@@ -15,6 +15,37 @@ import resume_support as support
 import install_resume_update
 
 class DurableTests(unittest.TestCase):
+    def test_ui_snapshot_available_while_worker_holds_database_lock(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            store=support.RunStore(tmp)
+            state={'sites':[]}
+            store.save(state)
+            held=threading.Event();release=threading.Event()
+            def worker():
+                with store.lock:
+                    held.set();release.wait(2)
+            thread=threading.Thread(target=worker);thread.start();held.wait(1)
+            try:
+                started=time.monotonic()
+                self.assertEqual(store.ui_snapshot,state)
+                self.assertLess(time.monotonic()-started,0.1)
+            finally:release.set();thread.join()
+
+    def test_event_flood_yields_and_unchanged_counters_do_not_redraw(self):
+        import queue
+        events=queue.Queue()
+        for i in range(10000):events.put(i)
+        proxy=support.EventProxy(events,SimpleNamespace())
+        proxy.batch_remaining=40;proxy.batch_deadline=time.monotonic()+1
+        for i in range(40):self.assertEqual(proxy.get_nowait(),i)
+        with self.assertRaises(queue.Empty):proxy.get_nowait()
+        self.assertEqual(events.qsize(),9960)
+        from unittest.mock import Mock
+        widget=Mock();label=support.ChangedLabel(widget)
+        for _ in range(10000):label.configure(text='1')
+        widget.configure.assert_called_once_with(text='1')
+        label.configure(text='2');self.assertEqual(widget.configure.call_count,2)
+
     def test_selected_queue_survives_process_restart_and_fresh_starts_new(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp);template=root/'template.xlsx';template.write_bytes(b'schema')

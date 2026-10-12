@@ -1,5 +1,7 @@
 """Durable selected-store runs; additive UI/runtime support for existing extractor."""
 import contextlib
+import copy
+import queue
 import hashlib
 import json
 import os
@@ -18,6 +20,7 @@ class RunStore:
         self.root.mkdir(parents=True, exist_ok=True)
         self.database = self.root / 'run_state.sqlite3'
         self.lock = threading.RLock()
+        self.ui_snapshot = None
         with self.connect() as db:
             db.execute('CREATE TABLE IF NOT EXISTS state (id INTEGER PRIMARY KEY, payload TEXT NOT NULL)')
 
@@ -37,11 +40,14 @@ class RunStore:
     def load(self):
         with self.lock, self.connect() as db:
             row = db.execute('SELECT payload FROM state WHERE id=1').fetchone()
-            return json.loads(row[0]) if row else None
+            state = json.loads(row[0]) if row else None
+            self.ui_snapshot = copy.deepcopy(state)
+            return state
 
     def save(self, state):
         with self.lock, self.connect() as db:
             db.execute('INSERT OR REPLACE INTO state VALUES(1,?)', (json.dumps(state),))
+        self.ui_snapshot = copy.deepcopy(state)
 
     def update(self, mutate):
         with self.lock:
@@ -170,6 +176,13 @@ class SessionProxy:
 class EventProxy:
     def __init__(self,queue,app):self.queue=queue;self.app=app
     def __getattr__(self,name):return getattr(self.queue,name)
+    def get_nowait(self):
+        # Yield to Tk even when cached responses flood the event queue.
+        if getattr(self, "batch_remaining", 1) <= 0 or time.monotonic() > getattr(self, "batch_deadline", float("inf")):
+            raise queue.Empty
+        self.batch_remaining = getattr(self, "batch_remaining", 1) - 1
+        return self.queue.get_nowait()
+
     def put(self,item,*args,**kwargs):
         if getattr(self.app,'_saved_run_active',False):
             if isinstance(item,str) and item.startswith('FRESH FETCH:') and getattr(self.app,'_resuming_saved',False):
@@ -185,9 +198,23 @@ class EventProxy:
         return self.queue.put(item,*args,**kwargs)
 
 
+class ChangedLabel:
+    """Avoid redrawing an unchanged dashboard counter for every log line."""
+    def __init__(self, widget):
+        self.widget=widget
+        self.previous=None
+    def configure(self, **kwargs):
+        if kwargs != self.previous:
+            self.widget.configure(**kwargs)
+            self.previous=dict(kwargs)
+    def __getattr__(self, name):
+        return getattr(self.widget, name)
+
+
 def enable_resume(g):
     App=g['App'];tls=g['_chotu_tls'];messagebox=g['messagebox']
     original_init=App.__init__;original_launch=App._launch_jobs
+    original_poll=App.poll
     original_session_factory=g['requests'].Session
     # Session-level cache also covers storefront image, ranking and audit pages.
     g['S']=SessionProxy(g['S'],tls,g['_chotu_wait'])
@@ -212,7 +239,10 @@ def enable_resume(g):
         self._saved_run_active=False
         self._saved_store_index=None
         self._saved_lease=None
+        self.saved_runs.load()  # Initial read before any worker can hold the lock.
         self.events=EventProxy(self.events,self)
+        for key, widget in self.metric_values.items():
+            self.metric_values[key]=ChangedLabel(widget)
         import customtkinter as ctk
         self.saved_controls=ctk.CTkFrame(root,fg_color='#10271b',corner_radius=8)
         self.saved_controls.pack(side='top',fill='x',padx=18,pady=(2,4))
@@ -230,11 +260,11 @@ def enable_resume(g):
         root.after(1000,self._saved_run_ui_tick)
 
     def refresh_controls(self):
-        state=self.saved_runs.load()
+        state=copy.deepcopy(self.saved_runs.ui_snapshot)
         if self.running:
             self.fresh_run_button.configure(state='disabled');self.continue_run_button.configure(state='disabled')
             if state:
-                saved=sum(site.get('status')=='done' and self.saved_runs.output_valid(site) for site in state['sites'])
+                saved=sum(site.get('status')=='done' for site in state['sites'])
                 self.saved_run_label.configure(text=f"Files saved: {saved}/{len(state['sites'])} — ANAS_DATA_FETCH (each store saved immediately)")
             return
         pending=self.saved_runs.pending(state) if state else []
@@ -245,6 +275,11 @@ def enable_resume(g):
             details=state['sites'][pending[0]]
             self.saved_run_label.configure(text=f"Saved: {done}/{len(state['sites'])} stores complete; {details.get('progress',0)}% — {details.get('detail','Waiting')}")
         else:self.saved_run_label.configure(text='No incomplete saved run' if not state else 'Saved run completed')
+
+    def poll(self):
+        self.events.batch_remaining=40
+        self.events.batch_deadline=time.monotonic()+0.020
+        return original_poll(self)
 
     def ui_tick(self):
         self.refresh_saved_controls()
@@ -365,4 +400,4 @@ def enable_resume(g):
 
     App.__init__=init;App._launch_jobs=launch;App.continue_saved_run=continue_run
     App.refresh_saved_controls=refresh_controls;App._saved_run_ui_tick=ui_tick
-    App._save_run_event=record_event;App.close=close
+    App._save_run_event=record_event;App.close=close;App.poll=poll

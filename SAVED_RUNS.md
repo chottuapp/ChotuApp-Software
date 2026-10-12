@@ -48,3 +48,5 @@ Cached pages still run the same hero/specification parsing and checks. All real
 HTTP pacing, Pause, Retry-After and 429/503 waits stay unchanged. The test verified
 a saved hero page was processed in under one second despite a 2.7s adaptive pace.
 This removes replay overhead, not the source website rate limit.
+
+UI responsiveness update: saved-run status uses an in-memory snapshot rather than waiting for the worker database lock. Event processing yields after 40 messages or 20 ms; unchanged counters are not redrawn. Durable worker writes, extraction rules and prices are unchanged. Windows hardware responsiveness still needs user verification.
