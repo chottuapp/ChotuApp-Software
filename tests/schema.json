@@ -1,0 +1,65 @@
+{
+  "Products": [
+    "product_id",
+    "category",
+    "subcategory",
+    "name",
+    "description",
+    "brand",
+    "material",
+    "weight_grams (agar ho)",
+    "condition (new/used)",
+    "warranty_months (agar ho)",
+    "base_price (PKR)",
+    "sale_price (PKR, agar discount ho)",
+    "sku",
+    "scraped_image_url (cover, auto)",
+    "final_image_url (cover/thumbnail — hosted link)",
+    "option_groups",
+    "available (yes/no)",
+    "source_url"
+  ],
+  "Product Images": [
+    "image_id",
+    "product_id",
+    "image_order",
+    "scraped_image_url (auto)",
+    "final_image_url (paste — hosted link)",
+    "is_primary (yes/no)",
+    "source_url"
+  ],
+  "Option Groups": [
+    "group_id",
+    "title (customer ko dikhega)",
+    "select_type",
+    "min",
+    "max",
+    "required (yes/no)"
+  ],
+  "Options": [
+    "option_id",
+    "group_id",
+    "option_name",
+    "extra_price (PKR)",
+    "option_image_url (agar size/color/variant ki apni image ho)",
+    "available (yes/no)"
+  ],
+  "Variant Combinations": [
+    "combination_id",
+    "product_id",
+    "source_variant_id",
+    "option_1_group_id",
+    "option_1_value",
+    "option_2_group_id",
+    "option_2_value",
+    "option_3_group_id",
+    "option_3_value",
+    "sku",
+    "base_price (PKR)",
+    "sale_price (PKR, agar discount ho)",
+    "available (yes/no)",
+    "stock_quantity (agar public ho)",
+    "variant_image_url",
+    "source_url"
+  ]
+}
