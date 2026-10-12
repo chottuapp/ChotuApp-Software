@@ -625,10 +625,10 @@ def run_site(base, name, template, log):
             skipped_invalid += 1
             continue
         available_priced=[v for v in priced if v.get('available') is True]
-        # Skip entirely unavailable products, but keep ALL variants of available products.
+        # Keep sold-out products and every source variant. Availability is a
+        # flag, never a reason to discard a priced public product.
         if not available_priced:
             skipped_out_of_stock += 1
-            continue
         cheapest=min(available_priced or priced,key=lambda v:money(v['price']))
         lowest=money(cheapest['price'])
         compare=money(cheapest.get('compare_at_price'))
@@ -687,14 +687,16 @@ def run_site(base, name, template, log):
             src=im.get('src')
             if not src: continue
             imgs.append({'image_id':uid('CI',pid+'|'+str(im.get('id') or i)),'product_id':pid,'image_order':i,'scraped_image_url (auto)':src,'final_image_url (paste — hosted link)':'','is_primary (yes/no)':'yes' if i==1 else 'no','source_url':url})
-    log(f'PRODUCT FILTER: skipped {skipped_out_of_stock} fully unavailable, {skipped_hidden} explicitly unpublished, {skipped_invalid} invalid/unpriced; retained {len(rows)} available products with ALL their variants')
-    if not rows: raise RuntimeError('No available, priced products found')
+    log(f'PRODUCT FILTER: retained {skipped_out_of_stock} fully unavailable products as available=no; skipped {skipped_hidden} explicitly unpublished, {skipped_invalid} invalid/unpriced; retained {len(rows)} products with ALL their variants')
+    if not rows: raise RuntimeError('No public, priced products found')
     rows.sort(key=lambda x:(x['category'].lower(), x['sale_price (PKR, agar discount ho)'] or x['base_price (PKR)'],x['name'].lower()))
     top_handles = verified_top20(base, log)
     if top_handles:
         rank = {base.rstrip('/') + '/products/' + handle: i for i, handle in enumerate(top_handles)}
         rows.sort(key=lambda r: (0, rank[r['source_url']]) if r['source_url'] in rank else (1, 0))
 
+    log(f'VARIANT EXPORT: {len(combos)} combinations; ' +
+        str(sum(c['available (yes/no)'] == 'no' for c in combos)) + ' unavailable preserved as no')
     for r in rows: write_row(wb['Products'],r)
     for r in imgs: write_row(wb['Product Images'],r)
     for r in groups: write_row(wb['Option Groups'],r)
@@ -1118,7 +1120,7 @@ class App:
         ctk.set_appearance_mode('dark')
         ctk.set_default_color_theme('blue')
         self.root = root
-        root.title('ChotuApp Studio R3 | Touchpad drag')
+        root.title('ChotuApp Studio R4 | All variants')
         root.geometry('1370x900')
         root.minsize(900, 640)
         root.configure(bg='#07170f')
@@ -1167,7 +1169,7 @@ class App:
         title=ctk.CTkFrame(header_inner,fg_color='transparent')
         title.pack(side='left')
         label(title,'ChotuApp Studio',23,FG,True).pack(anchor='w')
-        label(title,'TOUCHPAD DRAG SUPPORT R3',10,MUTED,True).pack(anchor='w')
+        label(title,'ALL VARIANTS · SOLD OUT = NO · R4',10,MUTED,True).pack(anchor='w')
         self.header_clock=label(header_inner,'●  SYSTEM READY',11,ACCENT,True)
         self.header_clock.pack(side='right')
 

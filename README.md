@@ -1,4 +1,11 @@
-# ChotuApp R3 touchpad update
+# ChotuApp R4 all-variants update
+
+R4 keeps entirely sold-out public priced products and all their variants, marking
+unavailable products/options/combinations as no. A four-shade discount fixture
+verifies 03/06/02/01, unavailable 01, base 899 and sale 499. These are controlled
+export tests, not validation of the mobile importer. The importer must display
+the sale price when present and show unavailable options disabled; its source
+is not in this repository.
 
 Shopify public-catalog extractor with a desktop GUI and ChotuApp workbook export.
 R3 adds tap-hold/left-button drag scrolling on store rows and page backgrounds.

@@ -186,9 +186,18 @@ class GuiTests(unittest.TestCase):
         self.assertEqual(calls,[a.sites[7]['url']])
 
 class ExportTests(unittest.TestCase):
-    def export(self,fractional):
+    def export(self,fractional,all_unavailable=False,eyebrow=False):
         price='999.88' if fractional else '999'
         product={'id':1,'title':'Fixture Cotton Shirt','handle':'fixture-shirt','vendor':'Fixture','product_type':'Shirts','body_html':'<p>Cotton shirt for daily wear.</p>','images':[{'id':1,'src':'https://example.com/shirt.jpg','position':1}],'options':[{'name':'Size'}],'variants':[{'id':11,'price':'699.44' if fractional else '699','available':False,'option1':'Medium'},{'id':12,'price':price,'available':True,'option1':'Big'}]}
+        if eyebrow:
+            product['title'] = 'Miss Rose Fashion Eyebrow'
+            product['variants'] = [
+                {'id': vid, 'price':'499', 'compare_at_price':'899',
+                 'available':shade != '01', 'option1':shade}
+                for vid,shade in ((32830548279399,'03'),(39858917736551,'06'),
+                                  (39474715197543,'02'),(32830548246631,'01'))]
+        if all_unavailable:
+            for variant in product['variants']: variant['available'] = False
         class Handler(BaseHTTPRequestHandler):
             def do_GET(self):
                 if self.path.startswith('/products.json'): data={'products':[product]}
@@ -219,11 +228,22 @@ class ExportTests(unittest.TestCase):
                     rows=list(wb[name].values);return [dict(zip(rows[0],r)) for r in rows[1:]]
                 self.assertEqual(len(records('Products')),1)
                 variants={str(v['source_variant_id']):v for v in records('Variant Combinations')}
-                self.assertEqual(len(variants),2)
-                self.assertEqual(variants['11']['available (yes/no)'],'no')
-                self.assertEqual(variants['12']['available (yes/no)'],'yes')
-                self.assertEqual(variants['11']['base_price (PKR)'],699)
-                self.assertEqual(variants['12']['base_price (PKR)'],999)
+                if eyebrow:
+                    self.assertEqual(len(variants), 4)
+                    self.assertEqual({v['option_1_value'] for v in variants.values()}, {'01','02','03','06'})
+                    self.assertEqual(variants['32830548246631']['available (yes/no)'], 'no')
+                    self.assertEqual(variants['32830548279399']['sale_price (PKR, agar discount ho)'],499)
+                    self.assertEqual(variants['32830548279399']['base_price (PKR)'],899)
+                    options={o['option_name']:o for o in records('Options')}
+                    self.assertEqual(options['01']['available (yes/no)'],'no')
+                    self.assertEqual(records('Products')[0]['sale_price (PKR, agar discount ho)'],499)
+                else:
+                    self.assertEqual(len(variants),2)
+                    self.assertEqual(variants['11']['available (yes/no)'],'no')
+                    self.assertEqual(variants['12']['available (yes/no)'],'no' if all_unavailable else 'yes')
+                    self.assertEqual(variants['11']['base_price (PKR)'],699)
+                    self.assertEqual(variants['12']['base_price (PKR)'],999)
+                    self.assertEqual(records('Products')[0]['available (yes/no)'], 'no' if all_unavailable else 'yes')
                 wb.close()
                 if fractional:
                     self.assertTrue(any('REVIEW REQUIRED:' in line for line in logs))
@@ -231,6 +251,8 @@ class ExportTests(unittest.TestCase):
                     self.assertIn('API_PRICES_MATCH',audit)
         finally:
             server.shutdown();server.server_close();thread.join()
+    def test_all_sold_out_product_retained(self):self.export(False,all_unavailable=True)
+    def test_eyebrow_four_shades_sale_and_unavailable_option(self):self.export(False,eyebrow=True)
     def test_integer_prices_and_unavailable_variants(self):self.export(False)
     def test_fractional_prices_truncate_and_preserve_final(self):self.export(True)
 
