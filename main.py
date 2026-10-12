@@ -646,12 +646,69 @@ def best_category(p, categories):
     if re.search(r'\b(bags?|purses?)\b', context): return 'Bags'
     return ptype if specific(ptype) else 'Uncategorized'
 
+def needs_detailed_description(product, soup):
+    identity = ' '.join([txt(product.get('title')), txt(product.get('product_type'))])
+    electronics = r'\b(laptops?|notebooks?|macbooks?|computers?|desktops?|smartphones?|mobiles?|mobile phones?|phones?|iphones?|ipads?|tablets?|monitors?|televisions?|smart tv|led tv|routers?|printers?|headphones?|earphones?|earbuds?|speakers?|smart[ -]?watches?|cameras?|projectors?|power banks?|chargers?|graphics cards?|motherboards?|processors?|refrigerators?|washing machines?|air conditioners?)\b'
+    # Any product's structured specification table deserves preservation.
+    labels = set(re.findall(r'(?i)\b(ram|processor|chipset|storage|battery capacity|screen size|resolution|connectivity|usb)\b', soup.get_text(' ', strip=True)))
+    specification_heading = any(re.search(r'(?i)\bspecifications?\b', node.get_text(' ',strip=True)) for node in soup.select('h1,h2,h3,h4'))
+    return bool(re.search(electronics, identity, re.I) or soup.find(['table', 'dl']) or specification_heading or len(labels) >= 3)
+
+
+def detailed_description(product, soup):
+    title = txt(product.get('title'))
+    specifications, seen = [], set()
+    def add_spec(text):
+        text = re.sub(r'\s+', ' ', text).strip()
+        key = text.casefold()
+        if text and key not in seen:
+            seen.add(key); specifications.append(text)
+    for table in soup.select('table'):
+        for row in table.select('tr'):
+            cells = [cell.get_text(' ', strip=True) for cell in row.find_all(['th','td'], recursive=False)]
+            cells = [cell for cell in cells if cell]
+            if cells:
+                add_spec(cells[0] + ': ' + ' | '.join(cells[1:]) if len(cells) > 1 else cells[0])
+        table.decompose()
+    for definition in soup.select('dl'):
+        for term in definition.select('dt'):
+            value = term.find_next_sibling('dd')
+            if value:
+                add_spec(term.get_text(' ',strip=True) + ': ' + value.get_text(' ',strip=True))
+        definition.decompose()
+    for tag in soup.find_all(['p','li','h1','h2','h3','h4','br','div']):
+        tag.insert_before('\n')
+    lines, used = [], set()
+    boilerplate = re.compile(r'(?i)^(add to cart|buy now|shop now|share|subscribe|newsletter|follow us|related products|you may also like|customer reviews|shipping policy|return policy)\b')
+    for line in soup.get_text(' ',strip=False).splitlines():
+        line = re.sub(r'\s+', ' ', html.unescape(line)).strip(' •|:-\t')
+        heading = re.sub(r'(?i)^(what (?:is|are)|about)\s+', '', line).rstrip('?').strip()
+        if not line or heading.casefold() == title.casefold() or boilerplate.search(line):
+            continue
+        if line.casefold() in ('description','specifications','technical specifications','product details'):
+            continue
+        if line.casefold() not in used and line.casefold() not in seen:
+            used.add(line.casefold()); lines.append(line)
+    # Specifications first: protect important details if Excel's hard cell
+    # capacity is reached. No guessed model, capacity, warranty or features.
+    sections = (['Specifications:\n' + '\n'.join(specifications)] if specifications else [])
+    if lines:
+        sections.append('\n'.join(lines))
+    result = '\n\n'.join(sections) or title
+    if len(result) > 32767:
+        _chotu_debug('DESCRIPTION LIMIT: Excel cell capacity reached for ' + title)
+        result = result[:32767]
+    return result
+
+
 def friendly_description(p):
     title = txt(p.get('title'))
-    body = p.get('body_html') or ''
+    body = (p.get('body_html') or '') + (p.get('_storefront_specs_html') or '')
     if not body: return title
     soup = BeautifulSoup(str(body), 'html.parser')
     for tag in soup.find_all(['script','style','noscript','iframe','svg']): tag.decompose()
+    if needs_detailed_description(p, soup):
+        return detailed_description(p, soup)
     for tag in soup.find_all(['p','li','h2','h3','h4','br','div']): tag.insert_before('\n')
     source = html.unescape(soup.get_text(' ', strip=False)).replace('\xa0', ' ')
     reject = re.compile(r'(?i)(add to cart|buy now|shop now|wishlist|share this|free shipping|cash on delivery|return policy|subscribe|newsletter|follow us|limited time|hurry|order now|click here|discount code|customer reviews|read more|view all|related products|you may also like)')
@@ -701,6 +758,7 @@ def image_key(url):
 
 def storefront_cover(base, product, pictures, log):
     url = base.rstrip('/') + '/products/' + product['handle']
+    product['_storefront_specs_html'] = ''
     fallback = pictures[0]['src'] if pictures else ''
     status, detail, cover = 'REVIEW', '', fallback
     try:
@@ -716,6 +774,9 @@ def storefront_cover(base, product, pictures, log):
             _chotu_tls.image_throttled = True
         resp.raise_for_status()
         soup = BeautifulSoup(resp.text, 'html.parser')
+        # Only product-detail areas; do not harvest recommendation/global tables.
+        product['_storefront_specs_html'] = ''.join(str(node) for node in soup.select(
+            'product-info table, .product__info-container table, [id^="ProductInfo"] table, .product-specifications, #specifications, [data-product-specifications]'))
         hero = soup.select_one('media-gallery .product__media img, [id^="MediaGallery"] .product__media img, .product__media img')
         meta = soup.find('meta', property='og:image')
         candidate = (hero.get('data-src') or hero.get('src')) if hero else (meta.get('content') if meta else None)
@@ -1070,8 +1131,8 @@ def quality_validation(rows, imgs, groups, opts, combos, output, log, storefront
         if not cat or cat.casefold() in generic or 'categories' in cat.casefold() or 'feed' in cat.casefold():
             flag('WARNING', 'GENERIC_CATEGORY', pid, cat or '(empty)', url)
         desc = str(r.get('description') or '').strip()
-        if len(desc) > 300:
-            flag('WARNING', 'LONG_APP_DESCRIPTION', pid, f'{len(desc)} characters', url)
+        if len(desc) >= 32767:
+            flag('WARNING', 'DESCRIPTION_EXCEL_CELL_LIMIT', pid, 'Description reaches Excel cell limit; check source for omitted detail', url)
         if re.search(r'(?i)\b(free gift|premium orders|free for orders)\b',str(r.get('name') or '')):
             flag('WARNING', 'PROMOTIONAL_PRODUCT_REVIEW', pid, 'Confirm this is separately saleable before importing', url)
         if not desc:
@@ -1381,7 +1442,7 @@ class App:
         ctk.set_appearance_mode('dark')
         ctk.set_default_color_theme('blue')
         self.root = root
-        root.title('ChotuApp Studio R10 | Top 20 first')
+        root.title('ChotuApp Studio R11 | Detailed specifications')
         root.geometry('1370x900')
         root.minsize(900, 640)
         root.configure(bg='#07170f')
@@ -1430,7 +1491,7 @@ class App:
         title=ctk.CTkFrame(header_inner,fg_color='transparent')
         title.pack(side='left')
         label(title,'ChotuApp Studio',23,FG,True).pack(anchor='w')
-        label(title,'TOP 20 FIRST · CATEGORY INDEPENDENT · R10',10,MUTED,True).pack(anchor='w')
+        label(title,'PRODUCT SPECIFICATIONS · DETAILED DESCRIPTIONS · R11',10,MUTED,True).pack(anchor='w')
         self.header_clock=label(header_inner,'●  SYSTEM READY',11,ACCENT,True)
         self.header_clock.pack(side='right')
 

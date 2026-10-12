@@ -1,4 +1,4 @@
-# ChotuApp R10 top-20 ordering update
+# ChotuApp R11 detailed-specifications update
 
 R7 excludes explicit free-gift promotional products before creating any product,
 image, option or variant rows. Paid Gift Sets and ordinary products whose
@@ -38,6 +38,17 @@ when sold-out/promotional products are excluded. If ranking cannot be verified,
 no sales ranking is invented and the output remains REVIEW. Mixed-category global
 ordering, source-grid pagination and the exported ranking receipt were tested.
 
+R11 preserves detailed source specifications for electronics and any product with
+specification tables/definition lists/headings. It formats table rows as key/value
+lines, removes boilerplate/scripts, and retains long source paragraphs. The former
+300-character cap and corresponding quality warning do not apply to detailed
+specifications. Supported product-detail page tables supplement body_html.
+No specifications or warranty terms are invented. Excel has a hard 32767-character
+cell limit; reaching it is explicitly flagged for review. Normal cosmetics
+descriptions remain concise. Tests cover electronics specs, long paragraphs,
+product-page tables and actual long-description XLSX export. The separate mobile
+importer/UI must also preserve multiline long descriptions.
+
 The original RAR remains unchanged. Updated desktop source is `main.py`.
 
 R6 adds product-description images to Product Images, deduplicates Shopify
@@ -76,7 +87,7 @@ Existing FINAL files and previous exports retain backup protection.
 
 ## Windows update
 
-Close ChotuApp. Extract `ChotuApp_Fixed_R10.zip` into a separate folder and open
+Close ChotuApp. Extract `ChotuApp_Fixed_R11.zip` into a separate folder and open
 CMD in its inner `ChotuApp_Fixed` folder:
 
 ```bat

@@ -186,9 +186,13 @@ class GuiTests(unittest.TestCase):
         self.assertEqual(calls,[a.sites[7]['url']])
 
 class ExportTests(unittest.TestCase):
-    def export(self,fractional,all_unavailable=False,eyebrow=False,body_image=False,with_gift=False,ranked=False):
+    def export(self,fractional,all_unavailable=False,eyebrow=False,body_image=False,with_gift=False,ranked=False,technical=False):
         price='999.88' if fractional else '999'
         product={'id':1,'title':'Fixture Cotton Shirt','handle':'fixture-shirt','vendor':'Fixture','product_type':'Shirts','body_html':'<p>Cotton shirt for daily wear.</p>','images':[{'id':1,'src':'https://example.com/shirt.jpg','position':1}],'options':[{'name':'Size'}],'variants':[{'id':11,'price':'699.44' if fractional else '699','available':False,'option1':'Medium'},{'id':12,'price':price,'available':True,'option1':'Big'}]}
+        if technical:
+            product['title']='Laptop Model X'
+            product['product_type']='Laptops'
+            product['body_html']='<table>'+''.join(f'<tr><th>Specification {i}</th><td>Verified source value {i}</td></tr>' for i in range(25))+'<tr><th>Warranty</th><td>One year</td></tr></table>'
         if body_image:
             product['body_html'] += '<img src="https://images.example/instructions.jpg">'
         if eyebrow:
@@ -253,6 +257,13 @@ class ExportTests(unittest.TestCase):
                 def records(name):
                     rows=list(wb[name].values);return [dict(zip(rows[0],r)) for r in rows[1:]]
                 self.assertEqual(len(records('Products')),1)
+                if technical:
+                    description=records('Products')[0]['description']
+                    self.assertGreater(len(description),300)
+                    self.assertIn('Specification 24: Verified source value 24',description)
+                    self.assertIn('Warranty: One year',description)
+                    quality=folder/'audit_reports/Fixture/Fixture - QUALITY REPORT.csv'
+                    self.assertNotIn('LONG_APP_DESCRIPTION',quality.read_text(encoding='utf-8-sig'))
                 if body_image:
                     image_urls={r['scraped_image_url (auto)'] for r in records('Product Images')}
                     self.assertEqual(image_urls, {'https://example.com/shirt.jpg','https://images.example/instructions.jpg'})
@@ -280,6 +291,7 @@ class ExportTests(unittest.TestCase):
                     self.assertIn('API_PRICES_MATCH',audit)
         finally:
             server.shutdown();server.server_close();thread.join()
+    def test_long_technical_description_exported_to_excel(self):self.export(False,technical=True)
     def test_best_seller_order_report_exported(self):self.export(False,ranked=True)
     def test_free_gift_not_exported_with_regular_product(self):self.export(False,with_gift=True)
     def test_description_image_exported_with_gallery(self):self.export(False,body_image=True)
@@ -355,6 +367,31 @@ class CatalogQualityTests(unittest.TestCase):
         self.assertFalse(main.is_free_gift({'title':'Gift Set of 4 Body Mists','handle':'gift-set'}))
         self.assertFalse(main.is_free_gift({'title':'Oil Free Foundation','body_html':'Free gift on orders over Rs4999'}))
 
+    def test_electronics_specs_not_cut_at_300_characters(self):
+        specs=[('Processor','Intel Core i7'),('RAM','16 GB DDR5'),('Storage','1 TB SSD'),('Display','15.6 inch 1920 x 1080'),('Battery','56 Wh'),('Connectivity','Wi-Fi 6, Bluetooth 5.2'),('Ports','USB-C, HDMI, 2 x USB-A'),('Operating System','Windows 11'),('Weight','1.7 kg'),('Warranty','One year manufacturer warranty')]
+        body='<table>'+''.join(f'<tr><th>{k}</th><td>{v}</td></tr>' for k,v in specs)+'</table>'
+        body+='<p>'+'Source technical detail. '*30+'</p>'
+        result=main.friendly_description({'title':'Laptop Model X','body_html':body})
+        self.assertGreater(len(result),300)
+        for key,value in specs:
+            self.assertIn(key+': '+value,result)
+        self.assertNotIn('32 GB',result)
+
+    def test_specification_heading_enables_detailed_description(self):
+        text='Materials: source cotton. Measurements: source sizes. '*15
+        result=main.friendly_description({'title':'Shirt','body_html':'<h2>Specifications</h2><p>'+text+'</p>'})
+        self.assertIn(text.strip(),result)
+        self.assertGreater(len(result),300)
+
+    def test_long_electronics_paragraph_and_definition_list_preserved(self):
+        text='Verified source details. '*25
+        result=main.friendly_description({'title':'Smartphone X','body_html':'<dl><dt>Battery</dt><dd>5000 mAh</dd></dl><p>'+text+'</p><script>ignore()</script>'})
+        self.assertIn('Battery: 5000 mAh',result)
+        self.assertIn(text.strip(),result)
+        self.assertNotIn('ignore()',result)
+        ordinary=main.friendly_description({'title':'Lipstick','body_html':'<p>Source cosmetic details.</p>'})
+        self.assertLessEqual(len(ordinary),300)
+
     def test_categories_capitalized_consistently(self):
         self.assertEqual(main.normalize_category('eyebrow'),'Eyebrow')
         self.assertEqual(main.normalize_category('lip gloss'),'Lip Gloss')
@@ -393,9 +430,12 @@ class CatalogQualityTests(unittest.TestCase):
         main._chotu_tls.adaptive_last_request=0
         pictures=[{'src':'https://cdn.shopify.com/a.jpg'},{'src':'https://cdn.shopify.com/b.jpg'}]
         html='<media-gallery><div class="product__media"><img src="https://cdn.shopify.com/b_800x.jpg?width=800"></div></media-gallery>'
+        html += '<product-info><table><tr><th>RAM</th><td>16 GB</td></tr></table></product-info>'
         response=SimpleNamespace(status_code=200,text=html,raise_for_status=lambda:None)
+        product={'handle':'item','title':'Laptop Model X'}
         with patch.object(main.S,'get',return_value=response):
-            cover=main.storefront_cover('https://store.example',{'handle':'item'},pictures,lambda x:None)
+            cover=main.storefront_cover('https://store.example',product,pictures,lambda x:None)
+        self.assertIn('RAM: 16 GB',main.friendly_description(product))
         self.assertEqual(cover,pictures[1]['src'])
         self.assertEqual(main._chotu_tls.image_audit[0][1],'VERIFIED')
         self.assertEqual(main.image_key('https://missrose.com.pk/cdn/shop/files/front.png?width=800'),
