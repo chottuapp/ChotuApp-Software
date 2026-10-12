@@ -186,7 +186,7 @@ class GuiTests(unittest.TestCase):
         self.assertEqual(calls,[a.sites[7]['url']])
 
 class ExportTests(unittest.TestCase):
-    def export(self,fractional,all_unavailable=False,eyebrow=False,body_image=False,with_gift=False):
+    def export(self,fractional,all_unavailable=False,eyebrow=False,body_image=False,with_gift=False,ranked=False):
         price='999.88' if fractional else '999'
         product={'id':1,'title':'Fixture Cotton Shirt','handle':'fixture-shirt','vendor':'Fixture','product_type':'Shirts','body_html':'<p>Cotton shirt for daily wear.</p>','images':[{'id':1,'src':'https://example.com/shirt.jpg','position':1}],'options':[{'name':'Size'}],'variants':[{'id':11,'price':'699.44' if fractional else '699','available':False,'option1':'Medium'},{'id':12,'price':price,'available':True,'option1':'Big'}]}
         if body_image:
@@ -236,7 +236,18 @@ class ExportTests(unittest.TestCase):
                         self.assertEqual(final.read_bytes(), previous_final)
                         self.assertFalse((out/'Fixture.xlsx').exists())
                         return
-                    main.run_site(f'http://127.0.0.1:{server.server_port}','Fixture',str(template),logs.append)
+                    if ranked:
+                        with patch.object(main,'verified_top20',return_value=[product['handle']]):
+                            main.run_site(f'http://127.0.0.1:{server.server_port}','Fixture',str(template),logs.append)
+                    else:
+                        main.run_site(f'http://127.0.0.1:{server.server_port}','Fixture',str(template),logs.append)
+                if ranked:
+                    import csv
+                    report=folder/'audit_reports/Fixture/Fixture - BEST SELLERS.csv'
+                    ranks=list(csv.DictReader(report.open(encoding='utf-8-sig')))
+                    self.assertEqual(ranks[0]['rank'],'1')
+                    self.assertEqual(ranks[0]['name'],product['title'])
+                    self.assertTrue(any('FILE ORDER:' in line for line in logs))
                 self.assertEqual(final.read_bytes(),previous_final)
                 wb=load_workbook(out/'Fixture.xlsx')
                 def records(name):
@@ -269,6 +280,7 @@ class ExportTests(unittest.TestCase):
                     self.assertIn('API_PRICES_MATCH',audit)
         finally:
             server.shutdown();server.server_close();thread.join()
+    def test_best_seller_order_report_exported(self):self.export(False,ranked=True)
     def test_free_gift_not_exported_with_regular_product(self):self.export(False,with_gift=True)
     def test_description_image_exported_with_gallery(self):self.export(False,body_image=True)
     def test_all_sold_out_product_excluded(self):self.export(False,all_unavailable=True)
@@ -397,6 +409,17 @@ class CatalogQualityTests(unittest.TestCase):
             cover=main.storefront_cover('https://store.example',{'handle':'item'},[{'src':'https://cdn.shopify.com/a.jpg'}],lambda x:None)
         self.assertIsNone(cover)
         self.assertEqual(main._chotu_tls.image_audit[0][1],'REVIEW')
+
+    def test_top20_order_overrides_category_and_url_scheme(self):
+        rows=[{'name':f'Product {i}', 'category':('Foundation','Lipstick','Eyebrow')[i%3],
+               'source_url':f'http://store.example/products/p{i}/?variant=123'} for i in range(25)]
+        rows.sort(key=lambda r:r['category'])
+        original=[r['name'] for r in rows]
+        handles=[f'p{i}' for i in range(19,-1,-1)]
+        ranked=main.prioritize_top_sellers(rows,handles)
+        self.assertEqual([r['name'] for r in rows[:20]],[f'Product {i}' for i in range(19,-1,-1)])
+        self.assertEqual(len(ranked),20)
+        self.assertEqual([r['name'] for r in rows[20:]],[n for n in original if n not in {f'Product {i}' for i in range(20)}])
 
     def test_top20_paginates_past_unavailable_products(self):
         from types import SimpleNamespace

@@ -1,4 +1,4 @@
-# ChotuApp R9 live-price verification update
+# ChotuApp R10 top-20 ordering update
 
 R7 excludes explicit free-gift promotional products before creating any product,
 image, option or variant rows. Paid Gift Sets and ordinary products whose
@@ -30,6 +30,14 @@ truncation policy remains, with original API price audits preserved.
 31 full-suite tests plus targeted rate-limit checks passed. The user-reported
 Modest suit mismatch still needs its actual exported workbook and product URL.
 
+R10 explicitly prioritizes the verified website top-20 list across categories,
+matching by product handle regardless of URL scheme/query/trailing slash.
+Remaining rows follow afterward. BEST SELLERS.csv records the applied ranks and
+FILE ORDER log confirms how many were promoted. Pagination checks up to 25 pages
+when sold-out/promotional products are excluded. If ranking cannot be verified,
+no sales ranking is invented and the output remains REVIEW. Mixed-category global
+ordering, source-grid pagination and the exported ranking receipt were tested.
+
 The original RAR remains unchanged. Updated desktop source is `main.py`.
 
 R6 adds product-description images to Product Images, deduplicates Shopify
@@ -57,7 +65,7 @@ must read Product Images to display the full gallery.
   fallback and create an IMAGE AUDIT REVIEW record; fallback is not called verified.
 - Put the first 20 included products from a confirmed storefront best-selling
   collection grid at the top of Products. Ignore recommendations/navigation;
-  check up to five pages when sold-out products are excluded. If ranking cannot
+  check up to 25 pages when sold-out products are excluded. If ranking cannot
   be confirmed, retain ordinary ordering and require REVIEW.
 - Preserve base and sale price fields, integer truncation policy and API audits.
   The separate mobile importer must honor sale prices and exact combinations.
@@ -68,7 +76,7 @@ Existing FINAL files and previous exports retain backup protection.
 
 ## Windows update
 
-Close ChotuApp. Extract `ChotuApp_Fixed_R9.zip` into a separate folder and open
+Close ChotuApp. Extract `ChotuApp_Fixed_R10.zip` into a separate folder and open
 CMD in its inner `ChotuApp_Fixed` folder:
 
 ```bat

@@ -733,6 +733,17 @@ def storefront_cover(base, product, pictures, log):
     return cover if status == 'VERIFIED' else None
 
 
+def prioritize_top_sellers(rows, handles):
+    # Rank is global across categories. Match product handles so URL scheme,
+    # query parameters and trailing slashes cannot silently defeat ordering.
+    rank = {handle: i for i, handle in enumerate(dict.fromkeys(handles))}
+    def key(row):
+        handle = urlparse(row['source_url']).path.rstrip('/').rsplit('/', 1)[-1]
+        return (0, rank[handle]) if handle in rank else (1, 0)
+    rows.sort(key=key)
+    return [row for row in rows if key(row)[0] == 0]
+
+
 def verified_top20(base, log, eligible_handles=None):
     # Walk verified collection grids, never navigation/recommendation links.
     found, seen = [], set()
@@ -741,7 +752,7 @@ def verified_top20(base, log, eligible_handles=None):
     if not wanted:
         return []
     try:
-        for page in range(1, 6):
+        for page in range(1, 26):
             _chotu_wait()
             if page > 1:
                 _chotu_backoff(getattr(_chotu_tls, 'adaptive_pace', 1.5), 'Best-selling pagination')
@@ -789,7 +800,7 @@ def verified_top20(base, log, eligible_handles=None):
                     return found
             if not new_handles:
                 break
-        raise RuntimeError('Could not verify enough eligible best-selling products within five pages')
+        raise RuntimeError('Could not verify enough eligible best-selling products within 25 pages')
     except Exception as exc:
         log('TOP 20: UNVERIFIED — ' + str(exc)[:200] + '; original ordering kept, REVIEW required')
         return []
@@ -930,9 +941,14 @@ def run_site(base, name, template, log):
         writer = csv.writer(stream)
         writer.writerow(['product_url', 'status', 'cover_url', 'detail'])
         writer.writerows(_chotu_tls.image_audit)
-    if top_handles:
-        rank = {base.rstrip('/') + '/products/' + handle: i for i, handle in enumerate(top_handles)}
-        rows.sort(key=lambda r: (0, rank[r['source_url']]) if r['source_url'] in rank else (1, 0))
+    ranked_rows = prioritize_top_sellers(rows, top_handles) if top_handles else []
+    with (OUT / (safe_name + ' - BEST SELLERS.csv')).open('w', encoding='utf-8-sig', newline='') as stream:
+        writer = csv.writer(stream)
+        writer.writerow(['rank', 'product_id', 'name', 'category', 'source_url'])
+        for rank, row in enumerate(ranked_rows, 1):
+            writer.writerow([rank, row['product_id'], row['name'], row['category'], row['source_url']])
+    if ranked_rows:
+        log('FILE ORDER: first ' + str(len(ranked_rows)) + ' products follow website best-selling rank across ALL categories; remaining products follow afterward')
 
     log(f'VARIANT EXPORT: {len(combos)} combinations; ' +
         str(sum(c['available (yes/no)'] == 'no' for c in combos)) + ' unavailable preserved as no')
@@ -1365,7 +1381,7 @@ class App:
         ctk.set_appearance_mode('dark')
         ctk.set_default_color_theme('blue')
         self.root = root
-        root.title('ChotuApp Studio R9 | Price verification')
+        root.title('ChotuApp Studio R10 | Top 20 first')
         root.geometry('1370x900')
         root.minsize(900, 640)
         root.configure(bg='#07170f')
@@ -1414,7 +1430,7 @@ class App:
         title=ctk.CTkFrame(header_inner,fg_color='transparent')
         title.pack(side='left')
         label(title,'ChotuApp Studio',23,FG,True).pack(anchor='w')
-        label(title,'FRESH VARIANT PRICE CHECK · R9',10,MUTED,True).pack(anchor='w')
+        label(title,'TOP 20 FIRST · CATEGORY INDEPENDENT · R10',10,MUTED,True).pack(anchor='w')
         self.header_clock=label(header_inner,'●  SYSTEM READY',11,ACCENT,True)
         self.header_clock.pack(side='right')
 
