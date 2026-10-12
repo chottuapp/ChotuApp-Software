@@ -188,8 +188,12 @@ def txt(v):
     return re.sub(r'\s+', ' ', html.unescape(BeautifulSoup(str(v or ''), 'html.parser').get_text(' ', strip=True))).strip()
 
 def money(v):
-    try: return Decimal(str(v)).quantize(Decimal('0.01'))
-    except (InvalidOperation, TypeError, ValueError): return None
+    try:
+        value = Decimal(str(v)).quantize(Decimal('0.01'))
+        return value if value.is_finite() and value >= 0 else None
+    except (InvalidOperation, TypeError, ValueError):
+        return None
+
 
 def uid(prefix, key): return prefix + hashlib.sha256(str(key).encode()).hexdigest()[:12]
 
@@ -308,6 +312,55 @@ def collections(base, log):
 
 # CHOTUAPP_PRICE_AUDIT_V1
 # Read-only cross-endpoint verification. Does not change prices or variants.
+def shopify_minor_price(value):
+    amount = Decimal(str(value))
+    if not amount.is_finite() or amount < 0 or amount != amount.to_integral_value():
+        raise ValueError('Invalid Shopify minor-unit price')
+    return amount / Decimal('100')
+
+
+def refresh_variant_prices(base, product, log):
+    # Product.js uses minor units, unlike products.json decimal rupees.
+    # Stage the complete response before changing the source product.
+    if getattr(_chotu_tls, 'price_throttled', False):
+        raise ChotuRateLimited('Live price checks paused after source rate limit')
+    try:
+        live = get_json(base.rstrip('/') + '/products/' + product['handle'] + '.js')
+    except ChotuRateLimited:
+        _chotu_tls.price_throttled = True
+        raise
+    if live.get('currency') and str(live['currency']).upper() != 'PKR':
+        raise ValueError('Source currency is not PKR: ' + str(live['currency']))
+    if str(live.get('id')) != str(product.get('id')):
+        raise ValueError('Product.js identity does not match catalog product')
+    source = {str(v['id']): v for v in product.get('variants', []) if v.get('id') is not None}
+    variants, ids = [], set()
+    changed = 0
+    for current in live.get('variants', []):
+        vid = str(current.get('id') or '')
+        if not vid or vid in ids or not isinstance(current.get('available'), bool):
+            raise ValueError('Missing/duplicate variant identity or unknown availability')
+        ids.add(vid)
+        variant = dict(source.get(vid, {}))
+        variant.update(current)
+        price = shopify_minor_price(current['price'])
+        compare = shopify_minor_price(current['compare_at_price']) if current.get('compare_at_price') is not None else None
+        previous = source.get(vid, {})
+        if money(previous.get('price')) != price or money(previous.get('compare_at_price')) != compare:
+            changed += 1
+        variant['price'] = str(price)
+        variant['compare_at_price'] = str(compare) if compare is not None else None
+        variants.append(variant)
+    if not variants:
+        raise ValueError('Product.js returned no variants')
+    product['variants'] = variants
+    options = live.get('options')
+    if isinstance(options, list) and all(isinstance(o, dict) for o in options):
+        product['options'] = options
+    log('LIVE VARIANT PRICES: ' + txt(product.get('title')) + ' — ' + str(len(variants)) + ' checked; ' + str(changed) + ' refreshed')
+    return variants
+
+
 def audit_fractional_prices(base, rows, combos, output, log):
     from urllib.parse import urlparse
     by_product = {}
@@ -319,12 +372,12 @@ def audit_fractional_prices(base, rows, combos, output, log):
         _chotu_wait()
         bp = money(r.get('base_price (PKR)'))
         sp = money(r.get('sale_price (PKR, agar discount ho)'))
-        if not any(v is not None and v != v.to_integral_value() for v in (bp, sp)):
-            continue
         checked += 1
         url = r.get('source_url') or ''
         try:
             handle = urlparse(url).path.rstrip('/').split('/')[-1]
+            if getattr(_chotu_tls, 'price_throttled', False):
+                raise ChotuRateLimited('Source rate limited; remaining price verification deferred')
             live = get_json(f"{base}/products/{handle}.js")
             live_variants = {str(v.get('id')): v for v in live.get('variants', [])}
             if not live_variants:
@@ -359,7 +412,7 @@ def audit_fractional_prices(base, rows, combos, output, log):
         w.writerow(['status','product_url','source_variant_id','check','export_base_sale','current_api_base_sale','detail'])
         w.writerows(findings)
     problems=sum(x[0] in ('REVIEW','MISMATCH') for x in findings)
-    log(f'PRICE AUDIT: {output} ({checked} fractional-price products checked; {problems} review/mismatch rows)')
+    log(f'PRICE AUDIT: {output} ({checked} products checked; {problems} review/mismatch rows)')
     log('PRICE AUDIT NOTE: product.js is a second Shopify API endpoint, NOT visual storefront/checkout verification. No prices changed.')
 
 # CHOTUAPP_STOREFRONT_AUDIT_V1
@@ -762,6 +815,7 @@ def run_site(base, name, template, log):
     rows=[]; imgs=[]; groups=[]; opts=[]; combos=[]; review=[]
     _chotu_tls.image_audit = []
     _chotu_tls.image_throttled = False
+    _chotu_tls.price_throttled = False
     skipped_hidden = skipped_out_of_stock = skipped_invalid = 0
     for p in products:
         _chotu_wait()
@@ -793,7 +847,15 @@ def run_site(base, name, template, log):
             skipped_invalid += 1
             log('CATALOG FILTER: excluded service/placeholder: ' + txt(p.get('title')))
             continue
-        cheapest=min(available_priced or priced,key=lambda v:money(v['price']))
+        try:
+            variants = refresh_variant_prices(base, p, log)
+            available_priced = [v for v in variants if v.get('available') is True and money(v.get('price')) is not None and money(v.get('price')) > 0]
+            if not available_priced:
+                skipped_out_of_stock += 1
+                continue
+        except Exception as exc:
+            log('PRICE VERIFICATION INCOMPLETE: ' + txt(p.get('title')) + ' — ' + str(exc))
+        cheapest=min(available_priced,key=lambda v:money(v['price']))
         lowest=money(cheapest['price'])
         compare=money(cheapest.get('compare_at_price'))
         baseprice=compare if compare is not None and compare>lowest else lowest
@@ -1224,6 +1286,8 @@ def run_site(base, name, template, log):
                 problems.append('Storefront verification incomplete after rate limiting')
 
         # Do not publish a partial/uncertain catalog if the source hit its known page limit.
+        if any('PRICE VERIFICATION INCOMPLETE:' in line for line in logs):
+            problems.append('Some live variant prices could not be verified')
         if any('IMAGE VERIFICATION INCOMPLETE:' in line for line in logs):
             problems.append('Some storefront front images could not be verified')
         if any('TOP 20: UNVERIFIED' in line for line in logs):
@@ -1301,7 +1365,7 @@ class App:
         ctk.set_appearance_mode('dark')
         ctk.set_default_color_theme('blue')
         self.root = root
-        root.title('ChotuApp Studio R8 | Fresh fetch')
+        root.title('ChotuApp Studio R9 | Price verification')
         root.geometry('1370x900')
         root.minsize(900, 640)
         root.configure(bg='#07170f')
@@ -1350,7 +1414,7 @@ class App:
         title=ctk.CTkFrame(header_inner,fg_color='transparent')
         title.pack(side='left')
         label(title,'ChotuApp Studio',23,FG,True).pack(anchor='w')
-        label(title,'FRESH FETCH · COMPLETE TEMPLATE · R8',10,MUTED,True).pack(anchor='w')
+        label(title,'FRESH VARIANT PRICE CHECK · R9',10,MUTED,True).pack(anchor='w')
         self.header_clock=label(header_inner,'●  SYSTEM READY',11,ACCENT,True)
         self.header_clock.pack(side='right')
 

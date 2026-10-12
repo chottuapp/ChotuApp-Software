@@ -1,4 +1,4 @@
-# ChotuApp R8 fresh-fetch update
+# ChotuApp R9 live-price verification update
 
 R7 excludes explicit free-gift promotional products before creating any product,
 image, option or variant rows. Paid Gift Sets and ordinary products whose
@@ -17,6 +17,18 @@ example, with old catalog rows removed. The installer adds it if missing and
 preserves existing user templates. Browse selection remains supported. Fields
 not publicly available stay blank; no business details are invented. A test
 verified changed source prices are read despite an earlier failed-run checkpoint.
+
+R9 refreshes included products from product.js before building rows, validating
+product/variant identity and minor currency units. It uses current variant sale
+and compare-at prices, while preserving individual availability and option values.
+Price audit now includes whole-rupee products, not only fractional ones.
+Unverified responses force REVIEW; rate limiting stops further refresh attempts.
+Base price remains the regular/compare-at price; selling price is sale_price when
+present. Product-level price represents the cheapest available variant, while
+Variant Combinations records exact selected-variant prices. Existing integer
+truncation policy remains, with original API price audits preserved.
+31 full-suite tests plus targeted rate-limit checks passed. The user-reported
+Modest suit mismatch still needs its actual exported workbook and product URL.
 
 The original RAR remains unchanged. Updated desktop source is `main.py`.
 
@@ -56,7 +68,7 @@ Existing FINAL files and previous exports retain backup protection.
 
 ## Windows update
 
-Close ChotuApp. Extract `ChotuApp_Fixed_R8.zip` into a separate folder and open
+Close ChotuApp. Extract `ChotuApp_Fixed_R9.zip` into a separate folder and open
 CMD in its inner `ChotuApp_Fixed` folder:
 
 ```bat

@@ -211,7 +211,7 @@ class ExportTests(unittest.TestCase):
             def do_GET(self):
                 if self.path.startswith('/products.json'): data={'products':catalog}
                 elif self.path.startswith('/products/fixture-shirt.js'):
-                    data={'variants':[dict(v,price=int(main.Decimal(v['price'])*100),compare_at_price=None) for v in product['variants']]}
+                    data={'id':product['id'],'variants':[dict(v,price=int(main.Decimal(v['price'])*100),compare_at_price=int(main.Decimal(v['compare_at_price'])*100) if v.get('compare_at_price') is not None else None) for v in product['variants']]}
                 elif self.path.startswith('/products/fixture-shirt'):
                     self.send_response(200);self.end_headers();self.wfile.write(f'<span class="price-item">PKR {price}</span>'.encode());return
                 else:data={'collections':[]}
@@ -275,6 +275,33 @@ class ExportTests(unittest.TestCase):
     def test_eyebrow_four_shades_sale_and_unavailable_option(self):self.export(False,eyebrow=True)
     def test_integer_prices_and_unavailable_variants(self):self.export(False)
     def test_fractional_prices_truncate_and_preserve_final(self):self.export(True)
+
+class PriceVerificationTests(unittest.TestCase):
+    def test_live_variant_price_replaces_catalog_price_and_preserves_discount(self):
+        product={'id':1,'title':'Suit','handle':'suit','variants':[{'id':11,'price':'4250','compare_at_price':'5000','available':True,'option1':'Small'}]}
+        live={'id':1,'variants':[{'id':11,'price':212500,'compare_at_price':425000,'available':True,'option1':'Small'}]}
+        with patch.object(main,'get_json',return_value=live):
+            variants=main.refresh_variant_prices('https://store.example',product,lambda x:None)
+        self.assertEqual(main.money(variants[0]['price']),main.Decimal('2125'))
+        self.assertEqual(main.money(variants[0]['compare_at_price']),main.Decimal('4250'))
+
+    def test_rate_limit_stops_additional_live_price_requests(self):
+        p={'id':1,'title':'Suit','handle':'suit','variants':[]}
+        main._chotu_tls.price_throttled=False
+        try:
+            with patch.object(main,'get_json',side_effect=main.ChotuRateLimited('rate limited')) as get:
+                with self.assertRaises(main.ChotuRateLimited):main.refresh_variant_prices('https://store.example',p,lambda x:None)
+                with self.assertRaises(main.ChotuRateLimited):main.refresh_variant_prices('https://store.example',p,lambda x:None)
+                self.assertEqual(get.call_count,1)
+        finally:main._chotu_tls.price_throttled=False
+
+    def test_wrong_identity_does_not_change_catalog(self):
+        p={'id':1,'title':'Suit','handle':'suit','variants':[{'id':11,'price':'2500'}]}
+        with patch.object(main,'get_json',return_value={'id':2,'variants':[]}):
+            with self.assertRaises(ValueError):main.refresh_variant_prices('https://store.example',p,lambda x:None)
+        self.assertEqual(p['variants'][0]['price'],'2500')
+        for value in ('NaN','Infinity','-1','499.5'):
+            with self.assertRaises(ValueError):main.shopify_minor_price(value)
 
 class FreshFetchTests(unittest.TestCase):
     def tearDown(self):
