@@ -221,6 +221,12 @@ class ExportTests(unittest.TestCase):
                 final.write_bytes(template.read_bytes());previous_final=final.read_bytes()
                 logs=[]
                 with patch.object(main,'OUT',out),patch.object(main,'__file__',str(folder/'main.py')):
+                    if all_unavailable:
+                        with self.assertRaisesRegex(RuntimeError, 'No public, priced products'):
+                            main.run_site(f'http://127.0.0.1:{server.server_port}','Fixture',str(template),logs.append)
+                        self.assertEqual(final.read_bytes(), previous_final)
+                        self.assertFalse((out/'Fixture.xlsx').exists())
+                        return
                     main.run_site(f'http://127.0.0.1:{server.server_port}','Fixture',str(template),logs.append)
                 self.assertEqual(final.read_bytes(),previous_final)
                 wb=load_workbook(out/'Fixture.xlsx')
@@ -251,9 +257,77 @@ class ExportTests(unittest.TestCase):
                     self.assertIn('API_PRICES_MATCH',audit)
         finally:
             server.shutdown();server.server_close();thread.join()
-    def test_all_sold_out_product_retained(self):self.export(False,all_unavailable=True)
+    def test_all_sold_out_product_excluded(self):self.export(False,all_unavailable=True)
     def test_eyebrow_four_shades_sale_and_unavailable_option(self):self.export(False,eyebrow=True)
     def test_integer_prices_and_unavailable_variants(self):self.export(False)
     def test_fractional_prices_truncate_and_preserve_final(self):self.export(True)
+
+class CatalogQualityTests(unittest.TestCase):
+    def test_canonical_beauty_categories(self):
+        for title,expected in [('MISS ROSE Eyeliner Feather Pen','Eyeliner'),
+                               ('Miss Rose Matte Oil-Free Foundation','Foundation'),
+                               ('Miss Rose Shiny Gloss','Lip Gloss'),
+                               ('Cotton embroidered kurta','Kurtas & Kurtis'),
+                               ('Blush embroidered kurta','Kurtas & Kurtis')]:
+            p={'title':title,'product_type':'Miss Rose Product Categories'}
+            self.assertEqual(main.best_category(p,[]),expected)
+        self.assertEqual(main.best_category({'title':'Item','product_type':'lipgloss'},[]),'Lip Gloss')
+
+    def test_description_drops_heading_and_preserves_facts(self):
+        p={'title':'Cotton Shirt','body_html':'<h2>What is Cotton Shirt</h2><p>Made from cotton fabric. Includes one shirt.</p><p>Buy now!</p><script>bad()</script>'}
+        result=main.friendly_description(p)
+        self.assertIn('cotton fabric',result)
+        self.assertIn('Includes one shirt',result)
+        self.assertNotIn('What is',result)
+        self.assertNotIn('Buy now',result)
+        self.assertNotIn('bad()',result)
+        self.assertEqual(main.friendly_description({'title':'No details','body_html':''}),'No details')
+
+    def test_front_image_matches_product_hero(self):
+        from types import SimpleNamespace
+        main._chotu_tls.image_audit=[]
+        main._chotu_tls.image_throttled=False
+        main._chotu_tls.adaptive_last_request=0
+        pictures=[{'src':'https://cdn.shopify.com/a.jpg'},{'src':'https://cdn.shopify.com/b.jpg'}]
+        html='<media-gallery><div class="product__media"><img src="https://cdn.shopify.com/b_800x.jpg?width=800"></div></media-gallery>'
+        response=SimpleNamespace(status_code=200,text=html,raise_for_status=lambda:None)
+        with patch.object(main.S,'get',return_value=response):
+            cover=main.storefront_cover('https://store.example',{'handle':'item'},pictures,lambda x:None)
+        self.assertEqual(cover,pictures[1]['src'])
+        self.assertEqual(main._chotu_tls.image_audit[0][1],'VERIFIED')
+        self.assertEqual(main.image_key('https://missrose.com.pk/cdn/shop/files/front.png?width=800'),
+                         main.image_key('https://cdn.shopify.com/s/files/1/0072/9101/1175/files/front.png?v=1'))
+
+    def test_unrelated_image_does_not_replace_gallery(self):
+        from types import SimpleNamespace
+        main._chotu_tls.image_audit=[];main._chotu_tls.image_throttled=False;main._chotu_tls.adaptive_last_request=0
+        response=SimpleNamespace(status_code=200,text='<meta property="og:image" content="https://cdn.shopify.com/other.jpg">',raise_for_status=lambda:None)
+        with patch.object(main.S,'get',return_value=response):
+            cover=main.storefront_cover('https://store.example',{'handle':'item'},[{'src':'https://cdn.shopify.com/a.jpg'}],lambda x:None)
+        self.assertIsNone(cover)
+        self.assertEqual(main._chotu_tls.image_audit[0][1],'REVIEW')
+
+    def test_top20_paginates_past_unavailable_products(self):
+        from types import SimpleNamespace
+        def response(handles):
+            html='<select><option value="best-selling" selected>Best selling</option></select><ul id="product-grid">'
+            html+=''.join(f'<a href="/products/{h}">{h}</a>' for h in handles)+'</ul>'
+            return SimpleNamespace(text=html,raise_for_status=lambda:None)
+        responses=[response(['soldout']+[f'p{i}' for i in range(10)]),response([f'p{i}' for i in range(10,20)])]
+        with patch.object(main.S,'get',side_effect=responses),patch.object(main,'_chotu_backoff'):
+            result=main.verified_top20('https://store.example',lambda x:None,{f'p{i}' for i in range(20)})
+        self.assertEqual(result,[f'p{i}' for i in range(20)])
+
+    def test_top20_uses_grid_and_excludes_navigation(self):
+        from types import SimpleNamespace
+        html='<a href="/products/advertisement">Ad</a><select><option value="best-selling" selected>Best selling</option></select><ul id="product-grid">'
+        html+=''.join(f'<li><a href="/products/p{i}">Product</a></li>' for i in range(20))+'</ul>'
+        response=SimpleNamespace(text=html,raise_for_status=lambda:None)
+        with patch.object(main.S,'get',return_value=response):
+            ranked=main.verified_top20('https://store.example',lambda x:None,set(f'p{i}' for i in range(20)))
+        self.assertEqual(ranked,[f'p{i}' for i in range(20)])
+        response.text=html.replace(' selected','')
+        with patch.object(main.S,'get',return_value=response):
+            self.assertEqual(main.verified_top20('https://store.example',lambda x:None),[])
 
 if __name__=='__main__':unittest.main()

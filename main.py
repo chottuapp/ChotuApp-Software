@@ -5,7 +5,7 @@ import subprocess
 import os, re, json, time, hashlib, threading, queue, html, shutil, csv, datetime
 from pathlib import Path
 from decimal import Decimal, InvalidOperation
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urljoin, urlsplit, urlunsplit, parse_qsl, urlencode
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
 import requests
@@ -474,9 +474,41 @@ def best_category(p, categories):
     context = ' '.join([title, ptype] + options).casefold()
     generic = re.compile(r'(?i)^(all|all products|shop all|new arrivals?|best sellers?|sale|featured|uncategorized|general|catalog|products?|collections?|shop now|in stock feed)$')
     def specific(value):
-        return bool(value) and not generic.fullmatch(value) and not re.search(r'(?i)\b(sale|discount|clearance|new arrival|best seller|trending|shop now|feed|under rs|under pkr)\b', value)
+        return bool(value) and 'product categories' not in value.casefold() and value.casefold() not in ('cosmetic', 'cosmetics', 'makeup', 'eye', 'lip') and not generic.fullmatch(value) and not re.search(r'(?i)\b(sale|discount|clearance|new arrival|best seller|trending|shop now|feed|under rs|under pkr)\b', value)
     # Explicit product words in the title take priority over broad site collections.
     rules = [
+        (r'\b(brush cleaner|brush cleanser)\b', 'Brush Cleaner'),
+        (r'\b(lip gloss|lipgloss|shiny gloss|shiny lip gloss)\b', 'Lip Gloss'),
+        (r'\b(lip liner|lipliner)\b', 'Lip Liner'),
+        (r'\b(lip balm|lipbalm)\b', 'Lip Balm'),
+        (r'\b(lip tint|lip oil|lip serum)\b', 'Lip Care'),
+        (r'\b(eyebrow|eye brow)\b', 'Eyebrow'),
+        (r'\b(eyelash serum|eye lash serum)\b', 'Eyelash Serum'),
+        (r'\b(eyelashes?|eye lashes?)\b', 'Eyelashes'),
+        (r'\b(eyeliner|eye liner|gel liner|gelliner|kajal)\b', 'Eyeliner'),
+        (r'\b(eye ?shadow|eye shades|eye palette)\b', 'Eyeshadow'),
+        (r'\b(eye glitter|liquid glitter)\b', 'Eye Glitter'),
+        (r'\bmascara\b', 'Mascara'),
+        (r'\bfoundation\b', 'Foundation'),
+        (r'\bconcealer\b', 'Concealer'),
+        (r'\bcolor corrector|colour corrector\b', 'Color Corrector'),
+        (r'\b(compact powder|pressed powder|face powder)\b', 'Face Powder'),
+        (r'\bloose powder\b', 'Loose Powder'),
+        (r'\bblush(?:er)?\b', 'Blush'),
+        (r'\bhighlighters?\b', 'Highlighter'),
+        (r'\bcontour|bronzer\b', 'Contour & Bronzer'),
+        (r'\b(primer|bb cream|bbcream)\b', 'Face Primer' if 'primer' in title.casefold() else 'BB Cream'),
+        (r'\b(makeup remover|make up remover)\b', 'Makeup Remover'),
+        (r'\b(setting spray|fixer|setting mist)\b', 'Setting Spray'),
+        (r'\b(brush|brushes)\b', 'Makeup Brushes'),
+        (r'\b(face wash|cleanser)\b', 'Face Cleanser'),
+        (r'\btoner\b', 'Toner'),
+        (r'\b(hand cream|moisturizer|moisturiser)\b', 'Moisturizer'),
+        (r'\bserum\b', 'Serum'),
+        (r'\b(blender|blenders|sponge|sponges)\b', 'Makeup Sponges'),
+        (r'\bnails?\b', 'Nails'),
+        (r'\b(body mists?|perfumes?|fragrances?)\b', 'Fragrances'),
+
         (r'\b(khussa|khusa|khussas)\b', 'Khussa'),
         (r'\b(sneakers?|trainers?)\b', 'Sneakers'),
         (r'\b(slippers?|slides?)\b', 'Slippers'),
@@ -499,6 +531,14 @@ def best_category(p, categories):
         (r'\b(lipsticks?)\b', 'Lipstick'),
         (r'\b(perfumes?|fragrances?)\b', 'Fragrances'),
     ]
+    # Explicit apparel words outrank beauty color words such as 'blush'.
+    for pattern, label in rules:
+        if label in ('Kurtas & Kurtis', 'Dresses', 'Trousers & Jeans', 'Abayas & Hijabs', 'Dupattas & Shawls', 'Gharara & Sharara') and re.search(pattern, title, re.I):
+            return label
+    if re.search(r'\b(bundle|deal)\b', title, re.I):
+        return 'Bundles & Deals'
+    if re.search(r'\bmake[ -]?up (kit|box|set)\b', title, re.I):
+        return 'Makeup Kits'
     for pattern, label in rules:
         if re.search(pattern, title, re.I):
             return label
@@ -506,7 +546,10 @@ def best_category(p, categories):
     vague = re.compile(r'(?i)^(girls?|boys?|kids?|women|men|ladies|clothing|footwear|[123]\s*(?:pc|piece|pcs|pieces))$')
     for candidate in [ptype] + options:
         if specific(candidate) and not vague.fullmatch(candidate):
-            return candidate
+            for pattern, label in rules:
+                if re.search(pattern, candidate, re.I):
+                    return label
+            return candidate.strip().title()
     if re.search(r'\b(shoes?|footwear)\b', context): return 'Footwear'
     if re.search(r'\b(shirt|suit|lawn|cotton|embroidered|2 piece|3 piece|co-ord)\b', context): return 'Clothing'
     if re.search(r'\b(bags?|purses?)\b', context): return 'Bags'
@@ -525,6 +568,9 @@ def friendly_description(p):
     for line in source.splitlines():
         line = re.sub(r'\s+', ' ', line).strip(' •|:-\t')
         if not line or reject.search(line): continue
+        heading = re.sub(r'(?i)^(what (?:is|are)|about|description)\s*[:?-]?\s*', '', line).rstrip('?').strip()
+        if heading.casefold() == title.casefold() or line.casefold() in ('features', 'benefits', 'description', 'how to use', 'product details'):
+            continue
         for sentence in re.split(r'(?<=[.!?])\s+(?=[A-Z0-9])', line):
             sentence = sentence.strip(' •|:-\t')
             if not 8 <= len(sentence) <= 400 or 'http' in sentence.lower(): continue
@@ -543,50 +589,120 @@ def friendly_description(p):
         chosen.add(i); length += len(sentence)+1
         if length >= 180 or len(chosen) >= 4: break
     result=' '.join(s for i,s in enumerate(sentences) if i in chosen)
+    result = re.sub(r'\s+', ' ', result).strip()
     return result or title
 
 
 # CHOTUAPP_TOP20_V1: best-selling ordering is used only when the storefront
 # explicitly exposes the requested sort. Never infer sales volume.
-def verified_top20(base, log):
-    from urllib.parse import urljoin, parse_qs
-    from bs4 import BeautifulSoup
-    url = base.rstrip('/') + '/collections/all?sort_by=best-selling'
+def image_key(url):
+    parts = urlsplit(urljoin('https://cdn.shopify.com', str(url)))
+    path = re.sub(r'_\d+x\d*(?=\.[a-zA-Z]+$)', '', parts.path)
+    # Shopify serves the same asset through store /cdn/shop/ and CDN /s/files/.
+    if path.startswith('/cdn/shop/'):
+        return ('shopify-asset', path[len('/cdn/shop/'):])
+    if parts.netloc.casefold().endswith('.shopify.com'):
+        match = re.search(r'.*/(files|products)/(.*)$', path)
+        if match:
+            return ('shopify-asset', match.group(1) + '/' + match.group(2))
+    return (parts.netloc.casefold(), path)
+
+
+def storefront_cover(base, product, pictures, log):
+    url = base.rstrip('/') + '/products/' + product['handle']
+    fallback = pictures[0]['src'] if pictures else ''
+    status, detail, cover = 'REVIEW', '', fallback
     try:
+        if getattr(_chotu_tls, 'image_throttled', False):
+            raise RuntimeError('Image verification paused after source rate limit')
         _chotu_wait()
+        # Apply existing source pacing; never send a burst of per-product requests.
+        last = getattr(_chotu_tls, 'adaptive_last_request', 0)
+        _chotu_backoff(max(0, last + getattr(_chotu_tls, 'adaptive_pace', 1.5) - time.monotonic()), 'Image pacing')
+        _chotu_tls.adaptive_last_request = time.monotonic()
         resp = S.get(url, timeout=25)
-        if resp.status_code != 200:
-            log('TOP 20: Storefront returned HTTP ' + str(resp.status_code) + '; original ordering kept')
-            return []
+        if resp.status_code in (429, 503):
+            _chotu_tls.image_throttled = True
+        resp.raise_for_status()
         soup = BeautifulSoup(resp.text, 'html.parser')
-        # A sort option alone does not prove the response actually applied it.
-        selected = any(
-            node.get('value') == 'best-selling' and (node.has_attr('selected') or
-            (node.parent and node.parent.get('value') == 'best-selling'))
-            for node in soup.select('option')
-        )
-        if not selected:
-            log('TOP 20: Best-selling sort not confirmed by storefront; original ordering kept')
-            return []
-        found=[]; seen=set()
-        for a in soup.select('a[href*="/products/"]'):
-            href = urljoin(base+'/', a.get('href',''))
-            parsed = urlparse(href)
-            if parsed.hostname != urlparse(base).hostname: continue
-            m = re.search(r'/products/([^/?#]+)', parsed.path)
-            if not m: continue
-            handle = m.group(1)
-            if handle not in seen:
-                seen.add(handle); found.append(handle)
-            if len(found) >= 20: break
-        if len(found) < 20:
-            log('TOP 20: Fewer than 20 ranked product links visible; original ordering kept')
-            return []
-        log('TOP 20: Storefront best-selling order confirmed; prioritizing 20 handles')
-        return found
+        hero = soup.select_one('media-gallery .product__media img, [id^="MediaGallery"] .product__media img, .product__media img')
+        meta = soup.find('meta', property='og:image')
+        candidate = (hero.get('data-src') or hero.get('src')) if hero else (meta.get('content') if meta else None)
+        if not candidate:
+            raise RuntimeError('No recognized product hero or og:image')
+        candidate = urljoin(url, candidate)
+        match = next((im['src'] for im in pictures if image_key(im['src']) == image_key(candidate)), None)
+        if not match:
+            raise RuntimeError('Front image not matched to this product gallery; API order preserved')
+        cover, status, detail = match, 'VERIFIED', 'Product-page hero' if hero else 'Product-page og:image'
     except Exception as exc:
-        log('TOP 20: Verification failed; original ordering kept: ' + str(exc)[:120])
+        detail = str(exc)[:250]
+        log('IMAGE VERIFICATION INCOMPLETE: ' + url + ' — ' + detail)
+    _chotu_tls.image_audit.append([url, status, cover, detail])
+    return cover if status == 'VERIFIED' else None
+
+
+def verified_top20(base, log, eligible_handles=None):
+    # Walk verified collection grids, never navigation/recommendation links.
+    found, seen = [], set()
+    sort_verified_without_control = False
+    wanted = min(20, len(eligible_handles)) if eligible_handles is not None else 20
+    if not wanted:
         return []
+    try:
+        for page in range(1, 6):
+            _chotu_wait()
+            if page > 1:
+                _chotu_backoff(getattr(_chotu_tls, 'adaptive_pace', 1.5), 'Best-selling pagination')
+            response = S.get(base.rstrip('/') + '/collections/all?sort_by=best-selling&page=' + str(page), timeout=25)
+            response.raise_for_status()
+            soup = BeautifulSoup(response.text, 'html.parser')
+            selected = any(node.get('value') == 'best-selling' and node.has_attr('selected')
+                           for node in soup.select('option'))
+            grid = soup.select_one('#product-grid, .product-grid, [data-product-grid]')
+            if not selected and grid is not None:
+                # Some Shopify themes hide sorting controls but emit server-side
+                # pagination preserving the requested best-selling sort. Check
+                # against a separate alphabetic control response before trusting it.
+                next_link = soup.find('link', rel='next')
+                next_url = urlparse(urljoin(base + '/', next_link.get('href', ''))) if next_link else None
+                server_sort = next_url is not None and next_url.hostname == urlparse(base).hostname and dict(parse_qsl(next_url.query)).get('sort_by') == 'best-selling'
+                if server_sort and page == 1:
+                    _chotu_backoff(getattr(_chotu_tls, 'adaptive_pace', 1.5), 'Sort verification')
+                    control = S.get(base.rstrip('/') + '/collections/all?sort_by=title-ascending&page=1', timeout=25)
+                    control.raise_for_status()
+                    control_grid = BeautifulSoup(control.text, 'html.parser').select_one('#product-grid, .product-grid, [data-product-grid]')
+                    control_links = control_grid.select('h3 a[href*="/products/"]') if control_grid else []
+                    labels = [a.get_text(' ', strip=True).casefold() for a in control_links]
+                    current = [a.get('href') for a in grid.select('h3 a[href*="/products/"]')]
+                    control_order = [a.get('href') for a in control_links]
+                    selected = len(labels) >= 3 and labels == sorted(labels) and current != control_order
+                    sort_verified_without_control = selected
+                elif server_sort and page > 1:
+                    selected = sort_verified_without_control
+            if not selected or grid is None:
+                raise RuntimeError('Selected best-selling sort and collection product grid were not both found')
+            new_handles = 0
+            for anchor in grid.select('a[href*="/products/"]'):
+                parsed = urlparse(urljoin(base + '/', anchor.get('href', '')))
+                if parsed.hostname != urlparse(base).hostname:
+                    continue
+                match = re.search(r'/products/([^/?#]+)', parsed.path)
+                if match and match.group(1) not in seen:
+                    handle = match.group(1)
+                    seen.add(handle); new_handles += 1
+                    if eligible_handles is None or handle in eligible_handles:
+                        found.append(handle)
+                if len(found) == wanted:
+                    log('TOP 20: Storefront best-selling grid order confirmed; prioritizing ' + str(wanted) + ' available products')
+                    return found
+            if not new_handles:
+                break
+        raise RuntimeError('Could not verify enough eligible best-selling products within five pages')
+    except Exception as exc:
+        log('TOP 20: UNVERIFIED — ' + str(exc)[:200] + '; original ordering kept, REVIEW required')
+        return []
+
 
 def run_site(base, name, template, log):
     # CHOTUAPP_MULTIDIM_VARIANTS_V1
@@ -606,6 +722,8 @@ def run_site(base, name, template, log):
         ws=wb[sheet]
         if ws.max_row>1: ws.delete_rows(2,ws.max_row-1)
     rows=[]; imgs=[]; groups=[]; opts=[]; combos=[]; review=[]
+    _chotu_tls.image_audit = []
+    _chotu_tls.image_throttled = False
     skipped_hidden = skipped_out_of_stock = skipped_invalid = 0
     for p in products:
         _chotu_wait()
@@ -625,10 +743,14 @@ def run_site(base, name, template, log):
             skipped_invalid += 1
             continue
         available_priced=[v for v in priced if v.get('available') is True]
-        # Keep sold-out products and every source variant. Availability is a
-        # flag, never a reason to discard a priced public product.
+        # Only sellable products; retain unavailable variants of each included product.
         if not available_priced:
             skipped_out_of_stock += 1
+            continue
+        if re.search(r"(?i)don't buy me|default out of stock product", txt(p.get('body_html'))) or p.get('handle') in ('shipping-protection', 'back-in-stock-apps'):
+            skipped_invalid += 1
+            log('CATALOG FILTER: excluded service/placeholder: ' + txt(p.get('title')))
+            continue
         cheapest=min(available_priced or priced,key=lambda v:money(v['price']))
         lowest=money(cheapest['price'])
         compare=money(cheapest.get('compare_at_price'))
@@ -638,8 +760,15 @@ def run_site(base, name, template, log):
         pictures=[im for im in (p.get('images') or []) if isinstance(im,dict) and im.get('src')]
         pictures.sort(key=lambda im:(im.get('position') if isinstance(im.get('position'),int) else 999999))
         featured=(p.get('image') or {}).get('src') or ''
-        if featured:
-            pictures.sort(key=lambda im:0 if im.get('src')==featured else 1)
+        if featured and not any(im['src'] == featured for im in pictures):
+            pictures.append({'src': featured})
+        for variant in variants:
+            image = variant.get('featured_image') or {}
+            if isinstance(image, dict) and image.get('src'):
+                pictures.append({'src': image['src']})
+        verified_cover = storefront_cover(base, p, pictures, log)
+        if verified_cover:
+            pictures.sort(key=lambda im: 0 if image_key(im['src']) == image_key(verified_cover) else 1)
         seen_urls=set(); pictures=[im for im in pictures if not (im['src'] in seen_urls or seen_urls.add(im['src']))]
         cover=pictures[0]['src'] if pictures else featured
         category=best_category(p,cats.get(p.get('id'),[]))
@@ -687,10 +816,15 @@ def run_site(base, name, template, log):
             src=im.get('src')
             if not src: continue
             imgs.append({'image_id':uid('CI',pid+'|'+str(im.get('id') or i)),'product_id':pid,'image_order':i,'scraped_image_url (auto)':src,'final_image_url (paste — hosted link)':'','is_primary (yes/no)':'yes' if i==1 else 'no','source_url':url})
-    log(f'PRODUCT FILTER: retained {skipped_out_of_stock} fully unavailable products as available=no; skipped {skipped_hidden} explicitly unpublished, {skipped_invalid} invalid/unpriced; retained {len(rows)} products with ALL their variants')
+    log(f'PRODUCT FILTER: excluded {skipped_out_of_stock} fully unavailable products; skipped {skipped_hidden} explicitly unpublished, {skipped_invalid} invalid/unpriced; retained {len(rows)} products with ALL their variants')
     if not rows: raise RuntimeError('No public, priced products found')
     rows.sort(key=lambda x:(x['category'].lower(), x['sale_price (PKR, agar discount ho)'] or x['base_price (PKR)'],x['name'].lower()))
-    top_handles = verified_top20(base, log)
+    top_handles = verified_top20(base, log, {urlparse(r['source_url']).path.rsplit('/',1)[-1] for r in rows})
+    safe_name = re.sub(r'[^\w .-]', '', name).strip() or 'Shopify'
+    with (OUT / (safe_name + ' - IMAGE AUDIT.csv')).open('w', encoding='utf-8-sig', newline='') as stream:
+        writer = csv.writer(stream)
+        writer.writerow(['product_url', 'status', 'cover_url', 'detail'])
+        writer.writerows(_chotu_tls.image_audit)
     if top_handles:
         rank = {base.rstrip('/') + '/products/' + handle: i for i, handle in enumerate(top_handles)}
         rows.sort(key=lambda r: (0, rank[r['source_url']]) if r['source_url'] in rank else (1, 0))
@@ -1047,6 +1181,10 @@ def run_site(base, name, template, log):
                 problems.append('Storefront verification incomplete after rate limiting')
 
         # Do not publish a partial/uncertain catalog if the source hit its known page limit.
+        if any('IMAGE VERIFICATION INCOMPLETE:' in line for line in logs):
+            problems.append('Some storefront front images could not be verified')
+        if any('TOP 20: UNVERIFIED' in line for line in logs):
+            problems.append('Best-selling order could not be verified')
         if any('Catalog completeness NOT PROVEN' in line for line in logs):
             problems.append('Catalog completeness unverified')
         if any('Category mapping INCOMPLETE' in line for line in logs):
@@ -1120,7 +1258,7 @@ class App:
         ctk.set_appearance_mode('dark')
         ctk.set_default_color_theme('blue')
         self.root = root
-        root.title('ChotuApp Studio R4 | All variants')
+        root.title('ChotuApp Studio R5 | Catalog quality')
         root.geometry('1370x900')
         root.minsize(900, 640)
         root.configure(bg='#07170f')
@@ -1169,7 +1307,7 @@ class App:
         title=ctk.CTkFrame(header_inner,fg_color='transparent')
         title.pack(side='left')
         label(title,'ChotuApp Studio',23,FG,True).pack(anchor='w')
-        label(title,'ALL VARIANTS · SOLD OUT = NO · R4',10,MUTED,True).pack(anchor='w')
+        label(title,'CLEAN CATALOG · IMAGES · TOP SELLERS · R5',10,MUTED,True).pack(anchor='w')
         self.header_clock=label(header_inner,'●  SYSTEM READY',11,ACCENT,True)
         self.header_clock.pack(side='right')
 
