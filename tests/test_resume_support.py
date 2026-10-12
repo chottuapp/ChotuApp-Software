@@ -81,7 +81,7 @@ class ResumeGuiTests(unittest.TestCase):
             module.CONFIG=root/'sites.json';module.HOME=root;module.OUT=root/'exports';module.OUT.mkdir()
             template=root/'template.xlsx';template.write_bytes(b'fixture schema')
             store=support.RunStore(target/'saved_runs')
-            state=store.fresh([{'name':'Finished','url':'https://finished.example'},{'name':'Remaining','url':'https://remaining.example'}],template)
+            state=store.fresh([{'name':'Finished','url':'https://finished.example'},{'name':'Remaining','url':'https://remaining.example'},{'name':'Last','url':'https://last.example'}],template)
             output=module.OUT/'Finished.xlsx';output.write_bytes(b'previous good output');stat=output.stat()
             def advance(s):
                 s['sites'][0].update(status='done',output={'path':str(output),'size':stat.st_size,'mtime_ns':stat.st_mtime_ns},progress=100)
@@ -98,19 +98,29 @@ class ResumeGuiTests(unittest.TestCase):
             for button in (app.fresh_run_button,app.continue_run_button):
                 self.assertTrue(button.winfo_ismapped())
                 self.assertLess(button.winfo_rooty()+button.winfo_height(),rootwin.winfo_rooty()+rootwin.winfo_height())
-            calls=[]
+            calls=[];last_started=threading.Event();release_last=threading.Event()
             def job(site,template):
                 calls.append(site['name'])
+                if site['name']=='Last':
+                    last_started.set();release_last.wait(3)
                 # Newly constructed app and worker can replay response persisted before restart.
-                self.assertEqual(module.S.get('https://remaining.example/product.js').json()['price'],499)
+                if site['name']=='Remaining':
+                    self.assertEqual(module.S.get('https://remaining.example/product.js').json()['price'],499)
                 new=module.OUT/(site['name']+'.xlsx');new.write_bytes(b'new output')
                 app.events.put(('__JOB_RESULT__',True,site['name']))
             try:
                 with patch.object(app,'_run_checked',side_effect=job):
                     app.continue_saved_run()
+                    self.assertTrue(last_started.wait(2))
+                    self.assertTrue(app.running)
+                    self.assertTrue((module.OUT/'Remaining.xlsx').is_file())
+                    self.assertEqual(store.load()['sites'][1]['status'],'done')
+                    app.refresh_saved_controls()
+                    self.assertIn('Files saved: 2/3',app.saved_run_label.cget('text'))
+                    release_last.set()
                     deadline=time.monotonic()+4
                     while app.running and time.monotonic()<deadline:rootwin.update();time.sleep(.01)
-                self.assertFalse(app.running);self.assertEqual(calls,['Remaining'])
+                self.assertFalse(app.running);self.assertEqual(calls,['Remaining','Last'])
                 self.assertEqual(store.load()['status'],'complete')
                 self.assertEqual(output.read_bytes(),b'previous good output')
                 self.assertFalse(errors)

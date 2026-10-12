@@ -36,3 +36,9 @@ exclusion; fresh-run isolation; simultaneous-writer exclusion; GUI restart with
 saved selection, cached response replay and completed-store skipping; visibility
 of both buttons at 900x640. Real Windows shutdown/hardware validation remains
 pending. The update does not claim to resolve the separate touchpad issue.
+
+Immediate file status: each completed store publishes its Excel to the existing
+ANAS_DATA_FETCH folder before the next store completes. The log prints FILE SAVED
+NOW and the fixed control row shows Files saved: X/Y during the queue. A test
+blocked the last store and verified the earlier file already existed on disk
+and its completed state/count were persisted.

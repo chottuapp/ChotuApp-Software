@@ -230,10 +230,13 @@ def enable_resume(g):
         root.after(1000,self._saved_run_ui_tick)
 
     def refresh_controls(self):
+        state=self.saved_runs.load()
         if self.running:
             self.fresh_run_button.configure(state='disabled');self.continue_run_button.configure(state='disabled')
+            if state:
+                saved=sum(site.get('status')=='done' and self.saved_runs.output_valid(site) for site in state['sites'])
+                self.saved_run_label.configure(text=f"Files saved: {saved}/{len(state['sites'])} — ANAS_DATA_FETCH (each store saved immediately)")
             return
-        state=self.saved_runs.load()
         pending=self.saved_runs.pending(state) if state else []
         self.fresh_run_button.configure(state='normal')
         self.continue_run_button.configure(state='normal' if pending else 'disabled')
@@ -267,6 +270,11 @@ def enable_resume(g):
                     site['progress']=100
         if isinstance(item,str) and (item.startswith('__CHOTU_PROGRESS__|') or 'SAVED REVIEW EXCEL:' in item or 'REVIEW REQUIRED:' in item) or isinstance(item,tuple) and len(item)==3 and item[0]=='__JOB_RESULT__':
             self.saved_runs.update(update)
+            if isinstance(item,tuple) and len(item)==3 and item[0]=='__JOB_RESULT__' and item[1]:
+                state=self.saved_runs.load()
+                output=state['sites'][index].get('output') if state else None
+                if output:
+                    self.events.queue.put('FILE SAVED NOW: '+output['path']+' — remaining stores continue separately')
 
     def launch(self,chosen,template,saved_state=None):
         if self.running or not chosen:return
