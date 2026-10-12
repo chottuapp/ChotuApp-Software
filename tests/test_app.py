@@ -186,9 +186,11 @@ class GuiTests(unittest.TestCase):
         self.assertEqual(calls,[a.sites[7]['url']])
 
 class ExportTests(unittest.TestCase):
-    def export(self,fractional,all_unavailable=False,eyebrow=False):
+    def export(self,fractional,all_unavailable=False,eyebrow=False,body_image=False):
         price='999.88' if fractional else '999'
         product={'id':1,'title':'Fixture Cotton Shirt','handle':'fixture-shirt','vendor':'Fixture','product_type':'Shirts','body_html':'<p>Cotton shirt for daily wear.</p>','images':[{'id':1,'src':'https://example.com/shirt.jpg','position':1}],'options':[{'name':'Size'}],'variants':[{'id':11,'price':'699.44' if fractional else '699','available':False,'option1':'Medium'},{'id':12,'price':price,'available':True,'option1':'Big'}]}
+        if body_image:
+            product['body_html'] += '<img src="https://images.example/instructions.jpg">'
         if eyebrow:
             product['title'] = 'Miss Rose Fashion Eyebrow'
             product['variants'] = [
@@ -233,6 +235,9 @@ class ExportTests(unittest.TestCase):
                 def records(name):
                     rows=list(wb[name].values);return [dict(zip(rows[0],r)) for r in rows[1:]]
                 self.assertEqual(len(records('Products')),1)
+                if body_image:
+                    image_urls={r['scraped_image_url (auto)'] for r in records('Product Images')}
+                    self.assertEqual(image_urls, {'https://example.com/shirt.jpg','https://images.example/instructions.jpg'})
                 variants={str(v['source_variant_id']):v for v in records('Variant Combinations')}
                 if eyebrow:
                     self.assertEqual(len(variants), 4)
@@ -257,12 +262,24 @@ class ExportTests(unittest.TestCase):
                     self.assertIn('API_PRICES_MATCH',audit)
         finally:
             server.shutdown();server.server_close();thread.join()
+    def test_description_image_exported_with_gallery(self):self.export(False,body_image=True)
     def test_all_sold_out_product_excluded(self):self.export(False,all_unavailable=True)
     def test_eyebrow_four_shades_sale_and_unavailable_option(self):self.export(False,eyebrow=True)
     def test_integer_prices_and_unavailable_variants(self):self.export(False)
     def test_fractional_prices_truncate_and_preserve_final(self):self.export(True)
 
 class CatalogQualityTests(unittest.TestCase):
+    def test_categories_capitalized_consistently(self):
+        self.assertEqual(main.normalize_category('eyebrow'),'Eyebrow')
+        self.assertEqual(main.normalize_category('lip gloss'),'Lip Gloss')
+        self.assertEqual(main.normalize_category('bb cream'),'BB Cream')
+        self.assertEqual(main.normalize_category('COMPACT POWDER'),'Compact Powder')
+
+    def test_description_images_preserved_separately_from_video(self):
+        product={'body_html':'<img src="https://images.example/instructions.jpg"><img src="https://images.example/instructions.jpg"><img src="data:image/png;base64,abc"><video src="video.mp4"></video>'}
+        images=main.description_images(product,'https://store.example')
+        self.assertEqual(images,[{'src':'https://images.example/instructions.jpg'}])
+
     def test_canonical_beauty_categories(self):
         for title,expected in [('MISS ROSE Eyeliner Feather Pen','Eyeliner'),
                                ('Miss Rose Matte Oil-Free Foundation','Foundation'),

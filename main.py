@@ -467,6 +467,33 @@ def write_row(ws, vals):
 
 # CHOTUAPP_CATALOG_QUALITY_V3
 # Conservative source-grounded categorization and description formatting.
+def normalize_category(value):
+    value = re.sub(r'\s+', ' ', str(value or '')).strip()
+    result = value.title()
+    for acronym in ('BB', 'CC', 'UV', 'SPF', 'PKR', '3D'):
+        result = re.sub(r'\b' + acronym + r'\b', acronym, result, flags=re.I)
+    return result or 'Uncategorized'
+
+
+def description_images(product, base):
+    # Images in Shopify body_html are product content, not gallery metadata.
+    soup = BeautifulSoup(product.get('body_html') or '', 'html.parser')
+    result, seen = [], set()
+    for image in soup.select('img'):
+        src = image.get('data-src') or image.get('src')
+        if not src and image.get('srcset'):
+            src = image['srcset'].split(',')[-1].strip().split()[0]
+        if not src:
+            continue
+        url = urljoin(base + '/', html.unescape(src))
+        parsed = urlparse(url)
+        if parsed.scheme not in ('https', 'http') or not parsed.hostname or '{' in url:
+            continue
+        if image_key(url) not in seen:
+            seen.add(image_key(url)); result.append({'src': url})
+    return result
+
+
 def best_category(p, categories):
     title = txt(p.get('title'))
     ptype = txt(p.get('product_type'))
@@ -474,12 +501,12 @@ def best_category(p, categories):
     context = ' '.join([title, ptype] + options).casefold()
     generic = re.compile(r'(?i)^(all|all products|shop all|new arrivals?|best sellers?|sale|featured|uncategorized|general|catalog|products?|collections?|shop now|in stock feed)$')
     def specific(value):
-        return bool(value) and 'product categories' not in value.casefold() and value.casefold() not in ('cosmetic', 'cosmetics', 'makeup', 'eye', 'lip') and not generic.fullmatch(value) and not re.search(r'(?i)\b(sale|discount|clearance|new arrival|best seller|trending|shop now|feed|under rs|under pkr)\b', value)
+        return bool(value) and not re.search(r'(?i)product categories|shop online', value) and value.casefold() not in ('cosmetic', 'cosmetics', 'makeup', 'eye', 'lip') and not generic.fullmatch(value) and not re.search(r'(?i)\b(sale|discount|clearance|new arrival|best seller|trending|shop now|feed|under rs|under pkr)\b', value)
     # Explicit product words in the title take priority over broad site collections.
     rules = [
         (r'\b(brush cleaner|brush cleanser)\b', 'Brush Cleaner'),
         (r'\b(lip gloss|lipgloss|shiny gloss|shiny lip gloss)\b', 'Lip Gloss'),
-        (r'\b(lip liner|lipliner)\b', 'Lip Liner'),
+        (r'\b(lip liners?|lipliners?)\b', 'Lip Liner'),
         (r'\b(lip balm|lipbalm)\b', 'Lip Balm'),
         (r'\b(lip tint|lip oil|lip serum)\b', 'Lip Care'),
         (r'\b(eyebrow|eye brow)\b', 'Eyebrow'),
@@ -498,7 +525,7 @@ def best_category(p, categories):
         (r'\bhighlighters?\b', 'Highlighter'),
         (r'\bcontour|bronzer\b', 'Contour & Bronzer'),
         (r'\b(primer|bb cream|bbcream)\b', 'Face Primer' if 'primer' in title.casefold() else 'BB Cream'),
-        (r'\b(makeup remover|make up remover)\b', 'Makeup Remover'),
+        (r'\b(makeup removers?|make up removers?)\b', 'Makeup Remover'),
         (r'\b(setting spray|fixer|setting mist)\b', 'Setting Spray'),
         (r'\b(brush|brushes)\b', 'Makeup Brushes'),
         (r'\b(face wash|cleanser)\b', 'Face Cleanser'),
@@ -766,12 +793,13 @@ def run_site(base, name, template, log):
             image = variant.get('featured_image') or {}
             if isinstance(image, dict) and image.get('src'):
                 pictures.append({'src': image['src']})
+        pictures.extend(description_images(p, base))
         verified_cover = storefront_cover(base, p, pictures, log)
         if verified_cover:
             pictures.sort(key=lambda im: 0 if image_key(im['src']) == image_key(verified_cover) else 1)
-        seen_urls=set(); pictures=[im for im in pictures if not (im['src'] in seen_urls or seen_urls.add(im['src']))]
+        seen_urls=set(); pictures=[im for im in pictures if not (image_key(im['src']) in seen_urls or seen_urls.add(image_key(im['src'])))]
         cover=pictures[0]['src'] if pictures else featured
-        category=best_category(p,cats.get(p.get('id'),[]))
+        category=normalize_category(best_category(p,cats.get(p.get('id'),[])))
         desc=friendly_description(p)
         url=f"{base}/products/{p['handle']}"
         dimensions=[]
@@ -1258,7 +1286,7 @@ class App:
         ctk.set_appearance_mode('dark')
         ctk.set_default_color_theme('blue')
         self.root = root
-        root.title('ChotuApp Studio R5 | Catalog quality')
+        root.title('ChotuApp Studio R6 | Full image export')
         root.geometry('1370x900')
         root.minsize(900, 640)
         root.configure(bg='#07170f')
@@ -1307,7 +1335,7 @@ class App:
         title=ctk.CTkFrame(header_inner,fg_color='transparent')
         title.pack(side='left')
         label(title,'ChotuApp Studio',23,FG,True).pack(anchor='w')
-        label(title,'CLEAN CATALOG · IMAGES · TOP SELLERS · R5',10,MUTED,True).pack(anchor='w')
+        label(title,'GALLERY + DESCRIPTION IMAGES · R6',10,MUTED,True).pack(anchor='w')
         self.header_clock=label(header_inner,'●  SYSTEM READY',11,ACCENT,True)
         self.header_clock.pack(side='right')
 

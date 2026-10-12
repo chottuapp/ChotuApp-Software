@@ -1,6 +1,13 @@
-# ChotuApp R5 catalog quality update
+# ChotuApp R6 gallery and category update
 
 The original RAR remains unchanged. Updated desktop source is `main.py`.
+
+R6 adds product-description images to Product Images, deduplicates Shopify
+store/CDN aliases, and consistently formats category capitalization while keeping
+BB/CC/SPF/UV acronyms. A live single-product export verified four eyebrow gallery
+photos plus the description instruction image, with the website hero first.
+Video thumbnails remain video media, not product photos. The mobile importer
+must read Product Images to display the full gallery.
 
 ## Catalog rules
 
@@ -31,7 +38,7 @@ Existing FINAL files and previous exports retain backup protection.
 
 ## Windows update
 
-Close ChotuApp. Extract `ChotuApp_Fixed_R5.zip` into a separate folder and open
+Close ChotuApp. Extract `ChotuApp_Fixed_R6.zip` into a separate folder and open
 CMD in its inner `ChotuApp_Fixed` folder:
 
 ```bat
@@ -54,7 +61,8 @@ Use Python 3.12 with Tk and requirements.txt. A display is required for GUI test
 python -m unittest discover -s tests -v
 ```
 
-22 automated tests passed. A separate live Miss Rose eyebrow export verified
+24 automated tests passed, followed by the additional description-image export
+test and a live five-image export check. A separate live Miss Rose eyebrow export verified
 sale 499, four shades including unavailable 01, all four API gallery images,
 website hero first, cleaned description and Eyebrow category. This representative
 export isolates catalog enumeration and ranking; the live ranking helper was
