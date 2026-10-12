@@ -38,7 +38,8 @@ def diagnose(root):
         version=re.search(r"root\.title\(['\"]([^'\"]+)",text)
         print('Installed title:',version.group(1) if version else 'unknown')
         print('Source SHA256:',hashlib.sha256(data).hexdigest()[:16])
-        print('Configured request pacing:', '1.5s baseline' if 'adaptive_pace' in text and '1.5' in text else 'inspect source')
+        pacing=re.search(r"getattr\(_chotu_tls,\s*['\"]adaptive_pace['\"],\s*([0-9.]+)\)",text)
+        print('Configured request pacing:',pacing.group(1)+'s baseline' if pacing else 'inspect source')
     else:print('main.py not found at selected installation')
     for package in ('requests','customtkinter','openpyxl','beautifulsoup4'):
         try:print(package+':',importlib.metadata.version(package))
