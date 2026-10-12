@@ -467,6 +467,12 @@ def write_row(ws, vals):
 
 # CHOTUAPP_CATALOG_QUALITY_V3
 # Conservative source-grounded categorization and description formatting.
+def is_free_gift(product):
+    # Only explicit promotional product identities. A paid "Gift Set" stays.
+    identity = txt(product.get('title')) + ' ' + str(product.get('handle') or '').replace('-', ' ').replace('_', ' ')
+    return bool(re.search(r'(?i)\bfree\s+gifts?\b|\bgifts?\s*\(\s*free\b|\bfree\s+(?:for|on)\s+(?:premium\s+)?orders\b', identity))
+
+
 def normalize_category(value):
     value = re.sub(r'\s+', ' ', str(value or '')).strip()
     result = value.title()
@@ -773,6 +779,10 @@ def run_site(base, name, template, log):
         # Only sellable products; retain unavailable variants of each included product.
         if not available_priced:
             skipped_out_of_stock += 1
+            continue
+        if is_free_gift(p):
+            skipped_invalid += 1
+            log('CATALOG FILTER: excluded free-gift promotion: ' + txt(p.get('title')))
             continue
         if re.search(r"(?i)don't buy me|default out of stock product", txt(p.get('body_html'))) or p.get('handle') in ('shipping-protection', 'back-in-stock-apps'):
             skipped_invalid += 1
@@ -1286,7 +1296,7 @@ class App:
         ctk.set_appearance_mode('dark')
         ctk.set_default_color_theme('blue')
         self.root = root
-        root.title('ChotuApp Studio R6 | Full image export')
+        root.title('ChotuApp Studio R7 | Free gifts excluded')
         root.geometry('1370x900')
         root.minsize(900, 640)
         root.configure(bg='#07170f')
@@ -1335,7 +1345,7 @@ class App:
         title=ctk.CTkFrame(header_inner,fg_color='transparent')
         title.pack(side='left')
         label(title,'ChotuApp Studio',23,FG,True).pack(anchor='w')
-        label(title,'GALLERY + DESCRIPTION IMAGES · R6',10,MUTED,True).pack(anchor='w')
+        label(title,'CLEAN CATALOG · NO FREE GIFTS · R7',10,MUTED,True).pack(anchor='w')
         self.header_clock=label(header_inner,'●  SYSTEM READY',11,ACCENT,True)
         self.header_clock.pack(side='right')
 

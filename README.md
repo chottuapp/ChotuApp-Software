@@ -1,4 +1,9 @@
-# ChotuApp R6 gallery and category update
+# ChotuApp R7 free-gift exclusion update
+
+R7 excludes explicit free-gift promotional products before creating any product,
+image, option or variant rows. Paid Gift Sets and ordinary products whose
+description mentions a gift are retained. Two targeted filter/export tests passed.
+Previously imported gifts need removal in the app; new exports omit them.
 
 The original RAR remains unchanged. Updated desktop source is `main.py`.
 
@@ -38,7 +43,7 @@ Existing FINAL files and previous exports retain backup protection.
 
 ## Windows update
 
-Close ChotuApp. Extract `ChotuApp_Fixed_R6.zip` into a separate folder and open
+Close ChotuApp. Extract `ChotuApp_Fixed_R7.zip` into a separate folder and open
 CMD in its inner `ChotuApp_Fixed` folder:
 
 ```bat
