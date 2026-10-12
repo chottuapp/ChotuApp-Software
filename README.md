@@ -1,6 +1,8 @@
-# ChotuApp tested update
+# ChotuApp R2 update
 
 Shopify public-catalog extractor with a desktop GUI and ChotuApp workbook export.
+R2 handles wheel events sent to a focused root while hovering over a scroll pane,
+pins FETCH SELECTED above the page, and persists the selected template.
 The original RAR and historical files are preserved. `main.py` is the extracted,
 updated source; the archive itself is not updated.
 

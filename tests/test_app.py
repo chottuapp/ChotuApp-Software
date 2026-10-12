@@ -77,7 +77,7 @@ class GuiTests(unittest.TestCase):
 
     def test_selection_and_idle_pause(self):
         a=self.app
-        self.assertEqual(a.refresh_selected.cget('state'),'disabled')
+        self.assertEqual(a.refresh_selected.cget('state'),'normal')
         a.store_checks[a.sites[5]['url']].set(True)
         a._selection_changed()
         self.assertEqual(a._selected_indices(),[5])
@@ -115,6 +115,29 @@ class GuiTests(unittest.TestCase):
             a._launch_jobs([a.sites[0]],'fixture.xlsx');self.pump_until_done()
         self.assertIn('REVIEW REQUIRED',a.live_status.cget('text'))
         self.assertEqual(a.progress_value.get(),100)
+
+    def test_focus_root_routes_to_hovered_store(self):
+        a = self.app
+        page = a._wheel_workspace._parent_canvas
+        page.yview_moveto(.35); self.root.update()
+        canvas = a.store_list._parent_canvas
+        canvas.yview_moveto(0); self.root.update()
+        before_page = page.yview()
+        # Windows wheel messages can name the focused root, not the hovered pane.
+        x = canvas.winfo_rootx() + 20
+        y = canvas.winfo_rooty() + 20
+        from types import SimpleNamespace
+        event = SimpleNamespace(widget=self.root, x_root=x, y_root=y, delta=-120, num=None, state=0)
+        self.assertEqual(a._route_wheel(event), 'break')
+        self.assertGreater(canvas.yview()[0], 0)
+        self.assertEqual(page.yview(), before_page)
+
+    def test_fetch_button_visible_at_small_window(self):
+        self.root.geometry('900x640'); self.root.update()
+        button = self.app.refresh_selected
+        self.assertTrue(button.winfo_ismapped())
+        self.assertLess(button.winfo_rooty() + button.winfo_height(),
+                        self.root.winfo_rooty() + self.root.winfo_height())
 
     def test_selected_launch_runs_only_ticked_store(self):
         a=self.app

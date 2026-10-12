@@ -1118,7 +1118,7 @@ class App:
         ctk.set_appearance_mode('dark')
         ctk.set_default_color_theme('blue')
         self.root = root
-        root.title('ChotuApp Studio  |  Catalog Intelligence')
+        root.title('ChotuApp Studio R2 | Scroll + Fetch')
         root.geometry('1370x900')
         root.minsize(900, 640)
         root.configure(bg='#07170f')
@@ -1167,7 +1167,7 @@ class App:
         title=ctk.CTkFrame(header_inner,fg_color='transparent')
         title.pack(side='left')
         label(title,'ChotuApp Studio',23,FG,True).pack(anchor='w')
-        label(title,'CATALOG INTELLIGENCE  /  PRO V2',10,MUTED,True).pack(anchor='w')
+        label(title,'SCROLL + FETCH REPAIR R2',10,MUTED,True).pack(anchor='w')
         self.header_clock=label(header_inner,'●  SYSTEM READY',11,ACCENT,True)
         self.header_clock.pack(side='right')
 
@@ -1205,6 +1205,12 @@ class App:
         row=ctk.CTkFrame(controls,fg_color='transparent')
         row.pack(fill='x',padx=19,pady=(0,9))
         self.template=tk.StringVar(value=str(HOME/'ChotuApp_Seller_Template_Updated_Variants.xlsx'))
+        try:
+            preferences = json.loads(CONFIG.with_name('chotuapp_preferences.json').read_text(encoding='utf-8'))
+            if isinstance(preferences, dict) and isinstance(preferences.get('template'), str):
+                self.template.set(preferences['template'])
+        except (OSError, ValueError):
+            pass
         label(row,'TEMPLATE',10,MUTED,True,width=86,anchor='w').pack(side='left')
         entry(row,self.template).pack(side='left',fill='x',expand=True,padx=(0,9))
         button(row,'Browse file',self.browse,width=125).pack(side='left')
@@ -1253,10 +1259,10 @@ class App:
 
         # CHOTUAPP_STICKY_UI_V1: toolbar is pinned below scrollable workspace
         actions=ctk.CTkFrame(root,fg_color='#10271b')
-        actions.pack(side='bottom',fill='x',padx=18,pady=(5,7))
+        actions.pack(side='top',fill='x',padx=18,pady=(5,7))
         self.refresh=button(actions,'▶  Refresh all',self.start,primary=True,width=153)
         self.refresh.pack(side='left',padx=(0,8))
-        self.refresh_selected=button(actions,'▶  Start selected stores',self.start_selected,width=188)
+        self.refresh_selected=button(actions,'▶  FETCH SELECTED',self.start_selected,width=188)
         self.refresh_selected.pack(side='left',padx=(0,8))
         self.pause_button=button(actions,'⏸ Pause',self.toggle_pause,width=105)
         self.pause_button.configure(state='disabled')
@@ -1512,6 +1518,14 @@ class App:
 
     def _route_wheel(self, event, button=None):
         node = event.widget
+        # Windows delivers MouseWheel to the focused widget, which can be
+        # the root or an entry far from the pane under the pointer.
+        try:
+            hovered = self.root.winfo_containing(event.x_root, event.y_root)
+            if hovered is not None and hovered is not self.root:
+                node = hovered
+        except (tk.TclError, AttributeError):
+            pass
         target = None
         while node is not None:
             if isinstance(node, (tk.Text, tk.Listbox)):
@@ -1545,8 +1559,15 @@ class App:
         return 'break'
 
     def browse(self):
-        path=filedialog.askopenfilename(filetypes=[('Excel template','*.xlsx')]);
-        if path:self.template.set(path)
+        path = filedialog.askopenfilename(filetypes=[('Excel template','*.xlsx')])
+        if path:
+            self.template.set(path)
+            try:
+                CONFIG.parent.mkdir(parents=True, exist_ok=True)
+                CONFIG.with_name('chotuapp_preferences.json').write_text(
+                    json.dumps({'template': path}), encoding='utf-8')
+            except OSError as exc:
+                messagebox.showwarning('Template preference', 'Selected for this session; could not save preference: ' + str(exc))
     def _selected_indices(self):
         return [i for i, site in enumerate(self.sites)
                 if site['url'] in self.store_checks and self.store_checks[site['url']].get()]
@@ -1554,8 +1575,8 @@ class App:
     def _selection_changed(self):
         count = len(self._selected_indices())
         self.selection_label.configure(text=f'{count} of {len(self.sites)} stores selected')
-        self.refresh_selected.configure(text=f'▶  Start selected ({count})',
-                                        state='normal' if count and not self.running else 'disabled')
+        self.refresh_selected.configure(text=f'▶  FETCH SELECTED ({count})',
+                                        state='disabled' if self.running else 'normal')
 
     def select_all_stores(self):
         for var in self.store_checks.values(): var.set(True)
