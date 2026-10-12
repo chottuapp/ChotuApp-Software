@@ -343,6 +343,26 @@ def enable_resume(g):
             return
         g['_chotu_pause_gate'].set();self.root.destroy()
 
+    # Local saved pages need no network pacing. Keep all real-request waits,
+    # Pause handling, source verification and rate-limit backoff unchanged.
+    original_backoff=g['_chotu_backoff']
+    original_cover=g.get('storefront_cover')
+    def backoff(seconds,reason='Retry'):
+        if reason=='Image pacing' and getattr(tls,'replaying_saved_image',False):
+            g['_chotu_wait']()
+            return
+        return original_backoff(seconds,reason)
+    if original_cover:
+        def cover(base,product,pictures,log):
+            cache=getattr(tls,'saved_response_cache',None)
+            url=base.rstrip('/')+'/products/'+product['handle']
+            previous=getattr(tls,'replaying_saved_image',False)
+            tls.replaying_saved_image=cache is not None and cache.get(url) is not None
+            try:return original_cover(base,product,pictures,log)
+            finally:tls.replaying_saved_image=previous
+        g['storefront_cover']=cover
+        g['_chotu_backoff']=backoff
+
     App.__init__=init;App._launch_jobs=launch;App.continue_saved_run=continue_run
     App.refresh_saved_controls=refresh_controls;App._saved_run_ui_tick=ui_tick
     App._save_run_event=record_event;App.close=close

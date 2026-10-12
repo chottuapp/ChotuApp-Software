@@ -90,7 +90,9 @@ class ResumeGuiTests(unittest.TestCase):
             folder=store.root/state['id']/'1';folder.mkdir()
             cache=support.ResponseCache(folder/'pages.sqlite3')
             response=requests.Response();response.status_code=200;response._content=b'{"price":499}';response.url='https://remaining.example/product.js';response.encoding='utf-8'
-            cache.put(response.url,response);cache.close()
+            cache.put(response.url,response)
+            html=requests.Response();html.status_code=200;html.url='https://remaining.example/products/p1';html._content=b'<media-gallery><div class="product__media"><img src="https://images.example/hero.jpg"></div></media-gallery>';html.encoding='utf-8'
+            cache.put(html.url,html);cache.close()
             rootwin=module.tk.Tk();errors=[];rootwin.report_callback_exception=lambda *args:errors.append(args)
             app=module.App(rootwin);rootwin.update()
             self.assertEqual(app.continue_run_button.cget('state'),'normal')
@@ -106,6 +108,12 @@ class ResumeGuiTests(unittest.TestCase):
                 # Newly constructed app and worker can replay response persisted before restart.
                 if site['name']=='Remaining':
                     self.assertEqual(module.S.get('https://remaining.example/product.js').json()['price'],499)
+                    module._chotu_tls.image_audit=[];module._chotu_tls.image_throttled=False
+                    module._chotu_tls.adaptive_last_request=time.monotonic();module._chotu_tls.adaptive_pace=2.7
+                    started=time.monotonic()
+                    hero=module.storefront_cover('https://remaining.example',{'handle':'p1'},[{'src':'https://images.example/hero.jpg'}],lambda x:None)
+                    self.assertEqual(hero,'https://images.example/hero.jpg')
+                    self.assertLess(time.monotonic()-started,1.0)
                 new=module.OUT/(site['name']+'.xlsx');new.write_bytes(b'new output')
                 app.events.put(('__JOB_RESULT__',True,site['name']))
             try:

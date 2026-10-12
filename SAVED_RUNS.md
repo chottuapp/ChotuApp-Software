@@ -42,3 +42,9 @@ ANAS_DATA_FETCH folder before the next store completes. The log prints FILE SAVE
 NOW and the fixed control row shows Files saved: X/Y during the queue. A test
 blocked the last store and verified the earlier file already existed on disk
 and its completed state/count were persisted.
+
+Resume replay speed: cached product-page responses bypass Image pacing only.
+Cached pages still run the same hero/specification parsing and checks. All real
+HTTP pacing, Pause, Retry-After and 429/503 waits stay unchanged. The test verified
+a saved hero page was processed in under one second despite a 2.7s adaptive pace.
+This removes replay overhead, not the source website rate limit.
