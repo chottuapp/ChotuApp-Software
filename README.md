@@ -1,9 +1,22 @@
-# ChotuApp R7 free-gift exclusion update
+# ChotuApp R8 fresh-fetch update
 
 R7 excludes explicit free-gift promotional products before creating any product,
 image, option or variant rows. Paid Gift Sets and ordinary products whose
 description mentions a gift are retained. Two targeted filter/export tests passed.
 Previously imported gifts need removal in the app; new exports omit them.
+
+R8 starts every new store fetch with a unique empty request database and sends
+no-cache request headers. Previous failed-run checkpoints and old export rows
+are not reused as source data. Pause/Resume continues the current run; restarting
+Fetch or reopening after failure starts from zero. Website/CDN freshness still
+depends on the source server honoring requests. Old FINAL files are used only
+for change comparison and backup protection.
+
+ChotuApp_Template.xlsx is a clean nine-sheet schema derived from the uploaded
+example, with old catalog rows removed. The installer adds it if missing and
+preserves existing user templates. Browse selection remains supported. Fields
+not publicly available stay blank; no business details are invented. A test
+verified changed source prices are read despite an earlier failed-run checkpoint.
 
 The original RAR remains unchanged. Updated desktop source is `main.py`.
 
@@ -43,7 +56,7 @@ Existing FINAL files and previous exports retain backup protection.
 
 ## Windows update
 
-Close ChotuApp. Extract `ChotuApp_Fixed_R7.zip` into a separate folder and open
+Close ChotuApp. Extract `ChotuApp_Fixed_R8.zip` into a separate folder and open
 CMD in its inner `ChotuApp_Fixed` folder:
 
 ```bat
@@ -52,7 +65,7 @@ py "%USERPROFILE%\Desktop\ChotuApp_Software\main.py"
 ```
 
 For a custom installation, use `py install_update.py --target "D:\your\folder"`.
-The installer verifies a timestamped backup, then replaces only main.py. If
+The installer verifies a timestamped backup, then replaces main.py and adds the bundled template only if missing. If
 runtime dependencies are missing, run `py -m pip install -r requirements.txt`.
 Choose the original template, select stores, and click FETCH SELECTED. Template
 choice is persisted. Touchpad tap-hold/drag on store rows and page backgrounds

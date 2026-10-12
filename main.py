@@ -11,8 +11,8 @@ from tkinter import ttk, filedialog, messagebox
 import requests
 
 # CHOTUAPP_MANUAL_RESUME_CHECKPOINT_V1
-# Persist successful public API responses per store. Replay exact URL on restart;
-# never replay failed/partial requests. Clear after a successfully saved Excel.
+# Persist successful API responses only for the current run. Every newly
+# started fetch uses a new database and never replays an earlier run.
 import sqlite3
 import zlib
 _chotu_tls = threading.local()
@@ -45,7 +45,11 @@ def _chotu_open_checkpoint(base, name):
     identity = hashlib.sha256((base.rstrip('/') + '|' + name).encode()).hexdigest()[:14]
     folder = Path(__file__).resolve().parent / 'resume_checkpoints'
     folder.mkdir(parents=True, exist_ok=True)
-    path = folder / (safe + '-' + identity + '.sqlite3')
+    # Each fetch owns a new database. Older failed-run checkpoints are never
+    # replayed into a fresh catalog, price or availability run.
+    descriptor, filename = tempfile.mkstemp(prefix=safe + '-' + identity + '-fresh-', suffix='.sqlite3', dir=folder)
+    os.close(descriptor)
+    path = Path(filename)
     db = sqlite3.connect(str(path), timeout=30)
     db.execute('CREATE TABLE IF NOT EXISTS responses (url TEXT PRIMARY KEY, payload BLOB NOT NULL)')
     db.commit()
@@ -106,7 +110,8 @@ from openpyxl import load_workbook
 HOME = Path(os.environ.get('CHOTUAPP_DATA_DIR', str(Path.home() / 'Desktop')))
 OUT = HOME / 'ANAS_DATA_FETCH'
 CONFIG = HOME / 'chotuapp_extractor_sites.json'
-HEADERS = {'User-Agent': 'Mozilla/5.0 (compatible; ChotuAppCatalogRefresh/1.0)'}
+HEADERS = {'User-Agent': 'Mozilla/5.0 (compatible; ChotuAppCatalogRefresh/1.0)',
+           'Cache-Control': 'no-cache', 'Pragma': 'no-cache'}
 S = requests.Session(); S.headers.update(HEADERS)
 
 # CHOTUAPP_ADAPTIVE_SPEED_V4
@@ -369,7 +374,7 @@ def storefront_price_audit(rows, output, log):
     findings = []
     checked = 0
     session = requests.Session()
-    session.headers.update({'User-Agent': 'Mozilla/5.0 (compatible; ChotuAppCatalogRefresh/1.0)'})
+    session.headers.update(HEADERS)
     for r in rows:
         _chotu_wait()
         base = money(r.get('base_price (PKR)'))
@@ -1296,7 +1301,7 @@ class App:
         ctk.set_appearance_mode('dark')
         ctk.set_default_color_theme('blue')
         self.root = root
-        root.title('ChotuApp Studio R7 | Free gifts excluded')
+        root.title('ChotuApp Studio R8 | Fresh fetch')
         root.geometry('1370x900')
         root.minsize(900, 640)
         root.configure(bg='#07170f')
@@ -1345,7 +1350,7 @@ class App:
         title=ctk.CTkFrame(header_inner,fg_color='transparent')
         title.pack(side='left')
         label(title,'ChotuApp Studio',23,FG,True).pack(anchor='w')
-        label(title,'CLEAN CATALOG · NO FREE GIFTS · R7',10,MUTED,True).pack(anchor='w')
+        label(title,'FRESH FETCH · COMPLETE TEMPLATE · R8',10,MUTED,True).pack(anchor='w')
         self.header_clock=label(header_inner,'●  SYSTEM READY',11,ACCENT,True)
         self.header_clock.pack(side='right')
 
@@ -1382,7 +1387,9 @@ class App:
         label(controls,'Configure your template and add storefronts',11,MUTED).pack(anchor='w',padx=19,pady=(0,13))
         row=ctk.CTkFrame(controls,fg_color='transparent')
         row.pack(fill='x',padx=19,pady=(0,9))
-        self.template=tk.StringVar(value=str(HOME/'ChotuApp_Seller_Template_Updated_Variants.xlsx'))
+        legacy_template = HOME / 'ChotuApp_Seller_Template_Updated_Variants.xlsx'
+        bundled_template = Path(__file__).resolve().with_name('ChotuApp_Template.xlsx')
+        self.template=tk.StringVar(value=str(legacy_template if legacy_template.is_file() else bundled_template))
         try:
             preferences = json.loads(CONFIG.with_name('chotuapp_preferences.json').read_text(encoding='utf-8'))
             if isinstance(preferences, dict) and isinstance(preferences.get('template'), str):
@@ -1620,7 +1627,8 @@ class App:
         try:
             cp = _chotu_open_checkpoint(site['url'], name)
             checkpoint_opened = True
-            self.events.put('CHECKPOINT: ' + str(cp) + ' (successful API pages reusable after restart)')
+            self.events.put('FRESH FETCH: new run; previous request checkpoints ignored. Products, prices, availability and images fetched again.')
+            self.events.put('CHECKPOINT: ' + str(cp) + ' (this run only; restarting Fetch begins from zero)')
             before = self._output_snapshot(name)
             evidence = []
             def log_line(line):
@@ -1657,7 +1665,7 @@ class App:
             _chotu_pause_gate.set()
             self.pause_button.configure(text='⏸ Pause')
             self.set_live_status('working', 'RESUMED')
-            self.logbox.insert('end', 'RESUMED: continuing from saved request checkpoint.\n')
+            self.logbox.insert('end', 'RESUMED: continuing the current fresh run.\n')
 
     def open_folder(self, path):
         path = Path(path)
@@ -1672,7 +1680,7 @@ class App:
 
     def close(self):
         if self.running and not messagebox.askyesno(
-                'Extraction running', 'Close now? Unsaved work stops; saved exports and request checkpoints remain available.'):
+                'Extraction running', 'Close now? Unsaved work stops; saved exports remain. The next fetch starts from zero.'):
             return
         _chotu_pause_gate.set()
         self.root.destroy()

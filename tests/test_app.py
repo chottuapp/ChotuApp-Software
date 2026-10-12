@@ -276,6 +276,39 @@ class ExportTests(unittest.TestCase):
     def test_integer_prices_and_unavailable_variants(self):self.export(False)
     def test_fractional_prices_truncate_and_preserve_final(self):self.export(True)
 
+class FreshFetchTests(unittest.TestCase):
+    def tearDown(self):
+        main._chotu_close_checkpoint()
+
+    def test_new_fetch_ignores_failed_run_checkpoint_and_reads_changed_price(self):
+        import requests
+        def response(price):
+            r=requests.Response();r.status_code=200
+            r._content=json.dumps({'price':price}).encode()
+            return r
+        with tempfile.TemporaryDirectory() as tmp, patch.object(main,'__file__',str(Path(tmp)/'main.py')), patch.object(main,'_chotu_backoff'):
+            with patch.object(main.S,'get',side_effect=[response(499),response(399)]) as get:
+                first=main._chotu_open_checkpoint('https://store.example','Fixture')
+                self.assertEqual(main.get_json('https://store.example/product.js')['price'],499)
+                self.assertEqual(main.get_json('https://store.example/product.js')['price'],499)
+                self.assertEqual(get.call_count,1)
+                main._chotu_close_checkpoint(success=False)
+                second=main._chotu_open_checkpoint('https://store.example','Fixture')
+                self.assertNotEqual(first,second)
+                self.assertTrue(first.exists())
+                self.assertEqual(main.get_json('https://store.example/product.js')['price'],399)
+                self.assertEqual(get.call_count,2)
+                main._chotu_close_checkpoint(success=True)
+                self.assertFalse(second.exists())
+
+    def test_uploaded_structure_template_contains_no_old_catalog_records(self):
+        wb=load_workbook(ROOT/'ChotuApp_Template.xlsx',read_only=True)
+        self.assertEqual(len(wb.sheetnames),9)
+        for sheet in ('Products','Product Images','Option Groups','Options','Variant Combinations'):
+            self.assertEqual(wb[sheet].max_row,1)
+        self.assertTrue(all(row[1].value is None for row in wb['Brand Info'].iter_rows(min_row=2)))
+        wb.close()
+
 class CatalogQualityTests(unittest.TestCase):
     def test_free_gift_filter_preserves_paid_gift_sets(self):
         self.assertTrue(main.is_free_gift({'title':'Miss Rose Com Pk Gift (Free for Premium Orders Rs4999+)'}))

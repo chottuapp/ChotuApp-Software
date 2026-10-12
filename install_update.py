@@ -16,6 +16,11 @@ def install(target):
         raise RuntimeError('Existing main.py not found. Supply --target with your existing ChotuApp_Software folder.')
     if destination == source:
         raise RuntimeError('Extract this update into a separate folder before installing.')
+    # Install the clean schema template only when absent; keep user templates.
+    template_source = source.with_name('ChotuApp_Template.xlsx')
+    template_destination = destination.with_name('ChotuApp_Template.xlsx')
+    if template_source.is_file() and not template_destination.exists():
+        shutil.copy2(template_source, template_destination)
     if destination.read_bytes() == data:
         print('Already installed; no changes needed.')
         return
