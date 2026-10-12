@@ -1118,7 +1118,7 @@ class App:
         ctk.set_appearance_mode('dark')
         ctk.set_default_color_theme('blue')
         self.root = root
-        root.title('ChotuApp Studio R2 | Scroll + Fetch')
+        root.title('ChotuApp Studio R3 | Touchpad drag')
         root.geometry('1370x900')
         root.minsize(900, 640)
         root.configure(bg='#07170f')
@@ -1167,7 +1167,7 @@ class App:
         title=ctk.CTkFrame(header_inner,fg_color='transparent')
         title.pack(side='left')
         label(title,'ChotuApp Studio',23,FG,True).pack(anchor='w')
-        label(title,'SCROLL + FETCH REPAIR R2',10,MUTED,True).pack(anchor='w')
+        label(title,'TOUCHPAD DRAG SUPPORT R3',10,MUTED,True).pack(anchor='w')
         self.header_clock=label(header_inner,'●  SYSTEM READY',11,ACCENT,True)
         self.header_clock.pack(side='right')
 
@@ -1236,7 +1236,7 @@ class App:
         middle.grid_columnconfigure(1,weight=1)
         list_panel=frame(middle)
         list_panel.grid(row=0,column=0,sticky='nsew',padx=(0,12))
-        label(list_panel,'Connected stores',15,FG,True).pack(anchor='w',padx=17,pady=(14,8))
+        label(list_panel,'Connected stores · tap-hold and drag to scroll',15,FG,True).pack(anchor='w',padx=17,pady=(14,8))
         self.store_checks = {}
         self.store_list = ctk.CTkScrollableFrame(list_panel, height=172,
             fg_color='#0b1e14', corner_radius=12,
@@ -1506,6 +1506,11 @@ class App:
             button = 4 if sequence == '<Button-4>' else 5 if sequence == '<Button-5>' else None
             self.root.bind_class(self._wheel_tag, sequence,
                                  lambda event, button=button: self._route_wheel(event, button))
+        self._pan_state = None
+        for sequence, callback in (('<ButtonPress-1>', self._pan_start),
+                                   ('<B1-Motion>', self._pan_move),
+                                   ('<ButtonRelease-1>', self._pan_end)):
+            self.root.bind_class(self._wheel_tag, sequence, callback)
         self._tag_wheel_widgets(self.root)
 
     def _tag_wheel_widgets(self, widget):
@@ -1515,6 +1520,60 @@ class App:
         widget.bindtags((self._wheel_tag,) + tuple(t for t in tags if t != self._wheel_tag))
         for child in widget.winfo_children():
             self._tag_wheel_widgets(child)
+
+    def _pan_start(self, event):
+        node = event.widget
+        checkbox = None
+        target = None
+        while node is not None:
+            kind = type(node).__name__
+            # Preserve text selection, editable fields, buttons and native
+            # scrollbar dragging. Store checkboxes defer clicks until release.
+            if isinstance(node, (tk.Text, tk.Entry, tk.Listbox, ttk.Scrollbar)) or kind in (
+                    'CTkEntry', 'CTkButton', 'CTkScrollbar', 'Button', 'Scrollbar'):
+                self._pan_state = None
+                return None
+            if kind == 'CTkCheckBox':
+                checkbox = node
+            if node is self.store_list or node is self.store_list._parent_canvas:
+                target = self.store_list._parent_canvas
+                break
+            if node is self._wheel_workspace or node is self._wheel_workspace._parent_canvas:
+                target = self._wheel_workspace._parent_canvas
+                break
+            node = getattr(node, 'master', None)
+        if target is None:
+            self._pan_state = None
+            return None
+        self._pan_state = {'target': target, 'y': event.y_root,
+                           'fraction': target.yview()[0], 'moved': False,
+                           'checkbox': checkbox}
+        return 'break'
+
+    def _pan_move(self, event):
+        state = self._pan_state
+        if state is None:
+            return None
+        distance = event.y_root - state['y']
+        if abs(distance) >= 5:
+            state['moved'] = True
+        if state['moved']:
+            canvas = state['target']
+            region = canvas.tk.splitlist(canvas.cget('scrollregion'))
+            if len(region) == 4:
+                height = float(region[3]) - float(region[1])
+                if height > 0:
+                    canvas.yview_moveto(state['fraction'] - distance / height)
+        return 'break'
+
+    def _pan_end(self, event):
+        state = self._pan_state
+        self._pan_state = None
+        if state is None:
+            return None
+        if not state['moved'] and state['checkbox'] is not None:
+            state['checkbox'].toggle()
+        return 'break'
 
     def _route_wheel(self, event, button=None):
         node = event.widget

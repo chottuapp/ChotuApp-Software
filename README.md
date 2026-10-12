@@ -1,6 +1,11 @@
-# ChotuApp R2 update
+# ChotuApp R3 touchpad update
 
 Shopify public-catalog extractor with a desktop GUI and ChotuApp workbook export.
+R3 adds tap-hold/left-button drag scrolling on store rows and page backgrounds.
+A normal store click still toggles selection; dragging a row does not. Text fields,
+buttons and scrollbar controls retain their normal actions. Two-finger gestures
+that send MouseWheel events retain wheel support. Real hardware validation is pending.
+
 R2 handles wheel events sent to a focused root while hovering over a scroll pane,
 pins FETCH SELECTED above the page, and persists the selected template.
 The original RAR and historical files are preserved. `main.py` is the extracted,

@@ -116,6 +116,41 @@ class GuiTests(unittest.TestCase):
         self.assertIn('REVIEW REQUIRED',a.live_status.cget('text'))
         self.assertEqual(a.progress_value.get(),100)
 
+    def test_touchpad_drag_scrolls_store_without_toggling(self):
+        from types import SimpleNamespace
+        a = self.app
+        checkbox = a.store_list.winfo_children()[0].winfo_children()[0]
+        canvas = a.store_list._parent_canvas
+        canvas.yview_moveto(0); self.root.update()
+        page_before = a._wheel_workspace._parent_canvas.yview()
+        a._pan_start(SimpleNamespace(widget=checkbox, y_root=400))
+        a._pan_move(SimpleNamespace(y_root=300))
+        a._pan_end(SimpleNamespace(y_root=300))
+        self.assertGreater(canvas.yview()[0], 0)
+        self.assertEqual(a._selected_indices(), [])
+        self.assertEqual(a._wheel_workspace._parent_canvas.yview(), page_before)
+
+    def test_pan_bindings_and_click_selection(self):
+        a = self.app
+        checkbox = a.store_list.winfo_children()[0].winfo_children()[0]
+        from types import SimpleNamespace
+        self.assertTrue(self.root.bind_class(a._wheel_tag, '<B1-Motion>'))
+        a._pan_start(SimpleNamespace(widget=checkbox, y_root=300))
+        a._pan_end(SimpleNamespace(y_root=300))
+        self.assertEqual(a._selected_indices(), [0])
+        a._pan_start(SimpleNamespace(widget=a.bulk, y_root=300))
+        self.assertIsNone(a._pan_state)
+
+    def test_touchpad_drag_main_page(self):
+        from types import SimpleNamespace
+        a = self.app
+        canvas = a._wheel_workspace._parent_canvas
+        canvas.yview_moveto(0); self.root.update()
+        a._pan_start(SimpleNamespace(widget=canvas, y_root=400))
+        a._pan_move(SimpleNamespace(y_root=280))
+        a._pan_end(SimpleNamespace(y_root=280))
+        self.assertGreater(canvas.yview()[0], 0)
+
     def test_focus_root_routes_to_hovered_store(self):
         a = self.app
         page = a._wheel_workspace._parent_canvas
