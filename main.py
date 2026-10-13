@@ -514,7 +514,34 @@ def storefront_price_audit(rows, output, log):
     return {x[1] for x in findings
             if x[0] in ('EXACT_DISPLAY_MATCH', 'DISPLAY_WHOLE_RUPEE_MATCH')}
 
+def discount_export_fields(vals):
+    # CHOTUAPP_DISCOUNT_FIELDS_V1: additive export fields, never change prices.
+    from decimal import Decimal, ROUND_HALF_UP
+    result = dict(vals)
+    base = money(vals.get('base_price (PKR)'))
+    sale = money(vals.get('sale_price (PKR, agar discount ho)'))
+    result.update({'discount_percentage (%)': None, 'discount_tag': None,
+                   'discount_tag_source': None, 'source_discount_tag': None})
+    if base is not None and sale is not None and base > 0 and 0 <= sale < base:
+        percentage = (base - sale) / base * Decimal('100')
+        result['discount_percentage (%)'] = float(percentage.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP))
+        result['discount_tag'] = str(percentage.quantize(Decimal('1'), rounding=ROUND_HALF_UP)) + '% Off'
+        result['discount_tag_source'] = 'calculated_from_prices'
+    return result
+
+
 def write_row(ws, vals):
+    if ws.title in ('Products', 'Variant Combinations'):
+        vals = discount_export_fields(vals)
+    if ws.title == 'Products':
+        vals = dict(vals)
+        vals['sale_price (PKR, only if discounted)'] = vals.get('sale_price (PKR, agar discount ho)')
+        vals['scraped_image_url (auto)'] = vals.get('scraped_image_url (cover, auto)')
+        vals['final_image_url (main photo)'] = vals.get('final_image_url (cover/thumbnail — hosted link)') or vals.get('scraped_image_url (cover, auto)')
+    elif ws.title == 'Option Groups':
+        vals = dict(vals, **{'title (customer sees this)': vals.get('title (customer ko dikhega)')})
+    elif ws.title == 'Options':
+        vals = dict(vals, option_image_url=vals.get('option_image_url (agar size/color/variant ki apni image ho)'))
     # CHOTUAPP_GREEN_SMOOTH_V1: cache headers instead of re-reading them for every row.
     headers = getattr(ws, '_chotu_export_headers', None)
     if headers is None:
@@ -1018,7 +1045,13 @@ def run_site(base, name, template, log):
 
     log(f'VARIANT EXPORT: {len(combos)} combinations; ' +
         str(sum(c['available (yes/no)'] == 'no' for c in combos)) + ' unavailable preserved as no')
-    for r in rows: write_row(wb['Products'],r)
+    galleries = {}
+    for image in imgs:
+        galleries.setdefault(image['product_id'], []).append(image['scraped_image_url (auto)'])
+    for r in rows:
+        r['gallery_urls (extra photos, separate with |)'] = '|'.join(galleries.get(r['product_id'], []))
+        write_row(wb['Products'],r)
+    log('DISCOUNT TAGS: product and variant percentages calculated from exported regular/sale prices; exact website badge text not independently fetched')
     for r in imgs: write_row(wb['Product Images'],r)
     for r in groups: write_row(wb['Option Groups'],r)
     for r in opts: write_row(wb['Options'],r)
@@ -1324,6 +1357,17 @@ def run_site(base, name, template, log):
                         _cell.value = _integer
                         _changed += 1
         if _changed:
+            # Keep new export aliases/tags consistent with the final integer prices.
+            for _sheet_name in ('Products', 'Variant Combinations'):
+                _ws = _book[_sheet_name]
+                _headers = {str(c.value).strip(): c.column for c in _ws[1] if c.value is not None}
+                for _row in _ws.iter_rows(min_row=2):
+                    _vals = {key: _row[col-1].value for key, col in _headers.items()}
+                    _tags = discount_export_fields(_vals)
+                    for _key in ('discount_percentage (%)', 'discount_tag', 'discount_tag_source', 'source_discount_tag'):
+                        if _key in _headers: _row[_headers[_key]-1].value = _tags[_key]
+                    if 'sale_price (PKR, only if discounted)' in _headers:
+                        _row[_headers['sale_price (PKR, only if discounted)']-1].value = _vals.get('sale_price (PKR, agar discount ho)')
             _temp = staging / (safe + ' - PRICE POLICY BUILDING.xlsx')
             try:
                 _book.save(_temp)
