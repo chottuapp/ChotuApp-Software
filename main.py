@@ -996,7 +996,12 @@ def run_site(base, name, template, log):
     log(f'PRODUCT FILTER: excluded {skipped_out_of_stock} fully unavailable products; skipped {skipped_hidden} explicitly unpublished, {skipped_invalid} invalid/unpriced; retained {len(rows)} products with ALL their variants')
     if not rows: raise RuntimeError('No public, priced products found')
     rows.sort(key=lambda x:(x['category'].lower(), x['sale_price (PKR, agar discount ho)'] or x['base_price (PKR)'],x['name'].lower()))
-    top_handles = verified_top20(base, log, {urlparse(r['source_url']).path.rsplit('/',1)[-1] for r in rows})
+    # CHOTUAPP_DISCOUNT_TOP20_V1: only genuinely discounted products qualify.
+    discount_handles = {urlparse(r['source_url']).path.rstrip('/').rsplit('/',1)[-1] for r in rows
+                        if money(r.get('sale_price (PKR, agar discount ho)')) is not None
+                        and money(r.get('base_price (PKR)')) is not None
+                        and 0 <= money(r.get('sale_price (PKR, agar discount ho)')) < money(r.get('base_price (PKR)'))}
+    top_handles = verified_top20(base, log, discount_handles)
     safe_name = re.sub(r'[^\w .-]', '', name).strip() or 'Shopify'
     with (OUT / (safe_name + ' - IMAGE AUDIT.csv')).open('w', encoding='utf-8-sig', newline='') as stream:
         writer = csv.writer(stream)
@@ -1009,7 +1014,7 @@ def run_site(base, name, template, log):
         for rank, row in enumerate(ranked_rows, 1):
             writer.writerow([rank, row['product_id'], row['name'], row['category'], row['source_url']])
     if ranked_rows:
-        log('FILE ORDER: first ' + str(len(ranked_rows)) + ' products follow website best-selling rank across ALL categories; remaining products follow afterward')
+        log('FILE ORDER: first ' + str(len(ranked_rows)) + ' discounted products follow website best-selling rank across ALL categories; remaining products follow afterward')
 
     log(f'VARIANT EXPORT: {len(combos)} combinations; ' +
         str(sum(c['available (yes/no)'] == 'no' for c in combos)) + ' unavailable preserved as no')
