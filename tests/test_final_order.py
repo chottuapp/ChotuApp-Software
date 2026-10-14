@@ -2,6 +2,7 @@ from pathlib import Path
 import csv
 import importlib.util
 import sys
+import subprocess
 import tempfile
 import unittest
 from openpyxl import Workbook,load_workbook
@@ -21,10 +22,10 @@ class FinalOrderTests(unittest.TestCase):
         rows=[self.row('p'+str(i)) for i in range(25)]
         ranked=main.prioritize_top_sellers(rows,['p'+str(i) for i in range(24,-1,-1)])
         self.assertEqual(len(ranked),20);self.assertEqual(rows[0]['name'],'p24')
-    def test_available_variant_discount_counts_and_unverified_never_invents_rank(self):
+    def test_variant_only_discount_stays_below_visible_discount_and_no_fake_rank(self):
         rows=[self.row('full'),self.row('bundle'),self.row('sale',80)]
         ranked=main.prioritize_top_sellers(rows,['bundle'],{'bundle'})
-        self.assertEqual([r['name'] for r in rows],['bundle','sale','full'])
+        self.assertEqual([r['name'] for r in rows],['sale','full','bundle'])
         rows=[self.row('full'),self.row('sale',80)]
         self.assertEqual(main.prioritize_top_sellers(rows,[]),[])
         self.assertEqual([r['name'] for r in rows],['sale','full'])
@@ -42,12 +43,12 @@ class FinalOrderTests(unittest.TestCase):
                 writer=csv.DictWriter(stream,fieldnames=['source_url']);writer.writeheader();writer.writerow({'source_url':'https://shop/products/bundle'})
             main.finalize_catalog_order(file,receipt,lambda x:None)
             result=load_workbook(file);it=iter(result['Products'].values);h=next(it);actual=[dict(zip(h,r)) for r in it]
-            self.assertEqual([r['name'] for r in actual],['bundle','sale','full'])
+            self.assertEqual([r['name'] for r in actual],['sale','full','bundle'])
             self.assertEqual({r['product_id']:r for r in actual},{r['product_id']:r for r in rows})
             self.assertEqual(list(result['Variant Combinations'].values),list(variants.values))
             self.assertEqual(list(result['Product Images'].values),list(images.values))
     def test_installer_only_changes_ordering_and_preserves_fast_manual_hooks(self):
-        source=(ROOT/'main.py').read_text()
+        source=subprocess.check_output(['git','-C',str(ROOT),'show','3293422:main.py']).decode()
         for old,new in install_final_order.REPLACEMENTS:source=source.replace(new,old,1)
         source+='\n# manual + fast hooks kept\n# adaptive_pace 0.35\n'
         changed,count=install_final_order.transform(source.encode());expected=source

@@ -13,10 +13,10 @@ import install_discount_top20 as patch
 class DiscountRankingTests(unittest.TestCase):
     def test_discount_filter_and_order_preserve_remaining_products(self):
         source=(ROOT/'main.py').read_text()
-        block=source[source.index("    variant_discount_ids={c['product_id']"):source.index('    safe_name = ',source.index("    variant_discount_ids={c['product_id']"))]
+        block=source[source.index('    discount_handles={'):source.index('    safe_name = ',source.index('    discount_handles={'))]
         rows=[{'product_id':h,'source_url':'https://shop/products/'+h,'base_price (PKR)':base,'sale_price (PKR, agar discount ho)':sale} for h,base,sale in [('full',100,None),('equal',100,100),('higher',100,120),('cheap',100,50),('free-sale',100,0)]]
         observed=[]
-        def verified(base,log,eligible):
+        def verified(base,log,eligible,rank_all=False):
             observed.append(eligible)
             return [h for h in ['full','free-sale','cheap'] if h in eligible]
         scope=dict(rows=rows,combos=[],money=lambda x:Decimal(str(x)) if x is not None else None,urlparse=urlparse,verified_top20=verified,base='https://shop',log=lambda x:None)
