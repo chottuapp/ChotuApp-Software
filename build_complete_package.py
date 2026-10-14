@@ -5,15 +5,17 @@ import json
 import zipfile
 import install_daily_auto
 import install_speed_patch
+import install_fast_fetch
 
 ROOT=Path(__file__).resolve().parent
 
 def build():
     source=install_daily_auto.transform((ROOT/'main.py').read_text())
+    source=install_fast_fetch.transform(source)
     integrated,_=install_speed_patch.transform(source.encode())
     compile(integrated,'main.py','exec')
     files={'main.py':integrated}
-    for name in ['resume_support.py','automation_support.py','requirements.txt','install_complete_update.py','COMPLETE_PACKAGE.md','DAILY_AUTOMATION.md','SAVED_RUNS.md','SPEED_PATCH.md']:
+    for name in ['resume_support.py','automation_support.py','fast_fetch_support.py','requirements.txt','install_complete_update.py','COMPLETE_PACKAGE.md','DAILY_AUTOMATION.md','SAVED_RUNS.md','SPEED_PATCH.md','FAST_FETCH.md']:
         files[name]=(ROOT/name).read_bytes()
     template=(ROOT/'importer-files/Chotu_Products_Import_Template_Discount_Tags.xlsx').read_bytes()
     files['ChotuApp_Template.xlsx']=template

@@ -40,6 +40,8 @@ def diagnose(root):
         print('Source SHA256:',hashlib.sha256(data).hexdigest()[:16])
         pacing=re.search(r"getattr\(_chotu_tls,\s*['\"]adaptive_pace['\"],\s*([0-9.]+)\)",text)
         print('Configured request pacing:',pacing.group(1)+'s baseline' if pacing else 'inspect source')
+        fast_hook='# CHOTUAPP_CONTROLLED_FAST_V1' in text
+        print('Controlled Fast Fetch:', 'installed hook + helper (2 workers, 0.25s shared preload spacing)' if fast_hook and (root/'fast_fetch_support.py').is_file() else 'not installed / helper missing')
     else:print('main.py not found at selected installation')
     for package in ('requests','customtkinter','openpyxl','beautifulsoup4'):
         try:print(package+':',importlib.metadata.version(package))
