@@ -35,6 +35,20 @@ class ManualTests(unittest.TestCase):
             startup.write_text('unrelated user launcher');remover.disable_settings(root,backup,startup)
             self.assertEqual(startup.read_text(),'unrelated user launcher')
 
+    def test_combined_installer_from_serial_daily_preserves_user_files(self):
+        import install_manual_fast
+        with tempfile.TemporaryDirectory() as tmp:
+            target=Path(tmp)
+            (target/'main.py').write_text(install_daily_auto.transform((ROOT/'main.py').read_text()))
+            (target/'store-list.keep').write_bytes(b'unchanged user settings')
+            install_manual_fast.install(target)
+            text=(target/'main.py').read_text()
+            self.assertIn('# CHOTUAPP_CONTROLLED_FAST_V1',text)
+            self.assertIn('# CHOTUAPP_MANUAL_ONLY_V1',text)
+            self.assertIn('# CHOTUAPP_SPEED_S1',text)
+            self.assertNotIn('_enable_daily_automation(globals())',text)
+            self.assertEqual((target/'store-list.keep').read_bytes(),b'unchanged user settings')
+
     def test_actual_gui_no_auto_panel_and_manual_selected_fetch(self):
         import requests
         original_factory=requests.Session

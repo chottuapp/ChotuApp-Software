@@ -58,6 +58,11 @@ def enable_fast_fetch(g):
     if g.get('_chotu_fast_fetch_enabled'):return
     from resume_support import ResponseCache
     tls=g['_chotu_tls'];factory=g['requests'].Session
+    original_init=g['App'].__init__
+    def init(self,root):
+        original_init(self,root)
+        root.title(root.title()+' | Fast Fetch (2 workers)')
+    g['App'].__init__=init
     def session_factory(*args,**kwargs):return GatedSession(factory(*args,**kwargs),tls,g['_chotu_wait'])
     g['requests'].Session=session_factory
     g['S']=ThreadSession(GatedSession(g['S'],tls,g['_chotu_wait']),tls)
@@ -140,7 +145,9 @@ def enable_fast_fetch(g):
 
     def collections(base,log):
         products=getattr(tls,'fast_products',[])
-        if getattr(tls,'saved_api_path',None) is None:return old_collections(base,log)
+        if getattr(tls,'saved_api_path',None) is None:
+            log('FAST FETCH: serial fallback — no durable Saved Runs context; use FETCH SELECTED / New Fresh Run from the updated app')
+            return old_collections(base,log)
         handles=[];seen=set()
         try:
             for page in range(1,30):
