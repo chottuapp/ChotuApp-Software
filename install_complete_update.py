@@ -10,7 +10,7 @@ import tempfile
 def install(target):
     source=Path(__file__).resolve().parent;target=Path(target).expanduser().resolve()
     if source==target:raise RuntimeError('Extract the ZIP separately from your installed software folder.')
-    program=['resume_support.py','automation_support.py','fast_fetch_support.py','requirements.txt','main.py']
+    program=['resume_support.py','manual_mode_support.py','remove_daily_auto.py','fast_fetch_support.py','requirements.txt','main.py']
     payloads={name:(source/name).read_bytes() for name in program}
     for name,data in payloads.items():
         if name.endswith('.py'):compile(data,name,'exec')
@@ -35,7 +35,9 @@ def install(target):
             os.replace(temporary,destination)
         finally:
             if temporary:temporary.unlink(missing_ok=True)
-    print('SUCCESS: Complete software bundle installed. User files, settings and saved runs retained.')
+    from remove_daily_auto import disable_settings
+    disable_settings(target,backup)
+    print('SUCCESS: Complete manual software installed. User files and saved runs retained; automation disabled.')
     print('Backup:',backup)
     print('Start:',target/'main.py')
 

@@ -2082,13 +2082,8 @@ class App:
         if added:self.save();self.redraw();self.bulk.delete('1.0','end')
         messagebox.showinfo('Bulk Add',f'Added: {added}\nSkipped/duplicates: {len(skipped)}')
     def _top20_auto_tick(self):
-        try:
-            if time.monotonic() - self._top20_last_auto >= 86400 and str(self.refresh.cget('state')) != 'disabled':
-                if self.sites and Path(self.template.get()).is_file():
-                    self._top20_last_auto = time.monotonic()
-                    self.start()
-        finally:
-            self.root.after(60000, self._top20_auto_tick)
+        # Manual-only operation: no unattended refresh.
+        return
 
     def remove(self):
         if str(self.refresh.cget('state')) == 'disabled': return
