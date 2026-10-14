@@ -85,6 +85,60 @@ class FastFetchTests(unittest.TestCase):
         with self.assertRaises(RuntimeError):gate.wait(preload=True)
         self.assertTrue(logs)
 
+    def test_first_429_stops_retries_and_cached_data_survives_restart(self):
+        original_factory=requests.Session
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);file=root/'main.py';source,_=install_speed_patch.transform((ROOT/'main.py').read_bytes());file.write_bytes(source)
+            spec=importlib.util.spec_from_file_location('rate_pause_fixture',file);module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+            resume_support.enable_resume(module.__dict__);fast.enable_fast_fetch(module.__dict__)
+            module._chotu_tls.saved_api_path=root/'api.sqlite3'
+            module._chotu_tls.saved_response_cache=resume_support.ResponseCache(root/'pages.sqlite3')
+            module._chotu_open_checkpoint('https://limited.example','Limited')
+            session=module.S
+            while hasattr(session,'session'):session=session.session
+            ok=requests.Response();ok.status_code=200;ok._content=b'{"price":3845}'
+            limited=requests.Response();limited.status_code=429;limited.headers['Retry-After']='120';limited._content=b'blocked'
+            try:
+                with patch.object(session,'get',side_effect=[ok,limited]) as network:
+                    self.assertEqual(module.get_json('https://limited.example/saved.json')['price'],3845)
+                    started=time.monotonic()
+                    with self.assertRaisesRegex(module.ChotuRateLimited,'SOURCE PAUSED'):module.get_json('https://limited.example/blocked.json')
+                    self.assertLess(time.monotonic()-started,2)
+                    with self.assertRaises(module.ChotuRateLimited):module.get_json('https://limited.example/blocked.json')
+                    self.assertEqual(module.get_json('https://limited.example/saved.json')['price'],3845)
+                    self.assertEqual(network.call_count,2)
+                reloaded=fast.RequestGate(lambda:None,lambda x:None,state_path=root/'source_pacing/limited.example.json')
+                self.assertTrue(reloaded.limited);self.assertGreaterEqual(reloaded.baseline,1.0)
+                with self.assertRaises(RuntimeError):reloaded.wait()
+            finally:
+                module._chotu_close_checkpoint(False);module._chotu_tls.saved_response_cache.close();requests.Session=original_factory
+
+    def test_blocked_category_preload_does_not_replace_previous_export(self):
+        original_factory=requests.Session
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);file=root/'main.py';file.write_bytes((ROOT/'main.py').read_bytes())
+            spec=importlib.util.spec_from_file_location('blocked_export_fixture',file);module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+            product={'id':1,'handle':'serum','variants':[{'id':10,'available':True,'price':'1490'}]}
+            module.discover=lambda base,log:([product],True)
+            module.collections=lambda base,log:{}
+            resume_support.enable_resume(module.__dict__);fast.enable_fast_fetch(module.__dict__)
+            module.OUT=root/'exports';module.OUT.mkdir();previous=module.OUT/'Fixture.xlsx';previous.write_bytes(b'previous verified file')
+            module._chotu_tls.saved_api_path=root/'api.sqlite3'
+            module._chotu_tls.saved_response_cache=resume_support.ResponseCache(root/'pages.sqlite3')
+            module._chotu_open_checkpoint('https://blocked.example','Fixture')
+            def fetch(url,tries=4):
+                if '/collections.json' in url:return {'collections':[{'handle':'blocked','title':'Lipstick'}]}
+                response=requests.Response();response.status_code=429
+                module._chotu_tls.fast_gate.response(response)
+                raise module._chotu_tls.fast_gate.blocked_error()
+            module.get_json=fetch
+            try:
+                with self.assertRaises(module.ChotuRateLimited):module.run_site('https://blocked.example','Fixture',str(ROOT/'ChotuApp_Template.xlsx'),lambda x:None)
+                self.assertEqual(previous.read_bytes(),b'previous verified file')
+                self.assertFalse((module.OUT/'Fixture - REFRESH REVIEW.xlsx').exists())
+            finally:
+                module._chotu_close_checkpoint(False);module._chotu_tls.saved_response_cache.close();requests.Session=original_factory
+
     def test_installer_adds_hooks_only_and_is_idempotent(self):
         source=(ROOT/'main.py').read_text();updated=install_fast_fetch.transform(source)
         self.assertEqual(updated.replace(install_fast_fetch.RESUME_HOOK,'').replace(install_fast_fetch.FAST_HOOK,''),source)
