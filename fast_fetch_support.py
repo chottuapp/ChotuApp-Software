@@ -16,15 +16,21 @@ class RequestGate:
     def __init__(self, pause, log, baseline=0.25, state_path=None, error_factory=RuntimeError):
         self.pause=pause;self.log=log;self.baseline=baseline;self.interval=baseline
         self.lock=threading.RLock();self.next_start=0.0;self.cooldown=0.0;self.limited=False
-        self.success_streak=0;self.recovery_window=20
+        self.success_streak=0;self.recovery_window=20;self.recovery_not_before=0.0
         self.state_path=Path(state_path) if state_path else None;self.error_factory=error_factory
         if self.state_path:
             try:
                 state=json.loads(self.state_path.read_text())
                 learned=float(state.get('min_spacing',baseline))
                 if math.isfinite(learned):self.interval=max(self.baseline,min(12.0,learned))
+                self.recovery_not_before=float(state.get('recovery_not_before_epoch',0))
+                if 'recovery_not_before_epoch' not in state and self.interval>self.baseline:
+                    # Older profiles recorded slowdown but not when it happened.
+                    # Do not immediately accelerate a previously throttled source.
+                    self.recovery_not_before=time.time()+1800
                 remaining=float(state.get('retry_after_epoch',0))-time.time()
                 if remaining>0:self.cooldown=time.monotonic()+remaining;self.limited=True
+                if 'recovery_not_before_epoch' not in state:self.persist_state()
             except (OSError,ValueError,TypeError):pass
     def blocked_error(self):
         remaining=max(1,int(self.cooldown-time.monotonic()+0.99))
@@ -38,7 +44,7 @@ class RequestGate:
             try:
                 self.state_path.parent.mkdir(parents=True,exist_ok=True)
                 state={'retry_after_epoch':time.time()+max(0,self.cooldown-time.monotonic()) if self.limited else 0,
-                       'min_spacing':self.interval,'profile_version':2}
+                       'min_spacing':self.interval,'profile_version':3,'recovery_not_before_epoch':self.recovery_not_before}
                 with tempfile.NamedTemporaryFile(dir=self.state_path.parent,mode='w',delete=False) as stream:
                     temporary=Path(stream.name);json.dump(state,stream);stream.flush();os.fsync(stream.fileno())
                 os.replace(temporary,self.state_path)
@@ -67,13 +73,15 @@ class RequestGate:
                 except (ValueError,TypeError,OverflowError):pass
             with self.lock:
                 self.success_streak=0
-                self.interval=min(12.0,max(2.5,self.interval*1.8));self.cooldown=max(self.cooldown,time.monotonic()+delay);self.limited=True
+                if not self.limited:self.interval=min(12.0,max(2.5,self.interval*1.8))
+                self.cooldown=max(self.cooldown,time.monotonic()+delay);self.limited=True
+                self.recovery_not_before=max(self.recovery_not_before,time.time()+1800)
                 self.persist_block(delay)
             self.log(f'FAST FETCH: HTTP {response.status_code}; store paused, checkpoint retained, cooldown {delay:.0f}s; no repeated blocked requests')
         elif response.status_code==200:
             previous=None;recovered_value=None
             with self.lock:
-                if self.limited:return
+                if self.limited or time.time()<self.recovery_not_before:return
                 self.success_streak+=1
                 if self.success_streak>=self.recovery_window:
                     self.success_streak=0
@@ -117,7 +125,7 @@ def enable_fast_fetch(g):
     original_init=g['App'].__init__
     def init(self,root):
         original_init(self,root)
-        root.title(root.title()+' | Fast Fetch (5 workers) | High Speed V3')
+        root.title(root.title()+' | Fast Fetch | Stable Source Pacing')
     g['App'].__init__=init
     def session_factory(*args,**kwargs):return GatedSession(factory(*args,**kwargs),tls,g['_chotu_wait'])
     g['requests'].Session=session_factory
@@ -146,10 +154,11 @@ def enable_fast_fetch(g):
     def open_checkpoint(base,name):
         result=old_open(base,name)
         host=(urlparse(base).hostname or 'unknown').lower().removeprefix('www.')
-        floor=0.5 if host in ('elitecosmeticspk.com','shopmodest.pk') else 0.25
+        floor=1.0 if host in ('elitecosmeticspk.com','shopmodest.pk') else 0.25
         state_path=Path(g['__file__']).resolve().parent/'source_pacing'/(host+'.json')
         tls.fast_gate=RequestGate(g['_chotu_wait'],g['_chotu_debug'],floor,state_path,g['ChotuRateLimited']);tls.fast_products=[]
-        tls.fast_worker_count=5
+        tls.fast_worker_count=1 if host=='shopmodest.pk' or time.time()<tls.fast_gate.recovery_not_before else 5
+        if tls.fast_worker_count==1:g['_chotu_debug']('STABLE PACING: single worker; learned spacing retained; no acceleration during recent-throttle recovery hold.')
         return result
     def close_checkpoint(success=False):
         try:return old_close(success)

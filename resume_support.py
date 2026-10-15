@@ -316,13 +316,20 @@ def enable_resume(g):
         self.events.batch_deadline=time.monotonic()+0.020
         was_running=self.running
         result=original_poll(self)
-        if was_running and not self.running and self._source_final_paused and not self._non_source_failed:
-            self.set_live_status('review','Website cooldown — saved work retained')
+        if was_running and not self.running:
             state=self.saved_runs.ui_snapshot or {}
             sites=state.get('sites',[])
             complete=sum(site.get('status')=='done' for site in sites)
-            self.progress_value.set(int(100*complete/max(1,len(sites))))
-            self.progress_label.configure(text=f'Saved {complete}/{len(sites)} stores — website cooldown; Continue Saved Run later')
+            paused=[site['name'] for site in sites if site.get('status')=='source_paused']
+            failed=[site['name'] for site in sites if site.get('status')=='failed']
+            if paused or failed:
+                details=[]
+                if failed:details.append('Failed: '+', '.join(failed))
+                if paused:details.append('Website cooldown: '+', '.join(paused))
+                detail='; '.join(details)
+                self.set_live_status('error' if failed else 'review',detail+' — saved work retained')
+                self.progress_value.set(int(100*complete/max(1,len(sites))))
+                self.progress_label.configure(text=f'Saved {complete}/{len(sites)} stores — '+detail)
         return result
 
     def ui_tick(self):

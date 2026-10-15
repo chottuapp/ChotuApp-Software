@@ -12,7 +12,7 @@ from fast_fetch_support import RequestGate,GatedSession
 class AdaptiveRecoveryTests(unittest.TestCase):
     def test_old_225_profile_recovers_gradually_and_never_below_safe_floor(self):
         with tempfile.TemporaryDirectory() as tmp:
-            path=Path(tmp)/'profile.json';path.write_text(json.dumps({'min_spacing':2.25,'retry_after_epoch':0}))
+            path=Path(tmp)/'profile.json';path.write_text(json.dumps({'min_spacing':2.25,'retry_after_epoch':0,'recovery_not_before_epoch':0}))
             logs=[];gate=RequestGate(lambda:None,logs.append,baseline=1.0,state_path=path)
             ok=SimpleNamespace(status_code=200)
             self.assertEqual(gate.baseline,1.0);self.assertEqual(gate.interval,2.25)
@@ -63,3 +63,22 @@ class AdaptiveRecoveryTests(unittest.TestCase):
         starts.sort()
         self.assertEqual(len(starts),15)
         self.assertTrue(all(b-a>=0.025 for a,b in zip(starts,starts[1:])))
+
+    def test_throttled_profile_does_not_accelerate_after_restart(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)/'state.json';gate=RequestGate(lambda:None,lambda x:None,baseline=1,state_path=path)
+            limited=SimpleNamespace(status_code=429,headers={'Retry-After':'120'})
+            gate.response(limited);interval=gate.interval;gate.response(limited)
+            self.assertEqual(gate.interval,interval)
+            data=json.loads(path.read_text());data['retry_after_epoch']=0;path.write_text(json.dumps(data))
+            resumed=RequestGate(lambda:None,lambda x:None,baseline=1,state_path=path)
+            for _ in range(200):resumed.response(SimpleNamespace(status_code=200))
+            self.assertEqual(resumed.interval,interval)
+            self.assertGreater(resumed.recovery_not_before,time.time()+1700)
+    def test_legacy_slow_profile_migrates_without_erasing_cooldown(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)/'legacy.json';path.write_text(json.dumps({'min_spacing':4.61,'retry_after_epoch':time.time()+90}))
+            gate=RequestGate(lambda:None,lambda x:None,baseline=1,state_path=path)
+            self.assertTrue(gate.limited);self.assertGreater(gate.recovery_not_before,time.time()+1700)
+            state=json.loads(path.read_text());self.assertGreater(state['retry_after_epoch'],time.time()+80)
+            self.assertEqual(state['min_spacing'],4.61)
