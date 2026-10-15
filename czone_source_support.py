@@ -129,6 +129,9 @@ def parse_product(html,url,soup=None):
     # Catalog completeness counts every product, but non-sellable products need
     # no price/variant interpretation. In particular, isActive is NOT stock proof.
     source_stock=str(p.get('productStock',{}).get('stockStatus','')).lower()
+    # A hidden/internal price is not a public purchasable offer, even if stock says instock.
+    if str(p.get('productPrice',{}).get('isHidePrice','0'))=='1':
+        return dict(id=str(p['productID']),name=p['productName'],url=canonical(url),available=False)
     if source_stock in ('onorderonly','outofstock','outstock','out-of-stock'):
         return dict(id=str(p['productID']),name=p['productName'],url=canonical(url),available=False)
     if p.get('productVariants') or p.get('productOptions') or str(p.get('isVariant','0'))!='0':

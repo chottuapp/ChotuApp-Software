@@ -20,6 +20,24 @@ def page(price='250.00',sale='0.00',stock='InStock',variant=None):
     return '<script id="__NUXT_DATA__" type="application/json">'+json.dumps(a)+'</script><script type="application/ld+json">'+json.dumps(schema)+'</script><div class="wx-product-info-item-price"><span class="wx-product-price">Rs. '+price+'</span></div>'
 
 class CzoneTests(unittest.TestCase):
+    def test_upcoming_hidden_price_without_offer_is_excluded(self):
+        from bs4 import BeautifulSoup
+        html=page('5000.00').replace('"isHidePrice":', '"isHidePrice":')
+        soup=BeautifulSoup(html,'html.parser')
+        data=json.loads(soup.select_one('#__NUXT_DATA__').string)
+        for item in data:
+            if isinstance(item,dict) and 'isHidePrice' in item:
+                item['isHidePrice']=len(data);data.append('1');break
+        soup.select_one('#__NUXT_DATA__').string=json.dumps(data)
+        schema=soup.select_one('script[type="application/ld+json"]');product=json.loads(schema.string);product.pop('offers');schema.string=json.dumps(product)
+        soup.select_one('.wx-product-price').string='Upcoming'
+        result=c.parse_product(str(soup),URL)
+        self.assertFalse(result['available']);self.assertNotIn('price',result)
+    def test_visible_product_missing_offer_is_not_silently_skipped(self):
+        from bs4 import BeautifulSoup
+        soup=BeautifulSoup(page(),'html.parser');tag=soup.select_one('script[type="application/ld+json"]')
+        product=json.loads(tag.string);product.pop('offers');tag.string=json.dumps(product)
+        with self.assertRaisesRegex(ValueError,'Unsupported product offer'):c.parse_product(str(soup),URL)
     def test_parser_filter_preserves_product_details_and_ignores_global_navigation(self):
         from bs4 import BeautifulSoup
         html=page()+'<nav>'+('<svg><path d="a" /></svg><a>Store navigation</a>'*100)+'</nav><div class="wx-product-content"><table><tr><td>Memory</td><td>16GB DDR5</td></tr></table><p>Keep dry.</p></div>'
