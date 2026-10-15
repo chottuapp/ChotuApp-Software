@@ -1,14 +1,28 @@
 """Read-only public variant schema capture for the reported Czone iPad."""
-import json,sys
+import json,sys,sqlite3,hashlib
 from pathlib import Path
 from bs4 import BeautifulSoup
-import requests
 from czone_source_support import nuxt
 URL='https://www.czone.com.pk/apple-11-ipad-pro-m5-chip-256gb-wifi-only-space-black-mdwk4'
 
+def saved_page(root):
+    if not root.is_dir():return None
+    paths=sorted(root.rglob('pages.sqlite3'),key=lambda path:path.stat().st_mtime,reverse=True)
+    for path in paths:
+        try:
+            db=sqlite3.connect(path.resolve().as_uri()+'?mode=ro',uri=True,timeout=5)
+            try:row=db.execute('SELECT body,checksum FROM pages WHERE url=? OR final_url=? LIMIT 1',(URL,URL)).fetchone()
+            finally:db.close()
+        except sqlite3.Error:continue
+        if row and hashlib.sha256(row[0]).hexdigest()==row[1]:return row[0]
+    return None
+
 def main():
-    response=requests.get(URL,timeout=45);response.raise_for_status()
-    soup=BeautifulSoup(response.content,'html.parser');values,decode=nuxt(soup)
+    body=saved_page(Path.home()/'Desktop'/'ChotuApp_Software'/'saved_runs')
+    if body is None:
+        raise RuntimeError('The reported iPad page was not found in saved runs. No website request or file change was made.')
+    print('Reading already saved iPad page; database opened READ ONLY. No website request.')
+    soup=BeautifulSoup(body,'html.parser');values,decode=nuxt(soup)
     records=[]
     for item in values:
         if isinstance(item,dict) and 'productID' in item and 'productPrice' in item:
