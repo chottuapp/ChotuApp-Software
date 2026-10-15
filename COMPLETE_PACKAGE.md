@@ -1,4 +1,4 @@
-Complete ChotuApp source bundle — 2026-10-14
+Complete ChotuApp source bundle — 2026-10-15
 
 This ZIP combines the current R11 extraction engine with discounted top-20 ordering, discount tags/importer aliases, 0.35-second adaptive baseline pacing, saved runs, UI responsiveness support, manual-only fetching, and two-worker Controlled Fast Fetch with shared adaptive throttling. No separate patch installers are needed for this ZIP's main.py.
 
@@ -13,3 +13,5 @@ To install over an existing Windows app: close it, extract ZIP to a separate fol
 For a separate development copy: install requirements, then `py main.py`. Source uses the existing Desktop data paths, so use an isolated account or explicit local path overrides when testing. Regression tests are in the GitHub repository tests/ directory, not in this source ZIP; they use temporary paths and fixture data. Linux GUI tests need a virtual display; Windows touchpad and Windows login startup require hardware verification.
 
 Daily automation and the owned Windows login launcher have been removed. Fetching is manual: select stores and use FETCH SELECTED or New Fresh Run. Continue Saved Run resumes the prior saved queue. Pause does not cancel a run; close the window to leave its saved progress, then reopen to choose a new fresh run. No unattended refresh timer is active.
+
+Manual-run cooldown recovery processes other stores before retrying a rate-limited source. It retries at most twice after cooldowns of at most 120 seconds; longer delays or continued blocking stay pending with a Website cooldown status. No scheduled fetching or login startup is enabled. Shop Modest and Elite Cosmetics use a one-worker conservative profile.

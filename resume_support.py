@@ -181,10 +181,29 @@ class EventProxy:
         if getattr(self, "batch_remaining", 1) <= 0 or time.monotonic() > getattr(self, "batch_deadline", float("inf")):
             raise queue.Empty
         self.batch_remaining = getattr(self, "batch_remaining", 1) - 1
-        return self.queue.get_nowait()
+        item=self.queue.get_nowait()
+        if isinstance(item,tuple) and len(item)==3 and item[0]=='__STORE_STATUS__':
+            self.app.set_live_status(item[1],item[2])
+            return ('__DEBUG__',item[2])
+        return item
 
     def put(self,item,*args,**kwargs):
         if getattr(self.app,'_saved_run_active',False):
+            attempt=getattr(self.app,'_source_attempt',None)
+            if attempt is not None and isinstance(item,str) and item.startswith('FAILED:') and 'SOURCE PAUSED:' in item:
+                attempt['paused']=True;attempt['detail']=item.split('SOURCE PAUSED:',1)[1].strip()
+                gate=self.app._source_gate()
+                if gate is not None:attempt['retry_at']=gate.cooldown
+                else:
+                    import re
+                    match=re.search(r'after at least ([0-9.]+)s',item)
+                    attempt['retry_at']=time.monotonic()+(float(match.group(1)) if match else 60)
+                item='WEBSITE COOLDOWN: '+item.removeprefix('FAILED: ')
+            if isinstance(item,tuple) and len(item)==3 and item[0]=='__JOB_RESULT__' and not item[1]:
+                if attempt is not None and attempt.get('paused'):
+                    self.app._save_run_event(('__SOURCE_PAUSED__',attempt['retry_at'],attempt['detail']))
+                    return self.queue.put(('__DEBUG__','Website cooldown — saved requests retained; other stores continue'),*args,**kwargs)
+                self.app._non_source_failed=True
             if isinstance(item,str) and item.startswith('FRESH FETCH:') and getattr(self.app,'_resuming_saved',False):
                 item='CONTINUE SAVED RUN: previous successful responses reused; unfinished requests retried.'
             elif isinstance(item,str) and item.startswith('CHECKPOINT:'):
@@ -240,6 +259,10 @@ def enable_resume(g):
         self._saved_store_index=None
         self._saved_lease=None
         self.saved_runs.load()  # Initial read before any worker can hold the lock.
+        self._source_gate=lambda:getattr(tls,'fast_gate',None)
+        self._source_auto_retry_limit=2
+        self._source_auto_wait_limit=120
+        self._source_attempt=None;self._source_final_paused=False;self._non_source_failed=False
         self.events=EventProxy(self.events,self)
         for key, widget in self.metric_values.items():
             self.metric_values[key]=ChangedLabel(widget)
@@ -279,7 +302,16 @@ def enable_resume(g):
     def poll(self):
         self.events.batch_remaining=40
         self.events.batch_deadline=time.monotonic()+0.020
-        return original_poll(self)
+        was_running=self.running
+        result=original_poll(self)
+        if was_running and not self.running and self._source_final_paused and not self._non_source_failed:
+            self.set_live_status('review','Website cooldown — saved work retained')
+            state=self.saved_runs.ui_snapshot or {}
+            sites=state.get('sites',[])
+            complete=sum(site.get('status')=='done' for site in sites)
+            self.progress_value.set(int(100*complete/max(1,len(sites))))
+            self.progress_label.configure(text=f'Saved {complete}/{len(sites)} stores — website cooldown; Continue Saved Run later')
+        return result
 
     def ui_tick(self):
         self.refresh_saved_controls()
@@ -290,7 +322,9 @@ def enable_resume(g):
         index=self._saved_store_index
         def update(state):
             site=state['sites'][index]
-            if isinstance(item,str) and item.startswith('__CHOTU_PROGRESS__|'):
+            if isinstance(item,tuple) and len(item)==3 and item[0]=='__SOURCE_PAUSED__':
+                site.update(status='source_paused',detail='Website cooldown — '+str(item[2]),retry_after_epoch=time.time()+max(0,item[1]-time.monotonic()))
+            elif isinstance(item,str) and item.startswith('__CHOTU_PROGRESS__|'):
                 _,pct,detail=item.split('|',2);site.update(progress=int(pct),detail=detail)
             elif isinstance(item,str) and ('SAVED REVIEW EXCEL:' in item or 'REVIEW REQUIRED:' in item):
                 site['reviewed']=True
@@ -303,7 +337,7 @@ def enable_resume(g):
                     if output.is_file():
                         stat=output.stat();site['output']={'path':str(output.resolve()),'size':stat.st_size,'mtime_ns':stat.st_mtime_ns}
                     site['progress']=100
-        if isinstance(item,str) and (item.startswith('__CHOTU_PROGRESS__|') or 'SAVED REVIEW EXCEL:' in item or 'REVIEW REQUIRED:' in item) or isinstance(item,tuple) and len(item)==3 and item[0]=='__JOB_RESULT__':
+        if (isinstance(item,tuple) and len(item)==3 and item[0]=='__SOURCE_PAUSED__') or isinstance(item,str) and (item.startswith('__CHOTU_PROGRESS__|') or 'SAVED REVIEW EXCEL:' in item or 'REVIEW REQUIRED:' in item) or isinstance(item,tuple) and len(item)==3 and item[0]=='__JOB_RESULT__':
             self.saved_runs.update(update)
             if isinstance(item,tuple) and len(item)==3 and item[0]=='__JOB_RESULT__' and item[1]:
                 state=self.saved_runs.load()
@@ -322,6 +356,7 @@ def enable_resume(g):
             if not Path(state['template']).is_file():raise RuntimeError('Saved template snapshot is missing. Start a new fresh run with your template.')
         except Exception as exc:
             lease.release();messagebox.showerror('Saved run',str(exc));return
+        self._source_attempt=None;self._source_final_paused=False;self._non_source_failed=False
         self._saved_lease=lease;self._saved_run_active=True;self._resuming_saved=bool(saved_state);self.running=True
         self.job_reviewed=any(site.get('reviewed',False) for site in state['sites']);self.job_failed=False;self.job_completed=0;self.job_expected=len(pending)
         self.refresh.configure(state='disabled');self.refresh_selected.configure(state='disabled')
@@ -334,27 +369,55 @@ def enable_resume(g):
         self._ui_products=0;self._ui_collections=0;self._ui_request_count=0;self._ui_429_count=0
         self.set_live_status('working',f'{len(pending)} remaining selected store(s)')
         def worker():
+            ready=list(pending);waiting={};attempts={};last_wait_message=None
             try:
-                for index in pending:
+                while ready or waiting:
+                    if ready:index=ready.pop(0)
+                    else:
+                        index=min(waiting,key=waiting.get)
+                        remaining=waiting[index]-time.monotonic()
+                        if remaining>0:
+                            bucket=int(remaining/5)
+                            if (index,bucket)!=last_wait_message:
+                                if last_wait_message is None or last_wait_message[0]!=index:
+                                    g['_chotu_debug_stage']('Website cooldown — '+state['sites'][index]['name'])
+                                last_wait_message=(index,bucket)
+                                self.events.put(('__STORE_STATUS__','working','WEBSITE COOLDOWN: '+state['sites'][index]['name']+' — retry in '+str(int(remaining+1))+'s'))
+                            g['_chotu_wait']();time.sleep(min(.25,remaining));continue
+                        waiting.pop(index)
                     self._saved_store_index=index
-                    site=state['sites'][index]
-                    self._saved_progress_floor=site.get('progress',0) if saved_state else 0
+                    current=self.saved_runs.load();site=current['sites'][index]
+                    attempts[index]=attempts.get(index,0)+1
+                    self._source_attempt={'paused':False}
+                    self._saved_progress_floor=site.get('progress',0) if saved_state or attempts[index]>1 else 0
                     def mark(s):s['sites'][index]['status']='running';s['status']='incomplete'
                     self.saved_runs.update(mark)
                     folder=self.saved_runs.root/state['id']/str(index);folder.mkdir(exist_ok=True)
                     tls.saved_api_path=folder/'api.sqlite3'
                     tls.saved_response_cache=ResponseCache(folder/'pages.sqlite3')
                     tls.saved_run_note=lambda text:self.events.put(('__DEBUG__',text))
-                    self.events.put(('CONTINUE SAVED RUN: ' if saved_state else 'NEW FRESH RUN: ')+site['name'])
+                    self.events.put(('__STORE_STATUS__','working',site['name']+(' — retrying saved requests' if attempts[index]>1 else '')))
+                    self.events.put(('CONTINUE SAVED RUN: ' if saved_state or attempts[index]>1 else 'NEW FRESH RUN: ')+site['name'])
                     try:self._run_checked(site,state['template'])
                     finally:
                         tls.saved_response_cache.close();tls.saved_response_cache=None;tls.saved_api_path=None;tls.saved_run_note=None
+                    attempt=self._source_attempt
+                    if attempt.get('paused'):
+                        remaining=max(0,attempt['retry_at']-time.monotonic())
+                        if attempts[index]<=self._source_auto_retry_limit and remaining<=self._source_auto_wait_limit:
+                            waiting[index]=attempt['retry_at']+1.0  # avoid retrying on the cooldown boundary
+                            self.events.put('WEBSITE COOLDOWN: '+site['name']+' — saved; retry queued after cooldown. Other stores continue.')
+                        else:
+                            self._source_final_paused=True
+                            self.events.queue.put(('__JOB_RESULT__',False,site['name']))
+                            self.events.put('WEBSITE COOLDOWN: '+site['name']+' — automatic retry limit reached or server delay is too long; Continue Saved Run later.')
                 def finish(s):s['status']='complete' if not self.saved_runs.pending(s) else 'incomplete'
                 self.saved_runs.update(finish)
             except Exception as exc:
+                self._source_attempt=None
                 self.events.put('FAILED: saved-run worker: '+str(exc));self.events.put(('__JOB_RESULT__',False,'Worker'))
             finally:
-                self._saved_run_active=False;self._saved_store_index=None
+                self._source_attempt=None;self._saved_run_active=False;self._saved_store_index=None
                 lease.release();self._saved_lease=None;self.events.put('__DONE__')
         threading.Thread(target=worker,daemon=True).start()
 

@@ -31,7 +31,7 @@ class RequestGate:
         if not self.state_path:return
         self.state_path.parent.mkdir(parents=True,exist_ok=True);temporary=None
         try:
-            state={'retry_after_epoch':time.time()+delay,'min_spacing':min(3.0,max(1.0,self.baseline*1.5))}
+            state={'retry_after_epoch':time.time()+max(0,self.cooldown-time.monotonic()),'min_spacing':min(3.0,max(1.0,self.baseline*1.5))}
             with tempfile.NamedTemporaryFile(dir=self.state_path.parent,mode='w',delete=False) as stream:
                 temporary=Path(stream.name);json.dump(state,stream);stream.flush();os.fsync(stream.fileno())
             os.replace(temporary,self.state_path)
@@ -111,9 +111,10 @@ def enable_fast_fetch(g):
     def open_checkpoint(base,name):
         result=old_open(base,name)
         host=(urlparse(base).hostname or 'unknown').lower().removeprefix('www.')
-        floor=1.0 if host=='elitecosmeticspk.com' else 0.25
+        floor=1.0 if host in ('elitecosmeticspk.com','shopmodest.pk') else 0.25
         state_path=Path(g['__file__']).resolve().parent/'source_pacing'/(host+'.json')
         tls.fast_gate=RequestGate(g['_chotu_wait'],g['_chotu_debug'],floor,state_path,g['ChotuRateLimited']);tls.fast_products=[]
+        tls.fast_worker_count=1 if host in ('elitecosmeticspk.com','shopmodest.pk') else 2
         return result
     def close_checkpoint(success=False):
         try:return old_close(success)
@@ -140,7 +141,8 @@ def enable_fast_fetch(g):
         page_path=Path(page_path).with_name('pages.sqlite3')
         gate=tls.fast_gate;note=getattr(tls,'saved_run_note',None)
         totals=[0,0];iterator=iter(tasks);iterator_lock=threading.Lock()
-        log(f'FAST FETCH: {label}; 2 workers, shared {gate.baseline:.2f}s request spacing; canonical checks preserved')
+        worker_count=getattr(tls,'fast_worker_count',2)
+        log(f'FAST FETCH: {label}; {worker_count} workers, shared {gate.baseline:.2f}s request spacing; canonical checks preserved')
         g['_chotu_debug_stage']('Parallel '+label)
         def worker():
             db=None;cache=None;session=None
@@ -168,7 +170,7 @@ def enable_fast_fetch(g):
                 tls.fast_session=None;tls.saved_response_cache=None;tls.db=None;tls.fast_preloading=False;tls.fast_gate=None
         # Two long-lived sessions/connections avoid a fresh TLS handshake for every product.
         # Each worker takes just one task at a time, so a rate limit cannot leave a large queued burst.
-        workers=[threading.Thread(target=worker,name='chotu-preload-'+str(i),daemon=True) for i in range(min(2,len(tasks)))]
+        workers=[threading.Thread(target=worker,name='chotu-preload-'+str(i),daemon=True) for i in range(min(worker_count,len(tasks)))]
         for thread in workers:thread.start()
         reported=0
         while any(thread.is_alive() for thread in workers):

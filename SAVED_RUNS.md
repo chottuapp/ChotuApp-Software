@@ -50,3 +50,5 @@ a saved hero page was processed in under one second despite a 2.7s adaptive pace
 This removes replay overhead, not the source website rate limit.
 
 UI responsiveness update: saved-run status uses an in-memory snapshot rather than waiting for the worker database lock. Event processing yields after 40 messages or 20 ms; unchanged counters are not redrawn. Durable worker writes, extraction rules and prices are unchanged. Windows hardware responsiveness still needs user verification.
+
+Rate-limit recovery inside a manual run: source cooldowns are saved distinctly from real Excel failures. Other stores run first; the blocked store gets at most two later attempts after cooldown (server waits over 120 seconds remain pending). Successful cached work is reused. Persistent blocking leaves Continue Saved Run available and a Website cooldown status; completed file counts are retained. No unattended daily fetch or login startup is enabled.
