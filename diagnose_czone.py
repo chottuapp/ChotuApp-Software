@@ -23,6 +23,18 @@ def inspect(session,url):
             pair=(a.get_text(' ',strip=True)[:160],target)
             if pair not in links:links.append(pair)
     print('CATALOG LINKS:',json.dumps(links[:45],ensure_ascii=True))
+    # Webx uses both legacy -p.ID.aspx and extensionless product URLs.
+    for node in soup.select('script[type="application/ld+json"]'):
+        try:
+            data=json.loads(node.get_text())
+            for item in data.get('mainEntity',{}).get('itemListElement',[]):
+                target=urljoin(response.url,item.get('url',''))
+                if urlsplit(target).hostname in ('www.czone.com.pk','czone.com.pk'):
+                    pair=(item.get('name',''),target)
+                    if pair not in links:links.append(pair)
+        except (ValueError,AttributeError,TypeError):pass
+    paging=[str(a) for a in soup.select('a[href]') if re.search(r'page|next|pagination',str(a),re.I)]
+    print('PAGINATION MARKUP:', '\n'.join(paging)[-14000:])
     # Only public visible text and markup around product attributes, never cookies/headers/forms.
     for tag in soup(['script','style','form','nav','footer','header']):tag.decompose()
     text=soup.get_text('\n',strip=True)
@@ -39,14 +51,14 @@ def main():
     print('CZONE SOURCE DIAGNOSTIC — READ ONLY\nNo application, templates, Excel or saved-run files are read or changed.')
     with requests.Session() as session:
         session.headers['User-Agent']='Mozilla/5.0 (Windows NT 10.0; Win64; x64) ChotuApp-Source-Diagnostic/1.0'
-        links=inspect(session,BASE)
-        products=[u for _,u in links if re.search(r'_pid[-=]',u,re.I)]
+        links=inspect(session,BASE+'products')
+        products=[u for _,u in links if re.search(r'(?:_pid[-=]|-p\.\d+\.aspx)',u,re.I)]
         if products:inspect(session,products[0])
         else:
             listings=[u for _,u in links if re.search(r'_(?:cid|cat|categ|pc)[-=]|/products|/laptops',u,re.I)]
             if listings:
                 found=inspect(session,listings[0])
-                products=[u for _,u in found if re.search(r'_pid[-=]',u,re.I)]
+                products=[u for _,u in found if re.search(r'(?:_pid[-=]|-p\.\d+\.aspx)',u,re.I)]
                 if products:inspect(session,products[0])
     print('\nEND CZONE DIAGNOSTIC')
 
