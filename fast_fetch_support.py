@@ -82,7 +82,7 @@ class RequestGate:
                         previous=self.interval;self.interval=recovered;recovered_value=recovered
                         self.persist_state()
             if previous is not None:
-                self.log(f'ADAPTIVE RECOVERY: {self.recovery_window} consecutive HTTP 200 responses; spacing {previous:.2f}s -> {recovered_value:.2f}s; safe floor {self.baseline:.2f}s')
+                self.log(f'ADAPTIVE RECOVERY: {self.recovery_window} consecutive HTTP 200 responses; spacing {previous:.2f}s -> {recovered_value:.2f}s; configured floor {self.baseline:.2f}s')
         else:
             self.network_failure()
 
@@ -117,13 +117,20 @@ def enable_fast_fetch(g):
     original_init=g['App'].__init__
     def init(self,root):
         original_init(self,root)
-        root.title(root.title()+' | Fast Fetch (5 workers) | Adaptive Speed V2')
+        root.title(root.title()+' | Fast Fetch (5 workers) | High Speed V3')
     g['App'].__init__=init
     def session_factory(*args,**kwargs):return GatedSession(factory(*args,**kwargs),tls,g['_chotu_wait'])
     g['requests'].Session=session_factory
     g['S']=ThreadSession(GatedSession(g['S'],tls,g['_chotu_wait']),tls)
     old_open=g['_chotu_open_checkpoint'];old_close=g['_chotu_close_checkpoint']
     old_discover=g['discover'];old_collections=g['collections'];old_backoff=g['_chotu_backoff']
+    old_get_json=g['get_json']
+    def get_json(*args,**kwargs):
+        previous=getattr(tls,'fast_json_request',False)
+        tls.fast_json_request=True
+        try:return old_get_json(*args,**kwargs)
+        finally:tls.fast_json_request=previous
+    g['get_json']=get_json
     old_debug_request=g['_chotu_debug_request'];old_debug_response=g['_chotu_debug_response']
 
     def debug_request(url,attempt):
@@ -139,7 +146,7 @@ def enable_fast_fetch(g):
     def open_checkpoint(base,name):
         result=old_open(base,name)
         host=(urlparse(base).hostname or 'unknown').lower().removeprefix('www.')
-        floor=1.0 if host in ('elitecosmeticspk.com','shopmodest.pk') else 0.25
+        floor=0.5 if host in ('elitecosmeticspk.com','shopmodest.pk') else 0.25
         state_path=Path(g['__file__']).resolve().parent/'source_pacing'/(host+'.json')
         tls.fast_gate=RequestGate(g['_chotu_wait'],g['_chotu_debug'],floor,state_path,g['ChotuRateLimited']);tls.fast_products=[]
         tls.fast_worker_count=5

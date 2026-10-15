@@ -118,10 +118,20 @@ class RunLease:
             finally:self.file.close();self.file=None
 
 
+def configure_response_database(db):
+    """Use WAL for concurrent cache readers; retain FULL commit durability."""
+    try:
+        db.execute('PRAGMA journal_mode=WAL').fetchone()
+    except sqlite3.OperationalError:
+        # Some filesystems cannot use WAL; keep their working journal mode.
+        pass
+    db.execute('PRAGMA synchronous=FULL')
+
+
 class ResponseCache:
     def __init__(self, path):
         self.db=sqlite3.connect(path,timeout=30)
-        self.db.execute('PRAGMA synchronous=FULL')
+        configure_response_database(self.db)
         self.db.execute('CREATE TABLE IF NOT EXISTS pages(url TEXT PRIMARY KEY, final_url TEXT, body BLOB, encoding TEXT, content_type TEXT, checksum TEXT)')
         self.db.commit()
     def get(self,url):
@@ -169,7 +179,9 @@ class SessionProxy:
             if callback:callback('SAVED RESPONSE: '+url)
             return response
         response=self.session.get(url,**kwargs)
-        cache.put(url,response)
+        # get_json commits its validated payload to api.sqlite3 immediately.
+        # Reuse legacy raw snapshots, but do not write each new JSON twice.
+        if not getattr(self.tls,'fast_json_request',False):cache.put(url,response)
         return response
 
 
@@ -244,7 +256,7 @@ def enable_resume(g):
     def open_checkpoint(base,name):
         path=getattr(tls,'saved_api_path',None)
         if path is None:return original_open(base,name)
-        db=sqlite3.connect(path,timeout=30);db.execute('PRAGMA synchronous=FULL')
+        db=sqlite3.connect(path,timeout=30);configure_response_database(db)
         db.execute('CREATE TABLE IF NOT EXISTS responses(url TEXT PRIMARY KEY,payload BLOB NOT NULL)');db.commit()
         tls.db=db;tls.checkpoint_path=Path(path)
         note=getattr(tls,'saved_run_note',None)
