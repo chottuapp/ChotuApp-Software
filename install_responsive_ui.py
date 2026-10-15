@@ -32,5 +32,8 @@ def install(target):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--target',type=Path,default=Path.home()/'Desktop'/'ChotuApp_Software');args=parser.parse_args()
-    try:install(args.target)
-    except Exception as exc:parser.exit(1,'UI update stopped: '+str(exc)+'\n')
+    try:
+        from rollback_responsive_ui import install as rollback
+        print('Smooth UI withdrawn; rolling back its startup hook only.')
+        rollback(args.target)
+    except Exception as exc:parser.exit(1,'UI rollback stopped: '+str(exc)+'\n')
