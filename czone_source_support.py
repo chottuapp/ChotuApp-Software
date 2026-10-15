@@ -24,15 +24,37 @@ def nuxt(soup):
     if not tag:raise ValueError('Czone public product state missing')
     values=json.loads(tag.string or tag.get_text())
     if not isinstance(values,list):raise ValueError('Unsupported Webx state')
-    def decode(value,stack=()):
-        if isinstance(value,bool):return value
-        if isinstance(value,int):
-            if value<0:return None
-            if value>=len(values) or value in stack:raise ValueError('Invalid/cyclic Webx state reference')
-            return decode(values[value],stack+(value,))
-        if isinstance(value,dict):return {k:decode(v,stack) for k,v in value.items()}
-        if isinstance(value,list):return [decode(v,stack) for v in value]
-        return value
+    memo={}
+    def reference(index):
+        if isinstance(index,bool) or not isinstance(index,int):
+            raise ValueError('Invalid Webx state reference type')
+        if index<0:
+            special={-1:None,-2:None,-3:float('nan'),-4:float('inf'),-5:float('-inf'),-6:-0.0}
+            if index not in special:raise ValueError('Unknown Webx special value')
+            return special[index]
+        if index>=len(values):raise ValueError('Webx state reference out of bounds')
+        if index in memo:return memo[index]
+        raw=values[index]
+        # Numbers stored IN the value table are literal values, not more indices.
+        if not isinstance(raw,(dict,list)):
+            memo[index]=raw
+            return raw
+        if isinstance(raw,dict):
+            result={};memo[index]=result
+            result.update({key:reference(ref) for key,ref in raw.items()})
+            return result
+        if raw and isinstance(raw[0],str):
+            if raw[0] in ('Reactive','ShallowReactive','Ref','ShallowRef') and len(raw)==2:
+                # Vue wrappers are not product option dimensions.
+                result=reference(raw[1]);memo[index]=result;return result
+            raise ValueError('Unsupported Webx typed value: '+raw[0])
+        result=[];memo[index]=result
+        result.extend(reference(ref) for ref in raw)
+        return result
+    def decode(value):
+        if isinstance(value,dict):return {key:reference(ref) for key,ref in value.items()}
+        if isinstance(value,list):return [reference(ref) for ref in value]
+        return reference(value)
     return values,decode
 
 
@@ -206,7 +228,9 @@ def export(g,base,name,template,log):
         html=get(url)
         if not structured(BeautifulSoup(html,'html.parser'),'Product'):
             nonproducts+=1;continue
-        product=parse_product(html,url)
+        try:product=parse_product(html,url)
+        except (ValueError,KeyError,TypeError) as exc:
+            raise RuntimeError('CZONE product check failed: '+url+' — '+str(exc)) from exc
         if product['id'] in records and records[product['id']]!=product:raise RuntimeError('Conflicting duplicate Czone product identity')
         records[product['id']]=product
         if index%25==0:

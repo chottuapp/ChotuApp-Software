@@ -20,6 +20,21 @@ def page(price='250.00',sale='0.00',stock='InStock',variant=None):
     return '<script id="__NUXT_DATA__" type="application/json">'+json.dumps(a)+'</script><script type="application/ld+json">'+json.dumps(schema)+'</script><div class="wx-product-info-item-price"><span class="wx-product-price">Rs. '+price+'</span></div>'
 
 class CzoneTests(unittest.TestCase):
+    def test_nuxt_literal_numbers_are_not_reference_indices(self):
+        from bs4 import BeautifulSoup
+        values=[{'price':1,'count':2,'zero':3,'flag':4},27000,1,0,True]
+        _,decode=c.nuxt(BeautifulSoup('<script id="__NUXT_DATA__">'+json.dumps(values)+'</script>','html.parser'))
+        self.assertEqual(decode(values[0]),{'price':27000,'count':1,'zero':0,'flag':True})
+    def test_nuxt_shared_and_cyclic_references_preserved(self):
+        from bs4 import BeautifulSoup
+        values=[{'first':1,'second':1},{'self':1,'quantity':2},32]
+        _,decode=c.nuxt(BeautifulSoup('<script id="__NUXT_DATA__">'+json.dumps(values)+'</script>','html.parser'))
+        result=decode(values[0]);self.assertIs(result['first'],result['second'])
+        self.assertIs(result['first']['self'],result['first']);self.assertEqual(result['first']['quantity'],32)
+    def test_nuxt_out_of_bounds_rejected(self):
+        from bs4 import BeautifulSoup
+        _,decode=c.nuxt(BeautifulSoup('<script id="__NUXT_DATA__">[{"price":999}]</script>','html.parser'))
+        with self.assertRaisesRegex(ValueError,'out of bounds'):decode(0)
     def test_existing_chrome_used_without_download(self):
         calls=[];browser=object()
         driver=SimpleNamespace(launch=lambda **kw:(calls.append(kw),browser)[1])
