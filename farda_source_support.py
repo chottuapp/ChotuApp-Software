@@ -1,5 +1,6 @@
 """Use Farda's explicitly linked ordering shop, after validating its catalog."""
 from urllib.parse import urlsplit
+import time
 
 SHOP='https://shop.fardafoods.com'
 
@@ -30,8 +31,10 @@ def enable_farda_source(g):
         tls=g['_chotu_tls'];gate=getattr(tls,'fast_gate',None)
         if gate is not None:
             with gate.lock:
-                gate.baseline=max(1.0,gate.baseline);gate.interval=max(1.0,gate.interval)
-            tls.fast_worker_count=1
+                recent_limit=getattr(gate,'limited',False) or time.time()<getattr(gate,'recovery_not_before',0) or gate.interval>1.0
+                gate.baseline=max(0.5,gate.baseline);gate.interval=max(0.5,gate.interval)
+            tls.fast_worker_count=1 if recent_limit else 2
+            log('FARDA FETCH: '+str(tls.fast_worker_count)+' workers; shared '+format(gate.interval,'.2f')+'s request spacing; price and full-page checks preserved.')
         data=g['get_json'](target+'/products.json?limit=250&page=1')
         products=validate_catalog(data)
         log('FARDA SOURCE VERIFIED: '+str(len(products))+' products on first catalog page; existing price, variant, image and pagination checks follow.')

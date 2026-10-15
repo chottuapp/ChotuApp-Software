@@ -42,3 +42,13 @@ class FardaTests(unittest.TestCase):
             installer.install(root)
             self.assertEqual((root/'saved.sqlite3').read_bytes(),b'keep')
             self.assertEqual(next((root/'backups').glob('*/main.py')).read_text(),original)
+
+    def test_healthy_farda_can_overlap_requests_without_erasing_recent_throttles(self):
+        data={'products':[{'id':1,'handle':'food','variants':[{'id':2,'price':'10','available':True}]}]}
+        g,calls,tls=self.fixture(data);tls.fast_gate.interval=.25
+        g['run_site']('https://fardafoods.com','Farda','template',lambda s:None)
+        self.assertEqual(tls.fast_worker_count,2);self.assertEqual(tls.fast_gate.interval,.5)
+        import time
+        g,calls,tls=self.fixture(data);tls.fast_gate.interval=2.5;tls.fast_gate.recovery_not_before=time.time()+1800
+        g['run_site']('https://fardafoods.com','Farda','template',lambda s:None)
+        self.assertEqual(tls.fast_worker_count,1);self.assertEqual(tls.fast_gate.interval,2.5)
