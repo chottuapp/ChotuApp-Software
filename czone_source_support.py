@@ -221,17 +221,40 @@ def browser_catalog(expected,pause,log):
 
 
 
+def configure_czone_gate(g):
+    gate=getattr(g.get('_chotu_tls'),'fast_gate',None)
+    if gate is not None:
+        with gate.lock:
+            # Czone has now demonstrated that a 0.25s start interval is too fast.
+            # Never erase a learned slowdown, Retry-After or recovery hold.
+            gate.baseline=max(1.0,gate.baseline)
+            gate.interval=max(gate.baseline,gate.interval)
+        gate.persist_state()
+    return gate
+
+
+def check_response(g,response):
+    if response.status_code in (429,503):
+        gate=getattr(g.get('_chotu_tls'),'fast_gate',None)
+        if gate is not None:
+            if not gate.limited:gate.response(response)
+            raise gate.blocked_error()
+        error=g.get('ChotuRateLimited',RuntimeError)
+        raise error('SOURCE PAUSED: website rate limit; retry this saved store after at least 60s. Checkpoint retained.')
+    response.raise_for_status()
+
+
 def parallel_pages(g,urls,log):
-    """Three bounded HTTP workers, each owning its session and SQLite connection."""
+    """Bounded HTTP workers with shared pacing and independent durable caches."""
     tls=g.get('_chotu_tls');gate=getattr(tls,'fast_gate',None)
     saved=getattr(tls,'saved_api_path',None)
     if gate is None or saved is None:
         for url in urls:
             g['_chotu_wait']();response=g['S'].get(url,timeout=45)
-            response.raise_for_status();yield url,response.content
+            check_response(g,response);yield url,response.content
         return
     from resume_support import ResponseCache
-    workers=1 if time.time()<getattr(gate,'recovery_not_before',0) else 3
+    workers=1 if time.time()<getattr(gate,'recovery_not_before',0) else 2
     log('CZONE FAST FETCH: '+str(workers)+' workers; shared '+format(gate.interval,'.2f')+'s pacing; price checks unchanged')
     note=getattr(tls,'saved_run_note',None);cache_path=Path(saved).with_name('pages.sqlite3')
     tasks=iter(urls);lock=threading.Lock();results=queue.Queue(maxsize=workers*2);stop=threading.Event()
@@ -250,7 +273,7 @@ def parallel_pages(g,urls,log):
                 with lock:
                     try:url=next(tasks)
                     except StopIteration:return
-                response=session.get(url,timeout=45);response.raise_for_status()
+                response=session.get(url,timeout=45);check_response(g,response)
                 deliver((url,response.content,None))
         except Exception as exc:deliver((None,None,exc))
         finally:
@@ -272,8 +295,9 @@ def parallel_pages(g,urls,log):
 
 def export(g,base,name,template,log):
     # Reuse the app's gated, checkpoint-aware HTTP session on the fetch thread.
+    configure_czone_gate(g)
     def get(url):
-        g['_chotu_wait']();response=g['S'].get(url,timeout=45);response.raise_for_status();return response.content
+        g['_chotu_wait']();response=g['S'].get(url,timeout=45);check_response(g,response);return response.content
     total,urls,categories=catalog(get(BASE+'/products'),get(BASE+'/sitemap.xml'))
     log('CZONE: public catalog '+str(total)+' products; sitemap candidates '+str(len(urls)))
     if len(urls)<total:

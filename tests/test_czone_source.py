@@ -20,12 +20,31 @@ def page(price='250.00',sale='0.00',stock='InStock',variant=None):
     return '<script id="__NUXT_DATA__" type="application/json">'+json.dumps(a)+'</script><script type="application/ld+json">'+json.dumps(schema)+'</script><div class="wx-product-info-item-price"><span class="wx-product-price">Rs. '+price+'</span></div>'
 
 class CzoneTests(unittest.TestCase):
+    def test_429_maps_to_saved_run_cooldown_and_preserves_retry_after(self):
+        import threading,time,requests
+        from fast_fetch_support import RequestGate
+        tls=threading.local();gate=RequestGate(lambda:None,lambda s:None,baseline=1)
+        tls.fast_gate=gate;g={'_chotu_tls':tls}
+        response=requests.Response();response.status_code=429;response.headers['Retry-After']='180'
+        with self.assertRaisesRegex(RuntimeError,'SOURCE PAUSED'):
+            c.check_response(g,response)
+        self.assertTrue(gate.limited);self.assertGreaterEqual(gate.cooldown-time.monotonic(),179)
+        before=gate.cooldown;c.configure_czone_gate(g)
+        self.assertEqual(gate.cooldown,before);self.assertGreaterEqual(gate.interval,2.5)
+    def test_czone_floor_does_not_reset_learned_slowdown(self):
+        import threading
+        from fast_fetch_support import RequestGate
+        tls=threading.local();gate=RequestGate(lambda:None,lambda s:None,baseline=.25);tls.fast_gate=gate
+        c.configure_czone_gate({'_chotu_tls':tls});self.assertEqual(gate.interval,1)
+        gate.interval=4;gate.recovery_not_before=12345678900
+        c.configure_czone_gate({'_chotu_tls':tls});self.assertEqual(gate.interval,4)
+        self.assertEqual(gate.recovery_not_before,12345678900)
     def test_order_only_variants_are_excluded_before_price_interpretation(self):
         html=page(variant=[{'variantID':'699775','price':'299000.00','isActive':'1'}])
         html=html.replace('"instock"','"onorderonly"')
         product=c.parse_product(html,URL)
         self.assertFalse(product['available']);self.assertNotIn('price',product)
-    def test_parallel_pages_use_three_sessions_and_durable_thread_local_caches(self):
+    def test_parallel_pages_use_bounded_sessions_and_durable_thread_local_caches(self):
         import threading,time
         from fast_fetch_support import GatedSession,RequestGate
         from resume_support import SessionProxy,ResponseCache
@@ -50,7 +69,7 @@ class CzoneTests(unittest.TestCase):
             g={'_chotu_tls':tls,'_chotu_wait':pause,'requests':SimpleNamespace(Session=factory)}
             urls=[c.BASE+'/item-'+str(i) for i in range(9)]
             self.assertEqual({u for u,b in c.parallel_pages(g,urls,lambda x:None)},set(urls))
-            self.assertGreater(state['max'],1);self.assertLessEqual(state['max'],3)
+            self.assertGreater(state['max'],1);self.assertLessEqual(state['max'],2)
             self.assertEqual(state['calls'],9)
             cache=ResponseCache(Path(temp)/'pages.sqlite3')
             self.assertTrue(all(cache.get(url) is not None for url in urls));cache.close()
@@ -121,7 +140,7 @@ class CzoneTests(unittest.TestCase):
             sitemap='<urlset><url><loc>'+URL+'</loc></url></urlset>'
             pages={c.BASE+'/products':listing.encode(),c.BASE+'/sitemap.xml':sitemap.encode(),URL:page().encode()}
             class Session:
-                def get(self,url,**kw):return SimpleNamespace(content=pages[url],raise_for_status=lambda:None)
+                def get(self,url,**kw):return SimpleNamespace(status_code=200,content=pages[url],raise_for_status=lambda:None)
             g={'S':Session(),'_chotu_wait':lambda:None,'OUT':root,'load_workbook':openpyxl.load_workbook,'uid':main.uid,'write_row':main.write_row}
             c.export(g,c.BASE,'Computer Zone',Path(main.__file__).parent/'ChotuApp_Template.xlsx',lambda x:None)
             result=openpyxl.load_workbook(root/'Computer Zone - REFRESH REVIEW.xlsx')
