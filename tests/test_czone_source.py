@@ -20,6 +20,42 @@ def page(price='250.00',sale='0.00',stock='InStock',variant=None):
     return '<script id="__NUXT_DATA__" type="application/json">'+json.dumps(a)+'</script><script type="application/ld+json">'+json.dumps(schema)+'</script><div class="wx-product-info-item-price"><span class="wx-product-price">Rs. '+price+'</span></div>'
 
 class CzoneTests(unittest.TestCase):
+    def test_order_only_variants_are_excluded_before_price_interpretation(self):
+        html=page(variant=[{'variantID':'699775','price':'299000.00','isActive':'1'}])
+        html=html.replace('"instock"','"onorderonly"')
+        product=c.parse_product(html,URL)
+        self.assertFalse(product['available']);self.assertNotIn('price',product)
+    def test_parallel_pages_use_three_sessions_and_durable_thread_local_caches(self):
+        import threading,time
+        from fast_fetch_support import GatedSession,RequestGate
+        from resume_support import SessionProxy,ResponseCache
+        from unittest.mock import patch
+        import requests
+        with tempfile.TemporaryDirectory() as temp:
+            tls=threading.local();pause=lambda:None
+            gate=RequestGate(pause,lambda x:None,baseline=.001)
+            tls.fast_gate=gate;tls.saved_api_path=Path(temp)/'api.sqlite3'
+            state={'active':0,'max':0,'calls':0};lock=threading.Lock()
+            class Raw:
+                headers={}
+                def get(self,url,**kw):
+                    with lock:
+                        state['active']+=1;state['calls']+=1;state['max']=max(state['max'],state['active'])
+                    time.sleep(.025)
+                    response=requests.Response();response.status_code=200;response.url=url;response._content=b'public HTML';response.encoding='utf-8'
+                    with lock:state['active']-=1
+                    return response
+                def close(self):pass
+            factory=lambda:GatedSession(SessionProxy(Raw(),tls,pause),tls,pause)
+            g={'_chotu_tls':tls,'_chotu_wait':pause,'requests':SimpleNamespace(Session=factory)}
+            urls=[c.BASE+'/item-'+str(i) for i in range(9)]
+            self.assertEqual({u for u,b in c.parallel_pages(g,urls,lambda x:None)},set(urls))
+            self.assertGreater(state['max'],1);self.assertLessEqual(state['max'],3)
+            self.assertEqual(state['calls'],9)
+            cache=ResponseCache(Path(temp)/'pages.sqlite3')
+            self.assertTrue(all(cache.get(url) is not None for url in urls));cache.close()
+            list(c.parallel_pages(g,urls,lambda x:None));self.assertEqual(state['calls'],9)
+            self.assertIs(tls.fast_gate,gate)
     def test_nuxt_literal_numbers_are_not_reference_indices(self):
         from bs4 import BeautifulSoup
         values=[{'price':1,'count':2,'zero':3,'flag':4},27000,1,0,True]

@@ -1,7 +1,7 @@
 """Czone Webx adapter. Uses public product pages; never Shopify endpoints.
 Unknown variants, mismatched prices and incomplete catalogs fail before publication.
 """
-import csv, hashlib, json, re, time
+import csv, hashlib, json, re, time, threading, queue
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from urllib.parse import urlsplit, urljoin
@@ -106,6 +106,11 @@ def parse_product(html,url):
     if len(objects)!=1:raise ValueError('Expected exactly one primary Webx product')
     p=objects[0]
     if canonical(p['productURL'])!=canonical(url):raise ValueError('Product identity/URL mismatch')
+    # Catalog completeness counts every product, but non-sellable products need
+    # no price/variant interpretation. In particular, isActive is NOT stock proof.
+    source_stock=str(p.get('productStock',{}).get('stockStatus','')).lower()
+    if source_stock in ('onorderonly','outofstock','outstock','out-of-stock'):
+        return dict(id=str(p['productID']),name=p['productName'],url=canonical(url),available=False)
     if p.get('productVariants') or p.get('productOptions') or str(p.get('isVariant','0'))!='0':
         raise ValueError('Webx variant schema needs verification; no variants silently omitted: '+url)
     schemas=structured(soup,'Product')
@@ -215,6 +220,56 @@ def browser_catalog(expected,pause,log):
         finally:browser.close()
 
 
+
+def parallel_pages(g,urls,log):
+    """Three bounded HTTP workers, each owning its session and SQLite connection."""
+    tls=g.get('_chotu_tls');gate=getattr(tls,'fast_gate',None)
+    saved=getattr(tls,'saved_api_path',None)
+    if gate is None or saved is None:
+        for url in urls:
+            g['_chotu_wait']();response=g['S'].get(url,timeout=45)
+            response.raise_for_status();yield url,response.content
+        return
+    from resume_support import ResponseCache
+    workers=1 if time.time()<getattr(gate,'recovery_not_before',0) else 3
+    log('CZONE FAST FETCH: '+str(workers)+' workers; shared '+format(gate.interval,'.2f')+'s pacing; price checks unchanged')
+    note=getattr(tls,'saved_run_note',None);cache_path=Path(saved).with_name('pages.sqlite3')
+    tasks=iter(urls);lock=threading.Lock();results=queue.Queue(maxsize=workers*2);stop=threading.Event()
+    def deliver(result):
+        while not stop.is_set():
+            try:results.put(result,timeout=.1);return
+            except queue.Full:pass
+    def worker():
+        session=cache=None
+        try:
+            tls.fast_gate=gate;tls.fast_preloading=True;tls.saved_run_note=note
+            cache=ResponseCache(cache_path);tls.saved_response_cache=cache
+            session=g['requests'].Session();session.headers.update(g.get('HEADERS',{}))
+            while not stop.is_set():
+                g['_chotu_wait']()
+                with lock:
+                    try:url=next(tasks)
+                    except StopIteration:return
+                response=session.get(url,timeout=45);response.raise_for_status()
+                deliver((url,response.content,None))
+        except Exception as exc:deliver((None,None,exc))
+        finally:
+            if session:session.close()
+            if cache:cache.close()
+            tls.saved_response_cache=None;tls.fast_gate=None;tls.fast_preloading=False;tls.saved_run_note=None
+    threads=[threading.Thread(target=worker,name='czone-http-'+str(i),daemon=True) for i in range(workers)]
+    for thread in threads:thread.start()
+    try:
+        while any(thread.is_alive() for thread in threads) or not results.empty():
+            try:url,body,error=results.get(timeout=.1)
+            except queue.Empty:continue
+            if error is not None:raise error
+            yield url,body
+    finally:
+        stop.set()
+        for thread in threads:thread.join()
+
+
 def export(g,base,name,template,log):
     # Reuse the app's gated, checkpoint-aware HTTP session on the fetch thread.
     def get(url):
@@ -224,8 +279,7 @@ def export(g,base,name,template,log):
     if len(urls)<total:
         urls.update(u for u in browser_catalog(total,g['_chotu_wait'],log) if u not in categories and urlsplit(u).path not in STATIC and not urlsplit(u).path.startswith('/blog/'))
     records={};nonproducts=0
-    for index,url in enumerate(sorted(urls),1):
-        html=get(url)
+    for index,(url,html) in enumerate(parallel_pages(g,sorted(urls),log),1):
         if not structured(BeautifulSoup(html,'html.parser'),'Product'):
             nonproducts+=1;continue
         try:product=parse_product(html,url)
