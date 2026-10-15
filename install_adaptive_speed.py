@@ -31,7 +31,7 @@ def install(target):
         if backup.read_bytes()!=installed:raise RuntimeError('Text update backup failed.')
         if main.read_bytes()!=installed:raise RuntimeError('Source changed; stopped.')
         atomic_write(main,updated)
-    print('SUCCESS: Adaptive Speed V2 + text processing update installed. No new dependency required.')
+    print('SUCCESS: Five-worker Adaptive Speed + text processing update installed. No new dependency required.')
     print('After 20 consecutive HTTP 200 replies, request spacing recovers 25% toward the source-safe floor.')
     print('Prices, variants, images, final ordering and saved work preserved. Continue Saved Run after restart.')
 

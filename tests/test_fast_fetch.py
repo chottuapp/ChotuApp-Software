@@ -75,8 +75,8 @@ class FastFetchTests(unittest.TestCase):
                     requests.Session=original_factory
                     if parallel:self.assertTrue(any('FAST FETCH:' in line for line in logs))
                 self.assertEqual(outputs[0],outputs[1]);self.assertEqual(counts[0],counts[1])
-                self.assertEqual(peaks[0],1);self.assertEqual(peaks[1],2);self.assertLess(times[1],times[0])
-                print('Same HTTP endpoints and every workbook cell: serial %.2fs, parallel %.2fs; max concurrent requests 2.'%tuple(times))
+                self.assertEqual(peaks[0],1);self.assertGreaterEqual(peaks[1],2);self.assertLessEqual(peaks[1],5);self.assertLess(times[1],times[0])
+                print('Same HTTP endpoints and every workbook cell: serial %.2fs, parallel %.2fs; five-worker pool, shared pacing preserved.'%tuple(times))
         finally:server.shutdown();server.server_close();thread.join();requests.Session=original_factory
 
     def test_rate_limit_cooldown_stops_prefetch_and_respects_retry_after(self):
