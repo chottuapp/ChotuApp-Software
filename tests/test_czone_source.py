@@ -20,6 +20,27 @@ def page(price='250.00',sale='0.00',stock='InStock',variant=None):
     return '<script id="__NUXT_DATA__" type="application/json">'+json.dumps(a)+'</script><script type="application/ld+json">'+json.dumps(schema)+'</script><div class="wx-product-info-item-price"><span class="wx-product-price">Rs. '+price+'</span></div>'
 
 class CzoneTests(unittest.TestCase):
+    def test_parser_filter_preserves_product_details_and_ignores_global_navigation(self):
+        from bs4 import BeautifulSoup
+        html=page()+'<nav>'+('<svg><path d="a" /></svg><a>Store navigation</a>'*100)+'</nav><div class="wx-product-content"><table><tr><td>Memory</td><td>16GB DDR5</td></tr></table><p>Keep dry.</p></div>'
+        expected=c.parse_product(html,URL,soup=BeautifulSoup(html,'html.parser'))
+        self.assertEqual(c.parse_product(html,URL),expected)
+        self.assertIn('16GB DDR5',expected['description']);self.assertNotIn('Store navigation',expected['description'])
+    def test_parsed_resume_cache_requires_same_source_and_same_run(self):
+        import threading
+        from unittest.mock import patch
+        with tempfile.TemporaryDirectory() as temp:
+            tls=threading.local();tls.saved_api_path=Path(temp)/'api.sqlite3'
+            g={'_chotu_tls':tls};bodies=[(URL,page().encode())]
+            def pages(*args):yield from bodies
+            with patch.object(c,'parallel_pages',side_effect=pages),patch.object(c,'parse_product',wraps=c.parse_product) as parse:
+                first=c.collect_products(g,[URL],lambda x:None);self.assertEqual(parse.call_count,1)
+                second=c.collect_products(g,[URL],lambda x:None);self.assertEqual(parse.call_count,1);self.assertEqual(first,second)
+                bodies[:]=[(URL,page('500.00').encode())]
+                third=c.collect_products(g,[URL],lambda x:None);self.assertEqual(parse.call_count,2)
+                self.assertEqual(third['2462094']['price'],500)
+                fresh=Path(temp)/'new-run';fresh.mkdir();tls.saved_api_path=fresh/'api.sqlite3'
+                c.collect_products(g,[URL],lambda x:None);self.assertEqual(parse.call_count,3)
     def test_429_maps_to_saved_run_cooldown_and_preserves_retry_after(self):
         import threading,time,requests
         from fast_fetch_support import RequestGate

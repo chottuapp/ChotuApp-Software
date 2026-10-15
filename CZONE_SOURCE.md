@@ -21,3 +21,9 @@ Tests additionally verify concurrent overlap is bounded at two, cached responses
 ## Czone rate-limit correction
 
 Observed live Czone HTTP 429 after the initial parallel update. The Czone-only request floor is now 1 second; healthy concurrency is capped at two, and the existing recent-throttle recovery hold retains one worker with its learned slower spacing. Learned intervals and server cooldowns are never reset by this module. HTTP 429/503 is converted to the existing SOURCE PAUSED exception so the Saved Runs queue treats it as a website cooldown instead of a generic failure. Server Retry-After, at least 60 seconds, and the existing bounded retry policy remain in control. These settings reduce pressure; they do not guarantee the website will never throttle.
+
+## Parsing and continuation performance
+
+Product parsing now builds only source JSON and the scoped product price, overview, content and specification sections. It avoids constructing header, footer, navigation and SVG trees, and no longer parses the same full HTML twice. On the two supplied public page snapshots, local parsing measured about 4.5–4.7 times faster with identical extracted product records. This is a CPU parsing measurement, not an end-to-end fetch-speed guarantee; new network requests still obey the source gate.
+
+A separate `czone_products.sqlite3` within the exact saved-run store folder persists validated parsing results. Reuse requires the same parser version and exact SHA256 of source page bytes, plus a valid checksum on the stored result. Changed source bytes rerun validation. Fresh runs have different directories and do not reuse older prices or results. The original page response cache, price agreement checks, availability filters, catalog count checks and learned cooldown are retained. Tests cover changed pages, exact resume reuse, fresh-run isolation and preservation of full scoped detail tables.

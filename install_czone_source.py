@@ -37,7 +37,8 @@ def install(target):
         raise
     print('SUCCESS: Czone Webx adapter installed. Other stores, speed settings, templates and saved work retained.')
     print('Czone uses up to 2 HTTP workers with at least 1s shared request spacing and separate durable caches. Recent throttling retains one worker.')
-    print('On Order Only / out-of-stock products are excluded before variant price interpretation; price checks remain unchanged.')
+    print('Product-only HTML parsing and same-run checksum-validated parsed results reduce repeated processing; price checks unchanged.')
+    print('Website rate-limit cooldowns and learned request spacing remain in force.')
     print('Browser discovery uses installed Google Chrome or Microsoft Edge with a separate temporary profile; no browser download.')
     print('Choose Computer Zone only and New Fresh Run. Unknown variants/specifications or incomplete catalogs stop safely.')
     print('Backup:',backup)

@@ -1,12 +1,13 @@
 """Czone Webx adapter. Uses public product pages; never Shopify endpoints.
 Unknown variants, mismatched prices and incomplete catalogs fail before publication.
 """
-import csv, hashlib, json, re, time, threading, queue
+import csv, hashlib, json, re, time, threading, queue, sqlite3
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from urllib.parse import urlsplit, urljoin
 from xml.etree import ElementTree
 from bs4 import BeautifulSoup
+from bs4.filter import ElementFilter
 
 BASE='https://www.czone.com.pk'
 STATIC={'/','/products','/contact','/blog','/about-us','/privacy-policy','/return-exchange','/pc-builder'}
@@ -100,8 +101,27 @@ def catalog(html,sitemap):
     return total,urls,categories
 
 
-def parse_product(html,url):
-    soup=BeautifulSoup(html,'html.parser');values,decode=nuxt(soup)
+class ProductSectionsOnly(ElementFilter):
+    @property
+    def includes_everything(self):return False
+    def allow_tag_creation(self,nsprefix,name,attrs):
+        attrs=attrs or {}
+        if name=='script':return attrs.get('id')=='__NUXT_DATA__' or attrs.get('type')=='application/ld+json'
+        classes=attrs.get('class','')
+        if isinstance(classes,list):classes=' '.join(classes)
+        return any(key in classes for key in ('wx-product-info-item-price','wx-product-overview','wx-product-specifications','wx-product-content','specification'))
+    def allow_string_creation(self,string):return False
+
+
+def product_soup(html):
+    # Do not construct thousands of header/footer/navigation/SVG nodes per page.
+    # Keep all descendants of accepted product sections, plus complete source JSON.
+    return BeautifulSoup(html,'html.parser',parse_only=ProductSectionsOnly())
+
+
+def parse_product(html,url,soup=None):
+    if soup is None:soup=product_soup(html)
+    values,decode=nuxt(soup)
     objects=[decode(obj) for obj in values if isinstance(obj,dict) and 'productID' in obj and 'productPrice' in obj]
     if len(objects)!=1:raise ValueError('Expected exactly one primary Webx product')
     p=objects[0]
@@ -293,6 +313,53 @@ def parallel_pages(g,urls,log):
         for thread in threads:thread.join()
 
 
+
+PARSER_VERSION='czone-webx-2'
+
+def collect_products(g,urls,log):
+    """Cache validated parsing only inside this exact saved run and source checksum."""
+    saved=getattr(g.get('_chotu_tls'),'saved_api_path',None)
+    db=None;records={};reused=0
+    pages=parallel_pages(g,urls,log)
+    try:
+        if saved is not None:
+            db=sqlite3.connect(Path(saved).with_name('czone_products.sqlite3'),timeout=30)
+            db.execute('PRAGMA synchronous=FULL')
+            db.execute('CREATE TABLE IF NOT EXISTS parsed(url TEXT PRIMARY KEY, source_hash TEXT, version TEXT, payload TEXT, payload_hash TEXT)')
+            db.commit()
+        for index,(url,html) in enumerate(pages,1):
+            source_hash=hashlib.sha256(html).hexdigest();product=None;hit=False
+            row=db.execute('SELECT source_hash,version,payload,payload_hash FROM parsed WHERE url=?',(url,)).fetchone() if db else None
+            if row and row[0]==source_hash and row[1]==PARSER_VERSION and hashlib.sha256(row[2].encode()).hexdigest()==row[3]:
+                try:
+                    product=json.loads(row[2])
+                    if product is not None:
+                        if not isinstance(product,dict) or not isinstance(product.get('available'),bool) or product.get('url')!=canonical(url):raise ValueError('Invalid cached product')
+                        for key in ('price','base'):
+                            if key in product:product[key]=amount(product[key])
+                    hit=True;reused+=1
+                except (ValueError,TypeError):product=None
+            if not hit:
+                soup=product_soup(html)
+                if structured(soup,'Product'):
+                    try:product=parse_product(html,url,soup=soup)
+                    except (ValueError,KeyError,TypeError) as exc:
+                        raise RuntimeError('CZONE product check failed: '+url+' — '+str(exc)) from exc
+                if db:
+                    payload=json.dumps(product,ensure_ascii=False,default=str,allow_nan=False)
+                    db.execute('INSERT OR REPLACE INTO parsed VALUES(?,?,?,?,?)',(url,source_hash,PARSER_VERSION,payload,hashlib.sha256(payload.encode()).hexdigest()));db.commit()
+            if product is not None:
+                if product['id'] in records and records[product['id']]!=product:raise RuntimeError('Conflicting duplicate Czone product identity')
+                records[product['id']]=product
+            if index%25==0:
+                log('CZONE: checked '+str(index)+'/'+str(len(urls))+' product pages; parsed results reused='+str(reused))
+                log('__CHOTU_PROGRESS__|'+str(min(65,5+int(60*index/len(urls))))+'|Checking Czone products')
+        return records
+    finally:
+        pages.close()
+        if db:db.close()
+
+
 def export(g,base,name,template,log):
     # Reuse the app's gated, checkpoint-aware HTTP session on the fetch thread.
     configure_czone_gate(g)
@@ -302,18 +369,7 @@ def export(g,base,name,template,log):
     log('CZONE: public catalog '+str(total)+' products; sitemap candidates '+str(len(urls)))
     if len(urls)<total:
         urls.update(u for u in browser_catalog(total,g['_chotu_wait'],log) if u not in categories and urlsplit(u).path not in STATIC and not urlsplit(u).path.startswith('/blog/'))
-    records={};nonproducts=0
-    for index,(url,html) in enumerate(parallel_pages(g,sorted(urls),log),1):
-        if not structured(BeautifulSoup(html,'html.parser'),'Product'):
-            nonproducts+=1;continue
-        try:product=parse_product(html,url)
-        except (ValueError,KeyError,TypeError) as exc:
-            raise RuntimeError('CZONE product check failed: '+url+' — '+str(exc)) from exc
-        if product['id'] in records and records[product['id']]!=product:raise RuntimeError('Conflicting duplicate Czone product identity')
-        records[product['id']]=product
-        if index%25==0:
-            log('CZONE: checked '+str(index)+'/'+str(len(urls))+' product pages')
-            log('__CHOTU_PROGRESS__|'+str(min(65,5+int(60*index/len(urls))))+'|Checking Czone products')
+    records=collect_products(g,sorted(urls),log)
     if len(records)!=total:raise RuntimeError('CZONE catalog incomplete: website '+str(total)+', verified '+str(len(records))+'. Saved responses retained; existing Excel preserved.')
     products=[p for p in records.values() if p['available'] and p['price']>0 and not re.search(r'\bfree gift\b',p['name'],re.I)]
     if not products:raise RuntimeError('No in-stock priced Czone products; existing Excel retained')
