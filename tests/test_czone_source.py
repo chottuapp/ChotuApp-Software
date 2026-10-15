@@ -20,6 +20,23 @@ def page(price='250.00',sale='0.00',stock='InStock',variant=None):
     return '<script id="__NUXT_DATA__" type="application/json">'+json.dumps(a)+'</script><script type="application/ld+json">'+json.dumps(schema)+'</script><div class="wx-product-info-item-price"><span class="wx-product-price">Rs. '+price+'</span></div>'
 
 class CzoneTests(unittest.TestCase):
+    def test_existing_chrome_used_without_download(self):
+        calls=[];browser=object()
+        driver=SimpleNamespace(launch=lambda **kw:(calls.append(kw),browser)[1])
+        self.assertIs(c.launch_catalog_browser(driver,lambda s:None),browser)
+        self.assertEqual(calls,[{'headless':True,'channel':'chrome'}])
+    def test_existing_edge_fallback(self):
+        calls=[];browser=object()
+        def launch(**kw):
+            calls.append(kw)
+            if kw.get('channel')=='chrome':raise RuntimeError('Chrome not installed')
+            return browser
+        self.assertIs(c.launch_catalog_browser(SimpleNamespace(launch=launch),lambda s:None),browser)
+        self.assertEqual(calls[-1]['channel'],'msedge')
+    def test_missing_browsers_stop_without_downloader(self):
+        def launch(**kw):raise RuntimeError('Browser unavailable')
+        with self.assertRaisesRegex(RuntimeError,'No browser download was attempted'):
+            c.launch_catalog_browser(SimpleNamespace(launch=launch),lambda s:None)
     def test_price_gallery_warranty_specifications(self):
         p=c.parse_product(page(),URL)
         self.assertEqual(str(p['price']),'250.00');self.assertEqual(len(p['images']),2)

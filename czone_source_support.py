@@ -151,11 +151,26 @@ def parse_product(html,url):
     return dict(id=str(p['productID']),name=p['productName'],description=desc,sku=fields.get('sku',''),brand=fields.get('vendorName',''),category=cats[0] if cats else fields.get('categoryName','Electronics'),subcategory=cats[-1] if len(cats)>1 else '',price=price,base=compare,available=available,images=images,url=canonical(url),warranty=fields.get('warranty',''),sold=sold,condition='used' if condition=='UsedCondition' else 'new')
 
 
+def launch_catalog_browser(chromium,log):
+    # Playwright creates a separate temporary profile; never opens the user's profile.
+    failures=[]
+    for channel in ('chrome','msedge',None):
+        try:
+            options={'headless':True}
+            if channel:options['channel']=channel
+            browser=chromium.launch(**options)
+            log('CZONE: using '+(channel or 'Playwright Chromium')+' with a separate temporary browser profile')
+            return browser
+        except Exception as exc:
+            failures.append(str(exc).splitlines()[0])
+    raise RuntimeError('Czone browser could not start. Install Google Chrome or Microsoft Edge. No browser download was attempted. Details: '+'; '.join(failures))
+
+
 def browser_catalog(expected,pause,log):
     """Follow the public site's actual infinite-scroll UI; no guessed private API."""
     from playwright.sync_api import sync_playwright
     with sync_playwright() as driver:
-        browser=driver.chromium.launch(headless=True)
+        browser=launch_catalog_browser(driver.chromium,log)
         try:
             page=browser.new_page();limited=[]
             page.on('response',lambda response: limited.append(response.status) if response.status in (429,503) else None)

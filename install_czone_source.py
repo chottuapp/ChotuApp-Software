@@ -1,5 +1,5 @@
 """Install Czone-only fetching support, preserving existing code and saved runs."""
-import argparse,ast,datetime,os,shutil,tempfile,subprocess,sys
+import argparse,ast,datetime,os,shutil,tempfile,subprocess,sys,importlib.util
 from pathlib import Path
 HOOK='\n# CHOTUAPP_CZONE_WEBX_V1\nfrom czone_source_support import enable_czone_source as _enable_czone_source\n_enable_czone_source(globals())\n\n'
 
@@ -37,15 +37,14 @@ def install(target):
         raise
     print('SUCCESS: Czone Webx adapter installed. Other stores, speed settings, templates and saved work retained.')
     print('Czone uses public pages, checks three price sources, and preserves gallery images and warranty text.')
-    print('Browser fallback requires: py -m pip install playwright; then py -m playwright install chromium')
+    print('Browser discovery uses installed Google Chrome or Microsoft Edge with a separate temporary profile; no browser download.')
     print('Choose Computer Zone only and New Fresh Run. Unknown variants/specifications or incomplete catalogs stop safely.')
     print('Backup:',backup)
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--target',type=Path,default=Path.home()/'Desktop'/'ChotuApp_Software');p.add_argument('--with-browser',action='store_true',help='Install the browser dependency used for Czone infinite-scroll discovery');a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--target',type=Path,default=Path.home()/'Desktop'/'ChotuApp_Software');p.add_argument('--with-browser',action='store_true',help='Ensure the Playwright Python package is available; use existing Chrome/Edge without downloading Chromium');a=p.parse_args()
     try:
-        if a.with_browser:
+        if a.with_browser and importlib.util.find_spec('playwright') is None:
             subprocess.run([sys.executable,'-m','pip','install','playwright'],check=True)
-            subprocess.run([sys.executable,'-m','playwright','install','chromium'],check=True)
         install(a.target)
     except Exception as exc:p.exit(1,'Czone update stopped: '+str(exc)+'\n')

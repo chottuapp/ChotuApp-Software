@@ -1,6 +1,6 @@
 # Czone Webx support
 
-Close ChotuApp before running install_czone_source.py --with-browser. The installer adds a Czone-only hook and module, and backs up the existing program. It does not replace the extraction engine, templates, stores, exports or saved runs. Playwright/Chromium is installed for public catalog infinite-scroll discovery when the sitemap is short of the catalog's advertised total.
+Close ChotuApp before running install_czone_source.py --with-browser. The installer adds a Czone-only hook and module, and backs up the existing program. It does not replace the extraction engine, templates, stores, exports or saved runs. Only the Playwright Python package is installed if missing. Public catalog discovery uses existing Google Chrome, then Microsoft Edge, then an already available Playwright Chromium. No browser download is attempted; every browser uses a separate temporary profile.
 
 Use the clean store URL https://www.czone.com.pk/ and select Computer Zone only, then New Fresh Run. Continue Saved Run reuses that interrupted run's successful public HTTP responses through the existing cache; New Fresh Run gets a new checkpoint. Chromium catalog discovery itself repeats on continuation when needed. No user browser profile is used.
 
