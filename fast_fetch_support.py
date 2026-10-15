@@ -16,7 +16,7 @@ class RequestGate:
     def __init__(self, pause, log, baseline=0.25, state_path=None, error_factory=RuntimeError):
         self.pause=pause;self.log=log;self.baseline=baseline;self.interval=baseline
         self.lock=threading.RLock();self.next_start=0.0;self.cooldown=0.0;self.limited=False
-        self.success_streak=0;self.recovery_window=80
+        self.success_streak=0;self.recovery_window=20
         self.state_path=Path(state_path) if state_path else None;self.error_factory=error_factory
         if self.state_path:
             try:
@@ -77,7 +77,7 @@ class RequestGate:
                 self.success_streak+=1
                 if self.success_streak>=self.recovery_window:
                     self.success_streak=0
-                    recovered=max(self.baseline,round(self.interval*0.90,4))
+                    recovered=max(self.baseline,round(self.interval*0.75,4))
                     if recovered<self.interval:
                         previous=self.interval;self.interval=recovered;recovered_value=recovered
                         self.persist_state()
@@ -117,7 +117,7 @@ def enable_fast_fetch(g):
     original_init=g['App'].__init__
     def init(self,root):
         original_init(self,root)
-        root.title(root.title()+' | Fast Fetch (2 workers) | Adaptive Speed')
+        root.title(root.title()+' | Fast Fetch (2 workers) | Adaptive Speed V2')
     g['App'].__init__=init
     def session_factory(*args,**kwargs):return GatedSession(factory(*args,**kwargs),tls,g['_chotu_wait'])
     g['requests'].Session=session_factory
@@ -142,7 +142,7 @@ def enable_fast_fetch(g):
         floor=1.0 if host in ('elitecosmeticspk.com','shopmodest.pk') else 0.25
         state_path=Path(g['__file__']).resolve().parent/'source_pacing'/(host+'.json')
         tls.fast_gate=RequestGate(g['_chotu_wait'],g['_chotu_debug'],floor,state_path,g['ChotuRateLimited']);tls.fast_products=[]
-        tls.fast_worker_count=1 if host in ('elitecosmeticspk.com','shopmodest.pk') else 2
+        tls.fast_worker_count=2
         return result
     def close_checkpoint(success=False):
         try:return old_close(success)
