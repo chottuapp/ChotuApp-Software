@@ -185,7 +185,11 @@ def get_json(url, tries=4):
 
 
 def txt(v):
-    return re.sub(r'\s+', ' ', html.unescape(BeautifulSoup(str(v or ''), 'html.parser').get_text(' ', strip=True))).strip()
+    # CHOTUAPP_TEXT_FAST_V1: plain strings need no HTML tree.
+    value=str(v or '')
+    if '<' not in value and '&' not in value:
+        return re.sub(r'\s+', ' ', value).strip()
+    return re.sub(r'\s+', ' ', html.unescape(BeautifulSoup(value, 'html.parser').get_text(' ', strip=True))).strip()
 
 def money(v):
     try:

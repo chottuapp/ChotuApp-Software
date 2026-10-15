@@ -15,3 +15,5 @@ For a separate development copy: install requirements, then `py main.py`. Source
 Daily automation and the owned Windows login launcher have been removed. Fetching is manual: select stores and use FETCH SELECTED or New Fresh Run. Continue Saved Run resumes the prior saved queue. Pause does not cancel a run; close the window to leave its saved progress, then reopen to choose a new fresh run. No unattended refresh timer is active.
 
 Manual-run cooldown recovery processes other stores before retrying a rate-limited source. It retries at most twice after cooldowns of at most 120 seconds; longer delays or continued blocking stay pending with a Website cooldown status. No scheduled fetching or login startup is enabled. Shop Modest and Elite Cosmetics use a one-worker conservative profile.
+
+Adaptive Speed recovers historical slow pacing after 80 consecutive fresh HTTP 200 responses, reducing the interval 10% per successful window toward the source-safe floor. Caches do not create false speed-recovery signals; rate-limit protection and bounded retries remain. A plain-text fast path preserves normalization output while avoiding unnecessary HTML trees.

@@ -17,6 +17,7 @@ import fast_fetch_support as fast
 import resume_support
 import install_speed_patch
 import install_fast_fetch
+import install_adaptive_speed
 
 class FastFetchTests(unittest.TestCase):
     def test_parallel_and_serial_export_every_cell_and_endpoint_match(self):
@@ -55,7 +56,9 @@ class FastFetchTests(unittest.TestCase):
         try:
             with tempfile.TemporaryDirectory() as tmp:
                 for parallel in (False,True):
-                    folder=Path(tmp)/str(parallel);folder.mkdir();file=folder/'main.py';file.write_bytes(source)
+                    folder=Path(tmp)/str(parallel);folder.mkdir();file=folder/'main.py'
+                    body=source if parallel else source.replace(install_adaptive_speed.NEW_TEXT.encode(),install_adaptive_speed.OLD_TEXT.encode(),1)
+                    file.write_bytes(body)
                     spec=importlib.util.spec_from_file_location('fast_fixture_'+str(parallel),file);module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
                     resume_support.enable_resume(module.__dict__)
                     if parallel:fast.enable_fast_fetch(module.__dict__)
@@ -108,7 +111,7 @@ class FastFetchTests(unittest.TestCase):
                     self.assertEqual(module.get_json('https://limited.example/saved.json')['price'],3845)
                     self.assertEqual(network.call_count,2)
                 reloaded=fast.RequestGate(lambda:None,lambda x:None,state_path=root/'source_pacing/limited.example.json')
-                self.assertTrue(reloaded.limited);self.assertGreaterEqual(reloaded.baseline,1.0)
+                self.assertTrue(reloaded.limited);self.assertGreaterEqual(reloaded.interval,1.0)
                 with self.assertRaises(RuntimeError):reloaded.wait()
             finally:
                 module._chotu_close_checkpoint(False);module._chotu_tls.saved_response_cache.close();requests.Session=original_factory

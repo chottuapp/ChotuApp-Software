@@ -1,6 +1,7 @@
 """Bounded per-store preloading; preserve canonical extraction and durable caches."""
 import email.utils
 import json
+import math
 import os
 import tempfile
 from urllib.parse import urlparse
@@ -14,30 +15,40 @@ import time
 class RequestGate:
     def __init__(self, pause, log, baseline=0.25, state_path=None, error_factory=RuntimeError):
         self.pause=pause;self.log=log;self.baseline=baseline;self.interval=baseline
-        self.lock=threading.Lock();self.next_start=0.0;self.cooldown=0.0;self.limited=False
+        self.lock=threading.RLock();self.next_start=0.0;self.cooldown=0.0;self.limited=False
+        self.success_streak=0;self.recovery_window=80
         self.state_path=Path(state_path) if state_path else None;self.error_factory=error_factory
         if self.state_path:
             try:
                 state=json.loads(self.state_path.read_text())
-                self.baseline=max(baseline,min(3.0,float(state.get('min_spacing',baseline))))
-                self.interval=self.baseline
+                learned=float(state.get('min_spacing',baseline))
+                if math.isfinite(learned):self.interval=max(self.baseline,min(12.0,learned))
                 remaining=float(state.get('retry_after_epoch',0))-time.time()
                 if remaining>0:self.cooldown=time.monotonic()+remaining;self.limited=True
             except (OSError,ValueError,TypeError):pass
     def blocked_error(self):
         remaining=max(1,int(self.cooldown-time.monotonic()+0.99))
         return self.error_factory(f'SOURCE PAUSED: website rate limit; retry this saved store after at least {remaining}s. Checkpoint retained; other stores can proceed.')
-    def persist_block(self,delay):
+    def persist_state(self):
         if not self.state_path:return
-        self.state_path.parent.mkdir(parents=True,exist_ok=True);temporary=None
-        try:
-            state={'retry_after_epoch':time.time()+max(0,self.cooldown-time.monotonic()),'min_spacing':min(3.0,max(1.0,self.baseline*1.5))}
-            with tempfile.NamedTemporaryFile(dir=self.state_path.parent,mode='w',delete=False) as stream:
-                temporary=Path(stream.name);json.dump(state,stream);stream.flush();os.fsync(stream.fileno())
-            os.replace(temporary,self.state_path)
-        except OSError as exc:self.log('FAST FETCH: could not persist source cooldown: '+str(exc))
-        finally:
-            if temporary:temporary.unlink(missing_ok=True)
+        # Serialize successful recovery with a simultaneous 429, so a healthy
+        # response cannot erase a newer cooldown written by another worker.
+        with self.lock:
+            temporary=None
+            try:
+                self.state_path.parent.mkdir(parents=True,exist_ok=True)
+                state={'retry_after_epoch':time.time()+max(0,self.cooldown-time.monotonic()) if self.limited else 0,
+                       'min_spacing':self.interval,'profile_version':2}
+                with tempfile.NamedTemporaryFile(dir=self.state_path.parent,mode='w',delete=False) as stream:
+                    temporary=Path(stream.name);json.dump(state,stream);stream.flush();os.fsync(stream.fileno())
+                os.replace(temporary,self.state_path)
+            except OSError as exc:self.log('FAST FETCH: could not persist adaptive source profile: '+str(exc))
+            finally:
+                if temporary:temporary.unlink(missing_ok=True)
+    def persist_block(self,delay):
+        self.persist_state()
+    def network_failure(self):
+        with self.lock:self.success_streak=0
     def wait(self,preload=False):
         while True:
             self.pause()
@@ -55,11 +66,25 @@ class RequestGate:
                 try:delay=max(delay,(email.utils.parsedate_to_datetime(raw)-datetime.datetime.now(datetime.timezone.utc)).total_seconds())
                 except (ValueError,TypeError,OverflowError):pass
             with self.lock:
+                self.success_streak=0
                 self.interval=min(12.0,max(2.5,self.interval*1.8));self.cooldown=max(self.cooldown,time.monotonic()+delay);self.limited=True
-            self.persist_block(delay)
+                self.persist_block(delay)
             self.log(f'FAST FETCH: HTTP {response.status_code}; store paused, checkpoint retained, cooldown {delay:.0f}s; no repeated blocked requests')
         elif response.status_code==200:
-            with self.lock:self.interval=max(self.baseline,self.interval*0.98)
+            previous=None;recovered_value=None
+            with self.lock:
+                if self.limited:return
+                self.success_streak+=1
+                if self.success_streak>=self.recovery_window:
+                    self.success_streak=0
+                    recovered=max(self.baseline,round(self.interval*0.90,4))
+                    if recovered<self.interval:
+                        previous=self.interval;self.interval=recovered;recovered_value=recovered
+                        self.persist_state()
+            if previous is not None:
+                self.log(f'ADAPTIVE RECOVERY: {self.recovery_window} consecutive HTTP 200 responses; spacing {previous:.2f}s -> {recovered_value:.2f}s; safe floor {self.baseline:.2f}s')
+        else:
+            self.network_failure()
 
 
 class GatedSession:
@@ -72,7 +97,10 @@ class GatedSession:
         if cache is not None and not any(kwargs.get(k) for k in ('params','stream','auth')) and cache.get(url) is not None:
             return self.session.get(url,**kwargs)
         gate.wait(getattr(self.tls,'fast_preloading',False))
-        response=self.session.get(url,**kwargs);gate.response(response);return response
+        try:response=self.session.get(url,**kwargs)
+        except Exception:
+            gate.network_failure();raise
+        gate.response(response);return response
 
 
 class ThreadSession:
@@ -89,7 +117,7 @@ def enable_fast_fetch(g):
     original_init=g['App'].__init__
     def init(self,root):
         original_init(self,root)
-        root.title(root.title()+' | Fast Fetch (2 workers)')
+        root.title(root.title()+' | Fast Fetch (2 workers) | Adaptive Speed')
     g['App'].__init__=init
     def session_factory(*args,**kwargs):return GatedSession(factory(*args,**kwargs),tls,g['_chotu_wait'])
     g['requests'].Session=session_factory
@@ -142,7 +170,7 @@ def enable_fast_fetch(g):
         gate=tls.fast_gate;note=getattr(tls,'saved_run_note',None)
         totals=[0,0];iterator=iter(tasks);iterator_lock=threading.Lock()
         worker_count=getattr(tls,'fast_worker_count',2)
-        log(f'FAST FETCH: {label}; {worker_count} workers, shared {gate.baseline:.2f}s request spacing; canonical checks preserved')
+        log(f'FAST FETCH: {label}; {worker_count} workers, shared {gate.interval:.2f}s starting request spacing; canonical checks preserved')
         g['_chotu_debug_stage']('Parallel '+label)
         def worker():
             db=None;cache=None;session=None
