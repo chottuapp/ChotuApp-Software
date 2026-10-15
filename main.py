@@ -733,43 +733,9 @@ def detailed_description(product, soup):
 
 
 def friendly_description(p):
-    title = txt(p.get('title'))
-    body = (p.get('body_html') or '') + (p.get('_storefront_specs_html') or '')
-    if not body: return title
-    soup = BeautifulSoup(str(body), 'html.parser')
-    for tag in soup.find_all(['script','style','noscript','iframe','svg']): tag.decompose()
-    if needs_detailed_description(p, soup):
-        return detailed_description(p, soup)
-    for tag in soup.find_all(['p','li','h2','h3','h4','br','div']): tag.insert_before('\n')
-    source = html.unescape(soup.get_text(' ', strip=False)).replace('\xa0', ' ')
-    reject = re.compile(r'(?i)(add to cart|buy now|shop now|wishlist|share this|free shipping|cash on delivery|return policy|subscribe|newsletter|follow us|limited time|hurry|order now|click here|discount code|customer reviews|read more|view all|related products|you may also like)')
-    sentences, seen = [], set()
-    for line in source.splitlines():
-        line = re.sub(r'\s+', ' ', line).strip(' •|:-\t')
-        if not line or reject.search(line): continue
-        heading = re.sub(r'(?i)^(what (?:is|are)|about|description)\s*[:?-]?\s*', '', line).rstrip('?').strip()
-        if heading.casefold() == title.casefold() or line.casefold() in ('features', 'benefits', 'description', 'how to use', 'product details'):
-            continue
-        for sentence in re.split(r'(?<=[.!?])\s+(?=[A-Z0-9])', line):
-            sentence = sentence.strip(' •|:-\t')
-            if not 8 <= len(sentence) <= 400 or 'http' in sentence.lower(): continue
-            key = re.sub(r'\W+', '', sentence).casefold()
-            if key and key not in seen:
-                seen.add(key); sentences.append(sentence)
-    if not sentences: return title
-    title_words = set(re.findall(r'[a-z0-9]{4,}', title.lower()))
-    def score(s):
-        low=s.lower()
-        return sum(w in low for w in title_words)*3 + len(re.findall(r'\b(size|shade|color|colour|material|fabric|includes|contains|made|capacity|volume|weight|finish|texture|set|pack|piece|ml|cm)\b',low))*2
-    ranked = sorted(enumerate(sentences), key=lambda x:(-score(x[1]),x[0]))
-    chosen, length = set(), 0
-    for i, sentence in ranked:
-        if length + len(sentence) + 1 > 300: continue
-        chosen.add(i); length += len(sentence)+1
-        if length >= 180 or len(chosen) >= 4: break
-    result=' '.join(s for i,s in enumerate(sentences) if i in chosen)
-    result = re.sub(r'\s+', ' ', result).strip()
-    return result or title
+    # CHOTUAPP_COMPLETE_DESCRIPTIONS_V1: no short cosmetic/category cutoff.
+    from complete_description_support import complete_description
+    return complete_description(p, txt, detailed_description, _chotu_debug)
 
 
 # CHOTUAPP_TOP20_V1: best-selling ordering is used only when the storefront
@@ -806,8 +772,9 @@ def storefront_cover(base, product, pictures, log):
         resp.raise_for_status()
         soup = BeautifulSoup(resp.text, 'html.parser')
         # Only product-detail areas; do not harvest recommendation/global tables.
-        product['_storefront_specs_html'] = ''.join(str(node) for node in soup.select(
-            'product-info table, .product__info-container table, [id^="ProductInfo"] table, .product-specifications, #specifications, [data-product-specifications]'))
+        # CHOTUAPP_COMPLETE_DETAIL_PANELS_V1
+        from complete_description_support import collect_product_details
+        product['_storefront_specs_html'] = collect_product_details(soup)
         hero = soup.select_one('media-gallery .product__media img, [id^="MediaGallery"] .product__media img, .product__media img')
         meta = soup.find('meta', property='og:image')
         candidate = (hero.get('data-src') or hero.get('src')) if hero else (meta.get('content') if meta else None)
