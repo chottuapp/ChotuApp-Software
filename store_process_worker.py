@@ -59,6 +59,8 @@ def main():
                     result['retry_after_epoch']=time.time()+delay
             if text.startswith('FRESH FETCH:') and request.get('resuming'):
                 text='CONTINUE SAVED RUN: successful responses reused; unfinished requests retried.'
+            if result['paused'] and text.startswith('FAILED:'):
+                text='WEBSITE COOLDOWN:'+text[len('FAILED:'):]
             emit('log',text=text)
     g['OUT']=Path(request['output_root']);g['OUT'].mkdir(parents=True,exist_ok=True)
     events=Events();app=SimpleNamespace(events=events,_output_snapshot=g['App']._output_snapshot)

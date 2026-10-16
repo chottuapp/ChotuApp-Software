@@ -111,7 +111,7 @@ class CloudService:
             finally:book.close()
             self.diagnostics=Collector(self.data/'telemetry.json')
             self.pause.set();self.settings.write_text(json.dumps({'paused':False}));self.error=None
-            scheduler=StoreScheduler(self.engine,self.store,state,self.output,self.pause,self.event);self.scheduler=scheduler
+            scheduler=StoreScheduler(self.engine,self.store,state,self.output,self.pause,self.event,retry_limit=5,wait_limit=900);self.scheduler=scheduler
             def work():
                 try:scheduler.run()
                 except Exception as exc:self.error=str(exc);self.event('FAILED: '+str(exc))

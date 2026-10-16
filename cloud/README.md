@@ -148,3 +148,15 @@ snapshots of the same run/file/content are archived once, even after restarting
 sync. Changed file content within a run creates another numbered copy. The next
 date starts again at `Seran.xlsx`. Cloud-run folders and logs remain available.
 The PC must be on with the updated sync helper running to create local files.
+
+Observed category rate-limit update
+-----------------------------------
+Rawayat, Rivaj UK, Junaid Jamshed and Tawakkal now start at one worker with
+at least 1-second shared request spacing after observed HTTP 429 at 0.25 seconds.
+Learned slower intervals and server cooldowns still take precedence. Cloud scheduling
+allows five automatic retries after the initial attempt and waits up to 15 minutes
+for each server cooldown, bounded by the CLI's overall time budget. Other stores
+continue during those waits. Source-paused worker events are labelled WEBSITE COOLDOWN
+rather than FAILED; schema, identity, price and completeness failures still fail closed.
+This reduces repeated rate-limit failures; it does not guarantee website acceptance
+or certify review workbooks as final.

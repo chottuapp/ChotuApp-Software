@@ -12,6 +12,15 @@ import threading
 import time
 
 
+# These hosts returned HTTP 429 during category preloading at 0.25s spacing.
+CAUTIOUS_SOURCES={'rawayat.com.pk','rivaj-uk.com','junaidjamshed.com','tawakkalfabrics.co'}
+
+
+def source_policy(host):
+    host=host.lower().removeprefix('www.')
+    return (1.0,1) if host in CAUTIOUS_SOURCES or host=='shopmodest.pk' else (1.0,5) if host=='elitecosmeticspk.com' else (0.25,5)
+
+
 class RequestGate:
     def __init__(self, pause, log, baseline=0.25, state_path=None, error_factory=RuntimeError):
         self.pause=pause;self.log=log;self.baseline=baseline;self.interval=baseline
@@ -154,10 +163,10 @@ def enable_fast_fetch(g):
     def open_checkpoint(base,name):
         result=old_open(base,name)
         host=(urlparse(base).hostname or 'unknown').lower().removeprefix('www.')
-        floor=1.0 if host in ('elitecosmeticspk.com','shopmodest.pk') else 0.25
+        floor,configured_workers=source_policy(host)
         state_path=Path(g['__file__']).resolve().parent/'source_pacing'/(host+'.json')
         tls.fast_gate=RequestGate(g['_chotu_wait'],g['_chotu_debug'],floor,state_path,g['ChotuRateLimited']);tls.fast_products=[]
-        tls.fast_worker_count=1 if host=='shopmodest.pk' or time.time()<tls.fast_gate.recovery_not_before else 5
+        tls.fast_worker_count=1 if time.time()<tls.fast_gate.recovery_not_before else configured_workers
         if tls.fast_worker_count==1:g['_chotu_debug']('STABLE PACING: single worker; learned spacing retained; no acceleration during recent-throttle recovery hold.')
         return result
     def close_checkpoint(success=False):
