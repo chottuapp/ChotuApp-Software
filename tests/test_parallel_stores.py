@@ -103,8 +103,28 @@ class ParallelStoreTests(unittest.TestCase):
         self.assertEqual(int((folder/'count.txt').read_text()),count)
         scheduler.shutdown();thread.join(8);self.assertFalse(thread.is_alive());self.assertEqual(self.store.load()['sites'][0]['status'],'pending')
         self.assertGreater(count,0);self.pause.set()
+        old_revision=self.store.load()['sites'][0]['software_revision']
+        self.engine.write_text(ENGINE.replace("meta['end']=time.time()","meta['updated_code']=True;meta['end']=time.time()"))
         resumed=StoreScheduler(self.engine,self.store,dict(self.store.load(),_resuming=True),self.output,self.pause,self.events.append);resumed.run()
         self.assertEqual((folder/'count.txt').read_text(),'50');self.assertEqual(self.store.load()['status'],'complete')
+        site=self.store.load()['sites'][0]
+        self.assertNotEqual(site['software_revision'],old_revision);self.assertEqual(site['previous_software_revision'],old_revision)
+        self.assertTrue(self.meta(resumed,0,'finished.json')['updated_code'])
+    def test_code_revision_invalidates_derived_parser_cache_only(self):
+        from software_revision_support import prepare_revision
+        from types import SimpleNamespace
+        from unittest.mock import patch
+        folder=self.root/'checkpoint';folder.mkdir();raw=folder/'pages.sqlite3';raw.write_bytes(b'saved response')
+        fake=SimpleNamespace(PARSER_VERSION='webx-test')
+        with patch.dict(sys.modules,{'czone_source_support':fake}):
+            first,previous=prepare_revision(self.engine,folder);self.assertIsNone(previous)
+            self.assertEqual(fake.PARSER_VERSION,'webx-test@'+first)
+            again,previous=prepare_revision(self.engine,folder);self.assertEqual((again,previous),(first,first))
+            self.engine.write_text(ENGINE+'\n# updated parser\n')
+            changed,previous=prepare_revision(self.engine,folder)
+            self.assertNotEqual(changed,first);self.assertEqual(previous,first)
+            self.assertEqual(fake.PARSER_VERSION,'webx-test@'+changed)
+            self.assertEqual(raw.read_bytes(),b'saved response')
     def test_installer_is_additive_and_backed_up(self):
         source="# CHOTUAPP_DURABLE_RUNS_V1\n# CHOTUAPP_CONTROLLED_FAST_V1\nif __name__=='__main__':\n    pass\n"
         self.engine.write_text(source);before=self.engine.read_bytes();(self.root/'saved_runs'/'keep.txt').write_text('keep')

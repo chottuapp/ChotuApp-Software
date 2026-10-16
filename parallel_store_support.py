@@ -66,6 +66,8 @@ class StoreScheduler:
         job=self.active.get(index)
         if job is None:return
         kind=message.get('type');text=str(message.get('text',''));prefix='['+job['site']['name']+'] '
+        if kind=='version':
+            self.mark(index,software_revision=message.get('revision'),previous_software_revision=message.get('previous'));return
         if kind=='result':job['result']=message;return
         if kind=='eof':job['eof']=True;return
         if kind=='debug':self.raw(('__DEBUG__',prefix+text));return

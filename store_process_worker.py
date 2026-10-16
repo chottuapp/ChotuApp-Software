@@ -8,12 +8,17 @@ def main():
     request=json.loads(sys.stdin.readline());folder=Path(request['folder']);folder.mkdir(parents=True,exist_ok=True)
     engine=Path(request['engine']).resolve();sys.path.insert(0,str(engine.parent))
     spec=importlib.util.spec_from_file_location('_chotu_isolated_engine',engine)
-    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);g=module.__dict__
+    module=importlib.util.module_from_spec(spec);exec(compile(engine.read_bytes(),str(engine),'exec'),module.__dict__);g=module.__dict__
     from resume_support import ResponseCache
     tls=g['_chotu_tls'];abort=threading.Event();write_lock=threading.Lock()
     def emit(kind,**data):
         with write_lock:
             sys.stdout.write(json.dumps(dict(type=kind,**data),ensure_ascii=True)+'\n');sys.stdout.flush()
+    from software_revision_support import prepare_revision
+    revision,previous=prepare_revision(engine,folder)
+    tls.software_revision=revision
+    emit('version',revision=revision,previous=previous)
+    emit('log',text='SOFTWARE VERSION: '+revision+' — installed code loaded'+('; updated checks will revalidate saved responses' if previous and previous!=revision else ''))
     original_wait=g['_chotu_wait']
     def wait():
         if abort.is_set():raise RuntimeError('Store worker stopped; successful checkpoints retained')

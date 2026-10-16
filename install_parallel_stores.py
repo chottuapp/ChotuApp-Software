@@ -23,7 +23,7 @@ def install(target):
     source=transform(original.decode('utf-8-sig')).encode()
     if original.startswith(b'\xef\xbb\xbf'):source=b'\xef\xbb\xbf'+source
     root=Path(__file__).resolve().parent
-    payloads={name:(root/name).read_bytes() for name in ('parallel_store_support.py','store_process_worker.py')}
+    payloads={name:(root/name).read_bytes() for name in ('parallel_store_support.py','store_process_worker.py','software_revision_support.py')}
     payloads['main.py']=source
     for name,data in payloads.items():compile(data,name,'exec')
     # Never alter a program while its Saved Runs queue is actively fetching.
