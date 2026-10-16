@@ -281,8 +281,8 @@ class ExportTests(unittest.TestCase):
                     self.assertEqual(len(variants),2)
                     self.assertEqual(variants['11']['available (yes/no)'],'no')
                     self.assertEqual(variants['12']['available (yes/no)'],'no' if all_unavailable else 'yes')
-                    self.assertEqual(variants['11']['base_price (PKR)'],699)
-                    self.assertEqual(variants['12']['base_price (PKR)'],999)
+                    self.assertEqual(variants['11']['base_price (PKR)'],699.44 if fractional else 699)
+                    self.assertEqual(variants['12']['base_price (PKR)'],999.88 if fractional else 999)
                     self.assertEqual(records('Products')[0]['available (yes/no)'], 'no' if all_unavailable else 'yes')
                 wb.close()
                 if fractional:
@@ -298,7 +298,7 @@ class ExportTests(unittest.TestCase):
     def test_all_sold_out_product_excluded(self):self.export(False,all_unavailable=True)
     def test_eyebrow_four_shades_sale_and_unavailable_option(self):self.export(False,eyebrow=True)
     def test_integer_prices_and_unavailable_variants(self):self.export(False)
-    def test_fractional_prices_truncate_and_preserve_final(self):self.export(True)
+    def test_fractional_prices_preserved_and_previous_final_protected(self):self.export(True)
 
 class PriceVerificationTests(unittest.TestCase):
     def test_live_variant_price_replaces_catalog_price_and_preserves_discount(self):

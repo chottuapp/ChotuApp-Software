@@ -4,6 +4,19 @@ from pathlib import Path
 from types import SimpleNamespace
 
 
+def copy_audits(engine,output,name):
+    import shutil
+    safe=re.sub(r'[^\w .-]','',name).strip() or 'Shopify'
+    source=Path(engine).parent/'audit_reports'/safe;destination=Path(output)/'audits'/safe
+    if not source.is_dir():return 0
+    destination.mkdir(parents=True,exist_ok=True);count=0
+    for path in source.glob('*.csv'):
+        if path.is_symlink():continue
+        temporary=destination/(path.name+'.pending')
+        shutil.copy2(path,temporary);os.replace(temporary,destination/path.name);count+=1
+    return count
+
+
 def main():
     request=json.loads(sys.stdin.readline());folder=Path(request['folder']);folder.mkdir(parents=True,exist_ok=True)
     engine=Path(request['engine']).resolve();sys.path.insert(0,str(engine.parent))
@@ -68,6 +81,9 @@ def main():
     tls.saved_run_note=lambda text:emit('debug',text=text)
     try:
         g['App']._run_checked(app,request['site'],request['template'])
+        if result['ok']:
+            count=copy_audits(engine,request['output_root'],request['site']['name'])
+            emit('log',text='AUDIT FILES: '+str(count)+' CSV reports exported alongside workbook.' if count else 'AUDIT FILES: no CSV reports available; review details remain unverified.')
         if result['ok'] and not announced:
             result.update(ok=False,detail='Child did not announce an exported workbook')
     except Exception as exc:

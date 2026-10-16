@@ -24,6 +24,13 @@ def snapshot(data):
         if not destination.exists() or destination.stat().st_size!=stat.st_size or destination.stat().st_mtime_ns!=stat.st_mtime_ns:
             temporary=destination.with_suffix('.pending');shutil.copy2(source,temporary);os.replace(temporary,destination)
         copied.append({'name':source.name,'size':stat.st_size,'mtime_ns':stat.st_mtime_ns})
+        safe=source.stem;audits=data/'ANAS_DATA_FETCH'/'audits'/safe
+        if audits.is_dir():
+            for report in audits.glob('*.csv'):
+                if report.is_symlink():continue
+                dest=exports/'audits'/safe/report.name;dest.parent.mkdir(parents=True,exist_ok=True)
+                temporary=dest.with_suffix('.pending');shutil.copy2(report,temporary);os.replace(temporary,dest)
+
     signature=hashlib.sha256(json.dumps(copied,sort_keys=True).encode()).hexdigest();previous=data/'live-files-signature.json'
     try:old=json.loads(previous.read_text()).get('signature')
     except (OSError,ValueError):old=None
@@ -41,8 +48,21 @@ def snapshot(data):
     status_lines.extend(str(index)+'. '+safe_text(item['name'],200) for index,item in enumerate(copied,1))
     if not copied:status_lines.append('None yet.')
     status_lines.extend(['','STORE STATUS'])
+    try:telemetry=json.loads((data/'telemetry.json').read_text()).get('stores',{})
+    except (OSError,ValueError):telemetry={}
     for site in state.get('sites',[]):
         status_lines.append(redact(safe_text(site.get('name','Store'))+': '+safe_text(site.get('status','unknown'))))
+        stats=telemetry.get(site.get('name'),{});progress=stats.get('task_progress',{})
+        if progress:
+            age=max(0,int(time.time()-progress['updated_epoch']))
+            status_lines.append('  '+safe_text(progress.get('stage'))+': '+str(progress.get('done'))+'/'+str(progress.get('total'))+' tasks; sample age '+str(age)+'s')
+            eta=progress.get('eta_seconds')
+            if site.get('status')=='running' and eta is not None and age<180:
+                status_lines.append('  Approximate ETA for this stage only: '+str(round(eta/60,1))+' minutes; excludes later processing/audits')
+            else:status_lines.append('  ETA unavailable or sample stale; not an overall completion estimate.')
+        if stats.get('last_success_epoch'):
+            stamp=datetime.datetime.fromtimestamp(stats['last_success_epoch'],datetime.timezone.utc).isoformat()
+            status_lines.append('  Last successful HTTP response (UTC): '+stamp)
     (data/'live-diagnostics'/'store-status.txt').write_text('\n'.join(status_lines)+'\n',encoding='utf-8')
     if (data/'console.txt').is_file():
         # Export messages are already retained in fetch-full.log; include a tail for startup failures too.

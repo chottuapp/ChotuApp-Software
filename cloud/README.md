@@ -160,3 +160,21 @@ continue during those waits. Source-paused worker events are labelled WEBSITE CO
 rather than FAILED; schema, identity, price and completeness failures still fail closed.
 This reduces repeated rate-limit failures; it does not guarantee website acceptance
 or certify review workbooks as final.
+
+Price fidelity, stage progress and per-store audits
+--------------------------------------------------
+New exports validate and preserve source PKR decimal amounts instead of truncating
+fractional values. Previously completed/restored workbooks are not silently re-priced.
+They retain their earlier audit warnings and need a separate fresh verification to
+recover any decimals already removed by an older exporter.
+
+The live store-status.txt now includes the last sampled prefetch task counts, sample
+age and last successful HTTP response time in UTC. Stage ETA uses consecutive task
+samples and is labelled as an estimate for that stage only; it excludes later workbook
+building/audits and is suppressed when the sample is over three minutes old or the
+store is not running. This does not increase website request throughput.
+
+Newly completed workers copy available per-store audit CSVs to ANAS_DATA_FETCH/audits;
+live Excel artifacts include those reports, and the normal checkpoint retains them
+with the output folder. Restored stores whose old checkpoint did not include reports
+cannot have those historical audits reconstructed from status counters alone.

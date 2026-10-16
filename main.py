@@ -1377,9 +1377,8 @@ def run_site(base, name, template, log):
         if not review_file.is_file():
             raise RuntimeError('Refresh workbook missing; existing FINAL preserved')
 
-        # CHOTUAPP_DECIMAL_TRUNCATE_V1
-        # User-selected integer PKR export policy. Original source prices remain in API audit.
-        # Do not silently publish transformed prices as verified FINAL.
+        # CHOTUAPP_SOURCE_DECIMALS_V2
+        # Preserve source PKR decimals; validate without truncation or rounding.
         from decimal import Decimal as _Decimal
         _book = load_workbook(review_file)
         _changed = 0
@@ -1401,7 +1400,7 @@ def run_site(base, name, template, log):
                         _value = _Decimal(str(_cell.value))
                         if not _value.is_finite() or _value < 0:
                             raise ValueError('Invalid price')
-                        _integer = int(_value)  # truncate, do not round
+                        _integer = _value  # exact source amount; never truncate or round
                     except Exception as _exc:
                         _book.close()
                         raise RuntimeError('Price policy: invalid value in ' + _sheet_name + ' cell ' + _cell.coordinate) from _exc
@@ -1432,7 +1431,7 @@ def run_site(base, name, template, log):
                 if _temp.exists(): _temp.unlink()
         else:
             _book.close()
-        log('PRICE POLICY: Removed fractional parts from ' + str(_changed) + ' Excel price cells (Products + Variant Combinations); original API price audits preserved.')
+        log('PRICE POLICY: Source decimal prices preserved in Products and Variant Combinations; no truncation or rounding.')
         finalize_catalog_order(review_file, staging / (safe + ' - BEST SELLERS.csv'), log)
 
         def problem_rows(filename, bad_values, column):

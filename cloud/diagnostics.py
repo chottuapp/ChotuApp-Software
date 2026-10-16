@@ -40,9 +40,17 @@ class Collector:
         name=match[1]
         if name not in self.stores and len(self.stores)>=30:return
         item=self.stores.setdefault(name,{'http_statuses':{},'network_seconds':0,'max_response_seconds':0,'cache_events':0,'issues':[]})
+        progress=re.search(r'FAST FETCH: (category responses|product prices and pages) ([0-9]+)/([0-9]+) tasks processed',text)
+        if progress:
+            now=time.time();done,total=int(progress[2]),int(progress[3]);old=item.get('task_progress',{})
+            eta=None
+            if old.get('stage')==progress[1] and old.get('total')==total and done>old.get('done',done) and now>old.get('updated_epoch',now):
+                eta=round((total-done)*(now-old['updated_epoch'])/(done-old['done']))
+            item['task_progress']={'stage':progress[1],'done':done,'total':total,'updated_epoch':now,'eta_seconds':eta}
         status=re.search(r'HTTP END status=(\d{3})',text)
         if status:
             key=status[1];item['http_statuses'][key]=item['http_statuses'].get(key,0)+1
+            if key=='200':item['last_success_epoch']=time.time()
             elapsed=re.search(r'elapsed=([0-9.]+)s',text)
             if elapsed:
                 seconds=float(elapsed[1]);item['network_seconds']=round(item['network_seconds']+seconds,3);item['max_response_seconds']=max(item['max_response_seconds'],seconds)
