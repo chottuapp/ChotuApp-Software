@@ -13,7 +13,7 @@ on:
         required: false
         type: string
       save_checkpoint:
-        description: 'Upload resume checkpoint (up to 250 MB; uses artifact storage)'
+        description: 'Upload resume checkpoint (large saves split into parts; uses artifact storage)'
         default: true
         type: boolean
       minutes:
@@ -95,7 +95,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: chotuapp-checkpoint
-          path: checkpoint.zip
+          path: |
+            checkpoint.zip
+            checkpoint.parts/
           if-no-files-found: warn
           retention-days: 1
 

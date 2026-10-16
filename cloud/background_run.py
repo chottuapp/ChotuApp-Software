@@ -15,7 +15,7 @@ def launch(data):
 def supervise(data):
     data=Path(data).resolve();args=[sys.executable,str(Path(__file__).with_name('cli.py')),'--data',str(data),'--minutes',os.environ['CLOUD_MINUTES']]
     if os.environ.get('RESUME_RUN_ID'):
-        args+=['--restore',str(Path(os.environ['RUNNER_TEMP'])/'chotu-restore/checkpoint.zip'),'--continue-saved']
+        args+=['--restore',str(Path(os.environ['RUNNER_TEMP'])/'chotu-restore'),'--continue-saved']
     else:args+=['--stores',os.environ.get('CLOUD_STORES','')]
     if os.environ.get('SAVE_CHECKPOINT')=='true':args+=['--checkpoint',str(Path.cwd()/'checkpoint.zip')]
     process=None

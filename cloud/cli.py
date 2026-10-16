@@ -25,15 +25,22 @@ def checkpoint(data,destination,max_bytes=250*1024*1024):
                     if path.is_file() and not path.is_symlink() and path.name!='active.lock':archive.write(path,path.relative_to(data).as_posix())
             for name in ('template.xlsx','controls.json'):
                 if (data/name).is_file():archive.write(data/name,name)
-        if temporary.stat().st_size>max_bytes:raise ValueError('Checkpoint exceeds 250 MB; outputs remain available, but this run has no downloadable resume checkpoint')
-        temporary.replace(destination)
+        if temporary.stat().st_size>max_bytes:
+            from checkpoint_parts import split_archive
+            parts=destination.with_suffix('.parts');split_archive(temporary,parts,part_bytes=max_bytes)
+            destination.unlink(missing_ok=True)
+            print('Large checkpoint saved in checksummed parts:',parts,flush=True)
+        else:temporary.replace(destination)
     finally:temporary.unlink(missing_ok=True)
 
 
 def _restore_unlocked(archive,data):
     data=Path(data).resolve();data.mkdir(parents=True,exist_ok=True)
     with zipfile.ZipFile(archive) as zipped:
-        if sum(item.file_size for item in zipped.infolist())>4*1024**3:raise ValueError('Checkpoint exceeds 4 GB expanded size')
+        import shutil
+        expanded=sum(item.file_size for item in zipped.infolist())
+        if expanded>8*1024**3:raise ValueError('Checkpoint exceeds 8 GB expanded safety limit')
+        if shutil.disk_usage(data).free<expanded+256*1024**2:raise ValueError('Insufficient disk space to restore checkpoint')
         for item in zipped.infolist():
             path=Path(item.filename)
             allowed=(path.parts[:1] in [('saved_runs',),('ANAS_DATA_FETCH',)] or path.parts[:2]==('runtime','source_pacing') or item.filename in ('template.xlsx','controls.json'))
@@ -43,7 +50,9 @@ def _restore_unlocked(archive,data):
         for item in zipped.infolist():
             target=data/item.filename
             if item.is_dir():target.mkdir(parents=True,exist_ok=True)
-            else:target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(zipped.read(item))
+            else:
+                target.parent.mkdir(parents=True,exist_ok=True)
+                with zipped.open(item) as source,target.open('wb') as destination:shutil.copyfileobj(source,destination)
 
     database=data/'saved_runs'/'run_state.sqlite3'
     if database.exists():
@@ -59,7 +68,9 @@ def _restore_unlocked(archive,data):
 def restore(archive,data):
     from resume_support import RunLease
     folder=Path(data)/'saved_runs';folder.mkdir(parents=True,exist_ok=True);lease=RunLease(folder);lease.acquire()
-    try:_restore_unlocked(archive,data)
+    try:
+        from checkpoint_parts import archive_path
+        with archive_path(archive) as source:_restore_unlocked(source,data)
     finally:lease.release()
 
 
@@ -117,7 +128,7 @@ def main():
         if not args.checkpoint and (args.data/'stop-request').exists():args.checkpoint=Path('checkpoint.zip')
         if args.checkpoint:
             try:
-                checkpoint(args.data,args.checkpoint);checkpoint_status='saved';print('Checkpoint saved:',args.checkpoint,flush=True)
+                checkpoint(args.data,args.checkpoint);checkpoint_status='saved';print('Checkpoint saved:',args.checkpoint if args.checkpoint.exists() else args.checkpoint.with_suffix('.parts'),flush=True)
             except ValueError as exc:checkpoint_status='not saved: '+str(exc);print('CHECKPOINT NOT SAVED:',exc,flush=True);result=2
         write_summary(service,checkpoint_status)
         print('Run finished. Excel files:',service.output,flush=True)
