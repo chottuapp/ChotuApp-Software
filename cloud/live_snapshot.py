@@ -1,0 +1,60 @@
+"""Copy only verified completed files; do not stop or restart active extraction."""
+import argparse,hashlib,json,os,shutil,sqlite3,time
+from pathlib import Path
+from diagnostics import atomic_json,build_report
+
+
+def saved_state(data):
+    database=Path(data)/'saved_runs'/'run_state.sqlite3'
+    if not database.exists():return {}
+    try:
+        with sqlite3.connect(database.resolve().as_uri()+'?mode=ro',uri=True,timeout=30) as db:row=db.execute('SELECT payload FROM state WHERE id=1').fetchone()
+    except sqlite3.OperationalError:return {}
+    return json.loads(row[0]) if row else {}
+
+
+def snapshot(data):
+    data=Path(data).resolve();state=saved_state(data);exports=data/'live-excel';exports.mkdir(exist_ok=True);copied=[]
+    for site in state.get('sites',[]):
+        record=site.get('output') or {};source=Path(record.get('path',''))
+        if site.get('status')!='done' or not source.is_file() or source.resolve().parent!=(data/'ANAS_DATA_FETCH').resolve():continue
+        stat=source.stat()
+        if stat.st_size!=record.get('size') or stat.st_mtime_ns!=record.get('mtime_ns'):continue
+        destination=exports/source.name
+        if not destination.exists() or destination.stat().st_size!=stat.st_size or destination.stat().st_mtime_ns!=stat.st_mtime_ns:
+            temporary=destination.with_suffix('.pending');shutil.copy2(source,temporary);os.replace(temporary,destination)
+        copied.append({'name':source.name,'size':stat.st_size,'mtime_ns':stat.st_mtime_ns})
+    signature=hashlib.sha256(json.dumps(copied,sort_keys=True).encode()).hexdigest();previous=data/'live-files-signature.json'
+    try:old=json.loads(previous.read_text()).get('signature')
+    except (OSError,ValueError):old=None
+    changed=bool(copied) and signature!=old
+    atomic_json(previous,{'signature':signature})
+    build_report(data,data/'live-diagnostics')
+    if (data/'console.txt').is_file():
+        # Export messages are already retained in fetch-full.log; include a tail for startup failures too.
+        from diagnostics import redact
+        lines=(data/'console.txt').read_text(encoding='utf-8',errors='replace').splitlines()
+        (data/'live-diagnostics'/'console-tail.txt').write_text('\n'.join(redact(line) for line in lines[-80:]),encoding='utf-8')
+    return {'finished':(data/'background-result.json').exists(),'files_changed':changed,'completed_files':len(copied)}
+
+
+def wait_and_snapshot(data,seconds=300):
+    data=Path(data);deadline=time.monotonic()+seconds
+    while not (data/'background-result.json').exists() and time.monotonic()<deadline:
+        try:
+            process=json.loads((data/'background-process.json').read_text());os.kill(int(process['pid']),0)
+        except ProcessLookupError:
+            atomic_json(data/'background-result.json',{'exit_code':1,'reason':'Supervisor exited unexpectedly'});break
+        except (OSError,ValueError,KeyError):pass
+        time.sleep(min(2,max(0,deadline-time.monotonic())))
+    result=snapshot(data)
+    print('Live snapshot:',json.dumps(result),flush=True)
+    state=saved_state(data)
+    for site in state.get('sites',[]):print(site.get('name','Store')+': '+str(site.get('status'))+' — '+str(site.get('progress',0))+'%',flush=True)
+    if os.environ.get('GITHUB_OUTPUT'):
+        with Path(os.environ['GITHUB_OUTPUT']).open('a') as stream:
+            for key,value in result.items():stream.write(key+'='+str(value).lower()+'\n')
+    return result
+
+if __name__=='__main__':
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--data',type=Path,required=True);parser.add_argument('--seconds',type=int,default=300);args=parser.parse_args();wait_and_snapshot(args.data,args.seconds)

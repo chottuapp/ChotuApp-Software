@@ -59,6 +59,7 @@ class CloudService:
         self.lines=collections.deque(maxlen=500);self.counter=0
         self.logger=logging.Logger('chotu-cloud-'+str(id(self)))
         handler=logging.handlers.RotatingFileHandler(self.data/'fetch.log',maxBytes=2*1024*1024,backupCount=2,encoding='utf-8');self.logger.addHandler(handler)
+        self.logger.addHandler(logging.FileHandler(self.data/'fetch-full.log',encoding='utf-8'))
         self.settings=self.data/'controls.json'
         try:
             if json.loads(self.settings.read_text()).get('paused'):self.pause.clear()

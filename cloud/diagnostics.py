@@ -97,6 +97,9 @@ def build_report(data,output):
         try:logs.extend((data/name).read_text(encoding='utf-8',errors='replace').splitlines())
         except OSError:pass
     (output/'redacted-log.txt').write_text('\n'.join(redact(x) for x in logs[-2000:]),encoding='utf-8')
+    if (data/'fetch-full.log').is_file():
+        with (data/'fetch-full.log').open(encoding='utf-8',errors='replace') as source,(output/'fetch-log.txt').open('w',encoding='utf-8') as destination:
+            for line in source:destination.write(redact(line.rstrip('\n'))+'\n')
     return report
 
 if __name__=='__main__':

@@ -1,0 +1,244 @@
+name: Monitor continuous cloud fetching
+description: Publish five-minute snapshots without interrupting extraction.
+runs:
+  using: composite
+  steps:
+    - name: Live logs and completed files 1/60
+      id: live_1
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 2/60
+      id: live_2
+      if: steps.live_1.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 3/60
+      id: live_3
+      if: steps.live_2.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 4/60
+      id: live_4
+      if: steps.live_3.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 5/60
+      id: live_5
+      if: steps.live_4.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 6/60
+      id: live_6
+      if: steps.live_5.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 7/60
+      id: live_7
+      if: steps.live_6.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 8/60
+      id: live_8
+      if: steps.live_7.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 9/60
+      id: live_9
+      if: steps.live_8.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 10/60
+      id: live_10
+      if: steps.live_9.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 11/60
+      id: live_11
+      if: steps.live_10.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 12/60
+      id: live_12
+      if: steps.live_11.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 13/60
+      id: live_13
+      if: steps.live_12.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 14/60
+      id: live_14
+      if: steps.live_13.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 15/60
+      id: live_15
+      if: steps.live_14.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 16/60
+      id: live_16
+      if: steps.live_15.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 17/60
+      id: live_17
+      if: steps.live_16.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 18/60
+      id: live_18
+      if: steps.live_17.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 19/60
+      id: live_19
+      if: steps.live_18.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 20/60
+      id: live_20
+      if: steps.live_19.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 21/60
+      id: live_21
+      if: steps.live_20.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 22/60
+      id: live_22
+      if: steps.live_21.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 23/60
+      id: live_23
+      if: steps.live_22.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 24/60
+      id: live_24
+      if: steps.live_23.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 25/60
+      id: live_25
+      if: steps.live_24.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 26/60
+      id: live_26
+      if: steps.live_25.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 27/60
+      id: live_27
+      if: steps.live_26.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 28/60
+      id: live_28
+      if: steps.live_27.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 29/60
+      id: live_29
+      if: steps.live_28.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 30/60
+      id: live_30
+      if: steps.live_29.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 31/60
+      id: live_31
+      if: steps.live_30.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 32/60
+      id: live_32
+      if: steps.live_31.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 33/60
+      id: live_33
+      if: steps.live_32.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 34/60
+      id: live_34
+      if: steps.live_33.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 35/60
+      id: live_35
+      if: steps.live_34.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 36/60
+      id: live_36
+      if: steps.live_35.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 37/60
+      id: live_37
+      if: steps.live_36.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 38/60
+      id: live_38
+      if: steps.live_37.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 39/60
+      id: live_39
+      if: steps.live_38.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 40/60
+      id: live_40
+      if: steps.live_39.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 41/60
+      id: live_41
+      if: steps.live_40.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 42/60
+      id: live_42
+      if: steps.live_41.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 43/60
+      id: live_43
+      if: steps.live_42.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 44/60
+      id: live_44
+      if: steps.live_43.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 45/60
+      id: live_45
+      if: steps.live_44.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 46/60
+      id: live_46
+      if: steps.live_45.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 47/60
+      id: live_47
+      if: steps.live_46.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 48/60
+      id: live_48
+      if: steps.live_47.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 49/60
+      id: live_49
+      if: steps.live_48.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 50/60
+      id: live_50
+      if: steps.live_49.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 51/60
+      id: live_51
+      if: steps.live_50.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 52/60
+      id: live_52
+      if: steps.live_51.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 53/60
+      id: live_53
+      if: steps.live_52.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 54/60
+      id: live_54
+      if: steps.live_53.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 55/60
+      id: live_55
+      if: steps.live_54.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 56/60
+      id: live_56
+      if: steps.live_55.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 57/60
+      id: live_57
+      if: steps.live_56.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 58/60
+      id: live_58
+      if: steps.live_57.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 59/60
+      id: live_59
+      if: steps.live_58.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
+    - name: Live logs and completed files 60/60
+      id: live_60
+      if: steps.live_59.outputs.finished == 'false'
+      uses: ./.github/actions/live-fetch-snapshot
