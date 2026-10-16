@@ -105,7 +105,7 @@ class StoreScheduler:
             stat=path.stat();self.mark(index,status='done',progress=100,detail='File saved',reviewed=bool(result.get('reviewed')),output={'path':str(path.resolve()),'size':stat.st_size,'mtime_ns':stat.st_mtime_ns})
             self.completed+=1;self.raw('FILE SAVED NOW: '+str(path)+' — other store processes continue.')
         else:
-            self.failed+=1;self.mark(index,status='failed',detail=str(result.get('detail')));self.raw('FAILED: '+site['name']+': '+str(result.get('detail')))
+            self.failed+=1;self.mark(index,status='blocked' if result.get('blocked') else 'failed',detail=str(result.get('detail')));self.raw('FAILED: '+site['name']+': '+str(result.get('detail')))
         self.raw(('__JOB_RESULT__',bool(result.get('ok')),site['name']))
     def shutdown(self):
         self.stop.set()

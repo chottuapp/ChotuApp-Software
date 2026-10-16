@@ -88,6 +88,12 @@ class ParallelStoreTests(unittest.TestCase):
     def test_crash_is_failed_without_marking_old_export_done(self):
         scheduler=self.build([{'name':'Bad','url':'https://bad.example','mode':'crash'},{'name':'Good','url':'https://good.example'}]);scheduler.run()
         self.assertEqual(self.store.load()['sites'][0]['status'],'failed');self.assertEqual(self.store.load()['sites'][1]['status'],'done')
+    def test_source_block_is_saved_separately_without_retry_loop(self):
+        altered=ENGINE.replace("        if mode=='crash':os._exit(3)","        if mode=='blocked':\n            self.events.put('FAILED: '+name+': SOURCE BLOCKED: public catalog denied')\n            self.events.put(('__JOB_RESULT__',False,name));return\n        if mode=='crash':os._exit(3)")
+        self.engine.write_text(altered)
+        scheduler=self.build([{'name':'Blocked','url':'https://blocked.example','mode':'blocked'},{'name':'Good','url':'https://good.example'}]);scheduler.run()
+        state=self.store.load();self.assertEqual(state['sites'][0]['status'],'blocked');self.assertEqual(state['sites'][1]['status'],'done')
+        self.assertEqual(scheduler.attempts[0],1);self.assertEqual(self.store.pending(state),[0])
     def test_stale_existing_export_is_not_success(self):
         wb=Workbook();wb.active.title='Products';wb.active.append(['id']);wb.active.append(['old']);wb.save(self.output/'Old.xlsx')
         scheduler=self.build([{'name':'Old','url':'https://old.example','mode':'stale'}]);scheduler.run()

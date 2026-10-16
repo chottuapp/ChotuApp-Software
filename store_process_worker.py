@@ -41,7 +41,7 @@ def main():
         tls.fast_worker_count=min(2,getattr(tls,'fast_worker_count',1))
         return result
     g['_chotu_open_checkpoint']=opened
-    result={'ok':False,'reviewed':False,'paused':False,'retry_after_epoch':0,'detail':''};announced=[]
+    result={'ok':False,'reviewed':False,'paused':False,'blocked':False,'retry_after_epoch':0,'detail':''};announced=[]
     class Events:
         def put(self,item):
             if isinstance(item,tuple) and item[0]=='__JOB_RESULT__':result['ok']=bool(item[1]);return
@@ -51,6 +51,7 @@ def main():
             if 'SAVED REVIEW EXCEL:' in text or 'REVIEW REQUIRED:' in text:result['reviewed']=True
             if text.startswith('FAILED:'):
                 result['detail']=text
+                result['blocked']='SOURCE BLOCKED:' in text
                 if 'SOURCE PAUSED:' in text:
                     result['paused']=True;gate=getattr(tls,'fast_gate',None)
                     match=re.search(r'after at least ([0-9.]+)s',text)

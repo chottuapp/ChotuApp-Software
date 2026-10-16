@@ -8,7 +8,7 @@ sys.path.insert(0,str(ROOT))
 from resume_support import RunLease,RunStore
 from parallel_store_support import StoreScheduler,output_key
 
-MODULES=('resume_support.py','fast_fetch_support.py','farda_source_support.py','complete_description_support.py','czone_source_support.py','software_revision_support.py')
+MODULES=('resume_support.py','fast_fetch_support.py','farda_source_support.py','complete_description_support.py','czone_source_support.py','software_revision_support.py','seran_source_support.py')
 DEFAULT_TEMPLATE=ROOT/'importer-files/Chotu_Products_Import_Template_Discount_Tags.xlsx'
 
 
@@ -18,6 +18,10 @@ def prepare_engine(data):
     runtime=Path(data)/'runtime';runtime.mkdir(parents=True,exist_ok=True)
     source=install_fast_fetch.transform((ROOT/'main.py').read_text(encoding='utf-8-sig'))
     source=install_farda_source.transform(source);source=install_czone_source.transform(source)
+    hook='\n# CHOTUAPP_SERAN_PUBLIC_SOURCE_V1\nfrom seran_source_support import enable_seran_source\nenable_seran_source(globals())\n\n'
+    guard="if __name__=='__main__':"
+    if source.count(guard)!=1:raise ValueError('Unexpected engine startup entry point')
+    source=source.replace(guard,hook+guard,1)
     content,_=install_speed_patch.transform(source.encode());compile(content,str(runtime/'main.py'),'exec')
     for name in MODULES:
         target=runtime/name;payload=(ROOT/name).read_bytes()

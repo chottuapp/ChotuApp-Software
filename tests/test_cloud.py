@@ -5,7 +5,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'cloud'));sys.path.insert(0,str(ROOT/'tests'))
 from runtime import CloudService,prepare_engine,validate_site
 from server import make_server
-from cli import parse_stores,checkpoint,restore
+from cli import parse_stores,checkpoint,restore,write_summary,print_logs
 from test_parallel_stores import ENGINE
 from openpyxl import Workbook
 
@@ -61,13 +61,27 @@ class CloudTests(unittest.TestCase):
         with self.assertRaises(ValueError):self.service.start([{'name':'Same','url':'https://a.example'},{'name':'same','url':'https://b.example'}])
     def test_separate_server_cannot_write_same_volume(self):
         with self.assertRaisesRegex(RuntimeError,'Another ChotuApp'):CloudService(self.service.data,engine=self.engine)
+    def test_final_summary_lists_done_and_blocked_stores(self):
+        import contextlib
+        self.service.start([{'name':'First','url':'https://first.example'}]);self.wait_for(lambda:not self.service.running)
+        self.service.store.update(lambda state:state['sites'].append({'name':'Seran','status':'blocked','detail':'SOURCE BLOCKED: HTTP 403'}))
+        with contextlib.redirect_stdout(io.StringIO()) as captured:
+            summary=write_summary(self.service,'saved')
+        self.assertIn('First: DONE',captured.getvalue());self.assertIn('Seran: BLOCKED',captured.getvalue())
+        self.assertEqual(summary['stores'][0]['products'],1)
+        self.assertEqual(json.loads((self.service.output/'run-summary.json').read_text())['checkpoint'],'saved')
+    def test_final_log_drain_includes_last_saved_confirmation(self):
+        import contextlib
+        self.service.event('FILE SAVED NOW: Example.xlsx')
+        with contextlib.redirect_stdout(io.StringIO()) as captured:seen=print_logs(self.service,0)
+        self.assertIn('FILE SAVED NOW:',captured.getvalue());self.assertEqual(seen,1)
     def test_store_input_never_runs_shell_text(self):
         parsed=parse_stores('One | https://one.example; Two | https://two.example')
         self.assertEqual([x['name'] for x in parsed],['One','Two'])
         with self.assertRaises(ValueError):parse_stores('invalid')
     def test_real_engine_loads_headlessly_without_changing_desktop_source(self):
         before=(ROOT/'main.py').read_bytes();engine=prepare_engine(self.root/'real')
-        script="import runpy; g=runpy.run_path(%r); assert g['_chotu_czone_source']; assert g['_chotu_farda_source']; print('Headless engine ready')"%str(engine)
+        script="import runpy; g=runpy.run_path(%r); assert g['_chotu_czone_source']; assert g['_chotu_farda_source']; assert g['_chotu_seran_source']; print('Headless engine ready')"%str(engine)
         result=subprocess.run([sys.executable,'-c',script],capture_output=True,text=True,env=dict(os.environ,CHOTUAPP_DATA_DIR=str(self.root/'home')))
         self.assertEqual(result.returncode,0,result.stderr);self.assertIn('Headless engine ready',result.stdout);self.assertEqual((ROOT/'main.py').read_bytes(),before)
 

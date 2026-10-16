@@ -63,6 +63,38 @@ def restore(archive,data):
     finally:lease.release()
 
 
+def print_logs(service,seen):
+    for message in service.snapshot()['logs']:
+        if message['id']>seen:print(message['text'],flush=True);seen=message['id']
+    return seen
+
+
+def write_summary(service,checkpoint_status):
+    from openpyxl import load_workbook
+    state=service.store.load() or {};stores=[]
+    for site in state.get('sites',[]):
+        item={key:site.get(key) for key in ('name','status','detail','reviewed','software_revision')}
+        output=site.get('output') or {};file=Path(output.get('path',''))
+        if site.get('status')=='done' and file.is_file():
+            book=load_workbook(file,read_only=True)
+            try:
+                item.update(file=file.name,products=book['Products'].max_row-1,variants=book['Variant Combinations'].max_row-1 if 'Variant Combinations' in book.sheetnames else 0)
+            finally:book.close()
+        stores.append(item)
+    summary={'run_id':state.get('id'),'status':state.get('status','incomplete'),'checkpoint':checkpoint_status,'stores':stores}
+    (service.output/'run-summary.json').write_text(json.dumps(summary,indent=2),encoding='utf-8')
+    lines=['RUN SUMMARY:']
+    for item in stores:
+        if item.get('file'):lines.append(item['name']+': DONE — '+str(item['products'])+' products, '+str(item['variants'])+' variants; '+item['file']+(' (REVIEW)' if item.get('reviewed') else ''))
+        else:lines.append(item['name']+': '+str(item.get('status','incomplete')).upper()+' — '+str(item.get('detail','')))
+    lines.append('Checkpoint: '+checkpoint_status);print('\n'.join(lines),flush=True)
+    if os.environ.get('GITHUB_STEP_SUMMARY'):
+        with Path(os.environ['GITHUB_STEP_SUMMARY']).open('a',encoding='utf-8') as stream:
+            stream.write('## ChotuApp results\n\n')
+            for line in lines[1:]:stream.write('- '+line.replace('<','&lt;').replace('>','&gt;').replace('\n',' ')+'\n')
+    return summary
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--data',type=Path,default=Path('.cloud-data'));parser.add_argument('--stores',default='');parser.add_argument('--continue-saved',action='store_true');parser.add_argument('--minutes',type=int,default=285);parser.add_argument('--checkpoint',type=Path);parser.add_argument('--restore',type=Path)
     args=parser.parse_args()
@@ -80,11 +112,14 @@ def main():
                 if message['id']>seen:print(message['text'],flush=True);seen=message['id']
             if time.monotonic()>=deadline:print('Cloud time budget reached; saving unfinished work.',flush=True);service.control('stop');break
             time.sleep(.5)
-        service.close();state=service.store.load();result=0 if state and state['status']=='complete' else 2
+        service.close();seen=print_logs(service,seen);state=service.store.load();result=0 if state and state['status']=='complete' else 2
+        checkpoint_status='not requested'
         if args.checkpoint:
-            try:checkpoint(args.data,args.checkpoint);print('Checkpoint saved:',args.checkpoint,flush=True)
-            except ValueError as exc:print('CHECKPOINT NOT SAVED:',exc,flush=True);result=2
-        print('Run complete. Excel files:',service.output,flush=True)
+            try:
+                checkpoint(args.data,args.checkpoint);checkpoint_status='saved';print('Checkpoint saved:',args.checkpoint,flush=True)
+            except ValueError as exc:checkpoint_status='not saved: '+str(exc);print('CHECKPOINT NOT SAVED:',exc,flush=True);result=2
+        write_summary(service,checkpoint_status)
+        print('Run finished. Excel files:',service.output,flush=True)
     finally:
         if service.running:service.close()
         elif service.lease.file:service.close()
