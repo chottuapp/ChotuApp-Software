@@ -14,7 +14,7 @@ on:
         type: string
       save_checkpoint:
         description: 'Upload resume checkpoint (up to 250 MB; uses artifact storage)'
-        default: false
+        default: true
         type: boolean
       minutes:
         description: 'Maximum fetch time, 1–300 minutes'
@@ -43,8 +43,10 @@ jobs:
           python-version: '3.12'
       - name: Install extraction dependencies
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y python3-tk
+          if ! python -c "import tkinter"; then
+            sudo apt-get update -qq
+            sudo apt-get install -y python3-tk
+          fi
           python -m pip install -r requirements.txt
       - name: Install Czone browser fallback when needed
         if: inputs.resume_run_id != '' || contains(inputs.stores, 'czone.com.pk')
@@ -62,6 +64,8 @@ jobs:
         id: launch
         run: python cloud/background_run.py start .cloud-data
       - name: Live progress, logs and completed-file uploads
+        env:
+          GH_TOKEN: ${{ github.token }}
         uses: ./.github/actions/monitor-cloud
       - name: Fetch result
         if: always() && steps.launch.outcome == 'success'
@@ -86,8 +90,8 @@ jobs:
           path: .cloud-data/ANAS_DATA_FETCH/
           if-no-files-found: warn
           retention-days: 1
-      - name: Upload optional saved checkpoint
-        if: always() && inputs.save_checkpoint
+      - name: Upload saved checkpoint when available
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: chotuapp-checkpoint

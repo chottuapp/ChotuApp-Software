@@ -7,7 +7,7 @@ from runtime import CloudService,prepare_engine,validate_site
 from server import make_server
 from cli import parse_stores,checkpoint,restore,write_summary,print_logs
 from test_parallel_stores import ENGINE
-from openpyxl import Workbook
+from openpyxl import Workbook,load_workbook
 
 
 class CloudTests(unittest.TestCase):
@@ -32,8 +32,14 @@ class CloudTests(unittest.TestCase):
         self.wait_for(lambda:(folder/'count.txt').exists());self.service.control('pause');time.sleep(.15)
         old=(folder/'count.txt').read_text();time.sleep(.15);self.assertEqual((folder/'count.txt').read_text(),old)
         self.service.close();self.engine.write_text(ENGINE.replace("meta['end']=time.time()","meta['updated']=True;meta['end']=time.time()"))
+        template=Path(state['template']);book=load_workbook(template);sheet=book['Products']
+        for cell in list(sheet[1]):
+            if cell.value=='stock_quantity (kitni quantity bechni hai)':sheet.delete_cols(cell.column)
+        sheet.cell(1,sheet.max_column+1,'custom_preserved');book.save(template);book.close()
         self.service=CloudService(self.root/'data',engine=self.engine,resolve_sites=False)
         self.assertFalse(self.service.pause.is_set());self.service.start(resume=True);self.wait_for(lambda:not self.service.running)
+        book=load_workbook(template);headers=[cell.value for cell in book['Products'][1]];book.close()
+        self.assertIn('custom_preserved',headers);self.assertIn('stock_quantity (kitni quantity bechni hai)',headers)
         self.assertEqual(self.service.store.load()['id'],state['id']);self.assertEqual(self.service.store.load()['status'],'complete')
         self.assertTrue(json.loads((folder/'finished.json').read_text())['updated'])
     def test_saved_checkpoint_roundtrip_keeps_completed_files_and_snapshot(self):

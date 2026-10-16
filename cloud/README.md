@@ -116,3 +116,24 @@ Options receive an image only if the linked variants have one unambiguous image 
 combination rows retain their own mappings. Image URL cells are clickable hyperlinks.
 These are spreadsheet/export changes; customer-facing display requires importer/app support.
 Existing custom templates need the product stock column added to receive the new field.
+
+Safe stop and resume (new runs)
+------------------------------
+Use `gh workflow run cloud-stop.yml --repo chottuapp/ChotuApp-Software -f run_id=RUN_ID`
+instead of Cancel workflow. The active snapshot monitor checks successful stop requests
+roughly every 30 seconds (API/network delays can extend this). The supervisor requests
+normal extraction shutdown, then the CLI saves its checkpoint, including successful
+responses and completed store outputs. A safe stop requests a checkpoint even if the
+original save_checkpoint input was false. Wait until the fetch run has ended and the
+`chotuapp-checkpoint` artifact exists before starting again. The stop request workflow
+succeeding alone does not mean the checkpoint is uploaded.
+
+Resume with `gh workflow run cloud-fetch.yml --repo chottuapp/ChotuApp-Software --ref main
+-f resume_run_id=RUN_ID -f minutes=300 -f save_checkpoint=true`.
+Completed stores are left alone; unfinished stores reuse saved responses with current
+code. Old template snapshots receive the stock column without losing custom columns.
+A paused run can finish with exit code 2 because work remains; check artifacts rather
+than assuming that exit code means saved work was lost. Checkpoints still have a
+250 MB compressed limit and 1-day retention. A hard cancellation, upload failure,
+expired artifact or oversized checkpoint cannot guarantee continuation. This is a
+resume improvement, not a promise of increased website request throughput.

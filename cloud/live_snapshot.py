@@ -53,8 +53,11 @@ def snapshot(data):
 
 
 def wait_and_snapshot(data,seconds=300):
-    data=Path(data);deadline=time.monotonic()+seconds
+    data=Path(data);deadline=time.monotonic()+seconds;next_control_check=0
     while not (data/'background-result.json').exists() and time.monotonic()<deadline:
+        if time.monotonic()>=next_control_check:
+            from remote_control import check_stop_request
+            check_stop_request(data);next_control_check=time.monotonic()+30
         try:
             process=json.loads((data/'background-process.json').read_text());os.kill(int(process['pid']),0)
         except ProcessLookupError:

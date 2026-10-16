@@ -99,6 +99,16 @@ class CloudService:
                 finally:book.close()
                 state=self.store.fresh(chosen,template)
             if not Path(state['template']).is_file():raise ValueError('Saved template is missing')
+            # Add the new field to a resumed template without replacing its custom columns.
+            book=load_workbook(state['template'])
+            try:
+                sheet=book['Products'];field='stock_quantity (kitni quantity bechni hai)'
+                if field not in [cell.value for cell in sheet[1]]:
+                    from copy import copy
+                    previous=sheet.cell(1,sheet.max_column)
+                    cell=sheet.cell(1,sheet.max_column+1,field);cell._style=copy(previous._style)
+                    book.save(state['template'])
+            finally:book.close()
             self.diagnostics=Collector(self.data/'telemetry.json')
             self.pause.set();self.settings.write_text(json.dumps({'paused':False}));self.error=None
             scheduler=StoreScheduler(self.engine,self.store,state,self.output,self.pause,self.event);self.scheduler=scheduler

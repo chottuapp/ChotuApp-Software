@@ -114,6 +114,7 @@ def main():
             time.sleep(.5)
         service.close();seen=print_logs(service,seen);state=service.store.load();result=0 if state and state['status']=='complete' else 2
         checkpoint_status='not requested'
+        if not args.checkpoint and (args.data/'stop-request').exists():args.checkpoint=Path('checkpoint.zip')
         if args.checkpoint:
             try:
                 checkpoint(args.data,args.checkpoint);checkpoint_status='saved';print('Checkpoint saved:',args.checkpoint,flush=True)

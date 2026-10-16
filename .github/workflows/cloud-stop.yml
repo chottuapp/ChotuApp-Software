@@ -1,0 +1,21 @@
+name: ChotuApp Save and Stop
+run-name: Save and stop ${{ inputs.run_id }}
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: 'Active cloud-fetch run ID to stop safely and save'
+        required: true
+        type: string
+permissions: {}
+jobs:
+  request:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    steps:
+      - name: Validate stop request
+        env:
+          TARGET_RUN: ${{ inputs.run_id }}
+        run: |
+          case "$TARGET_RUN" in *[!0-9]*|'') echo 'A numeric run ID is required'; exit 1;; esac
+          echo "Save and stop requested for $TARGET_RUN. Wait for the fetch run to finish uploading its checkpoint."
