@@ -198,7 +198,7 @@ def parse_product(html,url,soup=None):
     if compare<=price:compare=price
     # Use source-reported sales only; never infer best sellers from price or copy.
     sold=int(stock.get('soldQuantity') or 0)
-    return dict(id=str(p['productID']),name=p['productName'],description=desc,sku=fields.get('sku',''),brand=fields.get('vendorName',''),category=cats[0] if cats else fields.get('categoryName','Electronics'),subcategory=cats[-1] if len(cats)>1 else '',price=price,base=compare,available=available,images=images,url=canonical(url),warranty=fields.get('warranty',''),sold=sold,condition='used' if condition=='UsedCondition' else 'new')
+    return dict(id=str(p['productID']),name=p['productName'],description=desc,sku=fields.get('sku',''),brand=fields.get('vendorName',''),category=cats[0] if cats else fields.get('categoryName','Electronics'),subcategory=cats[-1] if len(cats)>1 else '',price=price,base=compare,available=available,images=images,url=canonical(url),warranty=fields.get('warranty',''),sold=sold,stock_quantity=(stock.get('availableQuantity') if str(stock.get('inventoryTracking'))=='1' else None),condition='used' if condition=='UsedCondition' else 'new')
 
 
 def launch_catalog_browser(chromium,log):
@@ -385,7 +385,7 @@ def export(g,base,name,template,log):
     for p in products:
         pid=g['uid']('CP',BASE+'|'+p['id']);sale=float(p['price']) if p['base']>p['price'] else None
         warranty=re.fullmatch(r'\s*(\d+)\s*-?\s*Month\(s\) Warranty\s*',p['warranty'],re.I)
-        row={'product_id':pid,'category':p['category'],'subcategory':p['subcategory'],'name':p['name'],'description':p['description'],'brand':p['brand'],'condition (new/used)':p['condition'],'warranty_months (agar ho)':int(warranty[1]) if warranty else '', 'base_price (PKR)':float(p['base']),'sale_price (PKR, agar discount ho)':sale,'sku':p['sku'],'scraped_image_url (cover, auto)':p['images'][0],'final_image_url (cover/thumbnail — hosted link)':'','option_groups':'','available (yes/no)':'yes','source_url':p['url'],'gallery_urls (extra photos, separate with |)':'|'.join(p['images'])}
+        row={'product_id':pid,'category':p['category'],'subcategory':p['subcategory'],'name':p['name'],'description':p['description'],'brand':p['brand'],'condition (new/used)':p['condition'],'warranty_months (agar ho)':int(warranty[1]) if warranty else '', 'base_price (PKR)':float(p['base']),'sale_price (PKR, agar discount ho)':sale,'sku':p['sku'],'scraped_image_url (cover, auto)':p['images'][0],'final_image_url (cover/thumbnail — hosted link)':'','option_groups':'','available (yes/no)':'yes','stock_quantity (kitni quantity bechni hai)':(int(str(p['stock_quantity'])) if re.fullmatch(r'[0-9]+',str(p.get('stock_quantity'))) else ''),'source_url':p['url'],'gallery_urls (extra photos, separate with |)':'|'.join(p['images'])}
         rows.append(row);g['write_row'](wb['Products'],row)
         combo={'combination_id':g['uid']('CC',BASE+'|'+p['id']),'product_id':pid,'source_variant_id':p['id'],'sku':p['sku'],'base_price (PKR)':float(p['base']),'sale_price (PKR, agar discount ho)':sale,'available (yes/no)':'yes','variant_image_url':p['images'][0],'source_url':p['url']}
         combos.append(combo);g['write_row'](wb['Variant Combinations'],combo)

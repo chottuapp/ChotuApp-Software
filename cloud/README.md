@@ -102,3 +102,17 @@ py cloud_sync_windows.py --run RUN_ID
 The PC must be on with this sync command running to download files. When the PC is off, cloud extraction and snapshots continue, subject to the host's run limits. Relaunch the helper after turning the PC on. Artifacts still expire after one day. A workflow already running before this update cannot gain live snapshot steps retroactively: for older runs the helper saves current status while waiting, then downloads available final logs/files. Do not cancel a productive old run merely to obtain live uploads; its completed results should be preserved first.
 
 Validation: 56 focused tests passed, including an actual detached supervisor surviving its launcher exit and snapshot checks; recorded-size/mtime checks; complete text retention beyond the rotating tail; incremental local sync; existing-file backup; artifact ordering; existing source, checkpoint and price-related behavior. Workflow and composite YAML and Python syntax were checked. GitHub's live artifact publication and Windows-native execution require confirmation on the next live run. No claim is made that this development session can monitor a running user's PC.
+
+Product stock and variant image export
+--------------------------------------
+New default templates include `stock_quantity (kitni quantity bechni hai)` in Products.
+Shopify product quantity is the sum of explicit nonnegative integer inventory counts
+only when every variant reports a count and none explicitly disables inventory tracking.
+Missing, partial, untracked or negative counts remain blank; availability is never converted
+to an invented quantity. Czone exports availableQuantity only with inventoryTracking=1.
+Variant quantity remains blank. No fallback of 100 is used.
+Exact variant images are resolved from featured_image, image_id or gallery variant_ids.
+Options receive an image only if the linked variants have one unambiguous image URL;
+combination rows retain their own mappings. Image URL cells are clickable hyperlinks.
+These are spreadsheet/export changes; customer-facing display requires importer/app support.
+Existing custom templates need the product stock column added to receive the new field.

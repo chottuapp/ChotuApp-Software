@@ -518,6 +518,46 @@ def storefront_price_audit(rows, output, log):
     return {x[1] for x in findings
             if x[0] in ('EXACT_DISPLAY_MATCH', 'DISPLAY_WHOLE_RUPEE_MATCH')}
 
+def public_stock_quantity(value):
+    # Never turn availability, booleans, missing or negative inventory into a count.
+    if isinstance(value, bool) or value is None:return None
+    text=str(value).strip()
+    return int(text) if re.fullmatch(r'[0-9]+',text) else None
+
+
+def product_stock_quantity(product, variants):
+    # A total is trustworthy only when every variant has an explicit tracked count.
+    if not variants:return ''
+    counts=[]
+    for variant in variants:
+        if variant.get('inventory_management', 'shopify') in (None, '', False):return ''
+        count=public_stock_quantity(variant.get('inventory_quantity'))
+        if count is None:return ''
+        counts.append(count)
+    return sum(counts)
+
+
+def variant_image_url(product, variant):
+    image=variant.get('featured_image')
+    if isinstance(image,dict):
+        url=image.get('src') or image.get('url')
+        if isinstance(url,str) and url.startswith(('https://','http://')):return url
+    matches=[]
+    for image in product.get('images') or []:
+        if not isinstance(image,dict):continue
+        linked=str(variant.get('image_id') or '')==str(image.get('id') or '') and bool(variant.get('image_id'))
+        linked=linked or str(variant.get('id')) in [str(v) for v in image.get('variant_ids') or []]
+        url=image.get('src')
+        if linked and isinstance(url,str) and url.startswith(('https://','http://')):matches.append(url)
+    return matches[0] if len(set(matches))==1 else ''
+
+
+def option_image_url(product, variants, index, value):
+    urls={variant_image_url(product,v) for v in variants if txt(v.get('option'+str(index)))==value}
+    urls.discard('')
+    return next(iter(urls)) if len(urls)==1 else ''
+
+
 def discount_export_fields(vals):
     # CHOTUAPP_DISCOUNT_FIELDS_V1: additive export fields, never change prices.
     from decimal import Decimal, ROUND_HALF_UP
@@ -552,6 +592,11 @@ def write_row(ws, vals):
         headers = tuple(str(c.value).strip() if c.value is not None else '' for c in ws[1])
         ws._chotu_export_headers = headers
     ws.append([vals.get(h) for h in headers])
+    for index,header in enumerate(headers,1):
+        value=vals.get(header)
+        if 'image_url' in header and isinstance(value,str) and value.startswith(('https://','http://')):
+            ws.cell(ws.max_row,index).hyperlink=value
+
 
 
 # CHOTUAPP_CATALOG_QUALITY_V3
@@ -1009,21 +1054,21 @@ def run_site(base, name, template, log):
                 groups.append({'group_id':gid,'title (customer ko dikhega)':title,'select_type':'single','min':1,'max':1,'required (yes/no)':'yes'})
                 for value in values:
                     # Same availability rule, precomputed once per dimension.
-                    opts.append({'option_id':uid('CO',gid+'|'+value),'group_id':gid,'option_name':value,'extra_price (PKR)':0,'option_image_url (agar size/color/variant ki apni image ho)':'','available (yes/no)':'yes' if value in available_values else 'no'})
+                    opts.append({'option_id':uid('CO',gid+'|'+value),'group_id':gid,'option_name':value,'extra_price (PKR)':0,'option_image_url (agar size/color/variant ki apni image ho)':option_image_url(p,variants,idx,value),'available (yes/no)':'yes' if value in available_values else 'no'})
         gid=','.join(x[1] for x in dimensions)
         for v in variants:
             vp=money(v.get('price')); vc=money(v.get('compare_at_price'))
             variant_base=vc if vp is not None and vc is not None and vc>vp else vp
             variant_sale=vp if vp is not None and variant_base is not None and variant_base>vp else None
             image=v.get('featured_image') or {}
-            image_url=image.get('src') if isinstance(image,dict) else ''
+            image_url=variant_image_url(p,v)
             entry={'combination_id':uid('CC',base+'|'+str(v['id'])),'product_id':pid,'source_variant_id':str(v['id']),'sku':str(v.get('sku') or ''),'base_price (PKR)':float(variant_base) if variant_base is not None else None,'sale_price (PKR, agar discount ho)':float(variant_sale) if variant_sale is not None else None,'available (yes/no)':'yes' if v.get('available') is True else 'no','stock_quantity (agar public ho)':'','variant_image_url':image_url or '','source_url':url}
             for pos,(idx,group_id,title,values) in enumerate(dimensions,1):
                 entry[f'option_{pos}_group_id']=group_id
                 entry[f'option_{pos}_value']=txt(v.get(f'option{idx}'))
             combos.append(entry)
         if len(p.get('options') or [])>3: review.append(f'More than 3 dimensions: {url}')
-        rows.append({'product_id':pid,'category':category,'subcategory':'','name':txt(p.get('title')),'description':desc,'brand':txt(p.get('vendor')) or name,'material':'','weight_grams (agar ho)':'','condition (new/used)':'new','warranty_months (agar ho)':'','base_price (PKR)':float(baseprice),'sale_price (PKR, agar discount ho)':float(sale) if sale is not None else None,'sku':str(cheapest.get('sku') or ''),'scraped_image_url (cover, auto)':cover,'final_image_url (cover/thumbnail — hosted link)':'','option_groups':gid,'available (yes/no)':'yes' if any(v.get('available') is True for v in variants) else 'no','stock_quantity (kitni quantity bechni hai)':'','max_qty_per_user (ek user zyada se zyada kitni le sakta hai)':'','source_url':url})
+        rows.append({'product_id':pid,'category':category,'subcategory':'','name':txt(p.get('title')),'description':desc,'brand':txt(p.get('vendor')) or name,'material':'','weight_grams (agar ho)':'','condition (new/used)':'new','warranty_months (agar ho)':'','base_price (PKR)':float(baseprice),'sale_price (PKR, agar discount ho)':float(sale) if sale is not None else None,'sku':str(cheapest.get('sku') or ''),'scraped_image_url (cover, auto)':cover,'final_image_url (cover/thumbnail — hosted link)':'','option_groups':gid,'available (yes/no)':'yes' if any(v.get('available') is True for v in variants) else 'no','stock_quantity (kitni quantity bechni hai)':product_stock_quantity(p,variants),'max_qty_per_user (ek user zyada se zyada kitni le sakta hai)':'','source_url':url})
         if not pictures: review.append(f'No image: {p.get("title")}')
         for i,im in enumerate(pictures,1):
             src=im.get('src')
