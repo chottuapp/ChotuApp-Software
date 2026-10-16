@@ -137,3 +137,14 @@ than assuming that exit code means saved work was lost. Checkpoints still have a
 250 MB compressed limit and 1-day retention. A hard cancellation, upload failure,
 expired artifact or oversized checkpoint cannot guarantee continuation. This is a
 resume improvement, not a promise of increased website request throughput.
+
+Dated PC Excel archive
+----------------------
+The Windows sync helper also keeps Excel files under
+`Desktop/ANAS_DATA_FETCH/Save daily data with dates/YYYY-MM-DD/`, using the PC's
+local download date. A new export from another run uses `Seran (1).xlsx`,
+`Seran (2).xlsx`, etc. Files are never overwritten in this archive. Repeated live
+snapshots of the same run/file/content are archived once, even after restarting
+sync. Changed file content within a run creates another numbered copy. The next
+date starts again at `Seran.xlsx`. Cloud-run folders and logs remain available.
+The PC must be on with the updated sync helper running to create local files.

@@ -1,5 +1,5 @@
 """Download cloud logs and completed Excel snapshots using the user's GitHub CLI login."""
-import argparse,datetime,hashlib,json,os,re,shutil,subprocess,sys,tempfile,time
+import argparse,datetime,hashlib,json,os,re,shutil,sqlite3,subprocess,sys,tempfile,time
 from pathlib import Path
 
 
@@ -27,9 +27,37 @@ def atomic_copy(source,destination):
     return True
 
 
+def archive_daily_excel(source,root,run,relative,day=None):
+    """Archive each distinct run/file version once, using the PC's local date."""
+    source=Path(source);root=Path(root);root.mkdir(parents=True,exist_ok=True)
+    day=day or datetime.datetime.now().astimezone().date().isoformat()
+    identity=json.dumps([str(run),str(relative),hashlib.sha256(source.read_bytes()).hexdigest()])
+    with sqlite3.connect(root/'.archive-index.sqlite3',timeout=30) as db:
+        db.execute('CREATE TABLE IF NOT EXISTS files (identity TEXT PRIMARY KEY, path TEXT NOT NULL)')
+        db.execute('BEGIN IMMEDIATE')
+        previous=db.execute('SELECT path FROM files WHERE identity=?',(identity,)).fetchone()
+        if previous and (root/previous[0]).is_file():return root/previous[0]
+        folder=root/day;folder.mkdir(exist_ok=True);index=0
+        while True:
+            name=source.stem+(' ('+str(index)+')' if index else '')+source.suffix
+            destination=folder/name
+            try:
+                stream=destination.open('xb');break
+            except FileExistsError:index+=1
+        try:
+            with stream,source.open('rb') as incoming:shutil.copyfileobj(incoming,stream)
+            db.execute('INSERT OR REPLACE INTO files VALUES (?,?)',(identity,str(destination.relative_to(root))))
+            db.commit()
+        except BaseException:
+            destination.unlink(missing_ok=True);raise
+    print('Daily file: '+str(destination),flush=True)
+    return destination
+
+
 class Sync:
-    def __init__(self,gh,repo,run,folder,call=None):
+    def __init__(self,gh,repo,run,folder,call=None,daily_root=None):
         self.gh=gh;self.repo=repo;self.run=run;self.folder=Path(folder);self.folder.mkdir(parents=True,exist_ok=True);(self.folder/'logs').mkdir(exist_ok=True)
+        self.daily_root=Path(daily_root) if daily_root else self.folder.parent/'Save daily data with dates'
         self.state_file=self.folder/'.cloud-sync-state.json';self.call_override=call
         try:self.seen=json.loads(self.state_file.read_text()).get('artifacts',{})
         except (OSError,ValueError):self.seen={}
@@ -66,6 +94,8 @@ class Sync:
                     if not path.is_file() or path.suffix.lower() not in ('.xlsx','.csv','.json','.txt','.log'):continue
                     relative=path.relative_to(temp)
                     destination=self.folder/relative if name=='chotuapp-excel-files' else self.folder/'logs'/relative
+                    if name=='chotuapp-excel-files' and path.suffix.lower()=='.xlsx':
+                        archive_daily_excel(path,self.daily_root,self.run,relative)
                     if atomic_copy(path,destination):count+=1
                 self.seen[name]=identity;print('Saved '+name+': '+str(count)+' new/updated files.',flush=True)
         if not self.seen:print('No downloadable snapshot yet. Older workflow versions publish files/logs only after fetching finishes.',flush=True)
@@ -86,7 +116,7 @@ def main():
     if not re.fullmatch(r'\d+',args.run) or not re.fullmatch(r'[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+',args.repo):parser.error('Invalid run ID or repository')
     if args.interval<30:parser.error('Polling interval must be at least 30 seconds')
     folder=args.folder or Path.home()/'Desktop'/'ANAS_DATA_FETCH'/('Cloud_'+args.run)
-    sync=Sync(find_gh(),args.repo,args.run,folder);print('Files: '+str(folder)+'\nLogs: '+str(folder/'logs')+'\nKeep this CMD open for local downloads. Ctrl+C stops sync only; cloud fetching continues.',flush=True)
+    sync=Sync(find_gh(),args.repo,args.run,folder);print('Files: '+str(folder)+'\nDaily files: '+str(sync.daily_root)+'\nLogs: '+str(folder/'logs')+'\nKeep this CMD open for local downloads. Ctrl+C stops sync only; cloud fetching continues.',flush=True)
     try:
         while True:
             try:
