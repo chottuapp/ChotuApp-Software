@@ -1,0 +1,27 @@
+name: ChotuApp One Automatic Continuation
+on:
+  workflow_run:
+    workflows: ['ChotuApp Cloud Fetch']
+    types: [completed]
+permissions:
+  contents: read
+  actions: write
+concurrency:
+  group: chotuapp-auto-${{ github.event.workflow_run.id }}
+  cancel-in-progress: false
+jobs:
+  continue:
+    if: github.event.workflow_run.event == 'workflow_dispatch' && github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.head_repository.full_name == github.repository
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Resume once only after budget expiry and a successful checkpoint
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python cloud/auto_continue.py

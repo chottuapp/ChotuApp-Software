@@ -80,7 +80,7 @@ def print_logs(service,seen):
     return seen
 
 
-def write_summary(service,checkpoint_status):
+def write_summary(service,checkpoint_status,stop_reason='completed_or_source_failure'):
     from openpyxl import load_workbook
     state=service.store.load() or {};stores=[]
     for site in state.get('sites',[]):
@@ -92,7 +92,7 @@ def write_summary(service,checkpoint_status):
                 item.update(file=file.name,products=book['Products'].max_row-1,variants=book['Variant Combinations'].max_row-1 if 'Variant Combinations' in book.sheetnames else 0)
             finally:book.close()
         stores.append(item)
-    summary={'run_id':state.get('id'),'status':state.get('status','incomplete'),'checkpoint':checkpoint_status,'stores':stores}
+    summary={'run_id':state.get('id'),'status':state.get('status','incomplete'),'checkpoint':checkpoint_status,'stores':stores,'stop_reason':stop_reason,'auto_continue_once':os.environ.get('CLOUD_AUTO_CONTINUE')=='true'}
     (service.output/'run-summary.json').write_text(json.dumps(summary,indent=2),encoding='utf-8')
     lines=['RUN SUMMARY:']
     for item in stores:
@@ -111,8 +111,10 @@ def main():
     args=parser.parse_args()
     if not 1<=args.minutes<=300:parser.error('Minutes must be between 1 and 300')
     if args.restore:restore(args.restore,args.data)
-    service=CloudService(args.data)
-    def stop(*unused):service.control('stop')
+    service=CloudService(args.data);stop_reason='completed_or_source_failure'
+    def stop(*unused):
+        nonlocal stop_reason
+        stop_reason='stop_requested';service.control('stop')
     signal.signal(signal.SIGTERM,stop);signal.signal(signal.SIGINT,stop)
     result=1
     try:
@@ -121,7 +123,7 @@ def main():
             snapshot=service.snapshot()
             for message in snapshot['logs']:
                 if message['id']>seen:print(message['text'],flush=True);seen=message['id']
-            if time.monotonic()>=deadline:print('Cloud time budget reached; saving unfinished work.',flush=True);service.control('stop');break
+            if time.monotonic()>=deadline:stop_reason='time_budget';print('Cloud time budget reached; saving unfinished work.',flush=True);service.control('stop');break
             time.sleep(.5)
         service.close();seen=print_logs(service,seen);state=service.store.load();result=0 if state and state['status']=='complete' else 2
         checkpoint_status='not requested'
@@ -130,7 +132,7 @@ def main():
             try:
                 checkpoint(args.data,args.checkpoint);checkpoint_status='saved';print('Checkpoint saved:',args.checkpoint if args.checkpoint.exists() else args.checkpoint.with_suffix('.parts'),flush=True)
             except ValueError as exc:checkpoint_status='not saved: '+str(exc);print('CHECKPOINT NOT SAVED:',exc,flush=True);result=2
-        write_summary(service,checkpoint_status)
+        write_summary(service,checkpoint_status,'stop_requested' if (args.data/'stop-request').exists() else stop_reason)
         print('Run finished. Excel files:',service.output,flush=True)
     finally:
         if service.running:service.close()

@@ -1,5 +1,5 @@
 name: ChotuApp Cloud Fetch
-run-name: Cloud fetch by @${{ github.actor }}
+run-name: ${{ inputs.continuation_parent != '' && format('Automatic continuation of {0}', inputs.continuation_parent) || format('Cloud fetch by @{0}', github.actor) }}
 on:
   workflow_dispatch:
     inputs:
@@ -16,6 +16,14 @@ on:
         description: 'Upload resume checkpoint (large saves split into parts; uses artifact storage)'
         default: true
         type: boolean
+      auto_continue_once:
+        description: 'After budget expiry, resume once for 300 more minutes if checkpoint succeeds'
+        default: false
+        type: boolean
+      continuation_parent:
+        description: 'Internal automatic-continuation parent ID; leave blank for manual runs'
+        required: false
+        type: string
       minutes:
         description: 'Maximum fetch time, 1–300 minutes'
         default: '285'
@@ -36,6 +44,7 @@ jobs:
       CLOUD_MINUTES: ${{ inputs.minutes }}
       RESUME_RUN_ID: ${{ inputs.resume_run_id }}
       SAVE_CHECKPOINT: ${{ inputs.save_checkpoint }}
+      CLOUD_AUTO_CONTINUE: ${{ inputs.auto_continue_once }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

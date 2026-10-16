@@ -189,3 +189,20 @@ SHA-256 checksums before extraction. Limits are 2 GB compressed and 8 GB expande
 with free-disk checks; GitHub artifact quotas and 1-day retention still apply. Splitting
 does not reduce total storage or guarantee an upload. Already deleted/expired checkpoints
 from earlier workflow revisions cannot be recovered by this code update.
+
+One automatic continuation
+--------------------------
+The user authorized one additional 300-minute continuation for Actions run 38970499270.
+A separate workflow_run handler on the default branch observes its completion. It
+requires a trusted main-branch manual dispatch, unfinished stores, an explicitly saved
+and available checkpoint, and evidence that the extraction time budget expired. For
+that already-running revision it reads the console-tail budget message; new runs record
+an explicit stop_reason in run-summary.json. A manual save-and-stop, cancellation,
+source failure alone, missing/oversized/expired checkpoint, or complete catalog does
+not trigger a continuation. The handler dispatches current main with the parent's
+run ID and auto_continue_once=false. The child will not automatically chain again.
+Duplicate completed-event processing checks for an existing named continuation.
+Future manually launched runs may explicitly opt in with auto_continue_once=true;
+the default is false. Cloud and artifact quotas still apply. This is a bounded resume
+feature, not a way to avoid GitHub time or storage limits. Live dispatch requires
+GitHub's workflow_run event and token permissions and was not exercised locally.
