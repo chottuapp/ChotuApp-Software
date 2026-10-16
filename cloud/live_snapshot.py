@@ -1,5 +1,5 @@
 """Copy only verified completed files; do not stop or restart active extraction."""
-import argparse,hashlib,json,os,shutil,sqlite3,time
+import argparse,datetime,hashlib,json,os,shutil,sqlite3,time
 from pathlib import Path
 from diagnostics import atomic_json,build_report
 
@@ -30,6 +30,20 @@ def snapshot(data):
     changed=bool(copied) and signature!=old
     atomic_json(previous,{'signature':signature})
     build_report(data,data/'live-diagnostics')
+    from diagnostics import redact,safe_text
+    status_lines=[
+        'Updated (UTC): '+datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        'Saved Excel files: '+str(len(copied)),
+        'Saved means exported; review/audit warnings must still be checked.',
+        '',
+        'SAVED FILES',
+    ]
+    status_lines.extend(str(index)+'. '+safe_text(item['name'],200) for index,item in enumerate(copied,1))
+    if not copied:status_lines.append('None yet.')
+    status_lines.extend(['','STORE STATUS'])
+    for site in state.get('sites',[]):
+        status_lines.append(redact(safe_text(site.get('name','Store'))+': '+safe_text(site.get('status','unknown'))))
+    (data/'live-diagnostics'/'store-status.txt').write_text('\n'.join(status_lines)+'\n',encoding='utf-8')
     if (data/'console.txt').is_file():
         # Export messages are already retained in fetch-full.log; include a tail for startup failures too.
         from diagnostics import redact

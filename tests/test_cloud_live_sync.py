@@ -23,6 +23,12 @@ class LiveTests(unittest.TestCase):
             self.assertEqual([p.name for p in (service.data/'live-excel').glob('*.xlsx')],['Ready.xlsx'])
             self.assertFalse(snapshot(service.data)['files_changed'])
             self.assertTrue((service.data/'live-diagnostics'/'fetch-log.txt').exists())
+            status=(service.data/'live-diagnostics'/'store-status.txt').read_text()
+            self.assertIn('Saved Excel files: 1',status)
+            self.assertIn('1. Ready.xlsx',status)
+            self.assertIn('Ready: done',status)
+            self.assertNotIn('Incomplete.xlsx',status)
+            self.assertIn('review/audit warnings',status)
         finally:service.close()
     def test_snapshot_requires_recorded_size_and_mtime(self):
         engine=self.root/'main.py';engine.write_text(ENGINE);service=CloudService(self.root/'data',engine=engine,resolve_sites=False)
