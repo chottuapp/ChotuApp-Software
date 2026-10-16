@@ -1,0 +1,89 @@
+name: ChotuApp Cloud Fetch
+run-name: Cloud fetch by @${{ github.actor }}
+on:
+  workflow_dispatch:
+    inputs:
+      stores:
+        description: 'Fresh run: Name | https://store.com; Other Name | https://other.com'
+        required: false
+        default: 'Farda Foods | https://fardafoods.com; Islamabad Tea | https://islamabadtea.pk'
+        type: string
+      resume_run_id:
+        description: 'Optional: previous Actions run ID with a checkpoint; leaves completed stores alone'
+        required: false
+        type: string
+      save_checkpoint:
+        description: 'Upload resume checkpoint (up to 250 MB; uses artifact storage)'
+        default: false
+        type: boolean
+      minutes:
+        description: 'Maximum fetch time, 1–300 minutes'
+        default: '285'
+        type: string
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: chotuapp-cloud-fetch
+  cancel-in-progress: false
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    env:
+      CHOTUAPP_CLOUD_DATA: ${{ github.workspace }}/.cloud-data
+      CLOUD_STORES: ${{ inputs.stores }}
+      CLOUD_MINUTES: ${{ inputs.minutes }}
+      RESUME_RUN_ID: ${{ inputs.resume_run_id }}
+      SAVE_CHECKPOINT: ${{ inputs.save_checkpoint }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install extraction dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y python3-tk
+          python -m pip install -r requirements.txt
+      - name: Install Czone browser fallback when needed
+        if: inputs.resume_run_id != '' || contains(inputs.stores, 'czone.com.pk')
+        run: |
+          python -m pip install playwright==1.55.0
+          python -m playwright install --with-deps chromium
+      - name: Restore optional saved run
+        if: inputs.resume_run_id != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          case "$RESUME_RUN_ID" in *[!0-9]*|'') echo 'Run ID must contain only digits'; exit 1;; esac
+          gh run download "$RESUME_RUN_ID" --repo "$GITHUB_REPOSITORY" --name chotuapp-checkpoint --dir "$RUNNER_TEMP/chotu-restore"
+      - name: Fetch selected stores on GitHub's runner
+        run: |
+          python - <<'PY'
+          import os,subprocess,sys
+          from pathlib import Path
+          args=[sys.executable,'cloud/cli.py','--data',os.environ['CHOTUAPP_CLOUD_DATA'],'--minutes',os.environ['CLOUD_MINUTES']]
+          if os.environ['RESUME_RUN_ID']:
+              args+=['--restore',str(Path(os.environ['RUNNER_TEMP'])/'chotu-restore/checkpoint.zip'),'--continue-saved']
+          else:
+              args+=['--stores',os.environ['CLOUD_STORES']]
+          if os.environ['SAVE_CHECKPOINT']=='true':args+=['--checkpoint','checkpoint.zip']
+          raise SystemExit(subprocess.call(args))
+          PY
+      - name: Upload Excel files and audits, including completed stores from a partial run
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chotuapp-excel-files
+          path: .cloud-data/ANAS_DATA_FETCH/
+          if-no-files-found: warn
+          retention-days: 1
+      - name: Upload optional saved checkpoint
+        if: always() && inputs.save_checkpoint
+        uses: actions/upload-artifact@v4
+        with:
+          name: chotuapp-checkpoint
+          path: checkpoint.zip
+          if-no-files-found: warn
+          retention-days: 1

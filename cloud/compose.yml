@@ -1,0 +1,17 @@
+services:
+  dashboard:
+    build:
+      context: ..
+      dockerfile: cloud/Dockerfile
+    restart: unless-stopped
+    init: true
+    environment:
+      CHOTUAPP_WEB_PASSWORD: ${CHOTUAPP_WEB_PASSWORD:?Set a unique password of at least 16 characters}
+      CHOTUAPP_AUTO_CONTINUE: '1'
+    volumes:
+      - chotu-data:/data
+    ports:
+      - '127.0.0.1:8080:8080'
+    stop_grace_period: 35s
+volumes:
+  chotu-data:

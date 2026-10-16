@@ -123,3 +123,7 @@ stock filtering, preservation of unavailable variants, sale prices, decimal
 policy, existing FINAL preservation, GUI scrolling/drag, selection, Pause/Resume,
 worker failure and REVIEW status. Controlled fixtures establish code behavior;
 they do not prove arbitrary website theme support or importer compatibility.
+
+## Cloud fetching (PC can be switched off)
+
+See [cloud setup and dashboard](cloud/README.md). The [ChotuApp Cloud Fetch workflow](https://github.com/chottuapp/ChotuApp-Software/actions/workflows/cloud-fetch.yml) runs a bounded job on GitHub's runner. A persistent online dashboard needs a Docker host with durable disk and HTTPS; the deployment files are in `cloud/`. The Windows application remains independent.
