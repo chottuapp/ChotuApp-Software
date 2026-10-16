@@ -71,6 +71,17 @@ jobs:
           if os.environ['SAVE_CHECKPOINT']=='true':args+=['--checkpoint','checkpoint.zip']
           raise SystemExit(subprocess.call(args))
           PY
+      - name: Collect diagnostic report even if fetching failed
+        if: always()
+        run: python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics
+      - name: Upload diagnostic report and redacted log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chotuapp-diagnostics
+          path: .cloud-data/diagnostics/
+          if-no-files-found: warn
+          retention-days: 1
       - name: Upload Excel files and audits, including completed stores from a partial run
         if: always()
         uses: actions/upload-artifact@v4
@@ -87,3 +98,25 @@ jobs:
           path: checkpoint.zip
           if-no-files-found: warn
           retention-days: 1
+
+  diagnostic-archive:
+    name: Archive structured diagnostics
+    needs: fetch
+    if: always() && !cancelled()
+    continue-on-error: true
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/download-artifact@v4
+        with:
+          name: chotuapp-diagnostics
+          path: incoming-diagnostics
+      - name: Archive credential-free JSON on the cloud-reports branch
+        run: python cloud/publish_report.py incoming-diagnostics/report.json

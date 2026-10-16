@@ -7,6 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from resume_support import RunLease,RunStore
 from parallel_store_support import StoreScheduler,output_key
+from diagnostics import Collector
 
 MODULES=('resume_support.py','fast_fetch_support.py','farda_source_support.py','complete_description_support.py','czone_source_support.py','software_revision_support.py','seran_source_support.py')
 DEFAULT_TEMPLATE=ROOT/'importer-files/Chotu_Products_Import_Template_Discount_Tags.xlsx'
@@ -54,6 +55,7 @@ class CloudService:
         except Exception:self.lease.release();raise
         self.output=self.data/'ANAS_DATA_FETCH';self.output.mkdir(exist_ok=True)
         self.pause=threading.Event();self.pause.set();self.lock=threading.RLock();self.thread=None;self.scheduler=None;self.resolve_sites=resolve_sites;self.error=None
+        self.diagnostics=Collector(self.data/'telemetry.json')
         self.lines=collections.deque(maxlen=500);self.counter=0
         self.logger=logging.Logger('chotu-cloud-'+str(id(self)))
         handler=logging.handlers.RotatingFileHandler(self.data/'fetch.log',maxBytes=2*1024*1024,backupCount=2,encoding='utf-8');self.logger.addHandler(handler)
@@ -75,7 +77,7 @@ class CloudService:
     def event(self,item):
         text=item[1] if isinstance(item,tuple) and len(item)>1 else str(item)
         with self.lock:
-            self.counter+=1;self.lines.append({'id':self.counter,'text':str(text)});self.logger.info(str(text))
+            self.counter+=1;self.lines.append({'id':self.counter,'text':str(text)});self.logger.info(str(text));self.diagnostics.observe(str(text))
     def start(self,sites=None,resume=False):
         from openpyxl import load_workbook
         with self.lock:
@@ -96,6 +98,7 @@ class CloudService:
                 finally:book.close()
                 state=self.store.fresh(chosen,template)
             if not Path(state['template']).is_file():raise ValueError('Saved template is missing')
+            self.diagnostics=Collector(self.data/'telemetry.json')
             self.pause.set();self.settings.write_text(json.dumps({'paused':False}));self.error=None
             scheduler=StoreScheduler(self.engine,self.store,state,self.output,self.pause,self.event);self.scheduler=scheduler
             def work():
@@ -123,5 +126,6 @@ class CloudService:
         if self.scheduler:self.scheduler.shutdown()
         if self.thread:self.thread.join(timeout=20)
         if self.running:raise RuntimeError('Worker has not stopped; lease retained')
+        self.diagnostics.flush()
         self.lease.release()
         for handler in self.logger.handlers:handler.close()
