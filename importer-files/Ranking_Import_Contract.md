@@ -1,6 +1,6 @@
 # Optional category and product ranking fields
 
-Use `Chotu_Products_Import_Template_ShopCode_Ranking.xlsx` for the complete template with shop codes, stock, discount tags and ranking metadata. It has 33 Products columns. All existing product, variant, stock and image field meanings are unchanged.
+Use `Chotu_Products_Import_Template_ShopCode_Ranking.xlsx` for the complete template with shop codes, stock, discount tags and ranking metadata. It has 34 Products columns, including the internal analysis_note field. All existing product, variant, stock and image field meanings are unchanged.
 
 ## Added Products fields
 
@@ -35,3 +35,7 @@ External marketplace popularity is an external trend signal; it is not evidence 
 ## Scope of this delivery
 
 The template columns, input validation, embedded Ranking Guide and this contract are delivered. No ranking values have been invented. Existing completed exports are unchanged. This delivery does not implement automated evidence collection, migrate an active cloud worker’s saved template, or change website application code. Those require separate fetching/importer/storefront implementation and verification.
+
+## Internal product analysis note
+
+`analysis_note` is optional plain text on every Products row. Preserve it for admin review and Rule 804; do not automatically append it to the customer-facing description or show it as a bestseller badge. It records verified storefront-sort evidence, explicit product-page merchant labels, collection membership signals, source URLs, check timestamps and missing-evidence limitations. A top/featured/trending collection label is not verified sales volume. Unranked products receive an explicit unknown-evidence note rather than an invented ranking. Saved-run notes may refer to cached responses; a check timestamp is not a guarantee of a fresh network fetch.

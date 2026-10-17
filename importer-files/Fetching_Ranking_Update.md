@@ -18,3 +18,9 @@ Fixture tests cover verified and unverified grids, evidence provenance, beauty-b
 This update does not implement cross-website trend research, comprehensive category-specific bestseller collection, or a complete replacement taxonomy for every store. It does not change website importer/storefront code. Existing category classification remains in use. Evidence may be checked from durable responses during a saved-run continuation; the check timestamp does not assert that the page was freshly fetched at that time.
 
 New runs use the latest code. An already active cloud worker must finish or be saved/stopped and resumed before it can use this revision. No active run was stopped or dispatched by this change.
+
+## Per-product analysis notes
+
+The engine now adds analysis_note to every exported product and writes a complete ANALYSIS NOTES audit CSV. Existing product-page responses are inspected for exact recognized labels inside product-information badges; navigation/recommendation text and discount-only labels are excluded. Existing collection membership responses record named Best Sellers, Top Collections, Trending, Most Popular and Featured signals with their actual page/API URLs and check times. Signals are attributed only to products observed in that collection response. No extra per-product requests are added.
+
+Merchant labels/collection membership remain clearly separate from verified best-selling sort positions. They do not by themselves assign product priority or verified-sales metadata. The note states unknown evidence for unverified products and retains manual notes. Final sorting preserves notes with product IDs. Existing completed files are unchanged; new runs and unfinished stores resumed on this revision use the new column.

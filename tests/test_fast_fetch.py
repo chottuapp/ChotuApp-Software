@@ -20,7 +20,8 @@ import install_fast_fetch
 import install_adaptive_speed
 
 class FastFetchTests(unittest.TestCase):
-    def test_parallel_and_serial_export_every_cell_and_endpoint_match(self):
+    @patch('ranking_support.evidence_checked_at',return_value='2026-10-17T00:00:00+00:00')
+    def test_parallel_and_serial_export_every_cell_and_endpoint_match(self,clock):
         products=[]
         for i in range(6):
             products.append({'id':i+1,'title':'Fixture '+str(i),'handle':'p'+str(i),'vendor':'Fixture','product_type':'Lipstick','body_html':'<p>Source product description for this verified cosmetic.</p>',

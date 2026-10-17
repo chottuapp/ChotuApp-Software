@@ -270,6 +270,7 @@ def discover(base, log):
 def collections(base, log):
     _chotu_debug_stage('Collection/category mapping')
     mapping={}
+    _chotu_tls.collection_popularity_evidence={}
     seen_handles=set(); skipped_empty=0; fetched=0
     try:
         for page in range(1, 30):
@@ -294,7 +295,13 @@ def collections(base, log):
                     try: ps=get_json(f'{base}/collections/{handle}/products.json?limit=250&page={pageno}').get('products',[])
                     except ChotuRateLimited: raise
                     except RuntimeError: break
-                    for p in ps: mapping.setdefault(p.get('id'),[]).append(title)
+                    from ranking_support import collection_evidence
+                    signal=collection_evidence(title,f'{base}/collections/{handle}',f'{base}/collections/{handle}/products.json?limit=250&page={pageno}')
+                    for p in ps:
+                        mapping.setdefault(p.get('id'),[]).append(title)
+                        if signal:
+                            notes=_chotu_tls.collection_popularity_evidence.setdefault(p.get('id'),[])
+                            if signal not in notes:notes.append(signal)
                     if len(ps)<250: break
             if len(batch)<250: break
         log(f'  Collection categories mapped: {len(mapping)} products ({skipped_empty} empty collections skipped)')
@@ -801,6 +808,7 @@ def image_key(url):
 def storefront_cover(base, product, pictures, log):
     url = base.rstrip('/') + '/products/' + product['handle']
     product['_storefront_specs_html'] = ''
+    product['_popularity_page_note'] = ''
     fallback = pictures[0]['src'] if pictures else ''
     status, detail, cover = 'REVIEW', '', fallback
     try:
@@ -816,6 +824,8 @@ def storefront_cover(base, product, pictures, log):
             _chotu_tls.image_throttled = True
         resp.raise_for_status()
         soup = BeautifulSoup(resp.text, 'html.parser')
+        from ranking_support import product_page_evidence
+        product['_popularity_page_note']=product_page_evidence(soup,url)
         # Only product-detail areas; do not harvest recommendation/global tables.
         # CHOTUAPP_COMPLETE_DETAIL_PANELS_V1
         from complete_description_support import collect_product_details
@@ -929,8 +939,8 @@ def verified_top20(base, log, eligible_handles=None, rank_all=False):
                     seen.add(handle); new_handles += 1
                     if eligible_handles is None or handle in eligible_handles:
                         found.append(handle)
-                        from datetime import datetime, timezone
-                        _chotu_tls.ranking_evidence[handle]={'url': base.rstrip('/')+'/collections/all?sort_by=best-selling&page='+str(page), 'checked_at': datetime.now(timezone.utc).isoformat()}
+                        from ranking_support import evidence_checked_at
+                        _chotu_tls.ranking_evidence[handle]={'url': base.rstrip('/')+'/collections/all?sort_by=best-selling&page='+str(page), 'checked_at': evidence_checked_at()}
                 if len(found) == wanted:
                     log('TOP 20: Storefront best-selling grid order confirmed; prioritizing ' + str(wanted) + ' available products')
                     return found
@@ -946,6 +956,7 @@ def run_site(base, name, template, log):
     # CHOTUAPP_MULTIDIM_VARIANTS_V1
     OUT.mkdir(exist_ok=True)
     _chotu_tls.stylo_collections_rate_limited = False
+    _chotu_tls.collection_popularity_evidence = {}
     products, complete_catalog=discover(base,log)
     if not products: raise RuntimeError('No public products found. Shopify endpoint may be unavailable.')
     if getattr(_chotu_tls, 'stylo_collections_rate_limited', False):
@@ -1064,7 +1075,7 @@ def run_site(base, name, template, log):
                 entry[f'option_{pos}_value']=txt(v.get(f'option{idx}'))
             combos.append(entry)
         if len(p.get('options') or [])>3: review.append(f'More than 3 dimensions: {url}')
-        rows.append({'product_id':pid,'category':category,'subcategory':'','name':txt(p.get('title')),'description':desc,'brand':txt(p.get('vendor')) or name,'material':'','weight_grams (agar ho)':'','condition (new/used)':'new','warranty_months (agar ho)':'','base_price (PKR)':float(baseprice),'sale_price (PKR, agar discount ho)':float(sale) if sale is not None else None,'sku':str(cheapest.get('sku') or ''),'scraped_image_url (cover, auto)':cover,'final_image_url (cover/thumbnail — hosted link)':'','option_groups':gid,'available (yes/no)':'yes' if any(v.get('available') is True for v in variants) else 'no','stock_quantity (kitni quantity bechni hai)':product_stock_quantity(p,variants),'max_qty_per_user (ek user zyada se zyada kitni le sakta hai)':'','source_url':url})
+        rows.append({'product_id':pid,'analysis_note':'\n'.join(([p['_popularity_page_note']] if p.get('_popularity_page_note') else [])+getattr(_chotu_tls,'collection_popularity_evidence',{}).get(p.get('id'),[])),'category':category,'subcategory':'','name':txt(p.get('title')),'description':desc,'brand':txt(p.get('vendor')) or name,'material':'','weight_grams (agar ho)':'','condition (new/used)':'new','warranty_months (agar ho)':'','base_price (PKR)':float(baseprice),'sale_price (PKR, agar discount ho)':float(sale) if sale is not None else None,'sku':str(cheapest.get('sku') or ''),'scraped_image_url (cover, auto)':cover,'final_image_url (cover/thumbnail — hosted link)':'','option_groups':gid,'available (yes/no)':'yes' if any(v.get('available') is True for v in variants) else 'no','stock_quantity (kitni quantity bechni hai)':product_stock_quantity(p,variants),'max_qty_per_user (ek user zyada se zyada kitni le sakta hai)':'','source_url':url})
         if not pictures: review.append(f'No image: {p.get("title")}')
         for i,im in enumerate(pictures,1):
             src=im.get('src')
@@ -1084,9 +1095,14 @@ def run_site(base, name, template, log):
     ranked_rows = prioritize_top_sellers(rows, top_handles)
     with (OUT / (safe_name + ' - BEST SELLERS.csv')).open('w', encoding='utf-8-sig', newline='') as stream:
         writer = csv.writer(stream)
-        writer.writerow(['rank', 'product_id', 'name', 'category', 'source_url', 'category_priority', 'product_priority', 'popularity_basis', 'popularity_source_url', 'popularity_checked_at'])
+        writer.writerow(['rank', 'product_id', 'name', 'category', 'source_url', 'category_priority', 'product_priority', 'popularity_basis', 'popularity_source_url', 'popularity_checked_at', 'analysis_note'])
         for rank, row in enumerate(ranked_rows, 1):
-            writer.writerow([rank, row['product_id'], row['name'], row['category'], row['source_url']]+[row.get(field) for field in ('category_priority','product_priority','popularity_basis','popularity_source_url','popularity_checked_at')])
+            writer.writerow([rank, row['product_id'], row['name'], row['category'], row['source_url']]+[row.get(field) for field in ('category_priority','product_priority','popularity_basis','popularity_source_url','popularity_checked_at','analysis_note')])
+    with (OUT / (safe_name + ' - ANALYSIS NOTES.csv')).open('w', encoding='utf-8-sig', newline='') as stream:
+        fields=['product_id','name','category','source_url','category_priority','product_priority','popularity_basis','popularity_source_url','popularity_checked_at','analysis_note']
+        writer=csv.DictWriter(stream,fieldnames=fields);writer.writeheader()
+        writer.writerows({field:row.get(field) for field in fields} for row in rows)
+    log('ANALYSIS NOTES: '+str(len(rows))+' products documented; collection labels are merchant signals, not verified sales counts; no additional page requests')
     if ranked_rows:
         log('FILE ORDER: store category priority, verified bestseller subset within categories, then payable price; no external sales inferred')
 

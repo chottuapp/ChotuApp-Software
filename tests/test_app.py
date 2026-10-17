@@ -260,6 +260,13 @@ class ExportTests(unittest.TestCase):
                 def records(name):
                     rows=list(wb[name].values);return [dict(zip(rows[0],r)) for r in rows[1:]]
                 self.assertEqual(len(records('Products')),1)
+                self.assertIn('[Popularity analysis]',records('Products')[0]['analysis_note'])
+                notes_file=folder/'audit_reports/Fixture/Fixture - ANALYSIS NOTES.csv'
+                import csv
+                with notes_file.open(encoding='utf-8-sig') as stream:analysis_rows=list(csv.DictReader(stream))
+                self.assertEqual(len(analysis_rows),1)
+                self.assertEqual(analysis_rows[0]['product_id'],records('Products')[0]['product_id'])
+                self.assertEqual(analysis_rows[0]['analysis_note'],records('Products')[0]['analysis_note'])
                 if technical:
                     description=records('Products')[0]['description']
                     self.assertGreater(len(description),300)

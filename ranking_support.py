@@ -2,8 +2,10 @@
 from copy import copy
 from decimal import Decimal, InvalidOperation
 from urllib.parse import urlsplit
+import re
+from datetime import datetime, timezone
 
-FIELDS=('category_priority','product_priority','popularity_basis','popularity_source_url','popularity_checked_at')
+FIELDS=('category_priority','product_priority','popularity_basis','popularity_source_url','popularity_checked_at','analysis_note')
 BEAUTY_HOSTS={'elitecosmeticspk.com','missrose.com.pk','rivaj-uk.com','vincecare.com'}
 BEAUTY_CATEGORIES=('makeup','lip','eye','foundation','concealer','blush','primer','mascara','highlighter','skin','face','sun','hair','shampoo','conditioner','body','bath','fragrance','perfume','nail','beauty','serum','toner','cream','lotion','wax','razor','shav','deodorant','personal care')
 
@@ -38,6 +40,42 @@ def priority(value):
     n=number(value)
     return n if n is not None and n>0 and n==n.to_integral_value() else Decimal('Infinity')
 
+NOTE_MARKER='[Popularity analysis]'
+
+def evidence_checked_at():
+    return datetime.now(timezone.utc).isoformat()
+
+def product_page_evidence(soup,url):
+    """Only explicit badges inside product information; never recommendations/navigation."""
+    labels=[]
+    for node in soup.select('.product__info-container .badge, .product__info .badge, [data-product-info] .badge'):
+        text=node.get_text(' ',strip=True)
+        if re.fullmatch(r'best[ -]?sellers?|best[ -]?selling|top[ -]?sellers?|top[ -]?selling|hot[ -]?selling|trending|most popular|top rated|featured',text,re.I):
+            if text not in labels:labels.append(text)
+    if not labels:return ''
+    return 'Product-page merchant label: '+', '.join(labels)+'. Source: '+url+'. Checked: '+evidence_checked_at()+'. This is a merchant label, not an independently verified sales count.'
+
+def collection_evidence(title,url,membership_url):
+    """A promotional collection membership is a signal, never a verified sales rank."""
+    if not re.search(r'(?i)\b(best[ -]?sellers?|best[ -]?selling|top[ -]?(?:selling|sellers?|collections?)|hot[ -]?selling|trending|most popular|customer favou?rites?|featured)\b',str(title)):
+        return ''
+    return 'Store collection signal: '+str(title)+'. Product membership observed at '+membership_url+'. Collection: '+url+'. Checked: '+evidence_checked_at()+'. Collection title/membership is a merchant signal only; no sales count or bestseller position verified.'
+
+
+def annotate_analysis(row):
+    existing=str(row.get('analysis_note') or '').split(NOTE_MARKER,1)[0].rstrip()
+    if row.get('popularity_basis')=='store_bestseller' and row.get('popularity_source_url') and row.get('popularity_checked_at'):
+        detail='Verified position '+str(row.get('product_priority'))+' in the inspected store-wide bestseller subset. Source: '+str(row['popularity_source_url'])+'. Evidence checked: '+str(row['popularity_checked_at'])+'. Storefront order is evidence of the displayed best-selling sort, not independently verified sales volume or a category-wide sales rank.'
+    else:
+        detail='No verified bestseller-order evidence recorded for this product. Only a bounded bestseller subset and recognized product-page labels are inspected; absence of evidence is not proof of low sales. No sales count inferred from price, discount, stock, or alphabetical order.'
+    if row.get('category_priority') not in (None,''):
+        detail+=' Category priority is manual merchandising, not sales evidence.'
+    detail+=' Saved-run evidence may come from cached responses; the check time does not guarantee a fresh network response.'
+    result=(existing+'\n\n' if existing else '')+NOTE_MARKER+' '+detail
+    if len(result)>32767:raise ValueError('Product analysis_note exceeds Excel cell limit; review evidence before exporting: '+str(row.get('product_id')))
+    row['analysis_note']=result
+
+
 def order_rows(rows, handles=(), evidence=None):
     """Rank verified matches within categories, then payable price; preserve stable ties."""
     evidence=evidence or {};rank={h:i+1 for i,h in enumerate(dict.fromkeys(handles))};ranked=[]
@@ -53,6 +91,7 @@ def order_rows(rows, handles=(), evidence=None):
         fact=evidence.get(handle)
         if handle in rank and fact and fact.get('url') and fact.get('checked_at'):
             row.update(product_priority=rank[handle],popularity_basis='store_bestseller',popularity_source_url=fact['url'],popularity_checked_at=fact['checked_at']);ranked.append(row)
+    for row in rows:annotate_analysis(row)
     def key(row):
         cat=str(row.get('category') or '');base=number(row.get('base_price (PKR)'));price=payable(row)
         discount=(base-price)/base if base is not None and base>0 and price.is_finite() else Decimal(0)
