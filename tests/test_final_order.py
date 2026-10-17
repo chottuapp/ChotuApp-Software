@@ -13,21 +13,16 @@ import install_final_order
 class FinalOrderTests(unittest.TestCase):
     def row(self,name,sale=None,category='A'):
         return {'product_id':name,'name':name,'category':category,'base_price (PKR)':100,'sale_price (PKR, agar discount ho)':sale,'source_url':'https://shop/products/'+name,'description':'keep '+name}
-    def test_top_discounted_then_other_discounted_then_full_price(self):
+    def test_verified_rank_stays_inside_its_category(self):
         rows=[self.row('full'),self.row('other-sale',80),self.row('best-sale',90,'Z'),self.row('equal',100)]
-        ranked=main.prioritize_top_sellers(rows,['full','best-sale'])
-        self.assertEqual([r['name'] for r in rows],['best-sale','other-sale','full','equal'])
+        main._chotu_tls.ranking_evidence={'best-sale':{'url':'https://shop/collections/all?sort_by=best-selling','checked_at':'2026-10-17T00:00:00+00:00'}}
+        ranked=main.prioritize_top_sellers(rows,['best-sale'])
+        self.assertEqual([r['name'] for r in rows],['other-sale','full','equal','best-sale'])
         self.assertEqual([r['name'] for r in ranked],['best-sale'])
-    def test_no_discount_ranks_regular_products_and_top20_cap(self):
-        rows=[self.row('p'+str(i)) for i in range(25)]
-        ranked=main.prioritize_top_sellers(rows,['p'+str(i) for i in range(24,-1,-1)])
-        self.assertEqual(len(ranked),20);self.assertEqual(rows[0]['name'],'p24')
-    def test_variant_only_discount_stays_below_visible_discount_and_no_fake_rank(self):
-        rows=[self.row('full'),self.row('bundle'),self.row('sale',80)]
-        ranked=main.prioritize_top_sellers(rows,['bundle'],{'bundle'})
-        self.assertEqual([r['name'] for r in rows],['sale','full','bundle'])
+    def test_unverified_handles_never_assign_rank(self):
         rows=[self.row('full'),self.row('sale',80)]
-        self.assertEqual(main.prioritize_top_sellers(rows,[]),[])
+        main._chotu_tls.ranking_evidence={}
+        self.assertEqual(main.prioritize_top_sellers(rows,['full']),[])
         self.assertEqual([r['name'] for r in rows],['sale','full'])
     def test_final_saved_file_preserves_every_product_field_and_other_sheet(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -44,7 +39,7 @@ class FinalOrderTests(unittest.TestCase):
             main.finalize_catalog_order(file,receipt,lambda x:None)
             result=load_workbook(file);it=iter(result['Products'].values);h=next(it);actual=[dict(zip(h,r)) for r in it]
             self.assertEqual([r['name'] for r in actual],['sale','full','bundle'])
-            self.assertEqual({r['product_id']:r for r in actual},{r['product_id']:r for r in rows})
+            self.assertEqual({r['product_id']:{k:r[k] for k in rows[0]} for r in actual},{r['product_id']:r for r in rows})
             self.assertEqual(list(result['Variant Combinations'].values),list(variants.values))
             self.assertEqual(list(result['Product Images'].values),list(images.values))
     def test_installer_only_changes_ordering_and_preserves_fast_manual_hooks(self):

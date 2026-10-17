@@ -13,7 +13,7 @@ import install_discount_top20 as patch
 class DiscountRankingTests(unittest.TestCase):
     def test_discount_filter_and_order_preserve_remaining_products(self):
         source=(ROOT/'main.py').read_text()
-        block=source[source.index('    discount_handles={'):source.index('    safe_name = ',source.index('    discount_handles={'))]
+        block=source[source.index('    ranking_handles={'):source.index('    safe_name = ',source.index('    ranking_handles={'))]
         rows=[{'product_id':h,'source_url':'https://shop/products/'+h,'base_price (PKR)':base,'sale_price (PKR, agar discount ho)':sale} for h,base,sale in [('full',100,None),('equal',100,100),('higher',100,120),('cheap',100,50),('free-sale',100,0)]]
         observed=[]
         def verified(base,log,eligible,rank_all=False):
@@ -23,8 +23,8 @@ class DiscountRankingTests(unittest.TestCase):
         function=next(n for n in ast.parse(source).body if isinstance(n,ast.FunctionDef) and n.name=='genuine_discount')
         exec(compile(ast.Module(body=[function],type_ignores=[]),'discount-function','exec'),scope)
         exec('\n'.join(line[4:] for line in block.splitlines()),scope)
-        self.assertEqual(observed,[{'cheap','free-sale'}])
-        self.assertEqual(scope['top_handles'],['free-sale','cheap'])
+        self.assertEqual(observed,[{'full','equal','higher','cheap','free-sale'}])
+        self.assertEqual(scope['top_handles'],['full','free-sale','cheap'])
 
     def test_legacy_patch_preserves_saved_run_hook_and_speed_and_is_idempotent(self):
         source=subprocess.check_output(['git','-C',str(ROOT),'show','3d36cef:main.py']).decode()

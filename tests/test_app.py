@@ -241,6 +241,7 @@ class ExportTests(unittest.TestCase):
                         self.assertFalse((out/'Fixture.xlsx').exists())
                         return
                     if ranked:
+                        main._chotu_tls.ranking_evidence={product['handle']:{'url':f'http://127.0.0.1:{server.server_port}/collections/all?sort_by=best-selling','checked_at':'2026-10-17T00:00:00+00:00'}}
                         with patch.object(main,'verified_top20',return_value=[product['handle']]):
                             main.run_site(f'http://127.0.0.1:{server.server_port}','Fixture',str(template),logs.append)
                     else:
@@ -248,7 +249,9 @@ class ExportTests(unittest.TestCase):
                 if ranked:
                     import csv
                     report=folder/'audit_reports/Fixture/Fixture - BEST SELLERS.csv'
-                    ranks=list(csv.DictReader(report.open(encoding='utf-8-sig')))
+                    with report.open(encoding='utf-8-sig') as stream:ranks=list(csv.DictReader(stream))
+                    self.assertEqual(ranks[0]['popularity_basis'],'store_bestseller')
+                    self.assertTrue(ranks[0]['popularity_source_url'])
                     self.assertEqual(ranks[0]['rank'],'1')
                     self.assertEqual(ranks[0]['name'],product['title'])
                     self.assertTrue(any('FILE ORDER:' in line for line in logs))
@@ -354,7 +357,8 @@ class FreshFetchTests(unittest.TestCase):
 
     def test_uploaded_structure_template_contains_no_old_catalog_records(self):
         wb=load_workbook(ROOT/'ChotuApp_Template.xlsx',read_only=True)
-        self.assertEqual(len(wb.sheetnames),9)
+        self.assertIn('Ranking Guide',wb.sheetnames)
+        self.assertTrue(set(('category_priority','product_priority','popularity_basis','popularity_source_url','popularity_checked_at')).issubset({c.value for c in wb['Products'][1]}))
         for sheet in ('Products','Product Images','Option Groups','Options','Variant Combinations'):
             self.assertEqual(wb[sheet].max_row,1)
         self.assertTrue(all(row[1].value is None for row in wb['Brand Info'].iter_rows(min_row=2)))
@@ -450,16 +454,22 @@ class CatalogQualityTests(unittest.TestCase):
         self.assertIsNone(cover)
         self.assertEqual(main._chotu_tls.image_audit[0][1],'REVIEW')
 
-    def test_top20_order_overrides_category_and_url_scheme(self):
+    def test_top20_preserves_categories_and_handles_url_scheme(self):
         rows=[{'name':f'Product {i}', 'category':('Foundation','Lipstick','Eyebrow')[i%3],
                'source_url':f'http://store.example/products/p{i}/?variant=123'} for i in range(25)]
         rows.sort(key=lambda r:r['category'])
         original=[r['name'] for r in rows]
         handles=[f'p{i}' for i in range(19,-1,-1)]
+        main._chotu_tls.ranking_evidence={h:{'url':'https://store.example/collections/all?sort_by=best-selling','checked_at':'2026-10-17T00:00:00+00:00'} for h in handles}
         ranked=main.prioritize_top_sellers(rows,handles)
-        self.assertEqual([r['name'] for r in rows[:20]],[f'Product {i}' for i in range(19,-1,-1)])
+        self.assertEqual([r['name'] for r in ranked],[f'Product {i}' for i in range(19,-1,-1)])
         self.assertEqual(len(ranked),20)
-        self.assertEqual([r['name'] for r in rows[20:]],[n for n in original if n not in {f'Product {i}' for i in range(20)}])
+        categories=[r['category'] for r in rows]
+        self.assertEqual(categories,sorted(categories))
+        for category in set(categories):
+            subset=[r for r in rows if r['category']==category]
+            priorities=[r.get('product_priority',float('inf')) for r in subset]
+            self.assertEqual(priorities,sorted(priorities))
 
     def test_top20_paginates_past_unavailable_products(self):
         from types import SimpleNamespace

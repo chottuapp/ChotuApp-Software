@@ -846,32 +846,23 @@ def genuine_discount(row):
 
 
 def prioritize_top_sellers(rows, handles, variant_discount_ids=()):
-    # CHOTUAPP_STRICT_DISCOUNT_ORDER_V2: only the visible Products row qualifies.
-    discounted=genuine_discount
-    has_discount=any(discounted(row) for row in rows)
-    rank={handle:i for i,handle in enumerate(dict.fromkeys(handles)) if has_discount or i<20}
-    def key(row):
-        handle=urlparse(row['source_url']).path.rstrip('/').rsplit('/',1)[-1]
-        eligible=discounted(row) if has_discount else True
-        if eligible and handle in rank:return (0,rank[handle])
-        return (1 if eligible else 2,0)
-    rows.sort(key=key)
-    return [row for row in rows if key(row)[0]==0]
+    from ranking_support import order_rows
+    return order_rows(rows, handles, getattr(_chotu_tls, 'ranking_evidence', {}))
 
 
 def finalize_catalog_order(workbook_path, ranking_path, log):
     # Apply the order after price policy and immediately before publication.
     book=load_workbook(workbook_path)
     try:
-        sheet=book['Products'];headers=[cell.value for cell in sheet[1]]
+        sheet=book['Products']
+        from ranking_support import ensure_columns
+        ensure_columns(sheet)
+        headers=[cell.value for cell in sheet[1]]
         rows=[dict(zip(headers,values)) for values in sheet.iter_rows(min_row=2,values_only=True)]
-        handles=[]
-        if Path(ranking_path).is_file():
-            with Path(ranking_path).open(encoding='utf-8-sig',newline='') as stream:
-                handles=[urlparse(row['source_url']).path.rstrip('/').rsplit('/',1)[-1] for row in csv.DictReader(stream)]
-        ranked=prioritize_top_sellers(rows,handles)
-        for index,row in enumerate(rows,2):
-            for col,header in enumerate(headers,1):sheet.cell(index,col).value=row.get(header)
+        # Evidence metadata was written during verification; final ordering must not invent it.
+        from ranking_support import order_rows, reorder_sheet
+        ranked=order_rows(rows)
+        reorder_sheet(sheet,rows)
         temporary=Path(workbook_path).with_name('.'+Path(workbook_path).stem+'-order.xlsx')
         try:
             book.save(temporary)
@@ -881,13 +872,14 @@ def finalize_catalog_order(workbook_path, ranking_path, log):
             finally:verify.close()
             os.replace(temporary,workbook_path)
         finally:temporary.unlink(missing_ok=True)
-        log('FINAL FILE ORDER: '+str(len(ranked))+' verified best sellers first; remaining discounted products, then non-discounted; prices/variants/images retained')
+        log('FINAL FILE ORDER: store category priority, verified product priority, then payable price; image hyperlinks move with products')
     finally:book.close()
 
 
 def verified_top20(base, log, eligible_handles=None, rank_all=False):
     # Walk verified collection grids, never navigation/recommendation links.
     found, seen = [], set()
+    _chotu_tls.ranking_evidence = {}
     sort_verified_without_control = False
     wanted = len(eligible_handles) if rank_all and eligible_handles is not None else (min(20, len(eligible_handles)) if eligible_handles is not None else 20)
     page_limit = 100 if rank_all else 25
@@ -937,6 +929,8 @@ def verified_top20(base, log, eligible_handles=None, rank_all=False):
                     seen.add(handle); new_handles += 1
                     if eligible_handles is None or handle in eligible_handles:
                         found.append(handle)
+                        from datetime import datetime, timezone
+                        _chotu_tls.ranking_evidence[handle]={'url': base.rstrip('/')+'/collections/all?sort_by=best-selling&page='+str(page), 'checked_at': datetime.now(timezone.utc).isoformat()}
                 if len(found) == wanted:
                     log('TOP 20: Storefront best-selling grid order confirmed; prioritizing ' + str(wanted) + ' available products')
                     return found
@@ -965,6 +959,8 @@ def run_site(base, name, template, log):
         if sheet not in wb.sheetnames: raise RuntimeError(f'Template missing sheet: {sheet}')
         ws=wb[sheet]
         if ws.max_row>1: ws.delete_rows(2,ws.max_row-1)
+    from ranking_support import ensure_columns
+    ensure_columns(wb['Products'])
     rows=[]; imgs=[]; groups=[]; opts=[]; combos=[]; review=[]
     _chotu_tls.image_audit = []
     _chotu_tls.image_throttled = False
@@ -1077,10 +1073,9 @@ def run_site(base, name, template, log):
     log(f'PRODUCT FILTER: excluded {skipped_out_of_stock} fully unavailable products; skipped {skipped_hidden} explicitly unpublished, {skipped_invalid} invalid/unpriced; retained {len(rows)} products with ALL their variants')
     if not rows: raise RuntimeError('No public, priced products found')
     rows.sort(key=lambda x:(x['category'].lower(), x['sale_price (PKR, agar discount ho)'] or x['base_price (PKR)'],x['name'].lower()))
-    # CHOTUAPP_DISCOUNT_TOP20_V1: strict visible-row discount grouping.
-    discount_handles={urlparse(r['source_url']).path.rstrip('/').rsplit('/',1)[-1] for r in rows if genuine_discount(r)}
-    ranking_handles=discount_handles or {urlparse(r['source_url']).path.rstrip('/').rsplit('/',1)[-1] for r in rows}
-    top_handles=verified_top20(base,log,ranking_handles,rank_all=bool(discount_handles))
+    # Verify a bounded bestseller subset across all eligible products, regardless of discounts.
+    ranking_handles={urlparse(r['source_url']).path.rstrip('/').rsplit('/',1)[-1] for r in rows}
+    top_handles=verified_top20(base,log,ranking_handles,rank_all=False)
     safe_name = re.sub(r'[^\w .-]', '', name).strip() or 'Shopify'
     with (OUT / (safe_name + ' - IMAGE AUDIT.csv')).open('w', encoding='utf-8-sig', newline='') as stream:
         writer = csv.writer(stream)
@@ -1089,11 +1084,11 @@ def run_site(base, name, template, log):
     ranked_rows = prioritize_top_sellers(rows, top_handles)
     with (OUT / (safe_name + ' - BEST SELLERS.csv')).open('w', encoding='utf-8-sig', newline='') as stream:
         writer = csv.writer(stream)
-        writer.writerow(['rank', 'product_id', 'name', 'category', 'source_url'])
+        writer.writerow(['rank', 'product_id', 'name', 'category', 'source_url', 'category_priority', 'product_priority', 'popularity_basis', 'popularity_source_url', 'popularity_checked_at'])
         for rank, row in enumerate(ranked_rows, 1):
-            writer.writerow([rank, row['product_id'], row['name'], row['category'], row['source_url']])
+            writer.writerow([rank, row['product_id'], row['name'], row['category'], row['source_url']]+[row.get(field) for field in ('category_priority','product_priority','popularity_basis','popularity_source_url','popularity_checked_at')])
     if ranked_rows:
-        log('FILE ORDER: verified top sellers among discounted products first (all products if no discounts); then remaining discounted, then non-discounted across ALL categories')
+        log('FILE ORDER: store category priority, verified bestseller subset within categories, then payable price; no external sales inferred')
 
     log(f'VARIANT EXPORT: {len(combos)} combinations; ' +
         str(sum(c['available (yes/no)'] == 'no' for c in combos)) + ' unavailable preserved as no')

@@ -14,6 +14,7 @@ class StrictOrderTests(unittest.TestCase):
         discounted=[{'product_id':'d'+str(i),'source_url':'https://shop/products/d'+str(i),'base_price (PKR)':100,'sale_price (PKR, agar discount ho)':80,'description':'unchanged'} for i in range(35)]
         normal={'product_id':'bundle','source_url':'https://shop/products/bundle','base_price (PKR)':1490,'sale_price (PKR, agar discount ho)':None}
         rows=[normal]+discounted
+        main._chotu_tls.ranking_evidence={h:{'url':'https://shop/collections/all?sort_by=best-selling','checked_at':'2026-10-17T00:00:00+00:00'} for h in ['d'+str(i) for i in range(35)]}
         ranked=main.prioritize_top_sellers(rows,['d'+str(i) for i in range(34,-1,-1)],{'bundle'})
         self.assertEqual(len(ranked),35)
         self.assertEqual([r['product_id'] for r in rows[:35]],['d'+str(i) for i in range(34,-1,-1)])

@@ -9,7 +9,7 @@ from resume_support import RunLease,RunStore
 from parallel_store_support import StoreScheduler,output_key
 from diagnostics import Collector
 
-MODULES=('resume_support.py','fast_fetch_support.py','farda_source_support.py','complete_description_support.py','czone_source_support.py','software_revision_support.py','seran_source_support.py')
+MODULES=('ranking_support.py','resume_support.py','fast_fetch_support.py','farda_source_support.py','complete_description_support.py','czone_source_support.py','software_revision_support.py','seran_source_support.py')
 DEFAULT_TEMPLATE=ROOT/'importer-files/Chotu_Products_Import_Template_Discount_Tags.xlsx'
 
 
@@ -103,11 +103,14 @@ class CloudService:
             book=load_workbook(state['template'])
             try:
                 sheet=book['Products'];field='stock_quantity (kitni quantity bechni hai)'
+                from ranking_support import ensure_columns
+                changed=ensure_columns(sheet)
                 if field not in [cell.value for cell in sheet[1]]:
                     from copy import copy
                     previous=sheet.cell(1,sheet.max_column)
                     cell=sheet.cell(1,sheet.max_column+1,field);cell._style=copy(previous._style)
-                    book.save(state['template'])
+                    changed=True
+                if changed:book.save(state['template'])
             finally:book.close()
             self.diagnostics=Collector(self.data/'telemetry.json')
             self.pause.set();self.settings.write_text(json.dumps({'paused':False}));self.error=None
