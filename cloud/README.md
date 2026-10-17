@@ -228,3 +228,12 @@ of reading and hashing the same body twice through nested cache wrappers. Tests 
 the pause control and checksum-corruption fallback, shared pacing, HTTP endpoints and
 exported workbook values intact. This reduces cache work, not the website's required
 cooldown; overall real-store speed improvement has not been benchmarked.
+
+Progress-display and local network retry fixes
+----------------------------------------------
+Completed stores no longer show old partial prefetch samples as active task progress.
+The PC helper also cleans that presentation for already-running older cloud snapshots,
+without modifying the downloaded original report. Local GitHub metadata calls time out
+after 120 seconds and artifact downloads after 10 minutes, then retry through normal
+sync handling. A timeout does not cancel cloud fetching. The live launcher picks up
+helper changes on its regular update check without a manual CMD restart.

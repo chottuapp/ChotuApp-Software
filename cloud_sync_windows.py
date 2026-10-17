@@ -54,6 +54,17 @@ def archive_daily_excel(source,root,run,relative,day=None):
     return destination
 
 
+def readable_progress_report(text):
+    # A finished export may have an older final prefetch sample (e.g. 3500/3535).
+    # Keep the downloaded original unchanged, but do not display it as incomplete.
+    result=[];done=False
+    for line in text.splitlines():
+        if line and not line.startswith(' '):done=line.endswith(': done')
+        if done and line.startswith('  ') and not line.startswith('  Last successful HTTP response'):continue
+        result.append(line)
+    return '\n'.join(result)
+
+
 class Sync:
     def __init__(self,gh,repo,run,folder,call=None,daily_root=None):
         self.gh=gh;self.repo=repo;self.run=run;self.folder=Path(folder);self.folder.mkdir(parents=True,exist_ok=True);(self.folder/'logs').mkdir(exist_ok=True)
@@ -64,7 +75,8 @@ class Sync:
         except (OSError,ValueError):self.seen={}
     def call(self,args):
         if self.call_override:return self.call_override(args)
-        result=subprocess.run([self.gh,*args],stdout=subprocess.PIPE,stderr=subprocess.PIPE,encoding='utf-8',errors='replace')
+        try:result=subprocess.run([self.gh,*args],stdout=subprocess.PIPE,stderr=subprocess.PIPE,encoding='utf-8',errors='replace',timeout=120)
+        except subprocess.TimeoutExpired as exc:raise RuntimeError('GitHub request timed out after 120s; will retry without stopping cloud fetching.') from exc
         if result.returncode:raise RuntimeError(result.stderr.strip() or 'GitHub request failed')
         return result.stdout
     def tick(self):
@@ -81,7 +93,8 @@ class Sync:
                     self.call(['run','download',self.run,'--repo',self.repo,'--name',name,'--dir',temp])
                 else:
                     with archive.open('wb') as stream:
-                        result=subprocess.run([self.gh,'api','repos/'+self.repo+'/actions/artifacts/'+identity+'/zip'],stdout=stream,stderr=subprocess.PIPE)
+                        try:result=subprocess.run([self.gh,'api','repos/'+self.repo+'/actions/artifacts/'+identity+'/zip'],stdout=stream,stderr=subprocess.PIPE,timeout=600)
+                        except subprocess.TimeoutExpired as exc:raise RuntimeError('Artifact download timed out; next sync will retry.') from exc
                     if result.returncode:raise RuntimeError(result.stderr.decode('utf-8',errors='replace'))
                     import zipfile
                     with zipfile.ZipFile(archive) as zipped:
@@ -103,7 +116,7 @@ class Sync:
         if progress_file.is_file():
             progress=progress_file.read_text(encoding='utf-8',errors='replace')
             if progress!=self.last_progress:
-                print('\nLATEST DOWNLOADED STORE REPORT\n'+progress,flush=True);self.last_progress=progress
+                print('\nLATEST DOWNLOADED STORE REPORT\n'+readable_progress_report(progress),flush=True);self.last_progress=progress
         if not self.seen:print('Waiting for the first downloadable snapshot; cloud setup/restore time is separate from the snapshot interval.',flush=True)
 
         self.state_file.write_text(json.dumps({'artifacts':self.seen}),encoding='utf-8')

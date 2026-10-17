@@ -53,7 +53,7 @@ def snapshot(data):
     for site in state.get('sites',[]):
         status_lines.append(redact(safe_text(site.get('name','Store'))+': '+safe_text(site.get('status','unknown'))))
         stats=telemetry.get(site.get('name'),{});progress=stats.get('task_progress',{})
-        if progress:
+        if progress and site.get('status')!='done':
             age=max(0,int(time.time()-progress['updated_epoch']))
             status_lines.append('  '+safe_text(progress.get('stage'))+': '+str(progress.get('done'))+'/'+str(progress.get('total'))+' tasks; sample age '+str(age)+'s')
             eta=progress.get('eta_seconds')
