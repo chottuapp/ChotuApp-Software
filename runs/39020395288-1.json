@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-17T12:38:52.917530+00:00",
+  "run_id": "39020395288",
+  "attempt": "1",
+  "source_commit": "32efc0540fcf0eb63f51c14477995c575cc59417",
+  "status": "complete",
+  "checkpoint_saved": true,
+  "python": "3.12.15",
+  "elapsed_seconds": 12217.1,
+  "stores": [
+    {
+      "name": "Stylo",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RANKING_UNVERIFIED",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "9ff1e22c27f46af5",
+      "products": 9414,
+      "variants": 45164,
+      "http_statuses": {
+        "200": 10665,
+        "429": 4
+      },
+      "network_seconds": 5139.0,
+      "max_response_seconds": 5.2,
+      "cache_events": 32780
+    }
+  ]
+}
