@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-16T21:33:47.421009+00:00",
-  "run_id": "38958847659",
+  "generated_utc": "2026-10-17T02:40:06.119723+00:00",
+  "run_id": "38970499270",
   "attempt": "1",
-  "source_commit": "1e8fe9108edb290658c47a896339655c0d3f2ae1",
+  "source_commit": "c809194a7898c6110cdf59fe06f154de32a737bf",
   "status": "incomplete",
   "checkpoint_saved": false,
   "python": "3.12.15",
-  "elapsed_seconds": 5581.6,
+  "elapsed_seconds": 18000.7,
   "stores": [
     {
       "name": "Miss Rose",
@@ -15,8 +15,6 @@
       "review_required": true,
       "issue_codes": [],
       "software_revision": "ac2e2e68888882b5",
-      "products": 179,
-      "variants": 1846,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
@@ -24,16 +22,18 @@
     },
     {
       "name": "Rawayat",
-      "status": "pending",
-      "review_required": false,
-      "issue_codes": [],
-      "software_revision": "548d51e8bd50613e",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "RANKING_UNVERIFIED"
+      ],
+      "software_revision": "7a71fb228b7ea7de",
       "http_statuses": {
-        "200": 2534
+        "200": 3722
       },
-      "network_seconds": 2379.3,
-      "max_response_seconds": 6.1,
-      "cache_events": 404
+      "network_seconds": 2836.0,
+      "max_response_seconds": 3.2,
+      "cache_events": 11003
     },
     {
       "name": "Rivaj UK",
@@ -42,54 +42,58 @@
       "issue_codes": [
         "RANKING_UNVERIFIED"
       ],
-      "software_revision": "548d51e8bd50613e",
-      "products": 297,
-      "variants": 831,
+      "software_revision": "7a71fb228b7ea7de",
       "http_statuses": {
         "200": 424
       },
-      "network_seconds": 824.3,
-      "max_response_seconds": 5.7,
+      "network_seconds": 433.3,
+      "max_response_seconds": 2.7,
       "cache_events": 1422
     },
     {
       "name": "Junaid Jamshed",
-      "status": "pending",
-      "review_required": false,
-      "issue_codes": [],
-      "software_revision": "548d51e8bd50613e",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "RANKING_UNVERIFIED"
+      ],
+      "software_revision": "7a71fb228b7ea7de",
       "http_statuses": {
-        "200": 2118
+        "200": 5044
       },
-      "network_seconds": 1178.8,
-      "max_response_seconds": 2.7,
-      "cache_events": 533
+      "network_seconds": 2724.8,
+      "max_response_seconds": 2.9,
+      "cache_events": 15113
     },
     {
       "name": "Stylo",
-      "status": "source_paused",
+      "status": "pending",
       "review_required": false,
       "issue_codes": [
+        "HTTP_429",
         "RATE_LIMIT"
       ],
-      "software_revision": "ac2e2e68888882b5",
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "software_revision": "7a71fb228b7ea7de",
+      "http_statuses": {
+        "200": 3420,
+        "429": 3
+      },
+      "network_seconds": 2453.0,
+      "max_response_seconds": 5.6,
+      "cache_events": 4364
     },
     {
       "name": "Tawakkal Fabrics",
-      "status": "source_paused",
-      "review_required": false,
-      "issue_codes": [
-        "RATE_LIMIT"
-      ],
-      "software_revision": "ac2e2e68888882b5",
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "7a71fb228b7ea7de",
+      "http_statuses": {
+        "200": 2310
+      },
+      "network_seconds": 2070.1,
+      "max_response_seconds": 3.2,
+      "cache_events": 5381
     },
     {
       "name": "Vince Care",
@@ -97,8 +101,6 @@
       "review_required": true,
       "issue_codes": [],
       "software_revision": "ac2e2e68888882b5",
-      "products": 207,
-      "variants": 359,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
@@ -106,14 +108,18 @@
     },
     {
       "name": "Elite Cosmetics",
-      "status": "pending",
-      "review_required": false,
-      "issue_codes": [],
-      "software_revision": "ac2e2e68888882b5",
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "RANKING_UNVERIFIED"
+      ],
+      "software_revision": "7a71fb228b7ea7de",
+      "http_statuses": {
+        "200": 1487
+      },
+      "network_seconds": 2638.6,
+      "max_response_seconds": 17.7,
+      "cache_events": 5216
     },
     {
       "name": "The Hanger Pakistan",
@@ -121,8 +127,6 @@
       "review_required": true,
       "issue_codes": [],
       "software_revision": "ac2e2e68888882b5",
-      "products": 349,
-      "variants": 1519,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
@@ -130,54 +134,76 @@
     },
     {
       "name": "Shop Modest",
-      "status": "pending",
-      "review_required": false,
-      "issue_codes": [],
-      "software_revision": "ac2e2e68888882b5",
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "RANKING_UNVERIFIED"
+      ],
+      "software_revision": "7a71fb228b7ea7de",
+      "http_statuses": {
+        "200": 552
+      },
+      "network_seconds": 505.5,
+      "max_response_seconds": 1.8,
+      "cache_events": 1087
     },
     {
       "name": "Seran",
-      "status": "pending",
-      "review_required": false,
-      "issue_codes": [],
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "RANKING_UNVERIFIED"
+      ],
+      "software_revision": "7a71fb228b7ea7de",
+      "http_statuses": {
+        "200": 333
+      },
+      "network_seconds": 193.6,
+      "max_response_seconds": 1.8,
+      "cache_events": 596
     },
     {
       "name": "Islamabad Tea",
-      "status": "pending",
+      "status": "done",
       "review_required": false,
       "issue_codes": [],
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "software_revision": "7a71fb228b7ea7de",
+      "http_statuses": {
+        "200": 38
+      },
+      "network_seconds": 15.7,
+      "max_response_seconds": 1.1,
+      "cache_events": 95
     },
     {
       "name": "Adam Cheese",
-      "status": "pending",
-      "review_required": false,
-      "issue_codes": [],
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "RANKING_UNVERIFIED"
+      ],
+      "software_revision": "7a71fb228b7ea7de",
+      "http_statuses": {
+        "200": 64
+      },
+      "network_seconds": 28.4,
+      "max_response_seconds": 1.7,
+      "cache_events": 179
     },
     {
       "name": "Farda Foods",
-      "status": "pending",
-      "review_required": false,
-      "issue_codes": [],
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "RANKING_UNVERIFIED"
+      ],
+      "software_revision": "7a71fb228b7ea7de",
+      "http_statuses": {
+        "200": 63
+      },
+      "network_seconds": 55.2,
+      "max_response_seconds": 2.9,
+      "cache_events": 165
     }
   ]
 }
