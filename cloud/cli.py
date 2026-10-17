@@ -18,11 +18,22 @@ def parse_stores(text):
 
 def checkpoint(data,destination,max_bytes=250*1024*1024):
     data=Path(data);destination=Path(destination);temporary=destination.with_suffix('.pending.zip')
+    state={};completed=set()
+    database=data/'saved_runs'/'run_state.sqlite3'
+    if database.is_file():
+        from resume_support import RunStore
+        with sqlite3.connect(database.resolve().as_uri()+'?mode=ro',uri=True) as db:row=db.execute('SELECT payload FROM state WHERE id=1').fetchone()
+        state=json.loads(row[0]) if row else {}
+        completed={str(index) for index,site in enumerate(state.get('sites',[])) if site.get('status')=='done' and RunStore.output_valid(site)}
+    def needed(path):
+        relative=path.relative_to(data).parts
+        return not (len(relative)>=4 and relative[0]=='saved_runs' and relative[1]==state.get('id') and relative[2] in completed)
     try:
-        with zipfile.ZipFile(temporary,'w',zipfile.ZIP_DEFLATED) as archive:
+        print('Checkpoint packaging: excluding request caches for '+str(len(completed))+' completed stores; Excel files and audits retained.',flush=True)
+        with zipfile.ZipFile(temporary,'w',zipfile.ZIP_DEFLATED,compresslevel=1) as archive:
             for folder in (data/'saved_runs',data/'runtime'/'source_pacing',data/'ANAS_DATA_FETCH'):
                 for path in folder.rglob('*'):
-                    if path.is_file() and not path.is_symlink() and path.name!='active.lock':archive.write(path,path.relative_to(data).as_posix())
+                    if path.is_file() and not path.is_symlink() and path.name!='active.lock' and needed(path):archive.write(path,path.relative_to(data).as_posix())
             for name in ('template.xlsx','controls.json'):
                 if (data/name).is_file():archive.write(data/name,name)
         if temporary.stat().st_size>max_bytes:
@@ -111,6 +122,8 @@ def main():
     args=parser.parse_args()
     if not 1<=args.minutes<=300:parser.error('Minutes must be between 1 and 300')
     if args.restore:restore(args.restore,args.data)
+    from diagnostics import atomic_json
+    atomic_json(args.data/'fetch-phase.json',{'phase':'starting'})
     service=CloudService(args.data);stop_reason='completed_or_source_failure'
     def stop(*unused):
         nonlocal stop_reason
@@ -119,20 +132,24 @@ def main():
     result=1
     try:
         service.start(parse_stores(args.stores),resume=args.continue_saved);deadline=time.monotonic()+args.minutes*60;seen=0
+        atomic_json(args.data/'fetch-phase.json',{'phase':'fetching'})
         while service.running:
             snapshot=service.snapshot()
             for message in snapshot['logs']:
                 if message['id']>seen:print(message['text'],flush=True);seen=message['id']
             if time.monotonic()>=deadline:stop_reason='time_budget';print('Cloud time budget reached; saving unfinished work.',flush=True);service.control('stop');break
             time.sleep(.5)
+        atomic_json(args.data/'fetch-phase.json',{'phase':'stopping'})
         service.close();seen=print_logs(service,seen);state=service.store.load();result=0 if state and state['status']=='complete' else 2
         checkpoint_status='not requested'
         if not args.checkpoint and (args.data/'stop-request').exists():args.checkpoint=Path('checkpoint.zip')
         if args.checkpoint:
+            atomic_json(args.data/'fetch-phase.json',{'phase':'checkpoint'})
             try:
                 checkpoint(args.data,args.checkpoint);checkpoint_status='saved';print('Checkpoint saved:',args.checkpoint if args.checkpoint.exists() else args.checkpoint.with_suffix('.parts'),flush=True)
             except ValueError as exc:checkpoint_status='not saved: '+str(exc);print('CHECKPOINT NOT SAVED:',exc,flush=True);result=2
         write_summary(service,checkpoint_status,'stop_requested' if (args.data/'stop-request').exists() else stop_reason)
+        atomic_json(args.data/'fetch-phase.json',{'phase':'finished','checkpoint':checkpoint_status})
         print('Run finished. Excel files:',service.output,flush=True)
     finally:
         if service.running:service.close()

@@ -250,3 +250,22 @@ The telemetry collector now resets old prefetch counts/ETA on known stage transi
 and displays Building Excel rows or Saving Excel workbook when appropriate, rather
 than suggesting the last task sample is still running. Active older cloud code is
 unchanged until the next continuation.
+
+Checkpoint finalization race and smaller resume archives
+-------------------------------------------------------
+The previous workflow finish command waited only 30 seconds for the supervised CLI
+before allowing artifact uploads to proceed. Large packaging could still be running,
+so no committed checkpoint path was available yet. The final run's timestamps and
+missing final CLI summary are consistent with that race; the supplied filtered log
+does not independently establish whether another packaging error also occurred.
+
+Finish now waits up to 15 minutes with heartbeat messages, avoids requesting a second
+stop during known finalization, and prints the CLI console tail into workflow logs.
+The CLI records starting/fetching/stopping/checkpoint/finished phases. A timeout is
+explicitly reported and never presented as a successful checkpoint.
+
+Packing uses fast deflate level 1 and excludes per-store request caches only for done
+stores whose saved workbook size and mtime still validate. Completed Excel/audit files,
+queue/template/pacing state and every unfinished store cache remain in the archive.
+This substantially avoids carrying completed-store raw page caches into each resume.
+The 2 GB compressed / 8 GB expanded safety limits and GitHub quotas still apply.

@@ -36,13 +36,31 @@ def supervise(data):
     finally:atomic_json(data/'background-result.json',{'exit_code':code})
     return code
 
+
+def finish(data,timeout=900,poll=.5):
+    data=Path(data);path=data/'background-result.json';deadline=time.monotonic()+timeout;next_report=0
+    try:phase=json.loads((data/'fetch-phase.json').read_text()).get('phase')
+    except (OSError,ValueError):phase=None
+    if not path.exists() and phase not in ('stopping','checkpoint','finished'):(data/'stop-request').touch()
+    while not path.exists() and time.monotonic()<deadline:
+        if time.monotonic()>=next_report:
+            try:phase=json.loads((data/'fetch-phase.json').read_text()).get('phase','unknown')
+            except (OSError,ValueError):phase='unknown'
+            print('Waiting for extraction/checkpoint finalization; phase='+str(phase)+'. Workflow will not upload early.',flush=True);next_report=time.monotonic()+15
+        time.sleep(poll)
+    # Surface the real CLI outcome in the workflow log, including checkpoint failures.
+    if (data/'console.txt').is_file():
+        from diagnostics import redact
+        from collections import deque
+        with (data/'console.txt').open(encoding='utf-8',errors='replace') as stream:tail=deque(stream,maxlen=80)
+        for line in tail:print(redact(line.rstrip()),flush=True)
+    if not path.exists():
+        print('FINALIZATION TIMEOUT: no supervisor result after '+str(timeout)+' seconds; checkpoint upload is not confirmed.',flush=True)
+        return 2
+    return json.loads(path.read_text())['exit_code']
+
 if __name__=='__main__':
     mode=sys.argv[1];data=Path(sys.argv[2])
     if mode=='start':launch(data)
     elif mode=='supervise':sys.exit(supervise(data))
-    elif mode=='finish':
-        path=data/'background-result.json'
-        if not path.exists():
-            (data/'stop-request').touch();deadline=time.monotonic()+30
-            while not path.exists() and time.monotonic()<deadline:time.sleep(.5)
-        sys.exit(json.loads(path.read_text())['exit_code'] if path.exists() else 2)
+    elif mode=='finish':sys.exit(finish(data))
