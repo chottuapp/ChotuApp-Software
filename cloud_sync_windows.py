@@ -59,6 +59,7 @@ class Sync:
         self.gh=gh;self.repo=repo;self.run=run;self.folder=Path(folder);self.folder.mkdir(parents=True,exist_ok=True);(self.folder/'logs').mkdir(exist_ok=True)
         self.daily_root=Path(daily_root) if daily_root else self.folder.parent/'Save daily data with dates'
         self.state_file=self.folder/'.cloud-sync-state.json';self.call_override=call
+        self.last_progress=None
         try:self.seen=json.loads(self.state_file.read_text()).get('artifacts',{})
         except (OSError,ValueError):self.seen={}
     def call(self,args):
@@ -98,7 +99,13 @@ class Sync:
                         archive_daily_excel(path,self.daily_root,self.run,relative)
                     if atomic_copy(path,destination):count+=1
                 self.seen[name]=identity;print('Saved '+name+': '+str(count)+' new/updated files.',flush=True)
-        if not self.seen:print('No downloadable snapshot yet. Older workflow versions publish files/logs only after fetching finishes.',flush=True)
+        progress_file=self.folder/'logs'/'store-status.txt'
+        if progress_file.is_file():
+            progress=progress_file.read_text(encoding='utf-8',errors='replace')
+            if progress!=self.last_progress:
+                print('\nLATEST DOWNLOADED STORE REPORT\n'+progress,flush=True);self.last_progress=progress
+        if not self.seen:print('Waiting for the first downloadable snapshot; cloud setup/restore time is separate from the snapshot interval.',flush=True)
+
         self.state_file.write_text(json.dumps({'artifacts':self.seen}),encoding='utf-8')
         text='Updated: '+datetime.datetime.now().astimezone().isoformat()+'\nRun: '+self.run+'\nStatus: '+str(status.get('status'))+'\nConclusion: '+str(status.get('conclusion'))+'\n'
         (self.folder/'logs'/'status.txt').write_text(text,encoding='utf-8');print(text.strip(),flush=True)
@@ -111,16 +118,46 @@ class Sync:
         return False
 
 
+def continuation_allowed(sync):
+    try:summary=json.loads((sync.folder/'run-summary.json').read_text())
+    except (OSError,ValueError):return False
+    if summary.get('checkpoint')!='saved' or summary.get('status')=='complete':return False
+    if str(sync.run)!='38970499270' and summary.get('auto_continue_once') is not True:return False
+    if summary.get('stop_reason'):return summary['stop_reason']=='time_budget'
+    try:console=(sync.folder/'logs'/'console-tail.txt').read_text(encoding='utf-8',errors='replace')
+    except OSError:return False
+    return 'Cloud time budget reached; saving unfinished work.' in console
+
+
+def next_continuation(sync):
+    runs=json.loads(sync.call(['run','list','--repo',sync.repo,'--workflow','cloud-fetch.yml','--limit','100','--json','databaseId,displayTitle']))
+    matches=[str(item['databaseId']) for item in runs if item.get('displayTitle')=='Automatic continuation of '+sync.run and str(item.get('databaseId','')).isdigit()]
+    return matches[0] if matches else None
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--run',required=True);parser.add_argument('--repo',default='chottuapp/ChotuApp-Software');parser.add_argument('--folder',type=Path);parser.add_argument('--interval',type=int,default=60);args=parser.parse_args()
     if not re.fullmatch(r'\d+',args.run) or not re.fullmatch(r'[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+',args.repo):parser.error('Invalid run ID or repository')
     if args.interval<30:parser.error('Polling interval must be at least 30 seconds')
     folder=args.folder or Path.home()/'Desktop'/'ANAS_DATA_FETCH'/('Cloud_'+args.run)
     sync=Sync(find_gh(),args.repo,args.run,folder);print('Files: '+str(folder)+'\nDaily files: '+str(sync.daily_root)+'\nLogs: '+str(folder/'logs')+'\nKeep this CMD open for local downloads. Ctrl+C stops sync only; cloud fetching continues.',flush=True)
+    continuation_deadline=None
     try:
         while True:
             try:
-                if sync.tick():print('Cloud run finished; available files and logs downloaded.',flush=True);return
+                if sync.tick():
+                    if continuation_allowed(sync):
+                        if continuation_deadline is None:continuation_deadline=time.monotonic()+600
+                        child=next_continuation(sync)
+                        if child:
+                            print('Following automatic continuation: '+child,flush=True)
+                            sync=Sync(sync.gh,sync.repo,child,sync.folder.parent/('Cloud_'+child),daily_root=sync.daily_root)
+                            continuation_deadline=None;continue
+                        if time.monotonic()<continuation_deadline:
+                            print('Parent run finished. Waiting for its automatic continuation; no CMD restart needed.',flush=True)
+                            time.sleep(args.interval);continue
+                        print('No automatic continuation found within 10 minutes. Check GitHub continuation workflow.',flush=True)
+                    print('Cloud run finished; available files and logs downloaded.',flush=True);return
             except (RuntimeError,ValueError,OSError) as exc:print('Sync will retry: '+str(exc),flush=True)
             time.sleep(args.interval)
     except KeyboardInterrupt:print('\nLocal sync stopped. Cloud run was not cancelled.')

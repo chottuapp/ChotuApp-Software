@@ -206,3 +206,25 @@ Future manually launched runs may explicitly opt in with auto_continue_once=true
 the default is false. Cloud and artifact quotas still apply. This is a bounded resume
 feature, not a way to avoid GitHub time or storage limits. Live dispatch requires
 GitHub's workflow_run event and token permissions and was not exercised locally.
+
+One-window live PC sync
+-----------------------
+cloud_live_windows.py supervises the local sync helper. It checks current main every
+15 minutes and replaces a changed helper only after its download compiles successfully;
+it restarts only the local child, reusing persisted sync/archive state. Unchanged source
+does not restart the child. Cloud fetching is not paused or cancelled by these updates.
+This supervises local downloading, not arbitrary hot replacement of active extraction
+code. Latest cloud extraction code is applied at the next checkpoint continuation.
+
+The updated sync helper prints the downloaded store-status.txt in CMD when it changes,
+and follows a named automatic continuation after an authorized budget-expired parent
+finishes with a saved checkpoint. It waits up to 10 minutes for that child, preserving
+the daily-folder layout. Live GitHub uploads remain five-minute snapshots; local
+polling cannot make an old cloud workflow publish more frequently. Browser/app UI,
+prices, variant mapping and website pacing checks remain unchanged.
+
+Cached HTML transport now returns its already-checksummed response directly instead
+of reading and hashing the same body twice through nested cache wrappers. Tests keep
+the pause control and checksum-corruption fallback, shared pacing, HTTP endpoints and
+exported workbook values intact. This reduces cache work, not the website's required
+cooldown; overall real-store speed improvement has not been benchmarked.

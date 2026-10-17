@@ -111,8 +111,16 @@ class GatedSession:
         gate=getattr(self.tls,'fast_gate',None)
         if not gate:return self.session.get(url,**kwargs)
         cache=getattr(self.tls,'saved_response_cache',None)
-        if cache is not None and not any(kwargs.get(k) for k in ('params','stream','auth')) and cache.get(url) is not None:
-            return self.session.get(url,**kwargs)
+        parsed=urlparse(url)
+        if cache is not None and not parsed.username and not parsed.password and not any(kwargs.get(k) for k in ('params','stream','auth')):
+            cached=cache.get(url)
+            if cached is not None:
+                # get() already verified the checksum. Avoid reading/hashing the
+                # same large HTML body again through the underlying SessionProxy.
+                self.pause()
+                note=getattr(self.tls,'saved_run_note',None)
+                if note:note('SAVED RESPONSE: '+url)
+                return cached
         gate.wait(getattr(self.tls,'fast_preloading',False))
         try:response=self.session.get(url,**kwargs)
         except Exception:
