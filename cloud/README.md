@@ -237,3 +237,16 @@ without modifying the downloaded original report. Local GitHub metadata calls ti
 after 120 seconds and artifact downloads after 10 minutes, then retry through normal
 sync handling. A timeout does not cancel cloud fetching. The live launcher picks up
 helper changes on its regular update check without a manual CMD restart.
+
+Audit-driven parsing and stage fix
+----------------------------------
+The 17 October diagnostic bundle confirmed Rivaj's API prices agree, while 202
+static theme-price checks remain pending, and Rawayat has one product lacking cover
+and gallery images, 554 short source descriptions and 11 generic option titles.
+These are not automatically repaired or hidden. A confirmed parser gap now accepts
+whitespace after Rs/Rs. as well as PKR within existing theme-price selectors. This
+fix is locally tested; it does not prove all 202 Rivaj theme pages are supported.
+The telemetry collector now resets old prefetch counts/ETA on known stage transitions
+and displays Building Excel rows or Saving Excel workbook when appropriate, rather
+than suggesting the last task sample is still running. Active older cloud code is
+unchanged until the next continuation.

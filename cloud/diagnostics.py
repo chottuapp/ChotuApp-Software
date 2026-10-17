@@ -40,6 +40,11 @@ class Collector:
         name=match[1]
         if name not in self.stores and len(self.stores)>=30:return
         item=self.stores.setdefault(name,{'http_statuses':{},'network_seconds':0,'max_response_seconds':0,'cache_events':0,'issues':[]})
+        stages=('Discover catalog','Collection/category mapping','Building Excel rows','Saving Excel workbook','Parallel category responses','Parallel product prices and pages','Idle')
+        stage=re.search(r'STAGE: (.+)$',text)
+        if stage and stage[1] in stages:
+            if item.get('current_stage')!=stage[1]:item.pop('task_progress',None)
+            item['current_stage']=stage[1]
         progress=re.search(r'FAST FETCH: (category responses|product prices and pages) ([0-9]+)/([0-9]+) tasks processed',text)
         if progress:
             now=time.time();done,total=int(progress[2]),int(progress[3]);old=item.get('task_progress',{})

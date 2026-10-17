@@ -478,7 +478,7 @@ def storefront_price_audit(rows, output, log):
             nodes = soup.select('.price-item--sale, .price-item--regular, .price-item')
             values = []
             for node in nodes[:16]:
-                match = re.search(r'(?:Rs\.?|PKR\s*)([\d,]+(?:\.\d+)?)',
+                match = re.search(r'(?:Rs\.?|PKR)\s*([\d,]+(?:\.\d+)?)',
                                   node.get_text(' ', strip=True), re.I)
                 if match:
                     value = _Decimal(match.group(1).replace(',', ''))
