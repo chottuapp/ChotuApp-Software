@@ -1,0 +1,29 @@
+---
+name: rule-804
+description: Apply the user's Rule 804 when polishing uploaded ChotuApp product catalog Excel files, unless the current request says otherwise.
+---
+
+# Rule 804
+
+Scope: the user's catalog-workbook requests in this project. Treat a subsequent uploaded catalog Excel workbook as this cleanup request when the user invokes Rule 804 or supplies no different instructions.
+
+- Write professional, complete product descriptions. Retain every useful product-specific detail available in the supplied workbook or verified product source; never shorten descriptions to an arbitrary word, sentence or character target. Long descriptions are acceptable when needed.
+- Preserve applicable ingredients/composition, allergens, materials/fabric, measurements and size charts, weight/volume, pack quantities, complete bundle contents, sizes/colours/shades and other options, model/technical specifications, compatibility, manufacturer-stated features/benefits, usage/preparation directions, care/storage instructions, precautions/warnings, and warranty information when actually supplied. Do not invent missing facts, unsupported benefits or certifications.
+- Rewrite descriptions into polished, natural, customer-facing English; do not merely reformat raw supplier wording. Use correct grammar, spelling, punctuation and consistent terminology while preserving the meaning and every distinct useful fact.
+- Open with a concise, product-specific overview explaining what the item is and its source-supported distinguishing features. Follow with relevant sections such as Key Details, Fabric & Fit, Ingredients, Pack Contents, Specifications, How to Use, Care or Storage. Use only sections relevant to the product and omit empty headings.
+- Keep the tone factual, confident and easy to read. Replace awkward phrasing, excessive capitalisation, repetitive product names, filler and exaggerated sales language. Do not invent superlatives, benefits, certifications, specifications or use cases to make the copy sound professional.
+- Present dimensions, units, percentages, pack quantities and option labels consistently without changing their values or converting ambiguous measurements. Preserve technical names and full ingredient/allergen lists. Retain source safety instructions precisely in meaning.
+- Match the writing to the product: apparel should explain sourced design, fit, fabric and care; food should retain ingredients, contents, quantities, preparation and storage; beauty products should retain sourced purpose, formulation, directions and cautions; electronics should retain full specifications and compatibility. Do not apply one generic description template to every category.
+- Organize descriptions with clear paragraphs, headings and lists where helpful. Remove only duplicate prose, irrelevant company copy, SEO keyword stuffing and sales calls to action; do not remove distinct useful information merely to make the text shorter.
+- Check that descriptions belong to the named product. Remove clearly copied details belonging to another product and use only supported facts for the correct product. Flag conflicting measurements or uncertain specifications rather than choosing or inventing a value. Preserve useful newly fetched information instead of replacing it with a generic short template.
+- If Excel's 32,767-character cell limit prevents retaining all useful detail, flag the limitation and agree on a suitable additional representation; do not silently truncate important content or change the workbook schema without authorization.
+- Correct and standardize categories/subcategories using product evidence; do not use a brand name as a product type.
+- Updated 2026-10-17: group products by corrected category, then put cheaper products first within each category. Use the valid positive sale price when below the regular price, otherwise the positive regular price. For equal payable prices, put higher genuine percentage discounts first, then retain original order unless verified popularity evidence exists. Preserve source price values exactly.
+- Provide up to five clearly labelled budget picks per category in a separate report when useful. Guessed recommendations must never be presented as verified top-selling products, sales counts or website rankings. Verified best-selling evidence may be reported separately; it must not silently override the user’s cheaper-first category ordering.
+- Remove standalone promotional gifts and products missing a valid positive price. A paid normal product that includes a complimentary gift is not automatically a gift product.
+- Remove related image/variant records and exclusively owned option groups/options for deleted products, preserving shared groups and referential integrity.
+- Preserve formulas, headers, sheets, formatting, product IDs, prices, SKUs, URLs, images, retained variants, availability and other non-requested fields. Limit changes to descriptions, category fields, row order and authorized deletions.
+- Validate every retained product against the source by ID, all unaffected fields, formulas, worksheet structure, relationships and discount order.
+- Publish each completed workbook separately to the authorized GitHub repository and give separate direct download links. Do not publish private runtime configuration, credentials or unrelated local files.
+- Operate on the actual supplied files; do not invent a second input when only one was uploaded. Current instructions override this saved default.
+- When the user supplies a shop-code registry, append a text `shop_code` column to Products and repeat the confirmed store code for every retained product in that store workbook. Preserve all existing cells and ordering. Match exact registry values; ask about ambiguous store aliases rather than guessing. Do not publish the original registry or unrelated private fields.

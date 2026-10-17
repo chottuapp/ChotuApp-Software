@@ -26,3 +26,4 @@ Scope: the user's catalog-workbook requests in this project. Treat a subsequent 
 - Validate every retained product against the source by ID, all unaffected fields, formulas, worksheet structure, relationships and discount order.
 - Publish each completed workbook separately to the authorized GitHub repository and give separate direct download links. Do not publish private runtime configuration, credentials or unrelated local files.
 - Operate on the actual supplied files; do not invent a second input when only one was uploaded. Current instructions override this saved default.
+- When the user supplies a shop-code registry, append a text `shop_code` column to Products and repeat the confirmed store code for every retained product in that store workbook. Preserve all existing cells and ordering. Match exact registry values; ask about ambiguous store aliases rather than guessing. Do not publish the original registry or unrelated private fields.
