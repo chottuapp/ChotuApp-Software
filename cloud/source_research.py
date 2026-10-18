@@ -105,12 +105,30 @@ def inspect(host):
   if status==200:
    robot_text=body.decode('utf-8',errors='replace');robots=RobotFileParser();robots.parse(robot_text.splitlines());records.append({'sitemaps':re.findall(r'(?im)^Sitemap:\s*(https://\S+)',robot_text)[:12]})
   if status in (401,403,429,503):raise RuntimeError('Source robots request denied or limited')
+  # Read one declared sitemap and one product child to establish actual catalog routes.
+  from xml.etree import ElementTree as ET
+  maps=list(dict.fromkeys(re.findall(r'(?im)^Sitemap:\s*(https://\S+)',robot_text))) if status==200 else []
+  for map_url in maps[:1]:
+   def sitemap_info(url):
+    status,final,body,kind=request(session,url,host,5*1024**2);time.sleep(1.5)
+    if status!=200:return []
+    tree=ET.fromstring(body);locs=[e.text.strip() for e in tree.iter() if e.tag.rsplit('}',1)[-1]=='loc' and e.text]
+    records.append({'sitemap_url':public_url(final),'sitemap_type':tree.tag.rsplit('}',1)[-1],'url_count':len(locs),'sample_urls':[public_url(u) for u in locs[:8]]})
+    return locs if tree.tag.rsplit('}',1)[-1]=='sitemapindex' else []
+   children=sitemap_info(map_url)
+   if children:
+    child=next((u for u in children if 'product' in u.lower()),children[0]);sitemap_info(child)
   home=get('https://'+host+'/')
   if home and home.get('status')==200:
    canonical=urlsplit(home['final_url']).hostname
    # Follow real navigation only; never guess product/category API routes.
    if host=='pk.khaadi.com' and canonical!='pk.khaadi.com':
-    records.append({'outcome':'pakistan_locale_unverified','redirect_host':canonical});return {'host':host,'responses':records}
+    records.append({'outcome':'pakistan_locale_unverified','redirect_host':canonical})
+    for record in list(records):
+     if record.get('sitemap_type')=='urlset':
+      products=[u for u in record['sample_urls'] if urlsplit(u).hostname=='pk.khaadi.com' and not urlsplit(u).path.endswith('.xml')]
+      for product in products[:1]:get(product)
+    return {'host':host,'responses':records}
    links=[x['url'] for x in home.get('links',[]) if urlsplit(x['url']).hostname==canonical and urlsplit(x['url']).path not in ('','/')]
    categories=[u for u in links if not re.search(r'privacy|terms|contact|about|shipping|return|faq|stores?|careers|track|polic|country',u,re.I)]
    category_links=[u for u in categories if '/collections/' in u or re.search(r'/(?:new-in|women|men|kids)(?:/|$)',urlsplit(u).path)]
