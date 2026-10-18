@@ -54,6 +54,25 @@ def public_product_state(soup):
         if len(result)>=8:break
     return result
 
+def controller_clues(soup,url):
+    urls=[];clues=[]
+    for script in soup.find_all('script'):
+        text=script.string or script.get_text()
+        for match in re.finditer(r'(?:Product|Country|Locale|Sites?)-[A-Za-z]+',text):
+            snippet=text[max(0,match.start()-160):match.end()+220]
+            if not re.search('token|secret|password|authorization|api.?key|bearer|email|phone',snippet,re.I):clues.append(snippet[:400])
+        for match in re.finditer(r'https?://[^\s"\x27<>]+|/on/demandware.store/[^\s"\x27<>]+',text):
+            value=match.group(0)
+            if re.search(r'(?:Product|Country|Locale)-',value):
+                u=public_url(urljoin(url,value))
+                if u and u not in urls:urls.append(u)
+    for tag in soup.find_all(True):
+        for key,value in tag.attrs.items():
+            if key.startswith('data-') and isinstance(value,str) and re.search(r'(?:Product|Country|Locale)-',value):
+                u=public_url(urljoin(url,value))
+                if u and u not in urls:urls.append(u)
+    return urls[:20],clues[:30]
+
 def describe(text,url):
  soup=BeautifulSoup(text,'html.parser');links=[]
  for a in soup.find_all('a',href=True):
@@ -64,7 +83,8 @@ def describe(text,url):
   u=public_url(urljoin(url,a['href']))
   if u and u not in product_links and '/products/' in u:product_links.append(u)
  locale_controls=[str(t)[:2000] for t in soup.select('select[name*=country],select[id*=country],a[data-country],form[action*=Country],a[href*="pk.khaadi"]')][:10]
- return {'url':public_url(url),'page':inspect_page(text,url),'product_links':product_links[:30],'locale_controls':locale_controls,'links':links[:500],'visible_html':clean_html(text),'public_product_state':public_product_state(soup),'module_preloads':[public_url(urljoin(url,t['href'])) for t in soup.select('link[rel=modulepreload][href]')][:15]}
+ controllers,clues=controller_clues(soup,url)
+ return {'url':public_url(url),'public_controller_urls':controllers,'public_route_clues':clues,'page':inspect_page(text,url),'product_links':product_links[:30],'locale_controls':locale_controls,'links':links[:500],'visible_html':clean_html(text),'public_product_state':public_product_state(soup),'module_preloads':[public_url(urljoin(url,t['href'])) for t in soup.select('link[rel=modulepreload][href]')][:15]}
 def inspect(host):
  session=requests.Session();session.headers['User-Agent']=AGENT;records=[];robots=None;home=None
  def get(url):
@@ -112,7 +132,7 @@ def inspect(host):
        if size>3*1024**2:raise ValueError('App script exceeds diagnostic limit')
        chunks.append(part)
       text=b''.join(chunks).decode('utf-8',errors='replace');snippets=[]
-      for match in re.finditer(r'https?://[^\s"\x27`<>]+|/api/[^\s"\x27`<>]+|(?:graphql|baseURL|baseUrl|Search-Show|Product-Variation|Search-UpdateGrid|/products/|/variants/|api.octane|api.laam)',text):
+      for match in re.finditer(r'https?://[^\s"\x27`<>]+|/api/[^\s"\x27`<>]+|(?:graphql|baseURL|baseUrl|Search-Show|Product-[A-Za-z]+|Country-[A-Za-z]+|Locale-[A-Za-z]+|Search-UpdateGrid|/products/|/variants/|api.octane|api.laam)',text):
        snippet=text[max(0,match.start()-100):match.end()+180]
        if not re.search('token|secret|password|authorization|api.?key|bearer|email|phone',snippet,re.I):snippets.append(snippet[:450])
        if len(snippets)>=70:break
