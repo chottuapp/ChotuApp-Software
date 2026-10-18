@@ -10,7 +10,7 @@ SKIP=re.compile(r'/account|/cart|/checkout|/search|/policies|/pages/|/blogs/|/pr
 
 def public_link(base,value):
     try:
-        p=urlsplit(urljoin(base,str(value)))
+        p=urlsplit(urljoin(base,str(value).strip()))
         if p.scheme!='https' or p.username or p.password or p.port not in (None,443):return ''
     except (ValueError,TypeError):return ''
     host=(p.hostname or '').lower().removeprefix('www.');expected=(urlsplit(base).hostname or '').lower().removeprefix('www.')

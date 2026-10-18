@@ -15,6 +15,8 @@ class WebsiteOrderTests(unittest.TestCase):
  def fact(self,cat=1,sub=1,product=1,label='Skin'):
   return {'category':label,'subcategory':'','category_order':cat,'subcategory_order':sub,'product_order':product,'source_url':BASE+'/collections/skin','checked_at':'2026-10-18T00:00:00Z'}
  def row(self,key,price):return {'product_id':key,'name':key,'category':'Old category','source_url':BASE+'/products/'+key,'base_price (PKR)':price,'sku':'SKU-'+key,'analysis_note':'Manual note'}
+ def test_browser_style_outer_url_whitespace_is_trimmed_for_real_shopmodest_links(self):
+  self.assertEqual(order.public_link('https://www.shopmodest.pk',' /collections/sale '),'https://www.shopmodest.pk/collections/sale')
  def test_navigation_order_and_exact_nested_labels_exclude_footer(self):
   nav=order.navigation(BeautifulSoup(HOME,'html.parser'),BASE)
   self.assertEqual([n['url'] for n in nav],[BASE+'/collections/skin',BASE+'/collections/makeup',BASE+'/collections/lips'])
