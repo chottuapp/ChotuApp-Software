@@ -195,9 +195,43 @@ def artifact_review():
             reports.append({'name':path.name,'columns':rows[0] if rows else [],'findings':selected[:30],'finding_count':len(selected)})
         return {'run_id':run,'reports':reports}
 
+def variant_review():
+    """Read only Zellbury's public API cache from the saved checkpoint."""
+    import sqlite3,zipfile,shutil
+    from checkpoint_parts import archive_path
+    run='39124854389'
+    with tempfile.TemporaryDirectory() as folder:
+        response=subprocess.run(['gh','run','download',run,'--repo','chottuapp/ChotuApp-Software','--name','chotuapp-checkpoint','--dir',folder],stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=240)
+        if response.returncode:return {'outcome':'checkpoint_unavailable'}
+        with archive_path(folder) as archive,zipfile.ZipFile(archive) as zipped:
+            matches=[info for info in zipped.infolist() if info.filename.endswith('/27/api.sqlite3')]
+            if len(matches)!=1 or matches[0].file_size>512*1024**2:return {'outcome':'public_api_cache_unavailable'}
+            path=Path(folder)/'zellbury-api.sqlite3'
+            with zipped.open(matches[0]) as incoming,path.open('wb') as outgoing:shutil.copyfileobj(incoming,outgoing)
+        connection=sqlite3.connect('file:'+str(path)+'?mode=ro',uri=True);products={};live={}
+        try:
+            for url,payload in connection.execute('SELECT url,payload FROM responses'):
+                if urlsplit(url).hostname!='zellbury.com':continue
+                try:data=json.loads(payload)
+                except (ValueError,TypeError):continue
+                if isinstance(data,dict) and isinstance(data.get('products'),list):
+                    for product in data['products']:
+                        if isinstance(product,dict) and product.get('id') is not None:products[str(product['id'])]=product
+                elif isinstance(data,dict) and isinstance(data.get('variants'),list) and urlsplit(url).path.endswith('.js'):live[urlsplit(url).path.rsplit('/',1)[-1][:-3]]=data
+        finally:connection.close()
+        seen={};collisions=[]
+        for pid,product in products.items():
+            for variant in live.get(product.get('handle'),product).get('variants',[]):
+                if not isinstance(variant,dict) or variant.get('id') is None:continue
+                record={'product_id':pid,'handle':product.get('handle'),'variant':{k:variant[k] for k in ('id','title','option1','option2','option3','price','compare_at_price','available') if k in variant}}
+                identity=str(variant['id'])
+                if identity in seen:collisions.append({'first':seen[identity],'repeated':record})
+                else:seen[identity]=record
+        return {'outcome':'inspected','product_count':len(products),'collision_count':len(collisions),'collisions':collisions[:15]}
+
 def main():
  run=os.environ.get('GITHUB_RUN_ID','')
  if not run.isdigit():raise ValueError('Research publication requires an Actions run identity')
- data={'run_id':run,'checked_utc':datetime.now(timezone.utc).isoformat(),'sources':[inspect(h) for h in HOSTS],'export_audits':artifact_review()};publish(data)
+ data={'run_id':run,'checked_utc':datetime.now(timezone.utc).isoformat(),'sources':[inspect(h) for h in HOSTS],'export_audits':artifact_review(),'variant_identity':variant_review()};publish(data)
  print('Sanitized public source fixtures published; application fetching not started.')
 if __name__=='__main__':main()
