@@ -25,14 +25,41 @@ def clean_html(text):
    elif key in ('href','src','action','data-url','data-href'):
     value=str(tag.attrs[key]);tag.attrs[key]=public_url(value) if value.startswith(('http://','https://')) else value.split('?')[0]
  # Preserve product/variation/cart-free markup, with bounded public snippets.
- candidates=soup.select('main, [role=main], .page, .product-detail, .search-results')
- return str(candidates[0] if candidates else soup)[:65000]
+ candidate=soup.select_one('main') or soup.select_one('[role=main]') or soup.select_one('.product-detail') or soup.select_one('.search-results') or soup.select_one('#maincontent')
+ return str(candidate if candidate else soup)[:80000]
+def public_product_state(soup):
+    state=soup.find('script',id='__NUXT_DATA__')
+    if state is None:return []
+    try:flat=json.loads(state.string or state.get_text())
+    except (ValueError,TypeError):return []
+    if not isinstance(flat,list):return []
+    def decode(index,seen=frozenset(),depth=0):
+        if not isinstance(index,int) or isinstance(index,bool):return index
+        if index<0 or index>=len(flat) or index in seen or depth>18:return None
+        value=flat[index];seen=seen|{index}
+        if isinstance(value,dict):return {k:decode(v,seen,depth+1) for k,v in value.items() if not re.search('token|secret|password|authorization|email|phone|session|cookie|address',k,re.I)}
+        if isinstance(value,list):
+            if value and isinstance(value[0],str) and value[0] in ('Ref','ShallowRef','Reactive','ShallowReactive'):return decode(value[1],seen,depth+1) if len(value)>1 else None
+            return [decode(v,seen,depth+1) for v in value[:300]]
+        return value
+    result=[]
+    for item in flat:
+        if not isinstance(item,dict):continue
+        # Only decoded objects with product identity and explicit commercial fields.
+        keys=set(item)
+        if keys.intersection(('variants','variant_groups','product_variants','options')) and keys.intersection(('title','name','handle','slug','product_id','id')):
+            obj={k:decode(v) for k,v in item.items() if not re.search('token|secret|password|authorization|email|phone|session|cookie|address',k,re.I)}
+            payload=json.dumps(obj,ensure_ascii=True)
+            if len(payload)<90000:result.append(obj)
+        if len(result)>=8:break
+    return result
+
 def describe(text,url):
  soup=BeautifulSoup(text,'html.parser');links=[]
  for a in soup.find_all('a',href=True):
   u=public_url(urljoin(url,a['href']));label=a.get_text(' ',strip=True)[:90]
   if u and not re.search(r'login|account|register|logout|checkout|cart|mailto|tel:|javascript:',u,re.I) and not any(x['url']==u for x in links):links.append({'url':u,'text':label})
- return {'url':public_url(url),'page':inspect_page(text,url),'links':links[:350],'visible_html':clean_html(text)}
+ return {'url':public_url(url),'page':inspect_page(text,url),'links':links[:500],'visible_html':clean_html(text),'public_product_state':public_product_state(soup),'module_preloads':[public_url(urljoin(url,t['href'])) for t in soup.select('link[rel=modulepreload][href]')][:15]}
 def inspect(host):
  session=requests.Session();session.headers['User-Agent']=AGENT;records=[];robots=None;home=None
  def get(url):
@@ -56,8 +83,12 @@ def inspect(host):
   if home and home.get('status')==200:
    canonical=urlsplit(home['final_url']).hostname
    # Follow real navigation only; never guess product/category API routes.
+   if host=='pk.khaadi.com' and canonical!='pk.khaadi.com':
+    records.append({'outcome':'pakistan_locale_unverified','redirect_host':canonical});return {'host':host,'responses':records}
    links=[x['url'] for x in home.get('links',[]) if urlsplit(x['url']).hostname==canonical and urlsplit(x['url']).path not in ('','/')]
    categories=[u for u in links if not re.search(r'privacy|terms|contact|about|shipping|return|faq|stores?|careers|track|polic|country',u,re.I)]
+   category_links=[u for u in categories if '/collections/' in u or re.search(r'/(?:new-in|women|men|kids)(?:/|$)',urlsplit(u).path)]
+   if category_links:categories=category_links
    for url in categories[:2]:
     page=get(url)
     if not page or page.get('status')!=200:continue
@@ -75,7 +106,7 @@ def inspect(host):
        if size>3*1024**2:raise ValueError('App script exceeds diagnostic limit')
        chunks.append(part)
       text=b''.join(chunks).decode('utf-8',errors='replace');snippets=[]
-      for match in re.finditer(r'https?://[^\s"\x27`<>]+|/api/[^\s"\x27`<>]+|(?:graphql|baseURL|baseUrl|Search-Show|Product-Variation|Search-UpdateGrid)',text):
+      for match in re.finditer(r'https?://[^\s"\x27`<>]+|/api/[^\s"\x27`<>]+|(?:graphql|baseURL|baseUrl|Search-Show|Product-Variation|Search-UpdateGrid|/products/|/variants/|api.octane|api.laam)',text):
        snippet=text[max(0,match.start()-100):match.end()+180]
        if not re.search('token|secret|password|authorization|api.?key|bearer|email|phone',snippet,re.I):snippets.append(snippet[:450])
        if len(snippets)>=70:break
