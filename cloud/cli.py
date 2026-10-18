@@ -45,13 +45,32 @@ def checkpoint(data,destination,max_bytes=250*1024*1024):
     finally:temporary.unlink(missing_ok=True)
 
 
+
+# Large successful response caches can exceed the old fixed 8 GiB threshold.
+# Keep a finite expansion cap and reserve working space before writing anything.
+MAX_RESTORE_BYTES=24*1024**3
+RESTORE_RESERVE_BYTES=1024**3
+
+def restore_capacity(entries,data):
+    import shutil
+    expanded=sum(item.file_size for item in entries)
+    free=shutil.disk_usage(data).free
+    gib=1024**3
+    print(f'Checkpoint restore preflight: expanded={expanded/gib:.2f} GiB, free={free/gib:.2f} GiB, reserve={RESTORE_RESERVE_BYTES/gib:.2f} GiB, maximum={MAX_RESTORE_BYTES/gib:.0f} GiB.',flush=True)
+    if expanded>MAX_RESTORE_BYTES:
+        raise ValueError(f'Checkpoint needs {expanded/gib:.2f} GiB expanded; exceeds {MAX_RESTORE_BYTES/gib:.0f} GiB restore safety limit. Existing checkpoint and exports are unchanged.')
+    if free<expanded+RESTORE_RESERVE_BYTES:
+        raise ValueError(f'Insufficient disk space to restore checkpoint: needs {(expanded+RESTORE_RESERVE_BYTES)/gib:.2f} GiB including working reserve; available {free/gib:.2f} GiB. No checkpoint entries extracted.')
+    return expanded
+
+
 def _restore_unlocked(archive,data):
     data=Path(data).resolve();data.mkdir(parents=True,exist_ok=True)
     with zipfile.ZipFile(archive) as zipped:
         import shutil
-        expanded=sum(item.file_size for item in zipped.infolist())
-        if expanded>8*1024**3:raise ValueError('Checkpoint exceeds 8 GB expanded safety limit')
-        if shutil.disk_usage(data).free<expanded+256*1024**2:raise ValueError('Insufficient disk space to restore checkpoint')
+        entries=zipped.infolist()
+        restore_capacity(entries,data)
+        if len({item.filename for item in entries})!=len(entries):raise ValueError('Duplicate checkpoint entries')
         for item in zipped.infolist():
             path=Path(item.filename)
             allowed=(path.parts[:1] in [('saved_runs',),('ANAS_DATA_FETCH',)] or path.parts[:2]==('runtime','source_pacing') or item.filename in ('template.xlsx','controls.json'))

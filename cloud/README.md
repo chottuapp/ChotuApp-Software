@@ -185,7 +185,7 @@ The former 250 MB compressed cutoff caused a real stopped run to lose its downlo
 resume checkpoint. New saves keep legacy checkpoint.zip for small archives and split
 larger archives into checksummed 250 MB parts plus a manifest, uploaded together as
 chotuapp-checkpoint. Resume supports both formats and verifies part order, sizes and
-SHA-256 checksums before extraction. Limits are 2 GB compressed and 8 GB expanded,
+SHA-256 checksums before extraction. Limits are 2 GB compressed and 24 GiB expanded (also bounded by actual free disk space with 1 GiB reserved),
 with free-disk checks; GitHub artifact quotas and 1-day retention still apply. Splitting
 does not reduce total storage or guarantee an upload. Already deleted/expired checkpoints
 from earlier workflow revisions cannot be recovered by this code update.

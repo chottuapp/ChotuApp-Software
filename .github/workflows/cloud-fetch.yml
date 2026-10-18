@@ -77,11 +77,6 @@ jobs:
             sudo apt-get install -y python3-tk
           fi
           python -m pip install -r requirements.txt
-      - name: Install Czone browser fallback when needed
-        if: inputs.resume_run_id != '' || contains(inputs.stores, 'czone.com.pk')
-        run: |
-          python -m pip install playwright==1.55.0
-          python -m playwright install --with-deps chromium
       - name: Restore optional saved run
         if: inputs.resume_run_id != ''
         env:
@@ -89,6 +84,12 @@ jobs:
         run: |
           case "$RESUME_RUN_ID" in *[!0-9]*|'') echo 'Run ID must contain only digits'; exit 1;; esac
           gh run download "$RESUME_RUN_ID" --repo "$GITHUB_REPOSITORY" --name chotuapp-checkpoint --dir "$RUNNER_TEMP/chotu-restore"
+          python cloud/prepare_resume.py --archive "$RUNNER_TEMP/chotu-restore" --data .cloud-data
+      - name: Install Czone browser fallback when needed
+        if: env.CLOUD_NEEDS_CZONE_BROWSER == 'true' || (inputs.resume_run_id == '' && contains(inputs.stores, 'czone.com.pk'))
+        run: |
+          python -m pip install playwright==1.55.0
+          python -m playwright install --with-deps chromium
       - name: Start continuous fetching on the cloud runner
         id: launch
         run: python cloud/background_run.py start .cloud-data

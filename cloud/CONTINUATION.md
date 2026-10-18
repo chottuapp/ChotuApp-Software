@@ -26,3 +26,14 @@ three ordinary requests per host, respects robots and stops at access denial or
 rate limits. It publishes only a limited public summary to source-reports; raw
 public fixtures expire as an Actions artifact after one day. It does not fix or
 claim successful extraction from unsupported platforms.
+
+## Large restored batches
+
+Restore preflights the declared uncompressed size against both a 24 GiB maximum
+and actual free disk space, retaining 1 GiB for working files. Unsafe paths and
+duplicate ZIP members are rejected before extraction. This lifts the old 8 GiB
+ceiling without disabling expansion or disk checks. The workflow restores once
+before optional browser setup; valid completed Czone exports do not trigger a
+new Chromium installation. Pending or missing Czone exports still do. Restored
+progress is verified on the next cloud run; a larger-than-24-GiB archive or
+insufficient runner storage still requires a different recovery strategy.
