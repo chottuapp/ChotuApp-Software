@@ -119,6 +119,8 @@ def inspect(host):
   if status==200:
    robot_text=body.decode('utf-8',errors='replace');robots=RobotFileParser();robots.parse(robot_text.splitlines());records.append({'sitemaps':re.findall(r'(?im)^Sitemap:\s*(https://\S+)',robot_text)[:12]})
   if status in (401,403,429,503):raise RuntimeError('Source robots request denied or limited')
+  if host=='laam.com' and os.environ.get('SOURCE_TARGET_PRODUCT')=='0085':
+   get('https://laam.com/products/0085');return {'host':host,'responses':records}
   # Read one declared sitemap and one product child to establish actual catalog routes.
   from xml.etree import ElementTree as ET
   maps=list(dict.fromkeys(re.findall(r'(?im)^Sitemap:\s*(https://\S+)',robot_text))) if status==200 else []
@@ -252,6 +254,6 @@ def variant_review():
 def main():
  run=os.environ.get('GITHUB_RUN_ID','')
  if not run.isdigit():raise ValueError('Research publication requires an Actions run identity')
- data={'run_id':run,'checked_utc':datetime.now(timezone.utc).isoformat(),'sources':[inspect(h) for h in HOSTS],'export_audits':artifact_review(),'variant_identity':variant_review() if os.environ.get('SOURCE_INSPECT_CHECKPOINT')=='1' else {'outcome':'previously_inspected'}};publish(data)
+ data={'run_id':run,'checked_utc':datetime.now(timezone.utc).isoformat(),'sources':[inspect(h) for h in (('laam.com',) if os.environ.get('SOURCE_TARGET_PRODUCT')=='0085' else HOSTS)],'export_audits':{'outcome':'not_requested'} if os.environ.get('SOURCE_TARGET_PRODUCT') else artifact_review(),'variant_identity':variant_review() if os.environ.get('SOURCE_INSPECT_CHECKPOINT')=='1' else {'outcome':'previously_inspected'}};publish(data)
  print('Sanitized public source fixtures published; application fetching not started.')
 if __name__=='__main__':main()
