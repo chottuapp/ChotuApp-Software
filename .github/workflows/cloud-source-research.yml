@@ -1,0 +1,25 @@
+name: ChotuApp Source Adapter Research
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - cloud/source_research.py
+      - .github/workflows/cloud-source-research.yml
+permissions:
+  contents: write
+concurrency:
+  group: chotuapp-source-research
+  cancel-in-progress: false
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install requests beautifulsoup4
+      - name: Inspect actual public navigation and product structures
+        run: python cloud/source_research.py
