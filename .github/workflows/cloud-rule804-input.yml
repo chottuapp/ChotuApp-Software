@@ -1,0 +1,39 @@
+name: Collect requested twelve Rule 804 workbooks
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/cloud-rule804-input.yml]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  collect:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download exact requested snapshot files
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh run download 39145530168 --repo chottuapp/ChotuApp-Software --name chotuapp-excel-files --dir /tmp/exports
+          python - <<'PY'
+          import pathlib,zipfile,json,hashlib
+          names=['Skin Factor','Islamabad Tea','Farda Foods','Nisa Naturals','Adam Cheese','Shop Modest','Denim Leftover','Miss Rose','Cool and Cool','Seran','Rivaj UK','The Hanger Pakistan']
+          root=pathlib.Path('/tmp/exports');out=pathlib.Path('/tmp/rule804-input');out.mkdir()
+          manifest=[]
+          with zipfile.ZipFile(out/'input.zip','w',zipfile.ZIP_DEFLATED) as z:
+              for name in names:
+                  found=list(root.rglob(name+'.xlsx'))
+                  assert len(found)==1,(name,len(found))
+                  p=found[0];z.write(p,p.name);manifest.append({'name':p.name,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()})
+          (out/'manifest.json').write_text(json.dumps({'run':'39145530168','files':manifest},indent=2))
+          PY
+      - name: Publish only requested workbooks
+        run: |
+          cd /tmp/rule804-input
+          git init -b rule804-inputs
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add input.zip manifest.json
+          git commit -m 'Requested twelve source workbooks for Rule 804'
+          git -c credential.helper= -c "http.https://github.com/.extraheader=$(git -C "$GITHUB_WORKSPACE" config --get http.https://github.com/.extraheader)" push "https://github.com/$GITHUB_REPOSITORY.git" HEAD:refs/heads/rule804-inputs --force
