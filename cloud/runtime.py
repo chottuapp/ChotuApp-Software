@@ -14,6 +14,12 @@ MODULES=('ranking_support.py','resume_support.py','fast_fetch_support.py','farda
 DEFAULT_TEMPLATE=ROOT/'importer-files/Chotu_Products_Import_Template_Discount_Tags.xlsx'
 
 
+def prioritize_stores(sites):
+    """Stable queue by prior observed count, never invent counts for new stores."""
+    counts=json.loads((ROOT/'cloud/store-priority.json').read_text())['product_counts']
+    return sorted(sites,key=lambda site:counts.get(site['name'],float('inf')))
+
+
 def prepare_engine(data):
     """Generate a separate runtime; never patch the Windows application in place."""
     import install_fast_fetch,install_farda_source,install_czone_source,install_speed_patch
@@ -92,6 +98,9 @@ class CloudService:
                 if not isinstance(sites,list) or not 1<=len(sites)<=30:raise ValueError('Select 1 to 30 stores')
                 chosen=[validate_site(x,self.resolve_sites) for x in sites]
                 if len({output_key(x) for x in chosen})!=len(chosen):raise ValueError('Every store needs a distinct name')
+                # Historical exported counts prioritize smaller known catalogs; unknowns remain stable last.
+                chosen=prioritize_stores(chosen)
+                self.event('QUEUE: smaller historical catalogs first; unknown counts last; fresh source data fetched again')
                 template=self.data/'template.xlsx'
                 if not template.exists():shutil.copy2(DEFAULT_TEMPLATE,template)
                 book=load_workbook(template,read_only=True)
