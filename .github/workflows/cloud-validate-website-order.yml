@@ -57,7 +57,7 @@ jobs:
                   capture=Capture(g,base,logs.append,max_requests=4,max_pages=1)
                   evidence=capture.collect()
                   samples=[{'product':key,'category':fact['category'],'subcategory':fact['subcategory'],'position':fact['product_order'],'url':fact['source_url'],'checked_at':fact['checked_at']} for key,fact in list(evidence.items())[:3]]
-                  sources.append({'url':base,'placements':len(evidence),'coverage':'bounded_prefix','samples':samples,'logs':logs[-3:]})
+                  sources.append({'url':base,'placements':len(evidence),'coverage':'bounded_prefix','samples':samples,'logs':logs[-3:],'unsupported_markup':capture.markup_debug})
           report={'run_id':os.environ['GITHUB_RUN_ID'],'source_commit':os.environ['GITHUB_SHA'],'validation':'success' if any(s['placements'] for s in sources) else 'no_supported_live_listing_verified','sources':sources,'fetch_runs_unchanged':True}
           publish(report,branch='website-order-reports')
           print(json.dumps(report,indent=2))

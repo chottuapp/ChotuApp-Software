@@ -41,7 +41,7 @@ def navigation(soup,base):
                 parent=node.find('a',recursive=False) or node.find('summary',recursive=False)
                 if parent is not None and parent is not anchor and parent.get_text(' ',strip=True):
                     text=parent.get_text(' ',strip=True)
-                    if text.casefold() not in ('shop','shop now','menu','all products'):parent_label=text
+                    if text.casefold() not in ('shop','shop now','menu','all products','categories','category','shop by category','products','collections'):parent_label=text
             category=parent_label or label;subcategory=label if parent_label and parent_label!=label else ''
             groups.setdefault(category,len(groups)+1)
             result.append({'url':url,'category':category,'subcategory':subcategory,'category_order':groups[category],'subcategory_order':len(result)+1})
@@ -72,7 +72,7 @@ def next_page(soup,base):
 
 class Capture:
     def __init__(self,g,base,log,max_requests=80,max_pages=5):
-        self.g=g;self.base=base.rstrip('/');self.log=log;self.limit=max_requests;self.max_pages=max_pages;self.requests=0;self.robot=None;self.evidence={};self.complete=True;self.last=0
+        self.g=g;self.base=base.rstrip('/');self.log=log;self.limit=max_requests;self.max_pages=max_pages;self.requests=0;self.robot=None;self.evidence={};self.complete=True;self.last=0;self.markup_debug=[]
     def page(self,url):
         url=public_link(self.base,url)
         if not url or self.requests>=self.limit:raise ValueError('Storefront order request limit reached')
@@ -93,13 +93,25 @@ class Capture:
             # BeautifulSoup.get_text preserves plain robots.txt responses.
             self.robot=RobotFileParser();self.robot.parse(robots.get_text().splitlines())
             home=self.page(self.base+'/');categories=navigation(home,self.base)
+            if not categories:
+                for anchor in home.select('a[href]'):
+                    url=public_link(self.base,anchor['href'])
+                    if url and re.search(r'/collections/|/(women|men|kids|new-in)(?:/|$)',urlsplit(url).path):
+                        self.markup_debug.append({'label':anchor.get_text(' ',strip=True)[:80],'url':url,'parents':[{'tag':p.name,'class':p.get('class',[]),'id':p.get('id','')} for p in list(anchor.parents)[:5]]})
+                    if len(self.markup_debug)>=12:break
             if not categories:raise ValueError('No supported public category navigation found')
             for category in categories:
                 current=category['url'];visited=set();position=0;seen_products=set();finished=False;declared_sort=dict(parse_qsl(urlsplit(current).query)).get('sort_by')
                 for page_number in range(self.max_pages):
                     if not current or current in visited:break
                     visited.add(current);page=self.page(current);keys=grid_products(page,self.base)
-                    if not keys:self.complete=False;break
+                    if not keys:
+                        self.complete=False
+                        for anchor in page.select('a[href]'):
+                            url=public_link(self.base,anchor['href'])
+                            if url and '/products/' in urlsplit(url).path:self.markup_debug.append({'url':url,'parents':[{'tag':p.name,'class':p.get('class',[]),'id':p.get('id','')} for p in list(anchor.parents)[:6]]})
+                            if len(self.markup_debug)>=8:break
+                        break
                     checked=datetime.now(timezone.utc).isoformat()
                     for key in keys:
                         if key in seen_products:continue
