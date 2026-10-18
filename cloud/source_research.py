@@ -102,6 +102,13 @@ def inspect(host):
   elif status==200 and 'json' in kind:
    try:
     value=json.loads(body);record['json_keys']=list(value)[:50] if isinstance(value,dict) else []
+    if isinstance(value,dict) and isinstance(value.get('product'),dict):
+     def safe_product(item):
+      if isinstance(item,dict):return {k:safe_product(v) for k,v in item.items() if not re.search('token|secret|password|authorization|email|phone|session|cookie|address',k,re.I)}
+      if isinstance(item,list):return [safe_product(v) for v in item[:100]]
+      return item
+     product=safe_product(value['product'])
+     if len(json.dumps(product))<120000:record['public_product']=product
    except ValueError:pass
   records.append(record)
   if status in (401,403,429,503):raise RuntimeError('Source unavailable or limited; diagnostic stopped')
@@ -143,7 +150,12 @@ def inspect(host):
     page=get(url)
     if not page or page.get('status')!=200:continue
     products=page.get('product_links',[]) or [x['url'] for x in page.get('links',[]) if urlsplit(x['url']).hostname==canonical and '/products/' in x['url'] and x['url']!=url]
-    for product in list(dict.fromkeys(products))[:2]:get(product)
+    for product in list(dict.fromkeys(products))[:2]:
+     detail=get(product)
+     if host=='sapphireonline.pk' and detail:
+      pid=urlsplit(product).path.rsplit('/',1)[-1].removesuffix('.html')
+      controls=[x['url'] for x in detail.get('public_product_controls',[]) if urlsplit(x['url']).path.endswith('/Product-Variation') and dict(parse_qsl(urlsplit(x['url']).query)).get('pid')==pid]
+      for variation in controls[:2]:get(variation)
    # Inspect one actual first-party application script, extracting only public route clues.
    scripts=[u for record in records for u in record.get('page',{}).get('script_urls',[])]
    script=next((u for u in scripts if '/js/productDetail.js' in u and urlsplit(u).hostname==canonical),None) or next((u for u in scripts if ('/_nuxt/' in u and urlsplit(u).hostname=='cdn.octane.store') or ('/js/main.js' in u and urlsplit(u).hostname==canonical)),None)
