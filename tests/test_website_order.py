@@ -46,6 +46,9 @@ class WebsiteOrderTests(unittest.TestCase):
  def test_actual_default_pagination_preserves_first_occurrence_and_no_forced_sort(self):
   pages={BASE+'/robots.txt':'User-agent: *\nAllow: /',BASE+'/':HOME,BASE+'/collections/skin':page(['high','cheap'],'?page=2'),BASE+'/collections/skin?page=2':page(['cheap','next']),BASE+'/collections/makeup':page(['face']),BASE+'/collections/lips':page(['lip'])}
   capture,calls=self.capture(pages);facts=capture.collect();self.assertTrue(capture.complete);self.assertEqual(facts['next']['product_order'],3);self.assertEqual(facts['high']['product_order'],1);self.assertFalse(any('best-selling' in u for u in calls))
+ def test_observed_shopmodest_t4s_and_laam_sidebar_markup(self):
+  html='<main><div class="side-nav side-nav--with-banner"><div><a href="/new-in">New in</a></div><button><div><a href="/women">Women</a></div></button></div><div class="t4s_box_pr_grid t4s-products"><div class="t4s-product"><div class="t4s-product-wrapper"><div class="t4s-product-inner"><a href="/products/frock">Image</a></div><h3><a href="/products/frock">Title</a></h3></div></div><div class="t4s-product"><a href="/products/second">Second</a></div></div></main>'
+  soup=BeautifulSoup(html,'html.parser');self.assertEqual(order.grid_products(soup,BASE),['frock','second']);self.assertEqual([item['category'] for item in order.navigation(soup,BASE)],['New in','Women'])
  def test_next_page_keeps_sort_only_when_website_default_control_declares_it(self):
   selected='<select name="sort_by"><option selected value="best-selling">Best selling</option></select>'
   pages={BASE+'/robots.txt':'User-agent: *\nAllow: /',BASE+'/':HOME,BASE+'/collections/skin':selected+page(['one'],'?sort_by=best-selling&page=2'),BASE+'/collections/skin?sort_by=best-selling&page=2':page(['two']),BASE+'/collections/makeup':page(['face']),BASE+'/collections/lips':page(['lip'])}

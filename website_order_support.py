@@ -5,7 +5,7 @@ from datetime import datetime,timezone
 import re,time
 from bs4 import BeautifulSoup
 FIELDS=('website_category_order','website_subcategory_order','website_product_order','website_order_source_url','website_order_checked_at','website_order_status')
-GRID='#product-grid, [data-product-grid], .product-grid, .collection-products, .products-grid, .grid--view-items, .product-list'
+GRID='#product-grid, [data-product-grid], .product-grid, .collection-products, .products-grid, .grid--view-items, .product-list, .t4s-products'
 SKIP=re.compile(r'/account|/cart|/checkout|/search|/policies|/pages/|/blogs/|/products/',re.I)
 
 def public_link(base,value):
@@ -25,7 +25,7 @@ def product_key(value):
 def navigation(soup,base):
     """Only observed header navigation/collection links, never the API's collection order."""
     roots=soup.select('header nav, header [role=navigation], [role=banner] nav, #shopify-section-header nav')
-    if not roots:roots=soup.select('header, [role=banner]')
+    if not roots:roots=soup.select('header, [role=banner], .side-nav')
     if not roots:roots=[node for node in soup.select('nav') if node.find_parent('footer') is None]
     result=[];seen=set();groups={}
     for root in roots:
