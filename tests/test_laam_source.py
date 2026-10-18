@@ -24,6 +24,29 @@ class LaamTests(unittest.TestCase):
    for before,after in zip(raw['variants'],p['variants']):
     self.assertEqual(after['id'],before['shopify_id']);self.assertEqual(after['price'],before['price']);self.assertEqual(after['inventory_quantity'],before['inventory_quantity']);self.assertEqual(after['option1'],before['title']);self.assertEqual(after['sku'],before['sku'])
    self.assertEqual([i['src'] for i in p['images']],[i['src'] for i in raw['media']]);self.assertEqual(p['_source_url'],fixture['url'])
+ def test_actual_0085_reversed_option_array_uses_explicit_source_positions(self):
+  raw=json.loads((ROOT/'tests/fixtures/laam_public_product_0085.json').read_text());before=copy.deepcopy(raw)
+  product=source.product_state(BeautifulSoup(html(raw),'html.parser'),'0085')
+  self.assertEqual(raw,before);self.assertEqual([d['name'] for d in product['options']],['Kids Size','Stitching Type'])
+  self.assertEqual(len(product['variants']),4)
+  for original,variant in zip(raw['variants'],product['variants']):
+   size,stitching=original['title'].split(' / ');self.assertEqual(variant['option1'],size);self.assertEqual(variant['option2'],stitching)
+   for key in ('price','compare_at_price','sku','inventory_quantity'):self.assertEqual(variant[key],original[key])
+   self.assertEqual(variant['id'],original['shopify_id']);self.assertEqual(variant['available'],original['stock_status']=='limited-stock')
+  self.assertEqual(sum(v['available'] for v in product['variants']),1)
+ def test_incomplete_duplicate_and_non_numeric_positions_are_not_guessed(self):
+  original=json.loads((ROOT/'tests/fixtures/laam_public_product_0085.json').read_text())
+  for positions in ((1,1),(None,1),('2',1),(True,2),(1,3)):
+   raw=copy.deepcopy(original)
+   for option,position in zip(raw['options'],positions):option['position']=position
+   with self.assertRaisesRegex(ValueError,'option positions'):source.normalize(raw,'0085')
+ def test_parser_errors_are_not_mislabelled_as_source_access_blocks(self):
+  keys=('discover','collections','refresh_variant_prices','storefront_cover','verified_top20','audit_fractional_prices','storefront_price_audit')
+  for error,prefix in ((ValueError('bad option data'),'ADAPTER ERROR:'),(source.SourceAccessError('robots denied'),'SOURCE BLOCKED:')):
+   def original(*args):raise error
+   g={key:(lambda *args:None) for key in keys};before=dict(g);g['_chotuapp_run_site_original']=original;source.enable_laam_source(g)
+   with self.assertRaisesRegex(RuntimeError,prefix):g['_chotuapp_run_site_original'](source.BASE,'LAAM',None,lambda _:None)
+   for key in keys:self.assertIs(g[key],before[key])
  def test_foreign_currency_rejected(self):
   raw=FIXTURES[0]['product']
   with self.assertRaisesRegex(ValueError,'currency unverified'):source.product_state(BeautifulSoup(html(raw,'USD'),'html.parser'),raw['handle'])

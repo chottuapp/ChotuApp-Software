@@ -1,0 +1,49 @@
+name: Validate LAAM Variant Repair
+on:
+  push:
+    branches: [main]
+    paths:
+      - laam_source_support.py
+      - tests/test_laam_source.py
+      - tests/fixtures/laam_public_product_0085.json
+      - .github/workflows/cloud-validate-laam.yml
+permissions:
+  contents: write
+concurrency:
+  group: chotuapp-laam-repair-validation
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - name: Validate actual failing product and source/error regressions
+        env:
+          PYTHONPATH: tests:cloud
+        run: python -m unittest tests.test_laam_source tests.test_cloud_diagnostics tests.test_source_compatibility
+      - name: Verify repair against live public product without restarting fetching
+        run: |
+          PYTHONPATH=cloud python - <<'PY'
+          import json,os
+          from bs4 import BeautifulSoup
+          from source_research import inspect,publish
+          from laam_source_support import normalize
+          os.environ['SOURCE_TARGET_PRODUCT']='0085'
+          result=inspect('laam.com')
+          page=next(r for r in result['responses'] if r.get('requested')=='https://laam.com/products/0085')
+          raw=next(p for p in page['public_product_state'] if p.get('handle')=='0085')
+          product=normalize(raw,'0085')
+          assert [o['name'] for o in product['options']]==['Kids Size','Stitching Type']
+          for original,variant in zip(raw['variants'],product['variants']):
+              assert variant['option1']+' / '+variant['option2']==original['title']
+              assert variant['id']==original['shopify_id']
+              assert variant['price']==original['price']
+          report={'run_id':os.environ['GITHUB_RUN_ID'],'source_commit':os.environ['GITHUB_SHA'],'validation':'success','product':'0085','variant_count':len(product['variants']),'option_order':[o['name'] for o in product['options']],'fetch_run_unchanged':'39136925448'}
+          publish(report,branch='laam-repair-reports')
+          print(json.dumps(report,indent=2))
+          PY

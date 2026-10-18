@@ -22,3 +22,9 @@ Khaadi's Pakistan homepage redirects the cloud runner to its US storefront. Do n
 ## Resume
 
 The latest verified checkpoint is Actions run `39124854389`, containing 24 saved workbooks. Resume this checkpoint after updating; completed store outputs remain unchanged. An export marked REVIEW still needs its audit checked. Automatic continuation does not make permanent source failures disappear.
+
+## LAAM option-order repair
+
+The actual failing product `0085` lists Stitching Type before Kids Size in its options array, while its explicit source positions specify Kids Size first. The adapter now sorts by validated positions before mapping observed variant titles. It retains all four variants (including three out of stock), source IDs, prices, stock counts, SKU and images. Missing/duplicate/invalid positions are rejected rather than guessed. Parser/schema failures now report `ADAPTER ERROR`, while verified source access/locale failures retain `SOURCE BLOCKED`.
+
+This update does not hot-replace code inside the active store process or cancel the current Zellbury work. It applies when a new saved-run resume prepares the updated engine. Existing successful response caches are retained.

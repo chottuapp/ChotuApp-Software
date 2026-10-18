@@ -23,6 +23,7 @@ def issue_codes(text):
     # A combined review/mismatch count includes unavailable endpoints; it is not proof of a price difference.
     if re.search(r'\b[1-9][0-9]* review/mismatch|\bREVIEW=[1-9][0-9]*',text,re.I):issues.append('AUDIT_REVIEW')
     if 'mismatch' in text.lower() and (re.search(r'FAILED:|EXCEPTION:|\bERROR\b',text) or re.search(r'\b[1-9][0-9]* mismatches?\b|\bMISMATCH=[1-9][0-9]*',text,re.I)):issues.append('DATA_MISMATCH')
+    if 'ADAPTER ERROR:' in text:issues.append('ADAPTER_ERROR')
     if 'Duplicate combination IDs' in text or 'Conflicting duplicate source variant identity' in text:issues.append('VARIANT_IDENTITY')
     return issues
 

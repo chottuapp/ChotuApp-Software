@@ -8,6 +8,10 @@ from bs4 import BeautifulSoup
 BASE='https://laam.com'
 AGENT='ChotuAppCatalogRefresh'
 
+class SourceAccessError(ValueError):
+    """Public source access/locale cannot be verified; distinct from parser failures."""
+
+
 def product_state(soup,handle):
     script=soup.find('script',id='__NUXT_DATA__')
     if script is None:raise ValueError('LAAM public product state missing')
@@ -41,7 +45,7 @@ def product_state(soup,handle):
             elif isinstance(value,list):
                 for item in value:walk(item)
         walk(tree)
-    if currencies!={'PKR'}:raise ValueError('LAAM Pakistan currency unverified; no foreign price export')
+    if currencies!={'PKR'}:raise SourceAccessError('LAAM Pakistan currency unverified; no foreign price export')
     return normalize(candidates[0],handle)
 
 def normalize(raw,handle):
@@ -49,6 +53,12 @@ def normalize(raw,handle):
     if str(raw.get('status') or '').lower() not in ('active','draft','archived'):raise ValueError('LAAM publication status unverified')
     options=raw.get('options');variants=raw.get('variants')
     if not isinstance(options,list) or len(options)>3 or not isinstance(variants,list) or not variants:raise ValueError('Unsupported LAAM option/variant schema')
+    if any(not isinstance(item,dict) for item in options):raise ValueError('Incomplete LAAM option schema')
+    positions=[item.get('position') for item in options]
+    if any(position is not None for position in positions):
+        if any(not isinstance(position,int) or isinstance(position,bool) for position in positions) or set(positions)!=set(range(1,len(options)+1)):
+            raise ValueError('LAAM option positions are missing, duplicated or invalid')
+        options=sorted(options,key=lambda item:item['position'])
     dims=[]
     for item in options:
         if not isinstance(item,dict) or not item.get('name') or not isinstance(item.get('values'),list):raise ValueError('Incomplete LAAM option values')
@@ -89,8 +99,8 @@ class PublicCatalog:
     def __init__(self,g,log):self.g=g;self.log=log;self.robots=None;self.last=0;self.products={}
     def read(self,url,allow_missing=False):
         p=urlsplit(url)
-        if p.scheme!='https' or p.hostname!='laam.com' or p.username or p.password or p.port not in (None,443):raise ValueError('LAAM public source changed host')
-        if self.robots and not self.robots.can_fetch(AGENT,url):raise ValueError('LAAM source path disallowed by robots')
+        if p.scheme!='https' or p.hostname!='laam.com' or p.username or p.password or p.port not in (None,443):raise SourceAccessError('LAAM public source changed host')
+        if self.robots and not self.robots.can_fetch(AGENT,url):raise SourceAccessError('LAAM source path disallowed by robots')
         self.g['_chotu_wait']()
         cache=getattr(self.g.get('_chotu_tls'),'saved_response_cache',None)
         response=cache.get(url) if cache else None;cached=response is not None
@@ -104,7 +114,7 @@ class PublicCatalog:
             if gate is not None:raise gate.blocked_error()
             raise RuntimeError('SOURCE PAUSED: LAAM rate limit; checkpoint retained')
         if allow_missing and response.status_code in (404,410):return response
-        if response.status_code!=200:raise ValueError('LAAM public source unavailable (HTTP '+str(response.status_code)+'); cached work retained')
+        if response.status_code!=200:raise SourceAccessError('LAAM public source unavailable (HTTP '+str(response.status_code)+'); cached work retained')
         if len(response.content)>20*1024**2:raise ValueError('LAAM source exceeds verified response size limit')
         return response
     def catalog(self):
@@ -132,7 +142,9 @@ class PublicCatalog:
             if response.status_code in (404,410):
                 self.log('LAAM SOURCE REMOVED: HTTP '+str(response.status_code)+' '+url+'; absent public product excluded')
                 continue
-            product=product_state(BeautifulSoup(response.text,'html.parser'),handle)
+            try:product=product_state(BeautifulSoup(response.text,'html.parser'),handle)
+            except SourceAccessError:raise
+            except (ValueError,TypeError,KeyError) as exc:raise ValueError('Product '+handle+': '+str(exc)) from exc
             if product['id'] in self.products:raise ValueError('LAAM sitemap returned repeated product identity')
             self.products[product['id']]=product
             if index==1 or index%50==0 or index==len(urls):self.log(f'PUBLIC PRODUCT PAGES: {index}/{len(urls)} LAAM products verified')
@@ -162,6 +174,7 @@ def enable_laam_source(g):
             g['_chotu_tls'].ranking_evidence={};log('TOP 20: UNVERIFIED — LAAM verified sales ordering unavailable; no guessed popularity');return []
         g.update(discover=lambda base,log:source.catalog(),collections=lambda base,log:{},refresh_variant_prices=lambda base,p,log:p['variants'],storefront_cover=cover,verified_top20=ranking,audit_fractional_prices=audit,storefront_price_audit=display)
         try:return original(BASE,name,template,log)
-        except ValueError as exc:raise RuntimeError('SOURCE BLOCKED: '+str(exc)) from exc
+        except SourceAccessError as exc:raise RuntimeError('SOURCE BLOCKED: '+str(exc)) from exc
+        except (ValueError,TypeError,KeyError) as exc:raise RuntimeError('ADAPTER ERROR: LAAM '+str(exc)+'. Saved responses retained; no options, prices or stock guessed.') from exc
         finally:g.update(replacements)
     g['_chotuapp_run_site_original']=run;g['_chotu_laam_source']=True
