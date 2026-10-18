@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-18T15:08:10.838572+00:00",
-  "run_id": "39136925448",
+  "generated_utc": "2026-10-18T15:49:11.775337+00:00",
+  "run_id": "39141866612",
   "attempt": "1",
-  "source_commit": "25f02b6bdb10f66b4439d475c0a389645feb10cf",
+  "source_commit": "9323789cf77081f13e089e36f25a401fe2d97aa8",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 1676.7,
+  "elapsed_seconds": 226.3,
   "stores": [
     {
       "name": "Miss Rose",
@@ -211,12 +211,13 @@
       "issue_codes": [
         "SOURCE_BLOCKED"
       ],
-      "software_revision": "3bc42a46b3ebf6db",
+      "software_revision": "d21279a8997b2154",
       "http_statuses": {
-        "200": 254
+        "200": 146,
+        "500": 1
       },
-      "network_seconds": 143.8,
-      "max_response_seconds": 3.3,
+      "network_seconds": 61.2,
+      "max_response_seconds": 1.6,
       "cache_events": 0
     },
     {
@@ -239,11 +240,11 @@
       "issue_codes": [
         "SOURCE_BLOCKED"
       ],
-      "software_revision": "3bc42a46b3ebf6db",
+      "software_revision": "d21279a8997b2154",
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
-      "cache_events": 0
+      "cache_events": 1
     },
     {
       "name": "Sapphire",
@@ -252,11 +253,11 @@
       "issue_codes": [
         "SOURCE_BLOCKED"
       ],
-      "software_revision": "3bc42a46b3ebf6db",
+      "software_revision": "d21279a8997b2154",
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
-      "cache_events": 0
+      "cache_events": 1
     },
     {
       "name": "Gul Ahmed",
@@ -373,7 +374,7 @@
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
-      "cache_events": 30358
+      "cache_events": 0
     }
   ]
 }
