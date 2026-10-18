@@ -76,6 +76,30 @@ class LaamTests(unittest.TestCase):
     payload={source.BASE+'/robots.txt':'User-agent: *\nAllow: /\nSitemap: https://laam.com/sitemap.xml',source.BASE+'/sitemap.xml':'<sitemapindex><sitemap><loc>https://laam.com/part.xml</loc></sitemap></sitemapindex>',source.BASE+'/part.xml':'<urlset xmlns:i="urn:image"><url><loc>https://laam.com/products/2665a</loc><i:image><i:loc>https://cdn.example/image.jpg</i:loc></i:image></url></urlset>',source.BASE+'/products/2665a':html(FIXTURES[0]['product'])}[url]
     response=requests.Response();response.status_code=200;response._content=payload.encode();response.encoding='utf-8';return response
   products,complete=FixtureSource({},lambda _:None).catalog();self.assertTrue(complete);self.assertEqual(len(products),1);self.assertEqual(products[0]['handle'],'2665a')
+ def test_parsed_cache_restarts_without_losing_any_product_or_variant_fields(self):
+  product=source.normalize(FIXTURES[0]['product'],FIXTURES[0]['product']['handle']);url=product['_source_url']
+  with tempfile.TemporaryDirectory() as tmp:
+   path=Path(tmp)/'derived.sqlite3';cache=source.ParsedProductCache(path,'revision-one');cache.put(url,product);cache.close();cache=source.ParsedProductCache(path,'revision-one');self.assertEqual(cache.get(url),product);cache.close()
+   cache=source.ParsedProductCache(path,'revision-two');self.assertIsNone(cache.get(url));cache.close()
+ def test_corrupt_parsed_cache_is_rejected_instead_of_replayed(self):
+  product=source.normalize(FIXTURES[0]['product'],FIXTURES[0]['product']['handle']);url=product['_source_url']
+  with tempfile.TemporaryDirectory() as tmp:
+   cache=source.ParsedProductCache(Path(tmp)/'derived.sqlite3','one');cache.put(url,product);cache.db.execute('UPDATE parsed_products SET payload=?',(b'corrupted',));cache.db.commit();self.assertIsNone(cache.get(url));cache.close()
+ def test_resume_reuses_parsed_products_without_another_page_parse(self):
+  from types import SimpleNamespace
+  import requests
+  raw=FIXTURES[0]['product'];url=source.BASE+'/products/'+raw['handle'];calls=[]
+  class FixtureSource(source.PublicCatalog):
+   def read(self,page,allow_missing=False):
+    calls.append(page)
+    data={source.BASE+'/robots.txt':'User-agent: *\nAllow: /\nSitemap: https://laam.com/sitemap.xml',source.BASE+'/sitemap.xml':'<urlset><url><loc>'+url+'</loc></url></urlset>',url:html(raw)}[page]
+    response=requests.Response();response.status_code=200;response._content=data.encode();response.encoding='utf-8';return response
+  with tempfile.TemporaryDirectory() as tmp:
+   g={'_chotu_tls':SimpleNamespace(saved_api_path=Path(tmp)/'api.sqlite3')}
+   first=FixtureSource(g,lambda _:None);products,complete=first.catalog();first.close();calls.clear();second=FixtureSource(g,lambda _:None)
+   with patch.object(source,'product_state',side_effect=AssertionError('Successful product parsed again')):
+    resumed,complete=second.catalog()
+   self.assertEqual(resumed,products);self.assertEqual(second.cache_hits,1);self.assertNotIn(url,calls);second.close()
  def test_export_integration_uses_existing_template_and_preserves_fields(self):
   spec=importlib.util.spec_from_file_location('laam_test_engine',ROOT/'main.py');engine=importlib.util.module_from_spec(spec);spec.loader.exec_module(engine)
   with tempfile.TemporaryDirectory() as tmp:

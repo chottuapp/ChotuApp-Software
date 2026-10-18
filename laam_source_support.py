@@ -1,10 +1,11 @@
 """LAAM's public Nuxt catalog; preserve observed variants and explicit PKR only."""
-import csv,json,re,time
+import csv,json,re,time,hashlib,sqlite3,zlib
+from pathlib import Path
 from decimal import Decimal,InvalidOperation
 from urllib.parse import urlsplit,urljoin,unquote
 from urllib.robotparser import RobotFileParser
 from xml.etree import ElementTree as ET
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup,SoupStrainer
 BASE='https://laam.com'
 AGENT='ChotuAppCatalogRefresh'
 
@@ -95,8 +96,38 @@ def normalize(raw,handle):
     category=next((str(raw[k]) for k in ('node_l4','node_l3','node_l2') if raw.get(k)), '')
     return {'id':raw['id'],'handle':handle,'title':str(raw['title']).strip(),'status':str(raw.get('status') or '').lower(),'body_html':raw.get('description') or '', 'product_type':category,'vendor':raw.get('brand') or '', 'tags':raw.get('tags') or [],'options':dims,'variants':result,'images':images,'image':images[0],'_source_url':BASE+'/products/'+handle}
 
+class ParsedProductCache:
+    """Derived results belong to one saved run and one exact adapter revision."""
+    def __init__(self,path,revision=None):
+        from resume_support import configure_response_database
+        self.revision=revision or hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+        self.db=sqlite3.connect(path,timeout=30);configure_response_database(self.db)
+        self.db.execute('CREATE TABLE IF NOT EXISTS parsed_products(url TEXT PRIMARY KEY,revision TEXT NOT NULL,payload BLOB NOT NULL,checksum TEXT NOT NULL)');self.db.commit()
+    def get(self,url):
+        row=self.db.execute('SELECT payload,checksum FROM parsed_products WHERE url=? AND revision=?',(url,self.revision)).fetchone()
+        if row is None:return None
+        body,checksum=row
+        try:
+            if hashlib.sha256(body).hexdigest()!=checksum:raise ValueError('Cache checksum mismatch')
+            decoder=zlib.decompressobj();raw=decoder.decompress(body,20*1024**2)
+            if not decoder.eof or decoder.unused_data:raise ValueError('Invalid parsed product cache')
+            product=json.loads(raw)
+            if not isinstance(product,dict) or product.get('_source_url')!=url or not isinstance(product.get('variants'),list):raise ValueError('Invalid parsed product identity')
+            return product
+        except (ValueError,TypeError,zlib.error):
+            self.db.execute('DELETE FROM parsed_products WHERE url=?',(url,));self.db.commit();return None
+    def put(self,url,product):
+        body=zlib.compress(json.dumps(product,ensure_ascii=True,separators=(',',':')).encode(),1)
+        self.db.execute('INSERT OR REPLACE INTO parsed_products VALUES(?,?,?,?)',(url,self.revision,body,hashlib.sha256(body).hexdigest()));self.db.commit()
+    def close(self):self.db.close()
+
 class PublicCatalog:
-    def __init__(self,g,log):self.g=g;self.log=log;self.robots=None;self.last=0;self.products={}
+    def __init__(self,g,log):
+        self.g=g;self.log=log;self.robots=None;self.last=0;self.products={};self.cache=None;self.cache_hits=0
+        path=getattr(g.get('_chotu_tls'),'saved_api_path',None)
+        if path:self.cache=ParsedProductCache(Path(path).with_name('laam-parsed.sqlite3'))
+    def close(self):
+        if self.cache:self.cache.close();self.cache=None
     def read(self,url,allow_missing=False):
         p=urlsplit(url)
         if p.scheme!='https' or p.hostname!='laam.com' or p.username or p.password or p.port not in (None,443):raise SourceAccessError('LAAM public source changed host')
@@ -138,16 +169,23 @@ class PublicCatalog:
             self.log('LAAM SITEMAP: '+str(len(urls))+' distinct public product URLs discovered')
         if not urls:raise ValueError('LAAM sitemap has no public product URLs')
         for index,url in enumerate(sorted(urls),1):
-            handle=unquote(urlsplit(url).path.rsplit('/',1)[-1]);response=self.read(url,allow_missing=True)
-            if response.status_code in (404,410):
-                self.log('LAAM SOURCE REMOVED: HTTP '+str(response.status_code)+' '+url+'; absent public product excluded')
-                continue
-            try:product=product_state(BeautifulSoup(response.text,'html.parser'),handle)
-            except SourceAccessError:raise
-            except (ValueError,TypeError,KeyError) as exc:raise ValueError('Product '+handle+': '+str(exc)) from exc
+            self.g.get('_chotu_wait',lambda:None)()
+            product=self.cache.get(url) if self.cache else None
+            if product is not None:self.cache_hits+=1
+            else:
+                handle=unquote(urlsplit(url).path.rsplit('/',1)[-1]);response=self.read(url,allow_missing=True)
+                if response.status_code in (404,410):
+                    self.log('LAAM SOURCE REMOVED: HTTP '+str(response.status_code)+' '+url+'; absent public product excluded')
+                    continue
+                # Nuxt state and currency evidence live in scripts; don't build a full page DOM.
+                try:product=product_state(BeautifulSoup(response.text,'html.parser',parse_only=SoupStrainer('script')),handle)
+                except SourceAccessError:raise
+                except (ValueError,TypeError,KeyError) as exc:raise ValueError('Product '+handle+': '+str(exc)) from exc
+                if self.cache:self.cache.put(url,product)
             if product['id'] in self.products:raise ValueError('LAAM sitemap returned repeated product identity')
             self.products[product['id']]=product
             if index==1 or index%50==0 or index==len(urls):self.log(f'PUBLIC PRODUCT PAGES: {index}/{len(urls)} LAAM products verified')
+        if self.cache_hits:self.log('LAAM PARSED CACHE: '+str(self.cache_hits)+' verified products reused without reparsing; current adapter revision only')
         self.log('LAAM SOURCE: complete declared product sitemap coverage; explicit PKR, observed variants, public stock and image URLs retained. No sales popularity assumed.')
         return list(self.products.values()),True
 
@@ -176,5 +214,6 @@ def enable_laam_source(g):
         try:return original(BASE,name,template,log)
         except SourceAccessError as exc:raise RuntimeError('SOURCE BLOCKED: '+str(exc)) from exc
         except (ValueError,TypeError,KeyError) as exc:raise RuntimeError('ADAPTER ERROR: LAAM '+str(exc)+'. Saved responses retained; no options, prices or stock guessed.') from exc
-        finally:g.update(replacements)
+        finally:
+            source.close();g.update(replacements)
     g['_chotuapp_run_site_original']=run;g['_chotu_laam_source']=True

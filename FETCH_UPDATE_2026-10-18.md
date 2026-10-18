@@ -28,3 +28,7 @@ The latest verified checkpoint is Actions run `39124854389`, containing 24 saved
 The actual failing product `0085` lists Stitching Type before Kids Size in its options array, while its explicit source positions specify Kids Size first. The adapter now sorts by validated positions before mapping observed variant titles. It retains all four variants (including three out of stock), source IDs, prices, stock counts, SKU and images. Missing/duplicate/invalid positions are rejected rather than guessed. Parser/schema failures now report `ADAPTER ERROR`, while verified source access/locale failures retain `SOURCE BLOCKED`.
 
 This update does not hot-replace code inside the active store process or cancel the current Zellbury work. It applies when a new saved-run resume prepares the updated engine. Existing successful response caches are retained.
+
+## Faster LAAM resume
+
+Successfully parsed products now have a durable, checksummed cache inside their own saved-run folder. Cache identity includes the exact adapter file revision, so parser updates revalidate from successful saved HTML instead of reusing stale interpretations. Corrupt records are rejected. Script-only parsing avoids constructing the whole storefront DOM for each page. No source pacing, stock, prices or option validation is relaxed. The next validated release resumes checkpoint `39136925448` and retains its 25 saved stores.
