@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-18T12:39:40.790815+00:00",
-  "run_id": "39124854389",
+  "generated_utc": "2026-10-18T15:08:10.838572+00:00",
+  "run_id": "39136925448",
   "attempt": "1",
-  "source_commit": "0d002828d04af0ca71b9198cfde68be6330208db",
+  "source_commit": "25f02b6bdb10f66b4439d475c0a389645feb10cf",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 2845.2,
+  "elapsed_seconds": 1676.7,
   "stores": [
     {
       "name": "Miss Rose",
@@ -206,17 +206,17 @@
     },
     {
       "name": "LAAM",
-      "status": "failed",
+      "status": "blocked",
       "review_required": false,
       "issue_codes": [
-        "HTTP_404"
+        "SOURCE_BLOCKED"
       ],
-      "software_revision": "8f94493b2e8066d5",
+      "software_revision": "3bc42a46b3ebf6db",
       "http_statuses": {
-        "404": 1
+        "200": 254
       },
-      "network_seconds": 2.1,
-      "max_response_seconds": 2.1,
+      "network_seconds": 143.8,
+      "max_response_seconds": 3.3,
       "cache_events": 0
     },
     {
@@ -234,32 +234,28 @@
     },
     {
       "name": "Khaadi",
-      "status": "failed",
+      "status": "blocked",
       "review_required": false,
       "issue_codes": [
-        "HTTP_404"
+        "SOURCE_BLOCKED"
       ],
-      "software_revision": "8f94493b2e8066d5",
-      "http_statuses": {
-        "404": 1
-      },
-      "network_seconds": 0.4,
-      "max_response_seconds": 0.4,
+      "software_revision": "3bc42a46b3ebf6db",
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
       "cache_events": 0
     },
     {
       "name": "Sapphire",
-      "status": "failed",
+      "status": "blocked",
       "review_required": false,
       "issue_codes": [
-        "HTTP_404"
+        "SOURCE_BLOCKED"
       ],
-      "software_revision": "8f94493b2e8066d5",
-      "http_statuses": {
-        "404": 1
-      },
-      "network_seconds": 0.9,
-      "max_response_seconds": 0.9,
+      "software_revision": "3bc42a46b3ebf6db",
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
       "cache_events": 0
     },
     {
@@ -344,21 +340,14 @@
       "name": "Outfitters",
       "status": "done",
       "review_required": true,
-      "issue_codes": [
-        "DATA_MISMATCH",
-        "HTTP_404",
-        "RANKING_UNVERIFIED"
-      ],
+      "issue_codes": [],
       "software_revision": "8f94493b2e8066d5",
       "products": 3894,
       "variants": 30005,
-      "http_statuses": {
-        "200": 2,
-        "404": 27
-      },
-      "network_seconds": 24.5,
-      "max_response_seconds": 1.6,
-      "cache_events": 20883
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
     },
     {
       "name": "Bonanza Satrangi",
@@ -375,16 +364,16 @@
     },
     {
       "name": "Zellbury",
-      "status": "failed",
-      "review_required": false,
-      "issue_codes": [
-        "STORE_FAILED"
-      ],
-      "software_revision": "8f94493b2e8066d5",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "3bc42a46b3ebf6db",
+      "products": 5933,
+      "variants": 25198,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
-      "cache_events": 24425
+      "cache_events": 30358
     }
   ]
 }
