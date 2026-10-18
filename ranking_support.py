@@ -5,7 +5,9 @@ from urllib.parse import urlsplit
 import re
 from datetime import datetime, timezone
 
-FIELDS=('category_priority','product_priority','popularity_basis','popularity_source_url','popularity_checked_at','analysis_note')
+from website_order_support import FIELDS as WEBSITE_FIELDS
+
+FIELDS=('category_priority','product_priority','popularity_basis','popularity_source_url','popularity_checked_at','analysis_note')+WEBSITE_FIELDS
 BEAUTY_HOSTS={'elitecosmeticspk.com','missrose.com.pk','rivaj-uk.com','vincecare.com'}
 BEAUTY_CATEGORIES=('makeup','lip','eye','foundation','concealer','blush','primer','mascara','highlighter','skin','face','sun','hair','shampoo','conditioner','body','bath','fragrance','perfume','nail','beauty','serum','toner','cream','lotion','wax','razor','shav','deodorant','personal care')
 
@@ -76,8 +78,12 @@ def annotate_analysis(row):
     row['analysis_note']=result
 
 
-def order_rows(rows, handles=(), evidence=None):
+def order_rows(rows, handles=(), evidence=None, policy='website'):
     """Rank verified matches within categories, then payable price; preserve stable ties."""
+    if policy=='website':
+        from website_order_support import apply_order
+        apply_order(rows)
+        return []
     evidence=evidence or {};rank={h:i+1 for i,h in enumerate(dict.fromkeys(handles))};ranked=[]
     first_category={};category_keys={}
     for i,row in enumerate(rows):

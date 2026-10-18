@@ -11,25 +11,25 @@ class RankingMetadataTests(unittest.TestCase):
         return {'product_id':pid,'category':cat,'base_price (PKR)':base,'sale_price (PKR, agar discount ho)':sale,'source_url':'https://elitecosmeticspk.com/products/'+pid}
     def test_beauty_category_precedes_cheaper_automotive(self):
         rows=[self.row('car','Automotive',1),self.row('makeup','Lipstick',500),self.row('cheap','Lipstick',100)]
-        ranking.order_rows(rows)
+        ranking.order_rows(rows,policy='legacy')
         self.assertEqual([r['product_id'] for r in rows],['cheap','makeup','car'])
         self.assertTrue(all(not r.get('popularity_basis') for r in rows))
     def test_verified_regular_price_product_can_outrank_discount_without_crossing_category(self):
         rows=[self.row('cheap','Lipstick',20),self.row('best','Lipstick',200),self.row('car','Automotive',1)]
         facts={'best':{'url':'https://elitecosmeticspk.com/collections/all?sort_by=best-selling','checked_at':'2026-10-17T00:00:00+00:00'}}
-        ranking.order_rows(rows,['best'],facts)
+        ranking.order_rows(rows,['best'],facts,policy='legacy')
         self.assertEqual([r['product_id'] for r in rows],['best','cheap','car'])
         self.assertEqual(rows[0]['popularity_basis'],'store_bestseller')
     def test_handles_without_evidence_do_not_create_popularity(self):
         rows=[self.row('expensive','Lipstick',200),self.row('cheap','Lipstick',100)]
-        self.assertEqual(ranking.order_rows(rows,['expensive']),[])
+        self.assertEqual(ranking.order_rows(rows,['expensive'],policy='legacy'),[])
         self.assertEqual(rows[0]['product_id'],'cheap')
         self.assertFalse(any(r.get('product_priority') for r in rows))
     def test_decimal_and_zero_sale_not_free_and_category_conflicts_fail(self):
         rows=[self.row('zero','Lipstick',100,0),self.row('decimal','Lipstick',100,99.25)]
-        ranking.order_rows(rows);self.assertEqual(rows[0]['product_id'],'decimal')
+        ranking.order_rows(rows,policy='legacy');self.assertEqual(rows[0]['product_id'],'decimal')
         rows[0]['category_priority']=2
-        with self.assertRaises(ValueError):ranking.order_rows(rows)
+        with self.assertRaises(ValueError):ranking.order_rows(rows,policy='legacy')
     def test_reordering_preserves_hyperlinks_styles_formulas_and_other_sheets(self):
         import main
         with tempfile.TemporaryDirectory() as d:
@@ -39,7 +39,8 @@ class RankingMetadataTests(unittest.TestCase):
             s.append(['lip','Lipstick',100,'https://elitecosmeticspk.com/products/lip','https://img/lip','=2+2'])
             s['E2'].hyperlink='https://img/car';s['E3'].hyperlink='https://img/lip';s['E3'].number_format='@'
             w.create_sheet('Options').append(['keep']);w.save(p);w.close()
-            main.finalize_catalog_order(p,Path(d)/'absent.csv',lambda _:None)
+            facts={key:{'category':cat,'subcategory':'','category_order':rank,'subcategory_order':1,'product_order':1,'source_url':'https://elitecosmeticspk.com/collections/'+key,'checked_at':'2026-10-18T00:00:00+00:00'} for key,cat,rank in (('lip','Lipstick',1),('car','Automotive',2))}
+            with patch.object(main._chotu_tls,'website_order_evidence',facts,create=True):main.finalize_catalog_order(p,Path(d)/'absent.csv',lambda _:None)
             v=load_workbook(p);self.assertEqual(v['Products']['A2'].value,'lip');self.assertEqual(v['Products']['E2'].hyperlink.target,'https://img/lip');self.assertEqual(v['Products']['E2'].hyperlink.ref,'E2');self.assertEqual(v['Products']['E2'].number_format,'@');self.assertEqual(v['Products']['F2'].value,'=2+2');self.assertEqual(v['Options']['A1'].value,'keep');v.close()
     def test_verified_grid_captures_actual_evidence_and_unverified_grid_does_not(self):
         import main

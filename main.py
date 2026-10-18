@@ -908,8 +908,10 @@ def genuine_discount(row):
 
 
 def prioritize_top_sellers(rows, handles, variant_discount_ids=()):
-    from ranking_support import order_rows
-    return order_rows(rows, handles, getattr(_chotu_tls, 'ranking_evidence', {}))
+    from website_order_support import apply_order
+    apply_order(rows,getattr(_chotu_tls,'website_order_evidence',{}))
+    # Displayed default order is not bestseller evidence.
+    return []
 
 
 def finalize_catalog_order(workbook_path, ranking_path, log):
@@ -922,8 +924,9 @@ def finalize_catalog_order(workbook_path, ranking_path, log):
         headers=[cell.value for cell in sheet[1]]
         rows=[dict(zip(headers,values)) for values in sheet.iter_rows(min_row=2,values_only=True)]
         # Evidence metadata was written during verification; final ordering must not invent it.
-        from ranking_support import order_rows, reorder_sheet
-        ranked=order_rows(rows)
+        from ranking_support import reorder_sheet
+        from website_order_support import apply_order
+        ranked=apply_order(rows,getattr(_chotu_tls,'website_order_evidence',{}))
         reorder_sheet(sheet,rows)
         temporary=Path(workbook_path).with_name('.'+Path(workbook_path).stem+'-order.xlsx')
         try:
@@ -934,7 +937,7 @@ def finalize_catalog_order(workbook_path, ranking_path, log):
             finally:verify.close()
             os.replace(temporary,workbook_path)
         finally:temporary.unlink(missing_ok=True)
-        log('FINAL FILE ORDER: store category priority, verified product priority, then payable price; image hyperlinks move with products')
+        log('FINAL FILE ORDER: verified website navigation and default product listing; unknown positions stable; image hyperlinks move with products')
     finally:book.close()
 
 
@@ -1148,16 +1151,19 @@ def run_site(base, name, template, log):
             writer=csv.writer(stream);writer.writerow(['issue_code','product_id','source_variant_id','source_url','detail']);writer.writerows(identity_findings)
     log(f'PRODUCT FILTER: excluded {skipped_out_of_stock} fully unavailable products; skipped {skipped_hidden} explicitly unpublished, {skipped_invalid} invalid/unpriced; retained {len(rows)} products with ALL their variants')
     if not rows: raise RuntimeError('No public, priced products found')
-    rows.sort(key=lambda x:(x['category'].lower(), x['sale_price (PKR, agar discount ho)'] or x['base_price (PKR)'],x['name'].lower()))
-    # Verify a bounded bestseller subset across all eligible products, regardless of discounts.
-    ranking_handles={urlparse(r['source_url']).path.rstrip('/').rsplit('/',1)[-1] for r in rows}
-    top_handles=verified_top20(base,log,ranking_handles,rank_all=False)
+    # Website ordering is independent of price and bestseller evidence.
+    top_handles=[]
+    log('WEBSITE ORDER POLICY: observed default listing; no forced bestseller or cheapest-first sort')
     safe_name = re.sub(r'[^\w .-]', '', name).strip() or 'Shopify'
     with (OUT / (safe_name + ' - IMAGE AUDIT.csv')).open('w', encoding='utf-8-sig', newline='') as stream:
         writer = csv.writer(stream)
         writer.writerow(['product_url', 'status', 'cover_url', 'detail'])
         writer.writerows(_chotu_tls.image_audit)
     ranked_rows = prioritize_top_sellers(rows, top_handles)
+    from website_order_support import FIELDS as website_fields
+    with (OUT/(safe_name+' - WEBSITE ORDER.csv')).open('w',encoding='utf-8-sig',newline='') as stream:
+        fields=['product_id','category','subcategory','source_url']+list(website_fields)
+        writer=csv.DictWriter(stream,fieldnames=fields);writer.writeheader();writer.writerows({key:row.get(key) for key in fields} for row in rows)
     with (OUT / (safe_name + ' - BEST SELLERS.csv')).open('w', encoding='utf-8-sig', newline='') as stream:
         writer = csv.writer(stream)
         writer.writerow(['rank', 'product_id', 'name', 'category', 'source_url', 'category_priority', 'product_priority', 'popularity_basis', 'popularity_source_url', 'popularity_checked_at', 'analysis_note'])
@@ -1259,6 +1265,8 @@ def quality_validation(rows, imgs, groups, opts, combos, output, log, storefront
     # Read-only checks: do not alter source data or auto-correct prices/categories.
     from collections import Counter, defaultdict
     issues = []
+    unknown_order=sum(row.get('website_order_status')=='unverified' for row in rows)
+    if unknown_order:issues.append(('WARNING','WEBSITE_ORDER_UNVERIFIED','', '',str(unknown_order)+' products have no verified default website listing position; original relative order retained'))
     product_ids = {r['product_id'] for r in rows}
     group_ids = {g['group_id'] for g in groups}
     option_values = defaultdict(set)
@@ -1301,7 +1309,7 @@ def quality_validation(rows, imgs, groups, opts, combos, output, log, storefront
         if url_counts[url] > 1:
             flag('ERROR', 'DUPLICATE_PRODUCT_URL', pid, url_counts[url], url)
         cat = str(r.get('category') or '').strip()
-        if not cat or cat.casefold() in generic or 'categories' in cat.casefold() or 'feed' in cat.casefold():
+        if (not cat or cat.casefold() in generic or 'categories' in cat.casefold() or 'feed' in cat.casefold()) and r.get('website_order_status')!='observed_default_listing':
             flag('WARNING', 'GENERIC_CATEGORY', pid, cat or '(empty)', url)
         desc = str(r.get('description') or '').strip()
         if len(desc) >= 32767:
@@ -2343,4 +2351,6 @@ class App:
         self.root.after(80 if not self.events.empty() else 180, self.poll)
 
 if __name__=='__main__':
+    from website_order_support import enable_website_order
+    enable_website_order(globals())
     root=tk.Tk();App(root);root.mainloop()

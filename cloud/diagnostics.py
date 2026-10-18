@@ -23,6 +23,7 @@ def issue_codes(text):
     # A combined review/mismatch count includes unavailable endpoints; it is not proof of a price difference.
     if re.search(r'\b[1-9][0-9]* review/mismatch|\bREVIEW=[1-9][0-9]*',text,re.I):issues.append('AUDIT_REVIEW')
     if 'mismatch' in text.lower() and (re.search(r'FAILED:|EXCEPTION:|\bERROR\b',text) or re.search(r'\b[1-9][0-9]* mismatches?\b|\bMISMATCH=[1-9][0-9]*',text,re.I)):issues.append('DATA_MISMATCH')
+    if 'WEBSITE ORDER UNVERIFIED:' in text:issues.append('WEBSITE_ORDER_UNVERIFIED')
     if 'ADAPTER ERROR:' in text:issues.append('ADAPTER_ERROR')
     if 'Duplicate combination IDs' in text or 'Conflicting duplicate source variant identity' in text:issues.append('VARIANT_IDENTITY')
     return issues
@@ -44,7 +45,7 @@ class Collector:
         name=match[1]
         if name not in self.stores and len(self.stores)>=30:return
         item=self.stores.setdefault(name,{'http_statuses':{},'network_seconds':0,'max_response_seconds':0,'cache_events':0,'issues':[]})
-        stages=('Discover catalog','Collection/category mapping','Building Excel rows','Writing Excel rows','Price audit','Saving Excel workbook','Parallel category responses','Parallel product prices and pages','Idle')
+        stages=('Website listing order','Discover catalog','Collection/category mapping','Building Excel rows','Writing Excel rows','Price audit','Saving Excel workbook','Parallel category responses','Parallel product prices and pages','Idle')
         stage=re.search(r'STAGE: (.+)$',text)
         if stage and stage[1] in stages:
             if item.get('current_stage')!=stage[1]:item.pop('task_progress',None)

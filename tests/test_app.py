@@ -242,25 +242,23 @@ class ExportTests(unittest.TestCase):
                         return
                     if ranked:
                         main._chotu_tls.ranking_evidence={product['handle']:{'url':f'http://127.0.0.1:{server.server_port}/collections/all?sort_by=best-selling','checked_at':'2026-10-17T00:00:00+00:00'}}
-                        with patch.object(main,'verified_top20',return_value=[product['handle']]):
+                        with patch.object(main,'verified_top20',return_value=[product['handle']]) as forced_sort:
                             main.run_site(f'http://127.0.0.1:{server.server_port}','Fixture',str(template),logs.append)
+                            forced_sort.assert_not_called()
                     else:
                         main.run_site(f'http://127.0.0.1:{server.server_port}','Fixture',str(template),logs.append)
                 if ranked:
                     import csv
                     report=folder/'audit_reports/Fixture/Fixture - BEST SELLERS.csv'
                     with report.open(encoding='utf-8-sig') as stream:ranks=list(csv.DictReader(stream))
-                    self.assertEqual(ranks[0]['popularity_basis'],'store_bestseller')
-                    self.assertTrue(ranks[0]['popularity_source_url'])
-                    self.assertEqual(ranks[0]['rank'],'1')
-                    self.assertEqual(ranks[0]['name'],product['title'])
+                    self.assertEqual(ranks,[])
                     self.assertTrue(any('FILE ORDER:' in line for line in logs))
                 self.assertEqual(final.read_bytes(),previous_final)
                 wb=load_workbook(out/'Fixture.xlsx')
                 def records(name):
                     rows=list(wb[name].values);return [dict(zip(rows[0],r)) for r in rows[1:]]
                 self.assertEqual(len(records('Products')),1)
-                self.assertIn('[Popularity analysis]',records('Products')[0]['analysis_note'])
+                self.assertIn('[Website listing order]',records('Products')[0]['analysis_note'])
                 notes_file=folder/'audit_reports/Fixture/Fixture - ANALYSIS NOTES.csv'
                 import csv
                 with notes_file.open(encoding='utf-8-sig') as stream:analysis_rows=list(csv.DictReader(stream))
@@ -469,14 +467,9 @@ class CatalogQualityTests(unittest.TestCase):
         handles=[f'p{i}' for i in range(19,-1,-1)]
         main._chotu_tls.ranking_evidence={h:{'url':'https://store.example/collections/all?sort_by=best-selling','checked_at':'2026-10-17T00:00:00+00:00'} for h in handles}
         ranked=main.prioritize_top_sellers(rows,handles)
-        self.assertEqual([r['name'] for r in ranked],[f'Product {i}' for i in range(19,-1,-1)])
-        self.assertEqual(len(ranked),20)
-        categories=[r['category'] for r in rows]
-        self.assertEqual(categories,sorted(categories))
-        for category in set(categories):
-            subset=[r for r in rows if r['category']==category]
-            priorities=[r.get('product_priority',float('inf')) for r in subset]
-            self.assertEqual(priorities,sorted(priorities))
+        self.assertEqual(ranked,[])
+        self.assertEqual([r['name'] for r in rows],original)
+        self.assertTrue(all(r['website_order_status']=='unverified' for r in rows))
 
     def test_top20_paginates_past_unavailable_products(self):
         from types import SimpleNamespace
