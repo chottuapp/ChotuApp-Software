@@ -1,27 +1,27 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-18T18:07:11.789887+00:00",
-  "run_id": "39152396221",
+  "generated_utc": "2026-10-18T23:08:47.737912+00:00",
+  "run_id": "39152733413",
   "attempt": "1",
-  "source_commit": "4332f0af9a600f3fc2b145bf80e6c19e922f0ea2",
+  "source_commit": "19fbde45a1f40bbb4d06ce78214b9b2caddf2f87",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 181.9,
+  "elapsed_seconds": 18000.6,
   "stores": [
     {
       "name": "Skin Factor",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
-      "software_revision": "15a5debb4807f3c9",
+      "software_revision": "c8298117490f9da9",
       "products": 28,
       "variants": 28,
       "http_statuses": {
         "200": 85
       },
-      "network_seconds": 57.2,
-      "max_response_seconds": 1.8,
+      "network_seconds": 61.3,
+      "max_response_seconds": 1.9,
       "cache_events": 109
     },
     {
@@ -31,14 +31,14 @@
       "issue_codes": [
         "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "15a5debb4807f3c9",
+      "software_revision": "c8298117490f9da9",
       "products": 29,
       "variants": 29,
       "http_statuses": {
         "200": 40
       },
-      "network_seconds": 18.7,
-      "max_response_seconds": 1.6,
+      "network_seconds": 19.6,
+      "max_response_seconds": 1.9,
       "cache_events": 87
     },
     {
@@ -46,14 +46,14 @@
       "status": "done",
       "review_required": true,
       "issue_codes": [],
-      "software_revision": "15a5debb4807f3c9",
+      "software_revision": "c8298117490f9da9",
       "products": 51,
       "variants": 53,
       "http_statuses": {
         "200": 70
       },
-      "network_seconds": 64.0,
-      "max_response_seconds": 3.4,
+      "network_seconds": 64.8,
+      "max_response_seconds": 7.4,
       "cache_events": 159
     },
     {
@@ -61,14 +61,14 @@
       "status": "done",
       "review_required": true,
       "issue_codes": [],
-      "software_revision": "15a5debb4807f3c9",
+      "software_revision": "c8298117490f9da9",
       "products": 55,
       "variants": 55,
       "http_statuses": {
         "200": 92
       },
-      "network_seconds": 44.6,
-      "max_response_seconds": 2.2,
+      "network_seconds": 51.6,
+      "max_response_seconds": 1.7,
       "cache_events": 172
     },
     {
@@ -76,191 +76,289 @@
       "status": "done",
       "review_required": true,
       "issue_codes": [],
-      "software_revision": "15a5debb4807f3c9",
+      "software_revision": "c8298117490f9da9",
       "products": 58,
       "variants": 58,
       "http_statuses": {
         "200": 67
       },
-      "network_seconds": 27.3,
-      "max_response_seconds": 1.7,
+      "network_seconds": 29.9,
+      "max_response_seconds": 2.1,
       "cache_events": 175
     },
     {
       "name": "Shop Modest",
-      "status": "pending",
-      "review_required": false,
+      "status": "done",
+      "review_required": true,
       "issue_codes": [],
-      "software_revision": "15a5debb4807f3c9",
+      "software_revision": "c8298117490f9da9",
+      "products": 139,
+      "variants": 1071,
       "http_statuses": {
-        "200": 38
+        "200": 709
       },
-      "network_seconds": 47.2,
+      "network_seconds": 681.8,
       "max_response_seconds": 1.8,
-      "cache_events": 0
+      "cache_events": 421
     },
     {
       "name": "Denim Leftover",
-      "status": "pending",
-      "review_required": false,
+      "status": "done",
+      "review_required": true,
       "issue_codes": [],
-      "software_revision": "15a5debb4807f3c9",
+      "software_revision": "c8298117490f9da9",
+      "products": 165,
+      "variants": 2083,
       "http_statuses": {
-        "200": 68
+        "200": 208
       },
-      "network_seconds": 48.7,
-      "max_response_seconds": 2.7,
-      "cache_events": 14
+      "network_seconds": 114.0,
+      "max_response_seconds": 2.6,
+      "cache_events": 509
     },
     {
       "name": "Miss Rose",
-      "status": "pending",
-      "review_required": false,
+      "status": "done",
+      "review_required": true,
       "issue_codes": [],
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "software_revision": "c8298117490f9da9",
+      "products": 179,
+      "variants": 1872,
+      "http_statuses": {
+        "200": 286
+      },
+      "network_seconds": 154.8,
+      "max_response_seconds": 1.9,
+      "cache_events": 567
     },
     {
       "name": "Vince Care",
-      "status": "pending",
+      "status": "source_paused",
       "review_required": false,
-      "issue_codes": [],
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "c8298117490f9da9",
+      "http_statuses": {
+        "200": 137,
+        "429": 1
+      },
+      "network_seconds": 125.1,
+      "max_response_seconds": 1.9,
       "cache_events": 0
     },
     {
       "name": "Cool and Cool",
-      "status": "pending",
-      "review_required": false,
+      "status": "done",
+      "review_required": true,
       "issue_codes": [],
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "software_revision": "c8298117490f9da9",
+      "products": 227,
+      "variants": 227,
+      "http_statuses": {
+        "200": 352
+      },
+      "network_seconds": 229.7,
+      "max_response_seconds": 1.9,
+      "cache_events": 934
     },
     {
       "name": "Seran",
-      "status": "pending",
-      "review_required": false,
-      "issue_codes": [],
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_403",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "c8298117490f9da9",
+      "products": 264,
+      "variants": 784,
+      "http_statuses": {
+        "200": 332,
+        "403": 1
+      },
+      "network_seconds": 197.3,
+      "max_response_seconds": 1.6,
+      "cache_events": 528
     },
     {
       "name": "Rivaj UK",
-      "status": "pending",
-      "review_required": false,
-      "issue_codes": [],
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "c8298117490f9da9",
+      "products": 297,
+      "variants": 831,
+      "http_statuses": {
+        "200": 609
+      },
+      "network_seconds": 595.2,
+      "max_response_seconds": 3.4,
+      "cache_events": 1170
     },
     {
       "name": "The Hanger Pakistan",
-      "status": "pending",
-      "review_required": false,
+      "status": "done",
+      "review_required": true,
       "issue_codes": [],
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "software_revision": "c8298117490f9da9",
+      "products": 339,
+      "variants": 1484,
+      "http_statuses": {
+        "200": 377
+      },
+      "network_seconds": 184.8,
+      "max_response_seconds": 2.3,
+      "cache_events": 1029
     },
     {
       "name": "Saeed Ghani",
-      "status": "pending",
+      "status": "source_paused",
       "review_required": false,
-      "issue_codes": [],
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "c8298117490f9da9",
+      "http_statuses": {
+        "200": 145,
+        "429": 1
+      },
+      "network_seconds": 135.7,
+      "max_response_seconds": 1.6,
       "cache_events": 0
     },
     {
       "name": "Computer Zone",
-      "status": "pending",
+      "status": "failed",
       "review_required": false,
-      "issue_codes": [],
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "c8298117490f9da9",
+      "http_statuses": {
+        "200": 2
+      },
+      "network_seconds": 1.8,
+      "max_response_seconds": 1.6,
       "cache_events": 0
     },
     {
       "name": "Hemani Herbals",
-      "status": "pending",
+      "status": "source_paused",
       "review_required": false,
-      "issue_codes": [],
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "c8298117490f9da9",
+      "http_statuses": {
+        "200": 151,
+        "429": 1
+      },
+      "network_seconds": 136.7,
+      "max_response_seconds": 3.2,
       "cache_events": 0
     },
     {
       "name": "Bonanza Satrangi",
-      "status": "pending",
+      "status": "source_paused",
       "review_required": false,
-      "issue_codes": [],
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "c8298117490f9da9",
+      "http_statuses": {
+        "200": 146,
+        "429": 1
+      },
+      "network_seconds": 79.8,
+      "max_response_seconds": 1.7,
       "cache_events": 0
     },
     {
       "name": "Tawakkal Fabrics",
-      "status": "pending",
-      "review_required": false,
-      "issue_codes": [],
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "c8298117490f9da9",
+      "products": 1395,
+      "variants": 3203,
+      "http_statuses": {
+        "200": 2476
+      },
+      "network_seconds": 2273.8,
+      "max_response_seconds": 1.9,
+      "cache_events": 4257
     },
     {
       "name": "Elite Cosmetics",
-      "status": "pending",
-      "review_required": false,
-      "issue_codes": [],
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "c8298117490f9da9",
+      "products": 1557,
+      "variants": 2019,
+      "http_statuses": {
+        "200": 1849
+      },
+      "network_seconds": 3351.0,
+      "max_response_seconds": 42.8,
+      "cache_events": 4803
     },
     {
       "name": "Rawayat",
-      "status": "pending",
-      "review_required": false,
+      "status": "done",
+      "review_required": true,
       "issue_codes": [],
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "software_revision": "c8298117490f9da9",
+      "products": 3471,
+      "variants": 4504,
+      "http_statuses": {
+        "200": 3806
+      },
+      "network_seconds": 2850.8,
+      "max_response_seconds": 2.1,
+      "cache_events": 10479
     },
     {
       "name": "Outfitters",
       "status": "pending",
       "review_required": false,
-      "issue_codes": [],
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "c8298117490f9da9",
+      "http_statuses": {
+        "200": 4064
+      },
+      "network_seconds": 4572.5,
+      "max_response_seconds": 2.9,
       "cache_events": 0
     },
     {
       "name": "Junaid Jamshed",
       "status": "pending",
       "review_required": false,
-      "issue_codes": [],
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "c8298117490f9da9",
+      "http_statuses": {
+        "200": 2095
+      },
+      "network_seconds": 1484.5,
+      "max_response_seconds": 2.0,
+      "cache_events": 152
     },
     {
       "name": "Zellbury",
