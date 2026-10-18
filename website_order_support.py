@@ -24,7 +24,7 @@ def product_key(value):
 
 def navigation(soup,base):
     """Only observed header navigation/collection links, never the API's collection order."""
-    roots=soup.select('header nav, header [role=navigation], [role=banner] nav, #shopify-section-header nav')
+    roots=soup.select('header nav, header [role=navigation], [role=banner] nav, #shopify-section-header nav, .side-nav')
     if not roots:roots=soup.select('header, [role=banner], .side-nav')
     if not roots:roots=[node for node in soup.select('nav') if node.find_parent('footer') is None]
     result=[];seen=set();groups={}
