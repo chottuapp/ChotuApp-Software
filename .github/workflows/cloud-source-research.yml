@@ -11,7 +11,7 @@ permissions:
   actions: read
 concurrency:
   group: chotuapp-source-research
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   inspect:
     runs-on: ubuntu-24.04

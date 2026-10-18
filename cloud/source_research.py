@@ -85,7 +85,7 @@ def describe(text,url):
  locale_controls=[str(t)[:2000] for t in soup.select('select[name*=country],select[id*=country],a[data-country],form[action*=Country],a[href*="pk.khaadi"]')][:10]
  controllers,clues=controller_clues(soup,url)
  controls=[]
- for node in soup.select('.product-detail input'):
+ for node in soup.select('input'):
   identity=str(node.get('name',''))+' '+str(node.get('id',''))+' '+' '.join(node.get('class',[]))
   if re.search('token|secret|password|email|phone|session|cookie',identity,re.I):continue
   value=str(node.get('value',''))
@@ -160,6 +160,9 @@ def inspect(host):
        snippet=text[max(0,match.start()-100):match.end()+180]
        if not re.search('token|secret|password|authorization|api.?key|bearer|email|phone',snippet,re.I):snippets.append(snippet[:450])
        if len(snippets)>=70:break
+      for match in list(re.finditer(r'size-item|variationUrl|variationURL|variation-url|productVariation',text))[-15:]:
+       snippet=text[max(0,match.start()-180):match.end()+300]
+       if not re.search('token|secret|password|authorization|api.?key|bearer|email|phone',snippet,re.I):snippets.append(snippet[:550])
       records.append({'public_script':public_url(script),'bytes':size,'route_clues':snippets})
  except Exception as exc:records.append({'outcome':'diagnostic_stopped','error_type':type(exc).__name__})
  finally:session.close()
