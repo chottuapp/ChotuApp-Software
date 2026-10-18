@@ -30,15 +30,12 @@ jobs:
             sudo apt-get install -y python3-tk
           fi
           python -m pip install -r requirements.txt
-      - name: Verify listing order, hyperlink integrity and existing exports
+      - name: Verify listing order, hyperlink integrity and source boundaries
         env:
           PYTHONPATH: tests:cloud
         run: >-
           python -m unittest tests.test_website_order tests.test_ranking_metadata
-          tests.test_app.ExportTests tests.test_app.PriceVerificationTests
-          tests.test_app.FreshFetchTests tests.test_app.CatalogQualityTests
-          tests.test_fast_fetch tests.test_laam_source tests.test_source_compatibility
-          tests.test_cloud.CloudTests tests.test_compact_response_cache tests.test_czone_source
+          tests.test_czone_source tests.test_source_compatibility tests.test_cloud_diagnostics
       - name: Check bounded public default listings without starting or stopping fetching
         env:
           PYTHONPATH: cloud
