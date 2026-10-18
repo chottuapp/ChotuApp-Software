@@ -7,6 +7,10 @@ import website_category_support as cat
 import website_order_support as order
 BASE='https://store.example'
 class StrictCategoryTests(unittest.TestCase):
+ def test_named_campaign_sale_is_not_product_taxonomy(self):
+  self.assertFalse(cat.substantive('Wedding Season Sale'));self.assertFalse(cat.substantive('10 10 Sale 2026'));self.assertTrue(cat.substantive('LITTLE GIRLS (1-6Y)'))
+  html='<nav class="breadcrumb"><a href="/">Home</a><a href="/collections/10-10-sale">10 10 Sale 2026</a></nav>'
+  self.assertIsNone(cat.breadcrumb(BeautifulSoup(html,'html.parser'),BASE+'/products/x'))
  def test_title_guesses_and_sale_membership_never_become_categories(self):
   row={'source_url':BASE+'/products/x','category':'Foundation','subcategory':'Guessed','name':'Foundation','base_price (PKR)':100}
   order.apply_order([row],{'x':dict(category='SALE',subcategory='',category_order=1,subcategory_order=1,product_order=1,source_url=BASE+'/collections/sale',checked_at='2026-10-18T00:00:00Z')})

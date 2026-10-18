@@ -6,7 +6,7 @@ FIELDS=('website_category_path','website_category_source_url','website_category_
 PROMOTIONAL=re.compile(r'^(?:home(?: page)?|all(?: products| collections)?|shop(?: all| now)?|catalog(?:ue)?|collections?|products?|sale|sales|clearance|deals?|offers?|featured(?: products)?|new(?: in| arrivals?)?|best[ -]?sell(?:ers?|ing)|top[ -]?sell(?:ers?|ing)|trending|under\s+(?:rs\.?|pkr)?\s*[\d,]+|in stock feed|uncategorized)$',re.I)
 def substantive(label):
     label=str(label or '').strip()
-    return bool(label) and not PROMOTIONAL.fullmatch(label)
+    return bool(label) and not PROMOTIONAL.fullmatch(label) and not re.search(r'(?i)\b(?:sales?|clearance|discounts?|new arrivals?|featured products|best[ -]?sellers?|trending)\b',label)
 def fact(path,url,status):
     path=[str(p).strip() for p in path if str(p).strip()]
     if not path or any(not substantive(p) for p in path):return None
