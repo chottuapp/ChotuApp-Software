@@ -22,6 +22,9 @@ class DiagnosticTests(unittest.TestCase):
     def test_zero_mismatch_note_is_not_a_data_failure(self):
         self.assertNotIn('DATA_MISMATCH',issue_codes('PRICE AUDIT: 138 products; 0 review/mismatch rows'))
         self.assertIn('DATA_MISMATCH',issue_codes('FAILED: Price mismatch'))
+        self.assertNotIn('DATA_MISMATCH',issue_codes('PRICE AUDIT: 3894 products; 9 review/mismatch rows; REVIEW=9, MISMATCH=0'))
+        self.assertIn('AUDIT_REVIEW',issue_codes('PRICE AUDIT: 9 review/mismatch rows'))
+        self.assertIn('DATA_MISMATCH',issue_codes('PRICE AUDIT: 2 review/mismatch rows; REVIEW=0, MISMATCH=2'))
     def test_public_report_allowlist_omits_details_credentials_and_full_logs(self):
         output=self.root/'ANAS_DATA_FETCH';output.mkdir()
         (output/'run-summary.json').write_text(json.dumps({'status':'incomplete','checkpoint':'saved','stores':[{'name':'Seran','status':'blocked','detail':'SOURCE BLOCKED: HTTP 403; password=very-private-secret','secret':'never-copy','software_revision':'a'*16}]}))

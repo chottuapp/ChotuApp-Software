@@ -1,0 +1,67 @@
+import copy,importlib.util,json,sys,tempfile,unittest
+from pathlib import Path
+from unittest.mock import patch
+from bs4 import BeautifulSoup
+from openpyxl import load_workbook
+ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT));sys.path.insert(0,str(ROOT/'cloud'))
+import laam_source_support as source
+FIXTURES=json.loads((ROOT/'tests/fixtures/laam_public_products.json').read_text())
+def html(raw,currency='PKR'):
+ flat=[]
+ def encode(value):
+  i=len(flat);flat.append(None)
+  if isinstance(value,dict):flat[i]={k:encode(v) for k,v in value.items()}
+  elif isinstance(value,list):flat[i]=[encode(v) for v in value]
+  else:flat[i]=value
+  return i
+ encode(raw)
+ return '<script id="__NUXT_DATA__">'+json.dumps(flat)+'</script><script type="application/ld+json">'+json.dumps({'@type':'Product','offers':{'priceCurrency':currency,'price':raw['variants'][0]['price']}})+'</script>'
+class LaamTests(unittest.TestCase):
+ def test_real_captured_products_preserve_observed_price_stock_options_images(self):
+  for fixture in FIXTURES:
+   raw=fixture['product'];p=source.product_state(BeautifulSoup(html(raw),'html.parser'),raw['handle'])
+   self.assertEqual(len(p['variants']),len(raw['variants']));self.assertEqual(p['body_html'],raw['description'])
+   for before,after in zip(raw['variants'],p['variants']):
+    self.assertEqual(after['id'],before['shopify_id']);self.assertEqual(after['price'],before['price']);self.assertEqual(after['inventory_quantity'],before['inventory_quantity']);self.assertEqual(after['option1'],before['title']);self.assertEqual(after['sku'],before['sku'])
+   self.assertEqual([i['src'] for i in p['images']],[i['src'] for i in raw['media']]);self.assertEqual(p['_source_url'],fixture['url'])
+ def test_foreign_currency_rejected(self):
+  raw=FIXTURES[0]['product']
+  with self.assertRaisesRegex(ValueError,'currency unverified'):source.product_state(BeautifulSoup(html(raw,'USD'),'html.parser'),raw['handle'])
+ def test_unknown_stock_not_invented_and_observed_out_of_stock_kept(self):
+  raw=copy.deepcopy(FIXTURES[0]['product']);raw['variants'][0]['stock_status']='out-of-stock';raw['variants'][0]['inventory_quantity']=0
+  p=source.normalize(raw,raw['handle']);self.assertFalse(p['variants'][0]['available']);self.assertEqual(p['variants'][0]['inventory_quantity'],0)
+  raw['variants'][0]['stock_status']=''
+  with self.assertRaisesRegex(ValueError,'availability unverified'):source.normalize(raw,raw['handle'])
+ def test_missing_quantity_blank_and_unknown_options_rejected(self):
+  raw=copy.deepcopy(FIXTURES[0]['product']);raw['variants'][0].pop('inventory_quantity');p=source.normalize(raw,raw['handle']);self.assertNotIn('inventory_quantity',p['variants'][0]);raw['variants'][0]['title']='Not a declared size'
+  with self.assertRaisesRegex(ValueError,'declared option'):source.normalize(raw,raw['handle'])
+ def test_source_does_not_follow_other_hosts(self):
+  reader=source.PublicCatalog({},lambda _:None)
+  with self.assertRaisesRegex(ValueError,'changed host'):reader.read('https://other.example/products/x')
+ def test_cached_public_pages_do_not_repeat_network_or_pacing_delay(self):
+  from types import SimpleNamespace
+  from resume_support import ResponseCache
+  import requests
+  with tempfile.TemporaryDirectory() as tmp:
+   cache=ResponseCache(Path(tmp)/'pages.sqlite3');r=requests.Response();r.url='https://laam.com/products/test';r.status_code=200;r._content=b'cached product page';r.encoding='utf-8';cache.put(r.url,r)
+   sleeps=[];g={'_chotu_tls':SimpleNamespace(saved_response_cache=cache),'_chotu_wait':lambda:None,'_chotu_backoff':lambda *args:sleeps.append(args),'_chotu_debug_request':lambda *args:None,'_chotu_debug_response':lambda *args,**kwargs:None}
+   reader=source.PublicCatalog(g,lambda _:None);self.assertEqual(reader.read(r.url).content,r.content);self.assertEqual(sleeps,[]);cache.close()
+ def test_public_sitemap_images_are_not_treated_as_products(self):
+  import requests
+  class FixtureSource(source.PublicCatalog):
+   def read(self,url,allow_missing=False):
+    payload={source.BASE+'/robots.txt':'User-agent: *\nAllow: /\nSitemap: https://laam.com/sitemap.xml',source.BASE+'/sitemap.xml':'<sitemapindex><sitemap><loc>https://laam.com/part.xml</loc></sitemap></sitemapindex>',source.BASE+'/part.xml':'<urlset xmlns:i="urn:image"><url><loc>https://laam.com/products/2665a</loc><i:image><i:loc>https://cdn.example/image.jpg</i:loc></i:image></url></urlset>',source.BASE+'/products/2665a':html(FIXTURES[0]['product'])}[url]
+    response=requests.Response();response.status_code=200;response._content=payload.encode();response.encoding='utf-8';return response
+  products,complete=FixtureSource({},lambda _:None).catalog();self.assertTrue(complete);self.assertEqual(len(products),1);self.assertEqual(products[0]['handle'],'2665a')
+ def test_export_integration_uses_existing_template_and_preserves_fields(self):
+  spec=importlib.util.spec_from_file_location('laam_test_engine',ROOT/'main.py');engine=importlib.util.module_from_spec(spec);spec.loader.exec_module(engine)
+  with tempfile.TemporaryDirectory() as tmp:
+   engine.OUT=Path(tmp);products=[source.normalize(f['product'],f['product']['handle']) for f in FIXTURES]
+   source.enable_laam_source(vars(engine));before=engine.discover;logs=[]
+   with patch.object(source.PublicCatalog,'catalog',return_value=(products,True)):
+    engine._chotuapp_run_site_original(source.BASE,'LAAM',ROOT/'importer-files/Chotu_Products_Import_Template_Discount_Tags.xlsx',logs.append)
+   self.assertIs(engine.discover,before)
+   book=load_workbook(Path(tmp)/'LAAM - REFRESH REVIEW.xlsx');sheet=book['Products'];rows=[dict(zip([c.value for c in sheet[1]],v)) for v in sheet.iter_rows(min_row=2,values_only=True)]
+   self.assertEqual(len(rows),4);self.assertEqual({r['source_url'] for r in rows},{f['url'] for f in FIXTURES})
+   variants=book['Variant Combinations'];self.assertEqual(variants.max_row-1,sum(len(p['variants']) for p in products));self.assertTrue(any('REVIEW=1' in line for line in logs));self.assertFalse(any('TOP 20: Storefront best-selling' in line for line in logs));book.close()
+if __name__=='__main__':unittest.main()

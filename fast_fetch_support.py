@@ -18,7 +18,7 @@ CAUTIOUS_SOURCES={'rawayat.com.pk','rivaj-uk.com','junaidjamshed.com','tawakkalf
 
 def source_policy(host):
     host=host.lower().removeprefix('www.')
-    if host in ('outfitters.com.pk','zellbury.com'):return (1.5,1)
+    if host in ('outfitters.com.pk','zellbury.com','laam.com','pk.khaadi.com','khaadi.com','sapphireonline.pk','pk.sapphireonline.pk'):return (1.5,1)
     return (1.0,1) if host in CAUTIOUS_SOURCES or host=='shopmodest.pk' else (1.0,5) if host=='elitecosmeticspk.com' else (0.25,5)
 
 

@@ -1,0 +1,46 @@
+name: ChotuApp Validate Fetch Update
+on:
+  push:
+    branches: [main]
+    paths: [cloud/fetch-update-release.json]
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: chotuapp-validate-fetch-update
+  cancel-in-progress: false
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install extraction dependencies
+        run: |
+          if ! python -c 'import tkinter'; then
+            sudo apt-get update -qq
+            sudo apt-get install -y python3-tk
+          fi
+          python -m pip install -r requirements.txt
+      - name: Verify export, source fixtures, checkpoints and continuation
+        id: tests
+        env:
+          PYTHONPATH: tests:cloud
+        run: >-
+          python -m unittest
+          tests.test_variant_identity_update tests.test_compact_response_cache
+          tests.test_cloud_diagnostics tests.test_cloud_quality_update tests.test_fetch_update_release
+          tests.test_resume_support.DurableTests tests.test_high_speed_cache
+          tests.test_fast_fetch tests.test_continuation_policy tests.test_seran_source
+          tests.test_laam_source tests.test_source_compatibility tests.test_checkpoint_parts tests.test_checkpoint_finalization
+          tests.test_cloud.CloudTests tests.test_app.ExportTests
+          tests.test_app.PriceVerificationTests tests.test_app.FreshFetchTests
+          tests.test_app.CatalogQualityTests tests.test_source_research
+      - name: Publish validation report and resume saved fetch only after success
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python cloud/fetch_update_release.py --validation '${{ steps.tests.outcome }}'

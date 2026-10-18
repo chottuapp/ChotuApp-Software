@@ -133,6 +133,7 @@ class ResponseCache:
         self.db=sqlite3.connect(path,timeout=30)
         configure_response_database(self.db)
         self.db.execute('CREATE TABLE IF NOT EXISTS pages(url TEXT PRIMARY KEY, final_url TEXT, body BLOB, encoding TEXT, content_type TEXT, checksum TEXT)')
+        self.db.execute('CREATE TABLE IF NOT EXISTS page_format(url TEXT PRIMARY KEY,codec TEXT NOT NULL,raw_bytes INTEGER NOT NULL)')
         self.db.commit()
     def get(self,url):
         row=self.db.execute('SELECT final_url,body,encoding,content_type,checksum FROM pages WHERE url=?',(url,)).fetchone()
@@ -140,6 +141,18 @@ class ResponseCache:
         final,body,encoding,ctype,checksum=row
         if hashlib.sha256(body).hexdigest()!=checksum:
             self.db.execute('DELETE FROM pages WHERE url=?',(url,));self.db.commit();return None
+        format_row=self.db.execute('SELECT codec,raw_bytes FROM page_format WHERE url=?',(url,)).fetchone()
+        if format_row and format_row[0]=='zlib-v1':
+            try:
+                import zlib
+                expected=format_row[1]
+                if not isinstance(expected,int) or not 0<=expected<=64*1024**2:raise ValueError('Invalid cached response size')
+                decoder=zlib.decompressobj();decoded=decoder.decompress(body,expected+1)
+                if len(decoded)!=expected or not decoder.eof or decoder.unused_data:raise ValueError('Invalid compressed cached response')
+                body=decoded
+            except (ValueError,zlib.error):
+                self.db.execute('DELETE FROM pages WHERE url=?',(url,));self.db.execute('DELETE FROM page_format WHERE url=?',(url,));self.db.commit();return None
+        elif format_row and format_row[0]!='raw':return None
         import requests
         response=requests.Response();response.status_code=200;response.url=final
         response._content=body;response.encoding=encoding
@@ -156,8 +169,14 @@ class ResponseCache:
             except (ValueError,TypeError):return
         if b'cf-chl-' in body or b'<title>Just a moment' in body:
             return
+        codec='raw';raw_bytes=len(body)
+        if 512<=raw_bytes<=64*1024**2:
+            import zlib
+            compressed=zlib.compress(body,1)
+            if len(compressed)<len(body)*.9:body=compressed;codec='zlib-v1'
         self.db.execute('INSERT OR REPLACE INTO pages VALUES(?,?,?,?,?,?)',
                         (url,response.url,body,response.encoding,response.headers.get('Content-Type'),hashlib.sha256(body).hexdigest()))
+        self.db.execute('INSERT OR REPLACE INTO page_format VALUES(?,?,?)',(url,codec,raw_bytes))
         self.db.commit()
     def close(self):self.db.close()
 

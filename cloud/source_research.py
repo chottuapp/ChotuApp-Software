@@ -180,13 +180,14 @@ def inspect(host):
  except Exception as exc:records.append({'outcome':'diagnostic_stopped','error_type':type(exc).__name__})
  finally:session.close()
  return {'host':host,'responses':records}
-def publish(data):
+def publish(data,branch='source-research'):
  payload=json.dumps(data,ensure_ascii=True,indent=2).encode()
  if len(payload)>2*1024**2:raise ValueError('Research report exceeds bounded public fixture size')
  with tempfile.TemporaryDirectory() as tmp:
   env=dict(os.environ,GIT_INDEX_FILE=str(Path(tmp)/'index'))
   def git(*args,input=None):return subprocess.run(['git',*args],input=input,env=env,stdout=subprocess.PIPE,stderr=subprocess.PIPE,check=True).stdout.decode().strip()
-  ref='refs/heads/source-research';parent=None
+  if branch not in ('source-research','fetch-update-reports'):raise ValueError('Unsupported public report branch')
+  ref='refs/heads/'+branch;parent=None
   if git('ls-remote','--heads','origin',ref):git('fetch','--depth=1','origin',ref);parent=git('rev-parse','FETCH_HEAD');git('read-tree',parent)
   else:git('read-tree','--empty')
   blob=git('hash-object','-w','--stdin',input=payload)

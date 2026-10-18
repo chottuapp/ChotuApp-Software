@@ -201,6 +201,39 @@ def money(v):
 
 def uid(prefix, key): return prefix + hashlib.sha256(str(key).encode()).hexdigest()[:12]
 
+def normalize_variant_combinations(base, combinations, log):
+    """Preserve distinct observed variants; scope colliding IDs without changing prices."""
+    buckets = {}
+    for row in combinations:
+        buckets.setdefault(row['combination_id'], []).append(row)
+    result, findings = [], []
+    for original_id, group in buckets.items():
+        if len(group) == 1:
+            result.append(group[0]); continue
+        unique, seen_rows, identities = [], set(), {}
+        for row in group:
+            fingerprint = json.dumps(row, sort_keys=True, ensure_ascii=True, default=str)
+            if fingerprint in seen_rows:
+                findings.append(('EXACT_DUPLICATE_COLLAPSED', row['product_id'], row.get('source_variant_id',''), row.get('source_url',''), 'Repeated identical source record; one logical combination retained.'))
+                continue
+            seen_rows.add(fingerprint)
+            key = (str(row['product_id']), str(row.get('source_variant_id','')), tuple((str(row.get(f'option_{i}_group_id','')), str(row.get(f'option_{i}_value',''))) for i in range(1,4)))
+            if key in identities:
+                changed = sorted(k for k in set(row) | set(identities[key]) if row.get(k) != identities[key].get(k))
+                raise RuntimeError('Conflicting duplicate source variant identity: product '+str(row['product_id'])+', variant '+str(row.get('source_variant_id',''))+', fields '+','.join(changed)+'. No conflicting prices, availability or images were silently selected.')
+            identities[key] = row; unique.append((key,row))
+        for key,row in unique:
+            if len(unique) > 1:
+                row = dict(row, combination_id=uid('CC',base+'|product-scoped|'+json.dumps(key,separators=(',',':'))))
+                findings.append(('SOURCE_ID_SCOPED', row['product_id'], row.get('source_variant_id',''), row.get('source_url',''), 'Source variant identity reused across distinct products or option selections; scoped export ID emitted. All source fields retained; review required.'))
+            result.append(row)
+    if len({r['combination_id'] for r in result}) != len(result):
+        raise RuntimeError('Variant export identity collision remains after product/option scoping')
+    if findings:
+        log('VARIANT IDENTITY REVIEW: '+str(len(findings))+' findings; '+str(len(combinations))+' records -> '+str(len(result))+' logical combinations. Source variant IDs, prices, stock, options and images retained; conflicts are never auto-selected.')
+    return result, findings
+
+
 def discover(base, log):
     _chotu_debug_stage('Discover catalog')
     """Collect catalog, then use collection-scoped pagination for large Shopify stores.
@@ -330,6 +363,22 @@ def shopify_minor_price(value):
     return amount / Decimal('100')
 
 
+def confirmed_removed_product(base, product, error, log):
+    """A missing optional .js endpoint alone does not prove a product is hidden."""
+    if 'Website endpoint unavailable (404):' not in str(error):return False
+    url=base.rstrip('/')+'/products/'+product['handle']
+    _chotu_wait()
+    try:
+        response=S.get(url,timeout=25)
+        same=(urlsplit(response.url).hostname or '').lower().removeprefix('www.')==(urlsplit(base).hostname or '').lower().removeprefix('www.')
+        if same and response.status_code in (404,410):
+            log('CATALOG FILTER: excluded confirmed removed public product: '+url+' (API 404; product page HTTP '+str(response.status_code)+')')
+            return True
+    except ChotuRateLimited:raise
+    except requests.RequestException:pass
+    return False
+
+
 def refresh_variant_prices(base, product, log):
     # Product.js uses minor units, unlike products.json decimal rupees.
     # Stage the complete response before changing the source product.
@@ -423,7 +472,8 @@ def audit_fractional_prices(base, rows, combos, output, log):
         w.writerow(['status','product_url','source_variant_id','check','export_base_sale','current_api_base_sale','detail'])
         w.writerows(findings)
     problems=sum(x[0] in ('REVIEW','MISMATCH') for x in findings)
-    log(f'PRICE AUDIT: {output} ({checked} products checked; {problems} review/mismatch rows)')
+    reviews=sum(x[0]=='REVIEW' for x in findings);mismatches=sum(x[0]=='MISMATCH' for x in findings)
+    log(f'PRICE AUDIT: {output} ({checked} products checked; {problems} review/mismatch rows; REVIEW={reviews}, MISMATCH={mismatches})')
     log('PRICE AUDIT NOTE: product.js is a second Shopify API endpoint, NOT visual storefront/checkout verification. No prices changed.')
 
 # CHOTUAPP_STOREFRONT_AUDIT_V1
@@ -599,10 +649,12 @@ def write_row(ws, vals):
         headers = tuple(str(c.value).strip() if c.value is not None else '' for c in ws[1])
         ws._chotu_export_headers = headers
     ws.append([vals.get(h) for h in headers])
+    # append already records the row index; max_row scans every worksheet cell.
+    appended_row = ws._current_row
     for index,header in enumerate(headers,1):
         value=vals.get(header)
         if 'image_url' in header and isinstance(value,str) and value.startswith(('https://','http://')):
-            ws.cell(ws.max_row,index).hyperlink=value
+            ws.cell(appended_row,index).hyperlink=value
 
 
 
@@ -974,11 +1026,14 @@ def run_site(base, name, template, log):
     ensure_columns(wb['Products'])
     rows=[]; imgs=[]; groups=[]; opts=[]; combos=[]; review=[]
     _chotu_tls.image_audit = []
+    _chotu_tls.variant_identity_findings = []
     _chotu_tls.image_throttled = False
     _chotu_tls.price_throttled = False
     skipped_hidden = skipped_out_of_stock = skipped_invalid = 0
-    for p in products:
+    for product_index,p in enumerate(products,1):
         _chotu_wait()
+        if product_index==1 or product_index%100==0:
+            log(f'ROW BUILD: {product_index-1}/{len(products)} products processed; {len(rows)} export rows prepared')
         variants=[v for v in p.get('variants',[]) if v.get('id') is not None]
         priced=[v for v in variants if money(v.get('price')) is not None and money(v.get('price'))>0]
         # CHOTUAPP_AVAILABLE_PRODUCTS_ONLY_V1
@@ -1014,6 +1069,9 @@ def run_site(base, name, template, log):
                 skipped_out_of_stock += 1
                 continue
         except Exception as exc:
+            if confirmed_removed_product(base,p,exc,log):
+                skipped_hidden += 1
+                continue
             log('PRICE VERIFICATION INCOMPLETE: ' + txt(p.get('title')) + ' — ' + str(exc))
         cheapest=min(available_priced,key=lambda v:money(v['price']))
         lowest=money(cheapest['price'])
@@ -1038,7 +1096,7 @@ def run_site(base, name, template, log):
         cover=pictures[0]['src'] if pictures else featured
         category=normalize_category(best_category(p,cats.get(p.get('id'),[])))
         desc=friendly_description(p)
-        url=f"{base}/products/{p['handle']}"
+        url=p.get('_source_url') or f"{base}/products/{p['handle']}"
         dimensions=[]
         for idx,dim in enumerate((p.get('options') or [])[:3],1):
             title=txt(dim.get('name')) or f'Option {idx}'
@@ -1081,6 +1139,13 @@ def run_site(base, name, template, log):
             src=im.get('src')
             if not src: continue
             imgs.append({'image_id':uid('CI',pid+'|'+str(im.get('id') or i)),'product_id':pid,'image_order':i,'scraped_image_url (auto)':src,'final_image_url (paste — hosted link)':'','is_primary (yes/no)':'yes' if i==1 else 'no','source_url':url})
+    log(f'ROW BUILD: {len(products)}/{len(products)} products processed; {len(rows)} export rows prepared')
+    combos, identity_findings = normalize_variant_combinations(base, combos, log)
+    _chotu_tls.variant_identity_findings = identity_findings
+    if identity_findings:
+        safe_identity_name = re.sub(r'[^\w .-]', '', name).strip() or 'Shopify'
+        with (OUT/(safe_identity_name+' - VARIANT IDENTITY AUDIT.csv')).open('w',encoding='utf-8-sig',newline='') as stream:
+            writer=csv.writer(stream);writer.writerow(['issue_code','product_id','source_variant_id','source_url','detail']);writer.writerows(identity_findings)
     log(f'PRODUCT FILTER: excluded {skipped_out_of_stock} fully unavailable products; skipped {skipped_hidden} explicitly unpublished, {skipped_invalid} invalid/unpriced; retained {len(rows)} products with ALL their variants')
     if not rows: raise RuntimeError('No public, priced products found')
     rows.sort(key=lambda x:(x['category'].lower(), x['sale_price (PKR, agar discount ho)'] or x['base_price (PKR)'],x['name'].lower()))
@@ -1108,6 +1173,7 @@ def run_site(base, name, template, log):
 
     log(f'VARIANT EXPORT: {len(combos)} combinations; ' +
         str(sum(c['available (yes/no)'] == 'no' for c in combos)) + ' unavailable preserved as no')
+    _chotu_debug_stage('Writing Excel rows')
     galleries = {}
     for image in imgs:
         galleries.setdefault(image['product_id'], []).append(image['scraped_image_url (auto)'])
@@ -1118,7 +1184,9 @@ def run_site(base, name, template, log):
     for r in imgs: write_row(wb['Product Images'],r)
     for r in groups: write_row(wb['Option Groups'],r)
     for r in opts: write_row(wb['Options'],r)
-    for r in combos: write_row(wb['Variant Combinations'],r)
+    for variant_index,r in enumerate(combos,1):
+        write_row(wb['Variant Combinations'],r)
+        if variant_index%1000==0 or variant_index==len(combos):log(f'WORKSHEET WRITE: {variant_index}/{len(combos)} variants written')
     if len({x['combination_id'] for x in combos})!=len(combos): raise RuntimeError('Duplicate combination IDs')
     product_ids_for_validation = {r['product_id'] for r in rows}
     if any(x['product_id'] not in product_ids_for_validation for x in combos): raise RuntimeError('Orphan variant combination')
@@ -1134,6 +1202,7 @@ def run_site(base, name, template, log):
     os.replace(temp,target)
     log(f'EXPORT BUILT: {len(rows)} products, {len(imgs)} images, {len(groups)} selector groups, {len(opts)} selector values, {len(combos)} actual variants ({sum(x["available (yes/no)"]=="no" for x in combos)} unavailable)')
     log(f'FILE: {target}')
+    _chotu_debug_stage('Price audit')
     audit_fractional_prices(base, rows, combos, OUT/f'{safe} - PRICE AUDIT.csv', log)
     storefront_verified = storefront_price_audit(rows, OUT/f'{safe} - STOREFRONT AUDIT.csv', log)
     quality_issues = quality_validation(rows, imgs, groups, opts, combos, OUT/f'{safe} - QUALITY REPORT.csv', log, storefront_verified)
@@ -1204,6 +1273,9 @@ def quality_validation(rows, imgs, groups, opts, combos, output, log, storefront
 
     def flag(severity, code, pid='', detail='', url=''):
         issues.append((severity, code, str(pid or ''), str(url or product_urls.get(pid, '')), str(detail)))
+
+    for code,pid,source_variant_id,url,detail in getattr(_chotu_tls,'variant_identity_findings',[]):
+        flag('WARNING',code,pid,detail+' Source variant: '+str(source_variant_id),url)
 
     generic = {'miss rose product categories', 'in stock feed', 'all products',
                'shop all', 'sale', 'new arrivals', 'uncategorized', 'general'}

@@ -20,7 +20,10 @@ def issue_codes(text):
         if re.search(r'(?:status=|HTTP\s+|\()'+str(code)+r'\b',text,re.I):issues.append('HTTP_'+str(code))
     for needle,code in [('SOURCE BLOCKED:','SOURCE_BLOCKED'),('SOURCE PAUSED:','RATE_LIMIT'),('TOP 20: UNVERIFIED','RANKING_UNVERIFIED'),('schema','SCHEMA_CHECK'),('CHECKPOINT NOT SAVED','CHECKPOINT_NOT_SAVED')]:
         if needle.lower() in text.lower():issues.append(code)
-    if 'mismatch' in text.lower() and (re.search(r'FAILED:|EXCEPTION:|\bERROR\b',text) or re.search(r'\b[1-9][0-9]* (?:review/)?mismatch',text)):issues.append('DATA_MISMATCH')
+    # A combined review/mismatch count includes unavailable endpoints; it is not proof of a price difference.
+    if re.search(r'\b[1-9][0-9]* review/mismatch|\bREVIEW=[1-9][0-9]*',text,re.I):issues.append('AUDIT_REVIEW')
+    if 'mismatch' in text.lower() and (re.search(r'FAILED:|EXCEPTION:|\bERROR\b',text) or re.search(r'\b[1-9][0-9]* mismatches?\b|\bMISMATCH=[1-9][0-9]*',text,re.I)):issues.append('DATA_MISMATCH')
+    if 'Duplicate combination IDs' in text or 'Conflicting duplicate source variant identity' in text:issues.append('VARIANT_IDENTITY')
     return issues
 
 
@@ -40,7 +43,7 @@ class Collector:
         name=match[1]
         if name not in self.stores and len(self.stores)>=30:return
         item=self.stores.setdefault(name,{'http_statuses':{},'network_seconds':0,'max_response_seconds':0,'cache_events':0,'issues':[]})
-        stages=('Discover catalog','Collection/category mapping','Building Excel rows','Saving Excel workbook','Parallel category responses','Parallel product prices and pages','Idle')
+        stages=('Discover catalog','Collection/category mapping','Building Excel rows','Writing Excel rows','Price audit','Saving Excel workbook','Parallel category responses','Parallel product prices and pages','Idle')
         stage=re.search(r'STAGE: (.+)$',text)
         if stage and stage[1] in stages:
             if item.get('current_stage')!=stage[1]:item.pop('task_progress',None)
@@ -52,6 +55,14 @@ class Collector:
             if old.get('stage')==progress[1] and old.get('total')==total and done>old.get('done',done) and now>old.get('updated_epoch',now):
                 eta=round((total-done)*(now-old['updated_epoch'])/(done-old['done']))
             item['task_progress']={'stage':progress[1],'done':done,'total':total,'updated_epoch':now,'eta_seconds':eta}
+        public_progress=re.search(r'PUBLIC PRODUCT PAGES: ([0-9]+)/([0-9]+) LAAM products verified',text)
+        if public_progress:
+            item['task_progress']={'stage':'public product pages','done':int(public_progress[1]),'total':int(public_progress[2]),'updated_epoch':time.time(),'eta_seconds':None}
+        local_progress=re.search(r'ROW BUILD: ([0-9]+)/([0-9]+) products processed|WORKSHEET WRITE: ([0-9]+)/([0-9]+) variants written',text)
+        if local_progress:
+            building=local_progress[1] is not None
+            done,total=(int(local_progress[1]),int(local_progress[2])) if building else (int(local_progress[3]),int(local_progress[4]))
+            item['task_progress']={'stage':'building Excel rows' if building else 'writing variant rows','done':done,'total':total,'updated_epoch':time.time(),'eta_seconds':None}
         status=re.search(r'HTTP END status=(\d{3})',text)
         if status:
             key=status[1];item['http_statuses'][key]=item['http_statuses'].get(key,0)+1
