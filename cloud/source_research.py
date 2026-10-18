@@ -23,7 +23,7 @@ def clean_html(text):
   for key in list(tag.attrs):
    if re.search('token|secret|password|key|email|phone',key,re.I):del tag.attrs[key]
    elif key in ('href','src','action','data-url','data-href'):
-    value=str(tag.attrs[key]);tag.attrs[key]=public_url(value) if value.startswith(('http://','https://')) else value.split('?')[0]
+    value=str(tag.attrs[key]);tag.attrs[key]='' if value.startswith('data:') else public_url(value) if value.startswith(('http://','https://')) else value.split('?')[0]
  # Preserve product/variation/cart-free markup, with bounded public snippets.
  candidate=soup.select_one('main') or soup.select_one('[role=main]') or soup.select_one('.product-detail') or soup.select_one('.search-results') or soup.select_one('#maincontent')
  return str(candidate if candidate else soup)[:80000]
