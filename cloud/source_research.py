@@ -59,7 +59,12 @@ def describe(text,url):
  for a in soup.find_all('a',href=True):
   u=public_url(urljoin(url,a['href']));label=a.get_text(' ',strip=True)[:90]
   if u and not re.search(r'login|account|register|logout|checkout|cart|mailto|tel:|javascript:',u,re.I) and not any(x['url']==u for x in links):links.append({'url':u,'text':label})
- return {'url':public_url(url),'page':inspect_page(text,url),'links':links[:500],'visible_html':clean_html(text),'public_product_state':public_product_state(soup),'module_preloads':[public_url(urljoin(url,t['href'])) for t in soup.select('link[rel=modulepreload][href]')][:15]}
+ product_links=[]
+ for a in soup.select('.product-tile a[href], .product[data-pid] a[href], .product-item a[href]'):
+  u=public_url(urljoin(url,a['href']))
+  if u and u not in product_links and '/products/' in u:product_links.append(u)
+ locale_controls=[str(t)[:2000] for t in soup.select('select[name*=country],select[id*=country],a[data-country],form[action*=Country],a[href*=pk.khaadi]')][:10]
+ return {'url':public_url(url),'page':inspect_page(text,url),'product_links':product_links[:30],'locale_controls':locale_controls,'links':links[:500],'visible_html':clean_html(text),'public_product_state':public_product_state(soup),'module_preloads':[public_url(urljoin(url,t['href'])) for t in soup.select('link[rel=modulepreload][href]')][:15]}
 def inspect(host):
  session=requests.Session();session.headers['User-Agent']=AGENT;records=[];robots=None;home=None
  def get(url):
@@ -77,7 +82,8 @@ def inspect(host):
   return record
  try:
   status,final,body,kind=request(session,'https://'+host+'/robots.txt',host,65536)
-  if status==200:robots=RobotFileParser();robots.parse(body.decode('utf-8',errors='replace').splitlines())
+  if status==200:
+   robot_text=body.decode('utf-8',errors='replace');robots=RobotFileParser();robots.parse(robot_text.splitlines());records.append({'sitemaps':re.findall(r'(?im)^Sitemap:\s*(https://\S+)',robot_text)[:12]})
   if status in (401,403,429,503):raise RuntimeError('Source robots request denied or limited')
   home=get('https://'+host+'/')
   if home and home.get('status')==200:
@@ -92,7 +98,7 @@ def inspect(host):
    for url in categories[:2]:
     page=get(url)
     if not page or page.get('status')!=200:continue
-    products=[x['url'] for x in page.get('links',[]) if urlsplit(x['url']).hostname==canonical and ('/products/' in x['url'] or re.search(r'/[^/]+\.html$',urlsplit(x['url']).path)) and x['url']!=url]
+    products=page.get('product_links',[]) or [x['url'] for x in page.get('links',[]) if urlsplit(x['url']).hostname==canonical and '/products/' in x['url'] and x['url']!=url]
     for product in list(dict.fromkeys(products))[:2]:get(product)
    # Inspect one actual first-party application script, extracting only public route clues.
    scripts=home.get('page',{}).get('script_urls',[])
