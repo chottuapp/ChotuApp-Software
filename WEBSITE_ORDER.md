@@ -20,3 +20,10 @@ Use the three order numbers lexicographically only when status, same-store sourc
 The final workbook preserves this order even after price/quality checks. Links and cell formatting follow their products. Existing popularity observations may remain as historical/source-attributed analysis but do not override default listing order. Rule 804 uses these website positions by default; historical cheapest-first ordering requires a new explicit user instruction.
 
 A completed workbook from an earlier run is not retroactively website-verified. It requires a new source-order capture/rebuild. New engine processes use the updated policy; code is not injected into already-running store processes.
+
+
+Strict website category policy
+
+Product categories are independent of default display order. A SALE/New Arrivals placement can keep its display rank without becoming the product category. Categories come only from an unambiguous same-store product breadcrumb or a product’s verified membership in a substantive collection actually linked in the store navigation. Breadcrumbs take precedence, followed by the deeper observed menu hierarchy. Source spelling and case are preserved. The full hierarchy is retained in website_category_path; category and subcategory contain the first and last source levels.
+
+Four provenance columns accompany categories: website_category_path, website_category_source_url, website_category_checked_at, website_category_status. Unverified categories are blank and generate WEBSITE_CATEGORY_UNVERIFIED review warnings. Existing unproven categories do not become trusted merely by retaining a previous workbook. Robots restrictions, request bounds and missing/ambiguous source data remain explicit limitations. Category keyword guesses, title-case rewriting and Rule804 editorial taxonomy are disabled in strict exports.

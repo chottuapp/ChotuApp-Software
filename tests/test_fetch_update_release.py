@@ -7,7 +7,7 @@ import fetch_update_release as release
 class ReleaseTests(unittest.TestCase):
  def invoke(self,validation,result=None):
   reports=[]
-  with patch.dict(os.environ,{'GITHUB_RUN_ID':'123456','GITHUB_SHA':'a'*40}),patch.object(sys,'argv',['release','--validation',validation]),patch.object(release,'publish',side_effect=lambda report,branch:reports.append((report,branch))),patch.object(release.subprocess,'run',return_value=result) as command,contextlib.redirect_stdout(io.StringIO()):
+  with patch.dict(os.environ,{'GITHUB_RUN_ID':'123456','GITHUB_SHA':'a'*40}),patch.object(sys,'argv',['release','--validation',validation]),patch.object(release,'publish',side_effect=lambda report,branch:reports.append((report,branch))),patch.object(release,'stop_previous'),patch.object(release.subprocess,'run',return_value=result) as command,contextlib.redirect_stdout(io.StringIO()):
    if validation!='success' or result.returncode:
     with self.assertRaises(SystemExit):release.main()
    else:release.main()
@@ -19,4 +19,12 @@ class ReleaseTests(unittest.TestCase):
   args=command.call_args.args[0];self.assertTrue(any(x.startswith('stores=') and 'Zero Lifestyle' in x for x in args));self.assertFalse(any(x.startswith('resume_run_id=') for x in args));self.assertIn('auto_continue_limit=6',args);self.assertEqual(reports[0][0]['fetch_run_id'],'987654');self.assertEqual(reports[0][1],'fetch-update-reports')
  def test_cli_error_is_not_published_as_arbitrary_output(self):
   reports,_=self.invoke('success',SimpleNamespace(returncode=1,stdout='',stderr='private credential value'));self.assertNotIn('private credential',json.dumps(reports));self.assertEqual(reports[0][0]['dispatch'],'failed')
+class StopTests(unittest.TestCase):
+ def test_already_completed_run_needs_no_mutation(self):
+  with patch.object(release.subprocess,'run',return_value=SimpleNamespace(stdout='{"status":"completed"}')) as command:
+   release.stop_previous('123');self.assertEqual(command.call_count,1)
+ def test_unconfirmed_stop_never_allows_new_dispatch(self):
+  with patch.object(release.subprocess,'run',return_value=SimpleNamespace(stdout='{"status":"in_progress"}')),patch.object(release.time,'sleep'):
+   with self.assertRaises(RuntimeError):release.stop_previous('123')
 if __name__=='__main__':unittest.main()
+

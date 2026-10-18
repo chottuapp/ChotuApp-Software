@@ -47,7 +47,10 @@ def product_state(soup,handle):
                 for item in value:walk(item)
         walk(tree)
     if currencies!={'PKR'}:raise SourceAccessError('LAAM Pakistan currency unverified; no foreign price export')
-    return normalize(candidates[0],handle)
+    product=normalize(candidates[0],handle)
+    from website_category_support import breadcrumb
+    product['_website_category_evidence']=breadcrumb(soup,BASE+'/products/'+handle)
+    return product
 
 def normalize(raw,handle):
     if raw.get('handle')!=handle or raw.get('id') is None or not raw.get('title'):raise ValueError('Incomplete LAAM identity')

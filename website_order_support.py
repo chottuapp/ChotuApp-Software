@@ -4,7 +4,9 @@ from urllib.robotparser import RobotFileParser
 from datetime import datetime,timezone
 import re,time
 from bs4 import BeautifulSoup
-FIELDS=('website_category_order','website_subcategory_order','website_product_order','website_order_source_url','website_order_checked_at','website_order_status')
+ORDER_FIELDS=('website_category_order','website_subcategory_order','website_product_order','website_order_source_url','website_order_checked_at','website_order_status')
+from website_category_support import FIELDS as CATEGORY_FIELDS
+FIELDS=ORDER_FIELDS+CATEGORY_FIELDS
 GRID='#product-grid, [data-product-grid], .product-grid, .collection-products, .products-grid, .grid--view-items, .product-list, .t4s-products'
 SKIP=re.compile(r'/account|/cart|/checkout|/search|/policies|/pages/|/blogs/|/products/',re.I)
 
@@ -24,7 +26,7 @@ def product_key(value):
 
 def navigation(soup,base):
     """Only observed header navigation/collection links, never the API's collection order."""
-    roots=soup.select('header nav, header [role=navigation], [role=banner] nav, #shopify-section-header nav, .side-nav')
+    roots=soup.select('header nav, header [role=navigation], [role=banner] nav, #shopify-section-header nav, .side-nav, #t4s-nav-ul, .header__inline-menu, .header-menu, .site-header__navigation')
     if not roots:roots=soup.select('header, [role=banner], .side-nav')
     if not roots:roots=[node for node in soup.select('nav') if node.find_parent('footer') is None]
     result=[];seen=set();groups={}
@@ -34,17 +36,19 @@ def navigation(soup,base):
             label=anchor.get_text(' ',strip=True)
             if not url or not label or SKIP.search(path) or not re.search(r'/collections/[^/]+/?$|/(women|woman|men|man|kids|new-in)/?$',path):continue
             if path.rstrip('/') in ('/collections/all','/collections/frontpage') or url in seen:continue
-            seen.add(url);parent_label=''
+            seen.add(url);parents=[]
             for node in anchor.parents:
                 if node is root:break
                 if node.name not in ('li','details'):continue
                 parent=node.find('a',recursive=False) or node.find('summary',recursive=False)
                 if parent is not None and parent is not anchor and parent.get_text(' ',strip=True):
                     text=parent.get_text(' ',strip=True)
-                    if text.casefold() not in ('shop','shop now','menu','all products','categories','category','shop by category','products','collections'):parent_label=text
-            category=parent_label or label;subcategory=label if parent_label and parent_label!=label else ''
+                    if text.casefold() not in ('shop','shop now','menu','all products','categories','category','shop by category','products','collections'):
+                        if text not in parents:parents.append(text)
+            path=list(reversed(parents))+[label];path=list(dict.fromkeys(path))
+            category=path[0];subcategory=path[-1] if len(path)>1 else ''
             groups.setdefault(category,len(groups)+1)
-            result.append({'url':url,'category':category,'subcategory':subcategory,'category_order':groups[category],'subcategory_order':len(result)+1})
+            result.append({'category_path':path,'url':url,'category':category,'subcategory':subcategory,'category_order':groups[category],'subcategory_order':len(result)+1})
     return result
 
 def grid_products(soup,base):
@@ -72,7 +76,7 @@ def next_page(soup,base):
 
 class Capture:
     def __init__(self,g,base,log,max_requests=80,max_pages=5):
-        self.g=g;self.base=base.rstrip('/');self.log=log;self.limit=max_requests;self.max_pages=max_pages;self.requests=0;self.robot=None;self.evidence={};self.complete=True;self.last=0;self.markup_debug=[]
+        self.g=g;self.base=base.rstrip('/');self.log=log;self.limit=max_requests;self.max_pages=max_pages;self.requests=0;self.robot=None;self.evidence={};self.complete=True;self.last=0;self.markup_debug=[];self.navigation=[]
     def page(self,url):
         url=public_link(self.base,url)
         if not url or self.requests>=self.limit:raise ValueError('Storefront order request limit reached')
@@ -92,7 +96,7 @@ class Capture:
             robots=self.page(self.base+'/robots.txt')
             # BeautifulSoup.get_text preserves plain robots.txt responses.
             self.robot=RobotFileParser();self.robot.parse(robots.get_text().splitlines())
-            home=self.page(self.base+'/');categories=navigation(home,self.base)
+            home=self.page(self.base+'/');categories=navigation(home,self.base);self.navigation=categories
             if not categories:
                 for anchor in home.select('a[href]'):
                     url=public_link(self.base,anchor['href'])
@@ -143,17 +147,19 @@ def position(value):
         return n if n>0 and str(n)==str(value).strip() else float('inf')
     except (ValueError,TypeError):return float('inf')
 
-def apply_order(rows,evidence=None):
+def apply_order(rows,evidence=None,category_evidence=None):
     """Stable unknown tails; never substitute price, discount, or popularity order."""
     evidence=evidence or {};known=[]
     for row in rows:
         fact=evidence.get(product_key(row.get('source_url','')))
         if fact:
-            row.update(category=fact['category'],subcategory=fact['subcategory'],website_category_order=fact['category_order'],website_subcategory_order=fact['subcategory_order'],website_product_order=fact['product_order'],website_order_source_url=fact['source_url'],website_order_checked_at=fact['checked_at'],website_order_status='observed_default_listing')
+            row.update(website_category_order=fact['category_order'],website_subcategory_order=fact['subcategory_order'],website_product_order=fact['product_order'],website_order_source_url=fact['source_url'],website_order_checked_at=fact['checked_at'],website_order_status='observed_default_listing')
         else:
-            for field in FIELDS:row.setdefault(field,'')
+            for field in ORDER_FIELDS:row.setdefault(field,'')
             if not row.get('website_order_status'):row['website_order_status']='unverified'
-        valid=all(position(row.get(field))!=float('inf') for field in FIELDS[:3]) and row.get('website_order_source_url') and public_link(row.get('source_url',''),row.get('website_order_source_url','')) and row.get('website_order_checked_at')
+        from website_category_support import apply as apply_category
+        apply_category(row,category_evidence)
+        valid=all(position(row.get(field))!=float('inf') for field in ORDER_FIELDS[:3]) and row.get('website_order_source_url') and public_link(row.get('source_url',''),row.get('website_order_source_url','')) and row.get('website_order_checked_at')
         if row.get('website_order_status')=='observed_default_listing' and valid:known.append(row)
         else:row['website_order_status']='unverified'
     marker='[Website listing order]'
@@ -167,18 +173,18 @@ def apply_order(rows,evidence=None):
         row['analysis_note']=note
     # Membership by object identity avoids quadratic dictionary comparisons on large exports.
     known_ids={id(row) for row in known}
-    rows.sort(key=lambda row:tuple(position(row.get(field)) for field in FIELDS[:3]) if id(row) in known_ids else (float('inf'),)*3)
+    rows.sort(key=lambda row:tuple(position(row.get(field)) for field in ORDER_FIELDS[:3]) if id(row) in known_ids else (float('inf'),)*3)
     return known
 
 def enable_website_order(g):
     if g.get('_chotu_website_order'):return
     original=g['_chotuapp_run_site_original']
     def run(base,name,template,log):
-        tls=g['_chotu_tls'];tls.website_order_evidence={};tls.website_order_complete=False
+        tls=g['_chotu_tls'];tls.website_order_evidence={};tls.website_order_complete=False;tls.website_category_evidence={};tls.website_category_navigation=[];tls.website_category_robot=None
         g.get('_chotu_debug_stage',lambda stage:None)('Website listing order')
         host=(urlsplit(base).hostname or '').lower().removeprefix('www.')
         if host not in ('pk.khaadi.com','khaadi.com','sapphireonline.pk','pk.sapphireonline.pk'):
-            capture=Capture(g,base,log);tls.website_order_evidence=capture.collect();tls.website_order_complete=capture.complete
+            capture=Capture(g,base,log);tls.website_order_evidence=capture.collect();tls.website_order_complete=capture.complete;tls.website_category_navigation=capture.navigation;tls.website_category_robot=capture.robot
         old=g['verified_top20']
         def no_forced_sort(*args,**kwargs):
             tls.ranking_evidence={};log('WEBSITE ORDER POLICY: default storefront order; forced bestseller and cheapest-first sorts disabled');return []

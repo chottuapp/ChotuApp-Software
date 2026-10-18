@@ -24,6 +24,7 @@ def issue_codes(text):
     if re.search(r'\b[1-9][0-9]* review/mismatch|\bREVIEW=[1-9][0-9]*',text,re.I):issues.append('AUDIT_REVIEW')
     if 'mismatch' in text.lower() and (re.search(r'FAILED:|EXCEPTION:|\bERROR\b',text) or re.search(r'\b[1-9][0-9]* mismatches?\b|\bMISMATCH=[1-9][0-9]*',text,re.I)):issues.append('DATA_MISMATCH')
     if 'WEBSITE ORDER UNVERIFIED:' in text:issues.append('WEBSITE_ORDER_UNVERIFIED')
+    if 'CATEGORY UNVERIFIED:' in text or 'WEBSITE_CATEGORY_UNVERIFIED' in text:issues.append('WEBSITE_CATEGORY_UNVERIFIED')
     if 'ADAPTER ERROR:' in text:issues.append('ADAPTER_ERROR')
     if 'Duplicate combination IDs' in text or 'Conflicting duplicate source variant identity' in text:issues.append('VARIANT_IDENTITY')
     return issues

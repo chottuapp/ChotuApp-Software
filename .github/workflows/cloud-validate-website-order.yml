@@ -3,6 +3,7 @@ on:
   push:
     branches: [main]
     paths:
+      - website_category_support.py
       - website_order_support.py
       - ranking_support.py
       - main.py
@@ -34,7 +35,7 @@ jobs:
         env:
           PYTHONPATH: tests:cloud
         run: >-
-          python -m unittest tests.test_website_order tests.test_ranking_metadata
+          python -m unittest tests.test_website_categories tests.test_website_order tests.test_ranking_metadata
           tests.test_czone_source tests.test_source_compatibility tests.test_cloud_diagnostics
       - name: Check bounded public default listings without starting or stopping fetching
         env:

@@ -304,6 +304,9 @@ def collections(base, log):
     _chotu_debug_stage('Collection/category mapping')
     mapping={}
     _chotu_tls.collection_popularity_evidence={}
+    if hasattr(_chotu_tls,'website_category_navigation'):
+        from website_category_support import navigation_membership
+        return navigation_membership(_chotu_tls,base,get_json,_chotu_wait,log)
     seen_handles=set(); skipped_empty=0; fetched=0
     try:
         for page in range(1, 30):
@@ -876,6 +879,9 @@ def storefront_cover(base, product, pictures, log):
             _chotu_tls.image_throttled = True
         resp.raise_for_status()
         soup = BeautifulSoup(resp.text, 'html.parser')
+        from website_category_support import breadcrumb
+        from website_order_support import public_link,product_key
+        product['_website_category_evidence']=breadcrumb(soup,url) if public_link(url,getattr(resp,'url','')) and getattr(resp,'url','') and product_key(resp.url)==product_key(url) else None
         from ranking_support import product_page_evidence
         product['_popularity_page_note']=product_page_evidence(soup,url)
         # Only product-detail areas; do not harvest recommendation/global tables.
@@ -909,7 +915,7 @@ def genuine_discount(row):
 
 def prioritize_top_sellers(rows, handles, variant_discount_ids=()):
     from website_order_support import apply_order
-    apply_order(rows,getattr(_chotu_tls,'website_order_evidence',{}))
+    apply_order(rows,getattr(_chotu_tls,'website_order_evidence',{}),getattr(_chotu_tls,'website_category_evidence',{}))
     # Displayed default order is not bestseller evidence.
     return []
 
@@ -926,8 +932,14 @@ def finalize_catalog_order(workbook_path, ranking_path, log):
         # Evidence metadata was written during verification; final ordering must not invent it.
         from ranking_support import reorder_sheet
         from website_order_support import apply_order
-        ranked=apply_order(rows,getattr(_chotu_tls,'website_order_evidence',{}))
+        ranked=apply_order(rows,getattr(_chotu_tls,'website_order_evidence',{}),getattr(_chotu_tls,'website_category_evidence',{}))
         reorder_sheet(sheet,rows)
+        verified_categories=sum(row.get('website_category_status') in ('verified_navigation_membership','verified_product_breadcrumb') for row in rows)
+        log('STRICT WEBSITE CATEGORIES: '+str(verified_categories)+'/'+str(len(rows))+' source-verified; remaining categories blank and require review')
+        from website_category_support import FIELDS as category_fields
+        with Path(workbook_path).with_name(Path(workbook_path).stem+' - CATEGORY AUDIT.csv').open('w',encoding='utf-8-sig',newline='') as stream:
+            fields=['product_id','name','category','subcategory','source_url']+list(category_fields)
+            writer=csv.DictWriter(stream,fieldnames=fields);writer.writeheader();writer.writerows({key:row.get(key) for key in fields} for row in rows)
         temporary=Path(workbook_path).with_name('.'+Path(workbook_path).stem+'-order.xlsx')
         try:
             book.save(temporary)
@@ -1097,7 +1109,10 @@ def run_site(base, name, template, log):
             pictures.sort(key=lambda im: 0 if image_key(im['src']) == image_key(verified_cover) else 1)
         seen_urls=set(); pictures=[im for im in pictures if not (image_key(im['src']) in seen_urls or seen_urls.add(image_key(im['src'])))]
         cover=pictures[0]['src'] if pictures else featured
-        category=normalize_category(best_category(p,cats.get(p.get('id'),[])))
+        from website_category_support import apply as strict_category
+        category_data=dict(p.get('_website_category_evidence') or {},source_url=p.get('_source_url') or f"{base}/products/{p['handle']}")
+        strict_category(category_data,getattr(_chotu_tls,'website_category_evidence',{}))
+        category=category_data['category']
         desc=friendly_description(p)
         url=p.get('_source_url') or f"{base}/products/{p['handle']}"
         dimensions=[]
@@ -1136,7 +1151,7 @@ def run_site(base, name, template, log):
                 entry[f'option_{pos}_value']=txt(v.get(f'option{idx}'))
             combos.append(entry)
         if len(p.get('options') or [])>3: review.append(f'More than 3 dimensions: {url}')
-        rows.append({'product_id':pid,'analysis_note':'\n'.join(([p['_popularity_page_note']] if p.get('_popularity_page_note') else [])+getattr(_chotu_tls,'collection_popularity_evidence',{}).get(p.get('id'),[])),'category':category,'subcategory':'','name':txt(p.get('title')),'description':desc,'brand':txt(p.get('vendor')) or name,'material':'','weight_grams (agar ho)':'','condition (new/used)':'new','warranty_months (agar ho)':'','base_price (PKR)':float(baseprice),'sale_price (PKR, agar discount ho)':float(sale) if sale is not None else None,'sku':str(cheapest.get('sku') or ''),'scraped_image_url (cover, auto)':cover,'final_image_url (cover/thumbnail — hosted link)':'','option_groups':gid,'available (yes/no)':'yes' if any(v.get('available') is True for v in variants) else 'no','stock_quantity (kitni quantity bechni hai)':product_stock_quantity(p,variants),'max_qty_per_user (ek user zyada se zyada kitni le sakta hai)':'','source_url':url})
+        rows.append({'product_id':pid,'analysis_note':'\n'.join(([p['_popularity_page_note']] if p.get('_popularity_page_note') else [])+getattr(_chotu_tls,'collection_popularity_evidence',{}).get(p.get('id'),[])),'category':category,'subcategory':'','name':txt(p.get('title')),'description':desc,'brand':txt(p.get('vendor')) or name,'material':'','weight_grams (agar ho)':'','condition (new/used)':'new','warranty_months (agar ho)':'','base_price (PKR)':float(baseprice),'sale_price (PKR, agar discount ho)':float(sale) if sale is not None else None,'sku':str(cheapest.get('sku') or ''),'scraped_image_url (cover, auto)':cover,'final_image_url (cover/thumbnail — hosted link)':'','option_groups':gid,'available (yes/no)':'yes' if any(v.get('available') is True for v in variants) else 'no','stock_quantity (kitni quantity bechni hai)':product_stock_quantity(p,variants),'max_qty_per_user (ek user zyada se zyada kitni le sakta hai)':'','source_url':url,**category_data})
         if not pictures: review.append(f'No image: {p.get("title")}')
         for i,im in enumerate(pictures,1):
             src=im.get('src')
@@ -1265,6 +1280,8 @@ def quality_validation(rows, imgs, groups, opts, combos, output, log, storefront
     # Read-only checks: do not alter source data or auto-correct prices/categories.
     from collections import Counter, defaultdict
     issues = []
+    unknown_categories=sum(row.get('website_category_status')=='unverified' for row in rows)
+    if unknown_categories:issues.append(('WARNING','WEBSITE_CATEGORY_UNVERIFIED','','',str(unknown_categories)+' products have no verified website category; category left blank, no inferred fallback'))
     unknown_order=sum(row.get('website_order_status')=='unverified' for row in rows)
     if unknown_order:issues.append(('WARNING','WEBSITE_ORDER_UNVERIFIED','', '',str(unknown_order)+' products have no verified default website listing position; original relative order retained'))
     product_ids = {r['product_id'] for r in rows}
