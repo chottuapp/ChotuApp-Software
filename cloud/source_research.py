@@ -95,7 +95,8 @@ def inspect(host):
  session=requests.Session();session.headers['User-Agent']=AGENT;records=[];robots=None;home=None
  def get(url):
   nonlocal robots
-  if robots is not None and not robots.can_fetch(AGENT,url):return None
+  if robots is not None and not robots.can_fetch(AGENT,url):
+   records.append({'requested':public_url(url),'outcome':'robots_disallowed'});return None
   status,final,body,kind=request(session,url,host,5*1024**2);time.sleep(1.5)
   record={'requested':public_url(url),'status':status,'final_url':public_url(final),'bytes':len(body),'content_type':kind}
   if status==200 and 'html' in kind:record.update(describe(body.decode('utf-8',errors='replace'),final))
@@ -250,6 +251,6 @@ def variant_review():
 def main():
  run=os.environ.get('GITHUB_RUN_ID','')
  if not run.isdigit():raise ValueError('Research publication requires an Actions run identity')
- data={'run_id':run,'checked_utc':datetime.now(timezone.utc).isoformat(),'sources':[inspect(h) for h in HOSTS],'export_audits':artifact_review(),'variant_identity':variant_review()};publish(data)
+ data={'run_id':run,'checked_utc':datetime.now(timezone.utc).isoformat(),'sources':[inspect(h) for h in HOSTS],'export_audits':artifact_review(),'variant_identity':variant_review() if os.environ.get('SOURCE_INSPECT_CHECKPOINT')=='1' else {'outcome':'previously_inspected'}};publish(data)
  print('Sanitized public source fixtures published; application fetching not started.')
 if __name__=='__main__':main()
