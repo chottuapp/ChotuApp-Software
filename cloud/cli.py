@@ -95,7 +95,7 @@ def write_summary(service,checkpoint_status,stop_reason='completed_or_source_fai
     from openpyxl import load_workbook
     state=service.store.load() or {};stores=[]
     for site in state.get('sites',[]):
-        item={key:site.get(key) for key in ('name','status','detail','reviewed','software_revision')}
+        item={key:site.get(key) for key in ('name','status','detail','reviewed','software_revision','retry_after_epoch')}
         output=site.get('output') or {};file=Path(output.get('path',''))
         if site.get('status')=='done' and file.is_file():
             book=load_workbook(file,read_only=True)
@@ -104,6 +104,8 @@ def write_summary(service,checkpoint_status,stop_reason='completed_or_source_fai
             finally:book.close()
         stores.append(item)
     summary={'run_id':state.get('id'),'status':state.get('status','incomplete'),'checkpoint':checkpoint_status,'stores':stores,'stop_reason':stop_reason,'auto_continue_once':os.environ.get('CLOUD_AUTO_CONTINUE')=='true'}
+    from continuation_policy import summary_fields
+    summary.update(summary_fields(state,service.store.root))
     (service.output/'run-summary.json').write_text(json.dumps(summary,indent=2),encoding='utf-8')
     lines=['RUN SUMMARY:']
     for item in stores:
@@ -141,6 +143,7 @@ def main():
             time.sleep(.5)
         atomic_json(args.data/'fetch-phase.json',{'phase':'stopping'})
         service.close();seen=print_logs(service,seen);state=service.store.load();result=0 if state and state['status']=='complete' else 2
+        if stop_reason=='completed_or_source_failure' and any(s.get('status')=='source_paused' for s in (state or {}).get('sites',[])):stop_reason='source_cooldown'
         checkpoint_status='not requested'
         if not args.checkpoint and (args.data/'stop-request').exists():args.checkpoint=Path('checkpoint.zip')
         if args.checkpoint:

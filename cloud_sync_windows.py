@@ -135,8 +135,14 @@ def continuation_allowed(sync):
     try:summary=json.loads((sync.folder/'run-summary.json').read_text())
     except (OSError,ValueError):return False
     if summary.get('checkpoint')!='saved' or summary.get('status')=='complete':return False
-    if str(sync.run)!='38970499270' and summary.get('auto_continue_once') is not True:return False
-    if summary.get('stop_reason'):return summary['stop_reason']=='time_budget'
+    try:
+        limit=int(summary.get('auto_continue_limit',0));index=int(summary.get('continuation_index',0));stalled=int(summary.get('stalled_runs',0))
+    except (TypeError,ValueError):return False
+    if limit>0 and not 0<=index<limit<=6:return False
+    chain=0<=index<limit<=6 and stalled<2
+    if str(sync.run)!='38970499270' and summary.get('auto_continue_once') is not True and not chain:return False
+    if stalled>=2:return False
+    if summary.get('stop_reason'):return summary['stop_reason'] in ('time_budget','source_cooldown')
     try:console=(sync.folder/'logs'/'console-tail.txt').read_text(encoding='utf-8',errors='replace')
     except OSError:return False
     return 'Cloud time budget reached; saving unfinished work.' in console

@@ -1,6 +1,7 @@
-"""One authorized continuation after a time-budget stop, never an endless restart loop."""
-import json,os,subprocess,tempfile
+"""Checkpoint continuations with an explicit chain limit and no-progress guard."""
+import json,os,subprocess,tempfile,time
 from pathlib import Path
+from continuation_policy import budget, recoverable, integer
 
 # User explicitly authorized one additional 300-minute run for this active run.
 AUTHORIZED_EXISTING_RUNS={'38970499270'}
@@ -8,9 +9,12 @@ AUTHORIZED_EXISTING_RUNS={'38970499270'}
 def eligible(run,repo,summary,console,checkpoint):
     if run.get('event')!='workflow_dispatch' or run.get('head_branch')!='main' or run.get('head_repository',{}).get('full_name')!=repo:return False
     if run.get('conclusion')=='cancelled' or not checkpoint:return False
-    authorized=str(run.get('id')) in AUTHORIZED_EXISTING_RUNS or summary.get('auto_continue_once') is True
+    limit,index=budget(summary)
+    authorized=(str(run.get('id')) in AUTHORIZED_EXISTING_RUNS or limit>index) and integer(summary.get('stalled_runs',0),default=2,maximum=2)<2
     timed_out=summary.get('stop_reason')=='time_budget' or ('Cloud time budget reached; saving unfinished work.' in console and not summary.get('stop_reason'))
-    return authorized and timed_out and summary.get('checkpoint')=='saved' and summary.get('status')!='complete' and any(s.get('status')!='done' for s in summary.get('stores',[]))
+    cooldown=summary.get('stop_reason')=='source_cooldown' and any(s.get('status')=='source_paused' for s in summary.get('stores',[]))
+    ready=any(recoverable(s) and (s.get('status')!='source_paused' or float(s.get('retry_after_epoch',0) or 0)<=time.time()+900) for s in summary.get('stores',[]))
+    return ready and authorized and (timed_out or cooldown) and summary.get('checkpoint')=='saved' and summary.get('status')!='complete' and any(recoverable(s) for s in summary.get('stores',[]))
 
 def gh(*args):
     result=subprocess.run(['gh',*args],capture_output=True,text=True,check=True,timeout=180)
@@ -36,7 +40,9 @@ def main():
     name='Automatic continuation of '+identity
     previous=json.loads(gh('run','list','--repo',repo,'--workflow','cloud-fetch.yml','--limit','100','--json','displayTitle'))
     if any(item.get('displayTitle')==name for item in previous):print('Continuation already exists; duplicate dispatch skipped.');return
-    gh('workflow','run','cloud-fetch.yml','--repo',repo,'--ref','main','-f','resume_run_id='+identity,'-f','minutes=300','-f','save_checkpoint=true','-f','auto_continue_once=false','-f','continuation_parent='+identity)
-    print('Submitted one additional 300-minute continuation of '+identity+'. Child will not automatically chain again.')
+    limit,index=budget(summary)
+    if str(run.get('id')) in AUTHORIZED_EXISTING_RUNS and not limit:limit=1
+    gh('workflow','run','cloud-fetch.yml','--repo',repo,'--ref','main','-f','resume_run_id='+identity,'-f','minutes=300','-f','save_checkpoint=true','-f','auto_continue_once=false','-f','continuation_parent='+identity,'-f','auto_continue_limit='+str(limit),'-f','continuation_index='+str(index+1),'-f','previous_progress='+str(summary.get('progress_token','')),'-f','stalled_runs='+str(summary.get('stalled_runs',0)))
+    print('Submitted continuation '+str(index+1)+'/'+str(limit)+' of '+identity+'; checkpoint and progress guards remain enabled.')
 
 if __name__=='__main__':main()

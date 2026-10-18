@@ -8,6 +8,7 @@ sys.path.insert(0,str(ROOT))
 from resume_support import RunLease,RunStore
 from parallel_store_support import StoreScheduler,output_key
 from diagnostics import Collector
+from continuation_policy import integer
 
 MODULES=('ranking_support.py','resume_support.py','fast_fetch_support.py','farda_source_support.py','complete_description_support.py','czone_source_support.py','software_revision_support.py','seran_source_support.py')
 DEFAULT_TEMPLATE=ROOT/'importer-files/Chotu_Products_Import_Template_Discount_Tags.xlsx'
@@ -114,7 +115,7 @@ class CloudService:
             finally:book.close()
             self.diagnostics=Collector(self.data/'telemetry.json')
             self.pause.set();self.settings.write_text(json.dumps({'paused':False}));self.error=None
-            scheduler=StoreScheduler(self.engine,self.store,state,self.output,self.pause,self.event,retry_limit=5,wait_limit=900);self.scheduler=scheduler
+            scheduler=StoreScheduler(self.engine,self.store,state,self.output,self.pause,self.event,retry_limit=5,wait_limit=900,skip_terminal=integer(os.environ.get('CLOUD_CONTINUATION_INDEX','0'))>0);self.scheduler=scheduler
             def work():
                 try:scheduler.run()
                 except Exception as exc:self.error=str(exc);self.event('FAILED: '+str(exc))

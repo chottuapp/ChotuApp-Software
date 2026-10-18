@@ -94,6 +94,18 @@ class ParallelStoreTests(unittest.TestCase):
         scheduler=self.build([{'name':'Blocked','url':'https://blocked.example','mode':'blocked'},{'name':'Good','url':'https://good.example'}]);scheduler.run()
         state=self.store.load();self.assertEqual(state['sites'][0]['status'],'blocked');self.assertEqual(state['sites'][1]['status'],'done')
         self.assertEqual(scheduler.attempts[0],1);self.assertEqual(self.store.pending(state),[0])
+    def test_raw_http_limit_becomes_resumable_cooldown(self):
+        altered=ENGINE.replace("        if mode=='crash':os._exit(3)","        if mode=='raw429':\n            from fast_fetch_support import RequestGate\n            gate=RequestGate(lambda:None,lambda text:None);gate.limited=True;gate.cooldown=time.monotonic()+3600;_chotu_tls.fast_gate=gate\n            raise RuntimeError('429 Too Many Requests')\n        if mode=='crash':os._exit(3)")
+        self.engine.write_text(altered)
+        scheduler=self.build([{'name':'Limited','url':'https://limited.example','mode':'raw429'}],retry_limit=0)
+        scheduler.run();site=self.store.load()['sites'][0]
+        self.assertEqual(site['status'],'source_paused');self.assertGreater(site['retry_after_epoch'],time.time()+3500)
+    def test_auto_resume_skips_terminal_failure_manual_resume_retries(self):
+        state=self.store.fresh([{'name':'Bad','url':'https://bad.example'}],self.template)
+        self.store.update(lambda s:s['sites'][0].update(status='failed'))
+        for skip,expected in ((True,[]),(False,[0])):
+            scheduler=StoreScheduler(self.engine,self.store,self.store.load(),self.output,self.pause,self.events.append,skip_terminal=skip)
+            self.assertEqual(scheduler.pending,expected)
     def test_stale_existing_export_is_not_success(self):
         wb=Workbook();wb.active.title='Products';wb.active.append(['id']);wb.active.append(['old']);wb.save(self.output/'Old.xlsx')
         scheduler=self.build([{'name':'Old','url':'https://old.example','mode':'stale'}]);scheduler.run()

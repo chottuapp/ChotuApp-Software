@@ -1,4 +1,4 @@
-name: ChotuApp One Automatic Continuation
+name: ChotuApp Bounded Automatic Continuation
 on:
   workflow_run:
     workflows: ['ChotuApp Cloud Fetch']
@@ -21,7 +21,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Resume once only after budget expiry and a successful checkpoint
+      - name: Resume eligible work within the chain and progress limits
         env:
           GH_TOKEN: ${{ github.token }}
         run: python cloud/auto_continue.py

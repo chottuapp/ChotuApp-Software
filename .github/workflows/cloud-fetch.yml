@@ -20,6 +20,22 @@ on:
         description: 'After budget expiry, resume once for 300 more minutes if checkpoint succeeds'
         default: false
         type: boolean
+      auto_continue_limit:
+        description: 'Additional checkpoint runs: 0 disables chaining, default 4, maximum 6; no-progress guard applies'
+        default: '4'
+        type: string
+      continuation_index:
+        description: 'Internal continuation counter; leave 0 for a manual resume'
+        default: '0'
+        type: string
+      previous_progress:
+        description: 'Internal progress fingerprint; leave blank for manual runs'
+        required: false
+        type: string
+      stalled_runs:
+        description: 'Internal no-progress counter; leave 0 for manual runs'
+        default: '0'
+        type: string
       continuation_parent:
         description: 'Internal automatic-continuation parent ID; leave blank for manual runs'
         required: false
@@ -45,6 +61,10 @@ jobs:
       RESUME_RUN_ID: ${{ inputs.resume_run_id }}
       SAVE_CHECKPOINT: ${{ inputs.save_checkpoint }}
       CLOUD_AUTO_CONTINUE: ${{ inputs.auto_continue_once }}
+      CLOUD_AUTO_CONTINUE_LIMIT: ${{ inputs.auto_continue_limit }}
+      CLOUD_CONTINUATION_INDEX: ${{ inputs.continuation_index }}
+      CLOUD_PREVIOUS_PROGRESS: ${{ inputs.previous_progress }}
+      CLOUD_STALLED_RUNS: ${{ inputs.stalled_runs }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

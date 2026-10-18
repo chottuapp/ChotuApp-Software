@@ -89,6 +89,10 @@ def main():
     except Exception as exc:
         result.update(ok=False,detail=str(exc));emit('debug',text=traceback.format_exc())
     finally:
+        gate=getattr(tls,'fast_gate',None)
+        if not result['ok'] and not abort.is_set() and gate is not None and gate.limited:
+            result.update(paused=True,blocked=False,retry_after_epoch=time.time()+max(1,gate.cooldown-time.monotonic()),detail=str(gate.blocked_error()))
+            emit('log',text='WEBSITE COOLDOWN: '+result['detail'])
         tls.saved_response_cache.close();tls.saved_response_cache=None
     emit('result',**result)
     return 0 if result['ok'] else 2
