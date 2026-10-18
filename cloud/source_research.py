@@ -68,7 +68,7 @@ def controller_clues(soup,url):
                 if u and u not in urls:urls.append(u)
     for tag in soup.find_all(True):
         for key,value in tag.attrs.items():
-            if key.startswith('data-') and isinstance(value,str) and re.search(r'(?:Product|Country|Locale)-',value):
+            if key.startswith('data-') and isinstance(value,str) and value.startswith(('/', 'https://')) and re.search(r'(?:Product|Country|Locale)-',value):
                 u=public_url(urljoin(url,value))
                 if u and u not in urls:urls.append(u)
     return urls[:20],clues[:30]
@@ -139,8 +139,8 @@ def inspect(host):
     products=page.get('product_links',[]) or [x['url'] for x in page.get('links',[]) if urlsplit(x['url']).hostname==canonical and '/products/' in x['url'] and x['url']!=url]
     for product in list(dict.fromkeys(products))[:2]:get(product)
    # Inspect one actual first-party application script, extracting only public route clues.
-   scripts=home.get('page',{}).get('script_urls',[])
-   script=next((u for u in scripts if ('/_nuxt/' in u and urlsplit(u).hostname=='cdn.octane.store') or ('/js/main.js' in u and urlsplit(u).hostname==canonical)),None)
+   scripts=[u for record in records for u in record.get('page',{}).get('script_urls',[])]
+   script=next((u for u in scripts if '/js/productDetail.js' in u and urlsplit(u).hostname==canonical),None) or next((u for u in scripts if ('/_nuxt/' in u and urlsplit(u).hostname=='cdn.octane.store') or ('/js/main.js' in u and urlsplit(u).hostname==canonical)),None)
    if script and (robots is None or urlsplit(script).hostname!=canonical or robots.can_fetch(AGENT,script)):
     with session.get(script,timeout=30,stream=True,allow_redirects=False) as response:
      if response.status_code==200:
