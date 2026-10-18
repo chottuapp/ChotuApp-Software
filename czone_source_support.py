@@ -376,7 +376,7 @@ def export(g,base,name,template,log):
     if len(records)!=total:raise RuntimeError('CZONE catalog incomplete: website '+str(total)+', verified '+str(len(records))+'. Saved responses retained; existing Excel preserved.')
     products=[p for p in records.values() if p['available'] and p['price']>0 and not re.search(r'\bfree gift\b',p['name'],re.I)]
     if not products:raise RuntimeError('No in-stock priced Czone products; existing Excel retained')
-    products.sort(key=lambda p:(0 if p['base']>p['price'] else 1,-p['sold'],-(p['base']-p['price'])/p['base'],p['name'].casefold()))
+    # Keep discovery order until verified website positions are applied by the finalizer.
     wb=g['load_workbook'](template)
     for sheet in ('Products','Product Images','Option Groups','Options','Variant Combinations'):
         if sheet not in wb.sheetnames:raise RuntimeError('Template missing '+sheet)
@@ -402,12 +402,12 @@ def export(g,base,name,template,log):
     report('PRICE AUDIT',['product_url','status','detail'],[(p['url'],'MATCH','Webx state, JSON-LD and displayed price agree') for p in products])
     report('STOREFRONT AUDIT',['product_url','status','detail'],[(p['url'],'MATCH','Product-specific displayed PKR price verified') for p in products])
     report('IMAGE AUDIT',['product_url','status','cover_url','detail'],[(p['url'],'MATCH',p['images'][0],'Public product gallery; main image first') for p in products])
-    # The outer finalizer reads this order; soldQuantity is a public source field, not independent sales proof.
-    report('BEST SELLERS',['rank','product_id','name','category','source_url'],[(i,r['product_id'],r['name'],r['category'],r['source_url']) for i,r in enumerate(rows,1)])
+    # Default displayed order is not a sales ranking.
+    report('BEST SELLERS',['rank','product_id','name','category','source_url'],[])
     report('CHANGE REPORT',['change','product_url','field','detail'],[('REFRESHED',p['url'],'','Czone public source') for p in products])
-    report('QUALITY REPORT',['severity','issue_code','source_url','detail'],[('WARNING','CZONE_SOURCE_REVIEW',BASE,'Webx adapter; source-reported soldQuantity ordering is not independent sales verification. Import requires review. Unknown variant schemas stop extraction.')])
+    report('QUALITY REPORT',['severity','issue_code','source_url','detail'],[('WARNING','CZONE_SOURCE_REVIEW',BASE,'Webx adapter; default website order requires verified listing positions; source sales counters do not set export order. Import requires review. Unknown variant schemas stop extraction.')])
     log('EXPORT BUILT: '+str(len(products))+' products; '+str(total-len(products))+' unavailable/unpriced/promotional products excluded')
-    log('CZONE: prices verified against product state, JSON-LD and displayed price. Source-reported sales order; no invented ranking.')
+    log('CZONE: prices verified against product state, JSON-LD and displayed price. Website order finalizer applies observed positions; unknown ordering remains REVIEW.')
     log('FILE: '+str(target))
 
 
