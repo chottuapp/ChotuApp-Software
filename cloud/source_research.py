@@ -212,7 +212,7 @@ def artifact_review():
 
 def variant_review():
     """Read only Zellbury's public API cache from the saved checkpoint."""
-    import sqlite3,zipfile,shutil
+    import sqlite3,zipfile,shutil,zlib
     from checkpoint_parts import archive_path
     run='39124854389'
     with tempfile.TemporaryDirectory() as folder:
@@ -227,8 +227,11 @@ def variant_review():
         try:
             for url,payload in connection.execute('SELECT url,payload FROM responses'):
                 if urlsplit(url).hostname!='zellbury.com':continue
-                try:data=json.loads(payload)
-                except (ValueError,TypeError):continue
+                try:
+                    decoder=zlib.decompressobj();body=decoder.decompress(payload,64*1024**2)
+                    if not decoder.eof or decoder.unused_data:continue
+                    data=json.loads(body)
+                except (ValueError,TypeError,zlib.error):continue
                 if isinstance(data,dict) and isinstance(data.get('products'),list):
                     for product in data['products']:
                         if isinstance(product,dict) and product.get('id') is not None:products[str(product['id'])]=product
@@ -242,7 +245,7 @@ def variant_review():
                 identity=str(variant['id'])
                 if identity in seen:collisions.append({'first':seen[identity],'repeated':record})
                 else:seen[identity]=record
-        return {'outcome':'inspected','product_count':len(products),'collision_count':len(collisions),'collisions':collisions[:15]}
+        return {'outcome':'inspected' if products else 'catalog_missing','product_count':len(products),'collision_count':len(collisions),'collisions':collisions[:15]}
 
 def main():
  run=os.environ.get('GITHUB_RUN_ID','')
