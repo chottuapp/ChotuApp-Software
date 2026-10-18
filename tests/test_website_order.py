@@ -72,6 +72,9 @@ class WebsiteOrderIntegrityTests(unittest.TestCase):
    evidence={'high':WebsiteOrderTests().fact(product=1),'cheap':WebsiteOrderTests().fact(product=2)}
    with patch.object(main._chotu_tls,'website_order_evidence',evidence,create=True):main.finalize_catalog_order(path,Path(tmp)/'ignored.csv',lambda _:None)
    book=load_workbook(path);self.assertEqual(book['Products']['A2'].value,'high');self.assertEqual(book['Products']['D2'].value,999);self.assertEqual(book['Products']['F2'].value,'=2+2');self.assertEqual(book['Products']['E2'].hyperlink.target,'https://image/high');self.assertEqual(book['Products']['E2'].hyperlink.ref,'E2');self.assertEqual(tuple(c.value for c in book['Variant Combinations'][1]),('variant','high',123.45));book.close()
+ def test_missing_provenance_and_malformed_urls_never_create_verified_positions(self):
+  row=WebsiteOrderTests().row('high',999);row.update(website_category_order=1,website_subcategory_order=1,website_product_order=1,website_order_source_url='',website_order_checked_at='2026-10-18T00:00:00Z',website_order_status='observed_default_listing')
+  order.apply_order([row]);self.assertEqual(row['website_order_status'],'unverified');self.assertEqual(order.public_link(BASE,'https://store.example:bad/collections/x'),'')
  def test_invalid_or_cross_store_positions_are_not_trusted(self):
   rows=[WebsiteOrderTests().row('one',900),WebsiteOrderTests().row('two',1)]
   rows[1].update(website_category_order=1,website_subcategory_order=1,website_product_order=1,website_order_status='observed_default_listing',website_order_source_url='https://other.example/collections/x',website_order_checked_at='2026-10-18T00:00:00Z')

@@ -9,8 +9,10 @@ GRID='#product-grid, [data-product-grid], .product-grid, .collection-products, .
 SKIP=re.compile(r'/account|/cart|/checkout|/search|/policies|/pages/|/blogs/|/products/',re.I)
 
 def public_link(base,value):
-    p=urlsplit(urljoin(base,str(value)))
-    if p.scheme!='https' or p.username or p.password or p.port not in (None,443):return ''
+    try:
+        p=urlsplit(urljoin(base,str(value)))
+        if p.scheme!='https' or p.username or p.password or p.port not in (None,443):return ''
+    except (ValueError,TypeError):return ''
     host=(p.hostname or '').lower().removeprefix('www.');expected=(urlsplit(base).hostname or '').lower().removeprefix('www.')
     if host!=expected:return ''
     query=[(k,v) for k,v in parse_qsl(p.query) if k in ('page','sort_by','start','sz','cgid','srule') or k.startswith('filter.')]
@@ -139,7 +141,7 @@ def apply_order(rows,evidence=None):
         else:
             for field in FIELDS:row.setdefault(field,'')
             if not row.get('website_order_status'):row['website_order_status']='unverified'
-        valid=all(position(row.get(field))!=float('inf') for field in FIELDS[:3]) and public_link(row.get('source_url',''),row.get('website_order_source_url','')) and row.get('website_order_checked_at')
+        valid=all(position(row.get(field))!=float('inf') for field in FIELDS[:3]) and row.get('website_order_source_url') and public_link(row.get('source_url',''),row.get('website_order_source_url','')) and row.get('website_order_checked_at')
         if row.get('website_order_status')=='observed_default_listing' and valid:known.append(row)
         else:row['website_order_status']='unverified'
     marker='[Website listing order]'
