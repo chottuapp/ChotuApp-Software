@@ -84,7 +84,13 @@ def describe(text,url):
   if u and u not in product_links and '/products/' in u:product_links.append(u)
  locale_controls=[str(t)[:2000] for t in soup.select('select[name*=country],select[id*=country],a[data-country],form[action*=Country],a[href*="pk.khaadi"]')][:10]
  controllers,clues=controller_clues(soup,url)
- return {'url':public_url(url),'public_controller_urls':controllers,'public_route_clues':clues,'page':inspect_page(text,url),'product_links':product_links[:30],'locale_controls':locale_controls,'links':links[:500],'visible_html':clean_html(text),'public_product_state':public_product_state(soup),'module_preloads':[public_url(urljoin(url,t['href'])) for t in soup.select('link[rel=modulepreload][href]')][:15]}
+ controls=[]
+ for node in soup.select('.product-detail input'):
+  identity=str(node.get('name',''))+' '+str(node.get('id',''))+' '+' '.join(node.get('class',[]))
+  if re.search('token|secret|password|email|phone|session|cookie',identity,re.I):continue
+  value=str(node.get('value',''))
+  if value.startswith(('/', 'https://')) and re.search('Product-|Variation|variation',value):controls.append({'field':identity,'url':public_url(urljoin(url,value))})
+ return {'url':public_url(url),'public_controller_urls':controllers,'public_product_controls':controls,'public_route_clues':clues,'page':inspect_page(text,url),'product_links':product_links[:30],'locale_controls':locale_controls,'links':links[:500],'visible_html':clean_html(text),'public_product_state':public_product_state(soup),'module_preloads':[public_url(urljoin(url,t['href'])) for t in soup.select('link[rel=modulepreload][href]')][:15]}
 def inspect(host):
  session=requests.Session();session.headers['User-Agent']=AGENT;records=[];robots=None;home=None
  def get(url):
