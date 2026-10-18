@@ -8,6 +8,7 @@ on:
       - .github/workflows/cloud-source-research.yml
 permissions:
   contents: write
+  actions: read
 concurrency:
   group: chotuapp-source-research
   cancel-in-progress: false
@@ -22,4 +23,6 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install requests beautifulsoup4
       - name: Inspect actual public navigation and product structures
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: python cloud/source_research.py

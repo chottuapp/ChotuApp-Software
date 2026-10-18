@@ -172,9 +172,26 @@ def publish(data):
   args=['-c','user.name=github-actions[bot]','-c','user.email=41898282+github-actions[bot]@users.noreply.github.com','commit-tree',git('write-tree')]
   if parent:args+=['-p',parent]
   sha=git(*args,input=b'Public sanitized storefront adapter fixtures\n');git('push','origin',sha+':'+ref)
+def artifact_review():
+    """Inspect public product audit records, never workbook owner/contact fields."""
+    import csv
+    run='39124854389'
+    with tempfile.TemporaryDirectory() as folder:
+        command=['gh','run','download',run,'--repo','chottuapp/ChotuApp-Software','--name','chotuapp-excel-files','--dir',folder]
+        response=subprocess.run(command,stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=180)
+        if response.returncode:return {'run_id':run,'outcome':'audit_artifact_unavailable'}
+        reports=[]
+        for path in Path(folder).rglob('*.csv'):
+            if 'Outfitters' not in str(path) or not any(x in path.name for x in ('PRICE AUDIT','QUALITY REPORT','STOREFRONT AUDIT')):continue
+            with path.open(encoding='utf-8-sig',newline='') as handle:
+                rows=list(csv.reader(handle))
+            selected=[row for row in rows[1:] if row and row[0].upper() in ('REVIEW','MISMATCH','ERROR','WARNING')]
+            reports.append({'name':path.name,'columns':rows[0] if rows else [],'findings':selected[:30],'finding_count':len(selected)})
+        return {'run_id':run,'reports':reports}
+
 def main():
  run=os.environ.get('GITHUB_RUN_ID','')
  if not run.isdigit():raise ValueError('Research publication requires an Actions run identity')
- data={'run_id':run,'checked_utc':datetime.now(timezone.utc).isoformat(),'sources':[inspect(h) for h in HOSTS]};publish(data)
+ data={'run_id':run,'checked_utc':datetime.now(timezone.utc).isoformat(),'sources':[inspect(h) for h in HOSTS],'export_audits':artifact_review()};publish(data)
  print('Sanitized public source fixtures published; application fetching not started.')
 if __name__=='__main__':main()
