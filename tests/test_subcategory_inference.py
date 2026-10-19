@@ -53,6 +53,13 @@ class SubcategoryInferenceTests(unittest.TestCase):
   cases=[('Gaming Keyboard, RGB, White Contour','A mechanical keyboard.','Keyboards'),('HP Laser Toner Reload Kit','Black laser toner kit.','Ink & Toner'),('Pickle-Cotton Silk-3 Piece','Stitched 3-Piece Suit. Shirt and trouser.','Ready-to-Wear Outfits'),('Yogurt and Egg Moisturizing Conditioner','A conditioner with yoghurt extracts.','Hair Conditioners'),('Bakhoor Tablet - Qamar','An incense tablet.','Bakhoor & Incense'),('Charcoal Black Tea Tissue Sheet Mask','A sheet mask.','Face Masks'),('Dr Herbalist Turmeric Powder Capsule','Turmeric capsules.','Herbal Supplements'),('Mouse Trap Book Rat Catching','A trap for rats.','Pest-Control Traps'),('Honey with Saffron - 250g','A jar of saffron-infused honey.','Honey'),('Saffron - 3 Pc','Unstitched 3-Piece Suit with shirt and trousers.','Unstitched Suits')]
   for name,description,label in cases:
    with self.subTest(name=name):self.assertEqual(infer(name,description)[0],label)
+ def test_jewellery_care_and_knit_terms_are_not_product_types(self):
+  cases=[('Adjustable Bracelet','Adjustable bracelet.\nJewellery Care : Keep away from water perfume and chemicals.','Bracelets'),('Madrasi Karay Pair','Wear after using perfume.','Bangles & Karas'),('Long Cable Knit Cardigan','A knitted cardigan.','Cardigans'),('USB Charging Cable','USB cable.','Cables'),('Jhumkay-05','Gold-plated jhumkay.','Jhumka Earrings')]
+  for name,description,label in cases:
+   with self.subTest(name=name):self.assertEqual(infer(name,description)[0],label)
+ def test_real_garment_description_after_care_is_still_read(self):
+  result=infer('Dreaming','FIT: Regular\nComposition & Care\nDo not bleach\nPRODUCT DESCRIPTION\nA soft cotton t-shirt with printed artwork.\nProduct Options:\nSize: S, M')
+  self.assertEqual(result[0],'T-Shirts')
  def test_export_finalization_keeps_prices_formulas_links_and_provenance(self):
   import main
   with tempfile.TemporaryDirectory() as d:

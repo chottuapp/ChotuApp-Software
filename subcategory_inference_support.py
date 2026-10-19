@@ -201,8 +201,14 @@ def _product_prose(description):
     # Application tools and ingredient names are not the item being sold.
     raw=str(description or '')
     boundary=re.search(r'(?im)(?:^|\n)\s*(?:how to use[^\n]*|directions[^\n]*|usage|ingredients|precautions[^\n]*|warnings?|care instructions|composition & care|available options|product options)\s*[:：.]?\s*(?:\n|$)',raw)
+    jewellery=re.search(r'(?im)(?:^|\n)\s*(?:\d+[.)]\s*)?(?:jewelry|jewellery)\s+care\s*[:：]',raw)
+    if jewellery and (boundary is None or jewellery.start()<boundary.start()):boundary=jewellery
+    detail=re.search(r'(?im)^\s*product description\s*[:：]?\s*$',raw)
+    extra=''
+    if detail:
+        extra=re.split(r'(?im)^\s*(?:product options|available options|care instructions|composition & care)\s*[:：]?',raw[detail.end():],maxsplit=1)[0]
     if boundary:raw=raw[:boundary.start()]
-    return plain(raw)[:2200]
+    return plain(raw+' '+extra)[:2200]
 
 def _quote(label,field,text,match=None):
     evidence=text[:300] if match is None else text[max(0,match.start()-55):match.end()+110]
@@ -233,6 +239,25 @@ def _bundle(name,body):
 # Explicit named item types for electronics, home goods and herbal ranges.
 # Read the leading item phrase first; specifications describe components too.
 NAMED_TYPES=[
+ ('Bomber Jackets',r'\bbomber zipper\b'),('Activewear',r'\bactivewear\b'),
+ ('Backpacks',r'\bbackpacks?\b'),('Blazers & Coats',r'\b(?:blazers?|coats?)\b'),('Dungarees',r'\bdungarees?\b'),
+ ('Heels & Pumps',r'\b(?:heels|pumps)\b'),('Mules',r'\bmules\b'),('Mary Jane Shoes',r'\bmary jane\b'),('Boat Shoes',r'\bboat shoes\b'),
+ ('Chinos',r'\bchinos?\b'),('Scarves',r'\bscar(?:f|ves)\b'),('Beanies',r'\bbeanie\b'),('Cardholders',r'\bcardholder\b'),
+ ('Headbands',r'\bheadbands?\b'),('Keychains',r'\bkeychains?\b'),('Hair Accessories',r'\bhair accessor(?:y|ies)\b'),('Earrings',r'\bearings\b'),
+ ('Sunglasses',r'\bsuglasses\b'),('Shopping Bags',r'\bshopping bags?\b'),('Tops',r'\b(?:bandeau|peplum)\s+top\b'),
+ ('Pullovers',r'\bpull[ -]?overs?\b'),('Forehead Jewellery',r'\bbindiya kanta\b'),
+
+ ('Jewellery Sets',r'\b(?:locket|mala|choker|pendant|dora|jhumka|necklace|kundan)\s+sets?\b'),
+ ('Bangles & Karas',r'\b(?:bangles?|kara|karay|kada)\b'),('Bracelets',r'\bbracelets?\b'),('Watches',r'\bwatch(?:es)?\b'),
+ ('Anklets',r'\banklets?\b'),('Pendants & Lockets',r'\b(?:pendants?|lockets?)\b'),('Necklaces',r'\b(?:necklaces?|choker|mala)\b'),
+ ('Jewellery Chains',r'\bchains?\b'),('Nose Jewellery',r'\b(?:nath|nose\s+(?:pin|ring|stud))\b'),
+ ('Hand Harnesses',r'\b(?:hand harness|angla)\b'),('Jhumka Earrings',r'\b(?:jhumk(?:a|ay|ey|y|i)s?|bali)\b'),
+ ('Hair Clips & Pins',r'\b(?:hair|bobby|scarf)\s+(?:clips?|pins?)\b'),('Hair Ties & Accessories',r'\b(?:hair ties?|ponytail|scrunchies?|hair band|hair catcher)\b'),
+ ('Forehead Jewellery',r'\b(?:tikka|matha patti)\b'),('Sneakers & Trainers',r'\b(?:sneakers?|trainers?)\b'),
+ ('Flats',r'\bflats\b'),('Sandals & Slides',r'\b(?:sandals?|slides?|flip[ -]flops?)\b'),('Clogs',r'\bclogs?\b'),('Loafers',r'\bloafers?\b'),('Boots',r'\bboots?\b'),
+ ('Briefs & Underwear',r'\b(?:briefs|trunks|underwear)\b'),('Hats',r'\b(?:bucket hat|hats?)\b'),('Belts',r'\bbelts?\b'),('Wallets',r'\bwallets?\b'),
+ ('Sunglasses',r'\bsunglasses\b'),('Blouses',r'\bblouses?\b'),('Tops',r'\b(?:printed|ribbed|knitted|cropped)\s+tops?\b|\bcamisoles?\b'),
+ ('Jumpsuits',r'\b(?:jumpsuit|playsuit|romper)\b'),('Vests & Gilets',r'\b(?:vests?|gilets?)\b'),('Denim Shorts',r'\bjorts\b'),('Shackets',r'\bshackets?\b'),
 
  ('Shoe-Care Products',r'\bshoe\s+(?:cleaner|polish\w*)\b|\bfoam cleaner for sneakers\b'),
  ('Car-Care Products',r'\bcar\s+(?:all purpose cleaner|engine degreaser|glass cleaner|interior dressing|waterless wash)\b'),
@@ -249,7 +274,7 @@ NAMED_TYPES=[
  ('Ink & Toner',r'\b(?:ink bottle|toner cartridge|toner reload kit|ink cartridge)\b'),
  ('Game Controllers',r'\b(?:game ?pad|(?:wireless |bluetooth |mode )?controller)\b'),
  ('Keyboard & Mouse Sets',r'\bdesktop set\b|\b(?:keyboard.*mouse|mouse.*keyboard)\b|\bquietkey combo\b'),
- ('Laptop Bags & Backpacks',r'\b(?:backpack|laptop bag|laptop sleeve)\b'),('Laptop Chargers',r'\blaptop\s+(?:charger|adapter)\b'),
+ ('Laptop Bags & Backpacks',r'\blaptop\s+(?:backpack|bag|sleeve)\b'),('Laptop Chargers',r'\blaptop\s+(?:charger|adapter)\b'),
  ('Laptop Stands',r'\blaptop\s+(?:stand|cooling pad)\b'),('Laptops',r'\b(?:laptop|notebook|macbook|chromebook)\b'),
  ('Headsets & Headphones',r'\b(?:headsets?|headphones?|earphones?|earbuds?)\b'),
  ('Mouse Pads',r'\b(?:mouse\s*pad|desk\s*mat)\b'),('Computer Mice',r'\bmouse\b(?!\s+trap)'),('Keyboards',r'\bkeyboard\b'),
@@ -296,6 +321,7 @@ def named_type(title,body):
     # Don't turn a pet's baby-powder scented mist into perfume, or hair colour into a shaver.
     for label,rule in NAMED_TYPES:
         match=rule.search(phrase)
+        if label=='Cables' and re.search(r'(?i)\bknit(?:ted)?\b',title):continue
         if label=='Saffron' and re.search(r'(?i)perfume|attar|cream|soap|face|mist',title):continue
         if label=='Game Controllers' and not re.search(r'(?i)game ?pad|joystick|hall effect|xbox|playstation|switch pro|8bitdo',title+' '+body[:500]):continue
         if match:return _quote(label,'name',phrase,match)
@@ -312,12 +338,13 @@ def infer(name,description,website_path=''):
     if conflicting:body=''
     # Structured olfactory notes identify fragrances even when the name is opaque.
     raw=str(description or '')
-    structured=all(re.search(r'(?im)^\s*'+('hear(?:t)?' if word=='heart' else word)+r'(?:\s+notes?)?\s*[:：]?\s*$',raw) for word in ('top','heart','base'))
-    if structured and re.search(r'(?i)\b(?:fragrance|\d+\s*ml|gender)\b',raw):
+    structured=all(re.search(r'(?im)^\s*'+('(?:hear(?:t)?|mid(?:dle)?)' if word=='heart' else word)+r'(?:\s+notes?)?\s*(?:[:：].*|\s*)$',raw) for word in ('top','heart','base'))
+    if structured and (re.search(r'(?i)\b(?:fragrance|\d+\s*ml|gender)\b',raw) or re.search(r'(?im)^\s*top notes?\s*:',raw)):
         return _quote('Body Mists' if re.search(r'(?i)\bmist notes\b',raw) else 'Perfumes & Fragrances','description',body)
     if re.search(r'(?i)\bpads\b',title) and re.search(r'(?i)\b(?:period|heavy flow|menstrual|sanitary)\b',body):return _quote('Sanitary Pads','description',body)
     if re.search(r'(?i)\bpalette\b',title) and re.search(r'(?i)\b(?:eye looks|eyeshadow|eye makeup)\b',body):return _quote('Eyeshadow Palettes','description',body)
     if re.search(r'(?i)\bashwagandha\b',title) and re.search(r'(?i)\b(?:super|herbal)\s+powder\b',body):return _quote('Herbal Powders','description',body)
+    if re.search(r'(?i)\bshort set\b',title) and re.search(r'(?i)jewellery care|jewelry care|gold platt?ed',raw):return _quote('Jewellery Sets','name',title)
     combined=title+' '+body[:1100]
     # Explicit intended-use wording disambiguates fabric shampoo, pet scents, and laundry wipes.
     cross_domain={'Pet Shampoos','Pet Deodorisers & Mists','Laundry Stain-Removal Wipes','Fabric Detergents'}
@@ -358,6 +385,9 @@ def infer(name,description,website_path=''):
         if label in cross_domain:continue
         match=rule.search(body)
         if match:return _quote(label,'description',body,match)
+    opening=named_type(body[:450],'')
+    if opening and opening[0] in {'Jewellery Sets','Bangles & Karas','Bracelets','Anklets','Pendants & Lockets','Necklaces','Jewellery Chains','Nose Jewellery','Hand Harnesses','Jhumka Earrings','Hair Clips & Pins','Hair Ties & Accessories','Forehead Jewellery'}:
+        return opening[0],'inferred_description','description: '+body[:300]
     result=_infer_type(title,body)
     if result:
         label,source,quote=result
