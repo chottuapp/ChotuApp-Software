@@ -38,7 +38,7 @@ class RetryTests(unittest.TestCase):
 class ParallelRetryTests(unittest.TestCase):
  def test_parallel_workers_finish_healthy_pages_before_deferred_retry(self):
   with tempfile.TemporaryDirectory() as temp:
-   lock=threading.Lock();calls={};tls=threading.local();tls.saved_api_path=Path(temp)/'api.sqlite3';tls.fast_gate=SimpleNamespace(recovery_not_before=0)
+   lock=threading.Lock();calls={};tls=threading.local();tls.saved_api_path=Path(temp)/'api.sqlite3';tls.fast_gate=SimpleNamespace(recovery_not_before=0,interval=1.0)
    class Session:
     def __init__(self):self.headers={}
     def close(self):pass
