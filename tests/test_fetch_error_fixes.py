@@ -13,6 +13,10 @@ class RetryTests(unittest.TestCase):
   if retry:r.headers['Retry-After']=retry
   return r
  def globals(self,session):return {'S':session,'_chotu_tls':SimpleNamespace(),'_chotu_wait':lambda:None,'_chotu_backoff':lambda *a:None}
+ def test_retry_telemetry_records_status_and_saved_cache_hits(self):
+  events=[];response=self.response(200);response._chotu_cache_hit=True
+  session=SimpleNamespace(get=lambda *a,**k:response);g=self.globals(session);g['_chotu_debug_response']=lambda status,size,**kwargs:events.append((status,kwargs.get('cached')))
+  c.fetch_page(g,session,c.BASE+'/product');self.assertEqual(events,[(200,True)])
  def test_transient_500_recovers_without_skipping_product(self):
   session=SimpleNamespace(get=lambda *a,**k:next(sequence));sequence=iter([self.response(500),self.response(200)])
   self.assertEqual(c.fetch_page(self.globals(session),session,c.BASE+'/product').content,b'good')

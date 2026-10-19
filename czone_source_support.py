@@ -276,12 +276,15 @@ def fetch_page(g,session,url):
     """Bounded upstream retry; 429/503 immediately retain existing source cooldowns."""
     for attempt in range(3):
         g['_chotu_wait']()
+        g.get('_chotu_debug_request',lambda *args:None)(url,attempt+1)
         try:
             response=session.get(url,timeout=45)
         except (requests.Timeout,requests.ConnectionError) as exc:
+            g.get('_chotu_debug_response',lambda *args,**kwargs:None)('EXCEPTION',0)
             if attempt==2:raise TemporaryPageError('Czone temporary transport failure: '+url) from exc
             g.get('_chotu_backoff',lambda seconds,reason:time.sleep(seconds))(2*(attempt+1),'Czone transport retry')
             continue
+        g.get('_chotu_debug_response',lambda *args,**kwargs:None)(response.status_code,len(response.content),cached=bool(getattr(response,'_chotu_cache_hit',False)))
         if response.status_code in (500,502,504):
             raw=response.headers.get('Retry-After','').strip();delay=2*(attempt+1)
             try:delay=max(delay,float(raw))

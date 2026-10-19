@@ -154,7 +154,7 @@ class ResponseCache:
                 self.db.execute('DELETE FROM pages WHERE url=?',(url,));self.db.execute('DELETE FROM page_format WHERE url=?',(url,));self.db.commit();return None
         elif format_row and format_row[0]!='raw':return None
         import requests
-        response=requests.Response();response.status_code=200;response.url=final
+        response=requests.Response();response.status_code=200;response.url=final;response._chotu_cache_hit=True
         response._content=body;response.encoding=encoding
         if ctype:response.headers['Content-Type']=ctype
         return response
