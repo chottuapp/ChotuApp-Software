@@ -1,0 +1,32 @@
+name: Capture official evidence for Rule 804 completion
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/rule804-completion-evidence.yml
+      - catalog-tools/collect_rule804_completion_evidence.py
+      - catalog-inputs/rule804-20261020-completion/jobs.json
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  evidence:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /catalog-tools/collect_rule804_completion_evidence.py
+            /catalog-inputs/rule804-20261020-completion/jobs.json
+      - name: Read official sources with robots and delay checks
+        run: python3 catalog-tools/collect_rule804_completion_evidence.py
+      - name: Preserve evidence on a separate branch
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git switch -c "rule804-evidence-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          git add --sparse catalog-inputs/rule804-20261020-completion/source-evidence.json
+          git commit -m 'Official product source evidence for Rule 804 completion'
+          git push origin HEAD
