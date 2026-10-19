@@ -1,0 +1,30 @@
+name: Rule 804 ambiguous product image evidence
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/rule804-review-images.yml
+      - catalog-tools/capture_rule804_review_images.py
+      - catalog-inputs/rule804-20261020-completion/image-jobs.json
+permissions:
+  contents: write
+jobs:
+  capture:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /catalog-tools/capture_rule804_review_images.py
+            /catalog-inputs/rule804-20261020-completion/image-jobs.json
+      - run: python3 -m pip install Pillow==11.3.0
+      - run: python3 catalog-tools/capture_rule804_review_images.py
+      - run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git switch -c "rule804-images-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          git add --sparse catalog-inputs/rule804-20261020-completion/visual-review.jpg catalog-inputs/rule804-20261020-completion/visual-review.json
+          git commit -m 'Product image evidence for ambiguous Rule 804 items'
+          git push origin HEAD
