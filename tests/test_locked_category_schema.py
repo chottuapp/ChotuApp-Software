@@ -10,6 +10,7 @@ class LockedCategorySchemaTests(unittest.TestCase):
   values=export_values(r);self.assertEqual(values['Category'],'Leaf');self.assertEqual(values['shop_code'],'SE10003');self.assertNotIn('Category',r);self.assertEqual(export_values({'Category':'Owner group','subcategory':''})['Category'],'Owner group')
   self.assertEqual(export_values(dict(r,source_url='https://new.example/products/x'))['shop_code'],'')
   self.assertEqual(export_values(dict(r,shop_code='OWNER'))['shop_code'],'OWNER')
+  self.assertEqual(export_values(dict(r,source_url='https://shop.fardafoods.com/products/a'))['shop_code'],'SE10002')
  def test_canonical_website_and_existing_category_survive_repeated_finalization(self):
   r=dict(fact(['SKIN','Face Wash'],'https://shop.example/collections/face','verified_navigation_membership'),source_url='https://shop.example/products/x',Category='Face Wash',subcategory_source='website',name='Unrelated serum',description='A serum.')
   r.pop('category');r.pop('subcategory');apply_order([r]);first=copy.deepcopy(r);apply_order([r]);self.assertEqual(r,first);self.assertEqual(r['Category'],'Face Serums');self.assertEqual(r['website_category_status'],'verified_navigation_membership')

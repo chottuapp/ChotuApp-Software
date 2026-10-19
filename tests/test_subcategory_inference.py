@@ -42,6 +42,17 @@ class SubcategoryInferenceTests(unittest.TestCase):
  def test_fragrance_domain_is_not_a_food_or_ingredient_claim(self):
   self.assertEqual(infer('Strawberry Milkshake','A gourmand scent.','Fragrances > Gourmand')[0],'Perfumes & Fragrances')
   self.assertIsNone(infer('Mystery','A new arrival.\nIngredients\nFragrance, water.'))
+ def test_electronics_subject_and_herbal_ingredient_remain_distinct(self):
+  cases=[('Controller with TMR Joysticks and Wear-Resistant Rings','A wireless game controller.','Game Controllers'),('Gaming Laptop, 16GB RAM, 512GB SSD','A gaming notebook.','Laptops'),('Honey Hair Shampoo','Shampoo containing honey.','Hair Shampoos'),('Semi-Stitched Embroidered Lawn','A 3-piece semi-stitched outfit with dupatta.','Semi-Stitched Suits'),('Honey Spoon','A sealed spoon containing honey.','Honey')]
+  for name,description,label in cases:
+   with self.subTest(name=name):self.assertEqual(infer(name,description)[0],label)
+ def test_structured_scent_notes_support_opaque_names_without_food_guessing(self):
+  body='Top\nJasmine, orange blossom\nHear\nMusk, lily\nBase\nAmber, woods\nGender\nUnisex\nSize\n100ML'
+  self.assertEqual(infer('Mirage Pearl',body)[0],'Perfumes & Fragrances')
+ def test_component_colour_and_serving_suggestions_do_not_override_item(self):
+  cases=[('Gaming Keyboard, RGB, White Contour','A mechanical keyboard.','Keyboards'),('HP Laser Toner Reload Kit','Black laser toner kit.','Ink & Toner'),('Pickle-Cotton Silk-3 Piece','Stitched 3-Piece Suit. Shirt and trouser.','Ready-to-Wear Outfits'),('Yogurt and Egg Moisturizing Conditioner','A conditioner with yoghurt extracts.','Hair Conditioners'),('Bakhoor Tablet - Qamar','An incense tablet.','Bakhoor & Incense'),('Charcoal Black Tea Tissue Sheet Mask','A sheet mask.','Face Masks'),('Dr Herbalist Turmeric Powder Capsule','Turmeric capsules.','Herbal Supplements'),('Mouse Trap Book Rat Catching','A trap for rats.','Pest-Control Traps'),('Honey with Saffron - 250g','A jar of saffron-infused honey.','Honey'),('Saffron - 3 Pc','Unstitched 3-Piece Suit with shirt and trousers.','Unstitched Suits')]
+  for name,description,label in cases:
+   with self.subTest(name=name):self.assertEqual(infer(name,description)[0],label)
  def test_export_finalization_keeps_prices_formulas_links_and_provenance(self):
   import main
   with tempfile.TemporaryDirectory() as d:

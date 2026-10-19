@@ -114,7 +114,7 @@ def apply(row,previous=None):
 
 # Owner-locked public export contract: shop_code first, one Category field.
 SHOP_CODES={
- 'fardafoods.com':'SE10002','adamsestore.com':'SE10003','islamabadtea.pk':'SE10004',
+ 'shop.fardafoods.com':'SE10002','fardafoods.com':'SE10002','adamsestore.com':'SE10003','islamabadtea.pk':'SE10004',
  'seran.com.pk':'SE10005','shopmodest.pk':'SE10006','thehangerpakistan.com':'SE10007',
  'vincecare.com':'SE10008','tawakkalfabrics.co':'SE10009','stylo.pk':'SE10010',
  'junaidjamshed.com':'SE10011','rivaj-uk.com':'SE10012','rawayat.com.pk':'SE10013',
@@ -145,6 +145,7 @@ NORMAL_LABELS={
 # These rules are ordered by intended purpose. They run before generic "shampoo",
 # "baby", "milk", "tea" or scent words can pull an item into an unrelated domain.
 PURPOSE_RULES=[
+ ('Hair Conditioners',r'\bconditioner\b'),('Face Masks',r'\b(?:face|facial|sheet|tissue|mud)\s+mask\b'),('Car-Care Products',r'\bcar\s+(?:wax|shampoo|polish)\b|\bdashboard\s+(?:polish|cleaner)\b'),
  ('Hand & Foot Creams',r'\bhand\s*(?:&|and)\s*foot\b.{0,25}\bcream\b'),
  ('Hand & Foot Lotions',r'\bhand\s*(?:&|and)\s*foot\b.{0,25}\blotion\b'),('Hand & Foot Scrubs',r'\bhand\s*(?:&|and)\s*foot\b.{0,25}\bscrub\b'),
  ('Eye Creams',r'\beye\s+cream\b'),('Makeup Removers',r'\bmicellar\s+water\b'),('Beard Care',r'\bbeard\s+leave[ -]in\s+cream\b'),
@@ -166,7 +167,7 @@ PURPOSE_RULES=[
  ('Razors & Shaving Tools',r'\brazors?\b'),('Body Butters',r'\bbody\s+butter\b'),('Foot Creams',r'\bheel\s+(?:care|cream)\b'),
  ('Face Peels & Exfoliators',r'\bpeeling\s+solution\b'),('Face Washes & Cleansers',r'\bcleansing\s+(?:oil|milk|balm)\b'),
  ('Face Moisturisers & Creams',r'\b(?:face|facial|night|day|whitening|brightening|freckle|glow)\s+cream\b'),
- ('Skirts',r'\bskirts?\b'),('Co-ord Sets',r'\bco[ -]?ord\s+sets?\b'),('Polo Shirts',r'\bpolo(?:s| shirt)?\b'),
+ ('Skirts',r'\bskirts?\b'),('Co-ord Sets',r'\bco[ -]?ord\s+sets?\b'),('Polo Shirts',r'\bpolo(?:s| shirts?| t-shirts?)\b'),
  ('Clothing Sets',r'\b[234]\s*(?:piece|pc)\b.{0,90}\b(?:gharara|sharara|lehenga|frock|dress|shalwar|kurta|suit|outfit|set)\b'),
  ('Bath Soaps',r'\b(?:luffa|loofah|beauty|bath|neem)\s+soap\b'),('Toothpaste Dispensers',r'\btooth\s*paste\s+dispenser\b'),('Dried Herbs',r'\bkasuri\s+methi\b'),
  ('Mosquito Repellents',r'\bmosquito\s+repellent\b'),('Hand Creams',r'\bhand(?:\s*(?:&|and)\s*nail)?\s+(?:cream|balm)\b'),('Foot Creams',r'\bfoot\s+cream\b'),('Nursing Pads',r'\bnursing\s+pads?\b'),('Paper Towels & Rolls',r'\bmaxi\s+roll\b'),
@@ -212,7 +213,8 @@ def _bundle(name,body):
     bundle=bool(re.search(r'\b(?:bundle|combo|kit|deal|twin pack|triple pack|glow pack|glow set)\b',title,re.I))
     if re.search(r'\bduo\b',title,re.I) and not re.search(r'\blip\b',title,re.I):bundle=True
     if not bundle:return None
-    if re.search(r'\b(?:dairy|cheese|ghee|butter|yogh?urt|raita|lassi|milky)\b',title,re.I):label='Dairy Bundles'
+    if re.search(r'\b(?:perfume|attar|fragrance|body spray)\b',title,re.I):label='Fragrance Sets'
+    elif re.search(r'\b(?:dairy|cheese|ghee|butter|yogh?urt|raita|lassi|milky)\b',title,re.I):label='Dairy Bundles'
     elif re.search(r'\b(?:spice|masala|coriander|cumin)\b',context):label='Spice Bundles'
     elif re.search(r'\bhair\s+colou?r\b',context):label='Hair Colours & Dyes'
     elif re.search(r'\b(?:hair|shampoo|conditioner)\b',title,re.I):label='Hair Care Bundles'
@@ -227,10 +229,95 @@ def _bundle(name,body):
         else:return None
     return _quote(label,'description',title+'; '+body)
 
+
+# Explicit named item types for electronics, home goods and herbal ranges.
+# Read the leading item phrase first; specifications describe components too.
+NAMED_TYPES=[
+
+ ('Shoe-Care Products',r'\bshoe\s+(?:cleaner|polish\w*)\b|\bfoam cleaner for sneakers\b'),
+ ('Car-Care Products',r'\bcar\s+(?:all purpose cleaner|engine degreaser|glass cleaner|interior dressing|waterless wash)\b'),
+ ('Craft Colourants',r'\bliquid colou?rs\b'),('Polishing Compounds',r'\bluster bars\b|\bpolishing compounds\b'),
+ ('Furniture Polishes',r'\bfurniture\s+(?:shiner|polish)\b'),('Liquid Droppers',r'\bplastic droppers\b'),('pH Test Papers',r'\bph papers\b'),
+ ('Dishwashing Liquids',r'\bdish\s*wash\b'),('Descalers',r'\bdescal[ae]r\b'),('Toilet Cleaners',r'\btoilet cleaner\b'),
+ ('Face Masks',r'\b(?:essence|gold)\s+mask\b'),('Makeup Removers',r'\bmakeup remover\b'),('Face Washes & Cleansers',r'\b(?:squalane|fade)\s+cleanser\b'),
+ ('Herbal Massage Balms',r'\bvapou?r rub\b'),('Herbal & Cosmetic Oils',r'\bherbal oil\b'),('Herbal Supplements',r'\bherbal supplement\b'),
+ ('Herbal Powders',r'\b(?:black seed|berberine|papaya leaves|pain relief)\s+powder\b'),
+ ('Food Flavourings',r'\bfood essence\b'),('Saffron',r'\b(?:premium quality |pure )?saffron\s+\d+(?:\.\d+)?\s*g\b'),('Instant Drink Mixes',r'\binstant drink powder\b'),
+ ('Quinoa',r'\bquinoa\b'),
+ ('Tablets',r'\bipad\b|\b(?:android|drawing|graphics|pen)\s+tablet\b'),('Wall Chargers',r'\b(?:wall charger|gan.*charger)\b'),('Security Cameras',r'\b(?:security.*camera|home camera)\b'),
+ ('Computer Cases',r'\b(?:tower case|tower chassis)\b'),('Gaming Chairs',r'\b(?:gaming|office)\s+chair\b'),('Gaming Consoles',r'\b(?:playstation|gaming console)\b'),
+ ('Ink & Toner',r'\b(?:ink bottle|toner cartridge|toner reload kit|ink cartridge)\b'),
+ ('Game Controllers',r'\b(?:game ?pad|(?:wireless |bluetooth |mode )?controller)\b'),
+ ('Keyboard & Mouse Sets',r'\bdesktop set\b|\b(?:keyboard.*mouse|mouse.*keyboard)\b|\bquietkey combo\b'),
+ ('Laptop Bags & Backpacks',r'\b(?:backpack|laptop bag|laptop sleeve)\b'),('Laptop Chargers',r'\blaptop\s+(?:charger|adapter)\b'),
+ ('Laptop Stands',r'\blaptop\s+(?:stand|cooling pad)\b'),('Laptops',r'\b(?:laptop|notebook|macbook|chromebook)\b'),
+ ('Headsets & Headphones',r'\b(?:headsets?|headphones?|earphones?|earbuds?)\b'),
+ ('Mouse Pads',r'\b(?:mouse\s*pad|desk\s*mat)\b'),('Computer Mice',r'\bmouse\b(?!\s+trap)'),('Keyboards',r'\bkeyboard\b'),
+ ('Webcams',r'\bweb\s*cam\b'),('Microphones',r'\bmicrophone\b'),('Speakers',r'\b(?:speaker|soundbar|subwoofer)\b'),
+ ('SSD Enclosures',r'\b(?:ssd|drive|hdd)\s+enclosure\b'),('External Storage Drives',r'\bexternal\s+(?:hard|ssd|drive|hdd)\b|\bportable\s+(?:hdd|ssd)\b'),
+ ('USB Flash Drives',r'\b(?:flash drive|pen drive|usb drive)\b'),('Memory Cards',r'\b(?:microsd|sdhc|sdxc|memory card)\b'),
+ ('USB Hubs & Docks',r'\b(?:multiport hub|usb hub|docking station|multiport adapter)\b'),('Stylus Pens',r'\bstylus\b'),
+ ('Phone Holders & Mounts',r'\b(?:mobile|phone)\s+holder\b'),('Power Banks',r'\bpower\s*bank\b'),
+ ('Power Supplies',r'\bpower\s+supply\b|\bPSU\b'),('UPS & Voltage Stabilisers',r'\b(?:UPS|stabili[sz]er)\b'),
+ ('Graphics Cards',r'\bgraphics?\s+card\b|\b(?:geforce|radeon)\b'),
+ ('Motherboards',r'\bmotherboard\b'),('Processors',r'\b(?:processor|CPU)\b'),('Computer Memory (RAM)',r'\b(?:RAM|memory module)\b'),
+ ('Computer Cases',r'\b(?:computer|PC|ATX|gaming)\s+(?:case|casing)\b'),('CPU Coolers',r'\b(?:cpu|processor|liquid)\s+cooler\b'),
+ ('Cooling Fans',r'\b(?:case|cooling|chassis)\s+fan\b'),('Thermal Paste',r'\bthermal\s+(?:paste|compound)\b'),
+ ('Solid-State Drives',r'\bSSD\b|\bsolid.state drive\b'),('Hard Drives',r'\bHDD\b|\bhard\s+(?:disk|drive)\b'),
+ ('Monitors',r'\bmonitor\b'),('Printers',r'\bprinter\b'),('Ink & Toner',r'\b(?:toner cartridge|ink cartridge)\b'),
+ ('Network Routers',r'\brouter\b'),('Network Switches',r'\b(?:network|ethernet|gigabit)\s+switch\b'),
+ ('Wireless Network Adapters',r'\b(?:wifi|wi-fi|wireless)\s+(?:usb\s+)?adapter\b'),('Network Range Extenders',r'\b(?:range extender|wifi extender)\b'),
+ ('Cables',r'\bcable\b'),('Adapters & Converters',r'\b(?:adapter|adaptor|converter)\b'),
+ ('Eyelash Adhesives',r'\beyelash\s+glue\b'),('Mouth Fresheners',r'\bmouth spray\b'),
+ ('Electric Kettles',r'\belectric kettle\b'),('Pest-Control Traps',r'\b(?:mouse trap|rat catch)\b'),('Hair Colouring Caps',r'\b(?:hair streaking|highlighting)\s+cap\b'),('Car Chargers',r'\bcar\s+charger\b'),
+ ('Toothpaste',r'\btoothpaste\b'),('Mouth Fresheners',r'\bmouth freshener\b'),('Hair Brushes & Combs',r'\bhair\s+(?:round\s+)?brush\b|\bhair comb\b'),
+ ('Electric Toothbrushes',r'\b(?:spinbrush|electric brush|electric toothbrush)\b'),('Toothbrushes',r'\btoothbrush\b'),('Contact Lens Solutions',r'\blens\s+(?:water|solution)\b'),
+ ('Body Scrubs',r'\b(?:shower|foot)\s+scrub\b'),('Hair Styling Waxes',r'\bwax stick\b|\bhair\s+(?:styling\s+)?wax\b'),('Hair Creams',r'\bhair\s+(?:protein|cream)\b'),
+ ('Honey',r'\bhoney\b'),('Herbal Massage Gels',r'\bpain relief\s+massage\s+gel\b'),('Baby Oils',r'\b(?:herbal )?oil for baby\b'),
+ ('Face Mists & Toners',r'\bface\s+mist\b'),('Lip Balms',r'\blip\s+butter\b|\btinted\s+(?:colou?r\s+)?balm\b'),
+ ('Massage Devices',r'\b(?:massager|massage gun|fascia gun)\b'),('Hair Dryers',r'\bhair\s*dryer\b'),
+ ('Hair Straighteners',r'\b(?:straightener|straightening brush)\b'),('Hair Curlers',r'\b(?:hair curler|curling iron|curling wand)\b'),
+ ('Trimmers & Clippers',r'\b(?:trimmer|hair clipper)\b'),('Electric Shavers',r'\b(?:electric shaver|foil shaver)\b'),
+ ('Socks',r'\bsocks?\b'),('Handbags',r'\b(?:handbag|shoulder bag|crossbody bag|tote bag|clutch bag)\b'),
+ ('Hair Colour & Henna',r'\b(?:henna|mehndi|mehendi)\b'),('Ubtan Powders',r'\bubtan\b'),
+ ('Clay Face Masks',r'\b(?:multani|fuller.s earth|mud mask)\b'),('Rose Water & Face Mists',r'\brose\s*water\b|\bgulab\s*jal\b'),
+ ('Herbal Supplements',r'\b(?:capsules?|gummies|shilajit)\b'),('Herbal Powders',r'\b(?:moringa|ashwagandha|amla|neem)\s+powder\b'),
+ ('Attars & Perfume Oils',r'\battar\b|\bperfume oil\b'),('Bakhoor & Incense',r'\b(?:bakhoor|bakhour|incense)\b'),
+ ('Body Sprays & Deodorants',r'\b(?:body spray|deodorant|roll.on)\b'),('Hair Oils',r'\b(?:hair|beard)\b.{0,15}\boil\b'),
+ ('Herbal & Cosmetic Oils',r'\b(?:coconut|castor|almond|neem|kalonji|black seed|argan|jojoba|olive|mustard)\s+oil\b'),
+ ('Essential Oils',r'\bessential\s+oil\b|\btea tree oil\b'),('Glycerin',r'\b(?:glycerin|glycerine)\b(?!\s+cream)'),
+ ('Eyebrow Products',r'\b(?:eyebrow|brow pen|brow wax|brow gel)\b'),('Lipsticks',r'\blip\s+cream\b'),
+ ('Face Scrubs & Exfoliators',r'\b(?:face|skin)\s+polish\b'),('Eye Creams',r'\bunder\s+eye\b.{0,20}\b(?:cream|gel)\b'),
+]
+NAMED_TYPES=[(label,re.compile(pattern,re.I)) for label,pattern in NAMED_TYPES]
+
+def named_type(title,body):
+    phrase=title.split(',')[0]
+    # Don't turn a pet's baby-powder scented mist into perfume, or hair colour into a shaver.
+    for label,rule in NAMED_TYPES:
+        match=rule.search(phrase)
+        if label=='Saffron' and re.search(r'(?i)perfume|attar|cream|soap|face|mist',title):continue
+        if label=='Game Controllers' and not re.search(r'(?i)game ?pad|joystick|hall effect|xbox|playstation|switch pro|8bitdo',title+' '+body[:500]):continue
+        if match:return _quote(label,'name',phrase,match)
+    # Stitching is a garment state; semi-stitched is not a fully stitched outfit.
+    garment=title+' '+body[:600]
+    if re.search(r'(?i)\bsemi[ -]?stitched\b',garment):return _quote('Semi-Stitched Suits','description',garment)
+    if re.search(r'(?i)\bstitched\s+(?:\d[ -]?piece|collection|printed|embroidered|emb)\b',garment) and not re.search(r'(?i)\bun[ -]?stitched\b',garment):return _quote('Ready-to-Wear Outfits','description',garment)
+    if re.search(r'(?i)\blength\s*:',body) and re.search(r'(?i)\bfabric\s*:',body) and re.search(r'(?i)\bmeters?\b',body):return _quote('Unstitched Fabric','description',body)
+    return None
+
 def infer(name,description,website_path=''):
     title=plain(name);body=_product_prose(description)
     conflicting=bool(re.search(r'(?i)Product Clarification:|description refers to .*while this listing',body))
     if conflicting:body=''
+    # Structured olfactory notes identify fragrances even when the name is opaque.
+    raw=str(description or '')
+    structured=all(re.search(r'(?im)^\s*'+('hear(?:t)?' if word=='heart' else word)+r'(?:\s+notes?)?\s*[:：]?\s*$',raw) for word in ('top','heart','base'))
+    if structured and re.search(r'(?i)\b(?:fragrance|\d+\s*ml|gender)\b',raw):
+        return _quote('Body Mists' if re.search(r'(?i)\bmist notes\b',raw) else 'Perfumes & Fragrances','description',body)
+    if re.search(r'(?i)\bpads\b',title) and re.search(r'(?i)\b(?:period|heavy flow|menstrual|sanitary)\b',body):return _quote('Sanitary Pads','description',body)
+    if re.search(r'(?i)\bpalette\b',title) and re.search(r'(?i)\b(?:eye looks|eyeshadow|eye makeup)\b',body):return _quote('Eyeshadow Palettes','description',body)
+    if re.search(r'(?i)\bashwagandha\b',title) and re.search(r'(?i)\b(?:super|herbal)\s+powder\b',body):return _quote('Herbal Powders','description',body)
     combined=title+' '+body[:1100]
     # Explicit intended-use wording disambiguates fabric shampoo, pet scents, and laundry wipes.
     cross_domain={'Pet Shampoos','Pet Deodorisers & Mists','Laundry Stain-Removal Wipes','Fabric Detergents'}
@@ -238,16 +325,24 @@ def infer(name,description,website_path=''):
         if label in cross_domain:
             match=rule.search(combined)
             if match:return _quote(label,'description',combined,match)
+    named=named_type(title,body)
+    technology={'Game Controllers','Keyboard & Mouse Sets','Laptop Bags & Backpacks','Laptop Chargers','Laptop Stands','Laptops','Headsets & Headphones','Mouse Pads','Computer Mice','Keyboards','Webcams','Microphones','Speakers','SSD Enclosures','External Storage Drives','USB Flash Drives','Memory Cards','USB Hubs & Docks','Stylus Pens','Phone Holders & Mounts','Power Banks','Power Supplies','UPS & Voltage Stabilisers','Graphics Cards','Motherboards','Processors','Computer Memory (RAM)','Computer Cases','CPU Coolers','Cooling Fans','Thermal Paste','Solid-State Drives','Hard Drives','Monitors','Printers','Ink & Toner','Network Routers','Network Switches','Wireless Network Adapters','Network Range Extenders','Cables','Adapters & Converters','Tablets','Wall Chargers','Security Cameras','Gaming Chairs','Gaming Consoles','Semi-Stitched Suits','Ready-to-Wear Outfits','Car Chargers'}
+    if named and named[0] in technology:return named
+    if named and named[0] in {'Shoe-Care Products','Car-Care Products'}:return named
     bundle=_bundle(title,body)
     if bundle:return bundle
     for label,rule in PURPOSE_RULES:
         if label in cross_domain:continue
         match=rule.search(title)
         if match:return _quote(label,'name',title,match)
+    if named and named[0]=='Herbal Supplements':return named
+    explicit=_infer_type(title,'')
+    if explicit:return NORMAL_LABELS.get(explicit[0],explicit[0]),explicit[1],explicit[2]
+    if named:return named
     if re.search(r'(?i)\bsoap\b',title):return _quote('Bath Soaps','name',title)
     if re.search(r'(?i)\bcream\b',title) and re.search(r'(?i)\bface\s*,?\s*hand\s*(?:&|and)\s*body\b',body):return _quote('Face & Body Creams','description',body)
     if re.search(r'(?i)\bcream\b',title) and re.search(r'(?i)\b(?:face|facial|skin|skincare)\b',body):return _quote('Face Moisturisers & Creams','description',body)
-    if all(re.search(r'(?i)\b'+word+r'\s+notes\b',body) for word in ('top','heart','base')):return _quote('Perfumes & Fragrances','description',body)
+    if all(re.search(r'(?i)\b'+word+r'\s+notes?\b',body) for word in ('top','heart','base')):return _quote('Perfumes & Fragrances','description',body)
     # Verified fragrance-domain membership resolves generic scent names without inventing notes.
     if re.search(r'(?i)\bfragrances?\b|\bperfumes?\b',website_path) and not re.search(r'(?i)\b(?:lotion|wash|cream|soap|shampoo|wipes|saniti[sz]er)\b',title):
         return 'Perfumes & Fragrances','inferred_product_type','Website domain path: '+website_path+'; name: '+title
