@@ -5,6 +5,14 @@ sys.path.insert(0,str(Path(__file__).resolve().parent))
 from runtime import CloudService
 
 
+def fetch_exit_code(state,stop_reason,checkpoint_status):
+    if checkpoint_status.startswith('not saved:'):return 2
+    if state and state.get('status')=='complete':return 0
+    if (state and stop_reason=='stop_requested' and checkpoint_status=='saved'
+        and not any(s.get('status') in ('failed','blocked') for s in state.get('sites',[]))):return 0
+    return 2
+
+
 def parse_stores(text):
     if text.lstrip().startswith('['):return json.loads(text)
     result=[]
@@ -171,7 +179,10 @@ def main():
             try:
                 checkpoint(args.data,args.checkpoint);checkpoint_status='saved';print('Checkpoint saved:',args.checkpoint if args.checkpoint.exists() else args.checkpoint.with_suffix('.parts'),flush=True)
             except ValueError as exc:checkpoint_status='not saved: '+str(exc);print('CHECKPOINT NOT SAVED:',exc,flush=True);result=2
-        write_summary(service,checkpoint_status,'stop_requested' if (args.data/'stop-request').exists() else stop_reason)
+        effective_stop='stop_requested' if (args.data/'stop-request').exists() else stop_reason
+        result=fetch_exit_code(state,effective_stop,checkpoint_status)
+        if result==0 and effective_stop=='stop_requested':print('SAVED AND STOPPED: checkpoint retained; fetching is incomplete and will not restart automatically.',flush=True)
+        write_summary(service,checkpoint_status,effective_stop)
         atomic_json(args.data/'fetch-phase.json',{'phase':'finished','checkpoint':checkpoint_status})
         print('Run finished. Excel files:',service.output,flush=True)
     finally:

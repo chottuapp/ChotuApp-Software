@@ -3,10 +3,19 @@ from pathlib import Path
 from unittest.mock import patch
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'cloud'));sys.path.insert(0,str(ROOT))
 from background_run import finish
-from cli import checkpoint,restore
+from cli import checkpoint,restore,fetch_exit_code
 from resume_support import RunStore
 from openpyxl import Workbook
 class FinalizationTests(unittest.TestCase):
+ def test_saved_manual_stop_is_successful_without_claiming_completion(self):
+  state={'status':'incomplete','sites':[{'status':'pending'}]}
+  self.assertEqual(fetch_exit_code(state,'stop_requested','saved'),0)
+  self.assertEqual(state['status'],'incomplete')
+  for reason,checkpoint_status in [('time_budget','saved'),('stop_requested','not saved: disk full'),('stop_requested','not requested')]:
+   self.assertEqual(fetch_exit_code(state,reason,checkpoint_status),2)
+  for status in ('blocked','failed'):
+   self.assertEqual(fetch_exit_code({'status':'incomplete','sites':[{'status':status}]},'stop_requested','saved'),2)
+  self.assertEqual(fetch_exit_code({'status':'complete','sites':[]},'completed_or_source_failure','not saved: disk full'),2)
  def test_packing_can_run_past_old_thirty_second_timeout(self):
   with tempfile.TemporaryDirectory() as tmp:
    root=Path(tmp);(root/'fetch-phase.json').write_text('{"phase":"checkpoint"}');clock=[0]
