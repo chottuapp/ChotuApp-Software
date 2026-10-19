@@ -76,6 +76,20 @@ class LaamTests(unittest.TestCase):
    cache=ResponseCache(Path(tmp)/'pages.sqlite3');r=requests.Response();r.url='https://laam.com/products/test';r.status_code=200;r._content=b'cached product page';r.encoding='utf-8';cache.put(r.url,r)
    sleeps=[];g={'_chotu_tls':SimpleNamespace(saved_response_cache=cache),'_chotu_wait':lambda:None,'_chotu_backoff':lambda *args:sleeps.append(args),'_chotu_debug_request':lambda *args:None,'_chotu_debug_response':lambda *args,**kwargs:None}
    reader=source.PublicCatalog(g,lambda _:None);self.assertEqual(reader.read(r.url).content,r.content);self.assertEqual(sleeps,[]);cache.close()
+ def test_bad_product_does_not_prevent_later_good_product_cache(self):
+  import requests
+  from types import SimpleNamespace
+  raw=FIXTURES[0]['product'];good=source.BASE+'/products/'+raw['handle'];bad=source.BASE+'/products/000-broken';visited=[]
+  class FixtureSource(source.PublicCatalog):
+   def read(self,url,allow_missing=False):
+    visited.append(url)
+    if url==bad:raise source.TemporaryProductError('SOURCE PAUSED: HTTP 500')
+    payload={source.BASE+'/robots.txt':'User-agent: *\nAllow: /\nSitemap: https://laam.com/sitemap.xml',source.BASE+'/sitemap.xml':'<urlset><url><loc>'+bad+'</loc></url><url><loc>'+good+'</loc></url></urlset>',good:html(raw)}[url]
+    r=requests.Response();r.status_code=200;r._content=payload.encode();r.encoding='utf-8';return r
+  with tempfile.TemporaryDirectory() as tmp:
+   reader=FixtureSource({'_chotu_tls':SimpleNamespace(saved_api_path=Path(tmp)/'api.sqlite3')},lambda _:None)
+   with self.assertRaisesRegex(source.TemporaryProductError,'catalog incomplete'):reader.catalog()
+   self.assertIn(good,visited);self.assertIsNotNone(reader.cache.get(good));self.assertIsNone(reader.cache.get(bad));reader.close()
  def test_public_sitemap_images_are_not_treated_as_products(self):
   import requests
   class FixtureSource(source.PublicCatalog):

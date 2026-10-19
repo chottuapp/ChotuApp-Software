@@ -9,6 +9,9 @@ from bs4 import BeautifulSoup,SoupStrainer
 BASE='https://laam.com'
 AGENT='ChotuAppCatalogRefresh'
 
+class TemporaryProductError(RuntimeError):
+    """A retryable page failure; never a missing or successfully exported product."""
+
 class SourceAccessError(ValueError):
     """Public source access/locale cannot be verified; distinct from parser failures."""
 
@@ -144,7 +147,7 @@ class PublicCatalog:
         if response is None:response=self.g['S'].get(url,timeout=35,allow_redirects=False)
         self.g['_chotu_debug_response'](response.status_code,len(response.content),cached=cached)
         if response.status_code in (500,502,504):
-            raise RuntimeError('SOURCE PAUSED: LAAM temporary server failure (HTTP '+str(response.status_code)+'); retry saved store after at least 60s. Checkpoint retained')
+            raise TemporaryProductError('SOURCE PAUSED: LAAM temporary server failure (HTTP '+str(response.status_code)+'); retry saved store after at least 60s. Checkpoint retained')
         if response.status_code in (429,503):
             gate=getattr(self.g.get('_chotu_tls'),'fast_gate',None)
             if gate is not None:raise gate.blocked_error()
@@ -173,12 +176,20 @@ class PublicCatalog:
                 if p.hostname=='laam.com' and re.fullmatch('/products/[^/]+',p.path) and not p.query:urls.add(loc)
             self.log('LAAM SITEMAP: '+str(len(urls))+' distinct public product URLs discovered')
         if not urls:raise ValueError('LAAM sitemap has no public product URLs')
+        deferred=[];consecutive=0
         for index,url in enumerate(sorted(urls),1):
             self.g.get('_chotu_wait',lambda:None)()
             product=self.cache.get(url) if self.cache else None
             if product is not None:self.cache_hits+=1
             else:
-                handle=unquote(urlsplit(url).path.rsplit('/',1)[-1]);response=self.read(url,allow_missing=True)
+                handle=unquote(urlsplit(url).path.rsplit('/',1)[-1])
+                try:response=self.read(url,allow_missing=True)
+                except TemporaryProductError:
+                    deferred.append(url);consecutive+=1
+                    self.log('LAAM PRODUCT DEFERRED: '+url+'; temporary server failure, not exported or marked complete')
+                    if consecutive>=5:raise TemporaryProductError('SOURCE PAUSED: LAAM consecutive server failures; retry saved store after at least 60s. Checkpoint retained')
+                    continue
+                consecutive=0
                 if response.status_code in (404,410):
                     self.log('LAAM SOURCE REMOVED: HTTP '+str(response.status_code)+' '+url+'; absent public product excluded')
                     continue
@@ -190,6 +201,7 @@ class PublicCatalog:
             if product['id'] in self.products:raise ValueError('LAAM sitemap returned repeated product identity')
             self.products[product['id']]=product
             if index==1 or index%50==0 or index==len(urls):self.log(f'PUBLIC PRODUCT PAGES: {index}/{len(urls)} LAAM products verified')
+        if deferred:raise TemporaryProductError('SOURCE PAUSED: LAAM '+str(len(deferred))+' product pages still unavailable; other successful products cached. Retry saved store after at least 60s; catalog incomplete')
         if self.cache_hits:self.log('LAAM PARSED CACHE: '+str(self.cache_hits)+' verified products reused without reparsing; current adapter revision only')
         self.log('LAAM SOURCE: complete declared product sitemap coverage; explicit PKR, observed variants, public stock and image URLs retained. No sales popularity assumed.')
         return list(self.products.values()),True
