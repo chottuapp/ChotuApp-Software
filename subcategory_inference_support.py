@@ -109,3 +109,21 @@ def apply(row,previous=None):
         row.update(subcategory=label,subcategory_source=source,subcategory_evidence=quote,subcategory_checked_at=stamp)
     else:row.update(subcategory_source='unverified',subcategory_evidence='No unambiguous product type in the supplied name/description',subcategory_checked_at='')
     return row
+
+
+# Owner-locked public export contract: shop_code first, one Category field.
+SHOP_CODES={
+ 'fardafoods.com':'SE10002','adamsestore.com':'SE10003','islamabadtea.pk':'SE10004',
+ 'seran.com.pk':'SE10005','shopmodest.pk':'SE10006','thehangerpakistan.com':'SE10007',
+ 'vincecare.com':'SE10008','tawakkalfabrics.co':'SE10009','stylo.pk':'SE10010',
+ 'junaidjamshed.com':'SE10011','rivaj-uk.com':'SE10012','rawayat.com.pk':'SE10013',
+ 'missrose.com.pk':'SE10014','elitecosmeticspk.com':'SH10003',
+}
+def export_values(row):
+    from urllib.parse import urlsplit
+    values=dict(row)
+    values['Category']=row.get('Category') or row.get('subcategory')
+    if not values.get('shop_code'):
+        host=(urlsplit(str(row.get('source_url') or '')).hostname or '').lower().removeprefix('www.')
+        values['shop_code']=SHOP_CODES.get(host,'')
+    return values

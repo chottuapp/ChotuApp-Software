@@ -638,7 +638,8 @@ def write_row(ws, vals):
     if ws.title in ('Products', 'Variant Combinations'):
         vals = discount_export_fields(vals)
     if ws.title == 'Products':
-        vals = dict(vals)
+        from subcategory_inference_support import export_values
+        vals = export_values(vals)
         vals['sale_price (PKR, only if discounted)'] = vals.get('sale_price (PKR, agar discount ho)')
         vals['scraped_image_url (auto)'] = vals.get('scraped_image_url (cover, auto)')
         vals['final_image_url (main photo)'] = vals.get('final_image_url (cover/thumbnail — hosted link)') or vals.get('scraped_image_url (cover, auto)')

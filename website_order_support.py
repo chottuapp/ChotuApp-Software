@@ -152,6 +152,12 @@ def apply_order(rows,evidence=None,category_evidence=None):
     """Stable unknown tails; never substitute price, discount, or popularity order."""
     evidence=evidence or {};known=[]
     for row in rows:
+        canonical='Category' in row
+        saved_category=row.get('Category')
+        if canonical:
+            row['subcategory']=saved_category or ''
+            path=str(row.get('website_category_path') or '')
+            if 'category' not in row and path:row['category']=path.split(' > ')[0]
         fact=evidence.get(product_key(row.get('source_url','')))
         if fact:
             row.update(website_category_order=fact['category_order'],website_subcategory_order=fact['subcategory_order'],website_product_order=fact['product_order'],website_order_source_url=fact['source_url'],website_order_checked_at=fact['checked_at'],website_order_status='observed_default_listing')
@@ -161,8 +167,13 @@ def apply_order(rows,evidence=None,category_evidence=None):
         from website_category_support import apply as apply_category
         prior_subcategory=(row.get('subcategory'),row.get('subcategory_source'),row.get('subcategory_checked_at'))
         apply_category(row,category_evidence)
+        if canonical and saved_category and not row.get('subcategory') and row.get('website_category_status')=='unverified':
+            row['subcategory']=saved_category
+            if row.get('subcategory_source') in (None,'','website','unverified'):
+                row.update(subcategory_source='existing',subcategory_evidence='Existing Category retained; website provenance unverified',subcategory_checked_at='')
         from subcategory_inference_support import apply as infer_subcategory
         infer_subcategory(row,prior_subcategory)
+        if 'Category' in row:row['Category']=row.get('subcategory') or ''
         valid=all(position(row.get(field))!=float('inf') for field in ORDER_FIELDS[:3]) and row.get('website_order_source_url') and public_link(row.get('source_url',''),row.get('website_order_source_url','')) and row.get('website_order_checked_at')
         if row.get('website_order_status')=='observed_default_listing' and valid:known.append(row)
         else:row['website_order_status']='unverified'
