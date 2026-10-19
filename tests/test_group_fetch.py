@@ -8,12 +8,12 @@ from resume_support import RunStore
 
 class GroupFetchTests(unittest.TestCase):
  def sites(self,n):return [{'name':'Store '+str(i),'url':'https://store'+str(i)+'.example'} for i in range(n)]
- def test_twenty_nine_stores_split_into_six_disjoint_runners(self):
+ def test_twenty_nine_stores_split_into_ten_disjoint_runners(self):
   sites=self.sites(29);plan=groups(sites)
-  self.assertEqual([len(g) for g in plan],[5,5,5,5,5,4]);self.assertEqual([s for g in plan for s in g],sites)
+  self.assertEqual([len(g) for g in plan],[3,3,3,3,3,3,3,3,3,2]);self.assertEqual([s for g in plan for s in g],sites)
  def test_completed_stores_are_not_dispatched_again(self):
   sites=self.sites(29);plan=groups(sites,[s['name'] for s in sites[:22]])
-  self.assertEqual([len(g) for g in plan],[5,2]);self.assertEqual(groups(sites,[s['name'] for s in sites]),[])
+  self.assertEqual([len(g) for g in plan],[3,3,1]);self.assertEqual(groups(sites,[s['name'] for s in sites]),[])
  def test_alias_hosts_names_and_unknown_saved_store_are_rejected(self):
   for sites,done in [([{'name':'A','url':'https://example.com'},{'name':'B','url':'http://www.example.com'}],()),([{'name':'A','url':'https://one.example'},{'name':'a','url':'https://two.example'}],()),(self.sites(2),['Unknown'])]:
    with self.assertRaises(ValueError):groups(sites,done)
@@ -52,8 +52,8 @@ class GroupFetchTests(unittest.TestCase):
    try:
     os.chdir(tmp);group_fetch.main();plan=json.loads(Path('fetch-group-plan.json').read_text())
    finally:os.chdir(previous)
-  commands=[a for a in calls if a[:2]==('workflow','run')];self.assertEqual(len(commands),3)
-  self.assertEqual([len(g['stores']) for g in plan['groups']],[5,5,1]);self.assertEqual(len({s['url'] for g in plan['groups'] for s in g['stores']}),11)
+  commands=[a for a in calls if a[:2]==('workflow','run')];self.assertEqual(len(commands),4)
+  self.assertEqual([len(g['stores']) for g in plan['groups']],[3,3,3,2]);self.assertEqual(len({s['url'] for g in plan['groups'] for s in g['stores']}),11)
   for i,command in enumerate(commands,1):self.assertIn('runner_group=batch-999-'+str(i),command);self.assertIn('partition_resume=false',command)
  def test_live_legacy_run_blocks_group_dispatch(self):
   import group_fetch

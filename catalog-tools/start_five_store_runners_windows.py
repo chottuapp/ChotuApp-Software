@@ -35,7 +35,7 @@ def main():
         print('Waiting for checkpoint and final uploads: '+source+' ('+state['status']+')',flush=True);time.sleep(15)
     artifacts=json.loads(gh('api','repos/'+REPO+'/actions/runs/'+source+'/artifacts?per_page=100')).get('artifacts',[])
     if not any(a['name']=='chotuapp-checkpoint' and not a.get('expired') for a in artifacts):raise SystemExit('No saved checkpoint on '+source+'. No fresh restart or duplicate work attempted; send this output.')
-    print('Checkpoint ready. Starting groups of at most five unfinished stores...',flush=True)
+    print('Checkpoint ready. Starting groups of at most three unfinished stores...',flush=True)
     print(gh('workflow','run','cloud-fetch-groups.yml','--repo',REPO,'--ref','main','-f','resume_run_id='+source),flush=True)
     print('GROUP DISPATCH REQUESTED. Existing completed stores stay in parent '+source+'. Send the workflow URL above to inspect the new runner IDs.',flush=True)
 if __name__=='__main__':main()

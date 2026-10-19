@@ -1,4 +1,4 @@
-"""Dispatch at most five distinct storefronts per independently resumable runner."""
+"""Dispatch at most three distinct storefronts per independently resumable runner."""
 import json,os,re,subprocess,tempfile
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -13,7 +13,7 @@ def groups(sites,completed=()):
     known={s['name'] for s in cleaned};completed=set(completed)
     if not completed<=known:raise ValueError('Saved stores do not match the supplied store list')
     remaining=[s for s in cleaned if s['name'] not in completed]
-    return [remaining[i:i+5] for i in range(0,len(remaining),5)]
+    return [remaining[i:i+3] for i in range(0,len(remaining),3)]
 
 def gh(*args):return subprocess.run(['gh',*args],capture_output=True,text=True,check=True,timeout=600).stdout
 
@@ -59,6 +59,6 @@ def main():
         print(title+': '+', '.join(s['name'] for s in stores)+' — '+item['status'],flush=True)
     Path('fetch-group-plan.json').write_text(json.dumps(report,indent=2))
     if os.environ.get('GITHUB_STEP_SUMMARY'):
-        with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:f.write('## Five-store runner groups\n\n'+str(len(completed))+' completed stores retained in parent; '+str(len(plan))+' runner groups dispatched.\n\n'+ '\n'.join('- '+r['runner_group']+': '+', '.join(s['name'] for s in r['stores']) for r in report['groups']))
+        with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:f.write('## Three-store runner groups\n\n'+str(len(completed))+' completed stores retained in parent; '+str(len(plan))+' runner groups dispatched.\n\n'+ '\n'.join('- '+r['runner_group']+': '+', '.join(s['name'] for s in r['stores']) for r in report['groups']))
     if not plan:print('All saved stores are complete; no duplicate work dispatched.')
 if __name__=='__main__':main()

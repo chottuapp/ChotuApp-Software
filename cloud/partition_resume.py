@@ -7,7 +7,7 @@ from resume_support import RunStore
 def partition(data,sites):
     data=Path(data).resolve();store=RunStore(data/'saved_runs');state=store.load()
     if not state:raise ValueError('No restored queue')
-    if not 1<=len(sites)<=5:raise ValueError('A runner accepts at most five selected stores')
+    if not 1<=len(sites)<=3:raise ValueError('A runner accepts at most three selected stores')
     key=lambda s:(str(s['name']).casefold(),(urlsplit(str(s['url'])).hostname or '').lower().removeprefix('www.'))
     requested={key(s) for s in sites}
     if len(requested)!=len(sites) or len({key(s)[1] for s in sites})!=len(sites):raise ValueError('Duplicate selected stores')
