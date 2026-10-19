@@ -871,11 +871,17 @@ def storefront_cover(base, product, pictures, log):
         if getattr(_chotu_tls, 'image_throttled', False):
             raise RuntimeError('Image verification paused after source rate limit')
         _chotu_wait()
-        # Apply existing source pacing; never send a burst of per-product requests.
-        last = getattr(_chotu_tls, 'adaptive_last_request', 0)
-        _chotu_backoff(max(0, last + getattr(_chotu_tls, 'adaptive_pace', 1.5) - time.monotonic()), 'Image pacing')
-        _chotu_tls.adaptive_last_request = time.monotonic()
-        resp = S.get(url, timeout=25)
+        # Reuse an integrity-checked checkpoint page before applying network pacing.
+        # Preloading already fetched these pages; a local read sends no request.
+        cache = getattr(_chotu_tls, 'saved_response_cache', None)
+        resp = cache.get(url) if cache is not None else None
+        if resp is None:
+            last = getattr(_chotu_tls, 'adaptive_last_request', 0)
+            _chotu_backoff(max(0, last + getattr(_chotu_tls, 'adaptive_pace', 1.5) - time.monotonic()), 'Image pacing')
+            _chotu_tls.adaptive_last_request = time.monotonic()
+            resp = S.get(url, timeout=25)
+        else:
+            _chotu_debug_response(resp.status_code, len(resp.content), cached=True)
         if resp.status_code in (429, 503):
             _chotu_tls.image_throttled = True
         resp.raise_for_status()

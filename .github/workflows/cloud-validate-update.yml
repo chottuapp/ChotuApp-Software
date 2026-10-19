@@ -33,7 +33,7 @@ jobs:
           python -m unittest
           tests.test_locked_category_schema tests.test_subcategory_inference tests.test_fetch_error_fixes tests.test_rate_limit_policy tests.test_website_categories tests.test_website_order tests.test_ranking_metadata tests.test_store_priority tests.test_variant_identity_update tests.test_compact_response_cache
           tests.test_cloud_diagnostics tests.test_cloud_quality_update tests.test_fetch_update_release
-          tests.test_resume_support.DurableTests tests.test_high_speed_cache
+          tests.test_resume_support.DurableTests tests.test_high_speed_cache tests.test_cached_row_speed
           tests.test_fast_fetch tests.test_continuation_policy tests.test_seran_source
           tests.test_laam_source tests.test_source_compatibility tests.test_checkpoint_parts tests.test_checkpoint_finalization
           tests.test_cloud.CloudTests tests.test_app.ExportTests
