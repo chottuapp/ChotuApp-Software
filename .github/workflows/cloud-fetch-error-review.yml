@@ -26,6 +26,12 @@ jobs:
           repo='chottuapp/ChotuApp-Software'
           def call(*args):return subprocess.run(['gh',*args],capture_output=True,text=True,check=True,timeout=180).stdout
           recent=json.loads(call('run','list','--repo',repo,'--workflow','cloud-fetch.yml','--limit','8','--json','databaseId,status,conclusion,headSha,displayTitle'))
+          auto=json.loads(call('run','list','--repo',repo,'--workflow','cloud-auto-continue.yml','--limit','3','--json','databaseId,conclusion,displayTitle'))
+          auto_failures=[]
+          for run in auto[:2]:
+              if run['conclusion']=='failure':
+                  raw=call('run','view',str(run['databaseId']),'--repo',repo,'--log-failed')
+                  auto_failures.extend(line for line in raw.splitlines() if re.search(r'Error|Exception|Traceback|FileNotFound|No continuation|Submitted continuation',line))
           with tempfile.TemporaryDirectory() as tmp:
               call('run','download','39152733413','--repo',repo,'--name','chotuapp-live-logs','--dir',tmp)
               log=next(pathlib.Path(tmp).rglob('fetch-log.txt')).read_text(encoding='utf-8',errors='replace')
@@ -38,5 +44,5 @@ jobs:
                       if re.search(r'EXCEPTION|Traceback|Error:|FAILED:|429|cooldown|RATE LIMIT|source_paused',line,re.I):
                           selected.extend(lines[max(0,i-3):min(len(lines),i+14)])
                   contexts[store]=list(dict.fromkeys(selected))[-55:]
-              publish({'run_id':os.environ['GITHUB_RUN_ID'],'source_run':'39152733413','recent_fetch_runs':recent,'contexts':contexts},branch='category-reports')
+              publish({'run_id':os.environ['GITHUB_RUN_ID'],'source_run':'39152733413','recent_fetch_runs':recent,'recent_auto_runs':auto,'auto_failures':auto_failures[-30:],'contexts':contexts},branch='category-reports')
           PY
