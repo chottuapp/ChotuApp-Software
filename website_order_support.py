@@ -6,7 +6,8 @@ import re,time
 from bs4 import BeautifulSoup
 ORDER_FIELDS=('website_category_order','website_subcategory_order','website_product_order','website_order_source_url','website_order_checked_at','website_order_status')
 from website_category_support import FIELDS as CATEGORY_FIELDS
-FIELDS=ORDER_FIELDS+CATEGORY_FIELDS
+from subcategory_inference_support import FIELDS as SUBCATEGORY_FIELDS
+FIELDS=ORDER_FIELDS+CATEGORY_FIELDS+SUBCATEGORY_FIELDS
 GRID='#product-grid, [data-product-grid], .product-grid, .collection-products, .products-grid, .grid--view-items, .product-list, .t4s-products'
 SKIP=re.compile(r'/account|/cart|/checkout|/search|/policies|/pages/|/blogs/|/products/',re.I)
 
@@ -158,7 +159,10 @@ def apply_order(rows,evidence=None,category_evidence=None):
             for field in ORDER_FIELDS:row.setdefault(field,'')
             if not row.get('website_order_status'):row['website_order_status']='unverified'
         from website_category_support import apply as apply_category
+        prior_subcategory=(row.get('subcategory'),row.get('subcategory_source'),row.get('subcategory_checked_at'))
         apply_category(row,category_evidence)
+        from subcategory_inference_support import apply as infer_subcategory
+        infer_subcategory(row,prior_subcategory)
         valid=all(position(row.get(field))!=float('inf') for field in ORDER_FIELDS[:3]) and row.get('website_order_source_url') and public_link(row.get('source_url',''),row.get('website_order_source_url','')) and row.get('website_order_checked_at')
         if row.get('website_order_status')=='observed_default_listing' and valid:known.append(row)
         else:row['website_order_status']='unverified'

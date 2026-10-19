@@ -10,7 +10,7 @@ from parallel_store_support import StoreScheduler,output_key
 from diagnostics import Collector
 from continuation_policy import integer
 
-MODULES=('website_category_support.py','ranking_support.py','resume_support.py','fast_fetch_support.py','farda_source_support.py','complete_description_support.py','czone_source_support.py','software_revision_support.py','seran_source_support.py','laam_source_support.py','source_compatibility_support.py','website_order_support.py')
+MODULES=('subcategory_inference_support.py','website_category_support.py','ranking_support.py','resume_support.py','fast_fetch_support.py','farda_source_support.py','complete_description_support.py','czone_source_support.py','software_revision_support.py','seran_source_support.py','laam_source_support.py','source_compatibility_support.py','website_order_support.py')
 DEFAULT_TEMPLATE=ROOT/'importer-files/Chotu_Products_Import_Template_Discount_Tags.xlsx'
 
 

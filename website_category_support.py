@@ -92,7 +92,8 @@ def apply(row,evidence=None):
     def trustworthy(data):
         if not data or not data.get(FIELDS[0]):return False
         path=str(data[FIELDS[0]]).split(' > ')
-        return bool(data.get(FIELDS[3]) in ('verified_navigation_membership','verified_product_breadcrumb') and data.get(FIELDS[1]) and public_link(url,data[FIELDS[1]]) and data.get(FIELDS[2]) and all(substantive(p) for p in path) and data.get('category')==path[0] and (data.get('subcategory') or '')==(path[-1] if len(path)>1 else ''))
+        return bool(data.get(FIELDS[3]) in ('verified_navigation_membership','verified_product_breadcrumb') and data.get(FIELDS[1]) and public_link(url,data[FIELDS[1]]) and data.get(FIELDS[2]) and all(substantive(p) for p in path) and data.get('category')==path[0] and ((data.get('subcategory') or '')==(path[-1] if len(path)>1 else '') or len(path)==1 and data.get('subcategory_source')=='website' and data.get('subcategory')==path[0]))
+    existing['subcategory_source']=row.get('subcategory_source','')
     existing['_category_depth']=len(str(existing.get(FIELDS[0]) or '').split(' > '))
     selected=choose(existing if trustworthy(existing) else None,candidate if trustworthy(candidate) else None)
     if selected:

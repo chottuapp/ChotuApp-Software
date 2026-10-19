@@ -935,10 +935,13 @@ def finalize_catalog_order(workbook_path, ranking_path, log):
         ranked=apply_order(rows,getattr(_chotu_tls,'website_order_evidence',{}),getattr(_chotu_tls,'website_category_evidence',{}))
         reorder_sheet(sheet,rows)
         verified_categories=sum(row.get('website_category_status') in ('verified_navigation_membership','verified_product_breadcrumb') for row in rows)
-        log('STRICT WEBSITE CATEGORIES: '+str(verified_categories)+'/'+str(len(rows))+' source-verified; remaining categories blank and require review')
+        log('STRICT WEBSITE CATEGORIES: '+str(verified_categories)+'/'+str(len(rows))+' source-verified; missing website taxonomy remains unverified')
         from website_category_support import FIELDS as category_fields
+        from subcategory_inference_support import FIELDS as subcategory_fields
+        inferred_subcategories=sum(str(row.get('subcategory_source','')).startswith('inferred_') for row in rows)
+        log('SUBCATEGORY FALLBACK: '+str(inferred_subcategories)+' inferred from supplied product text; explicitly labelled, not website-confirmed')
         with Path(workbook_path).with_name(Path(workbook_path).stem+' - CATEGORY AUDIT.csv').open('w',encoding='utf-8-sig',newline='') as stream:
-            fields=['product_id','name','category','subcategory','source_url']+list(category_fields)
+            fields=['product_id','name','category','subcategory','source_url']+list(category_fields)+list(subcategory_fields)
             writer=csv.DictWriter(stream,fieldnames=fields);writer.writeheader();writer.writerows({key:row.get(key) for key in fields} for row in rows)
         temporary=Path(workbook_path).with_name('.'+Path(workbook_path).stem+'-order.xlsx')
         try:
@@ -1281,7 +1284,9 @@ def quality_validation(rows, imgs, groups, opts, combos, output, log, storefront
     from collections import Counter, defaultdict
     issues = []
     unknown_categories=sum(row.get('website_category_status')=='unverified' for row in rows)
-    if unknown_categories:issues.append(('WARNING','WEBSITE_CATEGORY_UNVERIFIED','','',str(unknown_categories)+' products have no verified website category; category left blank, no inferred fallback'))
+    if unknown_categories:issues.append(('WARNING','WEBSITE_CATEGORY_UNVERIFIED','','',str(unknown_categories)+' products have no verified website category; category left blank; any description-based subcategory is separately labelled'))
+    inferred_subcategories=sum(str(row.get('subcategory_source','')).startswith('inferred_') for row in rows)
+    if inferred_subcategories:issues.append(('WARNING','SUBCATEGORY_INFERRED','','',str(inferred_subcategories)+' subcategories inferred from supplied product text; separately labelled, not verified website taxonomy'))
     unknown_order=sum(row.get('website_order_status')=='unverified' for row in rows)
     if unknown_order:issues.append(('WARNING','WEBSITE_ORDER_UNVERIFIED','', '',str(unknown_order)+' products have no verified default website listing position; original relative order retained'))
     product_ids = {r['product_id'] for r in rows}
