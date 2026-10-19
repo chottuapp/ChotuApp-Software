@@ -39,3 +39,5 @@ After a finished fetch and uploaded checkpoint, the fetch job itself can dispatc
 
 
 Checkpoint page reuse during row building: the cover/category/specification pass now reads a validated saved response before reserving an image-network pacing interval. Cached reads do not update the last-network-request timestamp or send a request. Cache misses and corrupt cached bodies retain the existing pacing and network verification; gallery matching, breadcrumbs and full specification extraction still execute. The gain depends on how many pages were preloaded; this does not raise source request rates or alter the currently running runner checkout.
+
+Gul Ahmed and Stylo: observed HTTP 429 during category traversal on 19 October. Both now start with one request worker and a 2.5-second minimum interval between fresh requests. Restored profiles cannot lower this floor; longer learned delays and Retry-After cooldowns are retained. Cache reads remain local and do not wait for network spacing. This mitigates the observed request burst; future site limits can still require a pause.
