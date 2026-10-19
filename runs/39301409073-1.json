@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-19T18:20:04.530017+00:00",
+  "run_id": "39301409073",
+  "attempt": "1",
+  "source_commit": "c2b85b15a423ac62bafcb34a4091262f45cccfa6",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.15",
+  "elapsed_seconds": 31.4,
+  "stores": [
+    {
+      "name": "Gul Ahmed",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "27d35b5bfcc42119",
+      "http_statuses": {
+        "200": 2
+      },
+      "network_seconds": 2.4,
+      "max_response_seconds": 2.1,
+      "cache_events": 1757
+    },
+    {
+      "name": "Stylo",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "27d35b5bfcc42119",
+      "http_statuses": {
+        "200": 1
+      },
+      "network_seconds": 0.2,
+      "max_response_seconds": 0.2,
+      "cache_events": 2168
+    },
+    {
+      "name": "LAAM",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "RATE_LIMIT"
+      ],
+      "software_revision": "27d35b5bfcc42119",
+      "http_statuses": {
+        "500": 5
+      },
+      "network_seconds": 2.8,
+      "max_response_seconds": 1.5,
+      "cache_events": 0
+    }
+  ]
+}
