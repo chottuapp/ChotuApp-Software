@@ -1,5 +1,5 @@
 """Checkpoint continuations with an explicit chain limit and no-progress guard."""
-import json,os,subprocess,tempfile,time
+import argparse,json,os,subprocess,tempfile,time
 from pathlib import Path
 from continuation_policy import budget, recoverable, integer
 
@@ -20,23 +20,43 @@ def gh(*args):
     result=subprocess.run(['gh',*args],capture_output=True,text=True,check=True,timeout=180)
     return result.stdout
 
+def current_run_context():
+    identity=os.environ.get('GITHUB_RUN_ID','');repo=os.environ.get('GITHUB_REPOSITORY','')
+    if not identity.isdigit() or os.environ.get('GITHUB_EVENT_NAME')!='workflow_dispatch':raise ValueError('Current main-branch dispatch identity required')
+    data=Path(os.environ.get('CHOTUAPP_CLOUD_DATA','.cloud-data'))
+    try:phase=json.loads((data/'fetch-phase.json').read_text())
+    except (OSError,ValueError):return None,None
+    if phase.get('phase')!='finished' or phase.get('checkpoint')!='saved':return None,None
+    run=json.loads(gh('api','repos/'+repo+'/actions/runs/'+identity))
+    if str(run.get('id'))!=identity or run.get('head_sha')!=os.environ.get('GITHUB_SHA'):raise ValueError('Current run identity does not match the checked-out release')
+    summary=json.loads((data/'ANAS_DATA_FETCH'/'run-summary.json').read_text())
+    return run,summary
+
 def main():
-    event=json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text());run=event['workflow_run'];repo=os.environ['GITHUB_REPOSITORY'];identity=str(run['id'])
+    parser=argparse.ArgumentParser();parser.add_argument('--current-run',action='store_true');args=parser.parse_args()
+    repo=os.environ['GITHUB_REPOSITORY'];summary=None
+    if args.current_run:
+        run,summary=current_run_context()
+        if run is None:print('No continuation: current fetch has no completed saved checkpoint.');return
+    else:
+        event=json.loads(Path(os.environ['GITHUB_EVENT_PATH']).read_text());run=event['workflow_run']
+    identity=str(run['id'])
     if run.get('event')!='workflow_dispatch' or run.get('head_branch')!='main' or run.get('head_repository',{}).get('full_name')!=repo:
         print('No continuation: source is not a trusted main-branch dispatch.');return
     if run.get('conclusion')=='cancelled':print('No continuation: manually cancelled.');return
     artifacts=json.loads(gh('api','repos/'+repo+'/actions/runs/'+identity+'/artifacts?per_page=100')).get('artifacts',[])
     checkpoint=any(a.get('name')=='chotuapp-checkpoint' and not a.get('expired') for a in artifacts)
     if not checkpoint:print('No continuation: no downloadable checkpoint.');return
-    with tempfile.TemporaryDirectory(prefix='chotu-auto-') as tmp:
-        root=Path(tmp);exports=root/'exports';logs=root/'logs'
-        gh('run','download',identity,'--repo',repo,'--name','chotuapp-excel-files','--dir',str(exports))
-        summary=json.loads((exports/'run-summary.json').read_text())
-        console=''
-        if not summary.get('stop_reason'):
-            gh('run','download',identity,'--repo',repo,'--name','chotuapp-live-logs','--dir',str(logs))
-            console=(logs/'console-tail.txt').read_text(encoding='utf-8',errors='replace')
-        if not eligible(run,repo,summary,console,checkpoint):print('No continuation: completed, stopped manually, unauthorized or not a time-budget stop.');return
+    console=''
+    if summary is None:
+        with tempfile.TemporaryDirectory(prefix='chotu-auto-') as tmp:
+            root=Path(tmp);exports=root/'exports';logs=root/'logs'
+            gh('run','download',identity,'--repo',repo,'--name','chotuapp-excel-files','--dir',str(exports))
+            summary=json.loads((exports/'run-summary.json').read_text())
+            if not summary.get('stop_reason'):
+                gh('run','download',identity,'--repo',repo,'--name','chotuapp-live-logs','--dir',str(logs))
+                console=(logs/'console-tail.txt').read_text(encoding='utf-8',errors='replace')
+    if not eligible(run,repo,summary,console,checkpoint):print('No continuation: completed, stopped manually, unauthorized or not a time-budget stop.');return
     name='Automatic continuation of '+identity
     previous=json.loads(gh('run','list','--repo',repo,'--workflow','cloud-fetch.yml','--limit','100','--json','displayTitle'))
     if any(item.get('displayTitle')==name for item in previous):print('Continuation already exists; duplicate dispatch skipped.');return

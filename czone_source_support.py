@@ -1,7 +1,7 @@
 """Czone Webx adapter. Uses public product pages; never Shopify endpoints.
 Unknown variants, mismatched prices and incomplete catalogs fail before publication.
 """
-import csv, hashlib, json, re, time, threading, queue, sqlite3
+import csv, hashlib, json, re, time, threading, queue, sqlite3, requests, email.utils, datetime
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from urllib.parse import urlsplit, urljoin
@@ -269,14 +269,57 @@ def check_response(g,response):
     response.raise_for_status()
 
 
+class TemporaryPageError(RuntimeError):
+    pass
+
+def fetch_page(g,session,url):
+    """Bounded upstream retry; 429/503 immediately retain existing source cooldowns."""
+    for attempt in range(3):
+        g['_chotu_wait']()
+        try:
+            response=session.get(url,timeout=45)
+        except (requests.Timeout,requests.ConnectionError) as exc:
+            if attempt==2:raise TemporaryPageError('Czone temporary transport failure: '+url) from exc
+            g.get('_chotu_backoff',lambda seconds,reason:time.sleep(seconds))(2*(attempt+1),'Czone transport retry')
+            continue
+        if response.status_code in (500,502,504):
+            raw=response.headers.get('Retry-After','').strip();delay=2*(attempt+1)
+            try:delay=max(delay,float(raw))
+            except ValueError:
+                try:delay=max(delay,(email.utils.parsedate_to_datetime(raw)-datetime.datetime.now(datetime.timezone.utc)).total_seconds())
+                except (ValueError,TypeError,OverflowError):pass
+            if delay>30:
+                error=g.get('ChotuRateLimited',RuntimeError)
+                raise error('SOURCE PAUSED: upstream server requested retry this saved store after at least '+str(int(delay+0.99))+'s; '+url)
+            if attempt==2:raise TemporaryPageError('Czone upstream HTTP '+str(response.status_code)+' after 3 attempts: '+url)
+            g.get('_chotu_debug',lambda text:None)('CZONE SERVER RETRY: HTTP '+str(response.status_code)+'; '+url)
+            g.get('_chotu_backoff',lambda seconds,reason:time.sleep(seconds))(delay,'Czone server retry')
+            continue
+        check_response(g,response)
+        return response
+
+def retry_deferred(g,urls,log):
+    for url in urls:
+        log('CZONE DEFERRED RETRY: '+url+'; all other successful pages retained')
+        try:response=fetch_page(g,g['S'],url)
+        except TemporaryPageError as exc:
+            error=g.get('ChotuRateLimited',RuntimeError)
+            raise error('SOURCE PAUSED: temporary Czone server failure; retry this saved store after at least 300s; missing product not silently excluded: '+url) from exc
+        yield url,response.content
+
+
 def parallel_pages(g,urls,log):
     """Bounded HTTP workers with shared pacing and independent durable caches."""
     tls=g.get('_chotu_tls');gate=getattr(tls,'fast_gate',None)
     saved=getattr(tls,'saved_api_path',None)
     if gate is None or saved is None:
+        deferred=[]
         for url in urls:
-            g['_chotu_wait']();response=g['S'].get(url,timeout=45)
-            check_response(g,response);yield url,response.content
+            try:response=fetch_page(g,g['S'],url)
+            except TemporaryPageError:
+                deferred.append(url);log('CZONE DEFERRED: temporary upstream failure; continue other products: '+url);continue
+            yield url,response.content
+        yield from retry_deferred(g,deferred,log)
         return
     from resume_support import ResponseCache
     workers=1 if time.time()<getattr(gate,'recovery_not_before',0) else 2
@@ -298,7 +341,8 @@ def parallel_pages(g,urls,log):
                 with lock:
                     try:url=next(tasks)
                     except StopIteration:return
-                response=session.get(url,timeout=45);check_response(g,response)
+                try:response=fetch_page(g,session,url)
+                except TemporaryPageError as exc:deliver((url,None,exc));continue
                 deliver((url,response.content,None))
         except Exception as exc:deliver((None,None,exc))
         finally:
@@ -307,12 +351,16 @@ def parallel_pages(g,urls,log):
             tls.saved_response_cache=None;tls.fast_gate=None;tls.fast_preloading=False;tls.saved_run_note=None
     threads=[threading.Thread(target=worker,name='czone-http-'+str(i),daemon=True) for i in range(workers)]
     for thread in threads:thread.start()
+    deferred=[]
     try:
         while any(thread.is_alive() for thread in threads) or not results.empty():
             try:url,body,error=results.get(timeout=.1)
             except queue.Empty:continue
+            if isinstance(error,TemporaryPageError):
+                deferred.append(url);log('CZONE DEFERRED: temporary upstream failure; continue other products: '+url);continue
             if error is not None:raise error
             yield url,body
+        yield from retry_deferred(g,deferred,log)
     finally:
         stop.set()
         for thread in threads:thread.join()
@@ -369,7 +417,10 @@ def export(g,base,name,template,log):
     # Reuse the app's gated, checkpoint-aware HTTP session on the fetch thread.
     configure_czone_gate(g)
     def get(url):
-        g['_chotu_wait']();response=g['S'].get(url,timeout=45);check_response(g,response);return response.content
+        try:return fetch_page(g,g['S'],url).content
+        except TemporaryPageError as exc:
+            error=g.get('ChotuRateLimited',RuntimeError)
+            raise error('SOURCE PAUSED: Czone temporary catalog server failure; retry this saved store after at least 300s: '+url) from exc
     total,urls,categories=catalog(get(BASE+'/products'),get(BASE+'/sitemap.xml'))
     log('CZONE: public catalog '+str(total)+' products; sitemap candidates '+str(len(urls)))
     if len(urls)<total:

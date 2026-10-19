@@ -52,6 +52,9 @@ concurrency:
   cancel-in-progress: false
 jobs:
   fetch:
+    permissions:
+      contents: read
+      actions: write
     runs-on: ubuntu-24.04
     timeout-minutes: 330
     env:
@@ -130,6 +133,12 @@ jobs:
             checkpoint.parts/
           if-no-files-found: warn
           retention-days: 1
+      - name: Dispatch authorized continuation after verified checkpoint upload
+        if: always() && !cancelled() && steps.launch.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python cloud/auto_continue.py --current-run
+
 
   diagnostic-archive:
     name: Archive structured diagnostics

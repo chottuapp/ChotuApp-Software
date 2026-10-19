@@ -4,7 +4,8 @@ class PolicyTests(unittest.TestCase):
  def test_observed_limited_hosts_start_with_one_worker(self):
   for host in ['rawayat.com.pk','rivaj-uk.com','www.junaidjamshed.com','tawakkalfabrics.co']:
    self.assertEqual(source_policy(host),(1.0,1))
-  self.assertEqual(source_policy('vincecare.com'),(.25,5))
+  for host in ['vincecare.com','saeedghani.pk','pk.hemaniherbals.com','bonanzasatrangi.com']:
+   self.assertEqual(source_policy(host),(2.5,1))
   for host in ('outfitters.com.pk','www.zellbury.com'):self.assertEqual(source_policy(host),(1.5,1))
  def test_cautious_floor_does_not_erase_existing_slowdown(self):
   import tempfile,json

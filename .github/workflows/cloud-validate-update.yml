@@ -31,7 +31,7 @@ jobs:
           PYTHONPATH: tests:cloud
         run: >-
           python -m unittest
-          tests.test_website_categories tests.test_website_order tests.test_ranking_metadata tests.test_store_priority tests.test_variant_identity_update tests.test_compact_response_cache
+          tests.test_fetch_error_fixes tests.test_rate_limit_policy tests.test_website_categories tests.test_website_order tests.test_ranking_metadata tests.test_store_priority tests.test_variant_identity_update tests.test_compact_response_cache
           tests.test_cloud_diagnostics tests.test_cloud_quality_update tests.test_fetch_update_release
           tests.test_resume_support.DurableTests tests.test_high_speed_cache
           tests.test_fast_fetch tests.test_continuation_policy tests.test_seran_source
@@ -44,8 +44,13 @@ jobs:
         env:
           PYTHONPATH: cloud:.
         run: python cloud/check_strict_categories.py
+      - name: Check the exact Czone server failure with bounded retries
+        id: source_fix
+        env:
+          PYTHONPATH: cloud:.
+        run: python cloud/check_fetch_fixes.py
       - name: Publish validation report and resume saved fetch only after success
         if: always()
         env:
           GH_TOKEN: ${{ github.token }}
-        run: python cloud/fetch_update_release.py --validation '${{ steps.tests.outcome == 'success' && steps.categories.outcome == 'success' && 'success' || 'failure' }}'
+        run: python cloud/fetch_update_release.py --validation '${{ steps.tests.outcome == 'success' && steps.categories.outcome == 'success' && steps.source_fix.outcome == 'success' && 'success' || 'failure' }}'

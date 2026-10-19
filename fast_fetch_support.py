@@ -13,11 +13,13 @@ import time
 
 
 # These hosts returned HTTP 429 during category preloading at 0.25s spacing.
+RECENTLY_LIMITED_SOURCES={'vincecare.com','saeedghani.pk','pk.hemaniherbals.com','bonanzasatrangi.com'}
 CAUTIOUS_SOURCES={'rawayat.com.pk','rivaj-uk.com','junaidjamshed.com','tawakkalfabrics.co'}
 
 
 def source_policy(host):
     host=host.lower().removeprefix('www.')
+    if host in RECENTLY_LIMITED_SOURCES:return (2.5,1)
     if host in ('outfitters.com.pk','zellbury.com','laam.com','pk.khaadi.com','khaadi.com','sapphireonline.pk','pk.sapphireonline.pk'):return (1.5,1)
     return (1.0,1) if host in CAUTIOUS_SOURCES or host=='shopmodest.pk' else (1.0,5) if host=='elitecosmeticspk.com' else (0.25,5)
 
@@ -248,21 +250,24 @@ def enable_fast_fetch(g):
         if getattr(tls,'saved_api_path',None) is None:
             log('FAST FETCH: serial fallback — no durable Saved Runs context; use FETCH SELECTED / New Fresh Run from the updated app')
             return old_collections(base,log)
-        handles=[];seen=set()
-        try:
-            for page in range(1,30):
-                batch=g['get_json'](f'{base}/collections.json?limit=250&page={page}').get('collections',[])
-                for c in batch:
-                    handle=c.get('handle')
-                    if handle and g['txt'](c.get('title')) and handle not in seen and c.get('products_count')!=0:
-                        handles.append(handle);seen.add(handle)
-                if len(batch)<250:break
-            def collection(handle):
+        if hasattr(tls,'website_category_navigation'):
+            log('FAST FETCH: strict website category mapping; skip legacy all-collection preload')
+        else:
+            handles=[];seen=set()
+            try:
                 for page in range(1,30):
-                    batch=g['get_json'](f'{base}/collections/{handle}/products.json?limit=250&page={page}').get('products',[])
+                    batch=g['get_json'](f'{base}/collections.json?limit=250&page={page}').get('collections',[])
+                    for c in batch:
+                        handle=c.get('handle')
+                        if handle and g['txt'](c.get('title')) and handle not in seen and c.get('products_count')!=0:
+                            handles.append(handle);seen.add(handle)
                     if len(batch)<250:break
-            preload(handles,collection,'category responses',log)
-        except Exception as exc:log('FAST FETCH: category preload deferred; original mapping will retry: '+str(exc)[:180])
+                def collection(handle):
+                    for page in range(1,30):
+                        batch=g['get_json'](f'{base}/collections/{handle}/products.json?limit=250&page={page}').get('products',[])
+                        if len(batch)<250:break
+                preload(handles,collection,'category responses',log)
+            except Exception as exc:log('FAST FETCH: category preload deferred; original mapping will retry: '+str(exc)[:180])
         if tls.fast_gate.limited:raise tls.fast_gate.blocked_error()
         mapping=old_collections(base,log)
         if tls.fast_gate.limited:raise tls.fast_gate.blocked_error()
