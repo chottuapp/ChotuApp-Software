@@ -1,0 +1,165 @@
+{
+  "run_id": "39204732673",
+  "source_run": "39152733413",
+  "recent_fetch_runs": [
+    {
+      "conclusion": "failure",
+      "databaseId": 39152733413,
+      "displayTitle": "Cloud fetch by @github-actions[bot]",
+      "headSha": "19fbde45a1f40bbb4d06ce78214b9b2caddf2f87",
+      "status": "completed"
+    },
+    {
+      "conclusion": "failure",
+      "databaseId": 39152396221,
+      "displayTitle": "Cloud fetch by @github-actions[bot]",
+      "headSha": "4332f0af9a600f3fc2b145bf80e6c19e922f0ea2",
+      "status": "completed"
+    },
+    {
+      "conclusion": "failure",
+      "databaseId": 39145530168,
+      "displayTitle": "Cloud fetch by @github-actions[bot]",
+      "headSha": "2c075008ce3ffe0cfb47fad1a7fa6fe4035223ce",
+      "status": "completed"
+    },
+    {
+      "conclusion": "failure",
+      "databaseId": 39141866612,
+      "displayTitle": "Cloud fetch by @github-actions[bot]",
+      "headSha": "9323789cf77081f13e089e36f25a401fe2d97aa8",
+      "status": "completed"
+    },
+    {
+      "conclusion": "failure",
+      "databaseId": 39136925448,
+      "displayTitle": "Cloud fetch by @github-actions[bot]",
+      "headSha": "25f02b6bdb10f66b4439d475c0a389645feb10cf",
+      "status": "completed"
+    },
+    {
+      "conclusion": "failure",
+      "databaseId": 39124854389,
+      "displayTitle": "Cloud fetch by @chottuapp",
+      "headSha": "0d002828d04af0ca71b9198cfde68be6330208db",
+      "status": "completed"
+    },
+    {
+      "conclusion": "failure",
+      "databaseId": 39117860368,
+      "displayTitle": "Cloud fetch by @chottuapp",
+      "headSha": "e865b517559f8775d76fb4c5a464e71381e07992",
+      "status": "completed"
+    },
+    {
+      "conclusion": "failure",
+      "databaseId": 39068755244,
+      "displayTitle": "Automatic continuation of 39047054601",
+      "headSha": "e222fcc19700731073c6bb6814fb83a8aceae548",
+      "status": "completed"
+    }
+  ],
+  "contexts": {
+    "Computer Zone": [
+      "[Computer Zone] CZONE: checked 1625/1801 product pages; parsed results reused=0",
+      "[Computer Zone] CZONE: checked 1650/1801 product pages; parsed results reused=0",
+      "[Computer Zone] CZONE: checked 1675/1801 product pages; parsed results reused=0",
+      "[Computer Zone] [18:59:56] EXCEPTION: HTTPError('500 Server Error: Internal Server Error for url: https://www.czone.com.pk/ugreen-nexode-pro-65w-gan-fast-charger')",
+      "[Computer Zone] [18:59:56] Traceback (most recent call last):",
+      "[Computer Zone] FAILED: Computer Zone: 500 Server Error: Internal Server Error for url: https://www.czone.com.pk/ugreen-nexode-pro-65w-gan-fast-charger",
+      "[Computer Zone] [18:59:56] STAGE: Idle"
+    ],
+    "Vince Care": [
+      "[Vince Care] [18:17:53] HTTP END status=200 elapsed=0.2s bytes=16424 https://vincecare.com/collections/rejuvenation/products.json?redacted",
+      "[Vince Care] [18:17:53] GET_JSON: https://vincecare.com/collections/retinol/products.json?redacted",
+      "[Vince Care] [18:17:53] HTTP START attempt=1 https://vincecare.com/collections/retinol/products.json?redacted",
+      "[Vince Care] [18:17:53] FAST FETCH: HTTP 429; store paused, checkpoint retained, cooldown 60s; no repeated blocked requests",
+      "[Vince Care] [18:17:53] HTTP END status=429 elapsed=0.1s bytes=9596 https://vincecare.com/collections/retinol/products.json?redacted",
+      "[Vince Care] [18:17:53] ADAPTIVE SPEED: HTTP 429; pace=2.5s; cooldown=12s",
+      "[Vince Care] [18:17:53] FAST FETCH: preload deferred to canonical retry: SOURCE PAUSED: website rate limit; retry this saved store after at least 60s. Checkpoint retained; other stores can proceed.",
+      "[Vince Care] [18:17:53] HTTP END status=EXCEPTION elapsed=0.9s bytes=0 https://vincecare.com/collections/perfumes-for-women/products.json?redacted",
+      "[Vince Care] FAST FETCH: category responses preload finished; successful tasks=73, deferred=2; canonical pass follows",
+      "[Vince Care] [18:17:53] EXCEPTION: ChotuRateLimited('SOURCE PAUSED: website rate limit; retry this saved store after at least 60s. Checkpoint retained; other stores can proceed.')",
+      "[Vince Care] [18:17:53] Traceback (most recent call last):",
+      "[Vince Care] WEBSITE COOLDOWN: Vince Care: SOURCE PAUSED: website rate limit; retry this saved store after at least 60s. Checkpoint retained; other stores can proceed.",
+      "[Vince Care] [18:17:53] STAGE: Idle"
+    ],
+    "Saeed Ghani": [
+      "[Saeed Ghani] [18:31:49] HTTP END status=200 elapsed=0.2s bytes=15 https://saeedghani.pk/collections/humidifier-1/products.json?redacted",
+      "[Saeed Ghani] [18:31:49] GET_JSON: https://saeedghani.pk/collections/imported-products/products.json?redacted",
+      "[Saeed Ghani] [18:31:49] HTTP START attempt=1 https://saeedghani.pk/collections/imported-products/products.json?redacted",
+      "[Saeed Ghani] [18:31:49] FAST FETCH: HTTP 429; store paused, checkpoint retained, cooldown 60s; no repeated blocked requests",
+      "[Saeed Ghani] [18:31:49] HTTP END status=429 elapsed=0.5s bytes=9629 https://saeedghani.pk/collections/herbal-only/products.json?redacted",
+      "[Saeed Ghani] [18:31:49] ADAPTIVE SPEED: HTTP 429; pace=2.5s; cooldown=12s",
+      "[Saeed Ghani] [18:31:49] FAST FETCH: preload deferred to canonical retry: SOURCE PAUSED: website rate limit; retry this saved store after at least 60s. Checkpoint retained; other stores can proceed.",
+      "[Saeed Ghani] [18:31:49] HTTP END status=EXCEPTION elapsed=0.2s bytes=0 https://saeedghani.pk/collections/imported-products/products.json?redacted",
+      "[Saeed Ghani] FAST FETCH: category responses preload finished; successful tasks=71, deferred=2; canonical pass follows",
+      "[Saeed Ghani] [18:31:49] EXCEPTION: ChotuRateLimited('SOURCE PAUSED: website rate limit; retry this saved store after at least 60s. Checkpoint retained; other stores can proceed.')",
+      "[Saeed Ghani] [18:31:49] Traceback (most recent call last):",
+      "[Saeed Ghani] WEBSITE COOLDOWN: Saeed Ghani: SOURCE PAUSED: website rate limit; retry this saved store after at least 60s. Checkpoint retained; other stores can proceed.",
+      "[Saeed Ghani] [18:31:49] STAGE: Idle"
+    ],
+    "Hemani Herbals": [
+      "[Hemani Herbals] [18:42:49] HTTP END status=200 elapsed=1.4s bytes=1115178 https://pk.hemaniherbals.com/collections/gift-corner",
+      "[Hemani Herbals] WEBSITE ORDER: Shop By Categories / Gift Corner \u2014 24 unique displayed products observed",
+      "[Hemani Herbals] [18:42:49] HTTP START attempt=1 https://pk.hemaniherbals.com/collections/value-sets",
+      "[Hemani Herbals] [18:42:50] HTTP END status=200 elapsed=1.5s bytes=1144429 https://pk.hemaniherbals.com/collections/value-sets",
+      "[Hemani Herbals] WEBSITE ORDER: Shop By Categories / Value Sets \u2014 24 unique displayed products observed",
+      "[Hemani Herbals] [18:42:50] HTTP START attempt=1 https://pk.hemaniherbals.com/collections/under-1000",
+      "[Hemani Herbals] [18:42:52] HTTP END status=200 elapsed=1.3s bytes=1282242 https://pk.hemaniherbals.com/collections/under-1000",
+      "[Hemani Herbals] WEBSITE ORDER: Shop By Categories / Under Rs. 1,000 \u2014 24 unique displayed products observed",
+      "[Hemani Herbals] [18:42:52] HTTP START attempt=1 https://pk.hemaniherbals.com/collections/under-pkr-3-000",
+      "[Hemani Herbals] [18:42:53] HTTP END status=200 elapsed=1.3s bytes=1264391 https://pk.hemaniherbals.com/collections/under-pkr-3-000",
+      "[Hemani Herbals] WEBSITE ORDER: Shop By Categories / Under Rs. 3,000 \u2014 24 unique displayed products observed",
+      "[Hemani Herbals] [18:42:53] HTTP START attempt=1 https://pk.hemaniherbals.com/collections/under-pkr-5-000",
+      "[Hemani Herbals] [18:42:55] HTTP END status=200 elapsed=1.5s bytes=1161530 https://pk.hemaniherbals.com/collections/under-pkr-5-000",
+      "[Hemani Herbals] WEBSITE ORDER: Shop By Categories / Under Rs. 5,000 \u2014 24 unique displayed products observed",
+      "[Hemani Herbals] [18:42:55] HTTP START attempt=1 https://pk.hemaniherbals.com/collections/glow-bright-skin",
+      "[Hemani Herbals] [18:42:56] HTTP END status=200 elapsed=1.4s bytes=1110194 https://pk.hemaniherbals.com/collections/glow-bright-skin",
+      "[Hemani Herbals] WEBSITE ORDER: Shop By Concern / Glow & Bright Skin \u2014 24 unique displayed products observed",
+      "[Hemani Herbals] [18:43:30] HTTP END status=200 elapsed=0.2s bytes=19260 https://pk.hemaniherbals.com/collections/smile-care/products.json?redacted",
+      "[Hemani Herbals] [18:43:30] GET_JSON: https://pk.hemaniherbals.com/collections/soap/products.json?redacted",
+      "[Hemani Herbals] [18:43:30] HTTP START attempt=1 https://pk.hemaniherbals.com/collections/soap/products.json?redacted",
+      "[Hemani Herbals] [18:43:30] FAST FETCH: HTTP 429; store paused, checkpoint retained, cooldown 60s; no repeated blocked requests",
+      "[Hemani Herbals] [18:43:30] HTTP END status=429 elapsed=0.8s bytes=9651 https://pk.hemaniherbals.com/collections/sleep-relaxation/products.json?redacted",
+      "[Hemani Herbals] [18:43:30] ADAPTIVE SPEED: HTTP 429; pace=2.5s; cooldown=12s",
+      "[Hemani Herbals] [18:43:30] FAST FETCH: preload deferred to canonical retry: SOURCE PAUSED: website rate limit; retry this saved store after at least 60s. Checkpoint retained; other stores can proceed.",
+      "[Hemani Herbals] [18:43:30] HTTP END status=EXCEPTION elapsed=0.2s bytes=0 https://pk.hemaniherbals.com/collections/soap/products.json?redacted",
+      "[Hemani Herbals] FAST FETCH: category responses preload finished; successful tasks=70, deferred=2; canonical pass follows",
+      "[Hemani Herbals] [18:43:30] EXCEPTION: ChotuRateLimited('SOURCE PAUSED: website rate limit; retry this saved store after at least 60s. Checkpoint retained; other stores can proceed.')",
+      "[Hemani Herbals] [18:43:30] Traceback (most recent call last):",
+      "[Hemani Herbals] WEBSITE COOLDOWN: Hemani Herbals: SOURCE PAUSED: website rate limit; retry this saved store after at least 60s. Checkpoint retained; other stores can proceed.",
+      "[Hemani Herbals] [18:43:30] STAGE: Idle"
+    ],
+    "Bonanza Satrangi": [
+      "[Bonanza Satrangi]   Catalog page 17: 250 records",
+      "[Bonanza Satrangi] [18:43:44] GET_JSON: https://bonanzasatrangi.com/products.json?redacted",
+      "[Bonanza Satrangi] [18:43:44] HTTP START attempt=1 https://bonanzasatrangi.com/products.json?redacted",
+      "[Bonanza Satrangi] [18:43:45] HTTP END status=200 elapsed=0.8s bytes=1042986 https://bonanzasatrangi.com/products.json?redacted",
+      "[Bonanza Satrangi]   Catalog page 18: 250 records",
+      "[Bonanza Satrangi] [18:43:45] GET_JSON: https://bonanzasatrangi.com/products.json?redacted",
+      "[Bonanza Satrangi] [18:43:45] HTTP START attempt=1 https://bonanzasatrangi.com/products.json?redacted",
+      "[Bonanza Satrangi] [18:43:45] HTTP END status=200 elapsed=0.9s bytes=966063 https://bonanzasatrangi.com/products.json?redacted",
+      "[Bonanza Satrangi]   Catalog page 19: 250 records",
+      "[Bonanza Satrangi] [18:43:46] HTTP END status=200 elapsed=0.7s bytes=908183 https://bonanzasatrangi.com/products.json?redacted",
+      "[Bonanza Satrangi]   Catalog page 20: 250 records",
+      "[Bonanza Satrangi] [18:43:46] GET_JSON: https://bonanzasatrangi.com/products.json?redacted",
+      "[Bonanza Satrangi] [18:43:46] HTTP START attempt=1 https://bonanzasatrangi.com/products.json?redacted",
+      "[Bonanza Satrangi] [18:43:47] HTTP END status=200 elapsed=0.8s bytes=972624 https://bonanzasatrangi.com/products.json?redacted",
+      "[Bonanza Satrangi]   Catalog page 21: 250 records",
+      "[Bonanza Satrangi] [18:44:25] HTTP END status=200 elapsed=0.3s bytes=28033 https://bonanzasatrangi.com/collections/men-low-cut/products.json?redacted",
+      "[Bonanza Satrangi] [18:44:25] GET_JSON: https://bonanzasatrangi.com/collections/men-mid-calf/products.json?redacted",
+      "[Bonanza Satrangi] [18:44:25] HTTP START attempt=1 https://bonanzasatrangi.com/collections/men-mid-calf/products.json?redacted",
+      "[Bonanza Satrangi] [18:44:25] FAST FETCH: HTTP 429; store paused, checkpoint retained, cooldown 60s; no repeated blocked requests",
+      "[Bonanza Satrangi] [18:44:25] HTTP END status=429 elapsed=0.2s bytes=9620 https://bonanzasatrangi.com/collections/check/products.json?redacted",
+      "[Bonanza Satrangi] [18:44:25] ADAPTIVE SPEED: HTTP 429; pace=2.5s; cooldown=12s",
+      "[Bonanza Satrangi] [18:44:25] FAST FETCH: preload deferred to canonical retry: SOURCE PAUSED: website rate limit; retry this saved store after at least 60s. Checkpoint retained; other stores can proceed.",
+      "[Bonanza Satrangi] [18:44:25] HTTP END status=EXCEPTION elapsed=0.1s bytes=0 https://bonanzasatrangi.com/collections/men-mid-calf/products.json?redacted",
+      "[Bonanza Satrangi] FAST FETCH: category responses preload finished; successful tasks=79, deferred=2; canonical pass follows",
+      "[Bonanza Satrangi] [18:44:25] EXCEPTION: ChotuRateLimited('SOURCE PAUSED: website rate limit; retry this saved store after at least 60s. Checkpoint retained; other stores can proceed.')",
+      "[Bonanza Satrangi] [18:44:25] Traceback (most recent call last):",
+      "[Bonanza Satrangi] WEBSITE COOLDOWN: Bonanza Satrangi: SOURCE PAUSED: website rate limit; retry this saved store after at least 60s. Checkpoint retained; other stores can proceed.",
+      "[Bonanza Satrangi] [18:44:25] STAGE: Idle"
+    ]
+  }
+}
