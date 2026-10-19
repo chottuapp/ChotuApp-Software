@@ -1,5 +1,9 @@
 name: Publish live fetch snapshot
 description: Wait while the existing extractor continues, then publish logs and completed files.
+inputs:
+  seconds:
+    description: Snapshot interval in seconds
+    default: '300'
 outputs:
   finished:
     value: ${{ steps.snapshot.outputs.finished }}
@@ -8,7 +12,9 @@ runs:
   steps:
     - id: snapshot
       shell: bash
-      run: python cloud/live_snapshot.py --data .cloud-data --seconds 300
+      env:
+        SNAPSHOT_SECONDS: ${{ inputs.seconds }}
+      run: python cloud/live_snapshot.py --data .cloud-data --seconds "$SNAPSHOT_SECONDS"
     - name: Publish live text log
       continue-on-error: true
       uses: actions/upload-artifact@v4
