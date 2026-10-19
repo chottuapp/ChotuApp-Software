@@ -54,6 +54,18 @@ def validate_site(site,resolve=True):
     return {'name':name,'url':parsed.scheme+'://'+parsed.netloc.rstrip('/')}
 
 
+def requeue_updated_group(state,revision,group):
+    """Retry terminal results once when a grouped runner loads genuinely newer code."""
+    if not group:return 0
+    count=0
+    for site in state.get('sites',[]):
+        previous=site.get('software_revision','')
+        if site.get('status') in ('failed','blocked') and re.fullmatch('[0-9a-f]{16}',str(previous)) and previous!=revision and site.get('retry_queued_revision')!=revision:
+            site.update(previous_status=site['status'],previous_detail=site.get('detail',''),status='pending',detail='Queued retry after software update; previous failure retained',retry_queued_revision=revision)
+            count+=1
+    return count
+
+
 class CloudService:
     def __init__(self,data,engine=None,resolve_sites=True):
         self.data=Path(data).resolve();self.data.mkdir(parents=True,exist_ok=True)
@@ -122,6 +134,10 @@ class CloudService:
                     changed=True
                 if changed:book.save(state['template'])
             finally:book.close()
+            from software_revision_support import installed_revision
+            if requeue_updated_group(state,installed_revision(self.engine),os.environ.get('CLOUD_RUNNER_GROUP','')):
+                self.store.save(state)
+                self.event('QUEUE: previous terminal results requeued for updated code; original failure retained')
             self.diagnostics=Collector(self.data/'telemetry.json')
             self.pause.set();self.settings.write_text(json.dumps({'paused':False}));self.error=None
             scheduler=StoreScheduler(self.engine,self.store,state,self.output,self.pause,self.event,retry_limit=5,wait_limit=900,skip_terminal=integer(os.environ.get('CLOUD_CONTINUATION_INDEX','0'))>0);self.scheduler=scheduler

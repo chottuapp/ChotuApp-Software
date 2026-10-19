@@ -22,7 +22,11 @@ class StoreScheduler:
         self.control_lock=threading.Lock();self.paused=False;self.completed=0;self.deferred=0;self.failed=0
         self.ready=[];self.waiting={};self.before={};self.initial_deferred=[]
         for index in self.pending:
-            site=state['sites'][index];retry=site.get('retry_after_epoch',0)
+            site=state['sites'][index]
+            if site.get('status') in ('failed','blocked'):
+                values=dict(previous_status=site['status'],previous_detail=site.get('detail',''),status='pending',detail='Queued retry; previous failure retained')
+                self.mark(index,**values);site.update(values)
+            retry=site.get('retry_after_epoch',0)
             if site.get('status')=='source_paused' and retry>time.time():
                 if retry-time.time()<=self.wait_limit:self.waiting[index]=retry
                 else:self.initial_deferred.append(index)
