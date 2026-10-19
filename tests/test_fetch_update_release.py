@@ -7,7 +7,7 @@ import fetch_update_release as release
 class ReleaseTests(unittest.TestCase):
  def invoke(self,validation,result=None):
   reports=[]
-  with patch.dict(os.environ,{'GITHUB_RUN_ID':'123456','GITHUB_SHA':'a'*40}),patch.object(sys,'argv',['release','--validation',validation]),patch.object(release,'publish',side_effect=lambda report,branch:reports.append((report,branch))),patch.object(release,'stop_previous'),patch.object(release.subprocess,'run',return_value=result) as command,contextlib.redirect_stdout(io.StringIO()):
+  with patch.dict(os.environ,{'GITHUB_RUN_ID':'123456','GITHUB_SHA':'a'*40}),patch.object(sys,'argv',['release','--validation',validation]),patch.object(release,'publish',side_effect=lambda report,branch:reports.append((report,branch))),patch.object(release,'stop_previous'),patch.object(release,'stop_active_fetches',return_value=[]),patch.object(release.subprocess,'run',return_value=result) as command,contextlib.redirect_stdout(io.StringIO()):
    if validation!='success' or result.returncode:
     with self.assertRaises(SystemExit):release.main()
    else:release.main()

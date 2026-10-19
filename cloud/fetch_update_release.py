@@ -21,6 +21,12 @@ def stop_previous(run_id):
         if state()=='completed':return
     raise RuntimeError('Previous run is still active; fresh dispatch withheld')
 
+def stop_active_fetches():
+    result=subprocess.run(['gh','run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','30','--json','databaseId,status'],capture_output=True,text=True,check=True,timeout=30)
+    active=[str(item['databaseId']) for item in json.loads(result.stdout) if item.get('status')!='completed']
+    for identity in active:stop_previous(identity)
+    return active
+
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--validation',required=True);args=parser.parse_args()
     run=os.environ.get('GITHUB_RUN_ID','');sha=os.environ.get('GITHUB_SHA','')
@@ -34,7 +40,9 @@ def main():
     if args.validation=='success':
         previous=marker.get('stop_previous_run_id')
         if previous:
-            try:stop_previous(previous)
+            try:
+                if marker.get('stop_any_active_fetches'):report['previous_runs_stopped']=stop_active_fetches()
+                stop_previous(previous)
             except Exception:
                 report['dispatch']='failed';report['reason']='Previous run stop could not be confirmed';publish(report,branch='fetch-update-reports');raise SystemExit(1)
             report['previous_run_stopped']=previous
