@@ -1,0 +1,42 @@
+name: ChotuApp Five Websites Per Runner
+on:
+  workflow_dispatch:
+    inputs:
+      resume_run_id:
+        description: 'Saved, stopped parent run; omit for a fresh grouped fetch'
+        required: false
+        type: string
+      stores:
+        description: 'Optional exact store list; defaults to the registered 29 stores'
+        required: false
+        type: string
+permissions:
+  contents: read
+  actions: write
+concurrency:
+  group: chotuapp-group-dispatch
+  cancel-in-progress: false
+jobs:
+  dispatch:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install validation dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Dispatch separate groups with saved checkpoints
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RESUME_RUN_ID: ${{ inputs.resume_run_id }}
+          CLOUD_STORES: ${{ inputs.stores }}
+        run: python cloud/group_fetch.py
+      - name: Save group map
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chotuapp-fetch-groups
+          path: fetch-group-plan.json
+          if-no-files-found: ignore

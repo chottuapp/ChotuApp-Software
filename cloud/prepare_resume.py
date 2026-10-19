@@ -12,6 +12,10 @@ def prepare(archive,data,source_run):
     restore(archive,data)
     state=RunStore(data/'saved_runs').load()
     if not state or not state.get('sites'):raise ValueError('Checkpoint has no saved store queue')
+    if os.environ.get('CLOUD_PARTITION_RESUME')=='true':
+        from partition_resume import partition
+        from cli import parse_stores
+        state=partition(data,parse_stores(os.environ.get('CLOUD_STORES','')))
     from urllib.parse import urlsplit
     def complete(site):
         output=site.get('output') or {};file=data/'ANAS_DATA_FETCH'/Path(output.get('path','')).name

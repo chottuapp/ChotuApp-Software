@@ -62,7 +62,7 @@ def main():
     if any(item.get('displayTitle')==name for item in previous):print('Continuation already exists; duplicate dispatch skipped.');return
     limit,index=budget(summary)
     if str(run.get('id')) in AUTHORIZED_EXISTING_RUNS and not limit:limit=1
-    gh('workflow','run','cloud-fetch.yml','--repo',repo,'--ref','main','-f','resume_run_id='+identity,'-f','minutes=300','-f','save_checkpoint=true','-f','auto_continue_once=false','-f','continuation_parent='+identity,'-f','auto_continue_limit='+str(limit),'-f','continuation_index='+str(index+1),'-f','previous_progress='+str(summary.get('progress_token','')),'-f','stalled_runs='+str(summary.get('stalled_runs',0)))
+    gh('workflow','run','cloud-fetch.yml','--repo',repo,'--ref','main','-f','runner_group='+str(summary.get('runner_group','')),'-f','resume_run_id='+identity,'-f','minutes=300','-f','save_checkpoint=true','-f','auto_continue_once=false','-f','continuation_parent='+identity,'-f','auto_continue_limit='+str(limit),'-f','continuation_index='+str(index+1),'-f','previous_progress='+str(summary.get('progress_token','')),'-f','stalled_runs='+str(summary.get('stalled_runs',0)))
     print('Submitted continuation '+str(index+1)+'/'+str(limit)+' of '+identity+'; checkpoint and progress guards remain enabled.')
 
 if __name__=='__main__':main()

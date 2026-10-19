@@ -1,5 +1,5 @@
 name: ChotuApp Cloud Fetch
-run-name: ${{ inputs.continuation_parent != '' && format('Automatic continuation of {0}', inputs.continuation_parent) || format('Cloud fetch by @{0}', github.actor) }}
+run-name: ${{ inputs.continuation_parent != '' && format('Automatic continuation of {0}', inputs.continuation_parent) || (inputs.runner_group != '' && format('Cloud group {0}', inputs.runner_group) || format('Cloud fetch by @{0}', github.actor)) }}
 on:
   workflow_dispatch:
     inputs:
@@ -8,6 +8,14 @@ on:
         required: false
         default: 'Farda Foods | https://fardafoods.com; Islamabad Tea | https://islamabadtea.pk'
         type: string
+      runner_group:
+        description: 'Internal runner group; independent concurrency and continuation identity'
+        required: false
+        type: string
+      partition_resume:
+        description: 'Internal: select only the supplied group from the restored parent checkpoint'
+        default: false
+        type: boolean
       resume_run_id:
         description: 'Optional: previous Actions run ID with a checkpoint; leaves completed stores alone'
         required: false
@@ -48,7 +56,7 @@ permissions:
   contents: read
   actions: read
 concurrency:
-  group: chotuapp-cloud-fetch
+  group: ${{ inputs.runner_group != '' && format('chotuapp-cloud-fetch-{0}', inputs.runner_group) || 'chotuapp-cloud-fetch' }}
   cancel-in-progress: false
 jobs:
   fetch:
@@ -59,6 +67,8 @@ jobs:
     timeout-minutes: 330
     env:
       CHOTUAPP_CLOUD_DATA: ${{ github.workspace }}/.cloud-data
+      CLOUD_RUNNER_GROUP: ${{ inputs.runner_group }}
+      CLOUD_PARTITION_RESUME: ${{ inputs.partition_resume }}
       CLOUD_STORES: ${{ inputs.stores }}
       CLOUD_MINUTES: ${{ inputs.minutes }}
       RESUME_RUN_ID: ${{ inputs.resume_run_id }}
