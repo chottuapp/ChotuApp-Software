@@ -1,13 +1,13 @@
 name: Monitor continuous cloud fetching
-description: Publish a one-minute initial snapshot, then five-minute snapshots.
+description: Publish a ten-second initial snapshot, then five-minute snapshots.
 runs:
   using: composite
   steps:
-    - name: First live snapshot after one minute
+    - name: First live snapshot after ten seconds
       id: live_initial
       uses: ./.github/actions/live-fetch-snapshot
       with:
-        seconds: '60'
+        seconds: '10'
     - name: Live logs and completed files 1/60
       id: live_1
       if: steps.live_initial.outputs.finished == 'false'
