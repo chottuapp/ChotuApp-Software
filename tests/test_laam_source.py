@@ -58,6 +58,13 @@ class LaamTests(unittest.TestCase):
  def test_missing_quantity_blank_and_unknown_options_rejected(self):
   raw=copy.deepcopy(FIXTURES[0]['product']);raw['variants'][0].pop('inventory_quantity');p=source.normalize(raw,raw['handle']);self.assertNotIn('inventory_quantity',p['variants'][0]);raw['variants'][0]['title']='Not a declared size'
   with self.assertRaisesRegex(ValueError,'declared option'):source.normalize(raw,raw['handle'])
+ def test_temporary_server_failures_pause_without_becoming_terminal_blocks(self):
+  from types import SimpleNamespace
+  for status in (500,502,504):
+   response=SimpleNamespace(status_code=status,content=b'server failure')
+   g={'_chotu_wait':lambda:None,'_chotu_backoff':lambda *a:None,'_chotu_debug_request':lambda *a:None,'_chotu_debug_response':lambda *a,**k:None,'S':SimpleNamespace(get=lambda *a,**k:response)}
+   reader=source.PublicCatalog(g,lambda _:None)
+   with self.assertRaisesRegex(RuntimeError,'SOURCE PAUSED: LAAM temporary server failure'):reader.read(source.BASE+'/products/one')
  def test_source_does_not_follow_other_hosts(self):
   reader=source.PublicCatalog({},lambda _:None)
   with self.assertRaisesRegex(ValueError,'changed host'):reader.read('https://other.example/products/x')
