@@ -1,0 +1,42 @@
+name: Inspect requested fetch failure evidence
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/cloud-fetch-error-review.yml]
+permissions:
+  actions: read
+  contents: write
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install requests beautifulsoup4
+      - name: Read actual failure and rate-limit context
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PYTHONPATH: cloud
+        run: |
+          python - <<'PY'
+          import subprocess,tempfile,pathlib,json,collections,os,re
+          from source_research import publish
+          repo='chottuapp/ChotuApp-Software'
+          def call(*args):return subprocess.run(['gh',*args],capture_output=True,text=True,check=True,timeout=180).stdout
+          recent=json.loads(call('run','list','--repo',repo,'--workflow','cloud-fetch.yml','--limit','8','--json','databaseId,status,conclusion,headSha,displayTitle'))
+          with tempfile.TemporaryDirectory() as tmp:
+              call('run','download','39152733413','--repo',repo,'--name','chotuapp-live-logs','--dir',tmp)
+              log=next(pathlib.Path(tmp).rglob('fetch-log.txt')).read_text(encoding='utf-8',errors='replace')
+              stores=['Computer Zone','Vince Care','Saeed Ghani','Hemani Herbals','Bonanza Satrangi']
+              contexts={}
+              for store in stores:
+                  lines=[line for line in log.splitlines() if '['+store+']' in line]
+                  selected=[]
+                  for i,line in enumerate(lines):
+                      if re.search(r'EXCEPTION|Traceback|Error:|FAILED:|429|cooldown|RATE LIMIT|source_paused',line,re.I):
+                          selected.extend(lines[max(0,i-3):min(len(lines),i+14)])
+                  contexts[store]=list(dict.fromkeys(selected))[-55:]
+              publish({'run_id':os.environ['GITHUB_RUN_ID'],'source_run':'39152733413','recent_fetch_runs':recent,'contexts':contexts},branch='category-reports')
+          PY
