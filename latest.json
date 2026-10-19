@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-19T15:43:03.298211+00:00",
-  "run_id": "39239217166",
+  "generated_utc": "2026-10-19T17:03:49.113992+00:00",
+  "run_id": "39280218526",
   "attempt": "1",
-  "source_commit": "697e0e95090001f88760a638b0f5ddfa238765ef",
+  "source_commit": "2a485237ae584b13f55db1c4b56e871a32094a07",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 18000.8,
+  "elapsed_seconds": 4454.0,
   "stores": [
     {
       "name": "Skin Factor",
@@ -264,46 +264,38 @@
       "software_revision": "a444ce3152ae6c0c",
       "products": 4548,
       "variants": 5955,
-      "http_statuses": {
-        "200": 2038
-      },
-      "network_seconds": 1517.7,
-      "max_response_seconds": 6.5,
-      "cache_events": 18759
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
     },
     {
       "name": "Outfitters",
       "status": "done",
       "review_required": true,
-      "issue_codes": [
-        "HTTP_404",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
+      "issue_codes": [],
       "software_revision": "a444ce3152ae6c0c",
       "products": 3877,
       "variants": 29822,
-      "http_statuses": {
-        "200": 2500,
-        "404": 2
-      },
-      "network_seconds": 2731.2,
-      "max_response_seconds": 6.0,
-      "cache_events": 14400
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
     },
     {
       "name": "Junaid Jamshed",
-      "status": "pending",
-      "review_required": false,
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
         "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "a444ce3152ae6c0c",
-      "http_statuses": {
-        "200": 5179
-      },
-      "network_seconds": 2871.6,
-      "max_response_seconds": 1.9,
-      "cache_events": 7505
+      "software_revision": "87f4314e58711fb7",
+      "products": 4847,
+      "variants": 20908,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 19665
     },
     {
       "name": "Zellbury",
@@ -312,49 +304,75 @@
       "issue_codes": [
         "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "a444ce3152ae6c0c",
+      "software_revision": "87f4314e58711fb7",
       "http_statuses": {
-        "200": 2874
+        "200": 1472
       },
-      "network_seconds": 3671.6,
-      "max_response_seconds": 2.2,
-      "cache_events": 0
+      "network_seconds": 1879.8,
+      "max_response_seconds": 1.5,
+      "cache_events": 5387
     },
     {
       "name": "Gul Ahmed",
       "status": "pending",
       "review_required": false,
-      "issue_codes": [],
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "87f4314e58711fb7",
+      "http_statuses": {
+        "200": 364,
+        "429": 1
+      },
+      "network_seconds": 509.9,
+      "max_response_seconds": 3.8,
+      "cache_events": 155
     },
     {
       "name": "Stylo",
-      "status": "pending",
+      "status": "source_paused",
       "review_required": false,
-      "issue_codes": [],
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "87f4314e58711fb7",
+      "http_statuses": {
+        "200": 452,
+        "429": 1
+      },
+      "network_seconds": 379.4,
+      "max_response_seconds": 2.1,
       "cache_events": 0
     },
     {
       "name": "LAAM",
-      "status": "pending",
+      "status": "blocked",
       "review_required": false,
-      "issue_codes": [],
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
+      "issue_codes": [
+        "SOURCE_BLOCKED"
+      ],
+      "software_revision": "87f4314e58711fb7",
+      "http_statuses": {
+        "200": 405,
+        "500": 1
+      },
+      "network_seconds": 255.6,
+      "max_response_seconds": 15.8,
       "cache_events": 0
     },
     {
       "name": "Khaadi",
-      "status": "pending",
+      "status": "blocked",
       "review_required": false,
-      "issue_codes": [],
+      "issue_codes": [
+        "SOURCE_BLOCKED"
+      ],
+      "software_revision": "87f4314e58711fb7",
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
@@ -362,9 +380,12 @@
     },
     {
       "name": "Sapphire",
-      "status": "pending",
+      "status": "blocked",
       "review_required": false,
-      "issue_codes": [],
+      "issue_codes": [
+        "SOURCE_BLOCKED"
+      ],
+      "software_revision": "87f4314e58711fb7",
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
@@ -372,13 +393,18 @@
     },
     {
       "name": "Zero Lifestyle",
-      "status": "pending",
-      "review_required": false,
+      "status": "done",
+      "review_required": true,
       "issue_codes": [],
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "software_revision": "87f4314e58711fb7",
+      "products": 63,
+      "variants": 260,
+      "http_statuses": {
+        "200": 96
+      },
+      "network_seconds": 56.0,
+      "max_response_seconds": 1.9,
+      "cache_events": 126
     }
   ]
 }
