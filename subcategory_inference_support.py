@@ -334,6 +334,34 @@ def named_type(title,body):
 
 def infer(name,description,website_path=''):
     title=plain(name);body=_product_prose(description)
+    # Prefer the complete named outfit/accessory over individual components.
+    named_rules=[
+      ('Kurta & Trouser Sets',r'\bkurta\s+(?:and\s+|&\s*)?trousers?\b'),
+      ('Kurta & Dupatta Sets',r'\b(?:kurta|shirt)\s+(?:and\s+|&\s*)?dupatta\b'),
+      ('Kameez Shalwar Sets',r'\b(?:kameez\s+shalwar|shalwar\s+kameez)\b'),
+      ('Sweatshirts',r'\bsweat\s+shirts?\b'),
+      ('Cross-Body Bags',r'\bcross[ -]?body\s+bags?\b'),
+      ('Shoulder Bags',r'\bshoulder\s+bags?\b'),('Bucket Bags',r'\bbucket\s+bags?\b'),
+      ('Tunics',r'\btunics?\b'),('Jubbas & Thobes',r'\b(?:jubbas?|thobes?)\b'),
+      ('Waistcoats',r'\bwaist\s*coats?\b'),('Sherwanis',r'\bsherwanis?\b'),
+      ('Towel Sets',r'\btowel\s+sets?\b'),('Boxers & Trunks',r'\b(?:boxers?|trunks?)\b'),
+      ('Hand Towels',r'\bhand\s+towels?\b'),('Bath Towels',r'\bbath\s+(?:towels?|sheets?)\b'),
+      ('Hobo Bags',r'\bhobo\s+bags?\b'),('Cardholders',r'\bcard\s+holders?\b'),
+      ('Tote Bags',r'\btote\s+bags?\b'),('Canvas Bags',r'\bcanvas\s+bags?\b'),('Clutches',r'\bclutch(?:es)?\b'),
+      ('Polo Shirts',r'\bpolo\b'),('Briefs & Underwear',r'\bbriefs?\b'),
+      ('Ponchos & Capes',r'\b(?:poncho|capelet)\b'),
+      ('Shirts',r'\bbutton[ -]?down\b'),('Tops',r'\btops?\b'),
+
+    ]
+    if re.search(r'(?i)\bkameez\s+shalwar\b.*\bwaistcoat\b',title):
+        return _quote('Kameez Shalwar & Waistcoat Sets','name',title)
+    for label,pattern in named_rules:
+        if label=='Tops' and re.search(r'(?i)\b(?:kurta|shirt|blouse|dress|co[ -]?ord)\b',title):continue
+        if re.search(pattern,title,re.I):return _quote(label,'name',title)
+    if re.search(r'(?i)\b(?:[23]\s*(?:pc|piece)|[23]-piece)\b',title) and not re.search(r'(?i)\bun[ -]?stitched\b',title):
+        if re.search(r'(?i)\bstitched\b',title):return _quote('Stitched Outfit Sets','name',title)
+    if re.search(r'(?i)\bun[ -]?stitched\s+fabric\b',title):return _quote('Unstitched Fabric','name',title)
+    if re.search(r'(?i)\bdenim\b',title) and re.search(r'(?i)\b(?:pants?|trouser waist)\b',str(description or '')):return _quote('Denim Trousers','description',body)
     conflicting=bool(re.search(r'(?i)Product Clarification:|description refers to .*while this listing',body))
     if conflicting:body=''
     # Structured olfactory notes identify fragrances even when the name is opaque.

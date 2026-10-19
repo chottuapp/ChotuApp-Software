@@ -8,6 +8,10 @@ class SubcategoryInferenceTests(unittest.TestCase):
  def test_descriptor_in_prose_and_in_title_are_attributed_separately(self):
   a=infer('Certified Delulu','Unisex. A soft regular fit t-shirt with a round neck. Cotton blend polyester.');self.assertEqual(a[:2],('T-Shirts','inferred_description'));self.assertIn('t-shirt',a[2])
   self.assertEqual(infer('Cheddar Cheese 200g','A dairy product.')[0:2],('Cheddar Cheese','inferred_product_name'))
+ def test_reviewed_junaid_zellbury_complete_types(self):
+  cases={'Off White Cotton Kurta Trousers':'Kurta & Trouser Sets','Kurta Dupatta - 2899':'Kurta & Dupatta Sets','Cream Kameez Shalwar':'Kameez Shalwar Sets','Graphic Sweat Shirt - 1014':'Sweatshirts','Cross-Body Bags - E250':'Cross-Body Bags','Tunics - 1918':'Tunics','Blue Lawn Embroidered Stitched 3Pc':'Stitched Outfit Sets','Sky Blue Unstitched Fabric':'Unstitched Fabric','Fawn Casual Jubba':'Jubbas & Thobes'}
+  for name,expected in cases.items():
+   with self.subTest(name=name):self.assertEqual(infer(name,'')[0],expected)
  def test_complete_outfit_not_its_dupattas_and_trousers(self):
   self.assertEqual(infer('Aurelia','An unstitched 3-piece ensemble. Embroidered shirt, dupatta and cotton trousers.')[0],'Unstitched Suits')
   self.assertEqual(infer('Rosaline','Unstitched & RTW - 3PC ensemble. Shirt, dupatta and trousers.')[0],'Suits & Ensembles')
