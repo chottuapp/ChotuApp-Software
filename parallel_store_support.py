@@ -16,7 +16,7 @@ def output_key(site):return (re.sub(r'[^\w .-]','',site['name']).strip() or 'Sho
 class StoreScheduler:
     def __init__(self,engine,store,state,output,pause,send,max_processes=2,retry_limit=2,wait_limit=120,skip_terminal=False):
         self.engine=Path(engine);self.store=store;self.state=state;self.output=Path(output);self.pause=pause;self.send=send
-        self.max_processes=max(1,min(2,max_processes));self.retry_limit=retry_limit;self.wait_limit=wait_limit
+        self.max_processes=max(1,min(3,max_processes));self.retry_limit=retry_limit;self.wait_limit=wait_limit
         if len({output_key(site) for site in state['sites']})!=len(state['sites']):raise RuntimeError('Selected store names produce the same Excel filename; give each store a distinct name.')
         self.pending=[i for i in store.pending(state) if not skip_terminal or state['sites'][i].get('status') not in ('failed','blocked')];self.attempts={};self.active={};self.messages=queue.Queue();self.stop=threading.Event()
         self.control_lock=threading.Lock();self.paused=False;self.completed=0;self.deferred=0;self.failed=0

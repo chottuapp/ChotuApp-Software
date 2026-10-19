@@ -21,3 +21,11 @@ class QueuedRetryTests(unittest.TestCase):
    store=RunStore(Path(tmp)/'saved');state={'id':'abc','status':'incomplete','sites':[{'name':'Shop','url':'https://shop.example','status':'blocked','detail':'Access restriction','output':None}]};store.save(state)
    scheduler=StoreScheduler(Path(tmp)/'main.py',store,state,tmp,threading.Event(),lambda _:None,skip_terminal=True)
    self.assertEqual(scheduler.ready,[]);self.assertEqual(store.load()['sites'][0]['status'],'blocked')
+
+ def test_three_store_cloud_capacity_keeps_default_and_bounds(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   store=RunStore(Path(tmp)/'saved');state={'id':'abc','status':'incomplete','sites':[{'name':str(i),'url':'https://s'+str(i)+'.example','status':'pending','output':None} for i in range(3)]};store.save(state)
+   def build(**kw):return StoreScheduler(Path(tmp)/'main.py',store,state,tmp,threading.Event(),lambda _:None,**kw)
+   self.assertEqual(build().max_processes,2)
+   self.assertEqual(build(max_processes=3).max_processes,3)
+   self.assertEqual(build(max_processes=99).max_processes,3)

@@ -17,3 +17,5 @@ For one combined read-only terminal report, run `catalog-tools/watch_all_runners
 Scheduled manual retries are recorded as pending before they obtain a worker slot, with the previous status/detail preserved separately. Group continuation can requeue a terminal result once when its recorded extractor revision differs from the installed revision. A same-version block stays terminal, cooldowns remain intact, and the per-revision marker prevents repeating an early startup failure forever. These queue changes do not claim the underlying source error has been repaired.
 
 Latest override: newly dispatched groups contain at most three websites per runner. Existing five-store checkpoints remain readable and can be partitioned into groups of three and two after saving and stopping their source run.
+
+Cloud groups with up to three stores now receive three store-process slots, so the third website need not wait behind two long catalogs. Desktop and legacy larger queues retain two slots. Per-host pacing and cooldowns are unchanged.
