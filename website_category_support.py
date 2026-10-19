@@ -94,6 +94,10 @@ def apply(row,evidence=None):
         path=str(data[FIELDS[0]]).split(' > ')
         return bool(data.get(FIELDS[3]) in ('verified_navigation_membership','verified_product_breadcrumb') and data.get(FIELDS[1]) and public_link(url,data[FIELDS[1]]) and data.get(FIELDS[2]) and all(substantive(p) for p in path) and data.get('category')==path[0] and ((data.get('subcategory') or '')==(path[-1] if len(path)>1 else '') or len(path)==1 and data.get('subcategory_source')=='website' and data.get('subcategory')==path[0]))
     existing['subcategory_source']=row.get('subcategory_source','')
+    if str(existing['subcategory_source']).startswith('inferred_') and existing.get(FIELDS[0]):
+        # Public product-type labels are independent of the observed website hierarchy.
+        path=str(existing[FIELDS[0]]).split(' > ')
+        existing['subcategory']=path[-1] if len(path)>1 else ''
     existing['_category_depth']=len(str(existing.get(FIELDS[0]) or '').split(' > '))
     selected=choose(existing if trustworthy(existing) else None,candidate if trustworthy(candidate) else None)
     if selected:
