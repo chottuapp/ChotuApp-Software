@@ -1,0 +1,27 @@
+name: Android Build Diagnostics
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: [Build ChotuApp Android APK]
+    types: [completed]
+  push:
+    branches: [main]
+    paths: [cloud/android_build_diagnostics.py, .github/workflows/android-build-diagnostics.yml]
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: android-build-diagnostics
+  cancel-in-progress: false
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install requests beautifulsoup4
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: python cloud/android_build_diagnostics.py
