@@ -23,7 +23,7 @@ class RecoveryTests(unittest.TestCase):
    with self.assertRaises(ValueError):recovery.release_spec({'schema':1,'khaadi_worker':spec})
   expected={'commit':'b'*40,'sha256':'a'*64};self.assertEqual(recovery.release_spec({'schema':1,'khaadi_worker':expected}),expected)
  def test_published_worker_hash_matches_approved_version(self):
-  import hashlib,subprocess
+  import hashlib
   marker=json.loads((ROOT/'cloud/recovery-release.json').read_text());spec=recovery.release_spec(marker)
-  payload=subprocess.check_output(['git','show',spec['commit']+':catalog-tools/start_khaadi_local_fetch_windows.py'],cwd=ROOT)
+  payload=(ROOT/'catalog-tools/start_khaadi_local_fetch_windows.py').read_bytes()
   self.assertEqual(hashlib.sha256(payload).hexdigest(),spec['sha256'])

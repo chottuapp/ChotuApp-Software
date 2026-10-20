@@ -25,6 +25,7 @@ def main():
     if marker.get('schema')!=1 or not re.fullmatch('[a-f0-9]{40}',release):raise ValueError('Reviewed software commit required')
     runs=json.loads(gh('run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','100','--json','databaseId,displayTitle,status,conclusion,headSha'))
     for lane in marker['cloud_lanes']:
+        if lane.get('enabled') is False:print(lane['group']+': source repair pending; unchanged');continue
         chain=descendants(runs,lane['root_run_id'])
         if not chain or any(r['status']!='completed' for r in chain):print(lane['group']+': active or not found; unchanged');continue
         latest=chain[0];identity=str(latest['databaseId']);run=json.loads(gh('api','repos/'+REPO+'/actions/runs/'+identity))
