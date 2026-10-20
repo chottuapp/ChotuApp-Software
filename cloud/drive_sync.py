@@ -29,10 +29,11 @@ def main():
  state['folder']=folder;state.setdefault('daily_uploads',{}).setdefault(folder,{})
  state['run_id']=os.environ['GITHUB_RUN_ID'];state['sync_status']='scanning';state['last_scan_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat();globals()['LAST_STATE']=state
  state.pop('sync_error',None);publish(state,branch='drive-sync-reports')
- runs=json.loads(gh('run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','100','--json','databaseId,displayTitle,status,conclusion'))
+ runs=json.loads(gh('run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','100','--json','databaseId,displayTitle,status,conclusion,headSha'))
+ all_runs=list(runs)
  groups={r['displayTitle'].removeprefix('Cloud group ') for r in runs if r['displayTitle'].startswith('Cloud group fresh26-'+root+'-')}
  runs=checked.related(runs,groups)
- if not runs and not (ROOT/'catalog-inputs/khaadi-mobile/latest.json').exists():raise RuntimeError('No matching authorized fresh-batch runs found')
+ if not runs and not config.get('original_sources') and not (ROOT/'catalog-inputs/khaadi-mobile/latest.json').exists():raise RuntimeError('No matching authorized fresh-batch runs found')
  with tempfile.TemporaryDirectory() as tmp:
   cfg=Path(tmp)/'rclone.conf';cfg.write_text(secret,encoding='utf-8');cfg.chmod(0o600)
   def rc(*args):
@@ -42,6 +43,11 @@ def main():
   if upload_mobile(state,folder,rc):
    state['verified_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat();publish(state,branch='drive-sync-reports')
    print('VERIFIED: mobile Khaadi processed with Rule 804 and checksum-checked in',folder,flush=True)
+  from original_store_ingest import upload as upload_originals
+  original_sent=upload_originals(state,folder,rc,all_runs,gh,config.get('original_sources',[]))
+  if original_sent:state['verified_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat()
+  if original_sent or state.get('original_holds'):
+   publish(state,branch='drive-sync-reports');print('Original store Rule 804 Drive verified:',', '.join(original_sent) or 'none; see holds',flush=True)
   for run in reversed(runs):
    rid=str(run['databaseId']);artifacts=json.loads(gh('api','repos/'+REPO+'/actions/runs/'+rid+'/artifacts?per_page=100'))['artifacts']
    matches=[a for a in artifacts if a['name']=='chotuapp-rule804-files' and not a.get('expired')]
