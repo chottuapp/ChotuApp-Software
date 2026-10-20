@@ -26,7 +26,9 @@ def main():
     runs=json.loads(gh('run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','100','--json','databaseId,displayTitle,status,conclusion,headSha'))
     for lane in marker['cloud_lanes']:
         if lane.get('enabled') is False:print(lane['group']+': source repair pending; unchanged');continue
-        chain=descendants(runs,lane['root_run_id'])
+        roots={str(lane['root_run_id'])}|{str(r['databaseId']) for r in runs if r.get('displayTitle')=='Cloud group '+lane['group'] and int(r['databaseId'])>=int(lane['root_run_id'])}
+        identities={str(r['databaseId']) for root in roots for r in descendants(runs,root)}
+        chain=[r for r in runs if str(r['databaseId']) in identities]
         if not chain or any(r['status']!='completed' for r in chain):print(lane['group']+': active or not found; unchanged');continue
         latest=chain[0];identity=str(latest['databaseId']);run=json.loads(gh('api','repos/'+REPO+'/actions/runs/'+identity))
         if run.get('event')!='workflow_dispatch' or run.get('head_branch')!='main' or run.get('head_repository',{}).get('full_name')!=REPO:continue

@@ -13,7 +13,7 @@ def perform():
     publish(report,branch='fetch-update-reports')
     for site in marker['sources']:
         validate_runner_sources({'sites':[{'name':site['name'],'url':site['url']}]},site['group'])
-        runs=json.loads(gh('run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','100','--json','databaseId,displayTitle,status'))
+        runs=json.loads(gh('run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','100','--json','databaseId,displayTitle,status,headSha'))
         ids={str(r['databaseId']) for r in runs if r['displayTitle']=='Cloud group '+site['group']}
         for _ in runs:
             more={str(r['databaseId']) for r in runs if r['displayTitle'].startswith('Automatic continuation of ') and r['displayTitle'].split()[-1] in ids}
@@ -24,7 +24,14 @@ def perform():
             report['sources'].append({'name':site['name'],'status':'observed','run_id':str(selected[0]['databaseId']) if selected else None});continue
         if any(r['status']!='completed' and str(r['databaseId']) in ids for r in runs):
             current=next(r for r in runs if r['status']!='completed' and str(r['databaseId']) in ids)
-            if not site.get('restart_active'):
+            up_to_date=False
+            if site.get('required_commit') and current.get('headSha'):
+                required=site['required_commit']
+                import re
+                if not re.fullmatch('[0-9a-f]{40}',required):raise ValueError('Pinned repair commit required')
+                comparison=json.loads(gh('api','repos/'+REPO+'/compare/'+required+'...'+current['headSha']))
+                up_to_date=comparison.get('status') in ('ahead','identical')
+            if not site.get('restart_active') or up_to_date:
                 report['sources'].append({'name':site['name'],'status':'already_active','run_id':str(current['databaseId'])});continue
             target=str(current['databaseId'])
             gh('workflow','run','cloud-stop.yml','--repo',REPO,'--ref','main','-f','run_id='+target)
@@ -38,7 +45,7 @@ def perform():
             artifacts=json.loads(gh('api','repos/'+REPO+'/actions/runs/'+target+'/artifacts?per_page=100'))['artifacts']
             if not any(a['name']=='chotuapp-checkpoint' and not a.get('expired') for a in artifacts):raise RuntimeError('Stopped run has no checkpoint; no fresh restart attempted')
             site['parent']=target
-            runs=json.loads(gh('run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','100','--json','databaseId,displayTitle,status'))
+            runs=json.loads(gh('run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','100','--json','databaseId,displayTitle,status,headSha'))
             if any(r['status']!='completed' and (str(r['databaseId']) in ids or r['displayTitle']=='Automatic continuation of '+target) for r in runs):raise RuntimeError('Another LAAM continuation is active; refusing duplicate')
         parents=[str(r['databaseId']) for r in runs if str(r['databaseId']) in ids and r['status']=='completed' and int(r['databaseId'])>=int(site['parent'])]
         if site['parent'] not in parents:parents.append(site['parent'])
@@ -64,7 +71,7 @@ def perform():
         gh('workflow','run','cloud-fetch.yml','--repo',REPO,'--ref','main','-f','resume_run_id='+parent,'-f','partition_resume=true','-f','runner_group='+site['group'],'-f','stores='+site['name']+' | '+site['url'],'-f','minutes=300','-f','save_checkpoint=true','-f','auto_continue_limit=6','-f','auto_continue_once=false')
         record={'name':site['name'],'status':'resume_requested','parent':parent}
         for _ in range(10):
-            recent=json.loads(gh('run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','30','--json','databaseId,displayTitle,status'))
+            recent=json.loads(gh('run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','30','--json','databaseId,displayTitle,status,headSha'))
             new=[r for r in recent if str(r['databaseId']) not in ids and r['displayTitle']=='Cloud group '+site['group']]
             if new:record['run_id']=str(new[0]['databaseId']);record['run_status']=new[0]['status'];break
             time.sleep(3)
