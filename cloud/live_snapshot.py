@@ -70,6 +70,9 @@ def snapshot(data):
         from diagnostics import redact
         lines=(data/'console.txt').read_text(encoding='utf-8',errors='replace').splitlines()
         (data/'live-diagnostics'/'console-tail.txt').write_text('\n'.join(redact(line) for line in lines[-80:]),encoding='utf-8')
+    if os.environ.get('CLOUD_RUNNER_GROUP','').startswith('fresh26-') and copied:
+        from rule804_pipeline import run
+        run(exports,data/'rule804-excel')
     return {'finished':(data/'background-result.json').exists(),'files_changed':changed,'completed_files':len(copied)}
 
 

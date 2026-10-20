@@ -133,6 +133,18 @@ jobs:
           path: .cloud-data/ANAS_DATA_FETCH/
           if-no-files-found: warn
           retention-days: 1
+      - name: Final automated Rule 804 pass for fresh batch
+        if: always() && startsWith(env.CLOUD_RUNNER_GROUP, 'fresh26-')
+        run: python cloud/rule804_pipeline.py .cloud-data/ANAS_DATA_FETCH .cloud-data/rule804-excel
+      - name: Upload automated Rule 804 fresh workbooks
+        if: always() && startsWith(env.CLOUD_RUNNER_GROUP, 'fresh26-')
+        uses: actions/upload-artifact@v4
+        with:
+          name: chotuapp-rule804-files
+          overwrite: true
+          path: .cloud-data/rule804-excel/
+          if-no-files-found: warn
+          retention-days: 3
       - name: Upload saved checkpoint when available
         if: always()
         uses: actions/upload-artifact@v4

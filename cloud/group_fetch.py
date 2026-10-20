@@ -23,13 +23,21 @@ def main():
     if not identity.isdigit() or (source and not source.isdigit()):raise ValueError('Numeric run IDs required')
     # A single dispatcher is serialized by its workflow. Existing standalone/group runs must save and stop first.
     runs=json.loads(gh('run','list','--repo',repo,'--workflow','cloud-fetch.yml','--limit','100','--json','displayTitle,status,databaseId'))
-    prefix='Cloud group batch-'+identity+'-'
+    label=('fresh26-' if os.environ.get('CLOUD_FRESH_EXCLUDING_THREE')=='true' else 'batch-')+identity
+    prefix='Cloud group '+label+'-'
     own={str(r['databaseId']) for r in runs if r['displayTitle'].startswith(prefix)}
     for _ in range(len(runs)):
         added={str(r['databaseId']) for r in runs if (m:=re.fullmatch(r'Automatic continuation of (\d+)',r['displayTitle'])) and m.group(1) in own}
         if added<=own:break
         own.update(added)
     foreign=[r for r in runs if r['status']!='completed' and str(r['databaseId']) not in own]
+    if os.environ.get('CLOUD_FRESH_EXCLUDING_THREE')=='true':
+        excluded={str(r['databaseId']) for r in runs if r['displayTitle'] in ('Cloud group solo-laam','Cloud group solo-khaadi','Cloud group solo-sapphire')}
+        for _ in runs:
+            more={str(r['databaseId']) for r in runs if r['displayTitle'].startswith('Automatic continuation of ') and r['displayTitle'].split()[-1] in excluded}
+            if more<=excluded:break
+            excluded.update(more)
+        foreign=[r for r in foreign if str(r['databaseId']) not in excluded]
     if foreign:raise ValueError('Save and stop existing fetching before repartitioning. Active run IDs: '+', '.join(str(r['databaseId']) for r in foreign))
     text=os.environ.get('CLOUD_STORES','').strip();completed=[]
     if source:
@@ -47,10 +55,14 @@ def main():
         if {s['name'] for s in sites}!=names:raise ValueError('Supply the exact saved store list for this custom parent')
     else:
         sites=parse_stores(text) if text else json.loads((Path(__file__).parent/'fetch-update-release.json').read_text())['fresh_stores']
+    if os.environ.get('CLOUD_FRESH_EXCLUDING_THREE')=='true':
+        if source:raise ValueError('Fresh batch must start without a resume parent')
+        sites=[s for s in sites if host(s) not in {'laam.com','khaadi.com','pk.khaadi.com','sapphireonline.pk','pk.sapphireonline.pk'}]
+        if len(sites)!=26:raise ValueError('Expected exactly 26 registered fresh stores after excluding LAAM, Khaadi and Sapphire')
     plan=groups(sites,completed)
     report={'source_run':source,'completed_retained_in_parent':completed,'groups':[]}
     for index,stores in enumerate(plan,1):
-        lane='batch-'+identity+'-'+str(index);title='Cloud group '+lane
+        lane=label+'-'+str(index);title='Cloud group '+lane
         item={'runner_group':lane,'stores':stores,'status':'already_dispatched' if any(r['displayTitle']==title for r in runs) else 'pending'};report['groups'].append(item)
         if item['status']=='pending':
             gh('workflow','run','cloud-fetch.yml','--repo',repo,'--ref','main','-f','stores='+json.dumps(stores,separators=(',',':')),'-f','runner_group='+lane,'-f','resume_run_id='+source,'-f','partition_resume='+str(bool(source)).lower(),'-f','minutes=300','-f','save_checkpoint=true','-f','auto_continue_limit=6','-f','auto_continue_once=false')

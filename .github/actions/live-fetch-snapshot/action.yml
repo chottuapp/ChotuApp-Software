@@ -32,3 +32,13 @@ runs:
         path: .cloud-data/live-excel/
         overwrite: true
         retention-days: 1
+    - name: Publish automated Rule 804 files for fresh batch
+      if: steps.snapshot.outputs.files_changed == 'true' && startsWith(env.CLOUD_RUNNER_GROUP, 'fresh26-')
+      continue-on-error: true
+      uses: actions/upload-artifact@v4
+      with:
+        name: chotuapp-rule804-files
+        path: .cloud-data/rule804-excel/
+        overwrite: true
+        if-no-files-found: ignore
+        retention-days: 3

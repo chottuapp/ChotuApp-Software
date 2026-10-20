@@ -1,0 +1,37 @@
+name: ChotuApp Fresh 26 Stores
+run-name: Fresh26 ${{ inputs.batch_key }}
+on:
+  workflow_dispatch:
+    inputs:
+      batch_key:
+        description: 'Unique batch key created by the Windows pipeline helper'
+        required: true
+        type: string
+permissions:
+  contents: read
+  actions: write
+concurrency:
+  group: chotuapp-fresh26-dispatch
+  cancel-in-progress: false
+jobs:
+  dispatch:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - name: Dispatch fresh stores without disturbing excluded lanes
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CLOUD_FRESH_EXCLUDING_THREE: 'true'
+        run: python cloud/group_fetch.py
+      - name: Save exact fresh batch runner map
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fresh26-plan
+          path: fetch-group-plan.json
+          retention-days: 7
