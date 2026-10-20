@@ -1,0 +1,62 @@
+name: Build ChotuApp Android APK
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [android/**, .github/workflows/android-apk.yml]
+permissions:
+  contents: write
+concurrency:
+  group: android-apk
+  cancel-in-progress: true
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+      - name: Bundle checked headless extractor
+        run: python android/tools/prepare.py
+      - name: Build installable app and device tests
+        working-directory: android
+        run: gradle assembleDebug assembleDebugAndroidTest --stacktrace
+      - name: Enable emulator acceleration
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          profile: pixel_6
+          disable-animations: true
+          script: |
+            cd android
+            gradle connectedDebugAndroidTest --stacktrace
+            adb shell am start -n com.chotuapp.mobile/.MainActivity
+            sleep 4
+            adb shell screencap -p /sdcard/chotuapp.png
+            adb pull /sdcard/chotuapp.png dashboard.png
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ChotuApp-Android
+          path: |
+            android/app/build/outputs/apk/debug/*.apk
+            android/app/build/reports/androidTests/
+            android/dashboard.png
+      - name: Publish tested APK download
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python android/tools/publish_apk.py
