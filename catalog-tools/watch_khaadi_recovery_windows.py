@@ -75,7 +75,8 @@ def supervisor(data,hours=24):
                 if occupied(data/'active.lock'):
                     observed_existing=True;report('existing_fetch_running');time.sleep(60);continue
                 try:
-                    raw=urllib.request.urlopen(FEED,timeout=45).read(65537)
+                    request=urllib.request.Request(FEED+'?check='+str(time.time_ns()),headers={'Cache-Control':'no-cache','Pragma':'no-cache'})
+                    raw=urllib.request.urlopen(request,timeout=45).read(65537)
                     if len(raw)>65536:raise ValueError('Release metadata too large')
                     spec=release_spec(json.loads(raw));revision=spec['commit']
                 except (OSError,ValueError) as exc:
