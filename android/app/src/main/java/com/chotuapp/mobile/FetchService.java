@@ -35,7 +35,7 @@ public class FetchService extends Service {
             try {
                 extract(this);File data=new File(getFilesDir(),"khaadi");data.mkdirs();
                 String result=python(this).getModule("mobile_backend").callAttr("run",new File(getFilesDir(),"engine").getPath(),data.getPath(),Vault.read(this)).toString();
-                JSONObject parsed=new JSONObject(result);getSharedPreferences("worker",0).edit().putString("status",parsed.getString("status")).putString("message",parsed.getString("message")).apply();
+                JSONObject parsed=new JSONObject(result);getSharedPreferences("worker",0).edit().putString("source_sha256",parsed.optString("source_sha256","")).putString("status",parsed.getString("status")).putString("message",parsed.getString("message")).apply();
             } catch(Throwable e){getSharedPreferences("worker",0).edit().putString("status",paused.get()?"paused":"attention").putString("message",paused.get()?"Paused. Saved work retained.":"Worker needs attention. "+safe(e.getMessage())).apply();}
             finally{active.set(false);if(wake!=null&&wake.isHeld())wake.release();manager.notify(804,notice("Fetch stopped. Open ChotuApp for status."));stopForeground(STOP_FOREGROUND_DETACH);stopSelf();}
         },"khaadi-worker").start();return START_NOT_STICKY;

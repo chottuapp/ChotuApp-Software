@@ -28,8 +28,8 @@ def run(root,data,token,bridge=None):
   if code:return json.dumps({'status':'paused' if code==130 else 'attention','message':'Saved work retained. See activity for the source error.'})
  check()
  if not token:return json.dumps({'status':'ready_to_upload','message':'Excel saved on this phone. Connect GitHub to queue Rule 804 and Drive upload.'})
- upload(data,token,check)
- return json.dumps({'status':'cloud_queued','message':'Workbook queued for Rule 804 and Drive verification. Drive completion is shown separately.'})
+ sha=upload(data,token,check)
+ return json.dumps({'status':'cloud_queued','source_sha256':sha,'message':'Workbook queued for Rule 804 and Drive verification. Drive completion is shown separately.'})
 
 def upload(data,token,check=lambda:None):
  state=json.loads((data/'local-status.json').read_text());files=[Path(p) for p in state.get('files',[])]
@@ -54,6 +54,7 @@ def upload(data,token,check=lambda:None):
  put(path,content)
  marker=json.dumps({'store':'Khaadi','input_path':path,'sha256':sha,'coverage':'Public default-page discovery; full catalog coverage unverified'},indent=2).encode()
  put('catalog-inputs/khaadi-mobile/latest.json',marker)
+ return sha
 
 def dashboard():
  result={}
