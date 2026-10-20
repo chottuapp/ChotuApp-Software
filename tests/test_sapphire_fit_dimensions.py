@@ -48,6 +48,15 @@ class FitTests(unittest.TestCase):
   product=source.normalize_product(page(),URL,read)
   self.assertEqual(len(product['variants']),4);self.assertEqual(len(product['_unverified_variant_selections']),4)
   self.assertIn('unverified',product['_popularity_page_note'])
+ def test_master_price_range_is_allowed_only_before_exact_size_selection(self):
+  soup=BeautifulSoup(page(),'html.parser');main=soup.select_one('.product-wrapper');sales=source.primary_nodes(main,'.price .sales .cc-price[content]')
+  for node in sales:
+   node['content']='6200';wrapper=soup.new_tag('div',attrs={'class':'range'});node.parent.wrap(wrapper)
+   extra=soup.new_tag('span',attrs={'class':'sales'});price=soup.new_tag('span',attrs={'class':'cc-price','content':'6100'});extra.append(price);wrapper.append(extra)
+  button=source.primary_nodes(main,'button.add-to-cart[data-gtmga4data]')[0];data=json.loads(button['data-gtmga4data']);data['price']=6200;button['data-gtmga4data']=json.dumps(data)
+  parsed=source.inspect_page(str(soup),URL);self.assertTrue(parsed['has_price_range'])
+  wrapper.unwrap()
+  with self.assertRaises(ValueError):source.inspect_page(str(soup),URL)
  def test_server_selecting_wrong_fit_is_rejected(self):
   def read(url):
    params=parse_qs(urlsplit(url).query);return SimpleNamespace(text=page(params['dwvar_'+MASTER+'_itemType'][0],params['dwvar_'+MASTER+'_size'][0],wrong_fit=True))

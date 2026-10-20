@@ -64,6 +64,13 @@ def main():
   drive=json.loads(base64.b64decode(response['content']))
   report['drive']={'verified_files':len(drive.get('uploaded',{})),'verified_utc':drive.get('verified_utc'),'folders':{k:len(v) for k,v in drive.get('daily_uploads',{}).items()},'latest_move':drive.get('moves',[])[-1:]}
  except (RuntimeError,ValueError,KeyError):report['drive']={'status':'unavailable; not claimed verified'}
+ try:
+  response=json.loads(gh('api','repos/'+REPO+'/contents/local/khaadi.json?ref=local-run-status'))
+  local=json.loads(base64.b64decode(response['content']));age=(datetime.datetime.now(datetime.timezone.utc)-datetime.datetime.fromisoformat(local['observed_utc'])).total_seconds()
+  local['report_age_seconds']=max(0,round(age));local['status_confirmed']=age<=180
+  if age>180:local['status']='unknown_stale_heartbeat'
+  report['local_khaadi']=local
+ except (RuntimeError,ValueError,KeyError):pass
  report['fresh_completed']=sum(v=='done' for v in report['fresh_stores'].values())
  publish(report,branch='runner-status-reports')
  print('Active/queued:',report['active_queued'],'| fresh done:',report['fresh_completed'],'| cloud checked:',report['checked_utc'])

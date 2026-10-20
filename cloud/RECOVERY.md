@@ -30,3 +30,5 @@ It cannot rewrite parser rules or infer missing source facts.
 Publishing the descriptor also triggers cloud recovery tests. Workflow-completion
 and manual dispatch are supported as well. Failures retain logs and checkpoints;
 no workbook is automatically uploaded to Drive or labeled as fully verified.
+
+The updated Windows Khaadi supervisor publishes a limited heartbeat every 60 seconds to `local-run-status:local/khaadi.json`, using the PC's existing authenticated GitHub CLI. It sends only store identity, status, worker-lock activity, last progress event/age, check time and bounded source error; never the local workbook, cookies, tokens, configuration or process ID. Reporting failures do not stop fetching. The cloud combined reporter labels local telemetry older than three minutes unknown/stale. One local restart of the updated supervisor is necessary to install this capability; there is no remote-control service for an offline PC. Published pinned/hash-verified worker repairs are applied only after the existing worker exits; unknown source schemas still require a tested code repair.

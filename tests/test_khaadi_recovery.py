@@ -3,6 +3,13 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('khaadi_recovery',ROOT/'catalog-tools/watch_khaadi_recovery_windows.py');recovery=importlib.util.module_from_spec(spec);spec.loader.exec_module(recovery)
 class RecoveryTests(unittest.TestCase):
+ def test_local_telemetry_does_not_claim_dead_worker_is_running(self):
+  import time
+  from unittest.mock import patch
+  with tempfile.TemporaryDirectory() as tmp:
+   data=Path(tmp);(data/'local-status.json').write_text(json.dumps({'status':'running','worker_pid':123,'last_progress_epoch':time.time(),'token':'never-publish'}))
+   with patch.object(recovery,'occupied',return_value=False):report=recovery.local_report(data)
+   self.assertEqual(report['status'],'stopped');self.assertFalse(report['worker_active']);self.assertNotIn('token',report);self.assertNotIn('worker_pid',report)
  def test_network_errors_retry_but_parser_stock_currency_and_tls_do_not(self):
   for error in ('SOURCE PAUSED: temporary server 500','curl failed: curl: (28) timed out','curl failed: curl: (6) resolve failed'):self.assertTrue(recovery.transient(error),error)
   for error in ('ADAPTER ERROR: price mismatch','Currency unverified','Stock ambiguous','curl failed: curl: (60) SSL certificate error','list index out of range'):self.assertFalse(recovery.transient(error),error)

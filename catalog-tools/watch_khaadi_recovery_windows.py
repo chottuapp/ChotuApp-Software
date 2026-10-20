@@ -1,5 +1,5 @@
 """Supervise the approved Khaadi local worker; never invent a parser repair."""
-import contextlib,hashlib,json,os,re,subprocess,sys,time,urllib.request
+import contextlib,hashlib,json,os,re,subprocess,sys,time,urllib.request,threading,datetime,shutil,base64
 from pathlib import Path
 REPO='https://raw.githubusercontent.com/chottuapp/ChotuApp-Software/'
 FEED=REPO+'main/cloud/recovery-release.json'
@@ -65,12 +65,49 @@ def read_json(path):
     try:return json.loads(path.read_text(encoding='utf-8'))
     except (OSError,ValueError):return {}
 
+def local_report(data):
+    status=read_json(data/'local-status.json');live=occupied(data/'active.lock')
+    event=str(status.get('last_event',''))
+    if '\\Users\\' in event:event='Local export event recorded'
+    progress=status.get('last_progress_epoch')
+    return {'store':'Khaadi','execution':'Windows local','observed_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'worker_active':live,'status':('stopped' if status.get('status')=='running' and not live else status.get('status','unknown')),'worker_updated':status.get('updated'),'last_event':event[:1200],'error':str(status.get('error',''))[:700],'progress_age_seconds':max(0,round(time.time()-progress)) if isinstance(progress,(int,float)) else None}
+
+def publish_local_report(data):
+    gh=shutil.which('gh') or str(Path(os.environ.get('ProgramFiles','C:/Program Files'))/'GitHub CLI/gh.exe')
+    repo='repos/chottuapp/ChotuApp-Software';branch='local-run-status'
+    def api(endpoint,method=None,payload=None):
+        args=[gh,'api',repo+'/'+endpoint]
+        if method:args+=['--method',method]
+        if payload is not None:args+=['--input','-']
+        result=subprocess.run(args,input=json.dumps(payload) if payload is not None else None,capture_output=True,text=True,timeout=60)
+        if result.returncode:raise RuntimeError('Local status upload unavailable; local fetch unchanged')
+        return json.loads(result.stdout) if result.stdout.strip() else {}
+    try:api('git/ref/heads/'+branch)
+    except RuntimeError:
+        main=api('git/ref/heads/main');api('git/refs','POST',{'ref':'refs/heads/'+branch,'sha':main['object']['sha']})
+    payload={'message':'Update credential-free Khaadi local heartbeat','branch':branch,'content':base64.b64encode(json.dumps(local_report(data),indent=2).encode()).decode()}
+    try:payload['sha']=api('contents/local/khaadi.json?ref='+branch)['sha']
+    except RuntimeError:pass
+    api('contents/local/khaadi.json','PUT',payload)
+
+@contextlib.contextmanager
+def local_reporting(data):
+    stop=threading.Event()
+    def loop():
+        while not stop.is_set():
+            try:publish_local_report(data)
+            except (OSError,ValueError,RuntimeError,subprocess.SubprocessError):pass
+            stop.wait(60)
+    thread=threading.Thread(target=loop,daemon=True);thread.start()
+    try:yield
+    finally:stop.set();thread.join(timeout=2)
+
 def supervisor(data,hours=24):
     data.mkdir(parents=True,exist_ok=True);deadline=time.monotonic()+hours*3600;attempted=None;last_code=None;attempt=0;observed_existing=False
     def report(state,**extra):
         payload=dict(status=state,updated=time.strftime('%Y-%m-%d %H:%M:%S'),**extra);(data/'recovery-status.json').write_text(json.dumps(payload,indent=2),encoding='utf-8');print('AUTO RECOVERY:',state,extra,flush=True)
     try:
-        with lease(data/'recovery-supervisor.lock'),keep_awake():
+        with lease(data/'recovery-supervisor.lock'),keep_awake(),local_reporting(data):
             while time.monotonic()<deadline:
                 if occupied(data/'active.lock'):
                     observed_existing=True;report('existing_fetch_running');time.sleep(60);continue

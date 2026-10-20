@@ -41,7 +41,8 @@ def inspect_page(html,url):
     if data.get('currencyCode')!='PKR':raise ValueError('Explicit PKR required')
     price=amount(data.get('price'));price_nodes=primary_nodes(main,'.price .sales .cc-price[content]')
     visible_prices={Decimal(amount(node['content'])) for node in price_nodes}
-    if visible_prices!={Decimal(price)}:raise ValueError('Visible and structured primary product prices disagree: expected '+price+'; visible '+str(sorted(str(v) for v in visible_prices)))
+    has_price_range=(len(visible_prices)>1 and Decimal(price) in visible_prices and pid==master and not primary_nodes(main,'[data-attr="size"] input.options-select[checked]') and all(node.find_parent(class_='range') is not None for node in price_nodes))
+    if visible_prices!={Decimal(price)} and not has_price_range:raise ValueError('Visible and structured primary product prices disagree: expected '+price+'; visible '+str(sorted(str(v) for v in visible_prices)))
     compare=data.get('compare_price');compare=amount(compare) if compare not in (None,'',0) else None
     if compare and Decimal(compare)<=Decimal(price):compare=None
     canonical=soup.select_one('link[rel="canonical"]')
@@ -95,7 +96,7 @@ def inspect_page(html,url):
     for node in soup.select('.breadcrumb a[href]'):
         link=urljoin(BASE,node['href']);p=urlsplit(link);label=node.get_text(' ',strip=True)
         if label and p.hostname=='pk.sapphireonline.pk' and p.path.startswith('/collections/') and '/products/' not in p.path:path.append(label)
-    return dict(fits=fits,fixed_options=fixed_options,master_id=master,id=pid,title=title,price=price,compare_at_price=compare,sizes=sizes,selected_size=selected[0] if selected else None,available=not button.has_attr('disabled'),images=images,description=description,category_path=path,canonical_url=canonical)
+    return dict(has_price_range=has_price_range,fits=fits,fixed_options=fixed_options,master_id=master,id=pid,title=title,price=price,compare_at_price=compare,sizes=sizes,selected_size=selected[0] if selected else None,available=not button.has_attr('disabled'),images=images,description=description,category_path=path,canonical_url=canonical)
 
 def variant_url(master_url,size):
     p=urlsplit(master_url)
@@ -107,6 +108,7 @@ def variant_url(master_url,size):
 
 def normalize_product(page,url,read):
     master=inspect_page(page,url)
+    if master.get('has_price_range') and not master['sizes']:raise ValueError('Price range requires exact selected variants; no master price exported')
     if master['selected_size']:raise ValueError('Catalog discovery must use an unselected master product')
     unverified=[];variants=[];labels=[];multiple_fits=len(master['fits'])>1
     option_name='Inseam' if master['fits'] and all(re.fullmatch(r'Inseam-\d+',fit['label'],re.I) for fit in master['fits']) else 'Fit'
