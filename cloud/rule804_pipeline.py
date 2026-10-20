@@ -11,8 +11,9 @@ EXCLUDED={'LAAM','Khaadi','Sapphire'}
 def toolkit():
     spec=importlib.util.spec_from_file_location('rule804_xml_tools',ROOT/'catalog-tools/complete_rule804_batch.py');module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);return module
 
-def process(source,out,store,codes):
-    if store in EXCLUDED:raise ValueError('Excluded store cannot enter fresh Rule 804 pipeline')
+def process(source,out,store,codes,*,mobile_khaadi=False):
+    if store in EXCLUDED and not (mobile_khaadi and store=='Khaadi'):raise ValueError('Excluded store cannot enter fresh Rule 804 pipeline')
+    if mobile_khaadi and store!='Khaadi':raise ValueError('Mobile approval is only for Khaadi')
     tools=toolkit();book=load_workbook(source,read_only=True,data_only=False);patches={};warnings=[];ids=set();count=0;stamp=datetime.now(timezone.utc).isoformat()
     try:
         if not {'Products','Product Images','Option Groups','Options','Variant Combinations'}<=set(book.sheetnames):raise ValueError('Required template sheets missing')
@@ -23,6 +24,10 @@ def process(source,out,store,codes):
         for number,values in enumerate(rows,2):
             if not any(v is not None for v in values):continue
             row=dict(zip(headers,values));pid=row['product_id'];count+=1
+            if mobile_khaadi:
+                from urllib.parse import urlsplit
+                source_url=urlsplit(str(row.get('source_url') or ''))
+                if source_url.scheme!='https' or source_url.hostname!='pk.khaadi.com':raise ValueError('Mobile Khaadi requires Pakistan product source URLs')
             if not pid or str(pid) in ids:raise ValueError('Missing or duplicate product ID')
             ids.add(str(pid))
             try:price=Decimal(str(row['base_price (PKR)']))

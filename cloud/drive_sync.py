@@ -32,12 +32,16 @@ def main():
  runs=json.loads(gh('run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','100','--json','databaseId,displayTitle,status,conclusion'))
  groups={r['displayTitle'].removeprefix('Cloud group ') for r in runs if r['displayTitle'].startswith('Cloud group fresh26-'+root+'-')}
  runs=checked.related(runs,groups)
- if not runs:raise RuntimeError('No matching authorized fresh-batch runs found')
+ if not runs and not (ROOT/'catalog-inputs/khaadi-mobile/latest.json').exists():raise RuntimeError('No matching authorized fresh-batch runs found')
  with tempfile.TemporaryDirectory() as tmp:
   cfg=Path(tmp)/'rclone.conf';cfg.write_text(secret,encoding='utf-8');cfg.chmod(0o600)
   def rc(*args):
    result=subprocess.run(['rclone','--config',str(cfg),*args],capture_output=True,text=True,timeout=900)
    if result.returncode:raise RuntimeError('Drive '+args[0]+' failed; upload not marked verified')
+  from mobile_khaadi_ingest import upload as upload_mobile
+  if upload_mobile(state,folder,rc):
+   state['verified_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat();publish(state,branch='drive-sync-reports')
+   print('VERIFIED: mobile Khaadi processed with Rule 804 and checksum-checked in',folder,flush=True)
   for run in reversed(runs):
    rid=str(run['databaseId']);artifacts=json.loads(gh('api','repos/'+REPO+'/actions/runs/'+rid+'/artifacts?per_page=100'))['artifacts']
    matches=[a for a in artifacts if a['name']=='chotuapp-rule804-files' and not a.get('expired')]
