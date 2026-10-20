@@ -1,0 +1,172 @@
+{
+  "run_id": "39494494237",
+  "source_run": "39472411645",
+  "recent_runs": [
+    {
+      "conclusion": "success",
+      "databaseId": 39482445323,
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 39473490016,
+      "status": "completed"
+    },
+    {
+      "conclusion": "failure",
+      "databaseId": 39472411645,
+      "status": "completed"
+    }
+  ],
+  "result": {
+    "conclusion": "failure",
+    "jobs": [
+      {
+        "completedAt": "2026-10-20T18:10:56Z",
+        "conclusion": "failure",
+        "databaseId": 118799579998,
+        "name": "upload",
+        "startedAt": "2026-10-20T18:10:23Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-20T18:10:24Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-20T18:10:24Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-20T18:10:42Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@v4",
+            "number": 2,
+            "startedAt": "2026-10-20T18:10:24Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-20T18:10:43Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-python@v5",
+            "number": 3,
+            "startedAt": "2026-10-20T18:10:42Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-20T18:10:45Z",
+            "conclusion": "success",
+            "name": "Run python -m pip install requests beautifulsoup4",
+            "number": 4,
+            "startedAt": "2026-10-20T18:10:43Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-20T18:10:53Z",
+            "conclusion": "success",
+            "name": "Run sudo apt-get update -qq && sudo apt-get install -y rclone",
+            "number": 5,
+            "startedAt": "2026-10-20T18:10:45Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-20T18:10:54Z",
+            "conclusion": "failure",
+            "name": "Rule 804 checked files only, then checksum verification",
+            "number": 6,
+            "startedAt": "2026-10-20T18:10:53Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-20T18:10:54Z",
+            "conclusion": "skipped",
+            "name": "Post Run actions/setup-python@v5",
+            "number": 11,
+            "startedAt": "2026-10-20T18:10:54Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-20T18:10:54Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@v4",
+            "number": 12,
+            "startedAt": "2026-10-20T18:10:54Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-20T18:10:54Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 13,
+            "startedAt": "2026-10-20T18:10:54Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39472411645/job/118799579998"
+      }
+    ],
+    "status": "completed"
+  },
+  "failed_log": [
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:51.1063883Z (Reading database ... 75%",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:51.2588265Z (Reading database ... 80%",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:51.6640249Z (Reading database ... 85%",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:51.8460548Z (Reading database ... 90%",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:52.0191044Z (Reading database ... 95%",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:52.0191577Z (Reading database ... 100%",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:52.0192237Z (Reading database ... 214410 files and directories currently installed.)",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:52.0240458Z Preparing to unpack .../rclone_1.60.1+dfsg-3ubuntu0.24.04.6_amd64.deb ...",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:52.0266648Z Unpacking rclone (1.60.1+dfsg-3ubuntu0.24.04.6) ...",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:52.2837822Z Setting up rclone (1.60.1+dfsg-3ubuntu0.24.04.6) ...",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:52.2862389Z Processing triggers for man-db (2.12.0-4build2) ...",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:52.2885326Z Not building database; man-db/auto-update is not 'true'.",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:52.9518683Z ",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:52.9519534Z Running kernel seems to be up-to-date.",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:52.9519939Z ",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:52.9520115Z No services need to be restarted.",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:52.9520408Z ",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:52.9520573Z No containers need to be restarted.",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:52.9520887Z ",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:52.9521091Z No user sessions are running outdated binaries.",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:52.9521442Z ",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:52.9521970Z No VM guests are running outdated hypervisor (qemu) binaries on this host.",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:53.8753654Z ##[group]Run python cloud/drive_sync.py",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:53.8754012Z ^[[36;1mpython cloud/drive_sync.py^[[0m",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:53.8805811Z shell: /usr/bin/bash -e {0}",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:53.8806068Z env:",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:53.8806336Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:53.8806788Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:53.8807233Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:53.8807619Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:53.8808000Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:53.8808389Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib",
+    "[credential-bearing log line removed]",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:53.8811324Z   CHOTU_DRIVE_RCLONE_CONFIG: ",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:53.8811573Z ##[endgroup]",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:54.0683421Z Traceback (most recent call last):",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:54.0692564Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/drive_sync.py\", line 68, in <module>",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:54.0693526Z     if __name__=='__main__':main()",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:54.0693946Z                             ^^^^^^",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:54.0695068Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/drive_sync.py\", line 20, in main",
+    "[credential-bearing log line removed]",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:54.0697453Z                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:54.0698272Z RuntimeError: CHOTU_DRIVE_RCLONE_CONFIG secret not configured; no Drive upload attempted",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:54.0906482Z ##[error]Process completed with exit code 1.",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:54.1055772Z Post job cleanup.",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:54.1936292Z [command]/usr/bin/git version",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:54.1984995Z git version 2.55.0",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:54.2029556Z Temporarily overriding HOME='/home/runner/work/_temp/724b33b1-36dd-4e2b-9e13-58b8b35313b2' before making global git config changes",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:54.2030597Z Adding repository directory to the temporary git global config as a safe directory",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:54.2036090Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ChotuApp-Software/ChotuApp-Software",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:54.2080505Z [command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:54.2120162Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:54.2387013Z [command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:54.2418417Z http.https://github.com/.extraheader",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:54.2430865Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:54.2475389Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:54.2785705Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:54.2846292Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:54.3383316Z Cleaning up orphan processes",
+    "upload\tUNKNOWN STEP\t2026-10-20T18:10:54.3736899Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+  ]
+}
