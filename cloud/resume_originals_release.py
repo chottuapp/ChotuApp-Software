@@ -7,8 +7,10 @@ from runner_identity import validate_runner_sources
 REPO='chottuapp/ChotuApp-Software'
 def gh(*args):return subprocess.run(['gh',*args],capture_output=True,text=True,check=True,timeout=180).stdout
 
-def main():
-    marker=json.loads((Path(__file__).parent/'originals-resume-release.json').read_text());report={'run_id':os.environ['GITHUB_RUN_ID'],'sources':[]}
+def perform():
+    marker=json.loads((Path(__file__).parent/'originals-resume-release.json').read_text());report={'run_id':os.environ['GITHUB_RUN_ID'],'sources':[],'phase':'validating'}
+    globals()['LAST_REPORT']=report
+    publish(report,branch='fetch-update-reports')
     for site in marker['sources']:
         validate_runner_sources({'sites':[{'name':site['name'],'url':site['url']}]},site['group'])
         runs=json.loads(gh('run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','100','--json','databaseId,displayTitle,status'))
@@ -62,5 +64,12 @@ def main():
                 failed=subprocess.run(['gh','run','view',rid,'--repo',REPO,'--log-failed'],capture_output=True,text=True,timeout=120)
                 lines=failed.stdout.splitlines();record['error_context']=[redact(l) for l in lines if any(w in l for w in ('EXCEPTION','Error:','FAILED:','SOURCE BLOCKED','SOURCE PAUSED','##[error]'))][:30];break
             time.sleep(10)
+    report['phase']='finished'
     publish(report,branch='fetch-update-reports');print(json.dumps(report,indent=2))
+def main():
+    try:perform()
+    except Exception as exc:
+        from diagnostics import redact
+        report=globals().get('LAST_REPORT',{'run_id':os.environ.get('GITHUB_RUN_ID','unknown'),'sources':[]})
+        report.update(phase='failed',controller_error=redact(str(exc)));publish(report,branch='fetch-update-reports');raise
 if __name__=='__main__':main()
