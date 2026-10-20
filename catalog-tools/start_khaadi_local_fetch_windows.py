@@ -33,7 +33,10 @@ def fetch(root,data,session=None):
             from urllib.parse import urlsplit
             if urlsplit(response.url).hostname=='pk.khaadi.com':cache.put(url,response)
             return response
-        def get_fresh(self,url,**kwargs):return raw.get(url,**kwargs)
+        def get_fresh(self,url,**kwargs):
+            response=raw.get(url,**kwargs)
+            response.encoding='utf-8';response.headers={'Content-Type':'text/html; charset=utf-8'}
+            return response
     logpath=data/'fetch-log.txt';status=data/'local-status.json'
     last_heartbeat=[0.0];state_lock=threading.RLock();stop_heartbeat=threading.Event()
     latest_event=['Starting'];latest_progress=[time.time()]

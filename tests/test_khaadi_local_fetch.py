@@ -21,6 +21,22 @@ class LocalFetchTests(unittest.TestCase):
    state=json.loads((data/'local-status.json').read_text());self.assertEqual(state['status'],'exported_review_required');self.assertFalse(state['full_catalog_verified'])
    wb=load_workbook(state['files'][0]);self.assertEqual(wb['Products'].max_row,2);self.assertEqual(wb['Variant Combinations'].max_row,3);wb.close()
    self.assertTrue((data/'pages.sqlite3').is_file());self.assertTrue((data/'fetch-log.txt').is_file())
+ def test_fresh_native_curl_response_is_cache_compatible(self):
+  from resume_support import ResponseCache
+  url=source.BASE+'/robots.txt'
+  raw=SimpleNamespace(get=Mock(return_value=SimpleNamespace(url=url,status_code=200,content=b'User-agent: *',text='User-agent: *')))
+  def catalog(reader):
+   response=reader.read(url,fresh=True)
+   self.assertEqual(response.encoding,'utf-8')
+   raise RuntimeError('Transport checked')
+  with tempfile.TemporaryDirectory() as tmp:
+   data=Path(tmp)
+   with patch.object(source.PublicCatalog,'catalog',catalog),patch('builtins.print'):
+    self.assertEqual(helper.fetch(ROOT,data,raw),2)
+   state=json.loads((data/'local-status.json').read_text());self.assertEqual(state['error'],'Transport checked')
+   cache=ResponseCache(data/'pages.sqlite3')
+   try:self.assertEqual(cache.get(url).text,'User-agent: *')
+   finally:cache.close()
  def test_failure_keeps_resume_status_and_cached_work(self):
   with tempfile.TemporaryDirectory() as tmp:
    data=Path(tmp)
