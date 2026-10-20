@@ -20,6 +20,7 @@ class DriveSyncTests(unittest.TestCase):
    raise AssertionError(args)
   def command(args,**kw):
    if args[0]!='rclone':raise AssertionError(args)
+   self.assertIn('chotudrive:ChotuApp 19-10-2026 11-36AM',args)
    config=Path(args[2]);self.assertEqual(config.read_text(),CONFIG)
    if fail and 'check' in args:return SimpleNamespace(returncode=1)
    return SimpleNamespace(returncode=0)

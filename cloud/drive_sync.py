@@ -19,7 +19,8 @@ def main():
  secret=os.environ.get('CHOTU_DRIVE_RCLONE_CONFIG','')
  if not secret:raise RuntimeError('CHOTU_DRIVE_RCLONE_CONFIG secret not configured; no Drive upload attempted')
  config_text(secret)
- config=json.loads((ROOT/'cloud/drive-sync-release.json').read_text());root=config['dispatcher'];folder=checked.daily_folder()
+ config=json.loads((ROOT/'cloud/drive-sync-release.json').read_text());root=config['dispatcher'];folder=config.get('destination_folder') or checked.daily_folder()
+ if '/' in folder or '\\' in folder or ':' in folder or folder in ('.','..',''):raise ValueError('Invalid destination folder')
  try:
   old=json.loads(gh('api','repos/'+REPO+'/contents/latest.json?ref=drive-sync-reports'))
   state=json.loads(base64.b64decode(old['content']))
