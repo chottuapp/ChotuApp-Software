@@ -1,4 +1,5 @@
 """Explicit original-store opt-in: phone Khaadi -> Rule 804 -> checked Drive copy."""
+import datetime
 import hashlib,json,re,tempfile
 from pathlib import Path
 from rule804_pipeline import process
@@ -31,6 +32,6 @@ def upload(state,folder,rc,*,root=ROOT):
   remote='chotudrive:'+folder
   rc('copy',str(out.parent),remote,'--include','Khaadi.xlsx','--checksum')
   rc('check',str(out.parent),remote,'--include','Khaadi.xlsx','--one-way')
-  record.update(source_sha256=sha,pipeline_revision=revision,folder=folder,coverage='Public default-page discovery; full catalog coverage unverified')
+  record.update(verified_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),source_sha256=sha,pipeline_revision=revision,folder=folder,coverage='Public default-page discovery; full catalog coverage unverified')
   state['original_uploads']['Khaadi']=record
  return True

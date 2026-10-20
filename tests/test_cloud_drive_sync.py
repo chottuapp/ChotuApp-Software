@@ -31,7 +31,7 @@ class DriveSyncTests(unittest.TestCase):
    else:
     sync.main();report=publish.call_args.args[0]
     self.assertEqual(report['uploaded']['Miss Rose']['sha256'],record['sha256']);self.assertEqual(report['processed_artifacts']['123'],9)
-    self.assertNotIn('refresh_token',json.dumps(report))
+    self.assertNotIn('refresh_token',json.dumps(report));self.assertIn('verified_utc',report['uploaded']['Miss Rose'])
  def test_upload_is_marked_only_after_checksum_verification(self):self.exercise()
  def test_failed_checksum_never_marks_upload_verified(self):self.exercise(True)
  def test_missing_secret_never_calls_drive(self):

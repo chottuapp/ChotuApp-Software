@@ -64,7 +64,7 @@ def main():
      rc('copy',str(upload),remote,'--include','*.xlsx','--checksum')
      rc('check',str(upload),remote,'--include','*.xlsx','--one-way')
      for item,file in files:
-      record={'sha256':item['sha256'],'rule804':item['rule804'],'warnings':item.get('warnings',[]),'source_run':rid,'folder':folder}
+      record={'sha256':item['sha256'],'rule804':item['rule804'],'warnings':item.get('warnings',[]),'source_run':rid,'folder':folder,'verified_utc':datetime.datetime.now(datetime.timezone.utc).isoformat()}
       state['uploaded'][item['store']]=record;state['daily_uploads'][folder][item['store']]=record
     state.setdefault('held',{})[rid]=manifest.get('held',[])
     state['processed_artifacts'][rid]=artifact['id'];state['verified_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat();state['run_id']=os.environ['GITHUB_RUN_ID']
