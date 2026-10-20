@@ -1,0 +1,9 @@
+# Sapphire permitted public-page adapter — 20 October 2026
+
+The user supplied Pakistan-captured homepage, robots, sitemap and actual product pages. Public canonical product pages with observed `dwvar_*_size` selectors return exact selected variant IDs, prices, visible size selection and enabled/disabled add-to-cart state. No disallowed `/on/demandware.store/` requests are made and no Googlebot identity is used.
+
+Captured RTW suit: 2PCSTCASV996_999, PKR12990, selected XS variant 2PCSTCASV996-XSM-999 and selected L variant 2PCSTCASV996-LRG-999. Captured unstitched suit: U3PELXS26V91, PKR14990. Quantities remain unknown. Variant images are taken from each exact selected page, not guessed from another size. Raw HTML fixtures retain only the public product wrapper/canonical link, omit hidden inputs/scripts and embedded placeholder data images; no browser cookies were collected.
+
+The adapter validates visible vs structured prices, explicit PKR, canonical/master/selected identity, size labels, complete observed size coverage and source images. Invalid or unsupported formats stop with a real adapter error; blocked paths are rejected before a request. Cached successful work remains durable. Initial cloud probe verifies these samples before any full-catalog claim.
+
+**Coverage limitation:** supplied sitemap_1.xml contains 620 category links and no product URLs. The adapter inspects permitted default collection grids and exact observed product/variant pages. `start`, `sz` and restricted refinements are never requested. This cannot establish full catalog coverage; exports are explicitly REVIEW/partial coverage and must not be described as the entire Sapphire catalog. Website order remains unverified rather than inventing rank; observed product breadcrumbs remain source evidence. The new route does not solve Khaadi's separate geo-routing or adapter requirements.

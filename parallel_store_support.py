@@ -118,7 +118,7 @@ class StoreScheduler:
             try:job['process'].stdin.close()
             except (OSError,ValueError):pass
     def run(self):
-        self.raw('PARALLEL STORES: up to 2 different websites together; source pacing, cooldowns and checks preserved.')
+        self.raw('PARALLEL STORES: up to '+str(self.max_processes)+' different websites together; source pacing, cooldowns and checks preserved.')
         for index in self.initial_deferred:
             self.deferred+=1;site=self.state['sites'][index]
             self.raw('WEBSITE COOLDOWN: '+site['name']+' — server delay is too long; Continue Saved Run later.')
