@@ -39,7 +39,7 @@ class KhaadiTests(unittest.TestCase):
 
  def test_mixed_sitemap_excludes_policy_and_category_pages(self):
   from unittest.mock import patch
-  sitemap='<urlset>'+''.join('<url><loc>'+source.BASE+p+'</loc></url>' for p in ['/return-exchange-global.html','/privacy-policy.html','/ready-to-wear.html','/black-cambric-kurta/1-26-320-A-C1-VG_MULTI.html','/account/orders.html'])+'</urlset>'
+  sitemap='<urlset>'+''.join('<url><loc>'+source.BASE+p+'</loc></url>' for p in ['/blogs/winter2025.html','/blog/summer2026.html','/return-exchange-global.html','/privacy-policy.html','/ready-to-wear.html','/black-cambric-kurta/1-26-320-A-C1-VG_MULTI.html','/account/orders.html'])+'</urlset>'
   requested=[]
   class Reader(source.PublicCatalog):
    def read(self,url,**kwargs):
@@ -50,3 +50,16 @@ class KhaadiTests(unittest.TestCase):
    products,complete=Reader({'_chotu_wait':lambda:None},lambda _:None).catalog()
   self.assertEqual(len(products),1);self.assertFalse(complete)
   self.assertEqual([u for u in requested if u.endswith('.html')],[URL])
+
+ def test_content_page_is_skipped_but_broken_product_is_not(self):
+  from unittest.mock import patch
+  other=source.BASE+'/seasonal/lookbook2026.html'
+  for action,raises in [('Page-Show',False),('Product-Show',True)]:
+   class Reader(source.PublicCatalog):
+    def read(self,url,**kwargs):
+     text=('User-agent: *\nSitemap: '+source.BASE+'/sitemap_0.xml') if url.endswith('robots.txt') else '<urlset><url><loc>'+other+'</loc></url><url><loc>'+URL+'</loc></url></urlset>' if url.endswith('.xml') else '<div class="page" data-action="'+action+'"></div>' if url==other else fixture('master')
+     return SimpleNamespace(text=text,content=text.encode())
+   with patch.object(source,'normalize_product',side_effect=lambda html,*args: {'id':'main','variants':[]} if 'product-set-detail' in html else (_ for _ in ()).throw(ValueError('Primary product missing'))):
+    if raises:
+     with self.assertRaisesRegex(ValueError,'Primary product missing'):Reader({'_chotu_wait':lambda:None},lambda _:None).catalog()
+    else:self.assertEqual(len(Reader({'_chotu_wait':lambda:None},lambda _:None).catalog()[0]),1)

@@ -124,16 +124,29 @@ class PublicCatalog:
                 for n in row:
                     if local(n.tag)!='loc' or not n.text:continue
                     p=urlsplit(n.text.strip())
+                    if p.path.split('/')[1].lower() in ('blogs','blog','pages','account','customer-service','stores','store-locator'):continue
                     if p.hostname=='pk.khaadi.com' and re.fullmatch(r'/[^/]+/[A-Za-z0-9_-]*[0-9][A-Za-z0-9_-]*\.html',p.path) and not p.query:urls.setdefault(p.path.rsplit('/',1)[-1],n.text.strip())
         if not urls:raise SourceUnavailable('No public product addresses found in declared sitemap')
         result=[]
         for index,url in enumerate(urls.values(),1):
             self.g['_chotu_wait']();product=self.cache.get(url) if self.cache else None
             if product is None:
-                product=normalize_product(self.read(url).text,url,self.read)
+                html=self.read(url).text;soup=BeautifulSoup(html,'html.parser')
+                if soup.select_one('.product-set-detail[data-pid]') is None:
+                    page=soup.select_one('[data-action]');action=page.get('data-action') if page else None
+                    has_product=False
+                    for node in soup.select('script[type="application/ld+json"]'):
+                        try:
+                            data=json.loads(node.get_text())
+                            has_product=has_product or (isinstance(data,dict) and data.get('@type')=='Product')
+                        except (ValueError,TypeError):pass
+                    if action in ('Page-Show','Search-Show','Content-Show','Home-Show','Blog-Show') and not has_product:
+                        self.log('KHAADI NON-PRODUCT SKIPPED: '+str(action)+' '+url);continue
+                product=normalize_product(html,url,self.read)
                 if self.cache:self.cache.put(url,product)
             result.append(product)
             if index==1 or index%25==0:self.log(f'KHAADI PUBLIC PRODUCTS: {index}/{len(urls)} verified')
+        if not result:raise SourceUnavailable('No verified public products found; source page classification requires review')
         self.log('REVIEW REQUIRED: Khaadi public selected-size export; catalog completeness and website listing order unverified')
         return result,False
 
