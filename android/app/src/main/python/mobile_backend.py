@@ -69,6 +69,7 @@ def dashboard():
   try:
    response=requests.get('https://raw.githubusercontent.com/'+REPO+'/'+branch+'/latest.json',params={'check':time.time_ns()},timeout=25);response.raise_for_status();result[key]=response.json()
   except requests.RequestException:result[key]={'unavailable':True}
+ result.get('runners',{})['active_runners']=sum(run.get('status')=='in_progress' for run in result.get('runners',{}).get('runs',[]))
  from store_progress import rows
  result['store_progress']=rows(result.get('runners',{}))
  return json.dumps(result)
@@ -113,7 +114,7 @@ def safe_log(value,token=''):
  if token:value=value.replace(token,'[redacted]')
  value=re.sub(r'(?:github_pat_|gh[pousr]_)[A-Za-z0-9_]+','[redacted]',value)
  if re.search(r'authorization|access_token|refresh_token|client_secret|password|set-cookie|cookie:',value,re.I):return '[credential-bearing line omitted]'
- return re.sub(r'/data/(?:user/\d+|data)/com\.chotuapp\.mobile/[^ \n]*','[app-data]',value)[:900]
+ return re.sub(r'/data/(?:user/\d+|data)/com\.chotuapp\.(?:mobile|studio)/[^ \n]*','[app-data]',value)[:900]
 
 def log_tail(data,token=''):
  path=Path(data)/'fetch-log.txt'

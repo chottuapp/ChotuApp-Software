@@ -5,8 +5,9 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
-    <application android:label="ChotuApp" android:theme="@style/AppTheme" android:allowBackup="false" android:usesCleartextTraffic="false" android:icon="@drawable/app_icon">
-        <activity android:name=".MainActivity" android:exported="true"><intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter></activity>
-        <service android:name=".FetchService" android:exported="false" android:foregroundServiceType="dataSync" />
+    <application android:label="ChotuApp Studio" android:theme="@style/AppTheme" android:allowBackup="false" android:usesCleartextTraffic="false" android:icon="@drawable/app_icon">
+        <activity android:name="com.chotuapp.mobile.LoginActivity" android:exported="true"><intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter></activity>
+        <activity android:name="com.chotuapp.mobile.MainActivity" android:exported="false" />
+        <service android:name="com.chotuapp.mobile.FetchService" android:exported="false" android:foregroundServiceType="dataSync" />
     </application>
 </manifest>
