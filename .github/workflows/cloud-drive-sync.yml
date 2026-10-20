@@ -8,7 +8,7 @@ on:
     types: [completed]
   push:
     branches: [main]
-    paths: [cloud/drive_sync.py, cloud/drive-sync-release.json, .github/workflows/cloud-drive-sync.yml]
+    paths: [cloud/drive_sync.py, cloud/source_research.py, cloud/drive-sync-release.json, .github/workflows/cloud-drive-sync.yml]
 permissions:
   contents: write
   actions: read
