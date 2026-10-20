@@ -12,6 +12,9 @@ AGENT='ChotuAppCatalogRefresh'
 class TemporaryProductError(RuntimeError):
     """A retryable page failure; never a missing or successfully exported product."""
 
+class ConfirmedOutOfStock(ValueError):
+    """An explicit empty, zero-inventory public product, never an invented variant."""
+
 class SourceAccessError(ValueError):
     """Public source access/locale cannot be verified; distinct from parser failures."""
 
@@ -59,6 +62,11 @@ def normalize(raw,handle):
     if raw.get('handle')!=handle or raw.get('id') is None or not raw.get('title'):raise ValueError('Incomplete LAAM identity')
     if str(raw.get('status') or '').lower() not in ('active','draft','archived'):raise ValueError('LAAM publication status unverified')
     options=raw.get('options');variants=raw.get('variants')
+    if variants==[] and str(raw.get('stock_status') or '').lower() in ('out-of-stock','sold-out'):
+        quantity=raw.get('total_inventory_quantity');stores=raw.get('total_sellable_inventory_on_store')
+        if isinstance(quantity,int) and not isinstance(quantity,bool) and quantity==0:
+            if stores is not None and (not isinstance(stores,dict) or any(not isinstance(v,int) or isinstance(v,bool) or v!=0 for v in stores.values())):raise ValueError('Conflicting LAAM out-of-stock evidence')
+            raise ConfirmedOutOfStock('Explicit out-of-stock product with zero source inventory and no variants')
     if not isinstance(options,list) or len(options)>3 or not isinstance(variants,list) or not variants:raise ValueError('Unsupported LAAM option/variant schema')
     if any(not isinstance(item,dict) for item in options):raise ValueError('Incomplete LAAM option schema')
     positions=[item.get('position') for item in options]
@@ -204,6 +212,9 @@ class PublicCatalog:
                     continue
                 # Nuxt state and currency evidence live in scripts; don't build a full page DOM.
                 try:product=product_state(BeautifulSoup(response.text,'html.parser',parse_only=SoupStrainer('script')),handle)
+                except ConfirmedOutOfStock:
+                    self.log('LAAM SOURCE OUT OF STOCK: '+url+'; explicit zero inventory and empty variants; unavailable product excluded, no variants invented')
+                    continue
                 except SourceAccessError:raise
                 except (ValueError,TypeError,KeyError) as exc:raise ValueError('Product '+handle+': '+str(exc)) from exc
                 if self.cache:self.cache.put(url,product)

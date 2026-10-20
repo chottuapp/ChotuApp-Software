@@ -82,6 +82,25 @@ class LaamTests(unittest.TestCase):
    g={'_chotu_wait':lambda:None,'_chotu_backoff':lambda *a:None,'_chotu_debug_request':lambda *a:None,'_chotu_debug_response':lambda *a,**k:None,'S':session}
    with self.assertRaisesRegex(RuntimeError,'SOURCE PAUSED'):source.PublicCatalog(g,lambda _:None).read(source.BASE+'/products/one')
    self.assertEqual(session.get_fresh.call_count,count)
+ def test_actual_empty_out_of_stock_product_is_recognized_without_invented_variants(self):
+  raw=json.loads((ROOT/'tests/fixtures/laam_empty_out_of_stock.json').read_text())['product']
+  with self.assertRaises(source.ConfirmedOutOfStock):source.normalize(raw,raw['handle'])
+  for changes in ({'total_inventory_quantity':None},{'stock_status':'in-stock'},{'total_sellable_inventory_on_store':{'121':1}}):
+   changed=dict(raw,**changes)
+   try:source.normalize(changed,changed['handle'])
+   except source.ConfirmedOutOfStock:self.fail('Unknown/conflicting availability must not be excluded as confirmed out of stock')
+   except ValueError:pass
+   else:self.fail('Missing variants must not normalize successfully')
+ def test_confirmed_unavailable_product_does_not_stop_remaining_catalog(self):
+  from types import SimpleNamespace
+  fixture=json.loads((ROOT/'tests/fixtures/laam_empty_out_of_stock.json').read_text());bad=fixture['product'];good=FIXTURES[0]['product'];urls=[source.BASE+'/products/'+bad['handle'],source.BASE+'/products/'+good['handle']]
+  sitemap='<urlset>'+''.join('<url><loc>'+u+'</loc></url>' for u in urls)+'</urlset>'
+  class Reader(source.PublicCatalog):
+   def read(self,url,**kwargs):
+    text='User-agent: *\nSitemap: '+source.BASE+'/sitemap.xml' if url.endswith('robots.txt') else sitemap if url.endswith('.xml') else html(bad if url==urls[0] else good)
+    return SimpleNamespace(text=text,content=text.encode(),status_code=200)
+  products,complete=Reader({'_chotu_wait':lambda:None},lambda _:None).catalog()
+  self.assertTrue(complete);self.assertEqual(len(products),1);self.assertEqual(products[0]['id'],good['id'])
  def test_source_does_not_follow_other_hosts(self):
   reader=source.PublicCatalog({},lambda _:None)
   with self.assertRaisesRegex(ValueError,'changed host'):reader.read('https://other.example/products/x')
