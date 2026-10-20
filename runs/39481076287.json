@@ -1,0 +1,329 @@
+{
+  "run_id": "39481076287",
+  "checked_utc": "2026-10-20T19:10:07.153216+00:00",
+  "active_queued": 5,
+  "runs": [
+    {
+      "conclusion": "failure",
+      "databaseId": 39469788414,
+      "displayTitle": "Cloud group solo-sapphire",
+      "status": "completed",
+      "updatedAt": "2026-10-20T18:53:54Z",
+      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39469788414",
+      "lane": "solo-sapphire",
+      "snapshot": "Updated (UTC): 2026-10-20T18:53:12.427184+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nSapphire: failed\n  Stage: Idle\n  Last successful HTTP response (UTC): 2026-10-20T18:53:04.927171+00:00\n",
+      "snapshot_utc": "2026-10-20T18:53:12.427184+00:00",
+      "stores": {
+        "Sapphire": "failed"
+      },
+      "snapshot_age_seconds": 1015,
+      "snapshot_stale": true,
+      "failure_details": [
+        "fetch\tFetch result\t2026-10-20T18:53:14.0505912Z [Sapphire] [18:53:02] HTTP START attempt=1 https://pk.sapphireonline.pk/collections/modest-wear/products/MODTOP26V304_999.html?redacted",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0507351Z [Sapphire] [18:53:03] HTTP END status=200 elapsed=1.4s bytes=359709 https://pk.sapphireonline.pk/collections/modest-wear/products/MODTOP26V304_999.html?redacted",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0508854Z [Sapphire] [18:53:03] HTTP START attempt=1 https://pk.sapphireonline.pk/collections/sale/products/00024101FUS4_STD.html",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0510518Z [Sapphire] [18:53:04] HTTP END status=200 elapsed=1.4s bytes=363719 https://pk.sapphireonline.pk/collections/sale/products/00024101FUS4_STD.html",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0511929Z __CHOTU_PROGRESS__|1|Active: Sapphire",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0513521Z [Sapphire] [18:53:04] EXCEPTION: RuntimeError(\"ADAPTER ERROR: Sapphire Visible and structured primary product prices disagree: expected 1227.00; visible ['1167.00', '1227.00']. Saved work retained; no price/stock guessed.\")",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0515437Z [Sapphire] [18:53:04] Traceback (most recent call last):",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0529569Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 226, in run",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0547318Z     master=inspect_page(page,url)",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0547717Z            ^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0548456Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 44, in inspect_page",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0549645Z     if visible_prices!={Decimal(price)}:raise ValueError('Visible and structured primary product prices disagree: expected '+price+'; visible '+str(sorted(str(v) for v in visible_prices)))",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0550642Z                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0551636Z ValueError: Visible and structured primary product prices disagree: expected 1227.00; visible ['1167.00', '1227.00']",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0552127Z ",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0552395Z The above exception was the direct cause of the following exception:",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0558255Z     _chotuapp_run_site_original(base, name, template, intercept)",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0559455Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 194, in run",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0561007Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0562272Z                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0563099Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 228, in run",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0564145Z     except (ValueError,TypeError,KeyError) as exc:raise RuntimeError('ADAPTER ERROR: Sapphire '+str(exc)+'. Saved work retained; no price/stock guessed.') from exc",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0565043Z                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0566011Z RuntimeError: ADAPTER ERROR: Sapphire Visible and structured primary product prices disagree: expected 1227.00; visible ['1167.00', '1227.00']. Saved work retained; no price/stock guessed.",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0566700Z ",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0567332Z [Sapphire] FAILED: Sapphire: ADAPTER ERROR: Sapphire Visible and structured primary product prices disagree: expected 1227.00; visible ['1167.00', '1227.00']. Saved work retained; no price/stock guessed.",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0568215Z [Sapphire] [18:53:04] STAGE: Idle",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0569105Z FAILED: Sapphire: FAILED: Sapphire: ADAPTER ERROR: Sapphire Visible and structured primary product prices disagree: expected 1227.00; visible ['1167.00', '1227.00']. Saved work retained; no price/stock guessed.",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0569954Z False",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0570618Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0571779Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0572309Z RUN SUMMARY:",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0573513Z Sapphire: FAILED \u2014 FAILED: Sapphire: ADAPTER ERROR: Sapphire Visible and structured primary product prices disagree: expected 1227.00; visible ['1167.00', '1227.00']. Saved work retained; no price/stock guessed.",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0574373Z Checkpoint: saved",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0574933Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0585640Z ##[error]Process completed with exit code 2."
+      ]
+    },
+    {
+      "conclusion": "",
+      "databaseId": 39468633210,
+      "displayTitle": "Cloud group solo-laam",
+      "status": "in_progress",
+      "updatedAt": "2026-10-20T17:44:04Z",
+      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39468633210",
+      "lane": "solo-laam",
+      "snapshot": "Updated (UTC): 2026-10-20T19:05:31.907101+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nLAAM: running\n  Stage: Website listing order\n  public product pages: 350/183187 tasks; sample age 453s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-10-20T18:56:51.817634+00:00\n",
+      "snapshot_utc": "2026-10-20T19:05:31.907101+00:00",
+      "stores": {
+        "LAAM": "running"
+      },
+      "snapshot_age_seconds": 275,
+      "snapshot_stale": false
+    },
+    {
+      "conclusion": "",
+      "databaseId": 39450806726,
+      "displayTitle": "Cloud group fresh26-39450710625-9",
+      "status": "in_progress",
+      "updatedAt": "2026-10-20T15:41:57Z",
+      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39450806726",
+      "lane": "fresh26-39450710625-9",
+      "snapshot": "Updated (UTC): 2026-10-20T19:08:59.656034+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Zero Lifestyle.xlsx\n\nSTORE STATUS\nZellbury: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 3950/6163 tasks; sample age 134s\n  Approximate ETA for this stage only: 110.7 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-20T19:08:55.079560+00:00\nZero Lifestyle: done\n  Last successful HTTP response (UTC): 2026-10-20T15:43:17.576593+00:00\n",
+      "snapshot_utc": "2026-10-20T19:08:59.656034+00:00",
+      "stores": {
+        "Zellbury": "running",
+        "Zero Lifestyle": "done"
+      },
+      "snapshot_age_seconds": 67,
+      "snapshot_stale": false
+    },
+    {
+      "conclusion": "",
+      "databaseId": 39450802086,
+      "displayTitle": "Cloud group fresh26-39450710625-8",
+      "status": "in_progress",
+      "updatedAt": "2026-10-20T15:41:55Z",
+      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39450802086",
+      "lane": "fresh26-39450710625-8",
+      "snapshot": "Updated (UTC): 2026-10-20T19:09:24.349630+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Skin Factor.xlsx\n2. Bonanza Satrangi.xlsx\n\nSTORE STATUS\nSkin Factor: done\n  Last successful HTTP response (UTC): 2026-10-20T15:43:16.745425+00:00\nBonanza Satrangi: done\n  Last successful HTTP response (UTC): 2026-10-20T17:15:46.304250+00:00\nOutfitters: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 4100/4137 tasks; sample age 106s\n  Approximate ETA for this stage only: 1.9 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-20T19:09:14.913744+00:00\n",
+      "snapshot_utc": "2026-10-20T19:09:24.349630+00:00",
+      "stores": {
+        "Skin Factor": "done",
+        "Bonanza Satrangi": "done",
+        "Outfitters": "running"
+      },
+      "snapshot_age_seconds": 43,
+      "snapshot_stale": false
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 39450796831,
+      "displayTitle": "Cloud group fresh26-39450710625-7",
+      "status": "completed",
+      "updatedAt": "2026-10-20T16:23:03Z",
+      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39450796831",
+      "lane": "fresh26-39450710625-7",
+      "snapshot": "Updated (UTC): 2026-10-20T16:22:24.468897+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Denim Leftover.xlsx\n2. Cool and Cool.xlsx\n3. Saeed Ghani.xlsx\n\nSTORE STATUS\nDenim Leftover: done\n  Last successful HTTP response (UTC): 2026-10-20T15:44:12.975777+00:00\nCool and Cool: done\n  Last successful HTTP response (UTC): 2026-10-20T15:45:52.676996+00:00\nSaeed Ghani: done\n  Last successful HTTP response (UTC): 2026-10-20T16:21:21.878051+00:00\n",
+      "snapshot_utc": "2026-10-20T16:22:24.468897+00:00",
+      "stores": {
+        "Denim Leftover": "done",
+        "Cool and Cool": "done",
+        "Saeed Ghani": "done"
+      },
+      "snapshot_age_seconds": 10063,
+      "snapshot_stale": true
+    },
+    {
+      "conclusion": "",
+      "databaseId": 39450793299,
+      "displayTitle": "Cloud group fresh26-39450710625-6",
+      "status": "in_progress",
+      "updatedAt": "2026-10-20T15:41:52Z",
+      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39450793299",
+      "lane": "fresh26-39450710625-6",
+      "snapshot": "Updated (UTC): 2026-10-20T19:08:32.707503+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Nisa Naturals.xlsx\n2. Hemani Herbals.xlsx\n\nSTORE STATUS\nNisa Naturals: done\n  Last successful HTTP response (UTC): 2026-10-20T15:42:53.233666+00:00\nHemani Herbals: done\n  Last successful HTTP response (UTC): 2026-10-20T17:16:18.492717+00:00\nGul Ahmed: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 2250/6807 tasks; sample age 165s\n  Approximate ETA for this stage only: 378.4 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-20T19:08:19.656521+00:00\n",
+      "snapshot_utc": "2026-10-20T19:08:32.707503+00:00",
+      "stores": {
+        "Nisa Naturals": "done",
+        "Hemani Herbals": "done",
+        "Gul Ahmed": "running"
+      },
+      "snapshot_age_seconds": 94,
+      "snapshot_stale": false
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 39450789858,
+      "displayTitle": "Cloud group fresh26-39450710625-5",
+      "status": "completed",
+      "updatedAt": "2026-10-20T16:13:15Z",
+      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39450789858",
+      "lane": "fresh26-39450710625-5",
+      "snapshot": "Updated (UTC): 2026-10-20T16:12:41.910977+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Farda Foods.xlsx\n2. Adam Cheese.xlsx\n3. Computer Zone.xlsx\n\nSTORE STATUS\nFarda Foods: done\n  Last successful HTTP response (UTC): 2026-10-20T15:43:30.256766+00:00\nAdam Cheese: done\n  Last successful HTTP response (UTC): 2026-10-20T15:43:00.208176+00:00\nComputer Zone: done\n  Last successful HTTP response (UTC): 2026-10-20T16:12:37.323367+00:00\n",
+      "snapshot_utc": "2026-10-20T16:12:41.910977+00:00",
+      "stores": {
+        "Farda Foods": "done",
+        "Adam Cheese": "done",
+        "Computer Zone": "done"
+      },
+      "snapshot_age_seconds": 10645,
+      "snapshot_stale": true
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 39450786298,
+      "displayTitle": "Cloud group fresh26-39450710625-4",
+      "status": "completed",
+      "updatedAt": "2026-10-20T15:47:48Z",
+      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39450786298",
+      "lane": "fresh26-39450710625-4",
+      "snapshot": "Updated (UTC): 2026-10-20T15:47:13.856480+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Islamabad Tea.xlsx\n2. Shop Modest.xlsx\n3. Seran.xlsx\n\nSTORE STATUS\nIslamabad Tea: done\n  Last successful HTTP response (UTC): 2026-10-20T15:42:22.099566+00:00\nShop Modest: done\n  Last successful HTTP response (UTC): 2026-10-20T15:46:56.321511+00:00\nSeran: done\n  Last successful HTTP response (UTC): 2026-10-20T15:44:20.982112+00:00\n",
+      "snapshot_utc": "2026-10-20T15:47:13.856480+00:00",
+      "stores": {
+        "Islamabad Tea": "done",
+        "Shop Modest": "done",
+        "Seran": "done"
+      },
+      "snapshot_age_seconds": 12173,
+      "snapshot_stale": true
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 39450782519,
+      "displayTitle": "Cloud group fresh26-39450710625-3",
+      "status": "completed",
+      "updatedAt": "2026-10-20T16:52:46Z",
+      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39450782519",
+      "lane": "fresh26-39450710625-3",
+      "snapshot": "Updated (UTC): 2026-10-20T16:51:53.332548+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Vince Care.xlsx\n2. The Hanger Pakistan.xlsx\n3. Elite Cosmetics.xlsx\n\nSTORE STATUS\nVince Care: done\n  Last successful HTTP response (UTC): 2026-10-20T16:04:38.612202+00:00\nThe Hanger Pakistan: done\n  Last successful HTTP response (UTC): 2026-10-20T15:45:57.601092+00:00\nElite Cosmetics: done\n  Last successful HTTP response (UTC): 2026-10-20T16:38:59.500772+00:00\n",
+      "snapshot_utc": "2026-10-20T16:51:53.332548+00:00",
+      "stores": {
+        "Vince Care": "done",
+        "The Hanger Pakistan": "done",
+        "Elite Cosmetics": "done"
+      },
+      "snapshot_age_seconds": 8294,
+      "snapshot_stale": true
+    },
+    {
+      "conclusion": "",
+      "databaseId": 39450778729,
+      "displayTitle": "Cloud group fresh26-39450710625-2",
+      "status": "in_progress",
+      "updatedAt": "2026-10-20T15:41:46Z",
+      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39450778729",
+      "lane": "fresh26-39450710625-2",
+      "snapshot": "Updated (UTC): 2026-10-20T19:08:38.621215+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Tawakkal Fabrics.xlsx\n\nSTORE STATUS\nTawakkal Fabrics: done\n  Last successful HTTP response (UTC): 2026-10-20T16:31:59.556806+00:00\nJunaid Jamshed: running\n  Stage: Building Excel rows\n  building Excel rows: 6599/23728 tasks; sample age 11s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-10-20T18:45:57.511349+00:00\nStylo: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 1850/9149 tasks; sample age 17s\n  Approximate ETA for this stage only: 608.1 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-20T19:08:33.134825+00:00\n",
+      "snapshot_utc": "2026-10-20T19:08:38.621215+00:00",
+      "stores": {
+        "Tawakkal Fabrics": "done",
+        "Junaid Jamshed": "running",
+        "Stylo": "running"
+      },
+      "snapshot_age_seconds": 89,
+      "snapshot_stale": false
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 39450775009,
+      "displayTitle": "Cloud group fresh26-39450710625-1",
+      "status": "completed",
+      "updatedAt": "2026-10-20T18:55:24Z",
+      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39450775009",
+      "lane": "fresh26-39450710625-1",
+      "snapshot": "Updated (UTC): 2026-10-20T18:54:38.647510+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Miss Rose.xlsx\n2. Rivaj UK.xlsx\n3. Rawayat.xlsx\n\nSTORE STATUS\nMiss Rose: done\n  Last successful HTTP response (UTC): 2026-10-20T15:44:49.474903+00:00\nRivaj UK: done\n  Last successful HTTP response (UTC): 2026-10-20T15:56:19.270146+00:00\nRawayat: done\n  Last successful HTTP response (UTC): 2026-10-20T18:21:41.093087+00:00\n",
+      "snapshot_utc": "2026-10-20T18:54:38.647510+00:00",
+      "stores": {
+        "Miss Rose": "done",
+        "Rivaj UK": "done",
+        "Rawayat": "done"
+      },
+      "snapshot_age_seconds": 929,
+      "snapshot_stale": true
+    }
+  ],
+  "fresh_stores": {
+    "Zellbury": "running",
+    "Zero Lifestyle": "done",
+    "Skin Factor": "done",
+    "Bonanza Satrangi": "done",
+    "Outfitters": "running",
+    "Denim Leftover": "done",
+    "Cool and Cool": "done",
+    "Saeed Ghani": "done",
+    "Nisa Naturals": "done",
+    "Hemani Herbals": "done",
+    "Gul Ahmed": "running",
+    "Farda Foods": "done",
+    "Adam Cheese": "done",
+    "Computer Zone": "done",
+    "Islamabad Tea": "done",
+    "Shop Modest": "done",
+    "Seran": "done",
+    "Vince Care": "done",
+    "The Hanger Pakistan": "done",
+    "Elite Cosmetics": "done",
+    "Tawakkal Fabrics": "done",
+    "Junaid Jamshed": "running",
+    "Stylo": "running",
+    "Miss Rose": "done",
+    "Rivaj UK": "done",
+    "Rawayat": "done"
+  },
+  "local_khaadi": "Not visible to cloud monitoring; no local activity claimed",
+  "drive": {
+    "verified_files": 20,
+    "verified_utc": "2026-10-20T18:20:48.208649+00:00",
+    "folders": {
+      "ChotuApp 20-10-2026 Fresh": 20,
+      "ChotuApp 19-10-2026 11-36AM": 20
+    },
+    "latest_move": [
+      {
+        "source": "ChotuApp 20-10-2026 Fresh",
+        "destination": "ChotuApp 19-10-2026 11-36AM",
+        "verified_files": [
+          "Adam Cheese.xlsx",
+          "Bonanza Satrangi.xlsx",
+          "Computer Zone.xlsx",
+          "Cool and Cool.xlsx",
+          "Denim Leftover.xlsx",
+          "Elite Cosmetics.xlsx",
+          "Farda Foods.xlsx",
+          "Hemani Herbals.xlsx",
+          "Islamabad Tea.xlsx",
+          "Miss Rose.xlsx",
+          "Nisa Naturals.xlsx",
+          "Rivaj UK.xlsx",
+          "Saeed Ghani.xlsx",
+          "Seran.xlsx",
+          "Shop Modest.xlsx",
+          "Skin Factor.xlsx",
+          "Tawakkal Fabrics.xlsx",
+          "The Hanger Pakistan.xlsx",
+          "Vince Care.xlsx",
+          "Zero Lifestyle.xlsx"
+        ],
+        "destination_file_count": 24,
+        "preserved_other_files": 4,
+        "verified_utc": "2026-10-20T18:41:53.309795+00:00",
+        "source_removed": [
+          "Adam Cheese.xlsx",
+          "Bonanza Satrangi.xlsx",
+          "Computer Zone.xlsx",
+          "Cool and Cool.xlsx",
+          "Denim Leftover.xlsx",
+          "Elite Cosmetics.xlsx",
+          "Farda Foods.xlsx",
+          "Hemani Herbals.xlsx",
+          "Islamabad Tea.xlsx",
+          "Miss Rose.xlsx",
+          "Nisa Naturals.xlsx",
+          "Rivaj UK.xlsx",
+          "Saeed Ghani.xlsx",
+          "Seran.xlsx",
+          "Shop Modest.xlsx",
+          "Skin Factor.xlsx",
+          "Tawakkal Fabrics.xlsx",
+          "The Hanger Pakistan.xlsx",
+          "Vince Care.xlsx",
+          "Zero Lifestyle.xlsx"
+        ]
+      }
+    ]
+  },
+  "fresh_completed": 21
+}
