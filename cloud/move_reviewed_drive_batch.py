@@ -50,5 +50,9 @@ def main():
    r=subprocess.run(['rclone','--config',str(cfg),*args],capture_output=True,text=True,timeout=900)
    if r.returncode:raise RuntimeError('Drive '+args[0]+' failed; no unverified source deletion attempted')
    return r.stdout
-  transfer(rc,stage,state)
+  state['run_id']=os.environ['GITHUB_RUN_ID'];state['transfer_status']='started';publish(state,branch='drive-sync-reports')
+  try:
+   transfer(rc,stage,state);state['transfer_status']='finished';publish(state,branch='drive-sync-reports')
+  except Exception as exc:
+   state['transfer_status']='failed';state['transfer_error']=str(exc);publish(state,branch='drive-sync-reports');raise
 if __name__=='__main__':main()
