@@ -24,7 +24,22 @@ def perform():
             report['sources'].append({'name':site['name'],'status':'observed','run_id':str(selected[0]['databaseId']) if selected else None});continue
         if any(r['status']!='completed' and str(r['databaseId']) in ids for r in runs):
             current=next(r for r in runs if r['status']!='completed' and str(r['databaseId']) in ids)
-            report['sources'].append({'name':site['name'],'status':'already_active','run_id':str(current['databaseId'])});continue
+            if not site.get('restart_active'):
+                report['sources'].append({'name':site['name'],'status':'already_active','run_id':str(current['databaseId'])});continue
+            target=str(current['databaseId'])
+            gh('workflow','run','cloud-stop.yml','--repo',REPO,'--ref','main','-f','run_id='+target)
+            report['phase']='waiting_for_saved_stop';report['stopping_run']=target;publish(report,branch='fetch-update-reports')
+            deadline=time.monotonic()+480
+            while time.monotonic()<deadline:
+                saved=json.loads(gh('run','view',target,'--repo',REPO,'--json','status,conclusion'))
+                if saved['status']=='completed':break
+                time.sleep(15)
+            else:raise RuntimeError('Save-and-stop not finished; no overlapping LAAM run started')
+            artifacts=json.loads(gh('api','repos/'+REPO+'/actions/runs/'+target+'/artifacts?per_page=100'))['artifacts']
+            if not any(a['name']=='chotuapp-checkpoint' and not a.get('expired') for a in artifacts):raise RuntimeError('Stopped run has no checkpoint; no fresh restart attempted')
+            site['parent']=target
+            runs=json.loads(gh('run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','100','--json','databaseId,displayTitle,status'))
+            if any(r['status']!='completed' and (str(r['databaseId']) in ids or r['displayTitle']=='Automatic continuation of '+target) for r in runs):raise RuntimeError('Another LAAM continuation is active; refusing duplicate')
         parents=[str(r['databaseId']) for r in runs if str(r['databaseId']) in ids and r['status']=='completed' and int(r['databaseId'])>=int(site['parent'])]
         if site['parent'] not in parents:parents.append(site['parent'])
         parent=None
