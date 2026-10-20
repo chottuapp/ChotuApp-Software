@@ -36,3 +36,17 @@ class KhaadiTests(unittest.TestCase):
   reader=source.PublicCatalog({},print)
   for url in ['https://us.khaadi.com/product.html',source.BASE+'/on/demandware.store/Product-Variation']:
    with self.assertRaises(source.SourceUnavailable):reader.read(url)
+
+ def test_mixed_sitemap_excludes_policy_and_category_pages(self):
+  from unittest.mock import patch
+  sitemap='<urlset>'+''.join('<url><loc>'+source.BASE+p+'</loc></url>' for p in ['/return-exchange-global.html','/privacy-policy.html','/ready-to-wear.html','/black-cambric-kurta/1-26-320-A-C1-VG_MULTI.html','/account/orders.html'])+'</urlset>'
+  requested=[]
+  class Reader(source.PublicCatalog):
+   def read(self,url,**kwargs):
+    requested.append(url)
+    text=('User-agent: *\nSitemap: '+source.BASE+'/sitemap_0.xml') if url.endswith('robots.txt') else sitemap if url.endswith('.xml') else fixture('master')
+    return SimpleNamespace(text=text,content=text.encode())
+  with patch.object(source,'normalize_product',return_value={'id':'main','variants':[]}):
+   products,complete=Reader({'_chotu_wait':lambda:None},lambda _:None).catalog()
+  self.assertEqual(len(products),1);self.assertFalse(complete)
+  self.assertEqual([u for u in requested if u.endswith('.html')],[URL])

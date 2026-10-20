@@ -124,7 +124,7 @@ class PublicCatalog:
                 for n in row:
                     if local(n.tag)!='loc' or not n.text:continue
                     p=urlsplit(n.text.strip())
-                    if p.hostname=='pk.khaadi.com' and p.path.endswith('.html') and not p.query:urls.setdefault(p.path.rsplit('/',1)[-1],n.text.strip())
+                    if p.hostname=='pk.khaadi.com' and re.fullmatch(r'/[^/]+/[A-Za-z0-9_-]*[0-9][A-Za-z0-9_-]*\.html',p.path) and not p.query:urls.setdefault(p.path.rsplit('/',1)[-1],n.text.strip())
         if not urls:raise SourceUnavailable('No public product addresses found in declared sitemap')
         result=[]
         for index,url in enumerate(urls.values(),1):
