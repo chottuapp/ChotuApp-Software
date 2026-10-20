@@ -1,28 +1,39 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-20T10:04:32.187066+00:00",
-  "run_id": "39403648610",
+  "generated_utc": "2026-10-20T10:05:51.108584+00:00",
+  "run_id": "39400062782",
   "attempt": "1",
-  "source_commit": "c7bcd742a395fd363d600ee6d012b3b7390425d3",
+  "source_commit": "dc684251c2af58dc5ea26cb2b61399c894e7577a",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 798.9,
+  "elapsed_seconds": 2590.5,
   "stores": [
     {
-      "name": "Sapphire",
-      "status": "failed",
+      "name": "Gul Ahmed",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "d1dd11fd2972cd5e",
+      "products": 6766,
+      "variants": 27822,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    },
+    {
+      "name": "Stylo",
+      "status": "pending",
       "review_required": false,
       "issue_codes": [
-        "ADAPTER_ERROR"
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "aa9739efd359f794",
-      "http_statuses": {
-        "200": 533
-      },
-      "network_seconds": 763.7,
-      "max_response_seconds": 2.2,
-      "cache_events": 0
+      "software_revision": "d1dd11fd2972cd5e",
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 27968
     }
   ]
 }
