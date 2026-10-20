@@ -23,7 +23,7 @@ jobs:
       - name: Validate source regressions and checkpoint identity
         env:
           PYTHONPATH: tests:cloud:.
-        run: python -m unittest test_laam_source test_sapphire_source test_sapphire_fit_dimensions test_sapphire_checkpoint_alias test_group_fetch test_runner_identity -q
+        run: python -m unittest test_laam_source test_sapphire_source test_sapphire_fit_dimensions test_sapphire_checkpoint_alias test_original_resume_entrypoint test_checkpoint_download_retry test_group_fetch test_runner_identity -q
       - name: Resume explicit checkpoints only; preserve other active groups
         env:
           GH_TOKEN: ${{ github.token }}

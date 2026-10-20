@@ -96,7 +96,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           case "$RESUME_RUN_ID" in *[!0-9]*|'') echo 'Run ID must contain only digits'; exit 1;; esac
-          gh run download "$RESUME_RUN_ID" --repo "$GITHUB_REPOSITORY" --name chotuapp-checkpoint --dir "$RUNNER_TEMP/chotu-restore"
+          python cloud/download_checkpoint.py --run "$RESUME_RUN_ID" --repo "$GITHUB_REPOSITORY" --output "$RUNNER_TEMP/chotu-restore"
           python cloud/prepare_resume.py --archive "$RUNNER_TEMP/chotu-restore" --data .cloud-data
       - name: Install Czone browser fallback when needed
         if: env.CLOUD_NEEDS_CZONE_BROWSER == 'true' || (inputs.resume_run_id == '' && contains(inputs.stores, 'czone.com.pk'))
