@@ -9,7 +9,7 @@ from sapphire_source_support import PublicCatalog,BASE,AGENT,inspect_page,varian
 from source_research import publish
 from diagnostics import redact
 session=requests.Session();session.headers['User-Agent']=AGENT
-source=PublicCatalog({'S':session,'_chotu_wait':lambda:None,'_chotu_backoff':lambda delay,*a:time.sleep(delay)},print)
+source=PublicCatalog({'S':session,'_chotu_wait':lambda:None,'_chotu_debug_request':lambda *a:None,'_chotu_debug_response':lambda *a,**k:None,'_chotu_backoff':lambda delay,*a:time.sleep(delay)},print)
 report={'run_id':os.environ['GITHUB_RUN_ID'],'kind':'sapphire_denim_selection','pages':[]}
 try:
  robots=source.read(BASE+'/robots.txt');source.robot=RobotFileParser();source.robot.parse(robots.text.splitlines())
