@@ -1,7 +1,48 @@
 """Dispatch 26 fresh cloud stores, then copy only checked Rule 804 Excel files to Drive."""
 import contextlib,ctypes,datetime,hashlib,json,os,re,shutil,subprocess,sys,tempfile,time,uuid
 from pathlib import Path
-REPO='chottuapp/ChotuApp-Software';FOLDER='ChotuApp 20-10-2026 Fresh';EXCLUDED={'LAAM','Khaadi','Sapphire'}
+REPO='chottuapp/ChotuApp-Software';LEGACY_FOLDER='ChotuApp 20-10-2026 Fresh';EXCLUDED={'LAAM','Khaadi','Sapphire'}
+
+def daily_folder(now=None):
+    pakistan=datetime.timezone(datetime.timedelta(hours=5))
+    now=now or datetime.datetime.now(datetime.timezone.utc)
+    return 'ChotuApp '+now.astimezone(pakistan).strftime('%d-%m-%Y')+' Fresh'
+
+def activate_day(state,folder):
+    if 'daily_uploads' not in state:
+        state['daily_uploads']={LEGACY_FOLDER:dict(state.get('uploaded',{}))}
+        state['daily_seen_artifacts']={LEGACY_FOLDER:dict(state.get('seen_artifacts',{}))}
+    state['drive_folder']=folder
+    state['uploaded']=state['daily_uploads'].setdefault(folder,{})
+    state['seen_artifacts']=state.setdefault('daily_seen_artifacts',{}).setdefault(folder,{})
+
+def rclone_path():
+    rc=shutil.which('rclone')
+    if rc:return rc
+    choices=list((Path(os.environ['LOCALAPPDATA'])/'Microsoft/WinGet/Packages').glob('Rclone.Rclone_*/rclone-*-windows-amd64/rclone.exe'))
+    if not choices:raise RuntimeError('Rclone executable not found')
+    return str(sorted(choices)[-1])
+
+def status_report():
+    base=Path.home()/'Desktop/ANAS_DATA_FETCH/Fresh26_2026-10-20'
+    path=base/'pipeline-state.json'
+    if not path.is_file():print('No pipeline state found; no upload verified.');return 2
+    state=json.loads(path.read_text(encoding='utf-8'));folder=state.get('drive_folder',LEGACY_FOLDER)
+    print('Drive folder:',folder);print('Rule 804: uploader accepts processed artifacts only; bounded automated pass, review warnings may remain.')
+    print('Previously checksum-verified uploads:',len(state.get('uploaded',{})),'/26')
+    rc=rclone_path()
+    listing=command([rc,'lsf','chotudrive:'+folder,'--files-only','--include','*.xlsx'],check=False)
+    if listing.returncode==0:print('Excel files currently listed in Drive:',len([n for n in listing.stdout.splitlines() if n.lower().endswith('.xlsx')]))
+    else:print('Drive listing unavailable:',listing.stderr.strip())
+    with tempfile.TemporaryDirectory() as tmp:
+        for store,sha in state.get('uploaded',{}).items():
+            file=base/'Drive_Ready'/(store+'.xlsx')
+            if not file.is_file() or hashlib.sha256(file.read_bytes()).hexdigest()!=sha:raise ValueError('Local reviewed file missing or changed: '+store)
+            shutil.copy2(file,Path(tmp)/file.name)
+        if state.get('uploaded'):
+            subprocess.run([rc,'check',tmp,'chotudrive:'+folder,'--include','*.xlsx','--one-way'],check=True)
+            print('CURRENT DRIVE CHECK PASSED:',len(state['uploaded']),'Rule 804 files; no differences.')
+    return 0
 
 @contextlib.contextmanager
 def lease(path):
@@ -48,6 +89,7 @@ def checked_files(root,manifest):
     result=[]
     for item in manifest.get('files',[]):
         name=item['name'];store=item['store']
+        if not item.get('rule804') or not re.fullmatch('[0-9a-f]{64}',str(item.get('pipeline_revision',''))) or not re.fullmatch('[0-9a-f]{64}',str(item.get('source_sha256',''))):raise ValueError('Missing Rule 804 processing evidence: '+name)
         if Path(name).name!=name or name!=store+'.xlsx' or store in EXCLUDED:raise ValueError('Unexpected workbook identity')
         matches=list(root.rglob(name))
         if len(matches)!=1 or hashlib.sha256(matches[0].read_bytes()).hexdigest()!=item['sha256']:raise ValueError('Rule 804 workbook checksum mismatch: '+name)
@@ -56,11 +98,7 @@ def checked_files(root,manifest):
 
 def pipeline():
     gh=shutil.which('gh') or str(Path(os.environ.get('ProgramFiles','C:/Program Files'))/'GitHub CLI/gh.exe')
-    rc=shutil.which('rclone')
-    if not rc:
-        choices=list((Path(os.environ['LOCALAPPDATA'])/'Microsoft/WinGet/Packages').glob('Rclone.Rclone_*/rclone-*-windows-amd64/rclone.exe'))
-        if not choices:raise RuntimeError('Rclone executable not found; no fetching dispatched')
-        rc=str(sorted(choices)[-1])
+    rc=rclone_path()
     remotes=command([rc,'listremotes']).stdout.splitlines()
     if 'chotudrive:' not in remotes:raise RuntimeError('Existing chotudrive remote unavailable; no fetching dispatched')
     base=Path.home()/'Desktop/ANAS_DATA_FETCH/Fresh26_2026-10-20';base.mkdir(parents=True,exist_ok=True);statepath=base/'pipeline-state.json';output=base/'Drive_Ready';output.mkdir(exist_ok=True)
@@ -80,7 +118,7 @@ def pipeline():
                 if existing:state['dispatcher']=str(existing[0]['databaseId']);save(statepath,state);break
                 time.sleep(3)
             if not state.get('dispatcher'):raise RuntimeError('Dispatch pending; rerun this helper to reconnect without creating a new batch')
-        rootrun=state['dispatcher'];print('Fresh batch: https://github.com/'+REPO+'/actions/runs/'+rootrun,flush=True);print('Drive folder:',FOLDER,'| Keep this helper open for Drive uploads. Cloud fetching continues independently.',flush=True)
+        rootrun=state['dispatcher'];print('Fresh batch: https://github.com/'+REPO+'/actions/runs/'+rootrun,flush=True);print('Drive folder:',daily_folder(),'| Keep this helper open for Drive uploads. Cloud fetching continues independently.',flush=True)
         while not state.get('groups'):
             info=json.loads(call('run','view',rootrun,'--repo',REPO,'--json','status,conclusion'))
             with tempfile.TemporaryDirectory() as tmp:
@@ -96,6 +134,7 @@ def pipeline():
         stable=0
         while True:
             try:
+                folder=daily_folder();activate_day(state,folder);save(statepath,state)
                 allruns=json.loads(call('run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','100','--json','databaseId,displayTitle,status,conclusion'))
                 runs=related(allruns,[g['runner_group'] for g in state['groups']]);active=sum(r['status']!='completed' for r in runs)
                 for run in reversed(runs):
@@ -116,10 +155,11 @@ def pipeline():
                             print('Uploading',len(batch),'checked Excel files...',flush=True)
                             with tempfile.TemporaryDirectory() as stage:
                                 for record in batch:shutil.copy2(output/record['name'],Path(stage)/record['name'])
-                                subprocess.run([rc,'copy',stage,'chotudrive:'+FOLDER,'--include','*.xlsx','--checksum','--progress'],check=True)
-                                subprocess.run([rc,'check',stage,'chotudrive:'+FOLDER,'--include','*.xlsx','--one-way'],check=True)
+                                subprocess.run([rc,'copy',stage,'chotudrive:'+folder,'--include','*.xlsx','--checksum','--progress'],check=True)
+                                subprocess.run([rc,'check',stage,'chotudrive:'+folder,'--include','*.xlsx','--one-way'],check=True)
                             for record in batch:state['uploaded'][record['store']]=record['sha256']
-                            save(statepath,state)
+                            state['last_verified_at']=datetime.datetime.now(datetime.timezone.utc).isoformat();save(statepath,state)
+                            print('VERIFIED: Rule 804 applied before upload;',len(batch),'files checked in',folder,flush=True)
                         if manifest.get('held'):print('RULE804 HELD FOR REVIEW:',json.dumps(manifest['held']),flush=True)
                         state['seen_artifacts'][rid]=artifact['id'];save(statepath,state)
                 print(datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),'| fresh active/queued:',active,'| Drive verified:',len(state['uploaded']),'/26',flush=True)
@@ -135,7 +175,10 @@ def pipeline():
     finally:
         if awake:awake(0x80000000)
 def main():
+    if '--status' in sys.argv:return status_report()
     base=Path.home()/'Desktop/ANAS_DATA_FETCH/Fresh26_2026-10-20';base.mkdir(parents=True,exist_ok=True)
+    if '--resume-only' in sys.argv and not (base/'pipeline-state.json').is_file():
+        print('Existing batch state missing; no new fetch dispatched.');return 2
     try:
         with lease(base/'pipeline.lock'):return pipeline()
     except OSError as exc:
