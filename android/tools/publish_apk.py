@@ -7,10 +7,10 @@ def certificate(apk):
  sdk=Path(os.environ.get('ANDROID_HOME',os.environ.get('ANDROID_SDK_ROOT','/usr/local/lib/android/sdk')))
  tools=sorted((sdk/'build-tools').glob('*/apksigner'))
  if not tools:raise RuntimeError('APK signature verifier unavailable')
- text=run([str(tools[-1]),'verify','--print-certs',str(apk)],ROOT).stdout
- match=re.search(r'Signer #1 certificate SHA-256 digest: ([0-9a-fA-F]+)',text)
- if not match:raise ValueError('APK signing certificate unavailable')
- return match[1].lower()
+ run([str(tools[-1]),'verify',str(apk)],ROOT)
+ from apk_signers import fingerprints
+ return fingerprints(apk)
+
 def main():
  apk=ROOT/'android/app/build/outputs/apk/debug/app-debug.apk'
  if not apk.is_file() or apk.stat().st_size>95*1024*1024:raise ValueError('APK missing or exceeds Git delivery limit')
