@@ -15,7 +15,7 @@ def html(raw,currency='PKR'):
   else:flat[i]=value
   return i
  encode(raw)
- return '<script id="__NUXT_DATA__">'+json.dumps(flat)+'</script><script type="application/ld+json">'+json.dumps({'@type':'Product','offers':{'priceCurrency':currency,'price':raw['variants'][0]['price']}})+'</script>'
+ return '<script id="__NUXT_DATA__">'+json.dumps(flat)+'</script><script type="application/ld+json">'+json.dumps({'@type':'Product','offers':{'priceCurrency':currency,'price':raw['variants'][0]['price'] if raw['variants'] else raw.get('price',0)}})+'</script>'
 class LaamTests(unittest.TestCase):
  def test_real_captured_products_preserve_observed_price_stock_options_images(self):
   for fixture in FIXTURES:
