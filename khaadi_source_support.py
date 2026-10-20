@@ -113,6 +113,7 @@ class PublicCatalog:
         if allow_missing and response.status_code in (404,410):return response
         if response.status_code!=200:raise SourceUnavailable('Public page unavailable HTTP '+str(response.status_code))
         if len(response.content)>20*1024**2:raise ValueError('Public response exceeds validated size bound')
+        if fresh and cache:cache.put(url,response)
         return response
     def discover_urls(self,robots):
         path=getattr(self.g.get('_chotu_tls'),'saved_api_path',None)
@@ -183,7 +184,11 @@ class PublicCatalog:
                         except (ValueError,TypeError):pass
                     if action in ('Page-Show','Search-Show','Content-Show','Home-Show','Blog-Show') and not has_product:
                         self.log('KHAADI NON-PRODUCT SKIPPED: '+str(action)+' '+url);continue
-                product=normalize_product(html,url,self.read)
+                try:product=normalize_product(html,url,self.read)
+                except ValueError as exc:
+                    if str(exc) not in ('Selected size unavailable','Public page did not acknowledge requested size','Selected variant family/identity mismatch'):raise
+                    self.log('KHAADI SIZE RECHECK: cached master/size mismatch; refreshing this product and its size pages once '+url)
+                    product=normalize_product(self.read(url,fresh=True).text,url,lambda selected:self.read(selected,fresh=True))
                 if self.cache:self.cache.put(url,product)
             result.append(product)
             if index==1 or index%25==0:self.log(f'KHAADI PUBLIC PRODUCTS: {index}/{len(urls)} verified')

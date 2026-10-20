@@ -34,6 +34,26 @@ class KhaadiTests(unittest.TestCase):
   with self.assertRaisesRegex(ValueError,'acknowledge'):source.inspect_page(fixture('master'),URL+'?dwvar_1-26-320-A-C1-VG__MULTI_size=0XS')
   with self.assertRaisesRegex(ValueError,'acknowledge'):source.inspect_page(fixture('l'),URL+'?dwvar_1-26-320-A-C1-VG__MULTI_size=0XS')
   with self.assertRaisesRegex(ValueError,'PKR'):source.inspect_page(fixture('xs').replace('PKR','USD'),URL+'?dwvar_1-26-320-A-C1-VG__MULTI_size=0XS')
+ def test_size_mismatch_refreshes_master_and_variants_once(self):
+  from unittest.mock import patch
+  calls=[]
+  class Reader(source.PublicCatalog):
+   def read(self,url,fresh=False,**kwargs):
+    calls.append((url,fresh));return SimpleNamespace(text='User-agent: *' if url.endswith('robots.txt') else fixture('master'))
+  attempts=[]
+  def normalize(html,url,read):
+   attempts.append(url)
+   if len(attempts)==1:raise ValueError('Selected size unavailable')
+   read(URL+'?dwvar_example_size=0XS');return {'id':'verified'}
+  with patch.object(source.PublicCatalog,'discover_urls',return_value={URL:URL}),patch.object(source,'normalize_product',side_effect=normalize):
+   products,_=Reader({'_chotu_wait':lambda:None},lambda _:None).catalog()
+  self.assertEqual(products,[{'id':'verified'}]);self.assertIn((URL,True),calls);self.assertIn((URL+'?dwvar_example_size=0XS',True),calls)
+ def test_persistent_size_mismatch_is_not_silently_skipped(self):
+  from unittest.mock import patch
+  reader=source.PublicCatalog({'_chotu_wait':lambda:None},lambda _:None)
+  with patch.object(reader,'read',return_value=SimpleNamespace(text=fixture('master'))),patch.object(reader,'discover_urls',return_value={URL:URL}),patch.object(source,'normalize_product',side_effect=ValueError('Selected size unavailable')) as normalize:
+   with self.assertRaisesRegex(ValueError,'Selected size unavailable'):reader.catalog()
+   self.assertEqual(normalize.call_count,2)
  def test_runtime_loads_khaadi_adapter(self):
   from runtime import prepare_engine
   with tempfile.TemporaryDirectory() as tmp:
