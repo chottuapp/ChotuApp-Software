@@ -1,0 +1,210 @@
+{
+  "run_id": "39505930349",
+  "checked_utc": "2026-10-20T22:09:08.025348+00:00",
+  "build": {
+    "conclusion": "failure",
+    "databaseId": 39505592282,
+    "headSha": "4eac7cad8f29bb1e451e43e1b73621ec7af2873f",
+    "status": "completed",
+    "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39505592282"
+  },
+  "jobs": [
+    {
+      "id": 118913572131,
+      "run_id": 39505592282,
+      "workflow_name": "Build ChotuApp Android APK",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/chottuapp/ChotuApp-Software/actions/runs/39505592282",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVF-slM8AAAAbr80dIw",
+      "head_sha": "4eac7cad8f29bb1e451e43e1b73621ec7af2873f",
+      "url": "https://api.github.com/repos/chottuapp/ChotuApp-Software/actions/jobs/118913572131",
+      "html_url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39505592282/job/118913572131",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-10-20T22:06:13Z",
+      "started_at": "2026-10-20T22:06:15Z",
+      "completed_at": "2026-10-20T22:08:50Z",
+      "name": "build",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-20T22:06:16Z",
+          "completed_at": "2026-10-20T22:06:18Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-20T22:06:18Z",
+          "completed_at": "2026-10-20T22:06:25Z"
+        },
+        {
+          "name": "Run actions/setup-java@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-20T22:06:25Z",
+          "completed_at": "2026-10-20T22:06:25Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-20T22:06:25Z",
+          "completed_at": "2026-10-20T22:06:25Z"
+        },
+        {
+          "name": "Run python -m pip install requests beautifulsoup4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-20T22:06:25Z",
+          "completed_at": "2026-10-20T22:06:27Z"
+        },
+        {
+          "name": "Run gradle/actions/setup-gradle@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-20T22:06:27Z",
+          "completed_at": "2026-10-20T22:06:35Z"
+        },
+        {
+          "name": "Run actions/cache@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-20T22:06:35Z",
+          "completed_at": "2026-10-20T22:06:35Z"
+        },
+        {
+          "name": "Bundle checked headless extractor",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-20T22:06:35Z",
+          "completed_at": "2026-10-20T22:06:35Z"
+        },
+        {
+          "name": "Build installable app and device tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-20T22:06:35Z",
+          "completed_at": "2026-10-20T22:07:02Z"
+        },
+        {
+          "name": "Publish build checkpoint",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-20T22:07:02Z",
+          "completed_at": "2026-10-20T22:07:05Z"
+        },
+        {
+          "name": "Enable emulator acceleration",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-20T22:07:05Z",
+          "completed_at": "2026-10-20T22:07:05Z"
+        },
+        {
+          "name": "Run reactivecircus/android-emulator-runner@v2",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-20T22:07:05Z",
+          "completed_at": "2026-10-20T22:08:33Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-20T22:08:33Z",
+          "completed_at": "2026-10-20T22:08:35Z"
+        },
+        {
+          "name": "Publish tested APK download",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 14,
+          "started_at": "2026-10-20T22:08:35Z",
+          "completed_at": "2026-10-20T22:08:37Z"
+        },
+        {
+          "name": "Publish final build status",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-20T22:08:37Z",
+          "completed_at": "2026-10-20T22:08:39Z"
+        },
+        {
+          "name": "Post Run actions/cache@v4",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 26,
+          "started_at": "2026-10-20T22:08:39Z",
+          "completed_at": "2026-10-20T22:08:39Z"
+        },
+        {
+          "name": "Post Run gradle/actions/setup-gradle@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27,
+          "started_at": "2026-10-20T22:08:39Z",
+          "completed_at": "2026-10-20T22:08:48Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 28,
+          "started_at": "2026-10-20T22:08:48Z",
+          "completed_at": "2026-10-20T22:08:48Z"
+        },
+        {
+          "name": "Post Run actions/setup-java@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-10-20T22:08:48Z",
+          "completed_at": "2026-10-20T22:08:48Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 30,
+          "started_at": "2026-10-20T22:08:48Z",
+          "completed_at": "2026-10-20T22:08:49Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 31,
+          "started_at": "2026-10-20T22:08:49Z",
+          "completed_at": "2026-10-20T22:08:49Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/chottuapp/ChotuApp-Software/check-runs/118913572131",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000000324,
+      "runner_name": "GitHub Actions 1000000324",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ],
+  "failure_logs": "build\tPublish tested APK download\t\ufeff2026-10-20T22:08:35.4696234Z ##[group]Run python android/tools/publish_apk.py\nbuild\tPublish tested APK download\t2026-10-20T22:08:35.4696956Z ^[[36;1mpython android/tools/publish_apk.py^[[0m\nbuild\tPublish tested APK download\t2026-10-20T22:08:35.4780605Z shell: /usr/bin/bash -e {0}\nbuild\tPublish tested APK download\t2026-10-20T22:08:35.4781112Z env:\nbuild\tPublish tested APK download\t2026-10-20T22:08:35.4782284Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64\nbuild\tPublish tested APK download\t2026-10-20T22:08:35.4783080Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64\nbuild\tPublish tested APK download\t2026-10-20T22:08:35.4783746Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64\nbuild\tPublish tested APK download\t2026-10-20T22:08:35.4784359Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig\nbuild\tPublish tested APK download\t2026-10-20T22:08:35.4784966Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64\nbuild\tPublish tested APK download\t2026-10-20T22:08:35.4785517Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64\nbuild\tPublish tested APK download\t2026-10-20T22:08:35.4786065Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64\nbuild\tPublish tested APK download\t2026-10-20T22:08:35.4786586Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib\nbuild\tPublish tested APK download\t2026-10-20T22:08:35.4787063Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle\nbuild\tPublish tested APK download\t2026-10-20T22:08:35.4787507Z   GRADLE_USER_HOME: /home/runner/.gradle\nbuild\tPublish tested APK download\t2026-10-20T22:08:35.4787895Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true\nbuild\tPublish tested APK download\t2026-10-20T22:08:35.4788289Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true\nbuild\tPublish tested APK download\t2026-10-20T22:08:35.4788867Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle\nbuild\tPublish tested APK download\t2026-10-20T22:08:35.4789527Z   DEVELOCITY_INJECTION_CUSTOM_VALUE: gradle-actions\nbuild\tPublish tested APK download\t2026-10-20T22:08:35.4789948Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false\nbuild\tPublish tested APK download\t2026-10-20T22:08:35.4790345Z   ANDROID_AVD_HOME: /home/runner/.android/avd\n[credential-bearing log line removed]\nbuild\tPublish tested APK download\t2026-10-20T22:08:35.4794342Z ##[endgroup]\nbuild\tPublish tested APK download\t2026-10-20T22:08:37.5521656Z Traceback (most recent call last):\nbuild\tPublish tested APK download\t2026-10-20T22:08:37.5528488Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/android/tools/publish_apk.py\", line 36, in <module>\nbuild\tPublish tested APK download\t2026-10-20T22:08:37.5529326Z     if __name__=='__main__':main()\nbuild\tPublish tested APK download\t2026-10-20T22:08:37.5529737Z                             ^^^^^^\nbuild\tPublish tested APK download\t2026-10-20T22:08:37.5530551Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/android/tools/publish_apk.py\", line 27, in main\nbuild\tPublish tested APK download\t2026-10-20T22:08:37.5532589Z     if exists and (directory/'ChotuApp.apk').exists() and certificate(directory/'ChotuApp.apk')!=signing:raise ValueError('Update signing certificate changed; refusing an update that would require uninstalling saved work')\nbuild\tPublish tested APK download\t2026-10-20T22:08:37.5534434Z                                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nbuild\tPublish tested APK download\t2026-10-20T22:08:37.5535366Z ValueError: Update signing certificate changed; refusing an update that would require uninstalling saved work\nbuild\tPublish tested APK download\t2026-10-20T22:08:37.5599751Z ##[error]Process completed with exit code 1."
+}
