@@ -1,0 +1,42 @@
+name: ChotuApp Reviewed Fetch Recovery
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: [ChotuApp Cloud Fetch]
+    types: [completed]
+    branches: [main]
+  push:
+    branches: [main]
+    paths: [cloud/recovery-release.json]
+permissions:
+  contents: read
+  actions: write
+concurrency:
+  group: chotuapp-reviewed-fetch-recovery
+  cancel-in-progress: false
+jobs:
+  recover:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install test dependencies
+        run: |
+          if ! python -c 'import tkinter'; then
+            sudo apt-get update -qq
+            sudo apt-get install -y python3-tk
+          fi
+          python -m pip install -r requirements.txt
+      - name: Verify recovery, sources and saved export behavior
+        env:
+          PYTHONPATH: tests:cloud:.
+        run: python -m unittest test_reviewed_recovery test_khaadi_recovery test_sapphire_source test_sapphire_fit_dimensions test_khaadi_source test_khaadi_local_fetch test_khaadi_local_check test_laam_source test_auto_continue test_continuation_policy test_runner_identity -q
+      - name: Recover authorized saved lanes only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python cloud/recover_reviewed_fetches.py

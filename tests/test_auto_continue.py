@@ -31,7 +31,7 @@ class ContinueTests(unittest.TestCase):
       summary=dict(self.summary,stop_reason='time_budget');(folder/'run-summary.json').write_text(json.dumps(summary));return ''
      if args[:2]==('run','list'):return json.dumps([{'displayTitle':'Automatic continuation of 38970499270'}] if duplicate else [])
      return ''
-    with patch.dict(os.environ,{'GITHUB_EVENT_PATH':str(event),'GITHUB_REPOSITORY':'owner/repo'}),patch('auto_continue.gh',side_effect=fake):main()
+    with patch.dict(os.environ,{'GITHUB_EVENT_PATH':str(event),'GITHUB_REPOSITORY':'owner/repo'}),patch('sys.argv',['auto_continue.py']),patch('auto_continue.gh',side_effect=fake):main()
     dispatched=[c for c in calls if c[:2]==('workflow','run')]
     self.assertEqual(len(dispatched),0 if duplicate else 1)
     if dispatched:
