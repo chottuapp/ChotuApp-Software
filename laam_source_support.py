@@ -146,6 +146,15 @@ class PublicCatalog:
         self.g['_chotu_debug_request'](url,1)
         if response is None:response=self.g['S'].get(url,timeout=35,allow_redirects=False)
         self.g['_chotu_debug_response'](response.status_code,len(response.content),cached=cached)
+        for retry in range(1,3):
+            if response.status_code not in (500,502,504):break
+            self.log('LAAM SERVER RETRY: HTTP '+str(response.status_code)+' '+url+'; cooldown 60s; retry '+str(retry)+'/2')
+            self.g['_chotu_backoff'](60,'LAAM temporary server cooldown')
+            self.g['_chotu_wait']()
+            self.g['_chotu_debug_request'](url,retry+1)
+            session=self.g['S'];getter=getattr(session,'get_fresh',None) or session.get
+            response=getter(url,timeout=35,allow_redirects=False);self.last=time.monotonic()
+            self.g['_chotu_debug_response'](response.status_code,len(response.content),cached=False)
         if response.status_code in (500,502,504):
             raise TemporaryProductError('SOURCE PAUSED: LAAM temporary server failure (HTTP '+str(response.status_code)+'); retry saved store after at least 60s. Checkpoint retained')
         if response.status_code in (429,503):

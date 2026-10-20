@@ -65,6 +65,23 @@ class LaamTests(unittest.TestCase):
    g={'_chotu_wait':lambda:None,'_chotu_backoff':lambda *a:None,'_chotu_debug_request':lambda *a:None,'_chotu_debug_response':lambda *a,**k:None,'S':SimpleNamespace(get=lambda *a,**k:response)}
    reader=source.PublicCatalog(g,lambda _:None)
    with self.assertRaisesRegex(RuntimeError,'SOURCE PAUSED: LAAM temporary server failure'):reader.read(source.BASE+'/products/one')
+ def test_temporary_failure_recovers_in_same_runner_with_fresh_retry(self):
+  from types import SimpleNamespace
+  from unittest.mock import Mock
+  bad=SimpleNamespace(status_code=500,content=b'failure');good=SimpleNamespace(status_code=200,content=b'product')
+  session=Mock();session.get.return_value=bad;session.get_fresh.return_value=good;backoff=Mock()
+  g={'_chotu_wait':lambda:None,'_chotu_backoff':backoff,'_chotu_debug_request':lambda *a:None,'_chotu_debug_response':lambda *a,**k:None,'S':session}
+  self.assertIs(source.PublicCatalog(g,lambda _:None).read(source.BASE+'/products/one'),good)
+  session.get_fresh.assert_called_once_with(source.BASE+'/products/one',timeout=35,allow_redirects=False)
+  self.assertEqual([c.args[0] for c in backoff.call_args_list if c.args[1]=='LAAM temporary server cooldown'],[60])
+ def test_retry_budget_is_bounded_and_rate_limit_is_not_retried(self):
+  from types import SimpleNamespace
+  from unittest.mock import Mock
+  for status,count in ((500,2),(429,0)):
+   session=Mock();session.get.return_value=SimpleNamespace(status_code=status,content=b'failure');session.get_fresh.return_value=session.get.return_value
+   g={'_chotu_wait':lambda:None,'_chotu_backoff':lambda *a:None,'_chotu_debug_request':lambda *a:None,'_chotu_debug_response':lambda *a,**k:None,'S':session}
+   with self.assertRaisesRegex(RuntimeError,'SOURCE PAUSED'):source.PublicCatalog(g,lambda _:None).read(source.BASE+'/products/one')
+   self.assertEqual(session.get_fresh.call_count,count)
  def test_source_does_not_follow_other_hosts(self):
   reader=source.PublicCatalog({},lambda _:None)
   with self.assertRaisesRegex(ValueError,'changed host'):reader.read('https://other.example/products/x')
