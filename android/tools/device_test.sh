@@ -2,6 +2,7 @@
 set -euo pipefail
 cd android
 gradle connectedDebugAndroidTest --stacktrace 2>&1 | tee device.log
+adb install -r app/build/outputs/apk/debug/app-debug.apk
 adb shell am start -n com.chotuapp.mobile/.MainActivity
 sleep 4
 adb shell screencap -p /sdcard/chotuapp.png
