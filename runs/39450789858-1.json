@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-20T16:12:47.680828+00:00",
+  "run_id": "39450789858",
+  "attempt": "1",
+  "source_commit": "626ff1f45b38d167f711d1a14b0a1b4062c2c168",
+  "status": "complete",
+  "checkpoint_saved": true,
+  "python": "3.12.15",
+  "elapsed_seconds": 1813.9,
+  "stores": [
+    {
+      "name": "Farda Foods",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "db2f6f0b423cf75d",
+      "products": 51,
+      "variants": 53,
+      "http_statuses": {
+        "200": 64
+      },
+      "network_seconds": 57.3,
+      "max_response_seconds": 6.2,
+      "cache_events": 103
+    },
+    {
+      "name": "Adam Cheese",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "db2f6f0b423cf75d",
+      "products": 58,
+      "variants": 58,
+      "http_statuses": {
+        "200": 63
+      },
+      "network_seconds": 31.9,
+      "max_response_seconds": 2.6,
+      "cache_events": 116
+    },
+    {
+      "name": "Computer Zone",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "db2f6f0b423cf75d",
+      "products": 868,
+      "variants": 868,
+      "http_statuses": {
+        "200": 1809
+      },
+      "network_seconds": 3610.8,
+      "max_response_seconds": 21.0,
+      "cache_events": 0
+    }
+  ]
+}
