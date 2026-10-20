@@ -9,7 +9,7 @@ class AndroidBackendTests(unittest.TestCase):
  def test_pause_does_not_upload_saved_file(self):
   with tempfile.TemporaryDirectory() as tmp:
    root=Path(tmp);self.exported(root)
-   with patch.object(backend,'upload') as upload:
+   with patch.object(backend,'upload') as upload,patch.object(backend.requests,'Session'):
     with self.assertRaises(backend.Paused):backend.run(tmp,tmp,'secret',Mock(isPaused=Mock(return_value=True)))
     upload.assert_not_called()
  def test_existing_export_does_not_refetch_without_credentials(self):

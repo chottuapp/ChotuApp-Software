@@ -21,6 +21,7 @@ def prepare():
  shutil.copytree(ROOT/'tests/fixtures/khaadi_public',DEST/'test-fixtures',dirs_exist_ok=True)
  (DEST/'reviewed-release.json').write_text(json.dumps({'worker_revision':worker.REVISION,'desktop_gui_removed':True}))
  shutil.copy2(ROOT/'catalog-tools/start_khaadi_local_fetch_windows.py',DEST/'approved_worker.py')
+ (ROOT/'android/app/src/main/assets').mkdir(parents=True,exist_ok=True)
  with zipfile.ZipFile(ROOT/'android/app/src/main/assets/engine.zip','w',zipfile.ZIP_DEFLATED) as archive:
   for path in DEST.rglob('*'):
    if path.is_file() and '__pycache__' not in path.parts:archive.write(path,str(path.relative_to(DEST)))

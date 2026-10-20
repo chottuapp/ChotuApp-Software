@@ -1,5 +1,5 @@
 """Embedded Android worker. No Termux, subprocess, desktop UI or shell required."""
-import base64,hashlib,importlib.util,json,sys,time
+import base64,hashlib,importlib.util,json,sys,time,threading,contextlib,datetime
 from pathlib import Path
 import requests
 REPO='chottuapp/ChotuApp-Software'
@@ -9,6 +9,12 @@ def load(name,path):
  spec=importlib.util.spec_from_file_location(name,path);module=importlib.util.module_from_spec(spec);sys.modules[name]=module;spec.loader.exec_module(module);return module
 
 def run(root,data,token,bridge=None):
+ if bridge is None:
+  from java import jclass
+  bridge=jclass("com.chotuapp.mobile.FetchService")
+ with reporting(Path(data),bridge,token):return _run(root,data,token,bridge)
+
+def _run(root,data,token,bridge=None):
  if bridge is None:
   from java import jclass
   bridge=jclass("com.chotuapp.mobile.FetchService")
@@ -93,3 +99,31 @@ def self_test(root,data):
   if book['Variant Combinations'].max_row!=3:raise ValueError('Selected fixture variants missing')
  finally:book.close()
  return 'Embedded export verified'
+
+@contextlib.contextmanager
+def reporting(data,bridge,token):
+ stop=threading.Event()
+ def send():
+  if not token:return
+  try:
+   try:state=json.loads((data/'local-status.json').read_text())
+   except (OSError,ValueError):state={}
+   now=time.time();progress=state.get('last_progress_epoch')
+   report={'store':'Khaadi','execution':'Android app','observed_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'worker_active':state.get('status')=='running' and not bridge.isPaused(),'status':state.get('status','starting'),'worker_updated':state.get('updated'),'last_event':str(state.get('last_event',''))[:1200],'error':str(state.get('error',''))[:700],'progress_age_seconds':max(0,round(now-progress)) if isinstance(progress,(int,float)) else None}
+   session=requests.Session();session.headers['Authorization']='Bearer '+token;base='https://api.github.com/repos/'+REPO;branch='local-run-status'
+   ref=session.get(base+'/git/ref/heads/'+branch,timeout=20)
+   if ref.status_code==404:
+    main=session.get(base+'/git/ref/heads/main',timeout=20);main.raise_for_status();created=session.post(base+'/git/refs',json={'ref':'refs/heads/'+branch,'sha':main.json()['object']['sha']},timeout=20)
+    if created.status_code not in (201,422):return
+   elif ref.status_code!=200:return
+   url=base+'/contents/local/khaadi.json';old=session.get(url,params={'ref':branch},timeout=20)
+   if old.status_code not in (200,404):return
+   payload={'branch':branch,'message':'Publish credential-free Android Khaadi heartbeat','content':base64.b64encode(json.dumps(report).encode()).decode()}
+   if old.status_code==200:payload['sha']=old.json()['sha']
+   session.put(url,json=payload,timeout=20)
+  except (requests.RequestException,ValueError,KeyError,OSError):pass
+ def loop():
+  while not stop.is_set():send();stop.wait(60)
+ thread=threading.Thread(target=loop,daemon=True);thread.start()
+ try:yield
+ finally:stop.set();thread.join(timeout=1)
