@@ -148,6 +148,15 @@ class LaamTests(unittest.TestCase):
     payload={source.BASE+'/robots.txt':'User-agent: *\nAllow: /\nSitemap: https://laam.com/sitemap.xml',source.BASE+'/sitemap.xml':'<sitemapindex><sitemap><loc>https://laam.com/part.xml</loc></sitemap></sitemapindex>',source.BASE+'/part.xml':'<urlset xmlns:i="urn:image"><url><loc>https://laam.com/products/2665a</loc><i:image><i:loc>https://cdn.example/image.jpg</i:loc></i:image></url></urlset>',source.BASE+'/products/2665a':html(FIXTURES[0]['product'])}[url]
     response=requests.Response();response.status_code=200;response._content=payload.encode();response.encoding='utf-8';return response
   products,complete=FixtureSource({},lambda _:None).catalog();self.assertTrue(complete);self.assertEqual(len(products),1);self.assertEqual(products[0]['handle'],'2665a')
+ def test_catalog_product_500_is_deferred_without_repeated_minute_sleeps(self):
+  from types import SimpleNamespace
+  from unittest.mock import Mock
+  response=SimpleNamespace(status_code=500,content=b'failure')
+  backoff=Mock();session=SimpleNamespace(get=Mock(return_value=response),get_fresh=Mock(return_value=response))
+  reader=source.PublicCatalog({'S':session,'_chotu_wait':lambda:None,'_chotu_backoff':backoff,'_chotu_debug_request':lambda *a:None,'_chotu_debug_response':lambda *a,**kw:None},lambda _:None)
+  with self.assertRaises(source.TemporaryProductError):reader.read(source.BASE+'/products/bad',allow_missing=True)
+  self.assertEqual(session.get.call_count,1);session.get_fresh.assert_not_called()
+  self.assertFalse(any(c.args[0]==60 for c in backoff.call_args_list))
  def test_failed_url_cooldown_survives_resume_and_expires(self):
   import time
   with tempfile.TemporaryDirectory() as tmp:

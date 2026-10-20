@@ -164,19 +164,21 @@ class PublicCatalog:
         if path:self.cache=ParsedProductCache(Path(path).with_name('laam-parsed.sqlite3'))
     def close(self):
         if self.cache:self.cache.close();self.cache=None
-    def read(self,url,allow_missing=False):
+    def read(self,url,allow_missing=False,fresh=False):
         p=urlsplit(url)
         if p.scheme!='https' or p.hostname!='laam.com' or p.username or p.password or p.port not in (None,443):raise SourceAccessError('LAAM public source changed host')
         if self.robots and not self.robots.can_fetch(AGENT,url):raise SourceAccessError('LAAM source path disallowed by robots')
         self.g['_chotu_wait']()
         cache=getattr(self.g.get('_chotu_tls'),'saved_response_cache',None)
-        response=cache.get(url) if cache else None;cached=response is not None
+        response=cache.get(url) if cache and not fresh else None;cached=response is not None
         if not cached:
             self.g['_chotu_backoff'](max(0,self.last+1.5-time.monotonic()),'Public catalog pacing');self.last=time.monotonic()
         self.g['_chotu_debug_request'](url,1)
-        if response is None:response=self.g['S'].get(url,timeout=35,allow_redirects=False)
+        if response is None:
+            session=self.g['S'];getter=(getattr(session,'get_fresh',None) or session.get) if fresh else session.get
+            response=getter(url,timeout=35,allow_redirects=False)
         self.g['_chotu_debug_response'](response.status_code,len(response.content),cached=cached)
-        for retry in range(1,3):
+        for retry in range(1,1 if allow_missing else 3):
             if response.status_code not in (500,502,504):break
             self.log('LAAM SERVER RETRY: HTTP '+str(response.status_code)+' '+url+'; cooldown 60s; retry '+str(retry)+'/2')
             self.g['_chotu_backoff'](60,'LAAM temporary server cooldown')
@@ -231,7 +233,13 @@ class PublicCatalog:
                     deferred.append(url);consecutive+=1
                     if self.cache:self.cache.defer(url)
                     self.log('LAAM PRODUCT DEFERRED: '+url+'; temporary server failure, not exported or marked complete')
-                    if consecutive>=5:raise TemporaryProductError('SOURCE PAUSED: LAAM consecutive server failures; retry saved store after at least 60s. Checkpoint retained')
+                    if consecutive>=5:
+                        healthy=next(iter(self.products.values()),None)
+                        if not healthy:raise TemporaryProductError('SOURCE PAUSED: LAAM consecutive server failures with no verified health sample; checkpoint retained')
+                        try:self.read(healthy['_source_url'],fresh=True)
+                        except (RuntimeError,ValueError) as health_error:raise TemporaryProductError('SOURCE PAUSED: LAAM product service health check failed; checkpoint retained') from health_error
+                        self.log('LAAM HEALTH: verified product URL still responds; failed individual pages deferred while healthy pages continue')
+                        consecutive=0
                     continue
                 consecutive=0
                 if self.cache:self.cache.clear_deferred(url)
