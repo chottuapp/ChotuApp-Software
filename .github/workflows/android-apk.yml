@@ -29,7 +29,14 @@ jobs:
         run: python android/tools/prepare.py
       - name: Build installable app and device tests
         working-directory: android
-        run: gradle assembleDebug assembleDebugAndroidTest --stacktrace
+        run: |
+          set -o pipefail
+          gradle assembleDebug assembleDebugAndroidTest --stacktrace 2>&1 | tee build.log
+      - name: Publish build checkpoint
+        if: always()
+        env:
+          BUILD_PHASE: ${{ job.status }}
+        run: python android/tools/build_status.py
       - name: Enable emulator acceleration
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
@@ -43,7 +50,8 @@ jobs:
           disable-animations: true
           script: |
             cd android
-            gradle connectedDebugAndroidTest --stacktrace
+            set -o pipefail
+            gradle connectedDebugAndroidTest --stacktrace 2>&1 | tee device.log
             adb shell am start -n com.chotuapp.mobile/.MainActivity
             sleep 4
             adb shell screencap -p /sdcard/chotuapp.png
@@ -60,3 +68,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python android/tools/publish_apk.py
+      - name: Publish final build status
+        if: always()
+        env:
+          BUILD_PHASE: ${{ job.status }}
+        run: python android/tools/build_status.py

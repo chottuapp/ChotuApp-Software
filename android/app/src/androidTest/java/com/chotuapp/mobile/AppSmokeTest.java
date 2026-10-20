@@ -1,13 +1,21 @@
 package com.chotuapp.mobile;
-import android.test.ActivityInstrumentationTestCase2;
+import android.content.Context;
+import android.content.Intent;
+import androidx.test.platform.app.InstrumentationRegistry;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import static org.junit.Assert.*;
 import java.io.File;
-public class AppSmokeTest extends ActivityInstrumentationTestCase2<MainActivity> {
-    public AppSmokeTest(){super(MainActivity.class);}
-    public void testNativeDashboardAndEmbeddedExporter() throws Exception {
-        MainActivity activity=getActivity();assertNotNull(activity);
-        FetchService.extract(activity);
-        String result=FetchService.python(activity).getModule("mobile_backend").callAttr("self_test",new File(activity.getFilesDir(),"engine").getPath(),new File(activity.getFilesDir(),"smoke-test").getPath()).toString();
+@RunWith(AndroidJUnit4.class)
+public class AppSmokeTest {
+    @Test public void nativeDashboardAndEmbeddedExporter() throws Exception {
+        android.app.Instrumentation instrumentation=InstrumentationRegistry.getInstrumentation();
+        Context context=instrumentation.getTargetContext();
+        android.app.Activity activity=instrumentation.startActivitySync(new Intent(context,MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));assertNotNull(activity);
+        FetchService.extract(context);
+        String result=FetchService.python(context).getModule("mobile_backend").callAttr("self_test",new File(context.getFilesDir(),"engine").getPath(),new File(context.getFilesDir(),"smoke-test").getPath()).toString();
         assertEquals("Embedded export verified",result);
-        Vault.save(activity,"test-fixture-token");assertEquals("test-fixture-token",Vault.read(activity));Vault.clear(activity);assertEquals("",Vault.read(activity));
+        Vault.save(context,"test-fixture-token");assertEquals("test-fixture-token",Vault.read(context));Vault.clear(context);assertEquals("",Vault.read(context));
     }
 }
