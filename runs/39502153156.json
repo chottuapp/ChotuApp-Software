@@ -1,0 +1,210 @@
+{
+  "run_id": "39502153156",
+  "checked_utc": "2026-10-20T21:39:58.551055+00:00",
+  "build": {
+    "conclusion": "failure",
+    "databaseId": 39501690262,
+    "headSha": "a1d8fe6871dd4b7fa81a68daf547a1da360411df",
+    "status": "completed",
+    "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39501690262"
+  },
+  "jobs": [
+    {
+      "id": 118900492885,
+      "run_id": 39501690262,
+      "workflow_name": "Build ChotuApp Android APK",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/chottuapp/ChotuApp-Software/actions/runs/39501690262",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVF-slM8AAAAbrwWKVQ",
+      "head_sha": "a1d8fe6871dd4b7fa81a68daf547a1da360411df",
+      "url": "https://api.github.com/repos/chottuapp/ChotuApp-Software/actions/jobs/118900492885",
+      "html_url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39501690262/job/118900492885",
+      "status": "completed",
+      "conclusion": "failure",
+      "created_at": "2026-10-20T21:36:11Z",
+      "started_at": "2026-10-20T21:36:14Z",
+      "completed_at": "2026-10-20T21:39:39Z",
+      "name": "build",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-20T21:36:15Z",
+          "completed_at": "2026-10-20T21:36:19Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-20T21:36:19Z",
+          "completed_at": "2026-10-20T21:36:36Z"
+        },
+        {
+          "name": "Run actions/setup-java@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-20T21:36:36Z",
+          "completed_at": "2026-10-20T21:36:36Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-20T21:36:36Z",
+          "completed_at": "2026-10-20T21:36:37Z"
+        },
+        {
+          "name": "Run python -m pip install requests beautifulsoup4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-20T21:36:37Z",
+          "completed_at": "2026-10-20T21:36:39Z"
+        },
+        {
+          "name": "Run gradle/actions/setup-gradle@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-20T21:36:39Z",
+          "completed_at": "2026-10-20T21:36:50Z"
+        },
+        {
+          "name": "Run actions/cache@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-20T21:36:50Z",
+          "completed_at": "2026-10-20T21:36:50Z"
+        },
+        {
+          "name": "Bundle checked headless extractor",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-20T21:36:50Z",
+          "completed_at": "2026-10-20T21:36:50Z"
+        },
+        {
+          "name": "Build installable app and device tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-20T21:36:50Z",
+          "completed_at": "2026-10-20T21:37:58Z"
+        },
+        {
+          "name": "Publish build checkpoint",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-20T21:37:58Z",
+          "completed_at": "2026-10-20T21:38:00Z"
+        },
+        {
+          "name": "Enable emulator acceleration",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-20T21:38:00Z",
+          "completed_at": "2026-10-20T21:38:00Z"
+        },
+        {
+          "name": "Run reactivecircus/android-emulator-runner@v2",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 12,
+          "started_at": "2026-10-20T21:38:00Z",
+          "completed_at": "2026-10-20T21:39:15Z"
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-20T21:39:15Z",
+          "completed_at": "2026-10-20T21:39:18Z"
+        },
+        {
+          "name": "Publish tested APK download",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 14,
+          "started_at": "2026-10-20T21:39:18Z",
+          "completed_at": "2026-10-20T21:39:18Z"
+        },
+        {
+          "name": "Publish final build status",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-20T21:39:18Z",
+          "completed_at": "2026-10-20T21:39:20Z"
+        },
+        {
+          "name": "Post Run actions/cache@v4",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 26,
+          "started_at": "2026-10-20T21:39:20Z",
+          "completed_at": "2026-10-20T21:39:20Z"
+        },
+        {
+          "name": "Post Run gradle/actions/setup-gradle@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27,
+          "started_at": "2026-10-20T21:39:20Z",
+          "completed_at": "2026-10-20T21:39:35Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 28,
+          "started_at": "2026-10-20T21:39:35Z",
+          "completed_at": "2026-10-20T21:39:35Z"
+        },
+        {
+          "name": "Post Run actions/setup-java@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-10-20T21:39:35Z",
+          "completed_at": "2026-10-20T21:39:35Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 30,
+          "started_at": "2026-10-20T21:39:35Z",
+          "completed_at": "2026-10-20T21:39:35Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 31,
+          "started_at": "2026-10-20T21:39:35Z",
+          "completed_at": "2026-10-20T21:39:35Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/chottuapp/ChotuApp-Software/check-runs/118900492885",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000000314,
+      "runner_name": "GitHub Actions 1000000314",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ],
+  "failure_logs": "build\tRun reactivecircus/android-emulator-runner@v2\t\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8704324Z   target: default\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8704569Z   cores: 2\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8704808Z   avd-name: test\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8705079Z   force-avd-creation: true\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8705376Z   emulator-boot-timeout: 600\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8705678Z   emulator-port: 5554\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8706132Z   emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8706627Z   disable-spellchecker: false\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8706972Z   disable-linux-hw-accel: auto\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8707278Z   enable-hw-keyboard: false\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8707566Z   channel: stable\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8707798Z env:\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8708140Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8708644Z   JAVA_HOME_17_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.20-1/x64\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8709115Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.17/x64\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8709566Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib/pkgconfig\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8710286Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8710708Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8711135Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.17/x64\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8711568Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.17/x64/lib\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8711975Z   GRADLE_ACTION_ID: gradle/actions/setup-gradle\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8712330Z   GRADLE_USER_HOME: /home/runner/.gradle\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8712822Z   GRADLE_BUILD_ACTION_SETUP_COMPLETED: true\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8713163Z   GRADLE_BUILD_ACTION_CACHE_RESTORED: true\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8713628Z   DEVELOCITY_INJECTION_INIT_SCRIPT_NAME: gradle-actions.inject-develocity.init.gradle\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8714138Z   DEVELOCITY_INJECTION_CUSTOM_VALUE: gradle-actions\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8714494Z   GITHUB_DEPENDENCY_GRAPH_ENABLED: false\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.8714790Z ##[endgroup]\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9284962Z ##[group]Configure emulator\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9286169Z API level: 35\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9286574Z System image API level: 35\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9286990Z target: default\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9287343Z CPU architecture: x86_64\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9287751Z Hardware profile: pixel_6\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9288301Z Cores: 2\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9288931Z RAM size: \nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9289414Z Heap size: \nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9290049Z SD card path or size: \nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9290886Z Disk size: \nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9291592Z AVD name: test\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9291930Z force avd creation: true\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9292214Z Emulator boot timeout: 600\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9293726Z emulator port: 5554\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9294323Z emulator options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9294970Z disable animations: true\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9295362Z disable spellchecker: false\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9295770Z disable Linux hardware acceleration: false\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9296207Z enable hardware keyboard: false\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9296615Z Channel: 0 (stable)\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9296953Z Script:\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9297434Z cd android\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9297825Z set -o pipefail\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9298467Z gradle connectedDebugAndroidTest --stacktrace 2>&1 | tee device.log\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9299269Z adb shell am start -n com.chotuapp.mobile/.MainActivity\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9300111Z sleep 4\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9300898Z adb shell screencap -p /sdcard/chotuapp.png\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9301548Z adb pull /sdcard/chotuapp.png dashboard.png\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9302037Z Pre emulator launch script:\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9302725Z ##[endgroup]\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9303325Z ##[group]Install Android SDK\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:00.9392845Z [command]/usr/bin/sh -c \\yes | sdkmanager --licenses > /dev/null\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:04.4267826Z Installing latest build tools, platform tools, and platform.\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:04.4280133Z [command]/usr/bin/sh -c \\sdkmanager --install 'build-tools;37.0.0' platform-tools 'platforms;android-35'> /dev/null\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:05.8577835Z Installing latest emulator.\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:05.8590285Z [command]/usr/bin/sh -c \\sdkmanager --install emulator --channel=0 > /dev/null\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:17.3523811Z Installing system images.\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:17.3537325Z [command]/usr/bin/sh -c \\sdkmanager --install 'system-images;android-35;default;x86_64' --channel=0 > /dev/null\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:38.2886422Z ##[endgroup]\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:38.2887756Z ##[group]Create AVD\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:38.2888394Z Creating AVD.\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:38.2905206Z [command]/usr/bin/sh -c \\echo no | avdmanager create avd --force -n test --package 'system-images;android-35;default;x86_64' --device 'pixel_6'\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:39.0071677Z Loading local repository...                                                     \nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:39.0072511Z [=========                              ] 25% Loading local repository...       \nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:39.0076936Z [=========                              ] 25% Fetch remote repository...        \nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:39.0077506Z [=======================================] 100% Fetch remote repository...       \nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:39.2014728Z Auto-selecting single ABI x86_64\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:39.5580961Z [command]/usr/bin/sh -c \\printf 'hw.cpu.ncore=2\\n' >> /home/runner/.android/avd/test.avd/config.ini\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:39.5603231Z ##[endgroup]\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:39.5604971Z ##[group]Launch Emulator\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:39.5605291Z Starting emulator.\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:39.5617402Z [command]/usr/bin/sh -c \\/usr/local/lib/android/sdk/emulator/emulator -port 5554 -avd test -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim &\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:39.5731104Z INFO         | Android emulator version 37.2.12.0 (build_id 16428233) (CL:N/A)\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:39.5731805Z INFO         | Graphics backend: gfxstream\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:39.5732543Z INFO         | Found systemPath /usr/local/lib/android/sdk/system-images/android-35/default/x86_64/\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:39.6165157Z INFO         | Saving last run QEMU version for the AVD to 2\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:39.6165887Z INFO         | Increasing RAM size to 2560MB\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:39.6166408Z INFO         | Guest GLES Driver: Auto (ext controls)\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:39.6167183Z INFO         | emuglConfig_init: vulkan_mode_selected:swiftshader gles_mode_selected:swiftshader\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:39.6167844Z INFO         | Checking system compatibility:\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:39.6168329Z INFO         |   Checking: hasSufficientDiskSpace\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:39.6168891Z INFO         |      Ok: Disk space requirements to run avd: `test` are met\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:39.6169548Z INFO         |   Checking: hasSufficientHwGpu\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:39.6170321Z INFO         |      Ok: Hardware GPU compatibility checks are not required\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:39.6170946Z INFO         |   Checking: hasSufficientSystem\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:39.6171521Z INFO         |      Ok: System requirements to run avd: `test` are met\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:39.6172472Z WARNING      | Feature QuickbootFileBacked is disabled due to stability issues, if you really want that, the environment variable ANDROID_EMU_FORCE_QUICKBOOT_FILE_BACKED need to set to 1\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.4244158Z ERROR        | Unable to connect to adb daemon on port: 5037\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.4283590Z INFO         | Storing crashdata in: /tmp/android-runner/emu-crash-37.2.12.db, detection is enabled for process: 2941\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.4284296Z INFO         | Initializing gfxstream backend\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.4295493Z INFO         | startOpenglesRendererImpl: gpu info\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.4295955Z INFO         | \nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.4298301Z INFO         | initIcdPaths: ICD set to 'swiftshader', using Swiftshader ICD\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.4299247Z INFO         | Setting ICD filenames for the loader = /usr/local/lib/android/sdk/emulator/lib64/vulkan/vk_swiftshader_icd.json\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.4301471Z INFO         | SharedLibrary::open for [/usr/local/lib/android/sdk/emulator/qemu/linux-x86_64/lib64/vulkan/libvulkan.so]\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.4302388Z INFO         | SharedLibrary::open for [/usr/local/lib/android/sdk/emulator/qemu/linux-x86_64/lib64/vulkan/libvulkan.so.1]\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.4303042Z INFO         | SharedLibrary::open for [/usr/local/lib/android/sdk/emulator/lib64/vulkan/libvulkan.so]\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.4304068Z INFO         | Added library: /usr/local/lib/android/sdk/emulator/lib64/vulkan/libvulkan.so\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.4435187Z INFO         | Selecting Vulkan device: SwiftShader Device (Subzero), Version: 1.3.0\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.4436082Z INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5001487Z INFO         | Format VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 does not support YCbCr sampler conversion\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5029515Z INFO         | SharedLibrary::open for [libX11]\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5032986Z WARNING      | Could not open libX11.so, try libX11.so.6\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5033513Z INFO         | SharedLibrary::open for [libX11.so.6]\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5033957Z INFO         | SharedLibrary::open for [libX11-xcb]\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5034416Z WARNING      | Could not open libX11-xcb.so, try libX11-xcb.so.1\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5034845Z INFO         | SharedLibrary::open for [libX11-xcb.so.1]\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5133477Z INFO         | Initializing VkEmulation features:\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5134139Z INFO         |     glInteropSupported: false\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5134492Z INFO         |     useDeferredCommands: true\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5134891Z INFO         |     createResourceWithRequirements: true\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5135608Z INFO         |     useVulkanComposition: false\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5135986Z INFO         |     useVulkanNativeSwapchain: false\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5136355Z INFO         |     enable guestRenderDoc: false\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5136700Z INFO         |     ASTC LDR emulation mode: Gpu\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5137098Z INFO         |     enable ETC2 emulation: true\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5137444Z INFO         |     enable Ycbcr emulation: false\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5137777Z INFO         |     guestVulkanOnly: false\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5138107Z INFO         |     useDedicatedAllocations: false\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5138494Z INFO         |     guestVulkanMaxApiVersion: 1.3.0\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5138891Z INFO         |     enableProtectedMemoryEmulation: false\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5145090Z INFO         | Graphics Adapter Vendor Google (Google Inc.)\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5145898Z INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (Google SwiftShader)\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5146681Z INFO         | Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.0 SwiftShader 4.0.0.1)\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5148760Z INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 \nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5150942Z INFO         | Graphics Device Extensions N/A\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5151325Z INFO         | Disabling sparse binding feature support\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5241200Z INFO         | Sending adb public key [QAAAAAU9ezYz+N74YUw4DhyfZGKouEVKUDD0KK2pFcCbfcwUbfsGzs+YuqBl0l42ZZBaRSR1+6suwv5g7ACUkmdRP6PgOF18eql5ugTMONxXZVKsLf8690oRw/gXZ0nPqgE7G0ENYfC4HZRGP6xr0A7/sAw2ez9gTJRi07qhat7K2Q40s3WN4unyfyKQYHlypBR+xI195LxdTjxPEm3gHRK1mvwY90dtUECgxA+U16iEmN3z4i8eoIqeQ4TM4JqYwdOFWoU2EvZtmWLLsUWTI2eqdAt1FBKPHg5SR2WkqI0kANDPqo9f4jVueWn5iln3Y/Ed485GoFwwsWLP33nbE5GdRXUuYFTFF1+hAwnzTboku40Xy+DB0irtK788ZwmbuqxZjgxaPDkNCOmU5upiCkriVqyINS6gFYiW37dDVuBSwHOWSKoL91z85j3kNp/Ovw3gCLYvo1zbN87UhtHsboRpsqZb0hpSYIoH7/fjy4x1vqQoBITeJDsalPGh2D02uH/8UQr2LcP1dugkIFoMaAwc0E0hqk1lLjVN6maSOcZGdLXMUZJ6xPaDPMkAcQRK6MxKf+0gcgHcz7ydrhcYIOVjttifWXs8WjyYGQMtThl8mKTlrqVnP5aO7whAPS8QcsgrJcCRU3ucQw+YWZ4RURm4gaiASjL63EEDUpZw1Ob+wNA5ONV6rAEAAQA= runner@unknown]\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5247301Z INFO         | Userspace boot properties:\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5248270Z INFO         |   androidboot.boot_devices=pci0000:00/0000:00:03.0 pci0000:00/0000:00:06.0\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5249124Z INFO         |   androidboot.dalvik.vm.heapsize=576m\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5250107Z INFO         |   androidboot.debug.hwui.renderer=skiagl\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5250900Z INFO         |   androidboot.debug.sf.nobootanimation=1\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5251586Z INFO         |   androidboot.hardware=ranchu\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5252172Z INFO         |   androidboot.hardware.gltransport=pipe\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5252774Z INFO         |   androidboot.hardware.vulkan=ranchu\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5253361Z INFO         |   androidboot.logcat=*:V\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5253942Z INFO         |   androidboot.opengles.version=196608\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5254565Z INFO         |   androidboot.qemu=1\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5258274Z INFO         |   androidboot.qemu.adb.pubkey=QAAAAAU9ezYz+N74YUw4DhyfZGKouEVKUDD0KK2pFcCbfcwUbfsGzs+YuqBl0l42ZZBaRSR1+6suwv5g7ACUkmdRP6PgOF18eql5ugTMONxXZVKsLf8690oRw/gXZ0nPqgE7G0ENYfC4HZRGP6xr0A7/sAw2ez9gTJRi07qhat7K2Q40s3WN4unyfyKQYHlypBR+xI195LxdTjxPEm3gHRK1mvwY90dtUECgxA+U16iEmN3z4i8eoIqeQ4TM4JqYwdOFWoU2EvZtmWLLsUWTI2eqdAt1FBKPHg5SR2WkqI0kANDPqo9f4jVueWn5iln3Y/Ed485GoFwwsWLP33nbE5GdRXUuYFTFF1+hAwnzTboku40Xy+DB0irtK788ZwmbuqxZjgxaPDkNCOmU5upiCkriVqyINS6gFYiW37dDVuBSwHOWSKoL91z85j3kNp/Ovw3gCLYvo1zbN87UhtHsboRpsqZb0hpSYIoH7/fjy4x1vqQoBITeJDsalPGh2D02uH/8UQr2LcP1dugkIFoMaAwc0E0hqk1lLjVN6maSOcZGdLXMUZJ6xPaDPMkAcQRK6MxKf+0gcgHcz7ydrhcYIOVjttifWXs8WjyYGQMtThl8mKTlrqVnP5aO7whAPS8QcsgrJcCRU3ucQw+YWZ4RURm4gaiASjL63EEDUpZw1Ob+wNA5ONV6rAEAAQA= runner@unknown\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5262528Z INFO         |   androidboot.qemu.avd_name=test\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5263254Z INFO         |   androidboot.qemu.camera_hq_edge_processing=0\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5263937Z INFO         |   androidboot.qemu.camera_protocol_ver=1\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5264332Z INFO         |   androidboot.qemu.cpuvulkan.version=4206592\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5264771Z INFO         |   androidboot.qemu.gltransport.drawFlushInterval=800\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5265192Z INFO         |   androidboot.qemu.gltransport.name=pipe\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5265570Z INFO         |   androidboot.qemu.hwcodec.avcdec=2\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5265942Z INFO         |   androidboot.qemu.hwcodec.hevcdec=2\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5266311Z INFO         |   androidboot.qemu.hwcodec.vpxdec=2\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5266760Z INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5267190Z INFO         |   androidboot.qemu.skin=1080x2400\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5267534Z INFO         |   androidboot.qemu.virtiowifi=1\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5267877Z INFO         |   androidboot.qemu.vsync=60\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5268229Z INFO         |   androidboot.serialno=EMULATOR37X2X12X0\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5268741Z INFO         |   androidboot.vbmeta.digest=602b0c809848f3be570a96601071931225108ec3b3739d99a1dc41db38efe83c\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5269254Z INFO         |   androidboot.vbmeta.hash_alg=sha256\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5269605Z INFO         |   androidboot.vbmeta.size=6720\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5270149Z INFO         |   androidboot.veritymode=enforcing\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5496857Z WARNING: cannnot unmap ptr 0x7fa043201000 as it is in the protected range from 0x7f9fa3200000 to 0x7fa043400000\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:40.5805877Z INFO         | Monitoring duration of emulator setup.\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:41.5562742Z INFO         | Activated packet streamer for bluetooth emulation\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:41.5563589Z INFO         | Successfully initialized netsim WiFi\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:41.5618173Z INFO         | Setting display: 0 configuration to: 1080x2400, dpi: 420x420 \nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:41.5618945Z INFO         | setDisplayActiveConfig: id:0, 1080x2400\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:41.5619607Z INFO         | emulatorSetupEnvironment: Environment scene is not required\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:41.5699885Z USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:41.5701453Z WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:41.7656218Z WARNING      | Failed to process .ini file /home/runner/.android/emu-update-last-check.ini for reading.\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:49.5671661Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:49.5702492Z * daemon not running; starting now at tcp:5037\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:49.7272774Z * daemon started successfully\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:49.7291082Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:49.7291598Z adb: device offline\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:51.7324978Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:51.7372429Z adb: device offline\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:51.7382287Z The process '/usr/local/lib/android/sdk/platform-tools/adb' failed with exit code 1\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:53.7442011Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:53.7650264Z \nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:55.7701487Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:55.7941724Z \nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:57.8011664Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:57.8597719Z \nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:59.8656878Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:38:59.9073068Z \nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:01.9154059Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:01.9472246Z \nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:03.9516932Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:03.9742259Z \nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:05.9831455Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:06.0071233Z \nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:08.0155757Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:08.1378663Z \nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:08.4931209Z INFO         | Boot completed in 28894 ms\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:08.4934436Z INFO         | Increasing screen off timeout, logcat buffer size to 2M.\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:10.1424715Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell getprop sys.boot_completed\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:10.2303041Z 1\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:10.2332517Z Emulator booted.\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:10.2368184Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell input keyevent 82\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:14.1982819Z Disabling animations.\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:14.2036028Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell settings put global window_animation_scale 0.0\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:14.2781780Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell settings put global transition_animation_scale 0.0\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:14.4211553Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 shell settings put global animator_duration_scale 0.0\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:14.5221779Z ##[endgroup]\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:14.5318705Z [command]/usr/bin/sh -c cd android\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:14.5417260Z [command]/usr/bin/sh -c set -o pipefail\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:14.5452321Z /usr/bin/sh: 1: set: Illegal option -o pipefail\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:14.5480961Z ##[error]The process '/usr/bin/sh' failed with exit code 2\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:14.5500747Z ##[group]Terminate Emulator\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:14.5501781Z [command]/usr/local/lib/android/sdk/platform-tools/adb -s emulator-5554 emu kill\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:14.5530930Z OK: killing emulator, bye bye\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:14.5531737Z OK\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:14.5532686Z ##[endgroup]\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:14.5535704Z INFO         | Wait for emulator (pid 2941) 20 seconds to shutdown gracefully before kill;you can set environment variable ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL(in seconds) to change the default value (20 seconds)\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:14.5536926Z \nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:14.5665624Z USER_INFO    | Snapshots have been disabled by the user, save request is ignored.\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:14.5690720Z INFO         | Saving snapshot 'default_boot' took 0 ms\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:14.5884104Z ERROR        | stop: Not implemented\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:14.5891656Z WARNING      | Emulator client has not yet been configured.. Call configure me first!\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:14.6034160Z INFO         | removeAll\nbuild\tRun reactivecircus/android-emulator-runner@v2\t2026-10-20T21:39:14.9374989Z WARNING      | Netsim Wifi dns:///localhost:46779 is gone due to Stream removed (CANCELLED)"
+}
