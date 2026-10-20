@@ -46,8 +46,13 @@ def main():
     text=paths[0].read_text(encoding='utf-8',errors='replace')[:65536];updated,stores=parse_snapshot(text)
     item.update(snapshot=text,snapshot_utc=updated,stores=stores)
     if updated:
-     item['snapshot_age_seconds']=round((now-datetime.datetime.fromisoformat(updated)).total_seconds())
+     item['snapshot_age_seconds']=max(0,round((now-datetime.datetime.fromisoformat(updated)).total_seconds()))
      item['snapshot_stale']=item['snapshot_age_seconds']>600
+    if run['lane']=='solo-laam' and run['status']!='completed':
+     from diagnostics import redact
+     for filename in ('console-tail.txt','fetch-log.txt'):
+      logs=list(Path(tmp).rglob(filename))
+      if logs:item[filename]=[redact(line) for line in logs[0].read_text(encoding='utf-8',errors='replace').splitlines()[-70:]]
     if run['lane'].startswith('fresh26-39450710625-'):report['fresh_stores'].update(stores)
    except (RuntimeError,OSError,ValueError):item['snapshot_unavailable']=True
   if run.get('conclusion')=='failure':
