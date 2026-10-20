@@ -138,6 +138,9 @@ class LaamTests(unittest.TestCase):
    reader=FixtureSource({'_chotu_tls':SimpleNamespace(saved_api_path=Path(tmp)/'api.sqlite3')},lambda _:None)
    with self.assertRaisesRegex(source.TemporaryProductError,'catalog incomplete'):reader.catalog()
    self.assertIn(good,visited);self.assertIsNotNone(reader.cache.get(good));self.assertIsNone(reader.cache.get(bad));reader.close()
+   visited.clear();reader=FixtureSource({'_chotu_tls':SimpleNamespace(saved_api_path=Path(tmp)/'api.sqlite3')},lambda _:None)
+   with self.assertRaises(source.TemporaryProductError):reader.catalog()
+   self.assertNotIn(bad,visited);self.assertEqual(len(reader.products),1);reader.close()
  def test_public_sitemap_images_are_not_treated_as_products(self):
   import requests
   class FixtureSource(source.PublicCatalog):
@@ -145,6 +148,14 @@ class LaamTests(unittest.TestCase):
     payload={source.BASE+'/robots.txt':'User-agent: *\nAllow: /\nSitemap: https://laam.com/sitemap.xml',source.BASE+'/sitemap.xml':'<sitemapindex><sitemap><loc>https://laam.com/part.xml</loc></sitemap></sitemapindex>',source.BASE+'/part.xml':'<urlset xmlns:i="urn:image"><url><loc>https://laam.com/products/2665a</loc><i:image><i:loc>https://cdn.example/image.jpg</i:loc></i:image></url></urlset>',source.BASE+'/products/2665a':html(FIXTURES[0]['product'])}[url]
     response=requests.Response();response.status_code=200;response._content=payload.encode();response.encoding='utf-8';return response
   products,complete=FixtureSource({},lambda _:None).catalog();self.assertTrue(complete);self.assertEqual(len(products),1);self.assertEqual(products[0]['handle'],'2665a')
+ def test_failed_url_cooldown_survives_resume_and_expires(self):
+  import time
+  with tempfile.TemporaryDirectory() as tmp:
+   path=Path(tmp)/'cache.sqlite3';url=source.BASE+'/products/server-error'
+   cache=source.ParsedProductCache(path,'one');cache.defer(url);cache.close()
+   cache=source.ParsedProductCache(path,'two');self.assertTrue(cache.cooling(url))
+   with patch.object(source.time,'time',return_value=time.time()+3601):self.assertFalse(cache.cooling(url))
+   cache.clear_deferred(url);self.assertFalse(cache.cooling(url));cache.close()
  def test_parsed_cache_restarts_without_losing_any_product_or_variant_fields(self):
   product=source.normalize(FIXTURES[0]['product'],FIXTURES[0]['product']['handle']);url=product['_source_url']
   with tempfile.TemporaryDirectory() as tmp:

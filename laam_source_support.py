@@ -130,7 +130,8 @@ class ParsedProductCache:
         from resume_support import configure_response_database
         self.revision=revision or hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
         self.db=sqlite3.connect(path,timeout=30);configure_response_database(self.db)
-        self.db.execute('CREATE TABLE IF NOT EXISTS parsed_products(url TEXT PRIMARY KEY,revision TEXT NOT NULL,payload BLOB NOT NULL,checksum TEXT NOT NULL)');self.db.commit()
+        self.db.execute('CREATE TABLE IF NOT EXISTS parsed_products(url TEXT PRIMARY KEY,revision TEXT NOT NULL,payload BLOB NOT NULL,checksum TEXT NOT NULL)')
+        self.db.execute('CREATE TABLE IF NOT EXISTS temporary_failures(url TEXT PRIMARY KEY,retry_after REAL NOT NULL)');self.db.commit()
     def get(self,url):
         row=self.db.execute('SELECT payload,checksum FROM parsed_products WHERE url=? AND revision=?',(url,self.revision)).fetchone()
         if row is None:return None
@@ -147,6 +148,13 @@ class ParsedProductCache:
     def put(self,url,product):
         body=zlib.compress(json.dumps(product,ensure_ascii=True,separators=(',',':')).encode(),1)
         self.db.execute('INSERT OR REPLACE INTO parsed_products VALUES(?,?,?,?)',(url,self.revision,body,hashlib.sha256(body).hexdigest()));self.db.commit()
+    def defer(self,url,seconds=3600):
+        self.db.execute('INSERT OR REPLACE INTO temporary_failures VALUES(?,?)',(url,time.time()+seconds));self.db.commit()
+    def cooling(self,url):
+        row=self.db.execute('SELECT retry_after FROM temporary_failures WHERE url=?',(url,)).fetchone()
+        return bool(row and 0<row[0]-time.time()<=3600)
+    def clear_deferred(self,url):
+        self.db.execute('DELETE FROM temporary_failures WHERE url=?',(url,));self.db.commit()
     def close(self):self.db.close()
 
 class PublicCatalog:
@@ -210,26 +218,34 @@ class PublicCatalog:
         deferred=[];consecutive=0
         for index,url in enumerate(sorted(urls),1):
             self.g.get('_chotu_wait',lambda:None)()
+            if index==1 or (index-1)%50==0:self.log(f'PUBLIC PRODUCT PAGES: {index-1}/{len(urls)} LAAM pages inspected; {len(self.products)} clothing products retained; {len(deferred)} pages deferred')
+            if self.cache and self.cache.cooling(url):
+                deferred.append(url);continue
             product=self.cache.get(url) if self.cache else None
+            if product is not None and product.get('_excluded_reason'):continue
             if product is not None:self.cache_hits+=1
             else:
                 handle=unquote(urlsplit(url).path.rsplit('/',1)[-1])
                 try:response=self.read(url,allow_missing=True)
                 except TemporaryProductError:
                     deferred.append(url);consecutive+=1
+                    if self.cache:self.cache.defer(url)
                     self.log('LAAM PRODUCT DEFERRED: '+url+'; temporary server failure, not exported or marked complete')
                     if consecutive>=5:raise TemporaryProductError('SOURCE PAUSED: LAAM consecutive server failures; retry saved store after at least 60s. Checkpoint retained')
                     continue
                 consecutive=0
+                if self.cache:self.cache.clear_deferred(url)
                 if response.status_code in (404,410):
                     self.log('LAAM SOURCE REMOVED: HTTP '+str(response.status_code)+' '+url+'; absent public product excluded')
                     continue
                 # Nuxt state and currency evidence live in scripts; don't build a full page DOM.
                 try:product=product_state(BeautifulSoup(response.text,'html.parser',parse_only=SoupStrainer('script')),handle,clothing_only=True)
                 except OutsideClothingScope:
+                    if self.cache:self.cache.put(url,{'_source_url':url,'variants':[],'_excluded_reason':'not-confirmed-clothing'})
                     self.log('LAAM CLOTHING FILTER: excluded non-clothing or unclassified product '+url)
                     continue
                 except ConfirmedOutOfStock:
+                    if self.cache:self.cache.put(url,{'_source_url':url,'variants':[],'_excluded_reason':'confirmed-empty-zero-stock'})
                     self.log('LAAM SOURCE OUT OF STOCK: '+url+'; explicit zero inventory and empty variants; unavailable product excluded, no variants invented')
                     continue
                 except SourceAccessError:raise
@@ -237,7 +253,7 @@ class PublicCatalog:
                 if self.cache:self.cache.put(url,product)
             if product['id'] in self.products:raise ValueError('LAAM sitemap returned repeated product identity')
             self.products[product['id']]=product
-            if index==1 or index%50==0 or index==len(urls):self.log(f'PUBLIC PRODUCT PAGES: {index}/{len(urls)} LAAM products verified')
+            if index==1 or index%50==0 or index==len(urls):self.log(f'PUBLIC PRODUCT PAGES: {index}/{len(urls)} LAAM pages inspected; {len(self.products)} clothing products retained')
         if deferred:raise TemporaryProductError('SOURCE PAUSED: LAAM '+str(len(deferred))+' product pages still unavailable; other successful products cached. Retry saved store after at least 60s; catalog incomplete')
         if self.cache_hits:self.log('LAAM PARSED CACHE: '+str(self.cache_hits)+' verified products reused without reparsing; current adapter revision only')
         self.log('LAAM SOURCE: clothing-only selection from declared product sitemap; non-clothing and unclassified excluded; explicit PKR, observed variants, public stock and image URLs retained. No sales popularity assumed.')

@@ -42,3 +42,8 @@ runs:
         overwrite: true
         if-no-files-found: ignore
         retention-days: 3
+    - name: Trigger cloud Drive sync after a changed Rule 804 snapshot
+      if: steps.snapshot.outputs.files_changed == 'true' && startsWith(env.CLOUD_RUNNER_GROUP, 'fresh26-')
+      continue-on-error: true
+      shell: bash
+      run: gh workflow run cloud-drive-sync.yml --repo "$GITHUB_REPOSITORY" --ref main

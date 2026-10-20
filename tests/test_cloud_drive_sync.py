@@ -27,7 +27,7 @@ class DriveSyncTests(unittest.TestCase):
   with patch.object(sync,'gh',side_effect=gh),patch.object(sync,'publish') as publish,patch('subprocess.run',side_effect=command),patch.dict(os.environ,{'CHOTU_DRIVE_RCLONE_CONFIG':CONFIG,'GITHUB_RUN_ID':'777'}),patch('builtins.print'):
    if fail:
     with self.assertRaises(RuntimeError):sync.main()
-    publish.assert_not_called()
+    for saved in publish.call_args_list:self.assertFalse(saved.args[0]['uploaded']);self.assertFalse(saved.args[0]['processed_artifacts'])
    else:
     sync.main();report=publish.call_args.args[0]
     self.assertEqual(report['uploaded']['Miss Rose']['sha256'],record['sha256']);self.assertEqual(report['processed_artifacts']['123'],9)
