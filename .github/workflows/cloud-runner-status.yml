@@ -8,7 +8,7 @@ on:
     types: [completed]
   push:
     branches: [main]
-    paths: [cloud/runner_status.py, .github/workflows/cloud-runner-status.yml]
+    paths: [cloud/status-check-request.json, cloud/runner_status.py, .github/workflows/cloud-runner-status.yml]
 permissions:
   contents: write
   actions: read
