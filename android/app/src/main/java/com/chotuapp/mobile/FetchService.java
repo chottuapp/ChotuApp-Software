@@ -11,6 +11,10 @@ import java.util.zip.*;
 public class FetchService extends Service {
     static final AtomicBoolean active=new AtomicBoolean(false),paused=new AtomicBoolean(false);
     private PowerManager.WakeLock wake;
+    private static Context appContext;
+    @Override public void onCreate(){super.onCreate();appContext=getApplicationContext();}
+    public static String githubToken(){return appContext==null?"":Vault.read(appContext);}
+    public static boolean isActive(){return active.get();}
     public static boolean isPaused(){return paused.get();}
     static synchronized Python python(Context c){if(!Python.isStarted())Python.start(new AndroidPlatform(c.getApplicationContext()));return Python.getInstance();}
     static void extract(Context c) throws Exception {

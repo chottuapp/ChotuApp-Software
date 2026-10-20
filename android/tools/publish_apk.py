@@ -1,8 +1,16 @@
 """Deliver only the tested preview APK and checksum on a dedicated download branch."""
-import datetime,hashlib,json,os,shutil,subprocess,tempfile
+import datetime,hashlib,json,os,shutil,subprocess,tempfile,re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
 def run(args,cwd):return subprocess.run(args,cwd=cwd,check=True,capture_output=True,text=True)
+def certificate(apk):
+ sdk=Path(os.environ.get('ANDROID_HOME',os.environ.get('ANDROID_SDK_ROOT','/usr/local/lib/android/sdk')))
+ tools=sorted((sdk/'build-tools').glob('*/apksigner'))
+ if not tools:raise RuntimeError('APK signature verifier unavailable')
+ text=run([str(tools[-1]),'verify','--print-certs',str(apk)],ROOT).stdout
+ match=re.search(r'Signer #1 certificate SHA-256 digest: ([0-9a-fA-F]+)',text)
+ if not match:raise ValueError('APK signing certificate unavailable')
+ return match[1].lower()
 def main():
  apk=ROOT/'android/app/build/outputs/apk/debug/app-debug.apk'
  if not apk.is_file() or apk.stat().st_size>95*1024*1024:raise ValueError('APK missing or exceeds Git delivery limit')
@@ -15,10 +23,12 @@ def main():
   run(['git','remote','add','origin','https://github.com/chottuapp/ChotuApp-Software.git'],directory)
   exists=subprocess.run(['git','fetch','--depth','1','origin','android-builds'],cwd=directory,capture_output=True).returncode==0
   run(['git','checkout','-B','android-builds','FETCH_HEAD'] if exists else ['git','checkout','--orphan','android-builds'],directory)
+  signing=certificate(apk)
+  if exists and (directory/'ChotuApp.apk').exists() and certificate(directory/'ChotuApp.apk')!=signing:raise ValueError('Update signing certificate changed; refusing an update that would require uninstalling saved work')
   shutil.copy2(apk,directory/'ChotuApp.apk')
   screenshot=ROOT/'android/dashboard.png'
   if screenshot.exists():shutil.copy2(screenshot,directory/'dashboard.png')
-  report={'sha256':hashlib.sha256(apk.read_bytes()).hexdigest(),'bytes':apk.stat().st_size,'source_commit':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID'],'built_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'device_test':'Android 35 x86_64 dashboard, Keystore and captured-source XLSX export passed','release':'debug-signed preview; first phone live source fetch not yet verified'}
+  report={'version':'1.1-preview','signing_certificate_sha256':signing,'sha256':hashlib.sha256(apk.read_bytes()).hexdigest(),'bytes':apk.stat().st_size,'source_commit':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID'],'built_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'device_test':'Android 35 x86_64 dashboard, Keystore and captured-source XLSX export passed','release':'debug-signed preview; first phone live source fetch not yet verified'}
   (directory/'latest.json').write_text(json.dumps(report,indent=2));run(['git','add','ChotuApp.apk','latest.json'],directory)
   if screenshot.exists():run(['git','add','dashboard.png'],directory)
   run(['git','commit','-m','Deliver tested ChotuApp Android preview'],directory);run(['git','push','origin','HEAD:android-builds'],directory)

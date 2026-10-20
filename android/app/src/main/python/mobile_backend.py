@@ -33,6 +33,7 @@ def _run(root,data,token,bridge=None):
   code=worker.fetch(root,data,PublicSession())
   if code:return json.dumps({'status':'paused' if code==130 else 'attention','message':'Saved work retained. See activity for the source error.'})
  check()
+ if hasattr(bridge,'githubToken'):token=str(bridge.githubToken() or '')
  if not token:return json.dumps({'status':'ready_to_upload','message':'Excel saved on this phone. Connect GitHub to queue Rule 804 and Drive upload.'})
  sha=upload(data,token,check)
  return json.dumps({'status':'cloud_queued','source_sha256':sha,'message':'Workbook queued for Rule 804 and Drive verification. Drive completion is shown separately.'})
@@ -100,30 +101,82 @@ def self_test(root,data):
  finally:book.close()
  return 'Embedded export verified'
 
+def read_state(data):
+ try:return json.loads((Path(data)/'local-status.json').read_text())
+ except (OSError,ValueError):return {}
+
+def safe_log(value,token=''):
+ import re
+ value=str(value)
+ if token:value=value.replace(token,'[redacted]')
+ value=re.sub(r'(?:github_pat_|gh[pousr]_)[A-Za-z0-9_]+','[redacted]',value)
+ if re.search(r'authorization|access_token|refresh_token|client_secret|password|set-cookie|cookie:',value,re.I):return '[credential-bearing line omitted]'
+ return re.sub(r'/data/(?:user/\d+|data)/com\.chotuapp\.mobile/[^ \n]*','[app-data]',value)[:900]
+
+def log_tail(data,token=''):
+ path=Path(data)/'fetch-log.txt'
+ try:
+  with path.open('rb') as stream:
+   stream.seek(max(0,path.stat().st_size-18000));raw=stream.read(18000).decode('utf-8',errors='replace')
+  return [safe_log(line,token) for line in raw.splitlines()[-60:]]
+ except OSError:return []
+
+def mobile_report(data,token,active,paused=False):
+ state=read_state(data);progress=state.get('last_progress_epoch');status=state.get('status','ready')
+ if paused and active:status='pausing'
+ elif status=='running' and not active:status='stopped'
+ return {'store':'Khaadi','execution':'Android app','app_version':'1.1-preview','observed_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'worker_active':bool(active),'status':status,'worker_updated':state.get('updated'),'last_event':safe_log(state.get('last_event',''),token),'error':safe_log(state.get('error',''),token),'progress_age_seconds':max(0,round(time.time()-progress)) if isinstance(progress,(int,float)) else None,'log_tail':log_tail(data,token)}
+
+def telemetry_status(data,**record):
+ data=Path(data);data.mkdir(parents=True,exist_ok=True);path=data/'telemetry-status.json'
+ # Unique temporary files avoid collisions with manual Send now and periodic sync.
+ import tempfile,os
+ with tempfile.NamedTemporaryFile(mode='w',dir=data,delete=False,encoding='utf-8') as stream:
+  json.dump(record,stream);temporary=stream.name
+ os.replace(temporary,path)
+
+def sync_logs(data,token,active=False,paused=False):
+ data=Path(data);now=datetime.datetime.now(datetime.timezone.utc).isoformat()
+ if not token:
+  record={'status':'connection_required','message':'Connect GitHub once to enable remote logs. Fetching can continue locally.','attempted_utc':now};telemetry_status(data,**record);return json.dumps(record)
+ try:
+  session=requests.Session();session.headers.update(Authorization='Bearer '+token,Accept='application/vnd.github+json');base='https://api.github.com/repos/'+REPO;branch='local-run-status'
+  ref=session.get(base+'/git/ref/heads/'+branch,timeout=15)
+  if ref.status_code==404:
+   main=session.get(base+'/git/ref/heads/main',timeout=15)
+   if main.status_code!=200:raise RuntimeError('GitHub HTTP '+str(main.status_code))
+   created=session.post(base+'/git/refs',json={'ref':'refs/heads/'+branch,'sha':main.json()['object']['sha']},timeout=15)
+   if created.status_code not in (201,422):raise RuntimeError('GitHub HTTP '+str(created.status_code))
+  elif ref.status_code!=200:raise RuntimeError('GitHub HTTP '+str(ref.status_code))
+  report=mobile_report(data,token,active,paused)
+  # Separate Android path prevents an old PC heartbeat overwriting phone logs.
+  url=base+'/contents/local/khaadi-android.json';old=session.get(url,params={'ref':branch},timeout=15)
+  if old.status_code not in (200,404):raise RuntimeError('GitHub HTTP '+str(old.status_code))
+  payload={'branch':branch,'message':'Update redacted Android Khaadi progress and logs','content':base64.b64encode(json.dumps(report).encode()).decode()}
+  if old.status_code==200:payload['sha']=old.json()['sha']
+  response=session.put(url,json=payload,timeout=20)
+  if response.status_code not in (200,201):raise RuntimeError('GitHub HTTP '+str(response.status_code))
+  record={'status':'synced','last_success_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'message':'Remote logs synced. Automatic sync every 30 seconds while fetching.'}
+ except (requests.RequestException,ValueError,KeyError,OSError,RuntimeError) as exc:
+  # Do not expose HTTP response bodies or exceptions which might include credentials.
+  reason=str(exc) if isinstance(exc,RuntimeError) and str(exc).startswith('GitHub HTTP ') else 'Network or repository access unavailable'
+  if reason=='GitHub HTTP 403':reason='GitHub denied access. Allow Contents: Read and write for ChotuApp-Software'
+  elif reason=='GitHub HTTP 401':reason='GitHub token expired or invalid. Reconnect in Settings'
+  record={'status':'retry_pending','message':reason+'; local fetching is unchanged.','attempted_utc':now}
+ telemetry_status(data,**record);return json.dumps(record)
+
 @contextlib.contextmanager
 def reporting(data,bridge,token):
  stop=threading.Event()
- def send():
-  if not token:return
-  try:
-   try:state=json.loads((data/'local-status.json').read_text())
-   except (OSError,ValueError):state={}
-   now=time.time();progress=state.get('last_progress_epoch')
-   report={'store':'Khaadi','execution':'Android app','observed_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'worker_active':state.get('status')=='running' and not bridge.isPaused(),'status':state.get('status','starting'),'worker_updated':state.get('updated'),'last_event':str(state.get('last_event',''))[:1200],'error':str(state.get('error',''))[:700],'progress_age_seconds':max(0,round(now-progress)) if isinstance(progress,(int,float)) else None}
-   session=requests.Session();session.headers['Authorization']='Bearer '+token;base='https://api.github.com/repos/'+REPO;branch='local-run-status'
-   ref=session.get(base+'/git/ref/heads/'+branch,timeout=20)
-   if ref.status_code==404:
-    main=session.get(base+'/git/ref/heads/main',timeout=20);main.raise_for_status();created=session.post(base+'/git/refs',json={'ref':'refs/heads/'+branch,'sha':main.json()['object']['sha']},timeout=20)
-    if created.status_code not in (201,422):return
-   elif ref.status_code!=200:return
-   url=base+'/contents/local/khaadi.json';old=session.get(url,params={'ref':branch},timeout=20)
-   if old.status_code not in (200,404):return
-   payload={'branch':branch,'message':'Publish credential-free Android Khaadi heartbeat','content':base64.b64encode(json.dumps(report).encode()).decode()}
-   if old.status_code==200:payload['sha']=old.json()['sha']
-   session.put(url,json=payload,timeout=20)
-  except (requests.RequestException,ValueError,KeyError,OSError):pass
+ def current_token():
+  method=getattr(bridge,'githubToken',None)
+  return str(method() or '') if method else token
+ def send(terminal=False):
+  active=False if terminal else bool(bridge.isActive()) if hasattr(bridge,'isActive') else not bridge.isPaused()
+  sync_logs(data,current_token(),active,bridge.isPaused())
  def loop():
-  while not stop.is_set():send();stop.wait(60)
+  while not stop.is_set():send();stop.wait(30)
+  send(terminal=True)
  thread=threading.Thread(target=loop,daemon=True);thread.start()
  try:yield
  finally:stop.set();thread.join(timeout=1)
