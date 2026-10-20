@@ -1,8 +1,8 @@
 """Run Khaadi's public catalog locally, retaining verified work for resume."""
 import hashlib,importlib.util,json,subprocess,sys,time,urllib.request
 from pathlib import Path
-REVISION='fdde5ad'
-FILES={'main.py': '31dfcc3547c65eb3615f6e167cbdb61d2a4aea366b53f3a2ccb042ac7ca77b01', 'khaadi_source_support.py': 'f2e6d5104b40c122186d90aad9b95360ae3c93efa2dda517b305db3737af17a8', 'laam_source_support.py': '71f24a7fcbd50596d9e58679087a71a34d98b3fef1f1b8eb6afd175f75001961', 'resume_support.py': 'cc2eff15ee524963643f096eb165fe463404715ca0627990ea5c820520b47fcf', 'ranking_support.py': '6a4199a0fd90f1afc74e8e2b5b3327ebd69fe47bdd8d2263e869facc5fbf5953', 'website_order_support.py': '7c5bd0ce3cb4e6990f706cfc0b4d11add0620236da12950db213ef5a0c38cc5d', 'website_category_support.py': '65dfda24fc281d3f986293421977ee9f3d758d375099fc005242677cac268cfc', 'subcategory_inference_support.py': 'bf22deacee7287fb9803a88df64a63e5255a36c8b2720ec4f74c7176e3cc13a2', 'complete_description_support.py': '5db0a81dc00d53296d432e6eecca717cbd74a54a3721b24347787ad496b8f470', 'catalog-tools/check_khaadi_local_adapter_windows.py': '1cb937d8715a98fbc33a827f4400e02740ca9d08ecc81407e12b3c650543c4d1', 'importer-files/Chotu_Products_Import_Template_Discount_Tags.xlsx': '541b348dce523bd2e06679347afdcf7abe33e94aebf58dc6e09042b803fb3774'}
+REVISION='a4d435e'
+FILES={'main.py': '31dfcc3547c65eb3615f6e167cbdb61d2a4aea366b53f3a2ccb042ac7ca77b01', 'khaadi_source_support.py': '276040f29967b11e3a48e57e53c2597839b2b9c832125106600edabf157205a5', 'laam_source_support.py': '71f24a7fcbd50596d9e58679087a71a34d98b3fef1f1b8eb6afd175f75001961', 'resume_support.py': 'cc2eff15ee524963643f096eb165fe463404715ca0627990ea5c820520b47fcf', 'ranking_support.py': '6a4199a0fd90f1afc74e8e2b5b3327ebd69fe47bdd8d2263e869facc5fbf5953', 'website_order_support.py': '7c5bd0ce3cb4e6990f706cfc0b4d11add0620236da12950db213ef5a0c38cc5d', 'website_category_support.py': '65dfda24fc281d3f986293421977ee9f3d758d375099fc005242677cac268cfc', 'subcategory_inference_support.py': 'bf22deacee7287fb9803a88df64a63e5255a36c8b2720ec4f74c7176e3cc13a2', 'complete_description_support.py': '5db0a81dc00d53296d432e6eecca717cbd74a54a3721b24347787ad496b8f470', 'catalog-tools/check_khaadi_local_adapter_windows.py': '1cb937d8715a98fbc33a827f4400e02740ca9d08ecc81407e12b3c650543c4d1', 'importer-files/Chotu_Products_Import_Template_Discount_Tags.xlsx': '541b348dce523bd2e06679347afdcf7abe33e94aebf58dc6e09042b803fb3774'}
 
 def load(name,path):
     spec=importlib.util.spec_from_file_location(name,path);module=importlib.util.module_from_spec(spec);sys.modules[name]=module;spec.loader.exec_module(module);return module
@@ -26,10 +26,19 @@ def fetch(root,data,session=None):
             return response
         def get_fresh(self,url,**kwargs):return raw.get(url,**kwargs)
     logpath=data/'fetch-log.txt';status=data/'local-status.json'
+    last_heartbeat=[0.0]
     def log(message):
         line=time.strftime('%Y-%m-%d %H:%M:%S')+' '+str(message);print(line,flush=True)
         with logpath.open('a',encoding='utf-8') as stream:stream.write(line+'\n')
-    def state(value,**extra):status.write_text(json.dumps(dict(status=value,updated=time.strftime('%Y-%m-%d %H:%M:%S'),**extra),indent=2),encoding='utf-8')
+        if time.monotonic()-last_heartbeat[0]>=30:
+            last_heartbeat[0]=time.monotonic()
+            try:
+                record=json.loads(status.read_text())
+                if record.get('status')=='running':state('running',last_event=str(message))
+            except (OSError,ValueError):pass
+    def state(value,**extra):
+        import os
+        temporary=status.with_suffix('.pending');temporary.write_text(json.dumps(dict(status=value,worker_pid=os.getpid(),updated=time.strftime('%Y-%m-%d %H:%M:%S'),**extra),indent=2),encoding='utf-8');temporary.replace(status)
     try:
         engine.OUT=data/'files';engine.OUT.mkdir(exist_ok=True);engine.S=CachedCurl()
         engine._chotu_tls.saved_api_path=data/'api.sqlite3';engine._chotu_tls.saved_response_cache=cache
