@@ -1,31 +1,62 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-20T19:49:37.406097+00:00",
-  "run_id": "39468633210",
+  "generated_utc": "2026-10-20T20:42:14.587174+00:00",
+  "run_id": "39450778729",
   "attempt": "1",
-  "source_commit": "47445ca0b5f7e184f958d240219b883870762dd4",
+  "source_commit": "626ff1f45b38d167f711d1a14b0a1b4062c2c168",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 7475.7,
+  "elapsed_seconds": 18000.7,
   "stores": [
     {
-      "name": "LAAM",
-      "status": "source_paused",
+      "name": "Tawakkal Fabrics",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "db2f6f0b423cf75d",
+      "products": 1401,
+      "variants": 3217,
+      "http_statuses": {
+        "200": 1555
+      },
+      "network_seconds": 1252.2,
+      "max_response_seconds": 1.9,
+      "cache_events": 2810
+    },
+    {
+      "name": "Junaid Jamshed",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "db2f6f0b423cf75d",
+      "products": 5114,
+      "variants": 21958,
+      "http_statuses": {
+        "200": 5458
+      },
+      "network_seconds": 2821.3,
+      "max_response_seconds": 11.4,
+      "cache_events": 10263
+    },
+    {
+      "name": "Stylo",
+      "status": "pending",
       "review_required": false,
       "issue_codes": [
-        "HTTP_503",
-        "RATE_LIMIT"
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "2715c63e993f9bae",
+      "software_revision": "db2f6f0b423cf75d",
       "http_statuses": {
-        "500": 174,
-        "200": 102,
-        "503": 1
+        "200": 4226
       },
-      "network_seconds": 297.1,
-      "max_response_seconds": 7.6,
-      "cache_events": 0
+      "network_seconds": 9901.5,
+      "max_response_seconds": 4.9,
+      "cache_events": 340
     }
   ]
 }
