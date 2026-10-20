@@ -53,14 +53,7 @@ jobs:
           arch: x86_64
           profile: pixel_6
           disable-animations: true
-          script: |
-            cd android
-            set -o pipefail
-            gradle connectedDebugAndroidTest --stacktrace 2>&1 | tee device.log
-            adb shell am start -n com.chotuapp.mobile/.MainActivity
-            sleep 4
-            adb shell screencap -p /sdcard/chotuapp.png
-            adb pull /sdcard/chotuapp.png dashboard.png
+          script: bash android/tools/device_test.sh
       - uses: actions/upload-artifact@v4
         if: always()
         with:
