@@ -13,7 +13,14 @@ source=PublicCatalog({'S':session,'_chotu_wait':lambda:None,'_chotu_debug_reques
 report={'run_id':os.environ['GITHUB_RUN_ID'],'kind':'sapphire_denim_selection','pages':[]}
 try:
  robots=source.read(BASE+'/robots.txt');source.robot=RobotFileParser();source.robot.parse(robots.text.splitlines())
- url=BASE+'/collections/western-wear/products/WDNMV0726002.html';master=inspect_page(source.read(url).text,url)
+ url=BASE+'/collections/sale/products/00024101FUS4_STD.html'
+ response=source.read(url);soup=BeautifulSoup(response.text,'html.parser');main=soup.select_one('.product-wrapper')
+ report['source_url']=url
+ if main:
+  report['main_attributes']=main.attrs
+  report['price_scopes']=[{'node':str(n),'parent':str(n.parent)[:6000],'ancestors':[dict(x.attrs) for x in list(n.parents)[:6]]} for n in main.select('.price .sales .cc-price[content]')]
+  report['buttons']=[str(n) for n in main.select('button.add-to-cart[data-gtmga4data]')]
+ master=inspect_page(response.text,url)
  for fit in master['fits']:
   for size in master['sizes']:
    selected=variant_url(url,dict(size,fixed_options={fit['parameter']:fit['value']}));response=source.read(selected);soup=BeautifulSoup(response.text,'html.parser');main=soup.select_one('.product-wrapper')
