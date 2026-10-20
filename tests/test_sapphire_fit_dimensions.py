@@ -34,6 +34,20 @@ class FitTests(unittest.TestCase):
   for v in product['variants']:
    self.assertEqual(v['available'],v['option1']=='Slim Fit');self.assertEqual(float(v['price']),6100 if v['option1']=='Regular Fit' else 6200);self.assertIn(v['option2'],['S','M','L','XL'])
   self.assertTrue(all('/on/demandware.store/' not in u for u in urls))
+ def test_denim_inseam_labels_are_not_exported_as_fit(self):
+  def denim(markup):return markup.replace('Regular Fit','Inseam-030').replace('Slim Fit','Inseam-032')
+  def read(url):
+   params=parse_qs(urlsplit(url).query);return SimpleNamespace(text=denim(page(params['dwvar_'+MASTER+'_itemType'][0],params['dwvar_'+MASTER+'_size'][0])))
+  product=source.normalize_product(denim(page()),URL,read)
+  self.assertEqual([d['name'] for d in product['options']],['Inseam','Size'])
+ def test_unselected_disabled_master_is_not_a_fake_variant(self):
+  def read(url):
+   params=parse_qs(urlsplit(url).query)
+   if params['dwvar_'+MASTER+'_itemType'][0]=='SLM':return SimpleNamespace(text=page())
+   return SimpleNamespace(text=page('RGL',params['dwvar_'+MASTER+'_size'][0]))
+  product=source.normalize_product(page(),URL,read)
+  self.assertEqual(len(product['variants']),4);self.assertEqual(len(product['_unverified_variant_selections']),4)
+  self.assertIn('unverified',product['_popularity_page_note'])
  def test_server_selecting_wrong_fit_is_rejected(self):
   def read(url):
    params=parse_qs(urlsplit(url).query);return SimpleNamespace(text=page(params['dwvar_'+MASTER+'_itemType'][0],params['dwvar_'+MASTER+'_size'][0],wrong_fit=True))

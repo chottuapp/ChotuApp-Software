@@ -108,7 +108,8 @@ def variant_url(master_url,size):
 def normalize_product(page,url,read):
     master=inspect_page(page,url)
     if master['selected_size']:raise ValueError('Catalog discovery must use an unselected master product')
-    variants=[];labels=[];multiple_fits=len(master['fits'])>1
+    unverified=[];variants=[];labels=[];multiple_fits=len(master['fits'])>1
+    option_name='Inseam' if master['fits'] and all(re.fullmatch(r'Inseam-\d+',fit['label'],re.I) for fit in master['fits']) else 'Fit'
     selections=[]
     if multiple_fits:
         for fit in master['fits']:
@@ -118,6 +119,9 @@ def normalize_product(page,url,read):
     if selections:
         for fit_label,size in selections:
             selected_url=variant_url(url,size);variant=inspect_page(read(selected_url).text,selected_url)
+            if multiple_fits and variant['master_id']==master['master_id'] and variant['id']==master['master_id'] and not variant['selected_size'] and not variant['fixed_options'] and not variant['available']:
+                unverified.append({'option1':fit_label,'option2':size['label'],'source_url':selected_url,'reason':'Public page returned unselected disabled master; existence, price and stock unverified'})
+                continue
             if variant['master_id']!=master['master_id'] or not variant['selected_size'] or variant['selected_size']['value']!=size['value']:raise ValueError('Public size selection did not select the requested variant')
             if variant['fixed_options']!=size.get('fixed_options',{}):raise ValueError('Selected variant fixed option changed')
             if variant['selected_size']['label']!=size['label']:raise ValueError('Variant size label changed')
@@ -125,11 +129,12 @@ def normalize_product(page,url,read):
             variants.append({'id':variant['id'],'sku':variant['id'],'price':variant['price'],'compare_at_price':variant['compare_at_price'],'available':variant['available'],'option1':fit_label if multiple_fits else size['label'],**({'option2':size['label']} if multiple_fits else {}),'featured_image':{'src':variant['images'][0]}});labels.append(size['label'])
     else:
         variants=[{'id':master['id'],'sku':master['id'],'price':master['price'],'compare_at_price':master['compare_at_price'],'available':master['available']}]
+    if not variants:raise ValueError('No exact public variants verified')
     # Website-reported availability only; never derive quantity from quantity widgets or low-stock text.
     from website_category_support import fact
     category=fact(master['category_path'],url,'verified_product_breadcrumb')
     images=[{'src':u,'position':i+1} for i,u in enumerate(master['images'])]
-    return {'id':master['master_id'],'handle':master['master_id'],'title':master['title'],'body_html':master['description'],'vendor':'Sapphire','product_type':master['category_path'][-1] if master['category_path'] else '', 'status':'active','options':([{'name':'Fit','values':[fit['label'] for fit in master['fits']]},{'name':'Size','values':list(dict.fromkeys(labels))}] if multiple_fits else [{'name':'Size','values':labels}]) if labels else [],'variants':variants,'images':images,'image':images[0],'_source_url':url,'_website_category_evidence':category or {},'_popularity_page_note':'Sapphire source review: partial public-page catalog coverage; exact selected variant pages used. Full catalog completeness, website listing order, checkout availability and popularity are not independently verified.'}
+    return {'id':master['master_id'],'handle':master['master_id'],'title':master['title'],'body_html':master['description'],'vendor':'Sapphire','product_type':master['category_path'][-1] if master['category_path'] else '', 'status':'active','options':([{'name':option_name,'values':[fit['label'] for fit in master['fits']]},{'name':'Size','values':list(dict.fromkeys(labels))}] if multiple_fits else [{'name':'Size','values':labels}]) if labels else [],'variants':variants,'images':images,'image':images[0],'_source_url':url,'_website_category_evidence':category or {},'_unverified_variant_selections':unverified,'_popularity_page_note':(str(len(unverified))+' option combinations unverified and not exported. ' if unverified else '')+'Sapphire source review: partial public-page catalog coverage; exact selected variant pages used. Full catalog completeness, website listing order, checkout availability and popularity are not independently verified.'}
 
 class PublicCatalog:
     def __init__(self,g,log):
@@ -194,6 +199,7 @@ class PublicCatalog:
             if product is None:
                 product=normalize_product(self.read(url).text,url,self.read)
                 if self.cache:self.cache.put(url,product)
+            if product.get('_unverified_variant_selections'):self.log('SAPPHIRE VARIANT REVIEW: '+url+'; '+str(len(product['_unverified_variant_selections']))+' unverified combinations not exported; no stock or prices guessed')
             result.append(product)
             if index==1 or index%25==0:self.log(f'SAPPHIRE PUBLIC PRODUCTS: {index}/{len(products)} verified; exact selected variant pages; stock quantities unknown')
         # Default pages cannot establish full catalog coverage when start/sz pagination is disallowed.
