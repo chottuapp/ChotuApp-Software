@@ -42,6 +42,7 @@ def refs(value):
 
 def inline(cell,value):
  for child in list(cell):cell.remove(child)
+ if value=='':cell.attrib.pop('t',None);return
  cell.set('t','inlineStr');ET.SubElement(ET.SubElement(cell,Q('is')),Q('t')).text=value
 
 def serialize(tree,original):
