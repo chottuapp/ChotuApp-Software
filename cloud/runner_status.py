@@ -50,6 +50,14 @@ def main():
      item['snapshot_stale']=item['snapshot_age_seconds']>600
     if run['lane'].startswith('fresh26-39450710625-'):report['fresh_stores'].update(stores)
    except (RuntimeError,OSError,ValueError):item['snapshot_unavailable']=True
+  if run.get('conclusion')=='failure':
+   try:
+    lines=gh('run','view',str(run['databaseId']),'--repo',REPO,'--log-failed').splitlines();indices=set()
+    for index,line in enumerate(lines):
+     if re.search(r'EXCEPTION|RuntimeError:|ValueError:|ADAPTER ERROR|SOURCE BLOCKED|##\[error\]',line):indices.update(range(max(0,index-5),min(len(lines),index+3)))
+    from diagnostics import redact
+    item['failure_details']=[redact(lines[i]) for i in sorted(indices)][-80:]
+   except RuntimeError:item['failure_details_unavailable']=True
   report['runs'].append(item)
  try:
   response=json.loads(gh('api','repos/'+REPO+'/contents/latest.json?ref=drive-sync-reports'))
