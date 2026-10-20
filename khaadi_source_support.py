@@ -18,9 +18,13 @@ def amount(value):
 
 def inspect_page(html,url):
     soup=BeautifulSoup(html,'html.parser');outer=soup.select_one('.product-set-detail[data-pid]')
-    if outer is None:raise ValueError('Primary Khaadi product scope missing')
-    main=outer.select_one('.set-item[data-pid]');pid=outer['data-pid']
-    if main is None or main['data-pid']!=pid:raise ValueError('Primary product and bundle item identity disagree')
+    if outer is not None:
+        main=outer.select_one('.set-item[data-pid]');pid=outer['data-pid']
+        if main is None or main['data-pid']!=pid:raise ValueError('Primary product and bundle item identity disagree')
+    else:
+        standalone=soup.select('.product-wrapper.product-detail[data-pid]')
+        if len(standalone)!=1:raise ValueError('Primary Khaadi product scope missing or ambiguous')
+        main=standalone[0];pid=main['data-pid']
     records=[]
     for node in soup.select('script[type="application/ld+json"]'):
         data=json.loads(node.get_text())

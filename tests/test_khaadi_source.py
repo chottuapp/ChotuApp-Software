@@ -8,6 +8,12 @@ FIX=ROOT/'tests/fixtures/khaadi_public'
 URL=source.BASE+'/black-cambric-kurta/1-26-320-A-C1-VG_MULTI.html'
 def fixture(n):return (FIX/(n+'.html')).read_text()
 class KhaadiTests(unittest.TestCase):
+ def test_captured_standalone_tailored_product_layout(self):
+  html=(ROOT/'catalog-inputs/khaadi-layout/231b8aae835f433db7dbe3df4a27decb.html').read_text()
+  p=source.inspect_page(html,source.BASE+'/floral-tailored-3-piece/T-CHD09B-R-VG_MULTI.html')
+  self.assertEqual(p['id'],'T-CHD09B-R-VG_MULTI');self.assertEqual(p['price'],'6500.00')
+  self.assertEqual([x['label'] for x in p['sizes']],['XS','S','M','XL']);self.assertEqual(len(p['images']),6)
+  self.assertIsNone(p['available'])
  def test_actual_selected_ids_prices_stock_and_scope(self):
   for n,value,pid in [('xs','0XS','1001976750'),('l','00L','1001976753')]:
    p=source.inspect_page(fixture(n),URL+'?dwvar_1-26-320-A-C1-VG__MULTI_size='+value)
