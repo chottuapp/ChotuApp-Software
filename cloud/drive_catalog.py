@@ -27,8 +27,14 @@ def enrich(state,folders,files,histories):
      previous=old.get(group,{}).get(store,{})
      if previous.get('sha256')==record.get('sha256') and previous.get('folder')==folder:
       timestamp=previous.get('verified_utc') or old.get('verified_utc')
-      try:dates.append(datetime.datetime.fromisoformat(timestamp))
-      except (TypeError,ValueError):pass
+      try:
+       observed=datetime.datetime.fromisoformat(timestamp)
+       if not previous.get('verified_utc'):
+        for move in old.get('moves',[]):
+         if move.get('destination')==folder and store+'.xlsx' in move.get('verified_files',[]):
+          observed=max(observed,datetime.datetime.fromisoformat(move['verified_utc']))
+       dates.append(observed)
+      except (TypeError,ValueError,KeyError):pass
     if dates:record.update(verified_utc=min(dates).isoformat(),timestamp_source='Historical checksum verification report')
    if store in state.get('daily_uploads',{}).get(folder,{}):state['daily_uploads'][folder][store]=dict(record)
  return state
