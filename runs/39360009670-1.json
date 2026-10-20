@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-20T07:40:01.421975+00:00",
+  "run_id": "39360009670",
+  "attempt": "1",
+  "source_commit": "dc684251c2af58dc5ea26cb2b61399c894e7577a",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.15",
+  "elapsed_seconds": 18000.9,
+  "stores": [
+    {
+      "name": "Gul Ahmed",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "d1dd11fd2972cd5e",
+      "products": 6766,
+      "variants": 27822,
+      "http_statuses": {
+        "200": 409
+      },
+      "network_seconds": 874.4,
+      "max_response_seconds": 2.4,
+      "cache_events": 26613
+    },
+    {
+      "name": "Stylo",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "d1dd11fd2972cd5e",
+      "http_statuses": {
+        "200": 3313
+      },
+      "network_seconds": 7651.7,
+      "max_response_seconds": 2.6,
+      "cache_events": 16949
+    }
+  ]
+}
