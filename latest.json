@@ -1,28 +1,65 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-20T19:43:33.597187+00:00",
-  "run_id": "39481316921",
+  "generated_utc": "2026-10-20T19:48:56.005773+00:00",
+  "run_id": "39450802086",
   "attempt": "1",
-  "source_commit": "48dca796e41d366fc3c986c30a872cb696dea79f",
+  "source_commit": "626ff1f45b38d167f711d1a14b0a1b4062c2c168",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 1889.1,
+  "elapsed_seconds": 14778.5,
   "stores": [
     {
-      "name": "Sapphire",
+      "name": "Skin Factor",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
-      "software_revision": "4fcf29bd1829fbc9",
-      "products": 1023,
-      "variants": 3700,
+      "software_revision": "db2f6f0b423cf75d",
+      "products": 28,
+      "variants": 28,
       "http_statuses": {
-        "200": 1098
+        "200": 82
       },
-      "network_seconds": 1578.2,
-      "max_response_seconds": 2.1,
-      "cache_events": 0
+      "network_seconds": 49.2,
+      "max_response_seconds": 1.7,
+      "cache_events": 56
+    },
+    {
+      "name": "Bonanza Satrangi",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_503",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "db2f6f0b423cf75d",
+      "products": 1101,
+      "variants": 3377,
+      "http_statuses": {
+        "200": 1145
+      },
+      "network_seconds": 2740.6,
+      "max_response_seconds": 4.2,
+      "cache_events": 2203
+    },
+    {
+      "name": "Outfitters",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_404",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "db2f6f0b423cf75d",
+      "products": 4134,
+      "variants": 31741,
+      "http_statuses": {
+        "200": 4153,
+        "404": 6
+      },
+      "network_seconds": 4609.9,
+      "max_response_seconds": 3.0,
+      "cache_events": 8268
     }
   ]
 }
