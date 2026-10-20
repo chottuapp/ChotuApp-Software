@@ -100,3 +100,23 @@ class KhaadiTests(unittest.TestCase):
   with patch.object(source,'normalize_product',return_value={'id':'main','variants':[]}):
    products,complete=Reader({'_chotu_wait':lambda:None},lambda _:None).catalog()
   self.assertGreater(len(products),1);self.assertFalse(complete)
+ def test_completed_discovery_queue_is_restored_and_corruption_rebuilt(self):
+  from unittest.mock import patch
+  from urllib.robotparser import RobotFileParser
+  category=source.BASE+'/ready-to-wear/'
+  robots='User-agent: *\nSitemap: '+source.BASE+'/sitemap_0.xml'
+  requests=[]
+  class Reader(source.PublicCatalog):
+   def read(self,url,**kwargs):
+    requests.append(url)
+    text='<urlset><url><loc>'+category+'</loc></url></urlset>' if url.endswith('.xml') else '<a href="'+URL+'">Kurta</a>'
+    return SimpleNamespace(text=text,content=text.encode(),status_code=200)
+  with tempfile.TemporaryDirectory() as tmp:
+   reader=Reader({'_chotu_tls':SimpleNamespace(saved_api_path=Path(tmp)/'api.sqlite3'),'_chotu_wait':lambda:None},lambda _:None);reader.robot=RobotFileParser();reader.robot.parse(robots.splitlines())
+   response=SimpleNamespace(text=robots)
+   try:
+    first=reader.discover_urls(response);second=reader.discover_urls(response)
+    self.assertEqual(first,second);self.assertEqual(requests.count(category),1)
+    (Path(tmp)/'khaadi-discovery.json').write_text('{broken')
+    self.assertEqual(reader.discover_urls(response),first);self.assertEqual(requests.count(category),2)
+   finally:reader.close()

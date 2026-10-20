@@ -110,8 +110,17 @@ class PublicCatalog:
         if response.status_code!=200:raise SourceUnavailable('Public page unavailable HTTP '+str(response.status_code))
         if len(response.content)>20*1024**2:raise ValueError('Public response exceeds validated size bound')
         return response
-    def catalog(self):
-        robots=self.read(BASE+'/robots.txt',fresh=True);self.robot=RobotFileParser();self.robot.parse(robots.text.splitlines())
+    def discover_urls(self,robots):
+        path=getattr(self.g.get('_chotu_tls'),'saved_api_path',None)
+        checkpoint=Path(path).with_name('khaadi-discovery.json') if path else None
+        revision=hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+        if checkpoint and checkpoint.exists():
+            try:
+                record=json.loads(checkpoint.read_text());items=record['urls'];digest=hashlib.sha256(json.dumps(items,separators=(',',':')).encode()).hexdigest()
+                if record.get('revision')==revision and record.get('sha256')==digest and items and len(items)==len(set(items)) and all(urlsplit(u).scheme=='https' and urlsplit(u).hostname=='pk.khaadi.com' and re.fullmatch(r'/[^/]+/[A-Za-z0-9_-]*[0-9][A-Za-z0-9_-]*\.html',urlsplit(u).path) and not urlsplit(u).query for u in items):
+                    self.log('KHAADI DISCOVERY RESTORED: '+str(len(items))+' verified product URLs; completed category scan reused')
+                    return {urlsplit(u).path.rsplit('/',1)[-1]:u for u in items}
+            except (OSError,ValueError,KeyError,TypeError):pass
         queue=list(dict.fromkeys(re.findall(r'(?im)^Sitemap:\s*(https://\S+)',robots.text)));seen=set();urls={};categories=[]
         if not queue:raise SourceUnavailable('Declared public sitemap missing')
         while queue:
@@ -144,8 +153,17 @@ class PublicCatalog:
                 if not re.fullmatch(r'/[^/]+/[A-Za-z0-9_-]*[0-9][A-Za-z0-9_-]*\.html',p.path):continue
                 canonical=urlunsplit((p.scheme,p.netloc,p.path,'',''))
                 if self.robot.can_fetch(AGENT,canonical):urls.setdefault(p.path.rsplit('/',1)[-1],canonical)
+            soup.decompose()
             self.log(f'KHAADI LISTING PROGRESS: {index}/{len(categories)} categories; {len(urls)} distinct product URLs')
         if not urls:raise SourceUnavailable('No public product links found in permitted category listings')
+        if checkpoint:
+            items=list(urls.values());record={'revision':revision,'urls':items,'sha256':hashlib.sha256(json.dumps(items,separators=(',',':')).encode()).hexdigest()}
+            temporary=checkpoint.with_suffix('.pending');temporary.write_text(json.dumps(record),encoding='utf-8');temporary.replace(checkpoint)
+        return urls
+
+    def catalog(self):
+        robots=self.read(BASE+'/robots.txt',fresh=True);self.robot=RobotFileParser();self.robot.parse(robots.text.splitlines())
+        urls=self.discover_urls(robots)
         result=[]
         for index,url in enumerate(urls.values(),1):
             self.g['_chotu_wait']();product=self.cache.get(url) if self.cache else None

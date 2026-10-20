@@ -8,7 +8,10 @@ def partition(data,sites):
     data=Path(data).resolve();store=RunStore(data/'saved_runs');state=store.load()
     if not state:raise ValueError('No restored queue')
     if not 1<=len(sites)<=3:raise ValueError('A runner accepts at most three selected stores')
-    key=lambda s:(str(s['name']).casefold(),(urlsplit(str(s['url'])).hostname or '').lower().removeprefix('www.'))
+    def key(s):
+        host=(urlsplit(str(s['url'])).hostname or '').lower().removeprefix('www.')
+        if host=='sapphireonline.pk':host='pk.sapphireonline.pk'
+        return str(s['name']).casefold(),host
     requested={key(s) for s in sites}
     if len(requested)!=len(sites) or len({key(s)[1] for s in sites})!=len(sites):raise ValueError('Duplicate selected stores')
     selected=[(i,s) for i,s in enumerate(state['sites']) if key(s) in requested]
