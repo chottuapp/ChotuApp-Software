@@ -1,6 +1,6 @@
 {
-  "run_id": "39480017082",
-  "checked_utc": "2026-10-20T19:02:53.677591+00:00",
+  "run_id": "39480107400",
+  "checked_utc": "2026-10-20T19:03:33.021570+00:00",
   "active_queued": 5,
   "runs": [
     {
@@ -16,8 +16,46 @@
       "stores": {
         "Sapphire": "failed"
       },
-      "snapshot_age_seconds": 581,
-      "snapshot_stale": false
+      "snapshot_age_seconds": 621,
+      "snapshot_stale": true,
+      "failure_details": [
+        "fetch\tFetch result\t2026-10-20T18:53:14.0505912Z [Sapphire] [18:53:02] HTTP START attempt=1 https://pk.sapphireonline.pk/collections/modest-wear/products/MODTOP26V304_999.html?redacted",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0507351Z [Sapphire] [18:53:03] HTTP END status=200 elapsed=1.4s bytes=359709 https://pk.sapphireonline.pk/collections/modest-wear/products/MODTOP26V304_999.html?redacted",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0508854Z [Sapphire] [18:53:03] HTTP START attempt=1 https://pk.sapphireonline.pk/collections/sale/products/00024101FUS4_STD.html",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0510518Z [Sapphire] [18:53:04] HTTP END status=200 elapsed=1.4s bytes=363719 https://pk.sapphireonline.pk/collections/sale/products/00024101FUS4_STD.html",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0511929Z __CHOTU_PROGRESS__|1|Active: Sapphire",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0513521Z [Sapphire] [18:53:04] EXCEPTION: RuntimeError(\"ADAPTER ERROR: Sapphire Visible and structured primary product prices disagree: expected 1227.00; visible ['1167.00', '1227.00']. Saved work retained; no price/stock guessed.\")",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0515437Z [Sapphire] [18:53:04] Traceback (most recent call last):",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0529569Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 226, in run",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0547318Z     master=inspect_page(page,url)",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0547717Z            ^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0548456Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 44, in inspect_page",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0549645Z     if visible_prices!={Decimal(price)}:raise ValueError('Visible and structured primary product prices disagree: expected '+price+'; visible '+str(sorted(str(v) for v in visible_prices)))",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0550642Z                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0551636Z ValueError: Visible and structured primary product prices disagree: expected 1227.00; visible ['1167.00', '1227.00']",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0552127Z ",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0552395Z The above exception was the direct cause of the following exception:",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0558255Z     _chotuapp_run_site_original(base, name, template, intercept)",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0559455Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 194, in run",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0561007Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0562272Z                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0563099Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 228, in run",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0564145Z     except (ValueError,TypeError,KeyError) as exc:raise RuntimeError('ADAPTER ERROR: Sapphire '+str(exc)+'. Saved work retained; no price/stock guessed.') from exc",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0565043Z                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0566011Z RuntimeError: ADAPTER ERROR: Sapphire Visible and structured primary product prices disagree: expected 1227.00; visible ['1167.00', '1227.00']. Saved work retained; no price/stock guessed.",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0566700Z ",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0567332Z [Sapphire] FAILED: Sapphire: ADAPTER ERROR: Sapphire Visible and structured primary product prices disagree: expected 1227.00; visible ['1167.00', '1227.00']. Saved work retained; no price/stock guessed.",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0568215Z [Sapphire] [18:53:04] STAGE: Idle",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0569105Z FAILED: Sapphire: FAILED: Sapphire: ADAPTER ERROR: Sapphire Visible and structured primary product prices disagree: expected 1227.00; visible ['1167.00', '1227.00']. Saved work retained; no price/stock guessed.",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0569954Z False",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0570618Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0571779Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0572309Z RUN SUMMARY:",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0573513Z Sapphire: FAILED \u2014 FAILED: Sapphire: ADAPTER ERROR: Sapphire Visible and structured primary product prices disagree: expected 1227.00; visible ['1167.00', '1227.00']. Saved work retained; no price/stock guessed.",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0574373Z Checkpoint: saved",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0574933Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+        "fetch\tFetch result\t2026-10-20T18:53:14.0585640Z ##[error]Process completed with exit code 2."
+      ]
     },
     {
       "conclusion": "",
@@ -32,7 +70,7 @@
       "stores": {
         "LAAM": "running"
       },
-      "snapshot_age_seconds": 144,
+      "snapshot_age_seconds": 183,
       "snapshot_stale": false
     },
     {
@@ -49,7 +87,7 @@
         "Zellbury": "running",
         "Zero Lifestyle": "done"
       },
-      "snapshot_age_seconds": 238,
+      "snapshot_age_seconds": 278,
       "snapshot_stale": false
     },
     {
@@ -67,7 +105,7 @@
         "Bonanza Satrangi": "done",
         "Outfitters": "running"
       },
-      "snapshot_age_seconds": 215,
+      "snapshot_age_seconds": 255,
       "snapshot_stale": false
     },
     {
@@ -85,7 +123,7 @@
         "Cool and Cool": "done",
         "Saeed Ghani": "done"
       },
-      "snapshot_age_seconds": 9629,
+      "snapshot_age_seconds": 9669,
       "snapshot_stale": true
     },
     {
@@ -96,14 +134,14 @@
       "updatedAt": "2026-10-20T15:41:52Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39450793299",
       "lane": "fresh26-39450710625-6",
-      "snapshot": "Updated (UTC): 2026-10-20T18:58:29.041202+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Nisa Naturals.xlsx\n2. Hemani Herbals.xlsx\n\nSTORE STATUS\nNisa Naturals: done\n  Last successful HTTP response (UTC): 2026-10-20T15:42:53.233666+00:00\nHemani Herbals: done\n  Last successful HTTP response (UTC): 2026-10-20T17:16:18.492717+00:00\nGul Ahmed: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 2150/6807 tasks; sample age 61s\n  Approximate ETA for this stage only: 387.8 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-20T18:58:24.663216+00:00\n",
-      "snapshot_utc": "2026-10-20T18:58:29.041202+00:00",
+      "snapshot": "Updated (UTC): 2026-10-20T19:03:30.883782+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Nisa Naturals.xlsx\n2. Hemani Herbals.xlsx\n\nSTORE STATUS\nNisa Naturals: done\n  Last successful HTTP response (UTC): 2026-10-20T15:42:53.233666+00:00\nHemani Herbals: done\n  Last successful HTTP response (UTC): 2026-10-20T17:16:18.492717+00:00\nGul Ahmed: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 2200/6807 tasks; sample age 112s\n  Approximate ETA for this stage only: 385.5 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-20T19:03:24.662666+00:00\n",
+      "snapshot_utc": "2026-10-20T19:03:30.883782+00:00",
       "stores": {
         "Nisa Naturals": "done",
         "Hemani Herbals": "done",
         "Gul Ahmed": "running"
       },
-      "snapshot_age_seconds": 265,
+      "snapshot_age_seconds": 2,
       "snapshot_stale": false
     },
     {
@@ -121,7 +159,7 @@
         "Adam Cheese": "done",
         "Computer Zone": "done"
       },
-      "snapshot_age_seconds": 10212,
+      "snapshot_age_seconds": 10251,
       "snapshot_stale": true
     },
     {
@@ -139,7 +177,7 @@
         "Shop Modest": "done",
         "Seran": "done"
       },
-      "snapshot_age_seconds": 11740,
+      "snapshot_age_seconds": 11779,
       "snapshot_stale": true
     },
     {
@@ -157,7 +195,7 @@
         "The Hanger Pakistan": "done",
         "Elite Cosmetics": "done"
       },
-      "snapshot_age_seconds": 7860,
+      "snapshot_age_seconds": 7900,
       "snapshot_stale": true
     },
     {
@@ -168,14 +206,14 @@
       "updatedAt": "2026-10-20T15:41:46Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39450778729",
       "lane": "fresh26-39450710625-2",
-      "snapshot": "Updated (UTC): 2026-10-20T18:58:33.641086+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Tawakkal Fabrics.xlsx\n\nSTORE STATUS\nTawakkal Fabrics: done\n  Last successful HTTP response (UTC): 2026-10-20T16:31:59.556806+00:00\nJunaid Jamshed: running\n  Stage: Building Excel rows\n  building Excel rows: 1899/23728 tasks; sample age 14s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-10-20T18:45:57.511349+00:00\nStylo: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 1700/9149 tasks; sample age 162s\n  Approximate ETA for this stage only: 620.7 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-20T18:58:28.106684+00:00\n",
-      "snapshot_utc": "2026-10-20T18:58:33.641086+00:00",
+      "snapshot": "Updated (UTC): 2026-10-20T19:03:36.148910+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Tawakkal Fabrics.xlsx\n\nSTORE STATUS\nTawakkal Fabrics: done\n  Last successful HTTP response (UTC): 2026-10-20T16:31:59.556806+00:00\nJunaid Jamshed: running\n  Stage: Building Excel rows\n  building Excel rows: 2499/23728 tasks; sample age 41s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-10-20T18:45:57.511349+00:00\nStylo: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 1750/9149 tasks; sample age 215s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-10-20T19:03:28.156206+00:00\n",
+      "snapshot_utc": "2026-10-20T19:03:36.148910+00:00",
       "stores": {
         "Tawakkal Fabrics": "done",
         "Junaid Jamshed": "running",
         "Stylo": "running"
       },
-      "snapshot_age_seconds": 260,
+      "snapshot_age_seconds": -3,
       "snapshot_stale": false
     },
     {
@@ -193,7 +231,7 @@
         "Rivaj UK": "done",
         "Rawayat": "done"
       },
-      "snapshot_age_seconds": 495,
+      "snapshot_age_seconds": 534,
       "snapshot_stale": false
     }
   ],
