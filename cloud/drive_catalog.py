@@ -42,6 +42,7 @@ def enrich(state,folders,files,histories):
 def main():
  secret=os.environ.get('CHOTU_DRIVE_RCLONE_CONFIG','');config_text(secret)
  response=json.loads(gh('api','repos/'+REPO+'/contents/latest.json?ref=drive-sync-reports'));state=json.loads(base64.b64decode(response['content']))
+ globals()['LAST_STATE']=state
  folder=state['folder']
  if '/' in folder or '\\' in folder or ':' in folder:raise ValueError('Unexpected folder path')
  with tempfile.TemporaryDirectory() as tmp:
@@ -58,6 +59,14 @@ def main():
   if not re.fullmatch(r'runs/\d+\.json',name):continue
   try:histories.append(json.loads(git('show','FETCH_HEAD:'+name)))
   except (ValueError,subprocess.CalledProcessError):pass
- enrich(state,folders,files,histories);state['run_id']=os.environ['GITHUB_RUN_ID'];state['catalog_checked_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat();publish(state,branch='drive-sync-reports')
+ enrich(state,folders,files,histories);state['run_id']=os.environ['GITHUB_RUN_ID'];state['catalog_checked_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat();state['catalog_status']='ready';state.pop('catalog_error',None);publish(state,branch='drive-sync-reports')
  print('Read-only Drive catalog refreshed:',len(state.get('uploaded',{})),'store records. No files uploaded, moved or deleted.')
-if __name__=='__main__':main()
+if __name__=='__main__':
+ try:main()
+ except Exception as exc:
+  state=globals().get('LAST_STATE')
+  if state is not None:
+   state.update(run_id=os.environ['GITHUB_RUN_ID'],catalog_status='failed',catalog_error=type(exc).__name__+': Drive metadata refresh failed; existing files unchanged')
+   publish(state,branch='drive-sync-reports')
+  raise
+
