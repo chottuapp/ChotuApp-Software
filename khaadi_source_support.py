@@ -125,7 +125,7 @@ class PublicCatalog:
                 for n in row:
                     if local(n.tag)!='loc' or not n.text:continue
                     p=urlsplit(n.text.strip())
-                    if p.path.split('/')[1].lower() in ('blogs','blog','pages','account','customer-service','stores','store-locator'):continue
+                    if p.path.strip('/').split('/')[0].lower() in ('blogs','blog','pages','account','customer-service','stores','store-locator'):continue
                     if p.hostname=='pk.khaadi.com' and not p.query and not p.path.endswith('.html') and p.path.endswith('/') and n.text.strip() not in categories:categories.append(n.text.strip())
                     if p.hostname=='pk.khaadi.com' and re.fullmatch(r'/[^/]+/[A-Za-z0-9_-]*[0-9][A-Za-z0-9_-]*\.html',p.path) and not p.query:urls.setdefault(p.path.rsplit('/',1)[-1],n.text.strip())
         self.log('KHAADI DISCOVERY: '+str(len(categories))+' public category pages; '+str(len(urls))+' direct product links from sitemap')
@@ -140,7 +140,7 @@ class PublicCatalog:
             for node in soup.select('a[href]'):
                 link=urljoin(BASE,node['href']);p=urlsplit(link)
                 if p.hostname!='pk.khaadi.com' or p.scheme!='https' or p.username or p.password:continue
-                if p.path.split('/')[1].lower() in ('blogs','blog','pages','account','customer-service','stores','store-locator'):continue
+                if p.path.strip('/').split('/')[0].lower() in ('blogs','blog','pages','account','customer-service','stores','store-locator'):continue
                 if not re.fullmatch(r'/[^/]+/[A-Za-z0-9_-]*[0-9][A-Za-z0-9_-]*\.html',p.path):continue
                 canonical=urlunsplit((p.scheme,p.netloc,p.path,'',''))
                 if self.robot.can_fetch(AGENT,canonical):urls.setdefault(p.path.rsplit('/',1)[-1],canonical)

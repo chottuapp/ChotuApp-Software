@@ -67,7 +67,7 @@ class KhaadiTests(unittest.TestCase):
  def test_category_only_sitemap_discovers_deduplicated_public_product_links(self):
   from unittest.mock import patch
   category=source.BASE+'/ready-to-wear/essentials/kurta/'
-  pages={source.BASE+'/robots.txt':'User-agent: *\nDisallow: /on/demandware.store/\nSitemap: '+source.BASE+'/sitemap_0.xml',source.BASE+'/sitemap_0.xml':'<urlset><url><loc>'+category+'</loc></url></urlset>',category:'<div class="product-tile"><a href="'+URL+'?source=listing">Kurta</a><a href="'+URL+'">Duplicate</a><a href="/blogs/winter2025.html">Blog</a><a href="https://us.khaadi.com/wrong/123.html">Foreign</a></div>',URL:fixture('master')}
+  pages={source.BASE+'/robots.txt':'User-agent: *\nDisallow: /on/demandware.store/\nSitemap: '+source.BASE+'/sitemap_0.xml',source.BASE+'/sitemap_0.xml':'<urlset><url><loc>'+category+'</loc></url></urlset>',category:'<div class="product-tile"><a href="https://pk.khaadi.com">Root</a><a href="https://pk.khaadi.com?lang=en">Empty path query</a><a href="#">Anchor</a><a href="mailto:info@khaadi.com">Email</a><a href="tel:123">Phone</a><a href="javascript:;">Menu</a><a href="'+URL+'?source=listing">Kurta</a><a href="'+URL+'">Duplicate</a><a href="/blogs/winter2025.html">Blog</a><a href="https://us.khaadi.com/wrong/123.html">Foreign</a></div>',URL:fixture('master')}
   requests=[]
   class Reader(source.PublicCatalog):
    def read(self,url,**kwargs):
