@@ -1,0 +1,33 @@
+name: ChotuApp Rule 804 Google Drive Sync
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_run:
+    workflows: [ChotuApp Cloud Fetch]
+    types: [completed]
+  push:
+    branches: [main]
+    paths: [cloud/drive_sync.py, cloud/drive-sync-release.json, .github/workflows/cloud-drive-sync.yml]
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: chotuapp-drive-sync
+  cancel-in-progress: false
+jobs:
+  upload:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install requests beautifulsoup4
+      - run: sudo apt-get update -qq && sudo apt-get install -y rclone
+      - name: Rule 804 checked files only, then checksum verification
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CHOTU_DRIVE_RCLONE_CONFIG: ${{ secrets.CHOTU_DRIVE_RCLONE_CONFIG }}
+        run: python cloud/drive_sync.py
