@@ -183,6 +183,13 @@ def inspect(host):
  finally:session.close()
  return {'host':host,'responses':records}
 def publish(data,branch='source-research'):
+ for attempt in range(3):
+  try:return _publish_once(data,branch)
+  except subprocess.CalledProcessError:
+   if attempt==2:raise
+   time.sleep(2**(attempt+1))
+
+def _publish_once(data,branch='source-research'):
  payload=json.dumps(data,ensure_ascii=True,indent=2).encode()
  if len(payload)>2*1024**2:raise ValueError('Research report exceeds bounded public fixture size')
  with tempfile.TemporaryDirectory() as tmp:
