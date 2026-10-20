@@ -1,30 +1,48 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-19T22:25:55.734137+00:00",
-  "run_id": "39329899962",
+  "generated_utc": "2026-10-20T02:37:39.919159+00:00",
+  "run_id": "39328751388",
   "attempt": "1",
-  "source_commit": "6af3f2da81918e7a434713256ac5019a778fe2ab",
+  "source_commit": "280f6f327450990678574a763350769907e4c2a6",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 2432.8,
+  "elapsed_seconds": 18000.6,
   "stores": [
     {
-      "name": "LAAM",
-      "status": "failed",
+      "name": "Gul Ahmed",
+      "status": "pending",
       "review_required": false,
       "issue_codes": [
-        "ADAPTER_ERROR",
-        "SCHEMA_CHECK"
+        "HTTP_503",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "f7fd65827df35c14",
+      "software_revision": "27d35b5bfcc42119",
       "http_statuses": {
-        "500": 26,
-        "200": 1516
+        "200": 3412
       },
-      "network_seconds": 769.0,
-      "max_response_seconds": 4.2,
-      "cache_events": 0
+      "network_seconds": 7524.0,
+      "max_response_seconds": 4.3,
+      "cache_events": 17413
+    },
+    {
+      "name": "Stylo",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_503",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "27d35b5bfcc42119",
+      "http_statuses": {
+        "200": 3403,
+        "503": 1
+      },
+      "network_seconds": 8318.0,
+      "max_response_seconds": 4.6,
+      "cache_events": 18224
     }
   ]
 }
