@@ -1,5 +1,7 @@
 """Collect bounded, redacted original-lane failures using Actions' existing token."""
-import json,os,subprocess,re
+import json,os,subprocess,re,sys
+from pathlib import Path
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from diagnostics import redact
 from source_research import publish,public_product_state
 from bs4 import BeautifulSoup,SoupStrainer
