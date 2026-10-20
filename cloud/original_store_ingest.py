@@ -37,6 +37,7 @@ def upload(state,folder,rc,runs,gh,policy,*,root=ROOT):
   previous=state.get('original_uploads',{}).get(store,{})
   if str(previous.get('source_run','')).isdigit() and int(previous['source_run'])>int(rid):continue
   if run.get('status')!='completed':continue
+  input_headers=[]
   try:
    artifacts=json.loads(gh('api','repos/'+REPO+'/actions/runs/'+rid+'/artifacts?per_page=100'))['artifacts']
    found=[a for a in artifacts if a['name']=='chotuapp-excel-files' and not a.get('expired')]
@@ -55,6 +56,10 @@ def upload(state,folder,rc,runs,gh,policy,*,root=ROOT):
      raw=json.loads(gh('api','repos/'+REPO+'/contents/laam_source_support.py?ref='+run['headSha']))
      actual=hashlib.sha256(base64.b64decode(raw['content'])).hexdigest()
      if actual!=hashlib.sha256((root/'laam_source_support.py').read_bytes()).hexdigest():raise ValueError('LAAM clothing-only source revision requires review')
+    from openpyxl import load_workbook
+    book=load_workbook(files[0],read_only=True,data_only=False)
+    try:input_headers=list(next(book['Products'].iter_rows(values_only=True)))
+    finally:book.close()
     output=Path(tmp)/'checked'/files[0].name
     record=process(files[0],output,store,codes,approved_original=True)
     rc('copy',str(output.parent),'chotudrive:'+folder,'--include',output.name,'--checksum')
@@ -63,6 +68,6 @@ def upload(state,folder,rc,runs,gh,policy,*,root=ROOT):
     state.setdefault('original_uploads',{})[store]=record;state['original_processed'][store]=identity
     state.setdefault('original_holds',{}).pop(store,None);sent.append(store)
   except (RuntimeError,ValueError,KeyError,OSError) as exc:
-   state.setdefault('original_holds',{})[store]={'source_run':rid,'error':str(exc),'observed_utc':datetime.datetime.now(datetime.timezone.utc).isoformat()}
+   state.setdefault('original_holds',{})[store]={'source_run':rid,'error':str(exc),'input_headers':input_headers,'observed_utc':datetime.datetime.now(datetime.timezone.utc).isoformat()}
    print('ORIGINAL RULE804 HELD:',store,str(exc),flush=True)
  return sent
