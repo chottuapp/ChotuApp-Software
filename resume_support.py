@@ -184,6 +184,10 @@ class ResponseCache:
 class SessionProxy:
     def __init__(self,session,tls,pause):self.session=session;self.tls=tls;self.pause=pause
     def __getattr__(self,name):return getattr(self.session,name)
+    def get_fresh(self,url,**kwargs):
+        """Revalidate locale/permissions without replaying or replacing saved catalog pages."""
+        self.pause()
+        return self.session.get(url,**kwargs)
     def get(self,url,**kwargs):
         cache=getattr(self.tls,'saved_response_cache',None)
         if not cache or kwargs.get('params') or kwargs.get('stream') or kwargs.get('auth'):

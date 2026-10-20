@@ -9,12 +9,14 @@ def enable_source_compatibility(g):
         host=(urlsplit(base).hostname or '').lower().removeprefix('www.')
         if host not in ('pk.khaadi.com','khaadi.com','sapphireonline.pk','pk.sapphireonline.pk'):return original(base,log)
         g['_chotu_wait']()
+        live_get=getattr(g['S'],'get_fresh',g['S'].get)
+        log('SOURCE PREFLIGHT: fresh locale/robots verification; saved responses bypassed')
         if host in ('pk.khaadi.com','khaadi.com'):
-            response=g['S'].get('https://pk.khaadi.com/',timeout=30)
+            response=live_get('https://pk.khaadi.com/',timeout=30)
             actual=(urlsplit(response.url).hostname or '').lower()
             if actual!='pk.khaadi.com':raise RuntimeError('SOURCE BLOCKED: Khaadi Pakistan redirected to '+actual+'. Pakistan locale/currency unverified; foreign storefront prices will not be exported as PKR. Saved work retained.')
             raise RuntimeError('SOURCE BLOCKED: Khaadi uses Salesforce Commerce. A verified Pakistan product/variant adapter or merchant feed is required; no products.json fallback or guessed prices.')
-        url='https://pk.sapphireonline.pk/robots.txt';response=g['S'].get(url,timeout=30)
+        url='https://pk.sapphireonline.pk/robots.txt';response=live_get(url,timeout=30)
         if response.status_code!=200 or (urlsplit(response.url).hostname or '').lower()!='pk.sapphireonline.pk':raise RuntimeError('SOURCE BLOCKED: Sapphire public source permissions could not be verified; saved work retained.')
         robot=RobotFileParser();robot.parse(response.text.splitlines())
         endpoint='https://pk.sapphireonline.pk/on/demandware.store/Sites-Sapphire-Site/default/Product-Variation'
