@@ -63,3 +63,26 @@ class KhaadiTests(unittest.TestCase):
     if raises:
      with self.assertRaisesRegex(ValueError,'Primary product missing'):Reader({'_chotu_wait':lambda:None},lambda _:None).catalog()
     else:self.assertEqual(len(Reader({'_chotu_wait':lambda:None},lambda _:None).catalog()[0]),1)
+
+ def test_category_only_sitemap_discovers_deduplicated_public_product_links(self):
+  from unittest.mock import patch
+  category=source.BASE+'/ready-to-wear/essentials/kurta/'
+  pages={source.BASE+'/robots.txt':'User-agent: *\nDisallow: /on/demandware.store/\nSitemap: '+source.BASE+'/sitemap_0.xml',source.BASE+'/sitemap_0.xml':'<urlset><url><loc>'+category+'</loc></url></urlset>',category:'<div class="product-tile"><a href="'+URL+'?source=listing">Kurta</a><a href="'+URL+'">Duplicate</a><a href="/blogs/winter2025.html">Blog</a><a href="https://us.khaadi.com/wrong/123.html">Foreign</a></div>',URL:fixture('master')}
+  requests=[]
+  class Reader(source.PublicCatalog):
+   def read(self,url,**kwargs):
+    requests.append(url);text=pages[url];return SimpleNamespace(text=text,content=text.encode(),status_code=200)
+  with patch.object(source,'normalize_product',return_value={'id':'main','variants':[]}):
+   products,complete=Reader({'_chotu_wait':lambda:None},lambda _:None).catalog()
+  self.assertEqual(len(products),1);self.assertFalse(complete);self.assertEqual(requests.count(URL),1);self.assertIn(category,requests)
+ def test_removed_category_does_not_stop_other_live_category(self):
+  from unittest.mock import patch
+  dead=source.BASE+'/old-collection/';live=source.BASE+'/ready-to-wear/'
+  class Reader(source.PublicCatalog):
+   def read(self,url,**kwargs):
+    if url.endswith('robots.txt'):text='User-agent: *\nSitemap: '+source.BASE+'/sitemap_0.xml'
+    elif url.endswith('.xml'):text='<urlset><url><loc>'+dead+'</loc></url><url><loc>'+live+'</loc></url></urlset>'
+    elif url==live:text='<a href="'+URL+'">Kurta</a>'
+    else:text=fixture('master')
+    return SimpleNamespace(text=text,content=text.encode(),status_code=404 if url==dead else 200)
+  with patch.object(source,'normalize_product',return_value={'id':'main','variants':[]}):self.assertEqual(len(Reader({'_chotu_wait':lambda:None},lambda _:None).catalog()[0]),1)

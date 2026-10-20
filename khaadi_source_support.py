@@ -90,7 +90,7 @@ class PublicCatalog:
             self.cache=ParsedProductCache(Path(path).with_name('khaadi-parsed.sqlite3'),hashlib.sha256(Path(__file__).read_bytes()).hexdigest())
     def close(self):
         if self.cache:self.cache.close()
-    def read(self,url,fresh=False):
+    def read(self,url,fresh=False,allow_missing=False):
         p=urlsplit(url)
         if p.scheme!='https' or p.hostname!='pk.khaadi.com' or p.username or p.password or p.port not in (None,443):raise SourceUnavailable('Pakistan public source changed host')
         if 'demandware.store' in p.path or (self.robot and not self.robot.can_fetch(AGENT,url)):raise SourceUnavailable('Public source path disallowed; no request made')
@@ -106,12 +106,13 @@ class PublicCatalog:
         if urlsplit(response.url).hostname!='pk.khaadi.com':raise SourceUnavailable('Pakistan source redirected to a foreign host')
         self.g['_chotu_debug_response'](response.status_code,len(response.content),cached=cached)
         if response.status_code in (429,500,502,503,504):raise RuntimeError('SOURCE PAUSED: Khaadi public server response '+str(response.status_code)+'; retry saved store after at least 60s. Checkpoint retained')
+        if allow_missing and response.status_code in (404,410):return response
         if response.status_code!=200:raise SourceUnavailable('Public page unavailable HTTP '+str(response.status_code))
         if len(response.content)>20*1024**2:raise ValueError('Public response exceeds validated size bound')
         return response
     def catalog(self):
         robots=self.read(BASE+'/robots.txt',fresh=True);self.robot=RobotFileParser();self.robot.parse(robots.text.splitlines())
-        queue=list(dict.fromkeys(re.findall(r'(?im)^Sitemap:\s*(https://\S+)',robots.text)));seen=set();urls={}
+        queue=list(dict.fromkeys(re.findall(r'(?im)^Sitemap:\s*(https://\S+)',robots.text)));seen=set();urls={};categories=[]
         if not queue:raise SourceUnavailable('Declared public sitemap missing')
         while queue:
             url=queue.pop(0)
@@ -125,8 +126,26 @@ class PublicCatalog:
                     if local(n.tag)!='loc' or not n.text:continue
                     p=urlsplit(n.text.strip())
                     if p.path.split('/')[1].lower() in ('blogs','blog','pages','account','customer-service','stores','store-locator'):continue
+                    if p.hostname=='pk.khaadi.com' and not p.query and not p.path.endswith('.html') and p.path.endswith('/') and n.text.strip() not in categories:categories.append(n.text.strip())
                     if p.hostname=='pk.khaadi.com' and re.fullmatch(r'/[^/]+/[A-Za-z0-9_-]*[0-9][A-Za-z0-9_-]*\.html',p.path) and not p.query:urls.setdefault(p.path.rsplit('/',1)[-1],n.text.strip())
-        if not urls:raise SourceUnavailable('No public product addresses found in declared sitemap')
+        self.log('KHAADI DISCOVERY: '+str(len(categories))+' public category pages; '+str(len(urls))+' direct product links from sitemap')
+        for index,url in enumerate(categories,1):
+            if not self.robot.can_fetch(AGENT,url):
+                self.log('KHAADI CATEGORY SKIPPED: robots disallow '+url);continue
+            self.log(f'KHAADI CATEGORY: {index}/{len(categories)} '+url)
+            response=self.read(url,allow_missing=True)
+            if response.status_code in (404,410):
+                self.log('KHAADI CATEGORY REMOVED: HTTP '+str(response.status_code)+' '+url);continue
+            soup=BeautifulSoup(response.text,'html.parser')
+            for node in soup.select('a[href]'):
+                link=urljoin(BASE,node['href']);p=urlsplit(link)
+                if p.hostname!='pk.khaadi.com' or p.scheme!='https' or p.username or p.password:continue
+                if p.path.split('/')[1].lower() in ('blogs','blog','pages','account','customer-service','stores','store-locator'):continue
+                if not re.fullmatch(r'/[^/]+/[A-Za-z0-9_-]*[0-9][A-Za-z0-9_-]*\.html',p.path):continue
+                canonical=urlunsplit((p.scheme,p.netloc,p.path,'',''))
+                if self.robot.can_fetch(AGENT,canonical):urls.setdefault(p.path.rsplit('/',1)[-1],canonical)
+            self.log(f'KHAADI LISTING PROGRESS: {index}/{len(categories)} categories; {len(urls)} distinct product URLs')
+        if not urls:raise SourceUnavailable('No public product links found in permitted category listings')
         result=[]
         for index,url in enumerate(urls.values(),1):
             self.g['_chotu_wait']();product=self.cache.get(url) if self.cache else None
