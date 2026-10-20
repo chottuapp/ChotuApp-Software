@@ -21,21 +21,22 @@ def enrich(state,folders,files,histories):
    else:
     record.pop('file_id',None);record.pop('file_url',None)
    # ModTime may be copied from the source workbook: never call it upload time.
-   if not record.get('verified_utc'):
+   if not record.get('verified_utc') or record.get('timestamp_source')=='Historical checksum verification report':
     dates=[]
     for old in histories:
      previous=old.get(group,{}).get(store,{})
      if previous.get('sha256')==record.get('sha256') and previous.get('folder')==folder:
-      timestamp=previous.get('verified_utc') or old.get('verified_utc')
+      explicit=previous.get('verified_utc') if not previous.get('timestamp_source','').startswith('Historical checksum') else None
+      timestamp=explicit or old.get('verified_utc')
       try:
        observed=datetime.datetime.fromisoformat(timestamp)
-       if not previous.get('verified_utc'):
+       if not explicit:
         for move in old.get('moves',[]):
          if move.get('destination')==folder and store+'.xlsx' in move.get('verified_files',[]):
           observed=max(observed,datetime.datetime.fromisoformat(move['verified_utc']))
        dates.append(observed)
       except (TypeError,ValueError,KeyError):pass
-    if dates:record.update(verified_utc=min(dates).isoformat(),timestamp_source='Historical checksum verification report')
+    if dates:record.update(verified_utc=min(dates).isoformat(),timestamp_source='Historical checksum verification report v2')
    if store in state.get('daily_uploads',{}).get(folder,{}):state['daily_uploads'][folder][store]=dict(record)
  return state
 

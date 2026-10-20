@@ -19,3 +19,9 @@ class CatalogTests(unittest.TestCase):
   history={'verified_utc':'2026-10-20T10:00:00+00:00','uploaded':{'A':{'sha256':'abc','folder':'F'}},'moves':[{'destination':'F','verified_files':['A.xlsx'],'verified_utc':'2026-10-20T12:00:00+00:00'}]}
   enrich(state,[{'Name':'F','ID':'folder-id','IsDir':True}],[],[history])
   self.assertEqual(state['uploaded']['A']['verified_utc'],'2026-10-20T12:00:00+00:00')
+
+ def test_old_derived_timestamp_is_repaired_from_transfer(self):
+  state={'folder':'F','uploaded':{'A':{'sha256':'abc','folder':'F','verified_utc':'2026-10-20T10:00:00+00:00','timestamp_source':'Historical checksum verification report'}}}
+  history={'verified_utc':'2026-10-20T10:00:00+00:00','uploaded':{'A':dict(state['uploaded']['A'])},'moves':[{'destination':'F','verified_files':['A.xlsx'],'verified_utc':'2026-10-20T12:00:00+00:00'}]}
+  enrich(state,[{'Name':'F','ID':'folder-id','IsDir':True}],[],[history])
+  self.assertEqual(state['uploaded']['A']['verified_utc'],'2026-10-20T12:00:00+00:00')
