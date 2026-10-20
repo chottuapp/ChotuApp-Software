@@ -1,25 +1,42 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-20T20:55:42.864764+00:00",
-  "run_id": "39495300404",
+  "generated_utc": "2026-10-20T21:28:05.769925+00:00",
+  "run_id": "39494348075",
   "attempt": "1",
-  "source_commit": "c3e5ae40e364f96da2baaaba4345df74f1d6c5cb",
-  "status": "incomplete",
+  "source_commit": "502b65bb7d7c2f1dd58dfa1fecd9f97c4f86704e",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 315.4,
+  "elapsed_seconds": 2606.3,
   "stores": [
     {
-      "name": "LAAM",
-      "status": "pending",
-      "review_required": false,
-      "issue_codes": [],
-      "software_revision": "650a2e8875e33c7a",
+      "name": "Zellbury",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "4fcf29bd1829fbc9",
+      "products": 6143,
+      "variants": 25535,
       "http_statuses": {
-        "500": 7
+        "200": 304
       },
-      "network_seconds": 6.3,
-      "max_response_seconds": 3.3,
+      "network_seconds": 361.4,
+      "max_response_seconds": 1.5,
+      "cache_events": 24226
+    },
+    {
+      "name": "Zero Lifestyle",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "db2f6f0b423cf75d",
+      "products": 61,
+      "variants": 254,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
       "cache_events": 0
     }
   ]
