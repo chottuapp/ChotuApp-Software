@@ -9,7 +9,8 @@ class DiagnosisTests(unittest.TestCase):
   handle='1864-paradise-blue-embroidered-organza-stitched-0';catalog=Mock();catalog.read.side_effect=[SimpleNamespace(text='User-agent: *'),SimpleNamespace(text='<script id="__NUXT_DATA__">[]</script>')]
   def command(args,**kwargs):
    out=json.dumps({'status':'completed','conclusion':'failure','jobs':[],'headSha':'a'*40}) if '--json' in args else 'HTTP START failing product\nEXCEPTION: RuntimeError example\n'+'upload artifact\n'*200
+   if 'list' in args:out=json.dumps([{'databaseId':39455408546,'displayTitle':'Cloud group solo-sapphire','status':'completed','conclusion':'failure'}])
    return SimpleNamespace(returncode=0,stdout=out,stderr='')
   with patch.dict(os.environ,{'GITHUB_RUN_ID':'123'}),patch('subprocess.run',side_effect=command),patch.object(source_research,'publish') as publish,patch.object(source_research,'public_product_state',return_value=[{'handle':handle,'variants':[]}]),patch.object(laam_source_support,'PublicCatalog',return_value=catalog),patch('builtins.print'):
    runpy.run_path(str(ROOT/'cloud/original_three_diagnosis.py'),run_name='__main__')
-  report=publish.call_args.args[0];self.assertEqual(len(report['failures']),1);self.assertEqual(report['failures'][0]['source_run'],'39453368003');self.assertTrue(any('EXCEPTION' in line for line in report['failures'][0]['failed_log_tail']))
+  report=publish.call_args.args[0];self.assertEqual(len(report['failures']),1);self.assertEqual(report['failures'][0]['source_run'],'39455408546');self.assertTrue(any('EXCEPTION' in line for line in report['failures'][0]['failed_log_tail']))

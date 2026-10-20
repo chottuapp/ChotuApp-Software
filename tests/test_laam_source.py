@@ -17,6 +17,13 @@ def html(raw,currency='PKR'):
  encode(raw)
  return '<script id="__NUXT_DATA__">'+json.dumps(flat)+'</script><script type="application/ld+json">'+json.dumps({'@type':'Product','offers':{'priceCurrency':currency,'price':raw['variants'][0]['price'] if raw['variants'] else raw.get('price',0)}})+'</script>'
 class LaamTests(unittest.TestCase):
+ def test_clothing_scope_uses_source_category_not_title_keywords(self):
+  for raw in [x['product'] for x in FIXTURES]:self.assertTrue(source.is_clothing(raw))
+  raw=copy.deepcopy(FIXTURES[0]['product']);raw['node_l2']='Jewellery';raw['title']='Embroidered Suit Necklace'
+  self.assertFalse(source.is_clothing(raw))
+  with self.assertRaises(source.OutsideClothingScope):source.product_state(BeautifulSoup(html(raw),'html.parser'),raw['handle'],clothing_only=True)
+  raw.pop('node_l2');self.assertTrue(source.is_clothing(raw))
+  raw['description']='Perfect accessory for a clothing collection';self.assertFalse(source.is_clothing(raw))
  def test_real_captured_products_preserve_observed_price_stock_options_images(self):
   for fixture in FIXTURES:
    raw=fixture['product'];p=source.product_state(BeautifulSoup(html(raw),'html.parser'),raw['handle'])

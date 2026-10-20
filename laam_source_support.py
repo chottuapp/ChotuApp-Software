@@ -19,7 +19,20 @@ class SourceAccessError(ValueError):
     """Public source access/locale cannot be verified; distinct from parser failures."""
 
 
-def product_state(soup,handle):
+class OutsideClothingScope(ValueError):
+    """Not confirmed clothing under the requested LAAM clothing-only scope."""
+
+def is_clothing(raw):
+    category=str(raw.get('node_l2') or '').strip().casefold()
+    if category:return category=='clothing'
+    soup=BeautifulSoup(raw.get('description') or '', 'html.parser')
+    for label in soup.find_all('strong'):
+        if label.get_text(' ',strip=True).replace('\xa0',' ').strip().rstrip(':').strip().casefold()=='category':
+            value=''.join(str(n) for n in label.next_siblings)
+            return BeautifulSoup(value,'html.parser').get_text(' ',strip=True).casefold()=='clothing'
+    return False
+
+def product_state(soup,handle,clothing_only=False):
     script=soup.find('script',id='__NUXT_DATA__')
     if script is None:raise ValueError('LAAM public product state missing')
     flat=json.loads(script.string or script.get_text())
@@ -53,6 +66,7 @@ def product_state(soup,handle):
                 for item in value:walk(item)
         walk(tree)
     if currencies!={'PKR'}:raise SourceAccessError('LAAM Pakistan currency unverified; no foreign price export')
+    if clothing_only and not is_clothing(candidates[0]):raise OutsideClothingScope('Not source-confirmed clothing')
     product=normalize(candidates[0],handle)
     from website_category_support import breadcrumb
     product['_website_category_evidence']=breadcrumb(soup,BASE+'/products/'+handle)
@@ -211,7 +225,10 @@ class PublicCatalog:
                     self.log('LAAM SOURCE REMOVED: HTTP '+str(response.status_code)+' '+url+'; absent public product excluded')
                     continue
                 # Nuxt state and currency evidence live in scripts; don't build a full page DOM.
-                try:product=product_state(BeautifulSoup(response.text,'html.parser',parse_only=SoupStrainer('script')),handle)
+                try:product=product_state(BeautifulSoup(response.text,'html.parser',parse_only=SoupStrainer('script')),handle,clothing_only=True)
+                except OutsideClothingScope:
+                    self.log('LAAM CLOTHING FILTER: excluded non-clothing or unclassified product '+url)
+                    continue
                 except ConfirmedOutOfStock:
                     self.log('LAAM SOURCE OUT OF STOCK: '+url+'; explicit zero inventory and empty variants; unavailable product excluded, no variants invented')
                     continue
@@ -223,7 +240,7 @@ class PublicCatalog:
             if index==1 or index%50==0 or index==len(urls):self.log(f'PUBLIC PRODUCT PAGES: {index}/{len(urls)} LAAM products verified')
         if deferred:raise TemporaryProductError('SOURCE PAUSED: LAAM '+str(len(deferred))+' product pages still unavailable; other successful products cached. Retry saved store after at least 60s; catalog incomplete')
         if self.cache_hits:self.log('LAAM PARSED CACHE: '+str(self.cache_hits)+' verified products reused without reparsing; current adapter revision only')
-        self.log('LAAM SOURCE: complete declared product sitemap coverage; explicit PKR, observed variants, public stock and image URLs retained. No sales popularity assumed.')
+        self.log('LAAM SOURCE: clothing-only selection from declared product sitemap; non-clothing and unclassified excluded; explicit PKR, observed variants, public stock and image URLs retained. No sales popularity assumed.')
         return list(self.products.values()),True
 
 def enable_laam_source(g):
