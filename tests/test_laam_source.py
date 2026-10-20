@@ -157,6 +157,22 @@ class LaamTests(unittest.TestCase):
   with self.assertRaises(source.TemporaryProductError):reader.read(source.BASE+'/products/bad',allow_missing=True)
   self.assertEqual(session.get.call_count,1);session.get_fresh.assert_not_called()
   self.assertFalse(any(c.args[0]==60 for c in backoff.call_args_list))
+ def test_bad_product_cluster_does_not_trap_healthy_later_products(self):
+  from types import SimpleNamespace
+  first=copy.deepcopy(FIXTURES[0]['product']);first.update(handle='000-first')
+  last=copy.deepcopy(first);last.update(handle='zzz-last',id=999999)
+  urls=[source.BASE+'/products/'+first['handle']]+[source.BASE+'/products/001-bad-'+str(i) for i in range(5)]+[source.BASE+'/products/'+last['handle']]
+  calls=[]
+  class Reader(source.PublicCatalog):
+   def read(self,url,allow_missing=False,fresh=False):
+    calls.append((url,fresh))
+    if '001-bad-' in url:raise source.TemporaryProductError('HTTP 500')
+    text=('User-agent: *\nSitemap: '+source.BASE+'/sitemap.xml') if url.endswith('robots.txt') else '<urlset>'+''.join('<url><loc>'+u+'</loc></url>' for u in urls)+'</urlset>' if url.endswith('.xml') else html(last if 'zzz-last' in url else first)
+    return SimpleNamespace(text=text,content=text.encode(),status_code=200)
+  with tempfile.TemporaryDirectory() as tmp:
+   reader=Reader({'_chotu_tls':SimpleNamespace(saved_api_path=Path(tmp)/'api.sqlite3')},lambda _:None)
+   with self.assertRaisesRegex(source.TemporaryProductError,'catalog incomplete'):reader.catalog()
+   self.assertEqual(len(reader.products),2);self.assertIn((urls[0],True),calls);self.assertIn((urls[-1],False),calls);reader.close()
  def test_failed_url_cooldown_survives_resume_and_expires(self):
   import time
   with tempfile.TemporaryDirectory() as tmp:
