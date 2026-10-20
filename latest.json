@@ -1,25 +1,28 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-20T11:23:19.049441+00:00",
-  "run_id": "39414516183",
+  "generated_utc": "2026-10-20T11:46:01.987338+00:00",
+  "run_id": "39410937297",
   "attempt": "1",
-  "source_commit": "b0c9fadb187d3defca40626b0000a44e2e6965bf",
+  "source_commit": "551900ea445e641e815e086e222be26c45446157",
   "status": "incomplete",
-  "checkpoint_saved": false,
+  "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 0,
+  "elapsed_seconds": 3212.9,
   "stores": [
     {
-      "name": "Sapphire",
+      "name": "LAAM",
       "status": "failed",
       "review_required": false,
       "issue_codes": [
-        "ADAPTER_ERROR"
+        "ADAPTER_ERROR",
+        "SCHEMA_CHECK"
       ],
-      "software_revision": "a73eb941e0a0d27a",
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
+      "software_revision": "9d8e3198f94a8b4c",
+      "http_statuses": {
+        "500": 78
+      },
+      "network_seconds": 48.3,
+      "max_response_seconds": 3.6,
       "cache_events": 0
     }
   ]
