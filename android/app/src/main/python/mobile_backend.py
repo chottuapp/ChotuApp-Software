@@ -69,6 +69,8 @@ def dashboard():
   try:
    response=requests.get('https://raw.githubusercontent.com/'+REPO+'/'+branch+'/latest.json',params={'check':time.time_ns()},timeout=25);response.raise_for_status();result[key]=response.json()
   except requests.RequestException:result[key]={'unavailable':True}
+ from store_progress import rows
+ result['store_progress']=rows(result.get('runners',{}))
  return json.dumps(result)
 
 def verify_token(token):

@@ -48,7 +48,30 @@ public class MainActivity extends Activity {
         label(content,loading?"Refreshing cloud reports…":fetchedAt==0?"Cloud reports not loaded":"Fetched "+Math.max(0,(System.currentTimeMillis()-fetchedAt)/60000)+" min ago · source reports may lag",11,MUTED,false);gap(content,10);content.addView(button("Refresh cloud status",false,this::refresh));
     }
     void metric(LinearLayout row,String value,String title){LinearLayout m=column();m.setPadding(dp(18),dp(18),dp(12),dp(18));m.setBackground(bg(Color.WHITE,20));label(m,value,29,INK,true);label(m,title,12,MUTED,false);LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(0,-2,1);lp.setMargins(0,0,dp(8),0);row.addView(m,lp);}
-    void activity(){LinearLayout remote=card(content);label(remote,"LIVE REMOTE LOGS",11,GREEN,true);gap(remote,8);label(remote,telemetryLine(),13,INK,false);gap(remote,12);remote.addView(button(sendingLogs?"Sending…":"Send logs now",false,this::syncLogs));gap(remote,8);remote.addView(button("Refresh this activity",false,this::render));LinearLayout box=card(content);label(box,"PHONE WORKER · "+workerStatus().toUpperCase(),11,GREEN,true);gap(box,10);label(box,workerMessage(),14,INK,false);String logs=read(new File(getFilesDir(),"khaadi/fetch-log.txt"),6500);if(logs.isEmpty())logs="No local events yet. Start Khaadi from Overview.";gap(box,14);TextView events=label(box,logs.replace("Keep CMD open and PC awake; Ctrl+C stops local fetch.","Keep this phone online; Pause saves your progress."),11,MUTED,false);events.setTypeface(Typeface.MONOSPACE);events.setTextIsSelectable(true);
+    void progressCards(){
+        JSONArray stores=cloud.optJSONArray("store_progress");if(stores==null)return;
+        for(int i=0;i<stores.length();i++){
+            JSONObject store=stores.optJSONObject(i);if(store==null)continue;
+            String status=store.optString("status","unknown");boolean stale=store.optBoolean("stale");
+            boolean error=status.equals("failed")||status.equals("blocked")||status.equals("source_paused");
+            int color=stale?MUTED:error?Color.rgb(178,45,45):GREEN;
+            LinearLayout box=card(content);label(box,store.optString("store"),18,INK,true);
+            label(box,store.optString("execution")+" · "+store.optString("runner_id"),12,MUTED,false);
+            label(box,status.replace('_',' ')+(stale?" · stale report":""),13,color,true);
+            if(store.has("completed_tasks")){
+                label(box,store.optString("stage","Stage progress")+" · "+store.optString("unit"),12,MUTED,false);
+                label(box,store.optInt("completed_tasks")+" / "+store.optInt("total_tasks")+" · "+store.optInt("remaining_tasks")+" remaining",14,INK,true);
+                if(!store.isNull("stage_percent")){
+                    ProgressBar bar=new ProgressBar(this,null,android.R.attr.progressBarStyleHorizontal);bar.setMax(1000);bar.setProgress((int)(store.optDouble("stage_percent")*10));box.addView(bar,new LinearLayout.LayoutParams(-1,dp(12)));
+                    label(box,store.optString("stage_percent")+"% of this stage",12,color,true);
+                }
+                if(store.has("product_urls_found"))label(box,store.optInt("product_urls_found")+" product URLs discovered",12,MUTED,false);
+            }
+            label(box,"Overall completion and verified fetched-product count: not reported",11,MUTED,false);
+            label(box,"Report: "+store.optString("observed_utc","unavailable"),11,MUTED,false);
+        }
+    }
+    void activity(){progressCards();LinearLayout remote=card(content);label(remote,"LIVE REMOTE LOGS",11,GREEN,true);gap(remote,8);label(remote,telemetryLine(),13,INK,false);gap(remote,12);remote.addView(button(sendingLogs?"Sending…":"Send logs now",false,this::syncLogs));gap(remote,8);remote.addView(button("Refresh this activity",false,this::render));LinearLayout box=card(content);label(box,"PHONE WORKER · "+workerStatus().toUpperCase(),11,GREEN,true);gap(box,10);label(box,workerMessage(),14,INK,false);String logs=read(new File(getFilesDir(),"khaadi/fetch-log.txt"),6500);if(logs.isEmpty())logs="No local events yet. Start Khaadi from Overview.";gap(box,14);TextView events=label(box,logs.replace("Keep CMD open and PC awake; Ctrl+C stops local fetch.","Keep this phone online; Pause saves your progress."),11,MUTED,false);events.setTypeface(Typeface.MONOSPACE);events.setTextIsSelectable(true);
         JSONObject runners=cloud.optJSONObject("runners");if(runners!=null){JSONArray runs=runners.optJSONArray("runs");if(runs!=null)for(int i=0;i<runs.length();i++){JSONObject run=runs.optJSONObject(i);if(run==null)continue;LinearLayout r=card(content);label(r,run.optString("lane",run.optString("displayTitle","Cloud run")),14,INK,true);label(r,run.optString("status")+" · "+run.optString("conclusion"),12,GREEN,true);label(r,run.optString("snapshot","Snapshot not published yet"),12,MUTED,false);}}
     }
     void settings(){LinearLayout conn=card(content);boolean connected=!Vault.read(this).isEmpty();label(conn,"GITHUB CONNECTION",11,GREEN,true);gap(conn,10);label(conn,connected?"Connected securely":"Connect once for automatic delivery",18,INK,true);gap(conn,8);label(conn,"Your access token is encrypted with Android Keystore. It is never included in reports or backups.",13,MUTED,false);gap(conn,16);conn.addView(button(connected?"Change connection":"Connect GitHub",true,this::connect));if(connected){gap(conn,8);conn.addView(button("Disconnect",false,()->{Vault.clear(this);render();}));}
