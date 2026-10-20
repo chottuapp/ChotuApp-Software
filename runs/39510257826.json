@@ -1,0 +1,193 @@
+{
+  "run_id": "39510257826",
+  "checked_utc": "2026-10-20T22:44:34.067259+00:00",
+  "build": {
+    "conclusion": "",
+    "databaseId": 39510169976,
+    "headSha": "f19e7ae99c1e06117e22bd932eaa3edfde4a1479",
+    "status": "in_progress",
+    "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39510169976"
+  },
+  "jobs": [
+    {
+      "id": 118929201484,
+      "run_id": 39510169976,
+      "workflow_name": "Build ChotuApp Android APK",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/chottuapp/ChotuApp-Software/actions/runs/39510169976",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVF-slM8AAAAbsLuZTA",
+      "head_sha": "f19e7ae99c1e06117e22bd932eaa3edfde4a1479",
+      "url": "https://api.github.com/repos/chottuapp/ChotuApp-Software/actions/jobs/118929201484",
+      "html_url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39510169976/job/118929201484",
+      "status": "in_progress",
+      "conclusion": null,
+      "created_at": "2026-10-20T22:44:14Z",
+      "started_at": "2026-10-20T22:44:16Z",
+      "completed_at": null,
+      "name": "build",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-20T22:44:17Z",
+          "completed_at": "2026-10-20T22:44:20Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-20T22:44:20Z",
+          "completed_at": "2026-10-20T22:44:28Z"
+        },
+        {
+          "name": "Run actions/setup-java@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-20T22:44:28Z",
+          "completed_at": "2026-10-20T22:44:28Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-20T22:44:28Z",
+          "completed_at": "2026-10-20T22:44:28Z"
+        },
+        {
+          "name": "Run python -m pip install requests beautifulsoup4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-20T22:44:28Z",
+          "completed_at": "2026-10-20T22:44:32Z"
+        },
+        {
+          "name": "Run gradle/actions/setup-gradle@v4",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 6,
+          "started_at": "2026-10-20T22:44:32Z",
+          "completed_at": null
+        },
+        {
+          "name": "Run actions/cache@v4",
+          "status": "pending",
+          "conclusion": null,
+          "number": 7,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Bundle checked headless extractor",
+          "status": "pending",
+          "conclusion": null,
+          "number": 8,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Build installable app and device tests",
+          "status": "pending",
+          "conclusion": null,
+          "number": 9,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Publish build checkpoint",
+          "status": "pending",
+          "conclusion": null,
+          "number": 10,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Enable emulator acceleration",
+          "status": "pending",
+          "conclusion": null,
+          "number": 11,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Run reactivecircus/android-emulator-runner@v2",
+          "status": "pending",
+          "conclusion": null,
+          "number": 12,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Run actions/upload-artifact@v4",
+          "status": "pending",
+          "conclusion": null,
+          "number": 13,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Publish tested APK download",
+          "status": "pending",
+          "conclusion": null,
+          "number": 14,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Publish final build status",
+          "status": "pending",
+          "conclusion": null,
+          "number": 15,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Run gradle/actions/setup-gradle@v4",
+          "status": "pending",
+          "conclusion": null,
+          "number": 27,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "pending",
+          "conclusion": null,
+          "number": 28,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Run actions/setup-java@v4",
+          "status": "pending",
+          "conclusion": null,
+          "number": 29,
+          "started_at": null,
+          "completed_at": null
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "pending",
+          "conclusion": null,
+          "number": 30,
+          "started_at": null,
+          "completed_at": null
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/chottuapp/ChotuApp-Software/check-runs/118929201484",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000000337,
+      "runner_name": "GitHub Actions 1000000337",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}
