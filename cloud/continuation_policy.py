@@ -29,6 +29,12 @@ def progress_token(state,root):
                 try:
                     with sqlite3.connect(path.resolve().as_uri()+'?mode=ro',uri=True) as db:counts.append(db.execute('SELECT COUNT(*) FROM '+('pages' if name=='pages.sqlite3' else 'responses')).fetchone()[0])
                 except sqlite3.Error:counts.append(0)
+        if site.get('status')!='done':
+            derived=Path(root)/str(state.get('id',''))/str(index)/'laam-parsed.sqlite3'
+            for table in ('parsed_products','temporary_failures'):
+                try:
+                    with sqlite3.connect(derived.resolve().as_uri()+'?mode=ro',uri=True) as db:counts.append(db.execute('SELECT COUNT(*) FROM '+table).fetchone()[0])
+                except sqlite3.Error:counts.append(0)
         data.append([index,site.get('status')=='done',(site.get('output') or {}).get('size',0) if site.get('status')=='done' else 0,counts])
     return hashlib.sha256(json.dumps(data,separators=(',',':')).encode()).hexdigest()
 
