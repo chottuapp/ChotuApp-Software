@@ -10,7 +10,7 @@ from parallel_store_support import StoreScheduler,output_key
 from diagnostics import Collector
 from continuation_policy import integer
 
-MODULES=('subcategory_inference_support.py','website_category_support.py','ranking_support.py','resume_support.py','fast_fetch_support.py','farda_source_support.py','complete_description_support.py','czone_source_support.py','software_revision_support.py','seran_source_support.py','laam_source_support.py','source_compatibility_support.py','sapphire_source_support.py','website_order_support.py')
+MODULES=('subcategory_inference_support.py','website_category_support.py','ranking_support.py','resume_support.py','fast_fetch_support.py','farda_source_support.py','complete_description_support.py','czone_source_support.py','software_revision_support.py','seran_source_support.py','laam_source_support.py','source_compatibility_support.py','sapphire_source_support.py','khaadi_source_support.py','website_order_support.py')
 DEFAULT_TEMPLATE=ROOT/'importer-files/Chotu_Products_Import_Template_Discount_Tags.xlsx'
 
 
@@ -26,7 +26,7 @@ def prepare_engine(data):
     runtime=Path(data)/'runtime';runtime.mkdir(parents=True,exist_ok=True)
     source=install_fast_fetch.transform((ROOT/'main.py').read_text(encoding='utf-8-sig'))
     source=install_farda_source.transform(source);source=install_czone_source.transform(source)
-    hook='\n# CHOTUAPP_SERAN_PUBLIC_SOURCE_V1\nfrom seran_source_support import enable_seran_source\nenable_seran_source(globals())\nfrom laam_source_support import enable_laam_source\nenable_laam_source(globals())\nfrom source_compatibility_support import enable_source_compatibility\nenable_source_compatibility(globals())\nfrom website_order_support import enable_website_order\nenable_website_order(globals())\nfrom sapphire_source_support import enable_sapphire_source\nenable_sapphire_source(globals())\n\n'
+    hook='\n# CHOTUAPP_SERAN_PUBLIC_SOURCE_V1\nfrom seran_source_support import enable_seran_source\nenable_seran_source(globals())\nfrom laam_source_support import enable_laam_source\nenable_laam_source(globals())\nfrom source_compatibility_support import enable_source_compatibility\nenable_source_compatibility(globals())\nfrom website_order_support import enable_website_order\nenable_website_order(globals())\nfrom sapphire_source_support import enable_sapphire_source\nenable_sapphire_source(globals())\nfrom khaadi_source_support import enable_khaadi_source\nenable_khaadi_source(globals())\n\n'
     guard="if __name__=='__main__':"
     if source.count(guard)!=1:raise ValueError('Unexpected engine startup entry point')
     source=source.replace(guard,hook+guard,1)
