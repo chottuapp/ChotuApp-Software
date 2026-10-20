@@ -70,6 +70,9 @@ def dashboard():
    response=requests.get('https://raw.githubusercontent.com/'+REPO+'/'+branch+'/latest.json',params={'check':time.time_ns()},timeout=25);response.raise_for_status();result[key]=response.json()
   except requests.RequestException:result[key]={'unavailable':True}
  result.get('runners',{})['active_runners']=sum(run.get('status')=='in_progress' for run in result.get('runners',{}).get('runs',[]))
+ try:
+  response=requests.get('https://raw.githubusercontent.com/'+REPO+'/android-builds/studio-release.json',params={'check':time.time_ns()},timeout=15);response.raise_for_status();result['app_update']=response.json()
+ except (requests.RequestException,ValueError):result['app_update']={'unavailable':True}
  from store_progress import rows
  result['store_progress']=rows(result.get('runners',{}))
  return json.dumps(result)
