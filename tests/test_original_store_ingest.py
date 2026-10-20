@@ -9,9 +9,11 @@ class OriginalTests(unittest.TestCase):
  def setup_root(self,root):
   for name in ('cloud/rule804_pipeline.py','subcategory_inference_support.py','catalog-tools/complete_rule804_batch.py','cloud/confirmed-shop-codes.json','cloud/original_store_ingest.py','cloud/legacy_original_schema.py','laam_source_support.py'):
    dest=root/name;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(ROOT/name,dest)
- def exercise(self,*,status='done',fail_check=False,store='Sapphire',scope_valid=True):
+ def exercise(self,*,status='done',fail_check=False,store='Sapphire',scope_valid=True,legacy=False):
   with tempfile.TemporaryDirectory() as tmp:
    root=Path(tmp);self.setup_root(root);source=MobileTests().workbook(root,url='https://pk.sapphireonline.pk/products/P1.html' if store=='Sapphire' else 'https://laam.com/products/P1')
+   if legacy:
+    book=load_workbook(source);sheet=book['Products'];sheet['A1']='product_id';sheet['B1']='category';sheet['C1']='subcategory';sheet['A2']='P1';sheet['B2']='Broad';book.save(source);book.close()
    runs=[{'databaseId':12,'displayTitle':'Cloud group solo-'+store.lower(),'status':'completed','headSha':'approved'}];policy=[{'store':store,'group':'solo-'+store.lower()}];calls=[]
    def gh(*args):
     if args[0]=='api' and '/artifacts?' in args[1]:return json.dumps({'artifacts':[{'id':8,'name':'chotuapp-excel-files'}]})
@@ -32,6 +34,7 @@ class OriginalTests(unittest.TestCase):
     self.assertEqual(sent,[store]);self.assertEqual(calls,['copy','check']);self.assertIn('verified_utc',state['original_uploads'][store])
     self.assertEqual(ingest.upload(state,'target',Mock(side_effect=AssertionError),runs,gh,policy,root=root),[])
  def test_sapphire_804_then_checked_copy(self):self.exercise()
+ def test_legacy_sapphire_is_normalized_before_upload(self):self.exercise(legacy=True)
  def test_incomplete_never_uploaded(self):self.exercise(status='running')
  def test_failed_check_not_recorded_verified(self):self.exercise(fail_check=True)
  def test_laam_requires_matching_clothing_source(self):self.exercise(store='LAAM',scope_valid=False)
