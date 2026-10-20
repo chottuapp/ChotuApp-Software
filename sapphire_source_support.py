@@ -51,6 +51,11 @@ def inspect_page(html,url):
     # Requested URLs may contain public size selectors but must retain the actual master/variant identity.
     requested=urlsplit(url)
     if requested.hostname!='pk.sapphireonline.pk' or requested.path.rsplit('/',1)[-1] not in (master+'.html',pid+'.html'):raise ValueError('Requested source identity mismatch')
+    fixed_options={}
+    for attr in {n.find_parent(attrs={'data-attr':True}).get('data-attr') for n in primary_nodes(main,'[data-attr] input.options-select')} - {'size'}:
+        nodes=[n for n in primary_nodes(main,'[data-attr] input.options-select') if n.find_parent(attrs={'data-attr':True}).get('data-attr')==attr]
+        if attr!='itemType' or len(nodes)!=1 or not nodes[0].has_attr('checked') or not nodes[0].get('data-attr-value') or nodes[0].get('data-pid')!=pid:raise ValueError('Additional product option requires verification: '+str(attr))
+        fixed_options['dwvar_'+master+'_'+attr]=nodes[0]['data-attr-value']
     sizes=[]
     for node in primary_nodes(main,'[data-attr="size"] input.options-select'):
         item=node.find_parent(class_='size-item');label=item.find('span') if item else None
@@ -60,15 +65,14 @@ def inspect_page(html,url):
         # These parameter names/values are observed in the page controls; only the canonical HTML path is requested.
         params=[(k,v) for k,v in parse_qsl(urlsplit(node.get('value','')).query,keep_blank_values=True) if k.startswith('dwvar_') and k.endswith('_size')]
         if len(params)!=1:raise ValueError('Public size selector parameter unavailable')
-        sizes.append({'value':value,'label':text,'parameter':params[0][0],'selected':node.has_attr('checked')})
+        observed=dict(parse_qsl(urlsplit(node.get('value','')).query,keep_blank_values=True))
+        if any(observed.get(k)!=v for k,v in fixed_options.items()):raise ValueError('Size selector does not preserve fixed product option')
+        sizes.append({'fixed_options':fixed_options,'value':value,'label':text,'parameter':params[0][0],'selected':node.has_attr('checked')})
     if len({s['value'] for s in sizes})!=len(sizes):raise ValueError('Duplicate size values')
     selected=[s for s in sizes if s['selected']]
     if len(selected)>1:raise ValueError('Ambiguous selected size')
     if selected and (pid==master or data.get('item_variant')!=pid):raise ValueError('Selected variant identity not established')
     if not selected and pid!=master:raise ValueError('Variant page has no verified selected size')
-    for node in primary_nodes(main,'[data-attr] input.options-select'):
-        parent=node.find_parent(attrs={'data-attr':True})
-        if parent and parent.get('data-attr')!='size':raise ValueError('Additional product option requires verification')
     images=[]
     for node in primary_nodes(main,'img.pdp-image'):
         image=urljoin(BASE,node.get('data-high-src') or node.get('data-src') or node.get('src',''))
@@ -84,13 +88,15 @@ def inspect_page(html,url):
     for node in soup.select('.breadcrumb a[href]'):
         link=urljoin(BASE,node['href']);p=urlsplit(link);label=node.get_text(' ',strip=True)
         if label and p.hostname=='pk.sapphireonline.pk' and p.path.startswith('/collections/') and '/products/' not in p.path:path.append(label)
-    return dict(master_id=master,id=pid,title=title,price=price,compare_at_price=compare,sizes=sizes,selected_size=selected[0] if selected else None,available=not button.has_attr('disabled'),images=images,description=description,category_path=path,canonical_url=canonical)
+    return dict(fixed_options=fixed_options,master_id=master,id=pid,title=title,price=price,compare_at_price=compare,sizes=sizes,selected_size=selected[0] if selected else None,available=not button.has_attr('disabled'),images=images,description=description,category_path=path,canonical_url=canonical)
 
 def variant_url(master_url,size):
     p=urlsplit(master_url)
     if p.scheme!='https' or p.hostname!='pk.sapphireonline.pk' or '/products/' not in p.path or not p.path.endswith('.html'):raise ValueError('Public master product URL required')
     if not re.fullmatch(r'dwvar_[A-Za-z0-9_-]+_size',size['parameter']):raise ValueError('Invalid observed size parameter')
-    return urlunsplit((p.scheme,p.netloc,p.path,urlencode({size['parameter']:size['value']}),''))
+    fixed=size.get('fixed_options',{})
+    if any(not re.fullmatch(r'dwvar_[A-Za-z0-9_-]+_itemType',key) for key in fixed):raise ValueError('Invalid fixed option parameter')
+    return urlunsplit((p.scheme,p.netloc,p.path,urlencode({**fixed,size['parameter']:size['value']}),''))
 
 def normalize_product(page,url,read):
     master=inspect_page(page,url)
@@ -100,6 +106,7 @@ def normalize_product(page,url,read):
         for size in master['sizes']:
             selected_url=variant_url(url,size);variant=inspect_page(read(selected_url).text,selected_url)
             if variant['master_id']!=master['master_id'] or not variant['selected_size'] or variant['selected_size']['value']!=size['value']:raise ValueError('Public size selection did not select the requested variant')
+            if variant['fixed_options']!=master['fixed_options']:raise ValueError('Selected variant fixed option changed')
             if variant['selected_size']['label']!=size['label']:raise ValueError('Variant size label changed')
             if variant['id'] in {v['id'] for v in variants}:raise ValueError('Repeated variant identity')
             variants.append({'id':variant['id'],'sku':variant['id'],'price':variant['price'],'compare_at_price':variant['compare_at_price'],'available':variant['available'],'option1':size['label'],'featured_image':{'src':variant['images'][0]}});labels.append(size['label'])

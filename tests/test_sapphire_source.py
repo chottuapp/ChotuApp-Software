@@ -12,6 +12,27 @@ UNS=source.BASE+'/collections/unstitched/products/U3PELXS26V91.html'
 def fixture(name):return (FIX/name).read_text()
 def response(text,url):return SimpleNamespace(text=text,content=text.encode(),status_code=200,url=url)
 class SapphireTests(unittest.TestCase):
+ def test_actual_single_regular_fit_preserved_in_public_size_selectors(self):
+  url=source.BASE+'/collections/kurtas/products/MSTEKR26V610.html'
+  page=source.inspect_page(fixture('regular_fit.html'),url)
+  self.assertEqual(page['fixed_options'],{'dwvar_MSTEKR26V610_itemType':'RGL'})
+  self.assertEqual([s['label'] for s in page['sizes']],['S','M','L','XL'])
+  for size in page['sizes']:
+   selected=source.variant_url(url,size)
+   self.assertIn('dwvar_MSTEKR26V610_itemType=RGL',selected)
+   self.assertIn('dwvar_MSTEKR26V610_size='+size['value'],selected)
+   self.assertNotIn('/on/demandware.store/',selected)
+ def test_multiple_or_unselected_fit_options_require_verification(self):
+  url=source.BASE+'/collections/kurtas/products/MSTEKR26V610.html'
+  for multiple in (True,False):
+   soup=BeautifulSoup(fixture('regular_fit.html'),'html.parser');node=soup.select_one('[data-attr="itemType"] input')
+   if multiple:node.parent.append(copy.copy(node))
+   else:del node['checked']
+   with self.assertRaisesRegex(ValueError,'Additional product option'):source.inspect_page(str(soup),url)
+ def test_size_control_cannot_silently_change_fixed_fit(self):
+  url=source.BASE+'/collections/kurtas/products/MSTEKR26V610.html'
+  soup=BeautifulSoup(fixture('regular_fit.html'),'html.parser');node=soup.select_one('[data-attr="size"] input');node['value']=node['value'].replace('itemType=RGL','itemType=SLM')
+  with self.assertRaisesRegex(ValueError,'preserve fixed'):source.inspect_page(str(soup),url)
  def test_actual_selected_xs_and_l_pages_have_distinct_ids_and_exact_prices(self):
   for filename,value,pid,label in [('rtw_xs.html','XSM','2PCSTCASV996-XSM-999','XS'),('rtw_l.html','LRG','2PCSTCASV996-LRG-999','L')]:
    with self.subTest(filename=filename):
