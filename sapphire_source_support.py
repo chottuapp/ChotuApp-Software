@@ -16,18 +16,32 @@ def amount(value):
     if not value.is_finite() or value<=0:raise ValueError('Sapphire price missing or invalid')
     return str(value)
 
+def primary_nodes(main,selector):
+    """Ignore recommendation tiles and nested foreign products inside the PDP wrapper."""
+    result=[]
+    for node in main.select(selector):
+        parent=node
+        while parent is not main:
+            classes=parent.get('class',[])
+            if 'product-tile' in classes or ('product-detail' in classes and parent.get('data-pid') and parent.get('data-pid')!=main.get('data-pid')):break
+            parent=parent.parent
+        else:result.append(node)
+    return result
+
 def inspect_page(html,url):
     soup=BeautifulSoup(html,'html.parser');scopes=soup.select('.product-wrapper[data-pid]')
     if len(scopes)!=1:raise ValueError('Exact Sapphire product scope missing or ambiguous: '+url)
     main=scopes[0];master=main.get('data-master-id');pid=main.get('data-pid')
     if not master or not pid:raise ValueError('Source product identity missing')
-    button=main.select_one('button.add-to-cart[data-gtmga4data]')
+    buttons=primary_nodes(main,'button.add-to-cart[data-gtmga4data]')
+    button=buttons[0] if len(buttons)==1 else None
     if button is None:raise ValueError('Product price/currency evidence missing')
     data=json.loads(button['data-gtmga4data'])
     if data.get('item_id')!=master or button.get('data-pid')!=pid:raise ValueError('Source product identity mismatch')
     if data.get('currencyCode')!='PKR':raise ValueError('Explicit PKR required')
-    price=amount(data.get('price'));price_nodes=main.select('.price .sales .cc-price[content]')
-    if len(price_nodes)!=1 or Decimal(amount(price_nodes[0]['content']))!=Decimal(price):raise ValueError('Visible and structured product prices disagree')
+    price=amount(data.get('price'));price_nodes=primary_nodes(main,'.price .sales .cc-price[content]')
+    visible_prices={Decimal(amount(node['content'])) for node in price_nodes}
+    if visible_prices!={Decimal(price)}:raise ValueError('Visible and structured primary product prices disagree: expected '+price+'; visible '+str(sorted(str(v) for v in visible_prices)))
     compare=data.get('compare_price');compare=amount(compare) if compare not in (None,'',0) else None
     if compare and Decimal(compare)<=Decimal(price):compare=None
     canonical=soup.select_one('link[rel="canonical"]')
@@ -38,7 +52,7 @@ def inspect_page(html,url):
     requested=urlsplit(url)
     if requested.hostname!='pk.sapphireonline.pk' or requested.path.rsplit('/',1)[-1] not in (master+'.html',pid+'.html'):raise ValueError('Requested source identity mismatch')
     sizes=[]
-    for node in main.select('[data-attr="size"] input.options-select'):
+    for node in primary_nodes(main,'[data-attr="size"] input.options-select'):
         item=node.find_parent(class_='size-item');label=item.find('span') if item else None
         value=node.get('data-attr-value')
         if not label or not value or node.get('data-pid')!=pid:raise ValueError('Missing size value/label or mismatched product')
@@ -52,11 +66,11 @@ def inspect_page(html,url):
     if len(selected)>1:raise ValueError('Ambiguous selected size')
     if selected and (pid==master or data.get('item_variant')!=pid):raise ValueError('Selected variant identity not established')
     if not selected and pid!=master:raise ValueError('Variant page has no verified selected size')
-    for node in main.select('[data-attr] input.options-select'):
+    for node in primary_nodes(main,'[data-attr] input.options-select'):
         parent=node.find_parent(attrs={'data-attr':True})
         if parent and parent.get('data-attr')!='size':raise ValueError('Additional product option requires verification')
     images=[]
-    for node in main.select('img.pdp-image'):
+    for node in primary_nodes(main,'img.pdp-image'):
         image=urljoin(BASE,node.get('data-high-src') or node.get('data-src') or node.get('src',''))
         p=urlsplit(image)
         if p.scheme!='https' or p.hostname!='pk.sapphireonline.pk':continue
@@ -64,7 +78,7 @@ def inspect_page(html,url):
     if not images:raise ValueError('Verified product gallery missing')
     title=str(data.get('item_name') or '').strip()
     if not title:raise ValueError('Product name missing')
-    description='\n\n'.join(x.get_text('\n',strip=True) for x in main.select('.value.content'))
+    description='\n\n'.join(x.get_text('\n',strip=True) for x in primary_nodes(main,'.value.content'))
     if not description:raise ValueError('Product description unavailable')
     path=[]
     for node in soup.select('.breadcrumb a[href]'):

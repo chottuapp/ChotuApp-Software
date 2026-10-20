@@ -13,7 +13,7 @@ def main():
     source=PublicCatalog(g,print);report={'full_catalog_verified':False,'products':[]}
     try:
         robots=source.read(BASE+'/robots.txt',fresh=True);source.robot=RobotFileParser();source.robot.parse(robots.text.splitlines())
-        for path in ['/collections/ready-to-wear/products/2PCSTCASV996_999.html','/collections/unstitched/products/U3PELXS26V91.html']:
+        for path in ['/collections/unstitched/products/U1SDDS26V91T.html','/collections/ready-to-wear/products/2PCSTCASV996_999.html','/collections/unstitched/products/U3PELXS26V91.html']:
             url=BASE+path;product=normalize_product(source.read(url).text,url,source.read)
             report['products'].append({'name':product['title'],'source_url':url,'variants':[{k:v.get(k) for k in ('id','option1','price','compare_at_price','available')} for v in product['variants']],'image_count':len(product['images'])})
         report['sample_verified']=True

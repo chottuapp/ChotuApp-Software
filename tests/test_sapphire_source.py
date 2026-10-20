@@ -75,3 +75,17 @@ class SapphireTests(unittest.TestCase):
  def test_selected_disabled_variant_keeps_out_of_stock_without_quantity_guess(self):
   soup=BeautifulSoup(fixture('rtw_l.html'),'html.parser');soup.select_one('button.add-to-cart')['disabled']=''
   p=source.inspect_page(str(soup),URL);self.assertFalse(p['available']);self.assertEqual(p['selected_size']['label'],'L')
+ def test_actual_pdp_recommendation_prices_do_not_contaminate_main_price(self):
+  url=source.BASE+'/collections/unstitched/products/U1SDDS26V91T.html';html=fixture('price_with_recommendations.html')
+  p=source.inspect_page(html,url);self.assertEqual(p['id'],'U1SDDS26V91T');self.assertEqual(p['price'],'1490.00')
+  soup=BeautifulSoup(html,'html.parser');main=soup.select_one('.product-wrapper')
+  self.assertEqual(len(main.select('.price .sales .cc-price[content]')),3)
+  self.assertEqual(len(source.primary_nodes(main,'.price .sales .cc-price[content]')),1)
+  # A recommendation still matching analytics must never hide a real primary-price mismatch.
+  source.primary_nodes(main,'.price .sales .cc-price[content]')[0]['content']='1491.00'
+  with self.assertRaisesRegex(ValueError,'primary product prices disagree'):source.inspect_page(str(soup),url)
+ def test_recommendation_sizes_and_images_do_not_become_main_product_fields(self):
+  soup=BeautifulSoup(fixture('product_unstitched.html'),'html.parser');main=soup.select_one('.product-wrapper')
+  tile=BeautifulSoup('<div class="product-tile"><div data-attr="size"><input class="options-select" data-pid="OTHER" data-attr-value="XXL"></div><img class="pdp-image" data-src="https://pk.sapphireonline.pk/foreign.jpg"></div>','html.parser')
+  main.append(tile);p=source.inspect_page(str(soup),UNS)
+  self.assertEqual(p['sizes'],[]);self.assertNotIn(source.BASE+'/foreign.jpg',p['images'])
