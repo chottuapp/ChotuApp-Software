@@ -1,0 +1,26 @@
+name: Inspect Drive Transfer
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [cloud/drive_transfer_probe.py, .github/workflows/cloud-drive-transfer-probe.yml]
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: chotuapp-drive-transfer-probe
+  cancel-in-progress: false
+jobs:
+  diagnose:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install requests beautifulsoup4
+      - name: Read and archive redacted failures
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python cloud/drive_transfer_probe.py
