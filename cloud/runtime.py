@@ -120,6 +120,9 @@ class CloudService:
                     if 'Products' not in book.sheetnames:raise ValueError('Template must contain Products')
                 finally:book.close()
                 state=self.store.fresh(chosen,template)
+            from runner_identity import validate_runner_sources
+            validate_runner_sources(state,os.environ.get('CLOUD_RUNNER_GROUP',''))
+            self.event('RUNNER STORES: '+', '.join(s['name'] for s in state['sites']))
             if not Path(state['template']).is_file():raise ValueError('Saved template is missing')
             # Add the new field to a resumed template without replacing its custom columns.
             book=load_workbook(state['template'])

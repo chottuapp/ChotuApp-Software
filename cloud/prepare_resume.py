@@ -16,6 +16,8 @@ def prepare(archive,data,source_run):
         from partition_resume import partition
         from cli import parse_stores
         state=partition(data,parse_stores(os.environ.get('CLOUD_STORES','')))
+    from runner_identity import validate_runner_sources
+    validate_runner_sources(state,os.environ.get('CLOUD_RUNNER_GROUP',''))
     from urllib.parse import urlsplit
     def complete(site):
         output=site.get('output') or {};file=data/'ANAS_DATA_FETCH'/Path(output.get('path','')).name
