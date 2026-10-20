@@ -24,5 +24,6 @@ class AndroidBackendTests(unittest.TestCase):
     with self.assertRaises(RuntimeError):backend.upload(root,'secret')
    self.assertEqual(session.put.call_count,1);self.assertTrue((root/'files/Khaadi.xlsx').exists())
  def test_embedded_headless_bundle_exports_captured_product(self):
+  spec=importlib.util.spec_from_file_location('prepare_android_bundle',ROOT/'android/tools/prepare.py');bundle=importlib.util.module_from_spec(spec);spec.loader.exec_module(bundle);bundle.prepare()
   with tempfile.TemporaryDirectory() as tmp,patch('builtins.print'):
    self.assertEqual(backend.self_test(ROOT/'android/app/src/main/python/engine',tmp),'Embedded export verified')
