@@ -7,7 +7,7 @@ import original_store_ingest as ingest
 from rule804_pipeline import process
 class OriginalTests(unittest.TestCase):
  def setup_root(self,root):
-  for name in ('cloud/rule804_pipeline.py','subcategory_inference_support.py','catalog-tools/complete_rule804_batch.py','cloud/confirmed-shop-codes.json','cloud/original_store_ingest.py','laam_source_support.py'):
+  for name in ('cloud/rule804_pipeline.py','subcategory_inference_support.py','catalog-tools/complete_rule804_batch.py','cloud/confirmed-shop-codes.json','cloud/original_store_ingest.py','cloud/legacy_original_schema.py','laam_source_support.py'):
    dest=root/name;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(ROOT/name,dest)
  def exercise(self,*,status='done',fail_check=False,store='Sapphire',scope_valid=True):
   with tempfile.TemporaryDirectory() as tmp:
