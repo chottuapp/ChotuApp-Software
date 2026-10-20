@@ -100,7 +100,10 @@ def local_reporting(data):
             stop.wait(60)
     thread=threading.Thread(target=loop,daemon=True);thread.start()
     try:yield
-    finally:stop.set();thread.join(timeout=2)
+    finally:
+        stop.set();thread.join(timeout=2)
+        try:publish_local_report(data)
+        except (OSError,ValueError,RuntimeError,subprocess.SubprocessError):pass
 
 def supervisor(data,hours=24):
     data.mkdir(parents=True,exist_ok=True);deadline=time.monotonic()+hours*3600;attempted=None;last_code=None;attempt=0;observed_existing=False
