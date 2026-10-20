@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-20T20:42:32.711868+00:00",
+  "run_id": "39450806726",
+  "attempt": "1",
+  "source_commit": "626ff1f45b38d167f711d1a14b0a1b4062c2c168",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.15",
+  "elapsed_seconds": 18001.0,
+  "stores": [
+    {
+      "name": "Zellbury",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "db2f6f0b423cf75d",
+      "http_statuses": {
+        "200": 6141
+      },
+      "network_seconds": 7803.6,
+      "max_response_seconds": 2.2,
+      "cache_events": 0
+    },
+    {
+      "name": "Zero Lifestyle",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "db2f6f0b423cf75d",
+      "products": 61,
+      "variants": 254,
+      "http_statuses": {
+        "200": 94
+      },
+      "network_seconds": 55.8,
+      "max_response_seconds": 1.8,
+      "cache_events": 122
+    }
+  ]
+}
