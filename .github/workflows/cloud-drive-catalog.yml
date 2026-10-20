@@ -1,0 +1,30 @@
+name: ChotuApp Drive Links and Times
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: [ChotuApp Rule 804 Google Drive Sync]
+    types: [completed]
+  push:
+    branches: [main]
+    paths: [cloud/drive_catalog.py, .github/workflows/cloud-drive-catalog.yml]
+permissions:
+  contents: write
+concurrency:
+  group: chotuapp-drive-sync
+  cancel-in-progress: false
+jobs:
+  catalog:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install requests beautifulsoup4 openpyxl
+      - run: sudo apt-get update -qq && sudo apt-get install -y rclone
+      - name: Read existing Drive links and verification times
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CHOTU_DRIVE_RCLONE_CONFIG: ${{ secrets.CHOTU_DRIVE_RCLONE_CONFIG }}
+        run: python cloud/drive_catalog.py
