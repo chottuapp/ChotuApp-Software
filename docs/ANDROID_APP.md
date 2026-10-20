@@ -19,3 +19,10 @@ App-private files and saved work are lost if Android app data is cleared or the 
 
 ## Verification and delivery
 `android-apk.yml` builds the APK, boots an Android 35 emulator, launches the native Activity, tests encrypted credentials, and exports a captured Khaadi fixture through embedded Python/SQLite/openpyxl. It publishes the APK only if these checks pass, along with `android-builds:latest.json` (commit, SHA256, build time) and a screenshot. No live phone/Pakistan-source success is implied by an emulator fixture test.
+
+## Version 1.1: remote logs
+With GitHub connected, the active worker publishes a redacted tail of the last 60 local events every 30 seconds to `local-run-status:local/khaadi-android.json`. The Android path is separate from the PC heartbeat. The combined status report selects the newest device report and marks old heartbeats stale. This records source progress/errors; it is not continuous observation by a chat session.
+
+Overview shows the log-sync status. Activity provides Send logs now and a manual view refresh which preserves scrolling while reading. Connecting during a fetch takes effect without restarting the fetch; final workbook delivery also uses the current connection. Missing credentials, expired tokens, denied repository access and offline retries are visible instead of being silently ignored. Fetching remains independent of telemetry success. A final stopped/exported/error snapshot is attempted when the worker exits, subject to Android/network availability.
+
+Logs remove the current token, GitHub token patterns, credential-bearing lines and private app-storage paths before publication. No headers, cookies, raw response bodies or credentials are uploaded. The publisher verifies the previous and new APK signing certificate matches before offering the update, so users can install over the existing app and retain its data. Do not uninstall to apply this update.
