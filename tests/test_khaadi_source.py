@@ -86,3 +86,17 @@ class KhaadiTests(unittest.TestCase):
     else:text=fixture('master')
     return SimpleNamespace(text=text,content=text.encode(),status_code=404 if url==dead else 200)
   with patch.object(source,'normalize_product',return_value={'id':'main','variants':[]}):self.assertEqual(len(Reader({'_chotu_wait':lambda:None},lambda _:None).catalog()[0]),1)
+
+ def test_actual_captured_homepage_links_discover_products_without_crashing(self):
+  from unittest.mock import patch
+  category=source.BASE+'/ready-to-wear/'
+  class Reader(source.PublicCatalog):
+   def read(self,url,**kwargs):
+    if url.endswith('robots.txt'):text='User-agent: *\nSitemap: '+source.BASE+'/sitemap_0.xml'
+    elif url.endswith('.xml'):text='<urlset><url><loc>'+category+'</loc></url></urlset>'
+    elif url==category:text=(FIX/'homepage_links.html').read_text()
+    else:text=fixture('master')
+    return SimpleNamespace(text=text,content=text.encode(),status_code=200)
+  with patch.object(source,'normalize_product',return_value={'id':'main','variants':[]}):
+   products,complete=Reader({'_chotu_wait':lambda:None},lambda _:None).catalog()
+  self.assertGreater(len(products),1);self.assertFalse(complete)
