@@ -1,0 +1,809 @@
+{
+  "run_id": "39453604499",
+  "failures": [
+    {
+      "store": "LAAM",
+      "source_run": "39410937297",
+      "run": {
+        "conclusion": "failure",
+        "headSha": "551900ea445e641e815e086e222be26c45446157",
+        "jobs": [
+          {
+            "completedAt": "2026-10-20T11:46:11Z",
+            "conclusion": "failure",
+            "databaseId": 118588251975,
+            "name": "fetch",
+            "startedAt": "2026-10-20T10:52:07Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-20T10:52:08Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-20T10:52:08Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T10:52:16Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-20T10:52:08Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T10:52:16Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-20T10:52:16Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T10:52:18Z",
+                "conclusion": "success",
+                "name": "Install extraction dependencies",
+                "number": 4,
+                "startedAt": "2026-10-20T10:52:16Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T10:52:23Z",
+                "conclusion": "success",
+                "name": "Restore optional saved run",
+                "number": 5,
+                "startedAt": "2026-10-20T10:52:18Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T10:52:23Z",
+                "conclusion": "skipped",
+                "name": "Install Czone browser fallback when needed",
+                "number": 6,
+                "startedAt": "2026-10-20T10:52:23Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T10:52:23Z",
+                "conclusion": "success",
+                "name": "Start continuous fetching on the cloud runner",
+                "number": 7,
+                "startedAt": "2026-10-20T10:52:23Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:46:01Z",
+                "conclusion": "success",
+                "name": "Live progress, logs and completed-file uploads",
+                "number": 8,
+                "startedAt": "2026-10-20T10:52:23Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:46:01Z",
+                "conclusion": "failure",
+                "name": "Fetch result",
+                "number": 9,
+                "startedAt": "2026-10-20T11:46:01Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:46:02Z",
+                "conclusion": "success",
+                "name": "Collect diagnostic report even if fetching failed",
+                "number": 10,
+                "startedAt": "2026-10-20T11:46:01Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:46:02Z",
+                "conclusion": "success",
+                "name": "Upload diagnostic report and redacted log",
+                "number": 11,
+                "startedAt": "2026-10-20T11:46:02Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:46:04Z",
+                "conclusion": "success",
+                "name": "Upload Excel files and audits, including completed stores from a partial run",
+                "number": 12,
+                "startedAt": "2026-10-20T11:46:02Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:46:08Z",
+                "conclusion": "success",
+                "name": "Upload saved checkpoint when available",
+                "number": 13,
+                "startedAt": "2026-10-20T11:46:04Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:46:09Z",
+                "conclusion": "success",
+                "name": "Dispatch authorized continuation after verified checkpoint upload",
+                "number": 14,
+                "startedAt": "2026-10-20T11:46:08Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:46:09Z",
+                "conclusion": "success",
+                "name": "Post Live progress, logs and completed-file uploads",
+                "number": 26,
+                "startedAt": "2026-10-20T11:46:09Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:46:09Z",
+                "conclusion": "skipped",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 27,
+                "startedAt": "2026-10-20T11:46:09Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:46:09Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 28,
+                "startedAt": "2026-10-20T11:46:09Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:46:09Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 29,
+                "startedAt": "2026-10-20T11:46:09Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39410937297/job/118588251975"
+          },
+          {
+            "completedAt": "2026-10-20T11:46:32Z",
+            "conclusion": "success",
+            "databaseId": 118609382784,
+            "name": "Archive structured diagnostics",
+            "startedAt": "2026-10-20T11:46:14Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-20T11:46:17Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-20T11:46:15Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:46:26Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-20T11:46:17Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:46:26Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-20T11:46:26Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:46:27Z",
+                "conclusion": "success",
+                "name": "Run actions/download-artifact@v4",
+                "number": 4,
+                "startedAt": "2026-10-20T11:46:26Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:46:29Z",
+                "conclusion": "success",
+                "name": "Archive credential-free JSON on the cloud-reports branch",
+                "number": 5,
+                "startedAt": "2026-10-20T11:46:27Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:46:29Z",
+                "conclusion": "success",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 9,
+                "startedAt": "2026-10-20T11:46:29Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:46:30Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 10,
+                "startedAt": "2026-10-20T11:46:29Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:46:30Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 11,
+                "startedAt": "2026-10-20T11:46:30Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39410937297/job/118609382784"
+          }
+        ],
+        "status": "completed"
+      },
+      "failed_log_tail": [
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9433750Z [LAAM] [11:45:56] CACHE HIT status=200 elapsed=0.0s bytes=300302 https://laam.com/products/1859-gold-embroidered-jamavar-stitched-0",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9434784Z [LAAM] [11:45:56] HTTP START attempt=1 https://laam.com/products/1859-gold-embroidered-jamavar-unstitched-0",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9435620Z [LAAM] [11:45:56] CACHE HIT status=200 elapsed=0.0s bytes=296459 https://laam.com/products/1859-gold-embroidered-jamavar-unstitched-0",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9436359Z [LAAM] [11:45:56] HTTP START attempt=1 https://laam.com/products/186-peach",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9436929Z [LAAM] [11:45:56] CACHE HIT status=200 elapsed=0.0s bytes=309167 https://laam.com/products/186-peach",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9437549Z [LAAM] [11:45:56] HTTP START attempt=1 https://laam.com/products/1862-blue-grey-embroidered-jamavar-stitched-0",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9438097Z [LAAM] [11:45:56] CACHE HIT status=200 elapsed=0.0s bytes=300013 https://laam.com/products/1862-blue-grey-embroidered-jamavar-stitched-0",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9438638Z [LAAM] [11:45:56] HTTP START attempt=1 https://laam.com/products/1863-grey-embroidered-jamavar-stitched-0",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9439085Z [LAAM] [11:45:56] CACHE HIT status=200 elapsed=0.0s bytes=299881 https://laam.com/products/1863-grey-embroidered-jamavar-stitched-0",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9439661Z [LAAM] [11:45:56] HTTP START attempt=1 https://laam.com/products/1864-paradise-blue-embroidered-organza-stitched-0",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9440163Z [LAAM] [11:45:56] CACHE HIT status=200 elapsed=0.0s bytes=295613 https://laam.com/products/1864-paradise-blue-embroidered-organza-stitched-0",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9440543Z __CHOTU_PROGRESS__|1|Active: LAAM",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9441437Z [LAAM] [11:45:56] EXCEPTION: RuntimeError('ADAPTER ERROR: LAAM Product 1864-paradise-blue-embroidered-organza-stitched-0: Unsupported LAAM option/variant schema. Saved responses retained; no options, prices or stock guessed.')",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9442040Z [LAAM] [11:45:56] Traceback (most recent call last):",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9455524Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 206, in catalog",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9456096Z     try:product=product_state(BeautifulSoup(response.text,'html.parser',parse_only=SoupStrainer('script')),handle)",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9456480Z                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9456925Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 53, in product_state",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9457299Z     product=normalize(candidates[0],handle)",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9457507Z             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9457892Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 62, in normalize",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9458455Z     if not isinstance(options,list) or len(options)>3 or not isinstance(variants,list) or not variants:raise ValueError('Unsupported LAAM option/variant schema')",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9459095Z                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9459399Z ValueError: Unsupported LAAM option/variant schema",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9459549Z ",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9459685Z The above exception was the direct cause of the following exception:",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9459862Z ",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9459943Z Traceback (most recent call last):",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9460311Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 240, in run",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9460686Z     try:return original(BASE,name,template,log)",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9460913Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9461274Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 475, in run",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9461680Z     if host!='czone.com.pk':return original(base,name,template,log)",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9461940Z                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9462294Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1037, in run_site",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9462752Z     products, complete_catalog=discover(base,log)",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9462977Z                                ^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9463342Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 239, in <lambda>",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9464105Z     g.update(discover=lambda base,log:source.catalog(),collections=lambda base,log:{},refresh_variant_prices=lambda base,p,log:p['variants'],storefront_cover=cover,verified_top20=ranking,audit_fractional_prices=audit,storefront_price_audit=display)",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9464696Z                                       ^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9465080Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 208, in catalog",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9465569Z     except (ValueError,TypeError,KeyError) as exc:raise ValueError('Product '+handle+': '+str(exc)) from exc",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9465927Z                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9466318Z ValueError: Product 1864-paradise-blue-embroidered-organza-stitched-0: Unsupported LAAM option/variant schema",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9466593Z ",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9466726Z The above exception was the direct cause of the following exception:",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9466961Z ",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9467097Z Traceback (most recent call last):",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9467598Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1999, in _run_checked",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9467965Z     run_site(site['url'], name, template, log_line)",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9468361Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9468821Z     if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9469159Z                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9469551Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1492, in run_site",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9469952Z     _chotuapp_run_site_original(base, name, template, intercept)",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9470376Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 194, in run",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9470951Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9471426Z                                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9471963Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 207, in run",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9472335Z     try:return original(base,name,template,log)",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9472638Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9473002Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 242, in run",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9473601Z     except (ValueError,TypeError,KeyError) as exc:raise RuntimeError('ADAPTER ERROR: LAAM '+str(exc)+'. Saved responses retained; no options, prices or stock guessed.') from exc",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9474131Z                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9474722Z RuntimeError: ADAPTER ERROR: LAAM Product 1864-paradise-blue-embroidered-organza-stitched-0: Unsupported LAAM option/variant schema. Saved responses retained; no options, prices or stock guessed.",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9475148Z ",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9475528Z [LAAM] FAILED: LAAM: ADAPTER ERROR: LAAM Product 1864-paradise-blue-embroidered-organza-stitched-0: Unsupported LAAM option/variant schema. Saved responses retained; no options, prices or stock guessed.",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9476028Z [LAAM] [11:45:56] STAGE: Idle",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9476536Z FAILED: LAAM: FAILED: LAAM: ADAPTER ERROR: LAAM Product 1864-paradise-blue-embroidered-organza-stitched-0: Unsupported LAAM option/variant schema. Saved responses retained; no options, prices or stock guessed.",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9477048Z False",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9477322Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9477788Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9478230Z RUN SUMMARY:",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9479387Z LAAM: FAILED \u2014 FAILED: LAAM: ADAPTER ERROR: LAAM Product 1864-paradise-blue-embroidered-organza-stitched-0: Unsupported LAAM option/variant schema. Saved responses retained; no options, prices or stock guessed.",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9480269Z Checkpoint: saved",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9480760Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9488559Z ##[error]Process completed with exit code 2.",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9521773Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9522187Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9572639Z shell: /usr/bin/bash -e {0}",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9572824Z env:",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9573078Z   CHOTUAPP_CLOUD_DATA: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9573383Z   CLOUD_RUNNER_GROUP: solo-laam",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9573578Z   CLOUD_PARTITION_RESUME: true",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9573782Z   CLOUD_STORES: LAAM | https://laam.com",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9573982Z   CLOUD_MINUTES: 300",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9574150Z   RESUME_RUN_ID: 39408013693",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9574332Z   SAVE_CHECKPOINT: true",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9574505Z   CLOUD_AUTO_CONTINUE: false",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9574687Z   CLOUD_AUTO_CONTINUE_LIMIT: 6",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9574872Z   CLOUD_CONTINUATION_INDEX: 0",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:46:01.9575073Z   CLOUD_PREVIOUS_PROGRESS: "
+      ]
+    },
+    {
+      "store": "Sapphire",
+      "source_run": "39414516183",
+      "run": {
+        "conclusion": "failure",
+        "headSha": "b0c9fadb187d3defca40626b0000a44e2e6965bf",
+        "jobs": [
+          {
+            "completedAt": "2026-10-20T11:23:26Z",
+            "conclusion": "failure",
+            "databaseId": 118600155376,
+            "name": "fetch",
+            "startedAt": "2026-10-20T11:22:48Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-20T11:22:50Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-20T11:22:49Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:23:12Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-20T11:22:50Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:23:12Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-20T11:23:12Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:23:15Z",
+                "conclusion": "success",
+                "name": "Install extraction dependencies",
+                "number": 4,
+                "startedAt": "2026-10-20T11:23:12Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:23:18Z",
+                "conclusion": "failure",
+                "name": "Restore optional saved run",
+                "number": 5,
+                "startedAt": "2026-10-20T11:23:15Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:23:18Z",
+                "conclusion": "skipped",
+                "name": "Install Czone browser fallback when needed",
+                "number": 6,
+                "startedAt": "2026-10-20T11:23:18Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:23:18Z",
+                "conclusion": "skipped",
+                "name": "Start continuous fetching on the cloud runner",
+                "number": 7,
+                "startedAt": "2026-10-20T11:23:18Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:23:18Z",
+                "conclusion": "skipped",
+                "name": "Live progress, logs and completed-file uploads",
+                "number": 8,
+                "startedAt": "2026-10-20T11:23:18Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:23:18Z",
+                "conclusion": "skipped",
+                "name": "Fetch result",
+                "number": 9,
+                "startedAt": "2026-10-20T11:23:18Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:23:19Z",
+                "conclusion": "success",
+                "name": "Collect diagnostic report even if fetching failed",
+                "number": 10,
+                "startedAt": "2026-10-20T11:23:18Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:23:20Z",
+                "conclusion": "success",
+                "name": "Upload diagnostic report and redacted log",
+                "number": 11,
+                "startedAt": "2026-10-20T11:23:19Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:23:22Z",
+                "conclusion": "success",
+                "name": "Upload Excel files and audits, including completed stores from a partial run",
+                "number": 12,
+                "startedAt": "2026-10-20T11:23:20Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:23:22Z",
+                "conclusion": "success",
+                "name": "Upload saved checkpoint when available",
+                "number": 13,
+                "startedAt": "2026-10-20T11:23:22Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:23:22Z",
+                "conclusion": "skipped",
+                "name": "Dispatch authorized continuation after verified checkpoint upload",
+                "number": 14,
+                "startedAt": "2026-10-20T11:23:22Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:23:22Z",
+                "conclusion": "skipped",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 27,
+                "startedAt": "2026-10-20T11:23:22Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:23:23Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 28,
+                "startedAt": "2026-10-20T11:23:22Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:23:23Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 29,
+                "startedAt": "2026-10-20T11:23:23Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39414516183/job/118600155376"
+          },
+          {
+            "completedAt": "2026-10-20T11:23:43Z",
+            "conclusion": "success",
+            "databaseId": 118600425735,
+            "name": "Archive structured diagnostics",
+            "startedAt": "2026-10-20T11:23:29Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-20T11:23:30Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-20T11:23:29Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:23:38Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-20T11:23:30Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:23:38Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-20T11:23:38Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:23:38Z",
+                "conclusion": "success",
+                "name": "Run actions/download-artifact@v4",
+                "number": 4,
+                "startedAt": "2026-10-20T11:23:38Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:23:41Z",
+                "conclusion": "success",
+                "name": "Archive credential-free JSON on the cloud-reports branch",
+                "number": 5,
+                "startedAt": "2026-10-20T11:23:38Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:23:41Z",
+                "conclusion": "success",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 9,
+                "startedAt": "2026-10-20T11:23:41Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:23:41Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 10,
+                "startedAt": "2026-10-20T11:23:41Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-20T11:23:41Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 11,
+                "startedAt": "2026-10-20T11:23:41Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39414516183/job/118600425735"
+          }
+        ],
+        "status": "completed"
+      },
+      "failed_log_tail": [
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:15.7442957Z   CLOUD_CONTINUATION_INDEX: 0",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:15.7443209Z   CLOUD_PREVIOUS_PROGRESS: ",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:15.7443633Z   CLOUD_STALLED_RUNS: 0",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:15.7443923Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:15.7444371Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:15.7444826Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:15.7445233Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:15.7445637Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:15.7446041Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib",
+        "[credential-bearing log line removed]",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:15.7449517Z ##[endgroup]",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:18.7721459Z Checkpoint restore preflight: expanded=0.06 GiB, free=84.15 GiB, reserve=1.00 GiB, maximum=24 GiB.",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:18.9761921Z Traceback (most recent call last):",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:18.9769887Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/prepare_resume.py\", line 42, in <module>",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:18.9771318Z     if __name__=='__main__':main()",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:18.9771842Z                             ^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:18.9772779Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/prepare_resume.py\", line 39, in main",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:18.9773811Z     needs=prepare(a.archive,a.data,os.environ.get('RESUME_RUN_ID',''))",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:18.9774502Z           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:18.9775431Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/prepare_resume.py\", line 18, in prepare",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:18.9776478Z     state=partition(data,parse_stores(os.environ.get('CLOUD_STORES','')))",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:18.9777177Z           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:18.9778108Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/partition_resume.py\", line 15, in partition",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:18.9779267Z     if len(selected)!=len(sites):raise ValueError('Selected group does not match saved queue')",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:18.9780115Z                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:18.9781005Z ValueError: Selected group does not match saved queue",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:18.9892085Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:18.9969097Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:18.9969812Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:19.0020990Z shell: /usr/bin/bash -e {0}",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:19.0021250Z env:",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:19.0021634Z   CHOTUAPP_CLOUD_DATA: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:19.0022107Z   CLOUD_RUNNER_GROUP: solo-sapphire",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:19.0022388Z   CLOUD_PARTITION_RESUME: true",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:19.0022719Z   CLOUD_STORES: Sapphire | https://pk.sapphireonline.pk",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:19.0023069Z   CLOUD_MINUTES: 300",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:19.0023294Z   RESUME_RUN_ID: 39409532384",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:19.0023533Z   SAVE_CHECKPOINT: true",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:19.0023790Z   CLOUD_AUTO_CONTINUE: false",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:19.0024043Z   CLOUD_AUTO_CONTINUE_LIMIT: 6",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:19.0024295Z   CLOUD_CONTINUATION_INDEX: 0",
+        "fetch\tUNKNOWN STEP\t2026-10-20T11:23:19.0024586Z   CLOUD_PREVIOUS_PROGRESS: "
+      ]
+    }
+  ],
+  "laam_failing_product": [
+    {
+      "shopify_id": 8874462817016,
+      "id": 621078,
+      "title": "1864-PARADISE BLUE EMBROIDERED ORGANZA STITCHED",
+      "handle": "1864-paradise-blue-embroidered-organza-stitched-0",
+      "brand": " Motifz",
+      "partner": "Motifz Pvt Ltd",
+      "total_inventory_quantity": 0,
+      "partner_id": 7010,
+      "total_sellable_inventory_on_store": {
+        "121": 0,
+        "1405": 0
+      },
+      "external_product_id": "KVF1701",
+      "tags": [
+        "CREATED_BY_BIGBOX",
+        "ENABLE_COD",
+        "UPDATED_BY_BIGBOX",
+        "COD_ENABLED"
+      ],
+      "image": {
+        "shopify_id": 0,
+        "alt": "",
+        "src": "https://cdn.shopify.com/s/files/1/0356/7950/2474/products/mwu01864_paradise_blue_23029b5f-b21d-4057-9885-086415d56e2a.jpg?v=1757305653",
+        "width": 0,
+        "height": 0
+      },
+      "node_l1": "Women",
+      "node_l2": "Clothing",
+      "node_l3": "Eastern Ready to wear",
+      "node_l4": "Kurta Set",
+      "attributes": {
+        "color-type": "ice blue",
+        "lining-attached": "as shown in picture",
+        "names": [
+          "lining-attached",
+          "number-of-pieces",
+          "color-type",
+          "top-style",
+          "product-type",
+          "shirt-fabrics",
+          "season"
+        ],
+        "number-of-pieces": "2 piece - top & bottom",
+        "product-type": "festive/party wear",
+        "season": "all season",
+        "shirt-fabrics": "organza",
+        "top-style": "straight cut kurta"
+      },
+      "placement_source": "",
+      "has_video": false,
+      "valhalla_score": 0,
+      "vendor_shipping_days": 0,
+      "category": "",
+      "status": "ACTIVE",
+      "description": "<p><strong>Gender:&nbsp;</strong>Women\n</p><p><strong>Category:&nbsp;</strong>Clothing\n</p><p><strong>Outfit Type:&nbsp;</strong>Eastern Ready to wear\n</p><p><strong>Sub-Category:&nbsp;</strong>Kurta Set\n</p><p><strong>Color Type:&nbsp;</strong>Ice Blue\n</p><p><strong>Lining Attached:&nbsp;</strong>As shown in Picture\n</p><p><strong>Number of Pieces:&nbsp;</strong>2 Piece - Top & Bottom\n</p><p><strong>Product Type:&nbsp;</strong>Festive/Party Wear\n</p><p><strong>Season:&nbsp;</strong>All Season\n</p><p><strong>Shirt Fabrics:&nbsp;</strong>Organza\n</p><p><strong>Top Style:&nbsp;</strong>Straight Cut Kurta\n</p><p><strong>Disclaimer:&nbsp;</strong>Actual product color may vary slightly from the image.\n</p>",
+      "total_physical_inventory_quantity": 0,
+      "total_virtual_inventory_quantity": 0,
+      "price": 0,
+      "compare_at_price": 0,
+      "variants": [],
+      "options": [],
+      "media": [
+        {
+          "shopify_id": 0,
+          "alt": "",
+          "src": "https://cdn.shopify.com/s/files/1/0356/7950/2474/products/mwu01864_paradise_blue_23029b5f-b21d-4057-9885-086415d56e2a.jpg?v=1757305653",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "shopify_id": 0,
+          "alt": "",
+          "src": "https://cdn.shopify.com/s/files/1/0356/7950/2474/products/mwu01864_paradise_blue_01_32917aca-e8b1-4b19-9d4d-188a82c99eb4.jpg?v=1757305653",
+          "width": 0,
+          "height": 0
+        },
+        {
+          "shopify_id": 0,
+          "alt": "",
+          "src": "https://cdn.shopify.com/s/files/1/0356/7950/2474/products/mwu01864_paradise_blue_01_32917aca-e8b1-4b19-9d4d-188a82c99eb4.jpg?v=1757305",
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "size_chart_id": 69751,
+      "drop_handle": "motifz-pvt-ltd-stitched",
+      "brand_handle": "-motifz",
+      "size_chart_name": "",
+      "stock_status": "out-of-stock",
+      "sale_percentage": 0,
+      "discount": 0,
+      "meta": {
+        "cta": "notify-me",
+        "cart_item_limit": 5
+      },
+      "additional_description": "",
+      "block_details": "",
+      "system_status": {
+        "121": true,
+        "1405": true
+      },
+      "seo_meta_title": null,
+      "seo_meta_description": null,
+      "seller_type": "READY_TO_SHIP",
+      "cod_status": {
+        "121": true,
+        "1405": true
+      },
+      "rating_by_store": {
+        "121": {
+          "average_rating": null,
+          "total_reviews": 0
+        },
+        "1405": {
+          "average_rating": null,
+          "total_reviews": 0
+        }
+      },
+      "brand_id": 6688,
+      "brand_logo": "https://cdn.shopify.com/s/files/1/2337/7003/files/20260702115026-0d06d378d9684baa-media_image-34d506a2fb2342ee88bae0291300d9bb.jpg",
+      "brand_rating_by_store": {
+        "121": {
+          "ratings": 1015,
+          "total_reviews": 273,
+          "star_count": {
+            "1": 47,
+            "2": 24,
+            "3": 26,
+            "4": 38,
+            "5": 138
+          },
+          "average_rating": 3.7
+        }
+      },
+      "brand_product_count": 3714,
+      "disclaimer": "Actual product color may vary slightly from the image.",
+      "bread_crumbs": {
+        "node_l1": {
+          "label": "Women",
+          "nodeHref": "women-1"
+        },
+        "node_l2": {
+          "label": "Clothing",
+          "nodeHref": "women-clothing-2"
+        },
+        "node_l3": {
+          "label": "Eastern Ready to wear",
+          "nodeHref": "women-eastern-ready-to-wear-3"
+        },
+        "node_l4": {
+          "label": "Kurta Set",
+          "nodeHref": "women-kurta-set-181"
+        }
+      },
+      "attributed_description": {
+        "color-type": {
+          "label": "ice blue"
+        },
+        "external-product-id": {
+          "label": "KVF1701"
+        },
+        "lining-attached": {
+          "label": "as shown in picture"
+        },
+        "number-of-pieces": {
+          "label": "2 piece - top & bottom"
+        },
+        "product-type": {
+          "label": "festive/party wear"
+        },
+        "season": {
+          "label": "all season"
+        },
+        "shirt-fabrics": {
+          "label": "organza"
+        },
+        "top-style": {
+          "label": "straight cut kurta"
+        }
+      },
+      "critical_attribute": "",
+      "node_ids": [
+        1,
+        2,
+        3,
+        181
+      ],
+      "product_handling_date": "2026-10-21T16:00:55"
+    }
+  ]
+}
