@@ -1,0 +1,30 @@
+name: Resume Validated Original Stores
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [cloud/originals-resume-release.json]
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: chotuapp-validated-originals-resume
+  cancel-in-progress: false
+jobs:
+  resume:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - name: Validate source regressions and checkpoint identity
+        env:
+          PYTHONPATH: tests:cloud:.
+        run: python -m unittest test_laam_source test_sapphire_source test_sapphire_fit_dimensions test_sapphire_checkpoint_alias test_group_fetch test_runner_identity -q
+      - name: Resume explicit checkpoints only; preserve other active groups
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python cloud/resume_originals_release.py
