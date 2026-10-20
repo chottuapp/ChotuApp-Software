@@ -24,6 +24,11 @@ class LaamTests(unittest.TestCase):
   with self.assertRaises(source.OutsideClothingScope):source.product_state(BeautifulSoup(html(raw),'html.parser'),raw['handle'],clothing_only=True)
   raw.pop('node_l2');self.assertTrue(source.is_clothing(raw))
   raw['description']='Perfect accessory for a clothing collection';self.assertFalse(source.is_clothing(raw))
+ def test_laam_rule_includes_all_clothing_construction_types(self):
+  for kind in ('Eastern Unstitched','Eastern Ready to wear','Western Ready to wear','Stitched'):
+   self.assertTrue(source.is_clothing({'node_l2':'Clothing','node_l3':kind}))
+  for kind in ('Bags','Jewellery','Footwear','Beauty','Accessories'):
+   self.assertFalse(source.is_clothing({'node_l2':kind,'title':'Ready to wear suit accessory'}))
  def test_real_captured_products_preserve_observed_price_stock_options_images(self):
   for fixture in FIXTURES:
    raw=fixture['product'];p=source.product_state(BeautifulSoup(html(raw),'html.parser'),raw['handle'])
