@@ -1,6 +1,7 @@
 """Resume explicitly selected original checkpoints after regression/source validation."""
-import json,os,subprocess,time
+import json,os,subprocess,time,sys
 from pathlib import Path
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from source_research import publish
 from runner_identity import validate_runner_sources
 REPO='chottuapp/ChotuApp-Software'
