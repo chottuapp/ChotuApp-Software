@@ -1,56 +1,34 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-21T15:14:04.939068+00:00",
-  "run_id": "39616605711",
+  "generated_utc": "2026-10-21T18:37:04.614454+00:00",
+  "run_id": "39620052330",
   "attempt": "1",
-  "source_commit": "92ba6aa6b14bea783e94502dce164bb8d65cd4eb",
-  "status": "complete",
+  "source_commit": "ea50c341812759e44b937496b79ec70f488d1e85",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 2735.1,
+  "elapsed_seconds": 13667.6,
   "stores": [
     {
-      "name": "Bonanza Satrangi",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "ea351ea30f5923af",
-      "products": 1105,
-      "variants": 3392,
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
-    },
-    {
-      "name": "Outfitters",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "ea351ea30f5923af",
-      "products": 4477,
-      "variants": 34076,
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
-    },
-    {
-      "name": "Zellbury",
-      "status": "done",
-      "review_required": true,
+      "name": "LAAM",
+      "status": "failed",
+      "review_required": false,
       "issue_codes": [
-        "WEBSITE_ORDER_UNVERIFIED"
+        "ADAPTER_ERROR",
+        "HTTP_404",
+        "HTTP_503",
+        "RATE_LIMIT"
       ],
-      "software_revision": "2f2457e6a7693ebc",
-      "products": 6083,
-      "variants": 25421,
+      "software_revision": "84be7f782ea67a69",
       "http_statuses": {
-        "200": 247
+        "500": 191,
+        "404": 41,
+        "200": 7298,
+        "503": 2
       },
-      "network_seconds": 313.1,
-      "max_response_seconds": 6.8,
-      "cache_events": 24107
+      "network_seconds": 7081.8,
+      "max_response_seconds": 21.8,
+      "cache_events": 0
     }
   ]
 }
