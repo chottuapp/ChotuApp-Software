@@ -217,3 +217,12 @@ class LaamTests(unittest.TestCase):
    self.assertEqual(len(rows),4);self.assertEqual({r['source_url'] for r in rows},{f['url'] for f in FIXTURES})
    variants=book['Variant Combinations'];self.assertEqual(variants.max_row-1,sum(len(p['variants']) for p in products));self.assertTrue(any('REVIEW=1' in line for line in logs));self.assertFalse(any('TOP 20: Storefront best-selling' in line for line in logs));book.close()
 if __name__=='__main__':unittest.main()
+
+class TransportRecoveryTests(unittest.TestCase):
+ def test_timeout_and_connection_are_retryable_but_tls_stays_blocked(self):
+  from requests.exceptions import ReadTimeout,ConnectionError,SSLError
+  from unittest.mock import Mock
+  reader=source.PublicCatalog({},lambda _:None)
+  for error in (ReadTimeout('slow'),ConnectionError('offline')):
+   with self.assertRaises(source.TemporaryProductError):reader.transport(Mock(side_effect=error),source.BASE+'/products/a')
+  with self.assertRaises(source.SourceAccessError):reader.transport(Mock(side_effect=SSLError('certificate')),source.BASE+'/products/a')

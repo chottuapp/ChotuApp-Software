@@ -1,0 +1,53 @@
+name: Resume LAAM After Network Repair
+on:
+  push:
+    branches: [main]
+    paths: [cloud/resume-laam-network-request.json]
+permissions:
+  actions: write
+  contents: write
+concurrency:
+  group: chotuapp-laam-repair-resume
+  cancel-in-progress: false
+jobs:
+  resume:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install requests beautifulsoup4 openpyxl
+      - name: Verify network recovery
+        env:
+          PYTHONPATH: tests:cloud:.
+        run: python -m unittest test_laam_source test_laam_owner_filter test_auto_continue -q
+      - name: Resume verified checkpoint without duplicate lane
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PYTHONPATH: cloud:.
+        run: |
+          python - <<'PY'
+          import json,subprocess,os
+          from pathlib import Path
+          from runner_status import select_runs
+          from source_research import publish
+          request=json.loads(Path('cloud/resume-laam-network-request.json').read_text());rid=request['checkpoint_run'];lane=request['lane']
+          if rid!='39586312392' or lane!='audit804-fresh804-20261021-a26dcd86-6-laam':raise ValueError('Unreviewed resume identity')
+          def gh(*a):return subprocess.run(['gh',*a],capture_output=True,text=True,check=True,timeout=180).stdout
+          repo='chottuapp/ChotuApp-Software'
+          runs=json.loads(gh('run','list','--repo',repo,'--workflow','cloud-fetch.yml','--limit','100','--json','databaseId,displayTitle,status,conclusion'))
+          lanes=select_runs(runs,'fresh804-20261021-a26dcd86')
+          current=next((r for r in lanes if r['lane']==lane),None)
+          report={'run_id':os.environ['GITHUB_RUN_ID'],'checkpoint':rid,'lane':lane}
+          if current and (current['status']!='completed' or int(current['databaseId'])>int(rid)):
+              report.update(status='existing_newer_lane',current=current)
+          else:
+              old=json.loads(gh('run','view',rid,'--repo',repo,'--json','status,conclusion'))
+              if old['status']!='completed':raise ValueError('Parent still active')
+              artifacts=json.loads(gh('api','repos/'+repo+'/actions/runs/'+rid+'/artifacts'))['artifacts']
+              if not any(a['name']=='chotuapp-checkpoint' and not a.get('expired') for a in artifacts):raise ValueError('Saved checkpoint unavailable')
+              result=gh('workflow','run','cloud-fetch.yml','--repo',repo,'--ref','main','-f','resume_run_id='+rid,'-f','runner_group='+lane,'-f','partition_resume=true','-f','stores=LAAM | https://laam.com','-f','minutes=300','-f','save_checkpoint=true','-f','auto_continue_limit=6','-f','auto_continue_once=false')
+              report.update(status='saved_resume_requested',dispatch=result)
+          publish(report,branch='laam-repair-reports')
+          PY

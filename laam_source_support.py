@@ -1,5 +1,6 @@
 """LAAM's public Nuxt catalog; preserve observed variants and explicit PKR only."""
 import csv,json,re,time,hashlib,sqlite3,zlib
+from requests.exceptions import Timeout,ConnectionError,SSLError
 from pathlib import Path
 from decimal import Decimal,InvalidOperation
 from urllib.parse import urlsplit,urljoin,unquote
@@ -181,6 +182,11 @@ class PublicCatalog:
         if path:self.cache=ParsedProductCache(Path(path).with_name('laam-parsed.sqlite3'))
     def close(self):
         if self.cache:self.cache.close();self.cache=None
+    def transport(self,getter,url):
+        try:return getter(url,timeout=35,allow_redirects=False)
+        except SSLError as exc:raise SourceAccessError('LAAM TLS verification failed; source requires review') from exc
+        except (Timeout,ConnectionError) as exc:
+            raise TemporaryProductError('SOURCE PAUSED: LAAM temporary network timeout/connection failure; cached work retained') from exc
     def read(self,url,allow_missing=False,fresh=False):
         p=urlsplit(url)
         if p.scheme!='https' or p.hostname!='laam.com' or p.username or p.password or p.port not in (None,443):raise SourceAccessError('LAAM public source changed host')
@@ -193,7 +199,7 @@ class PublicCatalog:
         self.g['_chotu_debug_request'](url,1)
         if response is None:
             session=self.g['S'];getter=(getattr(session,'get_fresh',None) or session.get) if fresh else session.get
-            response=getter(url,timeout=35,allow_redirects=False)
+            response=self.transport(getter,url)
         self.g['_chotu_debug_response'](response.status_code,len(response.content),cached=cached)
         for retry in range(1,1 if allow_missing else 3):
             if response.status_code not in (500,502,504):break
@@ -202,7 +208,7 @@ class PublicCatalog:
             self.g['_chotu_wait']()
             self.g['_chotu_debug_request'](url,retry+1)
             session=self.g['S'];getter=getattr(session,'get_fresh',None) or session.get
-            response=getter(url,timeout=35,allow_redirects=False);self.last=time.monotonic()
+            response=self.transport(getter,url);self.last=time.monotonic()
             self.g['_chotu_debug_response'](response.status_code,len(response.content),cached=False)
         if response.status_code in (500,502,504):
             raise TemporaryProductError('SOURCE PAUSED: LAAM temporary server failure (HTTP '+str(response.status_code)+'); retry saved store after at least 60s. Checkpoint retained')
