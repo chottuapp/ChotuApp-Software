@@ -14,7 +14,7 @@ def enrich(state,folders,files,histories):
  for group in ('uploaded','original_uploads'):
   for store,record in state.get(group,{}).items():
    if record.get('folder')!=folder:continue
-   matching=by_name.get(store+'.xlsx',[])
+   matching=by_name.get(record.get('file_name') or store+'.xlsx',[])
    record['folder_id']=folder_id;record['folder_url']=state['folder_url']
    if len(matching)==1 and matching[0].get('ID'):
     row=matching[0];record.update(file_id=row['ID'],file_url='https://drive.google.com/file/d/'+row['ID']+'/view',drive_modified_utc=row.get('ModTime'))

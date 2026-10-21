@@ -9,7 +9,7 @@ def gh(*args):
  if r.returncode:raise RuntimeError('GitHub '+args[0]+' unavailable')
  return r.stdout
 
-def select_runs(runs):
+def select_runs(runs,campaign=None):
  lanes={}
  for r in reversed(runs):
   title=r.get('displayTitle','')
@@ -18,9 +18,10 @@ def select_runs(runs):
  selected=[];seen=set()
  for r in runs:
   lane=lanes.get(str(r['databaseId']),r.get('displayTitle',''))
+  if campaign and not lane.startswith('audit804-'+campaign+'-'):continue
   if lane in seen:continue
   seen.add(lane)
-  if r['status']!='completed' or lane.startswith(('fresh26-39450710625-','solo-laam','solo-sapphire')):
+  if r['status']!='completed' or campaign or lane.startswith(('fresh26-39450710625-','solo-laam','solo-sapphire')):
    selected.append(dict(r,lane=lane))
  return selected[:20]
 
@@ -36,7 +37,8 @@ def main():
  now=datetime.datetime.now(datetime.timezone.utc)
  runs=json.loads(gh('run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','100','--json','databaseId,displayTitle,status,conclusion,updatedAt,url'))
  report={'run_id':os.environ['GITHUB_RUN_ID'],'checked_utc':now.isoformat(),'active_queued':sum(r['status']!='completed' for r in runs),'runs':[],'fresh_stores':{},'local_khaadi':'Not visible to cloud monitoring; no local activity claimed'}
- for run in select_runs(runs):
+ policy=json.loads((Path(__file__).parent/'drive-sync-release.json').read_text());campaign=policy.get('dispatcher') if policy.get('audit804_enabled') else None
+ for run in select_runs(runs,campaign):
   item=dict(run)
   with tempfile.TemporaryDirectory() as tmp:
    try:
@@ -53,7 +55,7 @@ def main():
      for filename in ('console-tail.txt','fetch-log.txt'):
       logs=list(Path(tmp).rglob(filename))
       if logs:item[filename]=[redact(line) for line in logs[0].read_text(encoding='utf-8',errors='replace').splitlines()[-70:]]
-    if run['lane'].startswith('fresh26-39450710625-'):report['fresh_stores'].update(stores)
+    if run['lane'].startswith('fresh26-39450710625-') or campaign and run['lane'].startswith('audit804-'+campaign+'-'):report['fresh_stores'].update(stores)
    except (RuntimeError,OSError,ValueError):item['snapshot_unavailable']=True
   if run.get('conclusion')=='failure':
    try:

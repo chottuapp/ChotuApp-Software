@@ -19,6 +19,9 @@ class SourceAccessError(ValueError):
     """Public source access/locale cannot be verified; distinct from parser failures."""
 
 
+class HiddenProduct(ValueError):
+    """Explicitly hidden, draft or archived LAAM product; never exported."""
+
 class OutsideClothingScope(ValueError):
     """Not confirmed clothing under the requested LAAM clothing-only scope."""
 
@@ -32,7 +35,13 @@ def is_clothing(raw):
             return BeautifulSoup(value,'html.parser').get_text(' ',strip=True).casefold()=='clothing'
     return False
 
-def product_state(soup,handle,clothing_only=False):
+def require_active(raw):
+    status=str(raw.get('status') or '').lower()
+    if status not in ('active','draft','archived'):raise ValueError('LAAM publication status unverified')
+    if status!='active' or any(raw.get(k) is True for k in ('hidden','is_hidden')) or any(raw.get(k) is False for k in ('visible','is_visible','published','is_published')) or str(raw.get('visibility') or '').lower() in ('hidden','private','unlisted'):
+        raise HiddenProduct('LAAM product explicitly hidden, unpublished or inactive')
+
+def product_state(soup,handle,clothing_only=False,active_only=False,in_stock_only=False):
     script=soup.find('script',id='__NUXT_DATA__')
     if script is None:raise ValueError('LAAM public product state missing')
     flat=json.loads(script.string or script.get_text())
@@ -52,6 +61,7 @@ def product_state(soup,handle,clothing_only=False):
         if decode(raw['handle'])!=handle:continue
         value={k:decode(v) for k,v in raw.items()};candidates.append(value)
     if len(candidates)!=1:raise ValueError('LAAM exact product state is missing or ambiguous')
+    if active_only:require_active(candidates[0])
     currencies=set()
     for tag in soup.find_all('script',type='application/ld+json'):
         try:tree=json.loads(tag.string or tag.get_text())
@@ -67,14 +77,15 @@ def product_state(soup,handle,clothing_only=False):
         walk(tree)
     if currencies!={'PKR'}:raise SourceAccessError('LAAM Pakistan currency unverified; no foreign price export')
     if clothing_only and not is_clothing(candidates[0]):raise OutsideClothingScope('Not source-confirmed clothing')
-    product=normalize(candidates[0],handle)
+    product=normalize(candidates[0],handle,active_only=active_only,in_stock_only=in_stock_only)
     from website_category_support import breadcrumb
     product['_website_category_evidence']=breadcrumb(soup,BASE+'/products/'+handle)
     return product
 
-def normalize(raw,handle):
+def normalize(raw,handle,active_only=False,in_stock_only=False):
     if raw.get('handle')!=handle or raw.get('id') is None or not raw.get('title'):raise ValueError('Incomplete LAAM identity')
     if str(raw.get('status') or '').lower() not in ('active','draft','archived'):raise ValueError('LAAM publication status unverified')
+    if active_only:require_active(raw)
     options=raw.get('options');variants=raw.get('variants')
     if variants==[] and str(raw.get('stock_status') or '').lower() in ('out-of-stock','sold-out'):
         quantity=raw.get('total_inventory_quantity');stores=raw.get('total_sellable_inventory_on_store')
@@ -115,6 +126,12 @@ def normalize(raw,handle):
         image=variant.get('featured_image') or variant.get('image')
         if isinstance(image,dict) and str(image.get('src') or '').startswith('https://'):row['featured_image']={'src':image['src']}
         result.append(row)
+    if in_stock_only:
+        available=[row for row in result if row['available']]
+        if not available:raise ConfirmedOutOfStock('No source-confirmed in-stock variants')
+        if str(raw.get('stock_status') or '').lower() in ('out-of-stock','sold-out'):raise ValueError('Conflicting LAAM product and variant availability')
+        result=available
+        for i,dimension in enumerate(dims,1):dimension['values']=[value for value in dimension['values'] if any(row.get('option'+str(i))==value for row in result)]
     images=[]
     for item in raw.get('media') or []:
         if not isinstance(item,dict) or not str(item.get('src') or '').startswith('https://'):continue
@@ -247,14 +264,18 @@ class PublicCatalog:
                     self.log('LAAM SOURCE REMOVED: HTTP '+str(response.status_code)+' '+url+'; absent public product excluded')
                     continue
                 # Nuxt state and currency evidence live in scripts; don't build a full page DOM.
-                try:product=product_state(BeautifulSoup(response.text,'html.parser',parse_only=SoupStrainer('script')),handle,clothing_only=True)
+                try:product=product_state(BeautifulSoup(response.text,'html.parser',parse_only=SoupStrainer('script')),handle,clothing_only=True,active_only=True,in_stock_only=True)
                 except OutsideClothingScope:
                     if self.cache:self.cache.put(url,{'_source_url':url,'variants':[],'_excluded_reason':'not-confirmed-clothing'})
                     self.log('LAAM CLOTHING FILTER: excluded non-clothing or unclassified product '+url)
                     continue
+                except HiddenProduct:
+                    if self.cache:self.cache.put(url,{'_source_url':url,'variants':[],'_excluded_reason':'hidden-or-inactive'})
+                    self.log('LAAM HIDDEN FILTER: excluded hidden/inactive product '+url)
+                    continue
                 except ConfirmedOutOfStock:
-                    if self.cache:self.cache.put(url,{'_source_url':url,'variants':[],'_excluded_reason':'confirmed-empty-zero-stock'})
-                    self.log('LAAM SOURCE OUT OF STOCK: '+url+'; explicit zero inventory and empty variants; unavailable product excluded, no variants invented')
+                    if self.cache:self.cache.put(url,{'_source_url':url,'variants':[],'_excluded_reason':'confirmed-out-of-stock'})
+                    self.log('LAAM SOURCE OUT OF STOCK: '+url+'; no source-confirmed available variants; unavailable product excluded, no variants invented')
                     continue
                 except SourceAccessError:raise
                 except (ValueError,TypeError,KeyError) as exc:raise ValueError('Product '+handle+': '+str(exc)) from exc
@@ -264,7 +285,7 @@ class PublicCatalog:
             if index==1 or index%50==0 or index==len(urls):self.log(f'PUBLIC PRODUCT PAGES: {index}/{len(urls)} LAAM pages inspected; {len(self.products)} clothing products retained')
         if deferred:raise TemporaryProductError('SOURCE PAUSED: LAAM '+str(len(deferred))+' product pages still unavailable; other successful products cached. Retry saved store after at least 60s; catalog incomplete')
         if self.cache_hits:self.log('LAAM PARSED CACHE: '+str(self.cache_hits)+' verified products reused without reparsing; current adapter revision only')
-        self.log('LAAM SOURCE: clothing-only selection from declared product sitemap; non-clothing and unclassified excluded; explicit PKR, observed variants, public stock and image URLs retained. No sales popularity assumed.')
+        self.log('LAAM SOURCE: active visible in-stock clothing only; hidden/inactive and out-of-stock products excluded; available source variants only; non-clothing and unclassified excluded; explicit PKR, observed variants, public stock and image URLs retained. No sales popularity assumed.')
         return list(self.products.values()),True
 
 def enable_laam_source(g):

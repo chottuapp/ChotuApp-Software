@@ -1,0 +1,96 @@
+"""804 Audit: independent all-row description/category and store identity gate.
+Bounded automatic checks, not a claim of human semantic review. Uncertain files HOLD.
+"""
+import hashlib,html,json,re
+from datetime import datetime,timezone
+from pathlib import Path
+from urllib.parse import urlsplit
+from openpyxl import load_workbook
+VERSION='804-audit-v1'
+# Independent reviewer vocabulary; do not call the classification implementation.
+TYPES=[
+ ('laptop',r'\blaptops?\b',r'\blaptops?\b'),
+ ('printer toner',r'\b(?:printer\s+toner|toner\s+(?:reload|cartridge))\b',r'\b(?:printer|toner|cartridge)\b'),
+ ('keyboard',r'\bkeyboards?\b',r'\bkeyboards?\b'),
+ ('earrings',r'\b(?:earrings?|hoops?|studs)\b',r'\b(?:earrings?|hoops?|studs)\b'),
+ ('necklace',r'\bnecklaces?\b',r'\bnecklaces?\b'),
+ ('body wash',r'\b(?:body\s+wash|shower\s+gel)\b',r'\b(?:body\s+wash|shower\s+gel)\b'),
+ ('hand wash',r'\bhand\s+wash\b',r'\bhand\s+wash\b'),
+ ('face wash',r'\b(?:face|facial)\s+wash\b',r'\b(?:face|facial)\s+(?:wash|cleanser)\b'),
+ ('hair shampoo',r'\bshampoo\b',r'\bshampoo\b'),
+ ('hair conditioner',r'\b(?:hair\s+)?conditioner\b',r'\bconditioner\b'),
+ ('hair oil',r'\bhair\s+oil\b',r'\bhair\s+oil\b'),
+ ('fragrance',r'\b(?:perfume|eau\s+de\s+parfum|fragrance\s+mist)\b',r'\b(?:fragrance|perfume)\b'),
+ ('sunscreen',r'\b(?:sunscreen|sunblock)\b',r'\b(?:sunscreen|sunblock|sun\s+protection)\b'),
+ ('lipstick',r'\b(?:lipstick|lip\s+paint)\b',r'\b(?:lipstick|lip\s+colour|lip\s+color)\b'),
+ ('mascara',r'\bmascara\b',r'\bmascara\b'),
+ ('foundation',r'\bfoundation\b',r'\bfoundation\b'),
+ ('garam masala',r'\bgaram\s+masala\b',r'\bgaram\s+masala\b'),
+ ('tea bags',r'\btea\s+bags?\b',r'\btea\s+bags?\b'),
+ ('mozzarella',r'\bmozzarella\b',r'\bmozzarella\b'),
+ ('unstitched',r'\bun[ -]?stitched\b',r'\bun[ -]?stitched\b'),
+ ('jeans',r'\bjeans?\b|\bdenim\s+(?:pants?|trousers?)\b',r'\b(?:jeans?|denim|trousers?)\b'),
+ ('hoodie',r'\bhood(?:ie|ies)\b',r'\bhood(?:ie|ies)\b'),
+ ('kurta',r'\bkurt[ai]s?\b',r'\b(?:kurt[ai]s?|ready.to.wear|suits?|outfits?)\b'),
+ ('trousers',r'\b(?:trousers?|pants?|culottes?|shalwars?)\b',r'\b(?:trousers?|pants?|culottes?|shalwars?|joggers?)\b'),
+]
+TYPES=[(name,re.compile(a,re.I),re.compile(b,re.I)) for name,a,b in TYPES]
+CARE=re.compile(r'\b(?:care instructions|how to use|directions|usage|precautions|avoid contact|apply to|wash with)\b',re.I)
+def plain(value):return re.sub(r'\s+',' ',html.unescape(re.sub('<[^>]*>',' ',str(value or '')))).strip()
+def tokens(value):return set(re.findall(r'\d+(?:[.,]\d+)?',plain(value)))
+def issues_for(row,source=None):
+ name=plain(row.get('name'));description=plain(row.get('description'));category=plain(row.get('Category'));issues=[]
+ if not name:issues.append('Missing product name')
+ if not description or len(re.findall(r'\b\w+\b',description))<5 or description.rstrip('.')==name.rstrip('.'):
+  issues.append('Description lacks enough product-specific content for review')
+ if re.search(r'\b(?:lorem ipsum|description coming soon|no description available)\b',description,re.I):issues.append('Placeholder description')
+ if not category:issues.append('Category blank or unresolved')
+ if category.lower() in {'accessories','clothing','beauty','skin care','hair care','food','sale','new arrivals','collection','women','men','kids','general','products'}:issues.append('Category is too broad or promotional for product-purpose classification')
+ if category and plain(row.get('brand')) and category.casefold()==plain(row.get('brand')).casefold():issues.append('Brand name used as product Category')
+ if re.search(r'Product Clarification:|description refers to .*while this listing',description,re.I):issues.append('Conflicting source description requires attention')
+ if source and not tokens(source.get('description'))<=tokens(description):issues.append('Description lost source numeric facts')
+ body=CARE.split(plain((source or row).get('description')),1)[0][:700]
+ primary=name or body
+ found=[(kind,allowed) for kind,pattern,allowed in TYPES if pattern.search(primary)]
+ if not found:found=[(kind,allowed) for kind,pattern,allowed in TYPES if pattern.search(body[:260])]
+ bundle=bool(re.search(r'\b(?:bundle|combo|kit|duo|deal|set of)\b',name,re.I))
+ if found and category:
+  if bundle:
+   if not re.search(r'\b(?:bundle|combo|kit|set|pack|outfit|suit)\b',category,re.I):issues.append('Bundle appears classified as a single component')
+  elif not found[0][1].search(category):issues.append('Primary product type and Category disagree: '+found[0][0])
+ elif category:
+  # Unknown category evidence is held; never trust a label just because it exists.
+  anchors=[w.rstrip('s') for w in re.findall('[a-z]{3,}',category.lower()) if w not in {'and','for','with','care','sets','set'}]
+  evidence=(name+' '+body).lower()
+  if not anchors or not all(re.search(r'\b'+re.escape(w)+r'(?:s|es)?\b',evidence) for w in anchors):issues.append('Category lacks clear product-purpose evidence; manual review required')
+ if re.search(r'\b[23]\s*[- ]?(?:pc|piece)',name,re.I) and re.search(r'\b(?:kurtas?|shirts?|trousers?|dupattas?)\b',category,re.I) and not re.search(r'suit|set|outfit|ready',category,re.I):issues.append('Multi-piece outfit may be classified as one component')
+ return list(dict.fromkeys(issues))
+
+def rows(path):
+ book=load_workbook(path,read_only=True,data_only=False)
+ try:
+  sheet=book['Products'];iterator=sheet.iter_rows(values_only=True);headers=next(iterator)
+  for values in iterator:
+   if any(value is not None for value in values):yield dict(zip(headers,values))
+ finally:book.close()
+
+def run(path,store,codes,hosts,*,source=None):
+ path=Path(path);findings=[];expected=codes.get(store);seen=set();count=0;finding_count=0
+ originals={str(row.get('product_id')):row for row in rows(source)} if source else {}
+ for row in rows(path):
+  count+=1;pid=str(row.get('product_id') or '');issues=issues_for(row,originals.get(pid))
+  if not pid or pid in seen:issues.append('Missing or duplicate product ID')
+  seen.add(pid)
+  if expected and str(row.get('shop_code') or '')!=expected:issues.append('Shop code missing, mixed or not confirmed for this store')
+  if store=='LAAM' and not re.search(r'cloth|suit|unstitched|stitched|wear|kurta|kurti|dress|trouser|shirt|jean|hood|jacket|shawl|dupatta|abaya|kaftan|saree|lehenga|sweater|cardigan|jogger|short|polo|legging|coat|outfit|gown|skirt|shalwar|pant|frock|top|sweatshirt',str(row.get('Category') or ''),re.I):issues.append('Rule LAAM: clothing purpose not confirmed')
+  url=urlsplit(str(row.get('source_url') or ''))
+  if url.scheme!='https' or (url.hostname or '').lower().removeprefix('www.') not in hosts:issues.append('Store source host mismatch')
+  if plain(row.get('Category')).casefold()==store.casefold():issues.append('Store name used as product Category')
+  if issues:
+   finding_count+=1
+   if len(findings)<100:findings.append({'product_id':pid,'issues':issues})
+ if expected and list(codes.values()).count(expected)>1:finding_count+=1;findings.append({'product_id':None,'issues':['Shop code assigned to multiple stores; identity review required']})
+ if not expected:finding_count+=1;findings.append({'product_id':None,'issues':['Shop code not confirmed; Drive replacement held']})
+ if not count:finding_count+=1;findings.append({'product_id':None,'issues':['Empty workbook']})
+ if originals and set(originals)!=seen:finding_count+=1;findings.append({'product_id':None,'issues':['Source/output product identity mismatch']})
+ return {'name':'804 Audit','version':VERSION,'store':store,'shop_code':expected,'status':'pass' if not finding_count else 'hold','products_checked':count,'findings_count':finding_count,'findings':findings,'details_truncated':finding_count>len(findings),'workbook_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'checked_utc':datetime.now(timezone.utc).isoformat(),'review_scope':'Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.'}

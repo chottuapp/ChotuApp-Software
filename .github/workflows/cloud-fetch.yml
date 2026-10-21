@@ -132,7 +132,7 @@ jobs:
           overwrite: true
           path: .cloud-data/ANAS_DATA_FETCH/
           if-no-files-found: warn
-          retention-days: 1
+          retention-days: 14
       - name: Final automated Rule 804 pass for fresh batch
         if: always() && startsWith(env.CLOUD_RUNNER_GROUP, 'fresh26-')
         run: python cloud/rule804_pipeline.py .cloud-data/ANAS_DATA_FETCH .cloud-data/rule804-excel

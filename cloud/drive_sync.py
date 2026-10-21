@@ -15,17 +15,22 @@ def config_text(value):
  if cfg.sections()!=['chotudrive'] or cfg['chotudrive'].get('type')!='drive' or not cfg['chotudrive'].get('token'):raise ValueError('Only the existing chotudrive Google Drive remote may be configured')
  return value
 
+def load_config():return json.loads((ROOT/'cloud/drive-sync-release.json').read_text())
+
 def main():
  secret=os.environ.get('CHOTU_DRIVE_RCLONE_CONFIG','')
  if not secret:raise RuntimeError('CHOTU_DRIVE_RCLONE_CONFIG secret not configured; no Drive upload attempted')
  config_text(secret)
- config=json.loads((ROOT/'cloud/drive-sync-release.json').read_text());root=config['dispatcher'];folder=config.get('destination_folder') or checked.daily_folder()
+ config=load_config();root=config['dispatcher'];folder=config.get('destination_folder') or checked.daily_folder()
  if '/' in folder or '\\' in folder or ':' in folder or folder in ('.','..',''):raise ValueError('Invalid destination folder')
  try:
   old=json.loads(gh('api','repos/'+REPO+'/contents/latest.json?ref=drive-sync-reports'))
   state=json.loads(base64.b64decode(old['content']))
  except RuntimeError:state={}
- if state.get('dispatcher')!=root:state={'dispatcher':root,'processed_artifacts':{},'uploaded':{},'daily_uploads':{}}
+ if state.get('dispatcher')!=root:
+  if config.get('audit804_enabled'):
+   state.update(dispatcher=root,processed_artifacts={},audit804_processed={},audit804_results={},audit804_artifacts={})
+  else:state={'dispatcher':root,'processed_artifacts':{},'uploaded':{},'daily_uploads':{}}
  state['folder']=folder;state.setdefault('daily_uploads',{}).setdefault(folder,{})
  state['run_id']=os.environ['GITHUB_RUN_ID'];state['sync_status']='scanning';state['last_scan_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat();globals()['LAST_STATE']=state
  state.pop('sync_error',None);publish(state,branch='drive-sync-reports')
@@ -33,12 +38,17 @@ def main():
  all_runs=list(runs)
  groups={r['displayTitle'].removeprefix('Cloud group ') for r in runs if r['displayTitle'].startswith('Cloud group fresh26-'+root+'-')}
  runs=checked.related(runs,groups)
- if not runs and not config.get('original_sources') and not (ROOT/'catalog-inputs/khaadi-mobile/latest.json').exists():raise RuntimeError('No matching authorized fresh-batch runs found')
+ if not runs and not config.get('audit804_enabled') and not config.get('original_sources') and not (ROOT/'catalog-inputs/khaadi-mobile/latest.json').exists():raise RuntimeError('No matching authorized fresh-batch runs found')
  with tempfile.TemporaryDirectory() as tmp:
   cfg=Path(tmp)/'rclone.conf';cfg.write_text(secret,encoding='utf-8');cfg.chmod(0o600)
   def rc(*args):
    result=subprocess.run(['rclone','--config',str(cfg),*args],capture_output=True,text=True,timeout=900)
    if result.returncode:raise RuntimeError('Drive '+args[0]+' failed; upload not marked verified')
+   return getattr(result,'stdout','')
+  if config.get('audit804_enabled'):
+   from audit804_delivery import run_campaign
+   run_campaign(state,config,all_runs,gh,rc)
+   publish(state,branch='drive-sync-reports');print('804 Audit campaign scan complete; only passed shop-code-identified workbooks delivered.');return
   from mobile_khaadi_ingest import upload as upload_mobile
   if upload_mobile(state,folder,rc):
    state['verified_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat();publish(state,branch='drive-sync-reports')

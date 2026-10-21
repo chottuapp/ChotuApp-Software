@@ -23,7 +23,7 @@ def snapshot(data):
         destination=exports/source.name
         if not destination.exists() or destination.stat().st_size!=stat.st_size or destination.stat().st_mtime_ns!=stat.st_mtime_ns:
             temporary=destination.with_suffix('.pending');shutil.copy2(source,temporary);os.replace(temporary,destination)
-        copied.append({'name':source.name,'size':stat.st_size,'mtime_ns':stat.st_mtime_ns})
+        copied.append({'store':site.get('name'),'name':source.name,'size':stat.st_size,'mtime_ns':stat.st_mtime_ns,'sha256':hashlib.sha256(destination.read_bytes()).hexdigest(),'complete':True})
         safe=source.stem;audits=data/'ANAS_DATA_FETCH'/'audits'/safe
         if audits.is_dir():
             for report in audits.glob('*.csv'):
@@ -31,6 +31,7 @@ def snapshot(data):
                 dest=exports/'audits'/safe/report.name;dest.parent.mkdir(parents=True,exist_ok=True)
                 temporary=dest.with_suffix('.pending');shutil.copy2(report,temporary);os.replace(temporary,dest)
 
+    atomic_json(exports/'completion-manifest.json',{'files':copied})
     signature=hashlib.sha256(json.dumps(copied,sort_keys=True).encode()).hexdigest();previous=data/'live-files-signature.json'
     try:old=json.loads(previous.read_text()).get('signature')
     except (OSError,ValueError):old=None

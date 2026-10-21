@@ -24,7 +24,7 @@ class DriveSyncTests(unittest.TestCase):
    config=Path(args[2]);self.assertEqual(config.read_text(),CONFIG)
    if fail and 'check' in args:return SimpleNamespace(returncode=1)
    return SimpleNamespace(returncode=0)
-  with patch('original_store_ingest.upload',return_value=[]),patch.object(sync,'gh',side_effect=gh),patch.object(sync,'publish') as publish,patch('subprocess.run',side_effect=command),patch.dict(os.environ,{'CHOTU_DRIVE_RCLONE_CONFIG':CONFIG,'GITHUB_RUN_ID':'777'}),patch('builtins.print'):
+  with patch.object(sync,'load_config',return_value={**json.loads((ROOT/'cloud/drive-sync-release.json').read_text()),'audit804_enabled':False,'dispatcher':'39450710625'}),patch('original_store_ingest.upload',return_value=[]),patch.object(sync,'gh',side_effect=gh),patch.object(sync,'publish') as publish,patch('subprocess.run',side_effect=command),patch.dict(os.environ,{'CHOTU_DRIVE_RCLONE_CONFIG':CONFIG,'GITHUB_RUN_ID':'777'}),patch('builtins.print'):
    if fail:
     with self.assertRaises(RuntimeError):sync.main()
     for saved in publish.call_args_list:self.assertFalse(saved.args[0]['uploaded']);self.assertFalse(saved.args[0]['processed_artifacts'])
