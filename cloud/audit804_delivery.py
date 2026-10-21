@@ -45,13 +45,17 @@ class DriveIdentity:
  def __exit__(self,*args):
   if self.tmp:self.tmp.cleanup()
  def replace(self,file,code,canonical):
-  if not code or codes_in(file)!={code}:raise ValueError('New workbook shop code is not a single confirmed identity')
-  matches=self.index.get(code,[])
+  if Path(canonical).name!=canonical or not canonical.endswith('.xlsx'):raise ValueError('Invalid canonical store filename')
+  if code and codes_in(file)!={code}:raise ValueError('New workbook shop code is not a single confirmed identity')
+  if not code:
+   from audit804 import rows
+   if any(str(r.get('shop_code') or '').strip() for r in rows(file)):raise ValueError('Unconfirmed shop code must remain blank')
+  matches=self.index.get(code,[]) if code else ([canonical] if canonical in self.names else [])
   if len(matches)>1:raise ValueError('Multiple existing files use this shop code; replacement held')
   old=matches[0] if matches else None
   destination=old or canonical
   if destination in self.names and destination!=old:raise ValueError('Target filename belongs to an unconfirmed/different shop code; old file retained')
-  if old and self.backup:self.backup(self.root/old,code)
+  if old and self.backup:self.backup(self.root/old,code or 'blank-'+Path(canonical).stem)
   if old:self.rc('check',str(self.root),self.remote,'--include',old,'--one-way')
   with tempfile.TemporaryDirectory() as tmp:
    stage=Path(tmp);target=stage/destination;shutil.copy2(file,target)
@@ -64,7 +68,8 @@ class DriveIdentity:
      try:self.rc('deletefile',self.remote+'/'+destination)
      except Exception:pass
     raise
-   shutil.copy2(file,self.root/destination);self.names[destination]={'Name':destination};self.index[code]=[destination]
+   shutil.copy2(file,self.root/destination);self.names[destination]={'Name':destination}
+   if code:self.index[code]=[destination]
   return {'replaced_file':old,'file_name':destination}
 
 def completed_files(stage):

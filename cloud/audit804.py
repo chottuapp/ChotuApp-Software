@@ -183,6 +183,7 @@ def run(path,store,codes,hosts,*,source=None):
   if not pid or pid in seen:issues.append('Missing or duplicate product ID')
   seen.add(pid)
   if expected and str(row.get('shop_code') or '')!=expected:issues.append('Shop code missing, mixed or not confirmed for this store')
+  if not expected and str(row.get('shop_code') or '').strip():issues.append('Unconfirmed shop code must remain blank')
   if store=='LAAM' and not re.search(r'cloth|suit|unstitched|stitched|wear|kurta|kurti|dress|trouser|shirt|jean|hood|jacket|shawl|dupatta|abaya|kaftan|saree|lehenga|sweater|cardigan|jogger|short|polo|legging|coat|outfit|gown|skirt|shalwar|pant|frock|top|sweatshirt',str(row.get('Category') or ''),re.I):issues.append('Rule LAAM: clothing purpose not confirmed')
   url=urlsplit(str(row.get('source_url') or ''))
   if url.scheme!='https' or (url.hostname or '').lower().removeprefix('www.') not in hosts:issues.append('Store source host mismatch')
@@ -191,7 +192,6 @@ def run(path,store,codes,hosts,*,source=None):
    finding_count+=1
    if len(findings)<100:findings.append({'product_id':pid,'issues':issues})
  if expected and list(codes.values()).count(expected)>1:finding_count+=1;findings.append({'product_id':None,'issues':['Shop code assigned to multiple stores; identity review required']})
- if not expected:finding_count+=1;findings.append({'product_id':None,'issues':['Shop code not confirmed; Drive replacement held']})
  if not count:finding_count+=1;findings.append({'product_id':None,'issues':['Empty workbook']})
  if originals and set(originals)!=seen:finding_count+=1;findings.append({'product_id':None,'issues':['Source/output product identity mismatch']})
- return {'name':'804 Audit','version':VERSION,'store':store,'shop_code':expected,'status':'pass' if not finding_count else 'hold','products_checked':count,'findings_count':finding_count,'findings':findings,'details_truncated':finding_count>len(findings),'workbook_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'checked_utc':datetime.now(timezone.utc).isoformat(),'review_scope':'Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.'}
+ return {'name':'804 Audit','version':VERSION,'store':store,'shop_code':expected,'identity_policy':'confirmed_code' if expected else 'owner_authorized_blank_code_exact_store_filename','status':'pass' if not finding_count else 'hold','products_checked':count,'findings_count':finding_count,'findings':findings,'details_truncated':finding_count>len(findings),'workbook_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'checked_utc':datetime.now(timezone.utc).isoformat(),'review_scope':'Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.'}

@@ -17,6 +17,9 @@ class AuditTests(unittest.TestCase):
    path=Path(tmp)/'x.xlsx';book=Workbook();s=book.active;s.title='Products';s.append(['shop_code','product_id','Category','name','description','source_url']);s.append(['S1','P1','Body Wash','Oud Body Wash','Oud body wash cleanses the skin gently.','https://store.example/product']);book.save(path)
    self.assertEqual(run(path,'Store',{'Store':'S1'},{'store.example'})['status'],'pass')
    self.assertEqual(run(path,'Store',{}, {'store.example'})['status'],'hold')
+   s.cell(2,1).value=None;book.save(path)
+   self.assertEqual(run(path,'Store',{}, {'store.example'})['status'],'pass')
+   self.assertEqual(run(path,'Store',{}, {'other.example'})['status'],'hold')
    self.assertEqual(run(path,'Store',{'Store':'S1'},{'other.example'})['status'],'hold')
 
  def test_plural_and_spaced_product_purposes(self):
