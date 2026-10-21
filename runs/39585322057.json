@@ -1597,7 +1597,7 @@
     }
   ],
   "transfer_status": "finished",
-  "sync_status": "scanning",
+  "sync_status": "finished",
   "last_scan_utc": "2026-10-21T10:32:51.311639+00:00",
   "folder_id": "17GbkIwSowcPdqyK3rFxhfc9nqkI-yUan",
   "folder_url": "https://drive.google.com/drive/folders/17GbkIwSowcPdqyK3rFxhfc9nqkI-yUan",
@@ -1651,7 +1651,8 @@
     "Vince Care": "source:901b0f68c41fd05c3570b2b8606943dc52a56f9c543ccea3a8b8cf4f24c7685c:Vince Care:22c8604445670a0860a1483e6bbc4312a781990754e6a55af242b43c8a26b300",
     "Computer Zone": "source:aca68afe8fe1559127da9647b3eb80e30d9b2c6e3961cb6e2c39d8b5d11057e3:Computer Zone:22c8604445670a0860a1483e6bbc4312a781990754e6a55af242b43c8a26b300",
     "Saeed Ghani": "source:9ccd9e97c7e8a04d42b6dfa18057a4471a4bab1b55996407adf0ff1b3dcb252d:Saeed Ghani:22c8604445670a0860a1483e6bbc4312a781990754e6a55af242b43c8a26b300",
-    "Tawakkal Fabrics": "source:a9b2ee76a93dbf0e1f8fe7cdaacff0ba99e7fdb23ddb33584cc101b5ea8e1f77:Tawakkal Fabrics:22c8604445670a0860a1483e6bbc4312a781990754e6a55af242b43c8a26b300"
+    "Tawakkal Fabrics": "source:a9b2ee76a93dbf0e1f8fe7cdaacff0ba99e7fdb23ddb33584cc101b5ea8e1f77:Tawakkal Fabrics:22c8604445670a0860a1483e6bbc4312a781990754e6a55af242b43c8a26b300",
+    "Elite Cosmetics": "source:ef53f153b638b2bbfd280e7ca0708dce89ef13456d13672ade372b41d64ba38f:Elite Cosmetics:22c8604445670a0860a1483e6bbc4312a781990754e6a55af242b43c8a26b300"
   },
   "audit804_results": {
     "Zero Lifestyle": {
@@ -7557,12 +7558,632 @@
       "source_artifact": 12338362079,
       "source_sha256": "a9b2ee76a93dbf0e1f8fe7cdaacff0ba99e7fdb23ddb33584cc101b5ea8e1f77",
       "held_input": "inputs/fresh804-20261021-a26dcd86/tawakkal-fabrics/a9b2ee76a93dbf0e/manifest.json"
+    },
+    "Elite Cosmetics": {
+      "name": "804 Audit",
+      "version": "804-audit-v1",
+      "store": "Elite Cosmetics",
+      "shop_code": "SH10003",
+      "status": "hold",
+      "products_checked": 1561,
+      "findings_count": 676,
+      "findings": [
+        {
+          "product_id": "CPdca39cf65dc9",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf04a4e90fb13",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP78e9bcb95696",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP04b49d83598d",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd1cc3f3d6d52",
+          "issues": [
+            "Primary product type and Category disagree: foundation"
+          ]
+        },
+        {
+          "product_id": "CP887076975292",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP41a4b794afb0",
+          "issues": [
+            "Primary product type and Category disagree: lipstick"
+          ]
+        },
+        {
+          "product_id": "CP50e40eb633a4",
+          "issues": [
+            "Primary product type and Category disagree: hair shampoo"
+          ]
+        },
+        {
+          "product_id": "CP5abfc1c5350b",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf4172885c178",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPed3d28dbecfb",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0797934a762a",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP25d0a0d1f5ed",
+          "issues": [
+            "Bundle family and product contents disagree"
+          ]
+        },
+        {
+          "product_id": "CP54e69b9be4c8",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8460eaad0d56",
+          "issues": [
+            "Primary product type and Category disagree: sunscreen"
+          ]
+        },
+        {
+          "product_id": "CP5fe9815f190e",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb75dd7358f6c",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc6ee6e501dc5",
+          "issues": [
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CP60e55768410b",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP21a2b5cd48ac",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0535b9ba8b8b",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc4ecd647ccc9",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP91a884641b5d",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP25f543cfb263",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPefa52f72cb80",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2d30e22ca9c4",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc5aa7ca764f5",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2916f89631ec",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2171a91f7833",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP30e1f66f828b",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb67dc808432c",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP80a5a766829f",
+          "issues": [
+            "Primary product type and Category disagree: lipstick"
+          ]
+        },
+        {
+          "product_id": "CPbd0d55b25a11",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPdba5e9aa785c",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP384906c3d216",
+          "issues": [
+            "Primary product type and Category disagree: foundation"
+          ]
+        },
+        {
+          "product_id": "CP1a07054f6bcf",
+          "issues": [
+            "Primary product type and Category disagree: foundation"
+          ]
+        },
+        {
+          "product_id": "CP86591328805c",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0c4a85182ed3",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0bee1bc26af8",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPbf26a6860b4c",
+          "issues": [
+            "Primary product type and Category disagree: face wash"
+          ]
+        },
+        {
+          "product_id": "CPdbafbab7ad95",
+          "issues": [
+            "Primary product type and Category disagree: face wash"
+          ]
+        },
+        {
+          "product_id": "CP97304219ef37",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPbb8fcf1b3c8d",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2da47ed86bf4",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1fa05151340f",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPedf643bc1b9e",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa3aea88e2caa",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd6e591d44af5",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPca0ee47b2003",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5785d2d8bf8d",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa32c8748ad51",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0db8e0c3ac29",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf4d7a52407e0",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd4cb04532c83",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0e81973cb53f",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf54b0b219d7c",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2f2357d65092",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPa6b2833362dd",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2919cbc51a7f",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8e390894a0bd",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8a3ba2b8883c",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPde271b493420",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPaa43e2ac8bec",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPff667e852178",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP715c9dd0eb46",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP179df99ee861",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd1872e610850",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP33cb3f5580df",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3990dc9fb50b",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4b3fc5d3f2cc",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP268872be48ae",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc1546743f8cd",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7536b62a1d93",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf6cc90687d70",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPdcedc06677ff",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa6fd3449d6e9",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8d969e7ab596",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa83a2647c2f7",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4da74c17eb75",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP33f951c367e9",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2262d7859bb2",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPbb94bb9eb10d",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9b417817f718",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP96d8f6fe5d54",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5f7ccc4a6d56",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP40f3754d459f",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP44e1423696b0",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP414c4caf904d",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1e770ca864f9",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4bbfd0e43512",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPff4b458c17c9",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0b6b46101144",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPabfe29eee27e",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP89458055d15f",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPfd86c7917149",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP85afe5dd4b79",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPde79580141c3",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc784c12baf05",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP51a99aa474e4",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5ee818f86cf5",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "details_truncated": true,
+      "workbook_sha256": "6cde1f6ade8ad43142ddd8ceb54cf5a47398198af226d3d48dc77cbc43c33126",
+      "checked_utc": "2026-10-21T10:33:06.053429+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "campaign_id": "fresh804-20261021-a26dcd86",
+      "source_run": "39576530845",
+      "source_artifact": 12339258616,
+      "source_sha256": "ef53f153b638b2bbfd280e7ca0708dce89ef13456d13672ade372b41d64ba38f",
+      "held_input": "inputs/fresh804-20261021-a26dcd86/elite-cosmetics/ef53f153b638b2bb/manifest.json"
     }
   },
   "audit804_artifacts": {
     "39576582942": "39576582942:12333989106:22c8604445670a0860a1483e6bbc4312a781990754e6a55af242b43c8a26b300",
     "39576513829": "39576513829:12335557474:22c8604445670a0860a1483e6bbc4312a781990754e6a55af242b43c8a26b300",
-    "39576530845": "39576530845:12335882730:22c8604445670a0860a1483e6bbc4312a781990754e6a55af242b43c8a26b300",
+    "39576530845": "39576530845:12339258616:22c8604445670a0860a1483e6bbc4312a781990754e6a55af242b43c8a26b300",
     "39576538764": "39576538764:12334945735:22c8604445670a0860a1483e6bbc4312a781990754e6a55af242b43c8a26b300",
     "39576546494": "39576546494:12336360920:22c8604445670a0860a1483e6bbc4312a781990754e6a55af242b43c8a26b300",
     "39576553433": "39576553433:12335205366:22c8604445670a0860a1483e6bbc4312a781990754e6a55af242b43c8a26b300",
@@ -7571,7 +8192,7 @@
     "39576523058": "39576523058:12338362079:22c8604445670a0860a1483e6bbc4312a781990754e6a55af242b43c8a26b300"
   },
   "audit804_campaign": "fresh804-20261021-a26dcd86",
-  "audit804_checked_utc": "2026-10-21T10:20:40.302467+00:00",
+  "audit804_checked_utc": "2026-10-21T10:33:10.034569+00:00",
   "audit804_replacement_backups": {
     "SE10004": "inputs/fresh804-20261021-a26dcd86/rollback-se10004/87180adaa2c3ba4c/manifest.json",
     "SE10003": "inputs/fresh804-20261021-a26dcd86/rollback-se10003/ad5984d91d80130e/manifest.json"
