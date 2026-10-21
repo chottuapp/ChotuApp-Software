@@ -24,3 +24,7 @@ class AuditTests(unittest.TestCase):
   self.assertFalse(issues_for({'name':'Shine Lip Gloss','description':'Lip gloss with a smooth shiny finish.','Category':'Lip Gloss'}))
  def test_bundle_family_mismatch(self):
   self.assertTrue(issues_for({'name':'Lipstick Makeup Kit','description':'A lipstick collection with rich makeup colours.','Category':'Dairy Bundles'}))
+
+ def test_reviewed_plural_and_food_aliases_are_not_false_mismatches(self):
+  examples=[('Glitter Lip Gloss','Lip Glosses','A high shine lip gloss with a glossy finish.'),('Tea Leaf Blend 900 Gram Pouch','Loose-Leaf Tea','A blend of tea leaves in a 900 gram pouch.'),('Baked Blush','Blushers','A baked blush to add colour to the cheeks.'),('Pizza Cheese','Pizza Cheese','Pizza cheese combines cheddar and mozzarella for a stringy texture.'),("Smart Milky Value Deal",'Dairy Bundles','A value deal with 5 litres of pasteurized milk.')]
+  for name,category,description in examples:self.assertFalse(issues_for({'name':name,'Category':category,'description':description}),name)

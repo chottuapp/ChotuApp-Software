@@ -39,6 +39,9 @@ TYPES=[
  ('face toner',r'\b(?:face|facial)\s+toner\b',r'\b(?:face|facial)\s+toner\b'),
  ('garam masala',r'\bgaram\s+masala\b',r'\bgaram\s+masala\b'),
  ('tea bags',r'\btea\s+bags?\b',r'\btea\s+bags?\b'),
+ ('pizza cheese',r'\bpizza\s+cheese\b',r'\bpizza\s+cheese\b'),
+ ('loose leaf tea',r'\btea\s+leaf\s+blend\b|\bloose[ -]leaf\s+tea\b',r'\bloose[ -]leaf\s+tea\b'),
+ ('blush',r'\bblush(?:er)?s?\b',r'\bblush(?:er)?s?\b'),
  ('mozzarella',r'\bmozzarella\b',r'\bmozzarella\b'),
  ('unstitched',r'\bun[ -]?stitched\b',r'\bun[ -]?stitched\b'),
  ('jeans',r'\bjeans?\b|\bdenim\s+(?:pants?|trousers?)\b',r'\b(?:jeans?|denim|trousers?)\b'),
@@ -62,20 +65,22 @@ def issues_for(row,source=None):
  if re.search(r'Product Clarification:|description refers to .*while this listing',description,re.I):issues.append('Conflicting source description requires attention')
  if source and not tokens(source.get('description'))<=tokens(description):issues.append('Description lost source numeric facts')
  body=CARE.split(plain((source or row).get('description')),1)[0][:700]
+ category_review=category
+ for plural,singular in {'glosses':'gloss','washes':'wash','shampoos':'shampoo','conditioners':'conditioner','mascaras':'mascara','foundations':'foundation','serums':'serum','toners':'toner','lotions':'lotion','concealers':'concealer','eyeliners':'eyeliner','eyeshadows':'eyeshadow','lipsticks':'lipstick'}.items():category_review=re.sub(r'\b'+plural+r'\b',singular,category_review,flags=re.I)
  primary=name or body
  found=[(kind,allowed) for kind,pattern,allowed in TYPES if pattern.search(primary)]
  if not found:found=[(kind,allowed) for kind,pattern,allowed in TYPES if pattern.search(body[:260])]
  bundle=bool(re.search(r'\b(?:bundle|combo|kit|duo|deal|set of)\b',name,re.I))
- if found and category:
-  if bundle:
-   family=found[0][0]
-   if re.search(r'dairy',category,re.I) and not re.search(r'cheese|milk|butter|ghee|dairy|yoghurt|lassi',name+' '+body,re.I):issues.append('Bundle family and product contents disagree')
-   if category.lower().startswith('hair') and not family.startswith('hair'):issues.append('Hair bundle category conflicts with primary product purpose')
-   if re.search(r'\b(?:skin|face)',category,re.I) and family in ('lipstick','lip gloss','lip liner','eyeshadow','eyeliner','mascara','foundation','concealer'):issues.append('Cosmetics bundle incorrectly classified as skincare')
-   if not re.search(r'\b(?:bundle|combo|kit|set|pack|outfit|suit)\b',category,re.I):issues.append('Bundle appears classified as a single component')
-  elif not found[0][1].search(category):issues.append('Primary product type and Category disagree: '+found[0][0])
+ if bundle and category:
+  if not re.search(r'\b(?:bundle|combo|kit|set|pack|outfit|suit)s?\b',category,re.I):issues.append('Bundle appears classified as a single component')
+  families={'dairy':r'cheese|milk|butter|ghee|dairy|yogh?urt|raita|lassi','makeup':r'lipstick|lip\s*gloss|eye\s*shadow|mascara|foundation|concealer|makeup','hair':r'hair|shampoo|conditioner','skin':r'skin|face|facial|serum|cream|lotion','spice':r'spice|masala|cumin|coriander|turmeric'}
+  for family,pattern in families.items():
+   if re.search(r'\b'+family+r'\b',category,re.I) and not re.search(pattern,name+' '+body,re.I):issues.append('Bundle family and product contents disagree')
+  if category.lower().startswith('hair') and found and not found[0][0].startswith('hair'):issues.append('Hair bundle category conflicts with primary product purpose')
+  if re.search(r'\b(?:skin|face)',category,re.I) and found and found[0][0] in ('lipstick','lip gloss','lip liner','eyeshadow','eyeliner','mascara','foundation','concealer'):issues.append('Cosmetics bundle incorrectly classified as skincare')
+ elif found and category:
+  if not found[0][1].search(category_review):issues.append('Primary product type and Category disagree: '+found[0][0])
  elif category:
-  # Unknown category evidence is held; never trust a label just because it exists.
   anchors=[w if w.endswith('ss') else w[:-2] if w.endswith(('ches','shes','xes','sses','zes')) else w[:-1] if w.endswith('s') else w for w in re.findall('[a-z]{3,}',category.lower()) if w not in {'and','for','with','care','sets','set'}]
   evidence=(name+' '+body).lower()
   if not anchors or not all(re.search(r'\b'+re.escape(w)+r'(?:s|es)?\b',evidence) for w in anchors):issues.append('Category lacks clear product-purpose evidence; manual review required')
