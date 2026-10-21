@@ -52,6 +52,7 @@ class DriveIdentity:
   destination=old or canonical
   if destination in self.names and destination!=old:raise ValueError('Target filename belongs to an unconfirmed/different shop code; old file retained')
   if old and self.backup:self.backup(self.root/old,code)
+  if old:self.rc('check',str(self.root),self.remote,'--include',old,'--one-way')
   with tempfile.TemporaryDirectory() as tmp:
    stage=Path(tmp);target=stage/destination;shutil.copy2(file,target)
    try:

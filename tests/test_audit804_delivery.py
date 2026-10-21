@@ -7,7 +7,7 @@ class DeliveryTests(unittest.TestCase):
   b=Workbook();s=b.active;s.title='Products';s.append(['shop_code','product_id','description']);s.append([code,'P1',description]);b.save(path)
  def exercise(self,fail=False,alias=False,wrong=False):
   with tempfile.TemporaryDirectory() as tmp:
-   root=Path(tmp);remote=root/'remote';remote.mkdir();oldname='Custom old name.xlsx' if alias else 'Store.xlsx';self.book(remote/oldname,'OTHER' if wrong else 'S1');new=root/'new.xlsx';self.book(new,'S1','new');calls=[]
+   root=Path(tmp);remote=root/'remote';remote.mkdir();oldname='Custom old name.xlsx' if alias else 'Store.xlsx';self.book(remote/oldname,'OTHER' if wrong else 'S1');new=root/'new.xlsx';self.book(new,'S1','new');calls=[];wrote=[False]
    def rc(*args):
     calls.append(args)
     if args[0]=='lsjson':return json.dumps([{'Name':p.name} for p in remote.glob('*.xlsx')])
@@ -15,8 +15,8 @@ class DeliveryTests(unittest.TestCase):
      if args[1].startswith('chotudrive:'):
       for p in remote.glob('*.xlsx'):shutil.copy2(p,Path(args[2])/p.name)
      else:
-      name=args[args.index('--include')+1];shutil.copy2(Path(args[1])/name,remote/name)
-    if args[0]=='check' and fail:raise RuntimeError('checksum check failed')
+      wrote[0]=True;name=args[args.index('--include')+1];shutil.copy2(Path(args[1])/name,remote/name)
+    if args[0]=='check' and fail and wrote[0]:raise RuntimeError('checksum check failed')
     if args[0]=='copyto':shutil.copy2(args[1],remote/Path(args[2]).name)
     return ''
    before=(remote/oldname).read_bytes()
