@@ -56,7 +56,7 @@ def main():
     if updated:
      item['snapshot_age_seconds']=max(0,round((now-datetime.datetime.fromisoformat(updated)).total_seconds()))
      item['snapshot_stale']=item['snapshot_age_seconds']>600
-    if run['lane']=='solo-laam' and run['status']!='completed':
+    if 'LAAM' in stores and run['status']!='completed':
      from diagnostics import redact
      for filename in ('console-tail.txt','fetch-log.txt'):
       logs=list(Path(tmp).rglob(filename))
