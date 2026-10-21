@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-21T14:24:16.882781+00:00",
+  "run_id": "39576575531",
+  "attempt": "1",
+  "source_commit": "fc7668e1accf604d5a2fdd369acf16db2bcfdf05",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.15",
+  "elapsed_seconds": 18000.7,
+  "stores": [
+    {
+      "name": "Bonanza Satrangi",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_503",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "ea351ea30f5923af",
+      "products": 1105,
+      "variants": 3392,
+      "http_statuses": {
+        "200": 1149
+      },
+      "network_seconds": 2744.6,
+      "max_response_seconds": 3.2,
+      "cache_events": 2211
+    },
+    {
+      "name": "Outfitters",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_404",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "ea351ea30f5923af",
+      "products": 4477,
+      "variants": 34076,
+      "http_statuses": {
+        "200": 4497,
+        "404": 4
+      },
+      "network_seconds": 5066.6,
+      "max_response_seconds": 7.9,
+      "cache_events": 8954
+    },
+    {
+      "name": "Zellbury",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "ea351ea30f5923af",
+      "http_statuses": {
+        "200": 6140
+      },
+      "network_seconds": 7972.7,
+      "max_response_seconds": 2.4,
+      "cache_events": 0
+    }
+  ]
+}
