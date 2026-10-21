@@ -1,33 +1,58 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-21T00:01:25.646187+00:00",
-  "run_id": "39496275070",
+  "generated_utc": "2026-10-21T01:43:54.019324+00:00",
+  "run_id": "39494289423",
   "attempt": "1",
-  "source_commit": "c71280e5de62a64fc7d1b75af26e84509dd39886",
+  "source_commit": "502b65bb7d7c2f1dd58dfa1fecd9f97c4f86704e",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 11049.5,
+  "elapsed_seconds": 18000.4,
   "stores": [
     {
-      "name": "LAAM",
-      "status": "failed",
+      "name": "Tawakkal Fabrics",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "db2f6f0b423cf75d",
+      "products": 1401,
+      "variants": 3217,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    },
+    {
+      "name": "Junaid Jamshed",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "db2f6f0b423cf75d",
+      "products": 5114,
+      "variants": 21958,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    },
+    {
+      "name": "Stylo",
+      "status": "pending",
       "review_required": false,
       "issue_codes": [
-        "HTTP_404",
         "HTTP_503",
-        "RATE_LIMIT"
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "d529f8bbd73d222a",
+      "software_revision": "4fcf29bd1829fbc9",
       "http_statuses": {
-        "500": 140,
-        "200": 5604,
-        "503": 3,
-        "404": 7
+        "200": 3411,
+        "502": 2,
+        "503": 1
       },
-      "network_seconds": 6243.2,
-      "max_response_seconds": 14.9,
-      "cache_events": 0
+      "network_seconds": 8307.8,
+      "max_response_seconds": 10.1,
+      "cache_events": 20875
     }
   ]
 }
