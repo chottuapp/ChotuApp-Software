@@ -1,0 +1,30 @@
+name: Resume Saved LAAM and Sapphire Separately
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [cloud/paused-group-request.json]
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: chotuapp-paused-group-resume
+  cancel-in-progress: false
+jobs:
+  resume:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install requests beautifulsoup4
+      - name: Verify saved runner partition safeguards
+        env:
+          PYTHONPATH: tests:cloud:.
+        run: python -m unittest test_paused_group_resume test_runner_status test_phone_heartbeat -q
+      - name: Save checkpoint and resume independent source lanes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python cloud/paused_group_resume.py
