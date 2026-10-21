@@ -36,3 +36,13 @@ class SemanticAuditTests(unittest.TestCase):
   self.assertTrue(review('Lipstick Face Kit','A face kit containing rich lipstick shades.','Skin Care Bundles'))
   self.assertTrue(review('Baby Moisturizer','Moisturizer for soft baby skin.','Face Moisturisers & Creams'))
   self.assertTrue(review('Growth Boost','An intensive hair growth serum for the scalp.','Face Serums'))
+
+ def test_jewellery_care_is_not_sold_perfume(self):
+  row={'name':'Bindiya Kanta-27 (Black)','description':'Bindiya Kanta. Standard size. Jewellery Care: Keep away from water perfume and chemicals. Packed in 1 gift box.','Category':'Forehead Jewellery'}
+  self.assertFalse(issues_for(row))
+  row['Category']='Perfumes & Fragrances';self.assertTrue(issues_for(row))
+ def test_named_removal_and_lipstick_capsules_override_incidental_words(self):
+  self.assertEqual(infer('18 Colors Capsule Lipstick Set','Mini capsule lipsticks.')[0],'Lip Sets')
+  self.assertEqual(infer('Hair Removal Spray','Removes unwanted hair without razors.')[0],'Hair Removal Sprays')
+  self.assertEqual(infer('Milky Wax Cream','Strip hair removal system.')[0],'Depilatory Waxes')
+  self.assertEqual(infer('Spiral Hair Ties (Pack of 2)','')[0],'Hair Ties & Scrunchies')

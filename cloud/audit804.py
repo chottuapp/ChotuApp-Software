@@ -112,7 +112,7 @@ REVIEW_TYPES=[
 ]
 TYPES=REVIEW_TYPES+TYPES
 TYPES=[(name,re.compile(a,re.I),re.compile(b,re.I)) for name,a,b in TYPES]
-CARE=re.compile(r'\b(?:care instructions|how to use|directions|usage|precautions|avoid contact|apply to|wash with)\b',re.I)
+CARE=re.compile(r'\b(?:(?:jewellery|jewelry)\s+care|care instructions|how to use|directions|usage|precautions|avoid contact|apply to|wash with)\b',re.I)
 def plain(value):return re.sub(r'\s+',' ',html.unescape(re.sub('<[^>]*>',' ',str(value or '')))).strip()
 def tokens(value):return set(re.findall(r'\d+(?:[.,]\d+)?',plain(value)))
 def issues_for(row,source=None):

@@ -6,6 +6,13 @@ def text(value):
 def has(pattern,value):return bool(re.search(pattern,value,re.I))
 def review(name,description,category,sku=""):
  title=text(name);body=text(description);evidence=title+' '+body;cat=text(category).lower()
+ # Regional jewellery names denote the sold object; care mentions are not perfume evidence.
+ jewellery={
+  'forehead jewellery':r'\b(?:bindiya|matha\s+patti|maang\s+tikka)\b',
+  'jhumka earrings':r'\b(?:jhumk[ai]|bali)\b',
+  'hair ties & scrunchies':r'\b(?:hair\s+ties|scrunchies|scrunchy)\b',
+ }
+ if cat in jewellery and has(jewellery[cat],title+' '+body[:120]):return []
  # Complete garments outrank the components, colour names and care instructions.
  clothing=has(r'\brtw\b|\bun[ -]?stitched\b|\b(?:shirts?|kurt[ai]s?|kameez|trousers?|dupattas?|kaftans?|hoodies?|sweaters?|polo|tees?|frocks?|gharara|sharara|suits?|dress(?:es)?|maxi|outfits?|ensembles?|shawls?|boxers?)\b',evidence)
  if has(r'\bmother size\s*:',description) and has(r'\bkid size\s*:',description) and has(r'\b[234]\s*piece\b',title):clothing=True
@@ -38,6 +45,8 @@ def review(name,description,category,sku=""):
   if cat in ('blushers','face powders','perfumes & fragrances','lipsticks') and has(r'\brtw\b|\b(?:shirt|trouser|dupatta)\s*:',description):return ['Garment evidence conflicts with cosmetics Category']
  # These aliases each need independent explicit source purpose evidence.
  proofs={
+  'hair removal sprays':r'\bhair\s+removal\s+spray\b',
+  'depilatory waxes':r'\b(?:depilatory|wax\s+cream)\b',
   'face & body lotions':r'\blotion\b.{0,50}\bface\b|\bface\b.{0,80}\bbody\b.{0,50}\blotion\b',
   'face & body creams':r'\bface\b.{0,80}\bbody\b.{0,50}\bcream\b|\bcream\b.{0,50}\bface\b',
 
@@ -54,7 +63,7 @@ def review(name,description,category,sku=""):
   'hair oils':r'\b(?:hair|scalp|beard)\b.{0,140}\boil\b|\boil\b.{0,140}\b(?:hair|scalp|beard)\b',
 
   'face serums':r'\bserum\b','lip treatments':r'\blip\b.{0,40}\b(?:serum|treatment)\b',
-  'lip sets':r'\blip\s+duo\b|\blipstick\s+plus\s+liner\b','lipsticks':r'\blip\s+(?:batom|crayon|cream)\b|\blipsticks?\b',
+  'lip sets':r'\blipstick\b.{0,30}\bset\b|\blip\s+duo\b|\blipstick\s+plus\s+liner\b','lipsticks':r'\blip\s+(?:batom|crayon|cream)\b|\blipsticks?\b',
   'eyebrow products':r'\b(?:eyebrow|brow)\b','makeup adhesives':r'\bglitter\s+glue\b',
   'under eye & kajal':r'\bunder\s+eye\s+pencil\b|\bkajal\b',
   'body mists':r'\bbody\s+mists?\b','fragrance sets':r'\b(?:body\s+mist|fragrance|perfume)\b.{0,80}\b(?:set|collection|pack)\b',

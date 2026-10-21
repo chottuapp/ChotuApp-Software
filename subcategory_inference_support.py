@@ -385,6 +385,14 @@ def _structured_clothing(title,description):
 def infer(name,description,website_path=''):
     title=plain(name);body=_product_prose(description)
     if re.search(r'(?i)\blotion\b',title) and re.search(r'(?i)\bface\b',title) and re.search(r'(?i)\bbody\b',title):return _quote('Face & Body Lotions','name',title)
+    for label,pattern in [
+        ('Forehead Jewellery',r'\bbindiya\b'),
+        ('Hair Ties & Scrunchies',r'\bhair\s+ties\b|\bscrunchies\b'),
+        ('Lip Sets',r'\blipstick\b.{0,30}\bset\b'),
+        ('Hair Removal Sprays',r'\bhair\s+removal\s+spray\b'),
+        ('Depilatory Waxes',r'\bwax\s+cream\b'),
+    ]:
+        if re.search(pattern,title,re.I):return _quote(label,'name',title)
     garment=_structured_clothing(title,description)
     if garment:return garment
     if re.search(r'(?i)\bcharcoal\s+mask\b',title) and re.search(r'(?i)\bskin\b',body):return _quote('Skin Masks','description',body)
