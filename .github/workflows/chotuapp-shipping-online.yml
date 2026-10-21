@@ -1,0 +1,58 @@
+name: ChotuApp Online Shipping Software
+run-name: Shipping audit by ${{ github.actor }}
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/chotuapp-shipping-online.yml]
+  workflow_dispatch:
+    inputs:
+      links:
+        description: 'Store or product HTTPS links (up to 5, separated by spaces)'
+        required: true
+        default: 'https://www.czone.com.pk/'
+        type: string
+      cities:
+        description: 'Pakistan delivery cities, separated by commas'
+        required: true
+        default: 'Karachi,Lahore,Islamabad,Gujranwala'
+        type: string
+      max_pages:
+        description: 'Maximum pages per store (1-500); limited scans are labelled'
+        required: true
+        default: '100'
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: chotuapp-shipping-${{ github.actor }}
+  cancel-in-progress: false
+jobs:
+  shipping-audit:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: online-shipping
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Excel support
+        run: python -m pip install -r online-shipping/requirements.txt
+      - name: Validate audit engine
+        run: python -m unittest discover -s online-shipping -p 'test_*.py' -v
+      - name: Fetch public products and shipping evidence
+        env:
+          AUDIT_LINKS: ${{ inputs.links || 'https://czone.com.pk/' }}
+          AUDIT_CITIES: ${{ inputs.cities || 'Karachi,Lahore,Islamabad,Gujranwala' }}
+          AUDIT_PAGES: ${{ inputs.max_pages || '100' }}
+        run: python -u online-shipping/audit.py --links "$AUDIT_LINKS" --cities "$AUDIT_CITIES" --max-pages "$AUDIT_PAGES"
+      - name: Save Excel, evidence and full logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ChotuApp-Shipping-Results-${{ github.run_number }}
+          path: shipping-output/
+          if-no-files-found: warn
+          retention-days: 30
