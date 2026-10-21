@@ -25,19 +25,20 @@ Local developer validation: `python -m pip install -r online-shipping/requiremen
 
 The separate viewer in `online-shipping/viewer/` lets you submit links, inspect runner status and saved product results, copy all logs and download Excel/CSV from the same screen. The browser polls GitHub every 15 seconds; the runner publishes progress approximately every 30 seconds on an isolated `shipping-results-RUNID-ATTEMPT` branch. Results and logs remain private in this repository. No Drive or existing catalog files are modified.
 
-The viewer requires a fine-grained GitHub token for this repository with **Contents: read** and **Actions: read/write**. Enter it only in the viewer's password field, never chat. It stays in memory, not localStorage, cookies, URLs or repository files. Disconnect or closing the tab clears it. Authorized source requests still run on GitHub, not on your laptop. Live counters/logs appear during fetching; the results table and Excel are available after final export. The table displays up to 300 matching rows; the Excel includes all captured rows.
+The viewer requires a fine-grained GitHub token restricted to **chottuapp/RedStore** with **Contents: read** and **Actions: read/write**. Enter it only in the viewer's password field, never chat. It stays in memory, not localStorage, cookies, URLs or repository files. Disconnect or closing the tab clears it. Authorized source requests still run on GitHub, not on your laptop. Live counters/logs appear during fetching; the results table and Excel are available after final export. The table displays up to 300 matching rows; the Excel includes all captured rows.
 
-### First publication
+### Viewer hosting and backend
 
-This checkout has Git push access but GitHub management API access is denied. Pages must be enabled once from an owner-authenticated CLI or repository Settings → Pages → Source: GitHub Actions. A private repository requires a GitHub plan that permits Pages. **Do not make the data repository public to resolve that restriction.** The Pages viewer contains no product data or credentials; visitors still need an authorized connection to access private results.
+**Backend and result storage: `chottuapp/RedStore`.** The viewer dispatches only RedStore's shipping workflow and reads only RedStore's result branches. The browser token needs RedStore access, not access to the hosting repository.
 
-After the code is pushed, the repository owner can run these in authenticated CMD:
+The owner confirmed GitHub returns HTTP 422 when enabling Pages for private RedStore on the current plan. Do not retry that operation or make RedStore public. Only the static viewer is mirrored to the already Pages-enabled `chottuapp/ChotuApp-Software` repository. Its deployment workflow publishes the interface without embedding catalog data or credentials.
 
-```cmd
-gh api --method POST repos/chottuapp/ChotuApp-Software/pages -f build_type=workflow
-gh workflow run shipping-viewer-pages.yml --repo chottuapp/ChotuApp-Software
-```
+Viewer address after a successful deployment: https://chottuapp.github.io/ChotuApp-Software/
 
-If Pages already exists or GitHub returns an account/permissions error, inspect that response before changing existing site settings. The **Publish Shipping Viewer** run reports the actual deployed URL; no live URL is claimed until that deployment succeeds.
+Deployment status: https://github.com/chottuapp/ChotuApp-Software/actions/workflows/shipping-viewer-pages.yml
 
-`PyariWalls_FINAL.xlsx` has not been uploaded in this session. The present exporter uses its documented standard audit workbook; it does not claim to reproduce an unseen Desktop template.
+Fetching status: https://github.com/chottuapp/RedStore/actions/workflows/chotuapp-shipping-online.yml
+
+The environment cannot query the management API or public Pages URL (proxy returns Forbidden). Git push confirms publication of code, not successful Pages deployment. The owner can check the deployment run using their authenticated CLI.
+
+The owner-supplied `PyariWalls_FINAL.xlsx` template is stored in **RedStore**, not in this static hosting mirror. RedStore's exporter uses its original seven columns and formatting. The historical example rows and PKR 999 are never reused as new-store facts. This repository hosts only the viewer; the live form dispatches RedStore and reads RedStore results.

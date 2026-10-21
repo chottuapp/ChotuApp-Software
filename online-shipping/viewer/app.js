@@ -1,5 +1,5 @@
 'use strict';
-const REPO='chottuapp/ChotuApp-Software',WORKFLOW='chotuapp-shipping-online.yml',API='https://api.github.com';
+const REPO='chottuapp/RedStore',WORKFLOW='chotuapp-shipping-online.yml',API='https://api.github.com';
 let credential='',run=null,rows=[],logText='',resultBranch='',busy=false,epoch=0,polling=false,requestFloor=null,loadedSummary='';
 const $=id=>document.getElementById(id);
 function message(text,error=false,id='message'){const el=$(id);el.className='message'+(error?' error':'');el.textContent=text;}
