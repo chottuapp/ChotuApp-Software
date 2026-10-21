@@ -7,7 +7,7 @@ class OwnerFilterTests(unittest.TestCase):
   raw=self.fixture();p=normalize(raw,raw['handle'],active_only=True,in_stock_only=True);self.assertEqual(len(p['variants']),1);self.assertTrue(all(v['available'] for v in p['variants']))
   selected=[v for v in raw['variants'] if v['stock_status'] in ('in-stock','limited-stock')];self.assertEqual(p['variants'][0]['price'],selected[0]['price'])
  def test_hidden_draft_archived_excluded(self):
-  for changes in ({'status':'draft'},{'status':'archived'},{'hidden':True},{'is_visible':False}):
+  for changes in ({'status':'draft'},{'status':'archived'},{'hidden':True},{'is_visible':False},{'published':False},{'visibility':'unlisted'},{'visibility':'private'}):
    raw=self.fixture();raw.update(changes)
    with self.assertRaises(HiddenProduct):normalize(raw,raw['handle'],active_only=True,in_stock_only=True)
  def test_all_outofstock_excluded(self):
