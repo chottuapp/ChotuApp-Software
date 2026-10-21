@@ -1,65 +1,56 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-21T14:24:16.882781+00:00",
-  "run_id": "39576575531",
+  "generated_utc": "2026-10-21T15:14:04.939068+00:00",
+  "run_id": "39616605711",
   "attempt": "1",
-  "source_commit": "fc7668e1accf604d5a2fdd369acf16db2bcfdf05",
-  "status": "incomplete",
+  "source_commit": "92ba6aa6b14bea783e94502dce164bb8d65cd4eb",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 18000.7,
+  "elapsed_seconds": 2735.1,
   "stores": [
     {
       "name": "Bonanza Satrangi",
       "status": "done",
       "review_required": true,
-      "issue_codes": [
-        "HTTP_503",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
+      "issue_codes": [],
       "software_revision": "ea351ea30f5923af",
       "products": 1105,
       "variants": 3392,
-      "http_statuses": {
-        "200": 1149
-      },
-      "network_seconds": 2744.6,
-      "max_response_seconds": 3.2,
-      "cache_events": 2211
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
     },
     {
       "name": "Outfitters",
       "status": "done",
       "review_required": true,
-      "issue_codes": [
-        "HTTP_404",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
+      "issue_codes": [],
       "software_revision": "ea351ea30f5923af",
       "products": 4477,
       "variants": 34076,
-      "http_statuses": {
-        "200": 4497,
-        "404": 4
-      },
-      "network_seconds": 5066.6,
-      "max_response_seconds": 7.9,
-      "cache_events": 8954
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
     },
     {
       "name": "Zellbury",
-      "status": "pending",
-      "review_required": false,
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
         "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "ea351ea30f5923af",
+      "software_revision": "2f2457e6a7693ebc",
+      "products": 6083,
+      "variants": 25421,
       "http_statuses": {
-        "200": 6140
+        "200": 247
       },
-      "network_seconds": 7972.7,
-      "max_response_seconds": 2.4,
-      "cache_events": 0
+      "network_seconds": 313.1,
+      "max_response_seconds": 6.8,
+      "cache_events": 24107
     }
   ]
 }
