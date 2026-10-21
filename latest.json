@@ -1,166 +1,30 @@
 {
-  "run_id": "39512413532",
-  "checked_utc": "2026-10-20T23:03:35.071665+00:00",
-  "active_queued": 3,
+  "run_id": "39519131275",
+  "checked_utc": "2026-10-21T00:05:34.087428+00:00",
+  "active_queued": 2,
   "runs": [
     {
-      "conclusion": "",
+      "conclusion": "failure",
       "databaseId": 39496275070,
       "displayTitle": "Cloud group solo-laam",
-      "status": "in_progress",
-      "updatedAt": "2026-10-20T20:56:40Z",
+      "status": "completed",
+      "updatedAt": "2026-10-21T00:02:09Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39496275070",
       "lane": "solo-laam",
-      "snapshot": "Updated (UTC): 2026-10-20T23:02:47.733014+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nLAAM: running\n  Stage: Website listing order\n  Last successful HTTP response (UTC): 2026-10-20T23:02:37.305030+00:00\n",
-      "snapshot_utc": "2026-10-20T23:02:47.733014+00:00",
+      "snapshot": "Updated (UTC): 2026-10-21T00:01:24.371611+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nLAAM: failed\n  Stage: Idle\n  Last successful HTTP response (UTC): 2026-10-21T00:00:32.146297+00:00\n",
+      "snapshot_utc": "2026-10-21T00:01:24.371611+00:00",
       "stores": {
-        "LAAM": "running"
+        "LAAM": "failed"
       },
-      "snapshot_age_seconds": 47,
+      "snapshot_age_seconds": 250,
       "snapshot_stale": false,
-      "console-tail.txt": [
-        "[LAAM] [23:01:53] HTTP START attempt=1 https://laam.com/products/3-piece-embroidered-suit-t-emb-006",
-        "[LAAM] [23:01:53] HTTP END status=200 elapsed=0.4s bytes=321815 https://laam.com/products/3-piece-embroidered-suit-t-emb-006",
-        "[LAAM] [23:01:54] HTTP START attempt=1 https://laam.com/products/3-piece-embroidered-suite",
-        "[LAAM] [23:01:56] HTTP END status=200 elapsed=2.1s bytes=318647 https://laam.com/products/3-piece-embroidered-suite",
-        "[LAAM] [23:01:56] HTTP START attempt=1 https://laam.com/products/3-piece-embroidered-unstitched-winter-collection-3",
-        "[LAAM] [23:01:57] HTTP END status=200 elapsed=0.5s bytes=297564 https://laam.com/products/3-piece-embroidered-unstitched-winter-collection-3",
-        "[LAAM] [23:01:58] HTTP START attempt=1 https://laam.com/products/3-piece-embroidered-unstitched-zc-1326-42-purple",
-        "[LAAM] [23:01:58] HTTP END status=200 elapsed=0.3s bytes=310874 https://laam.com/products/3-piece-embroidered-unstitched-zc-1326-42-purple",
-        "[LAAM] [23:01:59] HTTP START attempt=1 https://laam.com/products/3-piece-embroidered-unstitched-zc-1326-45-ice-blue",
-        "[LAAM] [23:02:00] HTTP END status=200 elapsed=0.3s bytes=311000 https://laam.com/products/3-piece-embroidered-unstitched-zc-1326-45-ice-blue",
-        "[LAAM] [23:02:01] HTTP START attempt=1 https://laam.com/products/3-piece-embroidered-unstitched-zc-1326-46-beige",
-        "[LAAM] [23:02:02] HTTP END status=200 elapsed=1.4s bytes=308299 https://laam.com/products/3-piece-embroidered-unstitched-zc-1326-46-beige",
-        "[LAAM] [23:02:02] HTTP START attempt=1 https://laam.com/products/3-piece-embroidered-unstitched-zc-1326-47-blue",
-        "[LAAM] [23:02:05] HTTP END status=200 elapsed=2.2s bytes=306574 https://laam.com/products/3-piece-embroidered-unstitched-zc-1326-47-blue",
-        "[LAAM] [23:02:05] HTTP START attempt=1 https://laam.com/products/3-piece-embroidered-velvet-suit",
-        "[LAAM] [23:02:05] HTTP END status=200 elapsed=0.4s bytes=309703 https://laam.com/products/3-piece-embroidered-velvet-suit",
-        "[LAAM] [23:02:06] HTTP START attempt=1 https://laam.com/products/3-piece-embroidered-velvet-suit-6",
-        "[LAAM] [23:02:06] HTTP END status=200 elapsed=0.3s bytes=313583 https://laam.com/products/3-piece-embroidered-velvet-suit-6",
-        "[LAAM] [23:02:08] HTTP START attempt=1 https://laam.com/products/3-piece-embroidered-velvet-suit-7",
-        "[LAAM] [23:02:08] HTTP END status=200 elapsed=0.3s bytes=310183 https://laam.com/products/3-piece-embroidered-velvet-suit-7",
-        "[LAAM] [23:02:09] HTTP START attempt=1 https://laam.com/products/3-piece-embroidered-white-chikankari-dress",
-        "[LAAM] [23:02:09] HTTP END status=200 elapsed=0.4s bytes=312307 https://laam.com/products/3-piece-embroidered-white-chikankari-dress",
-        "[LAAM] [23:02:11] HTTP START attempt=1 https://laam.com/products/3-piece-embroidered-white-crochet-net-dress-with-lawn-inner",
-        "[LAAM] [23:02:11] HTTP END status=200 elapsed=0.4s bytes=323292 https://laam.com/products/3-piece-embroidered-white-crochet-net-dress-with-lawn-inner",
-        "[LAAM] [23:02:12] HTTP START attempt=1 https://laam.com/products/3-piece-embroidered-white-lawn-dress-with-apple-green-chiffon-dupatta",
-        "[LAAM] [23:02:12] HTTP END status=200 elapsed=0.3s bytes=316912 https://laam.com/products/3-piece-embroidered-white-lawn-dress-with-apple-green-chiffon-dupatta",
-        "[LAAM] [23:02:14] HTTP START attempt=1 https://laam.com/products/3-piece-embroidery-organza-dress",
-        "[LAAM] [23:02:17] HTTP END status=200 elapsed=3.3s bytes=313382 https://laam.com/products/3-piece-embroidery-organza-dress",
-        "[LAAM] [23:02:17] HTTP START attempt=1 https://laam.com/products/3-piece-emerald-crest",
-        "[LAAM] [23:02:17] HTTP END status=200 elapsed=0.4s bytes=308836 https://laam.com/products/3-piece-emerald-crest",
-        "[LAAM] [23:02:18] HTTP START attempt=1 https://laam.com/products/3-piece-emerald-dynasty",
-        "[LAAM] [23:02:19] HTTP END status=200 elapsed=0.3s bytes=312908 https://laam.com/products/3-piece-emerald-dynasty",
-        "[LAAM] [23:02:20] HTTP START attempt=1 https://laam.com/products/3-piece-emeroidered-pink-suit",
-        "[LAAM] [23:02:20] HTTP END status=200 elapsed=0.4s bytes=310199 https://laam.com/products/3-piece-emeroidered-pink-suit",
-        "[LAAM] [23:02:21] HTTP START attempt=1 https://laam.com/products/3-piece-espresso-dominion",
-        "[LAAM] [23:02:22] HTTP END status=200 elapsed=0.3s bytes=316235 https://laam.com/products/3-piece-espresso-dominion",
-        "[LAAM] [23:02:23] HTTP START attempt=1 https://laam.com/products/3-piece-everbrown-jade",
-        "[LAAM] [23:02:23] HTTP END status=200 elapsed=0.3s bytes=308591 https://laam.com/products/3-piece-everbrown-jade",
-        "[LAAM] [23:02:24] HTTP START attempt=1 https://laam.com/products/3-piece-fantastic",
-        "[LAAM] [23:02:25] HTTP END status=200 elapsed=0.3s bytes=307769 https://laam.com/products/3-piece-fantastic",
-        "[LAAM] [23:02:26] HTTP START attempt=1 https://laam.com/products/3-piece-fawn-dominion",
-        "[LAAM] [23:02:26] HTTP END status=200 elapsed=0.3s bytes=315736 https://laam.com/products/3-piece-fawn-dominion",
-        "[LAAM] [23:02:27] HTTP START attempt=1 https://laam.com/products/3-piece-ferozay",
-        "[LAAM] [23:02:28] HTTP END status=200 elapsed=0.6s bytes=308747 https://laam.com/products/3-piece-ferozay",
-        "[LAAM] [23:02:29] HTTP START attempt=1 https://laam.com/products/3-piece-ferozi",
-        "[LAAM] [23:02:29] HTTP END status=200 elapsed=0.4s bytes=308909 https://laam.com/products/3-piece-ferozi",
-        "[LAAM] [23:02:30] HTTP START attempt=1 https://laam.com/products/3-piece-flora-black",
-        "[LAAM] [23:02:31] HTTP END status=200 elapsed=0.4s bytes=311210 https://laam.com/products/3-piece-flora-black",
-        "[LAAM] [23:02:32] HTTP START attempt=1 https://laam.com/products/3-piece-flora-pink",
-        "[LAAM] [23:02:32] HTTP END status=200 elapsed=0.3s bytes=307932 https://laam.com/products/3-piece-flora-pink",
-        "[LAAM] [23:02:33] HTTP START attempt=1 https://laam.com/products/3-piece-frock-jk-prt-010",
-        "[LAAM] [23:02:34] HTTP END status=200 elapsed=0.4s bytes=305478 https://laam.com/products/3-piece-frock-jk-prt-010",
-        "[LAAM] [23:02:35] HTTP START attempt=1 https://laam.com/products/3-piece-garnet-crown",
-        "[LAAM] [23:02:35] HTTP END status=200 elapsed=0.4s bytes=307130 https://laam.com/products/3-piece-garnet-crown",
-        "[LAAM] [23:02:36] HTTP START attempt=1 https://laam.com/products/3-piece-gem",
-        "[LAAM] [23:02:37] HTTP END status=200 elapsed=0.4s bytes=307615 https://laam.com/products/3-piece-gem",
-        "[LAAM] [23:02:38] HTTP START attempt=1 https://laam.com/products/3-piece-golden-dune",
-        "[LAAM] [23:02:40] HTTP END status=200 elapsed=1.7s bytes=309885 https://laam.com/products/3-piece-golden-dune",
-        "[LAAM] [23:02:40] HTTP START attempt=1 https://laam.com/products/3-piece-golden-legacy",
-        "[LAAM] [23:02:40] HTTP END status=200 elapsed=0.4s bytes=311954 https://laam.com/products/3-piece-golden-legacy",
-        "[LAAM] [23:02:41] HTTP START attempt=1 https://laam.com/products/3-piece-golden-shadow",
-        "[LAAM] [23:02:41] HTTP END status=200 elapsed=0.2s bytes=304926 https://laam.com/products/3-piece-golden-shadow",
-        "[LAAM] [23:02:43] HTTP START attempt=1 https://laam.com/products/3-piece-granite-charm",
-        "[LAAM] [23:02:43] HTTP END status=200 elapsed=0.3s bytes=332875 https://laam.com/products/3-piece-granite-charm",
-        "[LAAM] PUBLIC PRODUCT PAGES: 7000/183187 LAAM pages inspected; 6421 clothing products retained",
-        "[LAAM] PUBLIC PRODUCT PAGES: 7000/183187 LAAM pages inspected; 6421 clothing products retained; 54 pages deferred",
-        "[LAAM] [23:02:44] HTTP START attempt=1 https://laam.com/products/3-piece-graphite-grey-embroidered-ziba-khaddar-suit",
-        "[LAAM] [23:02:44] HTTP END status=200 elapsed=0.4s bytes=314982 https://laam.com/products/3-piece-graphite-grey-embroidered-ziba-khaddar-suit",
-        "[LAAM] [23:02:46] HTTP START attempt=1 https://laam.com/products/3-piece-green-crinkle-embroidered-suit",
-        "[LAAM] [23:02:46] HTTP END status=200 elapsed=0.3s bytes=349865 https://laam.com/products/3-piece-green-crinkle-embroidered-suit"
-      ],
-      "fetch-log.txt": [
-        "[LAAM] [23:01:53] HTTP END status=200 elapsed=0.4s bytes=321815 https://laam.com/products/3-piece-embroidered-suit-t-emb-006",
-        "[LAAM] [23:01:54] HTTP START attempt=1 https://laam.com/products/3-piece-embroidered-suite",
-        "[LAAM] [23:01:56] HTTP END status=200 elapsed=2.1s bytes=318647 https://laam.com/products/3-piece-embroidered-suite",
-        "[LAAM] [23:01:56] HTTP START attempt=1 https://laam.com/products/3-piece-embroidered-unstitched-winter-collection-3",
-        "[LAAM] [23:01:57] HTTP END status=200 elapsed=0.5s bytes=297564 https://laam.com/products/3-piece-embroidered-unstitched-winter-collection-3",
-        "[LAAM] [23:01:58] HTTP START attempt=1 https://laam.com/products/3-piece-embroidered-unstitched-zc-1326-42-purple",
-        "[LAAM] [23:01:58] HTTP END status=200 elapsed=0.3s bytes=310874 https://laam.com/products/3-piece-embroidered-unstitched-zc-1326-42-purple",
-        "[LAAM] [23:01:59] HTTP START attempt=1 https://laam.com/products/3-piece-embroidered-unstitched-zc-1326-45-ice-blue",
-        "[LAAM] [23:02:00] HTTP END status=200 elapsed=0.3s bytes=311000 https://laam.com/products/3-piece-embroidered-unstitched-zc-1326-45-ice-blue",
-        "[LAAM] [23:02:01] HTTP START attempt=1 https://laam.com/products/3-piece-embroidered-unstitched-zc-1326-46-beige",
-        "[LAAM] [23:02:02] HTTP END status=200 elapsed=1.4s bytes=308299 https://laam.com/products/3-piece-embroidered-unstitched-zc-1326-46-beige",
-        "[LAAM] [23:02:02] HTTP START attempt=1 https://laam.com/products/3-piece-embroidered-unstitched-zc-1326-47-blue",
-        "[LAAM] [23:02:05] HTTP END status=200 elapsed=2.2s bytes=306574 https://laam.com/products/3-piece-embroidered-unstitched-zc-1326-47-blue",
-        "[LAAM] [23:02:05] HTTP START attempt=1 https://laam.com/products/3-piece-embroidered-velvet-suit",
-        "[LAAM] [23:02:05] HTTP END status=200 elapsed=0.4s bytes=309703 https://laam.com/products/3-piece-embroidered-velvet-suit",
-        "[LAAM] [23:02:06] HTTP START attempt=1 https://laam.com/products/3-piece-embroidered-velvet-suit-6",
-        "[LAAM] [23:02:06] HTTP END status=200 elapsed=0.3s bytes=313583 https://laam.com/products/3-piece-embroidered-velvet-suit-6",
-        "[LAAM] [23:02:08] HTTP START attempt=1 https://laam.com/products/3-piece-embroidered-velvet-suit-7",
-        "[LAAM] [23:02:08] HTTP END status=200 elapsed=0.3s bytes=310183 https://laam.com/products/3-piece-embroidered-velvet-suit-7",
-        "[LAAM] [23:02:09] HTTP START attempt=1 https://laam.com/products/3-piece-embroidered-white-chikankari-dress",
-        "[LAAM] [23:02:09] HTTP END status=200 elapsed=0.4s bytes=312307 https://laam.com/products/3-piece-embroidered-white-chikankari-dress",
-        "[LAAM] [23:02:11] HTTP START attempt=1 https://laam.com/products/3-piece-embroidered-white-crochet-net-dress-with-lawn-inner",
-        "[LAAM] [23:02:11] HTTP END status=200 elapsed=0.4s bytes=323292 https://laam.com/products/3-piece-embroidered-white-crochet-net-dress-with-lawn-inner",
-        "[LAAM] [23:02:12] HTTP START attempt=1 https://laam.com/products/3-piece-embroidered-white-lawn-dress-with-apple-green-chiffon-dupatta",
-        "[LAAM] [23:02:12] HTTP END status=200 elapsed=0.3s bytes=316912 https://laam.com/products/3-piece-embroidered-white-lawn-dress-with-apple-green-chiffon-dupatta",
-        "[LAAM] [23:02:14] HTTP START attempt=1 https://laam.com/products/3-piece-embroidery-organza-dress",
-        "[LAAM] [23:02:17] HTTP END status=200 elapsed=3.3s bytes=313382 https://laam.com/products/3-piece-embroidery-organza-dress",
-        "[LAAM] [23:02:17] HTTP START attempt=1 https://laam.com/products/3-piece-emerald-crest",
-        "[LAAM] [23:02:17] HTTP END status=200 elapsed=0.4s bytes=308836 https://laam.com/products/3-piece-emerald-crest",
-        "[LAAM] [23:02:18] HTTP START attempt=1 https://laam.com/products/3-piece-emerald-dynasty",
-        "[LAAM] [23:02:19] HTTP END status=200 elapsed=0.3s bytes=312908 https://laam.com/products/3-piece-emerald-dynasty",
-        "[LAAM] [23:02:20] HTTP START attempt=1 https://laam.com/products/3-piece-emeroidered-pink-suit",
-        "[LAAM] [23:02:20] HTTP END status=200 elapsed=0.4s bytes=310199 https://laam.com/products/3-piece-emeroidered-pink-suit",
-        "[LAAM] [23:02:21] HTTP START attempt=1 https://laam.com/products/3-piece-espresso-dominion",
-        "[LAAM] [23:02:22] HTTP END status=200 elapsed=0.3s bytes=316235 https://laam.com/products/3-piece-espresso-dominion",
-        "[LAAM] [23:02:23] HTTP START attempt=1 https://laam.com/products/3-piece-everbrown-jade",
-        "[LAAM] [23:02:23] HTTP END status=200 elapsed=0.3s bytes=308591 https://laam.com/products/3-piece-everbrown-jade",
-        "[LAAM] [23:02:24] HTTP START attempt=1 https://laam.com/products/3-piece-fantastic",
-        "[LAAM] [23:02:25] HTTP END status=200 elapsed=0.3s bytes=307769 https://laam.com/products/3-piece-fantastic",
-        "[LAAM] [23:02:26] HTTP START attempt=1 https://laam.com/products/3-piece-fawn-dominion",
-        "[LAAM] [23:02:26] HTTP END status=200 elapsed=0.3s bytes=315736 https://laam.com/products/3-piece-fawn-dominion",
-        "[LAAM] [23:02:27] HTTP START attempt=1 https://laam.com/products/3-piece-ferozay",
-        "[LAAM] [23:02:28] HTTP END status=200 elapsed=0.6s bytes=308747 https://laam.com/products/3-piece-ferozay",
-        "[LAAM] [23:02:29] HTTP START attempt=1 https://laam.com/products/3-piece-ferozi",
-        "[LAAM] [23:02:29] HTTP END status=200 elapsed=0.4s bytes=308909 https://laam.com/products/3-piece-ferozi",
-        "[LAAM] [23:02:30] HTTP START attempt=1 https://laam.com/products/3-piece-flora-black",
-        "[LAAM] [23:02:31] HTTP END status=200 elapsed=0.4s bytes=311210 https://laam.com/products/3-piece-flora-black",
-        "[LAAM] [23:02:32] HTTP START attempt=1 https://laam.com/products/3-piece-flora-pink",
-        "[LAAM] [23:02:32] HTTP END status=200 elapsed=0.3s bytes=307932 https://laam.com/products/3-piece-flora-pink",
-        "[LAAM] [23:02:33] HTTP START attempt=1 https://laam.com/products/3-piece-frock-jk-prt-010",
-        "[LAAM] [23:02:34] HTTP END status=200 elapsed=0.4s bytes=305478 https://laam.com/products/3-piece-frock-jk-prt-010",
-        "[LAAM] [23:02:35] HTTP START attempt=1 https://laam.com/products/3-piece-garnet-crown",
-        "[LAAM] [23:02:35] HTTP END status=200 elapsed=0.4s bytes=307130 https://laam.com/products/3-piece-garnet-crown",
-        "[LAAM] [23:02:36] HTTP START attempt=1 https://laam.com/products/3-piece-gem",
-        "[LAAM] [23:02:37] HTTP END status=200 elapsed=0.4s bytes=307615 https://laam.com/products/3-piece-gem",
-        "[LAAM] [23:02:38] HTTP START attempt=1 https://laam.com/products/3-piece-golden-dune",
-        "[LAAM] [23:02:40] HTTP END status=200 elapsed=1.7s bytes=309885 https://laam.com/products/3-piece-golden-dune",
-        "[LAAM] [23:02:40] HTTP START attempt=1 https://laam.com/products/3-piece-golden-legacy",
-        "[LAAM] [23:02:40] HTTP END status=200 elapsed=0.4s bytes=311954 https://laam.com/products/3-piece-golden-legacy",
-        "[LAAM] [23:02:41] HTTP START attempt=1 https://laam.com/products/3-piece-golden-shadow",
-        "[LAAM] [23:02:41] HTTP END status=200 elapsed=0.2s bytes=304926 https://laam.com/products/3-piece-golden-shadow",
-        "[LAAM] [23:02:43] HTTP START attempt=1 https://laam.com/products/3-piece-granite-charm",
-        "[LAAM] [23:02:43] HTTP END status=200 elapsed=0.3s bytes=332875 https://laam.com/products/3-piece-granite-charm",
-        "[LAAM] PUBLIC PRODUCT PAGES: 7000/183187 LAAM pages inspected; 6421 clothing products retained",
-        "[LAAM] PUBLIC PRODUCT PAGES: 7000/183187 LAAM pages inspected; 6421 clothing products retained; 54 pages deferred",
-        "[LAAM] [23:02:44] HTTP START attempt=1 https://laam.com/products/3-piece-graphite-grey-embroidered-ziba-khaddar-suit",
-        "[LAAM] [23:02:44] HTTP END status=200 elapsed=0.4s bytes=314982 https://laam.com/products/3-piece-graphite-grey-embroidered-ziba-khaddar-suit",
-        "[LAAM] [23:02:46] HTTP START attempt=1 https://laam.com/products/3-piece-green-crinkle-embroidered-suit",
-        "[LAAM] [23:02:46] HTTP END status=200 elapsed=0.3s bytes=349865 https://laam.com/products/3-piece-green-crinkle-embroidered-suit",
-        "[LAAM] [23:02:47] HTTP START attempt=1 https://laam.com/products/3-piece-green-ivy"
+      "failure_details": [
+        "fetch\tFetch result\t2026-10-21T00:01:25.5859774Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts",
+        "fetch\tFetch result\t2026-10-21T00:01:25.5860446Z RUN SUMMARY:",
+        "fetch\tFetch result\t2026-10-21T00:01:25.5861391Z LAAM: FAILED \u2014 FAILED: LAAM: HTTPSConnectionPool(host='laam.com', port=443): Read timed out. (read timeout=35)",
+        "fetch\tFetch result\t2026-10-21T00:01:25.5862141Z Checkpoint: saved",
+        "fetch\tFetch result\t2026-10-21T00:01:25.5862844Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+        "fetch\tFetch result\t2026-10-21T00:01:25.5872810Z ##[error]Process completed with exit code 2."
       ]
     },
     {
@@ -177,7 +41,7 @@
         "Zellbury": "done",
         "Zero Lifestyle": "done"
       },
-      "snapshot_age_seconds": 5743,
+      "snapshot_age_seconds": 9462,
       "snapshot_stale": true
     },
     {
@@ -188,14 +52,14 @@
       "updatedAt": "2026-10-20T20:43:10Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39494295410",
       "lane": "fresh26-39450710625-6",
-      "snapshot": "Updated (UTC): 2026-10-20T23:00:28.502966+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Nisa Naturals.xlsx\n2. Hemani Herbals.xlsx\n\nSTORE STATUS\nNisa Naturals: done\nHemani Herbals: done\nGul Ahmed: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 5024/6807 tasks; sample age 68s\n  Approximate ETA for this stage only: 148.7 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-20T23:00:16.925903+00:00\n",
-      "snapshot_utc": "2026-10-20T23:00:28.502966+00:00",
+      "snapshot": "Updated (UTC): 2026-10-21T00:01:02.649514+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Nisa Naturals.xlsx\n2. Hemani Herbals.xlsx\n\nSTORE STATUS\nNisa Naturals: done\nHemani Herbals: done\nGul Ahmed: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 5724/6807 tasks; sample age 202s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-10-21T00:00:57.155057+00:00\n",
+      "snapshot_utc": "2026-10-21T00:01:02.649514+00:00",
       "stores": {
         "Nisa Naturals": "done",
         "Hemani Herbals": "done",
         "Gul Ahmed": "running"
       },
-      "snapshot_age_seconds": 187,
+      "snapshot_age_seconds": 271,
       "snapshot_stale": false
     },
     {
@@ -206,14 +70,14 @@
       "updatedAt": "2026-10-20T20:43:06Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39494289423",
       "lane": "fresh26-39450710625-2",
-      "snapshot": "Updated (UTC): 2026-10-20T22:59:51.793392+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Tawakkal Fabrics.xlsx\n2. Junaid Jamshed.xlsx\n\nSTORE STATUS\nTawakkal Fabrics: done\nJunaid Jamshed: done\nStylo: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 4558/9149 tasks; sample age 229s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-10-20T22:59:39.212588+00:00\n",
-      "snapshot_utc": "2026-10-20T22:59:51.793392+00:00",
+      "snapshot": "Updated (UTC): 2026-10-21T00:05:16.917365+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Tawakkal Fabrics.xlsx\n2. Junaid Jamshed.xlsx\n\nSTORE STATUS\nTawakkal Fabrics: done\nJunaid Jamshed: done\nStylo: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 5358/9149 tasks; sample age 153s\n  Approximate ETA for this stage only: 316.1 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-21T00:05:16.083803+00:00\n",
+      "snapshot_utc": "2026-10-21T00:05:16.917365+00:00",
       "stores": {
         "Tawakkal Fabrics": "done",
         "Junaid Jamshed": "done",
         "Stylo": "running"
       },
-      "snapshot_age_seconds": 223,
+      "snapshot_age_seconds": 17,
       "snapshot_stale": false
     },
     {
@@ -229,7 +93,7 @@
       "stores": {
         "Sapphire": "done"
       },
-      "snapshot_age_seconds": 12004,
+      "snapshot_age_seconds": 15723,
       "snapshot_stale": true
     },
     {
@@ -247,7 +111,7 @@
         "Bonanza Satrangi": "done",
         "Outfitters": "done"
       },
-      "snapshot_age_seconds": 11700,
+      "snapshot_age_seconds": 15419,
       "snapshot_stale": true
     },
     {
@@ -265,7 +129,7 @@
         "Cool and Cool": "done",
         "Saeed Ghani": "done"
       },
-      "snapshot_age_seconds": 24071,
+      "snapshot_age_seconds": 27790,
       "snapshot_stale": true
     },
     {
@@ -283,7 +147,7 @@
         "Adam Cheese": "done",
         "Computer Zone": "done"
       },
-      "snapshot_age_seconds": 24653,
+      "snapshot_age_seconds": 28372,
       "snapshot_stale": true
     },
     {
@@ -301,7 +165,7 @@
         "Shop Modest": "done",
         "Seran": "done"
       },
-      "snapshot_age_seconds": 26181,
+      "snapshot_age_seconds": 29900,
       "snapshot_stale": true
     },
     {
@@ -319,7 +183,7 @@
         "The Hanger Pakistan": "done",
         "Elite Cosmetics": "done"
       },
-      "snapshot_age_seconds": 22302,
+      "snapshot_age_seconds": 26021,
       "snapshot_stale": true
     },
     {
@@ -337,7 +201,7 @@
         "Rivaj UK": "done",
         "Rawayat": "done"
       },
-      "snapshot_age_seconds": 14936,
+      "snapshot_age_seconds": 18655,
       "snapshot_stale": true
     }
   ],
@@ -379,13 +243,13 @@
     "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
     "error": "",
     "progress_age_seconds": 1,
-    "report_age_seconds": 13244,
+    "report_age_seconds": 16971,
     "status_confirmed": false
   },
   "drive": {
     "sync_status": "finished",
     "sync_error": null,
-    "last_scan_utc": "2026-10-20T23:01:56.381863+00:00",
+    "last_scan_utc": "2026-10-21T00:04:53.586059+00:00",
     "held": {
       "39450775009": [],
       "39450778729": [],
@@ -420,7 +284,12 @@
         "pipeline_revision": "38e523ed70b0ac0819bc090e2db10454083b9c2511caf5cb68601934d9e8853f",
         "folder": "ChotuApp 19-10-2026 11-36AM",
         "verified_utc": "2026-10-20T23:02:50.132278+00:00",
-        "coverage": "Completed exported workbook; full website coverage remains unverified"
+        "coverage": "Completed exported workbook; full website coverage remains unverified",
+        "folder_id": "17GbkIwSowcPdqyK3rFxhfc9nqkI-yUan",
+        "folder_url": "https://drive.google.com/drive/folders/17GbkIwSowcPdqyK3rFxhfc9nqkI-yUan",
+        "file_id": "194izP9PJxqCpOtbG5Az6SGcJJ4f7q4sK",
+        "file_url": "https://drive.google.com/file/d/194izP9PJxqCpOtbG5Az6SGcJJ4f7q4sK/view",
+        "drive_modified_utc": "2026-10-20T23:02:11.342Z"
       }
     },
     "verified_utc": "2026-10-20T23:03:04.569813+00:00",
@@ -493,7 +362,7 @@
       "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
       "error": "",
       "progress_age_seconds": 1,
-      "report_age_seconds": 13244,
+      "report_age_seconds": 16971,
       "status_confirmed": false
     }
   ],
