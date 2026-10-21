@@ -316,8 +316,34 @@ NAMED_TYPES=[
 ]
 NAMED_TYPES=[(label,re.compile(pattern,re.I)) for label,pattern in NAMED_TYPES]
 
+# Reviewed primary objects precede compatibility targets, ingredients and generic features.
+PRIMARY_OBJECTS=[
+ ('CPU Coolers',r'\b(?:cpu|processor|liquid)\s+cooler\b'),
+ ('Monitor Arms & Mounts',r'\bmonitor\s+(?:arm|mount|stand)\b'),
+ ('Stylus Pens',r'\bstylus(?:\s+pen)?\b'),('Webcams',r'\bweb\s*cam\b'),
+ ('Laptop Bags & Backpacks',r'\blaptop\s+(?:backpack|bag|sleeve)\b|\btop\s+load\s+laptop\s+bag\b'),
+ ('Game Controllers',r'\b(?:dualsense|gamepad|wireless controller)\b'),
+ ('Cables',r'\b(?:coiled|usb|type.c|hdmi|displayport|ethernet)\s+cable\b'),
+ ('Keyboard & Mouse Sets',r'\b(?:wireless|desktop|bluetooth|keys s)\s+combo\b'),
+ ('Eyelash Serums',r'\b(?:eyelash|lash)\s+serum\b'),
+ ('False Eyelashes',r'\b(?:mink lashes|false eyelashes|false lashes)\b'),
+ ('Multipurpose Makeup Pencils',r'\blip\s+liner\s+(?:plus|and|&)\s+eyebrow\b'),
+ ('Lip & Cheek Colour',r'\blip\s*(?:&|and)\s*cheek\b'),
+ ('Lip Colour Sets',r'\bdual[ -]ended\b.*\blipstick\b.*\blip\s+gloss\b'),
+ ('Lip Oils',r'\blip\s+oil\b'),('Lipsticks',r'\blip\s+batom\s+crayon\b'),
+ ('Face Powders',r'\b(?:loose|compact|setting)\s+powder\b'),
+ ('Makeup Brushes',r'\b(?:face|makeup|paint)\s+brush\b'),
+ ('Makeup Adhesives',r'\bglitter\s+glue\b'),
+ ('Eyeshadow Palettes',r'\b(?:eye|eyeshadow)\s+palette\b'),
+ ('Fragrance Sets',r'\bbody\s+mists?\s+set\s+of\b'),
+]
+PRIMARY_OBJECTS=[(label,re.compile(pattern,re.I)) for label,pattern in PRIMARY_OBJECTS]
+
 def named_type(title,body):
     phrase=title.split(',')[0]
+    for label,rule in PRIMARY_OBJECTS:
+        match=rule.search(phrase)
+        if match:return _quote(label,'name',phrase,match)
     # Don't turn a pet's baby-powder scented mist into perfume, or hair colour into a shaver.
     for label,rule in NAMED_TYPES:
         match=rule.search(phrase)
@@ -334,6 +360,15 @@ def named_type(title,body):
 
 def infer(name,description,website_path=''):
     title=plain(name);body=_product_prose(description)
+    if not re.search(r'(?i)\btea\s+bags?\b',title) and re.search(r'(?i)\b(?:curled|tea)\s+leaves\b',body) and re.search(r'(?i)\btea\b',body):return _quote('Loose-Leaf Tea','description',body)
+    # A paid product with a free gift retains the paid product's purpose.
+    promotion=re.match(r'(?is)^buy\s+(.+?)\s*(?:&|and)\s*get\s+.+?\s+free$',title)
+    if promotion:
+        main=infer(promotion.group(1),'')
+        if main:return main[0],main[1],'Paid product: '+promotion.group(1)+'; complimentary gift retained in description'
+    primary=named_type(title,body)
+    if primary and any(label==primary[0] for label,_ in PRIMARY_OBJECTS):return primary
+
     # Prefer the complete named outfit/accessory over individual components.
     named_rules=[
       ('Kurta & Trouser Sets',r'\bkurta\s+(?:and\s+|&\s*)?trousers?\b'),

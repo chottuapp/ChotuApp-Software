@@ -9,7 +9,7 @@ from openpyxl import load_workbook
 VERSION='804-audit-v1'
 # Independent reviewer vocabulary; do not call the classification implementation.
 TYPES=[
- ('laptop',r'\blaptops?\b',r'\blaptops?\b'),
+ ('laptop',r'\b(?:laptops?|notebook|macbook|chromebook|ideapad)\b',r'\blaptops?\b'),
  ('printer toner',r'\b(?:printer\s+toner|toner\s+(?:reload|cartridge))\b',r'\b(?:printer|toner|cartridge)\b'),
  ('keyboard',r'\bkeyboards?\b',r'\bkeyboards?\b'),
  ('earrings',r'\b(?:earrings?|hoops?|studs)\b',r'\b(?:earrings?|hoops?|studs)\b'),
@@ -49,6 +49,68 @@ TYPES=[
  ('kurta',r'\bkurt[ai]s?\b',r'\b(?:kurt[ai]s?|ready.to.wear|suits?|outfits?)\b'),
  ('trousers',r'\b(?:trousers?|pants?|culottes?|shalwars?)\b',r'\b(?:trousers?|pants?|culottes?|shalwars?|joggers?)\b'),
 ]
+# Independent evidence checks for reviewed primary objects and equivalent labels.
+REVIEW_TYPES=[
+ ('tea leaves',r'\b(?:curled|tea)\s+leaves\b|\b(?:leaf blend|super dana)\b',r'loose.leaf tea'),
+ ('mouse pad',r'\bmouse\s*pad\b',r'mouse pads?'),
+ ('usb hub',r'\b(?:usb hub|multiport hub|docking station)\b',r'usb hubs?.*docks?'),
+ ('laundry cleansing wipes',r'\b(?:clothes|fabric)\b.*\bwipes\b',r'laundry stain.removal wipes'),
+
+ ('lassi',r'\blassi\b',r'lassi'),
+ ('ssd enclosure',r'\b(?:ssd|hdd|drive) enclosure\b',r'ssd enclosures?'),
+ ('external storage',r'\b(?:external|portable) (?:hard|ssd|hdd|drive)\b',r'external storage drives?'),
+ ('usb flash drive',r'\b(?:flash drive|pen drive)\b',r'usb flash drives?'),
+ ('phone stand',r'\b(?:phone|mobile) (?:stand|holder)\b',r'phone holders?|mounts?'),
+ ('power supply',r'\bpower supply\b',r'power supplies'),
+ ('computer case',r'\b(?:tower|pc|atx|computer) (?:case|chassis)\b',r'computer cases?'),
+ ('ram',r'\b(?:ddr[345]|ram|memory module)\b',r'computer memory|ddr[345] memory'),
+ ('wet wipes',r'\b(?:travelling|travel|wet|refreshing|fresh) wipes\b',r'wet wipes'),
+ ('makeup removal wipe',r'\b(?:cleansing|make ?up remov\w*)\b.*\bwipes\b',r'makeup remover wipes'),
+ ('laundry wipe',r'\b(?:clothes|fabric)\b.*\bwipes\b',r'laundry stain.removal wipes'),
+ ('pet mist',r'\bmist\b.*\b(?:dog|cat|pet)\b',r'pet deodori[sz]ers.*mists'),
+ ('toilet paper',r'\btoilet (?:roll|paper)\b',r'toilet paper'),
+ ('kitchen towel',r'\bkitchen (?:towel|roll)\b',r'kitchen paper towels?'),
+ ('paper roll',r'\bmaxi roll\b',r'paper towels?.*rolls?'),
+ ('body lotion',r'\b(?:body|fragrance) lotion\b',r'body lotions?'),
+
+ ('processor cooler',r'\b(?:cpu|processor|liquid)\s+cooler\b',r'cpu coolers'),
+ ('monitor arm',r'\bmonitor\s+(?:arm|mount|stand)\b',r'monitor arms?'),
+ ('stylus',r'\bstylus\b',r'stylus pens?'),
+ ('webcam',r'\bweb\s*cam\b',r'webcams?'),
+ ('game controller',r'\b(?:controller|gamepad|dualsense)\b',r'game controllers?'),
+ ('computer mouse',r'\bmouse\b',r'computer mice'),
+ ('headset',r'\b(?:headsets?|headphones?)\b',r'headsets?|headphones?'),
+ ('earbuds',r'\b(?:earbuds?|galaxy buds)\b',r'earphones?|earbuds?'),
+ ('backpack',r'\b(?:backpack|laptop bag|top load laptop bag)\b',r'backpacks?|laptop bags?'),
+ ('keyboard combo',r'\b(?:desktop set|wireless combo|bluetooth wireless combo|keys s combo)\b',r'keyboard.*mouse.*sets?'),
+ ('solid state drive',r'\b(?:ssd|solid.state drive)\b',r'solid.state drives?'),
+ ('power bank',r'\bpower bank\b',r'power banks?'),
+ ('wall charger',r'\b(?:wall charger|gan.*charger)\b',r'wall chargers?'),
+ ('usb cable',r'\b(?:coiled|usb|type.c|hdmi|displayport|ethernet)\s+cable\b',r'cables?'),
+ ('adapter',r'\b(?:adapter|converter)\b',r'adapters?|converters?|hubs?'),
+ ('yoghurt',r'\byogh?urt\b',r'yogh?urt'),
+ ('fabric detergent',r'\b(?:white|fabric|abaya)\s+(?:cleansing\s+)?shampoo\b',r'fabric detergents?'),
+ ('baby lotion',r'\bbaby(?: milk)? (?:lotion|cream)\b',r'baby lotions?|creams?'),
+ ('baby wash',r'\bbaby (?:washing gel|bath|body wash)\b',r'baby bath|body wash'),
+ ('sanitiser',r'\bhand saniti[sz]er\b',r'hand saniti[sz]ers?'),
+ ('tissues',r'\b(?:mini|compact|facial)\s+(?:mini\s+)?tissues?\b',r'facial tissues?'),
+ ('body powder',r'\b(?:prickly heat|body) powder\b',r'body powders?'),
+ ('lip oil',r'\blip oil\b',r'lip oils?'),
+ ('lash serum',r'\b(?:eyelash|lash) serum\b',r'eyelash serums?'),
+ ('false eyelashes',r'\b(?:mink lashes|false lashes|false eyelashes)\b',r'false eyelashes'),
+ ('face powder',r'\b(?:loose|compact|setting) powder\b',r'face powders?'),
+ ('bb cream',r'\b(?:bb|cc) cream\b',r'bb.*cc creams?'),
+ ('contour',r'\bcontour(?:ing)?\b',r'contour|bronzer'),
+ ('highlighter',r'\bhighlighter\b',r'highlighters?'),
+ ('makeup fixer',r'\b(?:makeup fixer|make up fixer|setting spray)\b',r'makeup setting sprays?'),
+ ('makeup brush',r'\b(?:face|makeup|paint) brush\b',r'makeup brushes?'),
+ ('multipurpose pencil',r'\blip liner (?:plus|and|&) eyebrow\b',r'multipurpose makeup pencils?'),
+ ('dual lip colour',r'\bdual.ended\b.*lipstick.*lip gloss',r'lip colour sets?'),
+ ('lip cheek colour',r'\blip\s*(?:&|and)\s*cheek\b',r'lip.*cheek colour'),
+ ('eye palette',r'\b(?:eye|eyeshadow) palette\b',r'eyeshadow palettes?'),
+ ('press on nails',r'\b(?:press.on|stick.on) nails\b',r'press.on nails'),
+]
+TYPES=REVIEW_TYPES+TYPES
 TYPES=[(name,re.compile(a,re.I),re.compile(b,re.I)) for name,a,b in TYPES]
 CARE=re.compile(r'\b(?:care instructions|how to use|directions|usage|precautions|avoid contact|apply to|wash with)\b',re.I)
 def plain(value):return re.sub(r'\s+',' ',html.unescape(re.sub('<[^>]*>',' ',str(value or '')))).strip()
@@ -66,11 +128,21 @@ def issues_for(row,source=None):
  if source and not tokens(source.get('description'))<=tokens(description):issues.append('Description lost source numeric facts')
  body=CARE.split(plain((source or row).get('description')),1)[0][:700]
  category_review=category
- for plural,singular in {'glosses':'gloss','washes':'wash','shampoos':'shampoo','conditioners':'conditioner','mascaras':'mascara','foundations':'foundation','serums':'serum','toners':'toner','lotions':'lotion','concealers':'concealer','eyeliners':'eyeliner','eyeshadows':'eyeshadow','lipsticks':'lipstick'}.items():category_review=re.sub(r'\b'+plural+r'\b',singular,category_review,flags=re.I)
- primary=name or body
+ for plural,singular in {'glosses':'gloss','washes':'wash','shampoos':'shampoo','conditioners':'conditioner','mascaras':'mascara','foundations':'foundation','serums':'serum','toners':'toner','lotions':'lotion','concealers':'concealer','eyeliners':'eyeliner','eyeshadows':'eyeshadow','lipsticks':'lipstick','perfumes':'perfume','fragrances':'fragrance','sunscreens':'sunscreen'}.items():category_review=re.sub(r'\b'+plural+r'\b',singular,category_review,flags=re.I)
+ primary=name.split(',')[0] or body
+ promotion=re.match(r'(?is)^buy\s+(.+?)\s*(?:&|and)\s*get\s+.+?\s+free$',primary)
+ if promotion:primary=promotion.group(1)
+
  found=[(kind,allowed) for kind,pattern,allowed in TYPES if pattern.search(primary)]
+ # Electronics specs mention other components; the earliest named object wins.
+ electronic={'processor cooler','monitor arm','stylus','webcam','game controller','computer mouse','headset','earbuds','backpack','keyboard combo','solid state drive','power bank','wall charger','usb cable','adapter','ssd enclosure','external storage','usb flash drive','phone stand','power supply','computer case','ram','mouse pad','usb hub','laptop','keyboard','printer toner'}
+ candidates=[(pattern.search(primary).start(),index,kind,allowed) for index,(kind,pattern,allowed) in enumerate(TYPES) if kind in electronic and pattern.search(primary)]
+ if candidates:
+  _,_,kind,allowed=min(candidates);found=[(kind,allowed)]
+
  if not found:found=[(kind,allowed) for kind,pattern,allowed in TYPES if pattern.search(body[:260])]
- bundle=bool(re.search(r'\b(?:bundle|combo|kit|duo|deal|set of)\b',name,re.I))
+ bundle=bool(re.search(r'\b(?:bundle|combo|kit|deal|set of)\b',name,re.I))
+ if re.search(r'printer|toner|reload',name,re.I):bundle=False
  if bundle and category:
   if not re.search(r'\b(?:bundle|combo|kit|set|pack|outfit|suit)s?\b',category,re.I):issues.append('Bundle appears classified as a single component')
   families={'dairy':r'cheese|milk|butter|ghee|dairy|yogh?urt|raita|lassi','makeup':r'lipstick|lip\s*gloss|eye\s*shadow|mascara|foundation|concealer|makeup','hair':r'hair|shampoo|conditioner','skin':r'skin|face|facial|serum|cream|lotion','spice':r'spice|masala|cumin|coriander|turmeric'}
