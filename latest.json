@@ -1,6 +1,6 @@
 {
-  "run_id": "39586586480",
-  "checked_utc": "2026-10-21T10:43:03.955240+00:00",
+  "run_id": "39586762825",
+  "checked_utc": "2026-10-21T10:44:34.211333+00:00",
   "active_queued": 6,
   "runs": [
     {
@@ -16,7 +16,7 @@
       "stores": {
         "Sapphire": "running"
       },
-      "snapshot_age_seconds": 111,
+      "snapshot_age_seconds": 201,
       "snapshot_stale": false
     },
     {
@@ -32,8 +32,152 @@
       "stores": {
         "LAAM": "running"
       },
-      "snapshot_age_seconds": 107,
-      "snapshot_stale": false
+      "snapshot_age_seconds": 198,
+      "snapshot_stale": false,
+      "console-tail.txt": [
+        "[LAAM] [10:41:07] HTTP START attempt=1 https://laam.com/sitemap.xml",
+        "[LAAM] [10:41:07] CACHE HIT status=200 elapsed=0.0s bytes=1375 https://laam.com/sitemap.xml",
+        "[LAAM] [10:41:07] HTTP START attempt=1 https://laam.com/sitemaps/products-boy-clothing-1.xml",
+        "[LAAM] [10:41:07] CACHE HIT status=200 elapsed=0.0s bytes=1640109 https://laam.com/sitemaps/products-boy-clothing-1.xml",
+        "[LAAM] LAAM SITEMAP: 6473 distinct public product URLs discovered",
+        "[LAAM] [10:41:08] HTTP START attempt=1 https://laam.com/sitemaps/products-girl-clothing-1.xml",
+        "[LAAM] [10:41:08] CACHE HIT status=200 elapsed=0.0s bytes=2541272 https://laam.com/sitemaps/products-girl-clothing-1.xml",
+        "[LAAM] LAAM SITEMAP: 16734 distinct public product URLs discovered",
+        "[LAAM] [10:41:08] HTTP START attempt=1 https://laam.com/sitemaps/products-men-clothing-1.xml",
+        "[LAAM] [10:41:08] CACHE HIT status=200 elapsed=0.0s bytes=3603026 https://laam.com/sitemaps/products-men-clothing-1.xml",
+        "[LAAM] LAAM SITEMAP: 31306 distinct public product URLs discovered",
+        "[LAAM] [10:41:08] HTTP START attempt=1 https://laam.com/sitemaps/products-other-1.xml",
+        "[LAAM] [10:41:08] CACHE HIT status=200 elapsed=0.0s bytes=2729731 https://laam.com/sitemaps/products-other-1.xml",
+        "[LAAM] LAAM SITEMAP: 42084 distinct public product URLs discovered",
+        "[LAAM] [10:41:08] HTTP START attempt=1 https://laam.com/sitemaps/products-women-accessories-1.xml",
+        "[LAAM] [10:41:08] CACHE HIT status=200 elapsed=0.0s bytes=10487071 https://laam.com/sitemaps/products-women-accessories-1.xml",
+        "[LAAM] LAAM SITEMAP: 82083 distinct public product URLs discovered",
+        "[LAAM] [10:41:08] HTTP START attempt=1 https://laam.com/sitemaps/products-women-accessories-2.xml",
+        "[LAAM] [10:41:08] CACHE HIT status=200 elapsed=0.0s bytes=1201670 https://laam.com/sitemaps/products-women-accessories-2.xml",
+        "[LAAM] LAAM SITEMAP: 87095 distinct public product URLs discovered",
+        "[LAAM] [10:41:08] HTTP START attempt=1 https://laam.com/sitemaps/products-women-clothing-1.xml",
+        "[LAAM] [10:41:08] CACHE HIT status=200 elapsed=0.0s bytes=5847988 https://laam.com/sitemaps/products-women-clothing-1.xml",
+        "[LAAM] LAAM SITEMAP: 112595 distinct public product URLs discovered",
+        "[LAAM] [10:41:09] HTTP START attempt=1 https://laam.com/sitemaps/products-women-clothing-2.xml",
+        "[LAAM] [10:41:09] CACHE HIT status=200 elapsed=0.0s bytes=6504148 https://laam.com/sitemaps/products-women-clothing-2.xml",
+        "[LAAM] LAAM SITEMAP: 138094 distinct public product URLs discovered",
+        "[LAAM] [10:41:09] HTTP START attempt=1 https://laam.com/sitemaps/products-women-clothing-3.xml",
+        "[LAAM] [10:41:09] CACHE HIT status=200 elapsed=0.0s bytes=6243489 https://laam.com/sitemaps/products-women-clothing-3.xml",
+        "[LAAM] LAAM SITEMAP: 163590 distinct public product URLs discovered",
+        "[LAAM] [10:41:09] HTTP START attempt=1 https://laam.com/sitemaps/products-women-clothing-4.xml",
+        "[LAAM] [10:41:09] CACHE HIT status=200 elapsed=0.0s bytes=3013881 https://laam.com/sitemaps/products-women-clothing-4.xml",
+        "[LAAM] LAAM SITEMAP: 176535 distinct public product URLs discovered",
+        "[LAAM] [10:41:09] HTTP START attempt=1 https://laam.com/sitemaps/products-women-footwear-1.xml",
+        "[LAAM] [10:41:09] CACHE HIT status=200 elapsed=0.0s bytes=1574475 https://laam.com/sitemaps/products-women-footwear-1.xml",
+        "[LAAM] LAAM SITEMAP: 183187 distinct public product URLs discovered",
+        "[LAAM] [10:41:09] HTTP START attempt=1 https://laam.com/drops-sitemap.xml",
+        "[LAAM] [10:41:09] CACHE HIT status=200 elapsed=0.0s bytes=4762198 https://laam.com/drops-sitemap.xml",
+        "[LAAM] LAAM SITEMAP: 183187 distinct public product URLs discovered",
+        "[LAAM] [10:41:09] HTTP START attempt=1 https://laam.com/nodes-sitemap.xml",
+        "[LAAM] [10:41:09] CACHE HIT status=200 elapsed=0.0s bytes=357659 https://laam.com/nodes-sitemap.xml",
+        "[LAAM] LAAM SITEMAP: 183187 distinct public product URLs discovered",
+        "[LAAM] [10:41:09] HTTP START attempt=1 https://laam.com/brands-sitemap.xml",
+        "[LAAM] [10:41:09] CACHE HIT status=200 elapsed=0.0s bytes=786657 https://laam.com/brands-sitemap.xml",
+        "[LAAM] LAAM SITEMAP: 183187 distinct public product URLs discovered",
+        "[LAAM] [10:41:09] HTTP START attempt=1 https://laam.com/collections-sitemap.xml",
+        "[LAAM] [10:41:09] CACHE HIT status=200 elapsed=0.0s bytes=12459 https://laam.com/collections-sitemap.xml",
+        "[LAAM] LAAM SITEMAP: 183187 distinct public product URLs discovered",
+        "[LAAM] [10:41:09] HTTP START attempt=1 https://laam.com/videos-sitemap.xml",
+        "[LAAM] [10:41:09] CACHE HIT status=200 elapsed=0.0s bytes=10629654 https://laam.com/videos-sitemap.xml",
+        "[LAAM] LAAM SITEMAP: 183187 distinct public product URLs discovered",
+        "[LAAM] PUBLIC PRODUCT PAGES: 0/183187 LAAM pages inspected; 0 clothing products retained; 0 pages deferred",
+        "[LAAM] PUBLIC PRODUCT PAGES: 1/183187 LAAM pages inspected; 1 clothing products retained",
+        "[LAAM] PUBLIC PRODUCT PAGES: 50/183187 LAAM pages inspected; 31 clothing products retained",
+        "[LAAM] PUBLIC PRODUCT PAGES: 50/183187 LAAM pages inspected; 31 clothing products retained; 0 pages deferred",
+        "[LAAM] PUBLIC PRODUCT PAGES: 100/183187 LAAM pages inspected; 43 clothing products retained; 0 pages deferred",
+        "[LAAM] PUBLIC PRODUCT PAGES: 150/183187 LAAM pages inspected; 45 clothing products retained; 0 pages deferred",
+        "[LAAM] PUBLIC PRODUCT PAGES: 200/183187 LAAM pages inspected; 49 clothing products retained; 0 pages deferred",
+        "[LAAM] PUBLIC PRODUCT PAGES: 250/183187 LAAM pages inspected; 50 clothing products retained; 0 pages deferred",
+        "[LAAM] PUBLIC PRODUCT PAGES: 300/183187 LAAM pages inspected; 68 clothing products retained; 0 pages deferred",
+        "[LAAM] PUBLIC PRODUCT PAGES: 350/183187 LAAM pages inspected; 104 clothing products retained; 0 pages deferred",
+        "[LAAM] [10:41:10] HTTP START attempt=1 https://laam.com/products/01-piece-stitched-bottom-155",
+        "[LAAM] [10:41:10] HTTP END status=500 elapsed=0.4s bytes=197365 https://laam.com/products/01-piece-stitched-bottom-155",
+        "[LAAM] LAAM PRODUCT DEFERRED: https://laam.com/products/01-piece-stitched-bottom-155; temporary server failure, not exported or marked complete",
+        "[LAAM] [10:41:11] HTTP START attempt=1 https://laam.com/products/01-piece-stitched-bottom-156",
+        "[LAAM] [10:41:13] HTTP END status=500 elapsed=1.6s bytes=197365 https://laam.com/products/01-piece-stitched-bottom-156",
+        "[LAAM] LAAM PRODUCT DEFERRED: https://laam.com/products/01-piece-stitched-bottom-156; temporary server failure, not exported or marked complete",
+        "[LAAM] [10:41:13] HTTP START attempt=1 https://laam.com/products/01-piece-stitched-bottom-158",
+        "[LAAM] [10:41:15] HTTP END status=500 elapsed=2.5s bytes=197365 https://laam.com/products/01-piece-stitched-bottom-158",
+        "[LAAM] LAAM PRODUCT DEFERRED: https://laam.com/products/01-piece-stitched-bottom-158; temporary server failure, not exported or marked complete",
+        "[LAAM] [10:41:15] HTTP START attempt=1 https://laam.com/products/01-piece-stitched-bottom-160"
+      ],
+      "fetch-log.txt": [
+        "[LAAM] [10:41:07] HTTP START attempt=1 https://laam.com/sitemap.xml",
+        "[LAAM] [10:41:07] CACHE HIT status=200 elapsed=0.0s bytes=1375 https://laam.com/sitemap.xml",
+        "[LAAM] [10:41:07] HTTP START attempt=1 https://laam.com/sitemaps/products-boy-clothing-1.xml",
+        "[LAAM] [10:41:07] CACHE HIT status=200 elapsed=0.0s bytes=1640109 https://laam.com/sitemaps/products-boy-clothing-1.xml",
+        "[LAAM] LAAM SITEMAP: 6473 distinct public product URLs discovered",
+        "[LAAM] [10:41:08] HTTP START attempt=1 https://laam.com/sitemaps/products-girl-clothing-1.xml",
+        "[LAAM] [10:41:08] CACHE HIT status=200 elapsed=0.0s bytes=2541272 https://laam.com/sitemaps/products-girl-clothing-1.xml",
+        "[LAAM] LAAM SITEMAP: 16734 distinct public product URLs discovered",
+        "[LAAM] [10:41:08] HTTP START attempt=1 https://laam.com/sitemaps/products-men-clothing-1.xml",
+        "[LAAM] [10:41:08] CACHE HIT status=200 elapsed=0.0s bytes=3603026 https://laam.com/sitemaps/products-men-clothing-1.xml",
+        "[LAAM] LAAM SITEMAP: 31306 distinct public product URLs discovered",
+        "[LAAM] [10:41:08] HTTP START attempt=1 https://laam.com/sitemaps/products-other-1.xml",
+        "[LAAM] [10:41:08] CACHE HIT status=200 elapsed=0.0s bytes=2729731 https://laam.com/sitemaps/products-other-1.xml",
+        "[LAAM] LAAM SITEMAP: 42084 distinct public product URLs discovered",
+        "[LAAM] [10:41:08] HTTP START attempt=1 https://laam.com/sitemaps/products-women-accessories-1.xml",
+        "[LAAM] [10:41:08] CACHE HIT status=200 elapsed=0.0s bytes=10487071 https://laam.com/sitemaps/products-women-accessories-1.xml",
+        "[LAAM] LAAM SITEMAP: 82083 distinct public product URLs discovered",
+        "[LAAM] [10:41:08] HTTP START attempt=1 https://laam.com/sitemaps/products-women-accessories-2.xml",
+        "[LAAM] [10:41:08] CACHE HIT status=200 elapsed=0.0s bytes=1201670 https://laam.com/sitemaps/products-women-accessories-2.xml",
+        "[LAAM] LAAM SITEMAP: 87095 distinct public product URLs discovered",
+        "[LAAM] [10:41:08] HTTP START attempt=1 https://laam.com/sitemaps/products-women-clothing-1.xml",
+        "[LAAM] [10:41:08] CACHE HIT status=200 elapsed=0.0s bytes=5847988 https://laam.com/sitemaps/products-women-clothing-1.xml",
+        "[LAAM] LAAM SITEMAP: 112595 distinct public product URLs discovered",
+        "[LAAM] [10:41:09] HTTP START attempt=1 https://laam.com/sitemaps/products-women-clothing-2.xml",
+        "[LAAM] [10:41:09] CACHE HIT status=200 elapsed=0.0s bytes=6504148 https://laam.com/sitemaps/products-women-clothing-2.xml",
+        "[LAAM] LAAM SITEMAP: 138094 distinct public product URLs discovered",
+        "[LAAM] [10:41:09] HTTP START attempt=1 https://laam.com/sitemaps/products-women-clothing-3.xml",
+        "[LAAM] [10:41:09] CACHE HIT status=200 elapsed=0.0s bytes=6243489 https://laam.com/sitemaps/products-women-clothing-3.xml",
+        "[LAAM] LAAM SITEMAP: 163590 distinct public product URLs discovered",
+        "[LAAM] [10:41:09] HTTP START attempt=1 https://laam.com/sitemaps/products-women-clothing-4.xml",
+        "[LAAM] [10:41:09] CACHE HIT status=200 elapsed=0.0s bytes=3013881 https://laam.com/sitemaps/products-women-clothing-4.xml",
+        "[LAAM] LAAM SITEMAP: 176535 distinct public product URLs discovered",
+        "[LAAM] [10:41:09] HTTP START attempt=1 https://laam.com/sitemaps/products-women-footwear-1.xml",
+        "[LAAM] [10:41:09] CACHE HIT status=200 elapsed=0.0s bytes=1574475 https://laam.com/sitemaps/products-women-footwear-1.xml",
+        "[LAAM] LAAM SITEMAP: 183187 distinct public product URLs discovered",
+        "[LAAM] [10:41:09] HTTP START attempt=1 https://laam.com/drops-sitemap.xml",
+        "[LAAM] [10:41:09] CACHE HIT status=200 elapsed=0.0s bytes=4762198 https://laam.com/drops-sitemap.xml",
+        "[LAAM] LAAM SITEMAP: 183187 distinct public product URLs discovered",
+        "[LAAM] [10:41:09] HTTP START attempt=1 https://laam.com/nodes-sitemap.xml",
+        "[LAAM] [10:41:09] CACHE HIT status=200 elapsed=0.0s bytes=357659 https://laam.com/nodes-sitemap.xml",
+        "[LAAM] LAAM SITEMAP: 183187 distinct public product URLs discovered",
+        "[LAAM] [10:41:09] HTTP START attempt=1 https://laam.com/brands-sitemap.xml",
+        "[LAAM] [10:41:09] CACHE HIT status=200 elapsed=0.0s bytes=786657 https://laam.com/brands-sitemap.xml",
+        "[LAAM] LAAM SITEMAP: 183187 distinct public product URLs discovered",
+        "[LAAM] [10:41:09] HTTP START attempt=1 https://laam.com/collections-sitemap.xml",
+        "[LAAM] [10:41:09] CACHE HIT status=200 elapsed=0.0s bytes=12459 https://laam.com/collections-sitemap.xml",
+        "[LAAM] LAAM SITEMAP: 183187 distinct public product URLs discovered",
+        "[LAAM] [10:41:09] HTTP START attempt=1 https://laam.com/videos-sitemap.xml",
+        "[LAAM] [10:41:09] CACHE HIT status=200 elapsed=0.0s bytes=10629654 https://laam.com/videos-sitemap.xml",
+        "[LAAM] LAAM SITEMAP: 183187 distinct public product URLs discovered",
+        "[LAAM] PUBLIC PRODUCT PAGES: 0/183187 LAAM pages inspected; 0 clothing products retained; 0 pages deferred",
+        "[LAAM] PUBLIC PRODUCT PAGES: 1/183187 LAAM pages inspected; 1 clothing products retained",
+        "[LAAM] PUBLIC PRODUCT PAGES: 50/183187 LAAM pages inspected; 31 clothing products retained",
+        "[LAAM] PUBLIC PRODUCT PAGES: 50/183187 LAAM pages inspected; 31 clothing products retained; 0 pages deferred",
+        "[LAAM] PUBLIC PRODUCT PAGES: 100/183187 LAAM pages inspected; 43 clothing products retained; 0 pages deferred",
+        "[LAAM] PUBLIC PRODUCT PAGES: 150/183187 LAAM pages inspected; 45 clothing products retained; 0 pages deferred",
+        "[LAAM] PUBLIC PRODUCT PAGES: 200/183187 LAAM pages inspected; 49 clothing products retained; 0 pages deferred",
+        "[LAAM] PUBLIC PRODUCT PAGES: 250/183187 LAAM pages inspected; 50 clothing products retained; 0 pages deferred",
+        "[LAAM] PUBLIC PRODUCT PAGES: 300/183187 LAAM pages inspected; 68 clothing products retained; 0 pages deferred",
+        "[LAAM] PUBLIC PRODUCT PAGES: 350/183187 LAAM pages inspected; 104 clothing products retained; 0 pages deferred",
+        "[LAAM] [10:41:10] HTTP START attempt=1 https://laam.com/products/01-piece-stitched-bottom-155",
+        "[LAAM] [10:41:10] HTTP END status=500 elapsed=0.4s bytes=197365 https://laam.com/products/01-piece-stitched-bottom-155",
+        "[LAAM] LAAM PRODUCT DEFERRED: https://laam.com/products/01-piece-stitched-bottom-155; temporary server failure, not exported or marked complete",
+        "[LAAM] [10:41:11] HTTP START attempt=1 https://laam.com/products/01-piece-stitched-bottom-156",
+        "[LAAM] [10:41:13] HTTP END status=500 elapsed=1.6s bytes=197365 https://laam.com/products/01-piece-stitched-bottom-156",
+        "[LAAM] LAAM PRODUCT DEFERRED: https://laam.com/products/01-piece-stitched-bottom-156; temporary server failure, not exported or marked complete",
+        "[LAAM] [10:41:13] HTTP START attempt=1 https://laam.com/products/01-piece-stitched-bottom-158",
+        "[LAAM] [10:41:15] HTTP END status=500 elapsed=2.5s bytes=197365 https://laam.com/products/01-piece-stitched-bottom-158",
+        "[LAAM] LAAM PRODUCT DEFERRED: https://laam.com/products/01-piece-stitched-bottom-158; temporary server failure, not exported or marked complete",
+        "[LAAM] [10:41:15] HTTP START attempt=1 https://laam.com/products/01-piece-stitched-bottom-160"
+      ]
     },
     {
       "conclusion": "success",
@@ -48,7 +192,7 @@
       "stores": {
         "Zero Lifestyle": "done"
       },
-      "snapshot_age_seconds": 4670,
+      "snapshot_age_seconds": 4760,
       "snapshot_stale": true
     },
     {
@@ -59,14 +203,14 @@
       "updatedAt": "2026-10-21T09:23:30Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39576575531",
       "lane": "audit804-fresh804-20261021-a26dcd86-9",
-      "snapshot": "Updated (UTC): 2026-10-21T10:39:17.801370+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nBonanza Satrangi: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 850/1106 tasks; sample age 175s\n  Approximate ETA for this stage only: 21.3 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-21T10:39:09.207437+00:00\nOutfitters: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 1450/4479 tasks; sample age 153s\n  Approximate ETA for this stage only: 151.4 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-21T10:39:12.002837+00:00\nZellbury: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 1350/6106 tasks; sample age 60s\n  Approximate ETA for this stage only: 237.7 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-21T10:39:12.424474+00:00\n",
-      "snapshot_utc": "2026-10-21T10:39:17.801370+00:00",
+      "snapshot": "Updated (UTC): 2026-10-21T10:44:19.418016+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nBonanza Satrangi: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 900/1106 tasks; sample age 227s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-10-21T10:44:14.237896+00:00\nOutfitters: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 1600/4479 tasks; sample age 5s\n  Approximate ETA for this stage only: 144.1 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-21T10:44:12.025183+00:00\nZellbury: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 1450/6106 tasks; sample age 62s\n  Approximate ETA for this stage only: 232.8 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-21T10:44:12.430775+00:00\n",
+      "snapshot_utc": "2026-10-21T10:44:19.418016+00:00",
       "stores": {
         "Bonanza Satrangi": "running",
         "Outfitters": "running",
         "Zellbury": "running"
       },
-      "snapshot_age_seconds": 226,
+      "snapshot_age_seconds": 15,
       "snapshot_stale": false
     },
     {
@@ -84,7 +228,7 @@
         "Denim Leftover": "done",
         "Cool and Cool": "done"
       },
-      "snapshot_age_seconds": 4491,
+      "snapshot_age_seconds": 4582,
       "snapshot_stale": true
     },
     {
@@ -95,14 +239,14 @@
       "updatedAt": "2026-10-21T09:23:24Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39576560881",
       "lane": "audit804-fresh804-20261021-a26dcd86-7",
-      "snapshot": "Updated (UTC): 2026-10-21T10:39:16.374235+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Saeed Ghani.xlsx\n\nSTORE STATUS\nSaeed Ghani: done\n  Last successful HTTP response (UTC): 2026-10-21T10:02:46.423322+00:00\nHemani Herbals: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 800/1063 tasks; sample age 212s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-10-21T10:39:06.621073+00:00\nGul Ahmed: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 700/6884 tasks; sample age 66s\n  Approximate ETA for this stage only: 515.4 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-21T10:39:11.593465+00:00\n",
-      "snapshot_utc": "2026-10-21T10:39:16.374235+00:00",
+      "snapshot": "Updated (UTC): 2026-10-21T10:44:18.153568+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Saeed Ghani.xlsx\n\nSTORE STATUS\nSaeed Ghani: done\n  Last successful HTTP response (UTC): 2026-10-21T10:02:46.423322+00:00\nHemani Herbals: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 900/1063 tasks; sample age 13s\n  Approximate ETA for this stage only: 13.6 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-21T10:44:16.622943+00:00\nGul Ahmed: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 750/6884 tasks; sample age 118s\n  Approximate ETA for this stage only: 511.2 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-21T10:44:11.620757+00:00\n",
+      "snapshot_utc": "2026-10-21T10:44:18.153568+00:00",
       "stores": {
         "Saeed Ghani": "done",
         "Hemani Herbals": "running",
         "Gul Ahmed": "running"
       },
-      "snapshot_age_seconds": 228,
+      "snapshot_age_seconds": 16,
       "snapshot_stale": false
     },
     {
@@ -120,7 +264,7 @@
         "LAAM": "pending",
         "Sapphire": "pending"
       },
-      "snapshot_age_seconds": 200,
+      "snapshot_age_seconds": 291,
       "snapshot_stale": false
     },
     {
@@ -138,7 +282,7 @@
         "Adam Cheese": "done",
         "Computer Zone": "done"
       },
-      "snapshot_age_seconds": 2911,
+      "snapshot_age_seconds": 3001,
       "snapshot_stale": true
     },
     {
@@ -156,7 +300,7 @@
         "Shop Modest": "done",
         "Seran": "done"
       },
-      "snapshot_age_seconds": 4454,
+      "snapshot_age_seconds": 4544,
       "snapshot_stale": true
     },
     {
@@ -174,7 +318,7 @@
         "The Hanger Pakistan": "done",
         "Elite Cosmetics": "done"
       },
-      "snapshot_age_seconds": 643,
+      "snapshot_age_seconds": 734,
       "snapshot_stale": true
     },
     {
@@ -185,14 +329,14 @@
       "updatedAt": "2026-10-21T09:23:07Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39576523058",
       "lane": "audit804-fresh804-20261021-a26dcd86-2",
-      "snapshot": "Updated (UTC): 2026-10-21T10:39:09.738302+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Tawakkal Fabrics.xlsx\n\nSTORE STATUS\nTawakkal Fabrics: done\n  Last successful HTTP response (UTC): 2026-10-21T10:13:19.761273+00:00\nJunaid Jamshed: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 2050/5155 tasks; sample age 71s\n  Approximate ETA for this stage only: 103.4 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-21T10:38:59.346025+00:00\nStylo: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 250/9242 tasks; sample age 168s\n  Approximate ETA for this stage only: 749.5 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-21T10:38:58.331354+00:00\n",
-      "snapshot_utc": "2026-10-21T10:39:09.738302+00:00",
+      "snapshot": "Updated (UTC): 2026-10-21T10:44:11.591649+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Tawakkal Fabrics.xlsx\n\nSTORE STATUS\nTawakkal Fabrics: done\n  Last successful HTTP response (UTC): 2026-10-21T10:13:19.761273+00:00\nJunaid Jamshed: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 2200/5155 tasks; sample age 72s\n  Approximate ETA for this stage only: 98.8 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-21T10:44:09.723445+00:00\nStylo: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 300/9242 tasks; sample age 220s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-10-21T10:44:08.334322+00:00\n",
+      "snapshot_utc": "2026-10-21T10:44:11.591649+00:00",
       "stores": {
         "Tawakkal Fabrics": "done",
         "Junaid Jamshed": "running",
         "Stylo": "running"
       },
-      "snapshot_age_seconds": 234,
+      "snapshot_age_seconds": 23,
       "snapshot_stale": false
     },
     {
@@ -203,14 +347,14 @@
       "updatedAt": "2026-10-21T09:23:03Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39576513829",
       "lane": "audit804-fresh804-20261021-a26dcd86-1",
-      "snapshot": "Updated (UTC): 2026-10-21T10:39:21.161790+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Miss Rose.xlsx\n2. Rivaj UK.xlsx\n\nSTORE STATUS\nMiss Rose: done\n  Last successful HTTP response (UTC): 2026-10-21T09:26:07.336304+00:00\nRivaj UK: done\n  Last successful HTTP response (UTC): 2026-10-21T09:37:28.515011+00:00\nRawayat: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 2200/4671 tasks; sample age 5s\n  Approximate ETA for this stage only: 82.4 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-21T10:39:14.452494+00:00\n",
-      "snapshot_utc": "2026-10-21T10:39:21.161790+00:00",
+      "snapshot": "Updated (UTC): 2026-10-21T10:44:23.728969+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Miss Rose.xlsx\n2. Rivaj UK.xlsx\n\nSTORE STATUS\nMiss Rose: done\n  Last successful HTTP response (UTC): 2026-10-21T09:26:07.336304+00:00\nRivaj UK: done\n  Last successful HTTP response (UTC): 2026-10-21T09:37:28.515011+00:00\nRawayat: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 2350/4671 tasks; sample age 8s\n  Approximate ETA for this stage only: 76.6 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-21T10:44:17.489375+00:00\n",
+      "snapshot_utc": "2026-10-21T10:44:23.728969+00:00",
       "stores": {
         "Miss Rose": "done",
         "Rivaj UK": "done",
         "Rawayat": "running"
       },
-      "snapshot_age_seconds": 223,
+      "snapshot_age_seconds": 10,
       "snapshot_stale": false
     }
   ],
@@ -254,7 +398,7 @@
     "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
     "error": "",
     "progress_age_seconds": 1,
-    "report_age_seconds": 55213,
+    "report_age_seconds": 55305,
     "status_confirmed": false
   },
   "drive": {
@@ -380,7 +524,7 @@
       "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
       "error": "",
       "progress_age_seconds": 1,
-      "report_age_seconds": 55213,
+      "report_age_seconds": 55305,
       "status_confirmed": false
     }
   ],
