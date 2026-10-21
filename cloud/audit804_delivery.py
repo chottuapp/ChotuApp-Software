@@ -81,7 +81,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT):
  groups={run['displayTitle'].removeprefix('Cloud group ') for run in all_runs if run.get('displayTitle','').startswith(prefix)}
  runs=helper.related(all_runs,groups);registry=json.loads((root/'cloud/fetch-update-release.json').read_text())['fresh_stores'];sites={s['name']:s for s in registry}
  codes=json.loads((root/'cloud/confirmed-shop-codes.json').read_text())
- revision=hashlib.sha256(b''.join((root/name).read_bytes() for name in ('cloud/audit804.py','cloud/audit804_delivery.py','cloud/rule804_pipeline.py','cloud/legacy_original_schema.py','cloud/confirmed-shop-codes.json','subcategory_inference_support.py','catalog-tools/complete_rule804_batch.py'))).hexdigest()
+ revision=hashlib.sha256(b''.join((root/name).read_bytes() for name in ('cloud/audit804.py','cloud/audit804_semantics.py','cloud/reviewed804_repairs.py','cloud/audit804_delivery.py','cloud/rule804_pipeline.py','cloud/legacy_original_schema.py','cloud/confirmed-shop-codes.json','subcategory_inference_support.py','catalog-tools/complete_rule804_batch.py'))).hexdigest()
  state['audit804_campaign']=campaign;state.setdefault('audit804_results',{});state.setdefault('audit804_processed',{});identity=None
  def handle(source,store,source_run,artifact_id,cache_key):
   nonlocal identity
@@ -94,10 +94,15 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT):
    if hashlib.sha256(base64.b64decode(evidence['content'])).digest()!=hashlib.sha256((root/'laam_source_support.py').read_bytes()).digest():raise ValueError('Rule LAAM clothing-only adapter revision not confirmed')
   with tempfile.TemporaryDirectory() as tmp:
    stage=Path(tmp);normalized,migrated=normalize(source,stage/'normalized'/source.name,code);output=stage/'checked'/(store+'.xlsx')
-   process(normalized,output,store,codes,approved_original=store in {'LAAM','Sapphire','Khaadi'})
+   processing=process(normalized,output,store,codes,approved_original=store in {'LAAM','Sapphire','Khaadi'})
    host=(urlsplit(sites[store]['url']).hostname or '').removeprefix('www.');hosts={host}
    if store=='Sapphire':hosts={'pk.sapphireonline.pk'}
+   if store=='Farda Foods':
+    from farda_source_support import SHOP
+    hosts.add(urlsplit(SHOP).hostname)
    report=audit(output,store,codes,hosts,source=normalized)
+   repairs=[r for r in processing.get('warnings',[]) if r.get('issue','').startswith(('Copied','Removed'))]
+   report.update(description_repairs_count=len(repairs),description_repairs_examples=repairs[:10])
    report.update(campaign_id=campaign,source_run=str(source_run),source_artifact=artifact_id,source_sha256=source_sha)
    if report['status']!='pass':
     if not marker:marker=save_held(source,store,campaign,str(source_run))

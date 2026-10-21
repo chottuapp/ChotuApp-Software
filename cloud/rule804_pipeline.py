@@ -7,6 +7,7 @@ from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from subcategory_inference_support import infer
+from reviewed804_repairs import roots,description as repair_description
 EXCLUDED={'LAAM','Khaadi','Sapphire'}
 def toolkit():
     spec=importlib.util.spec_from_file_location('rule804_xml_tools',ROOT/'catalog-tools/complete_rule804_batch.py');module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);return module
@@ -20,6 +21,7 @@ def process(source,out,store,codes,*,mobile_khaadi=False,approved_original=False
         if not {'Products','Product Images','Option Groups','Options','Variant Combinations'}<=set(book.sheetnames):raise ValueError('Required template sheets missing')
         sheet=book['Products'];rows=sheet.iter_rows(values_only=True);headers=next(rows);indices={h:i+1 for i,h in enumerate(headers)}
         if list(headers[:3])!=['shop_code','product_id','Category']:raise ValueError('Locked Rule 804 schema mismatch')
+        catalogue=roots(dict(zip(headers,v)) for v in sheet.iter_rows(min_row=2,values_only=True))
         required={'name','description','base_price (PKR)','source_url','subcategory_source','subcategory_evidence','subcategory_checked_at'}
         if not required<=set(headers):raise ValueError('Required description/category evidence fields missing')
         for number,values in enumerate(rows,2):
@@ -35,7 +37,8 @@ def process(source,out,store,codes,*,mobile_khaadi=False,approved_original=False
             try:price=Decimal(str(row['base_price (PKR)']))
             except (InvalidOperation,TypeError):raise ValueError('Invalid positive product price')
             if not price.is_finite() or price<=0:raise ValueError('Invalid positive product price')
-            description=str(row.get('description') or '')
+            description,description_repair=repair_description(row,store,catalogue)
+            if description_repair:warnings.append({'product_id':pid,'issue':description_repair})
             if len(description)>=32767:raise ValueError('Description reaches Excel limit; manual source review needed')
             changes={};code=codes.get(store)
             if code and row.get('shop_code')!=code:changes['shop_code']=code
@@ -43,6 +46,8 @@ def process(source,out,store,codes,*,mobile_khaadi=False,approved_original=False
             old=str(row.get('Category') or '');label=old
             if str(row.get('subcategory_source') or '').lower() not in ('manual','owner','manual_override'):
                 result=infer(row.get('name'),description)
+                if result is None and not old and re.match(r'(?i)^SHAWL[-_]',str(row.get('sku') or '')) and re.search(r'(?i)velvet|shawl',description):
+                    result=('Shawls','inferred_source_sku','Explicit source SKU: '+str(row['sku'])+'; source textile description retained')
                 if result:
                     label,origin,quote=result
                     if label!=old:changes.update(Category=label,subcategory_source=origin,subcategory_evidence=quote,subcategory_checked_at=stamp)
@@ -53,7 +58,7 @@ def process(source,out,store,codes,*,mobile_khaadi=False,approved_original=False
             lead=str(row.get('name') or '')+'.'
             if overview and polished.startswith(lead):polished=overview+polished[len(lead):]
             if not description.strip():warnings.append({'product_id':pid,'issue':'Missing description; source review required'})
-            if polished!=description:changes['description']=polished
+            if polished!=str(row.get('description') or ''):changes['description']=polished
             for key,value in changes.items():patches[get_column_letter(indices[key])+str(number)]=value
         if not count:raise ValueError('Empty catalog')
         for name in ('Product Images','Option Groups','Options','Variant Combinations'):

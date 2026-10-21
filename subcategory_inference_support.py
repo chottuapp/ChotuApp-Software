@@ -358,8 +358,50 @@ def named_type(title,body):
     if re.search(r'(?i)\blength\s*:',body) and re.search(r'(?i)\bfabric\s*:',body) and re.search(r'(?i)\bmeters?\b',body):return _quote('Unstitched Fabric','description',body)
     return None
 
+def _structured_clothing(title,description):
+    raw=re.split(r'(?im)^\s*(?:Product Options|Available Options)\s*:',str(description),maxsplit=1)[0]
+    body=plain(raw);context=title+' '+re.split(r'(?i)Note: Stitched Orders',body,maxsplit=1)[0]
+    garment=re.search(r'(?i)\b(?:shirt|kurta|kameez|trouser|dupatta|frock|dress|maxi|gharara|sharara|suit|ensemble|outfit)\b',context)
+    if not garment:return None
+    named_count=re.search(r'(?i)\b([1234])\s*[- ]?\s*(?:pc|piece)s?\b',title)
+    stated_count=re.search(r'(?i)\b(?:rtw|unstitched|stitched|suit|outfit)\s*[:-]?\s*([1234])\s*(?:pc|piece)s?\b',body)
+    prose_count=re.search(r'(?i)\b([234])\s*[- ]?(?:pc|piece)s?\b.{0,70}\b(?:ensemble|suit|outfit|stitched|stiched)\b',body)
+    count=int((named_count or stated_count or prose_count).group(1)) if named_count or stated_count or prose_count else None
+    unstitched=bool(re.search(r'(?i)\bun[ -]?stitched\b',context))
+    semi=bool(re.search(r'(?i)\bsemi[ -]?stitched\b',context))
+    ready=bool(re.search(r'(?i)\brtw\b|ready[ -]to[ -]wear|\bstitched\b',re.sub(r'(?i)\b(?:un|semi)[ -]?stitched\b','',context)))
+    if semi:return _quote('Semi-Stitched Suits','description',body)
+    if unstitched and ready:return None
+    components=sum(bool(re.search(r'(?im)^\s*'+word+r'\s*:',raw)) for word in ('shirt','trouser','dupatta','bottom','top'))
+    if unstitched:return _quote('Unstitched Suits' if count and count>1 or components>=2 else 'Unstitched Fabric','description',body)
+    if ready and count==1:
+        if re.search(r'(?i)\bmaxi\b',title+' '+body[:500]):return _quote('Dresses','description',body)
+        if re.search(r'(?im)^\s*(?:shirt|top)\s*:',raw):return _quote('Shirts','description',body)
+        if re.search(r'(?im)^\s*(?:trouser|bottom)\s*:',raw):return _quote('Trousers','description',body)
+    if ready and (count and count>1 or components>=2):return _quote('Ready-to-Wear Outfits','description',body)
+    if count and count>1:return _quote('Clothing Sets','name',title)
+    return None
+
 def infer(name,description,website_path=''):
     title=plain(name);body=_product_prose(description)
+    if re.search(r'(?i)\blotion\b',title) and re.search(r'(?i)\bface\b',title) and re.search(r'(?i)\bbody\b',title):return _quote('Face & Body Lotions','name',title)
+    garment=_structured_clothing(title,description)
+    if garment:return garment
+    if re.search(r'(?i)\bcharcoal\s+mask\b',title) and re.search(r'(?i)\bskin\b',body):return _quote('Skin Masks','description',body)
+    if re.search(r'(?i)\beye\s+roller\b',title):return _quote('Eye Treatments','name',title)
+    if re.search(r'(?i)\bcream\b',title) and re.search(r'(?i)\b(?:intimate areas|underarms|inner thighs)\b',body[:800]):return _quote('Body Creams','description',body)
+    if re.search(r'(?i)\bcream\b',title) and re.search(r'(?i)\b(?:skin|skincare)\b',body[:800]) and not re.search(r'(?i)\b(?:face|facial|eye|lip|hand|foot|heel|body|hair)\b',title+' '+body[:300]) and not re.search(r'(?i)\bbaby\b',title):return _quote('Skin Moisturisers & Creams','description',body)
+    if re.search(r'(?i)\bpack\b',title) and re.search(r'(?i)\b(?:combination|contains|includes)\b',body[:500]):
+        bundle=_bundle(title+' Bundle',body)
+        if bundle:return bundle
+    if re.search(r'(?i)\blip\b.{0,35}\bserum\b',title):return _quote('Lip Treatments','name',title)
+    explicit_bundle=bool(re.search(r'(?i)\bbundle\b|\b(?:kit|set|trio|duo|pack)\s+(?:of|featuring)\b',body[:250]))
+    if explicit_bundle:
+        hair=bool(re.search(r'(?i)\b(?:hair|shampoo|conditioner|scalp)\b',body[:1400]))
+        skin=bool(re.search(r'(?i)\b(?:skin|face|facial|cream|serum|lotion)\b',body[:1400]))
+        if hair and skin:return _quote('Personal Care Bundles','description',body)
+        if skin:return _quote('Skin Care Bundles','description',body)
+        if hair:return _quote('Hair Care Bundles','description',body)
     if not re.search(r'(?i)\btea\s+bags?\b',title) and re.search(r'(?i)\b(?:curled|tea)\s+leaves\b',body) and re.search(r'(?i)\btea\b',body):return _quote('Loose-Leaf Tea','description',body)
     # A paid product with a free gift retains the paid product's purpose.
     promotion=re.match(r'(?is)^buy\s+(.+?)\s*(?:&|and)\s*get\s+.+?\s+free$',title)

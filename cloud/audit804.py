@@ -6,7 +6,7 @@ from datetime import datetime,timezone
 from pathlib import Path
 from urllib.parse import urlsplit
 from openpyxl import load_workbook
-VERSION='804-audit-v1'
+VERSION='804-audit-v2'
 # Independent reviewer vocabulary; do not call the classification implementation.
 TYPES=[
  ('laptop',r'\b(?:laptops?|notebook|macbook|chromebook|ideapad)\b',r'\blaptops?\b'),
@@ -125,8 +125,9 @@ def issues_for(row,source=None):
  if category.lower() in {'accessories','clothing','beauty','skin care','hair care','food','sale','new arrivals','collection','women','men','kids','general','products'}:issues.append('Category is too broad or promotional for product-purpose classification')
  if category and plain(row.get('brand')) and category.casefold()==plain(row.get('brand')).casefold():issues.append('Brand name used as product Category')
  if re.search(r'Product Clarification:|description refers to .*while this listing',description,re.I):issues.append('Conflicting source description requires attention')
- if source and not tokens(source.get('description'))<=tokens(description):issues.append('Description lost source numeric facts')
- body=CARE.split(plain((source or row).get('description')),1)[0][:700]
+ from reviewed804_repairs import product_content
+ if source and not tokens(product_content(source))<=tokens(description):issues.append('Description lost source numeric facts')
+ body=CARE.split(description,1)[0][:1600]
  category_review=category
  for plural,singular in {'glosses':'gloss','washes':'wash','shampoos':'shampoo','conditioners':'conditioner','mascaras':'mascara','foundations':'foundation','serums':'serum','toners':'toner','lotions':'lotion','concealers':'concealer','eyeliners':'eyeliner','eyeshadows':'eyeshadow','lipsticks':'lipstick','perfumes':'perfume','fragrances':'fragrance','sunscreens':'sunscreen'}.items():category_review=re.sub(r'\b'+plural+r'\b',singular,category_review,flags=re.I)
  primary=name.split(',')[0] or body
@@ -143,20 +144,24 @@ def issues_for(row,source=None):
  if not found:found=[(kind,allowed) for kind,pattern,allowed in TYPES if pattern.search(body[:260])]
  bundle=bool(re.search(r'\b(?:bundle|combo|kit|deal|set of)\b',name,re.I))
  if re.search(r'printer|toner|reload',name,re.I):bundle=False
- if bundle and category:
-  if not re.search(r'\b(?:bundle|combo|kit|set|pack|outfit|suit)s?\b',category,re.I):issues.append('Bundle appears classified as a single component')
-  families={'dairy':r'cheese|milk|butter|ghee|dairy|yogh?urt|raita|lassi','makeup':r'lipstick|lip\s*gloss|eye\s*shadow|mascara|foundation|concealer|makeup','hair':r'hair|shampoo|conditioner','skin':r'skin|face|facial|serum|cream|lotion','spice':r'spice|masala|cumin|coriander|turmeric'}
-  for family,pattern in families.items():
-   if re.search(r'\b'+family+r'\b',category,re.I) and not re.search(pattern,name+' '+body,re.I):issues.append('Bundle family and product contents disagree')
-  if category.lower().startswith('hair') and found and not found[0][0].startswith('hair'):issues.append('Hair bundle category conflicts with primary product purpose')
-  if re.search(r'\b(?:skin|face)',category,re.I) and found and found[0][0] in ('lipstick','lip gloss','lip liner','eyeshadow','eyeliner','mascara','foundation','concealer'):issues.append('Cosmetics bundle incorrectly classified as skincare')
- elif found and category:
-  if not found[0][1].search(category_review):issues.append('Primary product type and Category disagree: '+found[0][0])
- elif category:
-  anchors=[w if w.endswith('ss') else w[:-2] if w.endswith(('ches','shes','xes','sses','zes')) else w[:-1] if w.endswith('s') else w for w in re.findall('[a-z]{3,}',category.lower()) if w not in {'and','for','with','care','sets','set'}]
-  evidence=(name+' '+body).lower()
-  if not anchors or not all(re.search(r'\b'+re.escape(w)+r'(?:s|es)?\b',evidence) for w in anchors):issues.append('Category lacks clear product-purpose evidence; manual review required')
- if re.search(r'\b[23]\s*[- ]?(?:pc|piece)',name,re.I) and re.search(r'\b(?:kurtas?|shirts?|trousers?|dupattas?)\b',category,re.I) and not re.search(r'suit|set|outfit|ready',category,re.I):issues.append('Multi-piece outfit may be classified as one component')
+ from audit804_semantics import review
+ semantic=review(name,description,category,str(row.get("sku") or ""))
+ if semantic is not None:issues.extend(semantic)
+ else:
+  if bundle and category:
+   if not re.search(r'\b(?:bundle|combo|kit|set|pack|outfit|suit)s?\b',category,re.I):issues.append('Bundle appears classified as a single component')
+   families={'dairy':r'cheese|milk|butter|ghee|dairy|yogh?urt|raita|lassi','makeup':r'lipstick|lip\s*gloss|eye\s*shadow|mascara|foundation|concealer|makeup','hair':r'hair|shampoo|conditioner','skin':r'skin|face|facial|serum|cream|lotion','spice':r'spice|masala|cumin|coriander|turmeric'}
+   for family,pattern in families.items():
+    if re.search(r'\b'+family+r'\b',category,re.I) and not re.search(pattern,name+' '+body,re.I):issues.append('Bundle family and product contents disagree')
+   if category.lower().startswith('hair') and found and not found[0][0].startswith('hair'):issues.append('Hair bundle category conflicts with primary product purpose')
+   if re.search(r'\b(?:skin|face)',category,re.I) and found and found[0][0] in ('lipstick','lip gloss','lip liner','eyeshadow','eyeliner','mascara','foundation','concealer'):issues.append('Cosmetics bundle incorrectly classified as skincare')
+  elif found and category:
+   if not found[0][1].search(category_review):issues.append('Primary product type and Category disagree: '+found[0][0])
+  elif category:
+   anchors=[w if w.endswith('ss') else w[:-2] if w.endswith(('ches','shes','xes','sses','zes')) else w[:-1] if w.endswith('s') else w for w in re.findall('[a-z]{3,}',category.lower()) if w not in {'and','for','with','care','sets','set'}]
+   evidence=(name+' '+body).lower()
+   if not anchors or not all(re.search(r'\b'+re.escape(w)+r'(?:s|es)?\b',evidence) for w in anchors):issues.append('Category lacks clear product-purpose evidence; manual review required')
+ if semantic is None and re.search(r'\b[23]\s*[- ]?(?:pc|piece)',name,re.I) and re.search(r'\b(?:kurtas?|shirts?|trousers?|dupattas?)\b',category,re.I) and not re.search(r'suit|set|outfit|ready',category,re.I):issues.append('Multi-piece outfit may be classified as one component')
  return list(dict.fromkeys(issues))
 
 def rows(path):
@@ -170,8 +175,11 @@ def rows(path):
 def run(path,store,codes,hosts,*,source=None):
  path=Path(path);findings=[];expected=codes.get(store);seen=set();count=0;finding_count=0
  originals={str(row.get('product_id')):row for row in rows(source)} if source else {}
+ from reviewed804_repairs import roots,conflicting_name
+ catalogue=roots(originals.values()) if originals else set()
  for row in rows(path):
   count+=1;pid=str(row.get('product_id') or '');issues=issues_for(row,originals.get(pid))
+  if store=='Seran' and conflicting_name(row,catalogue):issues.append('Description names a different known catalog product')
   if not pid or pid in seen:issues.append('Missing or duplicate product ID')
   seen.add(pid)
   if expected and str(row.get('shop_code') or '')!=expected:issues.append('Shop code missing, mixed or not confirmed for this store')
