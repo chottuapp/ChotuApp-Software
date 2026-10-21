@@ -11,3 +11,11 @@ The current private working key is outside this repository in `/workspace/.priva
 For future releases increment versionCode and read the installed version dynamically when checking updates (the first release checker compares against version 1). Same package and same certificate permit updates while preserving private app data. Android still requires installation consent. Current updater checks the public Studio release metadata during dashboard refresh and opens the fixed repository APK download URL; it cannot silently install or invent repairs.
 
 Progress numbers are stage task counts, not verified catalog/product completeness. Discovery URLs, rows, and page inspections have different units. Overall completion is unknown unless separately verified. Older Drive records without per-store timestamps show that time was not recorded; new uploads record verified_utc after checksum checks.
+
+## Studio 1.3
+
+A successful local login is remembered in app-private preferences across process restarts and same-key updates. Lock app explicitly clears that session; no plaintext password is saved. Existing profiles log in once after this upgrade.
+
+Public requests wait and retry connection failures, timeouts, 429 and temporary server failures, checking Pause during every retry delay. TLS, access-denied and adapter errors remain visible rather than being retried as successful data. Completed workbook upload retries transport outages without refetching the saved export. The foreground service continues when the activity closes and requests system recreation after process eviction. Force stop, phone shutdown and Android data-sync time limits can still require reopening/resuming; unrestricted battery use is recommended.
+
+Drive displays the current Pakistan date and count of distinct latest verified store uploads on that date. Each store has one latest entry, chosen using upload-verification timestamps; previous versions are not duplicated in the list. The list does not delete Drive files. Audit holds preserve the previous verified workbook.
