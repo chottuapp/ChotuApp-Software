@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-21T09:28:55.510033+00:00",
+  "run_id": "39576538764",
+  "attempt": "1",
+  "source_commit": "fc7668e1accf604d5a2fdd369acf16db2bcfdf05",
+  "status": "complete",
+  "checkpoint_saved": true,
+  "python": "3.12.15",
+  "elapsed_seconds": 316.5,
+  "stores": [
+    {
+      "name": "Islamabad Tea",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "ea351ea30f5923af",
+      "products": 29,
+      "variants": 29,
+      "http_statuses": {
+        "200": 32
+      },
+      "network_seconds": 12.5,
+      "max_response_seconds": 1.5,
+      "cache_events": 58
+    },
+    {
+      "name": "Shop Modest",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "ea351ea30f5923af",
+      "products": 126,
+      "variants": 982,
+      "http_statuses": {
+        "200": 155
+      },
+      "network_seconds": 138.7,
+      "max_response_seconds": 1.7,
+      "cache_events": 252
+    },
+    {
+      "name": "Seran",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_403",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "ea351ea30f5923af",
+      "products": 261,
+      "variants": 767,
+      "http_statuses": {
+        "200": 264,
+        "403": 1
+      },
+      "network_seconds": 157.7,
+      "max_response_seconds": 1.3,
+      "cache_events": 522
+    }
+  ]
+}
