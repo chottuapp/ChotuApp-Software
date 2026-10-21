@@ -1,33 +1,62 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-21T13:31:37.298114+00:00",
-  "run_id": "39586312392",
+  "generated_utc": "2026-10-21T14:23:37.067909+00:00",
+  "run_id": "39576523058",
   "attempt": "1",
-  "source_commit": "2c1ab8ebe5616f6827e441b886cd43818266159a",
+  "source_commit": "fc7668e1accf604d5a2fdd369acf16db2bcfdf05",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 10211.4,
+  "elapsed_seconds": 18000.8,
   "stores": [
     {
-      "name": "LAAM",
-      "status": "failed",
+      "name": "Tawakkal Fabrics",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "ea351ea30f5923af",
+      "products": 1402,
+      "variants": 3228,
+      "http_statuses": {
+        "200": 1556
+      },
+      "network_seconds": 1307.4,
+      "max_response_seconds": 1.8,
+      "cache_events": 2812
+    },
+    {
+      "name": "Junaid Jamshed",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "ea351ea30f5923af",
+      "products": 5146,
+      "variants": 21999,
+      "http_statuses": {
+        "200": 5487
+      },
+      "network_seconds": 3035.8,
+      "max_response_seconds": 1.9,
+      "cache_events": 10324
+    },
+    {
+      "name": "Stylo",
+      "status": "pending",
       "review_required": false,
       "issue_codes": [
-        "HTTP_404",
-        "HTTP_503",
-        "RATE_LIMIT"
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "c18ca888793ec1ce",
+      "software_revision": "ea351ea30f5923af",
       "http_statuses": {
-        "500": 63,
-        "200": 5705,
-        "404": 7,
-        "503": 1
+        "200": 4226
       },
-      "network_seconds": 5072.0,
-      "max_response_seconds": 18.9,
-      "cache_events": 0
+      "network_seconds": 10031.3,
+      "max_response_seconds": 4.3,
+      "cache_events": 341
     }
   ]
 }
