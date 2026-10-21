@@ -15,6 +15,7 @@ public class AppSmokeTest {
         MainActivity.suppressAutoFreshForTests=true;
         if(!Profile.exists(context))Profile.create(context,"test@example.com","fixture-password".toCharArray());
         assertFalse(Profile.login(context,"test@example.com","wrong-password".toCharArray()));assertTrue(Profile.login(context,"test@example.com","fixture-password".toCharArray()));
+        Profile.unlocked=false;assertTrue(Profile.authenticated(context));Profile.lock(context);assertFalse(Profile.authenticated(context));assertTrue(Profile.login(context,"test@example.com","fixture-password".toCharArray()));
         android.app.Activity activity=instrumentation.startActivitySync(new Intent(context,MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));assertNotNull(activity);
         instrumentation.runOnMainSync(()->{try{
             MainActivity main=(MainActivity)activity;
@@ -23,6 +24,8 @@ public class AppSmokeTest {
             android.widget.LinearLayout results=main.column();main.populateDrive(results,drive,"COOL");
             assertEquals(3,results.getChildCount());
             android.widget.TextView count=(android.widget.TextView)results.getChildAt(2);assertEquals("1 file shown",count.getText().toString());
+            drive.put("original_uploads",new org.json.JSONObject("{\"Cool and Cool\":{\"verified_utc\":\"2026-10-19T00:00:00Z\"}}"));
+            org.json.JSONObject newest=MainActivity.latestDriveFiles(drive);assertEquals(2,newest.length());assertEquals("2026-10-20T12:30:00+00:00",newest.getJSONObject("Cool and Cool").getString("verified_utc"));
             main.populateDrive(results,drive,"no matching file");assertEquals(1,results.getChildCount());
             assertTrue(((android.widget.TextView)results.getChildAt(0)).getText().toString().contains("No matching"));
         }catch(Exception e){throw new AssertionError(e);}});

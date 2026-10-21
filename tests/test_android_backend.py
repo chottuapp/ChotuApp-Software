@@ -63,3 +63,20 @@ class AndroidBackendTests(unittest.TestCase):
    root=Path(tmp);self.exported(root);bridge=Mock();bridge.isPaused.return_value=False;bridge.githubToken.return_value='new-token'
    with patch.object(backend,'upload',return_value='a'*64) as upload:
     result=json.loads(backend._run(tmp,tmp,'',bridge));self.assertEqual(result['status'],'cloud_queued');self.assertEqual(upload.call_args.args[1],'new-token')
+
+class NetworkResumeTests(unittest.TestCase):
+ def test_disconnect_and_server_failure_resume_same_request(self):
+  ok=Mock(status_code=200);busy=Mock(status_code=503)
+  request=Mock(side_effect=[backend.requests.ConnectionError('offline'),busy,ok]);notify=Mock();wait=Mock()
+  self.assertIs(backend.retry_network(request,lambda:None,notify,wait),ok)
+  self.assertEqual(request.call_count,3);busy.close.assert_called_once();self.assertEqual(notify.call_args.args,(False,))
+ def test_pause_interrupts_network_wait(self):
+  check=Mock(side_effect=[None,backend.Paused()]);request=Mock(side_effect=backend.requests.Timeout())
+  with self.assertRaises(backend.Paused):backend.retry_network(request,check,wait=Mock())
+  self.assertEqual(request.call_count,1)
+ def test_tls_and_access_errors_are_not_retried(self):
+  request=Mock(side_effect=backend.requests.exceptions.SSLError('invalid certificate'))
+  with self.assertRaises(backend.requests.exceptions.SSLError):backend.retry_network(request,lambda:None,wait=Mock())
+  self.assertEqual(request.call_count,1)
+  denied=Mock(status_code=403);request=Mock(return_value=denied)
+  self.assertIs(backend.retry_network(request,lambda:None,wait=Mock()),denied);self.assertEqual(request.call_count,1)

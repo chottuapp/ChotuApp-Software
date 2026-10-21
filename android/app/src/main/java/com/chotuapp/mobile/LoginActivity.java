@@ -1,7 +1,7 @@
 package com.chotuapp.mobile;
 import android.app.*;import android.os.*;import android.content.*;import android.graphics.Color;import android.text.InputType;import android.widget.*;
 public class LoginActivity extends Activity {
- public void onCreate(Bundle state){super.onCreate(state);getWindow().setFlags(8192,8192);boolean create=!Profile.exists(this);
+ public void onCreate(Bundle state){super.onCreate(state);getWindow().setFlags(8192,8192);if(Profile.authenticated(this)){Profile.unlocked=true;startActivity(new Intent(this,MainActivity.class));finish();return;}boolean create=!Profile.exists(this);
   LinearLayout layout=new LinearLayout(this);layout.setOrientation(1);layout.setPadding(32,90,32,32);layout.setBackgroundColor(Color.rgb(245,247,243));
   TextView title=new TextView(this);title.setText("CHOTUAPP STUDIO\n\nYour catalog, connected.");title.setTextSize(26);title.setTextColor(Color.rgb(23,107,81));layout.addView(title);
   TextView info=new TextView(this);info.setText(create?"Create your private app login. This does not create a Gmail or GitHub account.":"Welcome back. Unlock your local profile.");info.setPadding(0,30,0,24);layout.addView(info);

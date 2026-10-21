@@ -12,8 +12,10 @@ public class FetchService extends Service {
     static final AtomicBoolean active=new AtomicBoolean(false),paused=new AtomicBoolean(false);
     private PowerManager.WakeLock wake;
     private static Context appContext;
-    @Override public void onCreate(){super.onCreate();appContext=getApplicationContext();}
+    @Override public void onCreate(){super.onCreate();appContext=getApplicationContext();appContextService=this;}
     public static String githubToken(){return appContext==null?"":Vault.read(appContext);}
+    public static void networkWaiting(boolean waiting){if(appContext==null)return;String message=waiting?"Internet / source temporarily unavailable. Waiting; saved work will resume automatically.":"Connected. Fetching saved work…";appContext.getSharedPreferences("worker",0).edit().putString("status",waiting?"waiting_network":"running").putString("message",message).apply();NotificationManager manager=appContext.getSystemService(NotificationManager.class);if(active.get()&&appContextService!=null)manager.notify(804,appContextService.notice(message));}
+    private static FetchService appContextService;
     public static boolean isActive(){return active.get();}
     public static boolean isPaused(){return paused.get();}
     static File dataDirectory(Context context){String name=context.getSharedPreferences("worker",0).getString("data_dir","khaadi");if(!name.equals("khaadi")&&!name.matches("khaadi-sessions/fresh804-[0-9]{8}-[a-f0-9]{8}"))name="khaadi";return new File(context.getFilesDir(),name);}
@@ -37,11 +39,13 @@ public class FetchService extends Service {
         return new Notification.Builder(this,"fetch").setSmallIcon(com.chotuapp.mobile.R.drawable.app_icon).setContentTitle("ChotuApp · Khaadi").setContentText(text).setContentIntent(open).setOngoing(active.get()).addAction(new Notification.Action.Builder(null,"Pause",stop).build()).build();
     }
     public int onStartCommand(Intent intent,int flags,int id){
-        if(intent!=null&&"pause".equals(intent.getAction())){paused.set(true);getSharedPreferences("worker",0).edit().putString("message","Pausing after the current request. Saved responses stay on this phone.").apply();if(!active.get())stopSelf();return START_NOT_STICKY;}
-        if(!active.compareAndSet(false,true))return START_NOT_STICKY;
+        if(intent!=null&&"pause".equals(intent.getAction())){getSharedPreferences("worker",0).edit().putBoolean("resume_requested",false).commit();paused.set(true);getSharedPreferences("worker",0).edit().putString("message","Pausing after the current request. Saved responses stay on this phone.").apply();if(!active.get())stopSelf();return START_NOT_STICKY;}
+        if(intent==null&&!getSharedPreferences("worker",0).getBoolean("resume_requested",false)){stopSelf();return START_NOT_STICKY;}
+        if(!active.compareAndSet(false,true))return START_STICKY;
+        getSharedPreferences("worker",0).edit().putBoolean("resume_requested",true).commit();
         paused.set(false);NotificationManager manager=getSystemService(NotificationManager.class);manager.createNotificationChannel(new NotificationChannel("fetch","Catalog fetching",NotificationManager.IMPORTANCE_LOW));
         startForeground(804,notice("Fetching public pages. Saved progress is retained."));
-        wake=((PowerManager)getSystemService(POWER_SERVICE)).newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"ChotuApp:Fetch");wake.acquire(6*60*60*1000L);
+        wake=((PowerManager)getSystemService(POWER_SERVICE)).newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"ChotuApp:Fetch");wake.acquire();
         getSharedPreferences("worker",0).edit().putString("status","running").putString("message","Starting saved work…").apply();
         final String freshCampaign=intent==null?"":intent.getStringExtra("fresh_campaign_id");
         new Thread(()->{
@@ -50,11 +54,12 @@ public class FetchService extends Service {
                 String result=python(this).getModule("mobile_backend").callAttr("run",new File(getFilesDir(),"engine").getPath(),data.getPath(),Vault.read(this)).toString();
                 JSONObject parsed=new JSONObject(result);getSharedPreferences("worker",0).edit().putString("source_sha256",parsed.optString("source_sha256","")).putString("status",parsed.getString("status")).putString("message",parsed.getString("message")).apply();
             } catch(Throwable e){getSharedPreferences("worker",0).edit().putString("status",paused.get()?"paused":"attention").putString("message",paused.get()?"Paused. Saved work retained.":"Worker needs attention. "+safe(e.getMessage())).apply();}
-            finally{active.set(false);if(wake!=null&&wake.isHeld())wake.release();manager.notify(804,notice("Fetch stopped. Open ChotuApp for status."));stopForeground(STOP_FOREGROUND_DETACH);stopSelf();}
-        },"khaadi-worker").start();return START_NOT_STICKY;
+            finally{getSharedPreferences("worker",0).edit().putBoolean("resume_requested",false).commit();active.set(false);if(wake!=null&&wake.isHeld())wake.release();manager.notify(804,notice("Fetch stopped. Open ChotuApp for status."));stopForeground(STOP_FOREGROUND_DETACH);stopSelf();}
+        },"khaadi-worker").start();return START_STICKY;
     }
     private String safe(String s){if(s==null)return "Open Activity for details.";String token=Vault.read(this);if(!token.isEmpty())s=s.replace(token,"[redacted]");return s.substring(0,Math.min(600,s.length()));}
-    @Override public void onTimeout(int startId,int fgsType){paused.set(true);getSharedPreferences("worker",0).edit().putString("status","paused").putString("message","Android background time limit reached. Open the app and resume saved work.").apply();stopForeground(STOP_FOREGROUND_REMOVE);stopSelf();}
-    @Override public void onDestroy(){paused.set(true);super.onDestroy();}
+    @Override public void onTimeout(int startId,int fgsType){paused.set(true);getSharedPreferences("worker",0).edit().putBoolean("resume_requested",false).putString("status","paused").putString("message","Android background time limit reached. Open the app and resume saved work.").apply();stopForeground(STOP_FOREGROUND_REMOVE);stopSelf();}
+    @Override public void onTaskRemoved(Intent intent){super.onTaskRemoved(intent);}
+    @Override public void onDestroy(){paused.set(true);if(wake!=null&&wake.isHeld())wake.release();super.onDestroy();}
     @Override public IBinder onBind(Intent i){return null;}
 }

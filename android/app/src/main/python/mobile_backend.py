@@ -5,6 +5,23 @@ import requests
 REPO='chottuapp/ChotuApp-Software'
 class Paused(KeyboardInterrupt):pass
 
+def retry_network(operation,check,notify=lambda waiting:None,wait=time.sleep):
+ """Retry transport outages, rate limits and temporary server failures, never TLS or source/parser errors."""
+ attempt=0
+ while True:
+  check()
+  try:
+   response=operation()
+   if response.status_code not in (408,429,500,502,503,504):
+    notify(False);return response
+   response.close()
+  except requests.exceptions.SSLError:raise
+  except (requests.exceptions.ConnectionError,requests.exceptions.Timeout):pass
+  notify(True);attempt+=1
+  for _ in range(min(60,5*attempt)):
+   check();wait(1)
+
+
 def load(name,path):
  spec=importlib.util.spec_from_file_location(name,path);module=importlib.util.module_from_spec(spec);sys.modules[name]=module;spec.loader.exec_module(module);return module
 
@@ -12,7 +29,15 @@ def run(root,data,token,bridge=None):
  if bridge is None:
   from java import jclass
   bridge=jclass("com.chotuapp.mobile.FetchService")
- with reporting(Path(data),bridge,token):return _run(root,data,token,bridge)
+ with reporting(Path(data),bridge,token):
+  while True:
+   try:return _run(root,data,token,bridge)
+   except requests.exceptions.SSLError:raise
+   except (requests.exceptions.ConnectionError,requests.exceptions.Timeout):
+    if hasattr(bridge,'networkWaiting'):bridge.networkWaiting(True)
+    for _ in range(30):
+     if bridge.isPaused():raise Paused()
+     time.sleep(1)
 
 def _run(root,data,token,bridge=None):
  if bridge is None:
@@ -24,7 +49,7 @@ def _run(root,data,token,bridge=None):
  class PublicSession:
   def __init__(self):self.session=requests.Session();self.session.headers['User-Agent']='Mozilla/5.0 ChotuApp-PublicCatalog/1.0'
   def get(self,url,**kwargs):
-   check();response=self.session.get(url,timeout=(15,45));check();return response
+   response=retry_network(lambda:self.session.get(url,timeout=(15,45)),check,lambda waiting:bridge.networkWaiting(waiting) if hasattr(bridge,'networkWaiting') else None);check();return response
  state=data/'local-status.json'
  try:previous=json.loads(state.read_text())
  except (OSError,ValueError):previous={}
