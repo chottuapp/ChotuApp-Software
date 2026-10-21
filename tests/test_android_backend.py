@@ -80,3 +80,17 @@ class NetworkResumeTests(unittest.TestCase):
   self.assertEqual(request.call_count,1)
   denied=Mock(status_code=403);request=Mock(return_value=denied)
   self.assertIs(backend.retry_network(request,lambda:None,wait=Mock()),denied);self.assertEqual(request.call_count,1)
+
+class GitHubConnectionTests(unittest.TestCase):
+ def test_read_access_does_not_hide_failed_heartbeat_write(self):
+  with patch.object(backend,'verify_token',return_value='Connected'),patch.object(backend,'sync_logs',return_value=json.dumps({'status':'retry_pending','message':'GitHub denied access'})):
+   result=json.loads(backend.connect_github('/unused','private-fixture'))
+  self.assertEqual(result['status'],'connection_failed');self.assertIn('denied',result['message']);self.assertNotIn('private-fixture',json.dumps(result))
+ def test_connection_requires_first_successful_remote_write(self):
+  with patch.object(backend,'verify_token',return_value='Connected'),patch.object(backend,'sync_logs',return_value=json.dumps({'status':'synced','last_success_utc':'2026-10-21T10:00:00Z'})) as send:
+   self.assertEqual(json.loads(backend.connect_github('/unused','fixture',True))['status'],'connected');self.assertTrue(send.call_args.args[2])
+ def test_concurrent_branch_update_retries_latest_file_sha(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   session=Mock();session.get.side_effect=[Mock(status_code=200),Mock(status_code=404),Mock(status_code=200,json=Mock(return_value={'sha':'newer-file-sha'}))];session.put.side_effect=[Mock(status_code=409),Mock(status_code=201)]
+   with patch.object(backend.requests,'Session',return_value=session):result=json.loads(backend.sync_logs(tmp,'fixture',True))
+   self.assertEqual(result['status'],'synced');self.assertEqual(session.put.call_count,2);self.assertEqual(session.put.call_args.kwargs['json']['sha'],'newer-file-sha')

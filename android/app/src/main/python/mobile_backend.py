@@ -3,6 +3,11 @@ import base64,hashlib,importlib.util,json,sys,time,threading,contextlib,datetime
 from pathlib import Path
 import requests
 REPO='chottuapp/ChotuApp-Software'
+_network_waiting=False
+def network_notice(bridge,waiting):
+ global _network_waiting
+ _network_waiting=bool(waiting)
+ if hasattr(bridge,'networkWaiting'):bridge.networkWaiting(waiting)
 class Paused(KeyboardInterrupt):pass
 
 def retry_network(operation,check,notify=lambda waiting:None,wait=time.sleep):
@@ -34,7 +39,7 @@ def run(root,data,token,bridge=None):
    try:return _run(root,data,token,bridge)
    except requests.exceptions.SSLError:raise
    except (requests.exceptions.ConnectionError,requests.exceptions.Timeout):
-    if hasattr(bridge,'networkWaiting'):bridge.networkWaiting(True)
+    network_notice(bridge,True)
     for _ in range(30):
      if bridge.isPaused():raise Paused()
      time.sleep(1)
@@ -49,7 +54,7 @@ def _run(root,data,token,bridge=None):
  class PublicSession:
   def __init__(self):self.session=requests.Session();self.session.headers['User-Agent']='Mozilla/5.0 ChotuApp-PublicCatalog/1.0'
   def get(self,url,**kwargs):
-   response=retry_network(lambda:self.session.get(url,timeout=(15,45)),check,lambda waiting:bridge.networkWaiting(waiting) if hasattr(bridge,'networkWaiting') else None);check();return response
+   response=retry_network(lambda:self.session.get(url,timeout=(15,45)),check,lambda waiting:network_notice(bridge,waiting));check();return response
  state=data/'local-status.json'
  try:previous=json.loads(state.read_text())
  except (OSError,ValueError):previous={}
@@ -113,6 +118,15 @@ def verify_token(token):
  if not response.json().get('permissions',{}).get('push'):raise ValueError('This GitHub account needs write access to ChotuApp-Software.')
  return 'Connected'
 
+def connect_github(data,token,active=False,paused=False):
+ """Repository visibility alone is not a working remote-log connection."""
+ try:verify_token(token)
+ except (requests.RequestException,ValueError):
+  return json.dumps({'status':'connection_failed','message':'Cannot verify repository access. Check network, token expiry and ChotuApp-Software permissions.'})
+ result=json.loads(sync_logs(data,token,active,paused))
+ if result.get('status')!='synced':return json.dumps({'status':'connection_failed','message':result.get('message','Remote heartbeat write failed')})
+ return json.dumps({'status':'connected','message':'GitHub connected; first phone heartbeat published.','last_success_utc':result['last_success_utc']})
+
 def self_test(root,data):
  """On-device fixture export: embedded Python, SQLite, XLSX and headless source."""
  root=Path(root);sys.path.insert(0,str(root))
@@ -161,9 +175,10 @@ def mobile_report(data,token,active,paused=False):
  state=read_state(data);progress=state.get('last_progress_epoch');status=state.get('status','ready')
  try:campaign=json.loads((Path(data)/'session-meta.json').read_text()).get('fresh_campaign_id')
  except (OSError,ValueError):campaign=None
+ if _network_waiting and active:status='waiting_network'
  if paused and active:status='pausing'
  elif status=='running' and not active:status='stopped'
- return {'store':'Khaadi','execution':'Android app','app_version':'1.2-studio','fresh_campaign_id':campaign,'observed_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'worker_active':bool(active),'status':status,'worker_updated':state.get('updated'),'last_event':safe_log(state.get('last_event',''),token),'error':safe_log(state.get('error',''),token),'progress_age_seconds':max(0,round(time.time()-progress)) if isinstance(progress,(int,float)) else None,'log_tail':log_tail(data,token)}
+ return {'store':'Khaadi','execution':'Android app','app_version':'1.4-studio','fresh_campaign_id':campaign,'observed_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'worker_active':bool(active),'status':status,'worker_updated':state.get('updated'),'last_event':safe_log(state.get('last_event',''),token),'error':safe_log(state.get('error',''),token),'progress_age_seconds':max(0,round(time.time()-progress)) if isinstance(progress,(int,float)) else None,'log_tail':log_tail(data,token)}
 
 def telemetry_status(data,**record):
  data=Path(data);data.mkdir(parents=True,exist_ok=True);path=data/'telemetry-status.json'
@@ -173,7 +188,11 @@ def telemetry_status(data,**record):
   json.dump(record,stream);temporary=stream.name
  os.replace(temporary,path)
 
+_telemetry_lock=threading.Lock()
 def sync_logs(data,token,active=False,paused=False):
+ with _telemetry_lock:return _sync_logs(data,token,active,paused)
+
+def _sync_logs(data,token,active=False,paused=False):
  data=Path(data);now=datetime.datetime.now(datetime.timezone.utc).isoformat()
  if not token:
   record={'status':'connection_required','message':'Connect GitHub once to enable remote logs. Fetching can continue locally.','attempted_utc':now};telemetry_status(data,**record);return json.dumps(record)
@@ -190,12 +209,16 @@ def sync_logs(data,token,active=False,paused=False):
   # Separate Android path prevents an old PC heartbeat overwriting phone logs.
   url=base+'/contents/local/khaadi-android.json';old=session.get(url,params={'ref':branch},timeout=15)
   if old.status_code not in (200,404):raise RuntimeError('GitHub HTTP '+str(old.status_code))
-  payload={'branch':branch,'message':'Update redacted Android Khaadi progress and logs','content':base64.b64encode(json.dumps(report).encode()).decode()}
-  if old.status_code==200:payload['sha']=old.json()['sha']
-  response=session.put(url,json=payload,timeout=20)
-  if response.status_code not in (200,201):raise RuntimeError('GitHub HTTP '+str(response.status_code))
+  for attempt in range(3):
+   payload={'branch':branch,'message':'Update redacted Android Khaadi progress and logs','content':base64.b64encode(json.dumps(report).encode()).decode()}
+   if old.status_code==200:payload['sha']=old.json()['sha']
+   response=session.put(url,json=payload,timeout=20)
+   if response.status_code in (200,201):break
+   if response.status_code not in (409,422) or attempt==2:raise RuntimeError('GitHub HTTP '+str(response.status_code))
+   old=session.get(url,params={'ref':branch},timeout=15)
+   if old.status_code not in (200,404):raise RuntimeError('GitHub HTTP '+str(old.status_code))
   record={'status':'synced','last_success_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'message':'Remote logs synced. Automatic sync every 30 seconds while fetching.'}
- except (requests.RequestException,ValueError,KeyError,OSError,RuntimeError) as exc:
+ except Exception as exc:
   # Do not expose HTTP response bodies or exceptions which might include credentials.
   reason=str(exc) if isinstance(exc,RuntimeError) and str(exc).startswith('GitHub HTTP ') else 'Network or repository access unavailable'
   if reason=='GitHub HTTP 403':reason='GitHub denied access. Allow Contents: Read and write for ChotuApp-Software'
@@ -211,7 +234,8 @@ def reporting(data,bridge,token):
   return str(method() or '') if method else token
  def send(terminal=False):
   active=False if terminal else bool(bridge.isActive()) if hasattr(bridge,'isActive') else not bridge.isPaused()
-  sync_logs(data,current_token(),active,bridge.isPaused())
+  try:sync_logs(data,current_token(),active,bridge.isPaused())
+  except Exception as exc:telemetry_status(data,status='retry_pending',message='Phone reporting error ('+type(exc).__name__+'); fetching continues.',attempted_utc=datetime.datetime.now(datetime.timezone.utc).isoformat())
  def loop():
   while not stop.is_set():send();stop.wait(30)
   send(terminal=True)
