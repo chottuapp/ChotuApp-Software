@@ -86,7 +86,8 @@ def review(name,description,category,sku=""):
   'ink & toner':r'\b(?:ink bottle|toner|ink cartridge)\b',
   'ups & voltage stabilisers':r'\bups\b|\bvoltage stabili[sz]er\b',
   'voltage stabilizers':r'\bvoltage\s+(?:regulator|stabili[sz]er)\b'}
- if cat=='face serums' and has(r'\b(?:hair|eyelash|lip|lash)\b',title):return ['Facial serum Category conflicts with named application area']
+ if cat=='face serums' and (has(r'\b(?:hair|eyelash|lip|lash)\b',title) or has(r'\b(?:hair|scalp|lip|lash)\b.{0,40}\bserum\b',body[:300])):return ['Facial serum Category conflicts with named application area']
+ if cat=='face moisturisers & creams' and has(r'\b(?:body|hand|foot|heel|baby)\b',title):return ['Facial cream Category conflicts with named application area']
  if cat=='perfumes & fragrances':
   if has(r'\b(?:top|head)(?: notes?)?\s*:',evidence) and has(r'\b(?:heart|middle)(?: notes?)?\s*:',evidence) and has(r'\bbase(?: notes?)?\s*:',evidence) and not has(r'body lotion|body wash|hair|soap',title):return []
   if has(r'\bthe fragrance (?:opens|settles|unfolds)\b',body) and has(r'\bml\b',body) and not has(r'body lotion|body wash|hair|soap',title):return []
@@ -107,5 +108,6 @@ def review(name,description,category,sku=""):
   'skin care bundles':r'\b(?:skin|face|facial|cream|retinol|pigmentation|niacinamide|serum|acne|hand|feet)\b',
   'hair care bundles':r'\b(?:hair|shampoo|conditioner)\b',
   'personal care bundles':r'\b(?:hair|shampoo|face|body)\b'}
+ if cat=='skin care bundles' and has(r'\b(?:lipstick|lip gloss|eyeshadow|mascara|foundation|concealer)\b',title):return ['Cosmetics bundle incorrectly classified as skincare']
  if cat in families and bundle and has(families[cat],evidence):return []
  return None

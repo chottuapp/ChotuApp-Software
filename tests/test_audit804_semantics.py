@@ -31,3 +31,8 @@ class SemanticAuditTests(unittest.TestCase):
  def test_wrong_technology_type_is_still_rejected(self):
   self.assertTrue(review('CPU Liquid Cooler','CPU cooler with fan.','Processors'))
   self.assertTrue(review('Stylus Pen for iPad','A stylus for writing.','Tablets'))
+
+ def test_supported_word_does_not_clear_wrong_application_area(self):
+  self.assertTrue(review('Lipstick Face Kit','A face kit containing rich lipstick shades.','Skin Care Bundles'))
+  self.assertTrue(review('Baby Moisturizer','Moisturizer for soft baby skin.','Face Moisturisers & Creams'))
+  self.assertTrue(review('Growth Boost','An intensive hair growth serum for the scalp.','Face Serums'))
