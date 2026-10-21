@@ -151,6 +151,7 @@ def scan(start,cities,max_pages,log,deadline):
     if len({row[c] for c in cities})==1 and row[cities[0]].endswith(' PKR'):row['Fixed Delivery Charges']=row[cities[0]]
     row['Evidence']=' | '.join(snippets(page.lines,cities))[:12000];rows[url]=row
    elif POLICY.search(url):policy_lines.extend((url,line) for line in snippets(page.lines,cities))
+   log('page.processed',url=url,products=len(rows),errors=len(errors),pages=len(seen))
    evidence.append({'url':url,'sha256':sha,'checked_at_utc':NOW(),'product':is_product,'shipping_statements':snippets(page.lines,cities),'structured_products':entities[:1]})
    # Product links first; discover same-host public listings and policies, without cart/login requests.
    links=[]
@@ -204,9 +205,16 @@ def main():
  urls=list(dict.fromkeys(canonical(u) for u in re.split(r'[\s,]+',args.links) if u))
  if not urls or len(urls)>5 or not 1<=args.max_pages<=500:raise ValueError('Use 1-5 HTTPS links and 1-500 pages per store')
  args.out.mkdir(parents=True,exist_ok=True)
+ state={'products':0,'errors':0,'completed_products':0}
  def log(event,**fields):
   line=json.dumps({'time':NOW(),'event':event,**fields},ensure_ascii=False);print(line,flush=True)
   with (args.out/'activity.log').open('a',encoding='utf-8') as f:f.write(line+'\n')
+  if event=='fetch_error':state['errors']+=1
+  if event=='page.processed':state['products']=state['completed_products']+fields['products']
+  if event=='store.finished':state['completed_products']+=fields['products'];state['products']=state['completed_products']
+  if event=='export.finished':state['products']=fields['products'];state['errors']=fields['errors']
+  progress={'updated_at_utc':NOW(),'products':state['products'],'errors':state['errors'],'message':event+': '+str(fields.get('url',fields.get('path','')))}
+  staged=args.out/'progress.next.json';staged.write_text(json.dumps(progress,ensure_ascii=False),encoding='utf-8');staged.replace(args.out/'progress.json')
  rows=[];evidence=[];errors=[];coverage=[];deadline=time.monotonic()+45*60
  for url in urls:
   log('store.started',url=url)

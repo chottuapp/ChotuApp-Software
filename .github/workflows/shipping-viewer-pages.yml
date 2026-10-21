@@ -1,0 +1,35 @@
+name: Publish Shipping Viewer
+on:
+  push:
+    branches: [main]
+    paths:
+      - online-shipping/viewer/**
+      - .github/workflows/shipping-viewer-pages.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: shipping-viewer-pages
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: online-shipping/viewer
+          persist-credentials: false
+      - name: Check Pages configuration
+        uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: online-shipping/viewer
+      - name: Deploy viewer
+        id: deployment
+        uses: actions/deploy-pages@v4

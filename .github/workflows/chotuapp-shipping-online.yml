@@ -47,7 +47,7 @@ jobs:
           AUDIT_LINKS: ${{ inputs.links || 'https://czone.com.pk/' }}
           AUDIT_CITIES: ${{ inputs.cities || 'Karachi,Lahore,Islamabad,Gujranwala' }}
           AUDIT_PAGES: ${{ inputs.max_pages || '100' }}
-        run: python -u online-shipping/audit.py --links "$AUDIT_LINKS" --cities "$AUDIT_CITIES" --max-pages "$AUDIT_PAGES"
+        run: python -u online-shipping/run_online.py
       - name: Save Excel, evidence and full logs
         if: always()
         uses: actions/upload-artifact@v4
@@ -56,14 +56,3 @@ jobs:
           path: shipping-output/
           if-no-files-found: warn
           retention-days: 30
-      - name: Preserve this run's report on a separate results branch
-        if: always()
-        run: |
-          if [ -f shipping-output/summary.json ]; then
-            git config user.name github-actions
-            git config user.email github-actions@github.com
-            git switch -c "shipping-results-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
-            git add --sparse shipping-output
-            git commit -m 'Save online shipping audit results and source errors'
-            git push origin HEAD
-          fi

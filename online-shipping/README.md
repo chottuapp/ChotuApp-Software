@@ -20,3 +20,24 @@ Product names and links are collected from public HTML links and Product JSON-LD
 Each store is limited to 1–500 pages, each response to 3 MB, and total fetch time to about 45 minutes. At least one second separates requests, with longer robots delays respected. The first version discovers HTML-linked product/listing/policy pages; it does not execute JavaScript, enumerate every sitemap or automatically calculate checkout shipping. Products discovered but not visited are clearly labelled. GitHub Actions usage counts against the account's private-repository runner allowance.
 
 Local developer validation: `python -m pip install -r online-shipping/requirements.txt`, then `python -m unittest discover -s online-shipping -p 'test_*.py' -v`.
+
+## Live viewer
+
+The separate viewer in `online-shipping/viewer/` lets you submit links, inspect runner status and saved product results, copy all logs and download Excel/CSV from the same screen. The browser polls GitHub every 15 seconds; the runner publishes progress approximately every 30 seconds on an isolated `shipping-results-RUNID-ATTEMPT` branch. Results and logs remain private in this repository. No Drive or existing catalog files are modified.
+
+The viewer requires a fine-grained GitHub token for this repository with **Contents: read** and **Actions: read/write**. Enter it only in the viewer's password field, never chat. It stays in memory, not localStorage, cookies, URLs or repository files. Disconnect or closing the tab clears it. Authorized source requests still run on GitHub, not on your laptop. Live counters/logs appear during fetching; the results table and Excel are available after final export. The table displays up to 300 matching rows; the Excel includes all captured rows.
+
+### First publication
+
+This checkout has Git push access but GitHub management API access is denied. Pages must be enabled once from an owner-authenticated CLI or repository Settings → Pages → Source: GitHub Actions. A private repository requires a GitHub plan that permits Pages. **Do not make the data repository public to resolve that restriction.** The Pages viewer contains no product data or credentials; visitors still need an authorized connection to access private results.
+
+After the code is pushed, the repository owner can run these in authenticated CMD:
+
+```cmd
+gh api --method POST repos/chottuapp/ChotuApp-Software/pages -f build_type=workflow
+gh workflow run shipping-viewer-pages.yml --repo chottuapp/ChotuApp-Software
+```
+
+If Pages already exists or GitHub returns an account/permissions error, inspect that response before changing existing site settings. The **Publish Shipping Viewer** run reports the actual deployed URL; no live URL is claimed until that deployment succeeds.
+
+`PyariWalls_FINAL.xlsx` has not been uploaded in this session. The present exporter uses its documented standard audit workbook; it does not claim to reproduce an unseen Desktop template.
