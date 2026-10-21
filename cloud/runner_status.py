@@ -9,6 +9,12 @@ def gh(*args):
  if r.returncode:raise RuntimeError('GitHub '+args[0]+' unavailable')
  return r.stdout
 
+def phone_connection(reports):
+ phone=next((row for row in reports if row.get('execution')=='Android app'),None)
+ if phone is None:return {'status':'not_connected_or_no_report','status_confirmed':False,'message':'No Android heartbeat received. Connect GitHub in app Settings and start or resume fetching.'}
+ if not phone.get('status_confirmed'):return {'status':'heartbeat_stale','status_confirmed':False,'observed_utc':phone.get('observed_utc'),'message':'Phone heartbeat is stale; running or stopped cannot be confirmed.'}
+ return {'status':'connected','status_confirmed':True,'worker_active':phone.get('worker_active'),'worker_status':phone.get('status'),'observed_utc':phone.get('observed_utc'),'progress_age_seconds':phone.get('progress_age_seconds'),'message':'Recent phone report received; heartbeat does not itself prove product progress.'}
+
 def select_runs(runs,campaign=None):
  lanes={}
  for r in reversed(runs):
@@ -83,6 +89,8 @@ def main():
  if local_reports:
   report['local_khaadi']=max(local_reports,key=lambda row:datetime.datetime.fromisoformat(row['observed_utc']))
   report['khaadi_devices']=local_reports
+ report['phone_heartbeat']=phone_connection(local_reports)
+ report['monitoring']={'phone_heartbeat_seconds':30,'phone_stale_after_seconds':180,'cloud_schedule_minutes':5,'note':'Scheduled cloud checks can be delayed. Query local-run-status directly for latest phone heartbeat.'}
  report['fresh_completed']=sum(v=='done' for v in report['fresh_stores'].values())
  publish(report,branch='runner-status-reports')
  print('Active/queued:',report['active_queued'],'| fresh done:',report['fresh_completed'],'| cloud checked:',report['checked_utc'])
