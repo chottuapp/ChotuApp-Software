@@ -59,7 +59,9 @@ def upload(data,token,check=lambda:None):
   check();response=session.put(url,json=payload,timeout=180)
   if response.status_code not in (200,201):raise RuntimeError('GitHub upload failed ('+str(response.status_code)+'). File retained on phone.')
  put(path,content)
- marker=json.dumps({'store':'Khaadi','input_path':path,'sha256':sha,'coverage':'Public default-page discovery; full catalog coverage unverified'},indent=2).encode()
+ try:session_meta=json.loads((data/'session-meta.json').read_text())
+ except (OSError,ValueError):session_meta={}
+ marker=json.dumps({'store':'Khaadi','fresh_campaign_id':session_meta.get('fresh_campaign_id'),'input_path':path,'sha256':sha,'coverage':'Public default-page discovery; full catalog coverage unverified'},indent=2).encode()
  put('catalog-inputs/khaadi-mobile/latest.json',marker)
  return sha
 
@@ -73,6 +75,9 @@ def dashboard():
  try:
   response=requests.get('https://raw.githubusercontent.com/'+REPO+'/android-builds/studio-release.json',params={'check':time.time_ns()},timeout=15);response.raise_for_status();result['app_update']=response.json()
  except (requests.RequestException,ValueError):result['app_update']={'unavailable':True}
+ try:
+  response=requests.get('https://raw.githubusercontent.com/'+REPO+'/main/cloud/audit804-release.json',params={'check':time.time_ns()},timeout=15);response.raise_for_status();result['fresh_release']=response.json()
+ except (requests.RequestException,ValueError):pass
  from store_progress import rows
  result['store_progress']=rows(result.get('runners',{}))
  return json.dumps(result)
@@ -129,9 +134,11 @@ def log_tail(data,token=''):
 
 def mobile_report(data,token,active,paused=False):
  state=read_state(data);progress=state.get('last_progress_epoch');status=state.get('status','ready')
+ try:campaign=json.loads((Path(data)/'session-meta.json').read_text()).get('fresh_campaign_id')
+ except (OSError,ValueError):campaign=None
  if paused and active:status='pausing'
  elif status=='running' and not active:status='stopped'
- return {'store':'Khaadi','execution':'Android app','app_version':'1.1-preview','observed_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'worker_active':bool(active),'status':status,'worker_updated':state.get('updated'),'last_event':safe_log(state.get('last_event',''),token),'error':safe_log(state.get('error',''),token),'progress_age_seconds':max(0,round(time.time()-progress)) if isinstance(progress,(int,float)) else None,'log_tail':log_tail(data,token)}
+ return {'store':'Khaadi','execution':'Android app','app_version':'1.2-studio','fresh_campaign_id':campaign,'observed_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'worker_active':bool(active),'status':status,'worker_updated':state.get('updated'),'last_event':safe_log(state.get('last_event',''),token),'error':safe_log(state.get('error',''),token),'progress_age_seconds':max(0,round(time.time()-progress)) if isinstance(progress,(int,float)) else None,'log_tail':log_tail(data,token)}
 
 def telemetry_status(data,**record):
  data=Path(data);data.mkdir(parents=True,exist_ok=True);path=data/'telemetry-status.json'
@@ -185,4 +192,4 @@ def reporting(data,bridge,token):
   send(terminal=True)
  thread=threading.Thread(target=loop,daemon=True);thread.start()
  try:yield
- finally:stop.set();thread.join(timeout=1)
+ finally:stop.set();thread.join(timeout=90)

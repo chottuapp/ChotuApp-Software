@@ -12,6 +12,7 @@ public class AppSmokeTest {
     @Test public void nativeDashboardAndEmbeddedExporter() throws Exception {
         android.app.Instrumentation instrumentation=InstrumentationRegistry.getInstrumentation();
         Context context=instrumentation.getTargetContext();
+        MainActivity.suppressAutoFreshForTests=true;
         if(!Profile.exists(context))Profile.create(context,"test@example.com","fixture-password".toCharArray());
         assertFalse(Profile.login(context,"test@example.com","wrong-password".toCharArray()));assertTrue(Profile.login(context,"test@example.com","fixture-password".toCharArray()));
         android.app.Activity activity=instrumentation.startActivitySync(new Intent(context,MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));assertNotNull(activity);
@@ -25,6 +26,8 @@ public class AppSmokeTest {
             main.populateDrive(results,drive,"no matching file");assertEquals(1,results.getChildCount());
             assertTrue(((android.widget.TextView)results.getChildAt(0)).getText().toString().contains("No matching"));
         }catch(Exception e){throw new AssertionError(e);}});
+        File old=new File(context.getFilesDir(),"khaadi");old.mkdirs();File evidence=new File(old,"old-cache-fixture.txt");try(java.io.FileOutputStream stream=new java.io.FileOutputStream(evidence)){stream.write("saved".getBytes());}
+        File fresh=FetchService.prepareFreshDirectory(context,"fresh804-20261021-deadbeef");assertTrue(evidence.exists());assertFalse(new File(fresh,"old-cache-fixture.txt").exists());assertEquals(fresh,FetchService.dataDirectory(context));context.getSharedPreferences("worker",0).edit().remove("data_dir").remove("fresh_campaign_seen").commit();
         FetchService.extract(context);
         String result=FetchService.python(context).getModule("mobile_backend").callAttr("self_test",new File(context.getFilesDir(),"engine").getPath(),new File(context.getFilesDir(),"smoke-test").getPath()).toString();
         assertEquals("Embedded export verified",result);

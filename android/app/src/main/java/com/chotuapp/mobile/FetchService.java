@@ -16,6 +16,14 @@ public class FetchService extends Service {
     public static String githubToken(){return appContext==null?"":Vault.read(appContext);}
     public static boolean isActive(){return active.get();}
     public static boolean isPaused(){return paused.get();}
+    static File dataDirectory(Context context){String name=context.getSharedPreferences("worker",0).getString("data_dir","khaadi");if(!name.equals("khaadi")&&!name.matches("khaadi-sessions/fresh804-[0-9]{8}-[a-f0-9]{8}"))name="khaadi";return new File(context.getFilesDir(),name);}
+    static File prepareFreshDirectory(Context context,String campaign)throws Exception{
+        if(!campaign.matches("fresh804-[0-9]{8}-[a-f0-9]{8}"))throw new IOException("Invalid fresh campaign");
+        String relative="khaadi-sessions/"+campaign;File directory=new File(context.getFilesDir(),relative);if(!directory.exists()&&!directory.mkdirs())throw new IOException("Cannot create fresh session");
+        File meta=new File(directory,"session-meta.json");if(meta.exists()){JSONObject prior=new JSONObject(MainActivity.read(meta,4000));if(!prior.optString("fresh_campaign_id").equals(campaign))throw new IOException("Session identity mismatch");}
+        else try(FileOutputStream stream=new FileOutputStream(meta)){stream.write(new JSONObject().put("fresh_campaign_id",campaign).put("fresh_from_zero",true).toString().getBytes("UTF-8"));}
+        context.getSharedPreferences("worker",0).edit().putString("data_dir",relative).putString("fresh_campaign_seen",campaign).commit();return directory;
+    }
     static synchronized Python python(Context c){if(!Python.isStarted())Python.start(new AndroidPlatform(c.getApplicationContext()));return Python.getInstance();}
     static void extract(Context c) throws Exception {
         File target=new File(c.getFilesDir(),"engine");target.mkdirs();
@@ -35,9 +43,10 @@ public class FetchService extends Service {
         startForeground(804,notice("Fetching public pages. Saved progress is retained."));
         wake=((PowerManager)getSystemService(POWER_SERVICE)).newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"ChotuApp:Fetch");wake.acquire(6*60*60*1000L);
         getSharedPreferences("worker",0).edit().putString("status","running").putString("message","Starting saved work…").apply();
+        final String freshCampaign=intent==null?"":intent.getStringExtra("fresh_campaign_id");
         new Thread(()->{
             try {
-                extract(this);File data=new File(getFilesDir(),"khaadi");data.mkdirs();
+                extract(this);File data=freshCampaign!=null&&!freshCampaign.isEmpty()?prepareFreshDirectory(this,freshCampaign):dataDirectory(this);data.mkdirs();
                 String result=python(this).getModule("mobile_backend").callAttr("run",new File(getFilesDir(),"engine").getPath(),data.getPath(),Vault.read(this)).toString();
                 JSONObject parsed=new JSONObject(result);getSharedPreferences("worker",0).edit().putString("source_sha256",parsed.optString("source_sha256","")).putString("status",parsed.getString("status")).putString("message",parsed.getString("message")).apply();
             } catch(Throwable e){getSharedPreferences("worker",0).edit().putString("status",paused.get()?"paused":"attention").putString("message",paused.get()?"Paused. Saved work retained.":"Worker needs attention. "+safe(e.getMessage())).apply();}
