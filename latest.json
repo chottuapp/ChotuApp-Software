@@ -1,8 +1,62 @@
 {
-  "run_id": "39598769248",
-  "checked_utc": "2026-10-21T12:20:27.004342+00:00",
-  "active_queued": 5,
+  "run_id": "39618376174",
+  "checked_utc": "2026-10-21T14:37:16.693711+00:00",
+  "active_queued": 3,
   "runs": [
+    {
+      "conclusion": "",
+      "databaseId": 39616605711,
+      "displayTitle": "Automatic continuation of 39576575531",
+      "status": "in_progress",
+      "updatedAt": "2026-10-21T14:30:42Z",
+      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39616605711",
+      "lane": "audit804-fresh804-20261021-a26dcd86-9",
+      "snapshot": "Updated (UTC): 2026-10-21T14:33:34.350165+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Bonanza Satrangi.xlsx\n2. Outfitters.xlsx\n\nSTORE STATUS\nBonanza Satrangi: done\nOutfitters: done\nZellbury: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 5928/6106 tasks; sample age 63s\n  Approximate ETA for this stage only: 9.2 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-21T14:33:26.311455+00:00\n",
+      "snapshot_utc": "2026-10-21T14:33:34.350165+00:00",
+      "stores": {
+        "Bonanza Satrangi": "done",
+        "Outfitters": "done",
+        "Zellbury": "running"
+      },
+      "snapshot_age_seconds": 222,
+      "snapshot_stale": false
+    },
+    {
+      "conclusion": "",
+      "databaseId": 39616518549,
+      "displayTitle": "Automatic continuation of 39576560881",
+      "status": "in_progress",
+      "updatedAt": "2026-10-21T14:29:29Z",
+      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39616518549",
+      "lane": "audit804-fresh804-20261021-a26dcd86-7",
+      "snapshot": "Updated (UTC): 2026-10-21T14:35:15.127719+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Saeed Ghani.xlsx\n2. Hemani Herbals.xlsx\n\nSTORE STATUS\nSaeed Ghani: done\nHemani Herbals: done\nGul Ahmed: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 3492/6884 tasks; sample age 166s\n  Approximate ETA for this stage only: 282.7 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-21T14:35:05.394729+00:00\n",
+      "snapshot_utc": "2026-10-21T14:35:15.127719+00:00",
+      "stores": {
+        "Saeed Ghani": "done",
+        "Hemani Herbals": "done",
+        "Gul Ahmed": "running"
+      },
+      "snapshot_age_seconds": 122,
+      "snapshot_stale": false
+    },
+    {
+      "conclusion": "",
+      "databaseId": 39616488192,
+      "displayTitle": "Automatic continuation of 39576523058",
+      "status": "in_progress",
+      "updatedAt": "2026-10-21T14:29:24Z",
+      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39616488192",
+      "lane": "audit804-fresh804-20261021-a26dcd86-2",
+      "snapshot": "Updated (UTC): 2026-10-21T14:34:58.906414+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Tawakkal Fabrics.xlsx\n2. Junaid Jamshed.xlsx\n\nSTORE STATUS\nTawakkal Fabrics: done\nJunaid Jamshed: done\nStylo: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 3073/9242 tasks; sample age 80s\n  Approximate ETA for this stage only: 514.0 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-21T14:34:55.335720+00:00\n",
+      "snapshot_utc": "2026-10-21T14:34:58.906414+00:00",
+      "stores": {
+        "Tawakkal Fabrics": "done",
+        "Junaid Jamshed": "done",
+        "Stylo": "running"
+      },
+      "snapshot_age_seconds": 138,
+      "snapshot_stale": false
+    },
     {
       "conclusion": "success",
       "databaseId": 39586327905,
@@ -16,167 +70,33 @@
       "stores": {
         "Sapphire": "done"
       },
-      "snapshot_age_seconds": 2898,
+      "snapshot_age_seconds": 11107,
       "snapshot_stale": true
     },
     {
-      "conclusion": "",
+      "conclusion": "failure",
       "databaseId": 39586312392,
       "displayTitle": "Cloud group audit804-fresh804-20261021-a26dcd86-6-laam",
-      "status": "in_progress",
-      "updatedAt": "2026-10-21T10:40:38Z",
+      "status": "completed",
+      "updatedAt": "2026-10-21T13:32:25Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39586312392",
       "lane": "audit804-fresh804-20261021-a26dcd86-6-laam",
-      "snapshot": "Updated (UTC): 2026-10-21T12:17:02.183078+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nLAAM: running\n  Stage: Website listing order\n  Last successful HTTP response (UTC): 2026-10-21T12:16:51.121315+00:00\n",
-      "snapshot_utc": "2026-10-21T12:17:02.183078+00:00",
+      "snapshot": "Updated (UTC): 2026-10-21T13:31:35.085368+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nLAAM: failed\n  Stage: Idle\n  Last successful HTTP response (UTC): 2026-10-21T13:30:41.714881+00:00\n",
+      "snapshot_utc": "2026-10-21T13:31:35.085368+00:00",
       "stores": {
-        "LAAM": "running"
+        "LAAM": "failed"
       },
-      "snapshot_age_seconds": 205,
-      "snapshot_stale": false,
-      "console-tail.txt": [
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/2pc-light-peach-cambric-co-ord-set; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [12:15:38] HTTP START attempt=1 https://laam.com/products/2pc-light-purple-embroidered-lawn-riw-r26-0023",
-        "[LAAM] [12:15:40] HTTP END status=200 elapsed=2.6s bytes=330228 https://laam.com/products/2pc-light-purple-embroidered-lawn-riw-r26-0023",
-        "[LAAM] [12:15:40] HTTP START attempt=1 https://laam.com/products/2pc-lilac-bloom-swiss-silk-jupiter-f25-0013",
-        "[LAAM] [12:15:43] HTTP END status=200 elapsed=2.9s bytes=311911 https://laam.com/products/2pc-lilac-bloom-swiss-silk-jupiter-f25-0013",
-        "[LAAM] [12:15:43] HTTP START attempt=1 https://laam.com/products/2pc-luxe-cotton-silk-suit-1",
-        "[LAAM] [12:15:46] HTTP END status=200 elapsed=2.8s bytes=309183 https://laam.com/products/2pc-luxe-cotton-silk-suit-1",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/2pc-luxe-cotton-silk-suit-1; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [12:15:46] HTTP START attempt=1 https://laam.com/products/2pc-maroon-0051",
-        "[LAAM] [12:15:48] HTTP END status=200 elapsed=2.5s bytes=325242 https://laam.com/products/2pc-maroon-0051",
-        "[LAAM] [12:15:48] HTTP START attempt=1 https://laam.com/products/2pc-matching-separates-lawn-suit-am-001",
-        "[LAAM] [12:15:51] HTTP END status=200 elapsed=2.6s bytes=317423 https://laam.com/products/2pc-matching-separates-lawn-suit-am-001",
-        "[LAAM] [12:15:51] HTTP START attempt=1 https://laam.com/products/2pc-matching-separates-lawn-suit-am-002",
-        "[LAAM] [12:15:55] HTTP END status=200 elapsed=3.7s bytes=316859 https://laam.com/products/2pc-matching-separates-lawn-suit-am-002",
-        "[LAAM] [12:15:55] HTTP START attempt=1 https://laam.com/products/2pc-matching-separates-lawn-suit-am-003",
-        "[LAAM] [12:15:56] HTTP END status=200 elapsed=1.6s bytes=307599 https://laam.com/products/2pc-matching-separates-lawn-suit-am-003",
-        "[LAAM] [12:15:56] HTTP START attempt=1 https://laam.com/products/2pc-matching-separates-lawn-suit-am-004",
-        "[LAAM] [12:16:00] HTTP END status=200 elapsed=3.2s bytes=314575 https://laam.com/products/2pc-matching-separates-lawn-suit-am-004",
-        "[LAAM] [12:16:00] HTTP START attempt=1 https://laam.com/products/2pc-matching-separates-lawn-suit-am-005",
-        "[LAAM] [12:16:02] HTTP END status=200 elapsed=2.4s bytes=313241 https://laam.com/products/2pc-matching-separates-lawn-suit-am-005",
-        "[LAAM] [12:16:02] HTTP START attempt=1 https://laam.com/products/2pc-matching-separates-lawn-suit-am-006",
-        "[LAAM] [12:16:07] HTTP END status=200 elapsed=4.6s bytes=314430 https://laam.com/products/2pc-matching-separates-lawn-suit-am-006",
-        "[LAAM] [12:16:07] HTTP START attempt=1 https://laam.com/products/2pc-matching-separates-lawn-suit-am-007",
-        "[LAAM] [12:16:07] HTTP END status=200 elapsed=0.5s bytes=314091 https://laam.com/products/2pc-matching-separates-lawn-suit-am-007",
-        "[LAAM] [12:16:08] HTTP START attempt=1 https://laam.com/products/2pc-matching-separates-lawn-suit-am-008",
-        "[LAAM] [12:16:10] HTTP END status=200 elapsed=2.0s bytes=307762 https://laam.com/products/2pc-matching-separates-lawn-suit-am-008",
-        "[LAAM] [12:16:10] HTTP START attempt=1 https://laam.com/products/2pc-matching-separates-lawn-suit-am-010",
-        "[LAAM] [12:16:15] HTTP END status=200 elapsed=5.0s bytes=313014 https://laam.com/products/2pc-matching-separates-lawn-suit-am-010",
-        "[LAAM] [12:16:15] HTTP START attempt=1 https://laam.com/products/2pc-mauve-embroidered-lawn-riw-r26-0025",
-        "[LAAM] [12:16:16] HTTP END status=200 elapsed=1.0s bytes=330082 https://laam.com/products/2pc-mauve-embroidered-lawn-riw-r26-0025",
-        "[LAAM] [12:16:17] HTTP START attempt=1 https://laam.com/products/2pc-midnight-bloom-swiss-silk-set-jupiter-f25-0010",
-        "[LAAM] [12:16:18] HTTP END status=200 elapsed=1.5s bytes=312009 https://laam.com/products/2pc-midnight-bloom-swiss-silk-set-jupiter-f25-0010",
-        "[LAAM] [12:16:18] HTTP START attempt=1 https://laam.com/products/2pc-mint-embroidered-lawn-riw-r26-0022",
-        "[LAAM] [12:16:21] HTTP END status=200 elapsed=2.8s bytes=312070 https://laam.com/products/2pc-mint-embroidered-lawn-riw-r26-0022",
-        "[LAAM] [12:16:21] HTTP START attempt=1 https://laam.com/products/2pc-mint-mist-georgette-jupiter-f25-0005",
-        "[LAAM] [12:16:24] HTTP END status=200 elapsed=2.6s bytes=328118 https://laam.com/products/2pc-mint-mist-georgette-jupiter-f25-0005",
-        "[LAAM] [12:16:24] HTTP START attempt=1 https://laam.com/products/2pc-mirror-work-silk-karandi-w24-mws-0003",
-        "[LAAM] [12:16:26] HTTP END status=200 elapsed=2.7s bytes=309594 https://laam.com/products/2pc-mirror-work-silk-karandi-w24-mws-0003",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/2pc-mirror-work-silk-karandi-w24-mws-0003; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [12:16:26] HTTP START attempt=1 https://laam.com/products/2pc-multi-cambric-co-ord-set",
-        "[LAAM] [12:16:29] HTTP END status=200 elapsed=2.6s bytes=306200 https://laam.com/products/2pc-multi-cambric-co-ord-set",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/2pc-multi-cambric-co-ord-set; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] PUBLIC PRODUCT PAGES: 5500/183187 LAAM pages inspected; 2173 clothing products retained; 41 pages deferred",
-        "[LAAM] [12:16:29] HTTP START attempt=1 https://laam.com/products/2pc-multi-embroidered-alpine-aml-w25-0002",
-        "[LAAM] [12:16:32] HTTP END status=200 elapsed=2.7s bytes=330629 https://laam.com/products/2pc-multi-embroidered-alpine-aml-w25-0002",
-        "[LAAM] [12:16:32] HTTP START attempt=1 https://laam.com/products/2pc-multi-embroidered-karandi-aml-w25-0020",
-        "[LAAM] [12:16:34] HTTP END status=200 elapsed=2.8s bytes=332827 https://laam.com/products/2pc-multi-embroidered-karandi-aml-w25-0020",
-        "[LAAM] [12:16:34] HTTP START attempt=1 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0001",
-        "[LAAM] [12:16:37] HTTP END status=200 elapsed=2.7s bytes=312882 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0001",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0001; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [12:16:37] HTTP START attempt=1 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0003",
-        "[LAAM] [12:16:40] HTTP END status=200 elapsed=2.7s bytes=312230 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0003",
-        "[LAAM] [12:16:40] HTTP START attempt=1 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0004",
-        "[LAAM] [12:16:42] HTTP END status=200 elapsed=2.6s bytes=312886 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0004",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0004; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [12:16:42] HTTP START attempt=1 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0005",
-        "[LAAM] [12:16:45] HTTP END status=200 elapsed=2.7s bytes=312829 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0005",
-        "[LAAM] [12:16:45] HTTP START attempt=1 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0006",
-        "[LAAM] [12:16:49] HTTP END status=200 elapsed=3.5s bytes=329254 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0006",
-        "[LAAM] [12:16:49] HTTP START attempt=1 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0007",
-        "[LAAM] [12:16:51] HTTP END status=200 elapsed=2.0s bytes=313447 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0007",
-        "[LAAM] [12:16:51] HTTP START attempt=1 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0008",
-        "[LAAM] [12:16:53] HTTP END status=200 elapsed=2.5s bytes=329486 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0008",
-        "[LAAM] [12:16:53] HTTP START attempt=1 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0009",
-        "[LAAM] [12:16:56] HTTP END status=200 elapsed=2.9s bytes=311654 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0009",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0009; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [12:16:56] HTTP START attempt=1 https://laam.com/products/2pc-multi-embroidered-khaddar-appricot-aml-w26-0006",
-        "[LAAM] [12:16:59] HTTP END status=200 elapsed=2.7s bytes=307187 https://laam.com/products/2pc-multi-embroidered-khaddar-appricot-aml-w26-0006",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/2pc-multi-embroidered-khaddar-appricot-aml-w26-0006; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [12:16:59] HTTP START attempt=1 https://laam.com/products/2pc-multi-embroidered-khaddar-tea-pink-aml-w26-0005"
-      ],
-      "fetch-log.txt": [
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/2pc-light-peach-cambric-co-ord-set; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [12:15:38] HTTP START attempt=1 https://laam.com/products/2pc-light-purple-embroidered-lawn-riw-r26-0023",
-        "[LAAM] [12:15:40] HTTP END status=200 elapsed=2.6s bytes=330228 https://laam.com/products/2pc-light-purple-embroidered-lawn-riw-r26-0023",
-        "[LAAM] [12:15:40] HTTP START attempt=1 https://laam.com/products/2pc-lilac-bloom-swiss-silk-jupiter-f25-0013",
-        "[LAAM] [12:15:43] HTTP END status=200 elapsed=2.9s bytes=311911 https://laam.com/products/2pc-lilac-bloom-swiss-silk-jupiter-f25-0013",
-        "[LAAM] [12:15:43] HTTP START attempt=1 https://laam.com/products/2pc-luxe-cotton-silk-suit-1",
-        "[LAAM] [12:15:46] HTTP END status=200 elapsed=2.8s bytes=309183 https://laam.com/products/2pc-luxe-cotton-silk-suit-1",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/2pc-luxe-cotton-silk-suit-1; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [12:15:46] HTTP START attempt=1 https://laam.com/products/2pc-maroon-0051",
-        "[LAAM] [12:15:48] HTTP END status=200 elapsed=2.5s bytes=325242 https://laam.com/products/2pc-maroon-0051",
-        "[LAAM] [12:15:48] HTTP START attempt=1 https://laam.com/products/2pc-matching-separates-lawn-suit-am-001",
-        "[LAAM] [12:15:51] HTTP END status=200 elapsed=2.6s bytes=317423 https://laam.com/products/2pc-matching-separates-lawn-suit-am-001",
-        "[LAAM] [12:15:51] HTTP START attempt=1 https://laam.com/products/2pc-matching-separates-lawn-suit-am-002",
-        "[LAAM] [12:15:55] HTTP END status=200 elapsed=3.7s bytes=316859 https://laam.com/products/2pc-matching-separates-lawn-suit-am-002",
-        "[LAAM] [12:15:55] HTTP START attempt=1 https://laam.com/products/2pc-matching-separates-lawn-suit-am-003",
-        "[LAAM] [12:15:56] HTTP END status=200 elapsed=1.6s bytes=307599 https://laam.com/products/2pc-matching-separates-lawn-suit-am-003",
-        "[LAAM] [12:15:56] HTTP START attempt=1 https://laam.com/products/2pc-matching-separates-lawn-suit-am-004",
-        "[LAAM] [12:16:00] HTTP END status=200 elapsed=3.2s bytes=314575 https://laam.com/products/2pc-matching-separates-lawn-suit-am-004",
-        "[LAAM] [12:16:00] HTTP START attempt=1 https://laam.com/products/2pc-matching-separates-lawn-suit-am-005",
-        "[LAAM] [12:16:02] HTTP END status=200 elapsed=2.4s bytes=313241 https://laam.com/products/2pc-matching-separates-lawn-suit-am-005",
-        "[LAAM] [12:16:02] HTTP START attempt=1 https://laam.com/products/2pc-matching-separates-lawn-suit-am-006",
-        "[LAAM] [12:16:07] HTTP END status=200 elapsed=4.6s bytes=314430 https://laam.com/products/2pc-matching-separates-lawn-suit-am-006",
-        "[LAAM] [12:16:07] HTTP START attempt=1 https://laam.com/products/2pc-matching-separates-lawn-suit-am-007",
-        "[LAAM] [12:16:07] HTTP END status=200 elapsed=0.5s bytes=314091 https://laam.com/products/2pc-matching-separates-lawn-suit-am-007",
-        "[LAAM] [12:16:08] HTTP START attempt=1 https://laam.com/products/2pc-matching-separates-lawn-suit-am-008",
-        "[LAAM] [12:16:10] HTTP END status=200 elapsed=2.0s bytes=307762 https://laam.com/products/2pc-matching-separates-lawn-suit-am-008",
-        "[LAAM] [12:16:10] HTTP START attempt=1 https://laam.com/products/2pc-matching-separates-lawn-suit-am-010",
-        "[LAAM] [12:16:15] HTTP END status=200 elapsed=5.0s bytes=313014 https://laam.com/products/2pc-matching-separates-lawn-suit-am-010",
-        "[LAAM] [12:16:15] HTTP START attempt=1 https://laam.com/products/2pc-mauve-embroidered-lawn-riw-r26-0025",
-        "[LAAM] [12:16:16] HTTP END status=200 elapsed=1.0s bytes=330082 https://laam.com/products/2pc-mauve-embroidered-lawn-riw-r26-0025",
-        "[LAAM] [12:16:17] HTTP START attempt=1 https://laam.com/products/2pc-midnight-bloom-swiss-silk-set-jupiter-f25-0010",
-        "[LAAM] [12:16:18] HTTP END status=200 elapsed=1.5s bytes=312009 https://laam.com/products/2pc-midnight-bloom-swiss-silk-set-jupiter-f25-0010",
-        "[LAAM] [12:16:18] HTTP START attempt=1 https://laam.com/products/2pc-mint-embroidered-lawn-riw-r26-0022",
-        "[LAAM] [12:16:21] HTTP END status=200 elapsed=2.8s bytes=312070 https://laam.com/products/2pc-mint-embroidered-lawn-riw-r26-0022",
-        "[LAAM] [12:16:21] HTTP START attempt=1 https://laam.com/products/2pc-mint-mist-georgette-jupiter-f25-0005",
-        "[LAAM] [12:16:24] HTTP END status=200 elapsed=2.6s bytes=328118 https://laam.com/products/2pc-mint-mist-georgette-jupiter-f25-0005",
-        "[LAAM] [12:16:24] HTTP START attempt=1 https://laam.com/products/2pc-mirror-work-silk-karandi-w24-mws-0003",
-        "[LAAM] [12:16:26] HTTP END status=200 elapsed=2.7s bytes=309594 https://laam.com/products/2pc-mirror-work-silk-karandi-w24-mws-0003",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/2pc-mirror-work-silk-karandi-w24-mws-0003; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [12:16:26] HTTP START attempt=1 https://laam.com/products/2pc-multi-cambric-co-ord-set",
-        "[LAAM] [12:16:29] HTTP END status=200 elapsed=2.6s bytes=306200 https://laam.com/products/2pc-multi-cambric-co-ord-set",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/2pc-multi-cambric-co-ord-set; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] PUBLIC PRODUCT PAGES: 5500/183187 LAAM pages inspected; 2173 clothing products retained; 41 pages deferred",
-        "[LAAM] [12:16:29] HTTP START attempt=1 https://laam.com/products/2pc-multi-embroidered-alpine-aml-w25-0002",
-        "[LAAM] [12:16:32] HTTP END status=200 elapsed=2.7s bytes=330629 https://laam.com/products/2pc-multi-embroidered-alpine-aml-w25-0002",
-        "[LAAM] [12:16:32] HTTP START attempt=1 https://laam.com/products/2pc-multi-embroidered-karandi-aml-w25-0020",
-        "[LAAM] [12:16:34] HTTP END status=200 elapsed=2.8s bytes=332827 https://laam.com/products/2pc-multi-embroidered-karandi-aml-w25-0020",
-        "[LAAM] [12:16:34] HTTP START attempt=1 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0001",
-        "[LAAM] [12:16:37] HTTP END status=200 elapsed=2.7s bytes=312882 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0001",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0001; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [12:16:37] HTTP START attempt=1 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0003",
-        "[LAAM] [12:16:40] HTTP END status=200 elapsed=2.7s bytes=312230 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0003",
-        "[LAAM] [12:16:40] HTTP START attempt=1 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0004",
-        "[LAAM] [12:16:42] HTTP END status=200 elapsed=2.6s bytes=312886 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0004",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0004; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [12:16:42] HTTP START attempt=1 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0005",
-        "[LAAM] [12:16:45] HTTP END status=200 elapsed=2.7s bytes=312829 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0005",
-        "[LAAM] [12:16:45] HTTP START attempt=1 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0006",
-        "[LAAM] [12:16:49] HTTP END status=200 elapsed=3.5s bytes=329254 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0006",
-        "[LAAM] [12:16:49] HTTP START attempt=1 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0007",
-        "[LAAM] [12:16:51] HTTP END status=200 elapsed=2.0s bytes=313447 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0007",
-        "[LAAM] [12:16:51] HTTP START attempt=1 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0008",
-        "[LAAM] [12:16:53] HTTP END status=200 elapsed=2.5s bytes=329486 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0008",
-        "[LAAM] [12:16:53] HTTP START attempt=1 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0009",
-        "[LAAM] [12:16:56] HTTP END status=200 elapsed=2.9s bytes=311654 https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0009",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/2pc-multi-embroidered-khaddar-aml-w25-0009; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [12:16:56] HTTP START attempt=1 https://laam.com/products/2pc-multi-embroidered-khaddar-appricot-aml-w26-0006",
-        "[LAAM] [12:16:59] HTTP END status=200 elapsed=2.7s bytes=307187 https://laam.com/products/2pc-multi-embroidered-khaddar-appricot-aml-w26-0006",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/2pc-multi-embroidered-khaddar-appricot-aml-w26-0006; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [12:16:59] HTTP START attempt=1 https://laam.com/products/2pc-multi-embroidered-khaddar-tea-pink-aml-w26-0005"
+      "snapshot_age_seconds": 3942,
+      "snapshot_stale": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2386654Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts",
+        "fetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2387327Z RUN SUMMARY:",
+        "fetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2388458Z LAAM: FAILED \u2014 FAILED: LAAM: HTTPSConnectionPool(host='laam.com', port=443): Read timed out. (read timeout=35)",
+        "fetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2389717Z Checkpoint: saved",
+        "fetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2390906Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+        "fetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2401678Z ##[error]Process completed with exit code 2.",
+        "fetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2454394Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2455325Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m"
       ]
     },
     {
@@ -192,26 +112,8 @@
       "stores": {
         "Zero Lifestyle": "done"
       },
-      "snapshot_age_seconds": 10513,
+      "snapshot_age_seconds": 18722,
       "snapshot_stale": true
-    },
-    {
-      "conclusion": "",
-      "databaseId": 39576575531,
-      "displayTitle": "Cloud group audit804-fresh804-20261021-a26dcd86-9",
-      "status": "in_progress",
-      "updatedAt": "2026-10-21T09:23:30Z",
-      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39576575531",
-      "lane": "audit804-fresh804-20261021-a26dcd86-9",
-      "snapshot": "Updated (UTC): 2026-10-21T12:19:56.489569+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Bonanza Satrangi.xlsx\n\nSTORE STATUS\nBonanza Satrangi: done\n  Last successful HTTP response (UTC): 2026-10-21T10:57:39.276518+00:00\nOutfitters: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 3500/4479 tasks; sample age 36s\n  Approximate ETA for this stage only: 48.9 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-21T12:19:48.589566+00:00\nZellbury: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 3350/6106 tasks; sample age 98s\n  Approximate ETA for this stage only: 137.9 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-21T12:19:45.948501+00:00\n",
-      "snapshot_utc": "2026-10-21T12:19:56.489569+00:00",
-      "stores": {
-        "Bonanza Satrangi": "done",
-        "Outfitters": "running",
-        "Zellbury": "running"
-      },
-      "snapshot_age_seconds": 31,
-      "snapshot_stale": false
     },
     {
       "conclusion": "success",
@@ -228,26 +130,8 @@
         "Denim Leftover": "done",
         "Cool and Cool": "done"
       },
-      "snapshot_age_seconds": 10334,
+      "snapshot_age_seconds": 18544,
       "snapshot_stale": true
-    },
-    {
-      "conclusion": "",
-      "databaseId": 39576560881,
-      "displayTitle": "Cloud group audit804-fresh804-20261021-a26dcd86-7",
-      "status": "in_progress",
-      "updatedAt": "2026-10-21T09:23:24Z",
-      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39576560881",
-      "lane": "audit804-fresh804-20261021-a26dcd86-7",
-      "snapshot": "Updated (UTC): 2026-10-21T12:19:58.700632+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Saeed Ghani.xlsx\n2. Hemani Herbals.xlsx\n\nSTORE STATUS\nSaeed Ghani: done\n  Last successful HTTP response (UTC): 2026-10-21T10:02:46.423322+00:00\nHemani Herbals: done\n  Last successful HTTP response (UTC): 2026-10-21T10:57:36.685937+00:00\nGul Ahmed: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 1900/6884 tasks; sample age 108s\n  Approximate ETA for this stage only: 415.8 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-21T12:19:46.942669+00:00\n",
-      "snapshot_utc": "2026-10-21T12:19:58.700632+00:00",
-      "stores": {
-        "Saeed Ghani": "done",
-        "Hemani Herbals": "done",
-        "Gul Ahmed": "running"
-      },
-      "snapshot_age_seconds": 28,
-      "snapshot_stale": false
     },
     {
       "conclusion": "success",
@@ -262,7 +146,7 @@
       "stores": {
         "Nisa Naturals": "done"
       },
-      "snapshot_age_seconds": 6043,
+      "snapshot_age_seconds": 14253,
       "snapshot_stale": true
     },
     {
@@ -280,7 +164,7 @@
         "Adam Cheese": "done",
         "Computer Zone": "done"
       },
-      "snapshot_age_seconds": 8754,
+      "snapshot_age_seconds": 16963,
       "snapshot_stale": true
     },
     {
@@ -298,7 +182,7 @@
         "Shop Modest": "done",
         "Seran": "done"
       },
-      "snapshot_age_seconds": 10297,
+      "snapshot_age_seconds": 18506,
       "snapshot_stale": true
     },
     {
@@ -316,59 +200,44 @@
         "The Hanger Pakistan": "done",
         "Elite Cosmetics": "done"
       },
-      "snapshot_age_seconds": 6486,
+      "snapshot_age_seconds": 14696,
       "snapshot_stale": true
     },
     {
-      "conclusion": "",
-      "databaseId": 39576523058,
-      "displayTitle": "Cloud group audit804-fresh804-20261021-a26dcd86-2",
-      "status": "in_progress",
-      "updatedAt": "2026-10-21T09:23:07Z",
-      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39576523058",
-      "lane": "audit804-fresh804-20261021-a26dcd86-2",
-      "snapshot": "Updated (UTC): 2026-10-21T12:19:51.182236+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Tawakkal Fabrics.xlsx\n\nSTORE STATUS\nTawakkal Fabrics: done\n  Last successful HTTP response (UTC): 2026-10-21T10:13:19.761273+00:00\nJunaid Jamshed: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 5050/5155 tasks; sample age 95s\n  Approximate ETA for this stage only: 3.5 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-21T12:19:47.979554+00:00\nStylo: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 1450/9242 tasks; sample age 209s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-10-21T12:19:48.652277+00:00\n",
-      "snapshot_utc": "2026-10-21T12:19:51.182236+00:00",
-      "stores": {
-        "Tawakkal Fabrics": "done",
-        "Junaid Jamshed": "running",
-        "Stylo": "running"
-      },
-      "snapshot_age_seconds": 36,
-      "snapshot_stale": false
-    },
-    {
-      "conclusion": "",
+      "conclusion": "success",
       "databaseId": 39576513829,
       "displayTitle": "Cloud group audit804-fresh804-20261021-a26dcd86-1",
-      "status": "in_progress",
-      "updatedAt": "2026-10-21T09:23:03Z",
+      "status": "completed",
+      "updatedAt": "2026-10-21T12:38:45Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39576513829",
       "lane": "audit804-fresh804-20261021-a26dcd86-1",
-      "snapshot": "Updated (UTC): 2026-10-21T12:20:15.917390+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Miss Rose.xlsx\n2. Rivaj UK.xlsx\n\nSTORE STATUS\nMiss Rose: done\n  Last successful HTTP response (UTC): 2026-10-21T09:26:07.336304+00:00\nRivaj UK: done\n  Last successful HTTP response (UTC): 2026-10-21T09:37:28.515011+00:00\nRawayat: running\n  Stage: Building Excel rows\n  building Excel rows: 2499/4690 tasks; sample age 11s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-10-21T12:01:35.118705+00:00\n",
-      "snapshot_utc": "2026-10-21T12:20:15.917390+00:00",
+      "snapshot": "Updated (UTC): 2026-10-21T12:38:09.300118+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Miss Rose.xlsx\n2. Rivaj UK.xlsx\n3. Rawayat.xlsx\n\nSTORE STATUS\nMiss Rose: done\n  Last successful HTTP response (UTC): 2026-10-21T09:26:07.336304+00:00\nRivaj UK: done\n  Last successful HTTP response (UTC): 2026-10-21T09:37:28.515011+00:00\nRawayat: done\n  Last successful HTTP response (UTC): 2026-10-21T12:01:35.118705+00:00\n",
+      "snapshot_utc": "2026-10-21T12:38:09.300118+00:00",
       "stores": {
         "Miss Rose": "done",
         "Rivaj UK": "done",
-        "Rawayat": "running"
+        "Rawayat": "done"
       },
-      "snapshot_age_seconds": 11,
-      "snapshot_stale": false
+      "snapshot_age_seconds": 7147,
+      "snapshot_stale": true
     }
   ],
   "fresh_stores": {
-    "Sapphire": "done",
-    "LAAM": "running",
-    "Zero Lifestyle": "done",
     "Bonanza Satrangi": "done",
-    "Outfitters": "running",
+    "Outfitters": "done",
     "Zellbury": "running",
-    "Skin Factor": "done",
-    "Denim Leftover": "done",
-    "Cool and Cool": "done",
     "Saeed Ghani": "done",
     "Hemani Herbals": "done",
     "Gul Ahmed": "running",
+    "Tawakkal Fabrics": "done",
+    "Junaid Jamshed": "done",
+    "Stylo": "running",
+    "Sapphire": "done",
+    "LAAM": "failed",
+    "Zero Lifestyle": "done",
+    "Skin Factor": "done",
+    "Denim Leftover": "done",
+    "Cool and Cool": "done",
     "Nisa Naturals": "done",
     "Farda Foods": "done",
     "Adam Cheese": "done",
@@ -379,12 +248,9 @@
     "Vince Care": "done",
     "The Hanger Pakistan": "done",
     "Elite Cosmetics": "done",
-    "Tawakkal Fabrics": "done",
-    "Junaid Jamshed": "running",
-    "Stylo": "running",
     "Miss Rose": "done",
     "Rivaj UK": "done",
-    "Rawayat": "running"
+    "Rawayat": "done"
   },
   "local_khaadi": {
     "store": "Khaadi",
@@ -396,13 +262,13 @@
     "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
     "error": "",
     "progress_age_seconds": 1,
-    "report_age_seconds": 61061,
+    "report_age_seconds": 69276,
     "status_confirmed": false
   },
   "drive": {
     "sync_status": "finished",
     "sync_error": null,
-    "last_scan_utc": "2026-10-21T12:13:40.062345+00:00",
+    "last_scan_utc": "2026-10-21T14:36:32.448323+00:00",
     "held": {
       "39450775009": [],
       "39450778729": [],
@@ -522,7 +388,7 @@
       "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
       "error": "",
       "progress_age_seconds": 1,
-      "report_age_seconds": 61061,
+      "report_age_seconds": 69276,
       "status_confirmed": false
     }
   ],
@@ -537,5 +403,5 @@
     "cloud_schedule_minutes": 5,
     "note": "Scheduled cloud checks can be delayed. Query local-run-status directly for latest phone heartbeat."
   },
-  "fresh_completed": 21
+  "fresh_completed": 24
 }
