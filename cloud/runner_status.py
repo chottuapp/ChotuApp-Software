@@ -62,7 +62,9 @@ def main():
       logs=list(Path(tmp).rglob(filename))
       if logs:item[filename]=[redact(line) for line in logs[0].read_text(encoding='utf-8',errors='replace').splitlines()[-70:]]
     if run['lane'].startswith('fresh26-39450710625-') or campaign and run['lane'].startswith('audit804-'+campaign+'-'):
-     for store,status in stores.items():report['fresh_stores'].setdefault(store,status)
+     current_stores={store:status for store,status in stores.items() if store not in report['fresh_stores']}
+     item['stores']=current_stores
+     report['fresh_stores'].update(current_stores)
    except (RuntimeError,OSError,ValueError):item['snapshot_unavailable']=True
   if run.get('conclusion')=='failure':
    try:
