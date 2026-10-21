@@ -25,6 +25,18 @@ TYPES=[
  ('lipstick',r'\b(?:lipstick|lip\s+paint)\b',r'\b(?:lipstick|lip\s+colour|lip\s+color)\b'),
  ('mascara',r'\bmascara\b',r'\bmascara\b'),
  ('foundation',r'\bfoundation\b',r'\bfoundation\b'),
+ ('lip gloss',r'\blip\s*gloss\b',r'\blip\s*gloss\b'),
+ ('lip liner',r'\blip\s+liners?\b',r'\blip\s+liners?\b'),
+ ('lip balm',r'\blip\s+balms?\b',r'\blip\s+balms?\b'),
+ ('eyeshadow',r'\beye\s*shadow\b',r'\beye\s*shadow\b'),
+ ('eyeliner',r'\b(?:eye\s*liner|kajal|kohl)\b',r'\b(?:eye\s*liner|kajal|kohl)\b'),
+ ('concealer',r'\bconcealers?\b',r'\bconcealers?\b'),
+ ('makeup brush',r'\bmakeup\s+brush(?:es)?\b',r'\bmakeup\s+brush(?:es)?\b'),
+ ('makeup sponge',r'\b(?:makeup|beauty)\s+sponges?\b',r'\b(?:makeup|beauty)\s+sponges?\b'),
+ ('hair serum',r'\bhair\s+(?:growth\s+)?serum\b',r'\bhair\s+serum\b'),
+ ('face serum',r'\b(?:facial|face)\s+serum\b',r'\b(?:facial|face)\s+serum\b'),
+ ('body lotion',r'\bbody\s+(?:lotion|milk)\b',r'\bbody\s+(?:lotion|milk)\b'),
+ ('face toner',r'\b(?:face|facial)\s+toner\b',r'\b(?:face|facial)\s+toner\b'),
  ('garam masala',r'\bgaram\s+masala\b',r'\bgaram\s+masala\b'),
  ('tea bags',r'\btea\s+bags?\b',r'\btea\s+bags?\b'),
  ('mozzarella',r'\bmozzarella\b',r'\bmozzarella\b'),
@@ -56,11 +68,15 @@ def issues_for(row,source=None):
  bundle=bool(re.search(r'\b(?:bundle|combo|kit|duo|deal|set of)\b',name,re.I))
  if found and category:
   if bundle:
+   family=found[0][0]
+   if re.search(r'dairy',category,re.I) and not re.search(r'cheese|milk|butter|ghee|dairy|yoghurt|lassi',name+' '+body,re.I):issues.append('Bundle family and product contents disagree')
+   if category.lower().startswith('hair') and not family.startswith('hair'):issues.append('Hair bundle category conflicts with primary product purpose')
+   if re.search(r'\b(?:skin|face)',category,re.I) and family in ('lipstick','lip gloss','lip liner','eyeshadow','eyeliner','mascara','foundation','concealer'):issues.append('Cosmetics bundle incorrectly classified as skincare')
    if not re.search(r'\b(?:bundle|combo|kit|set|pack|outfit|suit)\b',category,re.I):issues.append('Bundle appears classified as a single component')
   elif not found[0][1].search(category):issues.append('Primary product type and Category disagree: '+found[0][0])
  elif category:
   # Unknown category evidence is held; never trust a label just because it exists.
-  anchors=[w.rstrip('s') for w in re.findall('[a-z]{3,}',category.lower()) if w not in {'and','for','with','care','sets','set'}]
+  anchors=[w if w.endswith('ss') else w[:-2] if w.endswith(('ches','shes','xes','sses','zes')) else w[:-1] if w.endswith('s') else w for w in re.findall('[a-z]{3,}',category.lower()) if w not in {'and','for','with','care','sets','set'}]
   evidence=(name+' '+body).lower()
   if not anchors or not all(re.search(r'\b'+re.escape(w)+r'(?:s|es)?\b',evidence) for w in anchors):issues.append('Category lacks clear product-purpose evidence; manual review required')
  if re.search(r'\b[23]\s*[- ]?(?:pc|piece)',name,re.I) and re.search(r'\b(?:kurtas?|shirts?|trousers?|dupattas?)\b',category,re.I) and not re.search(r'suit|set|outfit|ready',category,re.I):issues.append('Multi-piece outfit may be classified as one component')

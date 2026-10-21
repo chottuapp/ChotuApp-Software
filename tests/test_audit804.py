@@ -18,3 +18,9 @@ class AuditTests(unittest.TestCase):
    self.assertEqual(run(path,'Store',{'Store':'S1'},{'store.example'})['status'],'pass')
    self.assertEqual(run(path,'Store',{}, {'store.example'})['status'],'hold')
    self.assertEqual(run(path,'Store',{'Store':'S1'},{'other.example'})['status'],'hold')
+
+ def test_plural_and_spaced_product_purposes(self):
+  self.assertFalse(issues_for({'name':'Eye Shadow Palette','description':'A palette of eye shadow colours for eye makeup.','Category':'Eyeshadow'}))
+  self.assertFalse(issues_for({'name':'Shine Lip Gloss','description':'Lip gloss with a smooth shiny finish.','Category':'Lip Gloss'}))
+ def test_bundle_family_mismatch(self):
+  self.assertTrue(issues_for({'name':'Lipstick Makeup Kit','description':'A lipstick collection with rich makeup colours.','Category':'Dairy Bundles'}))
