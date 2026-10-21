@@ -1,0 +1,35 @@
+name: Inspect Stopped Fetch
+on:
+  push:
+    branches: [main]
+    paths: [cloud/inspect-stopped-request.json]
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install requests beautifulsoup4
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          PYTHONPATH: cloud:.
+        run: |
+          python - <<'PY'
+          import json,subprocess,os
+          from pathlib import Path
+          from source_research import publish
+          from diagnostics import redact
+          rid=json.loads(Path('cloud/inspect-stopped-request.json').read_text())['run_id']
+          if not rid.isdigit():raise ValueError('Numeric run required')
+          def gh(*a):return subprocess.run(['gh',*a],capture_output=True,text=True,check=True,timeout=180).stdout
+          result={'run_id':os.environ['GITHUB_RUN_ID'],'target':rid}
+          result['failed_log']=redact(gh('run','view',rid,'--repo','chottuapp/ChotuApp-Software','--log-failed'))[-38000:]
+          result['artifacts']=json.loads(gh('api','repos/chottuapp/ChotuApp-Software/actions/runs/'+rid+'/artifacts'))['artifacts']
+          publish(result,branch='stopped-fetch-reports')
+          PY
