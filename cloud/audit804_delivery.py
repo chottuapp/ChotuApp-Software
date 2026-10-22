@@ -183,7 +183,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT):
     phone_request=json.loads(phone_release.read_text())
     if phone_request.get('store')=='Khaadi' and phone_request.get('campaign_id')==campaign and phone_request.get('fresh_from_zero') is True:
      session_id=phone_request.get('session_id')
-     if isinstance(session_id,str) and __import__('re').fullmatch(r'fresh804-[0-9]{8}-[a-f0-9]{8}',session_id):approved_phone_campaigns.add(session_id)
+     if isinstance(session_id,str) and __import__('re').fullmatch(r'fresh804-[0-9]{8}-[a-f0-9]{8}',session_id):approved_phone_campaigns={session_id}
    if metadata.get('fresh_campaign_id') in approved_phone_campaigns:
     from mobile_khaadi_ingest import input_file
     supplied=input_file(root)
