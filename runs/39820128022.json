@@ -1,0 +1,650 @@
+{
+  "run_id": "39820128022",
+  "checked_utc": "2026-10-22T17:09:19.952857+00:00",
+  "targets": [
+    {
+      "target": "39620052330",
+      "state": {
+        "conclusion": "failure",
+        "displayTitle": "Cloud group audit804-fresh804-20261021-a26dcd86-6-laam",
+        "headSha": "ea50c341812759e44b937496b79ec70f488d1e85",
+        "jobs": [
+          {
+            "completedAt": "2026-10-21T18:37:44Z",
+            "conclusion": "failure",
+            "databaseId": 119290807194,
+            "name": "fetch",
+            "startedAt": "2026-10-21T14:48:16Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-21T14:48:17Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-21T14:48:16Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T14:48:26Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-21T14:48:17Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T14:48:26Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-21T14:48:26Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T14:48:30Z",
+                "conclusion": "success",
+                "name": "Install extraction dependencies",
+                "number": 4,
+                "startedAt": "2026-10-21T14:48:26Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T14:48:43Z",
+                "conclusion": "success",
+                "name": "Restore optional saved run",
+                "number": 5,
+                "startedAt": "2026-10-21T14:48:30Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T14:48:43Z",
+                "conclusion": "skipped",
+                "name": "Install Czone browser fallback when needed",
+                "number": 6,
+                "startedAt": "2026-10-21T14:48:43Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T14:48:44Z",
+                "conclusion": "success",
+                "name": "Start continuous fetching on the cloud runner",
+                "number": 7,
+                "startedAt": "2026-10-21T14:48:43Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:04Z",
+                "conclusion": "success",
+                "name": "Live progress, logs and completed-file uploads",
+                "number": 8,
+                "startedAt": "2026-10-21T14:48:44Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:04Z",
+                "conclusion": "failure",
+                "name": "Fetch result",
+                "number": 9,
+                "startedAt": "2026-10-21T18:37:04Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:05Z",
+                "conclusion": "success",
+                "name": "Collect diagnostic report even if fetching failed",
+                "number": 10,
+                "startedAt": "2026-10-21T18:37:04Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:06Z",
+                "conclusion": "success",
+                "name": "Upload diagnostic report and redacted log",
+                "number": 11,
+                "startedAt": "2026-10-21T18:37:05Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:07Z",
+                "conclusion": "success",
+                "name": "Upload Excel files and audits, including completed stores from a partial run",
+                "number": 12,
+                "startedAt": "2026-10-21T18:37:06Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:07Z",
+                "conclusion": "skipped",
+                "name": "Final automated Rule 804 pass for fresh batch",
+                "number": 13,
+                "startedAt": "2026-10-21T18:37:07Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:07Z",
+                "conclusion": "skipped",
+                "name": "Upload automated Rule 804 fresh workbooks",
+                "number": 14,
+                "startedAt": "2026-10-21T18:37:07Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:41Z",
+                "conclusion": "success",
+                "name": "Upload saved checkpoint when available",
+                "number": 15,
+                "startedAt": "2026-10-21T18:37:07Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:42Z",
+                "conclusion": "success",
+                "name": "Dispatch authorized continuation after verified checkpoint upload",
+                "number": 16,
+                "startedAt": "2026-10-21T18:37:41Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:42Z",
+                "conclusion": "success",
+                "name": "Post Live progress, logs and completed-file uploads",
+                "number": 30,
+                "startedAt": "2026-10-21T18:37:42Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:42Z",
+                "conclusion": "skipped",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 31,
+                "startedAt": "2026-10-21T18:37:42Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:42Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 32,
+                "startedAt": "2026-10-21T18:37:42Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:42Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 33,
+                "startedAt": "2026-10-21T18:37:42Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39620052330/job/119290807194"
+          },
+          {
+            "completedAt": "2026-10-21T18:38:01Z",
+            "conclusion": "success",
+            "databaseId": 119410841399,
+            "name": "Archive structured diagnostics",
+            "startedAt": "2026-10-21T18:37:47Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-21T18:37:49Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-21T18:37:48Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:55Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-21T18:37:49Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:56Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-21T18:37:55Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:56Z",
+                "conclusion": "success",
+                "name": "Run actions/download-artifact@v4",
+                "number": 4,
+                "startedAt": "2026-10-21T18:37:56Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:59Z",
+                "conclusion": "success",
+                "name": "Archive credential-free JSON on the cloud-reports branch",
+                "number": 5,
+                "startedAt": "2026-10-21T18:37:56Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:59Z",
+                "conclusion": "success",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 9,
+                "startedAt": "2026-10-21T18:37:59Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:59Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 10,
+                "startedAt": "2026-10-21T18:37:59Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:59Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 11,
+                "startedAt": "2026-10-21T18:37:59Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39620052330/job/119410841399"
+          }
+        ],
+        "status": "completed"
+      },
+      "failed_log": "fetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5477338Z [LAAM] [18:36:29] HTTP END status=200 elapsed=0.5s bytes=309276 https://laam.com/products/airah-0\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5479182Z [LAAM] [18:36:30] HTTP START attempt=1 https://laam.com/products/airah-1\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5481281Z [LAAM] [18:36:30] HTTP END status=200 elapsed=0.3s bytes=308236 https://laam.com/products/airah-1\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5483580Z [LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/airah-1; no source-confirmed available variants; unavailable product excluded, no variants invented\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5485042Z [LAAM] [18:36:31] HTTP START attempt=1 https://laam.com/products/airah-3\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5485902Z [LAAM] [18:36:32] HTTP END status=200 elapsed=0.3s bytes=321633 https://laam.com/products/airah-3\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5486655Z __CHOTU_PROGRESS__|1|Active: LAAM\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5487823Z [LAAM] [18:36:32] EXCEPTION: RuntimeError('ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.')\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5489031Z [LAAM] [18:36:32] Traceback (most recent call last):\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5495058Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 273, in catalog\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5496528Z     try:product=product_state(BeautifulSoup(response.text,'html.parser',parse_only=SoupStrainer('script')),handle,clothing_only=True,active_only=True,in_stock_only=True)\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5497778Z                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5499179Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 81, in product_state\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5500579Z     product=normalize(candidates[0],handle,active_only=active_only,in_stock_only=in_stock_only)\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5501434Z             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5502468Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 125, in normalize\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5503882Z     if len(values)!=len(dims) or any(str(value) not in dim['values'] for value,dim in zip(values,dims)):raise ValueError('LAAM observed variant does not match declared option values')\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5505126Z                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5506042Z ValueError: LAAM observed variant does not match declared option values\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5506513Z \nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5506873Z The above exception was the direct cause of the following exception:\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5507321Z \nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5507552Z Traceback (most recent call last):\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5508478Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 319, in run\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5509518Z     try:return original(BASE,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5510133Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5511053Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 475, in run\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5512045Z     if host!='czone.com.pk':return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5512742Z                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5513650Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1037, in run_site\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5514695Z     products, complete_catalog=discover(base,log)\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5515307Z                                ^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5516237Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 318, in <lambda>\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5517927Z     g.update(discover=lambda base,log:source.catalog(),collections=lambda base,log:{},refresh_variant_prices=lambda base,p,log:p['variants'],storefront_cover=cover,verified_top20=ranking,audit_fractional_prices=audit,storefront_price_audit=display)\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5519579Z                                       ^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5520643Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 287, in catalog\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5521796Z     except (ValueError,TypeError,KeyError) as exc:raise ValueError('Product '+handle+': '+str(exc)) from exc\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5522718Z                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5523556Z ValueError: Product airah-3: LAAM observed variant does not match declared option values\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5524072Z \nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5524431Z The above exception was the direct cause of the following exception:\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5524874Z \nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5525100Z Traceback (most recent call last):\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5525996Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1999, in _run_checked\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5526892Z     run_site(site['url'], name, template, log_line)\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5527862Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5528979Z     if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5530280Z                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5531251Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1492, in run_site\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5532198Z     _chotuapp_run_site_original(base, name, template, intercept)\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5533215Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5534471Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5535532Z                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5536596Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 215, in run\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5538220Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5540575Z                                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5542283Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 207, in run\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5543254Z     try:return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5543856Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5544751Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 321, in run\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5546126Z     except (ValueError,TypeError,KeyError) as exc:raise RuntimeError('ADAPTER ERROR: LAAM '+str(exc)+'. Saved responses retained; no options, prices or stock guessed.') from exc\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5547572Z                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5548839Z RuntimeError: ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5549937Z \nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5550684Z [LAAM] FAILED: LAAM: ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5551750Z [LAAM] [18:36:32] STAGE: Idle\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5552917Z FAILED: LAAM: FAILED: LAAM: ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5553988Z False\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5554696Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5555825Z Large checkpoint saved in checksummed parts: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5556899Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5557636Z RUN SUMMARY:\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5558972Z LAAM: FAILED \u2014 FAILED: LAAM: ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5560424Z Checkpoint: saved\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5561197Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5571226Z ##[error]Process completed with exit code 2.\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5633043Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5634087Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5694386Z shell: /usr/bin/bash -e {0}\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5694919Z env:\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5695582Z   CHOTUAPP_CLOUD_DATA: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5696461Z   CLOUD_RUNNER_GROUP: audit804-fresh804-20261021-a26dcd86-6-laam\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5697120Z   CLOUD_PARTITION_RESUME: true\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5697680Z   CLOUD_STORES: LAAM | https://laam.com\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5698254Z   CLOUD_MINUTES: 300\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5698749Z   RESUME_RUN_ID: 39586312392\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5699622Z   SAVE_CHECKPOINT: true\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:41.6972235Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:41.6972974Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:41.6973710Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:41.6974463Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:41.6975125Z   CLOUD_NEEDS_CZONE_BROWSER: false\n[credential-bearing log line removed]\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:41.6978718Z ##[endgroup]\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:42.4196443Z No continuation: completed, stopped manually, unauthorized or not a time-budget stop.\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:42.4506235Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:42.4626648Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:42.5477839Z [command]/usr/bin/git version\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:42.5520018Z git version 2.55.0\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:42.5562757Z Temporarily overriding HOME='/home/runner/work/_temp/c573cab6-86b8-44d5-b3a5-9f976ba14fd2' before making global git config changes\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:42.5565005Z Adding repository directory to the temporary git global config as a safe directory\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:42.5568997Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ChotuApp-Software/ChotuApp-Software\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:42.5608998Z [command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:42.5644602Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:42.5904377Z [command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:42.5931335Z http.https://github.com/.extraheader",
+      "artifacts": [
+        {
+          "name": "chotuapp-checkpoint",
+          "id": 12371215329,
+          "expired": false,
+          "size_in_bytes": 1137871080
+        },
+        {
+          "name": "chotuapp-excel-files",
+          "id": 12371095986,
+          "expired": false,
+          "size_in_bytes": 13254
+        },
+        {
+          "name": "chotuapp-live-logs",
+          "id": 12371006206,
+          "expired": false,
+          "size_in_bytes": 386049
+        },
+        {
+          "name": "chotuapp-diagnostics",
+          "id": 12369528575,
+          "expired": false,
+          "size_in_bytes": 383981
+        }
+      ],
+      "annotations": [
+        {
+          "level": "warning",
+          "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+        },
+        {
+          "level": "failure",
+          "message": "Process completed with exit code 2."
+        }
+      ],
+      "console-tail.txt": "[LAAM] [18:36:25] HTTP START attempt=1 https://laam.com/products/aira-underscarf-knotted\n[LAAM] [18:36:26] HTTP END status=200 elapsed=0.3s bytes=300760 https://laam.com/products/aira-underscarf-knotted\n[LAAM] [18:36:27] HTTP START attempt=1 https://laam.com/products/aira-v1-26\n[LAAM] [18:36:27] HTTP END status=200 elapsed=0.3s bytes=308404 https://laam.com/products/aira-v1-26\n[LAAM] [18:36:28] HTTP START attempt=1 https://laam.com/products/airah-0\n[LAAM] [18:36:29] HTTP END status=200 elapsed=0.5s bytes=309276 https://laam.com/products/airah-0\n[LAAM] [18:36:30] HTTP START attempt=1 https://laam.com/products/airah-1\n[LAAM] [18:36:30] HTTP END status=200 elapsed=0.3s bytes=308236 https://laam.com/products/airah-1\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/airah-1; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:36:31] HTTP START attempt=1 https://laam.com/products/airah-3\n[LAAM] [18:36:32] HTTP END status=200 elapsed=0.3s bytes=321633 https://laam.com/products/airah-3\n__CHOTU_PROGRESS__|1|Active: LAAM\n[LAAM] [18:36:32] EXCEPTION: RuntimeError('ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.')\n[LAAM] [18:36:32] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 273, in catalog\n    try:product=product_state(BeautifulSoup(response.text,'html.parser',parse_only=SoupStrainer('script')),handle,clothing_only=True,active_only=True,in_stock_only=True)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 81, in product_state\n    product=normalize(candidates[0],handle,active_only=active_only,in_stock_only=in_stock_only)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 125, in normalize\n    if len(values)!=len(dims) or any(str(value) not in dim['values'] for value,dim in zip(values,dims)):raise ValueError('LAAM observed variant does not match declared option values')\n                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: LAAM observed variant does not match declared option values\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 319, in run\n    try:return original(BASE,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 475, in run\n    if host!='czone.com.pk':return original(base,name,template,log)\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1037, in run_site\n    products, complete_catalog=discover(base,log)\n                               ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 318, in <lambda>\n    g.update(discover=lambda base,log:source.catalog(),collections=lambda base,log:{},refresh_variant_prices=lambda base,p,log:p['variants'],storefront_cover=cover,verified_top20=ranking,audit_fractional_prices=audit,storefront_price_audit=display)\n                                      ^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 287, in catalog\n    except (ValueError,TypeError,KeyError) as exc:raise ValueError('Product '+handle+': '+str(exc)) from exc\n                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Product airah-3: LAAM observed variant does not match declared option values\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1999, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1492, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 215, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 207, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 321, in run\n    except (ValueError,TypeError,KeyError) as exc:raise RuntimeError('ADAPTER ERROR: LAAM '+str(exc)+'. Saved responses retained; no options, prices or stock guessed.') from exc\n                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.\n\n[LAAM] FAILED: LAAM: ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.\n[LAAM] [18:36:32] STAGE: Idle\nFAILED: LAAM: FAILED: LAAM: ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.\nFalse\nCheckpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nLarge checkpoint saved in checksummed parts: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts\nCheckpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts\nRUN SUMMARY:\nLAAM: FAILED \u2014 FAILED: LAAM: ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.\nCheckpoint: saved\nRun finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+      "store-status.txt": "Updated (UTC): 2026-10-21T18:37:02.884915+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nLAAM: failed\n  Stage: Idle\n  Last successful HTTP response (UTC): 2026-10-21T18:36:32.148285+00:00",
+      "fetch-log.txt": "[LAAM] [18:35:19] HTTP END status=200 elapsed=0.3s bytes=303664 https://laam.com/products/ainee\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/ainee; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:20] HTTP START attempt=1 https://laam.com/products/aini-0\n[LAAM] [18:35:20] HTTP END status=200 elapsed=0.3s bytes=327709 https://laam.com/products/aini-0\n[LAAM] [18:35:21] HTTP START attempt=1 https://laam.com/products/aini-1\n[LAAM] [18:35:22] HTTP END status=200 elapsed=0.7s bytes=311870 https://laam.com/products/aini-1\n[LAAM] [18:35:23] HTTP START attempt=1 https://laam.com/products/ainm-embroidered-3pc-rb-pret\n[LAAM] [18:35:23] HTTP END status=200 elapsed=0.3s bytes=313638 https://laam.com/products/ainm-embroidered-3pc-rb-pret\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/ainm-embroidered-3pc-rb-pret; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:24] HTTP START attempt=1 https://laam.com/products/ainoor\n[LAAM] [18:35:25] HTTP END status=200 elapsed=0.6s bytes=313352 https://laam.com/products/ainoor\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/ainoor; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:26] HTTP START attempt=1 https://laam.com/products/ainoor-dark-purple\n[LAAM] [18:35:26] HTTP END status=200 elapsed=0.4s bytes=310787 https://laam.com/products/ainoor-dark-purple\n[LAAM] [18:35:27] HTTP START attempt=1 https://laam.com/products/ainoor-purple-heart\n[LAAM] [18:35:29] HTTP END status=200 elapsed=1.5s bytes=308657 https://laam.com/products/ainoor-purple-heart\n[LAAM] [18:35:29] HTTP START attempt=1 https://laam.com/products/ainy-0\n[LAAM] [18:35:29] HTTP END status=200 elapsed=0.3s bytes=324817 https://laam.com/products/ainy-0\n[LAAM] [18:35:30] HTTP START attempt=1 https://laam.com/products/air-craft-coat-pins\n[LAAM] [18:35:31] HTTP END status=200 elapsed=0.9s bytes=297749 https://laam.com/products/air-craft-coat-pins\n[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/air-craft-coat-pins\n[LAAM] [18:35:32] HTTP START attempt=1 https://laam.com/products/air-d-12\n[LAAM] [18:35:32] HTTP END status=200 elapsed=0.5s bytes=307254 https://laam.com/products/air-d-12\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/air-d-12; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:33] HTTP START attempt=1 https://laam.com/products/air-d-13\n[LAAM] [18:35:34] HTTP END status=200 elapsed=0.3s bytes=305911 https://laam.com/products/air-d-13\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/air-d-13; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:35] HTTP START attempt=1 https://laam.com/products/air-d-14\n[LAAM] [18:35:35] HTTP END status=200 elapsed=0.6s bytes=317528 https://laam.com/products/air-d-14\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/air-d-14; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:36] HTTP START attempt=1 https://laam.com/products/air-d-15\n[LAAM] [18:35:37] HTTP END status=200 elapsed=0.8s bytes=309715 https://laam.com/products/air-d-15\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/air-d-15; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:38] HTTP START attempt=1 https://laam.com/products/air-d-16\n[LAAM] [18:35:41] HTTP END status=200 elapsed=2.8s bytes=307732 https://laam.com/products/air-d-16\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/air-d-16; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:41] HTTP START attempt=1 https://laam.com/products/air-d-17\n[LAAM] [18:35:41] HTTP END status=200 elapsed=0.4s bytes=309660 https://laam.com/products/air-d-17\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/air-d-17; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:42] HTTP START attempt=1 https://laam.com/products/air-d-18\n[LAAM] [18:35:43] HTTP END status=200 elapsed=0.6s bytes=312208 https://laam.com/products/air-d-18\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/air-d-18; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:44] HTTP START attempt=1 https://laam.com/products/air-d-19\n[LAAM] [18:35:44] HTTP END status=200 elapsed=0.3s bytes=314260 https://laam.com/products/air-d-19\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/air-d-19; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:45] HTTP START attempt=1 https://laam.com/products/aira-0\n[LAAM] [18:35:46] HTTP END status=200 elapsed=0.4s bytes=306023 https://laam.com/products/aira-0\n[LAAM] [18:35:47] HTTP START attempt=1 https://laam.com/products/aira-10\n[LAAM] [18:35:47] HTTP END status=200 elapsed=0.6s bytes=310749 https://laam.com/products/aira-10\n[LAAM] [18:35:48] HTTP START attempt=1 https://laam.com/products/aira-11\n[LAAM] [18:35:48] HTTP END status=200 elapsed=0.4s bytes=327846 https://laam.com/products/aira-11\n[LAAM] [18:35:50] HTTP START attempt=1 https://laam.com/products/aira-12\n[LAAM] [18:35:50] HTTP END status=200 elapsed=0.4s bytes=313586 https://laam.com/products/aira-12\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/aira-12; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:51] HTTP START attempt=1 https://laam.com/products/aira-15\n[LAAM] [18:35:52] HTTP END status=200 elapsed=0.5s bytes=323315 https://laam.com/products/aira-15\n[LAAM] [18:35:53] HTTP START attempt=1 https://laam.com/products/aira-16\n[LAAM] [18:35:53] HTTP END status=200 elapsed=0.6s bytes=306738 https://laam.com/products/aira-16\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/aira-16; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:54] HTTP START attempt=1 https://laam.com/products/aira-2\n[LAAM] [18:35:55] HTTP END status=200 elapsed=0.4s bytes=310180 https://laam.com/products/aira-2\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/aira-2; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:56] HTTP START attempt=1 https://laam.com/products/aira-3\n[LAAM] [18:35:56] HTTP END status=200 elapsed=0.4s bytes=323968 https://laam.com/products/aira-3\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/aira-3; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:57] HTTP START attempt=1 https://laam.com/products/aira-3-pcs\n[LAAM] [18:35:58] HTTP END status=200 elapsed=0.4s bytes=334956 https://laam.com/products/aira-3-pcs\n[LAAM] [18:35:59] HTTP START attempt=1 https://laam.com/products/aira-3pc\n[LAAM] [18:35:59] HTTP END status=200 elapsed=0.4s bytes=311444 https://laam.com/products/aira-3pc\n[LAAM] PUBLIC PRODUCT PAGES: 15600/183187 LAAM pages inspected; 6084 clothing products retained\n[LAAM] PUBLIC PRODUCT PAGES: 15600/183187 LAAM pages inspected; 6084 clothing products retained; 118 pages deferred\n[LAAM] [18:36:00] HTTP START attempt=1 https://laam.com/products/aira-3pc-0\n[LAAM] [18:36:00] HTTP END status=200 elapsed=0.3s bytes=311144 https://laam.com/products/aira-3pc-0\n[LAAM] [18:36:02] HTTP START attempt=1 https://laam.com/products/aira-3pcfarshi-shalwar\n[LAAM] [18:36:02] HTTP END status=200 elapsed=0.3s bytes=311242 https://laam.com/products/aira-3pcfarshi-shalwar\n[LAAM] [18:36:03] HTTP START attempt=1 https://laam.com/products/aira-5\n[LAAM] [18:36:03] HTTP END status=200 elapsed=0.3s bytes=310043 https://laam.com/products/aira-5\n[LAAM] [18:36:05] HTTP START attempt=1 https://laam.com/products/aira-7\n[LAAM] [18:36:07] HTTP END status=200 elapsed=2.5s bytes=302064 https://laam.com/products/aira-7\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/aira-7; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:36:07] HTTP START attempt=1 https://laam.com/products/aira-8\n[LAAM] [18:36:08] HTTP END status=200 elapsed=0.7s bytes=308089 https://laam.com/products/aira-8\n[LAAM] [18:36:09] HTTP START attempt=1 https://laam.com/products/aira-crossbody\n[LAAM] [18:36:09] HTTP END status=200 elapsed=0.3s bytes=297597 https://laam.com/products/aira-crossbody\n[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/aira-crossbody\n[LAAM] [18:36:10] HTTP START attempt=1 https://laam.com/products/aira-el24-10-a\n[LAAM] [18:36:11] HTTP END status=200 elapsed=0.4s bytes=315117 https://laam.com/products/aira-el24-10-a\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/aira-el24-10-a; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:36:12] HTTP START attempt=1 https://laam.com/products/aira-el24-10-b\n[LAAM] [18:36:12] HTTP END status=200 elapsed=0.3s bytes=298969 https://laam.com/products/aira-el24-10-b\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/aira-el24-10-b; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:36:13] HTTP START attempt=1 https://laam.com/products/aira-embroidered-russian-raw-silk-3pc-suit\n[LAAM] [18:36:14] HTTP END status=200 elapsed=0.4s bytes=313631 https://laam.com/products/aira-embroidered-russian-raw-silk-3pc-suit\n[LAAM] [18:36:15] HTTP START attempt=1 https://laam.com/products/aira-grey\n[LAAM] [18:36:15] HTTP END status=200 elapsed=0.4s bytes=307522 https://laam.com/products/aira-grey\n[LAAM] [18:36:16] HTTP START attempt=1 https://laam.com/products/aira-ice-blue\n[LAAM] [18:36:16] HTTP END status=200 elapsed=0.3s bytes=311044 https://laam.com/products/aira-ice-blue\n[LAAM] [18:36:18] HTTP START attempt=1 https://laam.com/products/aira-kids-bangle-set-zarosh-jewel\n[LAAM] [18:36:18] HTTP END status=200 elapsed=0.3s bytes=303733 https://laam.com/products/aira-kids-bangle-set-zarosh-jewel\n[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/aira-kids-bangle-set-zarosh-jewel\n[LAAM] [18:36:19] HTTP START attempt=1 https://laam.com/products/aira-pashmire\n[LAAM] [18:36:19] HTTP END status=200 elapsed=0.3s bytes=316506 https://laam.com/products/aira-pashmire\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/aira-pashmire; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:36:21] HTTP START attempt=1 https://laam.com/products/aira-pret\n[LAAM] [18:36:24] HTTP END status=200 elapsed=3.2s bytes=310796 https://laam.com/products/aira-pret\n[LAAM] [18:36:24] HTTP START attempt=1 https://laam.com/products/aira-purple\n[LAAM] [18:36:24] HTTP END status=200 elapsed=0.6s bytes=308376 https://laam.com/products/aira-purple\n[LAAM] [18:36:25] HTTP START attempt=1 https://laam.com/products/aira-underscarf-knotted\n[LAAM] [18:36:26] HTTP END status=200 elapsed=0.3s bytes=300760 https://laam.com/products/aira-underscarf-knotted\n[LAAM] [18:36:27] HTTP START attempt=1 https://laam.com/products/aira-v1-26\n[LAAM] [18:36:27] HTTP END status=200 elapsed=0.3s bytes=308404 https://laam.com/products/aira-v1-26\n[LAAM] [18:36:28] HTTP START attempt=1 https://laam.com/products/airah-0\n[LAAM] [18:36:29] HTTP END status=200 elapsed=0.5s bytes=309276 https://laam.com/products/airah-0\n[LAAM] [18:36:30] HTTP START attempt=1 https://laam.com/products/airah-1\n[LAAM] [18:36:30] HTTP END status=200 elapsed=0.3s bytes=308236 https://laam.com/products/airah-1\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/airah-1; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:36:31] HTTP START attempt=1 https://laam.com/products/airah-3\n[LAAM] [18:36:32] HTTP END status=200 elapsed=0.3s bytes=321633 https://laam.com/products/airah-3\n__CHOTU_PROGRESS__|1|Active: LAAM\n[LAAM] [18:36:32] EXCEPTION: RuntimeError('ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.')\n[LAAM] [18:36:32] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 273, in catalog\n    try:product=product_state(BeautifulSoup(response.text,'html.parser',parse_only=SoupStrainer('script')),handle,clothing_only=True,active_only=True,in_stock_only=True)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 81, in product_state\n    product=normalize(candidates[0],handle,active_only=active_only,in_stock_only=in_stock_only)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 125, in normalize\n    if len(values)!=len(dims) or any(str(value) not in dim['values'] for value,dim in zip(values,dims)):raise ValueError('LAAM observed variant does not match declared option values')\n                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: LAAM observed variant does not match declared option values\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 319, in run\n    try:return original(BASE,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 475, in run\n    if host!='czone.com.pk':return original(base,name,template,log)\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1037, in run_site\n    products, complete_catalog=discover(base,log)\n                               ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 318, in <lambda>\n    g.update(discover=lambda base,log:source.catalog(),collections=lambda base,log:{},refresh_variant_prices=lambda base,p,log:p['variants'],storefront_cover=cover,verified_top20=ranking,audit_fractional_prices=audit,storefront_price_audit=display)\n                                      ^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 287, in catalog\n    except (ValueError,TypeError,KeyError) as exc:raise ValueError('Product '+handle+': '+str(exc)) from exc\n                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Product airah-3: LAAM observed variant does not match declared option values\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1999, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1492, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 215, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 207, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 321, in run\n    except (ValueError,TypeError,KeyError) as exc:raise RuntimeError('ADAPTER ERROR: LAAM '+str(exc)+'. Saved responses retained; no options, prices or stock guessed.') from exc\n                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.\n\n[LAAM] FAILED: LAAM: ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.\n[LAAM] [18:36:32] STAGE: Idle\nFAILED: LAAM: FAILED: LAAM: ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.\nFalse"
+    },
+    {
+      "target": "39616518549",
+      "state": {
+        "conclusion": "failure",
+        "displayTitle": "Automatic continuation of 39576560881",
+        "headSha": "92ba6aa6b14bea783e94502dce164bb8d65cd4eb",
+        "jobs": [
+          {
+            "completedAt": "2026-10-21T17:14:47Z",
+            "conclusion": "failure",
+            "databaseId": 119279089583,
+            "name": "fetch",
+            "startedAt": "2026-10-21T14:24:35Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-21T14:24:37Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-21T14:24:36Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T14:24:45Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-21T14:24:37Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T14:24:45Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-21T14:24:45Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T14:24:48Z",
+                "conclusion": "success",
+                "name": "Install extraction dependencies",
+                "number": 4,
+                "startedAt": "2026-10-21T14:24:45Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T14:24:58Z",
+                "conclusion": "success",
+                "name": "Restore optional saved run",
+                "number": 5,
+                "startedAt": "2026-10-21T14:24:48Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T14:24:58Z",
+                "conclusion": "skipped",
+                "name": "Install Czone browser fallback when needed",
+                "number": 6,
+                "startedAt": "2026-10-21T14:24:58Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T14:24:58Z",
+                "conclusion": "success",
+                "name": "Start continuous fetching on the cloud runner",
+                "number": 7,
+                "startedAt": "2026-10-21T14:24:58Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Live progress, logs and completed-file uploads",
+                "number": 8,
+                "startedAt": "2026-10-21T14:24:58Z",
+                "status": "in_progress"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Fetch result",
+                "number": 9,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Collect diagnostic report even if fetching failed",
+                "number": 10,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Upload diagnostic report and redacted log",
+                "number": 11,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Upload Excel files and audits, including completed stores from a partial run",
+                "number": 12,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Final automated Rule 804 pass for fresh batch",
+                "number": 13,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Upload automated Rule 804 fresh workbooks",
+                "number": 14,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Upload saved checkpoint when available",
+                "number": 15,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Dispatch authorized continuation after verified checkpoint upload",
+                "number": 16,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Post Live progress, logs and completed-file uploads",
+                "number": 30,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 31,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Post Run actions/checkout@v4",
+                "number": 32,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39616518549/job/119279089583"
+          },
+          {
+            "completedAt": "2026-10-21T17:15:06Z",
+            "conclusion": "failure",
+            "databaseId": 119367882765,
+            "name": "Archive structured diagnostics",
+            "startedAt": "2026-10-21T17:14:51Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-21T17:14:53Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-21T17:14:52Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T17:15:02Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-21T17:14:53Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T17:15:02Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-21T17:15:02Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T17:15:03Z",
+                "conclusion": "failure",
+                "name": "Run actions/download-artifact@v4",
+                "number": 4,
+                "startedAt": "2026-10-21T17:15:02Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T17:15:03Z",
+                "conclusion": "skipped",
+                "name": "Archive credential-free JSON on the cloud-reports branch",
+                "number": 5,
+                "startedAt": "2026-10-21T17:15:03Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T17:15:03Z",
+                "conclusion": "skipped",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 9,
+                "startedAt": "2026-10-21T17:15:03Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T17:15:03Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 10,
+                "startedAt": "2026-10-21T17:15:03Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T17:15:03Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 11,
+                "startedAt": "2026-10-21T17:15:03Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39616518549/job/119367882765"
+          }
+        ],
+        "status": "completed"
+      },
+      "log_unavailable": "log not found: 119279089583\n",
+      "artifacts": [
+        {
+          "name": "chotuapp-live-logs",
+          "id": 12360328466,
+          "expired": false,
+          "size_in_bytes": 140295
+        },
+        {
+          "name": "chotuapp-excel-files",
+          "id": 12353455697,
+          "expired": false,
+          "size_in_bytes": 1588355
+        }
+      ],
+      "annotations": [
+        {
+          "level": "failure",
+          "message": "The hosted runner lost communication with the server. Anything in your workflow that terminates the runner process, starves it for CPU/Memory, or blocks its network access can cause this error."
+        },
+        {
+          "level": "warning",
+          "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/download-artifact@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+        },
+        {
+          "level": "failure",
+          "message": "Unable to download artifact(s): Artifact not found for name: chotuapp-diagnostics\n        Please ensure that your artifact is not expired and the artifact was uploaded using a compatible version of toolkit/upload-artifact.\n        For more information, visit the GitHub Artifacts FAQ: https://github.com/actions/toolkit/blob/main/packages/artifact/docs/faq.md"
+        }
+      ],
+      "console-tail.txt": "[Gul Ahmed] [16:23:45] HTTP END status=200 elapsed=2.2s bytes=7431 https://www.gulahmedshop.com/products/regular-fit-polo-mn-psh-ss26-021-a.js\n[Gul Ahmed] [16:23:48] GET_JSON: https://www.gulahmedshop.com/products/relaxed-fit-tees-mn-ts-ss26-003-c.js\n[Gul Ahmed] [16:23:48] HTTP START attempt=1 https://www.gulahmedshop.com/products/relaxed-fit-tees-mn-ts-ss26-003-c.js\n[Gul Ahmed] [16:23:50] HTTP END status=200 elapsed=2.1s bytes=8426 https://www.gulahmedshop.com/products/relaxed-fit-tees-mn-ts-ss26-003-c.js\n[Gul Ahmed] [16:23:52] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-polo-mn-psh-ss26-018-b.js\n[Gul Ahmed] [16:23:52] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-polo-mn-psh-ss26-018-b.js\n[Gul Ahmed] [16:23:55] HTTP END status=200 elapsed=2.2s bytes=8152 https://www.gulahmedshop.com/products/regular-fit-polo-mn-psh-ss26-018-b.js\n[Gul Ahmed] [16:23:57] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-polo-mn-psh-ss26-018-a.js\n[Gul Ahmed] [16:23:57] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-polo-mn-psh-ss26-018-a.js\n[Gul Ahmed] [16:24:00] HTTP END status=200 elapsed=2.2s bytes=8103 https://www.gulahmedshop.com/products/regular-fit-polo-mn-psh-ss26-018-a.js\n[Gul Ahmed] [16:24:02] GET_JSON: https://www.gulahmedshop.com/products/relaxed-fit-shorts-mn-sht-ss26-003-a.js\n[Gul Ahmed] [16:24:02] HTTP START attempt=1 https://www.gulahmedshop.com/products/relaxed-fit-shorts-mn-sht-ss26-003-a.js\n[Gul Ahmed] [16:24:05] HTTP END status=200 elapsed=2.2s bytes=8514 https://www.gulahmedshop.com/products/relaxed-fit-shorts-mn-sht-ss26-003-a.js\n[Gul Ahmed] [16:24:07] GET_JSON: https://www.gulahmedshop.com/products/relaxed-fit-trousers-mn-trc-ss26-006-b.js\n[Gul Ahmed] [16:24:07] HTTP START attempt=1 https://www.gulahmedshop.com/products/relaxed-fit-trousers-mn-trc-ss26-006-b.js\n[Gul Ahmed] [16:24:10] HTTP END status=200 elapsed=2.1s bytes=8809 https://www.gulahmedshop.com/products/relaxed-fit-trousers-mn-trc-ss26-006-b.js\n[Gul Ahmed] [16:24:13] GET_JSON: https://www.gulahmedshop.com/products/relaxed-fit-trousers-mn-trc-ss26-006-a.js\n[Gul Ahmed] [16:24:13] HTTP START attempt=1 https://www.gulahmedshop.com/products/relaxed-fit-trousers-mn-trc-ss26-006-a.js\n[Gul Ahmed] [16:24:15] HTTP END status=200 elapsed=2.1s bytes=8889 https://www.gulahmedshop.com/products/relaxed-fit-trousers-mn-trc-ss26-006-a.js\n[Gul Ahmed] [16:24:17] GET_JSON: https://www.gulahmedshop.com/products/slim-fit-trousers-mn-trc-ss26-004-a.js\n[Gul Ahmed] [16:24:17] HTTP START attempt=1 https://www.gulahmedshop.com/products/slim-fit-trousers-mn-trc-ss26-004-a.js\n[Gul Ahmed] [16:24:20] HTTP END status=200 elapsed=2.2s bytes=8750 https://www.gulahmedshop.com/products/slim-fit-trousers-mn-trc-ss26-004-a.js\n[Gul Ahmed] [16:24:23] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-trousers-mn-trc-ss26-003-c.js\n[Gul Ahmed] [16:24:23] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-trousers-mn-trc-ss26-003-c.js\n[Gul Ahmed] [16:24:25] HTTP END status=200 elapsed=1.9s bytes=8620 https://www.gulahmedshop.com/products/regular-fit-trousers-mn-trc-ss26-003-c.js\n[Gul Ahmed] [16:24:28] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-trousers-mn-trc-ss26-003-b.js\n[Gul Ahmed] [16:24:28] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-trousers-mn-trc-ss26-003-b.js\n[Gul Ahmed] [16:24:30] HTTP END status=200 elapsed=2.1s bytes=8591 https://www.gulahmedshop.com/products/regular-fit-trousers-mn-trc-ss26-003-b.js\n[Gul Ahmed] [16:24:33] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-trousers-mn-trc-ss26-003-a.js\n[Gul Ahmed] [16:24:33] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-trousers-mn-trc-ss26-003-a.js\n[Gul Ahmed] [16:24:35] HTTP END status=200 elapsed=2.0s bytes=8607 https://www.gulahmedshop.com/products/regular-fit-trousers-mn-trc-ss26-003-a.js\n[Gul Ahmed] [16:24:37] GET_JSON: https://www.gulahmedshop.com/products/stippling-t-200-quilt-cover-set.js\n[Gul Ahmed] [16:24:37] HTTP START attempt=1 https://www.gulahmedshop.com/products/stippling-t-200-quilt-cover-set.js\n[Gul Ahmed] [16:24:40] HTTP END status=200 elapsed=2.3s bytes=6079 https://www.gulahmedshop.com/products/stippling-t-200-quilt-cover-set.js\n[Gul Ahmed] [16:24:42] GET_JSON: https://www.gulahmedshop.com/products/stippling-t-200-bed-throw.js\n[Gul Ahmed] [16:24:42] HTTP START attempt=1 https://www.gulahmedshop.com/products/stippling-t-200-bed-throw.js\n[Gul Ahmed] [16:24:45] HTTP END status=200 elapsed=2.2s bytes=5394 https://www.gulahmedshop.com/products/stippling-t-200-bed-throw.js\n[Gul Ahmed] [16:24:47] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-504-t.js\n[Gul Ahmed] [16:24:47] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-504-t.js\n[Gul Ahmed] [16:24:50] HTTP END status=200 elapsed=2.2s bytes=14117 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-504-t.js\n[Gul Ahmed] [16:24:52] GET_JSON: https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-510.js\n[Gul Ahmed] [16:24:52] HTTP START attempt=1 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-510.js\n[Gul Ahmed] [16:24:55] HTTP END status=200 elapsed=2.1s bytes=8821 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-510.js\n[Gul Ahmed] [16:24:57] GET_JSON: https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-504.js\n[Gul Ahmed] [16:24:57] HTTP START attempt=1 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-504.js\n[Gul Ahmed] [16:25:00] HTTP END status=200 elapsed=2.1s bytes=8788 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-504.js\n[Gul Ahmed] [16:25:02] GET_JSON: https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-503.js\n[Gul Ahmed] [16:25:02] HTTP START attempt=1 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-503.js\n[Gul Ahmed] FAST FETCH: product prices and pages 4842/6884 tasks processed; deferred=0\n[Gul Ahmed] [16:25:05] HTTP END status=200 elapsed=2.1s bytes=8782 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-503.js\n[Gul Ahmed] [16:25:07] GET_JSON: https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-502.js\n[Gul Ahmed] [16:25:07] HTTP START attempt=1 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-502.js\n[Gul Ahmed] [16:25:10] HTTP END status=200 elapsed=2.1s bytes=8782 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-502.js\n[Gul Ahmed] [16:25:12] GET_JSON: https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-016-b.js\n[Gul Ahmed] [16:25:12] HTTP START attempt=1 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-016-b.js\n[Gul Ahmed] [16:25:15] HTTP END status=200 elapsed=2.1s bytes=8810 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-016-b.js\n[Gul Ahmed] [16:25:18] GET_JSON: https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-016-a.js\n[Gul Ahmed] [16:25:18] HTTP START attempt=1 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-016-a.js\n[Gul Ahmed] [16:25:20] HTTP END status=200 elapsed=2.0s bytes=8927 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-016-a.js\n[Gul Ahmed] [16:25:22] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-506-t.js\n[Gul Ahmed] [16:25:22] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-506-t.js\n[Gul Ahmed] [16:25:25] HTTP END status=200 elapsed=2.1s bytes=13716 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-506-t.js\n[Gul Ahmed] [16:25:27] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-506-b.js\n[Gul Ahmed] [16:25:27] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-506-b.js\n[Gul Ahmed] [16:25:30] HTTP END status=200 elapsed=2.3s bytes=11687 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-506-b.js\n[Gul Ahmed] [16:25:32] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-505-t.js\n[Gul Ahmed] [16:25:32] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-505-t.js\n[Gul Ahmed] [16:25:35] HTTP END status=200 elapsed=2.1s bytes=14394 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-505-t.js\n[Gul Ahmed] [16:25:37] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-505-b.js\n[Gul Ahmed] [16:25:37] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-505-b.js\n[Gul Ahmed] [16:25:40] HTTP END status=200 elapsed=2.1s bytes=11914 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-505-b.js\n[Gul Ahmed] [16:25:42] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-504-b.js\n[Gul Ahmed] [16:25:42] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-504-b.js\n[Gul Ahmed] [16:25:45] HTTP END status=200 elapsed=2.3s bytes=11894 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-504-b.js\n[Gul Ahmed] [16:25:48] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-502-t.js\n[Gul Ahmed] [16:25:48] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-502-t.js\n[Gul Ahmed] [16:25:50] HTTP END status=200 elapsed=2.0s bytes=13707 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-502-t.js\n[Gul Ahmed] [16:25:52] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-502-b.js\n[Gul Ahmed] [16:25:52] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-502-b.js\n[Gul Ahmed] [16:25:55] HTTP END status=200 elapsed=2.1s bytes=12341 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-502-b.js",
+      "store-status.txt": "Updated (UTC): 2026-10-21T16:25:57.441491+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Saeed Ghani.xlsx\n2. Hemani Herbals.xlsx\n\nSTORE STATUS\nSaeed Ghani: done\nHemani Herbals: done\nGul Ahmed: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 4842/6884 tasks; sample age 54s\n  Approximate ETA for this stage only: 170.2 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-21T16:25:50.072321+00:00",
+      "fetch-log.txt": "[Gul Ahmed] [16:20:57] HTTP START attempt=1 https://www.gulahmedshop.com/products/tote-bag-ibs-ttb26-001.js\n[Gul Ahmed] [16:21:00] HTTP END status=200 elapsed=2.2s bytes=6995 https://www.gulahmedshop.com/products/tote-bag-ibs-ttb26-001.js\n[Gul Ahmed] [16:21:02] GET_JSON: https://www.gulahmedshop.com/products/shoulder-bag-ibs-shb26-006.js\n[Gul Ahmed] [16:21:02] HTTP START attempt=1 https://www.gulahmedshop.com/products/shoulder-bag-ibs-shb26-006.js\n[Gul Ahmed] [16:21:05] HTTP END status=200 elapsed=2.2s bytes=7142 https://www.gulahmedshop.com/products/shoulder-bag-ibs-shb26-006.js\n[Gul Ahmed] [16:21:07] GET_JSON: https://www.gulahmedshop.com/products/tote-bag-ibs-ttb26-002.js\n[Gul Ahmed] [16:21:07] HTTP START attempt=1 https://www.gulahmedshop.com/products/tote-bag-ibs-ttb26-002.js\n[Gul Ahmed] [16:21:10] HTTP END status=200 elapsed=2.1s bytes=6992 https://www.gulahmedshop.com/products/tote-bag-ibs-ttb26-002.js\n[Gul Ahmed] [16:21:12] GET_JSON: https://www.gulahmedshop.com/products/tan-shoulder-bag-ibs-shb26-005.js\n[Gul Ahmed] [16:21:12] HTTP START attempt=1 https://www.gulahmedshop.com/products/tan-shoulder-bag-ibs-shb26-005.js\n[Gul Ahmed] [16:21:15] HTTP END status=200 elapsed=2.3s bytes=7138 https://www.gulahmedshop.com/products/tan-shoulder-bag-ibs-shb26-005.js\n[Gul Ahmed] [16:21:17] GET_JSON: https://www.gulahmedshop.com/products/black-tote-bag-ibs-ttb26-003.js\n[Gul Ahmed] [16:21:17] HTTP START attempt=1 https://www.gulahmedshop.com/products/black-tote-bag-ibs-ttb26-003.js\n[Gul Ahmed] [16:21:20] HTTP END status=200 elapsed=2.2s bytes=7062 https://www.gulahmedshop.com/products/black-tote-bag-ibs-ttb26-003.js\n[Gul Ahmed] [16:21:22] GET_JSON: https://www.gulahmedshop.com/products/green-cross-body-bag-ibs-cbb26-004.js\n[Gul Ahmed] [16:21:22] HTTP START attempt=1 https://www.gulahmedshop.com/products/green-cross-body-bag-ibs-cbb26-004.js\n[Gul Ahmed] [16:21:25] HTTP END status=200 elapsed=2.2s bytes=7132 https://www.gulahmedshop.com/products/green-cross-body-bag-ibs-cbb26-004.js\n[Gul Ahmed] [16:21:27] GET_JSON: https://www.gulahmedshop.com/products/black-cross-body-bag-ibs-cbb26-003.js\n[Gul Ahmed] [16:21:27] HTTP START attempt=1 https://www.gulahmedshop.com/products/black-cross-body-bag-ibs-cbb26-003.js\n[Gul Ahmed] [16:21:30] HTTP END status=200 elapsed=2.2s bytes=7061 https://www.gulahmedshop.com/products/black-cross-body-bag-ibs-cbb26-003.js\n[Gul Ahmed] [16:21:32] GET_JSON: https://www.gulahmedshop.com/products/black-cross-body-bag-ibs-cbb26-001.js\n[Gul Ahmed] [16:21:32] HTTP START attempt=1 https://www.gulahmedshop.com/products/black-cross-body-bag-ibs-cbb26-001.js\n[Gul Ahmed] [16:21:35] HTTP END status=200 elapsed=2.1s bytes=7181 https://www.gulahmedshop.com/products/black-cross-body-bag-ibs-cbb26-001.js\n[Gul Ahmed] [16:21:37] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-top-wm-ktp-ss26-120.js\n[Gul Ahmed] [16:21:37] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-top-wm-ktp-ss26-120.js\n[Gul Ahmed] [16:21:40] HTTP END status=200 elapsed=2.2s bytes=9048 https://www.gulahmedshop.com/products/regular-fit-top-wm-ktp-ss26-120.js\n[Gul Ahmed] [16:21:42] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-top-wm-ktp-ss26-119.js\n[Gul Ahmed] [16:21:42] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-top-wm-ktp-ss26-119.js\n[Gul Ahmed] [16:21:45] HTTP END status=200 elapsed=2.1s bytes=6986 https://www.gulahmedshop.com/products/regular-fit-top-wm-ktp-ss26-119.js\n[Gul Ahmed] [16:21:47] GET_JSON: https://www.gulahmedshop.com/products/relax-fit-trousers-wm-trc-ss26-108.js\n[Gul Ahmed] [16:21:47] HTTP START attempt=1 https://www.gulahmedshop.com/products/relax-fit-trousers-wm-trc-ss26-108.js\n[Gul Ahmed] [16:21:50] HTTP END status=200 elapsed=2.2s bytes=7886 https://www.gulahmedshop.com/products/relax-fit-trousers-wm-trc-ss26-108.js\n[Gul Ahmed] [16:21:52] GET_JSON: https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-10.js\n[Gul Ahmed] [16:21:52] HTTP START attempt=1 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-10.js\n[Gul Ahmed] [16:21:55] HTTP END status=200 elapsed=2.2s bytes=8869 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-10.js\n[Gul Ahmed] [16:21:57] GET_JSON: https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-01-b.js\n[Gul Ahmed] [16:21:57] HTTP START attempt=1 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-01-b.js\n[Gul Ahmed] [16:22:00] HTTP END status=200 elapsed=2.1s bytes=9088 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-01-b.js\n[Gul Ahmed] [16:22:02] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-13-b.js\n[Gul Ahmed] [16:22:02] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-13-b.js\n[Gul Ahmed] [16:22:05] HTTP END status=200 elapsed=2.1s bytes=9454 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-13-b.js\n[Gul Ahmed] [16:22:07] GET_JSON: https://www.gulahmedshop.com/products/ss24-gold-waves-digital-cushion-cover.js\n[Gul Ahmed] [16:22:07] HTTP START attempt=1 https://www.gulahmedshop.com/products/ss24-gold-waves-digital-cushion-cover.js\n[Gul Ahmed] [16:22:10] HTTP END status=200 elapsed=2.2s bytes=4339 https://www.gulahmedshop.com/products/ss24-gold-waves-digital-cushion-cover.js\n[Gul Ahmed] [16:22:12] GET_JSON: https://www.gulahmedshop.com/products/almond-buff-embroidered-curtain.js\n[Gul Ahmed] [16:22:12] HTTP START attempt=1 https://www.gulahmedshop.com/products/almond-buff-embroidered-curtain.js\n[Gul Ahmed] [16:22:15] HTTP END status=200 elapsed=2.1s bytes=3376 https://www.gulahmedshop.com/products/almond-buff-embroidered-curtain.js\n[Gul Ahmed] [16:22:17] GET_JSON: https://www.gulahmedshop.com/products/black-basic-short-mn-sht-ss23-002-a.js\n[Gul Ahmed] [16:22:17] HTTP START attempt=1 https://www.gulahmedshop.com/products/black-basic-short-mn-sht-ss23-002-a.js\n[Gul Ahmed] [16:22:20] HTTP END status=200 elapsed=2.2s bytes=7254 https://www.gulahmedshop.com/products/black-basic-short-mn-sht-ss23-002-a.js\n[Gul Ahmed] [16:22:22] GET_JSON: https://www.gulahmedshop.com/products/loose-fit-tees-mn-ts-ss26-021-b.js\n[Gul Ahmed] [16:22:22] HTTP START attempt=1 https://www.gulahmedshop.com/products/loose-fit-tees-mn-ts-ss26-021-b.js\n[Gul Ahmed] [16:22:25] HTTP END status=200 elapsed=2.1s bytes=7993 https://www.gulahmedshop.com/products/loose-fit-tees-mn-ts-ss26-021-b.js\n[Gul Ahmed] [16:22:27] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-tees-mn-ts-ss26-019-b.js\n[Gul Ahmed] [16:22:27] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-tees-mn-ts-ss26-019-b.js\n[Gul Ahmed] [16:22:30] HTTP END status=200 elapsed=2.2s bytes=8407 https://www.gulahmedshop.com/products/regular-fit-tees-mn-ts-ss26-019-b.js\n[Gul Ahmed] [16:22:32] GET_JSON: https://www.gulahmedshop.com/products/fawn-cross-body-bag-ibs-cbb26-002.js\n[Gul Ahmed] [16:22:32] HTTP START attempt=1 https://www.gulahmedshop.com/products/fawn-cross-body-bag-ibs-cbb26-002.js\n[Gul Ahmed] [16:22:35] HTTP END status=200 elapsed=2.1s bytes=7100 https://www.gulahmedshop.com/products/fawn-cross-body-bag-ibs-cbb26-002.js\n[Gul Ahmed] [16:22:37] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-tees-mn-ts-ss26-002-a.js\n[Gul Ahmed] [16:22:37] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-tees-mn-ts-ss26-002-a.js\n[Gul Ahmed] [16:22:40] HTTP END status=200 elapsed=2.2s bytes=8082 https://www.gulahmedshop.com/products/regular-fit-tees-mn-ts-ss26-002-a.js\n[Gul Ahmed] [16:22:42] GET_JSON: https://www.gulahmedshop.com/products/cresent-everyday-classic-bed-sheet-set.js\n[Gul Ahmed] [16:22:42] HTTP START attempt=1 https://www.gulahmedshop.com/products/cresent-everyday-classic-bed-sheet-set.js\n[Gul Ahmed] [16:22:45] HTTP END status=200 elapsed=2.2s bytes=5760 https://www.gulahmedshop.com/products/cresent-everyday-classic-bed-sheet-set.js\n[Gul Ahmed] [16:22:47] GET_JSON: https://www.gulahmedshop.com/products/leaf-imprint-t-200-euro-sham-cushion-cover.js\n[Gul Ahmed] [16:22:47] HTTP START attempt=1 https://www.gulahmedshop.com/products/leaf-imprint-t-200-euro-sham-cushion-cover.js\n[Gul Ahmed] [16:22:50] HTTP END status=200 elapsed=2.3s bytes=4301 https://www.gulahmedshop.com/products/leaf-imprint-t-200-euro-sham-cushion-cover.js\n[Gul Ahmed] [16:22:52] GET_JSON: https://www.gulahmedshop.com/products/leaf-imprint-t-200-quilt-cover-set.js\n[Gul Ahmed] [16:22:52] HTTP START attempt=1 https://www.gulahmedshop.com/products/leaf-imprint-t-200-quilt-cover-set.js\n[Gul Ahmed] [16:22:55] HTTP END status=200 elapsed=2.2s bytes=6127 https://www.gulahmedshop.com/products/leaf-imprint-t-200-quilt-cover-set.js\n[Gul Ahmed] [16:22:57] GET_JSON: https://www.gulahmedshop.com/products/cotton-viscose-printed-co-oed-set-ipst-77227.js\n[Gul Ahmed] [16:22:57] HTTP START attempt=1 https://www.gulahmedshop.com/products/cotton-viscose-printed-co-oed-set-ipst-77227.js\n[Gul Ahmed] [16:23:00] HTTP END status=200 elapsed=2.1s bytes=9326 https://www.gulahmedshop.com/products/cotton-viscose-printed-co-oed-set-ipst-77227.js\n[Gul Ahmed] [16:23:02] GET_JSON: https://www.gulahmedshop.com/products/cambric-embroidered-co-ord-set-ipst-77138.js\n[Gul Ahmed] [16:23:02] HTTP START attempt=1 https://www.gulahmedshop.com/products/cambric-embroidered-co-ord-set-ipst-77138.js\n[Gul Ahmed] [16:23:05] HTTP END status=200 elapsed=2.1s bytes=8697 https://www.gulahmedshop.com/products/cambric-embroidered-co-ord-set-ipst-77138.js\n[Gul Ahmed] [16:23:07] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-top-mn-wcod-ss26-003-t.js\n[Gul Ahmed] [16:23:07] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-top-mn-wcod-ss26-003-t.js\n[Gul Ahmed] [16:23:10] HTTP END status=200 elapsed=2.1s bytes=8393 https://www.gulahmedshop.com/products/regular-fit-top-mn-wcod-ss26-003-t.js\n[Gul Ahmed] [16:23:13] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-trousers-mn-wcod-ss26-003-b.js\n[Gul Ahmed] [16:23:13] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-trousers-mn-wcod-ss26-003-b.js\n[Gul Ahmed] [16:23:15] HTTP END status=200 elapsed=2.0s bytes=7808 https://www.gulahmedshop.com/products/regular-fit-trousers-mn-wcod-ss26-003-b.js\n[Gul Ahmed] [16:23:17] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-top-mn-wcod-ss26-001-t.js\n[Gul Ahmed] [16:23:17] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-top-mn-wcod-ss26-001-t.js\n[Gul Ahmed] [16:23:20] HTTP END status=200 elapsed=2.1s bytes=8380 https://www.gulahmedshop.com/products/regular-fit-top-mn-wcod-ss26-001-t.js\n[Gul Ahmed] [16:23:22] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-shorts-mn-wcod-ss26-001-b.js\n[Gul Ahmed] [16:23:22] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-shorts-mn-wcod-ss26-001-b.js\n[Gul Ahmed] [16:23:25] HTTP END status=200 elapsed=2.2s bytes=7728 https://www.gulahmedshop.com/products/regular-fit-shorts-mn-wcod-ss26-001-b.js\n[Gul Ahmed] [16:23:27] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-shirt-mn-cs-ss26-302-b.js\n[Gul Ahmed] [16:23:27] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-shirt-mn-cs-ss26-302-b.js\n[Gul Ahmed] [16:23:30] HTTP END status=200 elapsed=2.1s bytes=8456 https://www.gulahmedshop.com/products/regular-fit-shirt-mn-cs-ss26-302-b.js\n[Gul Ahmed] [16:23:33] GET_JSON: https://www.gulahmedshop.com/products/loose-fit-tees-mn-ts-ss26-004-a.js\n[Gul Ahmed] [16:23:33] HTTP START attempt=1 https://www.gulahmedshop.com/products/loose-fit-tees-mn-ts-ss26-004-a.js\n[Gul Ahmed] [16:23:35] HTTP END status=200 elapsed=2.0s bytes=7359 https://www.gulahmedshop.com/products/loose-fit-tees-mn-ts-ss26-004-a.js\n[Gul Ahmed] [16:23:37] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-polo-mn-psh-ss26-021-c.js\n[Gul Ahmed] [16:23:37] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-polo-mn-psh-ss26-021-c.js\n[Gul Ahmed] [16:23:40] HTTP END status=200 elapsed=2.2s bytes=8112 https://www.gulahmedshop.com/products/regular-fit-polo-mn-psh-ss26-021-c.js\n[Gul Ahmed] [16:23:42] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-polo-mn-psh-ss26-021-a.js\n[Gul Ahmed] [16:23:42] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-polo-mn-psh-ss26-021-a.js\n[Gul Ahmed] [16:23:45] HTTP END status=200 elapsed=2.2s bytes=7431 https://www.gulahmedshop.com/products/regular-fit-polo-mn-psh-ss26-021-a.js\n[Gul Ahmed] [16:23:48] GET_JSON: https://www.gulahmedshop.com/products/relaxed-fit-tees-mn-ts-ss26-003-c.js\n[Gul Ahmed] [16:23:48] HTTP START attempt=1 https://www.gulahmedshop.com/products/relaxed-fit-tees-mn-ts-ss26-003-c.js\n[Gul Ahmed] [16:23:50] HTTP END status=200 elapsed=2.1s bytes=8426 https://www.gulahmedshop.com/products/relaxed-fit-tees-mn-ts-ss26-003-c.js\n[Gul Ahmed] [16:23:52] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-polo-mn-psh-ss26-018-b.js\n[Gul Ahmed] [16:23:52] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-polo-mn-psh-ss26-018-b.js\n[Gul Ahmed] [16:23:55] HTTP END status=200 elapsed=2.2s bytes=8152 https://www.gulahmedshop.com/products/regular-fit-polo-mn-psh-ss26-018-b.js\n[Gul Ahmed] [16:23:57] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-polo-mn-psh-ss26-018-a.js\n[Gul Ahmed] [16:23:57] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-polo-mn-psh-ss26-018-a.js\n[Gul Ahmed] [16:24:00] HTTP END status=200 elapsed=2.2s bytes=8103 https://www.gulahmedshop.com/products/regular-fit-polo-mn-psh-ss26-018-a.js\n[Gul Ahmed] [16:24:02] GET_JSON: https://www.gulahmedshop.com/products/relaxed-fit-shorts-mn-sht-ss26-003-a.js\n[Gul Ahmed] [16:24:02] HTTP START attempt=1 https://www.gulahmedshop.com/products/relaxed-fit-shorts-mn-sht-ss26-003-a.js\n[Gul Ahmed] [16:24:05] HTTP END status=200 elapsed=2.2s bytes=8514 https://www.gulahmedshop.com/products/relaxed-fit-shorts-mn-sht-ss26-003-a.js\n[Gul Ahmed] [16:24:07] GET_JSON: https://www.gulahmedshop.com/products/relaxed-fit-trousers-mn-trc-ss26-006-b.js\n[Gul Ahmed] [16:24:07] HTTP START attempt=1 https://www.gulahmedshop.com/products/relaxed-fit-trousers-mn-trc-ss26-006-b.js\n[Gul Ahmed] [16:24:10] HTTP END status=200 elapsed=2.1s bytes=8809 https://www.gulahmedshop.com/products/relaxed-fit-trousers-mn-trc-ss26-006-b.js\n[Gul Ahmed] [16:24:13] GET_JSON: https://www.gulahmedshop.com/products/relaxed-fit-trousers-mn-trc-ss26-006-a.js\n[Gul Ahmed] [16:24:13] HTTP START attempt=1 https://www.gulahmedshop.com/products/relaxed-fit-trousers-mn-trc-ss26-006-a.js\n[Gul Ahmed] [16:24:15] HTTP END status=200 elapsed=2.1s bytes=8889 https://www.gulahmedshop.com/products/relaxed-fit-trousers-mn-trc-ss26-006-a.js\n[Gul Ahmed] [16:24:17] GET_JSON: https://www.gulahmedshop.com/products/slim-fit-trousers-mn-trc-ss26-004-a.js\n[Gul Ahmed] [16:24:17] HTTP START attempt=1 https://www.gulahmedshop.com/products/slim-fit-trousers-mn-trc-ss26-004-a.js\n[Gul Ahmed] [16:24:20] HTTP END status=200 elapsed=2.2s bytes=8750 https://www.gulahmedshop.com/products/slim-fit-trousers-mn-trc-ss26-004-a.js\n[Gul Ahmed] [16:24:23] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-trousers-mn-trc-ss26-003-c.js\n[Gul Ahmed] [16:24:23] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-trousers-mn-trc-ss26-003-c.js\n[Gul Ahmed] [16:24:25] HTTP END status=200 elapsed=1.9s bytes=8620 https://www.gulahmedshop.com/products/regular-fit-trousers-mn-trc-ss26-003-c.js\n[Gul Ahmed] [16:24:28] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-trousers-mn-trc-ss26-003-b.js\n[Gul Ahmed] [16:24:28] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-trousers-mn-trc-ss26-003-b.js\n[Gul Ahmed] [16:24:30] HTTP END status=200 elapsed=2.1s bytes=8591 https://www.gulahmedshop.com/products/regular-fit-trousers-mn-trc-ss26-003-b.js\n[Gul Ahmed] [16:24:33] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-trousers-mn-trc-ss26-003-a.js\n[Gul Ahmed] [16:24:33] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-trousers-mn-trc-ss26-003-a.js\n[Gul Ahmed] [16:24:35] HTTP END status=200 elapsed=2.0s bytes=8607 https://www.gulahmedshop.com/products/regular-fit-trousers-mn-trc-ss26-003-a.js\n[Gul Ahmed] [16:24:37] GET_JSON: https://www.gulahmedshop.com/products/stippling-t-200-quilt-cover-set.js\n[Gul Ahmed] [16:24:37] HTTP START attempt=1 https://www.gulahmedshop.com/products/stippling-t-200-quilt-cover-set.js\n[Gul Ahmed] [16:24:40] HTTP END status=200 elapsed=2.3s bytes=6079 https://www.gulahmedshop.com/products/stippling-t-200-quilt-cover-set.js\n[Gul Ahmed] [16:24:42] GET_JSON: https://www.gulahmedshop.com/products/stippling-t-200-bed-throw.js\n[Gul Ahmed] [16:24:42] HTTP START attempt=1 https://www.gulahmedshop.com/products/stippling-t-200-bed-throw.js\n[Gul Ahmed] [16:24:45] HTTP END status=200 elapsed=2.2s bytes=5394 https://www.gulahmedshop.com/products/stippling-t-200-bed-throw.js\n[Gul Ahmed] [16:24:47] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-504-t.js\n[Gul Ahmed] [16:24:47] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-504-t.js\n[Gul Ahmed] [16:24:50] HTTP END status=200 elapsed=2.2s bytes=14117 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-504-t.js\n[Gul Ahmed] [16:24:52] GET_JSON: https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-510.js\n[Gul Ahmed] [16:24:52] HTTP START attempt=1 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-510.js\n[Gul Ahmed] [16:24:55] HTTP END status=200 elapsed=2.1s bytes=8821 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-510.js\n[Gul Ahmed] [16:24:57] GET_JSON: https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-504.js\n[Gul Ahmed] [16:24:57] HTTP START attempt=1 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-504.js\n[Gul Ahmed] [16:25:00] HTTP END status=200 elapsed=2.1s bytes=8788 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-504.js\n[Gul Ahmed] [16:25:02] GET_JSON: https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-503.js\n[Gul Ahmed] [16:25:02] HTTP START attempt=1 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-503.js\n[Gul Ahmed] FAST FETCH: product prices and pages 4842/6884 tasks processed; deferred=0\n[Gul Ahmed] [16:25:05] HTTP END status=200 elapsed=2.1s bytes=8782 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-503.js\n[Gul Ahmed] [16:25:07] GET_JSON: https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-502.js\n[Gul Ahmed] [16:25:07] HTTP START attempt=1 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-502.js\n[Gul Ahmed] [16:25:10] HTTP END status=200 elapsed=2.1s bytes=8782 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-502.js\n[Gul Ahmed] [16:25:12] GET_JSON: https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-016-b.js\n[Gul Ahmed] [16:25:12] HTTP START attempt=1 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-016-b.js\n[Gul Ahmed] [16:25:15] HTTP END status=200 elapsed=2.1s bytes=8810 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-016-b.js\n[Gul Ahmed] [16:25:18] GET_JSON: https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-016-a.js\n[Gul Ahmed] [16:25:18] HTTP START attempt=1 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-016-a.js\n[Gul Ahmed] [16:25:20] HTTP END status=200 elapsed=2.0s bytes=8927 https://www.gulahmedshop.com/products/relax-fit-top-wm-ktp-ss26-016-a.js\n[Gul Ahmed] [16:25:22] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-506-t.js\n[Gul Ahmed] [16:25:22] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-506-t.js\n[Gul Ahmed] [16:25:25] HTTP END status=200 elapsed=2.1s bytes=13716 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-506-t.js\n[Gul Ahmed] [16:25:27] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-506-b.js\n[Gul Ahmed] [16:25:27] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-506-b.js\n[Gul Ahmed] [16:25:30] HTTP END status=200 elapsed=2.3s bytes=11687 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-506-b.js\n[Gul Ahmed] [16:25:32] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-505-t.js\n[Gul Ahmed] [16:25:32] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-505-t.js\n[Gul Ahmed] [16:25:35] HTTP END status=200 elapsed=2.1s bytes=14394 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-505-t.js\n[Gul Ahmed] [16:25:37] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-505-b.js\n[Gul Ahmed] [16:25:37] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-505-b.js\n[Gul Ahmed] [16:25:40] HTTP END status=200 elapsed=2.1s bytes=11914 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-505-b.js\n[Gul Ahmed] [16:25:42] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-504-b.js\n[Gul Ahmed] [16:25:42] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-504-b.js\n[Gul Ahmed] [16:25:45] HTTP END status=200 elapsed=2.3s bytes=11894 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-504-b.js\n[Gul Ahmed] [16:25:48] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-502-t.js\n[Gul Ahmed] [16:25:48] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-502-t.js\n[Gul Ahmed] [16:25:50] HTTP END status=200 elapsed=2.0s bytes=13707 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-502-t.js\n[Gul Ahmed] [16:25:52] GET_JSON: https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-502-b.js\n[Gul Ahmed] [16:25:52] HTTP START attempt=1 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-502-b.js\n[Gul Ahmed] [16:25:55] HTTP END status=200 elapsed=2.1s bytes=12341 https://www.gulahmedshop.com/products/regular-fit-co-ord-set-wm-cod-ss26-502-b.js"
+    }
+  ],
+  "laam_public_variant_evidence": {
+    "id": 648200,
+    "handle": "airah-3",
+    "title": "AIRAH",
+    "status": "ACTIVE",
+    "stock_status": "in-stock",
+    "node_l2": "Clothing",
+    "node_l3": "Eastern Ready to wear",
+    "options": [
+      {
+        "values": [
+          "S",
+          "M",
+          "L"
+        ],
+        "name": "Size",
+        "position": 1
+      },
+      {
+        "values": [
+          "Champagne"
+        ],
+        "name": "Color",
+        "position": 2
+      }
+    ],
+    "variants": [
+      {
+        "id": null,
+        "shopify_id": 52840382206114,
+        "title": "S / Champagne / Champagne",
+        "option1": null,
+        "option2": null,
+        "option3": null,
+        "price": "13450",
+        "compare_at_price": "13450",
+        "stock_status": "limited-stock",
+        "inventory_quantity": 4
+      },
+      {
+        "id": null,
+        "shopify_id": 52840382206115,
+        "title": "M / Champagne / Champagne",
+        "option1": null,
+        "option2": null,
+        "option3": null,
+        "price": "13450",
+        "compare_at_price": "13450",
+        "stock_status": "in-stock",
+        "inventory_quantity": 8
+      },
+      {
+        "id": null,
+        "shopify_id": 52840382206116,
+        "title": "L / Champagne / Champagne",
+        "option1": null,
+        "option2": null,
+        "option3": null,
+        "price": "13450",
+        "compare_at_price": "13450",
+        "stock_status": "limited-stock",
+        "inventory_quantity": 4
+      }
+    ],
+    "_website_category_evidence": null
+  }
+}
