@@ -1,0 +1,1 @@
+For uploaded ChotuApp catalog Excel cleanup requests, read and apply the user's saved Rule 804 at `.agents/skills/rule-804/SKILL.md`. This project-local preference does not change software fetching behavior and does not override the user's current instructions. Do not claim this file provides account-wide memory in unrelated chats.
