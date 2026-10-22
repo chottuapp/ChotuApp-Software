@@ -1,87 +1,543 @@
 {
-  "run_id": "39619721416",
-  "target": "39586312392",
-  "failed_log": "WN STEP\t2026-10-21T13:31:37.1808472Z env:\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.1809065Z   CHOTUAPP_CLOUD_DATA: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.1809856Z   CLOUD_RUNNER_GROUP: audit804-fresh804-20261021-a26dcd86-6-laam\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.1810442Z   CLOUD_PARTITION_RESUME: true\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.1810941Z   CLOUD_STORES: LAAM | https://laam.com\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.1811435Z   CLOUD_MINUTES: 300\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.1811865Z   RESUME_RUN_ID: 39576553433\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.1812319Z   SAVE_CHECKPOINT: true\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.1812750Z   CLOUD_AUTO_CONTINUE: false\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.1813228Z   CLOUD_AUTO_CONTINUE_LIMIT: 6\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.1813711Z   CLOUD_CONTINUATION_INDEX: 0\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.1814194Z   CLOUD_PREVIOUS_PROGRESS: \nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.1814684Z   CLOUD_STALLED_RUNS: 0\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.1815198Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.1815923Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.1816622Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.1817250Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.1818295Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.1818931Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.1819494Z   CLOUD_NEEDS_CZONE_BROWSER: false\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.1819969Z ##[endgroup]\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2315913Z     raise value\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2323617Z   File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/urllib3/connectionpool.py\", line 793, in urlopen\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2324669Z     response = self._make_request(\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2325260Z                ^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2326355Z   File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/urllib3/connectionpool.py\", line 542, in _make_request\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2327498Z     self._raise_timeout(err=e, url=url, timeout_value=read_timeout)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2329446Z   File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/urllib3/connectionpool.py\", line 373, in _raise_timeout\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2330666Z     raise ReadTimeoutError(\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2331634Z urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='laam.com', port=443): Read timed out. (read timeout=35)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2332260Z \nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2332584Z During handling of the above exception, another exception occurred:\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2333002Z \nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2333209Z Traceback (most recent call last):\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2334048Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1999, in _run_checked\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2334895Z     run_site(site['url'], name, template, log_line)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2335797Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2336841Z     if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2337762Z                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2338658Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1492, in run_site\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2339531Z     _chotuapp_run_site_original(base, name, template, intercept)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2340451Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2341985Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2342992Z                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2343982Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 215, in run\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2345220Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2346319Z                                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2347311Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 207, in run\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2348318Z     try:return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2348861Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2349690Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 313, in run\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2350524Z     try:return original(BASE,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2351051Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2351886Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 475, in run\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2352967Z     if host!='czone.com.pk':return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2353590Z                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2354414Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1037, in run_site\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2355226Z     products, complete_catalog=discover(base,log)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2355765Z                                ^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2356622Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 312, in <lambda>\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2358537Z     g.update(discover=lambda base,log:source.catalog(),collections=lambda base,log:{},refresh_variant_prices=lambda base,p,log:p['variants'],storefront_cover=cover,verified_top20=ranking,audit_fractional_prices=audit,storefront_price_audit=display)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2359859Z                                       ^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2360742Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 248, in catalog\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2361603Z     try:response=self.read(url,allow_missing=True)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2362150Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2363001Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 196, in read\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2363901Z     response=getter(url,timeout=35,allow_redirects=False)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2364491Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2365329Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/fast_fetch_support.py\", line 138, in get\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2366284Z     return getattr(self.tls,'fast_session',self.session).get(url,**kwargs)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2366943Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2368088Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/fast_fetch_support.py\", line 128, in get\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2368940Z     try:response=self.session.get(url,**kwargs)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2369470Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2370279Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/resume_support.py\", line 204, in get\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2371077Z     response=self.session.get(url,**kwargs)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2371758Z              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2372585Z   File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/requests/sessions.py\", line 671, in get\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2373448Z     return self.request(\"GET\", url, params=params, **kwargs)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2374075Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2374902Z   File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/requests/sessions.py\", line 651, in request\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2375688Z     resp = self.send(prep, **send_kwargs)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2376184Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2376955Z   File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/requests/sessions.py\", line 784, in send\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2377865Z     r = adapter.send(request, **kwargs)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2378351Z         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2379121Z   File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/requests/adapters.py\", line 742, in send\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2379913Z     raise ReadTimeout(e, request=request)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2380710Z requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='laam.com', port=443): Read timed out. (read timeout=35)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2381304Z \nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2381727Z [LAAM] FAILED: LAAM: HTTPSConnectionPool(host='laam.com', port=443): Read timed out. (read timeout=35)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2382582Z [LAAM] [13:31:18] STAGE: Idle\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2383296Z FAILED: LAAM: FAILED: LAAM: HTTPSConnectionPool(host='laam.com', port=443): Read timed out. (read timeout=35)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2384008Z False\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2384641Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2385659Z Large checkpoint saved in checksummed parts: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2386654Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2387327Z RUN SUMMARY:\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2388458Z LAAM: FAILED \u2014 FAILED: LAAM: HTTPSConnectionPool(host='laam.com', port=443): Read timed out. (read timeout=35)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2389717Z Checkpoint: saved\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2390906Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2401678Z ##[error]Process completed with exit code 2.\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2454394Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2455325Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2519688Z shell: /usr/bin/bash -e {0}\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2520161Z env:\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2520758Z   CHOTUAPP_CLOUD_DATA: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2521545Z   CLOUD_RUNNER_GROUP: audit804-fresh804-20261021-a26dcd86-6-laam\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2522127Z   CLOUD_PARTITION_RESUME: true\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2522627Z   CLOUD_STORES: LAAM | https://laam.com\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2523126Z   CLOUD_MINUTES: 300\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2523554Z   RESUME_RUN_ID: 39576553433\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2524010Z   SAVE_CHECKPOINT: true\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2524449Z   CLOUD_AUTO_CONTINUE: false\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2524901Z   CLOUD_AUTO_CONTINUE_LIMIT: 6\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2525380Z   CLOUD_CONTINUATION_INDEX: 0\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2525885Z   CLOUD_PREVIOUS_PROGRESS: \nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2526334Z   CLOUD_STALLED_RUNS: 0\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2526847Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2527753Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2528540Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2529160Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2529776Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2530405Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2530966Z   CLOUD_NEEDS_CZONE_BROWSER: false\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.2531487Z ##[endgroup]\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5851272Z ##[group]Run actions/upload-artifact@v4\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5852215Z with:\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5852679Z   name: chotuapp-diagnostics\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5853361Z   path: .cloud-data/diagnostics/\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5854216Z   if-no-files-found: warn\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5854962Z   retention-days: 1\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5855508Z   compression-level: 6\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5855935Z   overwrite: false\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5856354Z   include-hidden-files: false\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5856800Z env:\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5857377Z   CHOTUAPP_CLOUD_DATA: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5858403Z   CLOUD_RUNNER_GROUP: audit804-fresh804-20261021-a26dcd86-6-laam\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5858992Z   CLOUD_PARTITION_RESUME: true\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5859475Z   CLOUD_STORES: LAAM | https://laam.com\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5859961Z   CLOUD_MINUTES: 300\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5860384Z   RESUME_RUN_ID: 39576553433\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5860831Z   SAVE_CHECKPOINT: true\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5861300Z   CLOUD_AUTO_CONTINUE: false\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5861753Z   CLOUD_AUTO_CONTINUE_LIMIT: 6\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5862217Z   CLOUD_CONTINUATION_INDEX: 0\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5862680Z   CLOUD_PREVIOUS_PROGRESS: \nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5863328Z   CLOUD_STALLED_RUNS: 0\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5863835Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5864512Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5865181Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5865802Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5866414Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5867046Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5867856Z   CLOUD_NEEDS_CZONE_BROWSER: false\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.5868340Z ##[endgroup]\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.7575511Z (node:6610) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.7576522Z (Use `node --trace-deprecation ...` to show where the warning was created)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.7674212Z With the provided path, there will be 3 files uploaded\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.7682250Z Artifact name is valid!\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:37.7683252Z Root directory input is valid!\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:38.1430717Z Beginning upload of artifact content to blob storage\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:38.1937246Z (node:6610) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:38.6798703Z Uploaded bytes 174954\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:38.7597787Z Finished uploading artifact content to blob storage!\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:38.7599797Z SHA256 digest of uploaded artifact zip is 59310f601f9f49ebcb8b59816c5045cb203ba4802851ed9c6c098a329b1e1bb3\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:38.7601114Z Finalizing artifact upload\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0455213Z Artifact chotuapp-diagnostics.zip successfully finalized. Artifact ID 12349966395\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0456940Z Artifact chotuapp-diagnostics has been successfully uploaded! Final size is 174954 bytes. Artifact ID is 12349966395\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0468905Z Artifact download URL: https://github.com/chottuapp/ChotuApp-Software/actions/runs/39586312392/artifacts/12349966395\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0613403Z ##[group]Run actions/upload-artifact@v4\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0613929Z with:\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0614332Z   name: chotuapp-excel-files\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0614798Z   overwrite: true\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0615235Z   path: .cloud-data/ANAS_DATA_FETCH/\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0615745Z   if-no-files-found: warn\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0616188Z   retention-days: 14\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0616616Z   compression-level: 6\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0617062Z   include-hidden-files: false\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0617515Z env:\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0618368Z   CHOTUAPP_CLOUD_DATA: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0619147Z   CLOUD_RUNNER_GROUP: audit804-fresh804-20261021-a26dcd86-6-laam\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0619723Z   CLOUD_PARTITION_RESUME: true\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0620215Z   CLOUD_STORES: LAAM | https://laam.com\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0620733Z   CLOUD_MINUTES: 300\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0621161Z   RESUME_RUN_ID: 39576553433\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0621647Z   SAVE_CHECKPOINT: true\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0622083Z   CLOUD_AUTO_CONTINUE: false\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0622538Z   CLOUD_AUTO_CONTINUE_LIMIT: 6\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0623003Z   CLOUD_CONTINUATION_INDEX: 0\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0623472Z   CLOUD_PREVIOUS_PROGRESS: \nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0623921Z   CLOUD_STALLED_RUNS: 0\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0624443Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0625133Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0625831Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0626464Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0627095Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0627960Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0628739Z   CLOUD_NEEDS_CZONE_BROWSER: false\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.0629218Z ##[endgroup]\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.2241663Z (node:6622) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.2243490Z (Use `node --trace-deprecation ...` to show where the warning was created)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.2326275Z With the provided path, there will be 10 files uploaded\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.5050402Z Artifact name is valid!\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.5051137Z Root directory input is valid!\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.7338601Z Beginning upload of artifact content to blob storage\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:39.7689059Z (node:6622) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.0516317Z Uploaded bytes 13215\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.1345488Z Finished uploading artifact content to blob storage!\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.1346887Z SHA256 digest of uploaded artifact zip is 499732f1f74f7d5147999c74aac586e55e3fb5b9a78b5beb7184c0199c5f9880\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.1348198Z Finalizing artifact upload\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4494662Z Artifact chotuapp-excel-files.zip successfully finalized. Artifact ID 12349132674\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4496000Z Artifact chotuapp-excel-files has been successfully uploaded! Final size is 13215 bytes. Artifact ID is 12349132674\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4502879Z Artifact download URL: https://github.com/chottuapp/ChotuApp-Software/actions/runs/39586312392/artifacts/12349132674\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4669212Z ##[group]Run actions/upload-artifact@v4\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4669754Z with:\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4670158Z   name: chotuapp-checkpoint\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4670651Z   path: checkpoint.zip\nfetch\tUNKNOWN STEP\tcheckpoint.parts/\nfetch\tUNKNOWN STEP\t\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4671183Z   if-no-files-found: warn\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4671638Z   retention-days: 1\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4672072Z   compression-level: 6\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4672514Z   overwrite: false\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4672958Z   include-hidden-files: false\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4673417Z env:\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4674001Z   CHOTUAPP_CLOUD_DATA: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4674786Z   CLOUD_RUNNER_GROUP: audit804-fresh804-20261021-a26dcd86-6-laam\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4675375Z   CLOUD_PARTITION_RESUME: true\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4675874Z   CLOUD_STORES: LAAM | https://laam.com\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4676398Z   CLOUD_MINUTES: 300\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4676837Z   RESUME_RUN_ID: 39576553433\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4677343Z   SAVE_CHECKPOINT: true\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4678081Z   CLOUD_AUTO_CONTINUE: false\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4678552Z   CLOUD_AUTO_CONTINUE_LIMIT: 6\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4679035Z   CLOUD_CONTINUATION_INDEX: 0\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4679505Z   CLOUD_PREVIOUS_PROGRESS: \nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4679961Z   CLOUD_STALLED_RUNS: 0\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4680488Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4681183Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4681877Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4682511Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4683147Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4683793Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4684405Z   CLOUD_NEEDS_CZONE_BROWSER: false\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.4684893Z ##[endgroup]\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.6352648Z (node:6634) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.6354341Z (Use `node --trace-deprecation ...` to show where the warning was created)\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.6418324Z Multiple search paths detected. Calculating the least common ancestor of all paths\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.6422258Z The least common ancestor is /home/runner/work/ChotuApp-Software/ChotuApp-Software. This will be the root directory of the artifact\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.6424389Z With the provided path, there will be 4 files uploaded\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.6429967Z Artifact name is valid!\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:40.6430891Z Root directory input is valid!\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:41.0227245Z Beginning upload of artifact content to blob storage\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:41.2882677Z (node:6634) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:42.2569299Z Uploaded bytes 8388608\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:42.5298700Z Uploaded bytes 16777216\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:42.6125293Z Uploaded bytes 25165824\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:42.7323973Z Uploaded bytes 33554432\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:42.8388644Z Uploaded bytes 41943040\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:43.0558367Z Uploaded bytes 50331648\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:43.1256138Z Uploaded bytes 58720256\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:43.3143105Z Uploaded bytes 67108864\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:43.6222262Z Uploaded bytes 75497472\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:43.9243106Z Uploaded bytes 83886080\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:44.0545989Z Uploaded bytes 92274688\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:44.3509815Z Uploaded bytes 100663296\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:44.5905373Z Uploaded bytes 109051904\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:44.7710041Z Uploaded bytes 117440512\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:45.0758433Z Uploaded bytes 125829120\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:45.2914665Z Uploaded bytes 134217728\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:45.5556088Z Uploaded bytes 142606336\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:45.7426445Z Uploaded bytes 150994944\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:46.0324897Z Uploaded bytes 159383552\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:46.3226445Z Uploaded bytes 167772160\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:46.5064566Z Uploaded bytes 176160768\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:46.7798500Z Uploaded bytes 184549376\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:47.1052202Z Uploaded bytes 192937984\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:47.4124339Z Uploaded bytes 201326592\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:47.8254972Z Uploaded bytes 209715200\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:47.8900963Z Uploaded bytes 218103808\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:48.3789021Z Uploaded bytes 226492416\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:48.5506124Z Uploaded bytes 234881024\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:48.6922197Z Uploaded bytes 243269632\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:48.8805086Z Uploaded bytes 251658240\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:49.1283004Z Uploaded bytes 260046848\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:49.4752706Z Uploaded bytes 268435456\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:49.7705741Z Uploaded bytes 276824064\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:49.9396533Z Uploaded bytes 285212672\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:50.2391294Z Uploaded bytes 293601280\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:50.4257264Z Uploaded bytes 301989888\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:50.6742495Z Uploaded bytes 310378496\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:50.9051584Z Uploaded bytes 318767104\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:51.2841002Z Uploaded bytes 327155712\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:51.3918660Z Uploaded bytes 335544320\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:51.6726338Z Uploaded bytes 343932928\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:51.8832146Z Uploaded bytes 352321536\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:52.1518108Z Uploaded bytes 360710144\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:52.4997590Z Uploaded bytes 369098752\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:52.6299099Z Uploaded bytes 377487360\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:52.8800368Z Uploaded bytes 385875968\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:53.1696403Z Uploaded bytes 394264576\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:53.3407843Z Uploaded bytes 402653184\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:53.6206209Z Uploaded bytes 411041792\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:53.8017429Z Uploaded bytes 419430400\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:54.1064896Z Uploaded bytes 427819008\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:54.5909232Z Uploaded bytes 436207616\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:54.7784427Z Uploaded bytes 444596224\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:55.0478561Z Uploaded bytes 452984832\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:55.3071398Z Uploaded bytes 461373440\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:55.3582448Z Uploaded bytes 469762048\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:55.6086217Z Uploaded bytes 478150656\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:55.7715150Z Uploaded bytes 486539264\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:56.0678582Z Uploaded bytes 494927872\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:56.2665825Z Uploaded bytes 503316480\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:56.5091761Z Uploaded bytes 511705088\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:56.7735124Z Uploaded bytes 520093696\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:57.0072591Z Uploaded bytes 528482304\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:57.2236092Z Uploaded bytes 536870912\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:57.6135720Z Uploaded bytes 545259520\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:57.7484781Z Uploaded bytes 553648128\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:58.0424036Z Uploaded bytes 562036736\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:58.2041177Z Uploaded bytes 570425344\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:58.4999912Z Uploaded bytes 578813952\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:58.7168704Z Uploaded bytes 587202560\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:58.9464404Z Uploaded bytes 595591168\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.1400538Z Uploaded bytes 603979776\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.3486039Z Uploaded bytes 608845641\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.4662108Z Finished uploading artifact content to blob storage!\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.4665293Z SHA256 digest of uploaded artifact zip is 8a632cbe7111dba2a14a9128489b8485923752b4cf9c88dd19b211f64ea52dac\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.4668149Z Finalizing artifact upload\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9102899Z Artifact chotuapp-checkpoint.zip successfully finalized. Artifact ID 12349552013\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9104743Z Artifact chotuapp-checkpoint has been successfully uploaded! Final size is 608845641 bytes. Artifact ID is 12349552013\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9113995Z Artifact download URL: https://github.com/chottuapp/ChotuApp-Software/actions/runs/39586312392/artifacts/12349552013\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9300496Z ##[group]Run python cloud/auto_continue.py --current-run\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9301196Z ^[[36;1mpython cloud/auto_continue.py --current-run^[[0m\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9363765Z shell: /usr/bin/bash -e {0}\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9364263Z env:\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9364885Z   CHOTUAPP_CLOUD_DATA: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9365724Z   CLOUD_RUNNER_GROUP: audit804-fresh804-20261021-a26dcd86-6-laam\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9366337Z   CLOUD_PARTITION_RESUME: true\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9366860Z   CLOUD_STORES: LAAM | https://laam.com\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9367377Z   CLOUD_MINUTES: 300\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9368093Z   RESUME_RUN_ID: 39576553433\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9368597Z   SAVE_CHECKPOINT: true\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9369061Z   CLOUD_AUTO_CONTINUE: false\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9369563Z   CLOUD_AUTO_CONTINUE_LIMIT: 6\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9370064Z   CLOUD_CONTINUATION_INDEX: 0\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9370573Z   CLOUD_PREVIOUS_PROGRESS: \nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9371113Z   CLOUD_STALLED_RUNS: 0\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9371656Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9372409Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9373151Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9373836Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9374509Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9375202Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9375836Z   CLOUD_NEEDS_CZONE_BROWSER: false\n[credential-bearing log line removed]\nfetch\tUNKNOWN STEP\t2026-10-21T13:31:59.9379901Z ##[endgroup]\nfetch\tUNKNOWN STEP\t2026-10-21T13:32:00.8300251Z No continuation: completed, stopped manually, unauthorized or not a time-budget stop.\nfetch\tUNKNOWN STEP\t2026-10-21T13:32:00.8615781Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-10-21T13:32:00.8726463Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-10-21T13:32:00.9611775Z [command]/usr/bin/git version\nfetch\tUNKNOWN STEP\t2026-10-21T13:32:00.9654346Z git version 2.55.0\nfetch\tUNKNOWN STEP\t2026-10-21T13:32:00.9697208Z Temporarily overriding HOME='/home/runner/work/_temp/3692940f-c7cd-4b89-8bb5-9a942f93dc17' before making global git config changes\nfetch\tUNKNOWN STEP\t2026-10-21T13:32:00.9699376Z Adding repository directory to the temporary git global config as a safe directory\nfetch\tUNKNOWN STEP\t2026-10-21T13:32:00.9704560Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ChotuApp-Software/ChotuApp-Software\nfetch\tUNKNOWN STEP\t2026-10-21T13:32:00.9747922Z [command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\nfetch\tUNKNOWN STEP\t2026-10-21T13:32:00.9785677Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\nfetch\tUNKNOWN STEP\t2026-10-21T13:32:01.0041236Z [command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nfetch\tUNKNOWN STEP\t2026-10-21T13:32:01.0071854Z http.https://github.com/.extraheader\nfetch\tUNKNOWN STEP\t2026-10-21T13:32:01.0085284Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader\nfetch\tUNKNOWN STEP\t2026-10-21T13:32:01.0124965Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'http\\.https\\:\\/\\/github\\.com\\/\\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\"\nfetch\tUNKNOWN STEP\t2026-10-21T13:32:01.0428538Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\\.gitdir:\nfetch\tUNKNOWN STEP\t2026-10-21T13:32:01.0489729Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url\nfetch\tUNKNOWN STEP\t2026-10-21T13:32:01.0904619Z Cleaning up orphan processes\nfetch\tUNKNOWN STEP\t2026-10-21T13:32:01.1288236Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/",
-  "artifacts": [
+  "run_id": "39819839089",
+  "checked_utc": "2026-10-22T17:07:22.273774+00:00",
+  "targets": [
     {
-      "id": 12349971364,
-      "node_id": "MDg6QXJ0aWZhY3QxMjM0OTk3MTM2NA==",
-      "name": "chotuapp-live-logs",
-      "size_in_bytes": 176811,
-      "url": "https://api.github.com/repos/chottuapp/ChotuApp-Software/actions/artifacts/12349971364",
-      "archive_download_url": "https://api.github.com/repos/chottuapp/ChotuApp-Software/actions/artifacts/12349971364/zip",
-      "expired": false,
-      "digest": "sha256:ea3adc7f627be6eb04bf59f7838cafa2c4293b7703a33e6db98f15152765ba04",
-      "created_at": "2026-10-21T13:31:37Z",
-      "updated_at": "2026-10-21T13:31:37Z",
-      "expires_at": "2026-11-04T13:31:35Z",
-      "workflow_run": {
-        "id": 39586312392,
-        "repository_id": 1415556244,
-        "head_repository_id": 1415556244,
-        "head_branch": "main",
-        "head_sha": "2c1ab8ebe5616f6827e441b886cd43818266159a"
-      }
+      "target": "39620052330",
+      "state": {
+        "conclusion": "failure",
+        "displayTitle": "Cloud group audit804-fresh804-20261021-a26dcd86-6-laam",
+        "headSha": "ea50c341812759e44b937496b79ec70f488d1e85",
+        "jobs": [
+          {
+            "completedAt": "2026-10-21T18:37:44Z",
+            "conclusion": "failure",
+            "databaseId": 119290807194,
+            "name": "fetch",
+            "startedAt": "2026-10-21T14:48:16Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-21T14:48:17Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-21T14:48:16Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T14:48:26Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-21T14:48:17Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T14:48:26Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-21T14:48:26Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T14:48:30Z",
+                "conclusion": "success",
+                "name": "Install extraction dependencies",
+                "number": 4,
+                "startedAt": "2026-10-21T14:48:26Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T14:48:43Z",
+                "conclusion": "success",
+                "name": "Restore optional saved run",
+                "number": 5,
+                "startedAt": "2026-10-21T14:48:30Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T14:48:43Z",
+                "conclusion": "skipped",
+                "name": "Install Czone browser fallback when needed",
+                "number": 6,
+                "startedAt": "2026-10-21T14:48:43Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T14:48:44Z",
+                "conclusion": "success",
+                "name": "Start continuous fetching on the cloud runner",
+                "number": 7,
+                "startedAt": "2026-10-21T14:48:43Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:04Z",
+                "conclusion": "success",
+                "name": "Live progress, logs and completed-file uploads",
+                "number": 8,
+                "startedAt": "2026-10-21T14:48:44Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:04Z",
+                "conclusion": "failure",
+                "name": "Fetch result",
+                "number": 9,
+                "startedAt": "2026-10-21T18:37:04Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:05Z",
+                "conclusion": "success",
+                "name": "Collect diagnostic report even if fetching failed",
+                "number": 10,
+                "startedAt": "2026-10-21T18:37:04Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:06Z",
+                "conclusion": "success",
+                "name": "Upload diagnostic report and redacted log",
+                "number": 11,
+                "startedAt": "2026-10-21T18:37:05Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:07Z",
+                "conclusion": "success",
+                "name": "Upload Excel files and audits, including completed stores from a partial run",
+                "number": 12,
+                "startedAt": "2026-10-21T18:37:06Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:07Z",
+                "conclusion": "skipped",
+                "name": "Final automated Rule 804 pass for fresh batch",
+                "number": 13,
+                "startedAt": "2026-10-21T18:37:07Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:07Z",
+                "conclusion": "skipped",
+                "name": "Upload automated Rule 804 fresh workbooks",
+                "number": 14,
+                "startedAt": "2026-10-21T18:37:07Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:41Z",
+                "conclusion": "success",
+                "name": "Upload saved checkpoint when available",
+                "number": 15,
+                "startedAt": "2026-10-21T18:37:07Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:42Z",
+                "conclusion": "success",
+                "name": "Dispatch authorized continuation after verified checkpoint upload",
+                "number": 16,
+                "startedAt": "2026-10-21T18:37:41Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:42Z",
+                "conclusion": "success",
+                "name": "Post Live progress, logs and completed-file uploads",
+                "number": 30,
+                "startedAt": "2026-10-21T18:37:42Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:42Z",
+                "conclusion": "skipped",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 31,
+                "startedAt": "2026-10-21T18:37:42Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:42Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 32,
+                "startedAt": "2026-10-21T18:37:42Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:42Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 33,
+                "startedAt": "2026-10-21T18:37:42Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39620052330/job/119290807194"
+          },
+          {
+            "completedAt": "2026-10-21T18:38:01Z",
+            "conclusion": "success",
+            "databaseId": 119410841399,
+            "name": "Archive structured diagnostics",
+            "startedAt": "2026-10-21T18:37:47Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-21T18:37:49Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-21T18:37:48Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:55Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-21T18:37:49Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:56Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-21T18:37:55Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:56Z",
+                "conclusion": "success",
+                "name": "Run actions/download-artifact@v4",
+                "number": 4,
+                "startedAt": "2026-10-21T18:37:56Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:59Z",
+                "conclusion": "success",
+                "name": "Archive credential-free JSON on the cloud-reports branch",
+                "number": 5,
+                "startedAt": "2026-10-21T18:37:56Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:59Z",
+                "conclusion": "success",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 9,
+                "startedAt": "2026-10-21T18:37:59Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:59Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 10,
+                "startedAt": "2026-10-21T18:37:59Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T18:37:59Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 11,
+                "startedAt": "2026-10-21T18:37:59Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39620052330/job/119410841399"
+          }
+        ],
+        "status": "completed"
+      },
+      "failed_log": "fetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5477338Z [LAAM] [18:36:29] HTTP END status=200 elapsed=0.5s bytes=309276 https://laam.com/products/airah-0\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5479182Z [LAAM] [18:36:30] HTTP START attempt=1 https://laam.com/products/airah-1\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5481281Z [LAAM] [18:36:30] HTTP END status=200 elapsed=0.3s bytes=308236 https://laam.com/products/airah-1\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5483580Z [LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/airah-1; no source-confirmed available variants; unavailable product excluded, no variants invented\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5485042Z [LAAM] [18:36:31] HTTP START attempt=1 https://laam.com/products/airah-3\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5485902Z [LAAM] [18:36:32] HTTP END status=200 elapsed=0.3s bytes=321633 https://laam.com/products/airah-3\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5486655Z __CHOTU_PROGRESS__|1|Active: LAAM\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5487823Z [LAAM] [18:36:32] EXCEPTION: RuntimeError('ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.')\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5489031Z [LAAM] [18:36:32] Traceback (most recent call last):\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5495058Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 273, in catalog\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5496528Z     try:product=product_state(BeautifulSoup(response.text,'html.parser',parse_only=SoupStrainer('script')),handle,clothing_only=True,active_only=True,in_stock_only=True)\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5497778Z                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5499179Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 81, in product_state\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5500579Z     product=normalize(candidates[0],handle,active_only=active_only,in_stock_only=in_stock_only)\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5501434Z             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5502468Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 125, in normalize\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5503882Z     if len(values)!=len(dims) or any(str(value) not in dim['values'] for value,dim in zip(values,dims)):raise ValueError('LAAM observed variant does not match declared option values')\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5505126Z                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5506042Z ValueError: LAAM observed variant does not match declared option values\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5506513Z \nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5506873Z The above exception was the direct cause of the following exception:\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5507321Z \nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5507552Z Traceback (most recent call last):\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5508478Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 319, in run\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5509518Z     try:return original(BASE,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5510133Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5511053Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 475, in run\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5512045Z     if host!='czone.com.pk':return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5512742Z                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5513650Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1037, in run_site\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5514695Z     products, complete_catalog=discover(base,log)\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5515307Z                                ^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5516237Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 318, in <lambda>\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5517927Z     g.update(discover=lambda base,log:source.catalog(),collections=lambda base,log:{},refresh_variant_prices=lambda base,p,log:p['variants'],storefront_cover=cover,verified_top20=ranking,audit_fractional_prices=audit,storefront_price_audit=display)\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5519579Z                                       ^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5520643Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 287, in catalog\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5521796Z     except (ValueError,TypeError,KeyError) as exc:raise ValueError('Product '+handle+': '+str(exc)) from exc\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5522718Z                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5523556Z ValueError: Product airah-3: LAAM observed variant does not match declared option values\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5524072Z \nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5524431Z The above exception was the direct cause of the following exception:\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5524874Z \nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5525100Z Traceback (most recent call last):\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5525996Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1999, in _run_checked\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5526892Z     run_site(site['url'], name, template, log_line)\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5527862Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5528979Z     if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5530280Z                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5531251Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1492, in run_site\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5532198Z     _chotuapp_run_site_original(base, name, template, intercept)\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5533215Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5534471Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5535532Z                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5536596Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 215, in run\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5538220Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5540575Z                                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5542283Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 207, in run\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5543254Z     try:return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5543856Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5544751Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 321, in run\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5546126Z     except (ValueError,TypeError,KeyError) as exc:raise RuntimeError('ADAPTER ERROR: LAAM '+str(exc)+'. Saved responses retained; no options, prices or stock guessed.') from exc\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5547572Z                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5548839Z RuntimeError: ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5549937Z \nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5550684Z [LAAM] FAILED: LAAM: ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5551750Z [LAAM] [18:36:32] STAGE: Idle\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5552917Z FAILED: LAAM: FAILED: LAAM: ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5553988Z False\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5554696Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5555825Z Large checkpoint saved in checksummed parts: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5556899Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5557636Z RUN SUMMARY:\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5558972Z LAAM: FAILED \u2014 FAILED: LAAM: ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5560424Z Checkpoint: saved\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5561197Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5571226Z ##[error]Process completed with exit code 2.\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5633043Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5634087Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5694386Z shell: /usr/bin/bash -e {0}\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5694919Z env:\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5695582Z   CHOTUAPP_CLOUD_DATA: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5696461Z   CLOUD_RUNNER_GROUP: audit804-fresh804-20261021-a26dcd86-6-laam\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5697120Z   CLOUD_PARTITION_RESUME: true\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5697680Z   CLOUD_STORES: LAAM | https://laam.com\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5698254Z   CLOUD_MINUTES: 300\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5698749Z   RESUME_RUN_ID: 39586312392\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5699622Z   SAVE_CHECKPOINT: true\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:41.6972235Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:41.6972974Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:41.6973710Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:41.6974463Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:41.6975125Z   CLOUD_NEEDS_CZONE_BROWSER: false\n[credential-bearing log line removed]\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:41.6978718Z ##[endgroup]\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:42.4196443Z No continuation: completed, stopped manually, unauthorized or not a time-budget stop.\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:42.4506235Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:42.4626648Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:42.5477839Z [command]/usr/bin/git version\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:42.5520018Z git version 2.55.0\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:42.5562757Z Temporarily overriding HOME='/home/runner/work/_temp/c573cab6-86b8-44d5-b3a5-9f976ba14fd2' before making global git config changes\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:42.5565005Z Adding repository directory to the temporary git global config as a safe directory\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:42.5568997Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ChotuApp-Software/ChotuApp-Software\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:42.5608998Z [command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:42.5644602Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:42.5904377Z [command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nfetch\tUNKNOWN STEP\t2026-10-21T18:37:42.5931335Z http.https://github.com/.extraheader",
+      "artifacts": [
+        {
+          "name": "chotuapp-checkpoint",
+          "id": 12371215329,
+          "expired": false,
+          "size_in_bytes": 1137871080
+        },
+        {
+          "name": "chotuapp-excel-files",
+          "id": 12371095986,
+          "expired": false,
+          "size_in_bytes": 13254
+        },
+        {
+          "name": "chotuapp-live-logs",
+          "id": 12371006206,
+          "expired": false,
+          "size_in_bytes": 386049
+        },
+        {
+          "name": "chotuapp-diagnostics",
+          "id": 12369528575,
+          "expired": false,
+          "size_in_bytes": 383981
+        }
+      ],
+      "console-tail.txt": "[LAAM] [18:36:25] HTTP START attempt=1 https://laam.com/products/aira-underscarf-knotted\n[LAAM] [18:36:26] HTTP END status=200 elapsed=0.3s bytes=300760 https://laam.com/products/aira-underscarf-knotted\n[LAAM] [18:36:27] HTTP START attempt=1 https://laam.com/products/aira-v1-26\n[LAAM] [18:36:27] HTTP END status=200 elapsed=0.3s bytes=308404 https://laam.com/products/aira-v1-26\n[LAAM] [18:36:28] HTTP START attempt=1 https://laam.com/products/airah-0\n[LAAM] [18:36:29] HTTP END status=200 elapsed=0.5s bytes=309276 https://laam.com/products/airah-0\n[LAAM] [18:36:30] HTTP START attempt=1 https://laam.com/products/airah-1\n[LAAM] [18:36:30] HTTP END status=200 elapsed=0.3s bytes=308236 https://laam.com/products/airah-1\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/airah-1; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:36:31] HTTP START attempt=1 https://laam.com/products/airah-3\n[LAAM] [18:36:32] HTTP END status=200 elapsed=0.3s bytes=321633 https://laam.com/products/airah-3\n__CHOTU_PROGRESS__|1|Active: LAAM\n[LAAM] [18:36:32] EXCEPTION: RuntimeError('ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.')\n[LAAM] [18:36:32] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 273, in catalog\n    try:product=product_state(BeautifulSoup(response.text,'html.parser',parse_only=SoupStrainer('script')),handle,clothing_only=True,active_only=True,in_stock_only=True)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 81, in product_state\n    product=normalize(candidates[0],handle,active_only=active_only,in_stock_only=in_stock_only)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 125, in normalize\n    if len(values)!=len(dims) or any(str(value) not in dim['values'] for value,dim in zip(values,dims)):raise ValueError('LAAM observed variant does not match declared option values')\n                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: LAAM observed variant does not match declared option values\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 319, in run\n    try:return original(BASE,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 475, in run\n    if host!='czone.com.pk':return original(base,name,template,log)\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1037, in run_site\n    products, complete_catalog=discover(base,log)\n                               ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 318, in <lambda>\n    g.update(discover=lambda base,log:source.catalog(),collections=lambda base,log:{},refresh_variant_prices=lambda base,p,log:p['variants'],storefront_cover=cover,verified_top20=ranking,audit_fractional_prices=audit,storefront_price_audit=display)\n                                      ^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 287, in catalog\n    except (ValueError,TypeError,KeyError) as exc:raise ValueError('Product '+handle+': '+str(exc)) from exc\n                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Product airah-3: LAAM observed variant does not match declared option values\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1999, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1492, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 215, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 207, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 321, in run\n    except (ValueError,TypeError,KeyError) as exc:raise RuntimeError('ADAPTER ERROR: LAAM '+str(exc)+'. Saved responses retained; no options, prices or stock guessed.') from exc\n                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.\n\n[LAAM] FAILED: LAAM: ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.\n[LAAM] [18:36:32] STAGE: Idle\nFAILED: LAAM: FAILED: LAAM: ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.\nFalse\nCheckpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nLarge checkpoint saved in checksummed parts: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts\nCheckpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts\nRUN SUMMARY:\nLAAM: FAILED \u2014 FAILED: LAAM: ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.\nCheckpoint: saved\nRun finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+      "store-status.txt": "Updated (UTC): 2026-10-21T18:37:02.884915+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nLAAM: failed\n  Stage: Idle\n  Last successful HTTP response (UTC): 2026-10-21T18:36:32.148285+00:00",
+      "fetch-log.txt": "[LAAM] [18:35:19] HTTP END status=200 elapsed=0.3s bytes=303664 https://laam.com/products/ainee\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/ainee; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:20] HTTP START attempt=1 https://laam.com/products/aini-0\n[LAAM] [18:35:20] HTTP END status=200 elapsed=0.3s bytes=327709 https://laam.com/products/aini-0\n[LAAM] [18:35:21] HTTP START attempt=1 https://laam.com/products/aini-1\n[LAAM] [18:35:22] HTTP END status=200 elapsed=0.7s bytes=311870 https://laam.com/products/aini-1\n[LAAM] [18:35:23] HTTP START attempt=1 https://laam.com/products/ainm-embroidered-3pc-rb-pret\n[LAAM] [18:35:23] HTTP END status=200 elapsed=0.3s bytes=313638 https://laam.com/products/ainm-embroidered-3pc-rb-pret\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/ainm-embroidered-3pc-rb-pret; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:24] HTTP START attempt=1 https://laam.com/products/ainoor\n[LAAM] [18:35:25] HTTP END status=200 elapsed=0.6s bytes=313352 https://laam.com/products/ainoor\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/ainoor; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:26] HTTP START attempt=1 https://laam.com/products/ainoor-dark-purple\n[LAAM] [18:35:26] HTTP END status=200 elapsed=0.4s bytes=310787 https://laam.com/products/ainoor-dark-purple\n[LAAM] [18:35:27] HTTP START attempt=1 https://laam.com/products/ainoor-purple-heart\n[LAAM] [18:35:29] HTTP END status=200 elapsed=1.5s bytes=308657 https://laam.com/products/ainoor-purple-heart\n[LAAM] [18:35:29] HTTP START attempt=1 https://laam.com/products/ainy-0\n[LAAM] [18:35:29] HTTP END status=200 elapsed=0.3s bytes=324817 https://laam.com/products/ainy-0\n[LAAM] [18:35:30] HTTP START attempt=1 https://laam.com/products/air-craft-coat-pins\n[LAAM] [18:35:31] HTTP END status=200 elapsed=0.9s bytes=297749 https://laam.com/products/air-craft-coat-pins\n[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/air-craft-coat-pins\n[LAAM] [18:35:32] HTTP START attempt=1 https://laam.com/products/air-d-12\n[LAAM] [18:35:32] HTTP END status=200 elapsed=0.5s bytes=307254 https://laam.com/products/air-d-12\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/air-d-12; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:33] HTTP START attempt=1 https://laam.com/products/air-d-13\n[LAAM] [18:35:34] HTTP END status=200 elapsed=0.3s bytes=305911 https://laam.com/products/air-d-13\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/air-d-13; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:35] HTTP START attempt=1 https://laam.com/products/air-d-14\n[LAAM] [18:35:35] HTTP END status=200 elapsed=0.6s bytes=317528 https://laam.com/products/air-d-14\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/air-d-14; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:36] HTTP START attempt=1 https://laam.com/products/air-d-15\n[LAAM] [18:35:37] HTTP END status=200 elapsed=0.8s bytes=309715 https://laam.com/products/air-d-15\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/air-d-15; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:38] HTTP START attempt=1 https://laam.com/products/air-d-16\n[LAAM] [18:35:41] HTTP END status=200 elapsed=2.8s bytes=307732 https://laam.com/products/air-d-16\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/air-d-16; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:41] HTTP START attempt=1 https://laam.com/products/air-d-17\n[LAAM] [18:35:41] HTTP END status=200 elapsed=0.4s bytes=309660 https://laam.com/products/air-d-17\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/air-d-17; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:42] HTTP START attempt=1 https://laam.com/products/air-d-18\n[LAAM] [18:35:43] HTTP END status=200 elapsed=0.6s bytes=312208 https://laam.com/products/air-d-18\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/air-d-18; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:44] HTTP START attempt=1 https://laam.com/products/air-d-19\n[LAAM] [18:35:44] HTTP END status=200 elapsed=0.3s bytes=314260 https://laam.com/products/air-d-19\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/air-d-19; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:45] HTTP START attempt=1 https://laam.com/products/aira-0\n[LAAM] [18:35:46] HTTP END status=200 elapsed=0.4s bytes=306023 https://laam.com/products/aira-0\n[LAAM] [18:35:47] HTTP START attempt=1 https://laam.com/products/aira-10\n[LAAM] [18:35:47] HTTP END status=200 elapsed=0.6s bytes=310749 https://laam.com/products/aira-10\n[LAAM] [18:35:48] HTTP START attempt=1 https://laam.com/products/aira-11\n[LAAM] [18:35:48] HTTP END status=200 elapsed=0.4s bytes=327846 https://laam.com/products/aira-11\n[LAAM] [18:35:50] HTTP START attempt=1 https://laam.com/products/aira-12\n[LAAM] [18:35:50] HTTP END status=200 elapsed=0.4s bytes=313586 https://laam.com/products/aira-12\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/aira-12; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:51] HTTP START attempt=1 https://laam.com/products/aira-15\n[LAAM] [18:35:52] HTTP END status=200 elapsed=0.5s bytes=323315 https://laam.com/products/aira-15\n[LAAM] [18:35:53] HTTP START attempt=1 https://laam.com/products/aira-16\n[LAAM] [18:35:53] HTTP END status=200 elapsed=0.6s bytes=306738 https://laam.com/products/aira-16\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/aira-16; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:54] HTTP START attempt=1 https://laam.com/products/aira-2\n[LAAM] [18:35:55] HTTP END status=200 elapsed=0.4s bytes=310180 https://laam.com/products/aira-2\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/aira-2; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:56] HTTP START attempt=1 https://laam.com/products/aira-3\n[LAAM] [18:35:56] HTTP END status=200 elapsed=0.4s bytes=323968 https://laam.com/products/aira-3\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/aira-3; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:35:57] HTTP START attempt=1 https://laam.com/products/aira-3-pcs\n[LAAM] [18:35:58] HTTP END status=200 elapsed=0.4s bytes=334956 https://laam.com/products/aira-3-pcs\n[LAAM] [18:35:59] HTTP START attempt=1 https://laam.com/products/aira-3pc\n[LAAM] [18:35:59] HTTP END status=200 elapsed=0.4s bytes=311444 https://laam.com/products/aira-3pc\n[LAAM] PUBLIC PRODUCT PAGES: 15600/183187 LAAM pages inspected; 6084 clothing products retained\n[LAAM] PUBLIC PRODUCT PAGES: 15600/183187 LAAM pages inspected; 6084 clothing products retained; 118 pages deferred\n[LAAM] [18:36:00] HTTP START attempt=1 https://laam.com/products/aira-3pc-0\n[LAAM] [18:36:00] HTTP END status=200 elapsed=0.3s bytes=311144 https://laam.com/products/aira-3pc-0\n[LAAM] [18:36:02] HTTP START attempt=1 https://laam.com/products/aira-3pcfarshi-shalwar\n[LAAM] [18:36:02] HTTP END status=200 elapsed=0.3s bytes=311242 https://laam.com/products/aira-3pcfarshi-shalwar\n[LAAM] [18:36:03] HTTP START attempt=1 https://laam.com/products/aira-5\n[LAAM] [18:36:03] HTTP END status=200 elapsed=0.3s bytes=310043 https://laam.com/products/aira-5\n[LAAM] [18:36:05] HTTP START attempt=1 https://laam.com/products/aira-7\n[LAAM] [18:36:07] HTTP END status=200 elapsed=2.5s bytes=302064 https://laam.com/products/aira-7\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/aira-7; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:36:07] HTTP START attempt=1 https://laam.com/products/aira-8\n[LAAM] [18:36:08] HTTP END status=200 elapsed=0.7s bytes=308089 https://laam.com/products/aira-8\n[LAAM] [18:36:09] HTTP START attempt=1 https://laam.com/products/aira-crossbody\n[LAAM] [18:36:09] HTTP END status=200 elapsed=0.3s bytes=297597 https://laam.com/products/aira-crossbody\n[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/aira-crossbody\n[LAAM] [18:36:10] HTTP START attempt=1 https://laam.com/products/aira-el24-10-a\n[LAAM] [18:36:11] HTTP END status=200 elapsed=0.4s bytes=315117 https://laam.com/products/aira-el24-10-a\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/aira-el24-10-a; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:36:12] HTTP START attempt=1 https://laam.com/products/aira-el24-10-b\n[LAAM] [18:36:12] HTTP END status=200 elapsed=0.3s bytes=298969 https://laam.com/products/aira-el24-10-b\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/aira-el24-10-b; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:36:13] HTTP START attempt=1 https://laam.com/products/aira-embroidered-russian-raw-silk-3pc-suit\n[LAAM] [18:36:14] HTTP END status=200 elapsed=0.4s bytes=313631 https://laam.com/products/aira-embroidered-russian-raw-silk-3pc-suit\n[LAAM] [18:36:15] HTTP START attempt=1 https://laam.com/products/aira-grey\n[LAAM] [18:36:15] HTTP END status=200 elapsed=0.4s bytes=307522 https://laam.com/products/aira-grey\n[LAAM] [18:36:16] HTTP START attempt=1 https://laam.com/products/aira-ice-blue\n[LAAM] [18:36:16] HTTP END status=200 elapsed=0.3s bytes=311044 https://laam.com/products/aira-ice-blue\n[LAAM] [18:36:18] HTTP START attempt=1 https://laam.com/products/aira-kids-bangle-set-zarosh-jewel\n[LAAM] [18:36:18] HTTP END status=200 elapsed=0.3s bytes=303733 https://laam.com/products/aira-kids-bangle-set-zarosh-jewel\n[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/aira-kids-bangle-set-zarosh-jewel\n[LAAM] [18:36:19] HTTP START attempt=1 https://laam.com/products/aira-pashmire\n[LAAM] [18:36:19] HTTP END status=200 elapsed=0.3s bytes=316506 https://laam.com/products/aira-pashmire\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/aira-pashmire; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:36:21] HTTP START attempt=1 https://laam.com/products/aira-pret\n[LAAM] [18:36:24] HTTP END status=200 elapsed=3.2s bytes=310796 https://laam.com/products/aira-pret\n[LAAM] [18:36:24] HTTP START attempt=1 https://laam.com/products/aira-purple\n[LAAM] [18:36:24] HTTP END status=200 elapsed=0.6s bytes=308376 https://laam.com/products/aira-purple\n[LAAM] [18:36:25] HTTP START attempt=1 https://laam.com/products/aira-underscarf-knotted\n[LAAM] [18:36:26] HTTP END status=200 elapsed=0.3s bytes=300760 https://laam.com/products/aira-underscarf-knotted\n[LAAM] [18:36:27] HTTP START attempt=1 https://laam.com/products/aira-v1-26\n[LAAM] [18:36:27] HTTP END status=200 elapsed=0.3s bytes=308404 https://laam.com/products/aira-v1-26\n[LAAM] [18:36:28] HTTP START attempt=1 https://laam.com/products/airah-0\n[LAAM] [18:36:29] HTTP END status=200 elapsed=0.5s bytes=309276 https://laam.com/products/airah-0\n[LAAM] [18:36:30] HTTP START attempt=1 https://laam.com/products/airah-1\n[LAAM] [18:36:30] HTTP END status=200 elapsed=0.3s bytes=308236 https://laam.com/products/airah-1\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/airah-1; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [18:36:31] HTTP START attempt=1 https://laam.com/products/airah-3\n[LAAM] [18:36:32] HTTP END status=200 elapsed=0.3s bytes=321633 https://laam.com/products/airah-3\n__CHOTU_PROGRESS__|1|Active: LAAM\n[LAAM] [18:36:32] EXCEPTION: RuntimeError('ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.')\n[LAAM] [18:36:32] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 273, in catalog\n    try:product=product_state(BeautifulSoup(response.text,'html.parser',parse_only=SoupStrainer('script')),handle,clothing_only=True,active_only=True,in_stock_only=True)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 81, in product_state\n    product=normalize(candidates[0],handle,active_only=active_only,in_stock_only=in_stock_only)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 125, in normalize\n    if len(values)!=len(dims) or any(str(value) not in dim['values'] for value,dim in zip(values,dims)):raise ValueError('LAAM observed variant does not match declared option values')\n                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: LAAM observed variant does not match declared option values\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 319, in run\n    try:return original(BASE,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 475, in run\n    if host!='czone.com.pk':return original(base,name,template,log)\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1037, in run_site\n    products, complete_catalog=discover(base,log)\n                               ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 318, in <lambda>\n    g.update(discover=lambda base,log:source.catalog(),collections=lambda base,log:{},refresh_variant_prices=lambda base,p,log:p['variants'],storefront_cover=cover,verified_top20=ranking,audit_fractional_prices=audit,storefront_price_audit=display)\n                                      ^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 287, in catalog\n    except (ValueError,TypeError,KeyError) as exc:raise ValueError('Product '+handle+': '+str(exc)) from exc\n                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Product airah-3: LAAM observed variant does not match declared option values\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1999, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1492, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 215, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 207, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 321, in run\n    except (ValueError,TypeError,KeyError) as exc:raise RuntimeError('ADAPTER ERROR: LAAM '+str(exc)+'. Saved responses retained; no options, prices or stock guessed.') from exc\n                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.\n\n[LAAM] FAILED: LAAM: ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.\n[LAAM] [18:36:32] STAGE: Idle\nFAILED: LAAM: FAILED: LAAM: ADAPTER ERROR: LAAM Product airah-3: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.\nFalse"
     },
     {
-      "id": 12349966395,
-      "node_id": "MDg6QXJ0aWZhY3QxMjM0OTk2NjM5NQ==",
-      "name": "chotuapp-diagnostics",
-      "size_in_bytes": 174954,
-      "url": "https://api.github.com/repos/chottuapp/ChotuApp-Software/actions/artifacts/12349966395",
-      "archive_download_url": "https://api.github.com/repos/chottuapp/ChotuApp-Software/actions/artifacts/12349966395/zip",
-      "expired": false,
-      "digest": "sha256:59310f601f9f49ebcb8b59816c5045cb203ba4802851ed9c6c098a329b1e1bb3",
-      "created_at": "2026-10-21T13:31:38Z",
-      "updated_at": "2026-10-21T13:31:38Z",
-      "expires_at": "2026-10-22T13:31:37Z",
-      "workflow_run": {
-        "id": 39586312392,
-        "repository_id": 1415556244,
-        "head_repository_id": 1415556244,
-        "head_branch": "main",
-        "head_sha": "2c1ab8ebe5616f6827e441b886cd43818266159a"
-      }
-    },
-    {
-      "id": 12349552013,
-      "node_id": "MDg6QXJ0aWZhY3QxMjM0OTU1MjAxMw==",
-      "name": "chotuapp-checkpoint",
-      "size_in_bytes": 608845641,
-      "url": "https://api.github.com/repos/chottuapp/ChotuApp-Software/actions/artifacts/12349552013",
-      "archive_download_url": "https://api.github.com/repos/chottuapp/ChotuApp-Software/actions/artifacts/12349552013/zip",
-      "expired": false,
-      "digest": "sha256:8a632cbe7111dba2a14a9128489b8485923752b4cf9c88dd19b211f64ea52dac",
-      "created_at": "2026-10-21T13:31:59Z",
-      "updated_at": "2026-10-21T13:31:59Z",
-      "expires_at": "2026-10-22T13:31:40Z",
-      "workflow_run": {
-        "id": 39586312392,
-        "repository_id": 1415556244,
-        "head_repository_id": 1415556244,
-        "head_branch": "main",
-        "head_sha": "2c1ab8ebe5616f6827e441b886cd43818266159a"
-      }
-    },
-    {
-      "id": 12349132674,
-      "node_id": "MDg6QXJ0aWZhY3QxMjM0OTEzMjY3NA==",
-      "name": "chotuapp-excel-files",
-      "size_in_bytes": 13215,
-      "url": "https://api.github.com/repos/chottuapp/ChotuApp-Software/actions/artifacts/12349132674",
-      "archive_download_url": "https://api.github.com/repos/chottuapp/ChotuApp-Software/actions/artifacts/12349132674/zip",
-      "expired": false,
-      "digest": "sha256:499732f1f74f7d5147999c74aac586e55e3fb5b9a78b5beb7184c0199c5f9880",
-      "created_at": "2026-10-21T13:31:40Z",
-      "updated_at": "2026-10-21T13:31:40Z",
-      "expires_at": "2026-11-04T13:31:39Z",
-      "workflow_run": {
-        "id": 39586312392,
-        "repository_id": 1415556244,
-        "head_repository_id": 1415556244,
-        "head_branch": "main",
-        "head_sha": "2c1ab8ebe5616f6827e441b886cd43818266159a"
-      }
+      "target": "39616518549",
+      "state": {
+        "conclusion": "failure",
+        "displayTitle": "Automatic continuation of 39576560881",
+        "headSha": "92ba6aa6b14bea783e94502dce164bb8d65cd4eb",
+        "jobs": [
+          {
+            "completedAt": "2026-10-21T17:14:47Z",
+            "conclusion": "failure",
+            "databaseId": 119279089583,
+            "name": "fetch",
+            "startedAt": "2026-10-21T14:24:35Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-21T14:24:37Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-21T14:24:36Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T14:24:45Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-21T14:24:37Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T14:24:45Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-21T14:24:45Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T14:24:48Z",
+                "conclusion": "success",
+                "name": "Install extraction dependencies",
+                "number": 4,
+                "startedAt": "2026-10-21T14:24:45Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T14:24:58Z",
+                "conclusion": "success",
+                "name": "Restore optional saved run",
+                "number": 5,
+                "startedAt": "2026-10-21T14:24:48Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T14:24:58Z",
+                "conclusion": "skipped",
+                "name": "Install Czone browser fallback when needed",
+                "number": 6,
+                "startedAt": "2026-10-21T14:24:58Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T14:24:58Z",
+                "conclusion": "success",
+                "name": "Start continuous fetching on the cloud runner",
+                "number": 7,
+                "startedAt": "2026-10-21T14:24:58Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Live progress, logs and completed-file uploads",
+                "number": 8,
+                "startedAt": "2026-10-21T14:24:58Z",
+                "status": "in_progress"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Fetch result",
+                "number": 9,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Collect diagnostic report even if fetching failed",
+                "number": 10,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Upload diagnostic report and redacted log",
+                "number": 11,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Upload Excel files and audits, including completed stores from a partial run",
+                "number": 12,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Final automated Rule 804 pass for fresh batch",
+                "number": 13,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Upload automated Rule 804 fresh workbooks",
+                "number": 14,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Upload saved checkpoint when available",
+                "number": 15,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Dispatch authorized continuation after verified checkpoint upload",
+                "number": 16,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Post Live progress, logs and completed-file uploads",
+                "number": 30,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 31,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Post Run actions/checkout@v4",
+                "number": 32,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39616518549/job/119279089583"
+          },
+          {
+            "completedAt": "2026-10-21T17:15:06Z",
+            "conclusion": "failure",
+            "databaseId": 119367882765,
+            "name": "Archive structured diagnostics",
+            "startedAt": "2026-10-21T17:14:51Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-21T17:14:53Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-21T17:14:52Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T17:15:02Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-21T17:14:53Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T17:15:02Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-21T17:15:02Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T17:15:03Z",
+                "conclusion": "failure",
+                "name": "Run actions/download-artifact@v4",
+                "number": 4,
+                "startedAt": "2026-10-21T17:15:02Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T17:15:03Z",
+                "conclusion": "skipped",
+                "name": "Archive credential-free JSON on the cloud-reports branch",
+                "number": 5,
+                "startedAt": "2026-10-21T17:15:03Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T17:15:03Z",
+                "conclusion": "skipped",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 9,
+                "startedAt": "2026-10-21T17:15:03Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T17:15:03Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 10,
+                "startedAt": "2026-10-21T17:15:03Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-21T17:15:03Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 11,
+                "startedAt": "2026-10-21T17:15:03Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39616518549/job/119367882765"
+          }
+        ],
+        "status": "completed"
+      },
+      "diagnostic_error": "Command '['gh', 'run', 'view', '39616518549', '--repo', 'chottuapp/ChotuApp-Software', '--log-failed']' returned non-zero exit status 1."
     }
   ]
 }
