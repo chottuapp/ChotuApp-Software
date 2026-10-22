@@ -31,7 +31,12 @@ def main():
    recent=json.loads(gh('run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','100','--json','databaseId,displayTitle,status,conclusion'));lanes=select_runs(recent,CAMPAIGN)
    present=[r for r in lanes if r['lane'] in (site['group'],site['old_group'])]
    if any(r['status']!='completed' or int(r['databaseId'])>int(site['failed_run']) for r in present):record.update(status='newer_or_active_lane_retained',runs=present);save();continue
-   parent,checked=checkpoint_parent(site['failed_run']);record.update(checkpoint_parent=parent,checked_ancestry=checked)
+   try:
+    parent,checked=checkpoint_parent(site['failed_run']);record.update(checkpoint_parent=parent,checked_ancestry=checked)
+   except ValueError as exc:
+    if site['name']!='Gul Ahmed' or request.get('allow_fresh_gul_ahmed') is not True or str(exc)!='No available checkpoint in completed continuation ancestry':raise
+    parent=None;record.update(recovery_mode='owner_authorized_fresh_after_missing_checkpoint',checkpoint_parent=None)
+
    if site['name']=='LAAM':
     import requests
     from bs4 import BeautifulSoup
@@ -41,8 +46,9 @@ def main():
     robot=reader.read(source.BASE+'/robots.txt');reader.robots=RobotFileParser();reader.robots.parse(robot.text.splitlines());page=reader.read(source.BASE+'/products/airah-3')
     product=source.product_state(BeautifulSoup(page.text,'html.parser'),'airah-3',clothing_only=True,active_only=True,in_stock_only=True)
     record['live_adapter_check']={'product':product['handle'],'variants':len(product['variants']),'options':[d['name'] for d in product['options']],'status':'pass'}
-   output=gh('workflow','run','cloud-fetch.yml','--repo',REPO,'--ref','main','-f','resume_run_id='+parent,'-f','partition_resume=true','-f','runner_group='+site['group'],'-f','stores='+site['name']+' | '+site['url'],'-f','minutes='+str(site['minutes']),'-f','save_checkpoint=true','-f','auto_continue_limit=6','-f','auto_continue_once=false')
-   record.update(status='saved_resume_requested',dispatch=output,minutes=site['minutes'])
+   resume_fields=['-f','resume_run_id='+parent,'-f','partition_resume=true'] if parent else []
+   output=gh('workflow','run','cloud-fetch.yml','--repo',REPO,'--ref','main',*resume_fields,'-f','runner_group='+site['group'],'-f','stores='+site['name']+' | '+site['url'],'-f','minutes='+str(site['minutes']),'-f','save_checkpoint=true','-f','auto_continue_limit=6','-f','auto_continue_once=false')
+   record.update(status='saved_resume_requested' if parent else 'owner_authorized_fresh_requested',dispatch=output,minutes=site['minutes'])
   except Exception as exc:record.update(status='recovery_held',error=redact(str(exc))[:1800])
   save()
 if __name__=='__main__':main()
