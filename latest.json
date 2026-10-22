@@ -1,25 +1,25 @@
 {
-  "run_id": "39686151140",
-  "checked_utc": "2026-10-21T22:23:48.599395+00:00",
-  "active_queued": 1,
+  "run_id": "39700028216",
+  "checked_utc": "2026-10-22T00:30:05.677176+00:00",
+  "active_queued": 0,
   "runs": [
     {
-      "conclusion": "",
+      "conclusion": "success",
       "databaseId": 39661536442,
       "displayTitle": "Automatic continuation of 39616488192",
-      "status": "in_progress",
-      "updatedAt": "2026-10-21T19:27:29Z",
+      "status": "completed",
+      "updatedAt": "2026-10-22T00:13:37Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39661536442",
       "lane": "audit804-fresh804-20261021-a26dcd86-2",
-      "snapshot": "Updated (UTC): 2026-10-21T22:18:57.233010+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Tawakkal Fabrics.xlsx\n2. Junaid Jamshed.xlsx\n\nSTORE STATUS\nTawakkal Fabrics: done\nJunaid Jamshed: done\nStylo: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 8553/9242 tasks; sample age 16s\n  Approximate ETA for this stage only: 57.4 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-21T22:18:53.484499+00:00\n",
-      "snapshot_utc": "2026-10-21T22:18:57.233010+00:00",
+      "snapshot": "Updated (UTC): 2026-10-22T00:13:00.831644+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Tawakkal Fabrics.xlsx\n2. Junaid Jamshed.xlsx\n3. Stylo.xlsx\n\nSTORE STATUS\nTawakkal Fabrics: done\nJunaid Jamshed: done\nStylo: done\n  Last successful HTTP response (UTC): 2026-10-21T23:16:05.795919+00:00\n",
+      "snapshot_utc": "2026-10-22T00:13:00.831644+00:00",
       "stores": {
         "Tawakkal Fabrics": "done",
         "Junaid Jamshed": "done",
-        "Stylo": "running"
+        "Stylo": "done"
       },
-      "snapshot_age_seconds": 291,
-      "snapshot_stale": false
+      "snapshot_age_seconds": 1025,
+      "snapshot_stale": true
     },
     {
       "conclusion": "failure",
@@ -34,7 +34,7 @@
       "stores": {
         "LAAM": "failed"
       },
-      "snapshot_age_seconds": 13606,
+      "snapshot_age_seconds": 21183,
       "snapshot_stale": true,
       "failure_details": [
         "fetch\tUNKNOWN STEP\t2026-10-21T18:37:04.5481281Z [LAAM] [18:36:30] HTTP END status=200 elapsed=0.3s bytes=308236 https://laam.com/products/airah-1",
@@ -101,7 +101,7 @@
         "Outfitters": "done",
         "Zellbury": "done"
       },
-      "snapshot_age_seconds": 25790,
+      "snapshot_age_seconds": 33367,
       "snapshot_stale": true
     },
     {
@@ -119,7 +119,7 @@
         "Hemani Herbals": "done",
         "Gul Ahmed": "running"
       },
-      "snapshot_age_seconds": 21471,
+      "snapshot_age_seconds": 29048,
       "snapshot_stale": true,
       "failure_details_unavailable": true
     },
@@ -136,7 +136,7 @@
       "stores": {
         "Sapphire": "done"
       },
-      "snapshot_age_seconds": 39099,
+      "snapshot_age_seconds": 46676,
       "snapshot_stale": true
     },
     {
@@ -152,7 +152,7 @@
       "stores": {
         "Zero Lifestyle": "done"
       },
-      "snapshot_age_seconds": 46714,
+      "snapshot_age_seconds": 54291,
       "snapshot_stale": true
     },
     {
@@ -170,7 +170,7 @@
         "Denim Leftover": "done",
         "Cool and Cool": "done"
       },
-      "snapshot_age_seconds": 46536,
+      "snapshot_age_seconds": 54113,
       "snapshot_stale": true
     },
     {
@@ -186,7 +186,7 @@
       "stores": {
         "Nisa Naturals": "done"
       },
-      "snapshot_age_seconds": 42245,
+      "snapshot_age_seconds": 49822,
       "snapshot_stale": true
     },
     {
@@ -204,7 +204,7 @@
         "Adam Cheese": "done",
         "Computer Zone": "done"
       },
-      "snapshot_age_seconds": 44955,
+      "snapshot_age_seconds": 52532,
       "snapshot_stale": true
     },
     {
@@ -222,7 +222,7 @@
         "Shop Modest": "done",
         "Seran": "done"
       },
-      "snapshot_age_seconds": 46498,
+      "snapshot_age_seconds": 54075,
       "snapshot_stale": true
     },
     {
@@ -240,7 +240,7 @@
         "The Hanger Pakistan": "done",
         "Elite Cosmetics": "done"
       },
-      "snapshot_age_seconds": 42688,
+      "snapshot_age_seconds": 50265,
       "snapshot_stale": true
     },
     {
@@ -258,14 +258,14 @@
         "Rivaj UK": "done",
         "Rawayat": "done"
       },
-      "snapshot_age_seconds": 35139,
+      "snapshot_age_seconds": 42716,
       "snapshot_stale": true
     }
   ],
   "fresh_stores": {
     "Tawakkal Fabrics": "done",
     "Junaid Jamshed": "done",
-    "Stylo": "running",
+    "Stylo": "done",
     "LAAM": "failed",
     "Bonanza Satrangi": "done",
     "Outfitters": "done",
@@ -302,13 +302,13 @@
     "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
     "error": "",
     "progress_age_seconds": 1,
-    "report_age_seconds": 97260,
+    "report_age_seconds": 104841,
     "status_confirmed": false
   },
   "drive": {
     "sync_status": "finished",
     "sync_error": null,
-    "last_scan_utc": "2026-10-21T22:01:00.645207+00:00",
+    "last_scan_utc": "2026-10-22T00:29:35.088010+00:00",
     "held": {
       "39450775009": [],
       "39450778729": [],
@@ -428,7 +428,7 @@
       "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
       "error": "",
       "progress_age_seconds": 1,
-      "report_age_seconds": 97260,
+      "report_age_seconds": 104841,
       "status_confirmed": false
     }
   ],
@@ -443,5 +443,5 @@
     "cloud_schedule_minutes": 5,
     "note": "Scheduled cloud checks can be delayed. Query local-run-status directly for latest phone heartbeat."
   },
-  "fresh_completed": 25
+  "fresh_completed": 26
 }
