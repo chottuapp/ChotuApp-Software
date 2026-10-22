@@ -1767,7 +1767,7 @@
     }
   ],
   "transfer_status": "finished",
-  "sync_status": "scanning",
+  "sync_status": "finished",
   "last_scan_utc": "2026-10-22T00:13:42.809078+00:00",
   "folder_id": "17GbkIwSowcPdqyK3rFxhfc9nqkI-yUan",
   "folder_url": "https://drive.google.com/drive/folders/17GbkIwSowcPdqyK3rFxhfc9nqkI-yUan",
@@ -1829,7 +1829,8 @@
     "Rawayat": "source:0dd52262844bd9d433172b579ee140904c551d9236b2a43765027e2bc1363db5:Rawayat:d32613167a53b3b995422ddc4b8e4694a4b4f5ca6f8da4ba318db4203546d620",
     "Junaid Jamshed": "source:27a16c3910f9a1c331bcceeb40b44741e4e222a710b2c195139ebd73a8f24c68:Junaid Jamshed:d32613167a53b3b995422ddc4b8e4694a4b4f5ca6f8da4ba318db4203546d620",
     "Outfitters": "source:91a33acad6ee9f7cd60774552ef19fd6638d317c08c28dc04d42a4a9636fe940:Outfitters:d32613167a53b3b995422ddc4b8e4694a4b4f5ca6f8da4ba318db4203546d620",
-    "Zellbury": "source:e1b78181c829587fae847978795cfc18382a24be89c04dae263f0506c5aad7f7:Zellbury:d32613167a53b3b995422ddc4b8e4694a4b4f5ca6f8da4ba318db4203546d620"
+    "Zellbury": "source:e1b78181c829587fae847978795cfc18382a24be89c04dae263f0506c5aad7f7:Zellbury:d32613167a53b3b995422ddc4b8e4694a4b4f5ca6f8da4ba318db4203546d620",
+    "Stylo": "source:27f6424beafdb7f05edb637ba8a2bc451c2cf7e94a91effe3dec90ff23459201:Stylo:d32613167a53b3b995422ddc4b8e4694a4b4f5ca6f8da4ba318db4203546d620"
   },
   "audit804_results": {
     "Zero Lifestyle": {
@@ -8870,6 +8871,18 @@
       "source_artifact": 12355583213,
       "source_sha256": "e1b78181c829587fae847978795cfc18382a24be89c04dae263f0506c5aad7f7",
       "held_input": "inputs/fresh804-20261021-a26dcd86/zellbury/e1b78181c829587f/manifest.json"
+    },
+    "Stylo": {
+      "name": "804 Audit",
+      "status": "hold",
+      "store": "Stylo",
+      "campaign_id": "fresh804-20261021-a26dcd86",
+      "source_run": "39661536442",
+      "source_artifact": 12391741711,
+      "error": "Unconfirmed shop code; held for review",
+      "source_sha256": "27f6424beafdb7f05edb637ba8a2bc451c2cf7e94a91effe3dec90ff23459201",
+      "held_input": "inputs/fresh804-20261021-a26dcd86/stylo/27f6424beafdb7f0/manifest.json",
+      "checked_utc": "2026-10-22T00:14:03.082657+00:00"
     }
   },
   "audit804_artifacts": {
@@ -8889,10 +8902,10 @@
     "39616518549": "39616518549:12353455697:d32613167a53b3b995422ddc4b8e4694a4b4f5ca6f8da4ba318db4203546d620",
     "39616605711": "39616605711:12355583213:d32613167a53b3b995422ddc4b8e4694a4b4f5ca6f8da4ba318db4203546d620",
     "39620052330": "39620052330:12371095986:d32613167a53b3b995422ddc4b8e4694a4b4f5ca6f8da4ba318db4203546d620",
-    "39661536442": "39661536442:12374655606:d32613167a53b3b995422ddc4b8e4694a4b4f5ca6f8da4ba318db4203546d620"
+    "39661536442": "39661536442:12391741711:d32613167a53b3b995422ddc4b8e4694a4b4f5ca6f8da4ba318db4203546d620"
   },
   "audit804_campaign": "fresh804-20261021-a26dcd86",
-  "audit804_checked_utc": "2026-10-21T22:01:08.842925+00:00",
+  "audit804_checked_utc": "2026-10-22T00:14:03.085937+00:00",
   "audit804_replacement_backups": {
     "SE10004": "inputs/fresh804-20261021-a26dcd86/rollback-se10004/ee0d4085af17aeed/manifest.json",
     "SE10003": "inputs/fresh804-20261021-a26dcd86/rollback-se10003/63f435061e09afc3/manifest.json",
