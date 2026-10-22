@@ -31,7 +31,7 @@ def main():
   shutil.copy2(jars[-1],directory/'apksigner.jar')
   screenshot=ROOT/'android/dashboard.png'
   if screenshot.exists():shutil.copy2(screenshot,directory/'dashboard.png')
-  report={'version':'1.4-studio-candidate','signing_certificate_sha256':signing,'sha256':hashlib.sha256(apk.read_bytes()).hexdigest(),'bytes':apk.stat().st_size,'source_commit':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID'],'built_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'device_test':'Android 35 x86_64 dashboard, Keystore and captured-source XLSX export passed','release':'debug-signed preview; first phone live source fetch not yet verified'}
+  report={'version':'1.5-studio-candidate','signing_certificate_sha256':signing,'sha256':hashlib.sha256(apk.read_bytes()).hexdigest(),'bytes':apk.stat().st_size,'source_commit':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID'],'built_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'device_test':'Android 35 x86_64 dashboard, Keystore and captured-source XLSX export passed','release':'debug-signed preview; first phone live source fetch not yet verified'}
   (directory/'studio-candidate.json').write_text(json.dumps(report,indent=2));run(['git','add','ChotuApp-Studio-candidate.apk','studio-candidate.json','apksigner.jar'],directory)
   if screenshot.exists():run(['git','add','dashboard.png'],directory)
   run(['git','commit','-m','Deliver tested ChotuApp Android preview'],directory);run(['git','push','origin','HEAD:android-builds'],directory)

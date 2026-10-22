@@ -14,6 +14,12 @@ def parse_progress(text):
                       'unit': unit, 'remaining_tasks': max(0, total-completed),
                       'stage_percent': round(100*completed/total, 1) if total and completed <= total else None,
                       'products_fetched': None, 'overall_percent': None}
+    match = re.findall(r'KHAADI PUBLIC PRODUCTS:\s*(\d+)/(\d+) verified', str(text))
+    if match:
+        done,total=map(int,match[-1])
+        result={'stage':'Public product URL verification','completed_tasks':done,'total_tasks':total,
+                'remaining_tasks':max(0,total-done),'stage_percent':round(100*done/total,1) if total and done<=total else None,
+                'unit':'product URL checks','products_fetched':None,'overall_percent':None}
     # Local log events use different, explicit units.
     match = re.findall(r'KHAADI LISTING PROGRESS:\s*(\d+)/(\d+) categories;\s*(\d+) distinct product URLs', str(text))
     if match and not result:

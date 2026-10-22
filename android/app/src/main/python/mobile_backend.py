@@ -108,6 +108,16 @@ def dashboard():
  try:
   response=requests.get('https://raw.githubusercontent.com/'+REPO+'/main/cloud/audit804-release.json',params={'check':time.time_ns()},timeout=15);response.raise_for_status();result['fresh_release']=response.json()
  except (requests.RequestException,ValueError):pass
+ # Read the phone branch directly; a delayed scheduled cloud summary is not current phone evidence.
+ try:
+  response=requests.get('https://raw.githubusercontent.com/'+REPO+'/local-run-status/local/khaadi-android.json',params={'check':time.time_ns()},timeout=15)
+  response.raise_for_status();phone=response.json()
+  age=(datetime.datetime.now(datetime.timezone.utc)-datetime.datetime.fromisoformat(phone['observed_utc'])).total_seconds()
+  phone['status_confirmed']=0<=age<=180;phone['report_age_seconds']=max(0,round(age))
+  if not phone['status_confirmed']:phone['status']='unknown_stale_heartbeat'
+  devices=result.setdefault('runners',{}).get('khaadi_devices',[])
+  result['runners']['khaadi_devices']=[d for d in devices if d.get('execution')!='Android app']+[phone]
+ except (requests.RequestException,ValueError,KeyError,TypeError):pass
  from store_progress import rows
  result['store_progress']=rows(result.get('runners',{}))
  return json.dumps(result)
@@ -178,7 +188,7 @@ def mobile_report(data,token,active,paused=False):
  if _network_waiting and active:status='waiting_network'
  if paused and active:status='pausing'
  elif status=='running' and not active:status='stopped'
- return {'store':'Khaadi','execution':'Android app','app_version':'1.4-studio','fresh_campaign_id':campaign,'observed_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'worker_active':bool(active),'status':status,'worker_updated':state.get('updated'),'last_event':safe_log(state.get('last_event',''),token),'error':safe_log(state.get('error',''),token),'progress_age_seconds':max(0,round(time.time()-progress)) if isinstance(progress,(int,float)) else None,'log_tail':log_tail(data,token)}
+ return {'store':'Khaadi','execution':'Android app','app_version':'1.5-studio','heartbeat_target_seconds':30,'background_fallback_minutes':15,'fresh_campaign_id':campaign,'observed_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'worker_active':bool(active),'status':status,'worker_updated':state.get('updated'),'last_event':safe_log(state.get('last_event',''),token),'error':safe_log(state.get('error',''),token),'progress_age_seconds':max(0,round(time.time()-progress)) if isinstance(progress,(int,float)) else None,'log_tail':log_tail(data,token)}
 
 def telemetry_status(data,**record):
  data=Path(data);data.mkdir(parents=True,exist_ok=True);path=data/'telemetry-status.json'
@@ -228,6 +238,10 @@ def _sync_logs(data,token,active=False,paused=False):
 
 @contextlib.contextmanager
 def reporting(data,bridge,token):
+ native=getattr(bridge,'hasNativeReporter',lambda:False)()
+ if native is True:
+  yield
+  return
  stop=threading.Event()
  def current_token():
   method=getattr(bridge,'githubToken',None)

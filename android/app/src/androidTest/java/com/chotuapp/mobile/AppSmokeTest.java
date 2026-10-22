@@ -31,6 +31,12 @@ public class AppSmokeTest {
         }catch(Exception e){throw new AssertionError(e);}});
         File old=new File(context.getFilesDir(),"khaadi");old.mkdirs();File evidence=new File(old,"old-cache-fixture.txt");try(java.io.FileOutputStream stream=new java.io.FileOutputStream(evidence)){stream.write("saved".getBytes());}
         File fresh=FetchService.prepareFreshDirectory(context,"fresh804-20261021-deadbeef");assertTrue(evidence.exists());assertFalse(new File(fresh,"old-cache-fixture.txt").exists());assertEquals(fresh,FetchService.dataDirectory(context));context.getSharedPreferences("worker",0).edit().remove("data_dir").remove("fresh_campaign_seen").commit();
+        HeartbeatJobs.ensureScheduled(context);
+        android.app.job.JobInfo heartbeat=context.getSystemService(android.app.job.JobScheduler.class).getPendingJob(HeartbeatJobs.PERIODIC_ID);
+        assertNotNull(heartbeat);assertTrue(heartbeat.isPersisted());assertTrue(heartbeat.getIntervalMillis()>=15*60*1000L);
+        android.content.pm.ServiceInfo service=context.getPackageManager().getServiceInfo(new android.content.ComponentName(context,HeartbeatJobs.class),0);
+        assertEquals("android.permission.BIND_JOB_SERVICE",service.permission);
+        assertEquals(6,context.getPackageManager().getPackageInfo(context.getPackageName(),0).getLongVersionCode());
         FetchService.extract(context);
         String result=FetchService.python(context).getModule("mobile_backend").callAttr("self_test",new File(context.getFilesDir(),"engine").getPath(),new File(context.getFilesDir(),"smoke-test").getPath()).toString();
         assertEquals("Embedded export verified",result);

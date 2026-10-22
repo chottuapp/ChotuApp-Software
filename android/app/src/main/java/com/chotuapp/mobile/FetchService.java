@@ -8,9 +8,19 @@ import org.json.JSONObject;
 import java.io.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.zip.*;
+import java.util.concurrent.*;
 public class FetchService extends Service {
     static final AtomicBoolean active=new AtomicBoolean(false),paused=new AtomicBoolean(false);
     private PowerManager.WakeLock wake;
+    private ScheduledExecutorService reporter;
+    public static boolean hasNativeReporter(){return true;}
+    private void startReporting(){
+        HeartbeatJobs.ensureScheduled(this);reporter=Executors.newSingleThreadScheduledExecutor();
+        reporter.scheduleWithFixedDelay(()->HeartbeatJobs.send(getApplicationContext()),0,30,TimeUnit.SECONDS);
+    }
+    private void finishReporting(){
+        if(reporter!=null){reporter.execute(()->HeartbeatJobs.send(getApplicationContext()));reporter.shutdown();}
+    }
     private static Context appContext;
     @Override public void onCreate(){super.onCreate();appContext=getApplicationContext();appContextService=this;}
     public static String githubToken(){return appContext==null?"":Vault.read(appContext);}
@@ -47,6 +57,7 @@ public class FetchService extends Service {
         startForeground(804,notice("Fetching public pages. Saved progress is retained."));
         wake=((PowerManager)getSystemService(POWER_SERVICE)).newWakeLock(PowerManager.PARTIAL_WAKE_LOCK,"ChotuApp:Fetch");wake.acquire();
         getSharedPreferences("worker",0).edit().putString("status","running").putString("message","Starting saved work…").apply();
+        startReporting();
         final String freshCampaign=intent==null?"":intent.getStringExtra("fresh_campaign_id");
         new Thread(()->{
             try {
@@ -54,7 +65,7 @@ public class FetchService extends Service {
                 String result=python(this).getModule("mobile_backend").callAttr("run",new File(getFilesDir(),"engine").getPath(),data.getPath(),Vault.read(this)).toString();
                 JSONObject parsed=new JSONObject(result);getSharedPreferences("worker",0).edit().putString("source_sha256",parsed.optString("source_sha256","")).putString("status",parsed.getString("status")).putString("message",parsed.getString("message")).apply();
             } catch(Throwable e){getSharedPreferences("worker",0).edit().putString("status",paused.get()?"paused":"attention").putString("message",paused.get()?"Paused. Saved work retained.":"Worker needs attention. "+safe(e.getMessage())).apply();}
-            finally{getSharedPreferences("worker",0).edit().putBoolean("resume_requested",false).commit();active.set(false);if(wake!=null&&wake.isHeld())wake.release();manager.notify(804,notice("Fetch stopped. Open ChotuApp for status."));stopForeground(STOP_FOREGROUND_DETACH);stopSelf();}
+            finally{getSharedPreferences("worker",0).edit().putBoolean("resume_requested",false).commit();active.set(false);finishReporting();if(wake!=null&&wake.isHeld())wake.release();manager.notify(804,notice("Fetch stopped. Open ChotuApp for status."));stopForeground(STOP_FOREGROUND_DETACH);stopSelf();}
         },"khaadi-worker").start();return START_STICKY;
     }
     private String safe(String s){if(s==null)return "Open Activity for details.";String token=Vault.read(this);if(!token.isEmpty())s=s.replace(token,"[redacted]");return s.substring(0,Math.min(600,s.length()));}

@@ -94,3 +94,15 @@ class GitHubConnectionTests(unittest.TestCase):
    session=Mock();session.get.side_effect=[Mock(status_code=200),Mock(status_code=404),Mock(status_code=200,json=Mock(return_value={'sha':'newer-file-sha'}))];session.put.side_effect=[Mock(status_code=409),Mock(status_code=201)]
    with patch.object(backend.requests,'Session',return_value=session):result=json.loads(backend.sync_logs(tmp,'fixture',True))
    self.assertEqual(result['status'],'synced');self.assertEqual(session.put.call_count,2);self.assertEqual(session.put.call_args.kwargs['json']['sha'],'newer-file-sha')
+
+class NativeHeartbeatTests(unittest.TestCase):
+ def test_native_reporter_does_not_spawn_duplicate_python_sender(self):
+  bridge=Mock();bridge.hasNativeReporter.return_value=True
+  with tempfile.TemporaryDirectory() as tmp,patch.object(backend,'sync_logs') as send:
+   with backend.reporting(Path(tmp),bridge,''):pass
+   send.assert_not_called()
+ def test_heartbeat_declares_real_reporting_target_without_claiming_progress(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   report=backend.mobile_report(Path(tmp),'',False)
+   self.assertEqual(report['app_version'],'1.5-studio');self.assertEqual(report['heartbeat_target_seconds'],30)
+   self.assertFalse(report['worker_active']);self.assertIsNone(report['progress_age_seconds'])

@@ -14,3 +14,8 @@ class ProgressTests(unittest.TestCase):
   self.assertEqual(rows[0]['completed_tasks'],5);self.assertNotIn('completed_tasks',rows[1]);self.assertEqual(rows[0]['runner_id'],'42')
  def test_invalid_total_not_percentage(self):
   self.assertIsNone(m.parse_progress('building Excel rows: 11/10')['stage_percent'])
+
+ def test_public_url_position_does_not_invent_retained_product_count(self):
+  p=m.parse_progress('KHAADI PUBLIC PRODUCTS: 25/100 verified')
+  self.assertEqual(p['stage_percent'],25);self.assertEqual(p['unit'],'product URL checks')
+  self.assertIsNone(p['products_fetched']);self.assertIsNone(p['overall_percent'])
