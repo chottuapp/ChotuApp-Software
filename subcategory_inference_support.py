@@ -120,6 +120,9 @@ SHOP_CODES={
  'junaidjamshed.com':'SE10011','rivaj-uk.com':'SE10012','rawayat.com.pk':'SE10013',
  'missrose.com.pk':'SE10014','elitecosmeticspk.com':'SH10003',
 }
+# Owner-confirmed host aliases for the full 29-store registry (22 October 2026).
+SHOP_CODES.update({'missrose.com.pk': 'SE10014', 'rawayat.com.pk': 'SE10013', 'rivaj-uk.com': 'SE10012', 'junaidjamshed.com': 'SE10011', 'stylo.pk': 'SE10010', 'tawakkalfabrics.co': 'SE10009', 'vincecare.com': 'SE10008', 'elitecosmeticspk.com': 'SH10003', 'thehangerpakistan.com': 'SE10007', 'shopmodest.pk': 'SE10006', 'seran.com.pk': 'SE10005', 'islamabadtea.pk': 'SE10004', 'adamsestore.com': 'SE10003', 'fardafoods.com': 'SE10002', 'czone.com.pk': 'SE10015', 'laam.com': 'SE10016', 'nisanaturals.pk': 'SE10017', 'pk.khaadi.com': 'SE10018', 'sapphireonline.pk': 'SE10019', 'gulahmedshop.com': 'SE10020', 'pk.hemaniherbals.com': 'SE10021', 'saeedghani.pk': 'SE10022', 'coolandcool.pk': 'SE10023', 'denimleftover.com': 'SE10024', 'skinfactor.pk': 'SE10025', 'outfitters.com.pk': 'SE10026', 'bonanzasatrangi.com': 'SE10027', 'zellbury.com': 'SE10028', 'zerolifestyle.co': 'SE10029'})
+SHOP_CODES.update({'pk.khaadi.com':'SE10018','pk.sapphireonline.pk':'SE10019'})
 def export_values(row):
     from urllib.parse import urlsplit
     values=dict(row)

@@ -53,6 +53,15 @@ class DriveIdentity:
   matches=self.index.get(code,[]) if code else ([canonical] if canonical in self.names else [])
   if len(matches)>1:raise ValueError('Multiple existing files use this shop code; replacement held')
   old=matches[0] if matches else None
+  # Owner has now supplied codes for previous blank-code exact store files.
+  # Never replace a conflicting populated code or a different source host.
+  if code and old is None and canonical in self.names:
+   from audit804 import rows
+   previous=list(rows(self.root/canonical));incoming=list(rows(file))
+   populated={str(r.get('shop_code') or '').strip() for r in previous}-{''}
+   def hosts(records):return {(urlsplit(str(r.get('source_url') or '')).hostname or '').lower().removeprefix('www.') for r in records}
+   before_hosts=hosts(previous);after_hosts=hosts(incoming)
+   if previous and not populated and len(before_hosts)==1 and '' not in before_hosts and before_hosts==after_hosts:old=canonical
   destination=old or canonical
   if destination in self.names and destination!=old:raise ValueError('Target filename belongs to an unconfirmed/different shop code; old file retained')
   if old and self.backup:self.backup(self.root/old,code or 'blank-'+Path(canonical).stem)

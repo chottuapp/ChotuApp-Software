@@ -4,10 +4,10 @@ from openpyxl import Workbook
 from audit804_delivery import DriveIdentity,completed_files
 class DeliveryTests(unittest.TestCase):
  def book(self,path,code,description='old'):
-  b=Workbook();s=b.active;s.title='Products';s.append(['shop_code','product_id','description']);s.append([code,'P1',description]);b.save(path)
- def exercise(self,fail=False,alias=False,wrong=False,blank=False):
+  b=Workbook();s=b.active;s.title='Products';s.append(['shop_code','product_id','description','source_url']);s.append([code,'P1',description,'https://store.example/products/one']);b.save(path)
+ def exercise(self,fail=False,alias=False,wrong=False,blank=False,migrate=False):
   with tempfile.TemporaryDirectory() as tmp:
-   root=Path(tmp);remote=root/'remote';remote.mkdir();oldname='Custom old name.xlsx' if alias else 'Store.xlsx';self.book(remote/oldname,'OTHER' if wrong else 'S1');new=root/'new.xlsx';self.book(new,None if blank else 'S1','new');calls=[];wrote=[False]
+   root=Path(tmp);remote=root/'remote';remote.mkdir();oldname='Custom old name.xlsx' if alias else 'Store.xlsx';self.book(remote/oldname,None if migrate else 'OTHER' if wrong else 'S1');new=root/'new.xlsx';self.book(new,None if blank else 'S1','new');calls=[];wrote=[False]
    def rc(*args):
     calls.append(args)
     if args[0]=='lsjson':return json.dumps([{'Name':p.name} for p in remote.glob('*.xlsx')])
@@ -37,3 +37,6 @@ class DeliveryTests(unittest.TestCase):
 
  def test_owner_authorized_blank_matches_exact_store_filename(self):self.exercise(blank=True)
  def test_blank_identity_checksum_failure_restores_old(self):self.exercise(blank=True,fail=True)
+
+ def test_confirmed_code_migrates_exact_blank_store_file(self):self.exercise(migrate=True)
+ def test_migration_verification_failure_rolls_back_blank_original(self):self.exercise(migrate=True,fail=True)
