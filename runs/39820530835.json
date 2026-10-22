@@ -8,6 +8,27 @@
       "group": "audit804-fresh804-20261021-a26dcd86-7-gul-ahmed",
       "status": "recovery_held",
       "error": "No available checkpoint in completed continuation ancestry"
+    },
+    {
+      "store": "LAAM",
+      "failed_run": "39620052330",
+      "group": "audit804-fresh804-20261021-a26dcd86-6-laam",
+      "checkpoint_parent": "39620052330",
+      "checked_ancestry": [
+        "39620052330"
+      ],
+      "live_adapter_check": {
+        "product": "airah-3",
+        "variants": 3,
+        "options": [
+          "Size",
+          "Color"
+        ],
+        "status": "pass"
+      },
+      "status": "saved_resume_requested",
+      "dispatch": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39820621688\n",
+      "minutes": 90
     }
   ]
 }
