@@ -19,6 +19,7 @@ public class AppSmokeTest {
         android.app.Activity activity=instrumentation.startActivitySync(new Intent(context,MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));assertNotNull(activity);
         instrumentation.runOnMainSync(()->{try{
             MainActivity main=(MainActivity)activity;
+            assertEquals("1.5-studio",main.installedVersionName());
             assertEquals("20 Oct 2026 · 5:30 PM PKT",main.pakistanTime("2026-10-20T12:30:00+00:00"));
             org.json.JSONObject drive=new org.json.JSONObject("{\"uploaded\":{\"Cool and Cool\":{\"folder\":\"F\",\"verified_utc\":\"2026-10-20T12:30:00+00:00\",\"file_url\":\"https://drive.google.com/file/d/id/view\"},\"Adam Cheese\":{\"folder\":\"F\"}}}");
             android.widget.LinearLayout results=main.column();main.populateDrive(results,drive,"COOL");
