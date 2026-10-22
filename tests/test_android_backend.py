@@ -106,3 +106,15 @@ class NativeHeartbeatTests(unittest.TestCase):
    report=backend.mobile_report(Path(tmp),'',False)
    self.assertEqual(report['app_version'],'1.5-studio');self.assertEqual(report['heartbeat_target_seconds'],30)
    self.assertFalse(report['worker_active']);self.assertIsNone(report['progress_age_seconds'])
+
+class LiveRunnerOverlayTests(unittest.TestCase):
+ def test_live_state_updates_without_fabricating_source_progress(self):
+  old={'runs':[{'databaseId':1,'status':'in_progress','stores':{'A':'running'},'snapshot':'old source progress','snapshot_utc':'2026-10-20T00:00:00Z'}]}
+  response=Mock();response.json.return_value={'workflow_runs':[{'id':1,'status':'completed','conclusion':'failure'},{'id':2,'status':'in_progress','display_title':'Saved LAAM'}]}
+  with patch.object(backend.requests,'get',return_value=response):result=backend.live_runner_states(old,'fixture')
+  self.assertEqual(result['active_runners'],1);self.assertEqual(result['runs'][1]['snapshot'],'old source progress')
+  self.assertTrue(result['runs'][1]['snapshot_stale']);self.assertEqual(result['runs'][1]['snapshot_utc'],'2026-10-20T00:00:00Z')
+  self.assertEqual(old['runs'][0]['status'],'in_progress')
+ def test_missing_token_does_not_send_anonymous_rate_limited_api_polls(self):
+  with patch.object(backend.requests,'get') as get:
+   backend.live_runner_states({},'');get.assert_not_called()

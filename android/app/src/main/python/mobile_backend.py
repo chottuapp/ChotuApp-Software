@@ -95,13 +95,34 @@ def upload(data,token,check=lambda:None):
  put('catalog-inputs/khaadi-mobile/latest.json',marker)
  return sha
 
-def dashboard():
+def live_runner_states(runners,token):
+ if not token:return runners
+ try:
+  response=requests.get('https://api.github.com/repos/'+REPO+'/actions/workflows/cloud-fetch.yml/runs',params={'per_page':100},headers={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json'},timeout=15)
+  response.raise_for_status();recent=response.json()['workflow_runs']
+  indexed={str(r.get('databaseId')):dict(r) for r in runners.get('runs',[])}
+  for run in recent:
+   rid=str(run['id']);old=indexed.get(rid)
+   if old is None and run['status']=='completed':continue
+   item=old or {'databaseId':run['id'],'displayTitle':run.get('display_title',''),'stores':{},'snapshot':''}
+   item.update(status=run['status'],conclusion=run.get('conclusion') or '',url=run.get('html_url'),live_state_checked_utc=datetime.datetime.now(datetime.timezone.utc).isoformat())
+   if run['status']=='completed' and any(v=='running' for v in item.get('stores',{}).values()):item['snapshot_stale']=True
+   indexed[rid]=item
+  result=dict(runners,runs=sorted(indexed.values(),key=lambda r:int(r['databaseId']),reverse=True),unavailable=False)
+  result['active_runners']=sum(r['status']=='in_progress' for r in recent)
+  result['queued_runners']=sum(r['status'] in ('queued','waiting','requested','pending') for r in recent)
+  result['live_state_checked_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat()
+  return result
+ except (requests.RequestException,ValueError,KeyError,TypeError):return dict(runners,live_state_unavailable=True)
+
+def dashboard(token=''):
  result={}
  for key,branch in (('runners','runner-status-reports'),('drive','drive-sync-reports')):
   try:
    response=requests.get('https://raw.githubusercontent.com/'+REPO+'/'+branch+'/latest.json',params={'check':time.time_ns()},timeout=25);response.raise_for_status();result[key]=response.json()
   except requests.RequestException:result[key]={'unavailable':True}
  result.get('runners',{})['active_runners']=sum(run.get('status')=='in_progress' for run in result.get('runners',{}).get('runs',[]))
+ result['runners']=live_runner_states(result.get('runners',{}),token)
  try:
   response=requests.get('https://raw.githubusercontent.com/'+REPO+'/android-builds/studio-release.json',params={'check':time.time_ns()},timeout=15);response.raise_for_status();result['app_update']=response.json()
  except (requests.RequestException,ValueError):result['app_update']={'unavailable':True}
