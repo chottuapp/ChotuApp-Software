@@ -104,7 +104,7 @@ class NativeHeartbeatTests(unittest.TestCase):
  def test_heartbeat_declares_real_reporting_target_without_claiming_progress(self):
   with tempfile.TemporaryDirectory() as tmp:
    report=backend.mobile_report(Path(tmp),'',False)
-   self.assertEqual(report['app_version'],'1.5-studio');self.assertEqual(report['heartbeat_target_seconds'],30)
+   self.assertEqual(report['app_version'],'1.6-studio');self.assertEqual(report['heartbeat_target_seconds'],30)
    self.assertFalse(report['worker_active']);self.assertIsNone(report['progress_age_seconds'])
 
 class LiveRunnerOverlayTests(unittest.TestCase):
