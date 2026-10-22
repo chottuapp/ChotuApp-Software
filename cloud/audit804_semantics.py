@@ -45,6 +45,7 @@ def review(name,description,category,sku=""):
   if cat in ('blushers','face powders','perfumes & fragrances','lipsticks') and has(r'\brtw\b|\b(?:shirt|trouser|dupatta)\s*:',description):return ['Garment evidence conflicts with cosmetics Category']
  # These aliases each need independent explicit source purpose evidence.
  proofs={
+  'smartwatches':r'\bsmart\s*watch(?:es)?\b',
   'hair removal sprays':r'\bhair\s+removal\s+spray\b',
   'depilatory waxes':r'\b(?:depilatory|wax\s+cream)\b',
   'face & body lotions':r'\blotion\b.{0,50}\bface\b|\bface\b.{0,80}\bbody\b.{0,50}\blotion\b',
@@ -103,6 +104,7 @@ def review(name,description,category,sku=""):
   if has(r'\b(?:a|this) fragrance\b|\bFragrance (?:Notes|Type)\s*:',body[:2000]) and has(r'\b(?:ml|notes|scent)\b',evidence) and not has(r'body lotion|body wash|hair|soap',title):return []
   if has(r'\b(?:top|head) notes?\b',evidence) and has(r'\b(?:heart|middle) notes?\b',evidence) and has(r'\bbase notes?\b',evidence) and not has(r'body lotion|body wash|hair|soap',title):return []
  # A target compatibility device is not the object being sold.
+ if cat=='smartwatches' and has(r'\b(?:strap|band|charger|protector|cable)\b',title):return ['Watch accessory incorrectly classified as smartwatch']
  if cat=='tablets' and has(r'\b(?:stylus|pencil)\b',title):return ['Stylus incorrectly classified as tablet']
  if cat=='processors' and has(r'\bcooler\b|thermal paste|contact frame|motherboard|laptop|memory',title):return ['CPU accessory incorrectly classified as processor']
  if cat=='gaming consoles' and has(r'controller|driving|racing wheel',title):return ['Gaming accessory incorrectly classified as console']

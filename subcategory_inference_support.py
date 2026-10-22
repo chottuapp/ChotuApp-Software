@@ -396,6 +396,9 @@ def infer(name,description,website_path=''):
         ('Depilatory Waxes',r'\bwax\s+cream\b'),
     ]:
         if re.search(pattern,title,re.I):return _quote(label,'name',title)
+    if not re.search(r'(?i)\b(?:strap|band|charger|cable|protector|case)\b',title):
+        if re.search(r'(?i)\bsmart\s*watch\b',title+' '+body[:200]):return _quote('Smartwatches','name and description',title+' '+body[:200])
+        if re.search(r'(?i)\b(?:earbuds?|earphones?|tws)\b',body[:800]) and re.search(r'(?i)\b(?:z\s*buds|earbuds?|arcade)\b',title):return _quote('Earphones/Earbuds','description',body[:800])
     garment=_structured_clothing(title,description)
     if garment:return garment
     if re.search(r'(?i)\bcharcoal\s+mask\b',title) and re.search(r'(?i)\bskin\b',body):return _quote('Skin Masks','description',body)

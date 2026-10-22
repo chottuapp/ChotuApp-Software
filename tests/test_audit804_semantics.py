@@ -46,3 +46,10 @@ class SemanticAuditTests(unittest.TestCase):
   self.assertEqual(infer('Hair Removal Spray','Removes unwanted hair without razors.')[0],'Hair Removal Sprays')
   self.assertEqual(infer('Milky Wax Cream','Strip hair removal system.')[0],'Depilatory Waxes')
   self.assertEqual(infer('Spiral Hair Ties (Pack of 2)','')[0],'Hair Ties & Scrunchies')
+
+ def test_explicit_wearables_override_marketing_collection_labels(self):
+  self.assertEqual(infer('Regal AI Pro Smartwatch','A smart watch with AMOLED display.')[0],'Smartwatches')
+  self.assertEqual(infer('Luna Pro','Luna Pro Smartwatch. Health features.')[0],'Smartwatches')
+  self.assertEqual(infer('Arcade Beast','The Arcade Beast earbuds with charging case.')[0],'Earphones/Earbuds')
+  self.assertTrue(review('Smartwatch Charger','A charger for a smartwatch.','Smartwatches'))
+  self.assertFalse(issues_for({'name':'Regal Smartwatch','description':'A smartwatch with Bluetooth calling and AMOLED display.','Category':'Smartwatches'}))
