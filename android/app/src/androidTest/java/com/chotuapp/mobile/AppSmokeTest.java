@@ -19,7 +19,7 @@ public class AppSmokeTest {
         android.app.Activity activity=instrumentation.startActivitySync(new Intent(context,MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));assertNotNull(activity);
         instrumentation.runOnMainSync(()->{try{
             MainActivity main=(MainActivity)activity;
-            assertEquals("1.5-studio",main.installedVersionName());
+            assertEquals("1.6-studio",main.installedVersionName());
             assertEquals("20 Oct 2026 · 5:30 PM PKT",main.pakistanTime("2026-10-20T12:30:00+00:00"));
             org.json.JSONObject drive=new org.json.JSONObject("{\"uploaded\":{\"Cool and Cool\":{\"folder\":\"F\",\"verified_utc\":\"2026-10-20T12:30:00+00:00\",\"file_url\":\"https://drive.google.com/file/d/id/view\"},\"Adam Cheese\":{\"folder\":\"F\"}}}");
             android.widget.LinearLayout results=main.column();main.populateDrive(results,drive,"COOL");
@@ -37,7 +37,7 @@ public class AppSmokeTest {
         assertNotNull(heartbeat);assertTrue(heartbeat.isPersisted());assertTrue(heartbeat.getIntervalMillis()>=15*60*1000L);
         android.content.pm.ServiceInfo service=context.getPackageManager().getServiceInfo(new android.content.ComponentName(context,HeartbeatJobs.class),0);
         assertEquals("android.permission.BIND_JOB_SERVICE",service.permission);
-        assertEquals(6,context.getPackageManager().getPackageInfo(context.getPackageName(),0).getLongVersionCode());
+        assertEquals(7,context.getPackageManager().getPackageInfo(context.getPackageName(),0).getLongVersionCode());
         FetchService.extract(context);
         String result=FetchService.python(context).getModule("mobile_backend").callAttr("self_test",new File(context.getFilesDir(),"engine").getPath(),new File(context.getFilesDir(),"smoke-test").getPath()).toString();
         assertEquals("Embedded export verified",result);

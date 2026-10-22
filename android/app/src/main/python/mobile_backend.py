@@ -1,4 +1,5 @@
 """Embedded Android worker. No Termux, subprocess, desktop UI or shell required."""
+import re
 import base64,hashlib,importlib.util,json,sys,time,threading,contextlib,datetime
 from pathlib import Path
 import requests
@@ -128,6 +129,9 @@ def dashboard(token=''):
  except (requests.RequestException,ValueError):result['app_update']={'unavailable':True}
  try:
   response=requests.get('https://raw.githubusercontent.com/'+REPO+'/main/cloud/audit804-release.json',params={'check':time.time_ns()},timeout=15);response.raise_for_status();result['fresh_release']=response.json()
+  session_response=requests.get('https://raw.githubusercontent.com/'+REPO+'/main/cloud/khaadi-session-release.json',params={'check':time.time_ns()},timeout=15);session_response.raise_for_status();session_release=session_response.json()
+  if session_release.get('store')=='Khaadi' and session_release.get('fresh_from_zero') is True and session_release.get('campaign_id')==result['fresh_release'].get('campaign_id') and re.fullmatch(r'fresh804-[0-9]{8}-[a-f0-9]{8}',session_release.get('session_id','')):
+   result['fresh_release']=dict(result['fresh_release'],campaign_id=session_release['session_id'])
  except (requests.RequestException,ValueError):pass
  # Read the phone branch directly; a delayed scheduled cloud summary is not current phone evidence.
  try:
@@ -209,7 +213,7 @@ def mobile_report(data,token,active,paused=False):
  if _network_waiting and active:status='waiting_network'
  if paused and active:status='pausing'
  elif status=='running' and not active:status='stopped'
- return {'store':'Khaadi','execution':'Android app','app_version':'1.5-studio','heartbeat_target_seconds':30,'background_fallback_minutes':15,'fresh_campaign_id':campaign,'observed_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'worker_active':bool(active),'status':status,'worker_updated':state.get('updated'),'last_event':safe_log(state.get('last_event',''),token),'error':safe_log(state.get('error',''),token),'progress_age_seconds':max(0,round(time.time()-progress)) if isinstance(progress,(int,float)) else None,'log_tail':log_tail(data,token)}
+ return {'store':'Khaadi','execution':'Android app','app_version':'1.6-studio','heartbeat_target_seconds':30,'background_fallback_minutes':15,'fresh_campaign_id':campaign,'observed_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'worker_active':bool(active),'status':status,'worker_updated':state.get('updated'),'last_event':safe_log(state.get('last_event',''),token),'error':safe_log(state.get('error',''),token),'progress_age_seconds':max(0,round(time.time()-progress)) if isinstance(progress,(int,float)) else None,'log_tail':log_tail(data,token)}
 
 def telemetry_status(data,**record):
  data=Path(data);data.mkdir(parents=True,exist_ok=True);path=data/'telemetry-status.json'
