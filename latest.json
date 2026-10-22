@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-21T19:25:07.135591+00:00",
-  "run_id": "39616488192",
+  "generated_utc": "2026-10-22T00:13:08.550538+00:00",
+  "run_id": "39661536442",
   "attempt": "1",
-  "source_commit": "92ba6aa6b14bea783e94502dce164bb8d65cd4eb",
-  "status": "incomplete",
+  "source_commit": "ea50c341812759e44b937496b79ec70f488d1e85",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 18000.8,
+  "elapsed_seconds": 16836.6,
   "stores": [
     {
       "name": "Tawakkal Fabrics",
@@ -37,18 +37,20 @@
     },
     {
       "name": "Stylo",
-      "status": "pending",
-      "review_required": false,
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
         "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "2f2457e6a7693ebc",
+      "software_revision": "84be7f782ea67a69",
+      "products": 9126,
+      "variants": 44201,
       "http_statuses": {
-        "200": 3592
+        "200": 2676
       },
-      "network_seconds": 8449.7,
-      "max_response_seconds": 3.0,
-      "cache_events": 7460
+      "network_seconds": 6273.2,
+      "max_response_seconds": 9.6,
+      "cache_events": 33013
     }
   ]
 }
