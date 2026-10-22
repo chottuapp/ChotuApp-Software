@@ -131,9 +131,10 @@ def write_summary(service,checkpoint_status,stop_reason='completed_or_source_fai
             finally:book.close()
         stores.append(item)
     summary={'run_id':state.get('id'),'status':state.get('status','incomplete'),'checkpoint':checkpoint_status,'stores':stores,'stop_reason':stop_reason,'auto_continue_once':os.environ.get('CLOUD_AUTO_CONTINUE')=='true'}
-    from continuation_policy import summary_fields
+    from continuation_policy import summary_fields,integer
     summary.update(summary_fields(state,service.store.root))
     summary['runner_group']=os.environ.get('CLOUD_RUNNER_GROUP','')
+    summary['continuation_minutes']=integer(os.environ.get('CLOUD_MINUTES','300'),default=300,maximum=300)
     (service.output/'run-summary.json').write_text(json.dumps(summary,indent=2),encoding='utf-8')
     lines=['RUN SUMMARY:']
     for item in stores:

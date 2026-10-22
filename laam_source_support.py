@@ -122,6 +122,11 @@ def normalize(raw,handle,active_only=False,in_stock_only=False):
             row.update(inventory_quantity=quantity,inventory_management='public')
         explicit=[variant.get('option'+str(i)) for i in range(1,len(dims)+1)]
         values=explicit if all(v is not None for v in explicit) else str(variant.get('title') or '').split(' / ') if dims else []
+        # Verified airah-3 layout repeats its final Color in the display title.
+        # Collapse exactly one identical trailing colour, only with complete declared dimensions.
+        if (not all(v is not None for v in explicit) and len(values)==len(dims)+1 and dims
+            and dims[-1]['name'].casefold() in ('color','colour') and values[-1]==values[-2]
+            and values[-1] in dims[-1]['values']):values=values[:-1]
         if len(values)!=len(dims) or any(str(value) not in dim['values'] for value,dim in zip(values,dims)):raise ValueError('LAAM observed variant does not match declared option values')
         row.update({'option'+str(i):str(value) for i,value in enumerate(values,1)})
         image=variant.get('featured_image') or variant.get('image')

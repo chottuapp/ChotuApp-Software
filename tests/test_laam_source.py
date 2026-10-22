@@ -226,3 +226,20 @@ class TransportRecoveryTests(unittest.TestCase):
   for error in (ReadTimeout('slow'),ConnectionError('offline')):
    with self.assertRaises(source.TemporaryProductError):reader.transport(Mock(side_effect=error),source.BASE+'/products/a')
   with self.assertRaises(source.SourceAccessError):reader.transport(Mock(side_effect=SSLError('certificate')),source.BASE+'/products/a')
+
+class RepeatedColorDisplayTests(unittest.TestCase):
+ def raw(self):
+  raw=copy.deepcopy(FIXTURES[0]['product']);raw['options'].append({'name':'Color','position':2,'values':['Champagne']})
+  for v in raw['variants']:v['title'] += ' / Champagne / Champagne'
+  return raw
+ def test_only_identical_declared_trailing_colour_is_collapsed(self):
+  raw=self.raw();result=source.normalize(raw,raw['handle'])
+  self.assertEqual(result['variants'][0]['option1'],'S');self.assertEqual(result['variants'][0]['option2'],'Champagne')
+  self.assertEqual(result['variants'][0]['title'],'S / Champagne / Champagne')
+  self.assertEqual(result['variants'][0]['price'],raw['variants'][0]['price'])
+  for bad in ['S / Champagne / Gold','S / Champagne / Champagne / Champagne','S / Gold / Gold']:
+   raw=self.raw();raw['variants'][0]['title']=bad
+   with self.assertRaisesRegex(ValueError,'declared option'):source.normalize(raw,raw['handle'])
+ def test_repeated_size_is_not_implicitly_dropped(self):
+  raw=self.raw();raw['options'][1]['name']='Stitching'
+  with self.assertRaises(ValueError):source.normalize(raw,raw['handle'])

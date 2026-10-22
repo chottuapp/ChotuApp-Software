@@ -37,3 +37,10 @@ class ContinueTests(unittest.TestCase):
     if dispatched:
      self.assertIn('auto_continue_once=false',dispatched[0]);self.assertIn('minutes=300',dispatched[0]);self.assertIn('resume_run_id=38970499270',dispatched[0])
 if __name__=='__main__':unittest.main()
+
+class CheckpointIntervalTests(unittest.TestCase):
+ def test_short_interval_survives_continuations_with_validated_defaults(self):
+  from auto_continue import run_minutes
+  self.assertEqual(run_minutes({'continuation_minutes':90}),90)
+  for value in (0,10,301,'bad',None):self.assertEqual(run_minutes({'continuation_minutes':value}),300)
+  self.assertEqual(run_minutes({}),300)

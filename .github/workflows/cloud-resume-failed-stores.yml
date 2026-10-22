@@ -1,0 +1,30 @@
+name: Repair and Continue Saved LAAM and Gul Ahmed
+on:
+  push:
+    branches: [main]
+    paths: [cloud/resume-failed-stores-request.json]
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: chotuapp-laam-gul-recovery
+  cancel-in-progress: false
+jobs:
+  resume:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install requests beautifulsoup4 openpyxl
+      - name: Verify adapter and continuation guards
+        env:
+          PYTHONPATH: tests:cloud:.
+        run: python -m unittest test_laam_source test_laam_owner_filter test_auto_continue test_continuation_policy -q
+      - name: Locate intact checkpoints and continue only reviewed stores
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PYTHONPATH: cloud:.
+        run: python cloud/resume_failed_stores.py
