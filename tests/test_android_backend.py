@@ -118,3 +118,21 @@ class LiveRunnerOverlayTests(unittest.TestCase):
  def test_missing_token_does_not_send_anonymous_rate_limited_api_polls(self):
   with patch.object(backend.requests,'get') as get:
    backend.live_runner_states({},'');get.assert_not_called()
+
+class KhaadiSessionRoutingTests(unittest.TestCase):
+ def test_only_matching_parent_campaign_selects_new_phone_session(self):
+  import types
+  original=json.loads((ROOT/'cloud/audit804-release.json').read_text())
+  requested=json.loads((ROOT/'cloud/khaadi-session-release.json').read_text())
+  for parent,expected in [(original['campaign_id'],requested['session_id']),('different-campaign',original['campaign_id'])]:
+   def get(url,**kwargs):
+    response=Mock()
+    if url.endswith('/audit804-release.json'):response.json.return_value=original.copy()
+    elif url.endswith('/khaadi-session-release.json'):response.json.return_value=dict(requested,campaign_id=parent)
+    elif url.endswith('/khaadi-android.json'):raise backend.requests.RequestException('no phone report')
+    else:response.json.return_value={}
+    return response
+   with patch.object(backend.requests,'get',side_effect=get),patch.dict(sys.modules,{'store_progress':types.SimpleNamespace(rows=lambda data:[])}):
+    result=json.loads(backend.dashboard())
+   self.assertEqual(result['fresh_release']['campaign_id'],expected)
+   self.assertEqual(original['campaign_id'],'fresh804-20261021-a26dcd86')
