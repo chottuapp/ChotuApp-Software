@@ -19,9 +19,19 @@ def main():
   record={'target':rid}
   try:
    record['state']=json.loads(gh('run','view',rid,'--repo',REPO,'--json','status,conclusion,jobs,headSha,displayTitle'))
-   record['failed_log']=evidence(gh('run','view',rid,'--repo',REPO,'--log-failed'))
+   try:record['failed_log']=evidence(gh('run','view',rid,'--repo',REPO,'--log-failed'))
+   except subprocess.CalledProcessError as exc:record['log_unavailable']=redact(exc.stderr or '')[:1500]
    artifacts=json.loads(gh('api','repos/'+REPO+'/actions/runs/'+rid+'/artifacts'))['artifacts']
    record['artifacts']=[{k:a.get(k) for k in ('name','id','expired','size_in_bytes')} for a in artifacts]
+   record['annotations']=[]
+   for job in record['state'].get('jobs',[]):
+    if job.get('conclusion')!='failure':continue
+    detail=json.loads(gh('api','repos/'+REPO+'/actions/jobs/'+str(job['databaseId'])))
+    check=detail.get('check_run_url','')
+    if check.startswith('https://api.github.com/repos/'+REPO+'/check-runs/'):
+     items=json.loads(gh('api',check.removeprefix('https://api.github.com/')+'/annotations'))
+     record['annotations'] += [{'level':a.get('annotation_level'),'message':redact(a.get('message',''))[:4500]} for a in items[:15]]
+
    if any(a['name']=='chotuapp-live-logs' and not a.get('expired') for a in artifacts):
     with tempfile.TemporaryDirectory() as folder:
      gh('run','download',rid,'--repo',REPO,'--name','chotuapp-live-logs','--dir',folder)
@@ -30,5 +40,19 @@ def main():
       if files:record[name]='\n'.join(redact(l) for l in files[0].read_text(errors='replace').splitlines()[-180:])[-26000:]
   except Exception as exc:record['diagnostic_error']=redact(str(exc))[:1000]
   result['targets'].append(record)
+ if request.get('public_laam_handle')=='airah-3':
+  try:
+   import requests,time
+   import laam_source_support as source
+   from bs4 import BeautifulSoup
+   from urllib.robotparser import RobotFileParser
+   from unittest.mock import patch
+   reader=source.PublicCatalog({'S':requests.Session(),'_chotu_wait':lambda:None,'_chotu_backoff':lambda seconds,reason:time.sleep(seconds),'_chotu_debug_request':lambda *a:None,'_chotu_debug_response':lambda *a,**k:None},lambda _:None)
+   robots=reader.read(source.BASE+'/robots.txt');reader.robots=RobotFileParser();reader.robots.parse(robots.text.splitlines())
+   page=reader.read(source.BASE+'/products/airah-3')
+   def capture(raw,handle,**kwargs):
+    return {k:raw.get(k) for k in ('id','handle','title','status','stock_status','node_l2','node_l3','options')} | {'variants':[{k:v.get(k) for k in ('id','shopify_id','title','option1','option2','option3','price','compare_at_price','stock_status','inventory_quantity')} for v in raw.get('variants',[])]}
+   with patch.object(source,'normalize',side_effect=capture):result['laam_public_variant_evidence']=source.product_state(BeautifulSoup(page.text,'html.parser'),'airah-3',clothing_only=True,active_only=True)
+  except Exception as exc:result['laam_probe_error']=redact(str(exc))[:1200]
  publish(result,branch='stopped-fetch-reports')
 if __name__=='__main__':main()
