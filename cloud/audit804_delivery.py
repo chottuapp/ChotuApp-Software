@@ -131,6 +131,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT):
     state.setdefault('uploaded',{})[store]=record
     state.setdefault('original_uploads',{}).pop(store,None)
     state.setdefault('daily_uploads',{}).setdefault(folder,{})[store]=record
+   if marker:report['held_input']=marker
    state['audit804_results'][store]=report;state['audit804_processed'][store]=cache_key
  def safe_handle(source,store,rid,artifact_id,key):
   try:handle(source,store,rid,artifact_id,key)
@@ -144,9 +145,16 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT):
   # Recheck durable held inputs after code/policy updates, even if Actions artifacts expired.
   for store,report in list(state['audit804_results'].items()):
    key='source:'+report.get('source_sha256','')+':'+store+':'+revision
-   if report.get('status')!='hold' or not report.get('held_input') or state['audit804_processed'].get(store,'').endswith(revision):continue
+   code_changed=bool(codes.get(store) and state.get('uploaded',{}).get(store,{}).get('shop_code')!=codes[store])
+   if report.get('status')!='hold' and not (report.get('status')=='pass' and code_changed):continue
+   if state['audit804_processed'].get(store,'').endswith(revision):continue
+   marker=report.get('held_input')
+   if not marker and code_changed and report.get('source_sha256'):
+    from audit804_queue import slug
+    marker='inputs/'+campaign+'/'+slug(store)+'/'+report['source_sha256'][:16]+'/manifest.json'
+   if not marker:continue
    with tempfile.TemporaryDirectory() as tmp:
-    source=restore_held(report['held_input'],Path(tmp)/(store+'.xlsx'),store,campaign);safe_handle(source,store,report.get('source_run','phone'),report.get('source_artifact'),key)
+    source=restore_held(marker,Path(tmp)/(store+'.xlsx'),store,campaign);safe_handle(source,store,report.get('source_run','phone'),report.get('source_artifact'),key)
   for run in reversed(runs):
    rid=str(run['databaseId']);artifacts=json.loads(gh('api','repos/chottuapp/ChotuApp-Software/actions/runs/'+rid+'/artifacts?per_page=100'))['artifacts'];found=[a for a in artifacts if a.get('name')=='chotuapp-excel-files' and not a.get('expired')]
    if not found:continue
