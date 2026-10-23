@@ -195,7 +195,7 @@ def _publish_once(data,branch='source-research'):
  with tempfile.TemporaryDirectory() as tmp:
   env=dict(os.environ,GIT_INDEX_FILE=str(Path(tmp)/'index'))
   def git(*args,input=None):return subprocess.run(['git',*args],input=input,env=env,stdout=subprocess.PIPE,stderr=subprocess.PIPE,check=True).stdout.decode().strip()
-  if branch not in ('stopped-fetch-reports','source-research','fetch-update-reports','laam-repair-reports','website-order-reports','category-reports','drive-sync-reports','runner-status-reports', 'android-build-reports'):raise ValueError('Unsupported public report branch')
+  if branch not in ('audit804-source-evidence','stopped-fetch-reports','source-research','fetch-update-reports','laam-repair-reports','website-order-reports','category-reports','drive-sync-reports','runner-status-reports', 'android-build-reports'):raise ValueError('Unsupported public report branch')
   ref='refs/heads/'+branch;parent=None
   if git('ls-remote','--heads','origin',ref):git('fetch','--depth=1','origin',ref);parent=git('rev-parse','FETCH_HEAD');git('read-tree',parent)
   else:git('read-tree','--empty')
