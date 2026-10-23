@@ -55,3 +55,8 @@ class OriginalStorePurposeTests(unittest.TestCase):
   self.assertEqual(review('Premium Suit','Shirt & Trouser 4.5M. Fabric: Cotton.','Suit Fabric Sets'),[])
   self.assertEqual(review('Cotton Suit','Kameez collar neckline. Shalwar included.','Kameez Shalwar Sets'),[])
   self.assertIsNone(review('Opaque Suit','No contents supplied','Suit Fabric Sets'))
+
+class CompleteDescriptionsTests(unittest.TestCase):
+ def test_complete_skin_description_is_not_relabeled_as_concerns(self):
+  row={'name':'Gentle Cleanser','description':'A gentle cleanser. Ingredients: Oat extract. Directions: Rinse thoroughly.'}
+  self.assertEqual(description(row,'Skin Factor',set()),(row['description'],None))

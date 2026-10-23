@@ -44,7 +44,7 @@ def description(row,store,catalogue):
   if copied and weight:
    candidate=title+'. Supplied weight: '+weight.group(1)
    if numbers(original)<=numbers(candidate):fixed=candidate;reason='Copied prose about a different spice/form removed; exact product name and every supplied weight/option retained.'
- if store=='Skin Factor' and title and fixed.strip() and not fixed.startswith(title):
+ if store=='Skin Factor' and title and fixed.strip() in {'Dryness, Dehydration & Sensitivity','Dryness, Dehydration & Skin Tightness','Oiliness, Breakouts, Enlarged Pores & Congestion','Dry, Dehydrated & Skin Tightness'}:
   fixed=title+'.\n\nSource-listed skin concerns: '+fixed.strip().rstrip('.')+'.'
   reason='Combined the supplied product identity and concentration with its complete source-listed skin concerns; no ingredients, kit contents or efficacy added.'
  return fixed,reason
