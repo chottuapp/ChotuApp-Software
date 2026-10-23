@@ -1,23 +1,39 @@
 {
-  "run_id": "39880198707",
-  "checked_utc": "2026-10-23T00:47:50.498021+00:00",
-  "active_queued": 1,
+  "run_id": "39899651797",
+  "checked_utc": "2026-10-23T04:19:02.805042+00:00",
+  "active_queued": 0,
   "runs": [
     {
-      "conclusion": "",
-      "databaseId": 39871046300,
-      "displayTitle": "Automatic continuation of 39860193127",
-      "status": "in_progress",
-      "updatedAt": "2026-10-22T23:20:13Z",
-      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39871046300",
+      "conclusion": "failure",
+      "databaseId": 39889255797,
+      "displayTitle": "Automatic continuation of 39880569413",
+      "status": "completed",
+      "updatedAt": "2026-10-23T03:54:57Z",
+      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39889255797",
       "lane": "audit804-fresh804-20261021-a26dcd86-7-gul-ahmed",
-      "snapshot": "Updated (UTC): 2026-10-23T00:46:16.602860+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nGul Ahmed: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 5083/7775 tasks; sample age 206s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-10-23T00:46:12.041605+00:00\n",
-      "snapshot_utc": "2026-10-23T00:46:16.602860+00:00",
+      "snapshot": "Updated (UTC): 2026-10-23T03:54:08.246219+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nGul Ahmed: pending\n  Stage: Parallel product prices and pages\n  product prices and pages: 7316/7775 tasks; sample age 58s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-10-23T03:53:47.155443+00:00\n",
+      "snapshot_utc": "2026-10-23T03:54:08.246219+00:00",
       "stores": {
-        "Gul Ahmed": "running"
+        "Gul Ahmed": "pending"
       },
-      "snapshot_age_seconds": 94,
-      "snapshot_stale": false
+      "snapshot_age_seconds": 1495,
+      "snapshot_stale": true,
+      "failure_details": [
+        "fetch\tFetch result\t2026-10-23T03:54:10.1546984Z [Gul Ahmed] [03:53:45] HTTP START attempt=1 https://www.gulahmedshop.com/products/shahjahan-latha-unstitched-fabric-cotton-lf.js",
+        "fetch\tFetch result\t2026-10-23T03:54:10.1547799Z [Gul Ahmed] [03:53:47] HTTP END status=200 elapsed=2.1s bytes=124550 https://www.gulahmedshop.com/products/shahjahan-latha-unstitched-fabric-cotton-lf.js",
+        "fetch\tFetch result\t2026-10-23T03:54:10.1548656Z [Gul Ahmed] [03:53:50] GET_JSON: https://www.gulahmedshop.com/products/optima-latha-unstitched-fabric-cotton-lf.js",
+        "fetch\tFetch result\t2026-10-23T03:54:10.1549381Z [Gul Ahmed] [03:53:50] HTTP START attempt=1 https://www.gulahmedshop.com/products/optima-latha-unstitched-fabric-cotton-lf.js",
+        "fetch\tFetch result\t2026-10-23T03:54:10.1549978Z Cloud time budget reached; saving unfinished work.",
+        "fetch\tFetch result\t2026-10-23T03:54:10.1550619Z [Gul Ahmed] [03:53:51] HTTP END status=EXCEPTION elapsed=1.4s bytes=0 https://www.gulahmedshop.com/products/optima-latha-unstitched-fabric-cotton-lf.js",
+        "fetch\tFetch result\t2026-10-23T03:54:10.1551386Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.",
+        "fetch\tFetch result\t2026-10-23T03:54:10.1552087Z Large checkpoint saved in checksummed parts: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts",
+        "fetch\tFetch result\t2026-10-23T03:54:10.1552750Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts",
+        "fetch\tFetch result\t2026-10-23T03:54:10.1553210Z RUN SUMMARY:",
+        "fetch\tFetch result\t2026-10-23T03:54:10.1553793Z Gul Ahmed: PENDING \u2014 Stopped; successful requests retained",
+        "fetch\tFetch result\t2026-10-23T03:54:10.1554184Z Checkpoint: saved",
+        "fetch\tFetch result\t2026-10-23T03:54:10.1554670Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+        "fetch\tFetch result\t2026-10-23T03:54:10.1566669Z ##[error]Process completed with exit code 2."
+      ]
     },
     {
       "conclusion": "failure",
@@ -32,7 +48,7 @@
       "stores": {
         "LAAM": "failed"
       },
-      "snapshot_age_seconds": 17799,
+      "snapshot_age_seconds": 30472,
       "snapshot_stale": true,
       "failure_details": [
         "fetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3755189Z [LAAM] [19:50:33] HTTP START attempt=1 https://laam.com/products/arleen-rae",
@@ -99,7 +115,7 @@
         "Junaid Jamshed": "done",
         "Stylo": "done"
       },
-      "snapshot_age_seconds": 88490,
+      "snapshot_age_seconds": 101162,
       "snapshot_stale": true
     },
     {
@@ -117,7 +133,7 @@
         "Outfitters": "done",
         "Zellbury": "done"
       },
-      "snapshot_age_seconds": 120831,
+      "snapshot_age_seconds": 133504,
       "snapshot_stale": true
     },
     {
@@ -134,7 +150,7 @@
         "Saeed Ghani": "done",
         "Hemani Herbals": "done"
       },
-      "snapshot_age_seconds": 116513,
+      "snapshot_age_seconds": 129185,
       "snapshot_stale": true,
       "failure_details_unavailable": true
     },
@@ -151,7 +167,7 @@
       "stores": {
         "Sapphire": "done"
       },
-      "snapshot_age_seconds": 134141,
+      "snapshot_age_seconds": 146813,
       "snapshot_stale": true
     },
     {
@@ -167,7 +183,7 @@
       "stores": {
         "Zero Lifestyle": "done"
       },
-      "snapshot_age_seconds": 141756,
+      "snapshot_age_seconds": 154428,
       "snapshot_stale": true
     },
     {
@@ -185,7 +201,7 @@
         "Denim Leftover": "done",
         "Cool and Cool": "done"
       },
-      "snapshot_age_seconds": 141578,
+      "snapshot_age_seconds": 154250,
       "snapshot_stale": true
     },
     {
@@ -201,7 +217,7 @@
       "stores": {
         "Nisa Naturals": "done"
       },
-      "snapshot_age_seconds": 137287,
+      "snapshot_age_seconds": 149959,
       "snapshot_stale": true
     },
     {
@@ -219,7 +235,7 @@
         "Adam Cheese": "done",
         "Computer Zone": "done"
       },
-      "snapshot_age_seconds": 139997,
+      "snapshot_age_seconds": 152669,
       "snapshot_stale": true
     },
     {
@@ -237,7 +253,7 @@
         "Shop Modest": "done",
         "Seran": "done"
       },
-      "snapshot_age_seconds": 141540,
+      "snapshot_age_seconds": 154213,
       "snapshot_stale": true
     },
     {
@@ -255,7 +271,7 @@
         "The Hanger Pakistan": "done",
         "Elite Cosmetics": "done"
       },
-      "snapshot_age_seconds": 137730,
+      "snapshot_age_seconds": 150402,
       "snapshot_stale": true
     },
     {
@@ -273,12 +289,12 @@
         "Rivaj UK": "done",
         "Rawayat": "done"
       },
-      "snapshot_age_seconds": 130181,
+      "snapshot_age_seconds": 142854,
       "snapshot_stale": true
     }
   ],
   "fresh_stores": {
-    "Gul Ahmed": "running",
+    "Gul Ahmed": "pending",
     "LAAM": "failed",
     "Tawakkal Fabrics": "done",
     "Junaid Jamshed": "done",
@@ -317,13 +333,13 @@
     "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
     "error": "",
     "progress_age_seconds": 1,
-    "report_age_seconds": 192310,
+    "report_age_seconds": 204982,
     "status_confirmed": false
   },
   "drive": {
-    "sync_status": "finished",
+    "sync_status": "scanning",
     "sync_error": null,
-    "last_scan_utc": "2026-10-23T00:47:04.220179+00:00",
+    "last_scan_utc": "2026-10-23T04:17:31.268503+00:00",
     "held": {
       "39450775009": [],
       "39450778729": [],
@@ -443,7 +459,7 @@
       "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
       "error": "",
       "progress_age_seconds": 1,
-      "report_age_seconds": 192310,
+      "report_age_seconds": 204982,
       "status_confirmed": false
     }
   ],
