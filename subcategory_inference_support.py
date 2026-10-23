@@ -399,6 +399,11 @@ def infer(name,description,website_path=''):
     if not re.search(r'(?i)\b(?:strap|band|charger|cable|protector|case)\b',title):
         if re.search(r'(?i)\bsmart\s*watch\b',title+' '+body[:200]):return _quote('Smartwatches','name and description',title+' '+body[:200])
         if re.search(r'(?i)\b(?:earbuds?|earphones?|tws)\b',body[:800]) and re.search(r'(?i)\b(?:z\s*buds|earbuds?|arcade)\b',title):return _quote('Earphones/Earbuds','description',body[:800])
+    for reviewed_label,reviewed_pattern in [('Thermal Paste', '\\bthermal\\s+(?:paste|compound)\\b'), ('CPU Coolers', '\\b(?:cpu|processor|air|liquid)\\s+cooler\\b'), ('Computer Memory (RAM)', '\\b(?:ddr[345]|so.dimm)\\b.*\\bmemory\\b'), ('Laptop Stands', '\\blaptop\\s+(?:stand|riser)\\b'), ('Laptop Chargers', '\\blaptop\\s+(?:charger|adapter)\\b'), ('Moccasins', '\\bmoccasins?\\b'), ('Court Shoes', '\\bcourt\\s+shoes?\\b'), ('Backless Shoes', '\\bback\\s+open\\b'), ('Hair Clips & Pins', '\\b(?:bobby\\s+pins?|hair\\s+clips?|heart\\s+clips?)\\b'), ('Hair Ties & Scrunchies', '\\bscrunch(?:ie|y|ies)\\b'), ('Pencil Cases', '\\bpencil\\s+case\\b'), ('Lunch Bags', '\\blunch\\s+bag\\b'), ('Handbags', '\\bhand\\s*bags?\\b'), ('Ubtan Powders', '\\bubtan\\b'), ('Baby Rash Creams', '\\bbaby\\s+rash\\b.*\\bcream\\b'), ('Body Lotions', '\\b(?:moisturizing|nourishing|whitening)\\s+lotion\\b')]:
+        if reviewed_label=="Handbags" and re.search(r"(?i)laptop|backpack|lunch|shoulder|cross.body|tote|hobo|bucket",title):continue
+        if re.search(reviewed_pattern,title,re.I):return _quote(reviewed_label,"name",title)
+    for reviewed_label,reviewed_pattern in [('Hijabs', '\\bhijabs?\\b'), ('Eye Patches', '\\beye\\s+patches\\b'), ('Body Creams', '\\bbreast\\b.{0,50}\\bcream\\b'), ('Skin Soothing Gels', '\\b(?:skin|aloe\\s+vera)\\b.{0,40}\\bgel\\b'), ('Oral Care', '\\b(?:breath\\s+spray|mouthwash|toothpaste)\\b'), ('Face Powders', '\\b(?:pressed|face|compact|loose)\\s+powder\\b'), ('Computer Mice', r'(?=.*\bmouse\b)(?=.*\b(?:usb|dpi|wireless|bluetooth)\b)')]:
+        if re.search(reviewed_pattern,title,re.I):return _quote(reviewed_label,"name",title)
     garment=_structured_clothing(title,description)
     if garment:return garment
     if re.search(r'(?i)\bcharcoal\s+mask\b',title) and re.search(r'(?i)\bskin\b',body):return _quote('Skin Masks','description',body)
