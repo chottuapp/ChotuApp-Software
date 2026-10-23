@@ -47,7 +47,7 @@ def main():
    return getattr(result,'stdout','')
   if config.get('audit804_enabled'):
    from audit804_delivery import run_campaign
-   run_campaign(state,config,all_runs,gh,rc)
+   run_campaign(state,config,all_runs,gh,rc,progress=lambda current:publish(current,branch='drive-sync-reports'))
    publish(state,branch='drive-sync-reports');print('804 Audit campaign scan complete; only passed shop-code-identified workbooks delivered.');return
   from mobile_khaadi_ingest import upload as upload_mobile
   if upload_mobile(state,folder,rc):

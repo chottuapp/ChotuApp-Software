@@ -88,7 +88,7 @@ def completed_files(stage):
  if len(summaries)!=1:return []
  return [{'store':row['name'],'name':row.get('file'),'complete':True} for row in json.loads(summaries[0].read_text()).get('stores',[]) if row.get('status')=='done' and row.get('file')]
 
-def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT):
+def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
  from importlib.util import spec_from_file_location,module_from_spec
  spec=spec_from_file_location('audit_groups',root/'catalog-tools/start_fresh26_rule804_drive_windows.py');helper=module_from_spec(spec);spec.loader.exec_module(helper)
  campaign=config['dispatcher'];folder=config['destination_folder'];prefix='Cloud group audit804-'+campaign+'-'
@@ -141,6 +141,8 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT):
    if not marker:marker=save_held(source,store,campaign,str(rid))
    state['audit804_results'][store]={'name':'804 Audit','status':'hold','store':store,'campaign_id':campaign,'source_run':str(rid),'source_artifact':artifact_id,'error':str(exc),'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'held_input':marker,'checked_utc':datetime.now(timezone.utc).isoformat()}
    state['audit804_processed'][store]=key
+  if progress:
+   state['audit804_last_store']=store;state['audit804_progress_utc']=datetime.now(timezone.utc).isoformat();progress(state)
  try:
   # Recheck durable held inputs after code/policy updates, even if Actions artifacts expired.
   for store,report in list(state['audit804_results'].items()):
