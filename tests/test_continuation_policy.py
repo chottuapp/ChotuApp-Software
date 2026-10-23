@@ -9,7 +9,7 @@ class PolicyTests(unittest.TestCase):
   run={'id':123,'event':'workflow_dispatch','head_branch':'main','head_repository':{'full_name':'o/r'},'conclusion':'failure'}
   s={'status':'incomplete','checkpoint':'saved','stop_reason':'time_budget','auto_continue_limit':4,'continuation_index':3,'stores':[{'status':'pending'}]}
   self.assertTrue(eligible(run,'o/r',s,'',True))
-  for changes in ({'continuation_index':4},{'stalled_runs':2},{'auto_continue_limit':7},{'stop_reason':'manual_stop'},{'stores':[{'status':'failed'}]}):
+  for changes in ({'continuation_index':4},{'stalled_runs':2},{'auto_continue_limit':49},{'stop_reason':'manual_stop'},{'stores':[{'status':'failed'}]}):
    self.assertFalse(eligible(run,'o/r',dict(s,**changes),'',True),changes)
   s.update(stop_reason='source_cooldown',stores=[{'status':'source_paused','retry_after_epoch':10**12}]);self.assertFalse(eligible(run,'o/r',s,'',True))
  def test_progress_uses_durable_responses_and_stall_counter(self):
@@ -21,7 +21,7 @@ class PolicyTests(unittest.TestCase):
    with patch.dict(os.environ,{'CLOUD_PREVIOUS_PROGRESS':second,'CLOUD_STALLED_RUNS':'1','CLOUD_AUTO_CONTINUE_LIMIT':'4','CLOUD_CONTINUATION_INDEX':'2'}):
     s=summary_fields(state,tmp);self.assertEqual(s['stalled_runs'],2);self.assertEqual(s['continuation_index'],2)
  def test_invalid_counters(self):
-  for value in ('-1','7','oops',None):self.assertEqual(integer(value),0)
+  for value in ('-1','49','oops',None):self.assertEqual(integer(value),0)
 if __name__=='__main__':unittest.main()
 
 class LocalFollowTests(unittest.TestCase):

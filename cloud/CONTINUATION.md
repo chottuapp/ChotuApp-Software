@@ -1,7 +1,7 @@
 # Checkpoint continuation
 
 A manual cloud-fetch dispatch defaults to four additional checkpoint runs. Set
-`auto_continue_limit` to an integer from 0 through 6. Each continuation has a
+`auto_continue_limit` to an integer from 0 through 48. Each continuation has a
 300-minute fetching budget; GitHub job, storage and account limits still apply.
 This is a bounded chain, not an always-on hosting service.
 

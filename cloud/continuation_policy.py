@@ -1,7 +1,7 @@
 """Bounded continuation policy: checkpoints, useful progress, and no manual-stop loops."""
 import hashlib,json,os,sqlite3
 from pathlib import Path
-MAX_CONTINUATIONS=6
+MAX_CONTINUATIONS=48
 
 def integer(value,default=0,maximum=MAX_CONTINUATIONS):
     try:

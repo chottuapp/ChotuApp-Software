@@ -29,7 +29,7 @@ on:
         default: false
         type: boolean
       auto_continue_limit:
-        description: 'Additional checkpoint runs: 0 disables chaining, default 4, maximum 6; no-progress guard applies'
+        description: 'Additional checkpoint runs: 0 disables chaining, default 4, maximum 48; no-progress guard applies'
         default: '4'
         type: string
       continuation_index:
