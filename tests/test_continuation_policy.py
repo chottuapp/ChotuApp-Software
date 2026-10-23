@@ -35,3 +35,11 @@ class LocalFollowTests(unittest.TestCase):
    p.write_text(json.dumps(summary));self.assertTrue(continuation_allowed(sync))
    for changes in ({'continuation_index':4},{'stalled_runs':2},{'stop_reason':'stop_requested'}):
     p.write_text(json.dumps(dict(summary,**changes)));self.assertFalse(continuation_allowed(sync))
+
+class ExtendedOwnerBudgetTests(unittest.TestCase):
+ def test_progressing_store_can_continue_after_old_six_segment_limit(self):
+  run={'id':123,'event':'workflow_dispatch','head_branch':'main','head_repository':{'full_name':'o/r'},'conclusion':'failure'}
+  summary={'status':'incomplete','checkpoint':'saved','stop_reason':'time_budget','auto_continue_limit':48,'continuation_index':6,'stalled_runs':0,'stores':[{'status':'pending'}]}
+  self.assertTrue(eligible(run,'o/r',summary,'',True))
+  self.assertFalse(eligible(run,'o/r',dict(summary,continuation_index=48),'',True))
+  self.assertFalse(eligible(run,'o/r',dict(summary,stalled_runs=2),'',True))
