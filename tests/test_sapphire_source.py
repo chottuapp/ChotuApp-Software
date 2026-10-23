@@ -90,7 +90,7 @@ class SapphireTests(unittest.TestCase):
     engine._chotuapp_run_site_original(source.BASE,'Sapphire',ROOT/'importer-files/Chotu_Products_Import_Template_Discount_Tags.xlsx',logs.append)
    self.assertIs(engine.discover,before)
    book=load_workbook(Path(tmp)/'Sapphire - REFRESH REVIEW.xlsx');sheet=book['Products'];headers=[x.value for x in sheet[1]];row=dict(zip(headers,next(sheet.iter_rows(min_row=2,values_only=True))))
-   self.assertIn('partial public-page catalog coverage',row['analysis_note']);self.assertEqual(row['source_url'],UNS);self.assertEqual(row['base_price (PKR)'],14990);self.assertIsNone(row['shop_code']);self.assertIn('2.5m',row['description']);self.assertEqual(book['Variant Combinations'].max_row-1,1)
+   self.assertIn('partial public-page catalog coverage',row['analysis_note']);self.assertEqual(row['source_url'],UNS);self.assertEqual(row['base_price (PKR)'],14990);self.assertEqual(row['shop_code'],'SE10019');self.assertIn('2.5m',row['description']);self.assertEqual(book['Variant Combinations'].max_row-1,1)
    self.assertTrue(any('Catalog completeness NOT PROVEN' in line for line in logs));book.close()
 
  def test_selected_disabled_variant_keeps_out_of_stock_without_quantity_guess(self):
