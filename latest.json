@@ -1,166 +1,68 @@
 {
-  "run_id": "39915760690",
-  "checked_utc": "2026-10-23T07:07:41.810088+00:00",
-  "active_queued": 1,
+  "run_id": "39937775979",
+  "checked_utc": "2026-10-23T10:15:31.578926+00:00",
+  "active_queued": 0,
   "runs": [
     {
-      "conclusion": "",
-      "databaseId": 39910528167,
-      "displayTitle": "Automatic continuation of 39901934794",
-      "status": "in_progress",
-      "updatedAt": "2026-10-23T06:17:11Z",
-      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39910528167",
+      "conclusion": "failure",
+      "databaseId": 39931811128,
+      "displayTitle": "Automatic continuation of 39920676276",
+      "status": "completed",
+      "updatedAt": "2026-10-23T09:53:00Z",
+      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39931811128",
       "lane": "audit804-fresh804-20261021-a26dcd86-6-laam",
-      "snapshot": "Updated (UTC): 2026-10-23T07:05:40.681908+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nLAAM: running\n  Stage: Website listing order\n  Last successful HTTP response (UTC): 2026-10-23T07:05:32.748898+00:00\n",
-      "snapshot_utc": "2026-10-23T07:05:40.681908+00:00",
+      "snapshot": "Updated (UTC): 2026-10-23T09:52:38.217873+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nLAAM: failed\n  Stage: Idle\n  Last successful HTTP response (UTC): 2026-10-23T09:51:46.167547+00:00\n",
+      "snapshot_utc": "2026-10-23T09:52:38.217873+00:00",
       "stores": {
-        "LAAM": "running"
+        "LAAM": "failed"
       },
-      "snapshot_age_seconds": 121,
-      "snapshot_stale": false,
-      "console-tail.txt": [
-        "[LAAM] [07:04:55] HTTP END status=200 elapsed=0.3s bytes=299284 https://laam.com/products/bairpins-grey-set",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/bairpins-grey-set",
-        "[LAAM] [07:04:57] HTTP START attempt=1 https://laam.com/products/bairuj",
-        "[LAAM] [07:04:57] HTTP END status=200 elapsed=0.4s bytes=310651 https://laam.com/products/bairuj",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/bairuj; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [07:04:58] HTTP START attempt=1 https://laam.com/products/baithak-blue-floral-printed-embroidered-3-piece-lawn-suit-with-chiffon-dupatta",
-        "[LAAM] [07:04:58] HTTP END status=200 elapsed=0.4s bytes=318205 https://laam.com/products/baithak-blue-floral-printed-embroidered-3-piece-lawn-suit-with-chiffon-dupatta",
-        "[LAAM] [07:05:00] HTTP START attempt=1 https://laam.com/products/baithak-ivory-khussa",
-        "[LAAM] [07:05:00] HTTP END status=200 elapsed=0.5s bytes=345267 https://laam.com/products/baithak-ivory-khussa",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/baithak-ivory-khussa",
-        "[LAAM] [07:05:01] HTTP START attempt=1 https://laam.com/products/bak",
-        "[LAAM] [07:05:01] HTTP END status=200 elapsed=0.4s bytes=309432 https://laam.com/products/bak",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/bak",
-        "[LAAM] [07:05:03] HTTP START attempt=1 https://laam.com/products/bakhoor",
-        "[LAAM] [07:05:03] HTTP END status=200 elapsed=0.5s bytes=309778 https://laam.com/products/bakhoor",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/bakhoor; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] PUBLIC PRODUCT PAGES: 24800/183187 LAAM pages inspected; 10089 clothing products retained; 185 pages deferred",
-        "[LAAM] [07:05:04] HTTP START attempt=1 https://laam.com/products/bakhoor-0",
-        "[LAAM] [07:05:04] HTTP END status=200 elapsed=0.3s bytes=309957 https://laam.com/products/bakhoor-0",
-        "[LAAM] [07:05:06] HTTP START attempt=1 https://laam.com/products/bakhoor-6ml-attar",
-        "[LAAM] [07:05:06] HTTP END status=200 elapsed=0.3s bytes=299686 https://laam.com/products/bakhoor-6ml-attar",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/bakhoor-6ml-attar",
-        "[LAAM] [07:05:07] HTTP START attempt=1 https://laam.com/products/bakht-0",
-        "[LAAM] [07:05:07] HTTP END status=200 elapsed=0.4s bytes=319995 https://laam.com/products/bakht-0",
-        "[LAAM] [07:05:09] HTTP START attempt=1 https://laam.com/products/bakht-1",
-        "[LAAM] [07:05:09] HTTP END status=200 elapsed=0.2s bytes=337734 https://laam.com/products/bakht-1",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/bakht-1; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [07:05:10] HTTP START attempt=1 https://laam.com/products/bakht-3",
-        "[LAAM] [07:05:12] HTTP END status=200 elapsed=2.4s bytes=331516 https://laam.com/products/bakht-3",
-        "[LAAM] [07:05:12] HTTP START attempt=1 https://laam.com/products/bakht-dupatta",
-        "[LAAM] [07:05:13] HTTP END status=200 elapsed=0.3s bytes=305716 https://laam.com/products/bakht-dupatta",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/bakht-dupatta",
-        "[LAAM] [07:05:14] HTTP START attempt=1 https://laam.com/products/bakhtawar",
-        "[LAAM] [07:05:14] HTTP END status=200 elapsed=0.3s bytes=305903 https://laam.com/products/bakhtawar",
-        "[LAAM] [07:05:15] HTTP START attempt=1 https://laam.com/products/bakhtawar-0",
-        "[LAAM] [07:05:16] HTTP END status=200 elapsed=0.4s bytes=319888 https://laam.com/products/bakhtawar-0",
-        "[LAAM] [07:05:17] HTTP START attempt=1 https://laam.com/products/bakhtawar-3",
-        "[LAAM] [07:05:17] HTTP END status=200 elapsed=0.2s bytes=342581 https://laam.com/products/bakhtawar-3",
-        "[LAAM] [07:05:18] HTTP START attempt=1 https://laam.com/products/bakhtawar-4",
-        "[LAAM] [07:05:19] HTTP END status=200 elapsed=0.3s bytes=334494 https://laam.com/products/bakhtawar-4",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/bakhtawar-4; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [07:05:20] HTTP START attempt=1 https://laam.com/products/bakhtawar-grey",
-        "[LAAM] [07:05:20] HTTP END status=200 elapsed=0.5s bytes=328239 https://laam.com/products/bakhtawar-grey",
-        "[LAAM] [07:05:21] HTTP START attempt=1 https://laam.com/products/bakhtawar-silver-bracelet-zarosh-jewel",
-        "[LAAM] [07:05:22] HTTP END status=200 elapsed=0.4s bytes=307712 https://laam.com/products/bakhtawar-silver-bracelet-zarosh-jewel",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/bakhtawar-silver-bracelet-zarosh-jewel",
-        "[LAAM] [07:05:23] HTTP START attempt=1 https://laam.com/products/bakhtawer",
-        "[LAAM] [07:05:23] HTTP END status=200 elapsed=0.3s bytes=331962 https://laam.com/products/bakhtawer",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/bakhtawer; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [07:05:24] HTTP START attempt=1 https://laam.com/products/bakhtuu",
-        "[LAAM] [07:05:25] HTTP END status=200 elapsed=0.3s bytes=330274 https://laam.com/products/bakhtuu",
-        "[LAAM] [07:05:26] HTTP START attempt=1 https://laam.com/products/bakhur-black-3pcs-chiffon",
-        "[LAAM] [07:05:26] HTTP END status=200 elapsed=0.5s bytes=320410 https://laam.com/products/bakhur-black-3pcs-chiffon",
-        "[LAAM] [07:05:27] HTTP START attempt=1 https://laam.com/products/baku-3pcs-shoulder-bag-choco-brown",
-        "[LAAM] [07:05:28] HTTP END status=200 elapsed=0.4s bytes=300574 https://laam.com/products/baku-3pcs-shoulder-bag-choco-brown",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/baku-3pcs-shoulder-bag-choco-brown",
-        "[LAAM] [07:05:29] HTTP START attempt=1 https://laam.com/products/bala",
-        "[LAAM] [07:05:29] HTTP END status=200 elapsed=0.4s bytes=303867 https://laam.com/products/bala",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/bala",
-        "[LAAM] [07:05:30] HTTP START attempt=1 https://laam.com/products/balaaj",
-        "[LAAM] [07:05:31] HTTP END status=200 elapsed=0.4s bytes=313351 https://laam.com/products/balaaj",
-        "[LAAM] [07:05:32] HTTP START attempt=1 https://laam.com/products/balaaj-designer",
-        "[LAAM] [07:05:32] HTTP END status=200 elapsed=0.3s bytes=307649 https://laam.com/products/balaaj-designer",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/balaaj-designer",
-        "[LAAM] [07:05:33] HTTP START attempt=1 https://laam.com/products/balance",
-        "[LAAM] [07:05:34] HTTP END status=200 elapsed=0.3s bytes=328991 https://laam.com/products/balance",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/balance; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [07:05:35] HTTP START attempt=1 https://laam.com/products/balar-long-dress",
-        "[LAAM] [07:05:35] HTTP END status=200 elapsed=0.3s bytes=328956 https://laam.com/products/balar-long-dress",
-        "[LAAM] [07:05:36] HTTP START attempt=1 https://laam.com/products/balar-stylish-dress"
-      ],
-      "fetch-log.txt": [
-        "[LAAM] [07:04:55] HTTP END status=200 elapsed=0.3s bytes=299284 https://laam.com/products/bairpins-grey-set",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/bairpins-grey-set",
-        "[LAAM] [07:04:57] HTTP START attempt=1 https://laam.com/products/bairuj",
-        "[LAAM] [07:04:57] HTTP END status=200 elapsed=0.4s bytes=310651 https://laam.com/products/bairuj",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/bairuj; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [07:04:58] HTTP START attempt=1 https://laam.com/products/baithak-blue-floral-printed-embroidered-3-piece-lawn-suit-with-chiffon-dupatta",
-        "[LAAM] [07:04:58] HTTP END status=200 elapsed=0.4s bytes=318205 https://laam.com/products/baithak-blue-floral-printed-embroidered-3-piece-lawn-suit-with-chiffon-dupatta",
-        "[LAAM] [07:05:00] HTTP START attempt=1 https://laam.com/products/baithak-ivory-khussa",
-        "[LAAM] [07:05:00] HTTP END status=200 elapsed=0.5s bytes=345267 https://laam.com/products/baithak-ivory-khussa",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/baithak-ivory-khussa",
-        "[LAAM] [07:05:01] HTTP START attempt=1 https://laam.com/products/bak",
-        "[LAAM] [07:05:01] HTTP END status=200 elapsed=0.4s bytes=309432 https://laam.com/products/bak",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/bak",
-        "[LAAM] [07:05:03] HTTP START attempt=1 https://laam.com/products/bakhoor",
-        "[LAAM] [07:05:03] HTTP END status=200 elapsed=0.5s bytes=309778 https://laam.com/products/bakhoor",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/bakhoor; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] PUBLIC PRODUCT PAGES: 24800/183187 LAAM pages inspected; 10089 clothing products retained; 185 pages deferred",
-        "[LAAM] [07:05:04] HTTP START attempt=1 https://laam.com/products/bakhoor-0",
-        "[LAAM] [07:05:04] HTTP END status=200 elapsed=0.3s bytes=309957 https://laam.com/products/bakhoor-0",
-        "[LAAM] [07:05:06] HTTP START attempt=1 https://laam.com/products/bakhoor-6ml-attar",
-        "[LAAM] [07:05:06] HTTP END status=200 elapsed=0.3s bytes=299686 https://laam.com/products/bakhoor-6ml-attar",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/bakhoor-6ml-attar",
-        "[LAAM] [07:05:07] HTTP START attempt=1 https://laam.com/products/bakht-0",
-        "[LAAM] [07:05:07] HTTP END status=200 elapsed=0.4s bytes=319995 https://laam.com/products/bakht-0",
-        "[LAAM] [07:05:09] HTTP START attempt=1 https://laam.com/products/bakht-1",
-        "[LAAM] [07:05:09] HTTP END status=200 elapsed=0.2s bytes=337734 https://laam.com/products/bakht-1",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/bakht-1; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [07:05:10] HTTP START attempt=1 https://laam.com/products/bakht-3",
-        "[LAAM] [07:05:12] HTTP END status=200 elapsed=2.4s bytes=331516 https://laam.com/products/bakht-3",
-        "[LAAM] [07:05:12] HTTP START attempt=1 https://laam.com/products/bakht-dupatta",
-        "[LAAM] [07:05:13] HTTP END status=200 elapsed=0.3s bytes=305716 https://laam.com/products/bakht-dupatta",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/bakht-dupatta",
-        "[LAAM] [07:05:14] HTTP START attempt=1 https://laam.com/products/bakhtawar",
-        "[LAAM] [07:05:14] HTTP END status=200 elapsed=0.3s bytes=305903 https://laam.com/products/bakhtawar",
-        "[LAAM] [07:05:15] HTTP START attempt=1 https://laam.com/products/bakhtawar-0",
-        "[LAAM] [07:05:16] HTTP END status=200 elapsed=0.4s bytes=319888 https://laam.com/products/bakhtawar-0",
-        "[LAAM] [07:05:17] HTTP START attempt=1 https://laam.com/products/bakhtawar-3",
-        "[LAAM] [07:05:17] HTTP END status=200 elapsed=0.2s bytes=342581 https://laam.com/products/bakhtawar-3",
-        "[LAAM] [07:05:18] HTTP START attempt=1 https://laam.com/products/bakhtawar-4",
-        "[LAAM] [07:05:19] HTTP END status=200 elapsed=0.3s bytes=334494 https://laam.com/products/bakhtawar-4",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/bakhtawar-4; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [07:05:20] HTTP START attempt=1 https://laam.com/products/bakhtawar-grey",
-        "[LAAM] [07:05:20] HTTP END status=200 elapsed=0.5s bytes=328239 https://laam.com/products/bakhtawar-grey",
-        "[LAAM] [07:05:21] HTTP START attempt=1 https://laam.com/products/bakhtawar-silver-bracelet-zarosh-jewel",
-        "[LAAM] [07:05:22] HTTP END status=200 elapsed=0.4s bytes=307712 https://laam.com/products/bakhtawar-silver-bracelet-zarosh-jewel",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/bakhtawar-silver-bracelet-zarosh-jewel",
-        "[LAAM] [07:05:23] HTTP START attempt=1 https://laam.com/products/bakhtawer",
-        "[LAAM] [07:05:23] HTTP END status=200 elapsed=0.3s bytes=331962 https://laam.com/products/bakhtawer",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/bakhtawer; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [07:05:24] HTTP START attempt=1 https://laam.com/products/bakhtuu",
-        "[LAAM] [07:05:25] HTTP END status=200 elapsed=0.3s bytes=330274 https://laam.com/products/bakhtuu",
-        "[LAAM] [07:05:26] HTTP START attempt=1 https://laam.com/products/bakhur-black-3pcs-chiffon",
-        "[LAAM] [07:05:26] HTTP END status=200 elapsed=0.5s bytes=320410 https://laam.com/products/bakhur-black-3pcs-chiffon",
-        "[LAAM] [07:05:27] HTTP START attempt=1 https://laam.com/products/baku-3pcs-shoulder-bag-choco-brown",
-        "[LAAM] [07:05:28] HTTP END status=200 elapsed=0.4s bytes=300574 https://laam.com/products/baku-3pcs-shoulder-bag-choco-brown",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/baku-3pcs-shoulder-bag-choco-brown",
-        "[LAAM] [07:05:29] HTTP START attempt=1 https://laam.com/products/bala",
-        "[LAAM] [07:05:29] HTTP END status=200 elapsed=0.4s bytes=303867 https://laam.com/products/bala",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/bala",
-        "[LAAM] [07:05:30] HTTP START attempt=1 https://laam.com/products/balaaj",
-        "[LAAM] [07:05:31] HTTP END status=200 elapsed=0.4s bytes=313351 https://laam.com/products/balaaj",
-        "[LAAM] [07:05:32] HTTP START attempt=1 https://laam.com/products/balaaj-designer",
-        "[LAAM] [07:05:32] HTTP END status=200 elapsed=0.3s bytes=307649 https://laam.com/products/balaaj-designer",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/balaaj-designer",
-        "[LAAM] [07:05:33] HTTP START attempt=1 https://laam.com/products/balance",
-        "[LAAM] [07:05:34] HTTP END status=200 elapsed=0.3s bytes=328991 https://laam.com/products/balance",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/balance; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [07:05:35] HTTP START attempt=1 https://laam.com/products/balar-long-dress",
-        "[LAAM] [07:05:35] HTTP END status=200 elapsed=0.3s bytes=328956 https://laam.com/products/balar-long-dress",
-        "[LAAM] [07:05:36] HTTP START attempt=1 https://laam.com/products/balar-stylish-dress"
+      "snapshot_age_seconds": 1373,
+      "snapshot_stale": true,
+      "failure_details": [
+        "fetch\tFetch result\t2026-10-23T09:52:39.8393704Z [LAAM] [09:51:44] HTTP END status=404 elapsed=0.2s bytes=197285 https://laam.com/products/black-mock-neck-slim-fit-bodycon-dress",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8395302Z [LAAM] LAAM SOURCE REMOVED: HTTP 404 https://laam.com/products/black-mock-neck-slim-fit-bodycon-dress; absent public product excluded",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8396880Z [LAAM] [09:51:45] HTTP START attempt=1 https://laam.com/products/black-modely-solid-turtleneck-bodycon-sweater-dress",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8398743Z [LAAM] [09:51:46] HTTP END status=200 elapsed=0.3s bytes=306205 https://laam.com/products/black-modely-solid-turtleneck-bodycon-sweater-dress",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8399859Z __CHOTU_PROGRESS__|1|Active: LAAM",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8401683Z [LAAM] [09:51:46] EXCEPTION: RuntimeError('ADAPTER ERROR: LAAM Product black-modely-solid-turtleneck-bodycon-sweater-dress: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.')",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8403614Z [LAAM] [09:51:46] Traceback (most recent call last):",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8412152Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 280, in catalog",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8419186Z     product=normalize(candidates[0],handle,active_only=active_only,in_stock_only=in_stock_only)",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8420083Z             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8421496Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 130, in normalize",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8423333Z     if len(values)!=len(dims) or any(str(value) not in dim['values'] for value,dim in zip(values,dims)):raise ValueError('LAAM observed variant does not match declared option values')",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8424853Z                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8425880Z ValueError: LAAM observed variant does not match declared option values",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8426468Z ",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8426832Z The above exception was the direct cause of the following exception:",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8440125Z     g.update(discover=lambda base,log:source.catalog(),collections=lambda base,log:{},refresh_variant_prices=lambda base,p,log:p['variants'],storefront_cover=cover,verified_top20=ranking,audit_fractional_prices=audit,storefront_price_audit=display)",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8441864Z                                       ^^^^^^^^^^^^^^^^",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8443021Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 294, in catalog",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8444529Z     except (ValueError,TypeError,KeyError) as exc:raise ValueError('Product '+handle+': '+str(exc)) from exc",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8445609Z                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8446887Z ValueError: Product black-modely-solid-turtleneck-bodycon-sweater-dress: LAAM observed variant does not match declared option values",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8447862Z ",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8448400Z The above exception was the direct cause of the following exception:",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8466411Z                                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8467743Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 207, in run",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8468683Z     try:return original(base,name,template,log)",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8469031Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8469668Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 329, in run",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8471105Z     except (ValueError,TypeError,KeyError) as exc:raise RuntimeError('ADAPTER ERROR: LAAM '+str(exc)+'. Saved responses retained; no options, prices or stock guessed.') from exc",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8472631Z                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8473766Z RuntimeError: ADAPTER ERROR: LAAM Product black-modely-solid-turtleneck-bodycon-sweater-dress: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8474642Z ",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8475414Z [LAAM] FAILED: LAAM: ADAPTER ERROR: LAAM Product black-modely-solid-turtleneck-bodycon-sweater-dress: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8476392Z [LAAM] [09:51:46] STAGE: Idle",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8477355Z FAILED: LAAM: FAILED: LAAM: ADAPTER ERROR: LAAM Product black-modely-solid-turtleneck-bodycon-sweater-dress: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8478572Z False",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8479029Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8479739Z CHECKPOINT NOT SAVED: Checkpoint exceeds 2 GB compressed safety limit; outputs remain available",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8480215Z RUN SUMMARY:",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8481437Z LAAM: FAILED \u2014 FAILED: LAAM: ADAPTER ERROR: LAAM Product black-modely-solid-turtleneck-bodycon-sweater-dress: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8482812Z Checkpoint: not saved: Checkpoint exceeds 2 GB compressed safety limit; outputs remain available",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8483552Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+        "fetch\tFetch result\t2026-10-23T09:52:39.8492521Z ##[error]Process completed with exit code 2."
       ]
     },
     {
@@ -176,7 +78,7 @@
       "stores": {
         "Gul Ahmed": "done"
       },
-      "snapshot_age_seconds": 3231,
+      "snapshot_age_seconds": 14500,
       "snapshot_stale": true
     },
     {
@@ -194,7 +96,7 @@
         "Junaid Jamshed": "done",
         "Stylo": "done"
       },
-      "snapshot_age_seconds": 111281,
+      "snapshot_age_seconds": 122551,
       "snapshot_stale": true
     },
     {
@@ -212,7 +114,7 @@
         "Outfitters": "done",
         "Zellbury": "done"
       },
-      "snapshot_age_seconds": 143623,
+      "snapshot_age_seconds": 154893,
       "snapshot_stale": true
     },
     {
@@ -229,7 +131,7 @@
         "Saeed Ghani": "done",
         "Hemani Herbals": "done"
       },
-      "snapshot_age_seconds": 139304,
+      "snapshot_age_seconds": 150574,
       "snapshot_stale": true,
       "failure_details_unavailable": true
     },
@@ -246,7 +148,7 @@
       "stores": {
         "Sapphire": "done"
       },
-      "snapshot_age_seconds": 156932,
+      "snapshot_age_seconds": 168202,
       "snapshot_stale": true
     },
     {
@@ -262,7 +164,7 @@
       "stores": {
         "Zero Lifestyle": "done"
       },
-      "snapshot_age_seconds": 164547,
+      "snapshot_age_seconds": 175817,
       "snapshot_stale": true
     },
     {
@@ -280,7 +182,7 @@
         "Denim Leftover": "done",
         "Cool and Cool": "done"
       },
-      "snapshot_age_seconds": 164369,
+      "snapshot_age_seconds": 175639,
       "snapshot_stale": true
     },
     {
@@ -296,7 +198,7 @@
       "stores": {
         "Nisa Naturals": "done"
       },
-      "snapshot_age_seconds": 160078,
+      "snapshot_age_seconds": 171348,
       "snapshot_stale": true
     },
     {
@@ -314,7 +216,7 @@
         "Adam Cheese": "done",
         "Computer Zone": "done"
       },
-      "snapshot_age_seconds": 162789,
+      "snapshot_age_seconds": 174058,
       "snapshot_stale": true
     },
     {
@@ -332,7 +234,7 @@
         "Shop Modest": "done",
         "Seran": "done"
       },
-      "snapshot_age_seconds": 164332,
+      "snapshot_age_seconds": 175601,
       "snapshot_stale": true
     },
     {
@@ -350,7 +252,7 @@
         "The Hanger Pakistan": "done",
         "Elite Cosmetics": "done"
       },
-      "snapshot_age_seconds": 160521,
+      "snapshot_age_seconds": 171791,
       "snapshot_stale": true
     },
     {
@@ -368,12 +270,12 @@
         "Rivaj UK": "done",
         "Rawayat": "done"
       },
-      "snapshot_age_seconds": 152973,
+      "snapshot_age_seconds": 164242,
       "snapshot_stale": true
     }
   ],
   "fresh_stores": {
-    "LAAM": "running",
+    "LAAM": "failed",
     "Gul Ahmed": "done",
     "Tawakkal Fabrics": "done",
     "Junaid Jamshed": "done",
@@ -412,7 +314,7 @@
     "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
     "error": "",
     "progress_age_seconds": 1,
-    "report_age_seconds": 215102,
+    "report_age_seconds": 226374,
     "status_confirmed": false
   },
   "drive": {
@@ -512,7 +414,7 @@
       "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
       "error": "",
       "progress_age_seconds": 1,
-      "report_age_seconds": 215102,
+      "report_age_seconds": 226374,
       "status_confirmed": false
     }
   ],
