@@ -4,8 +4,11 @@ import re
 def text(value):
  return re.sub(r'\s+',' ',re.sub('<[^>]*>',' ',str(value or ''))).strip()
 def has(pattern,value):return bool(re.search(pattern,value,re.I))
-def review(name,description,category,sku=""):
- title=text(name);body=text(description);evidence=title+' '+body;cat=text(category).lower()
+def review(name,description,category,sku="",source_type="",verified_path=""):
+ title=text(name);body=text(description);cat=text(category).lower()
+ # Only explicit source garment-type strings; a generic vendor/brand is not purpose evidence.
+ if re.fullmatch(r'(?i)(?:women|men|teens|kids)\s+(?:stitched\s+[234]\s+piece(?:\s+shirt\s+trouser)?|(?:cotton\s+silk\s+)?shalwar|(?:special\s+)?kurta)',str(source_type or '').strip()):body+=' Source-listed garment type: '+str(source_type)
+ evidence=title+' '+body
  # Regional jewellery names denote the sold object; care mentions are not perfume evidence.
  jewellery={
   'forehead jewellery':r'\b(?:bindiya|matha\s+patti|maang\s+tikka)\b',
@@ -13,6 +16,7 @@ def review(name,description,category,sku=""):
   'hair ties & scrunchies':r'\b(?:hair\s+ties|scrunchies|scrunchy)\b',
  }
  if cat in jewellery and has(jewellery[cat],title+' '+body[:120]):return []
+ if cat=='jewellery sets' and has(r'\bset\b',title) and has(r'jewell?ery\s+care|gold\s+plat',body):return []
  # Complete garments outrank the components, colour names and care instructions.
  clothing=has(r'\brtw\b|\bun[ -]?stitched\b|\b(?:stitched|shirts?|kurt[ai]s?|kameez|trousers?|dupattas?|kaftans?|hoodies?|sweaters?|polo|tees?|frocks?|gharara|sharara|suits?|dress(?:es)?|maxi|outfits?|ensembles?|shawls?|boxers?)\b',evidence)
  if has(r'\bmother size\s*:',description) and has(r'\bkid size\s*:',description) and has(r'\b[234]\s*piece\b',title):clothing=True
@@ -109,7 +113,7 @@ def review(name,description,category,sku=""):
   'driving wheels':r'\b(?:driving|racing)\s+(?:wheels?|simulator)\b',
   'thermal paste':r'\bthermal\s+(?:paste|compound)\b',
   'cpu coolers':r'\b(?:cpu|processor|air|liquid)\s+cooler\b',
-  'cooling fans':r'\b(?:case|chassis|cooling)\s+fans?\b',
+  'cooling fans':r'\b(?:case|chassis|cooling|cpu|uni)\s+fans?\b|\bargb\s+(?:[0-9-]+\s+)?fans?\b',
   'hard drives':r'\b(?:hard\s+(?:disk|drive)|hdd)\b',
   'laptop stands':r'\blaptop\s+(?:stand|riser)\b',
   'laptop chargers':r'\blaptop\s+(?:charger|adapter)\b',
@@ -170,6 +174,7 @@ def review(name,description,category,sku=""):
   'tablets':r'\b(?:ipad|tablet)\b','microphones':r'\bmicrophone\b',
   'computer speakers':r'\bspeakers?\b','memory cards':r'\b(?:micro\s*sd|microsdxc|memory card)\b',
   'microsd memory cards':r'\b(?:microsd|micro sd)\b','usb hubs & docking stations':r'\b(?:hub|docking station)\b',
+  'network switches':r'\b(?:gigabit|ethernet|network)\b.{0,65}\bswitch\b',
   'network routers':r'\brouter\b','vpn gateways & routers':r'\b(?:vpn gateway|router)\b',
   'unmanaged switches':r'\b(?:desktop|gigabit|network|ethernet)\s+switch\b',
   'network range extenders':r'\brange extender\b','mesh wi-fi systems':r'\bmesh\s+(?:wifi|wi-fi)\b',
@@ -180,9 +185,20 @@ def review(name,description,category,sku=""):
   'ink & toner':r'\b(?:ink bottle|toner|ink cartridge)\b',
   'ups & voltage stabilisers':r'\bups\b|\bvoltage stabili[sz]er\b',
   'voltage stabilizers':r'\bvoltage\s+(?:regulator|stabili[sz]er)\b'}
+ proofs.update({'cpu contact frames': '\\bcontact\\s+frame\\b', 'fan & lighting controllers': '\\b(?:fan\\s+(?:hub|controller)|argb\\s+(?:and\\s+fan\\s+hub|controller))\\b', 'internal usb hubs': '\\binternal\\s+usb\\b.{0,30}\\bhub\\b', 'computer status displays': '\\btrofeo\\s+vision\\b.{0,50}\\b(?:lcd|display|screen)\\b', 'racing wheels': '\\b(?:racing|steering)\\s+(?:steering\\s+)?wheel\\b', 'smart glasses': '\\bsmart\\s+glasses\\b', 'fitness bands': '\\bsmart\\s+band\\b', 'tablet stylus pens': '\\b(?:apple\\s+pencil|stylus)\\b', 'microsd memory cards': '\\bmicro\\s*sd(?:xc)?\\b', 'monitors': '\\bmonitors?\\b', 'laptops': '\\b(?:laptops?|ideapad|notebook|chromebook|macbook)\\b', 'keyboards': '\\bkeyboards?\\b', 'selfie sticks & tripods': '\\bselfie\\s+stick\\b', 'phone holders & mounts': '\\b(?:phone\\s+(?:stand|holder)|car\\s+mount)\\b', 'computer cases': '\\b(?:atx\\s+(?:gaming\\s+)?case|gaming\\s+case|computer\\s+case)\\b', 'khussa shoes': '\\bkhus[as]+\\b', 'chappals': '\\bchappals?\\b', 'slippers': '\\bslippers?\\b', 'clogs': '\\b(?:clogs?|crocs)\\b', 'baby booties': '\\bbooties\\b', 'mary jane shoes': '\\bmary\\s+janes?\\b', 'derby shoes': '\\bderby\\s+shoes?\\b', 'formal shoes': '\\bformal\\s+shoes?\\b', 'slingback shoes': '\\bsling[ -]?backs?\\b', 'loafers': '\\bloafers?\\b', 'ballet flats': '\\bballet\\s+flats?\\b', 'bras': '\\bbras?\\b', 'camisoles': '\\bcamisoles?\\b', 'panties': '\\bpant(?:y|ies)\\b', 'vests & gilets': '\\b(?:vest|gilet|sando)s?\\b', 'mufflers': '\\bmufflers?\\b', 'watches': '\\bwatch(?:es)?\\b', 'pouches': '\\bpouches?\\b', 'bowling bags': '\\bbowling\\s+bag\\b', 'backpacks': '\\bback[ -]?packs?\\b', 'bags': '\\bbag\\b', 'hair clips & pins': '\\b(?:claw|bow|heart|hair)\\s+clips?\\b|\\bbobby\\s+pins?\\b', 'hair ties & scrunchies': '\\bscrunch(?:ie|ies|y)\\b|\\bhair\\s+ties?\\b', 'lip oils': '\\blip\\s+(?:glow\\s+)?oil\\b', 'lip plumpers': '\\blip\\s+booster\\b', 'makeup removers': '\\bmakeup\\s+(?:cleanser|remover)\\b|\\bmicellar\\s+water\\b', 'makeup primers': '\\b(?:prime\\s+base|primer\\s+makeup\\s+base|makeup\\s+primer)\\b', 'sunscreens': '\\b(?:sunscreen|sunblock|sun\\s+protect)\\b', 'eyeliners': '\\b(?:smokey\\s+eyes?\\s+pencil|eye\\s+pencil|eyeliner|kajal)\\b', 'makeup powders': '\\b(?:wet\\s*(?:&|and)\\s*dry|terracotta)\\s+powder\\b', 'multipurpose complexion makeup': '\\b3\\s+in\\s+1\\b.*\\bconcealer\\b.*\\bcontour\\b.*\\bfoundation\\b', 'makeup sponges': '\\b(?:sponge\\s+puff|foundation\\s+sponge|makeup\\s+sponge)\\b', 'tweezers': '\\btweezers?\\b', 'blackhead removal tools': '\\bblack\\s*head\\s+pin\\b', 'pedicure sets': '\\bpedicure\\s+kit\\b', 'eyelash curlers': '\\b(?:lash\\s+turner|eyelash\\s+curler)\\b', 'skin scrubs & exfoliators': '\\b(?:skin\\s+polisher|skin\\s+scrub|body\\s+scrub)\\b', 'facial bleach creams': '\\bbleach\\s+cream\\b', 'bleach applicator brushes': '\\bbleach\\s+brush\\b', 'false eyelashes': '\\b(?:false\\s+)?eyelashes\\b', 'bb face makeup': '\\bbb\\s+skin\\s+editor\\b', 'shalwars': '\\bshalwar\\b', 'hair brushes & combs': '\\b(?:hair\\s+brush|blower?\\s+brush|blore\\s+brush|comb)\\b'})
+ proofs['case fans']=proofs['cooling fans']
+ proofs.update({
+  'eyeshadow palettes':r'\bpalette\b.{0,1600}\b(?:eyelids?|eyes?|shadow)\b|\b(?:eyes?|shadow)\b.{0,300}\bpalette\b',
+  'face mists & toners':r'\bmist\b.{0,1600}\bface\b',
+  'face scrubs & exfoliators':r'\bscrub\b.{0,1600}\bface\b',
+  'face wash':r'\b(?:face\s+wash|facial\s+cleansing\s+gel)\b',
+  'henna cones':r'\bcone\s+(?:mehndi|henna)\b',
+  'skin moisturising gels':r'\b(?:moisturi[sz]ing|soothing)\s+gel\b.{0,800}\bskin\b',
+ })
  if cat=='face serums' and (has(r'\b(?:hair|eyelash|lip|lash)\b',title) or has(r'\b(?:hair|scalp|lip|lash)\b.{0,40}\bserum\b',body[:300])):return ['Facial serum Category conflicts with named application area']
  if cat=='face moisturisers & creams' and has(r'\b(?:body|hand|foot|heel|baby)\b',title):return ['Facial cream Category conflicts with named application area']
  if cat=='perfumes & fragrances':
+  if str(verified_path).split(' > ')[0].casefold()=='fragrances' and not has(r'body lotion|body wash|hair|soap|cream',title):return []
   if has(r'\bfragrance guide\b',body) and has(r'\bscent family\s*:',body) and has(r'\bsize\s*:\s*\d+\s*ml\b',body):return []
   notes=[has(r'(?m)^\s*'+part+r'(?:\s+notes?)?\s*:?\s*(?:\n|$)',description) for part in ('top','(?:hear(?:t)?|mid(?:dle)?)','(?:base|dry)')]
   if all(notes) and not has(r'body lotion|body wash|hair|soap',title):return []

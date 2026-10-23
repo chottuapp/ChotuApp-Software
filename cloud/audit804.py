@@ -147,7 +147,11 @@ def issues_for(row,source=None):
  review_description=str(row.get('description') or '')
  if category=='Unstitched Suits' and row.get('website_category_status')=='verified_product_breadcrumb' and re.search(r'(?i)\bunstitched\b',str(row.get('website_category_path') or '')) and re.search(r'(?i)\bshirt\s*&\s*trouser\s+\d+(?:\.\d+)?\s*m\b',review_description):
   review_description='Unstitched suit. '+review_description
- semantic=review(name,review_description,category,str(row.get("sku") or ""))
+ verified_path=''
+ if row.get('website_category_status') in ('verified_navigation_membership','verified_product_breadcrumb') and row.get('website_category_checked_at') and row.get('website_category_source_url'):
+  if (urlsplit(str(row['website_category_source_url'])).hostname or '').removeprefix('www.')==(urlsplit(str(row.get('source_url') or '')).hostname or '').removeprefix('www.'):
+   verified_path=str(row.get('website_category_path') or '')
+ semantic=review(name,review_description,category,str(row.get("sku") or ""),source_type=str(row.get("brand") or ""),verified_path=verified_path)
  if category and plain(row.get('brand')) and category.casefold()==plain(row.get('brand')).casefold() and semantic!=[]:issues.append('Brand name used as product Category')
  if semantic is not None:issues.extend(semantic)
  else:

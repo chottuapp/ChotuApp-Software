@@ -8,6 +8,7 @@ from openpyxl.utils import get_column_letter
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 from subcategory_inference_support import infer
 from reviewed804_repairs import roots,description as repair_description
+from hold804_repairs import category as hold_category,description as hold_description
 EXCLUDED={'LAAM','Khaadi','Sapphire'}
 def toolkit():
     spec=importlib.util.spec_from_file_location('rule804_xml_tools',ROOT/'catalog-tools/complete_rule804_batch.py');module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module);return module
@@ -38,14 +39,16 @@ def process(source,out,store,codes,*,mobile_khaadi=False,approved_original=False
             except (InvalidOperation,TypeError):raise ValueError('Invalid positive product price')
             if not price.is_finite() or price<=0:raise ValueError('Invalid positive product price')
             description,description_repair=repair_description(row,store,catalogue)
-            if description_repair:warnings.append({'product_id':pid,'issue':description_repair})
+            description,hold_reason=hold_description(dict(row,description=description),store)
+            if hold_reason:description_repair=hold_reason
+            if description_repair:warnings.append({'product_id':pid,'issue':description_repair,'repair_kind':'description'})
             if len(description)>=32767:raise ValueError('Description reaches Excel limit; manual source review needed')
             changes={};code=codes.get(store)
             if code and row.get('shop_code')!=code:changes['shop_code']=code
             if not code and row.get('shop_code'):raise ValueError('Unconfirmed shop code; held for review')
             old=str(row.get('Category') or '');label=old
             if str(row.get('subcategory_source') or '').lower() not in ('manual','owner','manual_override'):
-                result=infer(row.get('name'),description)
+                result=hold_category(dict(row,description=description),store) or tools.extra_category(dict(row,description=description)) or infer(row.get('name'),description)
                 if row.get('website_category_status')=='verified_product_breadcrumb' and re.search(r'(?i)\bunstitched\b',str(row.get('website_category_path') or '')) and re.search(r'(?i)\bshirt\s*&\s*trouser\s+\d+(?:\.\d+)?\s*m\b',description):
                     result=('Unstitched Suits','verified_product_breadcrumb',str(row['website_category_path'])+'; supplied shirt and trouser fabric length retained')
                 if re.search(r'(?i)\bshirt\s*&\s*trouser\s+[2-9](?:\.\d+)?\s*m\b',description) and not re.search(r'(?i)\bunstitched\b',str(row.get('website_category_path') or '')):
