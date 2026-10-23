@@ -243,3 +243,16 @@ class RepeatedColorDisplayTests(unittest.TestCase):
  def test_repeated_size_is_not_implicitly_dropped(self):
   raw=self.raw();raw['options'][1]['name']='Stitching'
   with self.assertRaises(ValueError):source.normalize(raw,raw['handle'])
+
+class MissingGalleryTests(unittest.TestCase):
+ def test_observed_blank_gallery_does_not_discard_available_clothing(self):
+  raw=json.loads((ROOT/'tests/fixtures/laam_missing_gallery.json').read_text())
+  result=source.normalize(raw,raw['handle'],active_only=True,in_stock_only=True)
+  self.assertEqual(result['images'],[]);self.assertIsNone(result['image']);self.assertTrue(result['_source_warnings'])
+  self.assertEqual(result['variants'][0]['id'],42748905979988);self.assertEqual(result['variants'][0]['option1'],'XS')
+  self.assertEqual(result['variants'][0]['price'],'6299.3');self.assertEqual(result['variants'][0]['inventory_quantity'],3)
+ def test_explicit_primary_image_is_preserved_when_gallery_empty(self):
+  raw=json.loads((ROOT/'tests/fixtures/laam_missing_gallery.json').read_text())
+  raw['image']={'src':'https://cdn.example/actual-source.jpg','alt':'Source image'}
+  result=source.normalize(raw,raw['handle'],in_stock_only=True)
+  self.assertEqual(result['images'],[{'src':raw['image']['src'],'alt':'Source image','position':1}]);self.assertEqual(result['_source_warnings'],[])

@@ -143,9 +143,11 @@ def normalize(raw,handle,active_only=False,in_stock_only=False):
         if not isinstance(item,dict) or not str(item.get('src') or '').startswith('https://'):continue
         # LAAM media emits shopify_id=0 on distinct images; position is the export identity.
         images.append({'src':item['src'],'position':len(images)+1,'alt':str(item.get('alt') or '')})
-    if not images:raise ValueError('LAAM product gallery unavailable')
+    if not images and isinstance(raw.get('image'),dict) and str(raw['image'].get('src') or '').startswith('https://'):
+        images.append({'src':raw['image']['src'],'position':1,'alt':str(raw['image'].get('alt') or '')})
+    warnings=[] if images else ['Source product gallery has no published image URLs; no image invented.']
     category=next((str(raw[k]) for k in ('node_l4','node_l3','node_l2') if raw.get(k)), '')
-    return {'id':raw['id'],'handle':handle,'title':str(raw['title']).strip(),'status':str(raw.get('status') or '').lower(),'body_html':raw.get('description') or '', 'product_type':category,'vendor':raw.get('brand') or '', 'tags':raw.get('tags') or [],'options':dims,'variants':result,'images':images,'image':images[0],'_source_url':BASE+'/products/'+handle}
+    return {'id':raw['id'],'handle':handle,'title':str(raw['title']).strip(),'status':str(raw.get('status') or '').lower(),'body_html':raw.get('description') or '', 'product_type':category,'vendor':raw.get('brand') or '', 'tags':raw.get('tags') or [],'options':dims,'variants':result,'images':images,'image':images[0] if images else None,'_source_warnings':warnings,'_source_url':BASE+'/products/'+handle}
 
 class ParsedProductCache:
     """Derived results belong to one saved run and one exact adapter revision."""
@@ -290,6 +292,7 @@ class PublicCatalog:
                     continue
                 except SourceAccessError:raise
                 except (ValueError,TypeError,KeyError) as exc:raise ValueError('Product '+handle+': '+str(exc)) from exc
+                for warning in product.get('_source_warnings',[]):self.log('LAAM SOURCE WARNING: '+url+'; '+warning)
                 if self.cache:self.cache.put(url,product)
             if product['id'] in self.products:raise ValueError('LAAM sitemap returned repeated product identity')
             self.products[product['id']]=product
