@@ -46,6 +46,10 @@ def review(name,description,category,sku=""):
   if cat in ('blushers','face powders','perfumes & fragrances','lipsticks') and has(r'\brtw\b|\b(?:shirt|trouser|dupatta)\s*:',description):return ['Garment evidence conflicts with cosmetics Category']
  # These aliases each need independent explicit source purpose evidence.
  proofs={
+  'peshwas dresses':r'\bpeshwas\b',
+  'angrakhas':r'\bangrakha\b',
+  'kameez shalwar sets':r'\bkameez\b.{0,800}\bshalwar\b',
+  'suit fabric sets':r'\bshirt\s*&\s*trouser\s+[2-9](?:\.\d+)?\s*m\b',
   'cables':'\\b(?:cable|usb.c male to male)\\b',
   'wall chargers':'\\b(?:charger|charging station)\\b',
   'car chargers':'\\bcar\\s+charger\\b',
@@ -179,7 +183,8 @@ def review(name,description,category,sku=""):
  if cat=='face serums' and (has(r'\b(?:hair|eyelash|lip|lash)\b',title) or has(r'\b(?:hair|scalp|lip|lash)\b.{0,40}\bserum\b',body[:300])):return ['Facial serum Category conflicts with named application area']
  if cat=='face moisturisers & creams' and has(r'\b(?:body|hand|foot|heel|baby)\b',title):return ['Facial cream Category conflicts with named application area']
  if cat=='perfumes & fragrances':
-  notes=[has(r'(?m)^\s*'+part+r'(?:\s+notes?)?\s*:?\s*(?:\n|$)',description) for part in ('top','(?:heart|mid(?:dle)?)','(?:base|dry)')]
+  if has(r'\bfragrance guide\b',body) and has(r'\bscent family\s*:',body) and has(r'\bsize\s*:\s*\d+\s*ml\b',body):return []
+  notes=[has(r'(?m)^\s*'+part+r'(?:\s+notes?)?\s*:?\s*(?:\n|$)',description) for part in ('top','(?:hear(?:t)?|mid(?:dle)?)','(?:base|dry)')]
   if all(notes) and not has(r'body lotion|body wash|hair|soap',title):return []
   if has(r'\b(?:top|head)(?: notes?)?\s*:',evidence) and has(r'\b(?:heart|middle)(?: notes?)?\s*:',evidence) and has(r'\bbase(?: notes?)?\s*:',evidence) and not has(r'body lotion|body wash|hair|soap',title):return []
   if has(r'\bthe fragrance (?:opens|settles|unfolds)\b',body) and has(r'\bml\b',body) and not has(r'body lotion|body wash|hair|soap',title):return []

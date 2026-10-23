@@ -404,6 +404,9 @@ def infer(name,description,website_path=''):
         if re.search(reviewed_pattern,title,re.I):return _quote(reviewed_label,"name",title)
     for reviewed_label,reviewed_pattern in [('Hijabs', '\\bhijabs?\\b'), ('Eye Patches', '\\beye\\s+patches\\b'), ('Body Creams', '\\bbreast\\b.{0,50}\\bcream\\b'), ('Skin Soothing Gels', '\\b(?:skin|aloe\\s+vera)\\b.{0,40}\\bgel\\b'), ('Oral Care', '\\b(?:breath\\s+spray|mouthwash|toothpaste)\\b'), ('Face Powders', '\\b(?:pressed|face|compact|loose)\\s+powder\\b'), ('Computer Mice', r'(?=.*\bmouse\b)(?=.*\b(?:usb|dpi|wireless|bluetooth)\b)')]:
         if re.search(reviewed_pattern,title,re.I):return _quote(reviewed_label,"name",title)
+    for specific_label,specific_pattern in [('Peshwas Dresses',r'\bpeshwas\b'),('Angrakhas',r'\bangrakha\b')]:
+        if re.search(specific_pattern,title,re.I):return _quote(specific_label,'name',title)
+    if re.search(r'(?i)\b(?:gift\s+set|fragrance\s+set)\b',title) and re.search(r'(?i)\bfragrance\b',body) and re.search(r'(?i)\b(?:contains|includes|set)\b',body):return _quote('Fragrance Sets','name and source contents',title+' '+body)
     garment=_structured_clothing(title,description)
     if garment:return garment
     if re.search(r'(?i)\bcharcoal\s+mask\b',title) and re.search(r'(?i)\bskin\b',body):return _quote('Skin Masks','description',body)

@@ -48,6 +48,10 @@ def process(source,out,store,codes,*,mobile_khaadi=False,approved_original=False
                 result=infer(row.get('name'),description)
                 if row.get('website_category_status')=='verified_product_breadcrumb' and re.search(r'(?i)\bunstitched\b',str(row.get('website_category_path') or '')) and re.search(r'(?i)\bshirt\s*&\s*trouser\s+\d+(?:\.\d+)?\s*m\b',description):
                     result=('Unstitched Suits','verified_product_breadcrumb',str(row['website_category_path'])+'; supplied shirt and trouser fabric length retained')
+                if re.search(r'(?i)\bshirt\s*&\s*trouser\s+[2-9](?:\.\d+)?\s*m\b',description) and not re.search(r'(?i)\bunstitched\b',str(row.get('website_category_path') or '')):
+                    result=('Suit Fabric Sets','inferred_source_fabric_length','Shirt and trouser fabric supplied by metre: '+description[:250])
+                if row.get('website_category_status')=='verified_product_breadcrumb' and re.search(r'(?i)\bstitched\b',str(row.get('website_category_path') or '')) and re.search(r'(?i)\bkameez\b',description) and re.search(r'(?i)\bshalwar\b',description):
+                    result=('Kameez Shalwar Sets','verified_product_breadcrumb',str(row['website_category_path'])+'; source identifies both kameez and shalwar')
                 if result is None and not old and re.match(r'(?i)^SHAWL[-_]',str(row.get('sku') or '')) and re.search(r'(?i)velvet|shawl',description):
                     result=('Shawls','inferred_source_sku','Explicit source SKU: '+str(row['sku'])+'; source textile description retained')
                 if result:

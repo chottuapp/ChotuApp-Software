@@ -45,3 +45,13 @@ class FabricEvidenceTests(unittest.TestCase):
   self.assertEqual(issues_for(row),[])
   row['website_category_status']='unverified'
   self.assertTrue(issues_for(row))
+
+class OriginalStorePurposeTests(unittest.TestCase):
+ def test_garment_and_fragrance_names_have_specific_purpose(self):
+  self.assertEqual(infer('Embroidered Bedford Peshwas','Regular Fit Peshwas')[0],'Peshwas Dresses')
+  self.assertEqual(infer('Printed Cambric Angrakha','Regular Fit Angrakha')[0],'Angrakhas')
+  self.assertEqual(infer('Gift set','This set contains Fall For Her 100ml and Fall For Him 100ml, a union of fragrance.')[0],'Fragrance Sets')
+ def test_fabric_length_and_contents_are_independent_evidence(self):
+  self.assertEqual(review('Premium Suit','Shirt & Trouser 4.5M. Fabric: Cotton.','Suit Fabric Sets'),[])
+  self.assertEqual(review('Cotton Suit','Kameez collar neckline. Shalwar included.','Kameez Shalwar Sets'),[])
+  self.assertIsNone(review('Opaque Suit','No contents supplied','Suit Fabric Sets'))
