@@ -11,7 +11,7 @@ def main():
     session.headers['Accept-Language']='en-PK,en;q=0.9'
     def debug_response(status,size,**kwargs):print('HTTP',status,'bytes',size,flush=True)
     g={'S':session,'_chotu_wait':lambda:None,'_chotu_backoff':lambda delay,*args:__import__('time').sleep(delay),'_chotu_debug_request':lambda url,attempt:print('PUBLIC GET',url,flush=True),'_chotu_debug_response':debug_response}
-    source=PublicCatalog(g,print);report={'full_catalog_verified':False,'products':[]}
+    source=PublicCatalog(g,print);report={'full_catalog_verified':False,'products':[],'execution':'GitHub hosted runner','request':'Owner requested phone-independent fresh Khaadi cloud start on 23 October 2026'}
     try:
         robots=source.read(BASE+'/robots.txt',fresh=True);source.robot=RobotFileParser();source.robot.parse(robots.text.splitlines())
         for path in ['/floral-tailored-3-piece/T-CHD09B-R-VG_MULTI.html','/black-cambric-kurta/1-26-320-A-C1-VG_MULTI.html']:

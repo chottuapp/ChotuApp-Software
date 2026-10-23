@@ -3,9 +3,10 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: [cloud/khaadi_probe.py]
+    paths: [cloud/khaadi_probe.py, cloud/start_khaadi_cloud.py, .github/workflows/cloud-khaadi-check.yml]
 permissions:
   contents: write
+  actions: write
 concurrency:
   group: chotuapp-khaadi-source-check
   cancel-in-progress: false
@@ -23,6 +24,10 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: python cloud/khaadi_probe.py
+      - name: Start fresh cloud Khaadi after verified Pakistan public source
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python cloud/start_khaadi_cloud.py
       - name: Retain credential-free public source result
         if: always()
         uses: actions/upload-artifact@v4
