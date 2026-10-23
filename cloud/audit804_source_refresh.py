@@ -23,6 +23,15 @@ def main():
   if urlsplit(r.url).hostname.removeprefix('www.')!=host.removeprefix('www.'):raise ValueError('Source changed storefront')
   if len(r.content)>10*1024**2:raise ValueError('Source response exceeds review bound')
   return r
+ def emit(complete):
+  report={'run_id':os.environ['GITHUB_RUN_ID'],'checked_utc':datetime.now(timezone.utc).isoformat(),'complete':complete,'results':results}
+  # Retain every primary fact and image URL/hash; optional image bodies must not
+  # prevent later products or final evidence from being published.
+  while len(json.dumps(report,ensure_ascii=True,indent=2).encode())>1900000:
+   images=[v['public_image'] for v in results if v.get('public_image',{}).get('base64')]
+   if not images:raise ValueError('Primary public facts exceed bounded report size')
+   largest=max(images,key=lambda v:len(v['base64']));largest.pop('base64');largest['body_omitted_due_to_report_bound']=True
+  publish(report,branch='audit804-source-evidence')
  for item in items:
   rec={k:item[k] for k in ('store','product_id','source_url','name')};url=item['source_url'];p=urlsplit(url)
   try:
@@ -58,6 +67,6 @@ def main():
    rec['status']='review_evidence_collected'
   except Exception as exc:rec['error']=str(exc)[:500]
   results.append(rec);print(item['store'],item['product_id'],rec.get('error','public facts captured'),flush=True)
-  if len(results)%20==0:publish({'run_id':os.environ['GITHUB_RUN_ID'],'checked_utc':datetime.now(timezone.utc).isoformat(),'complete':False,'results':results},branch='audit804-source-evidence')
- publish({'run_id':os.environ['GITHUB_RUN_ID'],'checked_utc':datetime.now(timezone.utc).isoformat(),'complete':True,'results':results},branch='audit804-source-evidence')
+  if len(results)%20==0:emit(False)
+ emit(True)
 if __name__=='__main__':main()
