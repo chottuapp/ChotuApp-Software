@@ -1911,7 +1911,7 @@
     "Rawayat": "source:0dd52262844bd9d433172b579ee140904c551d9236b2a43765027e2bc1363db5:Rawayat:5a957db2486e2e9a1375da5f2e73de34b509becf2ce829c4440544e9cc214f63",
     "Junaid Jamshed": "source:27a16c3910f9a1c331bcceeb40b44741e4e222a710b2c195139ebd73a8f24c68:Junaid Jamshed:5a957db2486e2e9a1375da5f2e73de34b509becf2ce829c4440544e9cc214f63",
     "Outfitters": "source:91a33acad6ee9f7cd60774552ef19fd6638d317c08c28dc04d42a4a9636fe940:Outfitters:5a957db2486e2e9a1375da5f2e73de34b509becf2ce829c4440544e9cc214f63",
-    "Zellbury": "source:e1b78181c829587fae847978795cfc18382a24be89c04dae263f0506c5aad7f7:Zellbury:57543a7d5fdfd678cc208bfe3f05c8e45b3e58f828608b5eb7147d99b9369b13",
+    "Zellbury": "source:e1b78181c829587fae847978795cfc18382a24be89c04dae263f0506c5aad7f7:Zellbury:5a957db2486e2e9a1375da5f2e73de34b509becf2ce829c4440544e9cc214f63",
     "Stylo": "source:27f6424beafdb7f05edb637ba8a2bc451c2cf7e94a91effe3dec90ff23459201:Stylo:57543a7d5fdfd678cc208bfe3f05c8e45b3e58f828608b5eb7147d99b9369b13"
   },
   "audit804_results": {
@@ -5481,8 +5481,68 @@
       "identity_policy": "confirmed_code",
       "status": "hold",
       "products_checked": 6083,
-      "findings_count": 26,
+      "findings_count": 39,
       "findings": [
+        {
+          "product_id": "CP6b67aa921fb0",
+          "issues": [
+            "Primary product type and Category disagree: trousers"
+          ]
+        },
+        {
+          "product_id": "CPe8a9e6b30d29",
+          "issues": [
+            "Primary product type and Category disagree: kurta"
+          ]
+        },
+        {
+          "product_id": "CP2055242b25ef",
+          "issues": [
+            "Primary product type and Category disagree: kurta"
+          ]
+        },
+        {
+          "product_id": "CP26fa8d029de2",
+          "issues": [
+            "Primary product type and Category disagree: kurta"
+          ]
+        },
+        {
+          "product_id": "CP34098267a95a",
+          "issues": [
+            "Primary product type and Category disagree: kurta"
+          ]
+        },
+        {
+          "product_id": "CP680630a6fd26",
+          "issues": [
+            "Primary product type and Category disagree: kurta"
+          ]
+        },
+        {
+          "product_id": "CP42a9cf662f51",
+          "issues": [
+            "Primary product type and Category disagree: kurta"
+          ]
+        },
+        {
+          "product_id": "CPb0d5396a97a3",
+          "issues": [
+            "Primary product type and Category disagree: kurta"
+          ]
+        },
+        {
+          "product_id": "CPdf462ae25bea",
+          "issues": [
+            "Primary product type and Category disagree: kurta"
+          ]
+        },
+        {
+          "product_id": "CP5f278dde0c82",
+          "issues": [
+            "Primary product type and Category disagree: kurta"
+          ]
+        },
         {
           "product_id": "CPaca40ab81f57",
           "issues": [
@@ -5598,6 +5658,24 @@
           ]
         },
         {
+          "product_id": "CP914eefdad5ab",
+          "issues": [
+            "Primary product type and Category disagree: kurta"
+          ]
+        },
+        {
+          "product_id": "CPa7795d1cab31",
+          "issues": [
+            "Primary product type and Category disagree: kurta"
+          ]
+        },
+        {
+          "product_id": "CPb907bd01aa09",
+          "issues": [
+            "Primary product type and Category disagree: kurta"
+          ]
+        },
+        {
           "product_id": "CPaeff6f7ddf3a",
           "issues": [
             "Category lacks clear product-purpose evidence; manual review required"
@@ -5641,8 +5719,8 @@
         }
       ],
       "details_truncated": false,
-      "workbook_sha256": "19c5663a360f98c6b404cb6e9d14071dbe0e15f9e400076b78d3632c6a4aa996",
-      "checked_utc": "2026-10-23T04:36:08.872669+00:00",
+      "workbook_sha256": "7d96355ceafab2288a9255761b0785ea0f8785d2d52887828566b8b9c71770f5",
+      "checked_utc": "2026-10-23T06:05:46.630205+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "description_repairs_count": 0,
       "description_repairs_examples": [],
@@ -6333,6 +6411,6 @@
     "SE10012": "inputs/fresh804-20261021-a26dcd86/rollback-se10012/6548410248154e3c/manifest.json",
     "SE10015": "inputs/fresh804-20261021-a26dcd86/rollback-se10015/919a49547b15cc8a/manifest.json"
   },
-  "audit804_last_store": "Outfitters",
-  "audit804_progress_utc": "2026-10-23T06:05:19.825963+00:00"
+  "audit804_last_store": "Zellbury",
+  "audit804_progress_utc": "2026-10-23T06:05:46.637698+00:00"
 }
