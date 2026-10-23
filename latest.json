@@ -1,6 +1,6 @@
 {
-  "run_id": "39939219801",
-  "checked_utc": "2026-10-23T10:27:36.929446+00:00",
+  "run_id": "39975221458",
+  "checked_utc": "2026-10-23T15:05:30.244715+00:00",
   "active_queued": 0,
   "runs": [
     {
@@ -16,53 +16,55 @@
       "stores": {
         "LAAM": "failed"
       },
-      "snapshot_age_seconds": 2099,
+      "snapshot_age_seconds": 18772,
       "snapshot_stale": true,
       "failure_details": [
-        "fetch\tFetch result\t2026-10-23T09:52:39.8393704Z [LAAM] [09:51:44] HTTP END status=404 elapsed=0.2s bytes=197285 https://laam.com/products/black-mock-neck-slim-fit-bodycon-dress",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8395302Z [LAAM] LAAM SOURCE REMOVED: HTTP 404 https://laam.com/products/black-mock-neck-slim-fit-bodycon-dress; absent public product excluded",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8396880Z [LAAM] [09:51:45] HTTP START attempt=1 https://laam.com/products/black-modely-solid-turtleneck-bodycon-sweater-dress",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8398743Z [LAAM] [09:51:46] HTTP END status=200 elapsed=0.3s bytes=306205 https://laam.com/products/black-modely-solid-turtleneck-bodycon-sweater-dress",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8399859Z __CHOTU_PROGRESS__|1|Active: LAAM",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8401683Z [LAAM] [09:51:46] EXCEPTION: RuntimeError('ADAPTER ERROR: LAAM Product black-modely-solid-turtleneck-bodycon-sweater-dress: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.')",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8403614Z [LAAM] [09:51:46] Traceback (most recent call last):",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8412152Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 280, in catalog",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8419186Z     product=normalize(candidates[0],handle,active_only=active_only,in_stock_only=in_stock_only)",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8420083Z             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8421496Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 130, in normalize",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8423333Z     if len(values)!=len(dims) or any(str(value) not in dim['values'] for value,dim in zip(values,dims)):raise ValueError('LAAM observed variant does not match declared option values')",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8424853Z                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8425880Z ValueError: LAAM observed variant does not match declared option values",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8426468Z ",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8426832Z The above exception was the direct cause of the following exception:",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8440125Z     g.update(discover=lambda base,log:source.catalog(),collections=lambda base,log:{},refresh_variant_prices=lambda base,p,log:p['variants'],storefront_cover=cover,verified_top20=ranking,audit_fractional_prices=audit,storefront_price_audit=display)",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8441864Z                                       ^^^^^^^^^^^^^^^^",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8443021Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 294, in catalog",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8444529Z     except (ValueError,TypeError,KeyError) as exc:raise ValueError('Product '+handle+': '+str(exc)) from exc",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8445609Z                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8446887Z ValueError: Product black-modely-solid-turtleneck-bodycon-sweater-dress: LAAM observed variant does not match declared option values",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8447862Z ",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8448400Z The above exception was the direct cause of the following exception:",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8466411Z                                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8467743Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 207, in run",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8468683Z     try:return original(base,name,template,log)",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8469031Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8469668Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 329, in run",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8471105Z     except (ValueError,TypeError,KeyError) as exc:raise RuntimeError('ADAPTER ERROR: LAAM '+str(exc)+'. Saved responses retained; no options, prices or stock guessed.') from exc",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8472631Z                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8473766Z RuntimeError: ADAPTER ERROR: LAAM Product black-modely-solid-turtleneck-bodycon-sweater-dress: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8474642Z ",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8475414Z [LAAM] FAILED: LAAM: ADAPTER ERROR: LAAM Product black-modely-solid-turtleneck-bodycon-sweater-dress: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8476392Z [LAAM] [09:51:46] STAGE: Idle",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8477355Z FAILED: LAAM: FAILED: LAAM: ADAPTER ERROR: LAAM Product black-modely-solid-turtleneck-bodycon-sweater-dress: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8478572Z False",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8479029Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8479739Z CHECKPOINT NOT SAVED: Checkpoint exceeds 2 GB compressed safety limit; outputs remain available",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8480215Z RUN SUMMARY:",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8481437Z LAAM: FAILED \u2014 FAILED: LAAM: ADAPTER ERROR: LAAM Product black-modely-solid-turtleneck-bodycon-sweater-dress: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8482812Z Checkpoint: not saved: Checkpoint exceeds 2 GB compressed safety limit; outputs remain available",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8483552Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
-        "fetch\tFetch result\t2026-10-23T09:52:39.8492521Z ##[error]Process completed with exit code 2."
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8393715Z [LAAM] [09:51:44] HTTP END status=404 elapsed=0.2s bytes=197285 https://laam.com/products/black-mock-neck-slim-fit-bodycon-dress",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8395307Z [LAAM] LAAM SOURCE REMOVED: HTTP 404 https://laam.com/products/black-mock-neck-slim-fit-bodycon-dress; absent public product excluded",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8396885Z [LAAM] [09:51:45] HTTP START attempt=1 https://laam.com/products/black-modely-solid-turtleneck-bodycon-sweater-dress",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8398757Z [LAAM] [09:51:46] HTTP END status=200 elapsed=0.3s bytes=306205 https://laam.com/products/black-modely-solid-turtleneck-bodycon-sweater-dress",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8399864Z __CHOTU_PROGRESS__|1|Active: LAAM",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8401689Z [LAAM] [09:51:46] EXCEPTION: RuntimeError('ADAPTER ERROR: LAAM Product black-modely-solid-turtleneck-bodycon-sweater-dress: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.')",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8403618Z [LAAM] [09:51:46] Traceback (most recent call last):",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8412472Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 280, in catalog",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8419193Z     product=normalize(candidates[0],handle,active_only=active_only,in_stock_only=in_stock_only)",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8420087Z             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8421516Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 130, in normalize",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8423339Z     if len(values)!=len(dims) or any(str(value) not in dim['values'] for value,dim in zip(values,dims)):raise ValueError('LAAM observed variant does not match declared option values')",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8424858Z                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8425886Z ValueError: LAAM observed variant does not match declared option values",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8426473Z ",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8426836Z The above exception was the direct cause of the following exception:",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8440142Z     g.update(discover=lambda base,log:source.catalog(),collections=lambda base,log:{},refresh_variant_prices=lambda base,p,log:p['variants'],storefront_cover=cover,verified_top20=ranking,audit_fractional_prices=audit,storefront_price_audit=display)",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8441870Z                                       ^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8443027Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 294, in catalog",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8444534Z     except (ValueError,TypeError,KeyError) as exc:raise ValueError('Product '+handle+': '+str(exc)) from exc",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8445613Z                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8446892Z ValueError: Product black-modely-solid-turtleneck-bodycon-sweater-dress: LAAM observed variant does not match declared option values",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8447867Z ",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8448407Z The above exception was the direct cause of the following exception:",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8466415Z                                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8467753Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 207, in run",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8468687Z     try:return original(base,name,template,log)",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8469034Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8469671Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 329, in run",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8471114Z     except (ValueError,TypeError,KeyError) as exc:raise RuntimeError('ADAPTER ERROR: LAAM '+str(exc)+'. Saved responses retained; no options, prices or stock guessed.') from exc",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8472635Z                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8473769Z RuntimeError: ADAPTER ERROR: LAAM Product black-modely-solid-turtleneck-bodycon-sweater-dress: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8474645Z ",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8475421Z [LAAM] FAILED: LAAM: ADAPTER ERROR: LAAM Product black-modely-solid-turtleneck-bodycon-sweater-dress: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8476394Z [LAAM] [09:51:46] STAGE: Idle",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8477358Z FAILED: LAAM: FAILED: LAAM: ADAPTER ERROR: LAAM Product black-modely-solid-turtleneck-bodycon-sweater-dress: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8478575Z False",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8479032Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8479741Z CHECKPOINT NOT SAVED: Checkpoint exceeds 2 GB compressed safety limit; outputs remain available",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8480218Z RUN SUMMARY:",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8481601Z LAAM: FAILED \u2014 FAILED: LAAM: ADAPTER ERROR: LAAM Product black-modely-solid-turtleneck-bodycon-sweater-dress: LAAM observed variant does not match declared option values. Saved responses retained; no options, prices or stock guessed.",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8482815Z Checkpoint: not saved: Checkpoint exceeds 2 GB compressed safety limit; outputs remain available",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8483554Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8492532Z ##[error]Process completed with exit code 2.",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8540411Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-10-23T09:52:39.8554159Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m"
       ]
     },
     {
@@ -78,7 +80,7 @@
       "stores": {
         "Gul Ahmed": "done"
       },
-      "snapshot_age_seconds": 15226,
+      "snapshot_age_seconds": 31899,
       "snapshot_stale": true
     },
     {
@@ -96,7 +98,7 @@
         "Junaid Jamshed": "done",
         "Stylo": "done"
       },
-      "snapshot_age_seconds": 123276,
+      "snapshot_age_seconds": 139949,
       "snapshot_stale": true
     },
     {
@@ -114,7 +116,7 @@
         "Outfitters": "done",
         "Zellbury": "done"
       },
-      "snapshot_age_seconds": 155618,
+      "snapshot_age_seconds": 172291,
       "snapshot_stale": true
     },
     {
@@ -131,7 +133,7 @@
         "Saeed Ghani": "done",
         "Hemani Herbals": "done"
       },
-      "snapshot_age_seconds": 151299,
+      "snapshot_age_seconds": 167973,
       "snapshot_stale": true,
       "failure_details_unavailable": true
     },
@@ -148,7 +150,7 @@
       "stores": {
         "Sapphire": "done"
       },
-      "snapshot_age_seconds": 168928,
+      "snapshot_age_seconds": 185601,
       "snapshot_stale": true
     },
     {
@@ -164,7 +166,7 @@
       "stores": {
         "Zero Lifestyle": "done"
       },
-      "snapshot_age_seconds": 176542,
+      "snapshot_age_seconds": 193216,
       "snapshot_stale": true
     },
     {
@@ -182,7 +184,7 @@
         "Denim Leftover": "done",
         "Cool and Cool": "done"
       },
-      "snapshot_age_seconds": 176364,
+      "snapshot_age_seconds": 193038,
       "snapshot_stale": true
     },
     {
@@ -198,7 +200,7 @@
       "stores": {
         "Nisa Naturals": "done"
       },
-      "snapshot_age_seconds": 172073,
+      "snapshot_age_seconds": 188747,
       "snapshot_stale": true
     },
     {
@@ -216,7 +218,7 @@
         "Adam Cheese": "done",
         "Computer Zone": "done"
       },
-      "snapshot_age_seconds": 174784,
+      "snapshot_age_seconds": 191457,
       "snapshot_stale": true
     },
     {
@@ -234,7 +236,7 @@
         "Shop Modest": "done",
         "Seran": "done"
       },
-      "snapshot_age_seconds": 176327,
+      "snapshot_age_seconds": 193000,
       "snapshot_stale": true
     },
     {
@@ -252,7 +254,7 @@
         "The Hanger Pakistan": "done",
         "Elite Cosmetics": "done"
       },
-      "snapshot_age_seconds": 172516,
+      "snapshot_age_seconds": 189190,
       "snapshot_stale": true
     },
     {
@@ -270,7 +272,7 @@
         "Rivaj UK": "done",
         "Rawayat": "done"
       },
-      "snapshot_age_seconds": 164968,
+      "snapshot_age_seconds": 181641,
       "snapshot_stale": true
     }
   ],
@@ -314,13 +316,13 @@
     "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
     "error": "",
     "progress_age_seconds": 1,
-    "report_age_seconds": 227093,
+    "report_age_seconds": 243768,
     "status_confirmed": false
   },
   "drive": {
-    "sync_status": "finished",
+    "sync_status": "scanning",
     "sync_error": null,
-    "last_scan_utc": "2026-10-23T10:26:48.349677+00:00",
+    "last_scan_utc": "2026-10-23T15:04:55.844917+00:00",
     "held": {
       "39450775009": [],
       "39450778729": [],
@@ -414,7 +416,7 @@
       "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
       "error": "",
       "progress_age_seconds": 1,
-      "report_age_seconds": 227093,
+      "report_age_seconds": 243768,
       "status_confirmed": false
     }
   ],
