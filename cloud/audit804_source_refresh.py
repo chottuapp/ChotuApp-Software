@@ -35,6 +35,17 @@ def main():
      product={k:raw.get(k) for k in ('id','handle','title','description','body_html','type','product_type','vendor','tags','options','images')}
     except (requests.RequestException,ValueError):product=None
    if product:rec['product']=product
+   if product and item.get('inspect_image') is True:
+    import base64,hashlib
+    image=(product.get('images') or [None])[0]
+    if isinstance(image,str):
+     image='https:'+image if image.startswith('//') else image
+     image_url=urlsplit(image)
+     if image_url.scheme=='https' and image_url.hostname=='cdn.shopify.com':
+      image=image+('&' if image_url.query else '?')+'width=800'
+      visual=session.get(image,timeout=40);visual.raise_for_status()
+      if len(visual.content)<=250000 and visual.headers.get('Content-Type','').startswith('image/'):
+       rec['public_image']={'source_url':image,'sha256':hashlib.sha256(visual.content).hexdigest(),'content_type':visual.headers.get('Content-Type'),'base64':base64.b64encode(visual.content).decode()}
    if not product or not (product.get('description') or product.get('body_html')):
     soup=BeautifulSoup(read(url).text,'html.parser')
     scripts=[]
