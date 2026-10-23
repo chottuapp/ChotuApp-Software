@@ -144,7 +144,10 @@ def issues_for(row,source=None):
  bundle=bool(re.search(r'\b(?:bundle|combo|kit|deal|set of)\b',name,re.I))
  if re.search(r'printer|toner|reload',name,re.I):bundle=False
  from audit804_semantics import review
- semantic=review(name,str(row.get("description") or ""),category,str(row.get("sku") or ""))
+ review_description=str(row.get('description') or '')
+ if category=='Unstitched Suits' and row.get('website_category_status')=='verified_product_breadcrumb' and re.search(r'(?i)\bunstitched\b',str(row.get('website_category_path') or '')) and re.search(r'(?i)\bshirt\s*&\s*trouser\s+\d+(?:\.\d+)?\s*m\b',review_description):
+  review_description='Unstitched suit. '+review_description
+ semantic=review(name,review_description,category,str(row.get("sku") or ""))
  if category and plain(row.get('brand')) and category.casefold()==plain(row.get('brand')).casefold() and semantic!=[]:issues.append('Brand name used as product Category')
  if semantic is not None:issues.extend(semantic)
  else:

@@ -33,3 +33,15 @@ class WorkbookReviewRegressionTests(unittest.TestCase):
   self.assertEqual(issues_for(row),[])
   row.update(name='Opaque collection',description='An opaque collection without any product type.',Category='Vendor Brand',brand='Vendor Brand')
   self.assertIn('Brand name used as product Category',issues_for(row))
+
+class FabricEvidenceTests(unittest.TestCase):
+ def test_measured_fabric_cut_is_supported_without_marketing_label(self):
+  row={'name':'Moonlit','description':'Length: 4.25 Meters\nWidth: 56 inches\nFabric: Cotton','Category':'Unstitched Fabric'}
+  self.assertEqual(issues_for(row),[])
+  row['description']='Cotton fabric for a beautiful look.'
+  self.assertTrue(issues_for(row))
+ def test_verified_breadcrumb_and_length_support_unstitched_suit(self):
+  row={'name':'Premium Cotton Suit','description':'Shirt & Trouser 4.5M. Fabric: Cotton.','Category':'Unstitched Suits','website_category_status':'verified_product_breadcrumb','website_category_path':"Man > Men's Unstitched"}
+  self.assertEqual(issues_for(row),[])
+  row['website_category_status']='unverified'
+  self.assertTrue(issues_for(row))

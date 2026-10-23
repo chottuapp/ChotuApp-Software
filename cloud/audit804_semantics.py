@@ -21,6 +21,7 @@ def review(name,description,category,sku=""):
  state_evidence=re.split(r'(?i)Note: Stitched Orders|Product Options:',evidence,maxsplit=1)[0]
  unstitched=has(r'\bun[ -]?stitched\b',state_evidence)
  ready=has(r'\brtw\b|ready[ -]to[ -]wear|\bstitched\b',re.sub(r'\b(?:un|semi)[ -]?stitched\b','',state_evidence,flags=re.I))
+ if cat=='unstitched fabric' and has(r'(?im)^\s*length\s*:\s*[2-9](?:\.\d+)?\s*(?:m|meters?|metres?)\b',description) and has(r'(?im)^\s*width\s*:',description) and has(r'(?im)^\s*fabric\s*:',description):return []
  if clothing:
   if cat in ('clothing sets','kurta & trouser sets','co-ord sets','suits & ensembles','stitched outfit sets','kurta & dupatta sets'):
    return [] if multi or has(r'\b(?:co[ -]?ord|kurta.*trouser|shirt.*trouser|(?:kurta|shirt).*dupatta|gharara.*suit)\b',evidence) else None
