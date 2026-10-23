@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-23T06:16:04.820365+00:00",
-  "run_id": "39901934794",
+  "generated_utc": "2026-10-23T07:51:06.278864+00:00",
+  "run_id": "39910528167",
   "attempt": "1",
-  "source_commit": "e2945225b4611f949b32b3ed0a72e876a04a111b",
+  "source_commit": "906b80b6eff05a0a93714badf5e0b23f95720aea",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
@@ -14,16 +14,19 @@
       "status": "pending",
       "review_required": false,
       "issue_codes": [
-        "HTTP_404"
+        "HTTP_404",
+        "HTTP_503",
+        "RATE_LIMIT"
       ],
       "software_revision": "d886442bbff040ef",
       "http_statuses": {
-        "500": 166,
-        "404": 123,
-        "200": 3071
+        "500": 184,
+        "200": 2526,
+        "404": 152,
+        "503": 1
       },
-      "network_seconds": 1805.8,
-      "max_response_seconds": 17.2,
+      "network_seconds": 3132.0,
+      "max_response_seconds": 18.3,
       "cache_events": 0
     }
   ]
