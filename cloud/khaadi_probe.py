@@ -27,7 +27,7 @@ def main():
             if canonical:item['canonical']=canonical.get('href','').split('?')[0]
         observations.append(item)
     session.hooks['response'].append(observe)
-    source=PublicCatalog(g,print);report={'full_catalog_verified':False,'products':[],'execution':'GitHub hosted runner','request':'Owner requested phone-independent fresh Khaadi cloud start on 23 October 2026'}
+    source=PublicCatalog(g,print);report={'checked_utc':__import__('datetime').datetime.now(__import__('datetime').timezone.utc).isoformat(),'full_catalog_verified':False,'products':[],'execution':'GitHub hosted runner','request':'Owner requested phone-independent fresh Khaadi cloud start on 23 October 2026'}
     try:
         robots=source.read(BASE+'/robots.txt',fresh=True);source.robot=RobotFileParser();source.robot.parse(robots.text.splitlines())
         for path in ['/floral-tailored-3-piece/T-CHD09B-R-VG_MULTI.html','/black-cambric-kurta/1-26-320-A-C1-VG_MULTI.html']:
