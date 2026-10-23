@@ -8,7 +8,7 @@ on:
     types: [completed]
   push:
     branches: [main]
-    paths: [catalog-inputs/khaadi-mobile/latest.json, cloud/mobile_khaadi_ingest.py, cloud/original_store_ingest.py, cloud/legacy_original_schema.py, cloud/audit804.py, cloud/audit804_semantics.py, cloud/reviewed804_repairs.py, cloud/audit804_delivery.py, cloud/audit804_queue.py, cloud/confirmed-shop-codes.json, cloud/rule804_pipeline.py, cloud/drive_sync.py, cloud/source_research.py, cloud/drive-sync-release.json, .github/workflows/cloud-drive-sync.yml]
+    paths: [catalog-inputs/khaadi-mobile/latest.json, cloud/mobile_khaadi_ingest.py, cloud/original_store_ingest.py, cloud/legacy_original_schema.py, cloud/audit804.py, cloud/audit804_automation.py, cloud/hold804_repairs.py, cloud/audit804-reviewed-source.json, cloud/audit804_semantics.py, cloud/reviewed804_repairs.py, cloud/audit804_delivery.py, cloud/audit804_queue.py, cloud/confirmed-shop-codes.json, cloud/rule804_pipeline.py, cloud/drive_sync.py, cloud/source_research.py, cloud/drive-sync-release.json, .github/workflows/cloud-drive-sync.yml]
 permissions:
   contents: write
   actions: read

@@ -197,7 +197,7 @@ def run(path,store,codes,hosts,*,source=None):
   if plain(row.get('Category')).casefold()==store.casefold():issues.append('Store name used as product Category')
   if issues:
    finding_count+=1
-   if len(findings)<100:findings.append({'product_id':pid,'issues':issues})
+   if len(findings)<100:findings.append({'product_id':pid,'name':str(row.get('name') or ''),'source_url':str(row.get('source_url') or ''),'issues':issues})
  if expected and list(codes.values()).count(expected)>1:finding_count+=1;findings.append({'product_id':None,'issues':['Shop code assigned to multiple stores; identity review required']})
  if not count:finding_count+=1;findings.append({'product_id':None,'issues':['Empty workbook']})
  if originals and set(originals)!=seen:finding_count+=1;findings.append({'product_id':None,'issues':['Source/output product identity mismatch']})

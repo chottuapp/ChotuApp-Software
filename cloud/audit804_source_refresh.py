@@ -10,6 +10,7 @@ from source_research import publish
 AGENT='ChotuAppCatalogRefresh'
 def main():
  request=json.loads(Path('cloud/audit804-source-request.json').read_text());items=request['products']
+ if not items:print('No actionable public source holds');return
  if not 1<=len(items)<=160:raise ValueError('Bounded public review required')
  hosts={urlsplit(s['url']).hostname.removeprefix('www.') for s in json.loads(Path('cloud/fetch-update-release.json').read_text())['fresh_stores']}
  robots={};session=requests.Session();session.headers['User-Agent']=AGENT;results=[]
@@ -24,7 +25,7 @@ def main():
   if len(r.content)>10*1024**2:raise ValueError('Source response exceeds review bound')
   return r
  def emit(complete):
-  report={'run_id':os.environ['GITHUB_RUN_ID'],'checked_utc':datetime.now(timezone.utc).isoformat(),'complete':complete,'results':results}
+  report={'run_id':os.environ['GITHUB_RUN_ID'],'checked_utc':datetime.now(timezone.utc).isoformat(),'complete':complete,'next_cursor':request.get('next_cursor',0),'results':results}
   # Retain every primary fact and image URL/hash; optional image bodies must not
   # prevent later products or final evidence from being published.
   while len(json.dumps(report,ensure_ascii=True,indent=2).encode())>1900000:
@@ -69,4 +70,16 @@ def main():
   results.append(rec);print(item['store'],item['product_id'],rec.get('error','public facts captured'),flush=True)
   if len(results)%20==0:emit(False)
  emit(True)
-if __name__=='__main__':main()
+if __name__=='__main__':
+ if os.environ.get('AUTO_AUDIT_EVIDENCE')=='true':
+  import subprocess
+  from audit804_automation import request_from_holds
+  def report(branch):
+   subprocess.run(['git','fetch','origin',branch],check=True,capture_output=True)
+   return json.loads(subprocess.run(['git','show','FETCH_HEAD:latest.json'],check=True,capture_output=True,text=True).stdout)
+  state=report('drive-sync-reports')
+  try:previous=report('audit804-source-evidence')
+  except (subprocess.CalledProcessError,ValueError):previous={}
+  sites={s['name']:s for s in json.loads(Path('cloud/fetch-update-release.json').read_text())['fresh_stores']}
+  Path('cloud/audit804-source-request.json').write_text(json.dumps(request_from_holds(state,sites,previous)))
+ main()

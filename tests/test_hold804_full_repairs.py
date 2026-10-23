@@ -13,6 +13,21 @@ class SourceBoundHoldTests(unittest.TestCase):
   self.assertIsNone(category(row,'Computer Zone'))
   self.assertEqual(category(self.row('Wash & Wear Kurta Pajama - 2612'),'Zellbury')[0],'Kurta & Pyjama Sets')
   self.assertEqual(category(self.row('Disposable Compressed Towels, Travel Wipes'),'Elite Cosmetics')[0],'Compressed Towels')
+ def test_explicit_primary_type_is_not_an_ingredient_or_care_mention(self):
+  row=self.row('Garnier Face Wash Men White + Oil Control', 'Face cleansing foam for oily skin.')
+  self.assertEqual(category(row,'Elite Cosmetics')[0],'Face Wash')
+  self.assertEqual(category(self.row('Super Charged Face Serum - Tea Tree Oil','Hydrates facial skin.'),'Hemani Herbals')[0],'Face Serums')
+  self.assertEqual(issues_for(dict(self.row('Retinol 0.5% Serum','Retinol serum for facial skin; apply on clean face.'),Category='Face Serums')),[])
+ def test_trap_and_adhesive_are_accessories_not_the_compatibility_object(self):
+  for name,label in [('Mouse Trap Book Rat Catching 1 Piece','Pest-Control Traps'),('Christine Eyelash Glue Black','Eyelash Adhesives')]:
+   row=self.row(name,'Exact source product purpose retained.');self.assertEqual(category(row,'Elite Cosmetics')[0],label)
+   self.assertEqual(issues_for(dict(row,Category=label)),[])
+ def test_candle_accessories_and_supplement_forms_keep_their_identity(self):
+  value=category(self.row('Scented Candle Holder'),'Hemani Herbals');self.assertTrue(value is None or value[0]!='Scented Candles')
+  self.assertEqual(category(self.row('Dr. Herbalist Shilajit + Ashwagandha Gummies 90gm'),'Hemani Herbals')[0],'Herbal Gummies')
+ def test_new_aliases_do_not_erase_existing_audit_evidence(self):
+  for name in ['Nose Pore Cleansing Strips','Charcoal Nose Strips','Green Tea Nose Strips']:
+   self.assertEqual(issues_for(dict(self.row(name,'Nose strips remove blackheads from skin.'),Category='Blackhead Removal Strips')),[])
  def test_promo_retains_both_quantities_without_inventing_a_third_item(self):
   name='Buy Baby Washing Gel 500 ML & Get Body Lotion 100 ML Free';fixed,reason=description(self.row(name,name),'Cool and Cool')
   self.assertEqual(fixed,'Baby Washing Gel 500 ML. Includes Body Lotion 100 ML as a complimentary item.');self.assertTrue(reason)

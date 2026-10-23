@@ -95,7 +95,16 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
  groups={run['displayTitle'].removeprefix('Cloud group ') for run in all_runs if run.get('displayTitle','').startswith(prefix)}
  runs=helper.related(all_runs,groups);registry=json.loads((root/'cloud/fetch-update-release.json').read_text())['fresh_stores'];sites={s['name']:s for s in registry}
  codes=json.loads((root/'cloud/confirmed-shop-codes.json').read_text())
- revision=hashlib.sha256(b''.join((root/name).read_bytes() for name in ('cloud/audit804.py','cloud/audit804_semantics.py','cloud/reviewed804_repairs.py','cloud/audit804_delivery.py','cloud/rule804_pipeline.py','cloud/hold804_repairs.py','cloud/audit804-reviewed-source.json','cloud/legacy_original_schema.py','cloud/confirmed-shop-codes.json','subcategory_inference_support.py','catalog-tools/complete_rule804_batch.py'))).hexdigest()
+ evidence_revision=''
+ try:
+  from audit804_automation import refresh
+  evidence_revision,evidence_count,evidence_cache=refresh(root,gh,sites,state.get('audit804_auto_evidence_cache',[]))
+  state['audit804_auto_evidence_cache']=evidence_cache
+  state['audit804_auto_evidence']={'status':'checked','facts':evidence_count,'digest':evidence_revision}
+ except Exception:
+  state['audit804_auto_evidence']={'status':'unavailable','action':'Retain saved source facts; no unverified audit approval'}
+ revision=hashlib.sha256(b''.join((root/name).read_bytes() for name in ('cloud/audit804.py','cloud/audit804_semantics.py','cloud/reviewed804_repairs.py','cloud/audit804_delivery.py','cloud/rule804_pipeline.py','cloud/hold804_repairs.py','cloud/audit804-reviewed-source.json','cloud/audit804_automation.py','cloud/legacy_original_schema.py','cloud/confirmed-shop-codes.json','subcategory_inference_support.py','catalog-tools/complete_rule804_batch.py'))).hexdigest()
+ revision=hashlib.sha256((revision+evidence_revision).encode()).hexdigest()
  state['audit804_campaign']=campaign;state.setdefault('audit804_results',{});state.setdefault('audit804_processed',{});identity=None
  def handle(source,store,source_run,artifact_id,cache_key):
   nonlocal identity

@@ -8,6 +8,97 @@ SOURCE_TYPES={'Women Trouser':'Trousers','Women Earrings':'Earrings','Women Brac
 STORES={'Cool and Cool','Rivaj UK','Computer Zone','Saeed Ghani','Elite Cosmetics','Hemani Herbals','Bonanza Satrangi','Rawayat','Junaid Jamshed','Outfitters','Zellbury','Stylo'}
 # Explicit object names. Compatibility targets, ingredients and care text are not classifiers.
 NAMED=[
+ ('Scented Candles','\\b(?:(?:scented|aromatherapy|solid)\\s+)?candle\\b'),
+ ('Herbal Capsules','\\b(?:herbalist\\b.*\\bcapsules?|herbal\\s+oil\\s+capsule)\\b'),
+ ('Food Flavourings','\\bfood\\s+essence\\b'),
+ ('Olive Cooking Oils','\\b(?:extra\\s+virgin|pomace)\\s+olive\\s+oil\\b'),
+ ('Dental Gels','\\bdental\\s+gel\\b'),
+ ('Intimate Washes','\\bintimate\\s+wash\\b'),
+ ('Hand Cleansers','\\bhand\\s+cleanser\\b'),
+ ('Foot Sprays','\\bfoot\\s+spray\\b'),
+ ('Soap Bars','^soap\\s+with\\b'),
+ ('Miswak Sticks','\\bmiswak\\b'),
+ ('Herbal Nasal Drops','\\bherbal\\s+nasal\\s+drops\\b'),
+ ('Herbal Nasal Oils','\\bherbal\\s+nasal\\s+oil\\b'),
+ ('Herbal Relief Oils','\\b(?:herbal\\s+relief\\s+oil|sinu[ -]drain\\s+oil)\\b'),
+ ('Massage Gels','\\bicy\\s+hot\\b.*\\bgel\\b'),
+ ('Magnesium Sprays','\\bmagnesium\\s+spray\\b'),
+ ('Massage Creams','\\b(?:massage\\s+cream|relief\\s+cream\\s*[-–]\\s*himomed)\\b'),
+ ('Shilajit Supplements','\\bshilajit\\b'),
+ ('Garden Cress Seeds','\\bgarden\\s+cress\\s+seeds\\b'),
+ ('Psyllium Husk Supplements','\\b(?:ispaghol|psyllium\\s+husk)\\b'),
+ ('Herbal Powders','\\b(?:moringa|berberine)\\s+powder\\b'),
+ ('Face Mask Powders','\\bherbal\\s+beauty\\s+mask\\s+powder\\b'),
+ ('Disinfectant Sprays','\\bdisinfectant\\s+spray\\b'),
+ ('Sanitiser Sprays','\\bsanitizer\\s+spray\\b'),
+ ('Facial Gels','\\bface\\s+gel\\b'),
+ ('Hair Tonics','\\bhair\\s+tonic\\b'),
+
+ ('Household Batteries','\\b(?:AA|AAA)\\s+size\\s+cell\\s+batteries\\b'),
+ ('Eyelash Adhesives','\\beyelash\\s+glue\\b'),
+ ('Insecticide Sprays','\\b(?:insecticide\\s+spray|insect\\s+killer\\s+spray)\\b'),
+ ('Mosquito Coils','\\bmosquito\\s+coil\\b'),
+ ('Mosquito Repellent Devices','\\bmosquito\\s+killer\\s+machine\\b'),
+ ('Mouth Fresheners','\\bmouth\\s+spray\\b'),
+ ('Facial Bleaches','\\b(?:creme\\s+bleach|cream\\s+bleach|bleach\\s+sachet|facial\\s+bleach)\\b'),
+ ('Sanitary Pads','\\bpads\\b.{0,80}\\b(?:heavy\\s+flow|leak\\s+protection)\\b'),
+ ('Facial Tissues','\\b(?:pop[ -]?up\\s+)?tissues\\b'),
+ ('Packaging Stretch Wrap','\\bstretch\\s+wrap\\b.{0,40}\\bpackaging\\b'),
+ ('Food Cling Film','\\bcling\\s+film\\b.{0,40}\\bfood\\b'),
+ ('Baby Rash Creams','\\b(?:nappy|diaper)\\s+rash\\b'),
+ ('Water Filter Cartridges','\\b(?:water\\s+carbon\\s+filter|carbon\\s+filter\\b.*\\bhousehold|micron\\s+filter|PPF\\s+5\\s+micron)\\b'),
+ ('Lice Removal Combs','\\b(?:anti[ -]?lice|lice\\s+removal)\\b.*\\bcomb\\b'),
+ ('Facial Steamers','\\bfacial\\s+steamer\\b'),
+ ('Pest-Control Traps','\\b(?:mouse|rat)\\s+(?:trap|catching)\\b'),
+ ('Hand Wash','\\bhand\\s*wash\\b'),
+ ('Car Engine Degreasers','\\b(?:engine\\s+degreaser|car\\s+heavy\\s+duty\\s+degreaser)\\b'),
+ ('Car Polishes','\\bcar\\s+polish\\b'),
+ ('Multipurpose Household Cleaners','\\bmulti[ -]?purpose\\s+cleaner\\b'),
+ ('Floor Cleaners','\\bphenyl\\b'),
+ ('Dishwashing Liquids','\\b(?:liquid\\s+(?:gel\\s+)?dish\\s*wash|dishwashing\\s+liquid)\\b'),
+ ('Toilet & Tile Cleaners','\\btoilet\\s+and\\s+tiles?\\s+cleaner\\b'),
+ ('Glass Cleaners','\\bglass\\s+cleaner\\b'),
+ ('Laundry Bleaches','\\bbleach\\s+liquid\\s+for\\s+white\\s+clothes\\b'),
+ ('Adult Diapers','\\badult\\s+diaper\\b'),
+ ('Baby Diapers','\\bcarebaby\\b.*\\bdiapers\\b'),
+ ('Hair Removal Waxes','\\b(?:finger\\s+wax|brazilian\\s+.*wax|wax\\b.*\\bhair\\s+removal)\\b'),
+ ('Hair Removal Serums','\\bstop\\s+hair\\b.*\\bserum\\b'),
+ ('Hair Crimpers','\\bhair\\s+crimple\\b'),
+ ('Hair Curlers','\\b(?:hair\\s+curler|curler\\s+pro\\s+soft\\s+curl)\\b'),
+ ('Hair Sprays','\\bhair\\s+spray\\b'),
+ ('Blackhead Removal Strips','\\bnose\\s+pore\\s+strips\\b'),
+ ('Epilators & Trimmers','\\bepilator\\b'),
+ ('Lip Masks','\\blip\\s+mask\\b'),
+ ('Hair Protein Treatments','\\bhair\\s+protein\\b.*\\btreatment\\b'),
+
+ ('Remote Control Cars','\\bremote\\s+control\\s+car\\b'),
+ ('Remote Control Helicopters','\\bremote\\s+control\\s+helicopter\\b'),
+ ('Drawing Stencils','\\bstencils?\\b'),
+ ('Drawing Paper','\\bdrawing\\s+paper\\b'),
+ ('Board Games','\\bboard\\s+game\\b'),
+ ('Jigsaw Puzzles','\\bjigsaw\\s+puzzle\\b'),
+ ('Puzzle Cubes','\\bpuzzle\\s+cube\\b'),
+ ('Educational Puzzles','\\b(?:math|shape)\\b.*\\bpuzzle\\b|\\bpuzzle\\b.*\\b(?:math|shape)\\b'),
+ ('Montessori Busy Boards','\\bmontessori\\s+busy\\s+board\\b'),
+ ('Body Shapers','\\bbody\\s+shaper\\b'),
+ ('Stockings','\\bstockings?\\b'),
+ ('Bralettes','\\bbrallete\\b'),
+ ('Hand Mirrors','\\bhand\\s+mirror\\b'),
+ ('Makeup Puff & Clip Sets','\\bmakeup\\s+puff\\s*&\\s*clip\\s+set\\b'),
+
+ ('Face Wash','\\b(?:face|facial)\\s+wash\\b'),
+ ('Foot Scrubs',r'\bfoot\s+scrub\b'),
+ ('Multipurpose Skin Creams',r'\bcream\b.*\bface\b.*\bbody\b.*\bhands?\b'),
+ ('Lipstick Sets',r'\blipstick\s+bundle\b'),
+ ('Face Serums',r'\b(?:face|facial)\s+serum\b'),
+ ('Makeup Setting Powders',r'\b(?:illuminating|makeup|beauty)\s+baking\s+powder\b'),
+ ('Instant Tea Mixes',r'\bchai\s+instant\s+premix\b'),
+ ('Instant Drink Mixes',r'\blimopani\s+instant\s+premix\b'),
+ ('Herbal Gummies',r'\b(?:herbalist|ashwagandha)\b.*\bgummies\b'),
+ ('Pain Relief Ointments',r'\bpain\s+relief\s+massage\s+ointment\b'),
+ ('Vapor Rubs',r'\bvapor\s+rub\b'),
+ ('Pain Relief Sprays',r'\b(?:quick|pain)\s+relief\s+spray\b'),
+
  ('Diffuser Oils',r'\bdiffuser\s+oil\b'),
  ('Room Fragrances',r'\breed\s+diffuser\b'),
  ('Eyebrow Kits',r'\bbrow\s+kit\b'),
@@ -82,7 +173,7 @@ NAMED=[
  ('Rings','\\brings?\\b'),
  ('Brooches','\\bbrooch(?:es)?\\b'),
  ('Stud Earrings','\\bear\\s*studs?\\b'),
- ('Jhumka Earrings','\\bjhumk[ai]\\b'),
+ ('Jhumka Earrings','\\bjhumk(?:ay|a|i|y)\\b'),
  ('Pendants & Lockets','\\b(?:pendant|pendent|locket)s?\\b'),
  ('Headbands','\\b(?:head[ -]?band|hairband)s?\\b'),
  ('Hair Claws','\\bhair\\s+claw\\b'),
@@ -133,7 +224,10 @@ NAMED=[
 @lru_cache(maxsize=1)
 def public_index():
  path=Path(__file__).with_name('audit804-reviewed-source.json')
- return {(f['store'],str(f['product_id']),f['source_url']):f for f in json.loads(path.read_text()).get('products',[])} if path.exists() else {}
+ records=json.loads(path.read_text()).get('products',[]) if path.exists() else []
+ automatic=path.with_name('audit804-auto-source.json')
+ if automatic.exists():records+=json.loads(automatic.read_text()).get('products',[])
+ return {(f['store'],str(f['product_id']),f['source_url']):f for f in records}
 def public_facts(row,store):
  fact=public_index().get((store,str(row.get('product_id')),row.get('source_url')))
  if fact:
@@ -144,23 +238,31 @@ def public_facts(row,store):
 def category(row,store):
  if store not in STORES:return None
  name=str(row.get('name') or '');body=str(row.get('description') or '')
+ if store=='Stylo' and row.get('brand')=='Teenage' and re.search(r'(?i)\bbeede\b',name) and re.search(r'(?i)\bgirls\b',name):return 'Girls Training Bras','reviewed_regional_product_name','Reviewed source Padded BD/Non Padded BD naming and actual product images; no fabric composition inferred: '+name
  if store=='Junaid Jamshed' and row.get('brand') in SOURCE_TYPES:return SOURCE_TYPES[row['brand']],'reviewed_source_product_type','Explicit source product_type: '+row['brand']
  source=public_facts(row,store)
  if source:
-  types={'earring':'Earrings','earrings':'Earrings','earstuds':'Stud Earrings','jhumka':'Jhumka Earrings','karay':'Bangles & Karas','bangles':'Bangles & Karas','necklace':'Necklaces','necklaces':'Necklaces','bracelets':'Bracelets','anklet':'Anklets','anklets':'Anklets','ring':'Rings','pendent':'Pendants & Lockets','pendent/chain':'Pendant Necklaces','pendent/necklace':'Pendant Necklaces','nath':'Nose Jewellery','bindiya kanta':'Forehead Jewellery','choker set':'Jewellery Sets','mala set':'Jewellery Sets','locket set':'Jewellery Sets','bridal set':'Jewellery Sets','jeans':'Jeans'}
+  types={'earring':'Earrings','earrings':'Earrings','earstuds':'Stud Earrings','jhumka':'Jhumka Earrings','karay':'Bangles & Karas','bangles':'Bangles & Karas','necklace':'Necklaces','necklaces':'Necklaces','bracelets':'Bracelets','anklet':'Anklets','anklets':'Anklets','ring':'Rings','pendent':'Pendants & Lockets','nath':'Nose Jewellery','bindiya kanta':'Forehead Jewellery','choker set':'Jewellery Sets','mala set':'Jewellery Sets','locket set':'Jewellery Sets','bridal set':'Jewellery Sets','jeans':'Jeans'}
   if source.get('reviewed_visual_type')=='Jeans' and source.get('reviewed_visual_evidence',{}).get('sha256'):return 'Jeans','reviewed_product_image','Actual product image reviewed: '+source['reviewed_visual_evidence']['source_url']
   if str(source.get('product_type') or '').casefold()=='luxury unstitch' and re.search(r'(?i)\bshirt\s+shalwar\s+dupatta\b',name):return 'Unstitched Suits','reviewed_public_product_type','Source-listed Luxury Unstitch and named shirt, shalwar, dupatta; '+source['source_url']
+  if str(source.get('product_type') or '').strip().casefold()=='necklace' and re.search(r'(?i)\bset\b',name):return 'Jewellery Sets','reviewed_public_product_type','Source necklace family and explicit set name: '+name+'; '+source['source_url']
   label=types.get(str(source.get('product_type') or '').strip().casefold())
   if label:return label,'reviewed_public_product_type','Public product_type: '+source['product_type']+'; evidence run '+source['evidence_run']+'; '+source['source_url']
 
  for label,pattern in NAMED:
+  if label=='Scented Candles' and re.search(r'(?i)\b(?:holder|snuffer|trimmer)\b',name):continue
+  if label=='Shilajit Supplements' and re.search(r'(?i)\bgummies\b',name):continue
   if label=='Tops' and (not re.search(r'(?i)\b(?:knit|sleeve|capelet|ribbed|jersey|cotton)\b',name+' '+body[:300]) or store in {'Computer Zone','Elite Cosmetics','Hemani Herbals','Rivaj UK','Cool and Cool','Saeed Ghani'} or re.search(r'(?i)\b(?:makeup|cosmetic|lipstick|cream|serum|bundle)\b',name)):continue
   if label=='Cooling Fans' and re.search(r'(?i)\b(?:hub|controller|cable|adapter)\b',name.split(',')[0]):continue
+  if label=='Rings' and re.search(r'(?i)\bearrings?\b.*\bbindiya\b',name):return 'Jewellery Sets','reviewed_product_name','All source-named items: '+name
   if label=='Rings' and store=='Computer Zone':continue
   if label=='Rings' and re.search(r'(?i)\b(?:key|curtain|napkin|phone|holder|case|light|binder)\b',name):continue
   if label=='False Eyelashes' and re.search(r'(?i)\b(?:serum|growth|glue|adhesive|mascara|oil)\b',name):continue
   if re.search(pattern,name,re.I):return label,'reviewed_product_name','Explicit sold-object wording: '+name
  if re.search(r'(?i)\b(?:apply perfume|fragrance notes)\b',body) and re.search(r'(?i)\b(?:top|base|mid|dry)\s+note',body) and not re.search(r'(?i)\b(?:hand cream|body lotion|soap|wash)\b',name):return 'Perfumes & Fragrances','reviewed_source_description','Explicit fragrance use and note tiers: '+name+'; '+body[:500]
+ if store=='Stylo' and re.search(r'(?i)\bsofty\b',name) and (re.search(r'(?i)\b(?:feet|footbed|strap|footwear|shoes)\b',body+' '+str(row.get('website_category_path') or ''))):return 'Casual Footwear','reviewed_source_description','Named Softy with explicit source footwear/foot context: '+name+'; '+body[:300]
+ if store=='Stylo' and re.search(r'(?i)\bcasual\s+canvas\b',name) and re.search(r'(?i)\b(?:heel|footbed|sole|shoes)\b',body):return 'Canvas Shoes','reviewed_source_description','Canvas shoe source describes heel/sole: '+name+'; '+body[:300]
+ if store=='Rawayat' and re.search(r'(?i)\bchain\b',name) and not re.search(r'(?i)\b(?:bag|bike|motor|engine)\b',name):return 'Jewellery Chains','reviewed_product_name','Named jewellery chain: '+name
  if re.search(r'(?i)\b(?:crossbody|cross[ -]body)\s*bag\b',name):return 'Cross-Body Bags','reviewed_product_name',name
  if re.search(r'(?i)\bshoulder\s*bag\b',name):return 'Shoulder Bags','reviewed_product_name',name
  if re.search(r'(?i)\btote\s*bag\b',name):return 'Tote Bags','reviewed_product_name',name
@@ -179,18 +281,20 @@ def category(row,store):
  if re.search(r'(?i)\b(?:moisturizing|moisturising)\s+(?:water\s+)?gel\b',name) and re.search(r'(?i)\bskin\b',body):return 'Skin Moisturising Gels','reviewed_source_description','Named moisturising gel with skin context: '+name+'; '+body[:500]
  if re.search(r'(?i)\boil\b',name) and re.search(r'(?i)\bbaby\b',name):return 'Baby Oils','reviewed_product_name','Explicit baby oil: '+name
  if re.search(r'(?i)\bhand\s+elixir\b',name) and re.search(r'(?i)\bhydrat|moisturi',body):return 'Hand Moisturisers','reviewed_source_description','Source hand hydration purpose: '+name+'; '+body[:400]
- if re.search(r'(?i)\boil\b',name) and not re.search(r'(?i)\b(?:perfume|attar|ittar|fragrance)\b',name):
+ if re.search(r'(?i)\boil\b',name) and not re.search(r'(?i)\b(?:perfume|attar|ittar|fragrance|wash|serum|cream|soap|gel|shampoo|conditioner|spray|mask|scrub)\b',name):
   hair=bool(re.search(r'(?i)\bhair\b',body));skin=bool(re.search(r'(?i)\bskin\b',body))
   if hair and skin:return 'Hair & Skin Oils','reviewed_source_description','Source lists both hair and skin uses: '+name+'; '+body[:600]
   if hair:return 'Hair Oils','reviewed_source_description','Source hair application: '+name+'; '+body[:600]
   if skin:return 'Skin Oils','reviewed_source_description','Source skin application: '+name+'; '+body[:600]
+ if re.search(r'(?i)\bherbal\s+oil\b',name):return 'Herbal Oils','reviewed_product_name','Source explicitly names herbal oil; no ingestion/topical use inferred: '+name
  if re.fullmatch(r'(?i)Gift Basket',name.strip()) and re.search(r'(?i)\byou can fill\b',body):return 'Gift Baskets','reviewed_source_description','Empty customizable basket; source says buyer fills it: '+body
  if re.search(r'(?i)\b(?:bundle|trio|basket|gift\s*box|self.care\s+set)\b',name):
   if re.search(r'(?i)\b(?:skincare|skin|face\s+wash|cream|lotion)\b',body):
    label='Personal Care Bundles' if re.search(r'(?i)\b(?:haircare|fragrance|beard)\b',body) else 'Skin Care Bundles'
    return label,'reviewed_source_description','Source gift/bundle purpose and contents: '+name+'; '+body[:800]
  if re.search(r'(?i)\bbb\s+skin\s+editor\b',name) and re.search(r'(?i)\b(?:spf|matte|skin)\b',body):return 'BB Face Makeup','reviewed_source_description','Named BB makeup with supplied skin finish and SPF facts: '+name+'; '+body[:350]
- if re.search(r'(?i)\b(?:fancy|short|bridal|choker|necklace|traditional|pendent|pendant)\b.*\bset\b',name) and re.search(r'(?i)jewell?ery\s+care|gold\s+plat',body):return 'Jewellery Sets','reviewed_source_description','Named jewellery set and source jewellery-care context: '+name+'; '+body[:200]
+ if store=='Rawayat' and re.search(r'(?i)\bset\b',name+' '+body[:150]) and re.search(r'(?i)jewel(?:lery|ry)\s+care',body) and not re.search(r'(?i)\b(?:chain|ponytail|hair|nails?)\b',name):return 'Jewellery Sets','reviewed_source_description','Named/source-listed jewellery set and jewellery-care context: '+name+'; '+body[:200]
+ if re.search(r'(?i)\b(?:fancy|short|bridal|choker|necklace|traditional|pendent|pendant)\b.*\bset\b',name) and re.search(r'(?i)jewel(?:lery|ry)\s+care|gold\s+plat',body):return 'Jewellery Sets','reviewed_source_description','Named jewellery set and source jewellery-care context: '+name+'; '+body[:200]
  return None
 
 def description(row,store):
@@ -205,6 +309,13 @@ def description(row,store):
   lead=name+' is a fragrance'+(' in the '+leaf+' range.' if leaf.casefold()!='fragrances' else '.')
   if not body.startswith(lead):return lead+('\n\n'+original if body and body!=name else ''),'Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.'
  source=public_facts(row,store)
+ if source and store=='Rawayat':
+  kind=str(source.get('product_type') or '').strip().casefold()
+  overview={'necklace':'a necklace design','earring':'an earring design','earrings':'an earring design','earstuds':'a stud-earring design','nath':'a nose jewellery design','bindiya kanta':'a forehead jewellery design','ring':'a ring design','bracelets':'a bracelet design','anklet':'an anklet design','anklets':'an anklet design','pendent/chain':'a pendant necklace design','pendent/necklace':'a pendant necklace design','choker set':'a jewellery set','mala set':'a jewellery set','locket set':'a jewellery set','bridal set':'a jewellery set'}.get(kind)
+  if overview and re.search(r'(?i)\bset\b',name) and kind in ('necklace','choker set','mala set','locket set','bridal set'):overview='a jewellery set'
+  if overview:
+   lead=name+' is '+overview+'.'
+   if not body.startswith(lead):return lead+('\n\n'+original if body and body!=name else ''),'Added exact matching public product_type as a factual overview; all existing product/care details retained.'
  if store=='Junaid Jamshed' and body.split('\n\nProduct Options:')[0].strip()==name:
   kind={'Men Special Kurta':'a special kurta for men','Men Kurta':'a kurta for men','Women Powder':'a makeup powder','Women Eyebrow Kit':'an eyebrow makeup kit'}.get(row.get('brand'))
   if kind:return name+' is '+kind+'.'+original[len(name):],'Rewrote exact source product_type; existing options preserved.'
@@ -226,6 +337,6 @@ def description(row,store):
  if body==name:
   from subcategory_inference_support import infer
   result=category(row,store) or infer(name,'')
-  phrases={'Hair Brushes & Combs':'a hair-styling brush','Lip Balms':'a lip balm','Earrings':'an earring design','Stud Earrings':'a stud-earring design','Jhumka Earrings':'a jhumka-earring design','Rings':'a ring design','Bracelets':'a bracelet design','Necklaces':'a necklace design','Anklets':'an anklet design','Pendants & Lockets':'a locket design' if 'locket' in name.casefold() else 'a pendant design','Hair Clips & Pins':'a hair pin design' if 'pin' in name.casefold() else 'a hair clip design','Headbands':'a headband','Jewellery Sets':'a jewellery set','Hair Ties & Scrunchies':'a hair-tie design','Bangles & Karas':'a bangle or kara design','Brooches':'a brooch design'}
+  phrases={'Hand Harnesses':'a hand-jewellery harness','Belts':'a belt','Commemorative Coins':'a commemorative coin','Gift Boxes':'a gift box','Hand Mirrors':'a handheld mirror','Makeup Puff & Clip Sets':'a makeup puff and clip set','Hair Accessory Sets':'a hair accessory set','Hair Crowns & Tiaras':'a hair crown or tiara design','Hair Combs':'a hair comb','Nail Care Kits':'a nail care kit','Stationery Sets':'a stationery set','Artificial Nails':'an artificial nail design','Watches':'a watch','Jewellery Chains':'a jewellery chain design','Pendant Necklaces':'a pendant necklace design','Nose Jewellery':'a nose jewellery design','Forehead Jewellery':'a forehead jewellery design','Hair Claws':'a hair claw design','Hair Brushes & Combs':'a hair-styling brush','Lip Balms':'a lip balm','Earrings':'an earring design','Stud Earrings':'a stud-earring design','Jhumka Earrings':'a jhumka-earring design','Rings':'a ring design','Bracelets':'a bracelet design','Necklaces':'a necklace design','Anklets':'an anklet design','Pendants & Lockets':'a locket design' if 'locket' in name.casefold() else 'a pendant design','Hair Clips & Pins':'a hair pin design' if 'pin' in name.casefold() else 'a hair clip design','Headbands':'a headband','Jewellery Sets':'a jewellery set','Hair Ties & Scrunchies':'a hair-tie design','Bangles & Karas':'a bangle or kara design','Brooches':'a brooch design'}
   if result and result[0] in phrases:return name+' is '+phrases[result[0]]+'.','Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.'
  return original,None
