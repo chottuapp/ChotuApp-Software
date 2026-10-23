@@ -5,5 +5,24 @@
   "request": "Owner requested phone-independent fresh Khaadi cloud start on 23 October 2026",
   "sample_verified": false,
   "error": "Pakistan source redirected to a foreign host",
-  "run_id": "39903354627"
+  "public_route_observations": [
+    {
+      "url": "https://pk.khaadi.com/robots.txt",
+      "status": 200
+    },
+    {
+      "url": "https://pk.khaadi.com/floral-tailored-3-piece/T-CHD09B-R-VG_MULTI.html",
+      "status": 302,
+      "redirect_host": "us.khaadi.com"
+    },
+    {
+      "url": "https://us.khaadi.com/floral-tailored-3-piece/T-CHD09B-R-VG_MULTI.html",
+      "status": 200,
+      "structured_currencies": [
+        "USD"
+      ],
+      "canonical": "/floral-tailored-3-piece/T-CHD09B-R-VG_MULTI.html"
+    }
+  ],
+  "run_id": "39903597412"
 }
