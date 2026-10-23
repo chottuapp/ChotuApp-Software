@@ -1,6 +1,8 @@
 name: ChotuApp Reviewed Fetch Recovery
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '*/5 * * * *'
   workflow_run:
     workflows: [ChotuApp Cloud Fetch]
     types: [completed]
