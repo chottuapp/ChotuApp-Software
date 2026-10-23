@@ -1,32 +1,29 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-23T07:51:06.278864+00:00",
-  "run_id": "39910528167",
+  "generated_utc": "2026-10-23T09:24:45.089724+00:00",
+  "run_id": "39920676276",
   "attempt": "1",
-  "source_commit": "906b80b6eff05a0a93714badf5e0b23f95720aea",
+  "source_commit": "6c9e26590ee8b456b202d675ab578faa3ea3723c",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 5401.4,
+  "elapsed_seconds": 5400.5,
   "stores": [
     {
       "name": "LAAM",
       "status": "pending",
       "review_required": false,
       "issue_codes": [
-        "HTTP_404",
-        "HTTP_503",
-        "RATE_LIMIT"
+        "HTTP_404"
       ],
       "software_revision": "d886442bbff040ef",
       "http_statuses": {
-        "500": 184,
-        "200": 2526,
-        "404": 152,
-        "503": 1
+        "500": 199,
+        "200": 2929,
+        "404": 224
       },
-      "network_seconds": 3132.0,
-      "max_response_seconds": 18.3,
+      "network_seconds": 1975.7,
+      "max_response_seconds": 34.6,
       "cache_events": 0
     }
   ]
