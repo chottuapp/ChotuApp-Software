@@ -40,7 +40,8 @@ def main():
       if files:record[name]='\n'.join(redact(l) for l in files[0].read_text(errors='replace').splitlines()[-180:])[-26000:]
   except Exception as exc:record['diagnostic_error']=redact(str(exc))[:1000]
   result['targets'].append(record)
- if request.get('public_laam_handle')=='airah-3':
+ if re.fullmatch(r'[a-z0-9-]{1,120}',str(request.get('public_laam_handle',''))):
+  handle=request['public_laam_handle']
   try:
    import requests,time
    import laam_source_support as source
@@ -49,10 +50,10 @@ def main():
    from unittest.mock import patch
    reader=source.PublicCatalog({'S':requests.Session(),'_chotu_wait':lambda:None,'_chotu_backoff':lambda seconds,reason:time.sleep(seconds),'_chotu_debug_request':lambda *a:None,'_chotu_debug_response':lambda *a,**k:None},lambda _:None)
    robots=reader.read(source.BASE+'/robots.txt');reader.robots=RobotFileParser();reader.robots.parse(robots.text.splitlines())
-   page=reader.read(source.BASE+'/products/airah-3')
+   page=reader.read(source.BASE+'/products/'+handle)
    def capture(raw,handle,**kwargs):
-    return {k:raw.get(k) for k in ('id','handle','title','status','stock_status','node_l2','node_l3','options')} | {'variants':[{k:v.get(k) for k in ('id','shopify_id','title','option1','option2','option3','price','compare_at_price','stock_status','inventory_quantity')} for v in raw.get('variants',[])]}
-   with patch.object(source,'normalize',side_effect=capture):result['laam_public_variant_evidence']=source.product_state(BeautifulSoup(page.text,'html.parser'),'airah-3',clothing_only=True,active_only=True)
+    return {k:raw.get(k) for k in ('id','handle','title','status','stock_status','node_l2','node_l3','options','media','images','image','featured_image')} | {'variants':[{k:v.get(k) for k in ('id','shopify_id','title','option1','option2','option3','price','compare_at_price','stock_status','inventory_quantity')} for v in raw.get('variants',[])]}
+   with patch.object(source,'normalize',side_effect=capture):result['laam_public_variant_evidence']=source.product_state(BeautifulSoup(page.text,'html.parser'),handle,clothing_only=True,active_only=True)
   except Exception as exc:result['laam_probe_error']=redact(str(exc))[:1200]
  publish(result,branch='stopped-fetch-reports')
 if __name__=='__main__':main()
