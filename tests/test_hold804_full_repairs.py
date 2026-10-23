@@ -8,6 +8,11 @@ class SourceBoundHoldTests(unittest.TestCase):
   for name,label in cases:
    with self.subTest(name=name):
     row=self.row(name);actual=category(row,'Computer Zone' if 'Thermalright' in name or 'Lian' in name else 'Stylo');self.assertEqual(actual[0],label)
+ def test_included_controller_and_technical_ring_are_not_sold_objects(self):
+  row=self.row('8BitDo Ultimate 2 Wireless Controller, RGB Fire Ring')
+  self.assertIsNone(category(row,'Computer Zone'))
+  self.assertEqual(category(self.row('Wash & Wear Kurta Pajama - 2612'),'Zellbury')[0],'Kurta & Pyjama Sets')
+  self.assertEqual(category(self.row('Disposable Compressed Towels, Travel Wipes'),'Elite Cosmetics')[0],'Compressed Towels')
  def test_promo_retains_both_quantities_without_inventing_a_third_item(self):
   name='Buy Baby Washing Gel 500 ML & Get Body Lotion 100 ML Free';fixed,reason=description(self.row(name,name),'Cool and Cool')
   self.assertEqual(fixed,'Baby Washing Gel 500 ML. Includes Body Lotion 100 ML as a complimentary item.');self.assertTrue(reason)

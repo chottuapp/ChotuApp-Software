@@ -125,7 +125,7 @@ def issues_for(row,source=None):
  if category.lower() in {'accessories','clothing','beauty','skin care','hair care','food','sale','new arrivals','collection','women','men','kids','general','products'}:issues.append('Category is too broad or promotional for product-purpose classification')
  if re.search(r'Product Clarification:|description refers to .*while this listing',description,re.I):issues.append('Conflicting source description requires attention')
  from reviewed804_repairs import product_content
- if source and not tokens(product_content(source))<=tokens(description):issues.append('Description lost source numeric facts')
+ if source and product_content(source).strip() not in ('0','None','') and not tokens(product_content(source))<=tokens(description):issues.append('Description lost source numeric facts')
  body=CARE.split(description,1)[0][:1600]
  category_review=category
  for plural,singular in {'glosses':'gloss','washes':'wash','shampoos':'shampoo','conditioners':'conditioner','mascaras':'mascara','foundations':'foundation','serums':'serum','toners':'toner','lotions':'lotion','concealers':'concealer','eyeliners':'eyeliner','eyeshadows':'eyeshadow','lipsticks':'lipstick','perfumes':'perfume','fragrances':'fragrance','sunscreens':'sunscreen'}.items():category_review=re.sub(r'\b'+plural+r'\b',singular,category_review,flags=re.I)

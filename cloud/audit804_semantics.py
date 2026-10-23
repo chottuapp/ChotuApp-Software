@@ -7,13 +7,13 @@ def has(pattern,value):return bool(re.search(pattern,value,re.I))
 def review(name,description,category,sku="",source_type="",verified_path=""):
  title=text(name);body=text(description);cat=text(category).lower()
  # Only explicit source garment-type strings; a generic vendor/brand is not purpose evidence.
- if re.fullmatch(r'(?i)(?:women|men|teens|kids)\s+(?:stitched\s+[234]\s+piece(?:\s+shirt\s+trouser)?|(?:cotton\s+silk\s+)?shalwar|(?:special\s+)?kurta)',str(source_type or '').strip()):body+=' Source-listed garment type: '+str(source_type)
+ if re.fullmatch(r'(?i)(?:women|men|teens|kids|infants)\s+(?:stitched\s+[234]\s+piece(?:\s+shirt\s+trouser)?|(?:cotton\s+silk\s+)?shalwar|(?:special\s+)?kurta|trouser|earrings|bracelet|necklace|ring|eyebrow\s+kit|waistcoat\s+with\s+kurta\s+trouser)',str(source_type or '').strip()):body+=' Source-listed garment type: '+str(source_type)
  evidence=title+' '+body
  # Regional jewellery names denote the sold object; care mentions are not perfume evidence.
  jewellery={
-  'forehead jewellery':r'\b(?:bindiya|matha\s+patti|maang\s+tikka)\b',
+  'forehead jewellery':r'\b(?:jhoom(?:er|ar)|bindiya|matha\s+patti|maang\s+tikka)\b',
   'jhumka earrings':r'\b(?:jhumk[ai]|bali)\b',
-  'hair ties & scrunchies':r'\b(?:hair\s+ties|scrunchies|scrunchy)\b',
+  'hair ties & scrunchies':r'\b(?:ponytail|hair\s+ties|scrunchies|scrunchy)\b',
  }
  if cat in jewellery and has(jewellery[cat],title+' '+body[:120]):return []
  if cat=='jewellery sets' and has(r'\bset\b',title) and has(r'jewell?ery\s+care|gold\s+plat',body):return []
@@ -107,8 +107,8 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
   'jewellery chains':r'\bchains?\b',
   'bracelets':r'\bbracelets?\b',
   'jewellery sets':r'\b(?:jewell?ery|necklace|earrings?|choker|bridal)\b.{0,80}\bset\b|\bset\b.{0,80}\b(?:earrings?|necklace)\b',
-  'necklaces':r'\b(?:necklaces?|chokers?)\b',
-  'earrings':r'\bearrings?\b',
+  'necklaces':r'\b(?:mala|necklaces?|chokers?)\b',
+  'earrings':r'\b(?:earrings?|baliyan)\b',
   'bath towels':r'\bbath\s+(?:towels?|sheets?)\b',
   'driving wheels':r'\b(?:driving|racing)\s+(?:wheels?|simulator)\b',
   'thermal paste':r'\bthermal\s+(?:paste|compound)\b',
@@ -185,8 +185,67 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
   'ink & toner':r'\b(?:ink bottle|toner|ink cartridge)\b',
   'ups & voltage stabilisers':r'\bups\b|\bvoltage stabili[sz]er\b',
   'voltage stabilizers':r'\bvoltage\s+(?:regulator|stabili[sz]er)\b'}
- proofs.update({'cpu contact frames': '\\bcontact\\s+frame\\b', 'fan & lighting controllers': '\\b(?:fan\\s+(?:hub|controller)|argb\\s+(?:and\\s+fan\\s+hub|controller))\\b', 'internal usb hubs': '\\binternal\\s+usb\\b.{0,30}\\bhub\\b', 'computer status displays': '\\btrofeo\\s+vision\\b.{0,50}\\b(?:lcd|display|screen)\\b', 'racing wheels': '\\b(?:racing|steering)\\s+(?:steering\\s+)?wheel\\b', 'smart glasses': '\\bsmart\\s+glasses\\b', 'fitness bands': '\\bsmart\\s+band\\b', 'tablet stylus pens': '\\b(?:apple\\s+pencil|stylus)\\b', 'microsd memory cards': '\\bmicro\\s*sd(?:xc)?\\b', 'monitors': '\\bmonitors?\\b', 'laptops': '\\b(?:laptops?|ideapad|notebook|chromebook|macbook)\\b', 'keyboards': '\\bkeyboards?\\b', 'selfie sticks & tripods': '\\bselfie\\s+stick\\b', 'phone holders & mounts': '\\b(?:phone\\s+(?:stand|holder)|car\\s+mount)\\b', 'computer cases': '\\b(?:atx\\s+(?:gaming\\s+)?case|gaming\\s+case|computer\\s+case)\\b', 'khussa shoes': '\\bkhus[as]+\\b', 'chappals': '\\bchappals?\\b', 'slippers': '\\bslippers?\\b', 'clogs': '\\b(?:clogs?|crocs)\\b', 'baby booties': '\\bbooties\\b', 'mary jane shoes': '\\bmary\\s+janes?\\b', 'derby shoes': '\\bderby\\s+shoes?\\b', 'formal shoes': '\\bformal\\s+shoes?\\b', 'slingback shoes': '\\bsling[ -]?backs?\\b', 'loafers': '\\bloafers?\\b', 'ballet flats': '\\bballet\\s+flats?\\b', 'bras': '\\bbras?\\b', 'camisoles': '\\bcamisoles?\\b', 'panties': '\\bpant(?:y|ies)\\b', 'vests & gilets': '\\b(?:vest|gilet|sando)s?\\b', 'mufflers': '\\bmufflers?\\b', 'watches': '\\bwatch(?:es)?\\b', 'pouches': '\\bpouches?\\b', 'bowling bags': '\\bbowling\\s+bag\\b', 'backpacks': '\\bback[ -]?packs?\\b', 'bags': '\\bbag\\b', 'hair clips & pins': '\\b(?:claw|bow|heart|hair)\\s+clips?\\b|\\bbobby\\s+pins?\\b', 'hair ties & scrunchies': '\\bscrunch(?:ie|ies|y)\\b|\\bhair\\s+ties?\\b', 'lip oils': '\\blip\\s+(?:glow\\s+)?oil\\b', 'lip plumpers': '\\blip\\s+booster\\b', 'makeup removers': '\\bmakeup\\s+(?:cleanser|remover)\\b|\\bmicellar\\s+water\\b', 'makeup primers': '\\b(?:prime\\s+base|primer\\s+makeup\\s+base|makeup\\s+primer)\\b', 'sunscreens': '\\b(?:sunscreen|sunblock|sun\\s+protect)\\b', 'eyeliners': '\\b(?:smokey\\s+eyes?\\s+pencil|eye\\s+pencil|eyeliner|kajal)\\b', 'makeup powders': '\\b(?:wet\\s*(?:&|and)\\s*dry|terracotta)\\s+powder\\b', 'multipurpose complexion makeup': '\\b3\\s+in\\s+1\\b.*\\bconcealer\\b.*\\bcontour\\b.*\\bfoundation\\b', 'makeup sponges': '\\b(?:sponge\\s+puff|foundation\\s+sponge|makeup\\s+sponge)\\b', 'tweezers': '\\btweezers?\\b', 'blackhead removal tools': '\\bblack\\s*head\\s+pin\\b', 'pedicure sets': '\\bpedicure\\s+kit\\b', 'eyelash curlers': '\\b(?:lash\\s+turner|eyelash\\s+curler)\\b', 'skin scrubs & exfoliators': '\\b(?:skin\\s+polisher|skin\\s+scrub|body\\s+scrub)\\b', 'facial bleach creams': '\\bbleach\\s+cream\\b', 'bleach applicator brushes': '\\bbleach\\s+brush\\b', 'false eyelashes': '\\b(?:false\\s+)?eyelashes\\b', 'bb face makeup': '\\bbb\\s+skin\\s+editor\\b', 'shalwars': '\\bshalwar\\b', 'hair brushes & combs': '\\b(?:hair\\s+brush|blower?\\s+brush|blore\\s+brush|comb)\\b'})
+ proofs.update({'cpu contact frames': '\\bcontact\\s+frame\\b', 'fan & lighting controllers': '\\b(?:fan\\s+(?:hub|controller)|argb\\s+(?:and\\s+fan\\s+hub|controller))\\b', 'internal usb hubs': '\\binternal\\s+usb\\b.{0,30}\\bhub\\b', 'computer status displays': '\\btrofeo\\s+vision\\b.{0,50}\\b(?:lcd|display|screen)\\b', 'racing wheels': '\\b(?:racing|steering)\\s+(?:steering\\s+)?wheel\\b', 'smart glasses': '\\bsmart\\s+glasses\\b', 'fitness bands': '\\bsmart\\s+band\\b', 'tablet stylus pens': '\\b(?:apple\\s+pencil|stylus)\\b', 'microsd memory cards': '\\bmicro\\s*sd(?:xc)?\\b', 'monitors': '\\bmonitors?\\b', 'laptops': '\\b(?:laptops?|ideapad|notebook|chromebook|macbook)\\b', 'keyboards': '\\bkeyboards?\\b', 'selfie sticks & tripods': '\\bselfie\\s+stick\\b', 'phone holders & mounts': '\\b(?:phone\\s+(?:stand|holder)|car\\s+mount)\\b', 'computer cases': '\\b(?:atx\\s+(?:gaming\\s+)?case|gaming\\s+case|computer\\s+case)\\b', 'khussa shoes': '\\bkhus[as]+\\b', 'chappals': '\\bchappals?\\b', 'slippers': '\\bslippers?\\b', 'clogs': '\\b(?:clogs?|crocs)\\b', 'baby booties': '\\bbooties\\b', 'mary jane shoes': '\\bmary\\s+janes?\\b', 'derby shoes': '\\bderby\\s+shoes?\\b', 'formal shoes': '\\bformal\\s+shoes?\\b', 'slingback shoes': '\\bsling[ -]?backs?\\b', 'loafers': '\\bloafers?\\b', 'ballet flats': '\\bballet\\s+flats?\\b', 'bras': '\\bbras?\\b', 'camisoles': '\\bcamisoles?\\b', 'panties': '\\bpant(?:y|ies)\\b', 'vests & gilets': '\\b(?:vest|gilet|sando)s?\\b', 'mufflers': '\\bmufflers?\\b', 'watches': '\\bwatch(?:es)?\\b', 'pouches': r'\bpouch(?:es)?\b', 'bowling bags': '\\bbowling\\s+bag\\b', 'backpacks': '\\bback[ -]?packs?\\b', 'bags': '\\bbag\\b', 'hair clips & pins': '\\b(?:claw|bow|heart|hair)\\s+clips?\\b|\\bbobby\\s+pins?\\b', 'hair ties & scrunchies': '\\bscrunch(?:ie|ies|y)\\b|\\bhair\\s+ties?\\b', 'lip oils': '\\blip\\s+(?:glow\\s+)?oil\\b', 'lip plumpers': '\\blip\\s+booster\\b', 'makeup removers': '\\bmakeup\\s+(?:cleanser|remover)\\b|\\bmicellar\\s+water\\b', 'makeup primers': '\\b(?:prime\\s+base|primer\\s+makeup\\s+base|makeup\\s+primer)\\b', 'sunscreens': '\\b(?:sunscreen|sunblock|sun\\s+protect)\\b', 'eyeliners': '\\b(?:smokey\\s+eyes?\\s+pencil|eye\\s+pencil|eyeliner|kajal)\\b', 'makeup powders': '\\b(?:wet\\s*(?:&|and)\\s*dry|terracotta)\\s+powder\\b', 'multipurpose complexion makeup': '\\b3\\s+in\\s+1\\b.*\\bconcealer\\b.*\\bcontour\\b.*\\bfoundation\\b', 'makeup sponges': '\\b(?:sponge\\s+puff|foundation\\s+sponge|makeup\\s+sponge)\\b', 'tweezers': '\\btweezers?\\b', 'blackhead removal tools': '\\bblack\\s*head\\s+pin\\b', 'pedicure sets': '\\bpedicure\\s+kit\\b', 'eyelash curlers': '\\b(?:lash\\s+turner|eyelash\\s+curler)\\b', 'skin scrubs & exfoliators': '\\b(?:skin\\s+polisher|skin\\s+scrub|body\\s+scrub)\\b', 'facial bleach creams': '\\bbleach\\s+cream\\b', 'bleach applicator brushes': '\\bbleach\\s+brush\\b', 'false eyelashes': '\\b(?:false\\s+)?eyelashes\\b', 'bb face makeup': '\\bbb\\s+skin\\s+editor\\b', 'shalwars': '\\bshalwar\\b', 'hair brushes & combs': '\\b(?:hair\\s+brush|blower?\\s+brush|blore\\s+brush|comb)\\b'})
+ proofs['hair accessories']=r'\bhair\s+accessor(?:y|ies)\b'
+ proofs['jeans']=r'\b(?:denim jeans|jeans)\b'
+ proofs['earrings']=r'\b(?:earrings?|earings?|baliyan)\b'
  proofs['case fans']=proofs['cooling fans']
+ proofs.update({
+  'diffuser oils':r'\bdiffuser\s+oil\b',
+  'eyebrow kits':r'\b(?:eye)?brow\s+(?:makeup\s+)?kit\b',
+  'eyeliners':r'\b(?:dipliner|eyeliner|kajal|smokey\s+eyes?\s+pencil|eye\s+pencil)\b',
+  'face powders':r'\b(?:mineral|face|loose|compact)\s+powder\b',
+  'makeup removers':r'\bmake[ -]?up\s+(?:remover|cleanser)\b|\bmicellar\s+water\b',
+  'cardigans':r'\bcardigan\b',
+  'moccasins':r'\bmocass?ins?\b|\bloafer\b',
+  'monk shoes':r'\bmonk\b.{0,30}\bshoes\b',
+  'rings':r'\b(?:women\s+ring|finger\s+ring)\b',
+  'room fragrances':r'\b(?:room\s+(?:spray|freshener)|reed\s+diffuser)\b',
+ })
+ proofs['hair clips & pins']=r'\b(?:hair|heart|bow)\s+(?:clips?|pins?)\b|\bbobby\s+pins?\b'
+ proofs['hair brushes & combs']=r'\b(?:hair|blower?|blore)\s+brush(?:es)?\b|\bcombs?\b'
+ proofs.update({
+  'kurta & pyjama sets':r'\bkurta\s+p[ay]jama\b',
+  'sherwanis':r'\bsherwanis?\b',
+  'denim shorts':r'\bjorts\b|\bdenim\b.{0,30}\bshorts\b',
+  'bomber jackets':r'\bbomber\b',
+  'flats':r'\bflats\b',
+  'pullovers':r'\bpull[ -]?over\b',
+  'pyjamas':r'\bp[ay]jama\b',
+  'tops':r'\b(?:knit|sleeve|capelet)\b.{0,80}\btop\b',
+  'hand creams':r'\bhand\s+cream\b',
+ })
+ proofs.update({
+  'bed sheets':r'\bbed\s+sheet\b',
+  'school shoes':r'\bschool\s+shoes?\b',
+  'stoles':r'\bstoles?\b',
+  'bralettes':r'\bbralettes?\b',
+  'loungewear sets':r'\blounge\s*wear\s+set\b',
+  'nail care kits':r'\bnail\s+care\s+kit\b',
+  'stationery sets':r'\bstationery\s+set\b',
+  'boots':r'\bboots?\b',
+  'tote bags':r'\btote\s*bag\b',
+  'hair crowns & tiaras':r'\b(?:crown|tiara)\b',
+  'skin lotions':r'\blotion\b.{0,500}\bskin\b',
+  'skin scrubs & exfoliators':r'\bskin\s+polisher\b|\bscrub\b.{0,800}\bskin\b|\bskin\b.{0,800}\bscrub\b',
+  'lip balms':r'\blip\s+(?:balm|butter)\b',
+  'hand moisturisers':r'\bhand\s+elixir\b.{0,500}\b(?:hydrat|moistur)',
+ })
+ proofs.update({
+  'compressed towels':r'\bcompressed\s+towels?\b',
+  'massage devices':r'\b(?:massager|massage\s+gun|fascia\s+gun)\b',
+  'skin toning solutions':r'\btoning\s+solution\b',
+  'body scrubs':r'\b(?:body|shower)\s+scrub\b',
+  'hair colour developers':r'\bdeveloper\b.{0,15}\b(?:volume|vol)\b',
+  'nightdresses':r'\bnight(?:y|ie|ies|dress)\b',
+  'panties':r'\bpant(?:y|ie|ies)\b',
+  'pyjama sets':r'\bp[ay]jama\s+set\b',
+  'cardholders':r'\bcard[ -]?holders?\b',
+  'jewellery chains':r'\b(?:gold|silver|plated)\s+chain\b',
+  'hair accessory sets':r'\bhair\s+accessor(?:y|ies)\s+(?:combo\s+)?set\b',
+  'artificial nails':r'\b(?:artificial|false|press[ -]?on)\s+nails?\b',
+  'gift baskets':r'\bgift\s+basket\b.{0,150}\byou can fill\b',
+ })
  proofs.update({
   'eyeshadow palettes':r'\bpalette\b.{0,1600}\b(?:eyelids?|eyes?|shadow)\b|\b(?:eyes?|shadow)\b.{0,300}\bpalette\b',
   'face mists & toners':r'\bmist\b.{0,1600}\bface\b',
@@ -197,8 +256,10 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  })
  if cat=='face serums' and (has(r'\b(?:hair|eyelash|lip|lash)\b',title) or has(r'\b(?:hair|scalp|lip|lash)\b.{0,40}\bserum\b',body[:300])):return ['Facial serum Category conflicts with named application area']
  if cat=='face moisturisers & creams' and has(r'\b(?:body|hand|foot|heel|baby)\b',title):return ['Facial cream Category conflicts with named application area']
+ if cat=='toners & tonics' and 'toner' in str(verified_path).casefold() and has(r'\b(?:rose water|aloe vera)\b',evidence):return []
  if cat=='perfumes & fragrances':
-  if str(verified_path).split(' > ')[0].casefold()=='fragrances' and not has(r'body lotion|body wash|hair|soap|cream',title):return []
+  if has(r'\bapply perfume\b',body) and has(r'\btop\s+note',body) and has(r'\b(?:base|dry)\s+note',body):return []
+  if any(part.casefold() in ('fragrance','fragrances','perfume','perfumes') for part in str(verified_path).split(' > ')) and not has(r'body lotion|body wash|hair|soap|cream',title):return []
   if has(r'\bfragrance guide\b',body) and has(r'\bscent family\s*:',body) and has(r'\bsize\s*:\s*\d+\s*ml\b',body):return []
   notes=[has(r'(?m)^\s*'+part+r'(?:\s+notes?)?\s*:?\s*(?:\n|$)',description) for part in ('top','(?:hear(?:t)?|mid(?:dle)?)','(?:base|dry)')]
   if all(notes) and not has(r'body lotion|body wash|hair|soap',title):return []
@@ -214,14 +275,15 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  if cat=='memory cards' and has(r'card reader',title):return ['Reader incorrectly classified as memory card']
  if cat in proofs and has(proofs[cat],title+' '+body[:1600]):
   return []
- bundle=has(r'\b(?:bundle|kit|combo|duo|trio|pack|set|therapy)\b',title+' '+body[:250])
+ bundle=has(r'\b(?:bundle|kit|combo|duo|trio|pack|set|basket|therapy)\b|\bbuy\b.*\bget\b.*\bfree\b',title+' '+body[:250])
  families={
   'spice bundles':r'\b(?:spice|masala|cumin|coriander|pepper)\b',
   'makeup sets':r'\b(?:makeup|contour|highlight|blush|lipstick|eyeshadow)\b',
   'beauty sets & bundles':r'\b(?:makeup|skin|face|cream|serum)\b',
-  'skin care bundles':r'\b(?:skin|face|facial|cream|retinol|pigmentation|niacinamide|serum|acne|hand|feet|pores|breakouts)\b',
+  'skin care bundles':r'\b(?:skincare|rose water|lotion|skin|face|facial|cream|retinol|pigmentation|niacinamide|serum|acne|hand|feet|pores|breakouts)\b',
   'hair care bundles':r'\b(?:hair|shampoo|conditioner)\b',
-  'personal care bundles':r'\b(?:hair|shampoo|face|body)\b'}
+  'sun care bundles':r'\b(?:sunscreen|sunblock|sun protection)\b',
+  'personal care bundles':r'\b(?:skincare|haircare|fragrance|hair|shampoo|face|body)\b'}
  if cat=='skin care bundles' and has(r'\b(?:lipstick|lip gloss|eyeshadow|mascara|foundation|concealer)\b',title):return ['Cosmetics bundle incorrectly classified as skincare']
  if cat in families and bundle and has(families[cat],evidence):return []
  return None

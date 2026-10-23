@@ -4,9 +4,57 @@ from pathlib import Path
 from functools import lru_cache
 from datetime import datetime,timezone
 from urllib.parse import urlsplit
+SOURCE_TYPES={'Women Trouser':'Trousers','Women Earrings':'Earrings','Women Bracelet':'Bracelets','Women Necklace':'Necklaces','Women Ring':'Rings','Women Eyebrow Kit':'Eyebrow Kits','Infants Stitched 3 Piece':'Stitched Outfit Sets','Men Waistcoat With Kurta Trouser':'Clothing Sets'}
 STORES={'Cool and Cool','Rivaj UK','Computer Zone','Saeed Ghani','Elite Cosmetics','Hemani Herbals','Bonanza Satrangi','Rawayat','Junaid Jamshed','Outfitters','Zellbury','Stylo'}
 # Explicit object names. Compatibility targets, ingredients and care text are not classifiers.
 NAMED=[
+ ('Diffuser Oils',r'\bdiffuser\s+oil\b'),
+ ('Room Fragrances',r'\breed\s+diffuser\b'),
+ ('Eyebrow Kits',r'\bbrow\s+kit\b'),
+ ('Eyeliners',r'\bdipliner\b'),
+ ('Face Powders',r'\bmineral\s+powder\b'),
+ ('Makeup Removers',r'\bmake[ -]?up\s+remover\b'),
+ ('Cardigans',r'\bcardigan\b'),
+ ('Moccasins',r'\bmocass?ins?\b'),
+ ('Monk Shoes',r'\bmonk\b.{0,30}\bshoes\b'),
+
+ ('Kurta & Pyjama Sets',r'\bkurta\s+p[ay]jama\b'),
+ ('Kameez Shalwar Sets',r'\bkameez\s+shalwar\b'),
+ ('Sherwanis',r'\bsherwanis?\b'),
+ ('Denim Shorts',r'\bjorts\b'),
+ ('Bomber Jackets',r'\bbomber\b'),
+ ('Flats',r'\bflats\b'),
+ ('Pullovers',r'\bpull[ -]?over\b'),
+ ('Tops',r'\btop\b(?!\s*(?:note|coat|load|4|four|10))'),
+
+ ('Bed Sheets',r'\bbed\s+sheet\b'),
+ ('School Shoes',r'\bschool\s+shoes?\b'),
+ ('Stoles',r'\bstoles?\b'),
+ ('Bralettes',r'\bbralettes?\b'),
+ ('Loungewear Sets',r'\blounge\s*wear\s+set\b'),
+ ('Nail Care Kits',r'\bnail\s+care\s+kit\b'),
+ ('Stationery Sets',r'\bstationery\s+set\b'),
+ ('Boots',r'\bboots?\b'),
+ ('Belts',r'\bbelts?\b'),
+ ('Hair Crowns & Tiaras',r'\b(?:crown|tiara)\b'),
+
+ ('Compressed Towels',r'\bcompressed\s+towels?\b'),
+ ('Massage Devices',r'\b(?:massager|massage\s+gun|fascia\s+gun)\b'),
+ ('Skin Toning Solutions',r'\btoning\s+solution\b'),
+ ('Body Scrubs',r'\b(?:body|shower)\s+scrub\b'),
+ ('Hair Colour Developers',r'\bdeveloper\b.{0,15}\b(?:volume|vol)\b'),
+ ('Nightdresses',r'\bnight(?:y|ie|ies|dress)\b'),
+ ('Panties',r'\bpantie\b'),
+ ('Pyjama Sets',r'\bp[ay]jama\s+set\b'),
+ ('Cardholders',r'\bcard[ -]?holders?\b'),
+ ('Jewellery Chains',r'\b(?:gold|silver|plated)\s+chain\b'),
+ ('Hair Ties & Scrunchies',r'\bponytail\b'),
+ ('Forehead Jewellery',r'\bjhoom(?:er|ar)\b'),
+ ('Necklaces',r'\bmala\b(?!\s+set)'),
+ ('Earrings',r'\bbaliyan\b'),
+ ('Hair Accessory Sets',r'\bhair\s+accessor(?:y|ies)\s+(?:combo\s+)?set\b'),
+ ('Artificial Nails',r'\b(?:artificial|false|press[ -]?on)\s+nails?\b'),
+
  ('Sunscreens',r'\b(?:sunscreen|sunblock|sun\s+protect)\b'),
  ('Hair Brushes & Combs',r'\b(?:hair|blower?|blore)\s+brush(?:es)?\b'),
  ('Hair Brushes & Combs','\\b(?:hair\\s+brush|blore\\s+brush|blower?\\s+brush)\\b'),
@@ -63,7 +111,7 @@ NAMED=[
  ('Bras',r'\bbras?\b'),('Camisoles',r'\bcamisoles?\b'),('Panties',r'\bpant(?:y|ies)\b'),
  ('Vests & Gilets',r'\b(?:vest|gilet|sando)s?\b'),('Thermal Underwear',r'\bthermal\s+(?:wear|underwear|inner)\b'),
  ('Mufflers',r'\bmufflers?\b'),('Watches',r'\bwatch(?:es)?\b'),
- ('Pouches',r'\bpouches?\b'),('Bowling Bags',r'\bbowling\s+bag\b'),
+ ('Pouches',r'\bpouch(?:es)?\b'),('Bowling Bags',r'\bbowling\s+bag\b'),
  ('Backpacks',r'\bback[ -]?packs?\b'),('Pencil Cases',r'\bpencil\s+case\b'),
  ('Hair Clips & Pins',r'\b(?:claw|bow|heart|hair)\s+clips?\b|\bbobby\s+pins?\b'),
  ('Hair Ties & Scrunchies',r'\bscrunch(?:ie|ies|y)\b|\bhair\s+ties?\b'),
@@ -96,25 +144,36 @@ def public_facts(row,store):
 def category(row,store):
  if store not in STORES:return None
  name=str(row.get('name') or '');body=str(row.get('description') or '')
+ if store=='Junaid Jamshed' and row.get('brand') in SOURCE_TYPES:return SOURCE_TYPES[row['brand']],'reviewed_source_product_type','Explicit source product_type: '+row['brand']
  source=public_facts(row,store)
  if source:
   types={'earring':'Earrings','earrings':'Earrings','earstuds':'Stud Earrings','jhumka':'Jhumka Earrings','karay':'Bangles & Karas','bangles':'Bangles & Karas','necklace':'Necklaces','necklaces':'Necklaces','bracelets':'Bracelets','anklet':'Anklets','anklets':'Anklets','ring':'Rings','pendent':'Pendants & Lockets','pendent/chain':'Pendant Necklaces','pendent/necklace':'Pendant Necklaces','nath':'Nose Jewellery','bindiya kanta':'Forehead Jewellery','choker set':'Jewellery Sets','mala set':'Jewellery Sets','locket set':'Jewellery Sets','bridal set':'Jewellery Sets','jeans':'Jeans'}
+  if source.get('reviewed_visual_type')=='Jeans' and source.get('reviewed_visual_evidence',{}).get('sha256'):return 'Jeans','reviewed_product_image','Actual product image reviewed: '+source['reviewed_visual_evidence']['source_url']
+  if str(source.get('product_type') or '').casefold()=='luxury unstitch' and re.search(r'(?i)\bshirt\s+shalwar\s+dupatta\b',name):return 'Unstitched Suits','reviewed_public_product_type','Source-listed Luxury Unstitch and named shirt, shalwar, dupatta; '+source['source_url']
   label=types.get(str(source.get('product_type') or '').strip().casefold())
   if label:return label,'reviewed_public_product_type','Public product_type: '+source['product_type']+'; evidence run '+source['evidence_run']+'; '+source['source_url']
 
  for label,pattern in NAMED:
+  if label=='Tops' and (not re.search(r'(?i)\b(?:knit|sleeve|capelet|ribbed|jersey|cotton)\b',name+' '+body[:300]) or store in {'Computer Zone','Elite Cosmetics','Hemani Herbals','Rivaj UK','Cool and Cool','Saeed Ghani'} or re.search(r'(?i)\b(?:makeup|cosmetic|lipstick|cream|serum|bundle)\b',name)):continue
   if label=='Cooling Fans' and re.search(r'(?i)\b(?:hub|controller|cable|adapter)\b',name.split(',')[0]):continue
   if label=='Rings' and store=='Computer Zone':continue
   if label=='Rings' and re.search(r'(?i)\b(?:key|curtain|napkin|phone|holder|case|light|binder)\b',name):continue
   if label=='False Eyelashes' and re.search(r'(?i)\b(?:serum|growth|glue|adhesive|mascara|oil)\b',name):continue
   if re.search(pattern,name,re.I):return label,'reviewed_product_name','Explicit sold-object wording: '+name
- if re.search(r'(?i)\b(?:bowling|crossbody|cross[ -]body|shoulder|tote|hand)\s*bag\b',name):return None
+ if re.search(r'(?i)\b(?:apply perfume|fragrance notes)\b',body) and re.search(r'(?i)\b(?:top|base|mid|dry)\s+note',body) and not re.search(r'(?i)\b(?:hand cream|body lotion|soap|wash)\b',name):return 'Perfumes & Fragrances','reviewed_source_description','Explicit fragrance use and note tiers: '+name+'; '+body[:500]
+ if re.search(r'(?i)\b(?:crossbody|cross[ -]body)\s*bag\b',name):return 'Cross-Body Bags','reviewed_product_name',name
+ if re.search(r'(?i)\bshoulder\s*bag\b',name):return 'Shoulder Bags','reviewed_product_name',name
+ if re.search(r'(?i)\btote\s*bag\b',name):return 'Tote Bags','reviewed_product_name',name
+ if re.search(r'(?i)\bhand\s*bag\b',name):return 'Handbags','reviewed_product_name',name
  if re.search(r'(?i)\bbag\b',name):return 'Bags','reviewed_product_name','Product explicitly named a bag: '+name
  if re.search(r'(?i)\b(?:palette)\b',name) and re.search(r'(?i)\b(?:eyes?|eyeshadow|eye\s*makeup)\b',body):return 'Eyeshadow Palettes','reviewed_source_description','Source identifies eye makeup palette: '+name+'; '+body[:500]
  if re.search(r'(?i)\b(?:skin|face)\s+polish',name):return 'Skin Polishes','reviewed_product_name','Explicit skin polish: '+name
  if re.search(r'(?i)\bface\b',str(row.get('website_category_path') or '')) and re.search(r'(?i)\btoner\b',str(row.get('website_category_path') or '')) and re.search(r'(?i)\bmist\b',name):return 'Face Mists & Toners','verified_navigation_membership',str(row['website_category_path'])+'; '+name
  if re.search(r'(?i)\bscrub\b',name) and (re.search(r'(?i)\b(?:facial|face)\b',str(row.get('website_category_path') or '')) or re.search(r'(?i)\b(?:face|facial)\b',body)):return 'Face Scrubs & Exfoliators','reviewed_source_description','Facial scrub source context: '+name+'; '+str(row.get('website_category_path'))
  if re.search(r'(?i)\b(?:black|charcoal)\s+(?:peel.off\s+)?mask\b',name) and re.search(r'(?i)\bskin\b',body):return 'Skin Masks','reviewed_source_description','Skin mask source: '+name+'; '+body[:500]
+ if re.search(r'(?i)\b(?:skin|body)\b',body) and re.search(r'(?i)\bscrub\b',name):return 'Skin Scrubs & Exfoliators','reviewed_source_description','Scrub with source skin application: '+name+'; '+body[:300]
+ if re.search(r'(?i)\bbuy\b.*\bget\b.*\bfree\b',name) and re.search(r'(?i)\b(?:lotion|rose\s+water)\b',name):return 'Skin Care Bundles','reviewed_source_description','Named paid and complimentary skin-care items: '+name+'; '+body
+ if re.search(r'(?i)\bbundle\b',name) and re.search(r'(?i)\bsunscreen\b',body):return 'Sun Care Bundles','reviewed_source_description','Source names sunscreen combo pack: '+name+'; '+body
  if re.search(r'(?i)\blotion\b',name) and re.search(r'(?i)\bbody\s+lotion\b',body):return 'Body Lotions','reviewed_source_description','Explicit source body lotion: '+name+'; '+body[:300]
  if re.search(r'(?i)\blotion\b',name) and not re.search(r'(?i)\b(?:hair|baby|lip|foot|hand)\b',name):return 'Skin Lotions','reviewed_product_name','Named skin lotion: '+name
  if re.search(r'(?i)\b(?:moisturizing|moisturising)\s+(?:water\s+)?gel\b',name) and re.search(r'(?i)\bskin\b',body):return 'Skin Moisturising Gels','reviewed_source_description','Named moisturising gel with skin context: '+name+'; '+body[:500]
@@ -125,6 +184,7 @@ def category(row,store):
   if hair and skin:return 'Hair & Skin Oils','reviewed_source_description','Source lists both hair and skin uses: '+name+'; '+body[:600]
   if hair:return 'Hair Oils','reviewed_source_description','Source hair application: '+name+'; '+body[:600]
   if skin:return 'Skin Oils','reviewed_source_description','Source skin application: '+name+'; '+body[:600]
+ if re.fullmatch(r'(?i)Gift Basket',name.strip()) and re.search(r'(?i)\byou can fill\b',body):return 'Gift Baskets','reviewed_source_description','Empty customizable basket; source says buyer fills it: '+body
  if re.search(r'(?i)\b(?:bundle|trio|basket|gift\s*box|self.care\s+set)\b',name):
   if re.search(r'(?i)\b(?:skincare|skin|face\s+wash|cream|lotion)\b',body):
    label='Personal Care Bundles' if re.search(r'(?i)\b(?:haircare|fragrance|beard)\b',body) else 'Skin Care Bundles'
@@ -145,10 +205,14 @@ def description(row,store):
   lead=name+' is a fragrance'+(' in the '+leaf+' range.' if leaf.casefold()!='fragrances' else '.')
   if not body.startswith(lead):return lead+('\n\n'+original if body and body!=name else ''),'Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.'
  source=public_facts(row,store)
- if source and body==name and source.get('description') and source['description'].strip()!=name:
+ if store=='Junaid Jamshed' and body.split('\n\nProduct Options:')[0].strip()==name:
+  kind={'Men Special Kurta':'a special kurta for men','Men Kurta':'a kurta for men','Women Powder':'a makeup powder','Women Eyebrow Kit':'an eyebrow makeup kit'}.get(row.get('brand'))
+  if kind:return name+' is '+kind+'.'+original[len(name):],'Rewrote exact source product_type; existing options preserved.'
+ if source and body in ('0','','None') and str(source.get('product_type') or '').casefold()=='luxury unstitch' and re.search(r'(?i)\bshirt\s+shalwar\s+dupatta\b',name):return name+' is an unstitched outfit with a shirt, shalwar and dupatta.','Rewrote explicit source product_type and all three named components; no fabric, embroidery technique or quantities inferred.'
+ if source and body in (name,'','0','None') and source.get('description') and source['description'].strip()!=name:
   return name+'.\n\n'+source['description'],'Restored exact matching primary public product description; listing identity retained.'
- if source and str(source.get('product_type')).casefold()=='jeans' and body.startswith(name):
-  return name+' is a denim jeans style.'+original[len(name):],'Added the public product_type Jeans; every saved option retained.'
+ if source and (str(source.get('product_type')).casefold()=='jeans' or source.get('reviewed_visual_type')=='Jeans') and not body.startswith(name+' is a denim jeans style.'):
+  return name+' is a denim jeans style.'+('\n\n'+original if not body.startswith(name) else original[len(name):]),'Added the public product_type Jeans; every saved option retained.'
  promo=re.fullmatch(r'(?is)Buy\s+(.+?)\s*(?:&|and)\s*Get\s+(.+?)\s+Free',name)
  if promo and body==name:
   return promo[1].strip()+'. Includes '+promo[2].strip()+' as a complimentary item.','Rewrote the explicitly named paid product and complimentary gift; all names and quantities retained.'
