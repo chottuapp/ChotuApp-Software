@@ -1,30 +1,30 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-23T06:13:56.303254+00:00",
-  "run_id": "39901817367",
+  "generated_utc": "2026-10-23T06:16:04.820365+00:00",
+  "run_id": "39901934794",
   "attempt": "1",
-  "source_commit": "281c76368c6b8b9304721d02abcc7ff481ec2100",
-  "status": "complete",
+  "source_commit": "e2945225b4611f949b32b3ed0a72e876a04a111b",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 5400.1,
+  "elapsed_seconds": 5401.4,
   "stores": [
     {
-      "name": "Gul Ahmed",
-      "status": "done",
-      "review_required": true,
+      "name": "LAAM",
+      "status": "pending",
+      "review_required": false,
       "issue_codes": [
-        "WEBSITE_ORDER_UNVERIFIED"
+        "HTTP_404"
       ],
-      "software_revision": "5975b673c62e6fda",
-      "products": 7736,
-      "variants": 30889,
+      "software_revision": "d886442bbff040ef",
       "http_statuses": {
-        "200": 451
+        "500": 166,
+        "404": 123,
+        "200": 3071
       },
-      "network_seconds": 983.8,
-      "max_response_seconds": 2.4,
-      "cache_events": 30504
+      "network_seconds": 1805.8,
+      "max_response_seconds": 17.2,
+      "cache_events": 0
     }
   ]
 }
