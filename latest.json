@@ -1,174 +1,24 @@
 {
-  "run_id": "39910243001",
-  "checked_utc": "2026-10-23T06:14:15.890401+00:00",
-  "active_queued": 2,
+  "run_id": "39910565037",
+  "checked_utc": "2026-10-23T06:17:27.150039+00:00",
+  "active_queued": 1,
   "runs": [
     {
       "conclusion": "",
-      "databaseId": 39901934794,
-      "displayTitle": "Cloud group audit804-fresh804-20261021-a26dcd86-6-laam",
+      "databaseId": 39910528167,
+      "displayTitle": "Automatic continuation of 39901934794",
       "status": "in_progress",
-      "updatedAt": "2026-10-23T04:44:37Z",
-      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39901934794",
+      "updatedAt": "2026-10-23T06:17:11Z",
+      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39910528167",
       "lane": "audit804-fresh804-20261021-a26dcd86-6-laam",
-      "snapshot": "Updated (UTC): 2026-10-23T06:11:24.243436+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nLAAM: running\n  Stage: Website listing order\n  Last successful HTTP response (UTC): 2026-10-23T06:11:16.702657+00:00\n",
-      "snapshot_utc": "2026-10-23T06:11:24.243436+00:00",
-      "stores": {
-        "LAAM": "running"
-      },
-      "snapshot_age_seconds": 172,
-      "snapshot_stale": false,
-      "console-tail.txt": [
-        "[LAAM] PUBLIC PRODUCT PAGES: 23750/183187 LAAM pages inspected; 9641 clothing products retained",
-        "[LAAM] PUBLIC PRODUCT PAGES: 23750/183187 LAAM pages inspected; 9641 clothing products retained; 165 pages deferred",
-        "[LAAM] [06:10:43] HTTP START attempt=1 https://laam.com/products/azura-blue-2pc-dress",
-        "[LAAM] [06:10:43] HTTP END status=200 elapsed=0.4s bytes=317131 https://laam.com/products/azura-blue-2pc-dress",
-        "[LAAM] [06:10:44] HTTP START attempt=1 https://laam.com/products/azura-lilac",
-        "[LAAM] [06:10:45] HTTP END status=200 elapsed=0.4s bytes=329942 https://laam.com/products/azura-lilac",
-        "[LAAM] [06:10:46] HTTP START attempt=1 https://laam.com/products/azura-royale-flared-sequine-heavy-embroidered-frock-maroon-mmg-1066",
-        "[LAAM] [06:10:46] HTTP END status=200 elapsed=0.3s bytes=314437 https://laam.com/products/azura-royale-flared-sequine-heavy-embroidered-frock-maroon-mmg-1066",
-        "[LAAM] [06:10:47] HTTP START attempt=1 https://laam.com/products/azurae-0095",
-        "[LAAM] [06:10:48] HTTP END status=200 elapsed=0.3s bytes=324546 https://laam.com/products/azurae-0095",
-        "[LAAM] [06:10:49] HTTP START attempt=1 https://laam.com/products/azure-101",
-        "[LAAM] [06:10:49] HTTP END status=200 elapsed=0.3s bytes=308396 https://laam.com/products/azure-101",
-        "[LAAM] [06:10:50] HTTP START attempt=1 https://laam.com/products/azure-105",
-        "[LAAM] [06:10:51] HTTP END status=200 elapsed=0.4s bytes=319016 https://laam.com/products/azure-105",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/azure-105; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [06:10:52] HTTP START attempt=1 https://laam.com/products/azure-109",
-        "[LAAM] [06:10:52] HTTP END status=200 elapsed=0.3s bytes=318437 https://laam.com/products/azure-109",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/azure-109; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [06:10:53] HTTP START attempt=1 https://laam.com/products/azure-110",
-        "[LAAM] [06:10:54] HTTP END status=200 elapsed=0.4s bytes=321364 https://laam.com/products/azure-110",
-        "[LAAM] [06:10:55] HTTP START attempt=1 https://laam.com/products/azure-112",
-        "[LAAM] [06:10:55] HTTP END status=200 elapsed=0.4s bytes=305809 https://laam.com/products/azure-112",
-        "[LAAM] [06:10:56] HTTP START attempt=1 https://laam.com/products/azure-12",
-        "[LAAM] [06:10:57] HTTP END status=200 elapsed=1.0s bytes=319363 https://laam.com/products/azure-12",
-        "[LAAM] [06:10:58] HTTP START attempt=1 https://laam.com/products/azure-15",
-        "[LAAM] [06:10:58] HTTP END status=200 elapsed=0.5s bytes=318281 https://laam.com/products/azure-15",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/azure-15; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [06:10:59] HTTP START attempt=1 https://laam.com/products/azure-2",
-        "[LAAM] [06:11:00] HTTP END status=200 elapsed=0.4s bytes=311010 https://laam.com/products/azure-2",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/azure-2; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [06:11:01] HTTP START attempt=1 https://laam.com/products/azure-2-pc-pret",
-        "[LAAM] [06:11:01] HTTP END status=200 elapsed=0.3s bytes=308615 https://laam.com/products/azure-2-pc-pret",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/azure-2-pc-pret; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [06:11:02] HTTP START attempt=1 https://laam.com/products/azure-20",
-        "[LAAM] [06:11:03] HTTP END status=200 elapsed=0.5s bytes=307802 https://laam.com/products/azure-20",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/azure-20; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [06:11:04] HTTP START attempt=1 https://laam.com/products/azure-23",
-        "[LAAM] [06:11:04] HTTP END status=200 elapsed=0.4s bytes=302804 https://laam.com/products/azure-23",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/azure-23; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [06:11:05] HTTP START attempt=1 https://laam.com/products/azure-24",
-        "[LAAM] [06:11:06] HTTP END status=500 elapsed=0.3s bytes=197277 https://laam.com/products/azure-24",
-        "[LAAM] LAAM PRODUCT DEFERRED: https://laam.com/products/azure-24; temporary server failure, not exported or marked complete",
-        "[LAAM] [06:11:07] HTTP START attempt=1 https://laam.com/products/azure-24-39",
-        "[LAAM] [06:11:07] HTTP END status=200 elapsed=0.3s bytes=309210 https://laam.com/products/azure-24-39",
-        "[LAAM] [06:11:08] HTTP START attempt=1 https://laam.com/products/azure-28",
-        "[LAAM] [06:11:09] HTTP END status=200 elapsed=0.4s bytes=329165 https://laam.com/products/azure-28",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/azure-28; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [06:11:10] HTTP START attempt=1 https://laam.com/products/azure-2pcs-co-ord-set",
-        "[LAAM] [06:11:10] HTTP END status=200 elapsed=0.3s bytes=317035 https://laam.com/products/azure-2pcs-co-ord-set",
-        "[LAAM] [06:11:11] HTTP START attempt=1 https://laam.com/products/azure-3-piece-set",
-        "[LAAM] [06:11:12] HTTP END status=200 elapsed=0.4s bytes=312317 https://laam.com/products/azure-3-piece-set",
-        "[LAAM] [06:11:13] HTTP START attempt=1 https://laam.com/products/azure-3-piece-stitched",
-        "[LAAM] [06:11:13] HTTP END status=200 elapsed=0.4s bytes=315862 https://laam.com/products/azure-3-piece-stitched",
-        "[LAAM] [06:11:14] HTTP START attempt=1 https://laam.com/products/azure-33",
-        "[LAAM] [06:11:15] HTTP END status=200 elapsed=0.3s bytes=312491 https://laam.com/products/azure-33",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/azure-33; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [06:11:16] HTTP START attempt=1 https://laam.com/products/azure-34",
-        "[LAAM] [06:11:16] HTTP END status=200 elapsed=0.4s bytes=337388 https://laam.com/products/azure-34",
-        "[LAAM] [06:11:17] HTTP START attempt=1 https://laam.com/products/azure-36",
-        "[LAAM] [06:11:18] HTTP END status=200 elapsed=0.3s bytes=301039 https://laam.com/products/azure-36",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/azure-36; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [06:11:19] HTTP START attempt=1 https://laam.com/products/azure-3pc-0",
-        "[LAAM] [06:11:19] HTTP END status=200 elapsed=0.4s bytes=309106 https://laam.com/products/azure-3pc-0",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/azure-3pc-0; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [06:11:20] HTTP START attempt=1 https://laam.com/products/azure-3pc-stitched",
-        "[LAAM] [06:11:21] HTTP END status=200 elapsed=0.3s bytes=339002 https://laam.com/products/azure-3pc-stitched",
-        "[LAAM] [06:11:22] HTTP START attempt=1 https://laam.com/products/azure-4",
-        "[LAAM] [06:11:22] HTTP END status=200 elapsed=0.3s bytes=312026 https://laam.com/products/azure-4",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/azure-4; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [06:11:23] HTTP START attempt=1 https://laam.com/products/azure-41"
-      ],
-      "fetch-log.txt": [
-        "[LAAM] PUBLIC PRODUCT PAGES: 23750/183187 LAAM pages inspected; 9641 clothing products retained; 165 pages deferred",
-        "[LAAM] [06:10:43] HTTP START attempt=1 https://laam.com/products/azura-blue-2pc-dress",
-        "[LAAM] [06:10:43] HTTP END status=200 elapsed=0.4s bytes=317131 https://laam.com/products/azura-blue-2pc-dress",
-        "[LAAM] [06:10:44] HTTP START attempt=1 https://laam.com/products/azura-lilac",
-        "[LAAM] [06:10:45] HTTP END status=200 elapsed=0.4s bytes=329942 https://laam.com/products/azura-lilac",
-        "[LAAM] [06:10:46] HTTP START attempt=1 https://laam.com/products/azura-royale-flared-sequine-heavy-embroidered-frock-maroon-mmg-1066",
-        "[LAAM] [06:10:46] HTTP END status=200 elapsed=0.3s bytes=314437 https://laam.com/products/azura-royale-flared-sequine-heavy-embroidered-frock-maroon-mmg-1066",
-        "[LAAM] [06:10:47] HTTP START attempt=1 https://laam.com/products/azurae-0095",
-        "[LAAM] [06:10:48] HTTP END status=200 elapsed=0.3s bytes=324546 https://laam.com/products/azurae-0095",
-        "[LAAM] [06:10:49] HTTP START attempt=1 https://laam.com/products/azure-101",
-        "[LAAM] [06:10:49] HTTP END status=200 elapsed=0.3s bytes=308396 https://laam.com/products/azure-101",
-        "[LAAM] [06:10:50] HTTP START attempt=1 https://laam.com/products/azure-105",
-        "[LAAM] [06:10:51] HTTP END status=200 elapsed=0.4s bytes=319016 https://laam.com/products/azure-105",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/azure-105; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [06:10:52] HTTP START attempt=1 https://laam.com/products/azure-109",
-        "[LAAM] [06:10:52] HTTP END status=200 elapsed=0.3s bytes=318437 https://laam.com/products/azure-109",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/azure-109; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [06:10:53] HTTP START attempt=1 https://laam.com/products/azure-110",
-        "[LAAM] [06:10:54] HTTP END status=200 elapsed=0.4s bytes=321364 https://laam.com/products/azure-110",
-        "[LAAM] [06:10:55] HTTP START attempt=1 https://laam.com/products/azure-112",
-        "[LAAM] [06:10:55] HTTP END status=200 elapsed=0.4s bytes=305809 https://laam.com/products/azure-112",
-        "[LAAM] [06:10:56] HTTP START attempt=1 https://laam.com/products/azure-12",
-        "[LAAM] [06:10:57] HTTP END status=200 elapsed=1.0s bytes=319363 https://laam.com/products/azure-12",
-        "[LAAM] [06:10:58] HTTP START attempt=1 https://laam.com/products/azure-15",
-        "[LAAM] [06:10:58] HTTP END status=200 elapsed=0.5s bytes=318281 https://laam.com/products/azure-15",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/azure-15; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [06:10:59] HTTP START attempt=1 https://laam.com/products/azure-2",
-        "[LAAM] [06:11:00] HTTP END status=200 elapsed=0.4s bytes=311010 https://laam.com/products/azure-2",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/azure-2; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [06:11:01] HTTP START attempt=1 https://laam.com/products/azure-2-pc-pret",
-        "[LAAM] [06:11:01] HTTP END status=200 elapsed=0.3s bytes=308615 https://laam.com/products/azure-2-pc-pret",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/azure-2-pc-pret; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [06:11:02] HTTP START attempt=1 https://laam.com/products/azure-20",
-        "[LAAM] [06:11:03] HTTP END status=200 elapsed=0.5s bytes=307802 https://laam.com/products/azure-20",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/azure-20; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [06:11:04] HTTP START attempt=1 https://laam.com/products/azure-23",
-        "[LAAM] [06:11:04] HTTP END status=200 elapsed=0.4s bytes=302804 https://laam.com/products/azure-23",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/azure-23; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [06:11:05] HTTP START attempt=1 https://laam.com/products/azure-24",
-        "[LAAM] [06:11:06] HTTP END status=500 elapsed=0.3s bytes=197277 https://laam.com/products/azure-24",
-        "[LAAM] LAAM PRODUCT DEFERRED: https://laam.com/products/azure-24; temporary server failure, not exported or marked complete",
-        "[LAAM] [06:11:07] HTTP START attempt=1 https://laam.com/products/azure-24-39",
-        "[LAAM] [06:11:07] HTTP END status=200 elapsed=0.3s bytes=309210 https://laam.com/products/azure-24-39",
-        "[LAAM] [06:11:08] HTTP START attempt=1 https://laam.com/products/azure-28",
-        "[LAAM] [06:11:09] HTTP END status=200 elapsed=0.4s bytes=329165 https://laam.com/products/azure-28",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/azure-28; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [06:11:10] HTTP START attempt=1 https://laam.com/products/azure-2pcs-co-ord-set",
-        "[LAAM] [06:11:10] HTTP END status=200 elapsed=0.3s bytes=317035 https://laam.com/products/azure-2pcs-co-ord-set",
-        "[LAAM] [06:11:11] HTTP START attempt=1 https://laam.com/products/azure-3-piece-set",
-        "[LAAM] [06:11:12] HTTP END status=200 elapsed=0.4s bytes=312317 https://laam.com/products/azure-3-piece-set",
-        "[LAAM] [06:11:13] HTTP START attempt=1 https://laam.com/products/azure-3-piece-stitched",
-        "[LAAM] [06:11:13] HTTP END status=200 elapsed=0.4s bytes=315862 https://laam.com/products/azure-3-piece-stitched",
-        "[LAAM] [06:11:14] HTTP START attempt=1 https://laam.com/products/azure-33",
-        "[LAAM] [06:11:15] HTTP END status=200 elapsed=0.3s bytes=312491 https://laam.com/products/azure-33",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/azure-33; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [06:11:16] HTTP START attempt=1 https://laam.com/products/azure-34",
-        "[LAAM] [06:11:16] HTTP END status=200 elapsed=0.4s bytes=337388 https://laam.com/products/azure-34",
-        "[LAAM] [06:11:17] HTTP START attempt=1 https://laam.com/products/azure-36",
-        "[LAAM] [06:11:18] HTTP END status=200 elapsed=0.3s bytes=301039 https://laam.com/products/azure-36",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/azure-36; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [06:11:19] HTTP START attempt=1 https://laam.com/products/azure-3pc-0",
-        "[LAAM] [06:11:19] HTTP END status=200 elapsed=0.4s bytes=309106 https://laam.com/products/azure-3pc-0",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/azure-3pc-0; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [06:11:20] HTTP START attempt=1 https://laam.com/products/azure-3pc-stitched",
-        "[LAAM] [06:11:21] HTTP END status=200 elapsed=0.3s bytes=339002 https://laam.com/products/azure-3pc-stitched",
-        "[LAAM] [06:11:22] HTTP START attempt=1 https://laam.com/products/azure-4",
-        "[LAAM] [06:11:22] HTTP END status=200 elapsed=0.3s bytes=312026 https://laam.com/products/azure-4",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/azure-4; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [06:11:23] HTTP START attempt=1 https://laam.com/products/azure-41",
-        "[LAAM] [06:11:24] HTTP END status=200 elapsed=0.3s bytes=311637 https://laam.com/products/azure-41"
-      ]
+      "snapshot_unavailable": true
     },
     {
-      "conclusion": "",
+      "conclusion": "success",
       "databaseId": 39901817367,
       "displayTitle": "Cloud group audit804-fresh804-20261021-a26dcd86-7-gul-ahmed",
-      "status": "in_progress",
-      "updatedAt": "2026-10-23T06:14:07Z",
+      "status": "completed",
+      "updatedAt": "2026-10-23T06:14:22Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39901817367",
       "lane": "audit804-fresh804-20261021-a26dcd86-7-gul-ahmed",
       "snapshot": "Updated (UTC): 2026-10-23T06:13:51.132157+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Gul Ahmed.xlsx\n\nSTORE STATUS\nGul Ahmed: done\n  Last successful HTTP response (UTC): 2026-10-23T05:21:54.356051+00:00\n",
@@ -176,7 +26,7 @@
       "stores": {
         "Gul Ahmed": "done"
       },
-      "snapshot_age_seconds": 25,
+      "snapshot_age_seconds": 216,
       "snapshot_stale": false
     },
     {
@@ -194,7 +44,7 @@
         "Junaid Jamshed": "done",
         "Stylo": "done"
       },
-      "snapshot_age_seconds": 108075,
+      "snapshot_age_seconds": 108266,
       "snapshot_stale": true
     },
     {
@@ -212,7 +62,7 @@
         "Outfitters": "done",
         "Zellbury": "done"
       },
-      "snapshot_age_seconds": 140417,
+      "snapshot_age_seconds": 140608,
       "snapshot_stale": true
     },
     {
@@ -229,7 +79,7 @@
         "Saeed Ghani": "done",
         "Hemani Herbals": "done"
       },
-      "snapshot_age_seconds": 136098,
+      "snapshot_age_seconds": 136290,
       "snapshot_stale": true,
       "failure_details_unavailable": true
     },
@@ -246,7 +96,7 @@
       "stores": {
         "Sapphire": "done"
       },
-      "snapshot_age_seconds": 153727,
+      "snapshot_age_seconds": 153918,
       "snapshot_stale": true
     },
     {
@@ -262,7 +112,7 @@
       "stores": {
         "Zero Lifestyle": "done"
       },
-      "snapshot_age_seconds": 161341,
+      "snapshot_age_seconds": 161533,
       "snapshot_stale": true
     },
     {
@@ -280,7 +130,7 @@
         "Denim Leftover": "done",
         "Cool and Cool": "done"
       },
-      "snapshot_age_seconds": 161163,
+      "snapshot_age_seconds": 161355,
       "snapshot_stale": true
     },
     {
@@ -294,9 +144,10 @@
       "snapshot": "Updated (UTC): 2026-10-21T10:39:43.603011+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Nisa Naturals.xlsx\n\nSTORE STATUS\nNisa Naturals: done\n  Last successful HTTP response (UTC): 2026-10-21T09:24:31.872469+00:00\nLAAM: pending\n  Stage: Website listing order\n  Last successful HTTP response (UTC): 2026-10-21T10:39:31.829972+00:00\nSapphire: pending\n  Stage: Website listing order\n  Last successful HTTP response (UTC): 2026-10-21T10:39:33.670192+00:00\n",
       "snapshot_utc": "2026-10-21T10:39:43.603011+00:00",
       "stores": {
-        "Nisa Naturals": "done"
+        "Nisa Naturals": "done",
+        "LAAM": "pending"
       },
-      "snapshot_age_seconds": 156872,
+      "snapshot_age_seconds": 157064,
       "snapshot_stale": true
     },
     {
@@ -314,7 +165,7 @@
         "Adam Cheese": "done",
         "Computer Zone": "done"
       },
-      "snapshot_age_seconds": 159583,
+      "snapshot_age_seconds": 159774,
       "snapshot_stale": true
     },
     {
@@ -332,7 +183,7 @@
         "Shop Modest": "done",
         "Seran": "done"
       },
-      "snapshot_age_seconds": 161126,
+      "snapshot_age_seconds": 161317,
       "snapshot_stale": true
     },
     {
@@ -350,7 +201,7 @@
         "The Hanger Pakistan": "done",
         "Elite Cosmetics": "done"
       },
-      "snapshot_age_seconds": 157315,
+      "snapshot_age_seconds": 157507,
       "snapshot_stale": true
     },
     {
@@ -368,12 +219,11 @@
         "Rivaj UK": "done",
         "Rawayat": "done"
       },
-      "snapshot_age_seconds": 149767,
+      "snapshot_age_seconds": 149958,
       "snapshot_stale": true
     }
   ],
   "fresh_stores": {
-    "LAAM": "running",
     "Gul Ahmed": "done",
     "Tawakkal Fabrics": "done",
     "Junaid Jamshed": "done",
@@ -389,6 +239,7 @@
     "Denim Leftover": "done",
     "Cool and Cool": "done",
     "Nisa Naturals": "done",
+    "LAAM": "pending",
     "Farda Foods": "done",
     "Adam Cheese": "done",
     "Computer Zone": "done",
@@ -412,11 +263,11 @@
     "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
     "error": "",
     "progress_age_seconds": 1,
-    "report_age_seconds": 211896,
+    "report_age_seconds": 212085,
     "status_confirmed": false
   },
   "drive": {
-    "sync_status": "scanning",
+    "sync_status": "finished",
     "sync_error": null,
     "last_scan_utc": "2026-10-23T05:59:29.460053+00:00",
     "held": {
@@ -512,7 +363,7 @@
       "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
       "error": "",
       "progress_age_seconds": 1,
-      "report_age_seconds": 211896,
+      "report_age_seconds": 212085,
       "status_confirmed": false
     }
   ],
