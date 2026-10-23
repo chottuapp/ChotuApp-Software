@@ -23,7 +23,7 @@ def review(name,description,category,sku=""):
  ready=has(r'\brtw\b|ready[ -]to[ -]wear|\bstitched\b',re.sub(r'\b(?:un|semi)[ -]?stitched\b','',state_evidence,flags=re.I))
  if clothing:
   if cat in ('clothing sets','kurta & trouser sets','co-ord sets','suits & ensembles','stitched outfit sets','kurta & dupatta sets'):
-   return [] if multi or has(r'\b(?:co[ -]?ord|kurta.*trouser|shirt.*trouser|gharara.*suit)\b',evidence) else None
+   return [] if multi or has(r'\b(?:co[ -]?ord|kurta.*trouser|shirt.*trouser|(?:kurta|shirt).*dupatta|gharara.*suit)\b',evidence) else None
   if cat=='ready-to-wear outfits':
    if unstitched and not ready:return ['Stitching state conflicts with Category']
    return [] if ready else None

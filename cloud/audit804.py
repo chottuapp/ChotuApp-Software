@@ -123,7 +123,6 @@ def issues_for(row,source=None):
  if re.search(r'\b(?:lorem ipsum|description coming soon|no description available)\b',description,re.I):issues.append('Placeholder description')
  if not category:issues.append('Category blank or unresolved')
  if category.lower() in {'accessories','clothing','beauty','skin care','hair care','food','sale','new arrivals','collection','women','men','kids','general','products'}:issues.append('Category is too broad or promotional for product-purpose classification')
- if category and plain(row.get('brand')) and category.casefold()==plain(row.get('brand')).casefold():issues.append('Brand name used as product Category')
  if re.search(r'Product Clarification:|description refers to .*while this listing',description,re.I):issues.append('Conflicting source description requires attention')
  from reviewed804_repairs import product_content
  if source and not tokens(product_content(source))<=tokens(description):issues.append('Description lost source numeric facts')
@@ -145,7 +144,8 @@ def issues_for(row,source=None):
  bundle=bool(re.search(r'\b(?:bundle|combo|kit|deal|set of)\b',name,re.I))
  if re.search(r'printer|toner|reload',name,re.I):bundle=False
  from audit804_semantics import review
- semantic=review(name,description,category,str(row.get("sku") or ""))
+ semantic=review(name,str(row.get("description") or ""),category,str(row.get("sku") or ""))
+ if category and plain(row.get('brand')) and category.casefold()==plain(row.get('brand')).casefold() and semantic!=[]:issues.append('Brand name used as product Category')
  if semantic is not None:issues.extend(semantic)
  else:
   if bundle and category:

@@ -23,3 +23,13 @@ class HoldRepairsTests(unittest.TestCase):
   self.assertEqual(review('Lady Prive','Top\nCitrus, Coffee\nHeart\nRose\nBase\nVanilla','Perfumes & Fragrances'),[])
   self.assertIsNone(review('Opaque 30ml','No source product description','Perfumes & Fragrances'))
 if __name__=='__main__':unittest.main()
+
+class WorkbookReviewRegressionTests(unittest.TestCase):
+ def test_all_row_audit_preserves_note_heading_lines(self):
+  row={'name':'Lady Prive','description':'Top\nCitrus, Coffee\nHeart\nRose\nBase\nVanilla','Category':'Perfumes & Fragrances'}
+  self.assertEqual(issues_for(row),[])
+ def test_source_vendor_type_label_is_not_rejected_as_a_brand(self):
+  row={'name':'Beige Low Cut Unisex Socks','description':'Beige low cut unisex socks. Colour: Beige.','Category':'Socks','brand':'Socks'}
+  self.assertEqual(issues_for(row),[])
+  row.update(name='Opaque collection',description='An opaque collection without any product type.',Category='Vendor Brand',brand='Vendor Brand')
+  self.assertIn('Brand name used as product Category',issues_for(row))
