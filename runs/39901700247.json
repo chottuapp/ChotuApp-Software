@@ -1,0 +1,717 @@
+{
+  "run_id": "39901700247",
+  "checked_utc": "2026-10-23T04:42:09.849646+00:00",
+  "targets": [
+    {
+      "target": "39834176747",
+      "state": {
+        "conclusion": "failure",
+        "displayTitle": "Automatic continuation of 39820621688",
+        "headSha": "beb0df563beb819517f0c89a6fa6b565f4f68934",
+        "jobs": [
+          {
+            "completedAt": "2026-10-22T19:51:58Z",
+            "conclusion": "failure",
+            "databaseId": 120018205811,
+            "name": "fetch",
+            "startedAt": "2026-10-22T18:46:04Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-22T18:46:06Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-22T18:46:05Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T18:46:15Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-22T18:46:06Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T18:46:15Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-22T18:46:15Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T18:46:21Z",
+                "conclusion": "success",
+                "name": "Install extraction dependencies",
+                "number": 4,
+                "startedAt": "2026-10-22T18:46:15Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T18:48:08Z",
+                "conclusion": "success",
+                "name": "Restore optional saved run",
+                "number": 5,
+                "startedAt": "2026-10-22T18:46:21Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T18:48:08Z",
+                "conclusion": "skipped",
+                "name": "Install Czone browser fallback when needed",
+                "number": 6,
+                "startedAt": "2026-10-22T18:48:08Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T18:48:08Z",
+                "conclusion": "success",
+                "name": "Start continuous fetching on the cloud runner",
+                "number": 7,
+                "startedAt": "2026-10-22T18:48:08Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T19:51:13Z",
+                "conclusion": "success",
+                "name": "Live progress, logs and completed-file uploads",
+                "number": 8,
+                "startedAt": "2026-10-22T18:48:08Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T19:51:13Z",
+                "conclusion": "failure",
+                "name": "Fetch result",
+                "number": 9,
+                "startedAt": "2026-10-22T19:51:13Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T19:51:13Z",
+                "conclusion": "success",
+                "name": "Collect diagnostic report even if fetching failed",
+                "number": 10,
+                "startedAt": "2026-10-22T19:51:13Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T19:51:14Z",
+                "conclusion": "success",
+                "name": "Upload diagnostic report and redacted log",
+                "number": 11,
+                "startedAt": "2026-10-22T19:51:13Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T19:51:16Z",
+                "conclusion": "success",
+                "name": "Upload Excel files and audits, including completed stores from a partial run",
+                "number": 12,
+                "startedAt": "2026-10-22T19:51:14Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T19:51:16Z",
+                "conclusion": "skipped",
+                "name": "Final automated Rule 804 pass for fresh batch",
+                "number": 13,
+                "startedAt": "2026-10-22T19:51:16Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T19:51:16Z",
+                "conclusion": "skipped",
+                "name": "Upload automated Rule 804 fresh workbooks",
+                "number": 14,
+                "startedAt": "2026-10-22T19:51:16Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T19:51:54Z",
+                "conclusion": "success",
+                "name": "Upload saved checkpoint when available",
+                "number": 15,
+                "startedAt": "2026-10-22T19:51:16Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T19:51:55Z",
+                "conclusion": "success",
+                "name": "Dispatch authorized continuation after verified checkpoint upload",
+                "number": 16,
+                "startedAt": "2026-10-22T19:51:54Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T19:51:55Z",
+                "conclusion": "success",
+                "name": "Post Live progress, logs and completed-file uploads",
+                "number": 30,
+                "startedAt": "2026-10-22T19:51:55Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T19:51:55Z",
+                "conclusion": "skipped",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 31,
+                "startedAt": "2026-10-22T19:51:55Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T19:51:55Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 32,
+                "startedAt": "2026-10-22T19:51:55Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T19:51:55Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 33,
+                "startedAt": "2026-10-22T19:51:55Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39834176747/job/120018205811"
+          },
+          {
+            "completedAt": "2026-10-22T19:52:16Z",
+            "conclusion": "success",
+            "databaseId": 120051626498,
+            "name": "Archive structured diagnostics",
+            "startedAt": "2026-10-22T19:52:01Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-22T19:52:03Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-22T19:52:02Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T19:52:09Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-22T19:52:03Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T19:52:09Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-22T19:52:09Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T19:52:10Z",
+                "conclusion": "success",
+                "name": "Run actions/download-artifact@v4",
+                "number": 4,
+                "startedAt": "2026-10-22T19:52:09Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T19:52:14Z",
+                "conclusion": "success",
+                "name": "Archive credential-free JSON on the cloud-reports branch",
+                "number": 5,
+                "startedAt": "2026-10-22T19:52:10Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T19:52:14Z",
+                "conclusion": "success",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 9,
+                "startedAt": "2026-10-22T19:52:14Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T19:52:14Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 10,
+                "startedAt": "2026-10-22T19:52:14Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-22T19:52:14Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 11,
+                "startedAt": "2026-10-22T19:52:14Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39834176747/job/120051626498"
+          }
+        ],
+        "status": "completed"
+      },
+      "failed_log": "fetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3752600Z [LAAM] [19:50:32] HTTP END status=200 elapsed=0.3s bytes=303564 https://laam.com/products/ark-velo-embroidery-shirt\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3754059Z [LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/ark-velo-embroidery-shirt; no source-confirmed available variants; unavailable product excluded, no variants invented\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3755189Z [LAAM] [19:50:33] HTTP START attempt=1 https://laam.com/products/arleen-rae\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3755949Z [LAAM] [19:50:34] HTTP END status=200 elapsed=0.3s bytes=325437 https://laam.com/products/arleen-rae\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3756803Z [LAAM] [19:50:35] HTTP START attempt=1 https://laam.com/products/arlen-velvet-set-dark-olive-green\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3757785Z [LAAM] [19:50:35] HTTP END status=200 elapsed=0.4s bytes=312565 https://laam.com/products/arlen-velvet-set-dark-olive-green\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3758537Z __CHOTU_PROGRESS__|1|Active: LAAM\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3759505Z [LAAM] [19:50:35] EXCEPTION: RuntimeError('ADAPTER ERROR: LAAM Product arlen-velvet-set-dark-olive-green: LAAM product gallery unavailable. Saved responses retained; no options, prices or stock guessed.')\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3760221Z [LAAM] [19:50:35] Traceback (most recent call last):\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3768669Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 278, in catalog\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3769817Z     try:product=product_state(BeautifulSoup(response.text,'html.parser',parse_only=SoupStrainer('script')),handle,clothing_only=True,active_only=True,in_stock_only=True)\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3770559Z                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3771250Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 81, in product_state\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3771919Z     product=normalize(candidates[0],handle,active_only=active_only,in_stock_only=in_stock_only)\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3772402Z             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3772992Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 146, in normalize\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3773603Z     if not images:raise ValueError('LAAM product gallery unavailable')\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3774181Z                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3774514Z ValueError: LAAM product gallery unavailable\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3774710Z \nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3774906Z The above exception was the direct cause of the following exception:\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3775151Z \nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3775266Z Traceback (most recent call last):\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3775808Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 324, in run\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3776363Z     try:return original(BASE,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3776675Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3777214Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 475, in run\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3777786Z     if host!='czone.com.pk':return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3778166Z                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3778683Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1037, in run_site\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3779188Z     products, complete_catalog=discover(base,log)\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3779503Z                                ^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3780031Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 323, in <lambda>\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3781080Z     g.update(discover=lambda base,log:source.catalog(),collections=lambda base,log:{},refresh_variant_prices=lambda base,p,log:p['variants'],storefront_cover=cover,verified_top20=ranking,audit_fractional_prices=audit,storefront_price_audit=display)\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3782040Z                                       ^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3782605Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 292, in catalog\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3783331Z     except (ValueError,TypeError,KeyError) as exc:raise ValueError('Product '+handle+': '+str(exc)) from exc\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3783848Z                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3784546Z ValueError: Product arlen-velvet-set-dark-olive-green: LAAM product gallery unavailable\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3784871Z \nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3785068Z The above exception was the direct cause of the following exception:\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3785324Z \nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3785452Z Traceback (most recent call last):\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3785976Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1999, in _run_checked\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3786492Z     run_site(site['url'], name, template, log_line)\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3787049Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3787843Z     if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3788324Z                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3788862Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1492, in run_site\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3789405Z     _chotuapp_run_site_original(base, name, template, intercept)\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3789984Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3790724Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3791319Z                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3791937Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 215, in run\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3792701Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3793362Z                                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3794075Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 207, in run\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3794632Z     try:return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3794945Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3795461Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 326, in run\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3796294Z     except (ValueError,TypeError,KeyError) as exc:raise RuntimeError('ADAPTER ERROR: LAAM '+str(exc)+'. Saved responses retained; no options, prices or stock guessed.') from exc\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3797010Z                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3797756Z RuntimeError: ADAPTER ERROR: LAAM Product arlen-velvet-set-dark-olive-green: LAAM product gallery unavailable. Saved responses retained; no options, prices or stock guessed.\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3798390Z \nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3798847Z [LAAM] FAILED: LAAM: ADAPTER ERROR: LAAM Product arlen-velvet-set-dark-olive-green: LAAM product gallery unavailable. Saved responses retained; no options, prices or stock guessed.\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3799488Z [LAAM] [19:50:35] STAGE: Idle\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3800126Z FAILED: LAAM: FAILED: LAAM: ADAPTER ERROR: LAAM Product arlen-velvet-set-dark-olive-green: LAAM product gallery unavailable. Saved responses retained; no options, prices or stock guessed.\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3800781Z False\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3801180Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3801824Z Large checkpoint saved in checksummed parts: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3802424Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3802823Z RUN SUMMARY:\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3803747Z LAAM: FAILED \u2014 FAILED: LAAM: ADAPTER ERROR: LAAM Product arlen-velvet-set-dark-olive-green: LAAM product gallery unavailable. Saved responses retained; no options, prices or stock guessed.\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3804637Z Checkpoint: saved\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3805067Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3819013Z ##[error]Process completed with exit code 2.\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3858938Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3859526Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3903207Z shell: /usr/bin/bash -e {0}\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3903484Z env:\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3903854Z   CHOTUAPP_CLOUD_DATA: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3904508Z   CLOUD_RUNNER_GROUP: audit804-fresh804-20261021-a26dcd86-6-laam\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3904865Z   CLOUD_PARTITION_RESUME: false\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3905294Z   CLOUD_STORES: Farda Foods | https://fardafoods.com; Islamabad Tea | https://islamabadtea.pk\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3905708Z   CLOUD_MINUTES: 90\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3905954Z   RESUME_RUN_ID: 39820621688\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:13.3906217Z   SAVE_CHECKPOINT: true\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:54.6562340Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:54.6562740Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:54.6563134Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:54.6563533Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:54.6564082Z   CLOUD_NEEDS_CZONE_BROWSER: false\n[credential-bearing log line removed]\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:54.6566544Z ##[endgroup]\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:55.4196631Z No continuation: completed, stopped manually, unauthorized or not a time-budget stop.\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:55.4432572Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:55.4507246Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:55.5214198Z [command]/usr/bin/git version\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:55.5254046Z git version 2.55.0\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:55.5283361Z Temporarily overriding HOME='/home/runner/work/_temp/6a04a27f-dc91-497d-ad5b-816c1d4dd99c' before making global git config changes\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:55.5284709Z Adding repository directory to the temporary git global config as a safe directory\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:55.5287682Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ChotuApp-Software/ChotuApp-Software\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:55.5322617Z [command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:55.5356084Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:55.5584155Z [command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nfetch\tUNKNOWN STEP\t2026-10-22T19:51:55.5610285Z http.https://github.com/.extraheader",
+      "artifacts": [
+        {
+          "name": "chotuapp-live-logs",
+          "id": 12454611347,
+          "expired": false,
+          "size_in_bytes": 90090
+        },
+        {
+          "name": "chotuapp-checkpoint",
+          "id": 12453717805,
+          "expired": false,
+          "size_in_bytes": 1517781608
+        },
+        {
+          "name": "chotuapp-diagnostics",
+          "id": 12453597537,
+          "expired": false,
+          "size_in_bytes": 88066
+        },
+        {
+          "name": "chotuapp-excel-files",
+          "id": 12453578239,
+          "expired": false,
+          "size_in_bytes": 13267
+        }
+      ],
+      "annotations": [
+        {
+          "level": "warning",
+          "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+        },
+        {
+          "level": "failure",
+          "message": "Process completed with exit code 2."
+        }
+      ],
+      "console-tail.txt": "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/ark-solis; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:50:30] HTTP START attempt=1 https://laam.com/products/ark-vanta-embroidery-shirt\n[LAAM] [19:50:31] HTTP END status=200 elapsed=0.3s bytes=302556 https://laam.com/products/ark-vanta-embroidery-shirt\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/ark-vanta-embroidery-shirt; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:50:32] HTTP START attempt=1 https://laam.com/products/ark-velo-embroidery-shirt\n[LAAM] [19:50:32] HTTP END status=200 elapsed=0.3s bytes=303564 https://laam.com/products/ark-velo-embroidery-shirt\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/ark-velo-embroidery-shirt; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:50:33] HTTP START attempt=1 https://laam.com/products/arleen-rae\n[LAAM] [19:50:34] HTTP END status=200 elapsed=0.3s bytes=325437 https://laam.com/products/arleen-rae\n[LAAM] [19:50:35] HTTP START attempt=1 https://laam.com/products/arlen-velvet-set-dark-olive-green\n[LAAM] [19:50:35] HTTP END status=200 elapsed=0.4s bytes=312565 https://laam.com/products/arlen-velvet-set-dark-olive-green\n__CHOTU_PROGRESS__|1|Active: LAAM\n[LAAM] [19:50:35] EXCEPTION: RuntimeError('ADAPTER ERROR: LAAM Product arlen-velvet-set-dark-olive-green: LAAM product gallery unavailable. Saved responses retained; no options, prices or stock guessed.')\n[LAAM] [19:50:35] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 278, in catalog\n    try:product=product_state(BeautifulSoup(response.text,'html.parser',parse_only=SoupStrainer('script')),handle,clothing_only=True,active_only=True,in_stock_only=True)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 81, in product_state\n    product=normalize(candidates[0],handle,active_only=active_only,in_stock_only=in_stock_only)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 146, in normalize\n    if not images:raise ValueError('LAAM product gallery unavailable')\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: LAAM product gallery unavailable\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 324, in run\n    try:return original(BASE,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 475, in run\n    if host!='czone.com.pk':return original(base,name,template,log)\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1037, in run_site\n    products, complete_catalog=discover(base,log)\n                               ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 323, in <lambda>\n    g.update(discover=lambda base,log:source.catalog(),collections=lambda base,log:{},refresh_variant_prices=lambda base,p,log:p['variants'],storefront_cover=cover,verified_top20=ranking,audit_fractional_prices=audit,storefront_price_audit=display)\n                                      ^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 292, in catalog\n    except (ValueError,TypeError,KeyError) as exc:raise ValueError('Product '+handle+': '+str(exc)) from exc\n                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Product arlen-velvet-set-dark-olive-green: LAAM product gallery unavailable\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1999, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1492, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 215, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 207, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 326, in run\n    except (ValueError,TypeError,KeyError) as exc:raise RuntimeError('ADAPTER ERROR: LAAM '+str(exc)+'. Saved responses retained; no options, prices or stock guessed.') from exc\n                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: ADAPTER ERROR: LAAM Product arlen-velvet-set-dark-olive-green: LAAM product gallery unavailable. Saved responses retained; no options, prices or stock guessed.\n\n[LAAM] FAILED: LAAM: ADAPTER ERROR: LAAM Product arlen-velvet-set-dark-olive-green: LAAM product gallery unavailable. Saved responses retained; no options, prices or stock guessed.\n[LAAM] [19:50:35] STAGE: Idle\nFAILED: LAAM: FAILED: LAAM: ADAPTER ERROR: LAAM Product arlen-velvet-set-dark-olive-green: LAAM product gallery unavailable. Saved responses retained; no options, prices or stock guessed.\nFalse\nCheckpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nLarge checkpoint saved in checksummed parts: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts\nCheckpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts\nRUN SUMMARY:\nLAAM: FAILED \u2014 FAILED: LAAM: ADAPTER ERROR: LAAM Product arlen-velvet-set-dark-olive-green: LAAM product gallery unavailable. Saved responses retained; no options, prices or stock guessed.\nCheckpoint: saved\nRun finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+      "store-status.txt": "Updated (UTC): 2026-10-22T19:51:11.113006+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nLAAM: failed\n  Stage: Idle\n  Last successful HTTP response (UTC): 2026-10-22T19:50:35.690526+00:00",
+      "fetch-log.txt": "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/arij-drop-earring-multi-zarosh-jewel\n[LAAM] [19:49:24] HTTP START attempt=1 https://laam.com/products/arila\n[LAAM] [19:49:24] HTTP END status=200 elapsed=0.3s bytes=313938 https://laam.com/products/arila\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/arila; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:49:25] HTTP START attempt=1 https://laam.com/products/arin\n[LAAM] [19:49:25] HTTP END status=200 elapsed=0.3s bytes=349297 https://laam.com/products/arin\n[LAAM] [19:49:27] HTTP START attempt=1 https://laam.com/products/arin-0\n[LAAM] [19:49:27] HTTP END status=200 elapsed=0.4s bytes=329842 https://laam.com/products/arin-0\n[LAAM] [19:49:28] HTTP START attempt=1 https://laam.com/products/arina\n[LAAM] [19:49:28] HTTP END status=200 elapsed=0.3s bytes=325118 https://laam.com/products/arina\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/arina; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:49:30] HTTP START attempt=1 https://laam.com/products/arina-0\n[LAAM] [19:49:30] HTTP END status=200 elapsed=0.3s bytes=318294 https://laam.com/products/arina-0\n[LAAM] [19:49:31] HTTP START attempt=1 https://laam.com/products/arina-3pc\n[LAAM] [19:49:32] HTTP END status=200 elapsed=1.3s bytes=346103 https://laam.com/products/arina-3pc\n[LAAM] [19:49:33] HTTP START attempt=1 https://laam.com/products/arina-fc1-142\n[LAAM] [19:49:33] HTTP END status=200 elapsed=0.4s bytes=311329 https://laam.com/products/arina-fc1-142\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/arina-fc1-142; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:49:34] HTTP START attempt=1 https://laam.com/products/arine\n[LAAM] [19:49:34] HTTP END status=200 elapsed=0.4s bytes=310367 https://laam.com/products/arine\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/arine; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:49:36] HTTP START attempt=1 https://laam.com/products/arinya-3-piece-printed-lawn-stitched-suit\n[LAAM] [19:49:36] HTTP END status=200 elapsed=0.3s bytes=319689 https://laam.com/products/arinya-3-piece-printed-lawn-stitched-suit\n[LAAM] [19:49:37] HTTP START attempt=1 https://laam.com/products/aris-top\n[LAAM] [19:49:37] HTTP END status=200 elapsed=0.3s bytes=315319 https://laam.com/products/aris-top\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/aris-top; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:49:39] HTTP START attempt=1 https://laam.com/products/arisa\n[LAAM] [19:49:39] HTTP END status=200 elapsed=0.3s bytes=347268 https://laam.com/products/arisa\n[LAAM] [19:49:40] HTTP START attempt=1 https://laam.com/products/arisa-0\n[LAAM] [19:49:40] HTTP END status=200 elapsed=0.4s bytes=306875 https://laam.com/products/arisa-0\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/arisa-0; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:49:42] HTTP START attempt=1 https://laam.com/products/arisa-1\n[LAAM] [19:49:44] HTTP END status=200 elapsed=2.5s bytes=314279 https://laam.com/products/arisa-1\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/arisa-1; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:49:44] HTTP START attempt=1 https://laam.com/products/arisa-2\n[LAAM] [19:49:47] HTTP END status=200 elapsed=2.6s bytes=317093 https://laam.com/products/arisa-2\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/arisa-2; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:49:47] HTTP START attempt=1 https://laam.com/products/arisa-2pc\n[LAAM] [19:49:47] HTTP END status=200 elapsed=0.4s bytes=311602 https://laam.com/products/arisa-2pc\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/arisa-2pc; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:49:48] HTTP START attempt=1 https://laam.com/products/arisa-5\n[LAAM] [19:49:49] HTTP END status=200 elapsed=0.4s bytes=307607 https://laam.com/products/arisa-5\n[LAAM] [19:49:50] HTTP START attempt=1 https://laam.com/products/arisha\n[LAAM] [19:49:50] HTTP END status=500 elapsed=0.3s bytes=197275 https://laam.com/products/arisha\n[LAAM] LAAM PRODUCT DEFERRED: https://laam.com/products/arisha; temporary server failure, not exported or marked complete\n[LAAM] [19:49:51] HTTP START attempt=1 https://laam.com/products/arisha-5\n[LAAM] [19:49:51] HTTP END status=200 elapsed=0.4s bytes=312273 https://laam.com/products/arisha-5\n[LAAM] [19:49:53] HTTP START attempt=1 https://laam.com/products/arisha-6\n[LAAM] [19:49:53] HTTP END status=200 elapsed=0.3s bytes=306960 https://laam.com/products/arisha-6\n[LAAM] [19:49:54] HTTP START attempt=1 https://laam.com/products/arisha-pink-2-pc\n[LAAM] [19:49:55] HTTP END status=200 elapsed=0.4s bytes=310592 https://laam.com/products/arisha-pink-2-pc\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/arisha-pink-2-pc; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:49:56] HTTP START attempt=1 https://laam.com/products/arishfa-mz-0\n[LAAM] [19:49:56] HTTP END status=200 elapsed=0.3s bytes=318910 https://laam.com/products/arishfa-mz-0\n[LAAM] [19:49:57] HTTP START attempt=1 https://laam.com/products/arishma-chiffon-embroidered-frock-black-mmg-858\n[LAAM] [19:49:57] HTTP END status=200 elapsed=0.3s bytes=311508 https://laam.com/products/arishma-chiffon-embroidered-frock-black-mmg-858\n[LAAM] [19:49:59] HTTP START attempt=1 https://laam.com/products/arishma-chiffon-embroidered-frock-grey-mmg-858\n[LAAM] [19:49:59] HTTP END status=200 elapsed=0.5s bytes=312734 https://laam.com/products/arishma-chiffon-embroidered-frock-grey-mmg-858\n[LAAM] [19:50:00] HTTP START attempt=1 https://laam.com/products/arissela-frock\n[LAAM] [19:50:00] HTTP END status=200 elapsed=0.3s bytes=310785 https://laam.com/products/arissela-frock\n[LAAM] [19:50:02] HTTP START attempt=1 https://laam.com/products/arista-0\n[LAAM] [19:50:02] HTTP END status=200 elapsed=0.4s bytes=319927 https://laam.com/products/arista-0\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/arista-0; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:50:03] HTTP START attempt=1 https://laam.com/products/aristo\n[LAAM] [19:50:04] HTTP END status=200 elapsed=0.5s bytes=310071 https://laam.com/products/aristo\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/aristo; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:50:05] HTTP START attempt=1 https://laam.com/products/aristocratic-ash-oxidised-ring\n[LAAM] [19:50:05] HTTP END status=200 elapsed=0.8s bytes=301138 https://laam.com/products/aristocratic-ash-oxidised-ring\n[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/aristocratic-ash-oxidised-ring\n[LAAM] PUBLIC PRODUCT PAGES: 20800/183187 LAAM pages inspected; 8225 clothing products retained; 142 pages deferred\n[LAAM] [19:50:06] HTTP START attempt=1 https://laam.com/products/ariya-3-piece-printed-white\n[LAAM] [19:50:07] HTTP END status=200 elapsed=0.4s bytes=317312 https://laam.com/products/ariya-3-piece-printed-white\n[LAAM] [19:50:08] HTTP START attempt=1 https://laam.com/products/ariya-emb-3pcs\n[LAAM] [19:50:08] HTTP END status=200 elapsed=0.4s bytes=332081 https://laam.com/products/ariya-emb-3pcs\n[LAAM] [19:50:09] HTTP START attempt=1 https://laam.com/products/ariya-embroidered-3pc-mr-rai-attires\n[LAAM] [19:50:11] HTTP END status=200 elapsed=2.0s bytes=316157 https://laam.com/products/ariya-embroidered-3pc-mr-rai-attires\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/ariya-embroidered-3pc-mr-rai-attires; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:50:11] HTTP START attempt=1 https://laam.com/products/ariya-prett\n[LAAM] [19:50:11] HTTP END status=200 elapsed=0.3s bytes=354362 https://laam.com/products/ariya-prett\n[LAAM] [19:50:13] HTTP START attempt=1 https://laam.com/products/ariyana\n[LAAM] [19:50:15] HTTP END status=200 elapsed=2.6s bytes=311787 https://laam.com/products/ariyana\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/ariyana; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:50:15] HTTP START attempt=1 https://laam.com/products/arizma-velvet-3pc-suit\n[LAAM] [19:50:16] HTTP END status=200 elapsed=0.3s bytes=313275 https://laam.com/products/arizma-velvet-3pc-suit\n[LAAM] [19:50:17] HTTP START attempt=1 https://laam.com/products/ark-arden-embroidery-shirt\n[LAAM] [19:50:17] HTTP END status=200 elapsed=0.3s bytes=302651 https://laam.com/products/ark-arden-embroidery-shirt\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/ark-arden-embroidery-shirt; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:50:18] HTTP START attempt=1 https://laam.com/products/ark-atlas-cuban-shirt\n[LAAM] [19:50:19] HTTP END status=200 elapsed=0.3s bytes=308940 https://laam.com/products/ark-atlas-cuban-shirt\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/ark-atlas-cuban-shirt; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:50:20] HTTP START attempt=1 https://laam.com/products/ark-kentos-embroidery-shirt\n[LAAM] [19:50:20] HTTP END status=200 elapsed=0.3s bytes=309548 https://laam.com/products/ark-kentos-embroidery-shirt\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/ark-kentos-embroidery-shirt; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:50:21] HTTP START attempt=1 https://laam.com/products/ark-nero-embroidery-shirt\n[LAAM] [19:50:23] HTTP END status=200 elapsed=1.7s bytes=309072 https://laam.com/products/ark-nero-embroidery-shirt\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/ark-nero-embroidery-shirt; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:50:23] HTTP START attempt=1 https://laam.com/products/ark-noir-embroidery-cuban-shirt\n[LAAM] [19:50:26] HTTP END status=200 elapsed=2.8s bytes=305767 https://laam.com/products/ark-noir-embroidery-cuban-shirt\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/ark-noir-embroidery-cuban-shirt; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:50:26] HTTP START attempt=1 https://laam.com/products/ark-reverie\n[LAAM] [19:50:26] HTTP END status=200 elapsed=0.3s bytes=318675 https://laam.com/products/ark-reverie\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/ark-reverie; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:50:27] HTTP START attempt=1 https://laam.com/products/ark-signature-embroidery-shirt\n[LAAM] [19:50:28] HTTP END status=200 elapsed=0.3s bytes=304483 https://laam.com/products/ark-signature-embroidery-shirt\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/ark-signature-embroidery-shirt; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:50:29] HTTP START attempt=1 https://laam.com/products/ark-solis\n[LAAM] [19:50:29] HTTP END status=200 elapsed=0.3s bytes=305386 https://laam.com/products/ark-solis\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/ark-solis; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:50:30] HTTP START attempt=1 https://laam.com/products/ark-vanta-embroidery-shirt\n[LAAM] [19:50:31] HTTP END status=200 elapsed=0.3s bytes=302556 https://laam.com/products/ark-vanta-embroidery-shirt\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/ark-vanta-embroidery-shirt; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:50:32] HTTP START attempt=1 https://laam.com/products/ark-velo-embroidery-shirt\n[LAAM] [19:50:32] HTTP END status=200 elapsed=0.3s bytes=303564 https://laam.com/products/ark-velo-embroidery-shirt\n[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/ark-velo-embroidery-shirt; no source-confirmed available variants; unavailable product excluded, no variants invented\n[LAAM] [19:50:33] HTTP START attempt=1 https://laam.com/products/arleen-rae\n[LAAM] [19:50:34] HTTP END status=200 elapsed=0.3s bytes=325437 https://laam.com/products/arleen-rae\n[LAAM] [19:50:35] HTTP START attempt=1 https://laam.com/products/arlen-velvet-set-dark-olive-green\n[LAAM] [19:50:35] HTTP END status=200 elapsed=0.4s bytes=312565 https://laam.com/products/arlen-velvet-set-dark-olive-green\n__CHOTU_PROGRESS__|1|Active: LAAM\n[LAAM] [19:50:35] EXCEPTION: RuntimeError('ADAPTER ERROR: LAAM Product arlen-velvet-set-dark-olive-green: LAAM product gallery unavailable. Saved responses retained; no options, prices or stock guessed.')\n[LAAM] [19:50:35] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 278, in catalog\n    try:product=product_state(BeautifulSoup(response.text,'html.parser',parse_only=SoupStrainer('script')),handle,clothing_only=True,active_only=True,in_stock_only=True)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 81, in product_state\n    product=normalize(candidates[0],handle,active_only=active_only,in_stock_only=in_stock_only)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 146, in normalize\n    if not images:raise ValueError('LAAM product gallery unavailable')\n                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: LAAM product gallery unavailable\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 324, in run\n    try:return original(BASE,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 475, in run\n    if host!='czone.com.pk':return original(base,name,template,log)\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1037, in run_site\n    products, complete_catalog=discover(base,log)\n                               ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 323, in <lambda>\n    g.update(discover=lambda base,log:source.catalog(),collections=lambda base,log:{},refresh_variant_prices=lambda base,p,log:p['variants'],storefront_cover=cover,verified_top20=ranking,audit_fractional_prices=audit,storefront_price_audit=display)\n                                      ^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 292, in catalog\n    except (ValueError,TypeError,KeyError) as exc:raise ValueError('Product '+handle+': '+str(exc)) from exc\n                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Product arlen-velvet-set-dark-olive-green: LAAM product gallery unavailable\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1999, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1492, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 215, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 207, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 326, in run\n    except (ValueError,TypeError,KeyError) as exc:raise RuntimeError('ADAPTER ERROR: LAAM '+str(exc)+'. Saved responses retained; no options, prices or stock guessed.') from exc\n                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: ADAPTER ERROR: LAAM Product arlen-velvet-set-dark-olive-green: LAAM product gallery unavailable. Saved responses retained; no options, prices or stock guessed.\n\n[LAAM] FAILED: LAAM: ADAPTER ERROR: LAAM Product arlen-velvet-set-dark-olive-green: LAAM product gallery unavailable. Saved responses retained; no options, prices or stock guessed.\n[LAAM] [19:50:35] STAGE: Idle\nFAILED: LAAM: FAILED: LAAM: ADAPTER ERROR: LAAM Product arlen-velvet-set-dark-olive-green: LAAM product gallery unavailable. Saved responses retained; no options, prices or stock guessed.\nFalse"
+    },
+    {
+      "target": "39889255797",
+      "state": {
+        "conclusion": "failure",
+        "displayTitle": "Automatic continuation of 39880569413",
+        "headSha": "beb0df563beb819517f0c89a6fa6b565f4f68934",
+        "jobs": [
+          {
+            "completedAt": "2026-10-23T03:54:36Z",
+            "conclusion": "failure",
+            "databaseId": 120204903676,
+            "name": "fetch",
+            "startedAt": "2026-10-23T02:23:23Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-23T02:23:25Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-23T02:23:24Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T02:23:33Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-23T02:23:25Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T02:23:33Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-23T02:23:33Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T02:23:36Z",
+                "conclusion": "success",
+                "name": "Install extraction dependencies",
+                "number": 4,
+                "startedAt": "2026-10-23T02:23:33Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T02:23:50Z",
+                "conclusion": "success",
+                "name": "Restore optional saved run",
+                "number": 5,
+                "startedAt": "2026-10-23T02:23:36Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T02:23:50Z",
+                "conclusion": "skipped",
+                "name": "Install Czone browser fallback when needed",
+                "number": 6,
+                "startedAt": "2026-10-23T02:23:50Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T02:23:50Z",
+                "conclusion": "success",
+                "name": "Start continuous fetching on the cloud runner",
+                "number": 7,
+                "startedAt": "2026-10-23T02:23:50Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T03:54:10Z",
+                "conclusion": "success",
+                "name": "Live progress, logs and completed-file uploads",
+                "number": 8,
+                "startedAt": "2026-10-23T02:23:50Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T03:54:10Z",
+                "conclusion": "failure",
+                "name": "Fetch result",
+                "number": 9,
+                "startedAt": "2026-10-23T03:54:10Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T03:54:10Z",
+                "conclusion": "success",
+                "name": "Collect diagnostic report even if fetching failed",
+                "number": 10,
+                "startedAt": "2026-10-23T03:54:10Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T03:54:11Z",
+                "conclusion": "success",
+                "name": "Upload diagnostic report and redacted log",
+                "number": 11,
+                "startedAt": "2026-10-23T03:54:10Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T03:54:12Z",
+                "conclusion": "success",
+                "name": "Upload Excel files and audits, including completed stores from a partial run",
+                "number": 12,
+                "startedAt": "2026-10-23T03:54:11Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T03:54:12Z",
+                "conclusion": "skipped",
+                "name": "Final automated Rule 804 pass for fresh batch",
+                "number": 13,
+                "startedAt": "2026-10-23T03:54:12Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T03:54:12Z",
+                "conclusion": "skipped",
+                "name": "Upload automated Rule 804 fresh workbooks",
+                "number": 14,
+                "startedAt": "2026-10-23T03:54:12Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T03:54:33Z",
+                "conclusion": "success",
+                "name": "Upload saved checkpoint when available",
+                "number": 15,
+                "startedAt": "2026-10-23T03:54:12Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T03:54:34Z",
+                "conclusion": "success",
+                "name": "Dispatch authorized continuation after verified checkpoint upload",
+                "number": 16,
+                "startedAt": "2026-10-23T03:54:33Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T03:54:34Z",
+                "conclusion": "success",
+                "name": "Post Live progress, logs and completed-file uploads",
+                "number": 30,
+                "startedAt": "2026-10-23T03:54:34Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T03:54:34Z",
+                "conclusion": "skipped",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 31,
+                "startedAt": "2026-10-23T03:54:34Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T03:54:34Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 32,
+                "startedAt": "2026-10-23T03:54:34Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T03:54:34Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 33,
+                "startedAt": "2026-10-23T03:54:34Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39889255797/job/120204903676"
+          },
+          {
+            "completedAt": "2026-10-23T03:54:56Z",
+            "conclusion": "success",
+            "databaseId": 120231198287,
+            "name": "Archive structured diagnostics",
+            "startedAt": "2026-10-23T03:54:40Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-23T03:54:42Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-23T03:54:41Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T03:54:50Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-23T03:54:42Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T03:54:50Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-23T03:54:50Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T03:54:51Z",
+                "conclusion": "success",
+                "name": "Run actions/download-artifact@v4",
+                "number": 4,
+                "startedAt": "2026-10-23T03:54:50Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T03:54:54Z",
+                "conclusion": "success",
+                "name": "Archive credential-free JSON on the cloud-reports branch",
+                "number": 5,
+                "startedAt": "2026-10-23T03:54:51Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T03:54:54Z",
+                "conclusion": "success",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 9,
+                "startedAt": "2026-10-23T03:54:54Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T03:54:54Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 10,
+                "startedAt": "2026-10-23T03:54:54Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-23T03:54:54Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 11,
+                "startedAt": "2026-10-23T03:54:54Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39889255797/job/120231198287"
+          }
+        ],
+        "status": "completed"
+      },
+      "failed_log": "fetch\tFetch result\t2026-10-23T03:54:10.1548656Z [Gul Ahmed] [03:53:50] GET_JSON: https://www.gulahmedshop.com/products/optima-latha-unstitched-fabric-cotton-lf.js\nfetch\tFetch result\t2026-10-23T03:54:10.1549381Z [Gul Ahmed] [03:53:50] HTTP START attempt=1 https://www.gulahmedshop.com/products/optima-latha-unstitched-fabric-cotton-lf.js\nfetch\tFetch result\t2026-10-23T03:54:10.1549978Z Cloud time budget reached; saving unfinished work.\nfetch\tFetch result\t2026-10-23T03:54:10.1550619Z [Gul Ahmed] [03:53:51] HTTP END status=EXCEPTION elapsed=1.4s bytes=0 https://www.gulahmedshop.com/products/optima-latha-unstitched-fabric-cotton-lf.js\nfetch\tFetch result\t2026-10-23T03:54:10.1551386Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nfetch\tFetch result\t2026-10-23T03:54:10.1552087Z Large checkpoint saved in checksummed parts: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts\nfetch\tFetch result\t2026-10-23T03:54:10.1552750Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts\nfetch\tFetch result\t2026-10-23T03:54:10.1553210Z RUN SUMMARY:\nfetch\tFetch result\t2026-10-23T03:54:10.1553793Z Gul Ahmed: PENDING \u2014 Stopped; successful requests retained\nfetch\tFetch result\t2026-10-23T03:54:10.1554184Z Checkpoint: saved\nfetch\tFetch result\t2026-10-23T03:54:10.1554670Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH\nfetch\tFetch result\t2026-10-23T03:54:10.1566669Z ##[error]Process completed with exit code 2.",
+      "artifacts": [
+        {
+          "name": "chotuapp-live-logs",
+          "id": 12477835493,
+          "expired": false,
+          "size_in_bytes": 180756
+        },
+        {
+          "name": "chotuapp-excel-files",
+          "id": 12477337668,
+          "expired": false,
+          "size_in_bytes": 539
+        },
+        {
+          "name": "chotuapp-diagnostics",
+          "id": 12477222917,
+          "expired": false,
+          "size_in_bytes": 179080
+        },
+        {
+          "name": "chotuapp-checkpoint",
+          "id": 12476919562,
+          "expired": false,
+          "size_in_bytes": 757250065
+        }
+      ],
+      "annotations": [
+        {
+          "level": "warning",
+          "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+        },
+        {
+          "level": "failure",
+          "message": "Process completed with exit code 2."
+        }
+      ],
+      "console-tail.txt": "[Gul Ahmed] [03:51:55] HTTP START attempt=1 https://www.gulahmedshop.com/products/shahtaj-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:51:57] HTTP END status=200 elapsed=2.2s bytes=162285 https://www.gulahmedshop.com/products/shahtaj-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:00] GET_JSON: https://www.gulahmedshop.com/products/leader-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:00] HTTP START attempt=1 https://www.gulahmedshop.com/products/leader-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:02] HTTP END status=200 elapsed=2.1s bytes=107691 https://www.gulahmedshop.com/products/leader-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:05] GET_JSON: https://www.gulahmedshop.com/products/iron-ezee-hitex-plus-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:52:05] HTTP START attempt=1 https://www.gulahmedshop.com/products/iron-ezee-hitex-plus-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:52:07] HTTP END status=200 elapsed=1.8s bytes=108887 https://www.gulahmedshop.com/products/iron-ezee-hitex-plus-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:52:10] GET_JSON: https://www.gulahmedshop.com/products/gul-90-marine-candy-unstitched-fabric-blended.js\n[Gul Ahmed] [03:52:10] HTTP START attempt=1 https://www.gulahmedshop.com/products/gul-90-marine-candy-unstitched-fabric-blended.js\n[Gul Ahmed] [03:52:12] HTTP END status=200 elapsed=2.1s bytes=106311 https://www.gulahmedshop.com/products/gul-90-marine-candy-unstitched-fabric-blended.js\n[Gul Ahmed] [03:52:14] GET_JSON: https://www.gulahmedshop.com/products/vision-arzoo-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:52:14] HTTP START attempt=1 https://www.gulahmedshop.com/products/vision-arzoo-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:52:17] HTTP END status=200 elapsed=2.2s bytes=72389 https://www.gulahmedshop.com/products/vision-arzoo-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:52:20] GET_JSON: https://www.gulahmedshop.com/products/hitex-plus-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:20] HTTP START attempt=1 https://www.gulahmedshop.com/products/hitex-plus-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:22] HTTP END status=200 elapsed=1.8s bytes=76318 https://www.gulahmedshop.com/products/hitex-plus-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:24] GET_JSON: https://www.gulahmedshop.com/products/elite-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:52:24] HTTP START attempt=1 https://www.gulahmedshop.com/products/elite-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:52:27] HTTP END status=200 elapsed=2.2s bytes=99782 https://www.gulahmedshop.com/products/elite-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:52:30] GET_JSON: https://www.gulahmedshop.com/products/oscar-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:30] HTTP START attempt=1 https://www.gulahmedshop.com/products/oscar-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:32] HTTP END status=200 elapsed=2.0s bytes=176235 https://www.gulahmedshop.com/products/oscar-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:35] GET_JSON: https://www.gulahmedshop.com/products/prime-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:35] HTTP START attempt=1 https://www.gulahmedshop.com/products/prime-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:37] HTTP END status=200 elapsed=2.0s bytes=137477 https://www.gulahmedshop.com/products/prime-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:40] GET_JSON: https://www.gulahmedshop.com/products/hitex-plus-unstitched-fabric-cotton-with-gift-box.js\n[Gul Ahmed] [03:52:40] HTTP START attempt=1 https://www.gulahmedshop.com/products/hitex-plus-unstitched-fabric-cotton-with-gift-box.js\n[Gul Ahmed] [03:52:42] HTTP END status=200 elapsed=2.1s bytes=99067 https://www.gulahmedshop.com/products/hitex-plus-unstitched-fabric-cotton-with-gift-box.js\n[Gul Ahmed] [03:52:45] GET_JSON: https://www.gulahmedshop.com/products/gul-90000-plus-unstitched-fabric-cotton-with-gift-box.js\n[Gul Ahmed] [03:52:45] HTTP START attempt=1 https://www.gulahmedshop.com/products/gul-90000-plus-unstitched-fabric-cotton-with-gift-box.js\n[Gul Ahmed] [03:52:47] HTTP END status=200 elapsed=1.8s bytes=61951 https://www.gulahmedshop.com/products/gul-90000-plus-unstitched-fabric-cotton-with-gift-box.js\n[Gul Ahmed] [03:52:50] GET_JSON: https://www.gulahmedshop.com/products/hi-tex-twill-plus-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:50] HTTP START attempt=1 https://www.gulahmedshop.com/products/hi-tex-twill-plus-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:52] HTTP END status=200 elapsed=2.1s bytes=30786 https://www.gulahmedshop.com/products/hi-tex-twill-plus-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:54] GET_JSON: https://www.gulahmedshop.com/products/gini-gold-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:52:54] HTTP START attempt=1 https://www.gulahmedshop.com/products/gini-gold-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:52:57] HTTP END status=200 elapsed=2.2s bytes=129705 https://www.gulahmedshop.com/products/gini-gold-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:53:00] GET_JSON: https://www.gulahmedshop.com/products/suri-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:00] HTTP START attempt=1 https://www.gulahmedshop.com/products/suri-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:02] HTTP END status=200 elapsed=2.1s bytes=135457 https://www.gulahmedshop.com/products/suri-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:05] GET_JSON: https://www.gulahmedshop.com/products/titanium-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:05] HTTP START attempt=1 https://www.gulahmedshop.com/products/titanium-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:07] HTTP END status=200 elapsed=1.8s bytes=110712 https://www.gulahmedshop.com/products/titanium-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:10] GET_JSON: https://www.gulahmedshop.com/products/picasso-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:10] HTTP START attempt=1 https://www.gulahmedshop.com/products/picasso-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] FAST FETCH: product prices and pages 7316/7775 tasks processed; deferred=0\n[Gul Ahmed] [03:53:12] HTTP END status=200 elapsed=2.0s bytes=56330 https://www.gulahmedshop.com/products/picasso-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:15] GET_JSON: https://www.gulahmedshop.com/products/nawab-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:15] HTTP START attempt=1 https://www.gulahmedshop.com/products/nawab-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:17] HTTP END status=200 elapsed=2.1s bytes=140889 https://www.gulahmedshop.com/products/nawab-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:20] GET_JSON: https://www.gulahmedshop.com/products/esso-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:20] HTTP START attempt=1 https://www.gulahmedshop.com/products/esso-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:22] HTTP END status=200 elapsed=2.1s bytes=156973 https://www.gulahmedshop.com/products/esso-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:25] GET_JSON: https://www.gulahmedshop.com/products/darvesh-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:25] HTTP START attempt=1 https://www.gulahmedshop.com/products/darvesh-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:27] HTTP END status=200 elapsed=1.8s bytes=98628 https://www.gulahmedshop.com/products/darvesh-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:30] GET_JSON: https://www.gulahmedshop.com/products/s-o-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:30] HTTP START attempt=1 https://www.gulahmedshop.com/products/s-o-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:32] HTTP END status=200 elapsed=2.1s bytes=156877 https://www.gulahmedshop.com/products/s-o-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:35] GET_JSON: https://www.gulahmedshop.com/products/champion-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:35] HTTP START attempt=1 https://www.gulahmedshop.com/products/champion-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:37] HTTP END status=200 elapsed=2.0s bytes=176378 https://www.gulahmedshop.com/products/champion-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:40] GET_JSON: https://www.gulahmedshop.com/products/aurangzeb-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:40] HTTP START attempt=1 https://www.gulahmedshop.com/products/aurangzeb-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:42] HTTP END status=200 elapsed=2.1s bytes=100226 https://www.gulahmedshop.com/products/aurangzeb-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:45] GET_JSON: https://www.gulahmedshop.com/products/shahjahan-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:45] HTTP START attempt=1 https://www.gulahmedshop.com/products/shahjahan-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:47] HTTP END status=200 elapsed=2.1s bytes=124550 https://www.gulahmedshop.com/products/shahjahan-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:50] GET_JSON: https://www.gulahmedshop.com/products/optima-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:50] HTTP START attempt=1 https://www.gulahmedshop.com/products/optima-latha-unstitched-fabric-cotton-lf.js\nCloud time budget reached; saving unfinished work.\n[Gul Ahmed] [03:53:51] HTTP END status=EXCEPTION elapsed=1.4s bytes=0 https://www.gulahmedshop.com/products/optima-latha-unstitched-fabric-cotton-lf.js\nCheckpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nLarge checkpoint saved in checksummed parts: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts\nCheckpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts\nRUN SUMMARY:\nGul Ahmed: PENDING \u2014 Stopped; successful requests retained\nCheckpoint: saved\nRun finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+      "store-status.txt": "Updated (UTC): 2026-10-23T03:54:08.246219+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nGul Ahmed: pending\n  Stage: Parallel product prices and pages\n  product prices and pages: 7316/7775 tasks; sample age 58s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-10-23T03:53:47.155443+00:00",
+      "fetch-log.txt": "[Gul Ahmed] [03:48:57] HTTP END status=200 elapsed=2.0s bytes=64434 https://www.gulahmedshop.com/products/cotton-club-twill-plus-unstitched-fabric-cotton-with-gift-box.js\n[Gul Ahmed] [03:49:00] GET_JSON: https://www.gulahmedshop.com/products/white-gold-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:49:00] HTTP START attempt=1 https://www.gulahmedshop.com/products/white-gold-unstitched-fabric-blended-lf.js\n[Gul Ahmed] FAST FETCH: product prices and pages 7266/7775 tasks processed; deferred=0\n[Gul Ahmed] [03:49:02] HTTP END status=200 elapsed=2.1s bytes=16038 https://www.gulahmedshop.com/products/white-gold-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:49:05] GET_JSON: https://www.gulahmedshop.com/products/titanium-latha-unstitched-fabric-cotton-lf-2.js\n[Gul Ahmed] [03:49:05] HTTP START attempt=1 https://www.gulahmedshop.com/products/titanium-latha-unstitched-fabric-cotton-lf-2.js\n[Gul Ahmed] [03:49:07] HTTP END status=200 elapsed=2.1s bytes=71885 https://www.gulahmedshop.com/products/titanium-latha-unstitched-fabric-cotton-lf-2.js\n[Gul Ahmed] [03:49:10] GET_JSON: https://www.gulahmedshop.com/products/vision-marvel-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:49:10] HTTP START attempt=1 https://www.gulahmedshop.com/products/vision-marvel-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:49:12] HTTP END status=200 elapsed=2.0s bytes=28009 https://www.gulahmedshop.com/products/vision-marvel-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:49:15] GET_JSON: https://www.gulahmedshop.com/products/cotton-club-twill-plus-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:49:15] HTTP START attempt=1 https://www.gulahmedshop.com/products/cotton-club-twill-plus-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:49:17] HTTP END status=200 elapsed=2.1s bytes=62102 https://www.gulahmedshop.com/products/cotton-club-twill-plus-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:49:20] GET_JSON: https://www.gulahmedshop.com/products/gul-900-monochrome-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:49:20] HTTP START attempt=1 https://www.gulahmedshop.com/products/gul-900-monochrome-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:49:22] HTTP END status=200 elapsed=2.0s bytes=48087 https://www.gulahmedshop.com/products/gul-900-monochrome-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:49:24] GET_JSON: https://www.gulahmedshop.com/products/opus-marigold-unstitched-fabric-blended.js\n[Gul Ahmed] [03:49:24] HTTP START attempt=1 https://www.gulahmedshop.com/products/opus-marigold-unstitched-fabric-blended.js\n[Gul Ahmed] [03:49:28] HTTP END status=200 elapsed=3.2s bytes=53708 https://www.gulahmedshop.com/products/opus-marigold-unstitched-fabric-blended.js\n[Gul Ahmed] [03:49:30] GET_JSON: https://www.gulahmedshop.com/products/tanabana-royal-fg-08-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:49:30] HTTP START attempt=1 https://www.gulahmedshop.com/products/tanabana-royal-fg-08-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:49:32] HTTP END status=200 elapsed=2.2s bytes=27531 https://www.gulahmedshop.com/products/tanabana-royal-fg-08-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:49:35] GET_JSON: https://www.gulahmedshop.com/products/escada-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:49:35] HTTP START attempt=1 https://www.gulahmedshop.com/products/escada-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:49:37] HTTP END status=200 elapsed=1.9s bytes=47739 https://www.gulahmedshop.com/products/escada-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:49:40] GET_JSON: https://www.gulahmedshop.com/products/tanabana-royal-fg-07-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:49:40] HTTP START attempt=1 https://www.gulahmedshop.com/products/tanabana-royal-fg-07-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:49:42] HTTP END status=200 elapsed=2.1s bytes=17844 https://www.gulahmedshop.com/products/tanabana-royal-fg-07-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:49:45] GET_JSON: https://www.gulahmedshop.com/products/opus-merrick-unstitched-fabric-blended.js\n[Gul Ahmed] [03:49:45] HTTP START attempt=1 https://www.gulahmedshop.com/products/opus-merrick-unstitched-fabric-blended.js\n[Gul Ahmed] [03:49:47] HTTP END status=200 elapsed=2.1s bytes=16934 https://www.gulahmedshop.com/products/opus-merrick-unstitched-fabric-blended.js\n[Gul Ahmed] [03:49:50] GET_JSON: https://www.gulahmedshop.com/products/vision-dominant-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:49:50] HTTP START attempt=1 https://www.gulahmedshop.com/products/vision-dominant-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:49:52] HTTP END status=200 elapsed=2.1s bytes=88330 https://www.gulahmedshop.com/products/vision-dominant-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:49:54] GET_JSON: https://www.gulahmedshop.com/products/councillor-plus-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:49:54] HTTP START attempt=1 https://www.gulahmedshop.com/products/councillor-plus-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:49:57] HTTP END status=200 elapsed=2.2s bytes=48386 https://www.gulahmedshop.com/products/councillor-plus-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:50:00] GET_JSON: https://www.gulahmedshop.com/products/libas-e-mashriq-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:50:00] HTTP START attempt=1 https://www.gulahmedshop.com/products/libas-e-mashriq-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:50:02] HTTP END status=200 elapsed=1.9s bytes=45615 https://www.gulahmedshop.com/products/libas-e-mashriq-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:50:05] GET_JSON: https://www.gulahmedshop.com/products/vision-waterlily-unstitched-fabric-blended.js\n[Gul Ahmed] [03:50:05] HTTP START attempt=1 https://www.gulahmedshop.com/products/vision-waterlily-unstitched-fabric-blended.js\n[Gul Ahmed] [03:50:07] HTTP END status=200 elapsed=1.9s bytes=27626 https://www.gulahmedshop.com/products/vision-waterlily-unstitched-fabric-blended.js\n[Gul Ahmed] [03:50:10] GET_JSON: https://www.gulahmedshop.com/products/tanabana-royal-fg-06-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:50:10] HTTP START attempt=1 https://www.gulahmedshop.com/products/tanabana-royal-fg-06-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:50:12] HTTP END status=200 elapsed=2.1s bytes=21245 https://www.gulahmedshop.com/products/tanabana-royal-fg-06-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:50:15] GET_JSON: https://www.gulahmedshop.com/products/tanabana-royal-fg-05-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:50:15] HTTP START attempt=1 https://www.gulahmedshop.com/products/tanabana-royal-fg-05-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:50:17] HTTP END status=200 elapsed=2.1s bytes=21073 https://www.gulahmedshop.com/products/tanabana-royal-fg-05-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:50:20] GET_JSON: https://www.gulahmedshop.com/products/pride-unstitched-fabric-blended.js\n[Gul Ahmed] [03:50:20] HTTP START attempt=1 https://www.gulahmedshop.com/products/pride-unstitched-fabric-blended.js\n[Gul Ahmed] [03:50:22] HTTP END status=200 elapsed=2.1s bytes=18595 https://www.gulahmedshop.com/products/pride-unstitched-fabric-blended.js\n[Gul Ahmed] [03:50:25] GET_JSON: https://www.gulahmedshop.com/products/aveda-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:50:25] HTTP START attempt=1 https://www.gulahmedshop.com/products/aveda-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:50:27] HTTP END status=200 elapsed=2.0s bytes=20057 https://www.gulahmedshop.com/products/aveda-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:50:30] GET_JSON: https://www.gulahmedshop.com/products/opus-silverweed-unstitched-fabric-blended.js\n[Gul Ahmed] [03:50:30] HTTP START attempt=1 https://www.gulahmedshop.com/products/opus-silverweed-unstitched-fabric-blended.js\n[Gul Ahmed] [03:50:32] HTTP END status=200 elapsed=2.1s bytes=55316 https://www.gulahmedshop.com/products/opus-silverweed-unstitched-fabric-blended.js\n[Gul Ahmed] [03:50:35] GET_JSON: https://www.gulahmedshop.com/products/gul-90-fresher-unstitched-fabric-blended.js\n[Gul Ahmed] [03:50:35] HTTP START attempt=1 https://www.gulahmedshop.com/products/gul-90-fresher-unstitched-fabric-blended.js\n[Gul Ahmed] [03:50:37] HTTP END status=200 elapsed=1.8s bytes=115034 https://www.gulahmedshop.com/products/gul-90-fresher-unstitched-fabric-blended.js\n[Gul Ahmed] [03:50:40] GET_JSON: https://www.gulahmedshop.com/products/elite-unstitched-fabric-blended-with-gift-box.js\n[Gul Ahmed] [03:50:40] HTTP START attempt=1 https://www.gulahmedshop.com/products/elite-unstitched-fabric-blended-with-gift-box.js\n[Gul Ahmed] [03:50:42] HTTP END status=200 elapsed=2.1s bytes=81135 https://www.gulahmedshop.com/products/elite-unstitched-fabric-blended-with-gift-box.js\n[Gul Ahmed] [03:50:45] GET_JSON: https://www.gulahmedshop.com/products/cotton-club-twill-plus-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:50:45] HTTP START attempt=1 https://www.gulahmedshop.com/products/cotton-club-twill-plus-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:50:47] HTTP END status=200 elapsed=1.7s bytes=26109 https://www.gulahmedshop.com/products/cotton-club-twill-plus-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:50:49] GET_JSON: https://www.gulahmedshop.com/products/gul-900-snow-drop-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:50:49] HTTP START attempt=1 https://www.gulahmedshop.com/products/gul-900-snow-drop-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:50:52] HTTP END status=200 elapsed=2.2s bytes=69049 https://www.gulahmedshop.com/products/gul-900-snow-drop-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:50:55] GET_JSON: https://www.gulahmedshop.com/products/tanabana-royal-hb-06-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:50:55] HTTP START attempt=1 https://www.gulahmedshop.com/products/tanabana-royal-hb-06-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:50:57] HTTP END status=200 elapsed=2.1s bytes=24035 https://www.gulahmedshop.com/products/tanabana-royal-hb-06-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:51:00] GET_JSON: https://www.gulahmedshop.com/products/tanabana-royal-hb-05-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:51:00] HTTP START attempt=1 https://www.gulahmedshop.com/products/tanabana-royal-hb-05-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:51:02] HTTP END status=200 elapsed=2.1s bytes=24519 https://www.gulahmedshop.com/products/tanabana-royal-hb-05-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:51:05] GET_JSON: https://www.gulahmedshop.com/products/opus-lotus-unstitched-fabric-blended.js\n[Gul Ahmed] [03:51:05] HTTP START attempt=1 https://www.gulahmedshop.com/products/opus-lotus-unstitched-fabric-blended.js\n[Gul Ahmed] [03:51:07] HTTP END status=200 elapsed=2.1s bytes=21132 https://www.gulahmedshop.com/products/opus-lotus-unstitched-fabric-blended.js\n[Gul Ahmed] [03:51:10] GET_JSON: https://www.gulahmedshop.com/products/elite-unstitched-fabric-blended.js\n[Gul Ahmed] [03:51:10] HTTP START attempt=1 https://www.gulahmedshop.com/products/elite-unstitched-fabric-blended.js\n[Gul Ahmed] [03:51:12] HTTP END status=200 elapsed=2.2s bytes=68967 https://www.gulahmedshop.com/products/elite-unstitched-fabric-blended.js\n[Gul Ahmed] [03:51:15] GET_JSON: https://www.gulahmedshop.com/products/hitex-twill-classic-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:51:15] HTTP START attempt=1 https://www.gulahmedshop.com/products/hitex-twill-classic-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:51:17] HTTP END status=200 elapsed=2.0s bytes=11666 https://www.gulahmedshop.com/products/hitex-twill-classic-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:51:20] GET_JSON: https://www.gulahmedshop.com/products/classic-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:51:20] HTTP START attempt=1 https://www.gulahmedshop.com/products/classic-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:51:22] HTTP END status=200 elapsed=2.1s bytes=89314 https://www.gulahmedshop.com/products/classic-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:51:25] GET_JSON: https://www.gulahmedshop.com/products/hitex-twill-plus-unstitched-fabric-cotton-with-gift-box.js\n[Gul Ahmed] [03:51:25] HTTP START attempt=1 https://www.gulahmedshop.com/products/hitex-twill-plus-unstitched-fabric-cotton-with-gift-box.js\n[Gul Ahmed] [03:51:27] HTTP END status=200 elapsed=2.2s bytes=121353 https://www.gulahmedshop.com/products/hitex-twill-plus-unstitched-fabric-cotton-with-gift-box.js\n[Gul Ahmed] [03:51:30] GET_JSON: https://www.gulahmedshop.com/products/alora-cotton-plus-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:51:30] HTTP START attempt=1 https://www.gulahmedshop.com/products/alora-cotton-plus-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:51:32] HTTP END status=200 elapsed=2.1s bytes=27430 https://www.gulahmedshop.com/products/alora-cotton-plus-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:51:35] GET_JSON: https://www.gulahmedshop.com/products/mega-super-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:51:35] HTTP START attempt=1 https://www.gulahmedshop.com/products/mega-super-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:51:37] HTTP END status=200 elapsed=2.1s bytes=92809 https://www.gulahmedshop.com/products/mega-super-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:51:40] GET_JSON: https://www.gulahmedshop.com/products/super-soft-plus-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:51:40] HTTP START attempt=1 https://www.gulahmedshop.com/products/super-soft-plus-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:51:42] HTTP END status=200 elapsed=2.1s bytes=114532 https://www.gulahmedshop.com/products/super-soft-plus-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:51:45] GET_JSON: https://www.gulahmedshop.com/products/platinum-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:51:45] HTTP START attempt=1 https://www.gulahmedshop.com/products/platinum-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:51:47] HTTP END status=200 elapsed=2.1s bytes=100669 https://www.gulahmedshop.com/products/platinum-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:51:50] GET_JSON: https://www.gulahmedshop.com/products/ambassador-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:51:50] HTTP START attempt=1 https://www.gulahmedshop.com/products/ambassador-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:51:52] HTTP END status=200 elapsed=2.1s bytes=116815 https://www.gulahmedshop.com/products/ambassador-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:51:55] GET_JSON: https://www.gulahmedshop.com/products/shahtaj-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:51:55] HTTP START attempt=1 https://www.gulahmedshop.com/products/shahtaj-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:51:57] HTTP END status=200 elapsed=2.2s bytes=162285 https://www.gulahmedshop.com/products/shahtaj-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:00] GET_JSON: https://www.gulahmedshop.com/products/leader-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:00] HTTP START attempt=1 https://www.gulahmedshop.com/products/leader-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:02] HTTP END status=200 elapsed=2.1s bytes=107691 https://www.gulahmedshop.com/products/leader-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:05] GET_JSON: https://www.gulahmedshop.com/products/iron-ezee-hitex-plus-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:52:05] HTTP START attempt=1 https://www.gulahmedshop.com/products/iron-ezee-hitex-plus-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:52:07] HTTP END status=200 elapsed=1.8s bytes=108887 https://www.gulahmedshop.com/products/iron-ezee-hitex-plus-unstitched-fabric-cotton.js\n[Gul Ahmed] [03:52:10] GET_JSON: https://www.gulahmedshop.com/products/gul-90-marine-candy-unstitched-fabric-blended.js\n[Gul Ahmed] [03:52:10] HTTP START attempt=1 https://www.gulahmedshop.com/products/gul-90-marine-candy-unstitched-fabric-blended.js\n[Gul Ahmed] [03:52:12] HTTP END status=200 elapsed=2.1s bytes=106311 https://www.gulahmedshop.com/products/gul-90-marine-candy-unstitched-fabric-blended.js\n[Gul Ahmed] [03:52:14] GET_JSON: https://www.gulahmedshop.com/products/vision-arzoo-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:52:14] HTTP START attempt=1 https://www.gulahmedshop.com/products/vision-arzoo-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:52:17] HTTP END status=200 elapsed=2.2s bytes=72389 https://www.gulahmedshop.com/products/vision-arzoo-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:52:20] GET_JSON: https://www.gulahmedshop.com/products/hitex-plus-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:20] HTTP START attempt=1 https://www.gulahmedshop.com/products/hitex-plus-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:22] HTTP END status=200 elapsed=1.8s bytes=76318 https://www.gulahmedshop.com/products/hitex-plus-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:24] GET_JSON: https://www.gulahmedshop.com/products/elite-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:52:24] HTTP START attempt=1 https://www.gulahmedshop.com/products/elite-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:52:27] HTTP END status=200 elapsed=2.2s bytes=99782 https://www.gulahmedshop.com/products/elite-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:52:30] GET_JSON: https://www.gulahmedshop.com/products/oscar-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:30] HTTP START attempt=1 https://www.gulahmedshop.com/products/oscar-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:32] HTTP END status=200 elapsed=2.0s bytes=176235 https://www.gulahmedshop.com/products/oscar-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:35] GET_JSON: https://www.gulahmedshop.com/products/prime-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:35] HTTP START attempt=1 https://www.gulahmedshop.com/products/prime-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:37] HTTP END status=200 elapsed=2.0s bytes=137477 https://www.gulahmedshop.com/products/prime-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:40] GET_JSON: https://www.gulahmedshop.com/products/hitex-plus-unstitched-fabric-cotton-with-gift-box.js\n[Gul Ahmed] [03:52:40] HTTP START attempt=1 https://www.gulahmedshop.com/products/hitex-plus-unstitched-fabric-cotton-with-gift-box.js\n[Gul Ahmed] [03:52:42] HTTP END status=200 elapsed=2.1s bytes=99067 https://www.gulahmedshop.com/products/hitex-plus-unstitched-fabric-cotton-with-gift-box.js\n[Gul Ahmed] [03:52:45] GET_JSON: https://www.gulahmedshop.com/products/gul-90000-plus-unstitched-fabric-cotton-with-gift-box.js\n[Gul Ahmed] [03:52:45] HTTP START attempt=1 https://www.gulahmedshop.com/products/gul-90000-plus-unstitched-fabric-cotton-with-gift-box.js\n[Gul Ahmed] [03:52:47] HTTP END status=200 elapsed=1.8s bytes=61951 https://www.gulahmedshop.com/products/gul-90000-plus-unstitched-fabric-cotton-with-gift-box.js\n[Gul Ahmed] [03:52:50] GET_JSON: https://www.gulahmedshop.com/products/hi-tex-twill-plus-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:50] HTTP START attempt=1 https://www.gulahmedshop.com/products/hi-tex-twill-plus-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:52] HTTP END status=200 elapsed=2.1s bytes=30786 https://www.gulahmedshop.com/products/hi-tex-twill-plus-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:52:54] GET_JSON: https://www.gulahmedshop.com/products/gini-gold-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:52:54] HTTP START attempt=1 https://www.gulahmedshop.com/products/gini-gold-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:52:57] HTTP END status=200 elapsed=2.2s bytes=129705 https://www.gulahmedshop.com/products/gini-gold-unstitched-fabric-blended-lf.js\n[Gul Ahmed] [03:53:00] GET_JSON: https://www.gulahmedshop.com/products/suri-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:00] HTTP START attempt=1 https://www.gulahmedshop.com/products/suri-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:02] HTTP END status=200 elapsed=2.1s bytes=135457 https://www.gulahmedshop.com/products/suri-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:05] GET_JSON: https://www.gulahmedshop.com/products/titanium-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:05] HTTP START attempt=1 https://www.gulahmedshop.com/products/titanium-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:07] HTTP END status=200 elapsed=1.8s bytes=110712 https://www.gulahmedshop.com/products/titanium-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:10] GET_JSON: https://www.gulahmedshop.com/products/picasso-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:10] HTTP START attempt=1 https://www.gulahmedshop.com/products/picasso-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] FAST FETCH: product prices and pages 7316/7775 tasks processed; deferred=0\n[Gul Ahmed] [03:53:12] HTTP END status=200 elapsed=2.0s bytes=56330 https://www.gulahmedshop.com/products/picasso-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:15] GET_JSON: https://www.gulahmedshop.com/products/nawab-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:15] HTTP START attempt=1 https://www.gulahmedshop.com/products/nawab-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:17] HTTP END status=200 elapsed=2.1s bytes=140889 https://www.gulahmedshop.com/products/nawab-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:20] GET_JSON: https://www.gulahmedshop.com/products/esso-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:20] HTTP START attempt=1 https://www.gulahmedshop.com/products/esso-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:22] HTTP END status=200 elapsed=2.1s bytes=156973 https://www.gulahmedshop.com/products/esso-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:25] GET_JSON: https://www.gulahmedshop.com/products/darvesh-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:25] HTTP START attempt=1 https://www.gulahmedshop.com/products/darvesh-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:27] HTTP END status=200 elapsed=1.8s bytes=98628 https://www.gulahmedshop.com/products/darvesh-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:30] GET_JSON: https://www.gulahmedshop.com/products/s-o-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:30] HTTP START attempt=1 https://www.gulahmedshop.com/products/s-o-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:32] HTTP END status=200 elapsed=2.1s bytes=156877 https://www.gulahmedshop.com/products/s-o-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:35] GET_JSON: https://www.gulahmedshop.com/products/champion-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:35] HTTP START attempt=1 https://www.gulahmedshop.com/products/champion-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:37] HTTP END status=200 elapsed=2.0s bytes=176378 https://www.gulahmedshop.com/products/champion-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:40] GET_JSON: https://www.gulahmedshop.com/products/aurangzeb-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:40] HTTP START attempt=1 https://www.gulahmedshop.com/products/aurangzeb-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:42] HTTP END status=200 elapsed=2.1s bytes=100226 https://www.gulahmedshop.com/products/aurangzeb-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:45] GET_JSON: https://www.gulahmedshop.com/products/shahjahan-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:45] HTTP START attempt=1 https://www.gulahmedshop.com/products/shahjahan-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:47] HTTP END status=200 elapsed=2.1s bytes=124550 https://www.gulahmedshop.com/products/shahjahan-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:50] GET_JSON: https://www.gulahmedshop.com/products/optima-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:50] HTTP START attempt=1 https://www.gulahmedshop.com/products/optima-latha-unstitched-fabric-cotton-lf.js\n[Gul Ahmed] [03:53:51] HTTP END status=EXCEPTION elapsed=1.4s bytes=0 https://www.gulahmedshop.com/products/optima-latha-unstitched-fabric-cotton-lf.js"
+    }
+  ],
+  "laam_public_variant_evidence": {
+    "id": 526839,
+    "handle": "arlen-velvet-set-dark-olive-green",
+    "title": "Arlen Velvet Set - Dark Olive Green",
+    "status": "ACTIVE",
+    "stock_status": "limited-stock",
+    "node_l2": "Clothing",
+    "node_l3": "Eastern Ready to wear",
+    "options": [
+      {
+        "values": [
+          "XS",
+          "S",
+          "M",
+          "L",
+          "XL"
+        ],
+        "name": "Size",
+        "position": 1
+      }
+    ],
+    "media": [
+      {
+        "shopify_id": 0,
+        "alt": "",
+        "src": "",
+        "width": 0,
+        "height": 0
+      },
+      {
+        "shopify_id": 0,
+        "alt": "",
+        "src": "",
+        "width": 0,
+        "height": 0
+      },
+      {
+        "shopify_id": 0,
+        "alt": "",
+        "src": "",
+        "width": 0,
+        "height": 0
+      }
+    ],
+    "images": null,
+    "image": {
+      "shopify_id": 0,
+      "alt": "",
+      "src": "",
+      "width": 0,
+      "height": 0
+    },
+    "featured_image": null,
+    "variants": [
+      {
+        "id": null,
+        "shopify_id": 42748906045524,
+        "title": "M",
+        "option1": null,
+        "option2": null,
+        "option3": null,
+        "price": "6299.3",
+        "compare_at_price": "8999",
+        "stock_status": "out-of-stock",
+        "inventory_quantity": 0
+      },
+      {
+        "id": null,
+        "shopify_id": 42748906012756,
+        "title": "L",
+        "option1": null,
+        "option2": null,
+        "option3": null,
+        "price": "6299.3",
+        "compare_at_price": "8999",
+        "stock_status": "out-of-stock",
+        "inventory_quantity": 0
+      },
+      {
+        "id": null,
+        "shopify_id": 42748905979988,
+        "title": "XS",
+        "option1": null,
+        "option2": null,
+        "option3": null,
+        "price": "6299.3",
+        "compare_at_price": "8999",
+        "stock_status": "limited-stock",
+        "inventory_quantity": 3
+      },
+      {
+        "id": null,
+        "shopify_id": 42748905947220,
+        "title": "S",
+        "option1": null,
+        "option2": null,
+        "option3": null,
+        "price": "6299.3",
+        "compare_at_price": "8999",
+        "stock_status": "out-of-stock",
+        "inventory_quantity": 0
+      },
+      {
+        "id": null,
+        "shopify_id": 42748905914452,
+        "title": "XL",
+        "option1": null,
+        "option2": null,
+        "option3": null,
+        "price": "6299.3",
+        "compare_at_price": "8999",
+        "stock_status": "out-of-stock",
+        "inventory_quantity": 0
+      }
+    ],
+    "_website_category_evidence": null
+  }
+}
