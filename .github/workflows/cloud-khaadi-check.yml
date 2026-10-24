@@ -1,5 +1,7 @@
 name: ChotuApp Khaadi Public Page Check
 on:
+  schedule:
+    - cron: '*/30 * * * *'
   workflow_dispatch:
   push:
     branches: [main]
