@@ -4,10 +4,11 @@ from pathlib import Path
 from functools import lru_cache
 from datetime import datetime,timezone
 from urllib.parse import urlsplit
-SOURCE_TYPES={'Women Trouser':'Trousers','Women Earrings':'Earrings','Women Bracelet':'Bracelets','Women Necklace':'Necklaces','Women Ring':'Rings','Women Eyebrow Kit':'Eyebrow Kits','Infants Stitched 3 Piece':'Stitched Outfit Sets','Men Waistcoat With Kurta Trouser':'Clothing Sets'}
+SOURCE_TYPES={'SYNCC - Women Sweater':'Sweaters','Women Stitched Sari':'Sarees','Men Peshawari Chappal':'Chappals','Women Trouser':'Trousers','Women Earrings':'Earrings','Women Bracelet':'Bracelets','Women Necklace':'Necklaces','Women Ring':'Rings','Women Eyebrow Kit':'Eyebrow Kits','Infants Stitched 3 Piece':'Stitched Outfit Sets','Men Waistcoat With Kurta Trouser':'Clothing Sets'}
 STORES={'Miss Rose','Cool and Cool','Rivaj UK','Computer Zone','Saeed Ghani','Elite Cosmetics','Hemani Herbals','Bonanza Satrangi','Rawayat','Junaid Jamshed','Outfitters','Zellbury','Stylo'}
 # Explicit object names. Compatibility targets, ingredients and care text are not classifiers.
 NAMED=[
+ ('Makeup Setting Sprays',r'\b(?:makeup\s+)?fixing\s+spray\b'),
  ('Lipsticks',r'\blipstick\b'),
  ('Facial Cleansing Cloths',r'\bfacial\s+cleansing\s+(?:whitening\s+)?cloths\b'),
  ('Eyeshadow Applicators',r'\beye\s+shade\s+applicator\b'),
@@ -240,6 +241,7 @@ def public_facts(row,store):
  return None
 
 def category(row,store):
+ if store=='Sapphire' and re.fullmatch(r'(?i)Knit Cape Jumper',str(row.get('name') or '').strip()) and re.search(r'(?i)\bknit\s+cape\s+jumper\b',str(row.get('description') or '')):return 'Ponchos & Capes','reviewed_source_description','Source explicitly names a knit cape jumper; fabric percentages and measurements unchanged.'
  if store not in STORES:return None
  name=str(row.get('name') or '');body=str(row.get('description') or '')
  if store=='Stylo' and row.get('brand')=='Teenage' and re.search(r'(?i)\bbeede\b',name) and re.search(r'(?i)\bgirls\b',name):return 'Girls Training Bras','reviewed_regional_product_name','Reviewed source Padded BD/Non Padded BD naming and actual product images; no fabric composition inferred: '+name
@@ -323,7 +325,7 @@ def description(row,store):
    lead=name+' is '+overview+'.'
    if not body.startswith(lead):return lead+('\n\n'+original if body and body!=name else ''),'Added exact matching public product_type as a factual overview; all existing product/care details retained.'
  if store=='Junaid Jamshed' and body.split('\n\nProduct Options:')[0].strip()==name:
-  kind={'Men Special Kurta':'a special kurta for men','Men Kurta':'a kurta for men','Women Powder':'a makeup powder','Women Eyebrow Kit':'an eyebrow makeup kit'}.get(row.get('brand'))
+  kind={'Women Stitched Sari':'a stitched saree','Men Special Kurta':'a special kurta for men','Men Kurta':'a kurta for men','Women Powder':'a makeup powder','Women Eyebrow Kit':'an eyebrow makeup kit'}.get(row.get('brand'))
   if kind:return name+' is '+kind+'.'+original[len(name):],'Rewrote exact source product_type; existing options preserved.'
  if source and body in ('0','','None') and str(source.get('product_type') or '').casefold()=='luxury unstitch' and re.search(r'(?i)\bshirt\s+shalwar\s+dupatta\b',name):return name+' is an unstitched outfit with a shirt, shalwar and dupatta.','Rewrote explicit source product_type and all three named components; no fabric, embroidery technique or quantities inferred.'
  if source and body in (name,'','0','None') and source.get('description') and source['description'].strip()!=name:

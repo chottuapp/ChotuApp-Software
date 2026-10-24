@@ -5,7 +5,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from source_research import publish
 REPO='chottuapp/ChotuApp-Software'
 def gh(*args):
- r=subprocess.run(['gh',*args],capture_output=True,text=True,timeout=180)
+ r=subprocess.run(['gh',*args],capture_output=True,text=True,timeout=60)
  if r.returncode:raise RuntimeError('GitHub '+args[0]+' unavailable')
  return r.stdout
 
@@ -39,42 +39,58 @@ def parse_snapshot(text):
   if m:result[m[1]]=m[2]
  return updated,result
 
+def inspect_run(run,now):
+ item=dict(run)
+ with tempfile.TemporaryDirectory() as tmp:
+  try:
+   gh('run','download',str(run['databaseId']),'--repo',REPO,'--name','chotuapp-live-logs','--dir',tmp)
+   paths=list(Path(tmp).rglob('store-status.txt'))
+   if len(paths)!=1:raise ValueError('Snapshot unavailable')
+   text=paths[0].read_text(encoding='utf-8',errors='replace')[:65536];updated,stores=parse_snapshot(text)
+   item.update(snapshot=text,snapshot_utc=updated,stores=stores)
+   if updated:
+    item['snapshot_age_seconds']=max(0,round((now-datetime.datetime.fromisoformat(updated)).total_seconds()))
+    item['snapshot_stale']=item['snapshot_age_seconds']>600
+   if 'LAAM' in stores and run['status']!='completed':
+    from diagnostics import redact
+    for filename in ('console-tail.txt','fetch-log.txt'):
+     logs=list(Path(tmp).rglob(filename))
+     if logs:item[filename]=[redact(line) for line in logs[0].read_text(encoding='utf-8',errors='replace').splitlines()[-70:]]
+  except (RuntimeError,OSError,ValueError):item['snapshot_unavailable']=True
+ if run.get('conclusion')=='failure':
+  try:
+   lines=gh('run','view',str(run['databaseId']),'--repo',REPO,'--log-failed').splitlines();indices=set()
+   for index,line in enumerate(lines):
+    if re.search(r'EXCEPTION|RuntimeError:|ValueError:|ADAPTER ERROR|SOURCE BLOCKED|##\[error\]',line):indices.update(range(max(0,index-5),min(len(lines),index+3)))
+   from diagnostics import redact
+   item['failure_details']=[redact(lines[i]) for i in sorted(indices)][-80:]
+  except RuntimeError:item['failure_details_unavailable']=True
+ return item
+
 def main():
  now=datetime.datetime.now(datetime.timezone.utc)
  runs=json.loads(gh('run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','100','--json','databaseId,displayTitle,status,conclusion,updatedAt,url'))
  report={'run_id':os.environ['GITHUB_RUN_ID'],'checked_utc':now.isoformat(),'active_queued':sum(r['status']!='completed' for r in runs),'runs':[],'fresh_stores':{},'local_khaadi':'Not visible to cloud monitoring; no local activity claimed'}
  policy=json.loads((Path(__file__).parent/'drive-sync-release.json').read_text());campaign=policy.get('dispatcher') if policy.get('audit804_enabled') else None
- for run in select_runs(runs,campaign):
-  item=dict(run)
-  with tempfile.TemporaryDirectory() as tmp:
-   try:
-    gh('run','download',str(run['databaseId']),'--repo',REPO,'--name','chotuapp-live-logs','--dir',tmp)
-    paths=list(Path(tmp).rglob('store-status.txt'))
-    if len(paths)!=1:raise ValueError('Snapshot unavailable')
-    text=paths[0].read_text(encoding='utf-8',errors='replace')[:65536];updated,stores=parse_snapshot(text)
-    item.update(snapshot=text,snapshot_utc=updated,stores=stores)
-    if updated:
-     item['snapshot_age_seconds']=max(0,round((now-datetime.datetime.fromisoformat(updated)).total_seconds()))
-     item['snapshot_stale']=item['snapshot_age_seconds']>600
-    if 'LAAM' in stores and run['status']!='completed':
-     from diagnostics import redact
-     for filename in ('console-tail.txt','fetch-log.txt'):
-      logs=list(Path(tmp).rglob(filename))
-      if logs:item[filename]=[redact(line) for line in logs[0].read_text(encoding='utf-8',errors='replace').splitlines()[-70:]]
-    if run['lane'].startswith('fresh26-39450710625-') or campaign and run['lane'].startswith('audit804-'+campaign+'-'):
-     current_stores={store:status for store,status in stores.items() if store not in report['fresh_stores']}
-     item['stores']=current_stores
-     report['fresh_stores'].update(current_stores)
-   except (RuntimeError,OSError,ValueError):item['snapshot_unavailable']=True
-  if run.get('conclusion')=='failure':
-   try:
-    lines=gh('run','view',str(run['databaseId']),'--repo',REPO,'--log-failed').splitlines();indices=set()
-    for index,line in enumerate(lines):
-     if re.search(r'EXCEPTION|RuntimeError:|ValueError:|ADAPTER ERROR|SOURCE BLOCKED|##\[error\]',line):indices.update(range(max(0,index-5),min(len(lines),index+3)))
-    from diagnostics import redact
-    item['failure_details']=[redact(lines[i]) for i in sorted(indices)][-80:]
-   except RuntimeError:item['failure_details_unavailable']=True
-  report['runs'].append(item)
+ selected=select_runs(runs,campaign)
+ # Publish live API run states before artifact downloads; one slow run must not
+ # hide the heartbeat of every other runner.
+ report['runs']=[dict(run,snapshot_pending=True) for run in selected]
+ publish(report,branch='runner-status-reports')
+ from concurrent.futures import ThreadPoolExecutor,as_completed
+ with ThreadPoolExecutor(max_workers=4) as executor:
+  futures={executor.submit(inspect_run,run,now):run for run in selected}
+  by_id={str(run['databaseId']):dict(run,snapshot_pending=True) for run in selected}
+  for future in as_completed(futures):
+   run=futures[future]
+   try:item=future.result()
+   except Exception:item=dict(run,snapshot_unavailable=True)
+   by_id[str(run['databaseId'])]=item
+   report['runs']=[by_id[str(run['databaseId'])] for run in selected]
+   report['fresh_stores']={name:status for entry in report['runs'] for name,status in entry.get('stores',{}).items()}
+ report['collection_completed_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat()
+ report['collection_seconds']=round((datetime.datetime.now(datetime.timezone.utc)-now).total_seconds())
+
  try:
   response=json.loads(gh('api','repos/'+REPO+'/contents/latest.json?ref=drive-sync-reports'))
   drive=json.loads(base64.b64decode(response['content']))

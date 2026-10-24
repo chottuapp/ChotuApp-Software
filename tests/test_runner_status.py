@@ -9,3 +9,20 @@ class StatusTests(unittest.TestCase):
  def test_snapshot_states_are_not_confused_with_stage_text(self):
   updated,stores=parse_snapshot('Updated (UTC): 2026-10-20T18:00:00+00:00\nLAAM: running\n  Stage: Idle\nSapphire: failed')
   self.assertEqual(stores,{'LAAM':'running','Sapphire':'failed'});self.assertTrue(updated)
+
+class EarlyStatusTests(unittest.TestCase):
+ def test_live_status_is_published_before_slow_snapshot_collection(self):
+  import copy,json,os
+  from pathlib import Path
+  from unittest.mock import patch
+  import runner_status
+  campaign=json.loads((Path(runner_status.__file__).parent/'drive-sync-release.json').read_text())['dispatcher'];events=[]
+  run={'databaseId':1,'displayTitle':'Cloud group audit804-'+campaign+'-1','status':'in_progress','conclusion':''}
+  def gh(*args):
+   if args[:2]==('run','list'):return json.dumps([run])
+   raise RuntimeError('No optional report')
+  def publish(report,**kwargs):events.append(('publish',copy.deepcopy(report)))
+  def inspect(run,now):
+   self.assertEqual(events[0][0],'publish');self.assertTrue(events[0][1]['runs'][0]['snapshot_pending']);return dict(run,stores={'A':'running'})
+  with patch.dict(os.environ,{'GITHUB_RUN_ID':'1'}),patch.object(runner_status,'gh',gh),patch.object(runner_status,'publish',publish),patch.object(runner_status,'inspect_run',inspect):runner_status.main()
+  self.assertEqual(events[-1][1]['fresh_stores'],{'A':'running'});self.assertEqual(events[-1][1]['active_queued'],1)

@@ -12,6 +12,7 @@ def extend_proofs(proofs,additions):
 
 def review(name,description,category,sku="",source_type="",verified_path=""):
  title=text(name);body=text(description);cat=text(category).lower()
+ if source_type in ('SYNCC - Women Sweater','Women Stitched Sari','Men Peshawari Chappal'):body+=' Source-listed product type: '+source_type
  # Only explicit source garment-type strings; a generic vendor/brand is not purpose evidence.
  if re.fullmatch(r'(?i)(?:women|men|teens|kids|infants)\s+(?:stitched\s+[234]\s+piece(?:\s+shirt\s+trouser)?|(?:cotton\s+silk\s+)?shalwar|(?:special\s+)?kurta|trouser|earrings|bracelet|necklace|ring|eyebrow\s+kit|waistcoat\s+with\s+kurta\s+trouser)',str(source_type or '').strip()):body+=' Source-listed garment type: '+str(source_type)
  evidence=title+' '+body
@@ -199,6 +200,7 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  proofs['jewellery chains']=r'\b(?:neck\s+chain|jewellery\s+chain|gold[ -]?plated\s+.*chain|gold\s+snake\s+chain)\b|\bchain\b.{0,500}\bjewel(?:lery|ry)\s+care\b'
  proofs['herbal oils']=r'\bherbal\s+oil\b'
  proofs['case fans']=proofs['cooling fans']
+ extend_proofs(proofs,{'ponchos & capes':r'\b(?:knit\s+cape\s+jumper|poncho|capelet)\b','sarees':r'\b(?:saree|sari)\b','makeup setting sprays':r'\b(?:makeup\s+)?fixing\s+spray\b','sweaters':r'\bsweater\b'})
  extend_proofs(proofs,{'foundations':r'\bfoundation\b'})
  extend_proofs(proofs,{'facial cleansing cloths':r'\bfacial\s+cleansing\s+(?:whitening\s+)?cloths\b','eyeshadow applicators':r'\beye\s+shade\s+applicator\b','skin & hair care sets':r'\bskin\s+and\s+hair\b.{0,80}\bset\b','lipsticks':r'\blipstick\b'})
  extend_proofs(proofs,{'scented candles': '\\b(?:(?:scented|aromatherapy|solid)\\s+)?candle\\b', 'herbal capsules': '\\b(?:herbalist\\b.*\\bcapsules?|herbal\\s+oil\\s+capsule)\\b', 'food flavourings': '\\bfood\\s+essence\\b', 'olive cooking oils': '\\b(?:extra\\s+virgin|pomace)\\s+olive\\s+oil\\b', 'dental gels': '\\bdental\\s+gel\\b', 'intimate washes': '\\bintimate\\s+wash\\b', 'hand cleansers': '\\bhand\\s+cleanser\\b', 'foot sprays': '\\bfoot\\s+spray\\b', 'soap bars': '^soap\\s+with\\b', 'miswak sticks': '\\bmiswak\\b', 'herbal nasal drops': '\\bherbal\\s+nasal\\s+drops\\b', 'herbal nasal oils': '\\bherbal\\s+nasal\\s+oil\\b', 'herbal relief oils': '\\b(?:herbal\\s+relief\\s+oil|sinu[ -]drain\\s+oil)\\b', 'massage gels': '\\bicy\\s+hot\\b.*\\bgel\\b', 'magnesium sprays': '\\bmagnesium\\s+spray\\b', 'massage creams': '\\b(?:massage\\s+cream|relief\\s+cream\\s*[-–]\\s*himomed)\\b', 'shilajit supplements': '\\bshilajit\\b', 'garden cress seeds': '\\bgarden\\s+cress\\s+seeds\\b', 'psyllium husk supplements': '\\b(?:ispaghol|psyllium\\s+husk)\\b', 'herbal powders': '\\b(?:moringa|berberine)\\s+powder\\b', 'face mask powders': '\\bherbal\\s+beauty\\s+mask\\s+powder\\b', 'disinfectant sprays': '\\bdisinfectant\\s+spray\\b', 'sanitiser sprays': '\\bsanitizer\\s+spray\\b', 'facial gels': '\\bface\\s+gel\\b', 'hair tonics': '\\bhair\\s+tonic\\b'})
