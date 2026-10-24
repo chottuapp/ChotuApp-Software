@@ -91,7 +91,11 @@ def completed_files(stage):
 def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
  from importlib.util import spec_from_file_location,module_from_spec
  spec=spec_from_file_location('audit_groups',root/'catalog-tools/start_fresh26_rule804_drive_windows.py');helper=module_from_spec(spec);spec.loader.exec_module(helper)
- campaign=config['dispatcher'];folder=config['destination_folder'];prefix='Cloud group audit804-'+campaign+'-'
+ campaign=config['dispatcher']
+ if state.get('audit804_campaign') not in (None,campaign):
+  state['previous_audit804_campaign']={'campaign_id':state['audit804_campaign'],'results':state.get('audit804_results',{})}
+  for key in ('audit804_results','audit804_processed','audit804_artifacts'):state[key]={}
+ folder=config['destination_folder'];prefix='Cloud group audit804-'+campaign+'-'
  groups={run['displayTitle'].removeprefix('Cloud group ') for run in all_runs if run.get('displayTitle','').startswith(prefix)}
  runs=helper.related(all_runs,groups);registry=json.loads((root/'cloud/fetch-update-release.json').read_text())['fresh_stores'];sites={s['name']:s for s in registry}
  codes=json.loads((root/'cloud/confirmed-shop-codes.json').read_text())
@@ -103,7 +107,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
   state['audit804_auto_evidence']={'status':'checked','facts':evidence_count,'digest':evidence_revision}
  except Exception:
   state['audit804_auto_evidence']={'status':'unavailable','action':'Retain saved source facts; no unverified audit approval'}
- revision=hashlib.sha256(b''.join((root/name).read_bytes() for name in ('cloud/audit804.py','cloud/audit804_semantics.py','cloud/reviewed804_repairs.py','cloud/audit804_delivery.py','cloud/rule804_pipeline.py','cloud/hold804_repairs.py','cloud/audit804-reviewed-source.json','cloud/audit804_automation.py','cloud/legacy_original_schema.py','cloud/confirmed-shop-codes.json','subcategory_inference_support.py','catalog-tools/complete_rule804_batch.py'))).hexdigest()
+ revision=hashlib.sha256(b''.join((root/name).read_bytes() for name in ('cloud/audit804.py','cloud/audit804_semantics.py','cloud/reviewed804_repairs.py','cloud/audit804_delivery.py','cloud/rule804_pipeline.py','cloud/hold804_repairs.py','cloud/audit804-reviewed-source.json','cloud/audit804_automation.py','cloud/price_stock_gate.py','cloud/legacy_original_schema.py','cloud/confirmed-shop-codes.json','subcategory_inference_support.py','catalog-tools/complete_rule804_batch.py'))).hexdigest()
  revision=hashlib.sha256((revision+evidence_revision).encode()).hexdigest()
  state['audit804_campaign']=campaign;state.setdefault('audit804_results',{});state.setdefault('audit804_processed',{});identity=None
  def handle(source,store,source_run,artifact_id,cache_key):
@@ -123,8 +127,10 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
    if store=='Farda Foods':
     from farda_source_support import SHOP
     hosts.add(urlsplit(SHOP).hostname)
-   report=audit(output,store,codes,hosts,source=normalized)
+   report=audit(output,store,codes,hosts,source=normalized,strict_commercial=True)
    repairs=[r for r in processing.get('warnings',[]) if r.get('repair_kind')=='description' or r.get('issue','').startswith(('Copied','Removed'))]
+   from audit804_automation import recovery_plan
+   report['recovery']=recovery_plan(report,prior.get('recovery'))
    report.update(description_repairs_count=len(repairs),description_repairs_examples=repairs[:10])
    report.update(campaign_id=campaign,source_run=str(source_run),source_artifact=artifact_id,source_sha256=source_sha)
    if report['status']!='pass':

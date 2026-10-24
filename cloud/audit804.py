@@ -179,13 +179,15 @@ def rows(path):
    if any(value is not None for value in values):yield dict(zip(headers,values))
  finally:book.close()
 
-def run(path,store,codes,hosts,*,source=None):
+def run(path,store,codes,hosts,*,source=None,strict_commercial=False):
  path=Path(path);findings=[];expected=codes.get(store);seen=set();count=0;finding_count=0
+ from price_stock_gate import workbook_issues
+ commercial=workbook_issues(path) if strict_commercial else {}
  originals={str(row.get('product_id')):row for row in rows(source)} if source else {}
  from reviewed804_repairs import roots,conflicting_name
  catalogue=roots(originals.values()) if originals else set()
  for row in rows(path):
-  count+=1;pid=str(row.get('product_id') or '');issues=issues_for(row,originals.get(pid))
+  count+=1;pid=str(row.get('product_id') or '');issues=issues_for(row,originals.get(pid))+commercial.get(pid,[])
   if store=='Seran' and conflicting_name(row,catalogue):issues.append('Description names a different known catalog product')
   if not pid or pid in seen:issues.append('Missing or duplicate product ID')
   seen.add(pid)
@@ -198,6 +200,9 @@ def run(path,store,codes,hosts,*,source=None):
   if issues:
    finding_count+=1
    if len(findings)<100:findings.append({'product_id':pid,'name':str(row.get('name') or ''),'source_url':str(row.get('source_url') or ''),'issues':issues})
+ for pid,issues in commercial.items():
+  if pid not in seen:
+   finding_count+=1;findings.append({'product_id':pid,'issues':issues})
  if expected and list(codes.values()).count(expected)>1:finding_count+=1;findings.append({'product_id':None,'issues':['Shop code assigned to multiple stores; identity review required']})
  if not count:finding_count+=1;findings.append({'product_id':None,'issues':['Empty workbook']})
  if originals and set(originals)!=seen:finding_count+=1;findings.append({'product_id':None,'issues':['Source/output product identity mismatch']})

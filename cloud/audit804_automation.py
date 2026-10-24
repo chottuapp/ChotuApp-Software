@@ -66,3 +66,10 @@ def request_from_holds(state,sites,previous=None,limit=160):
  cursor=int((previous or {}).get('next_cursor',0))%len(pool)
  selected=(pool+pool)[cursor:cursor+min(limit,len(pool))]
  return {'request':'Automatic bounded primary-source refresh for 804 holds','products':selected,'cursor':cursor,'next_cursor':(cursor+len(selected))%len(pool)}
+
+def recovery_plan(report,previous=None,now=None):
+ """A hold remains actionable work, never an approval or a completed delivery."""
+ now=now or datetime.now(timezone.utc);previous=previous or {}
+ if report.get('status')=='pass':return {'stage':'audit_passed_delivery_ready','unfinished':False}
+ issues=sorted({issue for row in report.get('findings',[]) for issue in row.get('issues',[])})
+ return {'stage':'correction_pending_source_recheck','unfinished':True,'owner':'804 automated recovery','opened_utc':previous.get('opened_utc',now.isoformat()),'updated_utc':now.isoformat(),'next_source_check_due_utc':(now+timedelta(hours=2)).isoformat(),'actions':['Refresh exact public product facts','Apply supported description and category repairs','Rerun independent all-row audit','Upload and verify only after audit passes'],'issues':issues,'adapter_or_missing_fact_exception':'Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete.'}

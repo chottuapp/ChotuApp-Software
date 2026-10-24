@@ -37,4 +37,10 @@ class AutomationTests(unittest.TestCase):
    report['results']=[]
    third,count,cache=refresh(folder,lambda *args:json.dumps(report),self.sites,cache)
    self.assertEqual(second,third);self.assertEqual(count,1)
+ def test_hold_creates_recovery_work_not_a_fake_pass(self):
+  from audit804_automation import recovery_plan
+  report={'status':'hold','findings':[{'issues':['Category blank or unresolved']}]}
+  plan=recovery_plan(report,now=self.now)
+  self.assertTrue(plan['unfinished']);self.assertIn('Rerun independent all-row audit',plan['actions']);self.assertEqual(report['status'],'hold')
+  self.assertFalse(recovery_plan({'status':'pass'},now=self.now)['unfinished'])
  def test_no_hold_does_not_start_fetching(self):self.assertEqual(request_from_holds({},self.sites)['products'],[])

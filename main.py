@@ -1361,7 +1361,7 @@ def quality_validation(rows, imgs, groups, opts, combos, output, log, storefront
         if base is None or base <= 0:
             flag('ERROR', 'INVALID_BASE_PRICE', pid, str(base), url)
         if sale is not None and (sale <= 0 or (base is not None and sale >= base)):
-            flag('WARNING', 'SUSPICIOUS_SALE_PRICE', pid, f'base={base}, sale={sale}', url)
+            flag('ERROR', 'SUSPICIOUS_SALE_PRICE', pid, f'base={base}, sale={sale}', url)
         if any(p is not None and p != p.to_integral_value() for p in (base, sale)):
             if url in storefront_verified:
                 flag('INFO', 'FRACTIONAL_PRICE_DISPLAY_MATCH', pid, f'API base={base}, sale={sale}; static storefront HTML matched exact/whole-rupee active price; no export change', url)
@@ -1402,9 +1402,9 @@ def quality_validation(rows, imgs, groups, opts, combos, output, log, storefront
         base = money(c.get('base_price (PKR)'))
         sale = money(c.get('sale_price (PKR, agar discount ho)'))
         if base is None or base <= 0:
-            flag('WARNING', 'VARIANT_MISSING_PRICE', pid, c.get('source_variant_id'))
+            flag('ERROR', 'VARIANT_MISSING_PRICE', pid, c.get('source_variant_id'))
         if sale is not None and (sale <= 0 or (base is not None and sale >= base)):
-            flag('WARNING', 'VARIANT_SALE_PRICE', pid, c.get('source_variant_id'))
+            flag('ERROR', 'VARIANT_SALE_PRICE', pid, c.get('source_variant_id'))
         for i in (1, 2, 3):
             gid = c.get(f'option_{i}_group_id')
             value = c.get(f'option_{i}_value')
