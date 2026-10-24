@@ -1703,7 +1703,8 @@
     "Zero Lifestyle": "source:0ac4ed4cb4865ae114cc499bf045332535160d4cf2619bad4fe55b85f89be5aa:Zero Lifestyle:e7ebf891970e46b78449c49cea95b5a1ad58f522485d72a1da6e6f27071845b8",
     "Rivaj UK": "source:1a8489da044cedd83bd31f1e5b2b1bec683c772dc37d25b36bdb1660c28cc6ff:Rivaj UK:e7ebf891970e46b78449c49cea95b5a1ad58f522485d72a1da6e6f27071845b8",
     "Vince Care": "source:376425eeb507da03ce760b32b733cf3260ce74e4c27464d6f67503b00bbb41dc:Vince Care:e7ebf891970e46b78449c49cea95b5a1ad58f522485d72a1da6e6f27071845b8",
-    "Computer Zone": "source:5f548ed594afac3ce186033cf0d35dd352c8dace14e5039dbd11f8222f263fb2:Computer Zone:e7ebf891970e46b78449c49cea95b5a1ad58f522485d72a1da6e6f27071845b8"
+    "Computer Zone": "source:5f548ed594afac3ce186033cf0d35dd352c8dace14e5039dbd11f8222f263fb2:Computer Zone:e7ebf891970e46b78449c49cea95b5a1ad58f522485d72a1da6e6f27071845b8",
+    "Saeed Ghani": "source:c402c7a4fd31383785eca6c48aedc639717b7f14bc5561135f53482f27f6ed66:Saeed Ghani:e7ebf891970e46b78449c49cea95b5a1ad58f522485d72a1da6e6f27071845b8"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -2359,6 +2360,106 @@
       "source_run": "40074667667",
       "source_artifact": 12553158383,
       "source_sha256": "5f548ed594afac3ce186033cf0d35dd352c8dace14e5039dbd11f8222f263fb2"
+    },
+    "Saeed Ghani": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Saeed Ghani",
+      "shop_code": "SE10022",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 409,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CPc430d59d4cfb",
+          "name": "Skin and Hair Heaven Set",
+          "source_url": "https://saeedghani.pk/products/skin-and-hair-heaven-set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "details_truncated": false,
+      "workbook_sha256": "c5c5453e3123cfa0b30132dbd33f31a88056bd7f5091d4d8a5fbf3199d1ae6b4",
+      "checked_utc": "2026-10-24T08:16:17.593988+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-24T08:16:17.594704+00:00",
+        "updated_utc": "2026-10-24T08:16:17.594704+00:00",
+        "next_source_check_due_utc": "2026-10-24T08:31:17.594704+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category lacks clear product-purpose evidence; manual review required"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "description_repairs_count": 241,
+      "description_repairs_examples": [
+        {
+          "product_id": "CPe1fa707c0781",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPe3980b22eba6",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPa418a6afabdb",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP55eb52fcf907",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP337e298e3845",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP46e0a2ac2c43",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP2dbecdd1ab71",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP8f6758d93164",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP2110bb3b68b6",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP4acfbe5df500",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        }
+      ],
+      "campaign_id": "fresh804-20261024-c055e80e",
+      "source_run": "40074675482",
+      "source_artifact": 12553708021,
+      "source_sha256": "c402c7a4fd31383785eca6c48aedc639717b7f14bc5561135f53482f27f6ed66",
+      "held_input": "inputs/fresh804-20261024-c055e80e/saeed-ghani/c402c7a4fd313837/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -2398,8 +2499,8 @@
     "SE10026": "inputs/fresh804-20261021-a26dcd86/rollback-se10026/5be88fd6dd65639e/manifest.json",
     "SE10028": "inputs/fresh804-20261021-a26dcd86/rollback-se10028/bac7349a7e5a8e78/manifest.json"
   },
-  "audit804_last_store": "Computer Zone",
-  "audit804_progress_utc": "2026-10-24T08:06:50.850602+00:00",
+  "audit804_last_store": "Saeed Ghani",
+  "audit804_progress_utc": "2026-10-24T08:16:25.597779+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rawayat",
