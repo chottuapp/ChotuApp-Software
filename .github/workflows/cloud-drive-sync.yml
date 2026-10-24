@@ -18,7 +18,7 @@ concurrency:
 jobs:
   upload:
     runs-on: ubuntu-24.04
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -31,3 +31,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           CHOTU_DRIVE_RCLONE_CONFIG: ${{ secrets.CHOTU_DRIVE_RCLONE_CONFIG }}
         run: python cloud/drive_sync.py
+      - name: Publish Drive links after verified uploads
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CHOTU_DRIVE_RCLONE_CONFIG: ${{ secrets.CHOTU_DRIVE_RCLONE_CONFIG }}
+        run: python cloud/drive_catalog.py

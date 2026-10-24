@@ -1,9 +1,6 @@
 name: ChotuApp Drive Links and Times
 on:
   workflow_dispatch:
-  workflow_run:
-    workflows: [ChotuApp Rule 804 Google Drive Sync]
-    types: [completed]
   push:
     branches: [main]
     paths: [cloud/drive_catalog.py, .github/workflows/cloud-drive-catalog.yml]
@@ -13,6 +10,7 @@ concurrency:
   group: chotuapp-drive-sync
   cancel-in-progress: false
 jobs:
+  # Automatic enrichment runs inside Drive Sync to avoid cancelling its pending upload.
   catalog:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
