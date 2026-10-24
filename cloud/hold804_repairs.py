@@ -5,9 +5,13 @@ from functools import lru_cache
 from datetime import datetime,timezone
 from urllib.parse import urlsplit
 SOURCE_TYPES={'Women Trouser':'Trousers','Women Earrings':'Earrings','Women Bracelet':'Bracelets','Women Necklace':'Necklaces','Women Ring':'Rings','Women Eyebrow Kit':'Eyebrow Kits','Infants Stitched 3 Piece':'Stitched Outfit Sets','Men Waistcoat With Kurta Trouser':'Clothing Sets'}
-STORES={'Cool and Cool','Rivaj UK','Computer Zone','Saeed Ghani','Elite Cosmetics','Hemani Herbals','Bonanza Satrangi','Rawayat','Junaid Jamshed','Outfitters','Zellbury','Stylo'}
+STORES={'Miss Rose','Cool and Cool','Rivaj UK','Computer Zone','Saeed Ghani','Elite Cosmetics','Hemani Herbals','Bonanza Satrangi','Rawayat','Junaid Jamshed','Outfitters','Zellbury','Stylo'}
 # Explicit object names. Compatibility targets, ingredients and care text are not classifiers.
 NAMED=[
+ ('Lipsticks',r'\blipstick\b'),
+ ('Facial Cleansing Cloths',r'\bfacial\s+cleansing\s+(?:whitening\s+)?cloths\b'),
+ ('Eyeshadow Applicators',r'\beye\s+shade\s+applicator\b'),
+ ('Skin & Hair Care Sets',r'\bskin\s+and\s+hair\b.*\bset\b'),
  ('Scented Candles','\\b(?:(?:scented|aromatherapy|solid)\\s+)?candle\\b'),
  ('Herbal Capsules','\\b(?:herbalist\\b.*\\bcapsules?|herbal\\s+oil\\s+capsule)\\b'),
  ('Food Flavourings','\\bfood\\s+essence\\b'),
@@ -240,6 +244,7 @@ def category(row,store):
  name=str(row.get('name') or '');body=str(row.get('description') or '')
  if store=='Stylo' and row.get('brand')=='Teenage' and re.search(r'(?i)\bbeede\b',name) and re.search(r'(?i)\bgirls\b',name):return 'Girls Training Bras','reviewed_regional_product_name','Reviewed source Padded BD/Non Padded BD naming and actual product images; no fabric composition inferred: '+name
  if store=='Junaid Jamshed' and row.get('brand') in SOURCE_TYPES:return SOURCE_TYPES[row['brand']],'reviewed_source_product_type','Explicit source product_type: '+row['brand']
+ if re.search(r'(?i)\bcompact\b',name) and re.search(r'(?i)\bpowder\b',body) and re.search(r'(?i)\bface\b',body):return 'Face Powders','reviewed_source_description','Source describes a face compact powder; fragrance is a formulation attribute: '+name+'; '+body[:300]
  source=public_facts(row,store)
  if source:
   types={'earring':'Earrings','earrings':'Earrings','earstuds':'Stud Earrings','jhumka':'Jhumka Earrings','karay':'Bangles & Karas','bangles':'Bangles & Karas','necklace':'Necklaces','necklaces':'Necklaces','bracelets':'Bracelets','anklet':'Anklets','anklets':'Anklets','ring':'Rings','pendent':'Pendants & Lockets','nath':'Nose Jewellery','bindiya kanta':'Forehead Jewellery','choker set':'Jewellery Sets','mala set':'Jewellery Sets','locket set':'Jewellery Sets','bridal set':'Jewellery Sets','jeans':'Jeans'}
@@ -276,12 +281,13 @@ def category(row,store):
  if re.search(r'(?i)\b(?:skin|body)\b',body) and re.search(r'(?i)\bscrub\b',name):return 'Skin Scrubs & Exfoliators','reviewed_source_description','Scrub with source skin application: '+name+'; '+body[:300]
  if re.search(r'(?i)\bbuy\b.*\bget\b.*\bfree\b',name) and re.search(r'(?i)\b(?:lotion|rose\s+water)\b',name):return 'Skin Care Bundles','reviewed_source_description','Named paid and complimentary skin-care items: '+name+'; '+body
  if re.search(r'(?i)\bbundle\b',name) and re.search(r'(?i)\bsunscreen\b',body):return 'Sun Care Bundles','reviewed_source_description','Source names sunscreen combo pack: '+name+'; '+body
+ if re.search(r'(?i)\bfoundation\b',name) and not re.search(r'(?i)\b(?:brush|sponge|applicator|concealer|contour)\b',name):return 'Foundations','reviewed_product_name','Foundation is the sold product; oil-free is a formulation attribute: '+name
  if re.search(r'(?i)\blotion\b',name) and re.search(r'(?i)\bbody\s+lotion\b',body):return 'Body Lotions','reviewed_source_description','Explicit source body lotion: '+name+'; '+body[:300]
  if re.search(r'(?i)\blotion\b',name) and not re.search(r'(?i)\b(?:hair|baby|lip|foot|hand)\b',name):return 'Skin Lotions','reviewed_product_name','Named skin lotion: '+name
  if re.search(r'(?i)\b(?:moisturizing|moisturising)\s+(?:water\s+)?gel\b',name) and re.search(r'(?i)\bskin\b',body):return 'Skin Moisturising Gels','reviewed_source_description','Named moisturising gel with skin context: '+name+'; '+body[:500]
  if re.search(r'(?i)\boil\b',name) and re.search(r'(?i)\bbaby\b',name):return 'Baby Oils','reviewed_product_name','Explicit baby oil: '+name
  if re.search(r'(?i)\bhand\s+elixir\b',name) and re.search(r'(?i)\bhydrat|moisturi',body):return 'Hand Moisturisers','reviewed_source_description','Source hand hydration purpose: '+name+'; '+body[:400]
- if re.search(r'(?i)\boil\b',name) and not re.search(r'(?i)\b(?:perfume|attar|ittar|fragrance|wash|serum|cream|soap|gel|shampoo|conditioner|spray|mask|scrub)\b',name):
+ if re.search(r'(?i)\boil\b',name) and not re.search(r'(?i)\b(?:perfume|attar|ittar|fragrance|wash|serum|cream|soap|gel|shampoo|conditioner|spray|mask|scrub|foundation)\b',name):
   hair=bool(re.search(r'(?i)\bhair\b',body));skin=bool(re.search(r'(?i)\bskin\b',body))
   if hair and skin:return 'Hair & Skin Oils','reviewed_source_description','Source lists both hair and skin uses: '+name+'; '+body[:600]
   if hair:return 'Hair Oils','reviewed_source_description','Source hair application: '+name+'; '+body[:600]

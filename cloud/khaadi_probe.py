@@ -23,11 +23,14 @@ def main():
             for script in soup.select('script[type="application/ld+json"]'):
                 currencies.update(__import__('re').findall(r'"priceCurrency"\s*:\s*"([A-Z]{3})"',script.get_text()))
             item['structured_currencies']=sorted(currencies)
+            # Inspect genuine public country controls; do not invent a region route or price.
+            item['public_country_controls']=[node.get_text(' ',strip=True)[:400] for node in soup.select('select[name*=country],select[id*=country],a[data-country]')][:10]
+            item['pakistan_links']=[node.get('href') for node in soup.select('a[href]') if 'pk.khaadi.com' in str(node.get('href'))][:15]
             canonical=soup.select_one('link[rel=canonical]')
             if canonical:item['canonical']=canonical.get('href','').split('?')[0]
         observations.append(item)
     session.hooks['response'].append(observe)
-    source=PublicCatalog(g,print);report={'checked_utc':__import__('datetime').datetime.now(__import__('datetime').timezone.utc).isoformat(),'full_catalog_verified':False,'products':[],'execution':'GitHub hosted runner','request':'Owner requested phone-independent fresh Khaadi cloud start on 23 October 2026'}
+    source=PublicCatalog(g,print);report={'checked_utc':__import__('datetime').datetime.now(__import__('datetime').timezone.utc).isoformat(),'full_catalog_verified':False,'products':[],'execution':'GitHub hosted runner','request':'Owner requested phone-independent fresh Khaadi cloud start on 24 October 2026'}
     try:
         robots=source.read(BASE+'/robots.txt',fresh=True);source.robot=RobotFileParser();source.robot.parse(robots.text.splitlines())
         for path in ['/floral-tailored-3-piece/T-CHD09B-R-VG_MULTI.html','/black-cambric-kurta/1-26-320-A-C1-VG_MULTI.html']:

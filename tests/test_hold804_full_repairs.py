@@ -28,6 +28,10 @@ class SourceBoundHoldTests(unittest.TestCase):
  def test_new_aliases_do_not_erase_existing_audit_evidence(self):
   for name in ['Nose Pore Cleansing Strips','Charcoal Nose Strips','Green Tea Nose Strips']:
    self.assertEqual(issues_for(dict(self.row(name,'Nose strips remove blackheads from skin.'),Category='Blackhead Removal Strips')),[])
+ def test_fresh_batch_holds_use_primary_product_not_packaging_or_fragrance(self):
+  cases=[('Miss Rose Coral Charm Capsule Lipstick','Rich creamy lip colour with a smooth moisturizing finish.','Miss Rose','Lipsticks'),('Miss Rose Glow-Gild Compact','Compact powder for the face; subtle fragrance.','Miss Rose','Face Powders'),('Miss Rose Oil-Free Matte Long-Wear Foundation','Oil free liquid foundation for face makeup.','Miss Rose','Foundations'),("Facial Cleansing Whitening Cloths Apricot 4's",'Alcohol-free antibacterial cleansing cloths.','Cool and Cool','Facial Cleansing Cloths'),('Eye Shade Applicator','Applicator for controlled eye shadow blending.','Rivaj UK','Eyeshadow Applicators'),('Skin and Hair Heaven Set','A complete skin and hair care collection.','Saeed Ghani','Skin & Hair Care Sets')]
+  for name,body,store,label in cases:
+   row=self.row(name,body);self.assertEqual(category(row,store)[0],label);self.assertEqual(issues_for(dict(row,Category=label)),[])
  def test_promo_retains_both_quantities_without_inventing_a_third_item(self):
   name='Buy Baby Washing Gel 500 ML & Get Body Lotion 100 ML Free';fixed,reason=description(self.row(name,name),'Cool and Cool')
   self.assertEqual(fixed,'Baby Washing Gel 500 ML. Includes Body Lotion 100 ML as a complimentary item.');self.assertTrue(reason)
