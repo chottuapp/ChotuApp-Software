@@ -131,7 +131,11 @@ def issues_for(row,source=None):
  if source:
   reviewed_path=Path(__file__).with_name('audit804-image-reviews.json')
   if reviewed_path.exists():
-   for fact in json.loads(reviewed_path.read_text()).get('products',[]):
+   evidence_records=json.loads(reviewed_path.read_text())
+   for conflict in evidence_records.get('source_conflicts',[]):
+    if (conflict.get('product_id'),conflict.get('name'),conflict.get('source_url'))==(str(source.get('product_id')),source.get('name'),source.get('source_url')) and hashlib.sha256(str(source.get('description') or '').encode()).hexdigest()==conflict.get('input_description_sha256'):
+     issues.append(conflict['issue'])
+   for fact in evidence_records.get('products',[]):
     if not fact.get('replace_wrong_product_body'):continue
     if (fact.get('product_id'),fact.get('name'),fact.get('source_url'))!=(str(source.get('product_id')),source.get('name'),source.get('source_url')):continue
     if hashlib.sha256(str(source.get('description') or '').encode()).hexdigest()!=fact.get('input_description_sha256'):continue
