@@ -125,7 +125,20 @@ def issues_for(row,source=None):
  if category.lower() in {'accessories','clothing','beauty','skin care','hair care','food','sale','new arrivals','collection','women','men','kids','general','products'}:issues.append('Category is too broad or promotional for product-purpose classification')
  if re.search(r'Product Clarification:|description refers to .*while this listing',description,re.I):issues.append('Conflicting source description requires attention')
  from reviewed804_repairs import product_content
- if source and product_content(source).strip() not in ('0','None','') and not tokens(product_content(source))<=tokens(description):issues.append('Description lost source numeric facts')
+ source_content=product_content(source) if source else ''
+ # A reviewed primary label can disprove copied supplier prose. Limit replacement
+ # to the exact source identity/body digest; unrelated source facts remain protected.
+ if source:
+  reviewed_path=Path(__file__).with_name('audit804-image-reviews.json')
+  if reviewed_path.exists():
+   for fact in json.loads(reviewed_path.read_text()).get('products',[]):
+    if not fact.get('replace_wrong_product_body'):continue
+    if (fact.get('product_id'),fact.get('name'),fact.get('source_url'))!=(str(source.get('product_id')),source.get('name'),source.get('source_url')):continue
+    if hashlib.sha256(str(source.get('description') or '').encode()).hexdigest()!=fact.get('input_description_sha256'):continue
+    if not re.fullmatch('[a-f0-9]{64}',fact.get('image_sha256','')) or not fact.get('replacement_reason') or not fact.get('image_url','').startswith('https://'):continue
+    if not str(row.get('description') or '').startswith(fact['overview']):continue
+    source_content=fact['overview']
+ if source and source_content.strip() not in ('0','None','') and not tokens(source_content)<=tokens(description):issues.append('Description lost source numeric facts')
  body=CARE.split(description,1)[0][:1600]
  category_review=category
  for plural,singular in {'glosses':'gloss','washes':'wash','shampoos':'shampoo','conditioners':'conditioner','mascaras':'mascara','foundations':'foundation','serums':'serum','toners':'toner','lotions':'lotion','concealers':'concealer','eyeliners':'eyeliner','eyeshadows':'eyeshadow','lipsticks':'lipstick','perfumes':'perfume','fragrances':'fragrance','sunscreens':'sunscreen'}.items():category_review=re.sub(r'\b'+plural+r'\b',singular,category_review,flags=re.I)

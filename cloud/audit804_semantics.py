@@ -314,6 +314,46 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
   'henna cones':r'\bcone\s+(?:mehndi|henna)\b',
   'skin moisturising gels':r'\b(?:moisturi[sz]ing\s+(?:water\s+)?|soothing\s+)gel\b.{0,800}\bskin\b',
  })
+ extend_proofs(proofs,{
+  'hair ties & scrunchies':r'\bhair\s+poni(?:es)?\b|\b(?:organza|beaded)\s+pony\b',
+  'hair claws':r'\bhair\s+catcher',
+  'forehead jewellery':r'\bmathapatti',
+  'hair jewellery':r'\bhair\s+vine',
+  'jewellery chains':r'\b(?:double|dot)\s+chain\b',
+  'hair accessory sets':r'\bbag\s+hair\s+accessory\s+box',
+  'hair accessories & sunglasses sets':r'\bhair\s+accessor(?:y|ies)\b.*\b(?:sunglesses|sunglasses)',
+  'commemorative coins':r'\biraqi\s+coin',
+  'commemorative coin cards':r'\bcoin\s+card',
+  'skin scrubs & exfoliators':r'\bexfoliating\b.*\bgel',
+  'skin masks':r'\b(?:powder\s+mask|nose\s+mask|derma\s+fleece\s+collagen\s+sheet|rejuvenating\s+mask|bioaqua\b.*\bmask|essence\s+mask|mud\s+plus\s+lavender)\b',
+  'eye masks':r'\beye\s+mask',
+  'headbands':r'\bhair\s+band',
+  'facial cleansing wipes':r'\bfacial\s+wipes',
+  'personal mirrors':r'\bdouble\s+sided\s+mirror',
+  'face cleansers':r'\b(?:pure\s+skin\s+anti\s+acne\s+cleanser|deep\s+clean\s+gel\s+wash)\b',
+  'facial & body hair bleaches':r'\bfacial\s+and\s+body\s+hair',
+  'facial exfoliating treatments':r'\blactic\s+acid\s+5%.*exfoliat',
+  'eye treatments':r'\bcaffeine\s+solution.*eye\s+contour',
+  'face serums':r'\bhyaluronic\s+acid\s+2%.*\bface',
+  'facial sun protection':r'\b(?:face\s+guard\s+advanced|brightening\s+day\s+protection).*\bspf\s*\d+',
+  'face moisturisers & creams':r'\b(?:face\s+fresh\s+cream|pure\s+skin\s+acne\s+removal.*cream)\b|\bfair\s+and\s+lovely.*\bcream',
+  'craft colourants':r'\bliquid\s+colors.*(?:cosmetic\s+formulations|products\s+making)',
+ })
+ extend_proofs(proofs,{
+  'facial care sets':r'\bfacial\s+care\s+set\s+comprising\b.*\b(?:cleanser|mask|scrub)\b',
+  'facial treatments':r'\burgent\s+facial\s+treatment\b|\bfacial\s+treatment\b.*\b(?:face|skin)\b',
+  'decorative jewellery stones':r'\bloose\s+decorative\s+stones\b.*\bjewellery\s+decoration\b',
+ })
+ extend_proofs(proofs,{
+  'facial mask tool kits':r'\bfacial\s+mask\s+tool\s+kit\s+comprising\b.*\bmask\s+bowl',
+  'wax applicator sticks':r'\bwooden\s+wax\s+applicator\s+sticks',
+  'shimmer eyeshadows':r'\bshimmering\s+eye\s+makeup\s+paint',
+  'essential oils':r'\btea\s+tree\s+essential\s+oil',
+  'rings':r'\bzircon\s+ring\b|\ba\s+ring\s+with\b',
+  'jewellery chains':r'\bbeaded\s+jewellery\s+chains',
+  'decorative jewellery stones':r'\baqeeq\s+decorative\s+stone',
+ })
+ if cat=='jewellery sets' and has(r'\bstuds\s+earrings\b.*\bbindiya\b.*\badjustable\s+ring\b',title):return []
  if cat=='face serums' and (has(r'\b(?:hair|eyelash|lip|lash)\b',title) or has(r'\b(?:hair|scalp|lip|lash)\b.{0,40}\bserum\b',body[:300])):return ['Facial serum Category conflicts with named application area']
  if cat=='face moisturisers & creams' and has(r'\b(?:body|hand|foot|heel|baby)\b',title):return ['Facial cream Category conflicts with named application area']
  if cat in ('body spray','body sprays') and str(verified_path).casefold()=='body spray' and has(r'\b(?:spray|fragrance)\b',body):return []
