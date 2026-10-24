@@ -1,58 +1,54 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-24T11:16:12.559883+00:00",
-  "run_id": "40086617620",
+  "generated_utc": "2026-10-24T12:07:38.497101+00:00",
+  "run_id": "40086596963",
   "attempt": "1",
   "source_commit": "39c81eb09920ea24a0a6760ee22f12d296bcbc4b",
-  "status": "complete",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 2296.8,
+  "elapsed_seconds": 5400.4,
   "stores": [
     {
-      "name": "Skin Factor",
+      "name": "Hemani Herbals",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "4ea0b613ec340955",
-      "products": 28,
-      "variants": 28,
+      "products": 1074,
+      "variants": 1074,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
       "cache_events": 0
     },
     {
-      "name": "Bonanza Satrangi",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "4ea0b613ec340955",
-      "products": 1109,
-      "variants": 3373,
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
-    },
-    {
-      "name": "Outfitters",
-      "status": "done",
-      "review_required": true,
+      "name": "Gul Ahmed",
+      "status": "pending",
+      "review_required": false,
       "issue_codes": [
-        "HTTP_404",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "4ea0b613ec340955",
-      "products": 3871,
-      "variants": 29973,
       "http_statuses": {
-        "404": 6,
-        "200": 282
+        "200": 1077
       },
-      "network_seconds": 296.1,
-      "max_response_seconds": 1.5,
-      "cache_events": 14935
+      "network_seconds": 2247.1,
+      "max_response_seconds": 2.4,
+      "cache_events": 4244
+    },
+    {
+      "name": "Sapphire",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "4ea0b613ec340955",
+      "products": 1051,
+      "variants": 3764,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
     }
   ]
 }
