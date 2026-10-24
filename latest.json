@@ -11,7 +11,159 @@
       "updatedAt": "2026-10-24T15:17:03Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40106234498",
       "lane": "audit804-fresh804-20261024-c055e80e-6",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-10-24T15:41:06.865666+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Nisa Naturals.xlsx\n\nSTORE STATUS\nNisa Naturals: done\nLAAM: running\n  Stage: Website listing order\n  Last successful HTTP response (UTC): 2026-10-24T15:41:02.680816+00:00\nKhaadi: blocked\n",
+      "snapshot_utc": "2026-10-24T15:41:06.865666+00:00",
+      "stores": {
+        "Nisa Naturals": "done",
+        "LAAM": "running",
+        "Khaadi": "blocked"
+      },
+      "snapshot_age_seconds": 87,
+      "snapshot_stale": false,
+      "console-tail.txt": [
+        "[LAAM] [15:40:24] HTTP END status=200 elapsed=0.6s bytes=323366 https://laam.com/products/alara-13",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alara-13; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:40:25] HTTP START attempt=1 https://laam.com/products/alara-14",
+        "[LAAM] [15:40:25] HTTP END status=200 elapsed=0.5s bytes=315268 https://laam.com/products/alara-14",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alara-14; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:40:26] HTTP START attempt=1 https://laam.com/products/alara-16",
+        "[LAAM] [15:40:28] HTTP END status=200 elapsed=2.0s bytes=312352 https://laam.com/products/alara-16",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alara-16; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:40:28] HTTP START attempt=1 https://laam.com/products/alara-17",
+        "[LAAM] [15:40:28] HTTP END status=200 elapsed=0.4s bytes=313207 https://laam.com/products/alara-17",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alara-17; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:40:30] HTTP START attempt=1 https://laam.com/products/alara-19",
+        "[LAAM] [15:40:30] HTTP END status=200 elapsed=0.6s bytes=302494 https://laam.com/products/alara-19",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alara-19; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:40:31] HTTP START attempt=1 https://laam.com/products/alara-23",
+        "[LAAM] [15:40:31] HTTP END status=200 elapsed=0.4s bytes=321144 https://laam.com/products/alara-23",
+        "[LAAM] [15:40:33] HTTP START attempt=1 https://laam.com/products/alara-24",
+        "[LAAM] [15:40:33] HTTP END status=200 elapsed=0.4s bytes=336706 https://laam.com/products/alara-24",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alara-24; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:40:34] HTTP START attempt=1 https://laam.com/products/alara-25",
+        "[LAAM] [15:40:34] HTTP END status=200 elapsed=0.5s bytes=313233 https://laam.com/products/alara-25",
+        "[LAAM] [15:40:36] HTTP START attempt=1 https://laam.com/products/alara-29",
+        "[LAAM] [15:40:36] HTTP END status=200 elapsed=0.4s bytes=314393 https://laam.com/products/alara-29",
+        "[LAAM] [15:40:37] HTTP START attempt=1 https://laam.com/products/alara-3-pcs",
+        "[LAAM] [15:40:37] HTTP END status=200 elapsed=0.4s bytes=337490 https://laam.com/products/alara-3-pcs",
+        "[LAAM] [15:40:39] HTTP START attempt=1 https://laam.com/products/alara-30",
+        "[LAAM] [15:40:39] HTTP END status=200 elapsed=0.5s bytes=330366 https://laam.com/products/alara-30",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alara-30; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:40:40] HTTP START attempt=1 https://laam.com/products/alara-31",
+        "[LAAM] [15:40:41] HTTP END status=200 elapsed=0.8s bytes=314644 https://laam.com/products/alara-31",
+        "[LAAM] [15:40:42] HTTP START attempt=1 https://laam.com/products/alara-9",
+        "[LAAM] [15:40:42] HTTP END status=200 elapsed=0.5s bytes=315367 https://laam.com/products/alara-9",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alara-9; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:40:43] HTTP START attempt=1 https://laam.com/products/alara-amber",
+        "[LAAM] [15:40:43] HTTP END status=200 elapsed=0.4s bytes=320127 https://laam.com/products/alara-amber",
+        "[LAAM] [15:40:45] HTTP START attempt=1 https://laam.com/products/alara-ar-3",
+        "[LAAM] [15:40:46] HTTP END status=200 elapsed=1.6s bytes=308382 https://laam.com/products/alara-ar-3",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alara-ar-3; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:40:46] HTTP START attempt=1 https://laam.com/products/alara-black-modest-wear-abaya-1",
+        "[LAAM] [15:40:47] HTTP END status=200 elapsed=0.5s bytes=333093 https://laam.com/products/alara-black-modest-wear-abaya-1",
+        "[LAAM] [15:40:48] HTTP START attempt=1 https://laam.com/products/alara-fc7-121",
+        "[LAAM] [15:40:48] HTTP END status=200 elapsed=0.4s bytes=311337 https://laam.com/products/alara-fc7-121",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alara-fc7-121; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:40:49] HTTP START attempt=1 https://laam.com/products/alara-gold",
+        "[LAAM] [15:40:50] HTTP END status=200 elapsed=0.3s bytes=313451 https://laam.com/products/alara-gold",
+        "[LAAM] [15:40:51] HTTP START attempt=1 https://laam.com/products/alara-kids",
+        "[LAAM] [15:40:51] HTTP END status=200 elapsed=0.5s bytes=315971 https://laam.com/products/alara-kids",
+        "[LAAM] [15:40:52] HTTP START attempt=1 https://laam.com/products/alara-navy",
+        "[LAAM] [15:40:54] HTTP END status=200 elapsed=2.1s bytes=332858 https://laam.com/products/alara-navy",
+        "[LAAM] [15:40:54] HTTP START attempt=1 https://laam.com/products/alara-navy-blue",
+        "[LAAM] [15:40:55] HTTP END status=200 elapsed=0.7s bytes=320326 https://laam.com/products/alara-navy-blue",
+        "[LAAM] [15:40:56] HTTP START attempt=1 https://laam.com/products/alara-openable-bracelet-zarosh-jewel",
+        "[LAAM] [15:40:56] HTTP END status=200 elapsed=0.3s bytes=317442 https://laam.com/products/alara-openable-bracelet-zarosh-jewel",
+        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/alara-openable-bracelet-zarosh-jewel",
+        "[LAAM] [15:40:57] HTTP START attempt=1 https://laam.com/products/alara-pashmire",
+        "[LAAM] [15:40:58] HTTP END status=200 elapsed=0.5s bytes=331469 https://laam.com/products/alara-pashmire",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alara-pashmire; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:40:59] HTTP START attempt=1 https://laam.com/products/alara-sa-23-ar-006",
+        "[LAAM] [15:40:59] HTTP END status=200 elapsed=0.4s bytes=312979 https://laam.com/products/alara-sa-23-ar-006",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alara-sa-23-ar-006; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:41:00] HTTP START attempt=1 https://laam.com/products/alari",
+        "[LAAM] [15:41:01] HTTP END status=200 elapsed=0.4s bytes=323590 https://laam.com/products/alari",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alari; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:41:02] HTTP START attempt=1 https://laam.com/products/alars",
+        "[LAAM] [15:41:02] HTTP END status=200 elapsed=0.4s bytes=331505 https://laam.com/products/alars",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alars; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:41:03] HTTP START attempt=1 https://laam.com/products/alaska-d-01",
+        "[LAAM] [15:41:04] HTTP END status=200 elapsed=0.5s bytes=303451 https://laam.com/products/alaska-d-01",
+        "[LAAM] [15:41:05] HTTP START attempt=1 https://laam.com/products/alaska-d-03",
+        "[LAAM] [15:41:05] HTTP END status=200 elapsed=0.3s bytes=303524 https://laam.com/products/alaska-d-03"
+      ],
+      "fetch-log.txt": [
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alara-13; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:40:25] HTTP START attempt=1 https://laam.com/products/alara-14",
+        "[LAAM] [15:40:25] HTTP END status=200 elapsed=0.5s bytes=315268 https://laam.com/products/alara-14",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alara-14; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:40:26] HTTP START attempt=1 https://laam.com/products/alara-16",
+        "[LAAM] [15:40:28] HTTP END status=200 elapsed=2.0s bytes=312352 https://laam.com/products/alara-16",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alara-16; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:40:28] HTTP START attempt=1 https://laam.com/products/alara-17",
+        "[LAAM] [15:40:28] HTTP END status=200 elapsed=0.4s bytes=313207 https://laam.com/products/alara-17",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alara-17; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:40:30] HTTP START attempt=1 https://laam.com/products/alara-19",
+        "[LAAM] [15:40:30] HTTP END status=200 elapsed=0.6s bytes=302494 https://laam.com/products/alara-19",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alara-19; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:40:31] HTTP START attempt=1 https://laam.com/products/alara-23",
+        "[LAAM] [15:40:31] HTTP END status=200 elapsed=0.4s bytes=321144 https://laam.com/products/alara-23",
+        "[LAAM] [15:40:33] HTTP START attempt=1 https://laam.com/products/alara-24",
+        "[LAAM] [15:40:33] HTTP END status=200 elapsed=0.4s bytes=336706 https://laam.com/products/alara-24",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alara-24; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:40:34] HTTP START attempt=1 https://laam.com/products/alara-25",
+        "[LAAM] [15:40:34] HTTP END status=200 elapsed=0.5s bytes=313233 https://laam.com/products/alara-25",
+        "[LAAM] [15:40:36] HTTP START attempt=1 https://laam.com/products/alara-29",
+        "[LAAM] [15:40:36] HTTP END status=200 elapsed=0.4s bytes=314393 https://laam.com/products/alara-29",
+        "[LAAM] [15:40:37] HTTP START attempt=1 https://laam.com/products/alara-3-pcs",
+        "[LAAM] [15:40:37] HTTP END status=200 elapsed=0.4s bytes=337490 https://laam.com/products/alara-3-pcs",
+        "[LAAM] [15:40:39] HTTP START attempt=1 https://laam.com/products/alara-30",
+        "[LAAM] [15:40:39] HTTP END status=200 elapsed=0.5s bytes=330366 https://laam.com/products/alara-30",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alara-30; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:40:40] HTTP START attempt=1 https://laam.com/products/alara-31",
+        "[LAAM] [15:40:41] HTTP END status=200 elapsed=0.8s bytes=314644 https://laam.com/products/alara-31",
+        "[LAAM] [15:40:42] HTTP START attempt=1 https://laam.com/products/alara-9",
+        "[LAAM] [15:40:42] HTTP END status=200 elapsed=0.5s bytes=315367 https://laam.com/products/alara-9",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alara-9; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:40:43] HTTP START attempt=1 https://laam.com/products/alara-amber",
+        "[LAAM] [15:40:43] HTTP END status=200 elapsed=0.4s bytes=320127 https://laam.com/products/alara-amber",
+        "[LAAM] [15:40:45] HTTP START attempt=1 https://laam.com/products/alara-ar-3",
+        "[LAAM] [15:40:46] HTTP END status=200 elapsed=1.6s bytes=308382 https://laam.com/products/alara-ar-3",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alara-ar-3; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:40:46] HTTP START attempt=1 https://laam.com/products/alara-black-modest-wear-abaya-1",
+        "[LAAM] [15:40:47] HTTP END status=200 elapsed=0.5s bytes=333093 https://laam.com/products/alara-black-modest-wear-abaya-1",
+        "[LAAM] [15:40:48] HTTP START attempt=1 https://laam.com/products/alara-fc7-121",
+        "[LAAM] [15:40:48] HTTP END status=200 elapsed=0.4s bytes=311337 https://laam.com/products/alara-fc7-121",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alara-fc7-121; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:40:49] HTTP START attempt=1 https://laam.com/products/alara-gold",
+        "[LAAM] [15:40:50] HTTP END status=200 elapsed=0.3s bytes=313451 https://laam.com/products/alara-gold",
+        "[LAAM] [15:40:51] HTTP START attempt=1 https://laam.com/products/alara-kids",
+        "[LAAM] [15:40:51] HTTP END status=200 elapsed=0.5s bytes=315971 https://laam.com/products/alara-kids",
+        "[LAAM] [15:40:52] HTTP START attempt=1 https://laam.com/products/alara-navy",
+        "[LAAM] [15:40:54] HTTP END status=200 elapsed=2.1s bytes=332858 https://laam.com/products/alara-navy",
+        "[LAAM] [15:40:54] HTTP START attempt=1 https://laam.com/products/alara-navy-blue",
+        "[LAAM] [15:40:55] HTTP END status=200 elapsed=0.7s bytes=320326 https://laam.com/products/alara-navy-blue",
+        "[LAAM] [15:40:56] HTTP START attempt=1 https://laam.com/products/alara-openable-bracelet-zarosh-jewel",
+        "[LAAM] [15:40:56] HTTP END status=200 elapsed=0.3s bytes=317442 https://laam.com/products/alara-openable-bracelet-zarosh-jewel",
+        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/alara-openable-bracelet-zarosh-jewel",
+        "[LAAM] [15:40:57] HTTP START attempt=1 https://laam.com/products/alara-pashmire",
+        "[LAAM] [15:40:58] HTTP END status=200 elapsed=0.5s bytes=331469 https://laam.com/products/alara-pashmire",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alara-pashmire; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:40:59] HTTP START attempt=1 https://laam.com/products/alara-sa-23-ar-006",
+        "[LAAM] [15:40:59] HTTP END status=200 elapsed=0.4s bytes=312979 https://laam.com/products/alara-sa-23-ar-006",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alara-sa-23-ar-006; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:41:00] HTTP START attempt=1 https://laam.com/products/alari",
+        "[LAAM] [15:41:01] HTTP END status=200 elapsed=0.4s bytes=323590 https://laam.com/products/alari",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alari; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:41:02] HTTP START attempt=1 https://laam.com/products/alars",
+        "[LAAM] [15:41:02] HTTP END status=200 elapsed=0.4s bytes=331505 https://laam.com/products/alars",
+        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/alars; no source-confirmed available variants; unavailable product excluded, no variants invented",
+        "[LAAM] [15:41:03] HTTP START attempt=1 https://laam.com/products/alaska-d-01",
+        "[LAAM] [15:41:04] HTTP END status=200 elapsed=0.5s bytes=303451 https://laam.com/products/alaska-d-01",
+        "[LAAM] [15:41:05] HTTP START attempt=1 https://laam.com/products/alaska-d-03",
+        "[LAAM] [15:41:05] HTTP END status=200 elapsed=0.3s bytes=303524 https://laam.com/products/alaska-d-03",
+        "[LAAM] [15:41:06] HTTP START attempt=1 https://laam.com/products/alaska-d-04"
+      ]
     },
     {
       "conclusion": "",
@@ -21,7 +173,15 @@
       "updatedAt": "2026-10-24T15:14:38Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40106040331",
       "lane": "audit804-fresh804-20261024-c055e80e-2",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-10-24T15:40:23.523392+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Tawakkal Fabrics.xlsx\n2. Junaid Jamshed.xlsx\n\nSTORE STATUS\nTawakkal Fabrics: done\nJunaid Jamshed: done\nStylo: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 4966/10515 tasks; sample age 202s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-10-24T15:40:22.913447+00:00\n",
+      "snapshot_utc": "2026-10-24T15:40:23.523392+00:00",
+      "stores": {
+        "Tawakkal Fabrics": "done",
+        "Junaid Jamshed": "done",
+        "Stylo": "running"
+      },
+      "snapshot_age_seconds": 131,
+      "snapshot_stale": false
     },
     {
       "conclusion": "",
@@ -31,7 +191,15 @@
       "updatedAt": "2026-10-24T15:11:48Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40105825616",
       "lane": "audit804-fresh804-20261024-c055e80e-7",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-10-24T15:38:07.963792+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Hemani Herbals.xlsx\n2. Sapphire.xlsx\n\nSTORE STATUS\nHemani Herbals: done\nGul Ahmed: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 5445/6690 tasks; sample age 206s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-10-24T15:38:03.171211+00:00\nSapphire: done\n",
+      "snapshot_utc": "2026-10-24T15:38:07.963792+00:00",
+      "stores": {
+        "Hemani Herbals": "done",
+        "Gul Ahmed": "running",
+        "Sapphire": "done"
+      },
+      "snapshot_age_seconds": 266,
+      "snapshot_stale": false
     },
     {
       "conclusion": "success",
@@ -41,7 +209,14 @@
       "updatedAt": "2026-10-24T13:16:43Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40092780689",
       "lane": "audit804-fresh804-20261024-c055e80e-10",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-10-24T13:16:11.682451+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Zellbury.xlsx\n2. Zero Lifestyle.xlsx\n\nSTORE STATUS\nZellbury: done\n  Last successful HTTP response (UTC): 2026-10-24T12:48:33.319183+00:00\nZero Lifestyle: done\n",
+      "snapshot_utc": "2026-10-24T13:16:11.682451+00:00",
+      "stores": {
+        "Zellbury": "done",
+        "Zero Lifestyle": "done"
+      },
+      "snapshot_age_seconds": 8782,
+      "snapshot_stale": true
     },
     {
       "conclusion": "success",
@@ -51,7 +226,15 @@
       "updatedAt": "2026-10-24T11:16:38Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40086617620",
       "lane": "audit804-fresh804-20261024-c055e80e-9",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-10-24T11:16:07.056047+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Skin Factor.xlsx\n2. Bonanza Satrangi.xlsx\n3. Outfitters.xlsx\n\nSTORE STATUS\nSkin Factor: done\nBonanza Satrangi: done\nOutfitters: done\n  Last successful HTTP response (UTC): 2026-10-24T10:52:02.425629+00:00\n",
+      "snapshot_utc": "2026-10-24T11:16:07.056047+00:00",
+      "stores": {
+        "Skin Factor": "done",
+        "Bonanza Satrangi": "done",
+        "Outfitters": "done"
+      },
+      "snapshot_age_seconds": 15987,
+      "snapshot_stale": true
     },
     {
       "conclusion": "success",
@@ -61,7 +244,15 @@
       "updatedAt": "2026-10-24T10:36:39Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40080560084",
       "lane": "audit804-fresh804-20261024-c055e80e-1",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-10-24T10:36:00.915276+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Miss Rose.xlsx\n2. Rivaj UK.xlsx\n3. Rawayat.xlsx\n\nSTORE STATUS\nMiss Rose: done\nRivaj UK: done\nRawayat: done\n  Last successful HTTP response (UTC): 2026-10-24T10:06:53.016686+00:00\n",
+      "snapshot_utc": "2026-10-24T10:36:00.915276+00:00",
+      "stores": {
+        "Miss Rose": "done",
+        "Rivaj UK": "done",
+        "Rawayat": "done"
+      },
+      "snapshot_age_seconds": 18393,
+      "snapshot_stale": true
     },
     {
       "conclusion": "success",
@@ -71,7 +262,15 @@
       "updatedAt": "2026-10-24T08:16:09Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40074675482",
       "lane": "audit804-fresh804-20261024-c055e80e-8",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-10-24T08:15:33.763397+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Denim Leftover.xlsx\n2. Cool and Cool.xlsx\n3. Saeed Ghani.xlsx\n\nSTORE STATUS\nDenim Leftover: done\n  Last successful HTTP response (UTC): 2026-10-24T07:36:55.477600+00:00\nCool and Cool: done\n  Last successful HTTP response (UTC): 2026-10-24T07:38:37.593440+00:00\nSaeed Ghani: done\n  Last successful HTTP response (UTC): 2026-10-24T08:14:02.527615+00:00\n",
+      "snapshot_utc": "2026-10-24T08:15:33.763397+00:00",
+      "stores": {
+        "Denim Leftover": "done",
+        "Cool and Cool": "done",
+        "Saeed Ghani": "done"
+      },
+      "snapshot_age_seconds": 26820,
+      "snapshot_stale": true
     },
     {
       "conclusion": "success",
@@ -81,7 +280,15 @@
       "updatedAt": "2026-10-24T08:05:03Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40074667667",
       "lane": "audit804-fresh804-20261024-c055e80e-5",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-10-24T08:04:26.430499+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Farda Foods.xlsx\n2. Adam Cheese.xlsx\n3. Computer Zone.xlsx\n\nSTORE STATUS\nFarda Foods: done\n  Last successful HTTP response (UTC): 2026-10-24T07:36:08.558480+00:00\nAdam Cheese: done\n  Last successful HTTP response (UTC): 2026-10-24T07:35:39.870442+00:00\nComputer Zone: done\n  Last successful HTTP response (UTC): 2026-10-24T08:04:17.169306+00:00\n",
+      "snapshot_utc": "2026-10-24T08:04:26.430499+00:00",
+      "stores": {
+        "Farda Foods": "done",
+        "Adam Cheese": "done",
+        "Computer Zone": "done"
+      },
+      "snapshot_age_seconds": 27488,
+      "snapshot_stale": true
     },
     {
       "conclusion": "success",
@@ -91,7 +298,15 @@
       "updatedAt": "2026-10-24T07:40:40Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40074664854",
       "lane": "audit804-fresh804-20261024-c055e80e-4",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-10-24T07:40:07.170880+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Islamabad Tea.xlsx\n2. Shop Modest.xlsx\n3. Seran.xlsx\n\nSTORE STATUS\nIslamabad Tea: done\n  Last successful HTTP response (UTC): 2026-10-24T07:34:54.283103+00:00\nShop Modest: done\n  Last successful HTTP response (UTC): 2026-10-24T07:39:49.735300+00:00\nSeran: done\n  Last successful HTTP response (UTC): 2026-10-24T07:36:53.750571+00:00\n",
+      "snapshot_utc": "2026-10-24T07:40:07.170880+00:00",
+      "stores": {
+        "Islamabad Tea": "done",
+        "Shop Modest": "done",
+        "Seran": "done"
+      },
+      "snapshot_age_seconds": 28947,
+      "snapshot_stale": true
     },
     {
       "conclusion": "success",
@@ -101,9 +316,440 @@
       "updatedAt": "2026-10-24T08:41:20Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40074662060",
       "lane": "audit804-fresh804-20261024-c055e80e-3",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-10-24T08:40:50.174604+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Vince Care.xlsx\n2. The Hanger Pakistan.xlsx\n3. Elite Cosmetics.xlsx\n\nSTORE STATUS\nVince Care: done\n  Last successful HTTP response (UTC): 2026-10-24T07:56:48.324235+00:00\nThe Hanger Pakistan: done\n  Last successful HTTP response (UTC): 2026-10-24T07:38:06.562633+00:00\nElite Cosmetics: done\n  Last successful HTTP response (UTC): 2026-10-24T08:31:01.457659+00:00\n",
+      "snapshot_utc": "2026-10-24T08:40:50.174604+00:00",
+      "stores": {
+        "Vince Care": "done",
+        "The Hanger Pakistan": "done",
+        "Elite Cosmetics": "done"
+      },
+      "snapshot_age_seconds": 25304,
+      "snapshot_stale": true
     }
   ],
-  "fresh_stores": {},
-  "local_khaadi": "Not visible to cloud monitoring; no local activity claimed"
+  "fresh_stores": {
+    "Nisa Naturals": "done",
+    "LAAM": "running",
+    "Khaadi": "blocked",
+    "Tawakkal Fabrics": "done",
+    "Junaid Jamshed": "done",
+    "Stylo": "running",
+    "Hemani Herbals": "done",
+    "Gul Ahmed": "running",
+    "Sapphire": "done",
+    "Zellbury": "done",
+    "Zero Lifestyle": "done",
+    "Skin Factor": "done",
+    "Bonanza Satrangi": "done",
+    "Outfitters": "done",
+    "Miss Rose": "done",
+    "Rivaj UK": "done",
+    "Rawayat": "done",
+    "Denim Leftover": "done",
+    "Cool and Cool": "done",
+    "Saeed Ghani": "done",
+    "Farda Foods": "done",
+    "Adam Cheese": "done",
+    "Computer Zone": "done",
+    "Islamabad Tea": "done",
+    "Shop Modest": "done",
+    "Seran": "done",
+    "Vince Care": "done",
+    "The Hanger Pakistan": "done",
+    "Elite Cosmetics": "done"
+  },
+  "local_khaadi": {
+    "store": "Khaadi",
+    "execution": "Windows local",
+    "observed_utc": "2026-10-20T19:22:58.769213+00:00",
+    "worker_active": true,
+    "status": "unknown_stale_heartbeat",
+    "worker_updated": "2026-10-21 00:22:57",
+    "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
+    "error": "",
+    "progress_age_seconds": 1,
+    "report_age_seconds": 332385,
+    "status_confirmed": false
+  },
+  "collection_completed_utc": "2026-10-24T15:42:42.702427+00:00",
+  "collection_seconds": 9,
+  "store_overview": {
+    "Nisa Naturals": {
+      "state": "drive_verified",
+      "run_id": "40106234498",
+      "snapshot_utc": "2026-10-24T15:41:06.865666+00:00",
+      "uploaded_utc": "2026-10-24T15:08:49.820088+00:00"
+    },
+    "LAAM": {
+      "state": "fetching",
+      "run_id": "40106234498",
+      "snapshot_utc": "2026-10-24T15:41:06.865666+00:00"
+    },
+    "Khaadi": {
+      "state": "source_blocked",
+      "run_id": "40106234498",
+      "snapshot_utc": "2026-10-24T15:41:06.865666+00:00"
+    },
+    "Tawakkal Fabrics": {
+      "state": "drive_verified",
+      "run_id": "40106040331",
+      "snapshot_utc": "2026-10-24T15:40:23.523392+00:00",
+      "uploaded_utc": "2026-10-24T15:01:48.687881+00:00"
+    },
+    "Junaid Jamshed": {
+      "state": "drive_verified",
+      "run_id": "40106040331",
+      "snapshot_utc": "2026-10-24T15:40:23.523392+00:00",
+      "uploaded_utc": "2026-10-24T15:15:39.763305+00:00"
+    },
+    "Stylo": {
+      "state": "fetching",
+      "run_id": "40106040331",
+      "snapshot_utc": "2026-10-24T15:40:23.523392+00:00"
+    },
+    "Hemani Herbals": {
+      "state": "drive_verified",
+      "run_id": "40105825616",
+      "snapshot_utc": "2026-10-24T15:38:07.963792+00:00",
+      "uploaded_utc": "2026-10-24T14:59:48.194172+00:00"
+    },
+    "Gul Ahmed": {
+      "state": "fetching",
+      "run_id": "40105825616",
+      "snapshot_utc": "2026-10-24T15:38:07.963792+00:00"
+    },
+    "Sapphire": {
+      "state": "drive_verified",
+      "run_id": "40105825616",
+      "snapshot_utc": "2026-10-24T15:38:07.963792+00:00",
+      "uploaded_utc": "2026-10-24T15:13:55.808786+00:00"
+    },
+    "Zellbury": {
+      "state": "drive_verified",
+      "run_id": "40092780689",
+      "snapshot_utc": "2026-10-24T13:16:11.682451+00:00",
+      "uploaded_utc": "2026-10-24T15:16:39.788390+00:00"
+    },
+    "Zero Lifestyle": {
+      "state": "drive_verified",
+      "run_id": "40092780689",
+      "snapshot_utc": "2026-10-24T13:16:11.682451+00:00",
+      "uploaded_utc": "2026-10-24T15:12:48.737435+00:00"
+    },
+    "Skin Factor": {
+      "state": "drive_verified",
+      "run_id": "40086617620",
+      "snapshot_utc": "2026-10-24T11:16:07.056047+00:00",
+      "uploaded_utc": "2026-10-24T15:11:51.047886+00:00"
+    },
+    "Bonanza Satrangi": {
+      "state": "correction_queue",
+      "run_id": "40086617620",
+      "snapshot_utc": "2026-10-24T11:16:07.056047+00:00",
+      "issues_count": 2,
+      "issues": [
+        "Category blank or unresolved",
+        "Description lacks enough product-specific content for review"
+      ],
+      "audit_checked_utc": "2026-10-24T14:59:57.198659+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-24T09:27:16.320852+00:00",
+        "updated_utc": "2026-10-24T14:59:57.200501+00:00",
+        "next_source_check_due_utc": "2026-10-24T15:14:57.200501+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved",
+          "Description lacks enough product-specific content for review"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      }
+    },
+    "Outfitters": {
+      "state": "drive_verified",
+      "run_id": "40086617620",
+      "snapshot_utc": "2026-10-24T11:16:07.056047+00:00",
+      "uploaded_utc": "2026-10-24T15:14:52.820647+00:00"
+    },
+    "Miss Rose": {
+      "state": "drive_verified",
+      "run_id": "40080560084",
+      "snapshot_utc": "2026-10-24T10:36:00.915276+00:00",
+      "uploaded_utc": "2026-10-24T15:00:31.825140+00:00"
+    },
+    "Rivaj UK": {
+      "state": "drive_verified",
+      "run_id": "40080560084",
+      "snapshot_utc": "2026-10-24T10:36:00.915276+00:00",
+      "uploaded_utc": "2026-10-24T15:00:41.173677+00:00"
+    },
+    "Rawayat": {
+      "state": "correction_queue",
+      "run_id": "40080560084",
+      "snapshot_utc": "2026-10-24T10:36:00.915276+00:00",
+      "issues_count": 59,
+      "issues": [
+        "Bundle appears classified as a single component",
+        "Category lacks clear product-purpose evidence; manual review required",
+        "Description lacks enough product-specific content for review",
+        "Primary product type and Category disagree: earrings",
+        "Primary product type and Category disagree: necklace"
+      ],
+      "audit_checked_utc": "2026-10-24T15:00:21.557233+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-24T10:37:10.393410+00:00",
+        "updated_utc": "2026-10-24T15:00:21.564251+00:00",
+        "next_source_check_due_utc": "2026-10-24T15:15:21.564251+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Bundle appears classified as a single component",
+          "Category lacks clear product-purpose evidence; manual review required",
+          "Description lacks enough product-specific content for review",
+          "Primary product type and Category disagree: earrings",
+          "Primary product type and Category disagree: necklace"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      }
+    },
+    "Denim Leftover": {
+      "state": "drive_verified",
+      "run_id": "40074675482",
+      "snapshot_utc": "2026-10-24T08:15:33.763397+00:00",
+      "uploaded_utc": "2026-10-24T15:09:47.746188+00:00"
+    },
+    "Cool and Cool": {
+      "state": "drive_verified",
+      "run_id": "40074675482",
+      "snapshot_utc": "2026-10-24T08:15:33.763397+00:00",
+      "uploaded_utc": "2026-10-24T15:09:55.395401+00:00"
+    },
+    "Saeed Ghani": {
+      "state": "drive_verified",
+      "run_id": "40074675482",
+      "snapshot_utc": "2026-10-24T08:15:33.763397+00:00",
+      "uploaded_utc": "2026-10-24T15:10:53.826533+00:00"
+    },
+    "Farda Foods": {
+      "state": "drive_verified",
+      "run_id": "40074667667",
+      "snapshot_utc": "2026-10-24T08:04:26.430499+00:00",
+      "uploaded_utc": "2026-10-24T15:05:53.039535+00:00"
+    },
+    "Adam Cheese": {
+      "state": "drive_verified",
+      "run_id": "40074667667",
+      "snapshot_utc": "2026-10-24T08:04:26.430499+00:00",
+      "uploaded_utc": "2026-10-24T15:06:49.990984+00:00"
+    },
+    "Computer Zone": {
+      "state": "drive_verified",
+      "run_id": "40074667667",
+      "snapshot_utc": "2026-10-24T08:04:26.430499+00:00",
+      "uploaded_utc": "2026-10-24T15:07:53.030516+00:00"
+    },
+    "Islamabad Tea": {
+      "state": "drive_verified",
+      "run_id": "40074664854",
+      "snapshot_utc": "2026-10-24T07:40:07.170880+00:00",
+      "uploaded_utc": "2026-10-24T15:03:47.891670+00:00"
+    },
+    "Shop Modest": {
+      "state": "drive_verified",
+      "run_id": "40074664854",
+      "snapshot_utc": "2026-10-24T07:40:07.170880+00:00",
+      "uploaded_utc": "2026-10-24T15:03:57.857363+00:00"
+    },
+    "Seran": {
+      "state": "drive_verified",
+      "run_id": "40074664854",
+      "snapshot_utc": "2026-10-24T07:40:07.170880+00:00",
+      "uploaded_utc": "2026-10-24T15:05:47.405561+00:00"
+    },
+    "Vince Care": {
+      "state": "drive_verified",
+      "run_id": "40074662060",
+      "snapshot_utc": "2026-10-24T08:40:50.174604+00:00",
+      "uploaded_utc": "2026-10-24T15:02:44.013792+00:00"
+    },
+    "The Hanger Pakistan": {
+      "state": "drive_verified",
+      "run_id": "40074662060",
+      "snapshot_utc": "2026-10-24T08:40:50.174604+00:00",
+      "uploaded_utc": "2026-10-24T15:02:51.422812+00:00"
+    },
+    "Elite Cosmetics": {
+      "state": "correction_queue",
+      "run_id": "40074662060",
+      "snapshot_utc": "2026-10-24T08:40:50.174604+00:00",
+      "issues_count": 102,
+      "issues": [
+        "Bundle appears classified as a single component",
+        "Bundle family and product contents disagree",
+        "Category blank or unresolved",
+        "Category is too broad or promotional for product-purpose classification",
+        "Category lacks clear product-purpose evidence; manual review required",
+        "Description lacks enough product-specific content for review",
+        "Facial cream Category conflicts with named application area",
+        "Primary product type and Category disagree: blush"
+      ],
+      "audit_checked_utc": "2026-10-24T14:57:46.674344+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-24T08:41:39.987229+00:00",
+        "updated_utc": "2026-10-24T14:57:46.677068+00:00",
+        "next_source_check_due_utc": "2026-10-24T15:12:46.677068+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Bundle appears classified as a single component",
+          "Bundle family and product contents disagree",
+          "Category blank or unresolved",
+          "Category is too broad or promotional for product-purpose classification",
+          "Category lacks clear product-purpose evidence; manual review required",
+          "Description lacks enough product-specific content for review",
+          "Facial cream Category conflicts with named application area",
+          "Primary product type and Category disagree: blush",
+          "Primary product type and Category disagree: hair shampoo"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      }
+    }
+  },
+  "drive": {
+    "current_campaign": "fresh804-20261024-c055e80e",
+    "fresh_verified_files": 22,
+    "audit_progress_utc": "2026-10-24T15:16:39.789382+00:00",
+    "sync_status": "scanning",
+    "sync_error": null,
+    "last_scan_utc": "2026-10-24T15:42:38.718207+00:00",
+    "held": {
+      "39450775009": [],
+      "39450778729": [],
+      "39450782519": [],
+      "39450786298": [],
+      "39450789858": [],
+      "39450793299": [],
+      "39450796831": [],
+      "39450802086": [],
+      "39450806726": [],
+      "39494289423": [],
+      "39494295410": [],
+      "39494348075": [],
+      "39529042706": [
+        {
+          "store": "Stylo",
+          "error": "Unconfirmed shop code; held for review"
+        }
+      ],
+      "39529095851": []
+    },
+    "verified_files": 26,
+    "original_uploads": {},
+    "verified_utc": "2026-10-21T06:41:31.265056+00:00",
+    "folders": {
+      "ChotuApp 20-10-2026 Fresh": 20,
+      "ChotuApp 19-10-2026 11-36AM": 26
+    },
+    "latest_move": [
+      {
+        "source": "ChotuApp 20-10-2026 Fresh",
+        "destination": "ChotuApp 19-10-2026 11-36AM",
+        "verified_files": [
+          "Adam Cheese.xlsx",
+          "Bonanza Satrangi.xlsx",
+          "Computer Zone.xlsx",
+          "Cool and Cool.xlsx",
+          "Denim Leftover.xlsx",
+          "Elite Cosmetics.xlsx",
+          "Farda Foods.xlsx",
+          "Hemani Herbals.xlsx",
+          "Islamabad Tea.xlsx",
+          "Miss Rose.xlsx",
+          "Nisa Naturals.xlsx",
+          "Rivaj UK.xlsx",
+          "Saeed Ghani.xlsx",
+          "Seran.xlsx",
+          "Shop Modest.xlsx",
+          "Skin Factor.xlsx",
+          "Tawakkal Fabrics.xlsx",
+          "The Hanger Pakistan.xlsx",
+          "Vince Care.xlsx",
+          "Zero Lifestyle.xlsx"
+        ],
+        "destination_file_count": 24,
+        "preserved_other_files": 4,
+        "verified_utc": "2026-10-20T18:41:53.309795+00:00",
+        "source_removed": [
+          "Adam Cheese.xlsx",
+          "Bonanza Satrangi.xlsx",
+          "Computer Zone.xlsx",
+          "Cool and Cool.xlsx",
+          "Denim Leftover.xlsx",
+          "Elite Cosmetics.xlsx",
+          "Farda Foods.xlsx",
+          "Hemani Herbals.xlsx",
+          "Islamabad Tea.xlsx",
+          "Miss Rose.xlsx",
+          "Nisa Naturals.xlsx",
+          "Rivaj UK.xlsx",
+          "Saeed Ghani.xlsx",
+          "Seran.xlsx",
+          "Shop Modest.xlsx",
+          "Skin Factor.xlsx",
+          "Tawakkal Fabrics.xlsx",
+          "The Hanger Pakistan.xlsx",
+          "Vince Care.xlsx",
+          "Zero Lifestyle.xlsx"
+        ]
+      }
+    ]
+  },
+  "khaadi_devices": [
+    {
+      "store": "Khaadi",
+      "execution": "Windows local",
+      "observed_utc": "2026-10-20T19:22:58.769213+00:00",
+      "worker_active": true,
+      "status": "unknown_stale_heartbeat",
+      "worker_updated": "2026-10-21 00:22:57",
+      "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
+      "error": "",
+      "progress_age_seconds": 1,
+      "report_age_seconds": 332385,
+      "status_confirmed": false
+    }
+  ],
+  "phone_heartbeat": {
+    "status": "not_connected_or_no_report",
+    "status_confirmed": false,
+    "message": "No Android heartbeat received. Connect GitHub in app Settings and start or resume fetching."
+  },
+  "monitoring": {
+    "phone_heartbeat_seconds": 30,
+    "phone_stale_after_seconds": 180,
+    "cloud_schedule_minutes": 5,
+    "note": "Scheduled cloud checks can be delayed. Query local-run-status directly for latest phone heartbeat."
+  },
+  "fresh_completed": 25
 }
