@@ -1,56 +1,54 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-24T18:23:54.453042+00:00",
-  "run_id": "40113509442",
+  "generated_utc": "2026-10-24T19:49:14.889381+00:00",
+  "run_id": "40120019206",
   "attempt": "1",
   "source_commit": "a03762d2a13ac2cd2cd0b97b62869507315259c9",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 5402.1,
+  "elapsed_seconds": 5400.8,
   "stores": [
     {
-      "name": "Nisa Naturals",
+      "name": "Tawakkal Fabrics",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "4ea0b613ec340955",
-      "products": 55,
-      "variants": 55,
+      "products": 1443,
+      "variants": 3258,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
       "cache_events": 0
     },
     {
-      "name": "LAAM",
+      "name": "Junaid Jamshed",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "4ea0b613ec340955",
+      "products": 5545,
+      "variants": 23600,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    },
+    {
+      "name": "Stylo",
       "status": "pending",
       "review_required": false,
       "issue_codes": [
-        "HTTP_404"
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "4ea0b613ec340955",
       "http_statuses": {
-        "500": 139,
-        "200": 3174,
-        "404": 9
+        "200": 1074
       },
-      "network_seconds": 2202.2,
-      "max_response_seconds": 15.8,
-      "cache_events": 0
-    },
-    {
-      "name": "Khaadi",
-      "status": "blocked",
-      "review_required": false,
-      "issue_codes": [
-        "SOURCE_BLOCKED"
-      ],
-      "software_revision": "4ea0b613ec340955",
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "network_seconds": 2508.8,
+      "max_response_seconds": 3.0,
+      "cache_events": 15329
     }
   ]
 }
