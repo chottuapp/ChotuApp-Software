@@ -1659,7 +1659,8 @@
     "Elite Cosmetics": "source:12e594463d8920aea08de0258421042a6f0be7afd6be1796b73fe73bae55807d:Elite Cosmetics:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
     "Hemani Herbals": "source:90fa90469d303e99fa249668bfb3ac3513918f188b510dbb7bb8d5e34d2ae8fc:Hemani Herbals:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
     "Bonanza Satrangi": "source:71ed6fbbf79b23e89e5fa53069ed196fb24890df2190b560f0ed943e44d2321e:Bonanza Satrangi:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
-    "Sapphire": "source:03e6100c80c39f64102829df7340ea529d2d0a7a8500c2a2b591278bccf76ec5:Sapphire:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044"
+    "Sapphire": "source:03e6100c80c39f64102829df7340ea529d2d0a7a8500c2a2b591278bccf76ec5:Sapphire:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
+    "Rawayat": "source:5a42880ef153a81b4e405b770a51afae0d4cb90e0c1b6fb569cb5d1df9356993:Rawayat:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -3636,6 +3637,590 @@
       "source_artifact": 12555973142,
       "source_sha256": "03e6100c80c39f64102829df7340ea529d2d0a7a8500c2a2b591278bccf76ec5",
       "held_input": "inputs/fresh804-20261024-c055e80e/sapphire/03e6100c80c39f64/manifest.json"
+    },
+    "Rawayat": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Rawayat",
+      "shop_code": "SE10013",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 4437,
+      "findings_count": 57,
+      "findings": [
+        {
+          "product_id": "CP4ac24365e42d",
+          "name": "Golden Grace Trio Bundle (Anti Tarnish)",
+          "source_url": "https://rawayat.com.pk/products/golden-grace-trio-bundle",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CPa49ad6b686fb",
+          "name": "Zircon Ball Set (Anti Tarnish)",
+          "source_url": "https://rawayat.com.pk/products/zircon-gift-set",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf3355eedb7c0",
+          "name": "Signature Sparkle Trio",
+          "source_url": "https://rawayat.com.pk/products/signature-sparkle-trio",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5cd5b2c5e7b3",
+          "name": "Hair Poni-05",
+          "source_url": "https://rawayat.com.pk/products/hair-poni-05",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8a8b5d2b5751",
+          "name": "Iraqi Coin - Ya Qamar-e-Bani Hashim (Double Side)",
+          "source_url": "https://rawayat.com.pk/products/ya-qamar-e-bani-hashim-coin-double-side",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf6bb0f6189e9",
+          "name": "Stone",
+          "source_url": "https://rawayat.com.pk/products/stone",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP57c9a93d7a5f",
+          "name": "Flower Double Chain",
+          "source_url": "https://rawayat.com.pk/products/flower-double-chain-2",
+          "issues": [
+            "Primary product type and Category disagree: necklace"
+          ]
+        },
+        {
+          "product_id": "CP046a22b71917",
+          "name": "Jahanara-01 (Blue)",
+          "source_url": "https://rawayat.com.pk/products/jahanara-01-blue",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP58e35249ae54",
+          "name": "LAYLA SET (Maroon)",
+          "source_url": "https://rawayat.com.pk/products/layla-set-maroon",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9521ec5f6e19",
+          "name": "Mathapatti-18 (Pearl)",
+          "source_url": "https://rawayat.com.pk/products/mathapatti-18-pearl",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CP8371ceb1d1a0",
+          "name": "Foldable Hair Alloy-13 (Pearl)",
+          "source_url": "https://rawayat.com.pk/products/foldable-hair-alloy-13-pearl",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa219438cd81b",
+          "name": "Sahara-02 (Maroon)",
+          "source_url": "https://rawayat.com.pk/products/sahara-02-maroon",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe8b46be26e2d",
+          "name": "Gold Plated Studs Earrings & Bindiya With Adjustable Ring-03 (Pink)",
+          "source_url": "https://rawayat.com.pk/products/gold-plated-studs-earrings-bindiya-with-adjustable-ring-03-maroon",
+          "issues": [
+            "Primary product type and Category disagree: earrings"
+          ]
+        },
+        {
+          "product_id": "CP3df61ebf94b8",
+          "name": "Black Is The New Luxury",
+          "source_url": "https://rawayat.com.pk/products/black-is-the-new-luxury",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3b540b0ceff1",
+          "name": "Bag Hair Accessory box-19 (Assorted Colors)",
+          "source_url": "https://rawayat.com.pk/products/bag-hair-accessory-box-19",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CP77842800b07a",
+          "name": "Bag Hair Accessory box-17 (Assorted Colors)",
+          "source_url": "https://rawayat.com.pk/products/bag-hair-accessory-box-17",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CPf714a7dd275f",
+          "name": "Zircon Double Chain",
+          "source_url": "https://rawayat.com.pk/products/zircon-double-chain",
+          "issues": [
+            "Primary product type and Category disagree: necklace"
+          ]
+        },
+        {
+          "product_id": "CPa627d25aa7c6",
+          "name": "RUMEHA (Black)",
+          "source_url": "https://rawayat.com.pk/products/rumeha-black",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0e39fbc43fc4",
+          "name": "Black Luxe Trio",
+          "source_url": "https://rawayat.com.pk/products/black-luxe-trio",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa4dd948f158e",
+          "name": "Short Set-62 (Maroon)",
+          "source_url": "https://rawayat.com.pk/products/short-set-62-maroon",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb6e82f94fad9",
+          "name": "Silver Spark Set",
+          "source_url": "https://rawayat.com.pk/products/silver-spark-set",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8f17334c9431",
+          "name": "Everyday Elegance (Pack of 3)",
+          "source_url": "https://rawayat.com.pk/products/everyday-elegance-pack-of-3",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP6a1b7851a13e",
+          "name": "Complete Your Look (Pack of 3)",
+          "source_url": "https://rawayat.com.pk/products/ssasa",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP6e1ac9800c3d",
+          "name": "Madrasi Hoop Bali-32 (Golden)",
+          "source_url": "https://rawayat.com.pk/products/madrasi-hoop-bali-32-golden",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CP35a8fc737bf2",
+          "name": "Organza Pony-01 (White)",
+          "source_url": "https://rawayat.com.pk/products/organza-pony-01-white",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP90c84e2bcdd7",
+          "name": "Organza Pony-01 (Gray)",
+          "source_url": "https://rawayat.com.pk/products/organza-pony-01-gray",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP69f8333d41ac",
+          "name": "Organza Pony-01 (Blue)",
+          "source_url": "https://rawayat.com.pk/products/organza-pony-01-blue",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPbb3d06f8fb40",
+          "name": "Organza Pony-01 (Pink)",
+          "source_url": "https://rawayat.com.pk/products/organza-pony-01-pink",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf502f2093a1c",
+          "name": "Organza Pony-01 (Skin)",
+          "source_url": "https://rawayat.com.pk/products/organza-pony-01-skin",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP35d37bf567de",
+          "name": "Floral Hair Vine-03",
+          "source_url": "https://rawayat.com.pk/products/floral-hair-vine-03",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CP3b5197a6c65b",
+          "name": "Floral Hair Vine-02",
+          "source_url": "https://rawayat.com.pk/products/floral-pearl-hair-vine-02",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CP0f862942c880",
+          "name": "Floral Hair Vine-01",
+          "source_url": "https://rawayat.com.pk/products/foral-pearl-hair-vine",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CP7d7855641f34",
+          "name": "Gift Box",
+          "source_url": "https://rawayat.com.pk/products/gift-wrap-1",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CP63a5bf033f47",
+          "name": "Pearl Beaded Pony (Mint Green)",
+          "source_url": "https://rawayat.com.pk/products/pearl-beaded-pony",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2de35c4c6fb2",
+          "name": "Pearl Beaded Pony (Black)",
+          "source_url": "https://rawayat.com.pk/products/pearl-beaded-pony-black",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2c5404d79f83",
+          "name": "Pearl Beaded Pony (Beige)",
+          "source_url": "https://rawayat.com.pk/products/pearl-beaded-pony-beige",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa03500102dc8",
+          "name": "Pearl Beaded Pony (Pink)",
+          "source_url": "https://rawayat.com.pk/products/pearl-beaded-pony-pink",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPad4c318e2fa4",
+          "name": "Pearl Beaded Pony (Gray)",
+          "source_url": "https://rawayat.com.pk/products/pearl-beaded-pony-gray",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP963e0d827718",
+          "name": "Floral Pearl Hair Catcher (Blue)",
+          "source_url": "https://rawayat.com.pk/products/floral-pearl-hair-catcher-blue-1",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1fd6056f0988",
+          "name": "Floral Pearl Hair Catcher (Navy Blue)",
+          "source_url": "https://rawayat.com.pk/products/floral-pearl-hair-catcher-blue",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP30bb061ec33c",
+          "name": "Floral Pearl Hair Catcher (Light Pink)",
+          "source_url": "https://rawayat.com.pk/products/floral-pearl-hair-catcher-light-pink",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc37caeacc08f",
+          "name": "Floral Pearl Hair Catcher (Maroon)",
+          "source_url": "https://rawayat.com.pk/products/floral-pearl-hair-catcher-b",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9addfae0a39a",
+          "name": "Floral Pearl Hair Catcher (Brown)",
+          "source_url": "https://rawayat.com.pk/products/floral-pearl-hair-catcher-brown",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2b1be3002b9a",
+          "name": "Floral Pearl Hair Catcher (Champagne)",
+          "source_url": "https://rawayat.com.pk/products/floral-pearl-hair-catcher-champagne",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9dbb58081757",
+          "name": "Floral Pearl Hair Catcher (Gray)",
+          "source_url": "https://rawayat.com.pk/products/floral-pearl-hair-catcher-mauve-pink",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd82f9fe66538",
+          "name": "Cute Hair Accessories & Sunglesses (Blue)",
+          "source_url": "https://rawayat.com.pk/products/cute-hair-accessories-sunglesses-blue",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CP14bb3851d1fd",
+          "name": "Cute Hair Accessories & Sunglesses (Pink)",
+          "source_url": "https://rawayat.com.pk/products/mini-hair-clips-hair-ties-set-02-assorted-colors-1",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CP0656aa528095",
+          "name": "Cute Hair Accessories & Sunglesses (0ff White)",
+          "source_url": "https://rawayat.com.pk/products/cute-hair-accessories-sunglesses",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CP2ea7e4e9941c",
+          "name": "Cute Hair Accessories & Sunglesses (Brown)",
+          "source_url": "https://rawayat.com.pk/products/cute-hair-accessories-sunglesses-light-pink",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CP7e38c23617e5",
+          "name": "Cute Hair Accessories & Sunglesses (Red)",
+          "source_url": "https://rawayat.com.pk/products/cute-hair-accessories-sunglesses-04",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CP27216a43a5bb",
+          "name": "Cute Hair Accessories & Sunglesses (Light Pink)",
+          "source_url": "https://rawayat.com.pk/products/cute-hair-accessories-sunglesses-03",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CPef2e4a52874b",
+          "name": "Cute Hair Accessories & Sunglesses (Yellow)",
+          "source_url": "https://rawayat.com.pk/products/cute-hair-accessories-sunglesses-1",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CP1aef28f6d640",
+          "name": "Bag Hair Accessory box-18 (Assorted Colors)",
+          "source_url": "https://rawayat.com.pk/products/bag-hair-accessory-box-18",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CP7b0d45ba0eba",
+          "name": "Hajj & Umrah Gift - Allah & Ayat ul Kursi Gold Coin Card",
+          "source_url": "https://rawayat.com.pk/products/hajj-umrah-gift-allah-ayat-ul-kursi-gold-coin-card",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CP9d20a2f27b11",
+          "name": "Shjari Aqeeq",
+          "source_url": "https://rawayat.com.pk/products/shjari-aqeeq",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPaeb3814173c6",
+          "name": "DOT Chain",
+          "source_url": "https://rawayat.com.pk/products/dot-chain",
+          "issues": [
+            "Primary product type and Category disagree: necklace"
+          ]
+        },
+        {
+          "product_id": "CPc77257ce9c37",
+          "name": "Zircon Ring-126 (White)",
+          "source_url": "https://rawayat.com.pk/products/zircon-earring-126-white",
+          "issues": [
+            "Primary product type and Category disagree: earrings"
+          ]
+        }
+      ],
+      "details_truncated": false,
+      "workbook_sha256": "13fec01382d0ad04eee36c79342522760edbaa62495e1b63c0a1ae981885e51e",
+      "checked_utc": "2026-10-24T10:37:10.386862+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-24T10:37:10.393410+00:00",
+        "updated_utc": "2026-10-24T10:37:10.393410+00:00",
+        "next_source_check_due_utc": "2026-10-24T10:52:10.393410+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Bundle appears classified as a single component",
+          "Category lacks clear product-purpose evidence; manual review required",
+          "Description lacks enough product-specific content for review",
+          "Primary product type and Category disagree: earrings",
+          "Primary product type and Category disagree: necklace"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "description_repairs_count": 604,
+      "description_repairs_examples": [
+        {
+          "product_id": "CPcd0f3e907edd",
+          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP0b9ec4927be6",
+          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP3ecf84b2fb5b",
+          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPa9a174c030d9",
+          "issue": "Rewrote source-listed pack quantity, product type and listing reference; no material or stock claims added.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPd36c22578c89",
+          "issue": "Rewrote explicit earring colour and listing reference; no composition invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP58ec46eb3bc0",
+          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP3276a0610717",
+          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPccf8aa5f0faa",
+          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP99e79efa9562",
+          "issue": "Rewrote source-listed pack quantity, product type and listing reference; no material or stock claims added.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPcfea1cea38a5",
+          "issue": "Rewrote source-listed pack quantity, product type and listing reference; no material or stock claims added.",
+          "repair_kind": "description"
+        }
+      ],
+      "campaign_id": "fresh804-20261024-c055e80e",
+      "source_run": "40080560084",
+      "source_artifact": 12557371008,
+      "source_sha256": "5a42880ef153a81b4e405b770a51afae0d4cb90e0c1b6fb569cb5d1df9356993",
+      "held_input": "inputs/fresh804-20261024-c055e80e/rawayat/5a42880ef153a81b/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -3649,7 +4234,7 @@
     "40074680760": "40074680760:12555350663:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
     "40074659425": "40074659425:12553984721:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
     "40074672898": "40074672898:12554788862:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
-    "40080556101": "40080556101:12554922060:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
+    "40080556101": "40080556101:12556294645:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
     "40080560084": "40080560084:12554029484:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
     "40080584014": "40080584014:12554784007:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
     "40080584253": "40080584253:12555805309:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
@@ -3683,8 +4268,8 @@
     "SE10026": "inputs/fresh804-20261021-a26dcd86/rollback-se10026/5be88fd6dd65639e/manifest.json",
     "SE10028": "inputs/fresh804-20261021-a26dcd86/rollback-se10028/bac7349a7e5a8e78/manifest.json"
   },
-  "audit804_last_store": "Sapphire",
-  "audit804_progress_utc": "2026-10-24T09:47:43.016418+00:00",
+  "audit804_last_store": "Rawayat",
+  "audit804_progress_utc": "2026-10-24T10:37:20.347884+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rawayat",
