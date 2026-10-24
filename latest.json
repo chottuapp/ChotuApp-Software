@@ -1737,7 +1737,8 @@
     "Farda Foods": "source:8dc985a4c074e92256a0808e6c42802c8c3243e79b0d5080e4d2e5be0af6a63d:Farda Foods:2bb4d52178f2958961806cc1a3feea172973f1c05c35604a57e3f02b392940df",
     "Adam Cheese": "source:a425e81e764a1495f9760171bbc61aba219b3667e9620b662c59680e6dca498e:Adam Cheese:2bb4d52178f2958961806cc1a3feea172973f1c05c35604a57e3f02b392940df",
     "Nisa Naturals": "source:d2d0a6d3754d8137aed760e9837f8ea59e77cc930ee48c2c0bf25b221cd824fa:Nisa Naturals:2bb4d52178f2958961806cc1a3feea172973f1c05c35604a57e3f02b392940df",
-    "Denim Leftover": "source:7e118283b3ef319906608cb7d6031c4aed1e88fdfa5f36f43d491d16d3052624:Denim Leftover:2bb4d52178f2958961806cc1a3feea172973f1c05c35604a57e3f02b392940df"
+    "Denim Leftover": "source:7e118283b3ef319906608cb7d6031c4aed1e88fdfa5f36f43d491d16d3052624:Denim Leftover:2bb4d52178f2958961806cc1a3feea172973f1c05c35604a57e3f02b392940df",
+    "Cool and Cool": "source:f2f82b8218e17f6ee01223a63c83c771aabd57ddceaee4ad8d8703b40899f1d2:Cool and Cool:2bb4d52178f2958961806cc1a3feea172973f1c05c35604a57e3f02b392940df"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -2070,6 +2071,106 @@
       "source_run": "40074675482",
       "source_artifact": 12553150281,
       "source_sha256": "7e118283b3ef319906608cb7d6031c4aed1e88fdfa5f36f43d491d16d3052624"
+    },
+    "Cool and Cool": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Cool and Cool",
+      "shop_code": "SE10023",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 227,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CP427e5830859e",
+          "name": "Facial Cleansing Whitening Cloths Apricot 4's",
+          "source_url": "https://www.coolandcool.pk/products/facial-cleansing-whitening-cloths-apricot-4s",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "details_truncated": false,
+      "workbook_sha256": "fa6729c63c448e9a7797a78864d46503fdd2ec9f18ca9281870bc5b82062c511",
+      "checked_utc": "2026-10-24T07:48:35.760606+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-24T07:48:35.760962+00:00",
+        "updated_utc": "2026-10-24T07:48:35.760962+00:00",
+        "next_source_check_due_utc": "2026-10-24T09:48:35.760962+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category lacks clear product-purpose evidence; manual review required"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "description_repairs_count": 37,
+      "description_repairs_examples": [
+        {
+          "product_id": "CP0d20d99fe212",
+          "issue": "Rewrote the explicitly named paid product and complimentary gift; all names and quantities retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPe6e495153bc8",
+          "issue": "Rewrote the explicitly named paid product and complimentary gift; all names and quantities retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPdad2bb5bdf44",
+          "issue": "Rewrote the explicitly named paid product and complimentary gift; all names and quantities retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPb5e70fe9449b",
+          "issue": "Rewrote the explicitly named paid product and complimentary gift; all names and quantities retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP9cb870c720bb",
+          "issue": "Rewrote the explicitly named paid product and complimentary gift; all names and quantities retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPc2bb40b7eb36",
+          "issue": "Rewrote the explicitly named paid product and complimentary gift; all names and quantities retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPe6ca30803996",
+          "issue": "Rewrote the explicitly named paid product and complimentary gift; all names and quantities retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP17348d79be34",
+          "issue": "Rewrote the explicitly named paid product and complimentary gift; all names and quantities retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP3e9962e889e1",
+          "issue": "Rewrote the explicitly named paid product and complimentary gift; all names and quantities retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPe2eb72956b5b",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        }
+      ],
+      "campaign_id": "fresh804-20261024-c055e80e",
+      "source_run": "40074675482",
+      "source_artifact": 12553150281,
+      "source_sha256": "f2f82b8218e17f6ee01223a63c83c771aabd57ddceaee4ad8d8703b40899f1d2",
+      "held_input": "inputs/fresh804-20261024-c055e80e/cool-and-cool/f2f82b8218e17f6e/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -2106,8 +2207,8 @@
     "SE10026": "inputs/fresh804-20261021-a26dcd86/rollback-se10026/5be88fd6dd65639e/manifest.json",
     "SE10028": "inputs/fresh804-20261021-a26dcd86/rollback-se10028/bac7349a7e5a8e78/manifest.json"
   },
-  "audit804_last_store": "Denim Leftover",
-  "audit804_progress_utc": "2026-10-24T07:48:32.590759+00:00",
+  "audit804_last_store": "Cool and Cool",
+  "audit804_progress_utc": "2026-10-24T07:48:37.603693+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rawayat",
