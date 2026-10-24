@@ -1695,7 +1695,8 @@
     "Vince Care": "source:376425eeb507da03ce760b32b733cf3260ce74e4c27464d6f67503b00bbb41dc:Vince Care:e7ebf891970e46b78449c49cea95b5a1ad58f522485d72a1da6e6f27071845b8",
     "Computer Zone": "source:5f548ed594afac3ce186033cf0d35dd352c8dace14e5039dbd11f8222f263fb2:Computer Zone:e7ebf891970e46b78449c49cea95b5a1ad58f522485d72a1da6e6f27071845b8",
     "Saeed Ghani": "source:c402c7a4fd31383785eca6c48aedc639717b7f14bc5561135f53482f27f6ed66:Saeed Ghani:e7ebf891970e46b78449c49cea95b5a1ad58f522485d72a1da6e6f27071845b8",
-    "Tawakkal Fabrics": "source:8d528f29bd4bc922680697d66e850d711d3a84cf66e4109cfbce5d2c51683b65:Tawakkal Fabrics:e7ebf891970e46b78449c49cea95b5a1ad58f522485d72a1da6e6f27071845b8"
+    "Tawakkal Fabrics": "source:8d528f29bd4bc922680697d66e850d711d3a84cf66e4109cfbce5d2c51683b65:Tawakkal Fabrics:e7ebf891970e46b78449c49cea95b5a1ad58f522485d72a1da6e6f27071845b8",
+    "Elite Cosmetics": "source:12e594463d8920aea08de0258421042a6f0be7afd6be1796b73fe73bae55807d:Elite Cosmetics:e7ebf891970e46b78449c49cea95b5a1ad58f522485d72a1da6e6f27071845b8"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -2476,6 +2477,872 @@
       "source_run": "40074659425",
       "source_artifact": 12554440997,
       "source_sha256": "8d528f29bd4bc922680697d66e850d711d3a84cf66e4109cfbce5d2c51683b65"
+    },
+    "Elite Cosmetics": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Elite Cosmetics",
+      "shop_code": "SH10003",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 1559,
+      "findings_count": 108,
+      "findings": [
+        {
+          "product_id": "CP887076975292",
+          "name": "Gegemoon Orange Enzymes Exfoliating Brightening Gel - Deep Clean & Glow",
+          "source_url": "https://elitecosmeticspk.com/products/gegemoon-orange-enzymes-exfoliating-brightening-gel-deep-clean-glow",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP61b92264bd5a",
+          "name": "Saeed Ghani Mud Plus Lavender \u2013 A Soothing Blend for Radiant Skin",
+          "source_url": "https://elitecosmeticspk.com/products/sg-multani-mud-powder-purify-and-revitalize-your-skin-naturally",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd45803911e99",
+          "name": "Face Fresh Cream: Nourish, Brighten, and Revitalize Your Skin for a Fresh, Radiant Glow",
+          "source_url": "https://elitecosmeticspk.com/products/face-fresh-cream-nourish-brighten-and-revitalize-your-skin-for-a-fresh-radiant-glow",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe1e23986747e",
+          "name": "3DX Bleach: Advanced Skin Lightening for a Radiant and Even Complexion",
+          "source_url": "https://elitecosmeticspk.com/products/3dx-bleach-advanced-skin-lightening-for-a-radiant-and-even-complexion",
+          "issues": [
+            "Category is too broad or promotional for product-purpose classification"
+          ]
+        },
+        {
+          "product_id": "CP7a9d51ece856",
+          "name": "Fair and Lovely Jar 75g: Brighten, Nourish, and Even Your Skin Tone for a Radiant Glow",
+          "source_url": "https://elitecosmeticspk.com/products/fair-and-lovely-jar-75g-brighten-nourish-and-even-your-skin-tone-for-a-radiant-glow",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2a5695f0be86",
+          "name": "Rose Petal Party Pack: Elegant and Romantic Party Decor for Special Occasions",
+          "source_url": "https://elitecosmeticspk.com/products/rose-petal-party-pack-elegant-and-romantic-party-decor-for-special-occasions",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP47247a782889",
+          "name": "Miss Rose Blusher Palette \u2013 8 Color Shades for a Natural Flush",
+          "source_url": "https://elitecosmeticspk.com/products/miss-rose-blusher-palette-8-colors",
+          "issues": [
+            "Primary product type and Category disagree: blush"
+          ]
+        },
+        {
+          "product_id": "CP9a2ace91978d",
+          "name": "Becute Cosmetics Skin Polish Bleach Powder & Activator | Brightening & Whitening Skin Bleach Kit",
+          "source_url": "https://elitecosmeticspk.com/products/becute-cosmetics-skin-polish-bleach-powder-and-activator-skin-brightening-whitening-formula",
+          "issues": [
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CP53d2f1fe384a",
+          "name": "Medora Compact Powder | Lightweight Oil Control Matte Finish | Multiple Shades",
+          "source_url": "https://elitecosmeticspk.com/products/medora-compact-powder-lightweight-oil-control-matte-finish-multiple-shades",
+          "issues": [
+            "Primary product type and Category disagree: face powder"
+          ]
+        },
+        {
+          "product_id": "CP43e34f7ac168",
+          "name": "Medora Powder Perfumed Talc Small",
+          "source_url": "https://elitecosmeticspk.com/products/medora-powder-_premium-foundation-for-flawless-skin",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7e1135d35833",
+          "name": "Sunsilk black shine shampoo, Anti dandruff hampoo, best hair conditioner ,185ml",
+          "source_url": "https://elitecosmeticspk.com/products/sunsilk-black-shine-shampoo-anti-dandruff-hampoo-best-hair-conditioner-185ml",
+          "issues": [
+            "Primary product type and Category disagree: hair shampoo"
+          ]
+        },
+        {
+          "product_id": "CPcf475c958cfd",
+          "name": "Ishq E Haqeeqi K Mado Jazar - Tasawwuf Book by Khawajah Hameed ud Deen Nagori R.A | Translation by Sufi Sher Muhammad Chishti Nizami Qadri Hasni (\u0639\u0641\u06cc \u0639\u0646\u06c1)",
+          "source_url": "https://elitecosmeticspk.com/products/ishq-e-haqeeqi-k-mado-jazar",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPdc2e7316a1fa",
+          "name": "Liquid Colors Water Based For DIY 100ml - Vibrant & Easy-to-Use",
+          "source_url": "https://elitecosmeticspk.com/products/liquid-colors-water-based-for-diy-100ml-vibrant-easy-to-use",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb886ea3466e2",
+          "name": "Hair Band Fashion for Baby Girls - Cute & Stylish Accessories",
+          "source_url": "https://elitecosmeticspk.com/products/hair-band-fashion",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc2de15dffd64",
+          "name": "Sildne Hair Threading - Precision Hair Removal for Smooth Skin",
+          "source_url": "https://elitecosmeticspk.com/products/sildne-hair-threading",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPe8505f252872",
+          "name": "Roghan Sonf (Fennel Oil) 25ml - Pure & Natural",
+          "source_url": "https://elitecosmeticspk.com/products/roghan-sonf-fennel-oil-25ml-pure-natural",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa828ab6895a0",
+          "name": "Roghan Lavender (Lavender Oil) 25ml - Pure & Natural",
+          "source_url": "https://elitecosmeticspk.com/products/roghan-lavender-lavender-oil-25ml-pure-natural",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPaee48d8fbdba",
+          "name": "Kojic Hand & Feet Cream - Urgent Facial 100ml",
+          "source_url": "https://elitecosmeticspk.com/products/kojic-hand-feet-cream-urgent-facial-100ml",
+          "issues": [
+            "Facial cream Category conflicts with named application area"
+          ]
+        },
+        {
+          "product_id": "CPa8461caac424",
+          "name": "Roghan Garlic (Garlic Oil) 25ml - Pure & Natural",
+          "source_url": "https://elitecosmeticspk.com/products/roghan-garlic-garlic-oil-25ml-pure-natural",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP77b0849df544",
+          "name": "Roghan Darcheeni (Cinnamon Oil) 25ml - Pure & Natural",
+          "source_url": "https://elitecosmeticspk.com/products/roghan-darcheeni-cinnamon-oil-25ml-pure-natural",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP783120211f75",
+          "name": "Roghan Dhaniya (Coriander Oil) 25ml - Pure & Natural",
+          "source_url": "https://elitecosmeticspk.com/products/roghan-dhaniya-coriander-oil-25ml-pure-natural",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPdb60b95bffc1",
+          "name": "Roghan Ajwain 25ml - Pure & Natural",
+          "source_url": "https://elitecosmeticspk.com/products/roghan-ajwain-25ml-pure-natural",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0c41ccb0e41c",
+          "name": "Johnson's Baby Jelly Fragrance Free 250g - Gentle & Soothing",
+          "source_url": "https://elitecosmeticspk.com/products/johnsons-baby-jelly-fragrance-free-250g-gentle-soothing",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9dd46e5fbd27",
+          "name": "Johnson's Baby Jelly Fragrance Free 100g - Gentle & Soothing",
+          "source_url": "https://elitecosmeticspk.com/products/johnsons-baby-jelly-frangrance-free-100g",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0f0c0abae3e5",
+          "name": "Johnson's Baby Cologne Green Summer Swing 100ml - Fresh & Gentle Fragrance",
+          "source_url": "https://elitecosmeticspk.com/products/johnsons-baby-cologne-green-summer-swing-100ml-fresh-gentle-fragrance",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb5c52ad84429",
+          "name": "Johnson's Baby Top To Toe Shampoo 200ml",
+          "source_url": "https://elitecosmeticspk.com/products/johnsons-baby-top-to-toe-shampoo-100ml",
+          "issues": [
+            "Primary product type and Category disagree: hair shampoo"
+          ]
+        },
+        {
+          "product_id": "CP891f7d74f39a",
+          "name": "Medora Talcum Powder Perfumed Talc Season",
+          "source_url": "https://elitecosmeticspk.com/products/medora-talcum-powder-perfumed-talc-season",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe99864e061e6",
+          "name": "Medora Talcum Powder Perfumed Talc Salute",
+          "source_url": "https://elitecosmeticspk.com/products/medora-talcum-powder-perfumed-talc-salute",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8b545ece2a00",
+          "name": "Medora Talcum Powder Perfumed Talc Pleasure",
+          "source_url": "https://elitecosmeticspk.com/products/medora-talcum-powder-perfumed-talc-pleasure",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP50e19e8a69e5",
+          "name": "Medora Talcum Powder Perfumed Talc Reflect",
+          "source_url": "https://elitecosmeticspk.com/products/medora-talcum-powder-perfumed-talc-reflect",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP01a214ff348b",
+          "name": "Medora Talcum Powder Perfumed Talc Greeting",
+          "source_url": "https://elitecosmeticspk.com/products/medora-talcum-powder-perfumed-talc-greeting",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb7f54f3473c7",
+          "name": "Medora Talcum Powder Perfumed Talc Dignity",
+          "source_url": "https://elitecosmeticspk.com/products/medora-talcum-powder-perfumed-talc-dignity",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb3e49ca37460",
+          "name": "Medora Talcum Powder Perfumed Talc Joy",
+          "source_url": "https://elitecosmeticspk.com/products/medora-talcum-powder-perfumed-talc-joy",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP81cce36ce501",
+          "name": "Medora Talcum Powder Perfumed Talc Cherish",
+          "source_url": "https://elitecosmeticspk.com/products/medora-talcum-powder-perfumed-talc",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP17566c351cbb",
+          "name": "24K Gold Whitening Urgent Facial 3 in 1",
+          "source_url": "https://elitecosmeticspk.com/products/24k-gold-whitening-urgent-facial-3-in-1",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2a27fac58d7d",
+          "name": "24K Gold Whitening Facial Set",
+          "source_url": "https://elitecosmeticspk.com/products/24k-gold-whitening-facial-set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9d26fcad5d75",
+          "name": "Danbys Multivitamin Whitening Facial Set Small",
+          "source_url": "https://elitecosmeticspk.com/products/danbys-multivitamin-whitening-facial-set-small",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8b829c90d70e",
+          "name": "Danbys Multivitamin Whitening Facial Set Large",
+          "source_url": "https://elitecosmeticspk.com/products/danbys-multivitamin-whitening-facial-set-large",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb5af00b1f1cc",
+          "name": "Hair Catcher Set Imported Thai Quality Unbreakable",
+          "source_url": "https://elitecosmeticspk.com/products/hair-catcher-set-imported-thai-quality-unbreakable",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP306dad1eadd9",
+          "name": "Sildne Face Threading System",
+          "source_url": "https://elitecosmeticspk.com/products/sildne-face-threading-system",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPb572dabce412",
+          "name": "Zeerak Urgent Facial Whitening Powder Mask",
+          "source_url": "https://elitecosmeticspk.com/products/zeerak-urgent-facial-whitening-powder-mask",
+          "issues": [
+            "Category is too broad or promotional for product-purpose classification"
+          ]
+        },
+        {
+          "product_id": "CPc3876e418935",
+          "name": "Hair Ponies Imported Thai Quality Box",
+          "source_url": "https://elitecosmeticspk.com/products/hair-ponies-imported-thai-quality-box",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP71062cbdd319",
+          "name": "Bleach Bowl Card Large Pack",
+          "source_url": "https://elitecosmeticspk.com/products/bleach-bowl-card-large-pack",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP722a0edffade",
+          "name": "Glamorous Facial Wipes 30Pcs",
+          "source_url": "https://elitecosmeticspk.com/products/glamorous-facial-wipes-30pcs",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPfe6c20dd41c7",
+          "name": "Rivaj Blackhead Nose Mask Charcoal 50ml - Deep Cleansing for Clearer Skin",
+          "source_url": "https://elitecosmeticspk.com/products/rivaj-blackhead-nose-mask-charcoal-50ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9dbddb79aa35",
+          "name": "Double Sided Mirror For Personal Use",
+          "source_url": "https://elitecosmeticspk.com/products/double-sided-mirror-for-personal-use",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP76e631be9a70",
+          "name": "Bioaqua Eye Mask 1 Pack",
+          "source_url": "https://elitecosmeticspk.com/products/bioaqua-eye-mask-1-pack",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP28d589c87407",
+          "name": "Gatsby Level 2 Gel For Hair 150g",
+          "source_url": "https://elitecosmeticspk.com/products/gatsby-level-2-gel-for-hair-150g",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa3e8025dca36",
+          "name": "Wokali Hair Wax 50g",
+          "source_url": "https://elitecosmeticspk.com/products/wokali-hair-wax-50g",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPef075f1a2731",
+          "name": "Wax Stick 50 in 1 Wood",
+          "source_url": "https://elitecosmeticspk.com/products/wax-stick-50-in-1-wood",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2a02d899cb50",
+          "name": "Color Institute Shimmer Paint 1 Pc",
+          "source_url": "https://elitecosmeticspk.com/products/color-institute-shimmer-paint-1-pc",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf516e2f05d7a",
+          "name": "Saeed Ghani Hair Growth Spray | Natural Hair Growth & Strengthening Treatment",
+          "source_url": "https://elitecosmeticspk.com/products/saeed-ghani-hair-growth-spray",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPef5e16501937",
+          "name": "Kitchen Scale For Measurements Up to 10Kg",
+          "source_url": "https://elitecosmeticspk.com/products/kitchen-scale-for-measurements-up-to-10kg",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP18b67936baf1",
+          "name": "Whitening Capsules For Creams - Enhance Your Skincare Regimen",
+          "source_url": "https://elitecosmeticspk.com/products/whitening-capsules-for-creams",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP175757ed1a4a",
+          "name": "Magic Cube Puzzle Toy 1Pc",
+          "source_url": "https://elitecosmeticspk.com/products/magic-cube-puzzle-toy-1pc",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1918665b6fe1",
+          "name": "Revive Furniture Shiner Plus Universal 100ml",
+          "source_url": "https://elitecosmeticspk.com/products/revive-furniture-shiner-plus-universal-100ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPaccdcdd26550",
+          "name": "pH Papers For Acid Base Testing",
+          "source_url": "https://elitecosmeticspk.com/products/ph-papers-for-acid-base-testing",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7b3972d74537",
+          "name": "Liquid Colors For Products Making 100ml",
+          "source_url": "https://elitecosmeticspk.com/products/liquid-colors-for-products-making-100ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP544b46eab419",
+          "name": "Laundry Detergent - Powerful Action- Stain Remover - Perfumed - 25 Liter",
+          "source_url": "https://elitecosmeticspk.com/products/laundry-detergent-powerful-action-stain-remover-perfumed-25-liter",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0bd0888ff959",
+          "name": "Dish wash - Lemon - Antibacterial - Hand caring 25Liters",
+          "source_url": "https://elitecosmeticspk.com/products/dish-wash-lemon-antibacterial-hand-caring",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP459078b6f102",
+          "name": "Descalar - Limestone - Household water spots cleaner 25Liters",
+          "source_url": "https://elitecosmeticspk.com/products/descalar-limestone-household-water-spots-cleaner",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9f14d414f5dc",
+          "name": "Floor cleaner - Antibacterial - Perfumed 25Liter",
+          "source_url": "https://elitecosmeticspk.com/products/floor-cleaner-antibacterial-perfumed",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa93271849695",
+          "name": "Car Waterless Wash Formula 2 in 1 Vision X",
+          "source_url": "https://elitecosmeticspk.com/products/car-waterless-wash-formula-2-in-1-vision-x",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2812d43922f1",
+          "name": "Car Interior Dressing Vision X",
+          "source_url": "https://elitecosmeticspk.com/products/car-interior-dressing-vision-x",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa7dd964c99a7",
+          "name": "Car All Purpose Cleaner Vision X",
+          "source_url": "https://elitecosmeticspk.com/products/car-all-purpose-cleaner-vision-x",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe6865bdd0d9f",
+          "name": "IPL Laser Hair Removal Permanently",
+          "source_url": "https://elitecosmeticspk.com/products/ipl-laser-hair-removal-permanently",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb68ed44215ac",
+          "name": "Intelligent Nail Photography Lamp",
+          "source_url": "https://elitecosmeticspk.com/products/untitled-17nov_04-47",
+          "issues": [
+            "Category is too broad or promotional for product-purpose classification",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf9dd3504d343",
+          "name": "4 in 1 Foot Scrubber",
+          "source_url": "https://elitecosmeticspk.com/products/4-in-1-foot-scrubber",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP972df5ddcbaf",
+          "name": "Wooden Foot Scrubber Japanese",
+          "source_url": "https://elitecosmeticspk.com/products/wooden-foot-scrubber-japanese",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPd8d2e2f77174",
+          "name": "Pedicure Tool Kit",
+          "source_url": "https://elitecosmeticspk.com/products/manicure-and-pedicure-kit",
+          "issues": [
+            "Bundle appears classified as a single component",
+            "Bundle family and product contents disagree"
+          ]
+        },
+        {
+          "product_id": "CP629243309e39",
+          "name": "Emelie Foundation Oil Control \u2013 Matte Finish & Long-Lasting Coverage",
+          "source_url": "https://elitecosmeticspk.com/products/emelie-foundation-oil-control",
+          "issues": [
+            "Primary product type and Category disagree: foundation"
+          ]
+        },
+        {
+          "product_id": "CPd4008ef85e5c",
+          "name": "A'mrij Hair Support Fibers Builder",
+          "source_url": "https://elitecosmeticspk.com/products/amrij-hair-support-fibers-builder",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc3013b2b31bc",
+          "name": "Sweep Drain Opener 1 Liter",
+          "source_url": "https://elitecosmeticspk.com/products/sweep-drain-opener-1-liter",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP815360dae141",
+          "name": "Tea Tree Oil 10ml - Xpel",
+          "source_url": "https://elitecosmeticspk.com/products/tea-tree-oil-10ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP898a4c2f9973",
+          "name": "Boro Plus Healthy Skin Antiseptic Cream 40ml",
+          "source_url": "https://elitecosmeticspk.com/products/boro-plus-healthy-skin-antiseptic-cream-40ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPaeabf1fd66f3",
+          "name": "Comfor Beauty Aloe Vera Essence Oil 40ml",
+          "source_url": "https://elitecosmeticspk.com/products/comfor-beauty-aloe-vera-essence-oil-40ml",
+          "issues": [
+            "Category is too broad or promotional for product-purpose classification",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP02efcec1a551",
+          "name": "Modeling Comb Brush",
+          "source_url": "https://elitecosmeticspk.com/products/modeling-comb-brush",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP55a6358aff0d",
+          "name": "Aichun Beauty Face & Body Whitening Cream",
+          "source_url": "https://elitecosmeticspk.com/products/aichun-beauty-face-body-whitening-cream",
+          "issues": [
+            "Facial cream Category conflicts with named application area"
+          ]
+        },
+        {
+          "product_id": "CPf1e8f9e369e1",
+          "name": "AICHUN BEAUTY Heel Chapped Peeling Foot Hand Anti Dry Crack Skin Repair Moisturizing Nourishing Cream (100g)",
+          "source_url": "https://elitecosmeticspk.com/products/aichun-beauty-heel-chapped-peeling-foot-hand-anti-dry-crack-skin-repair-moisturizing-nourishing-cream-100g",
+          "issues": [
+            "Facial cream Category conflicts with named application area"
+          ]
+        },
+        {
+          "product_id": "CPbe88ac8be0cf",
+          "name": "GLUPATONE Extreme Strong Whitening Emulsion Ultra Plus GS-120 For Face & Body 50ml",
+          "source_url": "https://elitecosmeticspk.com/products/glupatone-extreme-strong-whitening-emulsion-ultra-plus-gs-120-for-face-body-50ml",
+          "issues": [
+            "Facial cream Category conflicts with named application area"
+          ]
+        },
+        {
+          "product_id": "CPc4a539f8a37d",
+          "name": "The Ordinary - Lactic Acid 5% + HA - 30ml",
+          "source_url": "https://elitecosmeticspk.com/products/the-ordinary-lactic-acid-5-ha-30ml",
+          "issues": [
+            "Category is too broad or promotional for product-purpose classification"
+          ]
+        },
+        {
+          "product_id": "CP11078d774d47",
+          "name": "The Ordinary - Caffeine Solution 5% + EGCG - 30ml",
+          "source_url": "https://elitecosmeticspk.com/products/the-ordinary-caffeine-solution-5-egcg-30ml",
+          "issues": [
+            "Category is too broad or promotional for product-purpose classification",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP874cf1fffce0",
+          "name": "The Ordinary - Hyaluronic Acid 2% + B5 - 30ml",
+          "source_url": "https://elitecosmeticspk.com/products/the-ordinary-hyaluronic-acid-2-b5-30ml",
+          "issues": [
+            "Category is too broad or promotional for product-purpose classification"
+          ]
+        },
+        {
+          "product_id": "CP67741d61dd7c",
+          "name": "Janssen -Face guard advanced 50ml",
+          "source_url": "https://elitecosmeticspk.com/products/janssen-face-guard-advanced-50ml",
+          "issues": [
+            "Category is too broad or promotional for product-purpose classification"
+          ]
+        },
+        {
+          "product_id": "CPc2f0ee097254",
+          "name": "Janssen - Brightening Night Care 150ML",
+          "source_url": "https://elitecosmeticspk.com/products/janssen-brightening-night-care-150ml",
+          "issues": [
+            "Category is too broad or promotional for product-purpose classification"
+          ]
+        },
+        {
+          "product_id": "CP00eda7f56d43",
+          "name": "Janssen -Brightening Day Protection 50ml",
+          "source_url": "https://elitecosmeticspk.com/products/janssen-brightening-day-protection-50ml",
+          "issues": [
+            "Category is too broad or promotional for product-purpose classification"
+          ]
+        },
+        {
+          "product_id": "CP3426b705a316",
+          "name": "Janssen -Micellar skin tonic 200ml",
+          "source_url": "https://elitecosmeticspk.com/products/janssen-micellar-skin-tonic-200ml",
+          "issues": [
+            "Category is too broad or promotional for product-purpose classification"
+          ]
+        },
+        {
+          "product_id": "CPe49622a0fd10",
+          "name": "Janssen - Derma Fleece Collagen Sheet",
+          "source_url": "https://elitecosmeticspk.com/products/janssen-derma-fleece-collagen-sheet",
+          "issues": [
+            "Category is too broad or promotional for product-purpose classification"
+          ]
+        },
+        {
+          "product_id": "CP29a4e1543391",
+          "name": "Janssen -Rejuvenating mask 200ml",
+          "source_url": "https://elitecosmeticspk.com/products/janssen-rejuvenating-mask-200ml",
+          "issues": [
+            "Category is too broad or promotional for product-purpose classification"
+          ]
+        },
+        {
+          "product_id": "CP82a152d90a54",
+          "name": "Janssen -MelaFadin Cleansing Powder 100gm",
+          "source_url": "https://elitecosmeticspk.com/products/janssen-melafadin-cleansing-powder-100gm",
+          "issues": [
+            "Category is too broad or promotional for product-purpose classification"
+          ]
+        },
+        {
+          "product_id": "CP25d328d77042",
+          "name": "Janssen -Gentle Cleansing Powder 100 g",
+          "source_url": "https://elitecosmeticspk.com/products/janssen-gentle-cleansing-powder-100-g",
+          "issues": [
+            "Category is too broad or promotional for product-purpose classification"
+          ]
+        },
+        {
+          "product_id": "CPfb33c9733f47",
+          "name": "Janssen - Melafadin Fluid 2 ml",
+          "source_url": "https://elitecosmeticspk.com/products/janssen-melafadin-fluid-2-ml",
+          "issues": [
+            "Category is too broad or promotional for product-purpose classification"
+          ]
+        },
+        {
+          "product_id": "CP31a5a3d46cdb",
+          "name": "NEUTROGENA Deep Clean Gel Wash 200ml",
+          "source_url": "https://elitecosmeticspk.com/products/neutrogena-deep-clean-gel-wash-200ml",
+          "issues": [
+            "Category is too broad or promotional for product-purpose classification"
+          ]
+        },
+        {
+          "product_id": "CP878202c2b2ce",
+          "name": "Dove Daily Moisture 2 in 1 Shampoo and Conditioner 250ml",
+          "source_url": "https://elitecosmeticspk.com/products/dove-daily-moisture-2-in-1-shampoo-and-conditioner-250ml",
+          "issues": [
+            "Primary product type and Category disagree: hair shampoo"
+          ]
+        },
+        {
+          "product_id": "CP35cdde04746c",
+          "name": "Hot Sexy Colors Liquid Lipstick Moisturizer Lip Tint Waterproof",
+          "source_url": "https://elitecosmeticspk.com/products/hot-sexy-colors-liquid-lipstick-moisturizer-lip-tint-waterproof",
+          "issues": [
+            "Primary product type and Category disagree: lipstick"
+          ]
+        },
+        {
+          "product_id": "CP059567a03694",
+          "name": "Bene Rose Tint \u2013 Long-Lasting Liquid Blush & Lip Tint",
+          "source_url": "https://elitecosmeticspk.com/products/bene-rose-tint-long-lasting-liquid-blush-lip-tint",
+          "issues": [
+            "Primary product type and Category disagree: blush"
+          ]
+        },
+        {
+          "product_id": "CPa53dcc950fda",
+          "name": "AICHUN BEAUTY Heel Chapped Peeling Foot Hand Anti Dry Crack Skin Repair Moisturizing Nourishing Cream (100g)",
+          "source_url": "https://elitecosmeticspk.com/products/a",
+          "issues": [
+            "Facial cream Category conflicts with named application area"
+          ]
+        },
+        {
+          "product_id": "CP7f17ba7d0a5c",
+          "name": "Aichun Beauty Face & Body Whitening Cream",
+          "source_url": "https://elitecosmeticspk.com/products/copy-of-guanjing-kojic-acid-collagen-underarm-whitening-cream",
+          "issues": [
+            "Facial cream Category conflicts with named application area"
+          ]
+        },
+        {
+          "product_id": "CPa3dee7604bdb",
+          "name": "BIOAQUA Pure Skin Anti Acne Cleanser 100g",
+          "source_url": "https://elitecosmeticspk.com/products/copy-of-dr-rashel-anti-aging-deep-cleansing-vitamin-c-facial-cleanser-80-ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP64ac1a6f3d55",
+          "name": "Dr. Rashel 24K Gold Radiance & Anti-Aging Essence Mask 25g - 100% Original | Best Gold Mask for Radiance & Youthful Skin in Pakistan",
+          "source_url": "https://elitecosmeticspk.com/products/dr-rashel-24k-gold-radiance-anti-aging-essence-mask-25g",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "details_truncated": true,
+      "workbook_sha256": "141d6c1100724dba41551cdc3bd4488703f651ca7f2b66f1e5f710ce36b8e4ff",
+      "checked_utc": "2026-10-24T08:41:39.984495+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-24T08:41:39.987229+00:00",
+        "updated_utc": "2026-10-24T08:41:39.987229+00:00",
+        "next_source_check_due_utc": "2026-10-24T08:56:39.987229+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Bundle appears classified as a single component",
+          "Bundle family and product contents disagree",
+          "Category blank or unresolved",
+          "Category is too broad or promotional for product-purpose classification",
+          "Category lacks clear product-purpose evidence; manual review required",
+          "Facial cream Category conflicts with named application area",
+          "Primary product type and Category disagree: blush",
+          "Primary product type and Category disagree: face powder",
+          "Primary product type and Category disagree: foundation",
+          "Primary product type and Category disagree: hair shampoo",
+          "Primary product type and Category disagree: lipstick"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "description_repairs_count": 2,
+      "description_repairs_examples": [
+        {
+          "product_id": "CP3e94ea015625",
+          "issue": "Restored exact matching primary public product description; listing identity retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP95c91c748356",
+          "issue": "Restored exact matching primary public product description; listing identity retained.",
+          "repair_kind": "description"
+        }
+      ],
+      "campaign_id": "fresh804-20261024-c055e80e",
+      "source_run": "40074662060",
+      "source_artifact": 12554377415,
+      "source_sha256": "12e594463d8920aea08de0258421042a6f0be7afd6be1796b73fe73bae55807d",
+      "held_input": "inputs/fresh804-20261024-c055e80e/elite-cosmetics/12e594463d8920ae/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -2516,8 +3383,8 @@
     "SE10026": "inputs/fresh804-20261021-a26dcd86/rollback-se10026/5be88fd6dd65639e/manifest.json",
     "SE10028": "inputs/fresh804-20261021-a26dcd86/rollback-se10028/bac7349a7e5a8e78/manifest.json"
   },
-  "audit804_last_store": "Tawakkal Fabrics",
-  "audit804_progress_utc": "2026-10-24T08:31:37.057985+00:00",
+  "audit804_last_store": "Elite Cosmetics",
+  "audit804_progress_utc": "2026-10-24T08:41:48.663491+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rawayat",
