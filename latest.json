@@ -1,60 +1,57 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-24T08:40:55.643068+00:00",
-  "run_id": "40074662060",
+  "generated_utc": "2026-10-24T09:04:53.091230+00:00",
+  "run_id": "40074670337",
   "attempt": "1",
   "source_commit": "9ed41cc15c560d4235455cb16a10dda35abc2489",
-  "status": "complete",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 3970.2,
+  "elapsed_seconds": 5400.4,
   "stores": [
     {
-      "name": "Vince Care",
+      "name": "Nisa Naturals",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "4ea0b613ec340955",
-      "products": 209,
-      "variants": 369,
+      "products": 55,
+      "variants": 55,
       "http_statuses": {
-        "200": 325
+        "200": 74
       },
-      "network_seconds": 736.7,
-      "max_response_seconds": 3.3,
-      "cache_events": 418
-    },
-    {
-      "name": "The Hanger Pakistan",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "4ea0b613ec340955",
-      "products": 357,
-      "variants": 1554,
-      "http_statuses": {
-        "200": 387
-      },
-      "network_seconds": 194.1,
+      "network_seconds": 34.4,
       "max_response_seconds": 1.7,
-      "cache_events": 714
+      "cache_events": 110
     },
     {
-      "name": "Elite Cosmetics",
-      "status": "done",
-      "review_required": true,
+      "name": "LAAM",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [],
+      "software_revision": "4ea0b613ec340955",
+      "http_statuses": {
+        "200": 3390,
+        "500": 33
+      },
+      "network_seconds": 1803.3,
+      "max_response_seconds": 15.8,
+      "cache_events": 0
+    },
+    {
+      "name": "Khaadi",
+      "status": "blocked",
+      "review_required": false,
       "issue_codes": [
-        "WEBSITE_ORDER_UNVERIFIED"
+        "SOURCE_BLOCKED"
       ],
       "software_revision": "4ea0b613ec340955",
-      "products": 1559,
-      "variants": 2023,
       "http_statuses": {
-        "200": 1786
+        "200": 3
       },
-      "network_seconds": 2930.1,
-      "max_response_seconds": 20.8,
-      "cache_events": 3118
+      "network_seconds": 3.2,
+      "max_response_seconds": 1.5,
+      "cache_events": 0
     }
   ]
 }
