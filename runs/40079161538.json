@@ -1656,7 +1656,7 @@
     "Computer Zone": "source:5f548ed594afac3ce186033cf0d35dd352c8dace14e5039dbd11f8222f263fb2:Computer Zone:e7ebf891970e46b78449c49cea95b5a1ad58f522485d72a1da6e6f27071845b8",
     "Saeed Ghani": "source:c402c7a4fd31383785eca6c48aedc639717b7f14bc5561135f53482f27f6ed66:Saeed Ghani:c016e073f90a18f875d13af2f53fc4a98e87d83187435355514ab8948147b658",
     "Tawakkal Fabrics": "source:8d528f29bd4bc922680697d66e850d711d3a84cf66e4109cfbce5d2c51683b65:Tawakkal Fabrics:e7ebf891970e46b78449c49cea95b5a1ad58f522485d72a1da6e6f27071845b8",
-    "Elite Cosmetics": "source:12e594463d8920aea08de0258421042a6f0be7afd6be1796b73fe73bae55807d:Elite Cosmetics:e7ebf891970e46b78449c49cea95b5a1ad58f522485d72a1da6e6f27071845b8"
+    "Elite Cosmetics": "source:12e594463d8920aea08de0258421042a6f0be7afd6be1796b73fe73bae55807d:Elite Cosmetics:c016e073f90a18f875d13af2f53fc4a98e87d83187435355514ab8948147b658"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -2343,7 +2343,7 @@
       "identity_policy": "confirmed_code",
       "status": "hold",
       "products_checked": 1559,
-      "findings_count": 108,
+      "findings_count": 104,
       "findings": [
         {
           "product_id": "CP887076975292",
@@ -2407,14 +2407,6 @@
           "source_url": "https://elitecosmeticspk.com/products/becute-cosmetics-skin-polish-bleach-powder-and-activator-skin-brightening-whitening-formula",
           "issues": [
             "Bundle appears classified as a single component"
-          ]
-        },
-        {
-          "product_id": "CP53d2f1fe384a",
-          "name": "Medora Compact Powder | Lightweight Oil Control Matte Finish | Multiple Shades",
-          "source_url": "https://elitecosmeticspk.com/products/medora-compact-powder-lightweight-oil-control-matte-finish-multiple-shades",
-          "issues": [
-            "Primary product type and Category disagree: face powder"
           ]
         },
         {
@@ -2908,14 +2900,6 @@
           ]
         },
         {
-          "product_id": "CP629243309e39",
-          "name": "Emelie Foundation Oil Control \u2013 Matte Finish & Long-Lasting Coverage",
-          "source_url": "https://elitecosmeticspk.com/products/emelie-foundation-oil-control",
-          "issues": [
-            "Primary product type and Category disagree: foundation"
-          ]
-        },
-        {
           "product_id": "CPd4008ef85e5c",
           "name": "A'mrij Hair Support Fibers Builder",
           "source_url": "https://elitecosmeticspk.com/products/amrij-hair-support-fibers-builder",
@@ -3102,14 +3086,6 @@
           ]
         },
         {
-          "product_id": "CP35cdde04746c",
-          "name": "Hot Sexy Colors Liquid Lipstick Moisturizer Lip Tint Waterproof",
-          "source_url": "https://elitecosmeticspk.com/products/hot-sexy-colors-liquid-lipstick-moisturizer-lip-tint-waterproof",
-          "issues": [
-            "Primary product type and Category disagree: lipstick"
-          ]
-        },
-        {
           "product_id": "CP059567a03694",
           "name": "Bene Rose Tint \u2013 Long-Lasting Liquid Blush & Lip Tint",
           "source_url": "https://elitecosmeticspk.com/products/bene-rose-tint-long-lasting-liquid-blush-lip-tint",
@@ -3148,19 +3124,44 @@
           "issues": [
             "Category lacks clear product-purpose evidence; manual review required"
           ]
+        },
+        {
+          "product_id": "CP05b8313723aa",
+          "name": "BIOAQUA Rice Raw Pulp Mask 25g",
+          "source_url": "https://elitecosmeticspk.com/products/copy-of-bioaqua-vitamin-c-rejuvenating-sheet-mask-25g",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP64314d1a3780",
+          "name": "BIOAQUA Avocado Moisturizing Mask 25g",
+          "source_url": "https://elitecosmeticspk.com/products/copy-of-bioaqua-niacinome-hydrating-shea-mask-25g",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4f7117881650",
+          "name": "BIOAQUA Niacinome Hydrating Shea Mask 25g",
+          "source_url": "https://elitecosmeticspk.com/products/bioaqua-niacinome-hydrating-shea-mask-25g",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
         }
       ],
       "details_truncated": true,
-      "workbook_sha256": "141d6c1100724dba41551cdc3bd4488703f651ca7f2b66f1e5f710ce36b8e4ff",
-      "checked_utc": "2026-10-24T08:41:39.984495+00:00",
+      "workbook_sha256": "66b88dbad312cac0d879904146c184b144d75c49da32debeb42129e99741fc74",
+      "checked_utc": "2026-10-24T08:47:51.968069+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
         "stage": "correction_pending_source_recheck",
         "unfinished": true,
         "owner": "804 automated recovery",
         "opened_utc": "2026-10-24T08:41:39.987229+00:00",
-        "updated_utc": "2026-10-24T08:41:39.987229+00:00",
-        "next_source_check_due_utc": "2026-10-24T08:56:39.987229+00:00",
+        "updated_utc": "2026-10-24T08:47:51.970648+00:00",
+        "next_source_check_due_utc": "2026-10-24T09:02:51.970648+00:00",
         "actions": [
           "Refresh exact public product facts",
           "Apply supported description and category repairs",
@@ -3173,12 +3174,10 @@
           "Category blank or unresolved",
           "Category is too broad or promotional for product-purpose classification",
           "Category lacks clear product-purpose evidence; manual review required",
+          "Description lacks enough product-specific content for review",
           "Facial cream Category conflicts with named application area",
           "Primary product type and Category disagree: blush",
-          "Primary product type and Category disagree: face powder",
-          "Primary product type and Category disagree: foundation",
-          "Primary product type and Category disagree: hair shampoo",
-          "Primary product type and Category disagree: lipstick"
+          "Primary product type and Category disagree: hair shampoo"
         ],
         "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
@@ -3240,8 +3239,8 @@
     "SE10026": "inputs/fresh804-20261021-a26dcd86/rollback-se10026/5be88fd6dd65639e/manifest.json",
     "SE10028": "inputs/fresh804-20261021-a26dcd86/rollback-se10028/bac7349a7e5a8e78/manifest.json"
   },
-  "audit804_last_store": "Saeed Ghani",
-  "audit804_progress_utc": "2026-10-24T08:47:41.171226+00:00",
+  "audit804_last_store": "Elite Cosmetics",
+  "audit804_progress_utc": "2026-10-24T08:47:51.971148+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rawayat",
