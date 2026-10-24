@@ -1656,7 +1656,8 @@
     "Computer Zone": "source:5f548ed594afac3ce186033cf0d35dd352c8dace14e5039dbd11f8222f263fb2:Computer Zone:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
     "Saeed Ghani": "source:c402c7a4fd31383785eca6c48aedc639717b7f14bc5561135f53482f27f6ed66:Saeed Ghani:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
     "Tawakkal Fabrics": "source:8d528f29bd4bc922680697d66e850d711d3a84cf66e4109cfbce5d2c51683b65:Tawakkal Fabrics:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
-    "Elite Cosmetics": "source:12e594463d8920aea08de0258421042a6f0be7afd6be1796b73fe73bae55807d:Elite Cosmetics:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044"
+    "Elite Cosmetics": "source:12e594463d8920aea08de0258421042a6f0be7afd6be1796b73fe73bae55807d:Elite Cosmetics:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
+    "Hemani Herbals": "source:90fa90469d303e99fa249668bfb3ac3513918f188b510dbb7bb8d5e34d2ae8fc:Hemani Herbals:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -3199,6 +3200,307 @@
       "source_artifact": 12554377415,
       "source_sha256": "12e594463d8920aea08de0258421042a6f0be7afd6be1796b73fe73bae55807d",
       "held_input": "inputs/fresh804-20261024-c055e80e/elite-cosmetics/12e594463d8920ae/manifest.json"
+    },
+    "Hemani Herbals": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Hemani Herbals",
+      "shop_code": "SE10021",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 1074,
+      "findings_count": 32,
+      "findings": [
+        {
+          "product_id": "CP4785b68c8dd5",
+          "name": "Ethereal Desires Gift Box",
+          "source_url": "https://pk.hemaniherbals.com/products/ethereal-desires-gift-box",
+          "issues": [
+            "Primary product type and Category disagree: fragrance"
+          ]
+        },
+        {
+          "product_id": "CP4f6bfeb8fa77",
+          "name": "Prostate Health Oil 60ml",
+          "source_url": "https://pk.hemaniherbals.com/products/prostate-health-oil-60ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0c0fa3c09da8",
+          "name": "Vanilla Chai Latte Instant Premix - 220g",
+          "source_url": "https://pk.hemaniherbals.com/products/vanilla-chai-latte-instant-premix-220g",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP21dff55d2234",
+          "name": "Pure Bloom Women's Overall Health Package",
+          "source_url": "https://pk.hemaniherbals.com/products/pure-bloom-womens-overall-health-package",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf8f1cad8d55d",
+          "name": "Dr. Organic Superfood - Ksylitol",
+          "source_url": "https://pk.hemaniherbals.com/products/dr-organic-superfood-ksylitol",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe21f6044306e",
+          "name": "Sleep Well Package Combo # 2",
+          "source_url": "https://pk.hemaniherbals.com/products/sleep-well-package-combo-2",
+          "issues": [
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CPab4e8e0bde15",
+          "name": "Sleep Well Package Combo # 1",
+          "source_url": "https://pk.hemaniherbals.com/products/sleep-well-package-combo-1",
+          "issues": [
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CP9edb958c06e5",
+          "name": "SQUAD ACTIVE 360",
+          "source_url": "https://pk.hemaniherbals.com/products/squad-active-360",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP811d9b9e5bed",
+          "name": "SQUAD CHAMPIONS BLACK EDITION",
+          "source_url": "https://pk.hemaniherbals.com/products/squad-quetta-black-edition-body-spray",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3d85a58928a5",
+          "name": "OUD KEIFI 22ml",
+          "source_url": "https://pk.hemaniherbals.com/products/oud-keifi-22ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP01eb3aa4682a",
+          "name": "NORAIZ 17ml",
+          "source_url": "https://pk.hemaniherbals.com/products/noraiz-17ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4bb24f6f3066",
+          "name": "OUD TAIFI 22ml",
+          "source_url": "https://pk.hemaniherbals.com/products/oud-taifi-22ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5b43c9571947",
+          "name": "QALB AL WARD 15ml",
+          "source_url": "https://pk.hemaniherbals.com/products/qalb-al-ward-15ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP6fafdb61ce6f",
+          "name": "JAVEDAAN 17ml",
+          "source_url": "https://pk.hemaniherbals.com/products/javedaan-17ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP61fdd3deae84",
+          "name": "LAMSAT AL DHAHAB 15ml",
+          "source_url": "https://pk.hemaniherbals.com/products/lamsat-al-dhahab-15ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPac4f08629263",
+          "name": "Oh So Flawless BB Cream - LIGHT",
+          "source_url": "https://pk.hemaniherbals.com/products/oh-so-flawless-bb-cream-light",
+          "issues": [
+            "Primary product type and Category disagree: bb cream"
+          ]
+        },
+        {
+          "product_id": "CP627e9f36b740",
+          "name": "Perfume - Coral Blush Intense 100ML",
+          "source_url": "https://pk.hemaniherbals.com/products/perfume-coral-blush",
+          "issues": [
+            "Primary product type and Category disagree: fragrance"
+          ]
+        },
+        {
+          "product_id": "CPfb072c65886a",
+          "name": "Yogurt & Egg Moisturizing Conditioner 300ml",
+          "source_url": "https://pk.hemaniherbals.com/products/yogurt-egg-moisturizing-conditioner",
+          "issues": [
+            "Primary product type and Category disagree: yoghurt"
+          ]
+        },
+        {
+          "product_id": "CP3ef2e15301cf",
+          "name": "Hair Mayonnaise with Argan & Aloe Vera",
+          "source_url": "https://pk.hemaniherbals.com/products/hair-mayonnaise-with-argan-aloe-vera",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9fa20e507bd7",
+          "name": "Monarchist Pour Homme",
+          "source_url": "https://pk.hemaniherbals.com/products/monarchist-pour-homme",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPdb2677c57057",
+          "name": "Primadonna Pour Femme",
+          "source_url": "https://pk.hemaniherbals.com/products/primadonna-pour-femme",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd4d60280f9d4",
+          "name": "TQ+ Premium Black Seed Oil 60ml",
+          "source_url": "https://pk.hemaniherbals.com/products/tq-premium-black-seed-oil-60ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7e168108a1bd",
+          "name": "Patriot Green Pour Homme 100ml",
+          "source_url": "https://pk.hemaniherbals.com/products/patriot-green-pour-homme-100ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP6fa9175b79a0",
+          "name": "Emerald Dream \u2013 Pour Femme",
+          "source_url": "https://pk.hemaniherbals.com/products/emerald-dream-pour-femme",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5dacd24eeb98",
+          "name": "Vintage Allure \u2013 Pour Homme",
+          "source_url": "https://pk.hemaniherbals.com/products/vintage-allure-pour-homme",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP437f65e8c354",
+          "name": "DAZZLE ME \u2013 Pour Femme",
+          "source_url": "https://pk.hemaniherbals.com/products/dazzle-me-pour-femme",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP114a25d2676a",
+          "name": "Rayaan Oud 10ml",
+          "source_url": "https://pk.hemaniherbals.com/products/rayaan-oud-10ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8e64093e2215",
+          "name": "SQUAD BELOW ZERO",
+          "source_url": "https://pk.hemaniherbals.com/products/squad-below-zero",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP84a0cc61ef7d",
+          "name": "SQUAD FIRE FIT",
+          "source_url": "https://pk.hemaniherbals.com/products/squad-fire-fit",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP165aa3eac03a",
+          "name": "SQUAD GAME PLAY",
+          "source_url": "https://pk.hemaniherbals.com/products/squad-game-play",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP22437819fd69",
+          "name": "CHAMPIONS SPECIAL EDITION GOLD",
+          "source_url": "https://pk.hemaniherbals.com/products/champions-special-edition-gold",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP419f178cb004",
+          "name": "Kashmiri Kehwa Instant Premix - 150g",
+          "source_url": "https://pk.hemaniherbals.com/products/kashmiri-kehwa-instant-premix-150g",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "details_truncated": false,
+      "workbook_sha256": "d42049378d28602a41f6ba6082649e7c50a10b2fb5e2d843711d011100b98d17",
+      "checked_utc": "2026-10-24T09:27:02.490041+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-24T09:27:02.491680+00:00",
+        "updated_utc": "2026-10-24T09:27:02.491680+00:00",
+        "next_source_check_due_utc": "2026-10-24T09:42:02.491680+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Bundle appears classified as a single component",
+          "Category lacks clear product-purpose evidence; manual review required",
+          "Primary product type and Category disagree: bb cream",
+          "Primary product type and Category disagree: fragrance",
+          "Primary product type and Category disagree: yoghurt"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
+      "campaign_id": "fresh804-20261024-c055e80e",
+      "source_run": "40080581305",
+      "source_artifact": 12555620850,
+      "source_sha256": "90fa90469d303e99fa249668bfb3ac3513918f188b510dbb7bb8d5e34d2ae8fc",
+      "held_input": "inputs/fresh804-20261024-c055e80e/hemani-herbals/90fa90469d303e99/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -3209,14 +3511,14 @@
     "40074670337": "40074670337:12554872021:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
     "40074675482": "40074675482:12553708021:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
     "40074677981": "40074677981:12555425217:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
-    "40074680760": "40074680760:12555350663:c016e073f90a18f875d13af2f53fc4a98e87d83187435355514ab8948147b658",
+    "40074680760": "40074680760:12555350663:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
     "40074659425": "40074659425:12553984721:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
     "40074672898": "40074672898:12554788862:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
-    "40080556101": "40080556101:12554922060:c016e073f90a18f875d13af2f53fc4a98e87d83187435355514ab8948147b658",
-    "40080560084": "40080560084:12554029484:c016e073f90a18f875d13af2f53fc4a98e87d83187435355514ab8948147b658",
+    "40080556101": "40080556101:12554922060:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
+    "40080560084": "40080560084:12554029484:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
     "40080584014": "40080584014:12554784007:c016e073f90a18f875d13af2f53fc4a98e87d83187435355514ab8948147b658",
     "40080584253": "40080584253:12554749150:c016e073f90a18f875d13af2f53fc4a98e87d83187435355514ab8948147b658",
-    "40080579970": "40080579970:12555480206:c016e073f90a18f875d13af2f53fc4a98e87d83187435355514ab8948147b658"
+    "40080579970": "40080579970:12555480206:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044"
   },
   "audit804_campaign": "fresh804-20261024-c055e80e",
   "audit804_checked_utc": "2026-10-24T09:10:23.025646+00:00",
@@ -3245,8 +3547,8 @@
     "SE10026": "inputs/fresh804-20261021-a26dcd86/rollback-se10026/5be88fd6dd65639e/manifest.json",
     "SE10028": "inputs/fresh804-20261021-a26dcd86/rollback-se10028/bac7349a7e5a8e78/manifest.json"
   },
-  "audit804_last_store": "Zero Lifestyle",
-  "audit804_progress_utc": "2026-10-24T09:26:49.009494+00:00",
+  "audit804_last_store": "Hemani Herbals",
+  "audit804_progress_utc": "2026-10-24T09:27:04.688945+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rawayat",
