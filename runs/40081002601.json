@@ -1657,7 +1657,8 @@
     "Saeed Ghani": "source:c402c7a4fd31383785eca6c48aedc639717b7f14bc5561135f53482f27f6ed66:Saeed Ghani:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
     "Tawakkal Fabrics": "source:8d528f29bd4bc922680697d66e850d711d3a84cf66e4109cfbce5d2c51683b65:Tawakkal Fabrics:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
     "Elite Cosmetics": "source:12e594463d8920aea08de0258421042a6f0be7afd6be1796b73fe73bae55807d:Elite Cosmetics:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
-    "Hemani Herbals": "source:90fa90469d303e99fa249668bfb3ac3513918f188b510dbb7bb8d5e34d2ae8fc:Hemani Herbals:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044"
+    "Hemani Herbals": "source:90fa90469d303e99fa249668bfb3ac3513918f188b510dbb7bb8d5e34d2ae8fc:Hemani Herbals:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
+    "Bonanza Satrangi": "source:71ed6fbbf79b23e89e5fa53069ed196fb24890df2190b560f0ed943e44d2321e:Bonanza Satrangi:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -3501,6 +3502,74 @@
       "source_artifact": 12555620850,
       "source_sha256": "90fa90469d303e99fa249668bfb3ac3513918f188b510dbb7bb8d5e34d2ae8fc",
       "held_input": "inputs/fresh804-20261024-c055e80e/hemani-herbals/90fa90469d303e99/manifest.json"
+    },
+    "Bonanza Satrangi": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Bonanza Satrangi",
+      "shop_code": "SE10027",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 1109,
+      "findings_count": 3,
+      "findings": [
+        {
+          "product_id": "CP04d02654c12b",
+          "name": "Two of a Kind Deal",
+          "source_url": "https://bonanzasatrangi.com/products/two-of-a-kind-deal",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPa2d46de07c9f",
+          "name": "Wedding Glow-Up Bundle",
+          "source_url": "https://bonanzasatrangi.com/products/wedding-glow-up-bundle",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP3271bc5c6868",
+          "name": "Always Glowing Fixing Spray",
+          "source_url": "https://bonanzasatrangi.com/products/fagfs-573",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        }
+      ],
+      "details_truncated": false,
+      "workbook_sha256": "9a48208ab2872c6d4decf01bff9d8f79b78497d2dd51da1be3283581d50e1b45",
+      "checked_utc": "2026-10-24T09:27:16.319278+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-24T09:27:16.320852+00:00",
+        "updated_utc": "2026-10-24T09:27:16.320852+00:00",
+        "next_source_check_due_utc": "2026-10-24T09:42:16.320852+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved",
+          "Description lacks enough product-specific content for review"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
+      "campaign_id": "fresh804-20261024-c055e80e",
+      "source_run": "40080584253",
+      "source_artifact": 12555805309,
+      "source_sha256": "71ed6fbbf79b23e89e5fa53069ed196fb24890df2190b560f0ed943e44d2321e",
+      "held_input": "inputs/fresh804-20261024-c055e80e/bonanza-satrangi/71ed6fbbf79b23e8/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -3516,9 +3585,10 @@
     "40074672898": "40074672898:12554788862:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
     "40080556101": "40080556101:12554922060:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
     "40080560084": "40080560084:12554029484:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
-    "40080584014": "40080584014:12554784007:c016e073f90a18f875d13af2f53fc4a98e87d83187435355514ab8948147b658",
+    "40080584014": "40080584014:12554784007:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
     "40080584253": "40080584253:12554749150:c016e073f90a18f875d13af2f53fc4a98e87d83187435355514ab8948147b658",
-    "40080579970": "40080579970:12555480206:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044"
+    "40080579970": "40080579970:12555480206:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
+    "40080581305": "40080581305:12555620850:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044"
   },
   "audit804_campaign": "fresh804-20261024-c055e80e",
   "audit804_checked_utc": "2026-10-24T09:10:23.025646+00:00",
@@ -3547,8 +3617,8 @@
     "SE10026": "inputs/fresh804-20261021-a26dcd86/rollback-se10026/5be88fd6dd65639e/manifest.json",
     "SE10028": "inputs/fresh804-20261021-a26dcd86/rollback-se10028/bac7349a7e5a8e78/manifest.json"
   },
-  "audit804_last_store": "Hemani Herbals",
-  "audit804_progress_utc": "2026-10-24T09:27:04.688945+00:00",
+  "audit804_last_store": "Bonanza Satrangi",
+  "audit804_progress_utc": "2026-10-24T09:27:18.530710+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rawayat",
