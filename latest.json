@@ -1,6 +1,6 @@
 {
-  "run_id": "40112076266",
-  "checked_utc": "2026-10-24T16:33:32.700203+00:00",
+  "run_id": "40112477048",
+  "checked_utc": "2026-10-24T16:38:28.756109+00:00",
   "active_queued": 3,
   "runs": [
     {
@@ -11,159 +11,7 @@
       "updatedAt": "2026-10-24T15:17:03Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40106234498",
       "lane": "audit804-fresh804-20261024-c055e80e-6",
-      "snapshot": "Updated (UTC): 2026-10-24T16:31:27.514272+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Nisa Naturals.xlsx\n\nSTORE STATUS\nNisa Naturals: done\nLAAM: running\n  Stage: Website listing order\n  Last successful HTTP response (UTC): 2026-10-24T16:31:25.349472+00:00\nKhaadi: blocked\n",
-      "snapshot_utc": "2026-10-24T16:31:27.514272+00:00",
-      "stores": {
-        "Nisa Naturals": "done",
-        "LAAM": "running",
-        "Khaadi": "blocked"
-      },
-      "snapshot_age_seconds": 125,
-      "snapshot_stale": false,
-      "console-tail.txt": [
-        "[LAAM] [16:30:44] HTTP END status=200 elapsed=0.7s bytes=314689 https://laam.com/products/amelia",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/amelia; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [16:30:45] HTTP START attempt=1 https://laam.com/products/amelia-1",
-        "[LAAM] [16:30:46] HTTP END status=200 elapsed=1.0s bytes=312633 https://laam.com/products/amelia-1",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/amelia-1; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [16:30:47] HTTP START attempt=1 https://laam.com/products/amelia-10",
-        "[LAAM] [16:30:47] HTTP END status=200 elapsed=0.8s bytes=325548 https://laam.com/products/amelia-10",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/amelia-10; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [16:30:48] HTTP START attempt=1 https://laam.com/products/amelia-11-0",
-        "[LAAM] [16:30:48] HTTP END status=200 elapsed=0.4s bytes=308964 https://laam.com/products/amelia-11-0",
-        "[LAAM] [16:30:50] HTTP START attempt=1 https://laam.com/products/amelia-16",
-        "[LAAM] [16:30:50] HTTP END status=200 elapsed=0.5s bytes=319677 https://laam.com/products/amelia-16",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/amelia-16; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [16:30:51] HTTP START attempt=1 https://laam.com/products/amelia-18",
-        "[LAAM] [16:30:51] HTTP END status=200 elapsed=0.3s bytes=312890 https://laam.com/products/amelia-18",
-        "[LAAM] [16:30:53] HTTP START attempt=1 https://laam.com/products/amelia-19",
-        "[LAAM] [16:30:54] HTTP END status=200 elapsed=1.7s bytes=310814 https://laam.com/products/amelia-19",
-        "[LAAM] [16:30:54] HTTP START attempt=1 https://laam.com/products/amelia-2-piece",
-        "[LAAM] [16:30:55] HTTP END status=200 elapsed=0.4s bytes=309229 https://laam.com/products/amelia-2-piece",
-        "[LAAM] [16:30:56] HTTP START attempt=1 https://laam.com/products/amelia-20",
-        "[LAAM] [16:30:57] HTTP END status=200 elapsed=1.2s bytes=322965 https://laam.com/products/amelia-20",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/amelia-20; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [16:30:57] HTTP START attempt=1 https://laam.com/products/amelia-21",
-        "[LAAM] [16:30:58] HTTP END status=200 elapsed=0.9s bytes=310767 https://laam.com/products/amelia-21",
-        "[LAAM] [16:30:59] HTTP START attempt=1 https://laam.com/products/amelia-23",
-        "[LAAM] [16:30:59] HTTP END status=200 elapsed=0.4s bytes=323676 https://laam.com/products/amelia-23",
-        "[LAAM] [16:31:00] HTTP START attempt=1 https://laam.com/products/amelia-24",
-        "[LAAM] [16:31:01] HTTP END status=200 elapsed=0.9s bytes=315498 https://laam.com/products/amelia-24",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/amelia-24; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [16:31:02] HTTP START attempt=1 https://laam.com/products/amelia-25",
-        "[LAAM] [16:31:04] HTTP END status=200 elapsed=1.9s bytes=312628 https://laam.com/products/amelia-25",
-        "[LAAM] [16:31:04] HTTP START attempt=1 https://laam.com/products/amelia-28",
-        "[LAAM] [16:31:05] HTTP END status=200 elapsed=1.8s bytes=312340 https://laam.com/products/amelia-28",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/amelia-28; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [16:31:05] HTTP START attempt=1 https://laam.com/products/amelia-29",
-        "[LAAM] [16:31:08] HTTP END status=200 elapsed=2.9s bytes=312335 https://laam.com/products/amelia-29",
-        "[LAAM] [16:31:08] HTTP START attempt=1 https://laam.com/products/amelia-3",
-        "[LAAM] [16:31:10] HTTP END status=200 elapsed=1.2s bytes=303458 https://laam.com/products/amelia-3",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/amelia-3; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [16:31:10] HTTP START attempt=1 https://laam.com/products/amelia-5a",
-        "[LAAM] [16:31:10] HTTP END status=200 elapsed=0.3s bytes=307591 https://laam.com/products/amelia-5a",
-        "[LAAM] [16:31:11] HTTP START attempt=1 https://laam.com/products/amelia-5b",
-        "[LAAM] [16:31:12] HTTP END status=200 elapsed=0.3s bytes=308558 https://laam.com/products/amelia-5b",
-        "[LAAM] [16:31:13] HTTP START attempt=1 https://laam.com/products/amelia-8",
-        "[LAAM] [16:31:15] HTTP END status=200 elapsed=2.6s bytes=312478 https://laam.com/products/amelia-8",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/amelia-8; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [16:31:15] HTTP START attempt=1 https://laam.com/products/amelia-dress",
-        "[LAAM] [16:31:17] HTTP END status=200 elapsed=1.5s bytes=313439 https://laam.com/products/amelia-dress",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/amelia-dress; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [16:31:17] HTTP START attempt=1 https://laam.com/products/amelia-earrings-tikka-champagne-zarosh-jewel",
-        "[LAAM] [16:31:18] HTTP END status=200 elapsed=1.1s bytes=322659 https://laam.com/products/amelia-earrings-tikka-champagne-zarosh-jewel",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/amelia-earrings-tikka-champagne-zarosh-jewel",
-        "[LAAM] [16:31:18] HTTP START attempt=1 https://laam.com/products/amelia-earrings-tikka-green-zarosh-jewel",
-        "[LAAM] [16:31:19] HTTP END status=200 elapsed=0.3s bytes=322449 https://laam.com/products/amelia-earrings-tikka-green-zarosh-jewel",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/amelia-earrings-tikka-green-zarosh-jewel",
-        "[LAAM] [16:31:20] HTTP START attempt=1 https://laam.com/products/amelia-earrings-tikka-mint-green-zarosh-jewel",
-        "[LAAM] [16:31:20] HTTP END status=200 elapsed=0.4s bytes=322629 https://laam.com/products/amelia-earrings-tikka-mint-green-zarosh-jewel",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/amelia-earrings-tikka-mint-green-zarosh-jewel",
-        "[LAAM] [16:31:21] HTTP START attempt=1 https://laam.com/products/amelia-earrings-tikka-pink-zarosh-jewel",
-        "[LAAM] [16:31:23] HTTP END status=200 elapsed=1.4s bytes=322435 https://laam.com/products/amelia-earrings-tikka-pink-zarosh-jewel",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/amelia-earrings-tikka-pink-zarosh-jewel",
-        "[LAAM] [16:31:23] HTTP START attempt=1 https://laam.com/products/amelia-earrings-tikka-red-zarosh-jewel",
-        "[LAAM] [16:31:23] HTTP END status=200 elapsed=0.3s bytes=322718 https://laam.com/products/amelia-earrings-tikka-red-zarosh-jewel",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/amelia-earrings-tikka-red-zarosh-jewel",
-        "[LAAM] [16:31:24] HTTP START attempt=1 https://laam.com/products/amelia-earrings-tikka-silver-mint-green-zarosh-jewel",
-        "[LAAM] [16:31:25] HTTP END status=200 elapsed=0.4s bytes=323275 https://laam.com/products/amelia-earrings-tikka-silver-mint-green-zarosh-jewel",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/amelia-earrings-tikka-silver-mint-green-zarosh-jewel",
-        "[LAAM] [16:31:26] HTTP START attempt=1 https://laam.com/products/amelia-earrings-tikka-silver-pink-zarosh-jewel",
-        "[LAAM] [16:31:27] HTTP END status=200 elapsed=0.8s bytes=321797 https://laam.com/products/amelia-earrings-tikka-silver-pink-zarosh-jewel",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/amelia-earrings-tikka-silver-pink-zarosh-jewel"
-      ],
-      "fetch-log.txt": [
-        "[LAAM] [16:30:44] HTTP END status=200 elapsed=0.7s bytes=314689 https://laam.com/products/amelia",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/amelia; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [16:30:45] HTTP START attempt=1 https://laam.com/products/amelia-1",
-        "[LAAM] [16:30:46] HTTP END status=200 elapsed=1.0s bytes=312633 https://laam.com/products/amelia-1",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/amelia-1; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [16:30:47] HTTP START attempt=1 https://laam.com/products/amelia-10",
-        "[LAAM] [16:30:47] HTTP END status=200 elapsed=0.8s bytes=325548 https://laam.com/products/amelia-10",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/amelia-10; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [16:30:48] HTTP START attempt=1 https://laam.com/products/amelia-11-0",
-        "[LAAM] [16:30:48] HTTP END status=200 elapsed=0.4s bytes=308964 https://laam.com/products/amelia-11-0",
-        "[LAAM] [16:30:50] HTTP START attempt=1 https://laam.com/products/amelia-16",
-        "[LAAM] [16:30:50] HTTP END status=200 elapsed=0.5s bytes=319677 https://laam.com/products/amelia-16",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/amelia-16; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [16:30:51] HTTP START attempt=1 https://laam.com/products/amelia-18",
-        "[LAAM] [16:30:51] HTTP END status=200 elapsed=0.3s bytes=312890 https://laam.com/products/amelia-18",
-        "[LAAM] [16:30:53] HTTP START attempt=1 https://laam.com/products/amelia-19",
-        "[LAAM] [16:30:54] HTTP END status=200 elapsed=1.7s bytes=310814 https://laam.com/products/amelia-19",
-        "[LAAM] [16:30:54] HTTP START attempt=1 https://laam.com/products/amelia-2-piece",
-        "[LAAM] [16:30:55] HTTP END status=200 elapsed=0.4s bytes=309229 https://laam.com/products/amelia-2-piece",
-        "[LAAM] [16:30:56] HTTP START attempt=1 https://laam.com/products/amelia-20",
-        "[LAAM] [16:30:57] HTTP END status=200 elapsed=1.2s bytes=322965 https://laam.com/products/amelia-20",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/amelia-20; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [16:30:57] HTTP START attempt=1 https://laam.com/products/amelia-21",
-        "[LAAM] [16:30:58] HTTP END status=200 elapsed=0.9s bytes=310767 https://laam.com/products/amelia-21",
-        "[LAAM] [16:30:59] HTTP START attempt=1 https://laam.com/products/amelia-23",
-        "[LAAM] [16:30:59] HTTP END status=200 elapsed=0.4s bytes=323676 https://laam.com/products/amelia-23",
-        "[LAAM] [16:31:00] HTTP START attempt=1 https://laam.com/products/amelia-24",
-        "[LAAM] [16:31:01] HTTP END status=200 elapsed=0.9s bytes=315498 https://laam.com/products/amelia-24",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/amelia-24; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [16:31:02] HTTP START attempt=1 https://laam.com/products/amelia-25",
-        "[LAAM] [16:31:04] HTTP END status=200 elapsed=1.9s bytes=312628 https://laam.com/products/amelia-25",
-        "[LAAM] [16:31:04] HTTP START attempt=1 https://laam.com/products/amelia-28",
-        "[LAAM] [16:31:05] HTTP END status=200 elapsed=1.8s bytes=312340 https://laam.com/products/amelia-28",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/amelia-28; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [16:31:05] HTTP START attempt=1 https://laam.com/products/amelia-29",
-        "[LAAM] [16:31:08] HTTP END status=200 elapsed=2.9s bytes=312335 https://laam.com/products/amelia-29",
-        "[LAAM] [16:31:08] HTTP START attempt=1 https://laam.com/products/amelia-3",
-        "[LAAM] [16:31:10] HTTP END status=200 elapsed=1.2s bytes=303458 https://laam.com/products/amelia-3",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/amelia-3; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [16:31:10] HTTP START attempt=1 https://laam.com/products/amelia-5a",
-        "[LAAM] [16:31:10] HTTP END status=200 elapsed=0.3s bytes=307591 https://laam.com/products/amelia-5a",
-        "[LAAM] [16:31:11] HTTP START attempt=1 https://laam.com/products/amelia-5b",
-        "[LAAM] [16:31:12] HTTP END status=200 elapsed=0.3s bytes=308558 https://laam.com/products/amelia-5b",
-        "[LAAM] [16:31:13] HTTP START attempt=1 https://laam.com/products/amelia-8",
-        "[LAAM] [16:31:15] HTTP END status=200 elapsed=2.6s bytes=312478 https://laam.com/products/amelia-8",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/amelia-8; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [16:31:15] HTTP START attempt=1 https://laam.com/products/amelia-dress",
-        "[LAAM] [16:31:17] HTTP END status=200 elapsed=1.5s bytes=313439 https://laam.com/products/amelia-dress",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/amelia-dress; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [16:31:17] HTTP START attempt=1 https://laam.com/products/amelia-earrings-tikka-champagne-zarosh-jewel",
-        "[LAAM] [16:31:18] HTTP END status=200 elapsed=1.1s bytes=322659 https://laam.com/products/amelia-earrings-tikka-champagne-zarosh-jewel",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/amelia-earrings-tikka-champagne-zarosh-jewel",
-        "[LAAM] [16:31:18] HTTP START attempt=1 https://laam.com/products/amelia-earrings-tikka-green-zarosh-jewel",
-        "[LAAM] [16:31:19] HTTP END status=200 elapsed=0.3s bytes=322449 https://laam.com/products/amelia-earrings-tikka-green-zarosh-jewel",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/amelia-earrings-tikka-green-zarosh-jewel",
-        "[LAAM] [16:31:20] HTTP START attempt=1 https://laam.com/products/amelia-earrings-tikka-mint-green-zarosh-jewel",
-        "[LAAM] [16:31:20] HTTP END status=200 elapsed=0.4s bytes=322629 https://laam.com/products/amelia-earrings-tikka-mint-green-zarosh-jewel",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/amelia-earrings-tikka-mint-green-zarosh-jewel",
-        "[LAAM] [16:31:21] HTTP START attempt=1 https://laam.com/products/amelia-earrings-tikka-pink-zarosh-jewel",
-        "[LAAM] [16:31:23] HTTP END status=200 elapsed=1.4s bytes=322435 https://laam.com/products/amelia-earrings-tikka-pink-zarosh-jewel",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/amelia-earrings-tikka-pink-zarosh-jewel",
-        "[LAAM] [16:31:23] HTTP START attempt=1 https://laam.com/products/amelia-earrings-tikka-red-zarosh-jewel",
-        "[LAAM] [16:31:23] HTTP END status=200 elapsed=0.3s bytes=322718 https://laam.com/products/amelia-earrings-tikka-red-zarosh-jewel",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/amelia-earrings-tikka-red-zarosh-jewel",
-        "[LAAM] [16:31:24] HTTP START attempt=1 https://laam.com/products/amelia-earrings-tikka-silver-mint-green-zarosh-jewel",
-        "[LAAM] [16:31:25] HTTP END status=200 elapsed=0.4s bytes=323275 https://laam.com/products/amelia-earrings-tikka-silver-mint-green-zarosh-jewel",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/amelia-earrings-tikka-silver-mint-green-zarosh-jewel",
-        "[LAAM] [16:31:26] HTTP START attempt=1 https://laam.com/products/amelia-earrings-tikka-silver-pink-zarosh-jewel",
-        "[LAAM] [16:31:27] HTTP END status=200 elapsed=0.8s bytes=321797 https://laam.com/products/amelia-earrings-tikka-silver-pink-zarosh-jewel",
-        "[LAAM] LAAM CLOTHING FILTER: excluded non-clothing or unclassified product https://laam.com/products/amelia-earrings-tikka-silver-pink-zarosh-jewel"
-      ]
+      "snapshot_pending": true
     },
     {
       "conclusion": "",
@@ -173,15 +21,7 @@
       "updatedAt": "2026-10-24T15:14:38Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40106040331",
       "lane": "audit804-fresh804-20261024-c055e80e-2",
-      "snapshot": "Updated (UTC): 2026-10-24T16:30:45.348430+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Tawakkal Fabrics.xlsx\n2. Junaid Jamshed.xlsx\n\nSTORE STATUS\nTawakkal Fabrics: done\nJunaid Jamshed: done\nStylo: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 5566/10515 tasks; sample age 224s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-10-24T16:30:38.086957+00:00\n",
-      "snapshot_utc": "2026-10-24T16:30:45.348430+00:00",
-      "stores": {
-        "Tawakkal Fabrics": "done",
-        "Junaid Jamshed": "done",
-        "Stylo": "running"
-      },
-      "snapshot_age_seconds": 167,
-      "snapshot_stale": false
+      "snapshot_pending": true
     },
     {
       "conclusion": "",
@@ -191,15 +31,7 @@
       "updatedAt": "2026-10-24T15:11:48Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40105825616",
       "lane": "audit804-fresh804-20261024-c055e80e-7",
-      "snapshot": "Updated (UTC): 2026-10-24T16:28:39.117421+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Hemani Herbals.xlsx\n2. Sapphire.xlsx\n\nSTORE STATUS\nHemani Herbals: done\nGul Ahmed: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 6045/6690 tasks; sample age 238s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-10-24T16:28:33.280115+00:00\nSapphire: done\n",
-      "snapshot_utc": "2026-10-24T16:28:39.117421+00:00",
-      "stores": {
-        "Hemani Herbals": "done",
-        "Gul Ahmed": "running",
-        "Sapphire": "done"
-      },
-      "snapshot_age_seconds": 294,
-      "snapshot_stale": false
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -209,14 +41,7 @@
       "updatedAt": "2026-10-24T13:16:43Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40092780689",
       "lane": "audit804-fresh804-20261024-c055e80e-10",
-      "snapshot": "Updated (UTC): 2026-10-24T13:16:11.682451+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Zellbury.xlsx\n2. Zero Lifestyle.xlsx\n\nSTORE STATUS\nZellbury: done\n  Last successful HTTP response (UTC): 2026-10-24T12:48:33.319183+00:00\nZero Lifestyle: done\n",
-      "snapshot_utc": "2026-10-24T13:16:11.682451+00:00",
-      "stores": {
-        "Zellbury": "done",
-        "Zero Lifestyle": "done"
-      },
-      "snapshot_age_seconds": 11841,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -226,15 +51,7 @@
       "updatedAt": "2026-10-24T11:16:38Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40086617620",
       "lane": "audit804-fresh804-20261024-c055e80e-9",
-      "snapshot": "Updated (UTC): 2026-10-24T11:16:07.056047+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Skin Factor.xlsx\n2. Bonanza Satrangi.xlsx\n3. Outfitters.xlsx\n\nSTORE STATUS\nSkin Factor: done\nBonanza Satrangi: done\nOutfitters: done\n  Last successful HTTP response (UTC): 2026-10-24T10:52:02.425629+00:00\n",
-      "snapshot_utc": "2026-10-24T11:16:07.056047+00:00",
-      "stores": {
-        "Skin Factor": "done",
-        "Bonanza Satrangi": "done",
-        "Outfitters": "done"
-      },
-      "snapshot_age_seconds": 19046,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -244,15 +61,7 @@
       "updatedAt": "2026-10-24T10:36:39Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40080560084",
       "lane": "audit804-fresh804-20261024-c055e80e-1",
-      "snapshot": "Updated (UTC): 2026-10-24T10:36:00.915276+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Miss Rose.xlsx\n2. Rivaj UK.xlsx\n3. Rawayat.xlsx\n\nSTORE STATUS\nMiss Rose: done\nRivaj UK: done\nRawayat: done\n  Last successful HTTP response (UTC): 2026-10-24T10:06:53.016686+00:00\n",
-      "snapshot_utc": "2026-10-24T10:36:00.915276+00:00",
-      "stores": {
-        "Miss Rose": "done",
-        "Rivaj UK": "done",
-        "Rawayat": "done"
-      },
-      "snapshot_age_seconds": 21452,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -262,15 +71,7 @@
       "updatedAt": "2026-10-24T08:16:09Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40074675482",
       "lane": "audit804-fresh804-20261024-c055e80e-8",
-      "snapshot": "Updated (UTC): 2026-10-24T08:15:33.763397+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Denim Leftover.xlsx\n2. Cool and Cool.xlsx\n3. Saeed Ghani.xlsx\n\nSTORE STATUS\nDenim Leftover: done\n  Last successful HTTP response (UTC): 2026-10-24T07:36:55.477600+00:00\nCool and Cool: done\n  Last successful HTTP response (UTC): 2026-10-24T07:38:37.593440+00:00\nSaeed Ghani: done\n  Last successful HTTP response (UTC): 2026-10-24T08:14:02.527615+00:00\n",
-      "snapshot_utc": "2026-10-24T08:15:33.763397+00:00",
-      "stores": {
-        "Denim Leftover": "done",
-        "Cool and Cool": "done",
-        "Saeed Ghani": "done"
-      },
-      "snapshot_age_seconds": 29879,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -280,15 +81,7 @@
       "updatedAt": "2026-10-24T08:05:03Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40074667667",
       "lane": "audit804-fresh804-20261024-c055e80e-5",
-      "snapshot": "Updated (UTC): 2026-10-24T08:04:26.430499+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Farda Foods.xlsx\n2. Adam Cheese.xlsx\n3. Computer Zone.xlsx\n\nSTORE STATUS\nFarda Foods: done\n  Last successful HTTP response (UTC): 2026-10-24T07:36:08.558480+00:00\nAdam Cheese: done\n  Last successful HTTP response (UTC): 2026-10-24T07:35:39.870442+00:00\nComputer Zone: done\n  Last successful HTTP response (UTC): 2026-10-24T08:04:17.169306+00:00\n",
-      "snapshot_utc": "2026-10-24T08:04:26.430499+00:00",
-      "stores": {
-        "Farda Foods": "done",
-        "Adam Cheese": "done",
-        "Computer Zone": "done"
-      },
-      "snapshot_age_seconds": 30546,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -298,15 +91,7 @@
       "updatedAt": "2026-10-24T07:40:40Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40074664854",
       "lane": "audit804-fresh804-20261024-c055e80e-4",
-      "snapshot": "Updated (UTC): 2026-10-24T07:40:07.170880+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Islamabad Tea.xlsx\n2. Shop Modest.xlsx\n3. Seran.xlsx\n\nSTORE STATUS\nIslamabad Tea: done\n  Last successful HTTP response (UTC): 2026-10-24T07:34:54.283103+00:00\nShop Modest: done\n  Last successful HTTP response (UTC): 2026-10-24T07:39:49.735300+00:00\nSeran: done\n  Last successful HTTP response (UTC): 2026-10-24T07:36:53.750571+00:00\n",
-      "snapshot_utc": "2026-10-24T07:40:07.170880+00:00",
-      "stores": {
-        "Islamabad Tea": "done",
-        "Shop Modest": "done",
-        "Seran": "done"
-      },
-      "snapshot_age_seconds": 32006,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -316,401 +101,9 @@
       "updatedAt": "2026-10-24T08:41:20Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40074662060",
       "lane": "audit804-fresh804-20261024-c055e80e-3",
-      "snapshot": "Updated (UTC): 2026-10-24T08:40:50.174604+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Vince Care.xlsx\n2. The Hanger Pakistan.xlsx\n3. Elite Cosmetics.xlsx\n\nSTORE STATUS\nVince Care: done\n  Last successful HTTP response (UTC): 2026-10-24T07:56:48.324235+00:00\nThe Hanger Pakistan: done\n  Last successful HTTP response (UTC): 2026-10-24T07:38:06.562633+00:00\nElite Cosmetics: done\n  Last successful HTTP response (UTC): 2026-10-24T08:31:01.457659+00:00\n",
-      "snapshot_utc": "2026-10-24T08:40:50.174604+00:00",
-      "stores": {
-        "Vince Care": "done",
-        "The Hanger Pakistan": "done",
-        "Elite Cosmetics": "done"
-      },
-      "snapshot_age_seconds": 28363,
-      "snapshot_stale": true
+      "snapshot_pending": true
     }
   ],
-  "fresh_stores": {
-    "Nisa Naturals": "done",
-    "LAAM": "running",
-    "Khaadi": "blocked",
-    "Tawakkal Fabrics": "done",
-    "Junaid Jamshed": "done",
-    "Stylo": "running",
-    "Hemani Herbals": "done",
-    "Gul Ahmed": "running",
-    "Sapphire": "done",
-    "Zellbury": "done",
-    "Zero Lifestyle": "done",
-    "Skin Factor": "done",
-    "Bonanza Satrangi": "done",
-    "Outfitters": "done",
-    "Miss Rose": "done",
-    "Rivaj UK": "done",
-    "Rawayat": "done",
-    "Denim Leftover": "done",
-    "Cool and Cool": "done",
-    "Saeed Ghani": "done",
-    "Farda Foods": "done",
-    "Adam Cheese": "done",
-    "Computer Zone": "done",
-    "Islamabad Tea": "done",
-    "Shop Modest": "done",
-    "Seran": "done",
-    "Vince Care": "done",
-    "The Hanger Pakistan": "done",
-    "Elite Cosmetics": "done"
-  },
-  "local_khaadi": {
-    "store": "Khaadi",
-    "execution": "Windows local",
-    "observed_utc": "2026-10-20T19:22:58.769213+00:00",
-    "worker_active": true,
-    "status": "unknown_stale_heartbeat",
-    "worker_updated": "2026-10-21 00:22:57",
-    "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
-    "error": "",
-    "progress_age_seconds": 1,
-    "report_age_seconds": 335442,
-    "status_confirmed": false
-  },
-  "collection_completed_utc": "2026-10-24T16:33:40.392968+00:00",
-  "collection_seconds": 8,
-  "store_overview": {
-    "Nisa Naturals": {
-      "state": "drive_verified",
-      "run_id": "40106234498",
-      "snapshot_utc": "2026-10-24T16:31:27.514272+00:00",
-      "uploaded_utc": "2026-10-24T16:25:47.415337+00:00"
-    },
-    "LAAM": {
-      "state": "fetching",
-      "run_id": "40106234498",
-      "snapshot_utc": "2026-10-24T16:31:27.514272+00:00"
-    },
-    "Khaadi": {
-      "state": "source_blocked",
-      "run_id": "40106234498",
-      "snapshot_utc": "2026-10-24T16:31:27.514272+00:00"
-    },
-    "Tawakkal Fabrics": {
-      "state": "drive_verified",
-      "run_id": "40106040331",
-      "snapshot_utc": "2026-10-24T16:30:45.348430+00:00",
-      "uploaded_utc": "2026-10-24T16:22:53.801084+00:00"
-    },
-    "Junaid Jamshed": {
-      "state": "drive_verified",
-      "run_id": "40106040331",
-      "snapshot_utc": "2026-10-24T16:30:45.348430+00:00",
-      "uploaded_utc": "2026-10-24T16:31:38.653527+00:00"
-    },
-    "Stylo": {
-      "state": "fetching",
-      "run_id": "40106040331",
-      "snapshot_utc": "2026-10-24T16:30:45.348430+00:00"
-    },
-    "Hemani Herbals": {
-      "state": "drive_verified",
-      "run_id": "40105825616",
-      "snapshot_utc": "2026-10-24T16:28:39.117421+00:00",
-      "uploaded_utc": "2026-10-24T16:29:45.894742+00:00"
-    },
-    "Gul Ahmed": {
-      "state": "fetching",
-      "run_id": "40105825616",
-      "snapshot_utc": "2026-10-24T16:28:39.117421+00:00"
-    },
-    "Sapphire": {
-      "state": "drive_verified",
-      "run_id": "40105825616",
-      "snapshot_utc": "2026-10-24T16:28:39.117421+00:00",
-      "uploaded_utc": "2026-10-24T16:29:57.538130+00:00"
-    },
-    "Zellbury": {
-      "state": "drive_verified",
-      "run_id": "40092780689",
-      "snapshot_utc": "2026-10-24T13:16:11.682451+00:00",
-      "uploaded_utc": "2026-10-24T16:32:37.640937+00:00"
-    },
-    "Zero Lifestyle": {
-      "state": "drive_verified",
-      "run_id": "40092780689",
-      "snapshot_utc": "2026-10-24T13:16:11.682451+00:00",
-      "uploaded_utc": "2026-10-24T16:28:55.737077+00:00"
-    },
-    "Skin Factor": {
-      "state": "drive_verified",
-      "run_id": "40086617620",
-      "snapshot_utc": "2026-10-24T11:16:07.056047+00:00",
-      "uploaded_utc": "2026-10-24T16:28:49.088650+00:00"
-    },
-    "Bonanza Satrangi": {
-      "state": "correction_queue",
-      "run_id": "40086617620",
-      "snapshot_utc": "2026-10-24T11:16:07.056047+00:00",
-      "issues_count": 2,
-      "issues": [
-        "Category blank or unresolved",
-        "Description lacks enough product-specific content for review"
-      ],
-      "audit_checked_utc": "2026-10-24T16:16:55.732464+00:00",
-      "recovery": {
-        "stage": "correction_pending_source_recheck",
-        "unfinished": true,
-        "owner": "804 automated recovery",
-        "opened_utc": "2026-10-24T09:27:16.320852+00:00",
-        "updated_utc": "2026-10-24T16:16:55.734079+00:00",
-        "next_source_check_due_utc": "2026-10-24T16:31:55.734079+00:00",
-        "actions": [
-          "Refresh exact public product facts",
-          "Apply supported description and category repairs",
-          "Rerun independent all-row audit",
-          "Upload and verify only after audit passes"
-        ],
-        "issues": [
-          "Category blank or unresolved",
-          "Description lacks enough product-specific content for review"
-        ],
-        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
-      }
-    },
-    "Outfitters": {
-      "state": "drive_verified",
-      "run_id": "40086617620",
-      "snapshot_utc": "2026-10-24T11:16:07.056047+00:00",
-      "uploaded_utc": "2026-10-24T16:30:48.997639+00:00"
-    },
-    "Miss Rose": {
-      "state": "drive_verified",
-      "run_id": "40080560084",
-      "snapshot_utc": "2026-10-24T10:36:00.915276+00:00",
-      "uploaded_utc": "2026-10-24T16:20:50.771790+00:00"
-    },
-    "Rivaj UK": {
-      "state": "drive_verified",
-      "run_id": "40080560084",
-      "snapshot_utc": "2026-10-24T10:36:00.915276+00:00",
-      "uploaded_utc": "2026-10-24T16:21:49.679543+00:00"
-    },
-    "Rawayat": {
-      "state": "drive_verified",
-      "run_id": "40080560084",
-      "snapshot_utc": "2026-10-24T10:36:00.915276+00:00",
-      "uploaded_utc": "2026-10-24T16:19:52.119347+00:00"
-    },
-    "Denim Leftover": {
-      "state": "drive_verified",
-      "run_id": "40074675482",
-      "snapshot_utc": "2026-10-24T08:15:33.763397+00:00",
-      "uploaded_utc": "2026-10-24T16:25:55.523494+00:00"
-    },
-    "Cool and Cool": {
-      "state": "drive_verified",
-      "run_id": "40074675482",
-      "snapshot_utc": "2026-10-24T08:15:33.763397+00:00",
-      "uploaded_utc": "2026-10-24T16:26:52.313765+00:00"
-    },
-    "Saeed Ghani": {
-      "state": "drive_verified",
-      "run_id": "40074675482",
-      "snapshot_utc": "2026-10-24T08:15:33.763397+00:00",
-      "uploaded_utc": "2026-10-24T16:27:54.324606+00:00"
-    },
-    "Farda Foods": {
-      "state": "drive_verified",
-      "run_id": "40074667667",
-      "snapshot_utc": "2026-10-24T08:04:26.430499+00:00",
-      "uploaded_utc": "2026-10-24T16:25:00.993829+00:00"
-    },
-    "Adam Cheese": {
-      "state": "drive_verified",
-      "run_id": "40074667667",
-      "snapshot_utc": "2026-10-24T08:04:26.430499+00:00",
-      "uploaded_utc": "2026-10-24T16:25:30.504135+00:00"
-    },
-    "Computer Zone": {
-      "state": "drive_verified",
-      "run_id": "40074667667",
-      "snapshot_utc": "2026-10-24T08:04:26.430499+00:00",
-      "uploaded_utc": "2026-10-24T16:25:41.060841+00:00"
-    },
-    "Islamabad Tea": {
-      "state": "drive_verified",
-      "run_id": "40074664854",
-      "snapshot_utc": "2026-10-24T07:40:07.170880+00:00",
-      "uploaded_utc": "2026-10-24T16:23:47.328230+00:00"
-    },
-    "Shop Modest": {
-      "state": "drive_verified",
-      "run_id": "40074664854",
-      "snapshot_utc": "2026-10-24T07:40:07.170880+00:00",
-      "uploaded_utc": "2026-10-24T16:23:55.936564+00:00"
-    },
-    "Seran": {
-      "state": "drive_verified",
-      "run_id": "40074664854",
-      "snapshot_utc": "2026-10-24T07:40:07.170880+00:00",
-      "uploaded_utc": "2026-10-24T16:24:54.342929+00:00"
-    },
-    "Vince Care": {
-      "state": "drive_verified",
-      "run_id": "40074662060",
-      "snapshot_utc": "2026-10-24T08:40:50.174604+00:00",
-      "uploaded_utc": "2026-10-24T16:23:34.168200+00:00"
-    },
-    "The Hanger Pakistan": {
-      "state": "drive_verified",
-      "run_id": "40074662060",
-      "snapshot_utc": "2026-10-24T08:40:50.174604+00:00",
-      "uploaded_utc": "2026-10-24T16:23:40.994832+00:00"
-    },
-    "Elite Cosmetics": {
-      "state": "correction_queue",
-      "run_id": "40074662060",
-      "snapshot_utc": "2026-10-24T08:40:50.174604+00:00",
-      "issues_count": 2,
-      "issues": [
-        "Category is too broad or promotional for product-purpose classification",
-        "Category lacks clear product-purpose evidence; manual review required",
-        "Source identity conflict: Comfor 40 ml listing uses an Aichun Beauty 30 ml facial-serum photo. Brand, volume and exact product identity need a consistent primary source; no quantity guessed.",
-        "Source identity conflict: Rose Petal Party Pack prose claims loose faux rose petals, but its primary image shows branded boxed packaging; actual contents require a corrected primary source."
-      ],
-      "audit_checked_utc": "2026-10-24T16:16:49.183259+00:00",
-      "recovery": {
-        "stage": "correction_pending_source_recheck",
-        "unfinished": true,
-        "owner": "804 automated recovery",
-        "opened_utc": "2026-10-24T08:41:39.987229+00:00",
-        "updated_utc": "2026-10-24T16:16:49.185690+00:00",
-        "next_source_check_due_utc": "2026-10-24T16:31:49.185690+00:00",
-        "actions": [
-          "Refresh exact public product facts",
-          "Apply supported description and category repairs",
-          "Rerun independent all-row audit",
-          "Upload and verify only after audit passes"
-        ],
-        "issues": [
-          "Category is too broad or promotional for product-purpose classification",
-          "Category lacks clear product-purpose evidence; manual review required",
-          "Source identity conflict: Comfor 40 ml listing uses an Aichun Beauty 30 ml facial-serum photo. Brand, volume and exact product identity need a consistent primary source; no quantity guessed.",
-          "Source identity conflict: Rose Petal Party Pack prose claims loose faux rose petals, but its primary image shows branded boxed packaging; actual contents require a corrected primary source."
-        ],
-        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
-      }
-    }
-  },
-  "drive": {
-    "current_campaign": "fresh804-20261024-c055e80e",
-    "fresh_verified_files": 23,
-    "audit_progress_utc": "2026-10-24T16:32:37.642014+00:00",
-    "sync_status": "finished",
-    "sync_error": null,
-    "last_scan_utc": "2026-10-24T16:16:19.462566+00:00",
-    "held": {
-      "39450775009": [],
-      "39450778729": [],
-      "39450782519": [],
-      "39450786298": [],
-      "39450789858": [],
-      "39450793299": [],
-      "39450796831": [],
-      "39450802086": [],
-      "39450806726": [],
-      "39494289423": [],
-      "39494295410": [],
-      "39494348075": [],
-      "39529042706": [
-        {
-          "store": "Stylo",
-          "error": "Unconfirmed shop code; held for review"
-        }
-      ],
-      "39529095851": []
-    },
-    "verified_files": 26,
-    "original_uploads": {},
-    "verified_utc": "2026-10-21T06:41:31.265056+00:00",
-    "folders": {
-      "ChotuApp 20-10-2026 Fresh": 20,
-      "ChotuApp 19-10-2026 11-36AM": 26
-    },
-    "latest_move": [
-      {
-        "source": "ChotuApp 20-10-2026 Fresh",
-        "destination": "ChotuApp 19-10-2026 11-36AM",
-        "verified_files": [
-          "Adam Cheese.xlsx",
-          "Bonanza Satrangi.xlsx",
-          "Computer Zone.xlsx",
-          "Cool and Cool.xlsx",
-          "Denim Leftover.xlsx",
-          "Elite Cosmetics.xlsx",
-          "Farda Foods.xlsx",
-          "Hemani Herbals.xlsx",
-          "Islamabad Tea.xlsx",
-          "Miss Rose.xlsx",
-          "Nisa Naturals.xlsx",
-          "Rivaj UK.xlsx",
-          "Saeed Ghani.xlsx",
-          "Seran.xlsx",
-          "Shop Modest.xlsx",
-          "Skin Factor.xlsx",
-          "Tawakkal Fabrics.xlsx",
-          "The Hanger Pakistan.xlsx",
-          "Vince Care.xlsx",
-          "Zero Lifestyle.xlsx"
-        ],
-        "destination_file_count": 24,
-        "preserved_other_files": 4,
-        "verified_utc": "2026-10-20T18:41:53.309795+00:00",
-        "source_removed": [
-          "Adam Cheese.xlsx",
-          "Bonanza Satrangi.xlsx",
-          "Computer Zone.xlsx",
-          "Cool and Cool.xlsx",
-          "Denim Leftover.xlsx",
-          "Elite Cosmetics.xlsx",
-          "Farda Foods.xlsx",
-          "Hemani Herbals.xlsx",
-          "Islamabad Tea.xlsx",
-          "Miss Rose.xlsx",
-          "Nisa Naturals.xlsx",
-          "Rivaj UK.xlsx",
-          "Saeed Ghani.xlsx",
-          "Seran.xlsx",
-          "Shop Modest.xlsx",
-          "Skin Factor.xlsx",
-          "Tawakkal Fabrics.xlsx",
-          "The Hanger Pakistan.xlsx",
-          "Vince Care.xlsx",
-          "Zero Lifestyle.xlsx"
-        ]
-      }
-    ]
-  },
-  "khaadi_devices": [
-    {
-      "store": "Khaadi",
-      "execution": "Windows local",
-      "observed_utc": "2026-10-20T19:22:58.769213+00:00",
-      "worker_active": true,
-      "status": "unknown_stale_heartbeat",
-      "worker_updated": "2026-10-21 00:22:57",
-      "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
-      "error": "",
-      "progress_age_seconds": 1,
-      "report_age_seconds": 335442,
-      "status_confirmed": false
-    }
-  ],
-  "phone_heartbeat": {
-    "status": "not_connected_or_no_report",
-    "status_confirmed": false,
-    "message": "No Android heartbeat received. Connect GitHub in app Settings and start or resume fetching."
-  },
-  "monitoring": {
-    "phone_heartbeat_seconds": 30,
-    "phone_stale_after_seconds": 180,
-    "cloud_schedule_minutes": 5,
-    "note": "Scheduled cloud checks can be delayed. Query local-run-status directly for latest phone heartbeat."
-  },
-  "fresh_completed": 25
+  "fresh_stores": {},
+  "local_khaadi": "Not visible to cloud monitoring; no local activity claimed"
 }
