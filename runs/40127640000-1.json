@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-24T21:30:04.573590+00:00",
+  "run_id": "40127640000",
+  "attempt": "1",
+  "source_commit": "a03762d2a13ac2cd2cd0b97b62869507315259c9",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.15",
+  "elapsed_seconds": 5400.2,
+  "stores": [
+    {
+      "name": "Nisa Naturals",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "4ea0b613ec340955",
+      "products": 55,
+      "variants": 55,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    },
+    {
+      "name": "LAAM",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_404",
+        "HTTP_503",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "4ea0b613ec340955",
+      "http_statuses": {
+        "500": 365,
+        "200": 2547,
+        "404": 20,
+        "503": 1
+      },
+      "network_seconds": 2988.7,
+      "max_response_seconds": 16.9,
+      "cache_events": 0
+    },
+    {
+      "name": "Khaadi",
+      "status": "blocked",
+      "review_required": false,
+      "issue_codes": [
+        "SOURCE_BLOCKED"
+      ],
+      "software_revision": "4ea0b613ec340955",
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    }
+  ]
+}
