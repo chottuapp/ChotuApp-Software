@@ -56,13 +56,24 @@ def main():
       visual=session.get(image,timeout=40);visual.raise_for_status()
       if len(visual.content)<=250000 and visual.headers.get('Content-Type','').startswith('image/'):
        rec['public_image']={'source_url':image,'sha256':hashlib.sha256(visual.content).hexdigest(),'content_type':visual.headers.get('Content-Type'),'base64':base64.b64encode(visual.content).decode()}
-   if not product or not (product.get('description') or product.get('body_html')):
+   if item.get('inspect_bundle') or not product or not (product.get('description') or product.get('body_html')):
     soup=BeautifulSoup(read(url).text,'html.parser')
     scripts=[]
     for node in soup.select('script[type="application/ld+json"]'):
      try:scripts.append(json.loads(node.get_text()))
      except ValueError:pass
     rec['structured_products']=scripts[:8]
+    if item.get('inspect_bundle'):
+     from urllib.parse import urljoin
+     rec['public_bundle_scripts']=[urljoin(url,n['src']).split('?')[0] for n in soup.select('script[src]') if re.search(r'(?i)bundle',n['src'])][:12]
+     raw=str(soup.select_one('main') or soup)
+     contexts=[]
+     for match in list(re.finditer(r'(?i)fastbundle|fast-bundle|bundle_id|bundleId|bundle-products|bundle_products',raw))[:12]:
+      context=raw[max(0,match.start()-250):match.end()+800]
+      if re.search(r'(?i)password|access.token|authorization|secret|api.key|set.cookie',context):continue
+      contexts.append(context)
+     rec['public_bundle_context']=contexts
+
     parts=soup.select('.product__description, .product-description, #product-description, [class*="bundle"][class*="title"], [class*="bundle"][class*="description"]')
     rec['public_description_fragments']=[n.get_text(' ',strip=True)[:8000] for n in parts[:10] if n.get_text(' ',strip=True)]
    rec['status']='review_evidence_collected'

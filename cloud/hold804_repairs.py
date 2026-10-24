@@ -8,6 +8,15 @@ SOURCE_TYPES={'SYNCC - Women Sweater':'Sweaters','Women Stitched Sari':'Sarees',
 STORES={'Miss Rose','Cool and Cool','Rivaj UK','Computer Zone','Saeed Ghani','Elite Cosmetics','Hemani Herbals','Bonanza Satrangi','Rawayat','Junaid Jamshed','Outfitters','Zellbury','Stylo'}
 # Explicit object names. Compatibility targets, ingredients and care text are not classifiers.
 NAMED=[
+ ('Perfumes & Fragrances',r'^perfume\s*[-–:]'),
+ ('Fragrance Gift Sets',r'\bethereal\s+desires\s+gift\s+box\b'),
+ ('Sugar Substitutes',r'\bksylitol\b'),
+ ('Sleep & Relaxation Sets',r'\bsleep\s+well\s+package\s+combo\b'),
+ ('Wellness Supplement Sets',r'\bpure\s+bloom\b.*\boverall\s+health\s+package\b'),
+ ('Instant Tea Mixes',r'\b(?:chai\s+(?:latte\s+)?|kehwa\s+)instant\s+premix\b'),
+ ('Hair Conditioners',r'\b(?:yogurt|yoghurt)\b.*\bconditioner\b'),
+ ('Hair Conditioning Treatments',r'\bhair\s+mayonnaise\b'),
+ ('BB & CC Creams',r'\bbb\s+cream\b'),
  ('Makeup Setting Sprays',r'\b(?:makeup\s+)?fixing\s+spray\b'),
  ('Lipsticks',r'\blipstick\b'),
  ('Facial Cleansing Cloths',r'\bfacial\s+cleansing\s+(?:whitening\s+)?cloths\b'),
@@ -247,6 +256,7 @@ def category(row,store):
  if store=='Stylo' and row.get('brand')=='Teenage' and re.search(r'(?i)\bbeede\b',name) and re.search(r'(?i)\bgirls\b',name):return 'Girls Training Bras','reviewed_regional_product_name','Reviewed source Padded BD/Non Padded BD naming and actual product images; no fabric composition inferred: '+name
  if store=='Junaid Jamshed' and row.get('brand') in SOURCE_TYPES:return SOURCE_TYPES[row['brand']],'reviewed_source_product_type','Explicit source product_type: '+row['brand']
  if re.search(r'(?i)\bcompact\b',name) and re.search(r'(?i)\bpowder\b',body) and re.search(r'(?i)\bface\b',body):return 'Face Powders','reviewed_source_description','Source describes a face compact powder; fragrance is a formulation attribute: '+name+'; '+body[:300]
+ if store=='Hemani Herbals' and row.get('website_category_path')=='Body Spray' and row.get('website_category_status') in ('verified_navigation_membership','verified_product_breadcrumb') and re.search(r'(?i)\b(?:spray|fragrance)\b',body):return 'Body Sprays','reviewed_source_breadcrumb','Verified source Body Spray breadcrumb and application directions: '+name
  source=public_facts(row,store)
  if source:
   types={'earring':'Earrings','earrings':'Earrings','earstuds':'Stud Earrings','jhumka':'Jhumka Earrings','karay':'Bangles & Karas','bangles':'Bangles & Karas','necklace':'Necklaces','necklaces':'Necklaces','bracelets':'Bracelets','anklet':'Anklets','anklets':'Anklets','ring':'Rings','pendent':'Pendants & Lockets','nath':'Nose Jewellery','bindiya kanta':'Forehead Jewellery','choker set':'Jewellery Sets','mala set':'Jewellery Sets','locket set':'Jewellery Sets','bridal set':'Jewellery Sets','jeans':'Jeans'}
@@ -294,6 +304,7 @@ def category(row,store):
   if hair and skin:return 'Hair & Skin Oils','reviewed_source_description','Source lists both hair and skin uses: '+name+'; '+body[:600]
   if hair:return 'Hair Oils','reviewed_source_description','Source hair application: '+name+'; '+body[:600]
   if skin:return 'Skin Oils','reviewed_source_description','Source skin application: '+name+'; '+body[:600]
+ if re.search(r'(?i)\boil\b',name) and re.search(r'(?i)\b(?:easy.to.consume|this supplement|daily nutritional care)\b',body) and not re.search(r'(?i)\b(?:hair|shampoo|cream|soap|fragrance)\b',name):return 'Dietary Supplement Oils','reviewed_source_description','Source explicitly describes consumption/nutritional supplementation; no dose or health claim invented: '+name+'; '+body[:500]
  if re.search(r'(?i)\bherbal\s+oil\b',name):return 'Herbal Oils','reviewed_product_name','Source explicitly names herbal oil; no ingestion/topical use inferred: '+name
  if re.fullmatch(r'(?i)Gift Basket',name.strip()) and re.search(r'(?i)\byou can fill\b',body):return 'Gift Baskets','reviewed_source_description','Empty customizable basket; source says buyer fills it: '+body
  if re.search(r'(?i)\b(?:bundle|trio|basket|gift\s*box|self.care\s+set)\b',name):

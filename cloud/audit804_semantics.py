@@ -200,6 +200,17 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  proofs['jewellery chains']=r'\b(?:neck\s+chain|jewellery\s+chain|gold[ -]?plated\s+.*chain|gold\s+snake\s+chain)\b|\bchain\b.{0,500}\bjewel(?:lery|ry)\s+care\b'
  proofs['herbal oils']=r'\bherbal\s+oil\b'
  proofs['case fans']=proofs['cooling fans']
+ extend_proofs(proofs,{
+  'fragrance gift sets':r'\bgift\s+box\b.{0,1600}\b(?:perfume|body mist)\b',
+  'sugar substitutes':r'\bksylitol\b.{0,500}\b(?:sweetener|sugar alternative)\b',
+  'sleep & relaxation sets':r'\bsleep\s+well\s+package\s+combo\b',
+  'wellness supplement sets':r'\b(?:overall\s+health\s+package|wellness\s+set)\b.{0,1000}\b(?:capsules|herbal tea|herbal powder)\b',
+  'instant tea mixes':r'\b(?:chai\s+(?:latte\s+)?|kehwa\s+)instant\s+premix\b',
+  'hair conditioners':r'\bconditioner\b.{0,1000}\b(?:hair|scalp)\b',
+  'hair conditioning treatments':r'\bhair\s+mayonnaise\b.{0,500}\bconditioning\b',
+  'bb & cc creams':r'\bbb\s+cream\b',
+  'dietary supplement oils':r'\boil\b.{0,1800}\b(?:easy.to.consume|this supplement|daily nutritional care)\b',
+ })
  extend_proofs(proofs,{'ponchos & capes':r'\b(?:knit\s+cape\s+jumper|poncho|capelet)\b','sarees':r'\b(?:saree|sari)\b','makeup setting sprays':r'\b(?:makeup\s+)?fixing\s+spray\b','sweaters':r'\bsweater\b'})
  extend_proofs(proofs,{'foundations':r'\bfoundation\b'})
  extend_proofs(proofs,{'facial cleansing cloths':r'\bfacial\s+cleansing\s+(?:whitening\s+)?cloths\b','eyeshadow applicators':r'\beye\s+shade\s+applicator\b','skin & hair care sets':r'\bskin\s+and\s+hair\b.{0,80}\bset\b','lipsticks':r'\blipstick\b'})
@@ -304,12 +315,14 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  })
  if cat=='face serums' and (has(r'\b(?:hair|eyelash|lip|lash)\b',title) or has(r'\b(?:hair|scalp|lip|lash)\b.{0,40}\bserum\b',body[:300])):return ['Facial serum Category conflicts with named application area']
  if cat=='face moisturisers & creams' and has(r'\b(?:body|hand|foot|heel|baby)\b',title):return ['Facial cream Category conflicts with named application area']
+ if cat in ('body spray','body sprays') and str(verified_path).casefold()=='body spray' and has(r'\b(?:spray|fragrance)\b',body):return []
  if cat=='casual footwear' and has(r'\bsofty\b',title) and has(r'\b(?:feet|footbed|strap|footwear|shoes)\b',body+' '+str(verified_path)):return []
  if cat=='canvas shoes' and has(r'\bcasual\s+canvas\b',title) and has(r'\b(?:heel|sole|footbed|shoes)\b',body):return []
  if cat=='toners & tonics' and 'toner' in str(verified_path).casefold() and has(r'\b(?:rose water|aloe vera)\b',evidence):return []
  if cat=='perfumes & fragrances':
+  if has(r'\bfragrance\b.{0,80}\bopens\b',body) and has(r'\b(?:pulse points|notes|musk)\b',body) and not has(r'\b(?:soap|wash|cream|lotion|candle|hair)\b',title):return []
   if has(r'\bapply perfume\b',body) and has(r'\btop\s+note',body) and has(r'\b(?:base|dry)\s+note',body):return []
-  if any(part.casefold() in ('fragrance','fragrances','perfume','perfumes') for part in str(verified_path).split(' > ')) and not has(r'body lotion|body wash|hair|soap|cream',title):return []
+  if any(part.casefold() in ('fragrance','fragrances','perfume','perfumes',"men's fragrance","women's fragrance",'arabia perfumes','attar') for part in str(verified_path).split(' > ')) and not has(r'body lotion|body wash|hair|soap|cream',title):return []
   if has(r'\bfragrance guide\b',body) and has(r'\bscent family\s*:',body) and has(r'\bsize\s*:\s*\d+\s*ml\b',body):return []
   notes=[has(r'(?m)^\s*'+part+r'(?:\s+notes?)?\s*:?\s*(?:\n|$)',description) for part in ('top','(?:hear(?:t)?|mid(?:dle)?)','(?:base|dry)')]
   if all(notes) and not has(r'body lotion|body wash|hair|soap',title):return []

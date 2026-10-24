@@ -32,6 +32,14 @@ class SourceBoundHoldTests(unittest.TestCase):
   cases=[('Miss Rose Coral Charm Capsule Lipstick','Rich creamy lip colour with a smooth moisturizing finish.','Miss Rose','Lipsticks'),('Miss Rose Glow-Gild Compact','Compact powder for the face; subtle fragrance.','Miss Rose','Face Powders'),('Miss Rose Oil-Free Matte Long-Wear Foundation','Oil free liquid foundation for face makeup.','Miss Rose','Foundations'),("Facial Cleansing Whitening Cloths Apricot 4's",'Alcohol-free antibacterial cleansing cloths.','Cool and Cool','Facial Cleansing Cloths'),('Eye Shade Applicator','Applicator for controlled eye shadow blending.','Rivaj UK','Eyeshadow Applicators'),('Skin and Hair Heaven Set','A complete skin and hair care collection.','Saeed Ghani','Skin & Hair Care Sets')]
   for name,body,store,label in cases:
    row=self.row(name,body);self.assertEqual(category(row,store)[0],label);self.assertEqual(issues_for(dict(row,Category=label)),[])
+ def test_new_garments_and_source_types_are_supported_without_guessed_fabric(self):
+  row=self.row('Knit Cape Jumper','Knit cape jumper in clean yarn. Fabric: 50% viscose, 28% polyester, 22% nylon.')
+  result=category(row,'Sapphire');self.assertEqual(result[0],'Ponchos & Capes');self.assertEqual(issues_for(dict(row,Category=result[0])),[])
+  row=self.row('The Buttercream Button-Front Knit','A versatile knitted top with button front.',brand='SYNCC - Women Sweater');result=category(row,'Junaid Jamshed');self.assertEqual(result[0],'Sweaters');self.assertEqual(issues_for(dict(row,Category=result[0])),[])
+  row=self.row('BLACK LAWN STITCHED SAREE','Black lawn stitched saree with supplied sizes.',brand='Women Stitched Sari');self.assertEqual(category(row,'Junaid Jamshed')[0],'Sarees')
+ def test_perfume_name_outweighs_colour_name_and_food_ingredient_in_conditioner(self):
+  row=self.row('Perfume - Coral Blush Intense 100ML','A fragrance with top notes, heart notes and base notes.');self.assertEqual(category(row,'Hemani Herbals')[0],'Perfumes & Fragrances')
+  row=self.row('Yogurt & Egg Moisturizing Conditioner 300ml','A moisturizing conditioner for dry hair and scalp care.');result=category(row,'Hemani Herbals');self.assertEqual(result[0],'Hair Conditioners');self.assertEqual(issues_for(dict(row,Category=result[0])),[])
  def test_promo_retains_both_quantities_without_inventing_a_third_item(self):
   name='Buy Baby Washing Gel 500 ML & Get Body Lotion 100 ML Free';fixed,reason=description(self.row(name,name),'Cool and Cool')
   self.assertEqual(fixed,'Baby Washing Gel 500 ML. Includes Body Lotion 100 ML as a complimentary item.');self.assertTrue(reason)

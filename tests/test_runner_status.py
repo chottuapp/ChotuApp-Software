@@ -26,3 +26,10 @@ class EarlyStatusTests(unittest.TestCase):
    self.assertEqual(events[0][0],'publish');self.assertTrue(events[0][1]['runs'][0]['snapshot_pending']);return dict(run,stores={'A':'running'})
   with patch.dict(os.environ,{'GITHUB_RUN_ID':'1'}),patch.object(runner_status,'gh',gh),patch.object(runner_status,'publish',publish),patch.object(runner_status,'inspect_run',inspect):runner_status.main()
   self.assertEqual(events[-1][1]['fresh_stores'],{'A':'running'});self.assertEqual(events[-1][1]['active_queued'],1)
+
+class OverviewTests(unittest.TestCase):
+ def test_export_correction_delivery_and_stale_progress_are_distinct(self):
+  from runner_status import store_overview
+  report={'runs':[{'databaseId':1,'status':'in_progress','stores':{'A':'done','B':'done','C':'running'},'snapshot_stale':True}]}
+  drive={'audit804_results':{'A':{'campaign_id':'new','status':'hold','findings_count':1,'findings':[{'issues':['Needs review']}] }},'uploaded':{'B':{'campaign_id':'new','audit804':{'status':'pass'},'verified_utc':'now'}}}
+  result=store_overview(report,drive,'new');self.assertEqual(result['A']['state'],'correction_queue');self.assertEqual(result['B']['state'],'drive_verified');self.assertEqual(result['C']['state'],'status_unconfirmed_stale_snapshot')
