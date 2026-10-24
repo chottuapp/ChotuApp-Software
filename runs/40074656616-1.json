@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-24T09:04:52.089964+00:00",
+  "run_id": "40074656616",
+  "attempt": "1",
+  "source_commit": "9ed41cc15c560d4235455cb16a10dda35abc2489",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.15",
+  "elapsed_seconds": 5400.4,
+  "stores": [
+    {
+      "name": "Miss Rose",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "4ea0b613ec340955",
+      "products": 185,
+      "variants": 1850,
+      "http_statuses": {
+        "200": 253
+      },
+      "network_seconds": 125.1,
+      "max_response_seconds": 1.7,
+      "cache_events": 374
+    },
+    {
+      "name": "Rivaj UK",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "4ea0b613ec340955",
+      "products": 319,
+      "variants": 968,
+      "http_statuses": {
+        "200": 482
+      },
+      "network_seconds": 469.7,
+      "max_response_seconds": 1.8,
+      "cache_events": 800
+    },
+    {
+      "name": "Rawayat",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [],
+      "software_revision": "4ea0b613ec340955",
+      "http_statuses": {
+        "200": 2755
+      },
+      "network_seconds": 2134.4,
+      "max_response_seconds": 2.7,
+      "cache_events": 0
+    }
+  ]
+}
