@@ -1808,8 +1808,69 @@
   },
   "original_holds": {},
   "original_uploads": {},
-  "audit804_processed": {},
-  "audit804_results": {},
+  "audit804_processed": {
+    "Miss Rose": "source:6c2d42802634fed0e651d14655c95d994c3f216a78ec1280c040c2230f34fd5d:Miss Rose:2bb4d52178f2958961806cc1a3feea172973f1c05c35604a57e3f02b392940df"
+  },
+  "audit804_results": {
+    "Miss Rose": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Miss Rose",
+      "shop_code": "SE10014",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 185,
+      "findings_count": 2,
+      "findings": [
+        {
+          "product_id": "CP0f1a7e142458",
+          "name": "Miss Rose Glow-Gild Compact",
+          "source_url": "https://missrose.com.pk/products/miss-rose-compact-powder-gold-packing",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5bb5f044ca03",
+          "name": "Miss Rose Coral Charm Capsule Lipstick",
+          "source_url": "https://missrose.com.pk/products/miss-rose-coral-charm-capsule-lipstick",
+          "issues": [
+            "Primary product type and Category disagree: lipstick"
+          ]
+        }
+      ],
+      "details_truncated": false,
+      "workbook_sha256": "6c2d42802634fed0e651d14655c95d994c3f216a78ec1280c040c2230f34fd5d",
+      "checked_utc": "2026-10-24T07:40:24.201356+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-24T07:40:24.201716+00:00",
+        "updated_utc": "2026-10-24T07:40:24.201716+00:00",
+        "next_source_check_due_utc": "2026-10-24T09:40:24.201716+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category lacks clear product-purpose evidence; manual review required",
+          "Primary product type and Category disagree: lipstick"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
+      "campaign_id": "fresh804-20261024-c055e80e",
+      "source_run": "40074656616",
+      "source_artifact": 12553045313,
+      "source_sha256": "6c2d42802634fed0e651d14655c95d994c3f216a78ec1280c040c2230f34fd5d",
+      "held_input": "inputs/fresh804-20261024-c055e80e/miss-rose/6c2d42802634fed0/manifest.json"
+    }
+  },
   "audit804_artifacts": {},
   "audit804_campaign": "fresh804-20261024-c055e80e",
   "audit804_checked_utc": "2026-10-24T07:34:27.001790+00:00",
@@ -1838,8 +1899,8 @@
     "SE10026": "inputs/fresh804-20261021-a26dcd86/rollback-se10026/5be88fd6dd65639e/manifest.json",
     "SE10028": "inputs/fresh804-20261021-a26dcd86/rollback-se10028/bac7349a7e5a8e78/manifest.json"
   },
-  "audit804_last_store": "Zellbury",
-  "audit804_progress_utc": "2026-10-24T05:05:44.756665+00:00",
+  "audit804_last_store": "Miss Rose",
+  "audit804_progress_utc": "2026-10-24T07:40:34.101359+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rawayat",
