@@ -47,13 +47,19 @@ def refresh(root,gh,sites,cache=None):
  public_index.cache_clear()
  return digest,len(facts),facts
 
-def request_from_holds(state,sites,previous=None,limit=160):
+def request_from_holds(state,sites,previous=None,limit=160,now=None):
  """Rotate bounded batches fairly across stores; no credentials or workbook contacts."""
+ now=now or datetime.now(timezone.utc);previous=previous or {};recent=previous.get('recent_checks',{})
  groups=[]
  for store,report in sorted(state.get('audit804_results',{}).items()):
   if store not in sites or report.get('status')!='hold':continue
   group=[]
   for row in report.get('findings',[]):
+   key=store+'|'+str(row.get('product_id') or '')
+   try:
+    checked=datetime.fromisoformat(recent.get(key,'').replace('Z','+00:00'))
+    if checked.tzinfo and timedelta(0)<=now-checked<timedelta(minutes=15):continue
+   except (ValueError,TypeError):pass
    url=urlsplit(str(row.get('source_url') or ''));host=urlsplit(sites[store]['url']).hostname
    if row.get('product_id') and row.get('name') and url.scheme=='https' and not url.query and not url.username and not url.password and url.hostname and url.hostname.removeprefix('www.')==host.removeprefix('www.'):
     group.append(dict(store=store,product_id=row['product_id'],name=row['name'],source_url=row['source_url'],inspect_image=False))
@@ -65,11 +71,11 @@ def request_from_holds(state,sites,previous=None,limit=160):
  if not pool:return {'request':'No actionable public source holds','products':[],'cursor':0}
  cursor=int((previous or {}).get('next_cursor',0))%len(pool)
  selected=(pool+pool)[cursor:cursor+min(limit,len(pool))]
- return {'request':'Automatic bounded primary-source refresh for 804 holds','products':selected,'cursor':cursor,'next_cursor':(cursor+len(selected))%len(pool)}
+ return {'request':'Automatic bounded primary-source refresh for 804 holds','products':selected,'recent_checks':dict(list(recent.items())[-1000:]),'cursor':cursor,'next_cursor':(cursor+len(selected))%len(pool)}
 
 def recovery_plan(report,previous=None,now=None):
  """A hold remains actionable work, never an approval or a completed delivery."""
  now=now or datetime.now(timezone.utc);previous=previous or {}
  if report.get('status')=='pass':return {'stage':'audit_passed_delivery_ready','unfinished':False}
  issues=sorted({issue for row in report.get('findings',[]) for issue in row.get('issues',[])})
- return {'stage':'correction_pending_source_recheck','unfinished':True,'owner':'804 automated recovery','opened_utc':previous.get('opened_utc',now.isoformat()),'updated_utc':now.isoformat(),'next_source_check_due_utc':(now+timedelta(hours=2)).isoformat(),'actions':['Refresh exact public product facts','Apply supported description and category repairs','Rerun independent all-row audit','Upload and verify only after audit passes'],'issues':issues,'adapter_or_missing_fact_exception':'Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete.'}
+ return {'stage':'correction_pending_source_recheck','unfinished':True,'owner':'804 automated recovery','opened_utc':previous.get('opened_utc',now.isoformat()),'updated_utc':now.isoformat(),'next_source_check_due_utc':(now+timedelta(minutes=15)).isoformat(),'actions':['Refresh exact public product facts','Apply supported description and category repairs','Rerun independent all-row audit','Upload and verify only after audit passes'],'issues':issues,'adapter_or_missing_fact_exception':'Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete.'}

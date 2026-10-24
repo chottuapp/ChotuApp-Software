@@ -43,4 +43,21 @@ class AutomationTests(unittest.TestCase):
   plan=recovery_plan(report,now=self.now)
   self.assertTrue(plan['unfinished']);self.assertIn('Rerun independent all-row audit',plan['actions']);self.assertEqual(report['status'],'hold')
   self.assertFalse(recovery_plan({'status':'pass'},now=self.now)['unfinished'])
+ def test_recently_checked_product_waits_then_reenters_queue(self):
+  state={'audit804_results':{'A':{'status':'hold','findings':[dict(product_id='P1',name='Blue Shirt',source_url='https://shop.example/products/blue-shirt')]}}}
+  previous={'recent_checks':{'A|P1':self.now.isoformat()}}
+  self.assertEqual(request_from_holds(state,self.sites,previous,now=self.now+timedelta(minutes=1))['products'],[])
+  self.assertEqual(len(request_from_holds(state,self.sites,previous,now=self.now+timedelta(minutes=16))['products']),1)
+ def test_empty_source_batch_does_not_dispatch_an_infinite_workflow_loop(self):
+  import tempfile,os,json
+  from pathlib import Path
+  from unittest.mock import patch
+  from audit804_source_refresh import main
+  with tempfile.TemporaryDirectory() as folder:
+   (Path(folder)/'cloud').mkdir();(Path(folder)/'cloud/audit804-source-request.json').write_text(json.dumps({'products':[]}))
+   old=os.getcwd()
+   try:
+    os.chdir(folder)
+    with patch('audit804_source_refresh.subprocess.run') as run:main();run.assert_not_called()
+   finally:os.chdir(old)
  def test_no_hold_does_not_start_fetching(self):self.assertEqual(request_from_holds({},self.sites)['products'],[])
