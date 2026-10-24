@@ -1651,7 +1651,8 @@
     "Bonanza Satrangi": "source:71ed6fbbf79b23e89e5fa53069ed196fb24890df2190b560f0ed943e44d2321e:Bonanza Satrangi:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
     "Sapphire": "source:03e6100c80c39f64102829df7340ea529d2d0a7a8500c2a2b591278bccf76ec5:Sapphire:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
     "Rawayat": "source:5a42880ef153a81b4e405b770a51afae0d4cb90e0c1b6fb569cb5d1df9356993:Rawayat:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
-    "Outfitters": "source:057d0e78f68ae16cfb370d6d65bfabf3264d554a9166a461e3308d7e31195cf2:Outfitters:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044"
+    "Outfitters": "source:057d0e78f68ae16cfb370d6d65bfabf3264d554a9166a461e3308d7e31195cf2:Outfitters:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044",
+    "Junaid Jamshed": "source:91b63fa396c658f7a28e52c4825cf82691b09e8d641a0eef132557652ee149f5:Junaid Jamshed:493d8c6bfd2ce4484e1bf65b793f34fb8a91a9532a46893a5659f6531626b044"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -4243,6 +4244,131 @@
       "source_run": "40086617620",
       "source_artifact": 12558526176,
       "source_sha256": "057d0e78f68ae16cfb370d6d65bfabf3264d554a9166a461e3308d7e31195cf2"
+    },
+    "Junaid Jamshed": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Junaid Jamshed",
+      "shop_code": "SE10011",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 5545,
+      "findings_count": 4,
+      "findings": [
+        {
+          "product_id": "CP4c701d46f2a7",
+          "name": "The Buttercream Button-Front Knit",
+          "source_url": "https://www.junaidjamshed.com/products/the-buttercream-button-front-knit-wtop2602471as",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPf4facae6b4f5",
+          "name": "BLACK LAWN STITCHED SAREE",
+          "source_url": "https://www.junaidjamshed.com/products/black-lawn-stitched-saree-jsr24502s",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP980942b0c488",
+          "name": "MAROON LAWN STITCHED SAREE",
+          "source_url": "https://www.junaidjamshed.com/products/maroon-lawn-stitched-saree-jsr24501s",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP912b124c4796",
+          "name": "JJFW-JPC-11481/S24-AB-TXT",
+          "source_url": "https://www.junaidjamshed.com/products/jjfw-jpc-11481-s24-ab-txt",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "details_truncated": false,
+      "workbook_sha256": "519e29beda787bb6b9d18d87c857d3ec532f82d7966ed6e97f415c5eb9a8bce8",
+      "checked_utc": "2026-10-24T11:26:51.058554+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-24T11:26:51.067084+00:00",
+        "updated_utc": "2026-10-24T11:26:51.067084+00:00",
+        "next_source_check_due_utc": "2026-10-24T11:41:51.067084+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved",
+          "Category lacks clear product-purpose evidence; manual review required"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "description_repairs_count": 244,
+      "description_repairs_examples": [
+        {
+          "product_id": "CP2a14bec6e126",
+          "issue": "Rewrote exact source product_type; existing options preserved.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP69ae788ee867",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPec5ae447af35",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP4fe784b19af4",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP6b2f5d364d1b",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP02032125ca88",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP4e7b3e985274",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPc480aaf5a708",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP623e74d5ef40",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP9f22ede41ffb",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        }
+      ],
+      "campaign_id": "fresh804-20261024-c055e80e",
+      "source_run": "40086654171",
+      "source_artifact": 12558292281,
+      "source_sha256": "91b63fa396c658f7a28e52c4825cf82691b09e8d641a0eef132557652ee149f5",
+      "held_input": "inputs/fresh804-20261024-c055e80e/junaid-jamshed/91b63fa396c658f7/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -4295,8 +4421,8 @@
     "SE10026": "inputs/fresh804-20261024-c055e80e/rollback-se10026/95ec651d160e62a5/manifest.json",
     "SE10028": "inputs/fresh804-20261021-a26dcd86/rollback-se10028/bac7349a7e5a8e78/manifest.json"
   },
-  "audit804_last_store": "Outfitters",
-  "audit804_progress_utc": "2026-10-24T11:18:29.495927+00:00",
+  "audit804_last_store": "Junaid Jamshed",
+  "audit804_progress_utc": "2026-10-24T11:27:02.194003+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rawayat",
