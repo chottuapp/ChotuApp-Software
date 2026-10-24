@@ -1,52 +1,50 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-24T15:15:57.065502+00:00",
-  "run_id": "40099153003",
+  "generated_utc": "2026-10-24T16:43:01.030500+00:00",
+  "run_id": "40105825616",
   "attempt": "1",
-  "source_commit": "39c81eb09920ea24a0a6760ee22f12d296bcbc4b",
+  "source_commit": "2dfb6962bd8ef0730815b89ab242504c51190973",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 5400.7,
+  "elapsed_seconds": 5400.3,
   "stores": [
     {
-      "name": "Nisa Naturals",
+      "name": "Hemani Herbals",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "4ea0b613ec340955",
-      "products": 55,
-      "variants": 55,
+      "products": 1074,
+      "variants": 1074,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
       "cache_events": 0
     },
     {
-      "name": "LAAM",
+      "name": "Gul Ahmed",
       "status": "pending",
       "review_required": false,
       "issue_codes": [
-        "HTTP_404"
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "4ea0b613ec340955",
       "http_statuses": {
-        "500": 111,
-        "200": 3155,
-        "404": 4
+        "200": 1074
       },
-      "network_seconds": 2480.7,
-      "max_response_seconds": 16.0,
-      "cache_events": 0
+      "network_seconds": 2282.9,
+      "max_response_seconds": 2.5,
+      "cache_events": 10694
     },
     {
-      "name": "Khaadi",
-      "status": "blocked",
-      "review_required": false,
-      "issue_codes": [
-        "SOURCE_BLOCKED"
-      ],
+      "name": "Sapphire",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
       "software_revision": "4ea0b613ec340955",
+      "products": 1051,
+      "variants": 3764,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
