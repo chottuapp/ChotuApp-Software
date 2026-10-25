@@ -1747,7 +1747,8 @@
     "Vince Care": "source:03332d481ec9061dc2e8db7297fcfb82b19a885d98220e6999ab54b7b9660721:Vince Care:3f3f689b83b864ce09dac4414b27fc5583c73226fc02504e1eec073679b1849a",
     "Computer Zone": "source:8b8d680c078780d3f510b5d84c3b15abe5c2b75a297f6c3c65a9069c89be5dcc:Computer Zone:3f3f689b83b864ce09dac4414b27fc5583c73226fc02504e1eec073679b1849a",
     "Saeed Ghani": "source:b646110cbcdfa6431f215af14446687a475b0614297cd939393df76e5bccf6e7:Saeed Ghani:3f3f689b83b864ce09dac4414b27fc5583c73226fc02504e1eec073679b1849a",
-    "Tawakkal Fabrics": "source:d55d7e744b1b9908ea78690452a42343a5e147da526b34b9c331a99bd6284952:Tawakkal Fabrics:3f3f689b83b864ce09dac4414b27fc5583c73226fc02504e1eec073679b1849a"
+    "Tawakkal Fabrics": "source:d55d7e744b1b9908ea78690452a42343a5e147da526b34b9c331a99bd6284952:Tawakkal Fabrics:3f3f689b83b864ce09dac4414b27fc5583c73226fc02504e1eec073679b1849a",
+    "Elite Cosmetics": "source:aea9e74fba44cc58345fabc8b901b2fabbfbc0a5f54ce016cb09c38fd033db94:Elite Cosmetics:3f3f689b83b864ce09dac4414b27fc5583c73226fc02504e1eec073679b1849a"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -2421,6 +2422,119 @@
       "source_run": "40185960943",
       "source_artifact": 12597830408,
       "source_sha256": "d55d7e744b1b9908ea78690452a42343a5e147da526b34b9c331a99bd6284952"
+    },
+    "Elite Cosmetics": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Elite Cosmetics",
+      "shop_code": "SH10003",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 1565,
+      "findings_count": 2,
+      "findings": [
+        {
+          "product_id": "CP120c1ff2308a",
+          "name": "celimax Retinal Shot Tightening Booster - 0.1% Retinal (15ml)",
+          "source_url": "https://elitecosmeticspk.com/products/celimax-retinal-shot-tightening-booster-0-1-retinal-15ml",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPaeabf1fd66f3",
+          "name": "Comfor Beauty Aloe Vera Essence Oil 40ml",
+          "source_url": "https://elitecosmeticspk.com/products/comfor-beauty-aloe-vera-essence-oil-40ml",
+          "issues": [
+            "Category is too broad or promotional for product-purpose classification",
+            "Source identity conflict: Comfor 40 ml listing uses an Aichun Beauty 30 ml facial-serum photo. Brand, volume and exact product identity need a consistent primary source; no quantity guessed.",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "details_truncated": false,
+      "workbook_sha256": "678263592a2f3a49559a6c3d505a074863fb26f7b4ea1d7770a464b4c171b0b7",
+      "checked_utc": "2026-10-25T11:54:26.809921+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-25T11:54:26.812350+00:00",
+        "updated_utc": "2026-10-25T11:54:26.812350+00:00",
+        "next_source_check_due_utc": "2026-10-25T12:09:26.812350+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved",
+          "Category is too broad or promotional for product-purpose classification",
+          "Category lacks clear product-purpose evidence; manual review required",
+          "Source identity conflict: Comfor 40 ml listing uses an Aichun Beauty 30 ml facial-serum photo. Brand, volume and exact product identity need a consistent primary source; no quantity guessed."
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "description_repairs_count": 12,
+      "description_repairs_examples": [
+        {
+          "product_id": "CP2a5695f0be86",
+          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP17566c351cbb",
+          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP2a27fac58d7d",
+          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP9d26fcad5d75",
+          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP8b829c90d70e",
+          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP71062cbdd319",
+          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPef075f1a2731",
+          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP2a02d899cb50",
+          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP815360dae141",
+          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP3e94ea015625",
+          "issue": "Rewrote exact named deodorant identity; scent, audience, duration label and volume retained.",
+          "repair_kind": "description"
+        }
+      ],
+      "campaign_id": "fresh804-20261025-fbb5ff31",
+      "source_run": "40185963943",
+      "source_artifact": 12598500042,
+      "source_sha256": "aea9e74fba44cc58345fabc8b901b2fabbfbc0a5f54ce016cb09c38fd033db94",
+      "held_input": "inputs/fresh804-20261025-fbb5ff31/elite-cosmetics/aea9e74fba44cc58/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -2466,8 +2580,8 @@
     "SE10020": "inputs/fresh804-20261024-c055e80e/rollback-se10020/5dceee108bf70b45/manifest.json",
     "SE10010": "inputs/fresh804-20261024-c055e80e/rollback-se10010/c98ed9980fd8369e/manifest.json"
   },
-  "audit804_last_store": "Tawakkal Fabrics",
-  "audit804_progress_utc": "2026-10-25T11:46:30.226909+00:00",
+  "audit804_last_store": "Elite Cosmetics",
+  "audit804_progress_utc": "2026-10-25T11:54:35.302908+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Elite Cosmetics",
