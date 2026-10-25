@@ -5,7 +5,7 @@ from functools import lru_cache
 from datetime import datetime,timezone
 from urllib.parse import urlsplit
 SOURCE_TYPES={'SYNCC - Women Sweater':'Sweaters','Women Stitched Sari':'Sarees','Men Peshawari Chappal':'Chappals','Women Trouser':'Trousers','Women Earrings':'Earrings','Women Bracelet':'Bracelets','Women Necklace':'Necklaces','Women Ring':'Rings','Women Eyebrow Kit':'Eyebrow Kits','Infants Stitched 3 Piece':'Stitched Outfit Sets','Men Waistcoat With Kurta Trouser':'Clothing Sets'}
-STORES={'Miss Rose','Cool and Cool','Rivaj UK','Computer Zone','Saeed Ghani','Elite Cosmetics','Hemani Herbals','Bonanza Satrangi','Rawayat','Junaid Jamshed','Outfitters','Zellbury','Stylo'}
+STORES={'Gul Ahmed','Miss Rose','Cool and Cool','Rivaj UK','Computer Zone','Saeed Ghani','Elite Cosmetics','Hemani Herbals','Bonanza Satrangi','Rawayat','Junaid Jamshed','Outfitters','Zellbury','Stylo'}
 # Explicit object names. Compatibility targets, ingredients and care text are not classifiers.
 NAMED=[
  ('Hand & Foot Creams','\\b(?:hand\\s*&\\s*feet|foot\\s+hand)\\b.*\\bcream\\b'),
@@ -310,6 +310,106 @@ def category(row,store):
  if store=='Sapphire' and re.fullmatch(r'(?i)Knit Cape Jumper',str(row.get('name') or '').strip()) and re.search(r'(?i)\bknit\s+cape\s+jumper\b',str(row.get('description') or '')):return 'Ponchos & Capes','reviewed_source_description','Source explicitly names a knit cape jumper; fabric percentages and measurements unchanged.'
  if store not in STORES:return None
  name=str(row.get('name') or '');body=str(row.get('description') or '')
+ if store=='Stylo':
+  for pattern,label in [
+   (r'\bfishing\s+gogo\s+for\s+kids\b','Fishing Games'),
+   (r'\bbuilding\s+blocks\s+for\s+kids\b','Building Block Sets'),
+   (r'\bsalah\s+box\s+for\s+kids\b','Prayer Gift Sets'),
+   (r'\bono\s+for\s+kids\b','Card Games'),
+   (r'\bremote\s+control\s+pickup\s+truck\b','Remote Control Trucks'),
+   (r'\bremote\s+control\s+aeroplane\b','Remote Control Aircraft')]:
+   if re.search(pattern,name,re.I):return label,'reviewed_source_product_purpose','Named source product and complete contents retained: '+name+'; '+body[:450]
+  for pattern,label in [
+   (r'\btank\s+top\b','Tank Tops'),
+   (r'\bsofty\b','Casual Footwear'),
+   (r'\b(?:liquid|wax)\s+polish\b|\bshoe\s+shiner\b','Shoe Polishes'),
+   (r'\b(?:gel\s+(?:pressure\s+point\s+)?pad|gel\s+insole)\b','Shoe Cushioning Pads'),
+   (r'\bschools?\s+shoes\b','School Shoes'),
+   (r'\blong\s+shoes\b','Boots & High-Top Shoes'),
+   (r'\bsnearker\b','Sneakers'),
+   (r'\bshrug\b','Shrugs'),
+   (r'\bdupp?atta\b|\bduppata\b','Dupattas'),
+   (r'\b(?:dinky|dinkies|toy\s+car|truck\s+set)\b','Toy Vehicles'),
+   (r'\blcd\s+panel\s+for\s+kids\b','LCD Writing Tablets'),
+   (r'\bmind\s+sharpening\s+game\b','Educational Games'),
+   (r'\bmontessori\s+mind\s+creative\s+sticks\b','Educational Construction Toys'),
+   (r'\b(?:alphabet\s+spelling|wooden\s+scrabble)\b','Spelling Games'),
+   (r'\bnail\s+board\s+lacing\b','Lacing & Threading Toys'),
+   (r'\bkitchen\s+set\s+for\s+kids\b','Toy Kitchen Sets'),
+   (r'\banimal\s+figures\s+for\s+kids\b','Toy Animal Figures'),
+   (r'\bdoctor\s+set\s+for\s+kids\b','Toy Doctor Sets'),
+   (r'\bclay\s+(?:dough|sets?)\s+for\s+kids\b','Modelling Dough Sets'),
+   (r'\barrow\s+shooter\s+for\s+kids\b','Toy Archery Sets'),
+   (r'\bdrawing\s+board\s+for\s+kids\b','Drawing Boards'),
+   (r'\bshooting\s+gun\s+for\s+kids\b','Foam Dart Toys'),
+  ]:
+   if re.search(pattern,name,re.I):return label,'reviewed_source_product_purpose','Named sold object; supplied source specifications and contents retained: '+name+'; '+body[:350]
+  if re.search(r'\bgift\s+pack\s+for\s+men\b',name,re.I) and re.search(r'\bwallet\b',body,re.I) and re.search(r'\b(?:belt|keychain|key\s+case|card\s+holder|cufflinks|pen)\b',body,re.I):return 'Mens Accessory Gift Sets','reviewed_source_description','Source explicitly names wallet and companion items in the complete accessory set: '+body[:500]
+  if re.search(r'\bfashion\s+set\s+for\s+kids\b',name,re.I):
+   if re.search(r'\bbeading\s+kit\b',body,re.I):return 'Jewellery Making Kits','reviewed_source_description','Source explicitly names a beading kit: '+body[:450]
+   if re.search(r'\b(?:princess|dress\s+up)\b',body,re.I):return 'Dress-Up Accessory Sets','reviewed_source_description','Source explicitly identifies pretend dress-up accessories: '+body[:450]
+  if re.search(r'\bcasual\s+shoes\b',name,re.I) and re.search(r'\bboat\s+shoes\b',body,re.I):return 'Boat Shoes','reviewed_source_description','Source explicitly identifies boat shoes: '+body[:350]
+ if store=='Gul Ahmed':
+  if re.search(r'\bplacemat\b.*\brunner\b.*\bset\b',name,re.I):return 'Table Linen Sets','reviewed_product_name','Source explicitly names the complete placemat and runner set: '+name
+  if re.search(r'\bbed\s*spread\s+set\b',name,re.I):return 'Bedspread Sets','reviewed_product_name','Source names a bedspread set: '+name
+  if re.search(r'\bcomplete\s+bed\s+set\b',name,re.I):return 'Bedding Sets','reviewed_product_name','Source explicitly names a complete bed set: '+name
+  if re.search(r'\bfleece\b',name,re.I) and re.search(r'\bfleece\s+throw\b',body,re.I):return 'Throws & Blankets','reviewed_source_description','Source explicitly names a fleece throw: '+body[:350]
+  if re.search(r'\bregular\s+fit\b.*\bsuits\b',name,re.I) and not re.search(r'\bunstitched\b|\b\d+(?:\.\d+)?\s*(?:meters?|metres?|mtr)\b',body,re.I):return 'Ready-to-Wear Suits','reviewed_product_name','Source explicitly names regular-fit suits: '+name
+  for pattern,label in [
+   (r'\bplace\s+mat','Placemats'),
+   (r'\bpillow\s+covers\b|\bpillow\s+pack\b','Pillowcase Sets'),
+   (r'\b(?:bed\s*sheet|sheet)\s+set\b','Bed Sheet Sets'),
+   (r'\bquilt\s*cover\s+set\b','Duvet Cover Sets'),
+   (r'\bnapkin\s+set\b','Table Napkin Sets'),
+   (r'\b(?:fish|steak)\s+platter\b','Serving Platters'),
+   (r'\btrinket\s+tray\b','Trinket Trays'),
+   (r'\bash\s*tray\b','Ashtrays'),
+   (r'\bcake\s+dish\b','Cake Dishes'),
+   (r'\b(?:collar|dinner)\s+plate\b','Dinner Plates'),
+   (r'\bhooded\s+zipper\b','Zip-Up Hoodies'),
+   (r'\b(?:earrings|earings)\b','Earrings'),
+   (r'\bco-ord\s+top\b','Tops')]:
+   if re.search(pattern,name,re.I):return label,'reviewed_product_name','Exact sold item named in source: '+name
+  if re.search(r'\bkolhapuri\b',name,re.I) and not re.search(r'\b(?:fabric|shirt|suit|kurta)\b',name,re.I):return 'Kolhapuri Sandals','reviewed_regional_product_name','Named Kolhapuri footwear design: '+name
+  if re.search(r'\brunner\b',name,re.I) and re.search(r'\btable\s+runner\b',body,re.I):return 'Table Runners','reviewed_source_description','Source explicitly identifies a table runner: '+body[:350]
+  if re.search(r'\bzero\s+twist\b.*\bset\b',name,re.I) and re.search(r'\btowels?\b',body,re.I):return 'Towel Sets','reviewed_source_description','Source zero twist towels supplied as a set: '+body[:350]
+  if re.search(r'\bratan\s+basket\b',name,re.I) and re.search(r'\brattan\s+basket\b',body,re.I):return 'Storage Baskets','reviewed_source_description','Source explicitly names a rattan storage basket: '+body[:350]
+  if re.search(r'\bmulti\s+purpose\s+mat\b',name,re.I) and re.search(r'\bquilted\s+mat\b',body,re.I):return 'Quilted Multipurpose Mats','reviewed_source_description','Source explicitly names a quilted multipurpose mat: '+body[:350]
+  if name=='Black' and row.get('website_category_status') in ('verified_product_breadcrumb','verified_navigation_membership') and 'trousers' in str(row.get('website_category_path','')).casefold():return 'Trousers','verified_source_category_path',str(row['website_category_path'])
+  for pattern,label in [
+   (r'\bunstitched\b.*\bfabric\b','Unstitched Fabric'),
+   (r'\bplacemat\b.*\brunner\b.*\bset\b','Table Linen Sets'),
+   (r'\bplacemat','Placemats'),
+   (r'\bpillow\s+cover\s+set\b','Pillowcase Sets'),
+   (r'\bpillow\s+cover\b','Pillowcases'),
+   (r'\bquilt\s+cover\s+set\b','Duvet Cover Sets'),
+   (r'\bcomforter\s+set\b','Comforter Sets'),
+   (r'\bfitted\s+sheet\s+set\b','Fitted Sheet Sets'),
+   (r'\bfitted\s+sheet\b','Fitted Sheets'),
+   (r'\btowel\b.*\bset\b','Towel Sets'),
+   (r'\btowel\b','Towels'),
+   (r'\bbath\s*robe','Bathrobes'),
+   (r'\bbath\s+mat\b','Bath Mats'),
+   (r'\b(?:throw|blanket)\b','Throws & Blankets'),
+   (r'\bcurtain','Curtains'),
+   (r'\btable\s+cover\b','Tablecloths'),
+   (r'\bprayer\s+mat\b','Prayer Mats'),
+   (r'\bportable\s+mattress','Portable Mattresses'),
+   (r'\bover[ -]?shirt\b','Overshirts'),
+   (r'\b(?:girl|boys?)\b.*\bshorts?\b','Shorts'),
+   (r'\b(?:co-ord|knit|printed)\s+bottom\b|^bottom$','Trousers'),
+   (r'\bdenim\s+jacket','Denim Jackets'),
+   (r'\bjump\s*suit','Jumpsuits')]:
+   if re.search(pattern,name,re.I):return label,'reviewed_product_name','Explicit primary sold item: '+name
+  if re.search(r'\bpeshawari\b',name,re.I) and re.search(r'\b(?:sandals?|chappal|sole|footwear)\b',body,re.I):return 'Peshawari Chappals','reviewed_source_description','Peshawari footwear named in source: '+body[:350]
+  if re.search(r'\bkolhapuri\b',name,re.I) and re.search(r'\b(?:sole|footwear|sandals?)\b',body,re.I):return 'Kolhapuri Sandals','reviewed_source_description','Kolhapuri footwear source: '+body[:350]
+  if re.search(r'\bsuits?\b',name,re.I) and re.search(r'\b(?:regular\s+fit|relaxed\s+fit|model\s+(?:size|specs)|wearing\s+size)\b',body,re.I) and not re.search(r'\bunstitched\b|\b\d+(?:\.\d+)?\s*(?:meters?|metres?|mtr)\b',body,re.I):return 'Ready-to-Wear Suits','reviewed_source_description','Named suit with source garment fit and worn-size evidence: '+body[:400]
+  if re.search(r'\bknitted\s+zipper\b',name,re.I) and re.search(r'\b(?:winter|warmth|layering)\b',body,re.I):return 'Zip-Up Knitwear','reviewed_source_description','Named winter knitted zipper: '+body[:350]
+  if re.search(r'\bdeo\b',name,re.I) and re.search(r'\bdeo\s+spray\b',body,re.I):return 'Deodorant Sprays','reviewed_source_description','Explicit source Type: Deo Spray. '+body[:350]
+  if re.search(r'\bdiscovery\s+set\b',name,re.I) and re.search(r'\bfragrance\b',body,re.I):return 'Fragrance Sets','reviewed_source_description','Named fragrance set and full source bottle count: '+body[:500]
+  if name=='Memory Foam' and re.search(r'\b(?:memory|contour)\s+pillow\b',body,re.I):return 'Pillows','reviewed_source_description','Source explicitly identifies a memory foam pillow: '+body[:350]
+  if re.search(r'\bmultipurpose\s+mat\b',name,re.I) and re.search(r'\bquilted\s+mat\b',body,re.I):return 'Quilted Multipurpose Mats','reviewed_source_description','Source quilted exercise/play mat with measurements retained: '+body[:500]
+  if re.search(r'\bskecher\b',name,re.I) and re.search(r'\bsneakers\b',body,re.I):return 'Sneakers','reviewed_source_description','Source explicitly identifies footwear as sneakers: '+body[:350]
  if store=='Rawayat':
   for pattern,label in [
    (r'\bhair\s+poni\b|\b(?:organza|beaded)\s+pony\b','Hair Ties & Scrunchies'),
@@ -457,6 +557,6 @@ def description(row,store):
  if body==name:
   from subcategory_inference_support import infer
   result=category(row,store) or infer(name,'')
-  phrases={'Hair Jewellery':'a hair jewellery design','Personal Mirrors':'a personal grooming mirror','Skin Masks':'a skin mask','Commemorative Coin Cards':'a commemorative coin card','Hair Accessories & Sunglasses Sets':'a set of hair accessories and sunglasses','Hoop Earrings':'a hoop-earring design','Hand Harnesses':'a hand-jewellery harness','Belts':'a belt','Commemorative Coins':'a commemorative coin','Gift Boxes':'a gift box','Hand Mirrors':'a handheld mirror','Makeup Puff & Clip Sets':'a makeup puff and clip set','Hair Accessory Sets':'a hair accessory set','Hair Crowns & Tiaras':'a hair crown or tiara design','Hair Combs':'a hair comb','Nail Care Kits':'a nail care kit','Stationery Sets':'a stationery set','Artificial Nails':'an artificial nail design','Watches':'a watch','Jewellery Chains':'a jewellery chain design','Pendant Necklaces':'a pendant necklace design','Nose Jewellery':'a nose jewellery design','Forehead Jewellery':'a forehead jewellery design','Hair Claws':'a hair claw design','Hair Brushes & Combs':'a hair-styling brush','Lip Balms':'a lip balm','Earrings':'an earring design','Stud Earrings':'a stud-earring design','Jhumka Earrings':'a jhumka-earring design','Rings':'a ring design','Bracelets':'a bracelet design','Necklaces':'a necklace design','Anklets':'an anklet design','Pendants & Lockets':'a locket design' if 'locket' in name.casefold() else 'a pendant design','Hair Clips & Pins':'a hair pin design' if 'pin' in name.casefold() else 'a hair clip design','Headbands':'a headband','Jewellery Sets':'a jewellery set','Hair Ties & Scrunchies':'a hair-tie design','Bangles & Karas':'a bangle or kara design','Brooches':'a brooch design'}
+  phrases={'Unstitched Fabric':'unstitched fabric','Scarves':'a scarf','Hair Jewellery':'a hair jewellery design','Personal Mirrors':'a personal grooming mirror','Skin Masks':'a skin mask','Commemorative Coin Cards':'a commemorative coin card','Hair Accessories & Sunglasses Sets':'a set of hair accessories and sunglasses','Hoop Earrings':'a hoop-earring design','Hand Harnesses':'a hand-jewellery harness','Belts':'a belt','Commemorative Coins':'a commemorative coin','Gift Boxes':'a gift box','Hand Mirrors':'a handheld mirror','Makeup Puff & Clip Sets':'a makeup puff and clip set','Hair Accessory Sets':'a hair accessory set','Hair Crowns & Tiaras':'a hair crown or tiara design','Hair Combs':'a hair comb','Nail Care Kits':'a nail care kit','Stationery Sets':'a stationery set','Artificial Nails':'an artificial nail design','Watches':'a watch','Jewellery Chains':'a jewellery chain design','Pendant Necklaces':'a pendant necklace design','Nose Jewellery':'a nose jewellery design','Forehead Jewellery':'a forehead jewellery design','Hair Claws':'a hair claw design','Hair Brushes & Combs':'a hair-styling brush','Lip Balms':'a lip balm','Earrings':'an earring design','Stud Earrings':'a stud-earring design','Jhumka Earrings':'a jhumka-earring design','Rings':'a ring design','Bracelets':'a bracelet design','Necklaces':'a necklace design','Anklets':'an anklet design','Pendants & Lockets':'a locket design' if 'locket' in name.casefold() else 'a pendant design','Hair Clips & Pins':'a hair pin design' if 'pin' in name.casefold() else 'a hair clip design','Headbands':'a headband','Jewellery Sets':'a jewellery set','Hair Ties & Scrunchies':'a hair-tie design','Bangles & Karas':'a bangle or kara design','Brooches':'a brooch design'}
   if result and result[0] in phrases:return name+' is '+phrases[result[0]]+'.','Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.'
  return original,None
