@@ -11,6 +11,11 @@ on:
         required: false
         default: ''
         type: string
+      native_run:
+        description: Optional successful native test run for publication-only resume
+        required: false
+        default: ''
+        type: string
 permissions:
   contents: read
   actions: read
@@ -19,7 +24,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   build:
-    if: ${{ inputs.build_run == '' }}
+    if: ${{ inputs.build_run == '' && inputs.native_run == '' }}
     runs-on: ubuntu-24.04
     timeout-minutes: 50
     environment: chotu-cloud-release
@@ -101,7 +106,7 @@ jobs:
           rm -f -- "$RUNNER_TEMP/private-checkout.log" "$RUNNER_TEMP/private-apk-build.log" "$RUNNER_TEMP/chotu-source-key" "$RUNNER_TEMP/chotu-source-hosts" "$RUNNER_TEMP/production-android.json" "$RUNNER_TEMP/original-resources.txt" "$RUNNER_TEMP/original-manifest.xml"
   native-test:
     needs: build
-    if: ${{ always() && (needs.build.result == 'success' || (needs.build.result == 'skipped' && inputs.build_run != '')) }}
+    if: ${{ always() && inputs.native_run == '' && (needs.build.result == 'success' || (needs.build.result == 'skipped' && inputs.build_run != '')) }}
     runs-on: ubuntu-24.04
     timeout-minutes: 25
     environment: chotu-cloud-release
@@ -195,6 +200,7 @@ jobs:
           rm -f -- "$RUNNER_TEMP/private-checkout.log" "$RUNNER_TEMP/private-native-test.log" "$RUNNER_TEMP/customer-launch-log.txt" "$RUNNER_TEMP/chotu-source-key" "$RUNNER_TEMP/chotu-source-hosts"
   publish:
     needs: native-test
+    if: ${{ always() && (needs['native-test'].result == 'success' || (needs['native-test'].result == 'skipped' && inputs.native_run != '')) }}
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     environment: chotu-cloud-release
@@ -232,6 +238,40 @@ jobs:
           path: ${{ runner.temp }}/customer-apk
           run-id: ${{ inputs.build_run || github.run_id }}
           github-token: ${{ github.token }}
+      - name: Require successful native check of this exact signed build
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BUILD_RUN: ${{ inputs.build_run || github.run_id }}
+          NATIVE_RUN: ${{ inputs.native_run || github.run_id }}
+        run: |
+          set -euo pipefail
+          [[ "$BUILD_RUN" =~ ^[0-9]+$ && "$NATIVE_RUN" =~ ^[0-9]+$ ]]
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$BUILD_RUN/jobs?per_page=100" > "$RUNNER_TEMP/verified-apk-build-jobs.json"
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$NATIVE_RUN" > "$RUNNER_TEMP/verified-native-run.json"
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$NATIVE_RUN/jobs?per_page=100" > "$RUNNER_TEMP/verified-native-jobs.json"
+          python3 - <<'PYGATE'
+          import os,json
+          from pathlib import Path
+          p=Path(os.environ['RUNNER_TEMP']);run=json.loads((p/'verified-native-run.json').read_text());jobs=json.loads((p/'verified-native-jobs.json').read_text())['jobs'];builds=json.loads((p/'verified-apk-build-jobs.json').read_text())['jobs']
+          assert run['path']=='.github/workflows/chotu-user-apk-cloud.yml' and run['event']=='workflow_dispatch'
+          assert run['repository']['full_name']=='chottuapp/ChotuApp-Software' and run['head_branch']=='main'
+          assert any(j['name']=='build' and j['conclusion']=='success' for j in builds)
+          native=[j for j in jobs if j['name']=='native-test' and j['conclusion']=='success'];assert len(native)==1
+          (p/'verified-native-job-id').write_text(str(native[0]['id']))
+          PYGATE
+          native_job=$(cat "$RUNNER_TEMP/verified-native-job-id")
+          gh api "repos/$GITHUB_REPOSITORY/actions/jobs/$native_job/logs" > "$RUNNER_TEMP/verified-native-public.log"
+          python3 - <<'PYIDENTITY'
+          import os,re,json,hashlib
+          from pathlib import Path
+          p=Path(os.environ['RUNNER_TEMP']);m=json.loads((p/'customer-apk/customer-apk-build-info.json').read_text());text=(p/'verified-native-public.log').read_text()
+          text=re.sub(r'\x1b\[[0-9;]*m','',text)
+          assert re.search(r'\brun-id:\s*'+re.escape(os.environ['BUILD_RUN'])+r'\b',text),'Native check used a different artifact run'
+          assert re.search(r'\bSOURCE_SHA:\s*'+re.escape(os.environ['SOURCE_SHA'])+r'\b',text),'Native check used different source'
+          assert m['commit']==os.environ['SOURCE_SHA'] and m['version_name']=='1.1.25' and m['version_code']==67
+          assert hashlib.sha256((p/'customer-apk/ChotuApp-User-1.1.25-67.apk').read_bytes()).hexdigest()==m['sha256']
+          print('Verified successful original build, matching signed artifact, approved source and completed native upgrade test.')
+          PYIDENTITY
       - name: Publish only the signed native-tested customer APK
         env:
           SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
