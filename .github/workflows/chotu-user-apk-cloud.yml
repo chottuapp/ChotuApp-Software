@@ -260,7 +260,7 @@ jobs:
           (p/'verified-native-job-id').write_text(str(native[0]['id']))
           PYGATE
           native_job=$(cat "$RUNNER_TEMP/verified-native-job-id")
-          gh api "repos/$GITHUB_REPOSITORY/actions/jobs/$native_job/logs" > "$RUNNER_TEMP/verified-native-public.log"
+          gh api --allow-escape-sequences "repos/$GITHUB_REPOSITORY/actions/jobs/$native_job/logs" > "$RUNNER_TEMP/verified-native-public.log"
           python3 - <<'PYIDENTITY'
           import os,re,json,hashlib
           from pathlib import Path
