@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-25T22:45:56.321635+00:00",
+  "run_id": "40234475340",
+  "attempt": "1",
+  "source_commit": "8fd364b3800f0a2aea184a091df8e57cd680ef2b",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.15",
+  "elapsed_seconds": 5400.8,
+  "stores": [
+    {
+      "name": "Tawakkal Fabrics",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "a31ba96b1b39a87f",
+      "products": 1460,
+      "variants": 3308,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    },
+    {
+      "name": "Junaid Jamshed",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "c1b3fecc7dcf99a0",
+      "http_statuses": {
+        "200": 2686
+      },
+      "network_seconds": 4277.4,
+      "max_response_seconds": 17.7,
+      "cache_events": 5280
+    },
+    {
+      "name": "Stylo",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "c1b3fecc7dcf99a0",
+      "http_statuses": {
+        "200": 1075
+      },
+      "network_seconds": 2500.0,
+      "max_response_seconds": 3.3,
+      "cache_events": 2424
+    }
+  ]
+}
