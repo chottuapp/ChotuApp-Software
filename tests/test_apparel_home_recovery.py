@@ -25,3 +25,6 @@ class ApparelHomeRecoveryTests(unittest.TestCase):
 
  def test_wallet_keychain_pack_does_not_require_or_invent_a_belt(self):
   self.check('Stylo','Gift Pack For Men P7409902','A leather gift set comprising a wallet and matching keychain. Includes: Wallet, Keychain.','Mens Accessory Gift Sets')
+
+ def test_retinal_booster_requires_explicit_treatment_purpose(self):
+  self.check('Elite Cosmetics','celimax Retinal Shot Tightening Booster - 0.1% Retinal (15ml)','This concentrated 15ml (0.50 fl. oz.) treatment is formulated specifically for promoting firm skin. It contains 0.1% Retinal, 1% Panthenol, and 3% MATRIXYL 3000.','Facial Treatments')

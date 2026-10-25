@@ -424,6 +424,7 @@ def category(row,store):
    (r'\bcoin\s+card\b','Commemorative Coin Cards')]:
    if re.search(pattern,name,re.I):return label,'reviewed_product_name','Explicit named object and accessories: '+name
  if store=='Elite Cosmetics':
+  if re.search(r'\bcelimax\s+retinal\s+shot\s+tightening\s+booster\b',name,re.I) and re.search(r'\bconcentrated\b.*\btreatment\b',body,re.I) and re.search(r'\bfirm\s+skin\b',body,re.I):return 'Facial Treatments','reviewed_source_description','Primary retailer explicitly describes a concentrated skin-firming treatment; concentrations retained: '+body[:700]
   if re.search(r'\burgent\s+facial\b',name,re.I) and not re.search(r'\b(?:hand|feet|foot)\b',name,re.I) and re.search(r'\bface\b',body,re.I):return 'Facial Treatments','reviewed_source_description','Source names a facial treatment and face application: '+body[:500]
   for pattern,label in [
    (r'\bexfoliating\b.*\bgel\b','Skin Scrubs & Exfoliators'),

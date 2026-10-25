@@ -16,6 +16,7 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  # Only explicit source garment-type strings; a generic vendor/brand is not purpose evidence.
  if re.fullmatch(r'(?i)(?:women|men|teens|kids|infants)\s+(?:stitched\s+[234]\s+piece(?:\s+shirt\s+trouser)?|(?:cotton\s+silk\s+)?shalwar|(?:special\s+)?kurta|trouser|earrings|bracelet|necklace|ring|eyebrow\s+kit|waistcoat\s+with\s+kurta\s+trouser)',str(source_type or '').strip()):body+=' Source-listed garment type: '+str(source_type)
  evidence=title+' '+body
+ if cat=='facial treatments' and has(r'\bretinal\s+shot\s+tightening\s+booster\b',title) and has(r'\bconcentrated\b.*\btreatment\b',body) and has(r'\bfirm\s+skin\b',body):return []
  # Regional jewellery names denote the sold object; care mentions are not perfume evidence.
  jewellery={
   'forehead jewellery':r'\b(?:jhoom(?:er|ar)|bindiya|matha\s+patti|maang\s+tikka)\b',
