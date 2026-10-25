@@ -1,8 +1,28 @@
 {
-  "run_id": "40205017763",
-  "checked_utc": "2026-10-25T15:02:22.301263+00:00",
-  "active_queued": 4,
+  "run_id": "40206217480",
+  "checked_utc": "2026-10-25T15:17:31.040909+00:00",
+  "active_queued": 5,
   "runs": [
+    {
+      "conclusion": "",
+      "databaseId": 40206224571,
+      "displayTitle": "Automatic continuation of 40199127700",
+      "status": "pending",
+      "updatedAt": "2026-10-25T15:17:24Z",
+      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40206224571",
+      "lane": "audit804-fresh804-20261025-fbb5ff31-7",
+      "snapshot_pending": true
+    },
+    {
+      "conclusion": "",
+      "databaseId": 40206151735,
+      "displayTitle": "Automatic continuation of 40199076919",
+      "status": "in_progress",
+      "updatedAt": "2026-10-25T15:16:47Z",
+      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40206151735",
+      "lane": "audit804-fresh804-20261025-fbb5ff31-6",
+      "snapshot_pending": true
+    },
     {
       "conclusion": "",
       "databaseId": 40199231239,
@@ -11,15 +31,7 @@
       "updatedAt": "2026-10-25T13:47:54Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40199231239",
       "lane": "audit804-fresh804-20261025-fbb5ff31-2",
-      "snapshot": "Updated (UTC): 2026-10-25T14:59:23.953067+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Tawakkal Fabrics.xlsx\n\nSTORE STATUS\nTawakkal Fabrics: done\nJunaid Jamshed: running\n  Stage: Building Excel rows\n  building Excel rows: 799/23961 tasks; sample age 33s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-10-25T14:51:56.595675+00:00\nStylo: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 2329/9800 tasks; sample age 118s\n  Approximate ETA for this stage only: 622.5 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-25T14:59:13.054337+00:00\n",
-      "snapshot_utc": "2026-10-25T14:59:23.953067+00:00",
-      "stores": {
-        "Tawakkal Fabrics": "done",
-        "Junaid Jamshed": "running",
-        "Stylo": "running"
-      },
-      "snapshot_age_seconds": 178,
-      "snapshot_stale": false
+      "snapshot_pending": true
     },
     {
       "conclusion": "",
@@ -29,15 +41,7 @@
       "updatedAt": "2026-10-25T13:47:40Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40199213698",
       "lane": "audit804-fresh804-20261025-fbb5ff31-9",
-      "snapshot": "Updated (UTC): 2026-10-25T14:59:33.581440+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Outfitters.xlsx\n\nSTORE STATUS\nBonanza Satrangi: running\n  Stage: Building Excel rows\n  building Excel rows: 4699/10125 tasks; sample age 124s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-10-25T14:59:26.730097+00:00\nOutfitters: done\n  Last successful HTTP response (UTC): 2026-10-25T14:06:36.545911+00:00\nZellbury: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 4848/5945 tasks; sample age 14s\n  Approximate ETA for this stage only: 54.8 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-25T14:59:29.229167+00:00\n",
-      "snapshot_utc": "2026-10-25T14:59:33.581440+00:00",
-      "stores": {
-        "Bonanza Satrangi": "running",
-        "Outfitters": "done",
-        "Zellbury": "running"
-      },
-      "snapshot_age_seconds": 169,
-      "snapshot_stale": false
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -47,195 +51,7 @@
       "updatedAt": "2026-10-25T14:09:54Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40199148329",
       "lane": "audit804-fresh804-20261025-fbb5ff31-1",
-      "snapshot": "Updated (UTC): 2026-10-25T14:09:20.374327+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Miss Rose.xlsx\n2. Rivaj UK.xlsx\n3. Rawayat.xlsx\n\nSTORE STATUS\nMiss Rose: done\nRivaj UK: done\nRawayat: done\n",
-      "snapshot_utc": "2026-10-25T14:09:20.374327+00:00",
-      "stores": {
-        "Miss Rose": "done",
-        "Rivaj UK": "done",
-        "Rawayat": "done"
-      },
-      "snapshot_age_seconds": 3182,
-      "snapshot_stale": true
-    },
-    {
-      "conclusion": "",
-      "databaseId": 40199127700,
-      "displayTitle": "Automatic continuation of 40192272295",
-      "status": "in_progress",
-      "updatedAt": "2026-10-25T13:46:28Z",
-      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40199127700",
-      "lane": "audit804-fresh804-20261025-fbb5ff31-7",
-      "snapshot": "Updated (UTC): 2026-10-25T14:57:38.566473+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Saeed Ghani.xlsx\n2. Hemani Herbals.xlsx\n\nSTORE STATUS\nSaeed Ghani: done\nHemani Herbals: done\nGul Ahmed: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 2791/6347 tasks; sample age 88s\n  Approximate ETA for this stage only: 296.4 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-10-25T14:57:27.075875+00:00\n",
-      "snapshot_utc": "2026-10-25T14:57:38.566473+00:00",
-      "stores": {
-        "Saeed Ghani": "done",
-        "Hemani Herbals": "done",
-        "Gul Ahmed": "running"
-      },
-      "snapshot_age_seconds": 284,
-      "snapshot_stale": false
-    },
-    {
-      "conclusion": "",
-      "databaseId": 40199076919,
-      "displayTitle": "Automatic continuation of 40192242068",
-      "status": "in_progress",
-      "updatedAt": "2026-10-25T13:45:52Z",
-      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40199076919",
-      "lane": "audit804-fresh804-20261025-fbb5ff31-6",
-      "snapshot": "Updated (UTC): 2026-10-25T15:02:04.229998+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Nisa Naturals.xlsx\n2. Sapphire.xlsx\n\nSTORE STATUS\nNisa Naturals: done\nLAAM: running\n  Stage: Website listing order\n  Last successful HTTP response (UTC): 2026-10-25T15:01:59.855086+00:00\nSapphire: done\n",
-      "snapshot_utc": "2026-10-25T15:02:04.229998+00:00",
-      "stores": {
-        "Nisa Naturals": "done",
-        "LAAM": "running",
-        "Sapphire": "done"
-      },
-      "snapshot_age_seconds": 18,
-      "snapshot_stale": false,
-      "console-tail.txt": [
-        "[LAAM] [15:00:57] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-dhagakari-digital-printed-lawn-suit-pde-798",
-        "[LAAM] [15:00:59] HTTP END status=200 elapsed=2.0s bytes=302897 https://laam.com/products/3-piece-unstitched-dhagakari-digital-printed-lawn-suit-pde-798",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-dhagakari-digital-printed-lawn-suit-pde-798; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:00:59] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-dhagakari-digital-printed-lawn-suit-pde-800",
-        "[LAAM] [15:01:02] HTTP END status=200 elapsed=2.3s bytes=304714 https://laam.com/products/3-piece-unstitched-dhagakari-digital-printed-lawn-suit-pde-800",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-dhagakari-digital-printed-lawn-suit-pde-800; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:02] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-dhagakari-digital-printed-lawn-suit-pde-808",
-        "[LAAM] [15:01:04] HTTP END status=200 elapsed=2.9s bytes=303495 https://laam.com/products/3-piece-unstitched-dhagakari-digital-printed-lawn-suit-pde-808",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-dhagakari-digital-printed-lawn-suit-pde-808; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:04] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-12",
-        "[LAAM] [15:01:07] HTTP END status=200 elapsed=2.4s bytes=303073 https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-12",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-12; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:07] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-13",
-        "[LAAM] [15:01:10] HTTP END status=200 elapsed=2.7s bytes=303628 https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-13",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-13; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:10] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-14",
-        "[LAAM] [15:01:12] HTTP END status=200 elapsed=2.7s bytes=303625 https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-14",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-14; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:12] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-15",
-        "[LAAM] [15:01:15] HTTP END status=200 elapsed=3.1s bytes=298780 https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-15",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-15; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:15] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-16",
-        "[LAAM] [15:01:18] HTTP END status=200 elapsed=2.3s bytes=299175 https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-16",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-16; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:18] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-205",
-        "[LAAM] [15:01:24] HTTP END status=200 elapsed=6.1s bytes=299822 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-205",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-205; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:24] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-206",
-        "[LAAM] [15:01:24] HTTP END status=200 elapsed=0.4s bytes=304271 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-206",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-206; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:25] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-207",
-        "[LAAM] [15:01:27] HTTP END status=200 elapsed=1.6s bytes=303140 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-207",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-207; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:27] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-208",
-        "[LAAM] [15:01:30] HTTP END status=200 elapsed=2.7s bytes=302357 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-208",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-208; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:30] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-210",
-        "[LAAM] [15:01:32] HTTP END status=200 elapsed=2.7s bytes=301778 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-210",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-210; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:32] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-211",
-        "[LAAM] [15:01:35] HTTP END status=200 elapsed=2.8s bytes=303715 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-211",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-211; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:35] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-212",
-        "[LAAM] [15:01:38] HTTP END status=200 elapsed=2.6s bytes=303735 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-212",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-212; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:38] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-213",
-        "[LAAM] [15:01:40] HTTP END status=200 elapsed=2.7s bytes=297609 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-213",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-213; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:41] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-214",
-        "[LAAM] [15:01:43] HTTP END status=200 elapsed=2.6s bytes=300927 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-214",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-214; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:43] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-dynasty-slub-cotton-suit-1",
-        "[LAAM] [15:01:46] HTTP END status=200 elapsed=2.8s bytes=303728 https://laam.com/products/3-piece-unstitched-dynasty-slub-cotton-suit-1",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-dynasty-slub-cotton-suit-1; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:46] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-dynsty-jacquard-embroidered-suit-dje-18",
-        "[LAAM] [15:01:49] HTTP END status=200 elapsed=2.6s bytes=298648 https://laam.com/products/3-piece-unstitched-dynsty-jacquard-embroidered-suit-dje-18",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-dynsty-jacquard-embroidered-suit-dje-18; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:49] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-embroidered-cambric-suit-mpt-2709-b",
-        "[LAAM] [15:01:51] HTTP END status=200 elapsed=2.7s bytes=324089 https://laam.com/products/3-piece-unstitched-embroidered-cambric-suit-mpt-2709-b",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-embroidered-cambric-suit-mpt-2709-b; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:51] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-embroidered-chiffon-suit",
-        "[LAAM] [15:01:54] HTTP END status=200 elapsed=2.7s bytes=312638 https://laam.com/products/3-piece-unstitched-embroidered-chiffon-suit",
-        "[LAAM] [15:01:54] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-embroidered-lawn-8",
-        "[LAAM] [15:01:57] HTTP END status=200 elapsed=2.7s bytes=301042 https://laam.com/products/3-piece-unstitched-embroidered-lawn-8",
-        "[LAAM] [15:01:57] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-embroidered-linen-suit-mpt-2702-a",
-        "[LAAM] [15:01:59] HTTP END status=200 elapsed=2.6s bytes=326037 https://laam.com/products/3-piece-unstitched-embroidered-linen-suit-mpt-2702-a",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-embroidered-linen-suit-mpt-2702-a; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:59] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-embroidered-organza-suit",
-        "[LAAM] [15:02:02] HTTP END status=200 elapsed=2.8s bytes=312472 https://laam.com/products/3-piece-unstitched-embroidered-organza-suit",
-        "[LAAM] [15:02:02] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-embroidered-organza-suit-0"
-      ],
-      "fetch-log.txt": [
-        "[LAAM] [15:00:57] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-dhagakari-digital-printed-lawn-suit-pde-798",
-        "[LAAM] [15:00:59] HTTP END status=200 elapsed=2.0s bytes=302897 https://laam.com/products/3-piece-unstitched-dhagakari-digital-printed-lawn-suit-pde-798",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-dhagakari-digital-printed-lawn-suit-pde-798; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:00:59] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-dhagakari-digital-printed-lawn-suit-pde-800",
-        "[LAAM] [15:01:02] HTTP END status=200 elapsed=2.3s bytes=304714 https://laam.com/products/3-piece-unstitched-dhagakari-digital-printed-lawn-suit-pde-800",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-dhagakari-digital-printed-lawn-suit-pde-800; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:02] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-dhagakari-digital-printed-lawn-suit-pde-808",
-        "[LAAM] [15:01:04] HTTP END status=200 elapsed=2.9s bytes=303495 https://laam.com/products/3-piece-unstitched-dhagakari-digital-printed-lawn-suit-pde-808",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-dhagakari-digital-printed-lawn-suit-pde-808; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:04] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-12",
-        "[LAAM] [15:01:07] HTTP END status=200 elapsed=2.4s bytes=303073 https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-12",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-12; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:07] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-13",
-        "[LAAM] [15:01:10] HTTP END status=200 elapsed=2.7s bytes=303628 https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-13",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-13; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:10] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-14",
-        "[LAAM] [15:01:12] HTTP END status=200 elapsed=2.7s bytes=303625 https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-14",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-14; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:12] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-15",
-        "[LAAM] [15:01:15] HTTP END status=200 elapsed=3.1s bytes=298780 https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-15",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-15; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:15] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-16",
-        "[LAAM] [15:01:18] HTTP END status=200 elapsed=2.3s bytes=299175 https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-16",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-elite-khaddar-chikankari-suit-pkc-16; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:18] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-205",
-        "[LAAM] [15:01:24] HTTP END status=200 elapsed=6.1s bytes=299822 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-205",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-205; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:24] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-206",
-        "[LAAM] [15:01:24] HTTP END status=200 elapsed=0.4s bytes=304271 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-206",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-206; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:25] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-207",
-        "[LAAM] [15:01:27] HTTP END status=200 elapsed=1.6s bytes=303140 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-207",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-207; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:27] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-208",
-        "[LAAM] [15:01:30] HTTP END status=200 elapsed=2.7s bytes=302357 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-208",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-208; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:30] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-210",
-        "[LAAM] [15:01:32] HTTP END status=200 elapsed=2.7s bytes=301778 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-210",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-210; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:32] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-211",
-        "[LAAM] [15:01:35] HTTP END status=200 elapsed=2.8s bytes=303715 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-211",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-211; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:35] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-212",
-        "[LAAM] [15:01:38] HTTP END status=200 elapsed=2.6s bytes=303735 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-212",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-212; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:38] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-213",
-        "[LAAM] [15:01:40] HTTP END status=200 elapsed=2.7s bytes=297609 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-213",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-213; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:41] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-214",
-        "[LAAM] [15:01:43] HTTP END status=200 elapsed=2.6s bytes=300927 https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-214",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-digital-printed-printkari-slub-cambric-suit-psc-214; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:43] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-dynasty-slub-cotton-suit-1",
-        "[LAAM] [15:01:46] HTTP END status=200 elapsed=2.8s bytes=303728 https://laam.com/products/3-piece-unstitched-dynasty-slub-cotton-suit-1",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-dynasty-slub-cotton-suit-1; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:46] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-dynsty-jacquard-embroidered-suit-dje-18",
-        "[LAAM] [15:01:49] HTTP END status=200 elapsed=2.6s bytes=298648 https://laam.com/products/3-piece-unstitched-dynsty-jacquard-embroidered-suit-dje-18",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-dynsty-jacquard-embroidered-suit-dje-18; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:49] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-embroidered-cambric-suit-mpt-2709-b",
-        "[LAAM] [15:01:51] HTTP END status=200 elapsed=2.7s bytes=324089 https://laam.com/products/3-piece-unstitched-embroidered-cambric-suit-mpt-2709-b",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-embroidered-cambric-suit-mpt-2709-b; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:51] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-embroidered-chiffon-suit",
-        "[LAAM] [15:01:54] HTTP END status=200 elapsed=2.7s bytes=312638 https://laam.com/products/3-piece-unstitched-embroidered-chiffon-suit",
-        "[LAAM] [15:01:54] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-embroidered-lawn-8",
-        "[LAAM] [15:01:57] HTTP END status=200 elapsed=2.7s bytes=301042 https://laam.com/products/3-piece-unstitched-embroidered-lawn-8",
-        "[LAAM] [15:01:57] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-embroidered-linen-suit-mpt-2702-a",
-        "[LAAM] [15:01:59] HTTP END status=200 elapsed=2.6s bytes=326037 https://laam.com/products/3-piece-unstitched-embroidered-linen-suit-mpt-2702-a",
-        "[LAAM] LAAM SOURCE OUT OF STOCK: https://laam.com/products/3-piece-unstitched-embroidered-linen-suit-mpt-2702-a; no source-confirmed available variants; unavailable product excluded, no variants invented",
-        "[LAAM] [15:01:59] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-embroidered-organza-suit",
-        "[LAAM] [15:02:02] HTTP END status=200 elapsed=2.8s bytes=312472 https://laam.com/products/3-piece-unstitched-embroidered-organza-suit",
-        "[LAAM] [15:02:02] HTTP START attempt=1 https://laam.com/products/3-piece-unstitched-embroidered-organza-suit-0"
-      ]
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -245,13 +61,7 @@
       "updatedAt": "2026-10-25T10:46:41Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40185984977",
       "lane": "audit804-fresh804-20261025-fbb5ff31-10",
-      "snapshot": "Updated (UTC): 2026-10-25T10:45:57.331789+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Zero Lifestyle.xlsx\n\nSTORE STATUS\nZero Lifestyle: done\n  Last successful HTTP response (UTC): 2026-10-25T10:45:53.912591+00:00\n",
-      "snapshot_utc": "2026-10-25T10:45:57.331789+00:00",
-      "stores": {
-        "Zero Lifestyle": "done"
-      },
-      "snapshot_age_seconds": 15385,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -261,15 +71,7 @@
       "updatedAt": "2026-10-25T10:49:16Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40185978523",
       "lane": "audit804-fresh804-20261025-fbb5ff31-8",
-      "snapshot": "Updated (UTC): 2026-10-25T10:48:48.092037+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Skin Factor.xlsx\n2. Denim Leftover.xlsx\n3. Cool and Cool.xlsx\n\nSTORE STATUS\nSkin Factor: done\n  Last successful HTTP response (UTC): 2026-10-25T10:45:21.213804+00:00\nDenim Leftover: done\n  Last successful HTTP response (UTC): 2026-10-25T10:46:46.842536+00:00\nCool and Cool: done\n  Last successful HTTP response (UTC): 2026-10-25T10:48:30.236220+00:00\n",
-      "snapshot_utc": "2026-10-25T10:48:48.092037+00:00",
-      "stores": {
-        "Skin Factor": "done",
-        "Denim Leftover": "done",
-        "Cool and Cool": "done"
-      },
-      "snapshot_age_seconds": 15214,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -279,15 +81,7 @@
       "updatedAt": "2026-10-25T11:14:33Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40185969620",
       "lane": "audit804-fresh804-20261025-fbb5ff31-5",
-      "snapshot": "Updated (UTC): 2026-10-25T11:13:55.839280+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Farda Foods.xlsx\n2. Adam Cheese.xlsx\n3. Computer Zone.xlsx\n\nSTORE STATUS\nFarda Foods: done\n  Last successful HTTP response (UTC): 2026-10-25T10:45:40.198686+00:00\nAdam Cheese: done\n  Last successful HTTP response (UTC): 2026-10-25T10:45:10.523323+00:00\nComputer Zone: done\n  Last successful HTTP response (UTC): 2026-10-25T11:13:47.990775+00:00\n",
-      "snapshot_utc": "2026-10-25T11:13:55.839280+00:00",
-      "stores": {
-        "Farda Foods": "done",
-        "Adam Cheese": "done",
-        "Computer Zone": "done"
-      },
-      "snapshot_age_seconds": 13706,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -297,15 +91,7 @@
       "updatedAt": "2026-10-25T10:50:27Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40185966651",
       "lane": "audit804-fresh804-20261025-fbb5ff31-4",
-      "snapshot": "Updated (UTC): 2026-10-25T10:50:01.703058+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Islamabad Tea.xlsx\n2. Shop Modest.xlsx\n3. Seran.xlsx\n\nSTORE STATUS\nIslamabad Tea: done\n  Last successful HTTP response (UTC): 2026-10-25T10:44:26.913385+00:00\nShop Modest: done\n  Last successful HTTP response (UTC): 2026-10-25T10:49:53.716945+00:00\nSeran: done\n  Last successful HTTP response (UTC): 2026-10-25T10:47:56.659517+00:00\n",
-      "snapshot_utc": "2026-10-25T10:50:01.703058+00:00",
-      "stores": {
-        "Islamabad Tea": "done",
-        "Shop Modest": "done",
-        "Seran": "done"
-      },
-      "snapshot_age_seconds": 15141,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -315,388 +101,9 @@
       "updatedAt": "2026-10-25T11:54:10Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40185963943",
       "lane": "audit804-fresh804-20261025-fbb5ff31-3",
-      "snapshot": "Updated (UTC): 2026-10-25T11:53:39.853909+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Vince Care.xlsx\n2. The Hanger Pakistan.xlsx\n3. Elite Cosmetics.xlsx\n\nSTORE STATUS\nVince Care: done\n  Last successful HTTP response (UTC): 2026-10-25T11:06:16.944477+00:00\nThe Hanger Pakistan: done\n  Last successful HTTP response (UTC): 2026-10-25T10:48:46.051381+00:00\nElite Cosmetics: done\n  Last successful HTTP response (UTC): 2026-10-25T11:53:20.993803+00:00\n",
-      "snapshot_utc": "2026-10-25T11:53:39.853909+00:00",
-      "stores": {
-        "Vince Care": "done",
-        "The Hanger Pakistan": "done",
-        "Elite Cosmetics": "done"
-      },
-      "snapshot_age_seconds": 11322,
-      "snapshot_stale": true
+      "snapshot_pending": true
     }
   ],
-  "fresh_stores": {
-    "Tawakkal Fabrics": "done",
-    "Junaid Jamshed": "running",
-    "Stylo": "running",
-    "Bonanza Satrangi": "running",
-    "Outfitters": "done",
-    "Zellbury": "running",
-    "Miss Rose": "done",
-    "Rivaj UK": "done",
-    "Rawayat": "done",
-    "Saeed Ghani": "done",
-    "Hemani Herbals": "done",
-    "Gul Ahmed": "running",
-    "Nisa Naturals": "done",
-    "LAAM": "running",
-    "Sapphire": "done",
-    "Zero Lifestyle": "done",
-    "Skin Factor": "done",
-    "Denim Leftover": "done",
-    "Cool and Cool": "done",
-    "Farda Foods": "done",
-    "Adam Cheese": "done",
-    "Computer Zone": "done",
-    "Islamabad Tea": "done",
-    "Shop Modest": "done",
-    "Seran": "done",
-    "Vince Care": "done",
-    "The Hanger Pakistan": "done",
-    "Elite Cosmetics": "done"
-  },
-  "local_khaadi": {
-    "store": "Khaadi",
-    "execution": "Windows local",
-    "observed_utc": "2026-10-20T19:22:58.769213+00:00",
-    "worker_active": true,
-    "status": "unknown_stale_heartbeat",
-    "worker_updated": "2026-10-21 00:22:57",
-    "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
-    "error": "",
-    "progress_age_seconds": 1,
-    "report_age_seconds": 416370,
-    "status_confirmed": false
-  },
-  "collection_completed_utc": "2026-10-25T15:02:28.738212+00:00",
-  "collection_seconds": 6,
-  "store_overview": {
-    "Tawakkal Fabrics": {
-      "state": "drive_verified",
-      "run_id": "40199231239",
-      "snapshot_utc": "2026-10-25T14:59:23.953067+00:00",
-      "uploaded_utc": "2026-10-25T13:31:48.284274+00:00"
-    },
-    "Junaid Jamshed": {
-      "state": "fetching",
-      "run_id": "40199231239",
-      "snapshot_utc": "2026-10-25T14:59:23.953067+00:00"
-    },
-    "Stylo": {
-      "state": "fetching",
-      "run_id": "40199231239",
-      "snapshot_utc": "2026-10-25T14:59:23.953067+00:00"
-    },
-    "Bonanza Satrangi": {
-      "state": "fetching",
-      "run_id": "40199213698",
-      "snapshot_utc": "2026-10-25T14:59:33.581440+00:00"
-    },
-    "Outfitters": {
-      "state": "correction_queue",
-      "run_id": "40199213698",
-      "snapshot_utc": "2026-10-25T14:59:33.581440+00:00",
-      "issues_count": 1,
-      "issues": [
-        "Category blank or unresolved"
-      ],
-      "audit_checked_utc": "2026-10-25T14:40:42.306304+00:00",
-      "recovery": {
-        "stage": "correction_pending_source_recheck",
-        "unfinished": true,
-        "owner": "804 automated recovery",
-        "opened_utc": "2026-10-25T14:40:42.312651+00:00",
-        "updated_utc": "2026-10-25T14:40:42.312651+00:00",
-        "next_source_check_due_utc": "2026-10-25T14:55:42.312651+00:00",
-        "actions": [
-          "Refresh exact public product facts",
-          "Apply supported description and category repairs",
-          "Rerun independent all-row audit",
-          "Upload and verify only after audit passes"
-        ],
-        "issues": [
-          "Category blank or unresolved"
-        ],
-        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
-      }
-    },
-    "Zellbury": {
-      "state": "fetching",
-      "run_id": "40199213698",
-      "snapshot_utc": "2026-10-25T14:59:33.581440+00:00"
-    },
-    "Miss Rose": {
-      "state": "drive_verified",
-      "run_id": "40199148329",
-      "snapshot_utc": "2026-10-25T14:09:20.374327+00:00",
-      "uploaded_utc": "2026-10-25T13:30:30.104701+00:00"
-    },
-    "Rivaj UK": {
-      "state": "drive_verified",
-      "run_id": "40199148329",
-      "snapshot_utc": "2026-10-25T14:09:20.374327+00:00",
-      "uploaded_utc": "2026-10-25T13:30:39.450223+00:00"
-    },
-    "Rawayat": {
-      "state": "correction_queue",
-      "run_id": "40199148329",
-      "snapshot_utc": "2026-10-25T14:09:20.374327+00:00",
-      "issues_count": 8,
-      "issues": [
-        "Bundle appears classified as a single component",
-        "Category lacks clear product-purpose evidence; manual review required",
-        "Description lacks enough product-specific content for review"
-      ],
-      "audit_checked_utc": "2026-10-25T14:10:19.552420+00:00",
-      "recovery": {
-        "stage": "correction_pending_source_recheck",
-        "unfinished": true,
-        "owner": "804 automated recovery",
-        "opened_utc": "2026-10-25T14:10:19.559747+00:00",
-        "updated_utc": "2026-10-25T14:10:19.559747+00:00",
-        "next_source_check_due_utc": "2026-10-25T14:25:19.559747+00:00",
-        "actions": [
-          "Refresh exact public product facts",
-          "Apply supported description and category repairs",
-          "Rerun independent all-row audit",
-          "Upload and verify only after audit passes"
-        ],
-        "issues": [
-          "Bundle appears classified as a single component",
-          "Category lacks clear product-purpose evidence; manual review required",
-          "Description lacks enough product-specific content for review"
-        ],
-        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
-      }
-    },
-    "Saeed Ghani": {
-      "state": "drive_verified",
-      "run_id": "40199127700",
-      "snapshot_utc": "2026-10-25T14:57:38.566473+00:00",
-      "uploaded_utc": "2026-10-25T13:37:51.664148+00:00"
-    },
-    "Hemani Herbals": {
-      "state": "drive_verified",
-      "run_id": "40199127700",
-      "snapshot_utc": "2026-10-25T14:57:38.566473+00:00",
-      "uploaded_utc": "2026-10-25T13:39:46.568198+00:00"
-    },
-    "Gul Ahmed": {
-      "state": "fetching",
-      "run_id": "40199127700",
-      "snapshot_utc": "2026-10-25T14:57:38.566473+00:00"
-    },
-    "Nisa Naturals": {
-      "state": "drive_verified",
-      "run_id": "40199076919",
-      "snapshot_utc": "2026-10-25T15:02:04.229998+00:00",
-      "uploaded_utc": "2026-10-25T13:36:53.027413+00:00"
-    },
-    "LAAM": {
-      "state": "fetching",
-      "run_id": "40199076919",
-      "snapshot_utc": "2026-10-25T15:02:04.229998+00:00"
-    },
-    "Sapphire": {
-      "state": "drive_verified",
-      "run_id": "40199076919",
-      "snapshot_utc": "2026-10-25T15:02:04.229998+00:00",
-      "uploaded_utc": "2026-10-25T13:39:29.104893+00:00"
-    },
-    "Zero Lifestyle": {
-      "state": "drive_verified",
-      "run_id": "40185984977",
-      "snapshot_utc": "2026-10-25T10:45:57.331789+00:00",
-      "uploaded_utc": "2026-10-25T13:38:52.482399+00:00"
-    },
-    "Skin Factor": {
-      "state": "drive_verified",
-      "run_id": "40185978523",
-      "snapshot_utc": "2026-10-25T10:48:48.092037+00:00",
-      "uploaded_utc": "2026-10-25T13:38:31.493219+00:00"
-    },
-    "Denim Leftover": {
-      "state": "drive_verified",
-      "run_id": "40185978523",
-      "snapshot_utc": "2026-10-25T10:48:48.092037+00:00",
-      "uploaded_utc": "2026-10-25T13:38:38.098346+00:00"
-    },
-    "Cool and Cool": {
-      "state": "drive_verified",
-      "run_id": "40185978523",
-      "snapshot_utc": "2026-10-25T10:48:48.092037+00:00",
-      "uploaded_utc": "2026-10-25T13:38:46.154079+00:00"
-    },
-    "Farda Foods": {
-      "state": "drive_verified",
-      "run_id": "40185969620",
-      "snapshot_utc": "2026-10-25T11:13:55.839280+00:00",
-      "uploaded_utc": "2026-10-25T13:36:30.461509+00:00"
-    },
-    "Adam Cheese": {
-      "state": "drive_verified",
-      "run_id": "40185969620",
-      "snapshot_utc": "2026-10-25T11:13:55.839280+00:00",
-      "uploaded_utc": "2026-10-25T13:36:35.244679+00:00"
-    },
-    "Computer Zone": {
-      "state": "drive_verified",
-      "run_id": "40185969620",
-      "snapshot_utc": "2026-10-25T11:13:55.839280+00:00",
-      "uploaded_utc": "2026-10-25T13:36:47.766398+00:00"
-    },
-    "Islamabad Tea": {
-      "state": "drive_verified",
-      "run_id": "40185966651",
-      "snapshot_utc": "2026-10-25T10:50:01.703058+00:00",
-      "uploaded_utc": "2026-10-25T13:33:52.103199+00:00"
-    },
-    "Shop Modest": {
-      "state": "drive_verified",
-      "run_id": "40185966651",
-      "snapshot_utc": "2026-10-25T10:50:01.703058+00:00",
-      "uploaded_utc": "2026-10-25T13:34:51.093965+00:00"
-    },
-    "Seran": {
-      "state": "drive_verified",
-      "run_id": "40185966651",
-      "snapshot_utc": "2026-10-25T10:50:01.703058+00:00",
-      "uploaded_utc": "2026-10-25T13:35:50.776649+00:00"
-    },
-    "Vince Care": {
-      "state": "drive_verified",
-      "run_id": "40185963943",
-      "snapshot_utc": "2026-10-25T11:53:39.853909+00:00",
-      "uploaded_utc": "2026-10-25T13:31:55.079524+00:00"
-    },
-    "The Hanger Pakistan": {
-      "state": "drive_verified",
-      "run_id": "40185963943",
-      "snapshot_utc": "2026-10-25T11:53:39.853909+00:00",
-      "uploaded_utc": "2026-10-25T13:32:27.840405+00:00"
-    },
-    "Elite Cosmetics": {
-      "state": "drive_verified",
-      "run_id": "40185963943",
-      "snapshot_utc": "2026-10-25T11:53:39.853909+00:00",
-      "uploaded_utc": "2026-10-25T13:33:46.276314+00:00"
-    }
-  },
-  "drive": {
-    "current_campaign": "fresh804-20261025-fbb5ff31",
-    "fresh_verified_files": 20,
-    "audit_progress_utc": "2026-10-25T14:40:55.430049+00:00",
-    "sync_status": "finished",
-    "sync_error": null,
-    "last_scan_utc": "2026-10-25T14:39:45.764608+00:00",
-    "held": {
-      "39450775009": [],
-      "39450778729": [],
-      "39450782519": [],
-      "39450786298": [],
-      "39450789858": [],
-      "39450793299": [],
-      "39450796831": [],
-      "39450802086": [],
-      "39450806726": [],
-      "39494289423": [],
-      "39494295410": [],
-      "39494348075": [],
-      "39529042706": [
-        {
-          "store": "Stylo",
-          "error": "Unconfirmed shop code; held for review"
-        }
-      ],
-      "39529095851": []
-    },
-    "verified_files": 27,
-    "original_uploads": {},
-    "verified_utc": "2026-10-21T06:41:31.265056+00:00",
-    "folders": {
-      "ChotuApp 20-10-2026 Fresh": 20,
-      "ChotuApp 19-10-2026 11-36AM": 27
-    },
-    "latest_move": [
-      {
-        "source": "ChotuApp 20-10-2026 Fresh",
-        "destination": "ChotuApp 19-10-2026 11-36AM",
-        "verified_files": [
-          "Adam Cheese.xlsx",
-          "Bonanza Satrangi.xlsx",
-          "Computer Zone.xlsx",
-          "Cool and Cool.xlsx",
-          "Denim Leftover.xlsx",
-          "Elite Cosmetics.xlsx",
-          "Farda Foods.xlsx",
-          "Hemani Herbals.xlsx",
-          "Islamabad Tea.xlsx",
-          "Miss Rose.xlsx",
-          "Nisa Naturals.xlsx",
-          "Rivaj UK.xlsx",
-          "Saeed Ghani.xlsx",
-          "Seran.xlsx",
-          "Shop Modest.xlsx",
-          "Skin Factor.xlsx",
-          "Tawakkal Fabrics.xlsx",
-          "The Hanger Pakistan.xlsx",
-          "Vince Care.xlsx",
-          "Zero Lifestyle.xlsx"
-        ],
-        "destination_file_count": 24,
-        "preserved_other_files": 4,
-        "verified_utc": "2026-10-20T18:41:53.309795+00:00",
-        "source_removed": [
-          "Adam Cheese.xlsx",
-          "Bonanza Satrangi.xlsx",
-          "Computer Zone.xlsx",
-          "Cool and Cool.xlsx",
-          "Denim Leftover.xlsx",
-          "Elite Cosmetics.xlsx",
-          "Farda Foods.xlsx",
-          "Hemani Herbals.xlsx",
-          "Islamabad Tea.xlsx",
-          "Miss Rose.xlsx",
-          "Nisa Naturals.xlsx",
-          "Rivaj UK.xlsx",
-          "Saeed Ghani.xlsx",
-          "Seran.xlsx",
-          "Shop Modest.xlsx",
-          "Skin Factor.xlsx",
-          "Tawakkal Fabrics.xlsx",
-          "The Hanger Pakistan.xlsx",
-          "Vince Care.xlsx",
-          "Zero Lifestyle.xlsx"
-        ]
-      }
-    ]
-  },
-  "khaadi_devices": [
-    {
-      "store": "Khaadi",
-      "execution": "Windows local",
-      "observed_utc": "2026-10-20T19:22:58.769213+00:00",
-      "worker_active": true,
-      "status": "unknown_stale_heartbeat",
-      "worker_updated": "2026-10-21 00:22:57",
-      "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
-      "error": "",
-      "progress_age_seconds": 1,
-      "report_age_seconds": 416370,
-      "status_confirmed": false
-    }
-  ],
-  "phone_heartbeat": {
-    "status": "not_connected_or_no_report",
-    "status_confirmed": false,
-    "message": "No Android heartbeat received. Connect GitHub in app Settings and start or resume fetching."
-  },
-  "monitoring": {
-    "phone_heartbeat_seconds": 30,
-    "phone_stale_after_seconds": 180,
-    "cloud_schedule_minutes": 5,
-    "note": "Scheduled cloud checks can be delayed. Query local-run-status directly for latest phone heartbeat."
-  },
-  "fresh_completed": 22
+  "fresh_stores": {},
+  "local_khaadi": "Not visible to cloud monitoring; no local activity claimed"
 }
