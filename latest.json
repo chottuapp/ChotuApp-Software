@@ -1748,7 +1748,7 @@
     "Computer Zone": "source:5f548ed594afac3ce186033cf0d35dd352c8dace14e5039dbd11f8222f263fb2:Computer Zone:993f3f1a43a882422294e66ff1c0aa7eb2443d443bbe55d211d05fbf7783582d",
     "Saeed Ghani": "source:c402c7a4fd31383785eca6c48aedc639717b7f14bc5561135f53482f27f6ed66:Saeed Ghani:993f3f1a43a882422294e66ff1c0aa7eb2443d443bbe55d211d05fbf7783582d",
     "Tawakkal Fabrics": "source:8d528f29bd4bc922680697d66e850d711d3a84cf66e4109cfbce5d2c51683b65:Tawakkal Fabrics:993f3f1a43a882422294e66ff1c0aa7eb2443d443bbe55d211d05fbf7783582d",
-    "Elite Cosmetics": "source:12e594463d8920aea08de0258421042a6f0be7afd6be1796b73fe73bae55807d:Elite Cosmetics:993f3f1a43a882422294e66ff1c0aa7eb2443d443bbe55d211d05fbf7783582d",
+    "Elite Cosmetics": "source:12e594463d8920aea08de0258421042a6f0be7afd6be1796b73fe73bae55807d:Elite Cosmetics:3f3f689b83b864ce09dac4414b27fc5583c73226fc02504e1eec073679b1849a",
     "Hemani Herbals": "source:90fa90469d303e99fa249668bfb3ac3513918f188b510dbb7bb8d5e34d2ae8fc:Hemani Herbals:993f3f1a43a882422294e66ff1c0aa7eb2443d443bbe55d211d05fbf7783582d",
     "Bonanza Satrangi": "source:71ed6fbbf79b23e89e5fa53069ed196fb24890df2190b560f0ed943e44d2321e:Bonanza Satrangi:993f3f1a43a882422294e66ff1c0aa7eb2443d443bbe55d211d05fbf7783582d",
     "Sapphire": "source:03e6100c80c39f64102829df7340ea529d2d0a7a8500c2a2b591278bccf76ec5:Sapphire:993f3f1a43a882422294e66ff1c0aa7eb2443d443bbe55d211d05fbf7783582d",
@@ -2444,17 +2444,8 @@
       "identity_policy": "confirmed_code",
       "status": "hold",
       "products_checked": 1559,
-      "findings_count": 2,
+      "findings_count": 1,
       "findings": [
-        {
-          "product_id": "CP2a5695f0be86",
-          "name": "Rose Petal Party Pack: Elegant and Romantic Party Decor for Special Occasions",
-          "source_url": "https://elitecosmeticspk.com/products/rose-petal-party-pack-elegant-and-romantic-party-decor-for-special-occasions",
-          "issues": [
-            "Source identity conflict: Rose Petal Party Pack prose claims loose faux rose petals, but its primary image shows branded boxed packaging; actual contents require a corrected primary source.",
-            "Category lacks clear product-purpose evidence; manual review required"
-          ]
-        },
         {
           "product_id": "CPaeabf1fd66f3",
           "name": "Comfor Beauty Aloe Vera Essence Oil 40ml",
@@ -2467,16 +2458,16 @@
         }
       ],
       "details_truncated": false,
-      "workbook_sha256": "3aa5744a0322bdb7d46191b96fc2d2ca05280d80d401dabc9a7b63ff1f407f41",
-      "checked_utc": "2026-10-25T09:23:27.966210+00:00",
+      "workbook_sha256": "492aef47e2881c64bcb6f3d38135b1b2ede4d87612b13bd0e1b0006b0ac54862",
+      "checked_utc": "2026-10-25T10:31:21.608151+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
         "stage": "correction_pending_source_recheck",
         "unfinished": true,
         "owner": "804 automated recovery",
         "opened_utc": "2026-10-24T08:41:39.987229+00:00",
-        "updated_utc": "2026-10-25T09:23:27.968667+00:00",
-        "next_source_check_due_utc": "2026-10-25T09:38:27.968667+00:00",
+        "updated_utc": "2026-10-25T10:31:21.610331+00:00",
+        "next_source_check_due_utc": "2026-10-25T10:46:21.610331+00:00",
         "actions": [
           "Refresh exact public product facts",
           "Apply supported description and category repairs",
@@ -2486,13 +2477,17 @@
         "issues": [
           "Category is too broad or promotional for product-purpose classification",
           "Category lacks clear product-purpose evidence; manual review required",
-          "Source identity conflict: Comfor 40 ml listing uses an Aichun Beauty 30 ml facial-serum photo. Brand, volume and exact product identity need a consistent primary source; no quantity guessed.",
-          "Source identity conflict: Rose Petal Party Pack prose claims loose faux rose petals, but its primary image shows branded boxed packaging; actual contents require a corrected primary source."
+          "Source identity conflict: Comfor 40 ml listing uses an Aichun Beauty 30 ml facial-serum photo. Brand, volume and exact product identity need a consistent primary source; no quantity guessed."
         ],
         "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
-      "description_repairs_count": 11,
+      "description_repairs_count": 12,
       "description_repairs_examples": [
+        {
+          "product_id": "CP2a5695f0be86",
+          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "repair_kind": "description"
+        },
         {
           "product_id": "CP17566c351cbb",
           "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
@@ -2535,11 +2530,6 @@
         },
         {
           "product_id": "CP3e94ea015625",
-          "issue": "Rewrote exact named deodorant identity; scent, audience, duration label and volume retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP95c91c748356",
           "issue": "Rewrote exact named deodorant identity; scent, audience, duration label and volume retained.",
           "repair_kind": "description"
         }
@@ -3081,8 +3071,8 @@
     "SE10020": "inputs/fresh804-20261024-c055e80e/rollback-se10020/0d4e3970c41ba06a/manifest.json",
     "SE10010": "inputs/fresh804-20261024-c055e80e/rollback-se10010/d5d489d5b2b66c26/manifest.json"
   },
-  "audit804_last_store": "Stylo",
-  "audit804_progress_utc": "2026-10-25T09:43:41.274433+00:00",
+  "audit804_last_store": "Elite Cosmetics",
+  "audit804_progress_utc": "2026-10-25T10:31:21.610663+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Elite Cosmetics",
