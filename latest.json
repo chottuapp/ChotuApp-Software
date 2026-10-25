@@ -1,57 +1,54 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-25T15:16:14.296176+00:00",
-  "run_id": "40199076919",
+  "generated_utc": "2026-10-25T15:17:03.270663+00:00",
+  "run_id": "40199127700",
   "attempt": "1",
   "source_commit": "82efdd7a373c3c0828bd564ed58ca0ad47c067c1",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 5400.7,
+  "elapsed_seconds": 5400.4,
   "stores": [
     {
-      "name": "Nisa Naturals",
+      "name": "Saeed Ghani",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "7d3c45cf7b4fd6ea",
-      "products": 55,
-      "variants": 55,
+      "products": 408,
+      "variants": 586,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
       "cache_events": 0
     },
     {
-      "name": "LAAM",
+      "name": "Hemani Herbals",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "7d3c45cf7b4fd6ea",
+      "products": 1072,
+      "variants": 1072,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    },
+    {
+      "name": "Gul Ahmed",
       "status": "pending",
       "review_required": false,
       "issue_codes": [
-        "HTTP_503",
-        "RATE_LIMIT"
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "7d3c45cf7b4fd6ea",
       "http_statuses": {
-        "200": 1687,
-        "503": 3,
-        "500": 55
+        "200": 1076
       },
-      "network_seconds": 4594.7,
-      "max_response_seconds": 18.3,
-      "cache_events": 0
-    },
-    {
-      "name": "Sapphire",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "7d3c45cf7b4fd6ea",
-      "products": 1050,
-      "variants": 3771,
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "network_seconds": 2284.6,
+      "max_response_seconds": 2.6,
+      "cache_events": 4240
     }
   ]
 }
