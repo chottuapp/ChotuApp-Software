@@ -1,6 +1,6 @@
 {
-  "run_id": "40150792769",
-  "checked_utc": "2026-10-25T01:29:17.435444+00:00",
+  "run_id": "40168513166",
+  "checked_utc": "2026-10-25T06:16:41.055421+00:00",
   "active_queued": 0,
   "runs": [
     {
@@ -11,15 +11,7 @@
       "updatedAt": "2026-10-25T00:21:42Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40140484733",
       "lane": "audit804-fresh804-20261024-c055e80e-2",
-      "snapshot": "Updated (UTC): 2026-10-25T00:21:12.075475+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Tawakkal Fabrics.xlsx\n2. Junaid Jamshed.xlsx\n3. Stylo.xlsx\n\nSTORE STATUS\nTawakkal Fabrics: done\nJunaid Jamshed: done\nStylo: done\n  Last successful HTTP response (UTC): 2026-10-24T23:32:45.978354+00:00\n",
-      "snapshot_utc": "2026-10-25T00:21:12.075475+00:00",
-      "stores": {
-        "Tawakkal Fabrics": "done",
-        "Junaid Jamshed": "done",
-        "Stylo": "done"
-      },
-      "snapshot_age_seconds": 4085,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "failure",
@@ -29,28 +21,7 @@
       "updatedAt": "2026-10-24T23:05:07Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40134578048",
       "lane": "audit804-fresh804-20261024-c055e80e-6",
-      "snapshot": "Updated (UTC): 2026-10-24T23:04:37.950624+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Nisa Naturals.xlsx\n\nSTORE STATUS\nNisa Naturals: done\nLAAM: pending\n  Stage: Website listing order\n  Last successful HTTP response (UTC): 2026-10-24T23:03:44.174276+00:00\nKhaadi: blocked\n",
-      "snapshot_utc": "2026-10-24T23:04:37.950624+00:00",
-      "stores": {
-        "Nisa Naturals": "done",
-        "LAAM": "pending",
-        "Khaadi": "blocked"
-      },
-      "snapshot_age_seconds": 8679,
-      "snapshot_stale": true,
-      "failure_details": [
-        "fetch\tUNKNOWN STEP\t2026-10-24T23:04:40.3276922Z Checkpoint packaging: excluding request caches for 1 completed stores; Excel files and audits retained.",
-        "fetch\tUNKNOWN STEP\t2026-10-24T23:04:40.3277787Z CHECKPOINT NOT SAVED: Checkpoint exceeds 2 GB compressed safety limit; outputs remain available",
-        "fetch\tUNKNOWN STEP\t2026-10-24T23:04:40.3278375Z RUN SUMMARY:",
-        "fetch\tUNKNOWN STEP\t2026-10-24T23:04:40.3279121Z Nisa Naturals: DONE \u2014 55 products, 55 variants; Nisa Naturals.xlsx (REVIEW)",
-        "fetch\tUNKNOWN STEP\t2026-10-24T23:04:40.3279903Z LAAM: PENDING \u2014 Stopped; successful requests retained",
-        "fetch\tUNKNOWN STEP\t2026-10-24T23:04:40.3280820Z Khaadi: BLOCKED \u2014 FAILED: Khaadi: SOURCE BLOCKED: Khaadi Pakistan source redirected to a foreign host",
-        "fetch\tUNKNOWN STEP\t2026-10-24T23:04:40.3281638Z Checkpoint: not saved: Checkpoint exceeds 2 GB compressed safety limit; outputs remain available",
-        "fetch\tUNKNOWN STEP\t2026-10-24T23:04:40.3282510Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
-        "fetch\tUNKNOWN STEP\t2026-10-24T23:04:40.3305346Z ##[error]Process completed with exit code 2.",
-        "fetch\tUNKNOWN STEP\t2026-10-24T23:04:40.3374045Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
-        "fetch\tUNKNOWN STEP\t2026-10-24T23:04:40.3374870Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m"
-      ]
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -60,15 +31,7 @@
       "updatedAt": "2026-10-24T18:04:37Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40112884712",
       "lane": "audit804-fresh804-20261024-c055e80e-7",
-      "snapshot": "Updated (UTC): 2026-10-24T18:03:59.441037+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Hemani Herbals.xlsx\n2. Gul Ahmed.xlsx\n3. Sapphire.xlsx\n\nSTORE STATUS\nHemani Herbals: done\nGul Ahmed: done\n  Last successful HTTP response (UTC): 2026-10-24T17:20:54.019554+00:00\nSapphire: done\n",
-      "snapshot_utc": "2026-10-24T18:03:59.441037+00:00",
-      "stores": {
-        "Hemani Herbals": "done",
-        "Gul Ahmed": "done",
-        "Sapphire": "done"
-      },
-      "snapshot_age_seconds": 26718,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -78,14 +41,7 @@
       "updatedAt": "2026-10-24T13:16:43Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40092780689",
       "lane": "audit804-fresh804-20261024-c055e80e-10",
-      "snapshot": "Updated (UTC): 2026-10-24T13:16:11.682451+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Zellbury.xlsx\n2. Zero Lifestyle.xlsx\n\nSTORE STATUS\nZellbury: done\n  Last successful HTTP response (UTC): 2026-10-24T12:48:33.319183+00:00\nZero Lifestyle: done\n",
-      "snapshot_utc": "2026-10-24T13:16:11.682451+00:00",
-      "stores": {
-        "Zellbury": "done",
-        "Zero Lifestyle": "done"
-      },
-      "snapshot_age_seconds": 43986,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -95,15 +51,7 @@
       "updatedAt": "2026-10-24T11:16:38Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40086617620",
       "lane": "audit804-fresh804-20261024-c055e80e-9",
-      "snapshot": "Updated (UTC): 2026-10-24T11:16:07.056047+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Skin Factor.xlsx\n2. Bonanza Satrangi.xlsx\n3. Outfitters.xlsx\n\nSTORE STATUS\nSkin Factor: done\nBonanza Satrangi: done\nOutfitters: done\n  Last successful HTTP response (UTC): 2026-10-24T10:52:02.425629+00:00\n",
-      "snapshot_utc": "2026-10-24T11:16:07.056047+00:00",
-      "stores": {
-        "Skin Factor": "done",
-        "Bonanza Satrangi": "done",
-        "Outfitters": "done"
-      },
-      "snapshot_age_seconds": 51190,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -113,15 +61,7 @@
       "updatedAt": "2026-10-24T10:36:39Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40080560084",
       "lane": "audit804-fresh804-20261024-c055e80e-1",
-      "snapshot": "Updated (UTC): 2026-10-24T10:36:00.915276+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Miss Rose.xlsx\n2. Rivaj UK.xlsx\n3. Rawayat.xlsx\n\nSTORE STATUS\nMiss Rose: done\nRivaj UK: done\nRawayat: done\n  Last successful HTTP response (UTC): 2026-10-24T10:06:53.016686+00:00\n",
-      "snapshot_utc": "2026-10-24T10:36:00.915276+00:00",
-      "stores": {
-        "Miss Rose": "done",
-        "Rivaj UK": "done",
-        "Rawayat": "done"
-      },
-      "snapshot_age_seconds": 53597,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -131,15 +71,7 @@
       "updatedAt": "2026-10-24T08:16:09Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40074675482",
       "lane": "audit804-fresh804-20261024-c055e80e-8",
-      "snapshot": "Updated (UTC): 2026-10-24T08:15:33.763397+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Denim Leftover.xlsx\n2. Cool and Cool.xlsx\n3. Saeed Ghani.xlsx\n\nSTORE STATUS\nDenim Leftover: done\n  Last successful HTTP response (UTC): 2026-10-24T07:36:55.477600+00:00\nCool and Cool: done\n  Last successful HTTP response (UTC): 2026-10-24T07:38:37.593440+00:00\nSaeed Ghani: done\n  Last successful HTTP response (UTC): 2026-10-24T08:14:02.527615+00:00\n",
-      "snapshot_utc": "2026-10-24T08:15:33.763397+00:00",
-      "stores": {
-        "Denim Leftover": "done",
-        "Cool and Cool": "done",
-        "Saeed Ghani": "done"
-      },
-      "snapshot_age_seconds": 62024,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -149,15 +81,7 @@
       "updatedAt": "2026-10-24T08:05:03Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40074667667",
       "lane": "audit804-fresh804-20261024-c055e80e-5",
-      "snapshot": "Updated (UTC): 2026-10-24T08:04:26.430499+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Farda Foods.xlsx\n2. Adam Cheese.xlsx\n3. Computer Zone.xlsx\n\nSTORE STATUS\nFarda Foods: done\n  Last successful HTTP response (UTC): 2026-10-24T07:36:08.558480+00:00\nAdam Cheese: done\n  Last successful HTTP response (UTC): 2026-10-24T07:35:39.870442+00:00\nComputer Zone: done\n  Last successful HTTP response (UTC): 2026-10-24T08:04:17.169306+00:00\n",
-      "snapshot_utc": "2026-10-24T08:04:26.430499+00:00",
-      "stores": {
-        "Farda Foods": "done",
-        "Adam Cheese": "done",
-        "Computer Zone": "done"
-      },
-      "snapshot_age_seconds": 62691,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -167,15 +91,7 @@
       "updatedAt": "2026-10-24T07:40:40Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40074664854",
       "lane": "audit804-fresh804-20261024-c055e80e-4",
-      "snapshot": "Updated (UTC): 2026-10-24T07:40:07.170880+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Islamabad Tea.xlsx\n2. Shop Modest.xlsx\n3. Seran.xlsx\n\nSTORE STATUS\nIslamabad Tea: done\n  Last successful HTTP response (UTC): 2026-10-24T07:34:54.283103+00:00\nShop Modest: done\n  Last successful HTTP response (UTC): 2026-10-24T07:39:49.735300+00:00\nSeran: done\n  Last successful HTTP response (UTC): 2026-10-24T07:36:53.750571+00:00\n",
-      "snapshot_utc": "2026-10-24T07:40:07.170880+00:00",
-      "stores": {
-        "Islamabad Tea": "done",
-        "Shop Modest": "done",
-        "Seran": "done"
-      },
-      "snapshot_age_seconds": 64150,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -185,465 +101,9 @@
       "updatedAt": "2026-10-24T08:41:20Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40074662060",
       "lane": "audit804-fresh804-20261024-c055e80e-3",
-      "snapshot": "Updated (UTC): 2026-10-24T08:40:50.174604+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Vince Care.xlsx\n2. The Hanger Pakistan.xlsx\n3. Elite Cosmetics.xlsx\n\nSTORE STATUS\nVince Care: done\n  Last successful HTTP response (UTC): 2026-10-24T07:56:48.324235+00:00\nThe Hanger Pakistan: done\n  Last successful HTTP response (UTC): 2026-10-24T07:38:06.562633+00:00\nElite Cosmetics: done\n  Last successful HTTP response (UTC): 2026-10-24T08:31:01.457659+00:00\n",
-      "snapshot_utc": "2026-10-24T08:40:50.174604+00:00",
-      "stores": {
-        "Vince Care": "done",
-        "The Hanger Pakistan": "done",
-        "Elite Cosmetics": "done"
-      },
-      "snapshot_age_seconds": 60507,
-      "snapshot_stale": true
+      "snapshot_pending": true
     }
   ],
-  "fresh_stores": {
-    "Tawakkal Fabrics": "done",
-    "Junaid Jamshed": "done",
-    "Stylo": "done",
-    "Nisa Naturals": "done",
-    "LAAM": "pending",
-    "Khaadi": "blocked",
-    "Hemani Herbals": "done",
-    "Gul Ahmed": "done",
-    "Sapphire": "done",
-    "Zellbury": "done",
-    "Zero Lifestyle": "done",
-    "Skin Factor": "done",
-    "Bonanza Satrangi": "done",
-    "Outfitters": "done",
-    "Miss Rose": "done",
-    "Rivaj UK": "done",
-    "Rawayat": "done",
-    "Denim Leftover": "done",
-    "Cool and Cool": "done",
-    "Saeed Ghani": "done",
-    "Farda Foods": "done",
-    "Adam Cheese": "done",
-    "Computer Zone": "done",
-    "Islamabad Tea": "done",
-    "Shop Modest": "done",
-    "Seran": "done",
-    "Vince Care": "done",
-    "The Hanger Pakistan": "done",
-    "Elite Cosmetics": "done"
-  },
-  "local_khaadi": {
-    "store": "Khaadi",
-    "execution": "Windows local",
-    "observed_utc": "2026-10-20T19:22:58.769213+00:00",
-    "worker_active": true,
-    "status": "unknown_stale_heartbeat",
-    "worker_updated": "2026-10-21 00:22:57",
-    "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
-    "error": "",
-    "progress_age_seconds": 1,
-    "report_age_seconds": 367587,
-    "status_confirmed": false
-  },
-  "collection_completed_utc": "2026-10-25T01:29:25.285444+00:00",
-  "collection_seconds": 8,
-  "store_overview": {
-    "Tawakkal Fabrics": {
-      "state": "drive_verified",
-      "run_id": "40140484733",
-      "snapshot_utc": "2026-10-25T00:21:12.075475+00:00",
-      "uploaded_utc": "2026-10-25T01:14:51.193423+00:00"
-    },
-    "Junaid Jamshed": {
-      "state": "drive_verified",
-      "run_id": "40140484733",
-      "snapshot_utc": "2026-10-25T00:21:12.075475+00:00",
-      "uploaded_utc": "2026-10-25T01:24:38.288894+00:00"
-    },
-    "Stylo": {
-      "state": "correction_queue",
-      "run_id": "40140484733",
-      "snapshot_utc": "2026-10-25T00:21:12.075475+00:00",
-      "issues_count": 133,
-      "issues": [
-        "Brand name used as product Category",
-        "Category is too broad or promotional for product-purpose classification",
-        "Category lacks clear product-purpose evidence; manual review required",
-        "Primary product type and Category disagree: earrings",
-        "Primary product type and Category disagree: jeans",
-        "Primary product type and Category disagree: necklace",
-        "Primary product type and Category disagree: stylus"
-      ],
-      "audit_checked_utc": "2026-10-25T01:10:13.210428+00:00",
-      "recovery": {
-        "stage": "correction_pending_source_recheck",
-        "unfinished": true,
-        "owner": "804 automated recovery",
-        "opened_utc": "2026-10-25T00:22:37.281636+00:00",
-        "updated_utc": "2026-10-25T01:10:13.225454+00:00",
-        "next_source_check_due_utc": "2026-10-25T01:25:13.225454+00:00",
-        "actions": [
-          "Refresh exact public product facts",
-          "Apply supported description and category repairs",
-          "Rerun independent all-row audit",
-          "Upload and verify only after audit passes"
-        ],
-        "issues": [
-          "Brand name used as product Category",
-          "Category is too broad or promotional for product-purpose classification",
-          "Category lacks clear product-purpose evidence; manual review required",
-          "Primary product type and Category disagree: earrings",
-          "Primary product type and Category disagree: jeans",
-          "Primary product type and Category disagree: necklace",
-          "Primary product type and Category disagree: stylus"
-        ],
-        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
-      }
-    },
-    "Nisa Naturals": {
-      "state": "drive_verified",
-      "run_id": "40134578048",
-      "snapshot_utc": "2026-10-24T23:04:37.950624+00:00",
-      "uploaded_utc": "2026-10-25T01:17:48.346684+00:00"
-    },
-    "LAAM": {
-      "state": "pending",
-      "run_id": "40134578048",
-      "snapshot_utc": "2026-10-24T23:04:37.950624+00:00"
-    },
-    "Khaadi": {
-      "state": "source_blocked",
-      "run_id": "40134578048",
-      "snapshot_utc": "2026-10-24T23:04:37.950624+00:00"
-    },
-    "Hemani Herbals": {
-      "state": "drive_verified",
-      "run_id": "40112884712",
-      "snapshot_utc": "2026-10-24T18:03:59.441037+00:00",
-      "uploaded_utc": "2026-10-25T01:21:45.897298+00:00"
-    },
-    "Gul Ahmed": {
-      "state": "correction_queue",
-      "run_id": "40112884712",
-      "snapshot_utc": "2026-10-24T18:03:59.441037+00:00",
-      "issues_count": 910,
-      "issues": [
-        "Category blank or unresolved",
-        "Category is too broad or promotional for product-purpose classification",
-        "Category lacks clear product-purpose evidence; manual review required",
-        "Description lacks enough product-specific content for review"
-      ],
-      "audit_checked_utc": "2026-10-25T01:08:54.954098+00:00",
-      "recovery": {
-        "stage": "correction_pending_source_recheck",
-        "unfinished": true,
-        "owner": "804 automated recovery",
-        "opened_utc": "2026-10-24T18:05:45.096792+00:00",
-        "updated_utc": "2026-10-25T01:08:54.964933+00:00",
-        "next_source_check_due_utc": "2026-10-25T01:23:54.964933+00:00",
-        "actions": [
-          "Refresh exact public product facts",
-          "Apply supported description and category repairs",
-          "Rerun independent all-row audit",
-          "Upload and verify only after audit passes"
-        ],
-        "issues": [
-          "Category blank or unresolved",
-          "Category is too broad or promotional for product-purpose classification",
-          "Category lacks clear product-purpose evidence; manual review required",
-          "Description lacks enough product-specific content for review"
-        ],
-        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
-      }
-    },
-    "Sapphire": {
-      "state": "drive_verified",
-      "run_id": "40112884712",
-      "snapshot_utc": "2026-10-24T18:03:59.441037+00:00",
-      "uploaded_utc": "2026-10-25T01:22:50.644875+00:00"
-    },
-    "Zellbury": {
-      "state": "drive_verified",
-      "run_id": "40092780689",
-      "snapshot_utc": "2026-10-24T13:16:11.682451+00:00",
-      "uploaded_utc": "2026-10-25T01:25:39.599830+00:00"
-    },
-    "Zero Lifestyle": {
-      "state": "drive_verified",
-      "run_id": "40092780689",
-      "snapshot_utc": "2026-10-24T13:16:11.682451+00:00",
-      "uploaded_utc": "2026-10-25T01:20:54.210024+00:00"
-    },
-    "Skin Factor": {
-      "state": "drive_verified",
-      "run_id": "40086617620",
-      "snapshot_utc": "2026-10-24T11:16:07.056047+00:00",
-      "uploaded_utc": "2026-10-25T01:20:48.195189+00:00"
-    },
-    "Bonanza Satrangi": {
-      "state": "correction_queue",
-      "run_id": "40086617620",
-      "snapshot_utc": "2026-10-24T11:16:07.056047+00:00",
-      "issues_count": 2,
-      "issues": [
-        "Category blank or unresolved",
-        "Description lacks enough product-specific content for review"
-      ],
-      "audit_checked_utc": "2026-10-25T01:07:52.391343+00:00",
-      "recovery": {
-        "stage": "correction_pending_source_recheck",
-        "unfinished": true,
-        "owner": "804 automated recovery",
-        "opened_utc": "2026-10-24T09:27:16.320852+00:00",
-        "updated_utc": "2026-10-25T01:07:52.392955+00:00",
-        "next_source_check_due_utc": "2026-10-25T01:22:52.392955+00:00",
-        "actions": [
-          "Refresh exact public product facts",
-          "Apply supported description and category repairs",
-          "Rerun independent all-row audit",
-          "Upload and verify only after audit passes"
-        ],
-        "issues": [
-          "Category blank or unresolved",
-          "Description lacks enough product-specific content for review"
-        ],
-        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
-      }
-    },
-    "Outfitters": {
-      "state": "drive_verified",
-      "run_id": "40086617620",
-      "snapshot_utc": "2026-10-24T11:16:07.056047+00:00",
-      "uploaded_utc": "2026-10-25T01:23:49.195809+00:00"
-    },
-    "Miss Rose": {
-      "state": "drive_verified",
-      "run_id": "40080560084",
-      "snapshot_utc": "2026-10-24T10:36:00.915276+00:00",
-      "uploaded_utc": "2026-10-25T01:11:52.953046+00:00"
-    },
-    "Rivaj UK": {
-      "state": "drive_verified",
-      "run_id": "40080560084",
-      "snapshot_utc": "2026-10-24T10:36:00.915276+00:00",
-      "uploaded_utc": "2026-10-25T01:12:52.768457+00:00"
-    },
-    "Rawayat": {
-      "state": "drive_verified",
-      "run_id": "40080560084",
-      "snapshot_utc": "2026-10-24T10:36:00.915276+00:00",
-      "uploaded_utc": "2026-10-25T01:21:30.444989+00:00"
-    },
-    "Denim Leftover": {
-      "state": "drive_verified",
-      "run_id": "40074675482",
-      "snapshot_utc": "2026-10-24T08:15:33.763397+00:00",
-      "uploaded_utc": "2026-10-25T01:17:56.186167+00:00"
-    },
-    "Cool and Cool": {
-      "state": "drive_verified",
-      "run_id": "40074675482",
-      "snapshot_utc": "2026-10-24T08:15:33.763397+00:00",
-      "uploaded_utc": "2026-10-25T01:18:53.149939+00:00"
-    },
-    "Saeed Ghani": {
-      "state": "drive_verified",
-      "run_id": "40074675482",
-      "snapshot_utc": "2026-10-24T08:15:33.763397+00:00",
-      "uploaded_utc": "2026-10-25T01:19:52.508176+00:00"
-    },
-    "Farda Foods": {
-      "state": "drive_verified",
-      "run_id": "40074667667",
-      "snapshot_utc": "2026-10-24T08:04:26.430499+00:00",
-      "uploaded_utc": "2026-10-25T01:16:56.370995+00:00"
-    },
-    "Adam Cheese": {
-      "state": "drive_verified",
-      "run_id": "40074667667",
-      "snapshot_utc": "2026-10-24T08:04:26.430499+00:00",
-      "uploaded_utc": "2026-10-25T01:17:30.385026+00:00"
-    },
-    "Computer Zone": {
-      "state": "drive_verified",
-      "run_id": "40074667667",
-      "snapshot_utc": "2026-10-24T08:04:26.430499+00:00",
-      "uploaded_utc": "2026-10-25T01:17:43.231507+00:00"
-    },
-    "Islamabad Tea": {
-      "state": "drive_verified",
-      "run_id": "40074664854",
-      "snapshot_utc": "2026-10-24T07:40:07.170880+00:00",
-      "uploaded_utc": "2026-10-25T01:15:45.017788+00:00"
-    },
-    "Shop Modest": {
-      "state": "drive_verified",
-      "run_id": "40074664854",
-      "snapshot_utc": "2026-10-24T07:40:07.170880+00:00",
-      "uploaded_utc": "2026-10-25T01:15:52.983895+00:00"
-    },
-    "Seran": {
-      "state": "drive_verified",
-      "run_id": "40074664854",
-      "snapshot_utc": "2026-10-24T07:40:07.170880+00:00",
-      "uploaded_utc": "2026-10-25T01:16:50.816586+00:00"
-    },
-    "Vince Care": {
-      "state": "drive_verified",
-      "run_id": "40074662060",
-      "snapshot_utc": "2026-10-24T08:40:50.174604+00:00",
-      "uploaded_utc": "2026-10-25T01:15:32.478277+00:00"
-    },
-    "The Hanger Pakistan": {
-      "state": "drive_verified",
-      "run_id": "40074662060",
-      "snapshot_utc": "2026-10-24T08:40:50.174604+00:00",
-      "uploaded_utc": "2026-10-25T01:15:39.640223+00:00"
-    },
-    "Elite Cosmetics": {
-      "state": "correction_queue",
-      "run_id": "40074662060",
-      "snapshot_utc": "2026-10-24T08:40:50.174604+00:00",
-      "issues_count": 2,
-      "issues": [
-        "Category is too broad or promotional for product-purpose classification",
-        "Category lacks clear product-purpose evidence; manual review required",
-        "Source identity conflict: Comfor 40 ml listing uses an Aichun Beauty 30 ml facial-serum photo. Brand, volume and exact product identity need a consistent primary source; no quantity guessed.",
-        "Source identity conflict: Rose Petal Party Pack prose claims loose faux rose petals, but its primary image shows branded boxed packaging; actual contents require a corrected primary source."
-      ],
-      "audit_checked_utc": "2026-10-25T01:07:42.764103+00:00",
-      "recovery": {
-        "stage": "correction_pending_source_recheck",
-        "unfinished": true,
-        "owner": "804 automated recovery",
-        "opened_utc": "2026-10-24T08:41:39.987229+00:00",
-        "updated_utc": "2026-10-25T01:07:42.766772+00:00",
-        "next_source_check_due_utc": "2026-10-25T01:22:42.766772+00:00",
-        "actions": [
-          "Refresh exact public product facts",
-          "Apply supported description and category repairs",
-          "Rerun independent all-row audit",
-          "Upload and verify only after audit passes"
-        ],
-        "issues": [
-          "Category is too broad or promotional for product-purpose classification",
-          "Category lacks clear product-purpose evidence; manual review required",
-          "Source identity conflict: Comfor 40 ml listing uses an Aichun Beauty 30 ml facial-serum photo. Brand, volume and exact product identity need a consistent primary source; no quantity guessed.",
-          "Source identity conflict: Rose Petal Party Pack prose claims loose faux rose petals, but its primary image shows branded boxed packaging; actual contents require a corrected primary source."
-        ],
-        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
-      }
-    }
-  },
-  "drive": {
-    "current_campaign": "fresh804-20261024-c055e80e",
-    "fresh_verified_files": 23,
-    "audit_progress_utc": "2026-10-25T01:25:39.600459+00:00",
-    "sync_status": "finished",
-    "sync_error": null,
-    "last_scan_utc": "2026-10-25T01:27:36.664070+00:00",
-    "held": {
-      "39450775009": [],
-      "39450778729": [],
-      "39450782519": [],
-      "39450786298": [],
-      "39450789858": [],
-      "39450793299": [],
-      "39450796831": [],
-      "39450802086": [],
-      "39450806726": [],
-      "39494289423": [],
-      "39494295410": [],
-      "39494348075": [],
-      "39529042706": [
-        {
-          "store": "Stylo",
-          "error": "Unconfirmed shop code; held for review"
-        }
-      ],
-      "39529095851": []
-    },
-    "verified_files": 26,
-    "original_uploads": {},
-    "verified_utc": "2026-10-21T06:41:31.265056+00:00",
-    "folders": {
-      "ChotuApp 20-10-2026 Fresh": 20,
-      "ChotuApp 19-10-2026 11-36AM": 26
-    },
-    "latest_move": [
-      {
-        "source": "ChotuApp 20-10-2026 Fresh",
-        "destination": "ChotuApp 19-10-2026 11-36AM",
-        "verified_files": [
-          "Adam Cheese.xlsx",
-          "Bonanza Satrangi.xlsx",
-          "Computer Zone.xlsx",
-          "Cool and Cool.xlsx",
-          "Denim Leftover.xlsx",
-          "Elite Cosmetics.xlsx",
-          "Farda Foods.xlsx",
-          "Hemani Herbals.xlsx",
-          "Islamabad Tea.xlsx",
-          "Miss Rose.xlsx",
-          "Nisa Naturals.xlsx",
-          "Rivaj UK.xlsx",
-          "Saeed Ghani.xlsx",
-          "Seran.xlsx",
-          "Shop Modest.xlsx",
-          "Skin Factor.xlsx",
-          "Tawakkal Fabrics.xlsx",
-          "The Hanger Pakistan.xlsx",
-          "Vince Care.xlsx",
-          "Zero Lifestyle.xlsx"
-        ],
-        "destination_file_count": 24,
-        "preserved_other_files": 4,
-        "verified_utc": "2026-10-20T18:41:53.309795+00:00",
-        "source_removed": [
-          "Adam Cheese.xlsx",
-          "Bonanza Satrangi.xlsx",
-          "Computer Zone.xlsx",
-          "Cool and Cool.xlsx",
-          "Denim Leftover.xlsx",
-          "Elite Cosmetics.xlsx",
-          "Farda Foods.xlsx",
-          "Hemani Herbals.xlsx",
-          "Islamabad Tea.xlsx",
-          "Miss Rose.xlsx",
-          "Nisa Naturals.xlsx",
-          "Rivaj UK.xlsx",
-          "Saeed Ghani.xlsx",
-          "Seran.xlsx",
-          "Shop Modest.xlsx",
-          "Skin Factor.xlsx",
-          "Tawakkal Fabrics.xlsx",
-          "The Hanger Pakistan.xlsx",
-          "Vince Care.xlsx",
-          "Zero Lifestyle.xlsx"
-        ]
-      }
-    ]
-  },
-  "khaadi_devices": [
-    {
-      "store": "Khaadi",
-      "execution": "Windows local",
-      "observed_utc": "2026-10-20T19:22:58.769213+00:00",
-      "worker_active": true,
-      "status": "unknown_stale_heartbeat",
-      "worker_updated": "2026-10-21 00:22:57",
-      "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
-      "error": "",
-      "progress_age_seconds": 1,
-      "report_age_seconds": 367587,
-      "status_confirmed": false
-    }
-  ],
-  "phone_heartbeat": {
-    "status": "not_connected_or_no_report",
-    "status_confirmed": false,
-    "message": "No Android heartbeat received. Connect GitHub in app Settings and start or resume fetching."
-  },
-  "monitoring": {
-    "phone_heartbeat_seconds": 30,
-    "phone_stale_after_seconds": 180,
-    "cloud_schedule_minutes": 5,
-    "note": "Scheduled cloud checks can be delayed. Query local-run-status directly for latest phone heartbeat."
-  },
-  "fresh_completed": 27
+  "fresh_stores": {},
+  "local_khaadi": "Not visible to cloud monitoring; no local activity claimed"
 }
