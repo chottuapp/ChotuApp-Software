@@ -1,54 +1,57 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-25T12:14:19.474453+00:00",
-  "run_id": "40185972717",
+  "generated_utc": "2026-10-25T12:14:15.438623+00:00",
+  "run_id": "40185957671",
   "attempt": "1",
   "source_commit": "bc4d4c0a4039c337547295c48e0df38698ebf6e5",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 5400.7,
+  "elapsed_seconds": 5400.4,
   "stores": [
     {
-      "name": "Nisa Naturals",
+      "name": "Miss Rose",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "7d3c45cf7b4fd6ea",
-      "products": 55,
-      "variants": 55,
+      "products": 178,
+      "variants": 1806,
       "http_statuses": {
-        "200": 79
+        "200": 695
       },
-      "network_seconds": 36.7,
-      "max_response_seconds": 2.3,
-      "cache_events": 110
+      "network_seconds": 184.3,
+      "max_response_seconds": 1.7,
+      "cache_events": 359
     },
     {
-      "name": "LAAM",
+      "name": "Rivaj UK",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "7d3c45cf7b4fd6ea",
+      "products": 318,
+      "variants": 967,
+      "http_statuses": {
+        "200": 650
+      },
+      "network_seconds": 594.2,
+      "max_response_seconds": 4.0,
+      "cache_events": 798
+    },
+    {
+      "name": "Rawayat",
       "status": "pending",
       "review_required": false,
       "issue_codes": [],
       "software_revision": "7d3c45cf7b4fd6ea",
       "http_statuses": {
-        "200": 3402,
-        "500": 33
+        "200": 2754
       },
-      "network_seconds": 1867.6,
-      "max_response_seconds": 16.1,
-      "cache_events": 0
-    },
-    {
-      "name": "Sapphire",
-      "status": "pending",
-      "review_required": false,
-      "issue_codes": [],
-      "software_revision": "7d3c45cf7b4fd6ea",
-      "http_statuses": {
-        "200": 3599
-      },
-      "network_seconds": 5015.5,
-      "max_response_seconds": 2.7,
+      "network_seconds": 2081.3,
+      "max_response_seconds": 1.7,
       "cache_events": 0
     }
   ]
