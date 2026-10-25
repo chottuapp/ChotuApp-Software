@@ -107,7 +107,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
   state['audit804_auto_evidence']={'status':'checked','facts':evidence_count,'digest':evidence_revision}
  except Exception:
   state['audit804_auto_evidence']={'status':'unavailable','action':'Retain saved source facts; no unverified audit approval'}
- revision=hashlib.sha256(b''.join((root/name).read_bytes() for name in ('cloud/audit804.py','cloud/audit804_semantics.py','cloud/reviewed804_repairs.py','cloud/audit804_delivery.py','cloud/rule804_pipeline.py','cloud/hold804_repairs.py','cloud/audit804-reviewed-source.json','cloud/audit804-image-reviews.json','cloud/audit804_automation.py','cloud/price_stock_gate.py','cloud/legacy_original_schema.py','cloud/confirmed-shop-codes.json','subcategory_inference_support.py','catalog-tools/complete_rule804_batch.py'))).hexdigest()
+ revision=hashlib.sha256(b''.join((root/name).read_bytes() for name in ('cloud/owner_product_exclusions.py','cloud/audit804.py','cloud/audit804_semantics.py','cloud/reviewed804_repairs.py','cloud/audit804_delivery.py','cloud/rule804_pipeline.py','cloud/hold804_repairs.py','cloud/audit804-reviewed-source.json','cloud/audit804-image-reviews.json','cloud/audit804_automation.py','cloud/price_stock_gate.py','cloud/legacy_original_schema.py','cloud/confirmed-shop-codes.json','subcategory_inference_support.py','catalog-tools/complete_rule804_batch.py'))).hexdigest()
  revision=hashlib.sha256((revision+evidence_revision).encode()).hexdigest()
  state['audit804_campaign']=campaign;state.setdefault('audit804_results',{});state.setdefault('audit804_processed',{});identity=None
  def handle(source,store,source_run,artifact_id,cache_key):
@@ -121,6 +121,8 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
    if hashlib.sha256(base64.b64decode(evidence['content'])).digest()!=hashlib.sha256((root/'laam_source_support.py').read_bytes()).digest():raise ValueError('Rule LAAM clothing-only adapter revision not confirmed')
   with tempfile.TemporaryDirectory() as tmp:
    stage=Path(tmp);normalized,migrated=normalize(source,stage/'normalized'/source.name,code);output=stage/'checked'/(store+'.xlsx')
+   from owner_product_exclusions import apply as apply_owner_exclusions
+   normalized,owner_exclusions=apply_owner_exclusions(normalized,stage/'owner-filtered'/source.name,store)
    processing=process(normalized,output,store,codes,approved_original=store in {'LAAM','Sapphire','Khaadi'})
    host=(urlsplit(sites[store]['url']).hostname or '').removeprefix('www.');hosts={host}
    if store=='Sapphire':hosts={'pk.sapphireonline.pk'}
@@ -131,6 +133,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
    repairs=[r for r in processing.get('warnings',[]) if r.get('repair_kind')=='description' or r.get('issue','').startswith(('Copied','Removed'))]
    from audit804_automation import recovery_plan
    report['recovery']=recovery_plan(report,prior.get('recovery'))
+   report['owner_authorized_exclusions']=owner_exclusions
    report.update(description_repairs_count=len(repairs),description_repairs_examples=repairs[:10])
    report.update(campaign_id=campaign,source_run=str(source_run),source_artifact=artifact_id,source_sha256=source_sha)
    if report['status']!='pass':
