@@ -1,53 +1,59 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-25T19:35:59.250987+00:00",
-  "run_id": "40226449490",
+  "generated_utc": "2026-10-25T19:39:48.980827+00:00",
+  "run_id": "40221116445",
   "attempt": "1",
-  "source_commit": "423a134dca9f01432cf02c0ae5d0a6ec3ff971ed",
+  "source_commit": "82efdd7a373c3c0828bd564ed58ca0ad47c067c1",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 201.1,
+  "elapsed_seconds": 4405.5,
   "stores": [
     {
-      "name": "Nisa Naturals",
+      "name": "Bonanza Satrangi",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_503",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "7d3c45cf7b4fd6ea",
+      "products": 1145,
+      "variants": 3453,
+      "http_statuses": {
+        "200": 660
+      },
+      "network_seconds": 1647.7,
+      "max_response_seconds": 2.9,
+      "cache_events": 12941
+    },
+    {
+      "name": "Outfitters",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "7d3c45cf7b4fd6ea",
-      "products": 55,
-      "variants": 55,
+      "products": 3826,
+      "variants": 29689,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
       "cache_events": 0
     },
     {
-      "name": "LAAM",
+      "name": "Zellbury",
       "status": "pending",
       "review_required": false,
-      "issue_codes": [],
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
       "software_revision": "7d3c45cf7b4fd6ea",
       "http_statuses": {
-        "200": 63,
-        "500": 66
+        "200": 1598
       },
-      "network_seconds": 74.2,
-      "max_response_seconds": 2.6,
-      "cache_events": 0
-    },
-    {
-      "name": "Sapphire",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "7d3c45cf7b4fd6ea",
-      "products": 1050,
-      "variants": 3771,
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "network_seconds": 2274.2,
+      "max_response_seconds": 1.9,
+      "cache_events": 22675
     }
   ]
 }
