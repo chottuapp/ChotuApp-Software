@@ -7,6 +7,10 @@ from continuation_policy import budget, recoverable, integer
 AUTHORIZED_EXISTING_RUNS={'38970499270'}
 
 def run_minutes(summary):
+    # Approved fresh campaign: longer segments reduce repeated restore/cache replay.
+    request=json.loads((Path(__file__).parent/'audit804-release.json').read_text())
+    prefix='audit804-'+str(request.get('campaign_id',''))+'-'
+    if request.get('fetch_segment_minutes')==300 and str(summary.get('runner_group','')).startswith(prefix):return 300
     value=integer(summary.get('continuation_minutes',300),default=300,maximum=300)
     return value if value>=30 else 300
 

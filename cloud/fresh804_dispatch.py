@@ -42,7 +42,7 @@ def main():
   lane='audit804-'+campaign+'-'+str(index);title='Cloud group '+lane
   item={'runner_group':lane,'stores':stores,'status':'already_dispatched' if any(run['displayTitle']==title for run in existing) else 'pending'};report['groups'].append(item)
   if item['status']=='pending':
-   gh('workflow','run','cloud-fetch.yml','--repo',REPO,'--ref','main','-f','stores='+json.dumps(stores,separators=(',',':')),'-f','runner_group='+lane,'-f','minutes=90','-f','save_checkpoint=true','-f','auto_continue_limit=48','-f','auto_continue_once=false')
+   gh('workflow','run','cloud-fetch.yml','--repo',REPO,'--ref','main','-f','stores='+json.dumps(stores,separators=(',',':')),'-f','runner_group='+lane,'-f','minutes='+str(request.get('fetch_segment_minutes',90)),'-f','save_checkpoint=true','-f','auto_continue_limit=48','-f','auto_continue_once=false')
    item['status']='dispatched'
   publish(report,branch='fetch-update-reports')
  report['dispatch']='complete';report['checked_utc']=datetime.now(timezone.utc).isoformat();publish(report,branch='fetch-update-reports');print('Fresh dispatch complete:',len(report['groups']),'runners, maximum three stores each; selected stores: '+str(len(sites))+'; source failures remain explicit.')
