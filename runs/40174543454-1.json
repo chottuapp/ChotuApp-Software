@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-25T09:21:39.733019+00:00",
+  "run_id": "40174543454",
+  "attempt": "1",
+  "source_commit": "b3688f4666458b3daac6a6895eb26bc0105494ad",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.15",
+  "elapsed_seconds": 5127.4,
+  "stores": [
+    {
+      "name": "LAAM",
+      "status": "failed",
+      "review_required": false,
+      "issue_codes": [
+        "ADAPTER_ERROR",
+        "HTTP_404"
+      ],
+      "software_revision": "4ea0b613ec340955",
+      "http_statuses": {
+        "500": 214,
+        "200": 2892,
+        "404": 10
+      },
+      "network_seconds": 2192.5,
+      "max_response_seconds": 13.4,
+      "cache_events": 0
+    }
+  ]
+}
