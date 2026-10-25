@@ -1,49 +1,12 @@
 {
-  "run_id": "39901878690",
-  "checked_utc": "2026-10-23T04:44:17.378053+00:00",
-  "stores": [
-    {
-      "store": "Gul Ahmed",
-      "failed_run": "39889255797",
-      "group": "audit804-fresh804-20261021-a26dcd86-7-gul-ahmed",
-      "status": "newer_or_active_lane_retained",
-      "runs": [
-        {
-          "conclusion": "",
-          "databaseId": 39901817367,
-          "displayTitle": "Cloud group audit804-fresh804-20261021-a26dcd86-7-gul-ahmed",
-          "status": "in_progress",
-          "lane": "audit804-fresh804-20261021-a26dcd86-7-gul-ahmed"
-        },
-        {
-          "conclusion": "failure",
-          "databaseId": 39616518549,
-          "displayTitle": "Automatic continuation of 39576560881",
-          "status": "completed",
-          "lane": "audit804-fresh804-20261021-a26dcd86-7"
-        }
-      ]
-    },
-    {
-      "store": "LAAM",
-      "failed_run": "39834176747",
-      "group": "audit804-fresh804-20261021-a26dcd86-6-laam",
-      "checkpoint_parent": "39834176747",
-      "checked_ancestry": [
-        "39834176747"
-      ],
-      "live_adapter_check": {
-        "product": "airah-3",
-        "variants": 3,
-        "options": [
-          "Size",
-          "Color"
-        ],
-        "status": "pass"
-      },
-      "status": "saved_resume_requested",
-      "dispatch": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/39901934794\n",
-      "minutes": 90
-    }
-  ]
+  "run_id": "40184634134",
+  "source_commit": "e5bce85c7f0b2b2b3cc3275b0918b95708b06f35",
+  "validation": "success",
+  "product": "0085",
+  "variant_count": 4,
+  "option_order": [
+    "Kids Size",
+    "Stitching Type"
+  ],
+  "fetch_run_unchanged": "39136925448"
 }
