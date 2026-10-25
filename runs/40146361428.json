@@ -1798,7 +1798,8 @@
     "Outfitters": "source:057d0e78f68ae16cfb370d6d65bfabf3264d554a9166a461e3308d7e31195cf2:Outfitters:42bad85fd25d37c2f0b6e6fd13c5037be86d362be337cb3052b37a43a3ebd570",
     "Junaid Jamshed": "source:91b63fa396c658f7a28e52c4825cf82691b09e8d641a0eef132557652ee149f5:Junaid Jamshed:42bad85fd25d37c2f0b6e6fd13c5037be86d362be337cb3052b37a43a3ebd570",
     "Zellbury": "source:0391e76edc60c9f201d340aa526f9d9c25e4118a8f481da95b67992bc7b81fa4:Zellbury:42bad85fd25d37c2f0b6e6fd13c5037be86d362be337cb3052b37a43a3ebd570",
-    "Gul Ahmed": "source:f433be01473288bdf885bad13f852e0bdb875ed5a5f9cab927a1203028fb729b:Gul Ahmed:42bad85fd25d37c2f0b6e6fd13c5037be86d362be337cb3052b37a43a3ebd570"
+    "Gul Ahmed": "source:f433be01473288bdf885bad13f852e0bdb875ed5a5f9cab927a1203028fb729b:Gul Ahmed:42bad85fd25d37c2f0b6e6fd13c5037be86d362be337cb3052b37a43a3ebd570",
+    "Stylo": "source:de2211c05acca364497c068293cc05c2382bc6647a537dbdc1d6303c0f45e475:Stylo:42bad85fd25d37c2f0b6e6fd13c5037be86d362be337cb3052b37a43a3ebd570"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -3797,6 +3798,909 @@
       "source_artifact": 12569603085,
       "source_sha256": "f433be01473288bdf885bad13f852e0bdb875ed5a5f9cab927a1203028fb729b",
       "held_input": "inputs/fresh804-20261024-c055e80e/gul-ahmed/f433be01473288bd/manifest.json"
+    },
+    "Stylo": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Stylo",
+      "shop_code": "SE10010",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 9880,
+      "findings_count": 133,
+      "findings": [
+        {
+          "product_id": "CPa02d49a0f0c7",
+          "name": "Brown Casual Softy For Women CL7220",
+          "source_url": "https://stylo.pk/products/brown-casual-softy-for-women-cl7220",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa70a2ea3589b",
+          "name": "Blue Casual Softy For Ladies CL9415",
+          "source_url": "https://stylo.pk/products/blue-casual-softy-for-ladies-cl9415",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe1aad3c021da",
+          "name": "Black Liquid Polish M00027",
+          "source_url": "https://stylo.pk/products/black-liquid-polish-m00027",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP78b70da06fae",
+          "name": "White Solid Tank Top LC0043",
+          "source_url": "https://stylo.pk/products/white-solid-tank-top-lc0043",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP74b31fab3c39",
+          "name": "White Solid Tank Top LC0041",
+          "source_url": "https://stylo.pk/products/white-solid-tank-top-lc0041",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP55af4134e3b9",
+          "name": "White Solid Tank Top LC0036",
+          "source_url": "https://stylo.pk/products/white-solid-tank-top-lc0036",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP255899d245b1",
+          "name": "Brown Solid Tank Top LC0036",
+          "source_url": "https://stylo.pk/products/brown-solid-tank-top-lc0036",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP15a65471aa85",
+          "name": "Black Solid Tank Top LC0036",
+          "source_url": "https://stylo.pk/products/black-solid-tank-top-lc0036",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CPec79e9141657",
+          "name": "Dinky For Kids T7005220",
+          "source_url": "https://stylo.pk/products/dinky-for-kids-t7005220",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4f51774e6653",
+          "name": "Dinky For Kids T7005211",
+          "source_url": "https://stylo.pk/products/dinky-for-kids-t7005211",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPfcc724165d9e",
+          "name": "Dinky For Kids T7005262",
+          "source_url": "https://stylo.pk/products/dinky-for-kids-t7005262",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1a33206501d7",
+          "name": "LCD Panel For Kids T7002118",
+          "source_url": "https://stylo.pk/products/lcd-panel-for-kids-t7002118",
+          "issues": [
+            "Primary product type and Category disagree: stylus"
+          ]
+        },
+        {
+          "product_id": "CP3b6c18d9b8c4",
+          "name": "Girls Pink Formal Long Shoes KD1926",
+          "source_url": "https://stylo.pk/products/girls-pink-formal-long-shoes-kd1926",
+          "issues": [
+            "Category is too broad or promotional for product-purpose classification",
+            "Brand name used as product Category",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP061888ee6d08",
+          "name": "Mind Sharpening Game (12 Level Cards) T7011010",
+          "source_url": "https://stylo.pk/products/mind-sharpening-game-12-level-cards-t7011010",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3d0bda5971a1",
+          "name": "Montessori Mind Creative Sticks ABC Shapes & 123 T7011110",
+          "source_url": "https://stylo.pk/products/montessori-mind-creative-sticks-abc-shapes-123-t7011110",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP72e2d36a4acf",
+          "name": "Cognitive Alphabet Spelling And Exercises Thinking T7012110",
+          "source_url": "https://stylo.pk/products/cognitive-alphabet-spelling-and-exercises-thinking-t7012110",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP63589474c9d9",
+          "name": "Brainy Words Wooden Scrabble Challenge T7012362",
+          "source_url": "https://stylo.pk/products/brainy-words-wooden-scrabble-challenge-t7012362",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf8846d6a54e7",
+          "name": "Winding Patterns Nail Board Lacing Threading Montessori Toys T7012710",
+          "source_url": "https://stylo.pk/products/winding-patterns-nail-board-lacing-threading-montessori-toys-t7012710",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc2fae23db288",
+          "name": "Kitchen Set For Kids T7010510",
+          "source_url": "https://stylo.pk/products/kitchen-set-for-kids-t7010510",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP899626e76dda",
+          "name": "Kitchen Set For Kids T7010410",
+          "source_url": "https://stylo.pk/products/kitchen-set-for-kids-t7010410",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP51384b2b11d0",
+          "name": "Kitchen Set For Kids T7010318",
+          "source_url": "https://stylo.pk/products/kitchen-set-for-kids-t7010318",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2d72151fc39f",
+          "name": "Kitchen Set For Kids T7010210",
+          "source_url": "https://stylo.pk/products/kitchen-set-for-kids-t7010210",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP40f12573fc16",
+          "name": "Kitchen Set For Kids T7010118",
+          "source_url": "https://stylo.pk/products/kitchen-set-for-kids-t7010118",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP35f04d93489e",
+          "name": "Animal Figures For Kids T7010010",
+          "source_url": "https://stylo.pk/products/animal-figures-for-kids-t7010010",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP00bed527ce02",
+          "name": "Animal Figures For Kids T7009910",
+          "source_url": "https://stylo.pk/products/animal-figures-for-kids-t7009910",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0ab0b78cf70c",
+          "name": "Animal Figures For Kids T7009710",
+          "source_url": "https://stylo.pk/products/animal-figures-for-kids-t7009710",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa89216ef3261",
+          "name": "Doctor Set For Kids T7009512",
+          "source_url": "https://stylo.pk/products/doctor-set-for-kids-t7009512",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe2e92de78066",
+          "name": "Doctor Set For Kids T7009418",
+          "source_url": "https://stylo.pk/products/doctor-set-for-kids-t7009418",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPeea16ad4ca57",
+          "name": "Animal Figures For Kids T7009110",
+          "source_url": "https://stylo.pk/products/animal-figures-for-kids-t7009110",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4c7ee1f8c415",
+          "name": "Kitchen Set For Kids T7009010",
+          "source_url": "https://stylo.pk/products/kitchen-set-for-kids-t7009010",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0fecf327ee82",
+          "name": "Fashion Set For Kids T7008810",
+          "source_url": "https://stylo.pk/products/fashion-set-for-kids-t7008810",
+          "issues": [
+            "Primary product type and Category disagree: earrings"
+          ]
+        },
+        {
+          "product_id": "CP8d0dd19b26b8",
+          "name": "Fashion Set For Kids T7008710",
+          "source_url": "https://stylo.pk/products/fashion-set-for-kids-t7008710",
+          "issues": [
+            "Primary product type and Category disagree: earrings"
+          ]
+        },
+        {
+          "product_id": "CPb8d671ddc2c4",
+          "name": "Kitchen Set For Kids T7008610",
+          "source_url": "https://stylo.pk/products/kitchen-set-for-kids-t7008610",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3dbde4ab7fdd",
+          "name": "Kitchen Set For Kids T7008510",
+          "source_url": "https://stylo.pk/products/kitchen-set-for-kids-t7008510",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP090cd14c0c3e",
+          "name": "Kitchen Set For Kids T7008410",
+          "source_url": "https://stylo.pk/products/kitchen-set-for-kids-t7008410",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP15ff4368027b",
+          "name": "Fashion Set For Kids T7008110",
+          "source_url": "https://stylo.pk/products/fashion-set-for-kids-t7008110",
+          "issues": [
+            "Primary product type and Category disagree: necklace"
+          ]
+        },
+        {
+          "product_id": "CPaa28f92ccc7d",
+          "name": "Fashion Set For Kids T7008010",
+          "source_url": "https://stylo.pk/products/fashion-set-for-kids-t7008010",
+          "issues": [
+            "Primary product type and Category disagree: necklace"
+          ]
+        },
+        {
+          "product_id": "CP711db1a766a2",
+          "name": "Kitchen Set For Kids T7007910",
+          "source_url": "https://stylo.pk/products/kitchen-set-for-kids-t7007910",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4ba2792a6693",
+          "name": "Animal Figures For Kids T7007510",
+          "source_url": "https://stylo.pk/products/animal-figures-for-kids-t7007510",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP38356e556eab",
+          "name": "Dinkies Set For Kids T7007410",
+          "source_url": "https://stylo.pk/products/dinkies-set-for-kids-t7007410",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPdf158fd19402",
+          "name": "Dinkies Set For Kids T7007310",
+          "source_url": "https://stylo.pk/products/dinkies-set-for-kids-t7007310",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP66704f997e48",
+          "name": "Clay Dough For Kids T7007210",
+          "source_url": "https://stylo.pk/products/clay-dough-for-kids-t7007210",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP17d62f3365d8",
+          "name": "Toy Car with Dinky For Kids T7007112",
+          "source_url": "https://stylo.pk/products/dinky-for-kids-t7007112",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa25437e0494a",
+          "name": "Toy Car with Dinky For Kids T7007113",
+          "source_url": "https://stylo.pk/products/dinky-for-kids-t7007113",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP09aa12b5372b",
+          "name": "Toy Car with Dinky For Kids T7007120",
+          "source_url": "https://stylo.pk/products/dinky-for-kids-t7007120",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3a5e9a8f8360",
+          "name": "Clay Set For Kids T7007011",
+          "source_url": "https://stylo.pk/products/clay-sets-for-kids-t7007011",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP29dd2e3ed54f",
+          "name": "Arrow Shooter For Kids T7006910",
+          "source_url": "https://stylo.pk/products/arrow-shooter-for-kids-t7006910",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP64c15d6ade9b",
+          "name": "Clay Sets For Kids T7006810",
+          "source_url": "https://stylo.pk/products/clay-sets-for-kids-t7006810",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe85063bdc0ae",
+          "name": "Clay Sets For Kids T7006610",
+          "source_url": "https://stylo.pk/products/clay-sets-for-kids-t7006610",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4cb70f350c2a",
+          "name": "Drawing Board For Kids T7006518",
+          "source_url": "https://stylo.pk/products/drawing-board-for-kids-t7006518",
+          "issues": [
+            "Primary product type and Category disagree: stylus"
+          ]
+        },
+        {
+          "product_id": "CP683fdccc1b6b",
+          "name": "Drawing Board For Kids T7006413",
+          "source_url": "https://stylo.pk/products/drawing-board-for-kids-t7006413",
+          "issues": [
+            "Primary product type and Category disagree: stylus"
+          ]
+        },
+        {
+          "product_id": "CP4410205a612f",
+          "name": "Shooting Gun For Kids T7006310",
+          "source_url": "https://stylo.pk/products/shooting-gun-for-kids-t7006310",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9a02471f78f8",
+          "name": "Dinky For Kids T7006210",
+          "source_url": "https://stylo.pk/products/dinky-for-kids-t7006210",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPda22d7255b70",
+          "name": "Truck Set For Kids T7006110",
+          "source_url": "https://stylo.pk/products/truck-set-for-kids-t7006110",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3a4d96df4621",
+          "name": "Clay Sets For Kids T7005910",
+          "source_url": "https://stylo.pk/products/clay-sets-for-kids-t7005910",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5ea35814af5a",
+          "name": "Clay Sets For Kids T7005810",
+          "source_url": "https://stylo.pk/products/clay-sets-for-kids-t7005810",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8653f79ffdeb",
+          "name": "Clay Sets For Kids T7005710",
+          "source_url": "https://stylo.pk/products/clay-sets-for-kids-t7005710",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5123bb198dc3",
+          "name": "Clay Sets For Kids T7005610",
+          "source_url": "https://stylo.pk/products/clay-sets-for-kids-t7005610",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP501b5e33ec75",
+          "name": "Fishing Gogo For Kids T7005510",
+          "source_url": "https://stylo.pk/products/fishing-gogo-for-kids-t7005510",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0f547eccaff4",
+          "name": "Building Blocks For Kids T7005410",
+          "source_url": "https://stylo.pk/products/building-blocks-for-kids-t7005410",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe1461a7c221d",
+          "name": "Gift Pack For Men P7410002",
+          "source_url": "https://stylo.pk/products/gift-pack-for-men-p7410002",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP588805f8fcc2",
+          "name": "Dinky Toy Car For Kids T7005201",
+          "source_url": "https://stylo.pk/products/dinky-for-kids-t7005201",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb40823b80cdd",
+          "name": "Salah Box For Kids T7004911",
+          "source_url": "https://stylo.pk/products/salah-box-for-kids-t7004911",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0fe41d208a64",
+          "name": "Salah Box For Kids T7004902",
+          "source_url": "https://stylo.pk/products/salah-box-for-kids-t7004902",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2cbc4508c8ce",
+          "name": "ONO For Kids T7004010",
+          "source_url": "https://stylo.pk/products/ono-for-kids-t7004010",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP657b0079d79f",
+          "name": "Remote Control Pickup Truck For Kids T7003412",
+          "source_url": "https://stylo.pk/products/remote-control-pickup-truck-for-kids-t7003412",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1e26ab72e73c",
+          "name": "Remote Control Aeroplane For Kids T7003201",
+          "source_url": "https://stylo.pk/products/remote-control-aeroplane-for-kids-t7003201",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa23f8a24b995",
+          "name": "Remote Control Aeroplane For Kids T7001712",
+          "source_url": "https://stylo.pk/products/remote-control-aeroplane-for-kids-t7001712",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP552f0f813333",
+          "name": "Golden Casual Softy For Women CLS045",
+          "source_url": "https://stylo.pk/products/golden-casual-softy-for-women-cls045",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP43d83b343c87",
+          "name": "Multy Casual Softy For Ladies CL5569",
+          "source_url": "https://stylo.pk/products/multy-casual-softy-for-ladies-cl5569",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP528062f662be",
+          "name": "Girls Purple Formal Long Shoes KD1926",
+          "source_url": "https://stylo.pk/products/girls-purple-formal-long-shoes-kd1926",
+          "issues": [
+            "Category is too broad or promotional for product-purpose classification",
+            "Brand name used as product Category",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3f0fbf5bd565",
+          "name": "Men Casual Shoes - MN500002",
+          "source_url": "https://stylo.pk/products/men-casual-shoes-mn500002",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe72ec415bb7e",
+          "name": "Men Casual Shoes - MN500205",
+          "source_url": "https://stylo.pk/products/men-casual-shoes-mn500205",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3bcc065a3b89",
+          "name": "Men Casual Shoes - MN500212",
+          "source_url": "https://stylo.pk/products/men-casual-shoes-mn500212",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP017a0423205f",
+          "name": "Men Casual Shoes - MN500105",
+          "source_url": "https://stylo.pk/products/men-casual-shoes-mn500105",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7092898cab4c",
+          "name": "Men Casual Shoes - MN500102",
+          "source_url": "https://stylo.pk/products/men-casual-shoes-mn500102",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPbc6b39af33ef",
+          "name": "Men Casual Shoes - MN500112",
+          "source_url": "https://stylo.pk/products/men-casual-shoes-mn500112",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPdd537b8dcee6",
+          "name": "Men Casual Shoes - MN500048",
+          "source_url": "https://stylo.pk/products/men-casual-shoes-mn500048",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP04f5b3e56c8f",
+          "name": "Men Casual Shoes - MN500005",
+          "source_url": "https://stylo.pk/products/men-casual-shoes-mn500005",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa833d90a3b9a",
+          "name": "Cream Casual Softy For Ladies CL5552",
+          "source_url": "https://stylo.pk/products/cream-casual-softy-for-ladies-cl5552",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7fff87babc70",
+          "name": "Maroon Casual Softy For Ladies CL5581",
+          "source_url": "https://stylo.pk/products/maroon-casual-softy-for-ladies-cl5581",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb7818814de3e",
+          "name": "Golden Lace Net Shrug PS6081",
+          "source_url": "https://stylo.pk/products/golden-lace-net-shrug-ps6081",
+          "issues": [
+            "Brand name used as product Category",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5ea1c8867f31",
+          "name": "Black Casual Softy For Ladies CL5552",
+          "source_url": "https://stylo.pk/products/black-casual-softy-for-ladies-cl5552",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP6fed85b767ab",
+          "name": "Multy Lumina For Women PR0073",
+          "source_url": "https://stylo.pk/products/multy-lumina-for-women-pr0073",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP15218b84621a",
+          "name": "Multy Wild Scape For Women PR0072",
+          "source_url": "https://stylo.pk/products/multy-wild-scape-for-women-pr0072",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb4c742ff3d4b",
+          "name": "Brown Long Shoes For Ladies WN9025",
+          "source_url": "https://stylo.pk/products/brown-long-shoes-for-ladies-wn9025",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP17fac13f8ce9",
+          "name": "Coffee Long Shoes For Ladies WN9024",
+          "source_url": "https://stylo.pk/products/coffee-long-shoes-for-ladies-wn9024",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP6618a3460c65",
+          "name": "Black Long Shoes For Ladies WN9024",
+          "source_url": "https://stylo.pk/products/black-long-shoes-for-ladies-wn9024",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP81b722a1af11",
+          "name": "Maroon Long Shoes For Women WN9023",
+          "source_url": "https://stylo.pk/products/maroon-long-shoes-for-women-wn9023",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPdc36f7d1dfc7",
+          "name": "Black Long Shoes For Women WN9023",
+          "source_url": "https://stylo.pk/products/black-long-shoes-for-women-wn9023",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2651179142cc",
+          "name": "Black Casual Snearker For Ladies AT9112",
+          "source_url": "https://stylo.pk/products/black-casual-snearker-for-ladies-at9112",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2885bd90e755",
+          "name": "Grey Casual Snearker For Ladies AT9112",
+          "source_url": "https://stylo.pk/products/grey-casual-snearker-for-ladies-at9112",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP85aa407255bf",
+          "name": "Golden Casual Women Softy CL7206",
+          "source_url": "https://stylo.pk/products/golden-casual-women-softy-cl7206",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3a32dde58287",
+          "name": "Golden Casual Softy For Ladies CL5592",
+          "source_url": "https://stylo.pk/products/golden-casual-softy-for-ladies-cl5592",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP45467f1514b6",
+          "name": "Seagreen Casual Softy For Ladies CL5555",
+          "source_url": "https://stylo.pk/products/seagreen-casual-softy-for-ladies-cl5555",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP11f87b1e5604",
+          "name": "Yellow Casual Women Softy CL5562",
+          "source_url": "https://stylo.pk/products/yellow-casual-women-softy-cl5562",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPed2e147ed604",
+          "name": "Pink Casual Women Softy CL5562",
+          "source_url": "https://stylo.pk/products/pink-casual-women-softy-cl5562",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPfd927c135b25",
+          "name": "Women Casual Softy - WS006762",
+          "source_url": "https://stylo.pk/products/women-casual-softy-ws006762",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP6118cd5fbd42",
+          "name": "Men Casual Softy - WS014901",
+          "source_url": "https://stylo.pk/products/men-casual-softy-ws014901",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf52bef3c2002",
+          "name": "Black Casual Softy For Ladies CL5496",
+          "source_url": "https://stylo.pk/products/black-casual-softy-for-ladies-cl5496",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "details_truncated": true,
+      "workbook_sha256": "0eaf18bda452d33c34addce3aa4130797c5a0f65d4128d7fc20a8f06b0cec15d",
+      "checked_utc": "2026-10-25T00:22:37.268719+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-25T00:22:37.281636+00:00",
+        "updated_utc": "2026-10-25T00:22:37.281636+00:00",
+        "next_source_check_due_utc": "2026-10-25T00:37:37.281636+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Brand name used as product Category",
+          "Category is too broad or promotional for product-purpose classification",
+          "Category lacks clear product-purpose evidence; manual review required",
+          "Primary product type and Category disagree: earrings",
+          "Primary product type and Category disagree: jeans",
+          "Primary product type and Category disagree: necklace",
+          "Primary product type and Category disagree: stylus"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "description_repairs_count": 86,
+      "description_repairs_examples": [
+        {
+          "product_id": "CP7b6979f678c8",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPdbc6b5515b37",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP0045ee6fc98d",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP7f3b66f4c692",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP670daeb3f592",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPb112f3af0cce",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPb050628ae2a9",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP6b07a7792a0e",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP87f0af87c86e",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP48e6caa3e862",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        }
+      ],
+      "campaign_id": "fresh804-20261024-c055e80e",
+      "source_run": "40140484733",
+      "source_artifact": 12580627197,
+      "source_sha256": "de2211c05acca364497c068293cc05c2382bc6647a537dbdc1d6303c0f45e475",
+      "held_input": "inputs/fresh804-20261024-c055e80e/stylo/de2211c05acca364/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -3871,8 +4775,8 @@
     "SE10021": "inputs/fresh804-20261024-c055e80e/rollback-se10021/0ec723307e5d4f01/manifest.json",
     "SE10013": "inputs/fresh804-20261024-c055e80e/rollback-se10013/3cdd162817556cc8/manifest.json"
   },
-  "audit804_last_store": "Zellbury",
-  "audit804_progress_utc": "2026-10-24T23:41:37.584814+00:00",
+  "audit804_last_store": "Stylo",
+  "audit804_progress_utc": "2026-10-25T00:22:49.773413+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Gul Ahmed",
