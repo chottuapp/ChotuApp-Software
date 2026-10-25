@@ -6,6 +6,11 @@ on:
         description: Reviewed private User App source commit
         required: true
         type: string
+      build_run:
+        description: Optional successful build job run to reuse for native checks
+        required: false
+        default: ''
+        type: string
 permissions:
   contents: read
   actions: read
@@ -14,6 +19,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   build:
+    if: ${{ inputs.build_run == '' }}
     runs-on: ubuntu-24.04
     timeout-minutes: 50
     environment: chotu-cloud-release
@@ -23,6 +29,7 @@ jobs:
       - name: Require reviewed source and restricted build credential
         env:
           SOURCE_KEY: ${{ secrets.CHOTU_APP_SOURCE_KEY }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           [[ "$SOURCE_SHA" =~ ^[a-f0-9]{40}$ ]] || exit 1
@@ -31,7 +38,7 @@ jobs:
           key="$RUNNER_TEMP/chotu-source-key"
           trap 'rm -f "$key" "$RUNNER_TEMP/chotu-source-hosts"' EXIT
           printf '%s\n' "$SOURCE_KEY" > "$key"
-          curl -fsS --retry 3 --max-time 60 https://api.github.com/meta | python3 -c 'import json,sys; print("\n".join("github.com "+k for k in json.load(sys.stdin)["ssh_keys"]))' > "$RUNNER_TEMP/chotu-source-hosts"
+          curl -fsS --retry 3 --max-time 60 -H "Authorization: Bearer $GH_TOKEN" https://api.github.com/meta | python3 -c 'import json,sys; print("\n".join("github.com "+k for k in json.load(sys.stdin)["ssh_keys"]))' > "$RUNNER_TEMP/chotu-source-hosts"
           export GIT_SSH_COMMAND="ssh -i $key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$RUNNER_TEMP/chotu-source-hosts"
           if ! (
             git init -q "$RUNNER_TEMP/chotu-private-source"
@@ -94,6 +101,7 @@ jobs:
           rm -f -- "$RUNNER_TEMP/private-checkout.log" "$RUNNER_TEMP/private-apk-build.log" "$RUNNER_TEMP/chotu-source-key" "$RUNNER_TEMP/chotu-source-hosts" "$RUNNER_TEMP/production-android.json" "$RUNNER_TEMP/original-resources.txt" "$RUNNER_TEMP/original-manifest.xml"
   native-test:
     needs: build
+    if: ${{ always() && (needs.build.result == 'success' || (needs.build.result == 'skipped' && inputs.build_run != '')) }}
     runs-on: ubuntu-24.04
     timeout-minutes: 25
     environment: chotu-cloud-release
@@ -103,6 +111,7 @@ jobs:
       - name: Require reviewed source and restricted build credential
         env:
           SOURCE_KEY: ${{ secrets.CHOTU_APP_SOURCE_KEY }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           [[ "$SOURCE_SHA" =~ ^[a-f0-9]{40}$ ]] || exit 1
@@ -111,7 +120,7 @@ jobs:
           key="$RUNNER_TEMP/chotu-source-key"
           trap 'rm -f "$key" "$RUNNER_TEMP/chotu-source-hosts"' EXIT
           printf '%s\n' "$SOURCE_KEY" > "$key"
-          curl -fsS --retry 3 --max-time 60 https://api.github.com/meta | python3 -c 'import json,sys; print("\n".join("github.com "+k for k in json.load(sys.stdin)["ssh_keys"]))' > "$RUNNER_TEMP/chotu-source-hosts"
+          curl -fsS --retry 3 --max-time 60 -H "Authorization: Bearer $GH_TOKEN" https://api.github.com/meta | python3 -c 'import json,sys; print("\n".join("github.com "+k for k in json.load(sys.stdin)["ssh_keys"]))' > "$RUNNER_TEMP/chotu-source-hosts"
           export GIT_SSH_COMMAND="ssh -i $key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$RUNNER_TEMP/chotu-source-hosts"
           if ! (
             git init -q "$RUNNER_TEMP/chotu-private-source"
@@ -128,6 +137,25 @@ jobs:
         with:
           name: production-user-apk
           path: ${{ runner.temp }}/customer-apk
+          run-id: ${{ inputs.build_run || github.run_id }}
+          github-token: ${{ github.token }}
+      - name: Verify reused signed build job succeeded
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BUILD_RUN: ${{ inputs.build_run || github.run_id }}
+        run: |
+          set -euo pipefail
+          [[ "$BUILD_RUN" =~ ^[0-9]+$ ]]
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$BUILD_RUN" > "$RUNNER_TEMP/apk-build-run.json"
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$BUILD_RUN/jobs?per_page=100" > "$RUNNER_TEMP/apk-build-jobs.json"
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=Path(os.environ['RUNNER_TEMP']);r=json.loads((p/'apk-build-run.json').read_text());jobs=json.loads((p/'apk-build-jobs.json').read_text())['jobs']
+          assert r['path']=='.github/workflows/chotu-user-apk-cloud.yml' and r['event']=='workflow_dispatch'
+          assert r['repository']['full_name']=='chottuapp/ChotuApp-Software'
+          assert any(j['name']=='build' and j['conclusion']=='success' for j in jobs),'Original APK build job did not succeed'
+          PY
       - name: Verify signed artifact identity before native checks
         run: |
           python3 - <<'PY'
@@ -176,6 +204,7 @@ jobs:
       - name: Require reviewed source and restricted build credential
         env:
           SOURCE_KEY: ${{ secrets.CHOTU_APP_SOURCE_KEY }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           [[ "$SOURCE_SHA" =~ ^[a-f0-9]{40}$ ]] || exit 1
@@ -184,7 +213,7 @@ jobs:
           key="$RUNNER_TEMP/chotu-source-key"
           trap 'rm -f "$key" "$RUNNER_TEMP/chotu-source-hosts"' EXIT
           printf '%s\n' "$SOURCE_KEY" > "$key"
-          curl -fsS --retry 3 --max-time 60 https://api.github.com/meta | python3 -c 'import json,sys; print("\n".join("github.com "+k for k in json.load(sys.stdin)["ssh_keys"]))' > "$RUNNER_TEMP/chotu-source-hosts"
+          curl -fsS --retry 3 --max-time 60 -H "Authorization: Bearer $GH_TOKEN" https://api.github.com/meta | python3 -c 'import json,sys; print("\n".join("github.com "+k for k in json.load(sys.stdin)["ssh_keys"]))' > "$RUNNER_TEMP/chotu-source-hosts"
           export GIT_SSH_COMMAND="ssh -i $key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$RUNNER_TEMP/chotu-source-hosts"
           if ! (
             git init -q "$RUNNER_TEMP/chotu-private-source"
@@ -201,6 +230,8 @@ jobs:
         with:
           name: production-user-apk
           path: ${{ runner.temp }}/customer-apk
+          run-id: ${{ inputs.build_run || github.run_id }}
+          github-token: ${{ github.token }}
       - name: Publish only the signed native-tested customer APK
         env:
           SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
