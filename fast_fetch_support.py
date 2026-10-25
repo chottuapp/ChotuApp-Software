@@ -187,8 +187,9 @@ def enable_fast_fetch(g):
         gate=getattr(tls,'fast_gate',None)
         if reason=='Rate limit' and gate is not None and gate.limited:
             raise gate.blocked_error()
-        # The shared transport gate replaces independent worker pacing only.
-        if getattr(tls,'fast_preloading',False) and reason=='Adaptive pacing':
+        # The shared transport gate paces every cache miss, including canonical
+        # verification. Do not wait twice for one request in that final pass.
+        if gate is not None and reason=='Adaptive pacing':
             g['_chotu_wait']();return
         return old_backoff(seconds,reason)
     g['_chotu_open_checkpoint']=open_checkpoint;g['_chotu_close_checkpoint']=close_checkpoint;g['_chotu_backoff']=backoff
