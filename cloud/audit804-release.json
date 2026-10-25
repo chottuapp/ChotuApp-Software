@@ -1,6 +1,6 @@
 {
   "campaign_id": "fresh804-20261025-fbb5ff31",
-  "request": "Owner requested zero fresh restart excluding Khaadi; strict live PKR prices, genuine discount prices and source stock; max three stores per runner",
+  "request": "Owner paused LAAM and Khaadi; all other stores continue without a fresh restart",
   "requested_date_pkt": "2026-10-25",
   "destination_folder": "ChotuApp 19-10-2026 11-36AM",
   "audit_name": "804 Audit",
@@ -11,8 +11,10 @@
   "audit_recovery": "active_correction_queue",
   "khaadi_execution": "excluded_by_owner_request",
   "excluded_stores": [
-    "Khaadi"
+    "Khaadi",
+    "LAAM"
   ],
   "stock_policy": "Exclude fully out-of-stock products; retain source-confirmed unavailable variants of included products. LAAM active visible in-stock clothing only.",
-  "price_policy": "Live variant identity, PKR prices and availability verified; no cached-price fallback on failed verification; sale only where actual payable price is below source compare-at price."
+  "price_policy": "Live variant identity, PKR prices and availability verified; no cached-price fallback on failed verification; sale only where actual payable price is below source compare-at price.",
+  "laam_fresh_enabled": false
 }
