@@ -1,0 +1,101 @@
+name: Chotu Tested Cloud Web Release
+on:
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Reviewed private source commit (must match built frontend trees)
+        required: true
+        type: string
+      build_run:
+        description: Successful cloud browser build run ID
+        required: true
+        type: string
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: chotu-cloud-production-release
+  cancel-in-progress: false
+jobs:
+  release:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    environment: chotu-cloud-release
+    env:
+      SOURCE_SHA: ${{ inputs.source_sha }}
+      BUILD_RUN: ${{ inputs.build_run }}
+    steps:
+      - name: Validate build run identifier
+        run: '[[ "$BUILD_RUN" =~ ^[0-9]+$ ]]'
+      - name: Require reviewed source and restricted build credential
+        env:
+          SOURCE_KEY: ${{ secrets.CHOTU_APP_SOURCE_KEY }}
+          DEPLOY_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+          FIREBASE_ACCESS: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CHOTU_ADMIN_APP }}
+        run: |
+          set -euo pipefail
+          [[ "$SOURCE_SHA" =~ ^[a-f0-9]{40}$ ]] || exit 1
+          test -n "$SOURCE_KEY" || { echo '::error::Run the one-time Chotu cloud setup. No PC runner or paid fallback is used.'; exit 1; }
+          test -n "$DEPLOY_KEY" && test -n "$FIREBASE_ACCESS" || { echo "::error::Encrypted release access has not been configured."; exit 1; }
+          umask 077
+          key="$RUNNER_TEMP/chotu-source-key"
+          trap 'rm -f "$key" "$RUNNER_TEMP/chotu-source-hosts"' EXIT
+          printf '%s\n' "$SOURCE_KEY" > "$key"
+          curl -fsS --retry 3 --max-time 60 https://api.github.com/meta | python3 -c 'import json,sys; print("\n".join("github.com "+k for k in json.load(sys.stdin)["ssh_keys"]))' > "$RUNNER_TEMP/chotu-source-hosts"
+          export GIT_SSH_COMMAND="ssh -i $key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$RUNNER_TEMP/chotu-source-hosts"
+          if ! (
+            git init -q "$RUNNER_TEMP/chotu-private-source"
+            cd "$RUNNER_TEMP/chotu-private-source"
+            git remote add origin git@github.com:chottuapp/ChotuProject-development.git
+            git fetch -q --depth=1 origin "$SOURCE_SHA"
+            git checkout -q --detach FETCH_HEAD
+            git fetch -q --depth=1 origin 5ecb2661b966c3cb2a0d15b33c3fd230d56f4ff6
+            test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
+          ) > "$RUNNER_TEMP/private-checkout.log" 2>&1; then
+            echo '::error::Private checkout failed. Check the read-only deploy key and approved commit; private logs are not uploaded.'
+            exit 1
+          fi
+      - uses: actions/download-artifact@v4
+        with:
+          name: production-user
+          path: ${{ runner.temp }}/production-user
+          run-id: ${{ inputs.build_run }}
+          github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: production-admin
+          path: ${{ runner.temp }}/chotu-private-source/chotu-admin/build/web
+          run-id: ${{ inputs.build_run }}
+          github-token: ${{ github.token }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Guarded backed-up release and read-only live verification
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+          FIREBASE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CHOTU_ADMIN_APP }}
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/chotu-private-source"
+          if ! bash scripts/cloud/publish-tested-web.sh 3>&1 > "$RUNNER_TEMP/private-release.log" 2>&1; then
+            python3 - <<'PYERROR'
+          import os
+          from pathlib import Path
+          text=(Path(os.environ['RUNNER_TEMP'])/'private-release.log').read_text(errors='replace')
+          reason='Private release check failed; check the last completed public stage. No private logs or customer data were uploaded.'
+          if 'Production code conflict' in text: reason='Server source conflict detected; guarded installation stopped. Do not override without reviewing the live change.'
+          elif 'Permission denied (publickey)' in text: reason='Amazon SSH authentication failed; no server code was published by this attempt.'
+          elif 'Built frontend differs' in text: reason='Reviewed source differs from the built frontend; rebuild before deploying.'
+          print('::error::'+reason)
+          PYERROR
+            exit 1
+          fi
+          echo 'User App: https://app.chotuapp.com/user/'
+          echo 'Admin: https://chotu-admin-app.web.app/'
+      - name: Remove temporary private source, logs and credential files
+        if: always()
+        run: |
+          rm -rf -- "$RUNNER_TEMP/chotu-private-source"
+          rm -f -- "$RUNNER_TEMP/private-checkout.log" "$RUNNER_TEMP/private-release.log" "$RUNNER_TEMP/chotu-source-key" "$RUNNER_TEMP/chotu-source-hosts" "$RUNNER_TEMP/market-key" "$RUNNER_TEMP/firebase-cloud-release.json"
