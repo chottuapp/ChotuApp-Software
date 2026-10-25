@@ -1680,7 +1680,8 @@
     "Tawakkal Fabrics": "source:d55d7e744b1b9908ea78690452a42343a5e147da526b34b9c331a99bd6284952:Tawakkal Fabrics:573b34d4c04e746e73d2ea09b46d142825e538dbbc6210723d9a3db1d2c5564b",
     "Elite Cosmetics": "source:aea9e74fba44cc58345fabc8b901b2fabbfbc0a5f54ce016cb09c38fd033db94:Elite Cosmetics:573b34d4c04e746e73d2ea09b46d142825e538dbbc6210723d9a3db1d2c5564b",
     "Hemani Herbals": "source:228b92b5eae005965872a016665e4f0e1bc8c91d1548f27da7f8b28ffa82bdb0:Hemani Herbals:573b34d4c04e746e73d2ea09b46d142825e538dbbc6210723d9a3db1d2c5564b",
-    "Sapphire": "source:89b481079a132a941ae47f196145d3095b2543e26a2026b759e071dbb84e802e:Sapphire:573b34d4c04e746e73d2ea09b46d142825e538dbbc6210723d9a3db1d2c5564b"
+    "Sapphire": "source:89b481079a132a941ae47f196145d3095b2543e26a2026b759e071dbb84e802e:Sapphire:573b34d4c04e746e73d2ea09b46d142825e538dbbc6210723d9a3db1d2c5564b",
+    "Rawayat": "source:ad6574deac7a5d044521361a3b428be8343fc02781bda196dc0a666a5876f9ba:Rawayat:573b34d4c04e746e73d2ea09b46d142825e538dbbc6210723d9a3db1d2c5564b"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -2507,6 +2508,172 @@
       "source_run": "40192242068",
       "source_artifact": 12599830630,
       "source_sha256": "89b481079a132a941ae47f196145d3095b2543e26a2026b759e071dbb84e802e"
+    },
+    "Rawayat": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Rawayat",
+      "shop_code": "SE10013",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 4416,
+      "findings_count": 8,
+      "findings": [
+        {
+          "product_id": "CP6179e3817d06",
+          "name": "Celeste Trio Set",
+          "source_url": "https://rawayat.com.pk/products/celeste-trio-set",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe91694f53d74",
+          "name": "Silver Charm \u2013 5 Rings Bundle",
+          "source_url": "https://rawayat.com.pk/products/silver-charm-5-rings-bundle",
+          "issues": [
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CP4b2890e21c58",
+          "name": "Golden Grace Trio Bundle (Anti Tarnish)",
+          "source_url": "https://rawayat.com.pk/products/golden-grace-trio-bundle-anti-tarnish",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CP1c0d426924c7",
+          "name": "Golden Leaf Elegance Duo",
+          "source_url": "https://rawayat.com.pk/products/golden-leaf-elegance-duo",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3e6e35c393a2",
+          "name": "Golden Charm Elegance Bundle (Anti Tarnish)",
+          "source_url": "https://rawayat.com.pk/products/golden-charm-elegance-bundle-anti-tarnish",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CP73e664a7e89f",
+          "name": "Golden Bloom Elegance Bundle (Anti Tarnish)",
+          "source_url": "https://rawayat.com.pk/products/golden-bloom-elegance-bundle-anti-tarnish",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CPf495b6f1e340",
+          "name": "Golden Star Elegance Bundle (Anti Tarnish)",
+          "source_url": "https://rawayat.com.pk/products/golden-star-elegance-bundle-anti-tarnish",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CP56b66aeeb984",
+          "name": "Golden Luxe Trio Bundle (Anti Tarnish)",
+          "source_url": "https://rawayat.com.pk/products/golden-luxe-trio-bundle",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Bundle appears classified as a single component"
+          ]
+        }
+      ],
+      "details_truncated": false,
+      "workbook_sha256": "ab973b82fd3bee5dd43ec69a37c5c075b636760c3b8ad2a61edf165c038b959c",
+      "checked_utc": "2026-10-25T14:10:19.552420+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-25T14:10:19.559747+00:00",
+        "updated_utc": "2026-10-25T14:10:19.559747+00:00",
+        "next_source_check_due_utc": "2026-10-25T14:25:19.559747+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Bundle appears classified as a single component",
+          "Category lacks clear product-purpose evidence; manual review required",
+          "Description lacks enough product-specific content for review"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "owner_authorized_exclusions": [],
+      "description_repairs_count": 655,
+      "description_repairs_examples": [
+        {
+          "product_id": "CPece9d6193d87",
+          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPdd4b654c31c3",
+          "issue": "Rewrote source-listed pack quantity, product type and listing reference; no material or stock claims added.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPe704ec835fcc",
+          "issue": "Rewrote explicit earring colour and listing reference; no composition invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP7c01b4572029",
+          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPac16dca185d9",
+          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPe91694f53d74",
+          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPbc5bc72c0159",
+          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP78fba76e28be",
+          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP830f075f9d46",
+          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP18e632e0dc43",
+          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
+          "repair_kind": "description"
+        }
+      ],
+      "campaign_id": "fresh804-20261025-fbb5ff31",
+      "source_run": "40199148329",
+      "source_artifact": 12600979862,
+      "source_sha256": "ad6574deac7a5d044521361a3b428be8343fc02781bda196dc0a666a5876f9ba",
+      "held_input": "inputs/fresh804-20261025-fbb5ff31/rawayat/ad6574deac7a5d04/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -2563,8 +2730,8 @@
     "SE10010": "inputs/fresh804-20261024-c055e80e/rollback-se10010/c98ed9980fd8369e/manifest.json",
     "SH10003": "inputs/fresh804-20261025-fbb5ff31/rollback-sh10003/8abc55373bb9c6b2/manifest.json"
   },
-  "audit804_last_store": "Hemani Herbals",
-  "audit804_progress_utc": "2026-10-25T13:39:46.568483+00:00",
+  "audit804_last_store": "Rawayat",
+  "audit804_progress_utc": "2026-10-25T14:10:32.012114+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Elite Cosmetics",
