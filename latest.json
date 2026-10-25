@@ -1,52 +1,57 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-25T14:09:25.632125+00:00",
-  "run_id": "40199148329",
+  "generated_utc": "2026-10-25T15:16:14.296176+00:00",
+  "run_id": "40199076919",
   "attempt": "1",
   "source_commit": "82efdd7a373c3c0828bd564ed58ca0ad47c067c1",
-  "status": "complete",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 1304.9,
+  "elapsed_seconds": 5400.7,
   "stores": [
     {
-      "name": "Miss Rose",
+      "name": "Nisa Naturals",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "7d3c45cf7b4fd6ea",
-      "products": 178,
-      "variants": 1806,
+      "products": 55,
+      "variants": 55,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
       "cache_events": 0
     },
     {
-      "name": "Rivaj UK",
+      "name": "LAAM",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_503",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "7d3c45cf7b4fd6ea",
+      "http_statuses": {
+        "200": 1687,
+        "503": 3,
+        "500": 55
+      },
+      "network_seconds": 4594.7,
+      "max_response_seconds": 18.3,
+      "cache_events": 0
+    },
+    {
+      "name": "Sapphire",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "7d3c45cf7b4fd6ea",
-      "products": 318,
-      "variants": 967,
+      "products": 1050,
+      "variants": 3771,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
       "cache_events": 0
-    },
-    {
-      "name": "Rawayat",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "7d3c45cf7b4fd6ea",
-      "products": 4416,
-      "variants": 5847,
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 17860
     }
   ]
 }
