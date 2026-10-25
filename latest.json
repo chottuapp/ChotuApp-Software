@@ -1681,7 +1681,8 @@
     "Elite Cosmetics": "source:aea9e74fba44cc58345fabc8b901b2fabbfbc0a5f54ce016cb09c38fd033db94:Elite Cosmetics:573b34d4c04e746e73d2ea09b46d142825e538dbbc6210723d9a3db1d2c5564b",
     "Hemani Herbals": "source:228b92b5eae005965872a016665e4f0e1bc8c91d1548f27da7f8b28ffa82bdb0:Hemani Herbals:573b34d4c04e746e73d2ea09b46d142825e538dbbc6210723d9a3db1d2c5564b",
     "Sapphire": "source:89b481079a132a941ae47f196145d3095b2543e26a2026b759e071dbb84e802e:Sapphire:573b34d4c04e746e73d2ea09b46d142825e538dbbc6210723d9a3db1d2c5564b",
-    "Rawayat": "source:ad6574deac7a5d044521361a3b428be8343fc02781bda196dc0a666a5876f9ba:Rawayat:573b34d4c04e746e73d2ea09b46d142825e538dbbc6210723d9a3db1d2c5564b"
+    "Rawayat": "source:ad6574deac7a5d044521361a3b428be8343fc02781bda196dc0a666a5876f9ba:Rawayat:573b34d4c04e746e73d2ea09b46d142825e538dbbc6210723d9a3db1d2c5564b",
+    "Outfitters": "source:0831c49627debafb98615330e8201b70495823372be2bcc636850ff5e05c1c8d:Outfitters:573b34d4c04e746e73d2ea09b46d142825e538dbbc6210723d9a3db1d2c5564b"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -2674,6 +2675,62 @@
       "source_artifact": 12600979862,
       "source_sha256": "ad6574deac7a5d044521361a3b428be8343fc02781bda196dc0a666a5876f9ba",
       "held_input": "inputs/fresh804-20261025-fbb5ff31/rawayat/ad6574deac7a5d04/manifest.json"
+    },
+    "Outfitters": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Outfitters",
+      "shop_code": "SE10026",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 3826,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CPb8dc685d9fcb",
+          "name": "All-Over Character Print Gillet",
+          "source_url": "https://outfitters.com.pk/products/f0104-301",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        }
+      ],
+      "details_truncated": false,
+      "workbook_sha256": "7847015cd9088371fc8dd9476330f64e487bef3480f8f1929a5a6d03e45f220e",
+      "checked_utc": "2026-10-25T14:40:42.306304+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-25T14:40:42.312651+00:00",
+        "updated_utc": "2026-10-25T14:40:42.312651+00:00",
+        "next_source_check_due_utc": "2026-10-25T14:55:42.312651+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "owner_authorized_exclusions": [],
+      "description_repairs_count": 1,
+      "description_repairs_examples": [
+        {
+          "product_id": "CPe50507f3b987",
+          "issue": "Added the public product_type Jeans; every saved option retained.",
+          "repair_kind": "description"
+        }
+      ],
+      "campaign_id": "fresh804-20261025-fbb5ff31",
+      "source_run": "40199213698",
+      "source_artifact": 12602138852,
+      "source_sha256": "0831c49627debafb98615330e8201b70495823372be2bcc636850ff5e05c1c8d",
+      "held_input": "inputs/fresh804-20261025-fbb5ff31/outfitters/0831c49627debafb/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -2730,8 +2787,8 @@
     "SE10010": "inputs/fresh804-20261024-c055e80e/rollback-se10010/c98ed9980fd8369e/manifest.json",
     "SH10003": "inputs/fresh804-20261025-fbb5ff31/rollback-sh10003/8abc55373bb9c6b2/manifest.json"
   },
-  "audit804_last_store": "Rawayat",
-  "audit804_progress_utc": "2026-10-25T14:10:32.012114+00:00",
+  "audit804_last_store": "Outfitters",
+  "audit804_progress_utc": "2026-10-25T14:40:55.430049+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Elite Cosmetics",
