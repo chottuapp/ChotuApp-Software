@@ -83,6 +83,28 @@ def product_state(soup,handle,clothing_only=False,active_only=False,in_stock_onl
     product['_website_category_evidence']=breadcrumb(soup,BASE+'/products/'+handle)
     return product
 
+# This revision only changes parsing of previously rejected option titles. Products
+# successfully normalized by the reviewed predecessor have identical cache schema.
+COMPATIBLE_PARSED_REVISIONS={'1c7604a7c33b8a7310d370dab183c0feed8bdbac88f53557f47928fb4d68672e'}
+
+def declared_option_title(title,dimensions):
+    """Resolve separators inside declared values without inventing combinations."""
+    answers=[];visits=0
+    def match(index,remaining,chosen):
+        nonlocal visits
+        visits+=1
+        if visits>10000:raise ValueError('LAAM option title matching exceeds safe bounds')
+        if len(answers)>1:return
+        if index==len(dimensions):
+            if remaining=='':answers.append(chosen)
+            return
+        for value in dict.fromkeys(dimensions[index]['values']):
+            prefix=value+(' / ' if index<len(dimensions)-1 else '')
+            if remaining.startswith(prefix):match(index+1,remaining[len(prefix):],chosen+[value])
+    match(0,str(title or ''),[])
+    if len(answers)>1:raise ValueError('LAAM option title matches multiple declared combinations')
+    return answers[0] if answers else None
+
 def normalize(raw,handle,active_only=False,in_stock_only=False):
     if raw.get('handle')!=handle or raw.get('id') is None or not raw.get('title'):raise ValueError('Incomplete LAAM identity')
     if str(raw.get('status') or '').lower() not in ('active','draft','archived'):raise ValueError('LAAM publication status unverified')
@@ -121,7 +143,7 @@ def normalize(raw,handle,active_only=False,in_stock_only=False):
         if isinstance(quantity,int) and not isinstance(quantity,bool) and quantity>=0:
             row.update(inventory_quantity=quantity,inventory_management='public')
         explicit=[variant.get('option'+str(i)) for i in range(1,len(dims)+1)]
-        values=explicit if all(v is not None for v in explicit) else str(variant.get('title') or '').split(' / ') if dims else []
+        values=explicit if all(v is not None for v in explicit) else (declared_option_title(variant.get('title'),dims) or str(variant.get('title') or '').split(' / ')) if dims else []
         # Verified airah-3 layout repeats its final Color in the display title.
         # Collapse exactly one identical trailing colour, only with complete declared dimensions.
         if (not all(v is not None for v in explicit) and len(values)==len(dims)+1 and dims
@@ -154,13 +176,15 @@ class ParsedProductCache:
     def __init__(self,path,revision=None):
         from resume_support import configure_response_database
         self.revision=revision or hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+        self.compatible_revisions=({self.revision}|COMPATIBLE_PARSED_REVISIONS) if revision is None else {self.revision}
         self.db=sqlite3.connect(path,timeout=30);configure_response_database(self.db)
         self.db.execute('CREATE TABLE IF NOT EXISTS parsed_products(url TEXT PRIMARY KEY,revision TEXT NOT NULL,payload BLOB NOT NULL,checksum TEXT NOT NULL)')
         self.db.execute('CREATE TABLE IF NOT EXISTS temporary_failures(url TEXT PRIMARY KEY,retry_after REAL NOT NULL)');self.db.commit()
     def get(self,url):
-        row=self.db.execute('SELECT payload,checksum FROM parsed_products WHERE url=? AND revision=?',(url,self.revision)).fetchone()
+        row=self.db.execute('SELECT payload,checksum,revision FROM parsed_products WHERE url=?',(url,)).fetchone()
+        if row is not None and row[2] not in self.compatible_revisions:return None
         if row is None:return None
-        body,checksum=row
+        body,checksum,_revision=row
         try:
             if hashlib.sha256(body).hexdigest()!=checksum:raise ValueError('Cache checksum mismatch')
             decoder=zlib.decompressobj();raw=decoder.decompress(body,20*1024**2)

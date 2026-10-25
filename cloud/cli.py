@@ -41,7 +41,9 @@ def checkpoint(data,destination,max_bytes=250*1024*1024):
             with sqlite3.connect(parsed.resolve().as_uri()+'?mode=ro',uri=True) as db:
                 if db.execute('PRAGMA quick_check').fetchone()[0]!='ok':continue
                 revision=__import__('hashlib').sha256((Path(__file__).resolve().parent.parent/'laam_source_support.py').read_bytes()).hexdigest()
-                if db.execute('SELECT COUNT(*) FROM parsed_products WHERE revision=?',(revision,)).fetchone()[0]:compacted.add(parsed.parent)
+                from laam_source_support import COMPATIBLE_PARSED_REVISIONS
+                revisions=tuple({revision}|COMPATIBLE_PARSED_REVISIONS)
+                if db.execute('SELECT COUNT(*) FROM parsed_products WHERE revision IN ('+','.join('?' for _ in revisions)+')',revisions).fetchone()[0]:compacted.add(parsed.parent)
         except (sqlite3.Error,OSError):continue
     if compacted:print('Checkpoint compaction: retaining LAAM parsed products; omitting redundant raw HTML response caches in '+str(len(compacted))+' store folders.',flush=True)
     def needed(path):
