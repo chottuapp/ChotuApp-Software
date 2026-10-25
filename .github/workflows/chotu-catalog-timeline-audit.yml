@@ -1,0 +1,91 @@
+name: Chotu Read Only Catalog Timeline Audit
+on:
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Reviewed read-only audit implementation commit
+        required: true
+        type: string
+      report_public_key:
+        description: Public encryption key for the private audit report
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: chotu-read-only-catalog-timeline
+  cancel-in-progress: false
+jobs:
+  inspect:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    environment: chotu-cloud-release
+    env:
+      SOURCE_SHA: ${{ inputs.source_sha }}
+    steps:
+      - name: Require reviewed source and restricted build credential
+        env:
+          SOURCE_KEY: ${{ secrets.CHOTU_APP_SOURCE_KEY }}
+        run: |
+          set -euo pipefail
+          [[ "$SOURCE_SHA" =~ ^[a-f0-9]{40}$ ]] || exit 1
+          test -n "$SOURCE_KEY" || { echo '::error::Run the one-time Chotu cloud setup. No PC runner or paid fallback is used.'; exit 1; }
+          umask 077
+          key="$RUNNER_TEMP/chotu-source-key"
+          trap 'rm -f "$key" "$RUNNER_TEMP/chotu-source-hosts"' EXIT
+          printf '%s\n' "$SOURCE_KEY" > "$key"
+          curl -fsS --retry 3 --max-time 60 https://api.github.com/meta | python3 -c 'import json,sys; print("\n".join("github.com "+k for k in json.load(sys.stdin)["ssh_keys"]))' > "$RUNNER_TEMP/chotu-source-hosts"
+          export GIT_SSH_COMMAND="ssh -i $key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$RUNNER_TEMP/chotu-source-hosts"
+          if ! (
+            git init -q "$RUNNER_TEMP/chotu-private-source"
+            cd "$RUNNER_TEMP/chotu-private-source"
+            git remote add origin git@github.com:chottuapp/ChotuProject-development.git
+            git fetch -q --depth=1 origin "$SOURCE_SHA"
+            git checkout -q --detach FETCH_HEAD
+            test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
+          ) > "$RUNNER_TEMP/private-checkout.log" 2>&1; then
+            echo '::error::Private checkout failed. Check the read-only deploy key and approved commit; private logs are not uploaded.'
+            exit 1
+          fi
+      - name: Read-only production catalog lineage and encrypt report
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+          REPORT_PUBLIC_KEY: ${{ inputs.report_public_key }}
+        run: |
+          set -euo pipefail
+          umask 077
+          key="$RUNNER_TEMP/catalog-audit-ssh-key"
+          trap 'rm -f "$key"' EXIT
+          printf '%s\n' "$SSH_PRIVATE_KEY" > "$key"
+          mkdir -p "$HOME/.ssh"
+          ssh-keyscan -T 15 -H 46.137.199.32 >> "$HOME/.ssh/known_hosts" 2>/dev/null
+          opts=(-o BatchMode=yes -o ConnectTimeout=20 -i "$key")
+          remote=ec2-user@46.137.199.32
+          owner=$(ssh "${opts[@]}" "$remote" "stat -c '%U' /var/www/html/.env")
+          [[ "$owner" =~ ^[a-zA-Z_][a-zA-Z0-9_-]*$ && "$owner" != root ]]
+          if ! ssh "${opts[@]}" "$remote" "cd /var/www/html && sudo -n -u '$owner' php" < "$RUNNER_TEMP/chotu-private-source/scripts/cloud/audit-live-catalog-times.php" > "$RUNNER_TEMP/private-catalog-report.json" 2> "$RUNNER_TEMP/private-catalog-error.log"; then
+            echo '::error::Read-only catalog inspection failed; no private report or logs were published.'
+            exit 1
+          fi
+          python3 - <<'PY'
+          import os,base64,json,ctypes,ctypes.util
+          from pathlib import Path
+          p=Path(os.environ['RUNNER_TEMP']);key=base64.b64decode(os.environ['REPORT_PUBLIC_KEY'],validate=True);assert len(key)==32
+          data=(p/'private-catalog-report.json').read_bytes();body=json.loads(data);assert 'app_timezone' in body and 'runs' in body
+          lib=ctypes.CDLL(ctypes.util.find_library('sodium'));assert lib.sodium_init()>=0
+          lib.crypto_box_seal.argtypes=[ctypes.c_void_p,ctypes.c_void_p,ctypes.c_ulonglong,ctypes.c_void_p]
+          output=ctypes.create_string_buffer(len(data)+48);assert lib.crypto_box_seal(output,data,len(data),key)==0
+          (p/'encrypted-catalog-report.bin').write_bytes(output.raw)
+          print('Read-only inspection completed; only encrypted report is uploaded. No catalog or live settings were changed.')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: encrypted-catalog-timeline
+          path: ${{ runner.temp }}/encrypted-catalog-report.bin
+          retention-days: 1
+      - name: Remove private audit source plaintext report and key
+        if: always()
+        run: |
+          rm -rf -- "$RUNNER_TEMP/chotu-private-source"
+          rm -f -- "$RUNNER_TEMP/private-checkout.log" "$RUNNER_TEMP/private-catalog-report.json" "$RUNNER_TEMP/private-catalog-error.log" "$RUNNER_TEMP/catalog-audit-ssh-key" "$RUNNER_TEMP/chotu-source-key" "$RUNNER_TEMP/chotu-source-hosts"
