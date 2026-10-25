@@ -414,9 +414,7 @@
       "image_sha256": "1b8df8a76145213524aeabee663d816a206cfc568de0ad101f6c32cc20833d83",
       "reviewed_utc": "2026-10-25T08:06:32.860964+00:00",
       "scope": "Exact matching public product_type Perfumes and product bottle label Eau de Parfum; no volume, notes, ingredients, stock or price inferred."
-    }
-  ],
-  "source_conflicts": [
+    },
     {
       "product_id": "CP2a5695f0be86",
       "name": "Rose Petal Party Pack: Elegant and Romantic Party Decor for Special Occasions",
@@ -424,9 +422,28 @@
       "input_description_sha256": "0c25a9df7e3faf49b327275bd8a1e5fb0eda905b89cd8231c989c003d22a6839",
       "image_url": "https://cdn.shopify.com/s/files/1/0732/4565/5356/files/orgsize_2860WhatsApp_20Image_202024-08-24_20at_204.20.22_20PM.webp?v=1748139236",
       "image_sha256": "b025c3c9300571913ec6f362194935e6feab6d2cb5e94ebc0cb238b07fa6f03a",
-      "issue": "Source identity conflict: Rose Petal Party Pack prose claims loose faux rose petals, but its primary image shows branded boxed packaging; actual contents require a corrected primary source.",
-      "checked_utc": "2026-10-24T16:13:29.730943+00:00"
-    },
+      "store": "Elite Cosmetics",
+      "category": "Table Tissues",
+      "overview": "Rose Petal Party Pack contains tissue paper for table settings, parties, gatherings and everyday clean-up. The Party Pack range is soft and absorbent, designed for convenient use when serving food or wiping small spills.",
+      "replace_wrong_product_body": true,
+      "replacement_reason": "The exact Rose Petal Party Pack brand/product name on the primary retailer box is corroborated by the manufacturer Party Pack and Party Pack Multipurpose pages, both explicitly identifying tissue paper. Copied faux floral-petal wording belongs to a different product; no colour, ply count or sheet quantity inferred.",
+      "manufacturer_sources": [
+        {
+          "url": "https://rosepetal.com.pk/product/party-pack/",
+          "page_sha256": "5a5c51bd58f4c0168c9cbc6bc35ecdef6d1232acd42b4fee6eec46b2117b2083",
+          "fact": "Party Pack Pink Tissue Paper; soft and absorbent; table settings and parties."
+        },
+        {
+          "url": "https://rosepetal.com.pk/product/party-pack-multipurpose/",
+          "page_sha256": "ea611bfe0fb3bb45394287129e5c1e228287ad8f59034c2d2cce8a5e20334684",
+          "fact": "Party Pack White Tissue Paper; soft and absorbent; parties, dining and everyday use."
+        }
+      ],
+      "reviewed_utc": "2026-10-25T10:28:46.821818+00:00",
+      "scope": "Only common manufacturer-confirmed tissue-paper identity and use retained. Retailer price, stock, image and legacy listing name unchanged."
+    }
+  ],
+  "source_conflicts": [
     {
       "product_id": "CPaeabf1fd66f3",
       "name": "Comfor Beauty Aloe Vera Essence Oil 40ml",
@@ -436,6 +453,14 @@
       "image_sha256": "9819fa03f71b63393ef6a580ec092b74e57ee774d3e465c78114930b0d6b52ea",
       "issue": "Source identity conflict: Comfor 40 ml listing uses an Aichun Beauty 30 ml facial-serum photo. Brand, volume and exact product identity need a consistent primary source; no quantity guessed.",
       "checked_utc": "2026-10-24T16:13:29.731235+00:00"
+    }
+  ],
+  "resolved_source_conflicts": [
+    {
+      "product_id": "CP2a5695f0be86",
+      "prior_issue": "Source identity conflict: Rose Petal Party Pack prose claims loose faux rose petals, but its primary image shows branded boxed packaging; actual contents require a corrected primary source.",
+      "resolution": "The exact Rose Petal Party Pack brand/product name on the primary retailer box is corroborated by the manufacturer Party Pack and Party Pack Multipurpose pages, both explicitly identifying tissue paper. Copied faux floral-petal wording belongs to a different product; no colour, ply count or sheet quantity inferred.",
+      "reviewed_utc": "2026-10-25T10:28:46.821818+00:00"
     }
   ]
 }
