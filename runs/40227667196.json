@@ -11,7 +11,13 @@
       "updatedAt": "2026-10-25T19:45:10Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40227327696",
       "lane": "audit804-fresh804-20261026-a3f0b983-10",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-10-25T19:44:37.881744+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Zero Lifestyle.xlsx\n\nSTORE STATUS\nZero Lifestyle: done\n  Last successful HTTP response (UTC): 2026-10-25T19:44:34.457159+00:00\n",
+      "snapshot_utc": "2026-10-25T19:44:37.881744+00:00",
+      "stores": {
+        "Zero Lifestyle": "done"
+      },
+      "snapshot_age_seconds": 166,
+      "snapshot_stale": false
     },
     {
       "conclusion": "",
@@ -21,7 +27,15 @@
       "updatedAt": "2026-10-25T19:42:51Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40227324235",
       "lane": "audit804-fresh804-20261026-a3f0b983-9",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-10-25T19:43:13.356363+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nBonanza Satrangi: running\nOutfitters: running\nZellbury: running\n",
+      "snapshot_utc": "2026-10-25T19:43:13.356363+00:00",
+      "stores": {
+        "Bonanza Satrangi": "running",
+        "Outfitters": "running",
+        "Zellbury": "running"
+      },
+      "snapshot_age_seconds": 251,
+      "snapshot_stale": false
     },
     {
       "conclusion": "",
@@ -31,7 +45,15 @@
       "updatedAt": "2026-10-25T19:42:48Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40227320685",
       "lane": "audit804-fresh804-20261026-a3f0b983-8",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-10-25T19:47:15.036601+00:00\nSaved Excel files: 3\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Skin Factor.xlsx\n2. Denim Leftover.xlsx\n3. Cool and Cool.xlsx\n\nSTORE STATUS\nSkin Factor: done\n  Last successful HTTP response (UTC): 2026-10-25T19:44:04.550421+00:00\nDenim Leftover: done\n  Last successful HTTP response (UTC): 2026-10-25T19:45:21.012210+00:00\nCool and Cool: done\n  Last successful HTTP response (UTC): 2026-10-25T19:47:04.984319+00:00\n",
+      "snapshot_utc": "2026-10-25T19:47:15.036601+00:00",
+      "stores": {
+        "Skin Factor": "done",
+        "Denim Leftover": "done",
+        "Cool and Cool": "done"
+      },
+      "snapshot_age_seconds": 9,
+      "snapshot_stale": false
     },
     {
       "conclusion": "",
@@ -41,7 +63,15 @@
       "updatedAt": "2026-10-25T19:42:45Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40227317163",
       "lane": "audit804-fresh804-20261026-a3f0b983-7",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-10-25T19:43:17.057647+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nSaeed Ghani: running\nHemani Herbals: running\nGul Ahmed: running\n",
+      "snapshot_utc": "2026-10-25T19:43:17.057647+00:00",
+      "stores": {
+        "Saeed Ghani": "running",
+        "Hemani Herbals": "running",
+        "Gul Ahmed": "running"
+      },
+      "snapshot_age_seconds": 247,
+      "snapshot_stale": false
     },
     {
       "conclusion": "",
@@ -51,7 +81,157 @@
       "updatedAt": "2026-10-25T19:42:42Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40227313142",
       "lane": "audit804-fresh804-20261026-a3f0b983-6",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-10-25T19:43:04.533245+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nNisa Naturals: running\nLAAM: running\nSapphire: running\n",
+      "snapshot_utc": "2026-10-25T19:43:04.533245+00:00",
+      "stores": {
+        "Nisa Naturals": "running",
+        "LAAM": "running",
+        "Sapphire": "running"
+      },
+      "snapshot_age_seconds": 260,
+      "snapshot_stale": false,
+      "console-tail.txt": [
+        "QUEUE: smaller historical catalogs first; unknown counts last; fresh source data fetched again",
+        "RUNNER STORES: Nisa Naturals, LAAM, Sapphire",
+        "PARALLEL STORES: up to 3 different websites together; source pacing, cooldowns and checks preserved.",
+        "NEW FRESH RUN: Nisa Naturals",
+        "NEW FRESH RUN: LAAM",
+        "NEW FRESH RUN: Sapphire",
+        "[LAAM] SOFTWARE VERSION: a31ba96b1b39a87f \u2014 installed code loaded",
+        "[LAAM] [19:42:55] STAGE: Starting LAAM",
+        "[LAAM] SAVED RUN: completed requests are durable; an incomplete request will be retried.",
+        "[LAAM] FRESH FETCH: new run; previous request checkpoints ignored. Products, prices, availability and images fetched again.",
+        "[LAAM] CHECKPOINT: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/saved_runs/1a30bdaa53ff45d7905aacdce9dab382/1/api.sqlite3 (this run only; restarting Fetch begins from zero)",
+        "__CHOTU_PROGRESS__|0|Active: Nisa Naturals, LAAM, Sapphire",
+        "[LAAM] [19:42:55] STAGE: Website listing order",
+        "[LAAM] [19:42:55] HTTP START attempt=1 https://laam.com/robots.txt",
+        "[Sapphire] SOFTWARE VERSION: a31ba96b1b39a87f \u2014 installed code loaded",
+        "[Nisa Naturals] SOFTWARE VERSION: a31ba96b1b39a87f \u2014 installed code loaded",
+        "[Sapphire] [19:42:56] STAGE: Starting Sapphire",
+        "[Nisa Naturals] [19:42:56] STAGE: Starting Nisa Naturals",
+        "[Sapphire] SAVED RUN: completed requests are durable; an incomplete request will be retried.",
+        "[Sapphire] FRESH FETCH: new run; previous request checkpoints ignored. Products, prices, availability and images fetched again.",
+        "[Sapphire] CHECKPOINT: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/saved_runs/1a30bdaa53ff45d7905aacdce9dab382/2/api.sqlite3 (this run only; restarting Fetch begins from zero)",
+        "__CHOTU_PROGRESS__|0|Active: Nisa Naturals, LAAM, Sapphire",
+        "[Nisa Naturals] SAVED RUN: completed requests are durable; an incomplete request will be retried.",
+        "[Nisa Naturals] FRESH FETCH: new run; previous request checkpoints ignored. Products, prices, availability and images fetched again.",
+        "[Nisa Naturals] CHECKPOINT: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/saved_runs/1a30bdaa53ff45d7905aacdce9dab382/0/api.sqlite3 (this run only; restarting Fetch begins from zero)",
+        "__CHOTU_PROGRESS__|1|Active: Nisa Naturals, LAAM, Sapphire",
+        "[Nisa Naturals] [19:42:56] STAGE: Website listing order",
+        "[Nisa Naturals] [19:42:56] HTTP START attempt=1 https://nisanaturals.pk/robots.txt",
+        "[Sapphire] [19:42:56] STAGE: Website listing order",
+        "[Sapphire] [19:42:56] HTTP START attempt=1 https://pk.sapphireonline.pk/robots.txt",
+        "[LAAM] [19:42:56] HTTP END status=200 elapsed=0.2s bytes=3286 https://laam.com/robots.txt",
+        "[Nisa Naturals] [19:42:56] HTTP END status=200 elapsed=0.2s bytes=3653 https://nisanaturals.pk/robots.txt",
+        "[LAAM] [19:42:56] HTTP START attempt=1 https://laam.com/",
+        "[Nisa Naturals] [19:42:56] HTTP START attempt=1 https://nisanaturals.pk/",
+        "[Sapphire] [19:42:56] HTTP END status=200 elapsed=0.3s bytes=2623 https://pk.sapphireonline.pk/robots.txt",
+        "[Sapphire] [19:42:56] HTTP START attempt=1 https://pk.sapphireonline.pk/sitemap_1.xml",
+        "[Sapphire] [19:42:57] HTTP END status=200 elapsed=1.3s bytes=141737 https://pk.sapphireonline.pk/sitemap_1.xml",
+        "[Sapphire] [19:42:57] HTTP START attempt=1 https://pk.sapphireonline.pk/collections/unstitched-bottoms",
+        "[LAAM] [19:42:57] HTTP END status=200 elapsed=1.6s bytes=395669 https://laam.com/",
+        "[LAAM] [19:42:57] HTTP START attempt=1 https://laam.com/new-in",
+        "[Nisa Naturals] [19:42:58] HTTP END status=200 elapsed=1.8s bytes=1413949 https://nisanaturals.pk/",
+        "[Nisa Naturals] [19:42:58] HTTP START attempt=1 https://nisanaturals.pk/collections/best-seller",
+        "[Sapphire] [19:42:59] HTTP END status=200 elapsed=1.6s bytes=308752 https://pk.sapphireonline.pk/collections/unstitched-bottoms",
+        "[Sapphire] SAPPHIRE PUBLIC COLLECTIONS: 1/530 inspected; 5 product URLs discovered",
+        "[Sapphire] [19:42:59] HTTP START attempt=1 https://pk.sapphireonline.pk/collections/woman-fabric-glossary",
+        "[Nisa Naturals] [19:42:59] HTTP END status=200 elapsed=1.1s bytes=581100 https://nisanaturals.pk/collections/best-seller",
+        "[Nisa Naturals] WEBSITE ORDER: Best Sellers /  \u2014 0 unique displayed products observed",
+        "[Nisa Naturals] [19:42:59] HTTP START attempt=1 https://nisanaturals.pk/collections/face-wash",
+        "[Sapphire] [19:43:00] HTTP END status=200 elapsed=1.4s bytes=267854 https://pk.sapphireonline.pk/collections/woman-fabric-glossary",
+        "[Sapphire] [19:43:00] HTTP START attempt=1 https://pk.sapphireonline.pk/collections/luxury-collection",
+        "[Nisa Naturals] [19:43:00] HTTP END status=200 elapsed=1.3s bytes=388074 https://nisanaturals.pk/collections/face-wash",
+        "[LAAM] [19:43:01] HTTP END status=200 elapsed=3.1s bytes=530223 https://laam.com/new-in",
+        "[Nisa Naturals] WEBSITE ORDER: Skin Care / Face Wash \u2014 0 unique displayed products observed",
+        "[Nisa Naturals] [19:43:01] HTTP START attempt=1 https://nisanaturals.pk/collections/creams",
+        "[LAAM] WEBSITE ORDER: New in /  \u2014 16 unique displayed products observed",
+        "[LAAM] [19:43:01] HTTP START attempt=1 https://laam.com/women",
+        "[Sapphire] [19:43:02] HTTP END status=200 elapsed=1.3s bytes=380047 https://pk.sapphireonline.pk/collections/luxury-collection",
+        "[Sapphire] [19:43:02] HTTP START attempt=1 https://pk.sapphireonline.pk/collections/mens-unstitched-cotton",
+        "[Nisa Naturals] [19:43:02] HTTP END status=200 elapsed=1.5s bytes=471866 https://nisanaturals.pk/collections/creams",
+        "[Nisa Naturals] WEBSITE ORDER: Skin Care / Creams \u2014 0 unique displayed products observed",
+        "[Nisa Naturals] [19:43:02] HTTP START attempt=1 https://nisanaturals.pk/collections/serum",
+        "[Sapphire] [19:43:03] HTTP END status=200 elapsed=1.4s bytes=380251 https://pk.sapphireonline.pk/collections/mens-unstitched-cotton",
+        "[Nisa Naturals] [19:43:03] HTTP END status=200 elapsed=1.2s bytes=296664 https://nisanaturals.pk/collections/serum",
+        "[LAAM] [19:43:03] HTTP END status=200 elapsed=2.8s bytes=601265 https://laam.com/women",
+        "[Sapphire] [19:43:03] HTTP START attempt=1 https://pk.sapphireonline.pk/collections/mens-unstitched-intermix-25",
+        "[Nisa Naturals] WEBSITE ORDER: Skin Care / Serums \u2014 0 unique displayed products observed",
+        "[Nisa Naturals] [19:43:03] HTTP START attempt=1 https://nisanaturals.pk/collections/lotion",
+        "[LAAM] WEBSITE ORDER: Women /  \u2014 16 unique displayed products observed",
+        "[LAAM] [19:43:03] HTTP START attempt=1 https://laam.com/men"
+      ],
+      "fetch-log.txt": [
+        "QUEUE: smaller historical catalogs first; unknown counts last; fresh source data fetched again",
+        "RUNNER STORES: Nisa Naturals, LAAM, Sapphire",
+        "PARALLEL STORES: up to 3 different websites together; source pacing, cooldowns and checks preserved.",
+        "NEW FRESH RUN: Nisa Naturals",
+        "NEW FRESH RUN: LAAM",
+        "NEW FRESH RUN: Sapphire",
+        "[LAAM] SOFTWARE VERSION: a31ba96b1b39a87f \u2014 installed code loaded",
+        "[LAAM] [19:42:55] STAGE: Starting LAAM",
+        "[LAAM] SAVED RUN: completed requests are durable; an incomplete request will be retried.",
+        "[LAAM] FRESH FETCH: new run; previous request checkpoints ignored. Products, prices, availability and images fetched again.",
+        "[LAAM] CHECKPOINT: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/saved_runs/1a30bdaa53ff45d7905aacdce9dab382/1/api.sqlite3 (this run only; restarting Fetch begins from zero)",
+        "__CHOTU_PROGRESS__|0|Active: Nisa Naturals, LAAM, Sapphire",
+        "[LAAM] [19:42:55] STAGE: Website listing order",
+        "[LAAM] [19:42:55] HTTP START attempt=1 https://laam.com/robots.txt",
+        "[Sapphire] SOFTWARE VERSION: a31ba96b1b39a87f \u2014 installed code loaded",
+        "[Nisa Naturals] SOFTWARE VERSION: a31ba96b1b39a87f \u2014 installed code loaded",
+        "[Sapphire] [19:42:56] STAGE: Starting Sapphire",
+        "[Nisa Naturals] [19:42:56] STAGE: Starting Nisa Naturals",
+        "[Sapphire] SAVED RUN: completed requests are durable; an incomplete request will be retried.",
+        "[Sapphire] FRESH FETCH: new run; previous request checkpoints ignored. Products, prices, availability and images fetched again.",
+        "[Sapphire] CHECKPOINT: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/saved_runs/1a30bdaa53ff45d7905aacdce9dab382/2/api.sqlite3 (this run only; restarting Fetch begins from zero)",
+        "__CHOTU_PROGRESS__|0|Active: Nisa Naturals, LAAM, Sapphire",
+        "[Nisa Naturals] SAVED RUN: completed requests are durable; an incomplete request will be retried.",
+        "[Nisa Naturals] FRESH FETCH: new run; previous request checkpoints ignored. Products, prices, availability and images fetched again.",
+        "[Nisa Naturals] CHECKPOINT: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/saved_runs/1a30bdaa53ff45d7905aacdce9dab382/0/api.sqlite3 (this run only; restarting Fetch begins from zero)",
+        "__CHOTU_PROGRESS__|1|Active: Nisa Naturals, LAAM, Sapphire",
+        "[Nisa Naturals] [19:42:56] STAGE: Website listing order",
+        "[Nisa Naturals] [19:42:56] HTTP START attempt=1 https://nisanaturals.pk/robots.txt",
+        "[Sapphire] [19:42:56] STAGE: Website listing order",
+        "[Sapphire] [19:42:56] HTTP START attempt=1 https://pk.sapphireonline.pk/robots.txt",
+        "[LAAM] [19:42:56] HTTP END status=200 elapsed=0.2s bytes=3286 https://laam.com/robots.txt",
+        "[Nisa Naturals] [19:42:56] HTTP END status=200 elapsed=0.2s bytes=3653 https://nisanaturals.pk/robots.txt",
+        "[LAAM] [19:42:56] HTTP START attempt=1 https://laam.com/",
+        "[Nisa Naturals] [19:42:56] HTTP START attempt=1 https://nisanaturals.pk/",
+        "[Sapphire] [19:42:56] HTTP END status=200 elapsed=0.3s bytes=2623 https://pk.sapphireonline.pk/robots.txt",
+        "[Sapphire] [19:42:56] HTTP START attempt=1 https://pk.sapphireonline.pk/sitemap_1.xml",
+        "[Sapphire] [19:42:57] HTTP END status=200 elapsed=1.3s bytes=141737 https://pk.sapphireonline.pk/sitemap_1.xml",
+        "[Sapphire] [19:42:57] HTTP START attempt=1 https://pk.sapphireonline.pk/collections/unstitched-bottoms",
+        "[LAAM] [19:42:57] HTTP END status=200 elapsed=1.6s bytes=395669 https://laam.com/",
+        "[LAAM] [19:42:57] HTTP START attempt=1 https://laam.com/new-in",
+        "[Nisa Naturals] [19:42:58] HTTP END status=200 elapsed=1.8s bytes=1413949 https://nisanaturals.pk/",
+        "[Nisa Naturals] [19:42:58] HTTP START attempt=1 https://nisanaturals.pk/collections/best-seller",
+        "[Sapphire] [19:42:59] HTTP END status=200 elapsed=1.6s bytes=308752 https://pk.sapphireonline.pk/collections/unstitched-bottoms",
+        "[Sapphire] SAPPHIRE PUBLIC COLLECTIONS: 1/530 inspected; 5 product URLs discovered",
+        "[Sapphire] [19:42:59] HTTP START attempt=1 https://pk.sapphireonline.pk/collections/woman-fabric-glossary",
+        "[Nisa Naturals] [19:42:59] HTTP END status=200 elapsed=1.1s bytes=581100 https://nisanaturals.pk/collections/best-seller",
+        "[Nisa Naturals] WEBSITE ORDER: Best Sellers /  \u2014 0 unique displayed products observed",
+        "[Nisa Naturals] [19:42:59] HTTP START attempt=1 https://nisanaturals.pk/collections/face-wash",
+        "[Sapphire] [19:43:00] HTTP END status=200 elapsed=1.4s bytes=267854 https://pk.sapphireonline.pk/collections/woman-fabric-glossary",
+        "[Sapphire] [19:43:00] HTTP START attempt=1 https://pk.sapphireonline.pk/collections/luxury-collection",
+        "[Nisa Naturals] [19:43:00] HTTP END status=200 elapsed=1.3s bytes=388074 https://nisanaturals.pk/collections/face-wash",
+        "[LAAM] [19:43:01] HTTP END status=200 elapsed=3.1s bytes=530223 https://laam.com/new-in",
+        "[Nisa Naturals] WEBSITE ORDER: Skin Care / Face Wash \u2014 0 unique displayed products observed",
+        "[Nisa Naturals] [19:43:01] HTTP START attempt=1 https://nisanaturals.pk/collections/creams",
+        "[LAAM] WEBSITE ORDER: New in /  \u2014 16 unique displayed products observed",
+        "[LAAM] [19:43:01] HTTP START attempt=1 https://laam.com/women",
+        "[Sapphire] [19:43:02] HTTP END status=200 elapsed=1.3s bytes=380047 https://pk.sapphireonline.pk/collections/luxury-collection",
+        "[Sapphire] [19:43:02] HTTP START attempt=1 https://pk.sapphireonline.pk/collections/mens-unstitched-cotton",
+        "[Nisa Naturals] [19:43:02] HTTP END status=200 elapsed=1.5s bytes=471866 https://nisanaturals.pk/collections/creams",
+        "[Nisa Naturals] WEBSITE ORDER: Skin Care / Creams \u2014 0 unique displayed products observed",
+        "[Nisa Naturals] [19:43:02] HTTP START attempt=1 https://nisanaturals.pk/collections/serum",
+        "[Sapphire] [19:43:03] HTTP END status=200 elapsed=1.4s bytes=380251 https://pk.sapphireonline.pk/collections/mens-unstitched-cotton",
+        "[Nisa Naturals] [19:43:03] HTTP END status=200 elapsed=1.2s bytes=296664 https://nisanaturals.pk/collections/serum",
+        "[LAAM] [19:43:03] HTTP END status=200 elapsed=2.8s bytes=601265 https://laam.com/women",
+        "[Sapphire] [19:43:03] HTTP START attempt=1 https://pk.sapphireonline.pk/collections/mens-unstitched-intermix-25",
+        "[Nisa Naturals] WEBSITE ORDER: Skin Care / Serums \u2014 0 unique displayed products observed",
+        "[Nisa Naturals] [19:43:03] HTTP START attempt=1 https://nisanaturals.pk/collections/lotion",
+        "[LAAM] WEBSITE ORDER: Women /  \u2014 16 unique displayed products observed",
+        "[LAAM] [19:43:03] HTTP START attempt=1 https://laam.com/men"
+      ]
     },
     {
       "conclusion": "",
@@ -61,7 +241,15 @@
       "updatedAt": "2026-10-25T19:42:39Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40227309294",
       "lane": "audit804-fresh804-20261026-a3f0b983-5",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-10-25T19:43:25.193167+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nFarda Foods: running\nAdam Cheese: running\nComputer Zone: running\n",
+      "snapshot_utc": "2026-10-25T19:43:25.193167+00:00",
+      "stores": {
+        "Farda Foods": "running",
+        "Adam Cheese": "running",
+        "Computer Zone": "running"
+      },
+      "snapshot_age_seconds": 239,
+      "snapshot_stale": false
     },
     {
       "conclusion": "",
@@ -71,7 +259,15 @@
       "updatedAt": "2026-10-25T19:42:36Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40227305499",
       "lane": "audit804-fresh804-20261026-a3f0b983-4",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-10-25T19:43:00.850192+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nIslamabad Tea: running\nShop Modest: running\nSeran: running\n",
+      "snapshot_utc": "2026-10-25T19:43:00.850192+00:00",
+      "stores": {
+        "Islamabad Tea": "running",
+        "Shop Modest": "running",
+        "Seran": "running"
+      },
+      "snapshot_age_seconds": 263,
+      "snapshot_stale": false
     },
     {
       "conclusion": "",
@@ -81,7 +277,15 @@
       "updatedAt": "2026-10-25T19:42:33Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40227301324",
       "lane": "audit804-fresh804-20261026-a3f0b983-3",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-10-25T19:42:59.621811+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nVince Care: running\nThe Hanger Pakistan: running\nElite Cosmetics: running\n",
+      "snapshot_utc": "2026-10-25T19:42:59.621811+00:00",
+      "stores": {
+        "Vince Care": "running",
+        "The Hanger Pakistan": "running",
+        "Elite Cosmetics": "running"
+      },
+      "snapshot_age_seconds": 265,
+      "snapshot_stale": false
     },
     {
       "conclusion": "",
@@ -91,7 +295,15 @@
       "updatedAt": "2026-10-25T19:42:30Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40227296477",
       "lane": "audit804-fresh804-20261026-a3f0b983-2",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-10-25T19:42:52.070273+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nTawakkal Fabrics: running\nJunaid Jamshed: running\nStylo: running\n",
+      "snapshot_utc": "2026-10-25T19:42:52.070273+00:00",
+      "stores": {
+        "Tawakkal Fabrics": "running",
+        "Junaid Jamshed": "running",
+        "Stylo": "running"
+      },
+      "snapshot_age_seconds": 272,
+      "snapshot_stale": false
     },
     {
       "conclusion": "",
@@ -101,9 +313,318 @@
       "updatedAt": "2026-10-25T19:42:26Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40227292065",
       "lane": "audit804-fresh804-20261026-a3f0b983-1",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-10-25T19:42:47.829579+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nMiss Rose: running\nRivaj UK: running\nRawayat: running\n",
+      "snapshot_utc": "2026-10-25T19:42:47.829579+00:00",
+      "stores": {
+        "Miss Rose": "running",
+        "Rivaj UK": "running",
+        "Rawayat": "running"
+      },
+      "snapshot_age_seconds": 276,
+      "snapshot_stale": false
     }
   ],
-  "fresh_stores": {},
-  "local_khaadi": "Not visible to cloud monitoring; no local activity claimed"
+  "fresh_stores": {
+    "Zero Lifestyle": "done",
+    "Bonanza Satrangi": "running",
+    "Outfitters": "running",
+    "Zellbury": "running",
+    "Skin Factor": "done",
+    "Denim Leftover": "done",
+    "Cool and Cool": "done",
+    "Saeed Ghani": "running",
+    "Hemani Herbals": "running",
+    "Gul Ahmed": "running",
+    "Nisa Naturals": "running",
+    "LAAM": "running",
+    "Sapphire": "running",
+    "Farda Foods": "running",
+    "Adam Cheese": "running",
+    "Computer Zone": "running",
+    "Islamabad Tea": "running",
+    "Shop Modest": "running",
+    "Seran": "running",
+    "Vince Care": "running",
+    "The Hanger Pakistan": "running",
+    "Elite Cosmetics": "running",
+    "Tawakkal Fabrics": "running",
+    "Junaid Jamshed": "running",
+    "Stylo": "running",
+    "Miss Rose": "running",
+    "Rivaj UK": "running",
+    "Rawayat": "running"
+  },
+  "local_khaadi": {
+    "store": "Khaadi",
+    "execution": "Windows local",
+    "observed_utc": "2026-10-20T19:22:58.769213+00:00",
+    "worker_active": true,
+    "status": "unknown_stale_heartbeat",
+    "worker_updated": "2026-10-21 00:22:57",
+    "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
+    "error": "",
+    "progress_age_seconds": 1,
+    "report_age_seconds": 433472,
+    "status_confirmed": false
+  },
+  "collection_completed_utc": "2026-10-25T19:47:30.112282+00:00",
+  "collection_seconds": 6,
+  "store_overview": {
+    "Zero Lifestyle": {
+      "state": "awaiting_804_audit",
+      "run_id": "40227327696",
+      "snapshot_utc": "2026-10-25T19:44:37.881744+00:00"
+    },
+    "Bonanza Satrangi": {
+      "state": "fetching",
+      "run_id": "40227324235",
+      "snapshot_utc": "2026-10-25T19:43:13.356363+00:00"
+    },
+    "Outfitters": {
+      "state": "fetching",
+      "run_id": "40227324235",
+      "snapshot_utc": "2026-10-25T19:43:13.356363+00:00"
+    },
+    "Zellbury": {
+      "state": "fetching",
+      "run_id": "40227324235",
+      "snapshot_utc": "2026-10-25T19:43:13.356363+00:00"
+    },
+    "Skin Factor": {
+      "state": "awaiting_804_audit",
+      "run_id": "40227320685",
+      "snapshot_utc": "2026-10-25T19:47:15.036601+00:00"
+    },
+    "Denim Leftover": {
+      "state": "awaiting_804_audit",
+      "run_id": "40227320685",
+      "snapshot_utc": "2026-10-25T19:47:15.036601+00:00"
+    },
+    "Cool and Cool": {
+      "state": "awaiting_804_audit",
+      "run_id": "40227320685",
+      "snapshot_utc": "2026-10-25T19:47:15.036601+00:00"
+    },
+    "Saeed Ghani": {
+      "state": "fetching",
+      "run_id": "40227317163",
+      "snapshot_utc": "2026-10-25T19:43:17.057647+00:00"
+    },
+    "Hemani Herbals": {
+      "state": "fetching",
+      "run_id": "40227317163",
+      "snapshot_utc": "2026-10-25T19:43:17.057647+00:00"
+    },
+    "Gul Ahmed": {
+      "state": "fetching",
+      "run_id": "40227317163",
+      "snapshot_utc": "2026-10-25T19:43:17.057647+00:00"
+    },
+    "Nisa Naturals": {
+      "state": "fetching",
+      "run_id": "40227313142",
+      "snapshot_utc": "2026-10-25T19:43:04.533245+00:00"
+    },
+    "LAAM": {
+      "state": "fetching",
+      "run_id": "40227313142",
+      "snapshot_utc": "2026-10-25T19:43:04.533245+00:00"
+    },
+    "Sapphire": {
+      "state": "fetching",
+      "run_id": "40227313142",
+      "snapshot_utc": "2026-10-25T19:43:04.533245+00:00"
+    },
+    "Farda Foods": {
+      "state": "fetching",
+      "run_id": "40227309294",
+      "snapshot_utc": "2026-10-25T19:43:25.193167+00:00"
+    },
+    "Adam Cheese": {
+      "state": "fetching",
+      "run_id": "40227309294",
+      "snapshot_utc": "2026-10-25T19:43:25.193167+00:00"
+    },
+    "Computer Zone": {
+      "state": "fetching",
+      "run_id": "40227309294",
+      "snapshot_utc": "2026-10-25T19:43:25.193167+00:00"
+    },
+    "Islamabad Tea": {
+      "state": "fetching",
+      "run_id": "40227305499",
+      "snapshot_utc": "2026-10-25T19:43:00.850192+00:00"
+    },
+    "Shop Modest": {
+      "state": "fetching",
+      "run_id": "40227305499",
+      "snapshot_utc": "2026-10-25T19:43:00.850192+00:00"
+    },
+    "Seran": {
+      "state": "fetching",
+      "run_id": "40227305499",
+      "snapshot_utc": "2026-10-25T19:43:00.850192+00:00"
+    },
+    "Vince Care": {
+      "state": "fetching",
+      "run_id": "40227301324",
+      "snapshot_utc": "2026-10-25T19:42:59.621811+00:00"
+    },
+    "The Hanger Pakistan": {
+      "state": "fetching",
+      "run_id": "40227301324",
+      "snapshot_utc": "2026-10-25T19:42:59.621811+00:00"
+    },
+    "Elite Cosmetics": {
+      "state": "fetching",
+      "run_id": "40227301324",
+      "snapshot_utc": "2026-10-25T19:42:59.621811+00:00"
+    },
+    "Tawakkal Fabrics": {
+      "state": "fetching",
+      "run_id": "40227296477",
+      "snapshot_utc": "2026-10-25T19:42:52.070273+00:00"
+    },
+    "Junaid Jamshed": {
+      "state": "fetching",
+      "run_id": "40227296477",
+      "snapshot_utc": "2026-10-25T19:42:52.070273+00:00"
+    },
+    "Stylo": {
+      "state": "fetching",
+      "run_id": "40227296477",
+      "snapshot_utc": "2026-10-25T19:42:52.070273+00:00"
+    },
+    "Miss Rose": {
+      "state": "fetching",
+      "run_id": "40227292065",
+      "snapshot_utc": "2026-10-25T19:42:47.829579+00:00"
+    },
+    "Rivaj UK": {
+      "state": "fetching",
+      "run_id": "40227292065",
+      "snapshot_utc": "2026-10-25T19:42:47.829579+00:00"
+    },
+    "Rawayat": {
+      "state": "fetching",
+      "run_id": "40227292065",
+      "snapshot_utc": "2026-10-25T19:42:47.829579+00:00"
+    }
+  },
+  "drive": {
+    "current_campaign": "fresh804-20261026-a3f0b983",
+    "fresh_verified_files": 0,
+    "audit_progress_utc": "2026-10-25T19:46:52.527978+00:00",
+    "sync_status": "finished",
+    "sync_error": null,
+    "last_scan_utc": "2026-10-25T19:29:21.170123+00:00",
+    "held": {
+      "39450775009": [],
+      "39450778729": [],
+      "39450782519": [],
+      "39450786298": [],
+      "39450789858": [],
+      "39450793299": [],
+      "39450796831": [],
+      "39450802086": [],
+      "39450806726": [],
+      "39494289423": [],
+      "39494295410": [],
+      "39494348075": [],
+      "39529042706": [
+        {
+          "store": "Stylo",
+          "error": "Unconfirmed shop code; held for review"
+        }
+      ],
+      "39529095851": []
+    },
+    "verified_files": 27,
+    "original_uploads": {},
+    "verified_utc": "2026-10-21T06:41:31.265056+00:00",
+    "folders": {
+      "ChotuApp 20-10-2026 Fresh": 20,
+      "ChotuApp 19-10-2026 11-36AM": 27
+    },
+    "latest_move": [
+      {
+        "source": "ChotuApp 20-10-2026 Fresh",
+        "destination": "ChotuApp 19-10-2026 11-36AM",
+        "verified_files": [
+          "Adam Cheese.xlsx",
+          "Bonanza Satrangi.xlsx",
+          "Computer Zone.xlsx",
+          "Cool and Cool.xlsx",
+          "Denim Leftover.xlsx",
+          "Elite Cosmetics.xlsx",
+          "Farda Foods.xlsx",
+          "Hemani Herbals.xlsx",
+          "Islamabad Tea.xlsx",
+          "Miss Rose.xlsx",
+          "Nisa Naturals.xlsx",
+          "Rivaj UK.xlsx",
+          "Saeed Ghani.xlsx",
+          "Seran.xlsx",
+          "Shop Modest.xlsx",
+          "Skin Factor.xlsx",
+          "Tawakkal Fabrics.xlsx",
+          "The Hanger Pakistan.xlsx",
+          "Vince Care.xlsx",
+          "Zero Lifestyle.xlsx"
+        ],
+        "destination_file_count": 24,
+        "preserved_other_files": 4,
+        "verified_utc": "2026-10-20T18:41:53.309795+00:00",
+        "source_removed": [
+          "Adam Cheese.xlsx",
+          "Bonanza Satrangi.xlsx",
+          "Computer Zone.xlsx",
+          "Cool and Cool.xlsx",
+          "Denim Leftover.xlsx",
+          "Elite Cosmetics.xlsx",
+          "Farda Foods.xlsx",
+          "Hemani Herbals.xlsx",
+          "Islamabad Tea.xlsx",
+          "Miss Rose.xlsx",
+          "Nisa Naturals.xlsx",
+          "Rivaj UK.xlsx",
+          "Saeed Ghani.xlsx",
+          "Seran.xlsx",
+          "Shop Modest.xlsx",
+          "Skin Factor.xlsx",
+          "Tawakkal Fabrics.xlsx",
+          "The Hanger Pakistan.xlsx",
+          "Vince Care.xlsx",
+          "Zero Lifestyle.xlsx"
+        ]
+      }
+    ]
+  },
+  "khaadi_devices": [
+    {
+      "store": "Khaadi",
+      "execution": "Windows local",
+      "observed_utc": "2026-10-20T19:22:58.769213+00:00",
+      "worker_active": true,
+      "status": "unknown_stale_heartbeat",
+      "worker_updated": "2026-10-21 00:22:57",
+      "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
+      "error": "",
+      "progress_age_seconds": 1,
+      "report_age_seconds": 433472,
+      "status_confirmed": false
+    }
+  ],
+  "phone_heartbeat": {
+    "status": "not_connected_or_no_report",
+    "status_confirmed": false,
+    "message": "No Android heartbeat received. Connect GitHub in app Settings and start or resume fetching."
+  },
+  "monitoring": {
+    "phone_heartbeat_seconds": 30,
+    "phone_stale_after_seconds": 180,
+    "cloud_schedule_minutes": 5,
+    "note": "Scheduled cloud checks can be delayed. Query local-run-status directly for latest phone heartbeat."
+  },
+  "fresh_completed": 4
 }
