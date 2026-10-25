@@ -1,52 +1,61 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-25T22:44:36.637749+00:00",
-  "run_id": "40234453946",
+  "generated_utc": "2026-10-25T22:45:20.433599+00:00",
+  "run_id": "40234500560",
   "attempt": "1",
   "source_commit": "8fd364b3800f0a2aea184a091df8e57cd680ef2b",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 5402.2,
+  "elapsed_seconds": 5400.5,
   "stores": [
     {
-      "name": "Miss Rose",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "a31ba96b1b39a87f",
-      "products": 177,
-      "variants": 1794,
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
-    },
-    {
-      "name": "Rivaj UK",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "a31ba96b1b39a87f",
-      "products": 318,
-      "variants": 967,
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
-    },
-    {
-      "name": "Rawayat",
+      "name": "Bonanza Satrangi",
       "status": "pending",
       "review_required": false,
-      "issue_codes": [],
+      "issue_codes": [
+        "HTTP_503",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
       "software_revision": "c1b3fecc7dcf99a0",
       "http_statuses": {
-        "200": 1883
+        "200": 2065
       },
-      "network_seconds": 3158.6,
-      "max_response_seconds": 15.8,
-      "cache_events": 14111
+      "network_seconds": 5106.0,
+      "max_response_seconds": 3.5,
+      "cache_events": 3209
+    },
+    {
+      "name": "Outfitters",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_404",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "c1b3fecc7dcf99a0",
+      "http_statuses": {
+        "404": 4,
+        "200": 1797
+      },
+      "network_seconds": 4414.9,
+      "max_response_seconds": 25.1,
+      "cache_events": 3597
+    },
+    {
+      "name": "Zellbury",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "c1b3fecc7dcf99a0",
+      "http_statuses": {
+        "200": 1792
+      },
+      "network_seconds": 4774.7,
+      "max_response_seconds": 26.6,
+      "cache_events": 3520
     }
   ]
 }
