@@ -1,60 +1,55 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-25T11:53:45.147407+00:00",
-  "run_id": "40185963943",
+  "generated_utc": "2026-10-25T12:14:19.474453+00:00",
+  "run_id": "40185972717",
   "attempt": "1",
   "source_commit": "bc4d4c0a4039c337547295c48e0df38698ebf6e5",
-  "status": "complete",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 4171.2,
+  "elapsed_seconds": 5400.7,
   "stores": [
     {
-      "name": "Vince Care",
+      "name": "Nisa Naturals",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "7d3c45cf7b4fd6ea",
-      "products": 209,
-      "variants": 369,
+      "products": 55,
+      "variants": 55,
       "http_statuses": {
-        "200": 325
+        "200": 79
       },
-      "network_seconds": 736.1,
+      "network_seconds": 36.7,
+      "max_response_seconds": 2.3,
+      "cache_events": 110
+    },
+    {
+      "name": "LAAM",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [],
+      "software_revision": "7d3c45cf7b4fd6ea",
+      "http_statuses": {
+        "200": 3402,
+        "500": 33
+      },
+      "network_seconds": 1867.6,
+      "max_response_seconds": 16.1,
+      "cache_events": 0
+    },
+    {
+      "name": "Sapphire",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [],
+      "software_revision": "7d3c45cf7b4fd6ea",
+      "http_statuses": {
+        "200": 3599
+      },
+      "network_seconds": 5015.5,
       "max_response_seconds": 2.7,
-      "cache_events": 418
-    },
-    {
-      "name": "The Hanger Pakistan",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "7d3c45cf7b4fd6ea",
-      "products": 371,
-      "variants": 1613,
-      "http_statuses": {
-        "200": 524
-      },
-      "network_seconds": 224.5,
-      "max_response_seconds": 1.9,
-      "cache_events": 742
-    },
-    {
-      "name": "Elite Cosmetics",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "7d3c45cf7b4fd6ea",
-      "products": 1565,
-      "variants": 2029,
-      "http_statuses": {
-        "200": 1983
-      },
-      "network_seconds": 3011.8,
-      "max_response_seconds": 19.7,
-      "cache_events": 3130
+      "cache_events": 0
     }
   ]
 }
