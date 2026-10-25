@@ -1,13 +1,18 @@
 {
-  "campaign_id": "fresh804-20261024-c055e80e",
-  "request": "Owner-requested fresh zero restart for all 29 stores; max three per runner; active 804 correction/recheck/audit/delivery recovery",
-  "requested_date_pkt": "2026-10-24",
+  "campaign_id": "fresh804-20261025-fbb5ff31",
+  "request": "Owner requested zero fresh restart excluding Khaadi; strict live PKR prices, genuine discount prices and source stock; max three stores per runner",
+  "requested_date_pkt": "2026-10-25",
   "destination_folder": "ChotuApp 19-10-2026 11-36AM",
   "audit_name": "804 Audit",
   "maximum_stores_per_runner": 3,
   "require_confirmed_shop_code": true,
-  "khaadi_fresh_enabled": true,
+  "khaadi_fresh_enabled": false,
   "laam_rule": "Active, visible, source-confirmed in-stock clothing only; stitched, unstitched and ready-made included; bags, jewellery and non-clothing excluded",
   "audit_recovery": "active_correction_queue",
-  "khaadi_execution": "cloud_fresh_attempt_pk_prices_only_no_phone_dependency"
+  "khaadi_execution": "excluded_by_owner_request",
+  "excluded_stores": [
+    "Khaadi"
+  ],
+  "stock_policy": "Exclude fully out-of-stock products; retain source-confirmed unavailable variants of included products. LAAM active visible in-stock clothing only.",
+  "price_policy": "Live variant identity, PKR prices and availability verified; no cached-price fallback on failed verification; sale only where actual payable price is below source compare-at price."
 }

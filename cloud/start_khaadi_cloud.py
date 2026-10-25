@@ -4,6 +4,8 @@ from pathlib import Path
 REPO='chottuapp/ChotuApp-Software'
 def gh(*args):return subprocess.check_output(['gh',*args],text=True,timeout=180)
 def main():
+ release=json.loads(Path('cloud/audit804-release.json').read_text())
+ if release.get('khaadi_fresh_enabled') is False or 'Khaadi' in release.get('excluded_stores',[]):print('Khaadi excluded by owner request; no fetching dispatched');return
  report=json.loads(Path('source-diagnostics/khaadi-public-route.json').read_text())
  if report.get('sample_verified') is not True:raise ValueError('Khaadi Pakistan public size source not verified; cloud fetch withheld')
  release=json.loads(Path('cloud/audit804-release.json').read_text());campaign=release['campaign_id']

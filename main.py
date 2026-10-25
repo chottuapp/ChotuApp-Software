@@ -1029,6 +1029,18 @@ def verified_top20(base, log, eligible_handles=None, rank_all=False):
         return found if rank_all else []
 
 
+def verified_sellable_variants(base, product, log):
+    """Never export catalog-snapshot prices after fresh verification fails."""
+    try:
+        variants = refresh_variant_prices(base, product, log)
+    except Exception as exc:
+        if confirmed_removed_product(base, product, exc, log):
+            return None
+        raise RuntimeError('SOURCE PAUSED: live price/stock verification incomplete for ' + str(product.get('handle') or '') + '; saved work retained; cached prices not exported. ' + str(exc)) from exc
+    available = [v for v in variants if v.get('available') is True and money(v.get('price')) is not None and money(v.get('price')) > 0]
+    return variants, available
+
+
 def run_site(base, name, template, log):
     # CHOTUAPP_MULTIDIM_VARIANTS_V1
     OUT.mkdir(exist_ok=True)
@@ -1074,11 +1086,7 @@ def run_site(base, name, template, log):
         if not p.get('handle') or not priced:
             skipped_invalid += 1
             continue
-        available_priced=[v for v in priced if v.get('available') is True]
-        # Only sellable products; retain unavailable variants of each included product.
-        if not available_priced:
-            skipped_out_of_stock += 1
-            continue
+        # Verify current stock before excluding a previously sold-out product.
         if is_free_gift(p):
             skipped_invalid += 1
             log('CATALOG FILTER: excluded free-gift promotion: ' + txt(p.get('title')))
@@ -1087,17 +1095,14 @@ def run_site(base, name, template, log):
             skipped_invalid += 1
             log('CATALOG FILTER: excluded service/placeholder: ' + txt(p.get('title')))
             continue
-        try:
-            variants = refresh_variant_prices(base, p, log)
-            available_priced = [v for v in variants if v.get('available') is True and money(v.get('price')) is not None and money(v.get('price')) > 0]
-            if not available_priced:
-                skipped_out_of_stock += 1
-                continue
-        except Exception as exc:
-            if confirmed_removed_product(base,p,exc,log):
-                skipped_hidden += 1
-                continue
-            log('PRICE VERIFICATION INCOMPLETE: ' + txt(p.get('title')) + ' — ' + str(exc))
+        verified = verified_sellable_variants(base, p, log)
+        if verified is None:
+            skipped_hidden += 1
+            continue
+        variants, available_priced = verified
+        if not available_priced:
+            skipped_out_of_stock += 1
+            continue
         cheapest=min(available_priced,key=lambda v:money(v['price']))
         lowest=money(cheapest['price'])
         compare=money(cheapest.get('compare_at_price'))
