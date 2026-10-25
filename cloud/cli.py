@@ -33,8 +33,20 @@ def checkpoint(data,destination,max_bytes=250*1024*1024):
         with sqlite3.connect(database.resolve().as_uri()+'?mode=ro',uri=True) as db:row=db.execute('SELECT payload FROM state WHERE id=1').fetchone()
         state=json.loads(row[0]) if row else {}
         completed={str(index) for index,site in enumerate(state.get('sites',[])) if site.get('status')=='done' and RunStore.output_valid(site)}
+    # LAAM retains checksummed parsed products. Its redundant raw HTML response
+    # database can exceed the artifact limit; refetch listing pages after resume.
+    compacted=set()
+    for parsed in (data/'saved_runs').rglob('laam-parsed.sqlite3'):
+        try:
+            with sqlite3.connect(parsed.resolve().as_uri()+'?mode=ro',uri=True) as db:
+                if db.execute('PRAGMA quick_check').fetchone()[0]!='ok':continue
+                revision=__import__('hashlib').sha256((Path(__file__).resolve().parent.parent/'laam_source_support.py').read_bytes()).hexdigest()
+                if db.execute('SELECT COUNT(*) FROM parsed_products WHERE revision=?',(revision,)).fetchone()[0]:compacted.add(parsed.parent)
+        except (sqlite3.Error,OSError):continue
+    if compacted:print('Checkpoint compaction: retaining LAAM parsed products; omitting redundant raw HTML response caches in '+str(len(compacted))+' store folders.',flush=True)
     def needed(path):
         relative=path.relative_to(data).parts
+        if path.parent in compacted and path.name in ('pages.sqlite3','pages.sqlite3-wal','pages.sqlite3-shm'):return False
         return not (len(relative)>=4 and relative[0]=='saved_runs' and relative[1]==state.get('id') and relative[2] in completed)
     try:
         print('Checkpoint packaging: excluding request caches for '+str(len(completed))+' completed stores; Excel files and audits retained.',flush=True)

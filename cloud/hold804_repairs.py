@@ -279,9 +279,12 @@ NAMED=[
 @lru_cache(maxsize=1)
 def public_index():
  path=Path(__file__).with_name('audit804-reviewed-source.json')
- records=json.loads(path.read_text()).get('products',[]) if path.exists() else []
+ reviewed=json.loads(path.read_text()).get('products',[]) if path.exists() else []
+ records=[]
  automatic=path.with_name('audit804-auto-source.json')
  if automatic.exists():records+=json.loads(automatic.read_text()).get('products',[])
+ # Explicitly reviewed source facts outrank an automatic empty/generic refresh.
+ records+=reviewed
  return {(f['store'],str(f['product_id']),f['source_url']):f for f in records}
 def public_facts(row,store):
  fact=public_index().get((store,str(row.get('product_id')),row.get('source_url')))
