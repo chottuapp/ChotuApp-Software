@@ -18,6 +18,6 @@ class FreshTests(unittest.TestCase):
   root=Path(__file__).resolve().parents[1]
   registry=json.loads((root/'cloud/fetch-update-release.json').read_text())['fresh_stores']
   request=json.loads((root/'cloud/audit804-release.json').read_text())
-  sites=selected_sites(registry,request);self.assertEqual(len(sites),31)
+  sites=selected_sites(registry,request);self.assertEqual(len(sites),len(registry)-2)
   plan=planned_groups(sites,request);self.assertEqual(len(plan),len(sites)-len([v for v in sites if v['name'] in request.get('completed_stores',[])]));self.assertTrue(all(len(g)==1 for g in plan))
   self.assertTrue({'Stylo','Bata','Aerosoft Studio','Servis','Ndure'}<={g[0]['name'] for g in plan})

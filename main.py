@@ -1095,6 +1095,11 @@ def run_site(base, name, template, log):
             skipped_invalid += 1
             log('CATALOG FILTER: excluded service/placeholder: ' + txt(p.get('title')))
             continue
+        from locked_store_rules import allowed_product
+        if not allowed_product(base,p):
+            skipped_invalid += 1
+            log('OWNER STORE RULE: excluded non-bag/non-wallet product: ' + txt(p.get('title')))
+            continue
         verified = verified_sellable_variants(base, p, log)
         if verified is None:
             skipped_hidden += 1

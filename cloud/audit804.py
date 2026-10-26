@@ -207,6 +207,9 @@ def run(path,store,codes,hosts,*,source=None,strict_commercial=False):
  catalogue=roots(originals.values()) if originals else set()
  for row in rows(path):
   count+=1;pid=str(row.get('product_id') or '');issues=issues_for(row,originals.get(pid))+commercial.get(pid,[])
+  if store=='Astore Bags':
+   from locked_store_rules import allowed_product
+   if not allowed_product('https://astorebags.pk',{'title':row.get('name'),'product_type':row.get('brand')}):issues.append('Rule Astore: only bags and wallets; product purpose unresolved or outside scope')
   if store=='Seran' and conflicting_name(row,catalogue):issues.append('Description names a different known catalog product')
   if not pid or pid in seen:issues.append('Missing or duplicate product ID')
   seen.add(pid);output_order.append(pid)

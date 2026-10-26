@@ -274,6 +274,8 @@ def enable_fast_fetch(g):
         if tls.fast_gate.limited:raise tls.fast_gate.blocked_error()
         eligible=[]
         for product in products:
+            from locked_store_rules import allowed_product
+            if not allowed_product(base,product):continue
             if str(product.get('status') or '').strip().lower() not in ('','active'):continue
             if 'published_at' in product and not product.get('published_at'):continue
             if not product.get('handle') or g['is_free_gift'](product):continue
