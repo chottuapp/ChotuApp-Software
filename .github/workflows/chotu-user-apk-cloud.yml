@@ -6,6 +6,11 @@ on:
         description: Reviewed private User App source commit
         required: true
         type: string
+      publication_tools_sha:
+        description: Optional reviewed publishing-tools commit; signed app identity remains source_sha
+        required: false
+        default: ''
+        type: string
       build_run:
         description: Optional successful build job run to reuse for native checks
         required: false
@@ -220,6 +225,7 @@ jobs:
     environment: chotu-cloud-release
     env:
       SOURCE_SHA: ${{ inputs.source_sha }}
+      PUBLISH_TOOLS_SHA: ${{ inputs.publication_tools_sha || inputs.source_sha }}
     steps:
       - name: Require reviewed source and restricted build credential
         env:
@@ -227,7 +233,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          [[ "$SOURCE_SHA" =~ ^[a-f0-9]{40}$ ]] || exit 1
+          [[ "$SOURCE_SHA" =~ ^[a-f0-9]{40}$ && "$PUBLISH_TOOLS_SHA" =~ ^[a-f0-9]{40}$ ]] || exit 1
           test -n "$SOURCE_KEY" || { echo '::error::Run the one-time Chotu cloud setup. No PC runner or paid fallback is used.'; exit 1; }
           umask 077
           key="$RUNNER_TEMP/chotu-source-key"
@@ -239,9 +245,9 @@ jobs:
             git init -q "$RUNNER_TEMP/chotu-private-source"
             cd "$RUNNER_TEMP/chotu-private-source"
             git remote add origin git@github.com:chottuapp/ChotuProject-development.git
-            git fetch -q --depth=1 origin "$SOURCE_SHA"
+            git fetch -q --depth=1 origin "$PUBLISH_TOOLS_SHA"
             git checkout -q --detach FETCH_HEAD
-            test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
+            test "$(git rev-parse HEAD)" = "$PUBLISH_TOOLS_SHA"
           ) > "$RUNNER_TEMP/private-checkout.log" 2>&1; then
             echo '::error::Private checkout failed. Check the read-only deploy key and approved commit; private logs are not uploaded.'
             exit 1
