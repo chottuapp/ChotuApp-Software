@@ -43,7 +43,9 @@ def workbook_issues(path):
     if not any(v is not None for v in values):continue
     row=dict(zip(headers,values));pid=str(row.get('product_id') or '')
     issues[pid].extend(check(row))
-    if title=='Products':products[pid]=row
+    if title=='Products':
+     products[pid]=row
+     if str(row.get('available (yes/no)') or '').strip().lower()=='no':issues[pid].append('Stock policy: fully out-of-stock products must be excluded; retain unavailable variants only under an available product')
     else:variants[pid].append(row)
   for pid,rows in variants.items():
    if pid not in products:issues[pid].append('Price/stock gate: orphan variant')

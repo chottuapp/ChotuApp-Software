@@ -16,3 +16,9 @@ class PriceStockTests(unittest.TestCase):
    path=Path(tmp)/'x.xlsx';book=Workbook();sheet=book.active;sheet.title='Products';headers=list(self.row());sheet.append(headers);sheet.append(list(self.row().values()));variants=book.create_sheet('Variant Combinations');variants.append(headers);variants.append(list(self.row(**{'available (yes/no)':'no'}).values()));variants.append(list(self.row().values()));book.save(path)
    self.assertEqual(workbook_issues(path),{})
    sheet.cell(2,headers.index('available (yes/no)')+1).value='no';book.save(path);self.assertIn('product and variant availability disagree',' '.join(workbook_issues(path)['P1']))
+
+ def test_fully_sold_out_product_is_rejected_but_unavailable_variants_are_retained(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   path=Path(tmp)/'soldout.xlsx';book=Workbook();products=book.active;products.title='Products';headers=list(self.row());products.append(headers);products.append(list(self.row(**{'available (yes/no)':'no'}).values()));variants=book.create_sheet('Variant Combinations');variants.append(headers);variants.append(list(self.row(**{'available (yes/no)':'no'}).values()));book.save(path)
+   self.assertIn('fully out-of-stock',' '.join(workbook_issues(path)['P1']))
+   products.cell(2,headers.index('available (yes/no)')+1).value='yes';variants.append(list(self.row().values()));book.save(path);self.assertEqual(workbook_issues(path),{})
