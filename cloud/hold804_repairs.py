@@ -305,6 +305,9 @@ def visual_review(row,store):
  return None
 
 def category(row,store):
+ name=str(row.get('name') or '');body=str(row.get('description') or '')
+ if store=='Junaid Jamshed' and re.search(r'\bbrow\b.*\bshaping\s+gel\b',name,re.I) and re.search(r'\b(?:brow|eyebrow)\s+shape\b',body,re.I):return 'Eyebrow Gels','reviewed_source_description','Source explicitly identifies brow tinting and shaping gel: '+body[:700]
+ if store=='Gul Ahmed' and re.search(r'\bapron\b',name,re.I) and re.search(r'\bcooking\b',body,re.I):return 'Kitchen Aprons','reviewed_source_description','Source identifies a cooking apron; finish and full measurements retained: '+body[:700]
  visual=visual_review(row,store)
  if visual:return visual['category'],'reviewed_primary_product_image',visual['overview']+' Image: '+visual['image_url']+' SHA256: '+visual['image_sha256']
  if store=='Sapphire' and re.fullmatch(r'(?i)Knit Cape Jumper',str(row.get('name') or '').strip()) and re.search(r'(?i)\bknit\s+cape\s+jumper\b',str(row.get('description') or '')):return 'Ponchos & Capes','reviewed_source_description','Source explicitly names a knit cape jumper; fabric percentages and measurements unchanged.'

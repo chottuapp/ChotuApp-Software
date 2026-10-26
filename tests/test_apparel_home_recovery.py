@@ -28,3 +28,7 @@ class ApparelHomeRecoveryTests(unittest.TestCase):
 
  def test_retinal_booster_requires_explicit_treatment_purpose(self):
   self.check('Elite Cosmetics','celimax Retinal Shot Tightening Booster - 0.1% Retinal (15ml)','This concentrated 15ml (0.50 fl. oz.) treatment is formulated specifically for promoting firm skin. It contains 0.1% Retinal, 1% Panthenol, and 3% MATRIXYL 3000.','Facial Treatments')
+
+ def test_brow_shaping_gel_and_cooking_apron(self):
+  self.check('Junaid Jamshed','BROW ADDICT TINT AND SHAPING GEL','Adds color and helps perfect your brow shape.','Eyebrow Gels')
+  self.check('Gul Ahmed','Blue Print Apron','Water-repellent apron for cooking. Size: 51x66+23cm; 20x26+9inch.','Kitchen Aprons')

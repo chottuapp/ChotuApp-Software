@@ -11,9 +11,11 @@
   "audit_recovery": "active_correction_queue",
   "khaadi_execution": "excluded_by_owner_request",
   "excluded_stores": [
-    "Khaadi"
+    "Khaadi",
+    "LAAM"
   ],
   "stock_policy": "Exclude fully out-of-stock products; retain source-confirmed unavailable variants of included products. LAAM active visible in-stock clothing only.",
   "price_policy": "Live variant identity, PKR prices and availability verified; no cached-price fallback on failed verification; sale only where actual payable price is below source compare-at price.",
-  "fetch_segment_minutes": 300
+  "fetch_segment_minutes": 300,
+  "laam_fresh_enabled": false
 }
