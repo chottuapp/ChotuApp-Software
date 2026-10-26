@@ -24,6 +24,11 @@ def source_policy(host):
     return (1.0,2) if host in CAUTIOUS_SOURCES or host=='shopmodest.pk' else (1.0,5) if host=='elitecosmeticspk.com' else (0.25,5)
 
 
+def needs_live_product_page(live):
+    """Only known live sellable variants need the HTML/hero preload."""
+    return any(v.get('available') is True for v in live.get('variants',[]))
+
+
 class RequestGate:
     def __init__(self, pause, log, baseline=0.25, state_path=None, error_factory=RuntimeError):
         self.pause=pause;self.log=log;self.baseline=baseline;self.interval=baseline
@@ -279,10 +284,15 @@ def enable_fast_fetch(g):
             if str(product.get('status') or '').strip().lower() not in ('','active'):continue
             if 'published_at' in product and not product.get('published_at'):continue
             if not product.get('handle') or g['is_free_gift'](product):continue
-            if any(v.get('id') is not None and v.get('available') is True and (g['money'](v.get('price')) or 0)>0 for v in product.get('variants',[])):
+            # Snapshot stock may be stale: the canonical pass verifies these too.
+            # Queue their price/stock checks here instead of leaving thousands serial.
+            if any(v.get('id') is not None and (g['money'](v.get('price')) or 0)>0 for v in product.get('variants',[])):
                 eligible.append(product['handle'])
         def detail(handle):
-            g['get_json'](base.rstrip('/')+'/products/'+handle+'.js')
+            live=g['get_json'](base.rstrip('/')+'/products/'+handle+'.js')
+            # No retained product/cover when every live variant is sold out.
+            # Canonical validation still checks identity, currency and prices.
+            if not needs_live_product_page(live):return
             # Store the original full page; hero/description/audits still parse it normally.
             response=g['S'].get(base.rstrip('/')+'/products/'+handle,timeout=25);response.raise_for_status()
         preload(eligible,detail,'product prices and pages',log)

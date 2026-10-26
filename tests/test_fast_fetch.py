@@ -20,6 +20,12 @@ import install_fast_fetch
 import install_adaptive_speed
 
 class FastFetchTests(unittest.TestCase):
+    def test_live_stock_controls_html_preload_not_stale_snapshot(self):
+        self.assertTrue(fast.needs_live_product_page({'variants':[{'available':False},{'available':True}]}))
+        self.assertFalse(fast.needs_live_product_page({'variants':[{'available':False}]}))
+        self.assertFalse(fast.needs_live_product_page({'variants':[{'available':'true'}]}))
+
+
     @patch('ranking_support.evidence_checked_at',return_value='2026-10-17T00:00:00+00:00')
     def test_parallel_and_serial_export_every_cell_and_endpoint_match(self,clock):
         products=[]
