@@ -61,7 +61,8 @@ def process(source,out,store,codes,*,mobile_khaadi=False,approved_original=False
                     label,origin,quote=result
                     if label!=old:changes.update(Category=label,subcategory_source=origin,subcategory_evidence=quote,subcategory_checked_at=stamp)
             if not label:warnings.append({'product_id':pid,'issue':'Ambiguous product category retained blank'})
-            polished=tools.tidy_description(description)
+            from description_readability import format_description
+            polished=format_description(tools.tidy_description(description))
             if re.findall(r'\d+(?:[.,]\d+)?',description)!=re.findall(r'\d+(?:[.,]\d+)?',polished):raise ValueError('Description numeric facts changed')
             overview=tools.product_overview(row,label)
             lead=str(row.get('name') or '')+'.'

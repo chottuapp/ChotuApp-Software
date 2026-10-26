@@ -107,7 +107,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
   state['audit804_auto_evidence']={'status':'checked','facts':evidence_count,'digest':evidence_revision}
  except Exception:
   state['audit804_auto_evidence']={'status':'unavailable','action':'Retain saved source facts; no unverified audit approval'}
- revision=hashlib.sha256(b''.join((root/name).read_bytes() for name in ('cloud/owner_product_exclusions.py','cloud/audit804.py','cloud/audit804_semantics.py','cloud/reviewed804_repairs.py','cloud/audit804_delivery.py','cloud/rule804_pipeline.py','cloud/hold804_repairs.py','cloud/audit804-reviewed-source.json','cloud/audit804-image-reviews.json','cloud/audit804_automation.py','cloud/price_stock_gate.py','cloud/legacy_original_schema.py','cloud/confirmed-shop-codes.json','subcategory_inference_support.py','catalog-tools/complete_rule804_batch.py'))).hexdigest()
+ revision=hashlib.sha256(b''.join((root/name).read_bytes() for name in ('cloud/description_readability.py','cloud/owner_product_exclusions.py','cloud/audit804.py','cloud/audit804_semantics.py','cloud/reviewed804_repairs.py','cloud/audit804_delivery.py','cloud/rule804_pipeline.py','cloud/hold804_repairs.py','cloud/audit804-reviewed-source.json','cloud/audit804-image-reviews.json','cloud/audit804_automation.py','cloud/price_stock_gate.py','cloud/legacy_original_schema.py','cloud/confirmed-shop-codes.json','subcategory_inference_support.py','catalog-tools/complete_rule804_batch.py'))).hexdigest()
  revision=hashlib.sha256((revision+evidence_revision).encode()).hexdigest()
  state['audit804_campaign']=campaign;state.setdefault('audit804_results',{});state.setdefault('audit804_processed',{});identity=None
  def handle(source,store,source_run,artifact_id,cache_key):

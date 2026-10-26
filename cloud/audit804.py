@@ -117,6 +117,8 @@ def plain(value):return re.sub(r'\s+',' ',html.unescape(re.sub('<[^>]*>',' ',str
 def tokens(value):return set(re.findall(r'\d+(?:[.,]\d+)?',plain(value)))
 def issues_for(row,source=None):
  name=plain(row.get('name'));description=plain(row.get('description'));category=plain(row.get('Category'));issues=[]
+ from description_readability import issues as readability_issues
+ issues.extend(readability_issues(row.get('description')))
  if not name:issues.append('Missing product name')
  if not description or len(re.findall(r'\b\w+\b',description))<5 or description.rstrip('.')==name.rstrip('.'):
   issues.append('Description lacks enough product-specific content for review')
@@ -197,7 +199,7 @@ def rows(path):
  finally:book.close()
 
 def run(path,store,codes,hosts,*,source=None,strict_commercial=False):
- path=Path(path);findings=[];expected=codes.get(store);seen=set();count=0;finding_count=0
+ path=Path(path);findings=[];expected=codes.get(store);seen=set();output_order=[];count=0;finding_count=0
  from price_stock_gate import workbook_issues
  commercial=workbook_issues(path) if strict_commercial else {}
  originals={str(row.get('product_id')):row for row in rows(source)} if source else {}
@@ -207,7 +209,7 @@ def run(path,store,codes,hosts,*,source=None,strict_commercial=False):
   count+=1;pid=str(row.get('product_id') or '');issues=issues_for(row,originals.get(pid))+commercial.get(pid,[])
   if store=='Seran' and conflicting_name(row,catalogue):issues.append('Description names a different known catalog product')
   if not pid or pid in seen:issues.append('Missing or duplicate product ID')
-  seen.add(pid)
+  seen.add(pid);output_order.append(pid)
   if expected and str(row.get('shop_code') or '')!=expected:issues.append('Shop code missing, mixed or not confirmed for this store')
   if not expected and str(row.get('shop_code') or '').strip():issues.append('Unconfirmed shop code must remain blank')
   if store=='LAAM' and not re.search(r'cloth|suit|unstitched|stitched|wear|kurta|kurti|dress|trouser|shirt|jean|hood|jacket|shawl|dupatta|abaya|kaftan|saree|lehenga|sweater|cardigan|jogger|short|polo|legging|coat|outfit|gown|skirt|shalwar|pant|frock|top|sweatshirt',str(row.get('Category') or ''),re.I):issues.append('Rule LAAM: clothing purpose not confirmed')
@@ -222,5 +224,6 @@ def run(path,store,codes,hosts,*,source=None,strict_commercial=False):
    finding_count+=1;findings.append({'product_id':pid,'issues':issues})
  if expected and list(codes.values()).count(expected)>1:finding_count+=1;findings.append({'product_id':None,'issues':['Shop code assigned to multiple stores; identity review required']})
  if not count:finding_count+=1;findings.append({'product_id':None,'issues':['Empty workbook']})
+ if originals and set(originals)==seen and list(originals)!=output_order:finding_count+=1;findings.append({'product_id':None,'issues':['Website/source product sequence changed during Rule 804; preserve supplied listing order']})
  if originals and set(originals)!=seen:finding_count+=1;findings.append({'product_id':None,'issues':['Source/output product identity mismatch']})
  return {'name':'804 Audit','version':VERSION,'store':store,'shop_code':expected,'identity_policy':'confirmed_code' if expected else 'owner_authorized_blank_code_exact_store_filename','status':'pass' if not finding_count else 'hold','products_checked':count,'findings_count':finding_count,'findings':findings,'details_truncated':finding_count>len(findings),'workbook_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'checked_utc':datetime.now(timezone.utc).isoformat(),'review_scope':'Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.'}
