@@ -1684,7 +1684,8 @@
     "Rawayat": "source:b4d65a11ef4a6666d8550914eb853f89cd7724a6157a23ed6b2f98e9261b2b4f:Rawayat:c2cea6fbcd6bcbc23c5d0f3576fb74408b51d4bfe91cea0ed7249546732fdf09",
     "Outfitters": "source:097feecd912cbb9b241f00f14e54e70a58c56677ca389dc2af0ac21ebd478356:Outfitters:c2cea6fbcd6bcbc23c5d0f3576fb74408b51d4bfe91cea0ed7249546732fdf09",
     "Bonanza Satrangi": "source:c3a8545710392e0a7605c1364824dc96ae9300bc6023b197da240aff96a861cf:Bonanza Satrangi:c2cea6fbcd6bcbc23c5d0f3576fb74408b51d4bfe91cea0ed7249546732fdf09",
-    "Junaid Jamshed": "source:fd47119a547b227613c52b13151b2e909107635fd9b63aa954a6096e8ae6ad0c:Junaid Jamshed:c2cea6fbcd6bcbc23c5d0f3576fb74408b51d4bfe91cea0ed7249546732fdf09"
+    "Junaid Jamshed": "source:fd47119a547b227613c52b13151b2e909107635fd9b63aa954a6096e8ae6ad0c:Junaid Jamshed:c2cea6fbcd6bcbc23c5d0f3576fb74408b51d4bfe91cea0ed7249546732fdf09",
+    "Gul Ahmed": "source:1e8848cb2b277e45ee54cfdccb4f2dd61bf5803e009f5a08575a86fd3deafe84:Gul Ahmed:c2cea6fbcd6bcbc23c5d0f3576fb74408b51d4bfe91cea0ed7249546732fdf09"
   },
   "audit804_results": {
     "Skin Factor": {
@@ -2762,6 +2763,67 @@
       "source_artifact": 12629202152,
       "source_sha256": "fd47119a547b227613c52b13151b2e909107635fd9b63aa954a6096e8ae6ad0c",
       "held_input": "inputs/fresh804-20261026-a3f0b983/junaid-jamshed/fd47119a547b2276/manifest.json"
+    },
+    "Gul Ahmed": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Gul Ahmed",
+      "shop_code": "SE10020",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 6284,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CP8c1e5c0f279a",
+          "name": "Blue Print Apron",
+          "source_url": "https://www.gulahmedshop.com/products/blue-print-apron",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "details_truncated": false,
+      "workbook_sha256": "cccb3a0ce6f50049dd636f974bccca812d8a0cae30cf4ae40ce1f9cf3a5bc436",
+      "checked_utc": "2026-10-26T05:31:43.761448+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-26T05:31:43.774761+00:00",
+        "updated_utc": "2026-10-26T05:31:43.774761+00:00",
+        "next_source_check_due_utc": "2026-10-26T05:46:43.774761+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category lacks clear product-purpose evidence; manual review required"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "owner_authorized_exclusions": [],
+      "description_repairs_count": 2,
+      "description_repairs_examples": [
+        {
+          "product_id": "CP39e7b88130ec",
+          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP145341481750",
+          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
+          "repair_kind": "description"
+        }
+      ],
+      "campaign_id": "fresh804-20261026-a3f0b983",
+      "source_run": "40265757578",
+      "source_artifact": 12630085556,
+      "source_sha256": "1e8848cb2b277e45ee54cfdccb4f2dd61bf5803e009f5a08575a86fd3deafe84",
+      "held_input": "inputs/fresh804-20261026-a3f0b983/gul-ahmed/1e8848cb2b277e45/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -2823,8 +2885,8 @@
     "SE10010": "inputs/fresh804-20261024-c055e80e/rollback-se10010/c98ed9980fd8369e/manifest.json",
     "SH10003": "inputs/fresh804-20261026-a3f0b983/rollback-sh10003/233c5910f473828a/manifest.json"
   },
-  "audit804_last_store": "Junaid Jamshed",
-  "audit804_progress_utc": "2026-10-26T05:22:44.288767+00:00",
+  "audit804_last_store": "Gul Ahmed",
+  "audit804_progress_utc": "2026-10-26T05:32:08.554870+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Gul Ahmed",
