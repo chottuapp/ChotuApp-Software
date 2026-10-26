@@ -9,4 +9,4 @@ def allowed_product(base,product):
  kind=str(product.get('product_type') or '')
  # Evaluate sold objects, not cross-selling/care prose or unrelated collection tags.
  if re.search(r'\b(?:bag\s+(?:charms?|straps?|covers?|organizers?)|watches|watch|shoes?|perfumes?|jewellery|jewelry|clothes?|sunglasses|belts?)\b',title,re.I):return False
- return bool(re.search(r'\b(?:bags?|wallets?|handbags?|backpacks?|rucksacks?|totes?|clutches|clutch|purses?|satchels?|briefcases?|duffels?)\b',title+' '+kind,re.I))
+ return bool(re.search(r'\b(?:bags?|wallets?|handbags?|backpacks?|rucksacks?|totes?|clutches|clutch|purses?|satchels?|briefcases?|duffels?|mini\s+pouches|mini\s+pouch)\b',title+' '+kind,re.I))

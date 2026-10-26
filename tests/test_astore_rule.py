@@ -2,7 +2,7 @@ import unittest
 from locked_store_rules import allowed_product
 class AstoreTests(unittest.TestCase):
  def test_womens_mens_bags_and_wallets(self):
-  for name in ['Ladies Handbag','Mens Wallet','Long Travel Bag','Knot Flower Tote','Canvas Backpack','Mini Clutch','Bag set of 3']:
+  for name in ['Ladies Handbag','Mens Wallet','Long Travel Bag','Knot Flower Tote','Canvas Backpack','Mini Clutch','Bag set of 3','Mini Pouch','Mini Pouches','Ladies Mini Pouches']:
    self.assertTrue(allowed_product('https://www.astorebags.pk',{'title':name}))
  def test_unrelated_and_unknown_items_never_pass_from_store_name(self):
   for name in ['Watch and Wallet Set','Bag charm','Bag strap','Shoes','Collection 123','Perfume','Sunglasses']:
