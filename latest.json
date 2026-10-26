@@ -1,56 +1,59 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-26T05:55:23.017896+00:00",
-  "run_id": "40265880469",
+  "generated_utc": "2026-10-26T08:46:46.838650+00:00",
+  "run_id": "40265670498",
   "attempt": "1",
   "source_commit": "481da1294ac43635e7f47b635cb4588598847e81",
-  "status": "complete",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 7541.0,
+  "elapsed_seconds": 18002.3,
   "stores": [
     {
-      "name": "Bonanza Satrangi",
+      "name": "Nisa Naturals",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
-      "software_revision": "c1b3fecc7dcf99a0",
-      "products": 1139,
-      "variants": 3435,
+      "software_revision": "a31ba96b1b39a87f",
+      "products": 55,
+      "variants": 55,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
       "cache_events": 0
     },
     {
-      "name": "Outfitters",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "c1b3fecc7dcf99a0",
-      "products": 3802,
-      "variants": 29493,
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
-    },
-    {
-      "name": "Zellbury",
-      "status": "done",
-      "review_required": true,
+      "name": "LAAM",
+      "status": "pending",
+      "review_required": false,
       "issue_codes": [
-        "WEBSITE_ORDER_UNVERIFIED"
+        "HTTP_404",
+        "HTTP_503",
+        "RATE_LIMIT"
       ],
       "software_revision": "c1b3fecc7dcf99a0",
-      "products": 5908,
-      "variants": 24179,
       "http_statuses": {
-        "200": 3411
+        "200": 10180,
+        "500": 183,
+        "503": 2,
+        "404": 7
       },
-      "network_seconds": 5036.9,
-      "max_response_seconds": 2.1,
-      "cache_events": 30694
+      "network_seconds": 7894.5,
+      "max_response_seconds": 15.0,
+      "cache_events": 0
+    },
+    {
+      "name": "Sapphire",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "c1b3fecc7dcf99a0",
+      "products": 1048,
+      "variants": 3769,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
     }
   ]
 }
