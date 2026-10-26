@@ -1,30 +1,28 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-26T11:36:17.094494+00:00",
-  "run_id": "40308942352",
+  "generated_utc": "2026-10-26T11:42:47.624909+00:00",
+  "run_id": "40309012761",
   "attempt": "1",
   "source_commit": "7a8ff0032ab0df30040832c7f4b31619eb4c7c67",
-  "status": "complete",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 3464.0,
+  "elapsed_seconds": 3820.4,
   "stores": [
     {
-      "name": "Tawakkal Fabrics",
-      "status": "done",
-      "review_required": true,
+      "name": "Sapphire",
+      "status": "failed",
+      "review_required": false,
       "issue_codes": [
-        "WEBSITE_ORDER_UNVERIFIED"
+        "ADAPTER_ERROR"
       ],
       "software_revision": "c1b3fecc7dcf99a0",
-      "products": 1452,
-      "variants": 3298,
       "http_statuses": {
-        "200": 1811
+        "200": 2545
       },
-      "network_seconds": 2929.0,
-      "max_response_seconds": 19.9,
-      "cache_events": 2912
+      "network_seconds": 3554.4,
+      "max_response_seconds": 5.2,
+      "cache_events": 0
     }
   ]
 }
