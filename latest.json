@@ -1,28 +1,32 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-26T10:41:43.591558+00:00",
-  "run_id": "40309047490",
+  "generated_utc": "2026-10-26T10:42:43.133420+00:00",
+  "run_id": "40308974358",
   "attempt": "1",
   "source_commit": "7a8ff0032ab0df30040832c7f4b31619eb4c7c67",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 67.6,
+  "elapsed_seconds": 233.4,
   "stores": [
     {
-      "name": "Skin Factor",
+      "name": "Seran",
       "status": "done",
       "review_required": true,
-      "issue_codes": [],
+      "issue_codes": [
+        "HTTP_403",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
       "software_revision": "c1b3fecc7dcf99a0",
-      "products": 28,
-      "variants": 28,
+      "products": 266,
+      "variants": 774,
       "http_statuses": {
-        "200": 82
+        "200": 270,
+        "403": 1
       },
-      "network_seconds": 53.7,
-      "max_response_seconds": 2.2,
-      "cache_events": 56
+      "network_seconds": 161.8,
+      "max_response_seconds": 3.2,
+      "cache_events": 532
     }
   ]
 }
