@@ -50,6 +50,7 @@ jobs:
             git fetch -q --depth=1 origin "$SOURCE_SHA"
             git checkout -q --detach FETCH_HEAD
             git fetch -q --depth=1 origin 5ecb2661b966c3cb2a0d15b33c3fd230d56f4ff6
+            git fetch -q --depth=1 origin dfe67a6ca768c679589f3ad1d64ed98b89ff80d2
             git fetch -q --depth=1 origin 428b40de453e2f1092c587d7f7eaa99aa9e59014
             git fetch -q --depth=1 origin b008c47c046a0f55f42fc5f5e8952edfb8ec7490
             test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
