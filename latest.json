@@ -1667,7 +1667,8 @@
     "Astore Bags": "source:ea78e5d14b5e1a02710dc9914ab629834c0e003e0d39c0474a572d982317993b:Astore Bags:b12bb52d07ee30e5d93bdf8b660f06028fe9d48b9af12ce3740dd915e8142a02",
     "Rawayat": "source:b2c4378b0173ccc9bd443858dfc1444a43117bc009ebd82b3b07ff0877e5bf35:Rawayat:b12bb52d07ee30e5d93bdf8b660f06028fe9d48b9af12ce3740dd915e8142a02",
     "Outfitters": "source:c36d61c654ec635e0823fc03e342a54a349f5d48617b3ebdc67137faee3f2bde:Outfitters:b12bb52d07ee30e5d93bdf8b660f06028fe9d48b9af12ce3740dd915e8142a02",
-    "Bonanza Satrangi": "source:6a656c491ea7659fd52cae40a347f2d58a79f1415167aa169049a9e0d97f4e2c:Bonanza Satrangi:acb537f9b03bd62be84ed4aac5d75c6ca224e6c17f6fdb290aee277e940862fd"
+    "Bonanza Satrangi": "source:6a656c491ea7659fd52cae40a347f2d58a79f1415167aa169049a9e0d97f4e2c:Bonanza Satrangi:acb537f9b03bd62be84ed4aac5d75c6ca224e6c17f6fdb290aee277e940862fd",
+    "Junaid Jamshed": "source:1ca28937445940ee8c35b6173978c5d522204d0e7f6208966583775cd3c0bb6a:Junaid Jamshed:b12bb52d07ee30e5d93bdf8b660f06028fe9d48b9af12ce3740dd915e8142a02"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -2976,6 +2977,107 @@
       "source_run": "40351942403",
       "source_artifact": 12676658292,
       "source_sha256": "6a656c491ea7659fd52cae40a347f2d58a79f1415167aa169049a9e0d97f4e2c"
+    },
+    "Junaid Jamshed": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Junaid Jamshed",
+      "shop_code": "SE10011",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 5714,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CP2f825e645ec0",
+          "name": "JJS-A-109-R19/S25/JJ8775-A9-PN",
+          "source_url": "https://www.junaidjamshed.com/products/jjs-a-109-r19-s25-jj8775-a9-pn",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "details_truncated": false,
+      "workbook_sha256": "f60cdd5c77e305f13d8c3dd410aca36e509de0de008278dd45b9a1432a57c8c9",
+      "checked_utc": "2026-10-26T20:14:33.985174+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-26T20:14:33.993040+00:00",
+        "updated_utc": "2026-10-26T20:14:33.993040+00:00",
+        "next_source_check_due_utc": "2026-10-26T20:29:33.993040+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category lacks clear product-purpose evidence; manual review required"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "owner_authorized_exclusions": [],
+      "description_repairs_count": 266,
+      "description_repairs_examples": [
+        {
+          "product_id": "CP2a14bec6e126",
+          "issue": "Rewrote exact source product_type; existing options preserved.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP69ae788ee867",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPec5ae447af35",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP4fe784b19af4",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP6b2f5d364d1b",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP02032125ca88",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP4e7b3e985274",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPc480aaf5a708",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP623e74d5ef40",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP9f22ede41ffb",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        }
+      ],
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "source_run": "40351492571",
+      "source_artifact": 12684245642,
+      "source_sha256": "1ca28937445940ee8c35b6173978c5d522204d0e7f6208966583775cd3c0bb6a",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/junaid-jamshed/1ca28937445940ee/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -3004,7 +3106,7 @@
     "40308955425": "40308955425:12647353255:b12bb52d07ee30e5d93bdf8b660f06028fe9d48b9af12ce3740dd915e8142a02",
     "40309025107": "40309025107:12650158227:b12bb52d07ee30e5d93bdf8b660f06028fe9d48b9af12ce3740dd915e8142a02",
     "40326292586": "40326292586:12652020158:b12bb52d07ee30e5d93bdf8b660f06028fe9d48b9af12ce3740dd915e8142a02",
-    "40326372578": "40326372578:12650764972:acb537f9b03bd62be84ed4aac5d75c6ca224e6c17f6fdb290aee277e940862fd",
+    "40326372578": "40326372578:12650764972:b12bb52d07ee30e5d93bdf8b660f06028fe9d48b9af12ce3740dd915e8142a02",
     "40308917270": "40308917270:12653448888:b12bb52d07ee30e5d93bdf8b660f06028fe9d48b9af12ce3740dd915e8142a02",
     "40309052898": "40309052898:12657633827:b12bb52d07ee30e5d93bdf8b660f06028fe9d48b9af12ce3740dd915e8142a02",
     "40308930317": "40308930317:12664405535:b12bb52d07ee30e5d93bdf8b660f06028fe9d48b9af12ce3740dd915e8142a02",
@@ -3057,8 +3159,8 @@
     "SE10034": "inputs/fresh804-20261026-5d42fe35/rollback-se10034/2797513dd7dc666c/manifest.json",
     "SE10030": "inputs/fresh804-20261026-5d42fe35/rollback-se10030/7b215fffcdb0dc75/manifest.json"
   },
-  "audit804_last_store": "Astore Bags",
-  "audit804_progress_utc": "2026-10-26T20:13:48.532266+00:00",
+  "audit804_last_store": "Junaid Jamshed",
+  "audit804_progress_utc": "2026-10-26T20:14:37.666891+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Gul Ahmed",
