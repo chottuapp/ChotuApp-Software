@@ -89,12 +89,15 @@ jobs:
           text=(Path(os.environ['RUNNER_TEMP'])/'private-feed-speed-release.log').read_text(errors='replace')
           inner=Path(os.environ['RUNNER_TEMP'])/'receipt-private-backend.log'
           if inner.exists(): text+='\n'+inner.read_text(errors='replace')
+          for name in ['feed-profile-before.json','feed-profile-after.json']:
+              profile=Path(os.environ['RUNNER_TEMP'])/name
+              if profile.exists(): text+='\n'+profile.read_text(errors='replace')
           for safe in ['Feed paging validation failed','Paging rank cache did not reuse its bounded block','Host guard','Search returned no suit products','Search returned a substring-only match','Receipt payload missing','Receipt field missing']:
               if safe in text: print('::error::'+safe)
           import re
           for code in set(re.findall(r'SQLSTATE\[[A-Z0-9]+\]',text)): print('::error::Database diagnostic '+code)
           if 'Production code conflict' in text: print('::error::Existing server code differs from the reviewed baseline; installation stopped without overriding it.')
-          else: print('::error::Combined receipt release check failed. Private server/source logs were not uploaded.')
+          else: print('::error::Feed performance release check failed. Private server/source logs were not uploaded.')
           PYERROR
             exit 1
           fi
