@@ -1,53 +1,29 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-26T03:47:55.900825+00:00",
-  "run_id": "40241713481",
+  "generated_utc": "2026-10-26T03:52:08.659426+00:00",
+  "run_id": "40241764792",
   "attempt": "1",
   "source_commit": "481da1294ac43635e7f47b635cb4588598847e81",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 18000.7,
+  "elapsed_seconds": 18001.0,
   "stores": [
     {
-      "name": "Bonanza Satrangi",
+      "name": "Tawakkal Fabrics",
       "status": "done",
       "review_required": true,
-      "issue_codes": [
-        "HTTP_503",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "c1b3fecc7dcf99a0",
-      "products": 1139,
-      "variants": 3435,
-      "http_statuses": {
-        "200": 7001
-      },
-      "network_seconds": 17490.1,
-      "max_response_seconds": 3.2,
-      "cache_events": 6582
+      "issue_codes": [],
+      "software_revision": "a31ba96b1b39a87f",
+      "products": 1460,
+      "variants": 3308,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
     },
     {
-      "name": "Outfitters",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [
-        "HTTP_404",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "c1b3fecc7dcf99a0",
-      "products": 3802,
-      "variants": 29493,
-      "http_statuses": {
-        "404": 10,
-        "200": 230
-      },
-      "network_seconds": 621.5,
-      "max_response_seconds": 23.7,
-      "cache_events": 14795
-    },
-    {
-      "name": "Zellbury",
+      "name": "Junaid Jamshed",
       "status": "pending",
       "review_required": false,
       "issue_codes": [
@@ -55,11 +31,26 @@
       ],
       "software_revision": "c1b3fecc7dcf99a0",
       "http_statuses": {
-        "200": 9309
+        "200": 16364
       },
-      "network_seconds": 15771.6,
-      "max_response_seconds": 31.3,
-      "cache_events": 12803
+      "network_seconds": 15972.6,
+      "max_response_seconds": 7.7,
+      "cache_events": 14171
+    },
+    {
+      "name": "Stylo",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "c1b3fecc7dcf99a0",
+      "http_statuses": {
+        "200": 3593
+      },
+      "network_seconds": 8400.8,
+      "max_response_seconds": 3.0,
+      "cache_events": 4575
     }
   ]
 }
