@@ -305,13 +305,14 @@ def visual_review(row,store):
  return None
 
 def category(row,store):
+ if store=='Zero Lifestyle' and row.get('name')=='Open Zbuds' and re.search(r'(?i)ear.?clip.*Bluetooth|Bluetooth.*ear.?clip',str(row.get('description') or ''),re.S):return 'Earphones/Earbuds','reviewed_source_description','Source explicitly describes open-ear wireless earbuds with Bluetooth and charging case.'
  name=str(row.get('name') or '');body=str(row.get('description') or '')
  if store=='Junaid Jamshed' and re.search(r'\bbrow\b.*\bshaping\s+gel\b',name,re.I) and re.search(r'\b(?:brow|eyebrow)\s+shape\b',body,re.I):return 'Eyebrow Gels','reviewed_source_description','Source explicitly identifies brow tinting and shaping gel: '+body[:700]
  if store=='Gul Ahmed' and re.search(r'\bapron\b',name,re.I) and re.search(r'\bcooking\b',body,re.I):return 'Kitchen Aprons','reviewed_source_description','Source identifies a cooking apron; finish and full measurements retained: '+body[:700]
  visual=visual_review(row,store)
  if visual:return visual['category'],'reviewed_primary_product_image',visual['overview']+' Image: '+visual['image_url']+' SHA256: '+visual['image_sha256']
  if store=='Sapphire' and re.fullmatch(r'(?i)Knit Cape Jumper',str(row.get('name') or '').strip()) and re.search(r'(?i)\bknit\s+cape\s+jumper\b',str(row.get('description') or '')):return 'Ponchos & Capes','reviewed_source_description','Source explicitly names a knit cape jumper; fabric percentages and measurements unchanged.'
- if store not in STORES:return None
+ if store not in STORES and store not in {'Aerosoft Studio','Bata','Servis','Ndure','Zero Lifestyle'}:return None
  name=str(row.get('name') or '');body=str(row.get('description') or '')
  if store=='Stylo':
   for pattern,label in [
@@ -452,6 +453,10 @@ def category(row,store):
  if store=='Hemani Herbals' and row.get('website_category_path')=='Body Spray' and row.get('website_category_status') in ('verified_navigation_membership','verified_product_breadcrumb') and re.search(r'(?i)\b(?:spray|fragrance)\b',body):return 'Body Sprays','reviewed_source_breadcrumb','Verified source Body Spray breadcrumb and application directions: '+name
  source=public_facts(row,store)
  if source:
+  if store=='Aerosoft Studio':
+   footwear={'slippers':'Slippers','slipper':'Slippers','sandals':'Sandals','running sneakers':'Sneakers & Trainers','walking sneakers':'Sneakers & Trainers','shoes':'Shoes'}
+   label=footwear.get(str(source.get('product_type') or '').strip().casefold())
+   if label:return label,'reviewed_public_product_type','Exact public product type: '+source['product_type']+'; '+source['source_url']
   bundle=source.get('reviewed_bundle',{})
   if store=='Bonanza Satrangi' and bundle.get('status')=='active' and bundle.get('category') in ('Fragrance Bundles','Makeup Bundles') and bundle.get('configuration_sha256') and bundle.get('products'):return bundle['category'],'reviewed_public_bundle_configuration',source['description']+'; '+bundle['configuration_source_url']
   types={'earring':'Earrings','earrings':'Earrings','earstuds':'Stud Earrings','jhumka':'Jhumka Earrings','karay':'Bangles & Karas','bangles':'Bangles & Karas','necklace':'Necklaces','necklaces':'Necklaces','bracelets':'Bracelets','anklet':'Anklets','anklets':'Anklets','ring':'Rings','pendent':'Pendants & Lockets','nath':'Nose Jewellery','bindiya kanta':'Forehead Jewellery','choker set':'Jewellery Sets','mala set':'Jewellery Sets','locket set':'Jewellery Sets','bridal set':'Jewellery Sets','jeans':'Jeans'}
@@ -523,7 +528,7 @@ def description(row,store):
    old,new=visual['correct_leading_copy']
    if useful.startswith(old):useful=new+useful[len(old):]
   return visual['overview']+('\n\n'+useful if useful else '\n\nListing: '+name),'Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.'
- if store not in STORES:return original,None
+ if store not in STORES and store not in {'Aerosoft Studio','Bata','Servis','Ndure','Zero Lifestyle'}:return original,None
  if (str(row.get('website_category_status') or '') in ('verified_navigation_membership','verified_product_breadcrumb')
      and str(row.get('website_category_path') or '').split(' > ')[0].casefold()=='fragrances'
      and row.get('website_category_source_url') and row.get('website_category_checked_at')
@@ -533,6 +538,12 @@ def description(row,store):
   lead=name+' is a fragrance'+(' in the '+leaf+' range.' if leaf.casefold()!='fragrances' else '.')
   if not body.startswith(lead):return lead+('\n\n'+original if body and body!=name else ''),'Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.'
  source=public_facts(row,store)
+ if source and store=='Aerosoft Studio':
+  kind=str(source.get('product_type') or '').strip().casefold()
+  types={'slippers':'slippers','slipper':'slippers','sandals':'sandals','running sneakers':'running sneakers','walking sneakers':'walking sneakers','shoes':'shoes'}
+  if kind in types:
+   lead=name+' is a footwear style listed as '+types[kind]+'.'
+   if not body.startswith(lead):return lead+'\n\n'+original,'Added exact public footwear type; original specifications and options retained.'
  if source and store=='Rawayat':
   kind=str(source.get('product_type') or '').strip().casefold()
   overview={'necklace':'a necklace design','earring':'an earring design','earrings':'an earring design','earstuds':'a stud-earring design','nath':'a nose jewellery design','bindiya kanta':'a forehead jewellery design','ring':'a ring design','bracelets':'a bracelet design','anklet':'an anklet design','anklets':'an anklet design','pendent/chain':'a pendant necklace design','pendent/necklace':'a pendant necklace design','choker set':'a jewellery set','mala set':'a jewellery set','locket set':'a jewellery set','bridal set':'a jewellery set'}.get(kind)

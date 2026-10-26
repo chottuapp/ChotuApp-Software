@@ -19,6 +19,8 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  if cat=='facial treatments' and has(r'\bretinal\s+shot\s+tightening\s+booster\b',title) and has(r'\bconcentrated\b.*\btreatment\b',body) and has(r'\bfirm\s+skin\b',body):return []
  if cat=='eyebrow gels' and has(r'\bbrow\b.*\b(?:tint|shaping)\b.*\bgel\b',title) and has(r'\bbrow\s+shape\b',body):return []
  if cat=='kitchen aprons' and has(r'\bapron\b',title) and has(r'\bcooking\b',body):return []
+ if cat=='earphones/earbuds' and has(r'\bearbuds?\b',body) and has(r'\bbluetooth\b',body):return []
+ if cat=='sneakers & trainers' and has(r'\bsneakers?\b',title+' '+body):return []
  # Regional jewellery names denote the sold object; care mentions are not perfume evidence.
  jewellery={
   'forehead jewellery':r'\b(?:jhoom(?:er|ar)|bindiya|matha\s+patti|maang\s+tikka)\b',
