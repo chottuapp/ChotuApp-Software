@@ -1561,7 +1561,8 @@
     "Nisa Naturals": "source:43e171ee565dff0d62da2db2bd2a96d08bcbf036fec7e5d9fc01a3ccf912da71:Nisa Naturals:2a7dd3ef4a9d616c259f4a2ebcf7f9e51c0d8587adbe037a79896973f01b6f8f",
     "Cool and Cool": "source:80e2a97cc32cf38d41ee794ba3e7b79dc7e2999f198008a446db309d917dbad4:Cool and Cool:2a7dd3ef4a9d616c259f4a2ebcf7f9e51c0d8587adbe037a79896973f01b6f8f",
     "Denim Leftover": "source:622b0967a4aec7a78d011234592dbbe3c7975b0b897544297c7c2370d4c47fbc:Denim Leftover:2a7dd3ef4a9d616c259f4a2ebcf7f9e51c0d8587adbe037a79896973f01b6f8f",
-    "Skin Factor": "source:e787eac786a27af3ec15c40ddde07d6985d16b0d0043bfdca9a2d480a72b5333:Skin Factor:2a7dd3ef4a9d616c259f4a2ebcf7f9e51c0d8587adbe037a79896973f01b6f8f"
+    "Skin Factor": "source:e787eac786a27af3ec15c40ddde07d6985d16b0d0043bfdca9a2d480a72b5333:Skin Factor:2a7dd3ef4a9d616c259f4a2ebcf7f9e51c0d8587adbe037a79896973f01b6f8f",
+    "Zero Lifestyle": "source:a89406a80713724dec7c2de44e01ef7cac52f4ffab217f64daeb9d9f8cdae8f1:Zero Lifestyle:2a7dd3ef4a9d616c259f4a2ebcf7f9e51c0d8587adbe037a79896973f01b6f8f"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -1994,6 +1995,56 @@
       "source_run": "40309047490",
       "source_artifact": 12643494150,
       "source_sha256": "e787eac786a27af3ec15c40ddde07d6985d16b0d0043bfdca9a2d480a72b5333"
+    },
+    "Zero Lifestyle": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Zero Lifestyle",
+      "shop_code": "SE10029",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 82,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CP99066f295f14",
+          "name": "Open Zbuds",
+          "source_url": "https://zerolifestyle.co/products/open-zbuds",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "details_truncated": false,
+      "workbook_sha256": "a89406a80713724dec7c2de44e01ef7cac52f4ffab217f64daeb9d9f8cdae8f1",
+      "checked_utc": "2026-10-26T10:54:43.614693+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-26T10:54:43.614895+00:00",
+        "updated_utc": "2026-10-26T10:54:43.614895+00:00",
+        "next_source_check_due_utc": "2026-10-26T11:09:43.614895+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category lacks clear product-purpose evidence; manual review required"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "owner_authorized_exclusions": [],
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "source_run": "40309070945",
+      "source_artifact": 12643876714,
+      "source_sha256": "a89406a80713724dec7c2de44e01ef7cac52f4ffab217f64daeb9d9f8cdae8f1",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/zero-lifestyle/a89406a80713724d/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -2006,7 +2057,8 @@
     "40308994010": "40308994010:12643746397:2a7dd3ef4a9d616c259f4a2ebcf7f9e51c0d8587adbe037a79896973f01b6f8f",
     "40309006270": "40309006270:12643154740:2a7dd3ef4a9d616c259f4a2ebcf7f9e51c0d8587adbe037a79896973f01b6f8f",
     "40309036649": "40309036649:12644376270:2a7dd3ef4a9d616c259f4a2ebcf7f9e51c0d8587adbe037a79896973f01b6f8f",
-    "40309042047": "40309042047:12643529250:2a7dd3ef4a9d616c259f4a2ebcf7f9e51c0d8587adbe037a79896973f01b6f8f"
+    "40309042047": "40309042047:12643529250:2a7dd3ef4a9d616c259f4a2ebcf7f9e51c0d8587adbe037a79896973f01b6f8f",
+    "40309047490": "40309047490:12643494150:2a7dd3ef4a9d616c259f4a2ebcf7f9e51c0d8587adbe037a79896973f01b6f8f"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-10-26T10:41:37.743458+00:00",
@@ -2041,8 +2093,8 @@
     "SE10010": "inputs/fresh804-20261024-c055e80e/rollback-se10010/c98ed9980fd8369e/manifest.json",
     "SH10003": "inputs/fresh804-20261026-a3f0b983/rollback-sh10003/18b2f2f18be54a63/manifest.json"
   },
-  "audit804_last_store": "Skin Factor",
-  "audit804_progress_utc": "2026-10-26T10:54:38.245214+00:00",
+  "audit804_last_store": "Zero Lifestyle",
+  "audit804_progress_utc": "2026-10-26T10:54:45.729069+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Elite Cosmetics",
