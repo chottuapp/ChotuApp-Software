@@ -1,28 +1,30 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-26T11:42:47.624909+00:00",
-  "run_id": "40309012761",
+  "generated_utc": "2026-10-26T11:50:04.008150+00:00",
+  "run_id": "40308955425",
   "attempt": "1",
   "source_commit": "7a8ff0032ab0df30040832c7f4b31619eb4c7c67",
-  "status": "incomplete",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 3820.4,
+  "elapsed_seconds": 4285.2,
   "stores": [
     {
-      "name": "Sapphire",
-      "status": "failed",
-      "review_required": false,
+      "name": "Elite Cosmetics",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
-        "ADAPTER_ERROR"
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "c1b3fecc7dcf99a0",
+      "products": 1566,
+      "variants": 2031,
       "http_statuses": {
-        "200": 2545
+        "200": 1984
       },
-      "network_seconds": 3554.4,
-      "max_response_seconds": 5.2,
-      "cache_events": 0
+      "network_seconds": 3037.1,
+      "max_response_seconds": 15.8,
+      "cache_events": 3132
     }
   ]
 }
