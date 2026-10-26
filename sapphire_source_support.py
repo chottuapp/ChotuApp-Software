@@ -106,6 +106,16 @@ def variant_url(master_url,size):
     if any(not re.fullmatch(r'dwvar_[A-Za-z0-9_-]+_itemType',key) for key in fixed):raise ValueError('Invalid fixed option parameter')
     return urlunsplit((p.scheme,p.netloc,p.path,urlencode({**fixed,size['parameter']:size['value']}),''))
 
+def confirmed_collection_redirect(response,requested):
+    """A current product URL redirected to its own public collection is not a PDP."""
+    before,after=urlsplit(requested),urlsplit(response.url)
+    if response.status_code!=200 or before.hostname!='pk.sapphireonline.pk' or after.hostname!=before.hostname:return False
+    if '/products/' not in before.path or after.path.rstrip('/')!=before.path.split('/products/',1)[0].rstrip('/'):return False
+    soup=BeautifulSoup(response.text,'html.parser');canonical=soup.select_one('link[rel="canonical"]')
+    if canonical is None or soup.select_one('.product-wrapper[data-pid]'):return False
+    target=urlsplit(urljoin(BASE,canonical.get('href','')))
+    return target.hostname==after.hostname and target.path.rstrip('/')==after.path.rstrip('/') and bool(soup.select_one('.product-tile'))
+
 def normalize_product(page,url,read):
     master=inspect_page(page,url)
     if master.get('has_price_range') and not master['sizes']:raise ValueError('Price range requires exact selected variants; no master price exported')
@@ -199,7 +209,14 @@ class PublicCatalog:
         for index,url in enumerate(products.values(),1):
             self.g['_chotu_wait']();product=self.cache.get(url) if self.cache else None
             if product is None:
-                product=normalize_product(self.read(url).text,url,self.read)
+                try:product=normalize_product(self.read(url).text,url,self.read)
+                except ValueError:
+                    # Recheck stale saved layouts against the current allowed public page.
+                    current=self.read(url,fresh=True)
+                    if confirmed_collection_redirect(current,url):
+                        self.log('SAPPHIRE SOURCE EXCLUSION: unavailable product redirects to its public collection: '+url)
+                        continue
+                    product=normalize_product(current.text,url,self.read)
                 if self.cache:self.cache.put(url,product)
             if product.get('_unverified_variant_selections'):self.log('SAPPHIRE VARIANT REVIEW: '+url+'; '+str(len(product['_unverified_variant_selections']))+' unverified combinations not exported; no stock or prices guessed')
             result.append(product)

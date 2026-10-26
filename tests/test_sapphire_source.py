@@ -12,6 +12,15 @@ UNS=source.BASE+'/collections/unstitched/products/U3PELXS26V91.html'
 def fixture(name):return (FIX/name).read_text()
 def response(text,url):return SimpleNamespace(text=text,content=text.encode(),status_code=200,url=url)
 class SapphireTests(unittest.TestCase):
+ def test_removed_product_requires_current_own_collection_redirect(self):
+  collection=source.BASE+'/collections/unstitched'
+  html='<link rel="canonical" href="'+collection+'"><div class="product-tile"></div>'
+  self.assertTrue(source.confirmed_collection_redirect(response(html,collection),UNS))
+  self.assertFalse(source.confirmed_collection_redirect(response(html,UNS),UNS))
+  self.assertFalse(source.confirmed_collection_redirect(response(html,source.BASE+'/collections/other'),UNS))
+  self.assertFalse(source.confirmed_collection_redirect(response(html+'<div class="product-wrapper" data-pid="X"></div>',collection),UNS))
+
+
  def test_actual_single_regular_fit_preserved_in_public_size_selectors(self):
   url=source.BASE+'/collections/kurtas/products/MSTEKR26V610.html'
   page=source.inspect_page(fixture('regular_fit.html'),url)

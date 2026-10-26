@@ -63,3 +63,5 @@ Owner Rule Astore — 26 October 2026: Whenever https://astorebags.pk is fetched
 Owner Rule Astore extension — 26 October 2026: Mini Pouches are explicitly included alongside bags and wallets, for all future astorebags.pk fetches. Unrelated products and separately sold bag accessories remain excluded.
 
 Owner-confirmed shop codes — 26 October 2026: Astore Bags (Astore) SE10030; Bata SE10031; Aerosoft Studio (Aerosoft) SE10032; Servis SE10033; Ndure (NDURE) SE10034. These replace the earlier blank-code instructions for these five stores. Apply to every retained Products row, rerun Rule 804 and independent 804 Audit, and checksum-verify replacement in the existing authorized Drive folder.
+
+Owner operational instruction — 26 October 2026: Routine fetch/audit holds and stopped runs are authorized for source-backed diagnosis, tested repair and checkpoint resume without repeatedly asking the owner. Preserve verified data and source rate limits, never guess prices/stock or bypass independent audit. Report genuine missing access/source exceptions honestly.
