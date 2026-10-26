@@ -1,10 +1,10 @@
 {
   "campaign_id": "fresh804-20261026-a3f0b983",
-  "request": "Owner requested faster fetching and all selected stores from zero; Khaadi remains excluded. Two overlapping workers on eligible sources retain shared request spacing, rate-limit cooldown, exact stock/price checks and full 804 Audit.",
+  "request": "Owner requested one store per runner, adding four footwear stores with blank shop codes; LAAM and Khaadi off. Preserve completed files and resume Stylo saved work.",
   "requested_date_pkt": "2026-10-26",
   "destination_folder": "ChotuApp 19-10-2026 11-36AM",
   "audit_name": "804 Audit",
-  "maximum_stores_per_runner": 3,
+  "maximum_stores_per_runner": 1,
   "require_confirmed_shop_code": true,
   "khaadi_fresh_enabled": false,
   "laam_rule": "Active, visible, source-confirmed in-stock clothing only; stitched, unstitched and ready-made included; bags, jewellery and non-clothing excluded",
@@ -17,5 +17,43 @@
   "stock_policy": "Exclude fully out-of-stock products; retain source-confirmed unavailable variants of included products. LAAM active visible in-stock clothing only.",
   "price_policy": "Live variant identity, PKR prices and availability verified; no cached-price fallback on failed verification; sale only where actual payable price is below source compare-at price.",
   "fetch_segment_minutes": 300,
-  "laam_fresh_enabled": false
+  "laam_fresh_enabled": false,
+  "runner_plan": "solo",
+  "resume_sources": {
+    "Stylo": "40295726610"
+  },
+  "completed_stores": [
+    "Miss Rose",
+    "Rivaj UK",
+    "Tawakkal Fabrics",
+    "Elite Cosmetics",
+    "The Hanger Pakistan",
+    "Vince Care",
+    "Islamabad Tea",
+    "Seran",
+    "Shop Modest",
+    "Adam Cheese",
+    "Computer Zone",
+    "Farda Foods",
+    "Hemani Herbals",
+    "Nisa Naturals",
+    "Cool and Cool",
+    "Denim Leftover",
+    "Saeed Ghani",
+    "Bonanza Satrangi",
+    "Skin Factor",
+    "Zero Lifestyle",
+    "Rawayat",
+    "Junaid Jamshed",
+    "Outfitters",
+    "Zellbury",
+    "Gul Ahmed",
+    "Sapphire"
+  ],
+  "owner_authorized_blank_shop_codes": [
+    "Bata",
+    "Aerosoft Studio",
+    "Servis",
+    "Ndure"
+  ]
 }
