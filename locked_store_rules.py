@@ -2,9 +2,13 @@
 import re
 from urllib.parse import urlsplit
 ASTORE_HOST='astorebags.pk'
+# Exact four optional gift-box products linked by the reviewed China Palm page.
+MAALI_GIFTBOX_HANDLES={'ralli-patchwork','desi-pop','colour-playground','clay-sage'}
 
 def allowed_product(base,product):
- if (urlsplit(base).hostname or '').lower().removeprefix('www.')!=ASTORE_HOST:return True
+ host=(urlsplit(base).hostname or '').lower().removeprefix('www.')
+ if host=='hellomaali.com':return product.get('handle') not in MAALI_GIFTBOX_HANDLES
+ if host!=ASTORE_HOST:return True
  title=str(product.get('title') or '')
  kind=str(product.get('product_type') or '')
  # Evaluate sold objects, not cross-selling/care prose or unrelated collection tags.

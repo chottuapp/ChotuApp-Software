@@ -14,7 +14,7 @@ import time
 
 # These hosts returned HTTP 429 during category preloading at 0.25s spacing.
 RECENTLY_LIMITED_SOURCES={'vincecare.com','saeedghani.pk','pk.hemaniherbals.com','bonanzasatrangi.com','gulahmedshop.com','stylo.pk'}
-CAUTIOUS_SOURCES={'rawayat.com.pk','rivaj-uk.com','junaidjamshed.com','tawakkalfabrics.co'}
+CAUTIOUS_SOURCES={'hellomaali.com','rawayat.com.pk','rivaj-uk.com','junaidjamshed.com','tawakkalfabrics.co'}
 
 
 def source_policy(host):
