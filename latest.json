@@ -1722,7 +1722,8 @@
     "Tawakkal Fabrics": "source:6f55ad01787a2a6485598984169089125de329b8e9b9d6cf5ef4887642cd0a83:Tawakkal Fabrics:5b6a149584fd86fdb467b2b285f47459481d9650d04161daa9dfee4fc3429c58",
     "Elite Cosmetics": "source:56a07f3cdb03d167f8c5468f61fe6aa6f938bff654e7d6e7c8f677e88d712f5b:Elite Cosmetics:5b6a149584fd86fdb467b2b285f47459481d9650d04161daa9dfee4fc3429c58",
     "Hemani Herbals": "source:e823bddbaf1378258b94dd2927a0c69aac05954c12284f8717db4daead02bc2e:Hemani Herbals:5b6a149584fd86fdb467b2b285f47459481d9650d04161daa9dfee4fc3429c58",
-    "Astore Bags": "source:ea78e5d14b5e1a02710dc9914ab629834c0e003e0d39c0474a572d982317993b:Astore Bags:25802b21def17e1386b69d0c2bf6b3b61c9837f00418ed1d307a599cef183fa6"
+    "Astore Bags": "source:ea78e5d14b5e1a02710dc9914ab629834c0e003e0d39c0474a572d982317993b:Astore Bags:25802b21def17e1386b69d0c2bf6b3b61c9837f00418ed1d307a599cef183fa6",
+    "Rawayat": "source:b2c4378b0173ccc9bd443858dfc1444a43117bc009ebd82b3b07ff0877e5bf35:Rawayat:25802b21def17e1386b69d0c2bf6b3b61c9837f00418ed1d307a599cef183fa6"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -5722,10 +5723,113 @@
       "source_artifact": 12650764972,
       "source_sha256": "ea78e5d14b5e1a02710dc9914ab629834c0e003e0d39c0474a572d982317993b",
       "held_input": "inputs/fresh804-20261026-5d42fe35/astore-bags/ea78e5d14b5e1a02/manifest.json"
+    },
+    "Rawayat": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Rawayat",
+      "shop_code": "SE10013",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 4357,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CP6c40ee215546",
+          "name": "Silver Blossom Elegance Bundle",
+          "source_url": "https://rawayat.com.pk/products/silver-blossom-elegance-bundle",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Bundle appears classified as a single component"
+          ]
+        }
+      ],
+      "details_truncated": false,
+      "workbook_sha256": "8afcdb9a5c2903eff9ead6a032879690db50a0d0b4b7dd6540d7b3fc5758903a",
+      "checked_utc": "2026-10-26T13:41:25.311836+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-26T13:41:25.318229+00:00",
+        "updated_utc": "2026-10-26T13:41:25.318229+00:00",
+        "next_source_check_due_utc": "2026-10-26T13:56:25.318229+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Bundle appears classified as a single component",
+          "Description lacks enough product-specific content for review"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "owner_authorized_exclusions": [],
+      "description_repairs_count": 647,
+      "description_repairs_examples": [
+        {
+          "product_id": "CPd39197907fd7",
+          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPece9d6193d87",
+          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP6179e3817d06",
+          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPdd4b654c31c3",
+          "issue": "Rewrote source-listed pack quantity, product type and listing reference; no material or stock claims added.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPe704ec835fcc",
+          "issue": "Rewrote explicit earring colour and listing reference; no composition invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP7c01b4572029",
+          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPac16dca185d9",
+          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPe91694f53d74",
+          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPbc5bc72c0159",
+          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP4b2890e21c58",
+          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "repair_kind": "description"
+        }
+      ],
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "source_run": "40308917270",
+      "source_artifact": 12653448888,
+      "source_sha256": "b2c4378b0173ccc9bd443858dfc1444a43117bc009ebd82b3b07ff0877e5bf35",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/rawayat/b2c4378b0173ccc9/manifest.json"
     }
   },
   "audit804_artifacts": {
-    "40308910925": "40308910925:12644485997:5b6a149584fd86fdb467b2b285f47459481d9650d04161daa9dfee4fc3429c58",
+    "40308910925": "40308910925:12644485997:25802b21def17e1386b69d0c2bf6b3b61c9837f00418ed1d307a599cef183fa6",
     "40308961929": "40308961929:12642699936:5b6a149584fd86fdb467b2b285f47459481d9650d04161daa9dfee4fc3429c58",
     "40308968460": "40308968460:12644346452:5b6a149584fd86fdb467b2b285f47459481d9650d04161daa9dfee4fc3429c58",
     "40308974358": "40308974358:12643539897:5b6a149584fd86fdb467b2b285f47459481d9650d04161daa9dfee4fc3429c58",
@@ -5786,8 +5890,8 @@
     "SH10003": "inputs/fresh804-20261026-5d42fe35/rollback-sh10003/c585a6caa471ef78/manifest.json",
     "blank-Aerosoft Studio": "inputs/fresh804-20261026-5d42fe35/rollback-blank-aerosoft-studio/bd2b50b97e164e14/manifest.json"
   },
-  "audit804_last_store": "Miss Rose",
-  "audit804_progress_utc": "2026-10-26T13:40:48.993617+00:00",
+  "audit804_last_store": "Rawayat",
+  "audit804_progress_utc": "2026-10-26T13:41:28.156160+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Outfitters",
