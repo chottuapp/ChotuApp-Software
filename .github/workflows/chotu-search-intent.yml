@@ -44,6 +44,7 @@ jobs:
             git fetch -q --depth=1 origin "$SOURCE_SHA"
             git checkout -q --detach FETCH_HEAD
             git fetch -q --depth=1 origin 8e1b0d6271b2324e86aab80ae9e0b90b57153792
+            git fetch -q --depth=1 origin 1df652d51fdd3b7659f3c7ccd8a5c85195bcc726
             test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
           ) > "$RUNNER_TEMP/private-checkout.log" 2>&1; then
             echo '::error::Private checkout failed. Check the read-only deploy key and approved commit; private logs are not uploaded.'
