@@ -1684,7 +1684,7 @@
     "Rawayat": "source:b4d65a11ef4a6666d8550914eb853f89cd7724a6157a23ed6b2f98e9261b2b4f:Rawayat:c2cea6fbcd6bcbc23c5d0f3576fb74408b51d4bfe91cea0ed7249546732fdf09",
     "Outfitters": "source:097feecd912cbb9b241f00f14e54e70a58c56677ca389dc2af0ac21ebd478356:Outfitters:c2cea6fbcd6bcbc23c5d0f3576fb74408b51d4bfe91cea0ed7249546732fdf09",
     "Bonanza Satrangi": "source:c3a8545710392e0a7605c1364824dc96ae9300bc6023b197da240aff96a861cf:Bonanza Satrangi:c2cea6fbcd6bcbc23c5d0f3576fb74408b51d4bfe91cea0ed7249546732fdf09",
-    "Junaid Jamshed": "source:fd47119a547b227613c52b13151b2e909107635fd9b63aa954a6096e8ae6ad0c:Junaid Jamshed:c2cea6fbcd6bcbc23c5d0f3576fb74408b51d4bfe91cea0ed7249546732fdf09",
+    "Junaid Jamshed": "source:fd47119a547b227613c52b13151b2e909107635fd9b63aa954a6096e8ae6ad0c:Junaid Jamshed:7eeebea86ea3f5ce2cc77f95f8cdf4bcde3965caed4ebc5b68930637a74d6180",
     "Gul Ahmed": "source:1e8848cb2b277e45ee54cfdccb4f2dd61bf5803e009f5a08575a86fd3deafe84:Gul Ahmed:c2cea6fbcd6bcbc23c5d0f3576fb74408b51d4bfe91cea0ed7249546732fdf09"
   },
   "audit804_results": {
@@ -2683,16 +2683,16 @@
         }
       ],
       "details_truncated": false,
-      "workbook_sha256": "d1c48d07d127b12ad767ca6f3d7fde8174f52658bda3016b4f264a446bbb04eb",
-      "checked_utc": "2026-10-26T05:22:19.452948+00:00",
+      "workbook_sha256": "cb84b9cdf41c00d239ddb42e07e28d4301492e11388eee0c0902b276130b6075",
+      "checked_utc": "2026-10-26T05:34:48.626289+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
         "stage": "correction_pending_source_recheck",
         "unfinished": true,
         "owner": "804 automated recovery",
         "opened_utc": "2026-10-26T05:22:19.461203+00:00",
-        "updated_utc": "2026-10-26T05:22:19.461203+00:00",
-        "next_source_check_due_utc": "2026-10-26T05:37:19.461203+00:00",
+        "updated_utc": "2026-10-26T05:34:48.635084+00:00",
+        "next_source_check_due_utc": "2026-10-26T05:49:48.635084+00:00",
         "actions": [
           "Refresh exact public product facts",
           "Apply supported description and category repairs",
@@ -2885,8 +2885,8 @@
     "SE10010": "inputs/fresh804-20261024-c055e80e/rollback-se10010/c98ed9980fd8369e/manifest.json",
     "SH10003": "inputs/fresh804-20261026-a3f0b983/rollback-sh10003/233c5910f473828a/manifest.json"
   },
-  "audit804_last_store": "Gul Ahmed",
-  "audit804_progress_utc": "2026-10-26T05:32:08.554870+00:00",
+  "audit804_last_store": "Junaid Jamshed",
+  "audit804_progress_utc": "2026-10-26T05:34:48.636048+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Gul Ahmed",
@@ -4746,12 +4746,23 @@
       "description": "",
       "evidence_run": "40226231114",
       "checked_utc": "2026-10-25T19:29:43.983807+00:00"
+    },
+    {
+      "store": "Junaid Jamshed",
+      "product_id": "CP9c6213593d3a",
+      "source_url": "https://www.junaidjamshed.com/products/brow-addict-tint-and-shaping-gel",
+      "requested_name": "BROW ADDICT TINT AND SHAPING GEL",
+      "public_title": "BROW ADDICT TINT AND SHAPING GEL",
+      "product_type": "Cosmetics Division",
+      "description": "Note Brow Addict Tint & Shaping Gel\noffers a perfect long-wearing brow look. It adds color, fills empty spaces, and helps perfect your brow shape.\u00a0A two-in-one product to fill, design, shape, and fix the brow shape",
+      "evidence_run": "40274607596",
+      "checked_utc": "2026-10-26T05:31:00.539440+00:00"
     }
   ],
   "audit804_auto_evidence": {
     "status": "checked",
-    "facts": 169,
-    "digest": "8b41fc555187bdaa6cd0c04c76964ed9e98773b9b7a92416c8cca086488c78e4"
+    "facts": 170,
+    "digest": "0f7b7ab8b8f3700a30c14add728a57aaf884ed0381f3d39aa2cf78fdd818f6a0"
   },
   "previous_audit804_campaign": {
     "campaign_id": "fresh804-20261025-fbb5ff31",
