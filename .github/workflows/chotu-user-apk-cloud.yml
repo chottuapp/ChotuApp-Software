@@ -304,6 +304,19 @@ jobs:
           print('Verified User APK download: '+m['download_url'])
           print('Verified User AAB download: '+m['aab_url'])
           PY
+      - name: Encrypt failed publication diagnostics for private review
+        if: failure()
+        run: |
+          set -euo pipefail
+          test -f "$RUNNER_TEMP/private-apk-publish.log" || exit 0
+          printf '%s' LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUVJekNDQW91Z0F3SUJBZ0lVWjYwazdQMWJtdTFORy95TUR4SW5GNXYzbktBd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0lURWZNQjBHQTFVRUF3d1dRMmh2ZEhVZ1luVnBiR1FnWkdsaFoyNXZjM1JwWXpBZUZ3MHlOakV3TWpZeApOelU1TURKYUZ3MHlOakV3TWpreE56VTVNREphTUNFeEh6QWRCZ05WQkFNTUZrTm9iM1IxSUdKMWFXeGtJR1JwCllXZHViM04wYVdNd2dnR2lNQTBHQ1NxR1NJYjNEUUVCQVFVQUE0SUJqd0F3Z2dHS0FvSUJnUURvM1Y1bEZQdmIKanM0WmF0aS92ZVlmMk1HZ1BMWlhGaGFpbXV5TFlsU3k0KzNuK1lQZkVhYUhKRjRSWnRtdDF5dEE2enFLdW9YSwo1RlE1eXFkUHc1T1pDc21HREE3eHZPZlRIQW5MTzN4OWdxR1BzZzZ5d2JiM2hIQWRUcUh4RUV3T3VlcjgrRnFvCkhBTXRNNG5HbHUzYjBzNU8xdWtRcUVkRlhyWDNOVTJVaHVjTFQrZTl1VFZzYlBqU1VJYmxiN2pFZC9CS09DZXIKWk9MaUVzdnV6c3NIRmFjL1kyRzVtK3hNWVFpRGRpbEI4U1poV1l4V0hSYmNybWxjNmt0NnJvOC9TMERGV3U1Kwp3cTNLQTIzckFNb2Z1TlVJQkU4MnBWUlBWNXh0aG9NRmhzaXRBYU5mTFFMVktFL3duY1pXQldYbmlGQlgwVGswCmhsbW9OZGkzV0g0NUxCM2N6OTYvL3ZTUGpxUDNYMDJxSDlwb2Z4eUdaVmNRQnc2STBxVktXbThOZCt6WEFkcHUKWXBBTDZGSGlvcVFjOWE5OVFmOEo1TTZRWmZYQlFVeXlReFNsTG9KM2d3REVrS2ZSSWtNTVU3ejZvdDcvWGlLbApRTVkxVWxhdnBFaUN4OWxZd3l0TnV2eWVITEdCUXNUblhWTldZTUFUaytTRmJ4bm9aUHREY2hFQ0F3RUFBYU5UCk1GRXdIUVlEVlIwT0JCWUVGRVVSdWh4WXh4VUhRMm1BSDZEdFVaSGhPdXVCTUI4R0ExVWRJd1FZTUJhQUZFVVIKdWh4WXh4VUhRMm1BSDZEdFVaSGhPdXVCTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3RFFZSktvWklodmNOQVFFTApCUUFEZ2dHQkFBSXpwWWVvWVovdXRsYkRjOVFmUzRRanh1endudlF1QVZ3MW9tSHlSVkFnMkFGNldjZ0hrVHd1CmZzVzhpZ3dsTThoL3g2blZub1czbkFiNlljSUtCeUF3b0pQYVQwZkJSVDNuemZKamVBOEQ1SWZycmNYeG9TbkIKVGt5Y1V1VG1UYlQvaTVVQ3RGT2R6RithSDk5SUVCT3BuK25zM2tCdVNRcDJ6aE80UEVPSHJKdXNxekVjcW80RgpleGlCQjd1VDF5b0pwODJKR3FTaGx6WWw3TWYzR0pMNE5ScVI0RzNVcXlTL2lEVW5HQml1RkVNYlc4d0NrTENBCnRnTHN6OXZ1WnFSYklsdWNFQyttb21MYXZ2am9qMjBReHExbm9RU2dwMlV0RnJtKzJJdGdsS2pISGJwMjM3SzMKVkhiK1BWR1RVcERsN2YzOUo3UGR0KzZwZFgraDNMcjJkNlJqSE5GdnNRQU4zSmZrTlY0a3RGV1ZPYlVTWGlJbwpWUzRyd3oyb3NuL2pWbjRPK01CL3M0UDJuYlpjRGprM0RPVitVZWNWdzJGMVl1VWtzcTd0UmxqK3h4aEZKRkw5CnBpb3NZVTl6ZDZ5TFYxSHZjZVNyOVdFaWNobXZjdmdOR1g1bTFMNjV1enV2Tlh6U3JPcFBUdEhndUo0OWNNR0QKMmtGdU5Vc2dhZz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K | base64 -d > "$RUNNER_TEMP/diagnostic-public.crt"
+          openssl cms -encrypt -aes256 -binary -outform DER -in "$RUNNER_TEMP/private-apk-publish.log" -out "$RUNNER_TEMP/publish-diagnostic.enc" "$RUNNER_TEMP/diagnostic-public.crt"
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: encrypted-publication-diagnostic
+          path: ${{ runner.temp }}/publish-diagnostic.enc
+          retention-days: 1
       - uses: actions/upload-artifact@v4
         with:
           name: customer-apk-publication
