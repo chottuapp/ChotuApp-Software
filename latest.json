@@ -1929,7 +1929,8 @@
     "Outfitters": "source:c36d61c654ec635e0823fc03e342a54a349f5d48617b3ebdc67137faee3f2bde:Outfitters:b12bb52d07ee30e5d93bdf8b660f06028fe9d48b9af12ce3740dd915e8142a02",
     "Bonanza Satrangi": "source:6a656c491ea7659fd52cae40a347f2d58a79f1415167aa169049a9e0d97f4e2c:Bonanza Satrangi:b12bb52d07ee30e5d93bdf8b660f06028fe9d48b9af12ce3740dd915e8142a02",
     "Junaid Jamshed": "source:1ca28937445940ee8c35b6173978c5d522204d0e7f6208966583775cd3c0bb6a:Junaid Jamshed:b12bb52d07ee30e5d93bdf8b660f06028fe9d48b9af12ce3740dd915e8142a02",
-    "Zellbury": "source:9507fa78c95cca57d9a08688a828387526cfc747177e4246906a748f145c2f89:Zellbury:b12bb52d07ee30e5d93bdf8b660f06028fe9d48b9af12ce3740dd915e8142a02"
+    "Zellbury": "source:9507fa78c95cca57d9a08688a828387526cfc747177e4246906a748f145c2f89:Zellbury:b12bb52d07ee30e5d93bdf8b660f06028fe9d48b9af12ce3740dd915e8142a02",
+    "Gul Ahmed": "source:0ee230c91b9b3de0db4d4161abb05b26de99491a670a38b99ad092812d4cdf9f:Gul Ahmed:b12bb52d07ee30e5d93bdf8b660f06028fe9d48b9af12ce3740dd915e8142a02"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -3406,6 +3407,133 @@
       "source_run": "40352242120",
       "source_artifact": 12685487319,
       "source_sha256": "9507fa78c95cca57d9a08688a828387526cfc747177e4246906a748f145c2f89"
+    },
+    "Gul Ahmed": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Gul Ahmed",
+      "shop_code": "SE10020",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 7103,
+      "findings_count": 9,
+      "findings": [
+        {
+          "product_id": "CP864a473db9cc",
+          "name": "Georgette Embellished Inner",
+          "source_url": "https://www.gulahmedshop.com/products/georgette-embellished-inner-ipab-22155-a",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP548cad1f3213",
+          "name": "Mattress Topper 26",
+          "source_url": "https://www.gulahmedshop.com/products/mattress-topper-26",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7475a08e49b8",
+          "name": "Sea foam Dyed Ultrasonic Bedspread",
+          "source_url": "https://www.gulahmedshop.com/products/sea-foam-dyed-ultrasonic-bedspread",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP607804016fee",
+          "name": "Aurora Red Jacquard Bed Spread",
+          "source_url": "https://www.gulahmedshop.com/products/aurora-red-jacquard-bed-spread",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP40d885333fb1",
+          "name": "Lapis Terry Turban",
+          "source_url": "https://www.gulahmedshop.com/products/lapis-terry-turban",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP01d2c4a7cddd",
+          "name": "Sand Tile T-150 Quilted Mat",
+          "source_url": "https://www.gulahmedshop.com/products/sand-tile-t-150-quilted-mat",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP82f24ae05aa3",
+          "name": "Skirt fit Jeans",
+          "source_url": "https://www.gulahmedshop.com/products/skirt-fit-jeans-wm-jns-ss26-022",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP3ccf0c58d92b",
+          "name": "Rosewood Dyed Ultrasonic Bedspread",
+          "source_url": "https://www.gulahmedshop.com/products/rosewood-dyed-ultrasonic-bedspread",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5466cc26ac14",
+          "name": "Women Tank Tops",
+          "source_url": "https://www.gulahmedshop.com/products/women-tank-tops-wm-ktp-ss25-119",
+          "issues": [
+            "Primary product type and Category disagree: trousers"
+          ]
+        }
+      ],
+      "details_truncated": false,
+      "workbook_sha256": "6fa7c29a4b7401f579788445f0ecda29a83be86658165d1f9d5c5eda807f8fe8",
+      "checked_utc": "2026-10-26T21:38:40.777256+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-26T21:38:40.788565+00:00",
+        "updated_utc": "2026-10-26T21:38:40.788565+00:00",
+        "next_source_check_due_utc": "2026-10-26T21:53:40.788565+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category lacks clear product-purpose evidence; manual review required",
+          "Primary product type and Category disagree: jeans",
+          "Primary product type and Category disagree: trousers"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "owner_authorized_exclusions": [],
+      "description_repairs_count": 2,
+      "description_repairs_examples": [
+        {
+          "product_id": "CP39e7b88130ec",
+          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP145341481750",
+          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
+          "repair_kind": "description"
+        }
+      ],
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "source_run": "40397891986",
+      "source_artifact": 12691471843,
+      "source_sha256": "0ee230c91b9b3de0db4d4161abb05b26de99491a670a38b99ad092812d4cdf9f",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/gul-ahmed/0ee230c91b9b3de0/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -3445,7 +3573,9 @@
     "40351942403": "40351942403:12676658292:b12bb52d07ee30e5d93bdf8b660f06028fe9d48b9af12ce3740dd915e8142a02",
     "40379190066": "40379190066:12680575296:b12bb52d07ee30e5d93bdf8b660f06028fe9d48b9af12ce3740dd915e8142a02",
     "40351492571": "40351492571:12684245642:b12bb52d07ee30e5d93bdf8b660f06028fe9d48b9af12ce3740dd915e8142a02",
-    "40352242120": "40352242120:12685487319:b12bb52d07ee30e5d93bdf8b660f06028fe9d48b9af12ce3740dd915e8142a02"
+    "40352242120": "40352242120:12685487319:b12bb52d07ee30e5d93bdf8b660f06028fe9d48b9af12ce3740dd915e8142a02",
+    "40351396811": "40351396811:12687087785:b12bb52d07ee30e5d93bdf8b660f06028fe9d48b9af12ce3740dd915e8142a02",
+    "40351480176": "40351480176:12687700947:b12bb52d07ee30e5d93bdf8b660f06028fe9d48b9af12ce3740dd915e8142a02"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-10-26T20:17:55.851214+00:00",
@@ -3489,8 +3619,8 @@
     "SE10034": "inputs/fresh804-20261026-5d42fe35/rollback-se10034/2797513dd7dc666c/manifest.json",
     "SE10030": "inputs/fresh804-20261026-5d42fe35/rollback-se10030/7b215fffcdb0dc75/manifest.json"
   },
-  "audit804_last_store": "Zellbury",
-  "audit804_progress_utc": "2026-10-26T20:16:52.972169+00:00",
+  "audit804_last_store": "Gul Ahmed",
+  "audit804_progress_utc": "2026-10-26T21:39:24.014369+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Gul Ahmed",
