@@ -1,32 +1,28 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-26T20:13:35.474472+00:00",
-  "run_id": "40352242120",
+  "generated_utc": "2026-10-26T20:40:48.581148+00:00",
+  "run_id": "40351396811",
   "attempt": "1",
   "source_commit": "9b8723b3ce2122dc7227fdabbcdef2ede932e621",
-  "status": "complete",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 15971.0,
+  "elapsed_seconds": 18000.8,
   "stores": [
     {
-      "name": "Zellbury",
-      "status": "done",
-      "review_required": true,
+      "name": "Stylo",
+      "status": "pending",
+      "review_required": false,
       "issue_codes": [
-        "HTTP_404",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "b7163c008958b085",
-      "products": 5861,
-      "variants": 24008,
       "http_statuses": {
-        "404": 6,
-        "200": 10287
+        "200": 3593
       },
-      "network_seconds": 14235.8,
-      "max_response_seconds": 4.1,
-      "cache_events": 23626
+      "network_seconds": 8334.2,
+      "max_response_seconds": 2.8,
+      "cache_events": 7464
     }
   ]
 }
