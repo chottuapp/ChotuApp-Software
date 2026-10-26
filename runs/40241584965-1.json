@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-26T03:45:47.053851+00:00",
+  "run_id": "40241584965",
+  "attempt": "1",
+  "source_commit": "481da1294ac43635e7f47b635cb4588598847e81",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.15",
+  "elapsed_seconds": 18001.4,
+  "stores": [
+    {
+      "name": "Nisa Naturals",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "a31ba96b1b39a87f",
+      "products": 55,
+      "variants": 55,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    },
+    {
+      "name": "LAAM",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_404",
+        "HTTP_503",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "c1b3fecc7dcf99a0",
+      "http_statuses": {
+        "200": 8544,
+        "500": 237,
+        "503": 5,
+        "404": 3
+      },
+      "network_seconds": 11940.2,
+      "max_response_seconds": 24.0,
+      "cache_events": 0
+    },
+    {
+      "name": "Sapphire",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "c1b3fecc7dcf99a0",
+      "products": 1048,
+      "variants": 3769,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    }
+  ]
+}
