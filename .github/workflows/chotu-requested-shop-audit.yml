@@ -1,0 +1,67 @@
+name: Chotu Requested Shop Registration Audit
+on:
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Reviewed private Feed/search/image performance commit
+        required: true
+        type: string
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: chotu-requested-shop-registration-audit
+  cancel-in-progress: false
+jobs:
+  release:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    environment: chotu-cloud-release
+    env:
+      SOURCE_SHA: ${{ inputs.source_sha }}
+    steps:
+      - name: Require reviewed source and restricted build credential
+        env:
+          SOURCE_KEY: ${{ secrets.CHOTU_APP_SOURCE_KEY }}
+          GH_TOKEN: ${{ github.token }}
+          DEPLOY_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+          FIREBASE_ACCESS: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CHOTU_ADMIN_APP }}
+        run: |
+          set -euo pipefail
+          [[ "$SOURCE_SHA" =~ ^[a-f0-9]{40}$ ]] || exit 1
+          test -n "$SOURCE_KEY" || { echo '::error::Run the one-time Chotu cloud setup. No PC runner or paid fallback is used.'; exit 1; }
+          test -n "$DEPLOY_KEY" && test -n "$FIREBASE_ACCESS" || { echo "::error::Encrypted release access has not been configured."; exit 1; }
+          umask 077
+          key="$RUNNER_TEMP/chotu-source-key"
+          trap 'rm -f "$key" "$RUNNER_TEMP/chotu-source-hosts"' EXIT
+          printf '%s\n' "$SOURCE_KEY" > "$key"
+          curl -fsS --retry 3 --max-time 60 -H "Authorization: Bearer $GH_TOKEN" https://api.github.com/meta | python3 -c 'import json,sys; print("\n".join("github.com "+k for k in json.load(sys.stdin)["ssh_keys"]))' > "$RUNNER_TEMP/chotu-source-hosts"
+          export GIT_SSH_COMMAND="ssh -i $key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$RUNNER_TEMP/chotu-source-hosts"
+          if ! (
+            git init -q "$RUNNER_TEMP/chotu-private-source"
+            cd "$RUNNER_TEMP/chotu-private-source"
+            git remote add origin git@github.com:chottuapp/ChotuProject-development.git
+            git fetch -q --depth=1 origin "$SOURCE_SHA"
+            git checkout -q --detach FETCH_HEAD
+            git fetch -q --depth=1 origin 5ecb2661b966c3cb2a0d15b33c3fd230d56f4ff6
+            git fetch -q --depth=1 origin 1d6bd5c4ada60e3289ef6bed456a04bb23cd04f9
+            git fetch -q --depth=1 origin dfe67a6ca768c679589f3ad1d64ed98b89ff80d2
+            git fetch -q --depth=1 origin 428b40de453e2f1092c587d7f7eaa99aa9e59014
+            git fetch -q --depth=1 origin b008c47c046a0f55f42fc5f5e8952edfb8ec7490
+            test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
+          ) > "$RUNNER_TEMP/private-checkout.log" 2>&1; then
+            echo '::error::Private checkout failed. Check the read-only deploy key and approved commit; private logs are not uploaded.'
+            exit 1
+          fi
+      - name: Match requested sheet against live shop registrations
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+        run: |
+          cd "$RUNNER_TEMP/chotu-private-source"
+          bash scripts/cloud/audit-requested-shop-registration.sh
+      - name: Remove private temporary checkout
+        if: always()
+        run: |
+          rm -rf -- "$RUNNER_TEMP/chotu-private-source"
+          rm -f -- "$RUNNER_TEMP/private-checkout.log" "$RUNNER_TEMP/chotu-source-key" "$RUNNER_TEMP/chotu-source-hosts"
