@@ -116,6 +116,19 @@ def confirmed_collection_redirect(response,requested):
     target=urlsplit(urljoin(BASE,canonical.get('href','')))
     return target.hostname==after.hostname and target.path.rstrip('/')==after.path.rstrip('/') and bool(soup.select_one('.product-tile'))
 
+def confirmed_unavailable_redirect(response,requested):
+    if confirmed_collection_redirect(response,requested):return True
+    before,after=urlsplit(requested),urlsplit(response.url)
+    # A removed root-level PDP currently returns an empty undefined-category page.
+    # This is a source-unavailable exclusion, never a claim about exact stock.
+    if response.status_code!=200 or before.hostname!='pk.sapphireonline.pk' or after.scheme!='https' or after.hostname!=before.hostname:return False
+    if not before.path.startswith('/products/') or not before.path.endswith('.html'):return False
+    if after.path!='/search' or parse_qsl(after.query)!=[('cgid','undefined')]:return False
+    soup=BeautifulSoup(response.text,'html.parser');canonical=soup.select_one('link[rel="canonical"]')
+    if canonical is None or soup.select_one('.product-wrapper[data-pid], .product-tile'):return False
+    target=urlsplit(urljoin(BASE,canonical.get('href','')))
+    return (target.scheme,target.hostname,target.path,parse_qsl(target.query))==('https',after.hostname,'/search',[('cgid','undefined')])
+
 def normalize_product(page,url,read):
     master=inspect_page(page,url)
     if master.get('has_price_range') and not master['sizes']:raise ValueError('Price range requires exact selected variants; no master price exported')
@@ -213,8 +226,8 @@ class PublicCatalog:
                 except ValueError:
                     # Recheck stale saved layouts against the current allowed public page.
                     current=self.read(url,fresh=True)
-                    if confirmed_collection_redirect(current,url):
-                        self.log('SAPPHIRE SOURCE EXCLUSION: unavailable product redirects to its public collection: '+url)
+                    if confirmed_unavailable_redirect(current,url):
+                        self.log('SAPPHIRE SOURCE EXCLUSION: product address has no current PDP; confirmed unavailable public landing, stock not inferred: '+url)
                         continue
                     product=normalize_product(current.text,url,self.read)
                 if self.cache:self.cache.put(url,product)

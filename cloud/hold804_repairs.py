@@ -307,6 +307,17 @@ def visual_review(row,store):
 
 def category(row,store):
  name=str(row.get('name') or '');body=str(row.get('description') or '')
+ if store=='Junaid Jamshed':
+  fact=public_facts(row,store)
+  if fact and str(fact.get('product_type') or '').casefold()=='shalwar':return 'Shalwars','reviewed_public_product_type','Exact matching primary source product type: Shalwar; '+str(fact['source_url'])
+ if store=='Gul Ahmed':
+  if re.search(r'\bjeans\b',name,re.I):return 'Jeans','reviewed_product_name','Named sold garment: '+name
+  if re.search(r'\btank\s+tops?\b',name,re.I):return 'Tank Tops','reviewed_product_name','Named sold garment, not styling companion trousers: '+name
+  if re.search(r'\bmattress\s+topper\b',name,re.I):return 'Mattress Toppers','reviewed_product_name',name
+  if re.search(r'\bbed\s*spread\b',name,re.I) and re.search(r'\b(?:pillow\s+cases|cushion\s+(?:cases|covers))\b',body,re.I):return 'Bedspread Sets','reviewed_source_contents','Source names bedspread and companion pillow/cushion cases: '+body[:850]
+  if re.search(r'\bterry\s+turban\b',name,re.I) and re.search(r'\bwrap\s+the\s+hair\b',body,re.I):return 'Hair Towels','reviewed_source_purpose','Source terry turban wraps hair after washing: '+body[:400]
+  if re.search(r'\bquilted\s+mat\b',name,re.I) and re.search(r'\b(?:padded|cushion|exercise|play\s+mat)\b',body,re.I):return 'Quilted Multipurpose Mats','reviewed_source_purpose',name+'; '+body[:600]
+  if re.search(r'\bembellished\s+inner\b',name,re.I) and re.search(r'\blayers?\s+well\s+under\s+abayas\b',body,re.I):return 'Abaya Inners','reviewed_source_purpose','Source identifies a layering inner worn under abayas: '+body[:550]
  if store=='Astore Bags':
   if re.search(r'\bmini\s+pouch(?:es)?\b',name,re.I):return 'Mini Pouches','reviewed_product_name',name
   if re.search(r'\bwallets?\b',name,re.I):return 'Wallets','reviewed_product_name',name
@@ -553,6 +564,8 @@ def description(row,store):
   lead=name+' is a fragrance'+(' in the '+leaf+' range.' if leaf.casefold()!='fragrances' else '.')
   if not body.startswith(lead):return lead+('\n\n'+original if body and body!=name else ''),'Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.'
  source=public_facts(row,store)
+ if source and store=='Junaid Jamshed' and str(source.get('product_type') or '').casefold()=='shalwar' and not body.startswith(name+' is a shalwar garment.'):
+  return name+' is a shalwar garment.\n\n'+original,'Added exact matching primary source product type; preserved every supplied size and option.'
  if source and store=='Bata' and source.get('reviewed_tag_overview'):
   lead=source['reviewed_tag_overview']
   if not body.startswith(lead):return lead+'\n\n'+original,'Added exact primary product-tag object type; original article code and options preserved.'

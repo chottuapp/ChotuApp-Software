@@ -16,6 +16,15 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  # Only explicit source garment-type strings; a generic vendor/brand is not purpose evidence.
  if re.fullmatch(r'(?i)(?:women|men|teens|kids|infants)\s+(?:stitched\s+[234]\s+piece(?:\s+shirt\s+trouser)?|(?:cotton\s+silk\s+)?shalwar|(?:special\s+)?kurta|trouser|earrings|bracelet|necklace|ring|eyebrow\s+kit|waistcoat\s+with\s+kurta\s+trouser)',str(source_type or '').strip()):body+=' Source-listed garment type: '+str(source_type)
  evidence=title+' '+body
+ if cat=='shalwars' and has(r'\bshalwar\s+garment\b',body):return []
+ if cat=='jeans' and has(r'\bjeans\b',title):return []
+ if cat=='tank tops' and has(r'\btank\s+tops?\b',title):return []
+ if cat=='mattress toppers' and has(r'\bmattress\s+topper\b',title):return []
+ if cat=='bedspread sets' and has(r'\bbed\s*spread\b',title) and has(r'\b(?:pillow\s+cases|cushion\s+(?:cases|covers))\b',body):return []
+ if cat=='hair towels' and has(r'\bterry\s+turban\b',title) and has(r'\bwrap\s+the\s+hair\b',body):return []
+ if cat=='quilted multipurpose mats' and has(r'\bquilted\s+mat\b',title) and has(r'\b(?:padded|cushion|exercise|play\s+mat)\b',body):return []
+ if cat=='abaya inners' and has(r'\bembellished\s+inner\b',title) and has(r'\blayers?\s+well\s+under\s+abayas\b',body):return []
+
  if cat=='facial treatments' and has(r'\bretinal\s+shot\s+tightening\s+booster\b',title) and has(r'\bconcentrated\b.*\btreatment\b',body) and has(r'\bfirm\s+skin\b',body):return []
  if cat=='eyebrow gels' and has(r'\bbrow\b.*\b(?:tint|shaping)\b.*\bgel\b',title) and has(r'\bbrow\s+shape\b',body):return []
  if cat=='kitchen aprons' and has(r'\bapron\b',title) and has(r'\bcooking\b',body):return []
