@@ -49,6 +49,7 @@ jobs:
             git remote add origin git@github.com:chottuapp/ChotuProject-development.git
             git fetch -q --depth=1 origin "$SOURCE_SHA"
             git checkout -q --detach FETCH_HEAD
+            git fetch -q --depth=1 origin 293897e077128f5cbe7320220441a8ab2b5784a5
             git fetch -q --depth=1 origin b629477f6baaed5114d218bbba24e60cb5077852
             git fetch -q --depth=1 origin 5ecb2661b966c3cb2a0d15b33c3fd230d56f4ff6
             git fetch -q --depth=1 origin 1d6bd5c4ada60e3289ef6bed456a04bb23cd04f9
@@ -93,7 +94,7 @@ jobs:
           for name in ['feed-profile-before.json','feed-profile-after.json']:
               profile=Path(os.environ['RUNNER_TEMP'])/name
               if profile.exists(): text+='\n'+profile.read_text(errors='replace')
-          for safe in ['Feed paging validation failed','Paging rank cache did not reuse its bounded block','Host guard','Search returned no suit products','Search returned a substring-only match','Receipt payload missing','Receipt field missing','Feed batch exceeds sixteen','Feed preference schema missing']:
+          for safe in ['Feed paging validation failed','Paging rank cache did not reuse its bounded block','Host guard','Search returned no suit products','Search returned a substring-only match','Receipt payload missing','Receipt field missing','Feed batch exceeds sixteen','Feed preference schema missing','Authenticated Feed cold load exceeds ten seconds']:
               if safe in text: print('::error::'+safe)
           import re
           for code in set(re.findall(r'SQLSTATE\[[A-Z0-9]+\]',text)): print('::error::Database diagnostic '+code)
