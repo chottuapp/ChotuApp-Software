@@ -292,7 +292,7 @@ jobs:
           assert hashlib.sha256((p/'customer-apk/ChotuApp-User-1.1.26-68.apk').read_bytes()).hexdigest()==m['sha256']
           print('Verified successful original build, matching signed artifact, approved source and completed native upgrade test.')
           PYIDENTITY
-      - name: Inspect server temporary storage before binary transfer
+      - name: Clean only this release’s failed partial transfers and inspect temporary storage
         env:
           SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
         run: |
@@ -303,7 +303,7 @@ jobs:
           printf '%s\n' "$SSH_PRIVATE_KEY" > "$key"
           mkdir -p "$HOME/.ssh"
           ssh-keyscan -T 15 -H 46.137.199.32 >> "$HOME/.ssh/known_hosts"
-          ssh -o BatchMode=yes -o ConnectTimeout=20 -i "$key" ec2-user@46.137.199.32 'df -h /tmp /var/tmp /var/www/html; df -i /tmp /var/tmp; du -sh /tmp/chotu-customer-apk-* 2>/dev/null || true'
+          ssh -o BatchMode=yes -o ConnectTimeout=20 -i "$key" ec2-user@46.137.199.32 'sudo -n rm -rf -- /tmp/chotu-customer-apk-40374422890 /tmp/chotu-customer-apk-40377599568 /tmp/chotu-customer-apk-40377858128; df -h /tmp /var/tmp /var/www/html; df -i /tmp /var/tmp'
       - name: Publish only the signed native-tested customer APK
         env:
           SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
