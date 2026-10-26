@@ -33,6 +33,17 @@ def check(row):
   except ValueError as exc:issues.append('Price/stock gate: '+str(exc))
  return list(dict.fromkeys(issues))
 
+def image_metadata_issues(row,product):
+ # Legacy files have no image-status metadata; do not reinterpret their blanks.
+ if 'variant_image_status' not in row:return []
+ status=str(row.get('variant_image_status') or '')
+ image=str(row.get('variant_image_url') or '');fallback=str(row.get('fallback_image_url') or '')
+ covers={str(product.get(k) or '') for k in ('final_image_url (main photo)','final_image_url (cover/thumbnail — hosted link)','scraped_image_url (auto)','scraped_image_url (cover, auto)')}-{''}
+ if status=='source_linked' and image.startswith(('https://','http://')) and not fallback:return []
+ if status=='product_photo_fallback' and not image and fallback in covers and fallback.startswith(('https://','http://')):return []
+ if status=='unavailable' and not image and not fallback and not covers:return []
+ return ['Image provenance: variant mapping/fallback status disagrees with source-linked image or product cover']
+
 def workbook_issues(path):
  book=load_workbook(path,read_only=True,data_only=False);issues=defaultdict(list);products={};variants=defaultdict(list)
  try:
@@ -50,6 +61,7 @@ def workbook_issues(path):
   for pid,rows in variants.items():
    if pid not in products:issues[pid].append('Price/stock gate: orphan variant')
    else:
+    for row in rows:issues[pid].extend(image_metadata_issues(row,products[pid]))
     expected='yes' if any(str(r.get('available (yes/no)')).strip().lower()=='yes' for r in rows) else 'no'
     if str(products[pid].get('available (yes/no)') or '').strip().lower()!=expected:issues[pid].append('Price/stock gate: product and variant availability disagree')
  finally:book.close()

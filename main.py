@@ -597,18 +597,38 @@ def product_stock_quantity(product, variants):
     return sum(counts)
 
 
+VARIANT_IMAGE_FIELDS=('variant_image_status','fallback_image_url','variant_image_note')
+
+def source_image_url(value):
+    if not isinstance(value,str):return ''
+    url='https:'+value if value.startswith('//') else value
+    parsed=urlparse(url)
+    return url if parsed.scheme in ('https','http') and parsed.hostname and not parsed.username and not parsed.password else ''
+
+def variant_image_metadata(image,cover):
+    image=source_image_url(image);cover=source_image_url(cover)
+    if image:return {'variant_image_status':'source_linked','fallback_image_url':'','variant_image_note':'Exact image association supplied by source variant data.'}
+    if cover:return {'variant_image_status':'product_photo_fallback','fallback_image_url':cover,'variant_image_note':'No unambiguous image linked to this variant in source data; fallback is the general product photo, not variant-specific proof. Availability is independent of images.'}
+    return {'variant_image_status':'unavailable','fallback_image_url':'','variant_image_note':'No unambiguous source variant image or product cover available. Availability is independent of images.'}
+
+def ensure_variant_image_fields(sheet):
+    headers=[cell.value for cell in sheet[1]]
+    for field in VARIANT_IMAGE_FIELDS:
+        if field not in headers:sheet.cell(1,sheet.max_column+1,field);headers.append(field)
+    if hasattr(sheet,'_chotu_export_headers'):del sheet._chotu_export_headers
+
 def variant_image_url(product, variant):
     image=variant.get('featured_image')
     if isinstance(image,dict):
         url=image.get('src') or image.get('url')
-        if isinstance(url,str) and url.startswith(('https://','http://')):return url
+        if source_image_url(url):return source_image_url(url)
     matches=[]
     for image in product.get('images') or []:
         if not isinstance(image,dict):continue
         linked=str(variant.get('image_id') or '')==str(image.get('id') or '') and bool(variant.get('image_id'))
         linked=linked or str(variant.get('id')) in [str(v) for v in image.get('variant_ids') or []]
         url=image.get('src')
-        if linked and isinstance(url,str) and url.startswith(('https://','http://')):matches.append(url)
+        if linked and source_image_url(url):matches.append(source_image_url(url))
     return matches[0] if len(set(matches))==1 else ''
 
 
@@ -1061,6 +1081,7 @@ def run_site(base, name, template, log):
         if ws.max_row>1: ws.delete_rows(2,ws.max_row-1)
     from ranking_support import ensure_columns
     ensure_columns(wb['Products'])
+    ensure_variant_image_fields(wb['Variant Combinations'])
     rows=[]; imgs=[]; groups=[]; opts=[]; combos=[]; review=[]
     _chotu_tls.image_audit = []
     _chotu_tls.variant_identity_findings = []
@@ -1169,6 +1190,7 @@ def run_site(base, name, template, log):
             for pos,(idx,group_id,title,values) in enumerate(dimensions,1):
                 entry[f'option_{pos}_group_id']=group_id
                 entry[f'option_{pos}_value']=txt(v.get(f'option{idx}'))
+            entry.update(variant_image_metadata(image_url,cover))
             combos.append(entry)
         if len(p.get('options') or [])>3: review.append(f'More than 3 dimensions: {url}')
         rows.append({'product_id':pid,'analysis_note':'\n'.join(([p['_popularity_page_note']] if p.get('_popularity_page_note') else [])+getattr(_chotu_tls,'collection_popularity_evidence',{}).get(p.get('id'),[])),'category':category,'subcategory':'','name':txt(p.get('title')),'description':desc,'brand':txt(p.get('vendor')) or name,'material':'','weight_grams (agar ho)':'','condition (new/used)':'new','warranty_months (agar ho)':'','base_price (PKR)':float(baseprice),'sale_price (PKR, agar discount ho)':float(sale) if sale is not None else None,'sku':str(cheapest.get('sku') or ''),'scraped_image_url (cover, auto)':cover,'final_image_url (cover/thumbnail — hosted link)':'','option_groups':gid,'available (yes/no)':'yes' if any(v.get('available') is True for v in variants) else 'no','stock_quantity (kitni quantity bechni hai)':product_stock_quantity(p,variants),'max_qty_per_user (ek user zyada se zyada kitni le sakta hai)':'','source_url':url,**category_data})
@@ -1214,6 +1236,7 @@ def run_site(base, name, template, log):
 
     log(f'VARIANT EXPORT: {len(combos)} combinations; ' +
         str(sum(c['available (yes/no)'] == 'no' for c in combos)) + ' unavailable preserved as no')
+    log('VARIANT IMAGES: '+str(sum(c.get('variant_image_status')=='source_linked' for c in combos))+' source-linked; '+str(sum(c.get('variant_image_status')=='product_photo_fallback' for c in combos))+' general product-photo fallbacks; source-specific image field stays blank when unlinked')
     _chotu_debug_stage('Writing Excel rows')
     galleries = {}
     for image in imgs:
