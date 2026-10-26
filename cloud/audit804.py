@@ -133,7 +133,8 @@ def issues_for(row,source=None):
  if source:
   reviewed_path=Path(__file__).with_name('audit804-image-reviews.json')
   if reviewed_path.exists():
-   evidence_records=json.loads(reviewed_path.read_text())
+   from review_evidence_cache import read_review_evidence
+   evidence_records=read_review_evidence(reviewed_path)
    for conflict in evidence_records.get('source_conflicts',[]):
     if (conflict.get('product_id'),conflict.get('name'),conflict.get('source_url'))==(str(source.get('product_id')),source.get('name'),source.get('source_url')) and hashlib.sha256(str(source.get('description') or '').encode()).hexdigest()==conflict.get('input_description_sha256'):
      issues.append(conflict['issue'])
@@ -209,7 +210,10 @@ def run(path,store,codes,hosts,*,source=None,strict_commercial=False):
   count+=1;pid=str(row.get('product_id') or '');issues=issues_for(row,originals.get(pid))+commercial.get(pid,[])
   if store=='Astore Bags':
    from locked_store_rules import allowed_product
-   if not allowed_product('https://astorebags.pk',{'title':row.get('name'),'product_type':row.get('brand')}):issues.append('Rule Astore: only bags and wallets; product purpose unresolved or outside scope')
+   from hold804_repairs import visual_review
+   confirmed=visual_review(row,store)
+   image_bag=confirmed and confirmed.get('category') in {'Bags','Handbags','Crossbody Bags','Wallets','Mini Pouches'}
+   if not allowed_product('https://astorebags.pk',{'title':row.get('name'),'product_type':row.get('brand')}) and not image_bag:issues.append('Rule Astore: only bags and wallets; product purpose unresolved or outside scope')
   if store=='Seran' and conflicting_name(row,catalogue):issues.append('Description names a different known catalog product')
   if not pid or pid in seen:issues.append('Missing or duplicate product ID')
   seen.add(pid);output_order.append(pid)

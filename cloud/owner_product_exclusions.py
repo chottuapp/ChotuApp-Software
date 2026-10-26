@@ -3,7 +3,7 @@ import zipfile
 import xml.etree.ElementTree as ET
 from openpyxl import load_workbook
 
-EXCLUSIONS={'Elite Cosmetics': {'CPaeabf1fd66f3': 'https://elitecosmeticspk.com/products/comfor-beauty-aloe-vera-essence-oil-40ml'}}
+EXCLUSIONS={'Astore Bags': {'CPb7a9fb37ac6f':'https://astorebags.pk/products/macbook-sleeve-brown-13-inches'}, 'Elite Cosmetics': {'CPaeabf1fd66f3': 'https://elitecosmeticspk.com/products/comfor-beauty-aloe-vera-essence-oil-40ml'}}
 NS='{http://schemas.openxmlformats.org/spreadsheetml/2006/main}'
 
 def apply(source,out,store):
@@ -42,4 +42,4 @@ def apply(source,out,store):
      if int(row.attrib['r']) in bypath[info.filename]:sheet.remove(row)
     data=ET.tostring(tree,encoding='utf-8',xml_declaration=True)
    dst.writestr(info,data)
- return out,[{'product_id':pid,'source_url':rules[pid],'reason':'Owner explicitly requested deletion of conflicting product on 25 October 2026'} for pid in sorted(removed)]
+ return out,[{'product_id':pid,'source_url':rules[pid],'reason':('Outside owner-locked Astore bags/wallets/mini-pouches scope: laptop sleeve' if store=='Astore Bags' else 'Owner explicitly requested deletion of conflicting product on 25 October 2026')} for pid in sorted(removed)]

@@ -297,7 +297,8 @@ def visual_review(row,store):
  import hashlib
  path=Path(__file__).with_name('audit804-image-reviews.json')
  if not path.exists():return None
- for item in json.loads(path.read_text()).get('products',[]):
+ from review_evidence_cache import read_review_evidence
+ for item in read_review_evidence(path).get('products',[]):
   if (item['store'],item['product_id'],item['name'],item['source_url'])!=(store,str(row.get('product_id')),row.get('name'),row.get('source_url')):continue
   if not item.get('image_url','').startswith('https://') or not re.fullmatch('[a-f0-9]{64}',item.get('image_sha256','')):continue
   description=str(row.get('description') or '')
@@ -305,6 +306,18 @@ def visual_review(row,store):
  return None
 
 def category(row,store):
+ name=str(row.get('name') or '');body=str(row.get('description') or '')
+ if store=='Astore Bags':
+  if re.search(r'\bmini\s+pouch(?:es)?\b',name,re.I):return 'Mini Pouches','reviewed_product_name',name
+  if re.search(r'\bwallets?\b',name,re.I):return 'Wallets','reviewed_product_name',name
+  if re.search(r'\b(?:bags?|handbags?|totes?|backpacks?|clutches|purses?)\b',name,re.I):return ('Bag Sets' if re.search(r'\bset\s+of\s+\d+',name,re.I) else 'Bags'),'reviewed_product_name',name
+ if store in {'Servis','Ndure'}:
+  for pattern,label in [(r'\bslides?\b','Slides'),(r'\boxford\s+shoes\b','Oxford Shoes'),(r'\bheels?\b','Heels'),(r'\bkola\s*puri\b|\bkolhapuri\b','Kolhapuri Sandals'),(r'\bpeshawari\b','Peshawari Chappals'),(r'\bmocs\b','Moccasins'),(r'\bpeep[ -]?toes\b','Peep-Toe Shoes'),(r'\bbags\b','Bags'),(r'\bshoe\s+brush\b','Shoe Brushes'),(r'\b(?:shoe\s+wax|shoe\s+shiner|shoe\s+freshner|shoecare|sole\s+cleaner|foam\s+shiner|self\s+shiner|nubuck\s+renovator)\b','Shoe Care Products'),(r'\bshoes\b','Shoes')]:
+   if re.search(pattern,name,re.I):return label,'reviewed_product_name','Named sold object: '+name
+  for pattern,label in [(r'\bshoe\s+care\s+kit\b','Shoe Care Kits'),(r'\bshoe\s+care\b','Shoe Care Products'),(r'\binsoles?\b','Shoe Insoles'),(r'\b(?:liquid|wax|bee)\b.*\bpolish\b','Shoe Polishes'),(r'\bformals?\b','Formal Shoes'),(r'\bcanvas\b','Canvas Shoes'),(r'\bballerinas?\b','Ballet Flats'),(r'\bwedges?\b','Wedge Shoes'),(r'\b(?:closed?|easy[ -]?fit|contrast\s+sole|laser[ -]?cut|buckle)\s+shoes\b','Shoes'),(r'\bsports?\s+shoes\b','Sports Shoes'),(r'\b(?:runners?)\b','Running Shoes'),(r'\bsliders?\b','Slides'),(r'\bpumps?\b','Pumps'),(r'\b(?:infant)\s+shoes\b','Baby Shoes')]:
+   if re.search(pattern,name,re.I):return label,'reviewed_product_name','Explicit named footwear object or care product: '+name
+  for pattern,label in [(r'\bsneakers?\b','Sneakers & Trainers'),(r'\b(?:slip[ -]?ons?)\b','Slip-On Shoes'),(r'\bcasual\s+shoes\b','Casual Shoes'),(r'\bformal\s+shoes\b','Formal Shoes'),(r'\b(?:mules?)\b','Mules'),(r'\b(?:moccs|moccasins?)\b','Moccasins'),(r'\b(?:loafers?)\b','Loafers'),(r'\bsling[ -]?backs?\b','Slingback Shoes'),(r'\bschool\s+shoes\b','School Shoes'),(r'\bslides?\b','Slides'),(r'\bflip[ -]?flops?\b','Flip-Flops')]:
+   if re.search(pattern,name,re.I):return label,'reviewed_product_name','Explicit sold footwear type: '+name
  if store=='Zero Lifestyle' and row.get('name')=='Open Zbuds' and re.search(r'(?i)ear.?clip.*Bluetooth|Bluetooth.*ear.?clip',str(row.get('description') or ''),re.S):return 'Earphones/Earbuds','reviewed_source_description','Source explicitly describes open-ear wireless earbuds with Bluetooth and charging case.'
  name=str(row.get('name') or '');body=str(row.get('description') or '')
  if store=='Junaid Jamshed' and re.search(r'\bbrow\b.*\bshaping\s+gel\b',name,re.I) and re.search(r'\b(?:brow|eyebrow)\s+shape\b',body,re.I):return 'Eyebrow Gels','reviewed_source_description','Source explicitly identifies brow tinting and shaping gel: '+body[:700]
@@ -312,7 +325,7 @@ def category(row,store):
  visual=visual_review(row,store)
  if visual:return visual['category'],'reviewed_primary_product_image',visual['overview']+' Image: '+visual['image_url']+' SHA256: '+visual['image_sha256']
  if store=='Sapphire' and re.fullmatch(r'(?i)Knit Cape Jumper',str(row.get('name') or '').strip()) and re.search(r'(?i)\bknit\s+cape\s+jumper\b',str(row.get('description') or '')):return 'Ponchos & Capes','reviewed_source_description','Source explicitly names a knit cape jumper; fabric percentages and measurements unchanged.'
- if store not in STORES and store not in {'Aerosoft Studio','Bata','Servis','Ndure','Zero Lifestyle'}:return None
+ if store not in STORES and store not in {'Aerosoft Studio','Bata','Servis','Ndure','Zero Lifestyle','Astore Bags'}:return None
  name=str(row.get('name') or '');body=str(row.get('description') or '')
  if store=='Stylo':
   for pattern,label in [
@@ -453,6 +466,8 @@ def category(row,store):
  if store=='Hemani Herbals' and row.get('website_category_path')=='Body Spray' and row.get('website_category_status') in ('verified_navigation_membership','verified_product_breadcrumb') and re.search(r'(?i)\b(?:spray|fragrance)\b',body):return 'Body Sprays','reviewed_source_breadcrumb','Verified source Body Spray breadcrumb and application directions: '+name
  source=public_facts(row,store)
  if source:
+  if store=='Bata' and source.get('reviewed_tag_category') and source.get('reviewed_type_tag'):
+   return source['reviewed_tag_category'],'reviewed_public_product_tag','Exact public merchant product tag: '+source['reviewed_type_tag']+'; '+source['source_url']
   if store=='Aerosoft Studio':
    footwear={'slippers':'Slippers','slipper':'Slippers','sandals':'Sandals','running sneakers':'Sneakers & Trainers','walking sneakers':'Sneakers & Trainers','shoes':'Shoes'}
    label=footwear.get(str(source.get('product_type') or '').strip().casefold())
@@ -528,7 +543,7 @@ def description(row,store):
    old,new=visual['correct_leading_copy']
    if useful.startswith(old):useful=new+useful[len(old):]
   return visual['overview']+('\n\n'+useful if useful else '\n\nListing: '+name),'Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.'
- if store not in STORES and store not in {'Aerosoft Studio','Bata','Servis','Ndure','Zero Lifestyle'}:return original,None
+ if store not in STORES and store not in {'Aerosoft Studio','Bata','Servis','Ndure','Zero Lifestyle','Astore Bags'}:return original,None
  if (str(row.get('website_category_status') or '') in ('verified_navigation_membership','verified_product_breadcrumb')
      and str(row.get('website_category_path') or '').split(' > ')[0].casefold()=='fragrances'
      and row.get('website_category_source_url') and row.get('website_category_checked_at')
@@ -538,6 +553,9 @@ def description(row,store):
   lead=name+' is a fragrance'+(' in the '+leaf+' range.' if leaf.casefold()!='fragrances' else '.')
   if not body.startswith(lead):return lead+('\n\n'+original if body and body!=name else ''),'Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.'
  source=public_facts(row,store)
+ if source and store=='Bata' and source.get('reviewed_tag_overview'):
+  lead=source['reviewed_tag_overview']
+  if not body.startswith(lead):return lead+'\n\n'+original,'Added exact primary product-tag object type; original article code and options preserved.'
  if source and store=='Aerosoft Studio':
   kind=str(source.get('product_type') or '').strip().casefold()
   types={'slippers':'slippers','slipper':'slippers','sandals':'sandals','running sneakers':'running sneakers','walking sneakers':'walking sneakers','shoes':'shoes'}
