@@ -1,0 +1,110 @@
+name: Chotu Coordinated Browsing Fixes
+on:
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Reviewed resumable sync commit
+        required: true
+        type: string
+      build_run:
+        description: Successful tested User and Admin cloud build
+        required: true
+        type: string
+      build_sha:
+        description: Exact commit recorded in both compiled clients
+        required: true
+        type: string
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: chotu-cloud-production-release
+  cancel-in-progress: false
+jobs:
+  release:
+    if: ${{ github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    environment: chotu-cloud-release
+    env:
+      SOURCE_SHA: ${{ inputs.source_sha }}
+      BUILD_RUN: ${{ inputs.build_run }}
+      BUILD_SHA: ${{ inputs.build_sha }}
+    steps:
+      - name: Require reviewed source and restricted build credential
+        env:
+          SOURCE_KEY: ${{ secrets.CHOTU_APP_SOURCE_KEY }}
+          GH_TOKEN: ${{ github.token }}
+          DEPLOY_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+        run: |
+          set -euo pipefail
+          [[ "$SOURCE_SHA" =~ ^[a-f0-9]{40}$ ]] || exit 1
+          test -n "$SOURCE_KEY" || { echo '::error::Run the one-time Chotu cloud setup. No PC runner or paid fallback is used.'; exit 1; }
+          test -n "$DEPLOY_KEY" || { echo "::error::Encrypted release access has not been configured."; exit 1; }
+          umask 077
+          key="$RUNNER_TEMP/chotu-source-key"
+          trap 'rm -f "$key" "$RUNNER_TEMP/chotu-source-hosts"' EXIT
+          printf '%s\n' "$SOURCE_KEY" > "$key"
+          curl -fsS --retry 3 --max-time 60 -H "Authorization: Bearer $GH_TOKEN" https://api.github.com/meta | python3 -c 'import json,sys; print("\n".join("github.com "+k for k in json.load(sys.stdin)["ssh_keys"]))' > "$RUNNER_TEMP/chotu-source-hosts"
+          export GIT_SSH_COMMAND="ssh -i $key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$RUNNER_TEMP/chotu-source-hosts"
+          if ! (
+            git init -q "$RUNNER_TEMP/chotu-private-source"
+            cd "$RUNNER_TEMP/chotu-private-source"
+            git remote add origin git@github.com:chottuapp/ChotuProject-development.git
+            git fetch -q --depth=1 origin "$SOURCE_SHA"
+            git checkout -q --detach FETCH_HEAD
+            git fetch -q --depth=1 origin edec97c96b3a8a4cc5ff2829ceee83eda984bb56
+            test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
+          ) > "$RUNNER_TEMP/private-checkout.log" 2>&1; then
+            echo '::error::Private checkout failed. Check the read-only deploy key and approved commit; private logs are not uploaded.'
+            exit 1
+          fi
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify tested User and Admin browser artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          [[ "$BUILD_RUN" =~ ^[0-9]+$ && "$BUILD_SHA" =~ ^[a-f0-9]{40}$ ]]
+          gh run download "$BUILD_RUN" --repo "$GITHUB_REPOSITORY" --name production-user --dir "$RUNNER_TEMP/production-user"
+          gh run download "$BUILD_RUN" --repo "$GITHUB_REPOSITORY" --name production-admin --dir "$RUNNER_TEMP/chotu-private-source/chotu-admin/build/web"
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$BUILD_RUN" > "$RUNNER_TEMP/browsing-build-run.json"
+          cd "$RUNNER_TEMP/chotu-private-source"
+          python3 - <<'PYVERIFY'
+          from pathlib import Path
+          import json,os,subprocess
+          temp=Path(os.environ['RUNNER_TEMP']);run=json.loads((temp/'browsing-build-run.json').read_text())
+          assert run['conclusion']=='success' and run['path']=='.github/workflows/chotu-private-app-cloud.yml'
+          for client,path in [('user',temp/'production-user'),('admin',Path('chotu-admin/build/web'))]:
+              info=json.loads((path/'build-info.json').read_text())
+              assert info['commit']==os.environ['BUILD_SHA'] and info['client']==client and info['environment']=='production' and info['api_base']=='https://app.chotuapp.com'
+              for name,tree in info['source_trees'].items():assert subprocess.check_output(['git','rev-parse','HEAD:'+name],text=True).strip()==tree
+          print('Both tested client trees match the reviewed release exactly.')
+          PYVERIFY
+      - name: Install guarded backend and verify current catalog read-only
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+        run: |
+          cd "$RUNNER_TEMP/chotu-private-source"
+          bash scripts/cloud/publish-browsing-fixes.sh
+      - name: Publish exact tested User browser
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd "$RUNNER_TEMP/chotu-private-source"
+          bash scripts/cloud/publish-browsing-user-web.sh
+      - name: Publish exact tested Admin progress browser
+        env:
+          FIREBASE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CHOTU_ADMIN_APP }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd "$RUNNER_TEMP/chotu-private-source"
+          bash scripts/cloud/publish-sync-admin.sh
+      - name: Remove private temporary checkout
+        if: always()
+        run: |
+          rm -rf -- "$RUNNER_TEMP/chotu-private-source" "$RUNNER_TEMP/production-user"
+          rm -f -- "$RUNNER_TEMP/private-checkout.log" "$RUNNER_TEMP/chotu-source-key" "$RUNNER_TEMP/chotu-source-hosts"
