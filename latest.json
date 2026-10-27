@@ -1992,7 +1992,7 @@
     "Skin Factor": "source:1d4a5c1e876e9c43d3b5b3bf50c93ca3c2d9bb683aee481f751e6b84ebf71890:Skin Factor:bd0e4d81ac391e51308dd5f9de402bdd0c910d0b1a3e5e24a5a0c2a32867b788",
     "Zero Lifestyle": "source:e62b326d26a843bf3ae51ee88b4da4661c6f01c7a91e0b04a667b367563b6737:Zero Lifestyle:bd0e4d81ac391e51308dd5f9de402bdd0c910d0b1a3e5e24a5a0c2a32867b788",
     "Aerosoft Studio": "source:8513193f22913c4b63220a29ccdf9ebb0ef1f1a99413e58da05d76f758429fb2:Aerosoft Studio:bd0e4d81ac391e51308dd5f9de402bdd0c910d0b1a3e5e24a5a0c2a32867b788",
-    "Rivaj UK": "source:994ee6508e0f0e5886850361a565928c442e2e831833a355640e87f2f716a830:Rivaj UK:4ef62bafdaa0ae7799b6993533e9674b876b5241ae910446e38f273d2a9d4d4f",
+    "Rivaj UK": "source:c54c8a426d63c2657d4299380bea3a205c0577100261307b05fbcc704cb90c90:Rivaj UK:bd0e4d81ac391e51308dd5f9de402bdd0c910d0b1a3e5e24a5a0c2a32867b788",
     "Vince Care": "source:74dcccdc3887092ac573b07cfdfaf456e39584e0a0651287aca9d9426b186a06:Vince Care:4ef62bafdaa0ae7799b6993533e9674b876b5241ae910446e38f273d2a9d4d4f",
     "Computer Zone": "source:24e6ae7fe3fb3c7a6308f711aa157bac7db74f22eb63d2c726098296d94d6d76:Computer Zone:4ef62bafdaa0ae7799b6993533e9674b876b5241ae910446e38f273d2a9d4d4f",
     "Bata": "source:4da01a00400e9dec971e589251a8496fec4072528d6800e17576ef53614dd609:Bata:4ef62bafdaa0ae7799b6993533e9674b876b5241ae910446e38f273d2a9d4d4f",
@@ -2566,17 +2566,40 @@
       "store": "Rivaj UK",
       "shop_code": "SE10012",
       "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 318,
-      "findings_count": 0,
-      "findings": [],
+      "status": "hold",
+      "products_checked": 322,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CP1a4a16d641fa",
+          "name": "Facial Capsules",
+          "source_url": "https://rivaj-uk.com/products/facial-capsules-2310009",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "b9d879e60f934898fefd05cb82ae26b4e35042ba1444b52c4c0dcfa8c58da632",
-      "checked_utc": "2026-10-27T09:03:56.693812+00:00",
+      "workbook_sha256": "6a371ec6360bcdf266431720483f86d9f67724a092febf163694d71825c26b16",
+      "checked_utc": "2026-10-27T11:24:35.418313+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-27T11:24:35.418750+00:00",
+        "updated_utc": "2026-10-27T11:24:35.418750+00:00",
+        "next_source_check_due_utc": "2026-10-27T11:39:35.418750+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category lacks clear product-purpose evidence; manual review required"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "description_repairs_count": 39,
@@ -2633,9 +2656,11 @@
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "40308923441",
-      "source_artifact": 12644812306,
-      "source_sha256": "994ee6508e0f0e5886850361a565928c442e2e831833a355640e87f2f716a830"
+      "source_run": "40493344638",
+      "source_artifact": 12730383215,
+      "source_sha256": "c54c8a426d63c2657d4299380bea3a205c0577100261307b05fbcc704cb90c90",
+      "refresh_generation": "refresh20261027-f31e6f08",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/rivaj-uk/c54c8a426d63c265/manifest.json"
     },
     "Vince Care": {
       "name": "804 Audit",
@@ -3720,8 +3745,8 @@
     "SE10030": "inputs/fresh804-20261026-5d42fe35/rollback-se10030/9d61af47a1679c6f/manifest.json",
     "CAS01": "inputs/fresh804-20261026-5d42fe35/rollback-cas01/ee651f199494b5ea/manifest.json"
   },
-  "audit804_last_store": "Hello Maali",
-  "audit804_progress_utc": "2026-10-27T11:22:55.698676+00:00",
+  "audit804_last_store": "Rivaj UK",
+  "audit804_progress_utc": "2026-10-27T11:25:06.589889+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Aerosoft Studio",
