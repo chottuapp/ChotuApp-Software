@@ -1,28 +1,30 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-27T11:47:11.102346+00:00",
-  "run_id": "40493466999",
+  "generated_utc": "2026-10-27T11:53:16.922003+00:00",
+  "run_id": "40477303521",
   "attempt": "1",
-  "source_commit": "3eab3d6fdb40eab346678ffd3b7ea2ab57b44c39",
+  "source_commit": "cebbf082b19afc4755903044d2ff3dfd667cae94",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 2463.2,
+  "elapsed_seconds": 10414.7,
   "stores": [
     {
-      "name": "Saeed Ghani",
+      "name": "Stylo",
       "status": "done",
       "review_required": true,
-      "issue_codes": [],
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
       "software_revision": "abfcf5ae3efadcd6",
-      "products": 407,
-      "variants": 585,
+      "products": 9357,
+      "variants": 44798,
       "http_statuses": {
-        "200": 557
+        "200": 4048
       },
-      "network_seconds": 1308.2,
-      "max_response_seconds": 3.0,
-      "cache_events": 848
+      "network_seconds": 12108.1,
+      "max_response_seconds": 22.6,
+      "cache_events": 76109
     }
   ]
 }
