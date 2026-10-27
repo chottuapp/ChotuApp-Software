@@ -305,8 +305,19 @@ def visual_review(row,store):
   if hashlib.sha256(description.encode()).hexdigest()==item['input_description_sha256'] or description.startswith(item['overview']):return item
  return None
 
+def maali_kind(row,fact=None):
+ title=str(row.get('name') or '');body=str(row.get('description') or '')
+ proof=bool(fact and (str(fact.get('product_type') or '').upper()=='PLANTS' or fact.get('plant_care_description')))
+ proof=proof or ('Live plant care' in body and 'Light:' in body and 'Watering:' in body)
+ proof=proof or bool(re.search(r'\bplant\s+with\s+grow\s+bag\b',title,re.I))
+ if not proof:return None
+ return 'Live Plant Sets' if re.search(r'\bbundle\b|\bset\s+of\s+\d+\b',title,re.I) else 'Live Plants'
+
 def category(row,store):
  name=str(row.get('name') or '');body=str(row.get('description') or '')
+ if store=='Hello Maali':
+  fact=public_facts(row,store);kind=maali_kind(row,fact)
+  if kind:return kind,'reviewed_product_plant_identity','Identity-matched source plant type/care panels: '+str(row.get('source_url'))
  if store=='Junaid Jamshed':
   fact=public_facts(row,store)
   if fact and str(fact.get('product_type') or '').casefold()=='shalwar':return 'Shalwars','reviewed_public_product_type','Exact matching primary source product type: Shalwar; '+str(fact['source_url'])
@@ -544,6 +555,15 @@ def category(row,store):
 
 def description(row,store):
  original=str(row.get('description') or '');name=str(row.get('name') or '');body=original.strip()
+
+ if store=='Hello Maali':
+  fact=public_facts(row,store);kind=maali_kind(row,fact)
+  if kind:
+   lead=name+(' is a set of live plants.' if kind=='Live Plant Sets' else ' is a live plant.')
+   care=str((fact or {}).get('plant_care_description') or '')
+   result=original if body.startswith(lead) else lead+'\n\n'+original
+   if care and care not in result:result+='\n\n'+care
+   return result,'Retained all saved details and added identity-verified source plant care; no care or pet-safety claims inferred.'
  if store=='Elite Cosmetics' and body==name and re.search(r'(?i)\broll.on\s+deodorant',name):return name+' is a roll-on deodorant.','Rewrote exact named deodorant identity; scent, audience, duration label and volume retained.'
  if store=='Rawayat' and name=='Gift Box' and body=='Add Gift Box & Bag':return 'Gift packaging comprising a gift box and bag.','Rewrote both explicitly offered packaging items; no size or material invented.'
  visual=visual_review(row,store)

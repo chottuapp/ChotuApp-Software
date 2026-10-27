@@ -122,7 +122,7 @@ def confirmed_unavailable_redirect(response,requested):
     # A removed root-level PDP currently returns an empty undefined-category page.
     # This is a source-unavailable exclusion, never a claim about exact stock.
     if response.status_code!=200 or before.hostname!='pk.sapphireonline.pk' or after.scheme!='https' or after.hostname!=before.hostname:return False
-    if not before.path.startswith('/products/') or not before.path.endswith('.html'):return False
+    if '/products/' not in before.path or not before.path.endswith('.html'):return False
     if after.path!='/search' or parse_qsl(after.query)!=[('cgid','undefined')]:return False
     soup=BeautifulSoup(response.text,'html.parser');canonical=soup.select_one('link[rel="canonical"]')
     if canonical is None or soup.select_one('.product-wrapper[data-pid], .product-tile'):return False

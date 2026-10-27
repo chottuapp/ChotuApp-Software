@@ -60,3 +60,28 @@ def complete_description(product,txt,detailed_description,debug):
         debug('DESCRIPTION LIMIT: Excel cell maximum reached for '+title+'; review the source for remaining detail.')
         result=result[:32767]
     return result
+
+
+def collect_maali_plant_details(soup,title,url):
+    """Read only identity-matched product care panels; never sitewide nursery copy."""
+    from urllib.parse import urlsplit,urljoin
+    p=urlsplit(url)
+    if p.hostname not in ('hellomaali.com','www.hellomaali.com') or not p.path.startswith('/products/'):return ''
+    canonical=soup.select_one('link[rel="canonical"]');titles=soup.select('h1')
+    if canonical is None or len(titles)!=1 or titles[0].get_text(' ',strip=True).casefold()!=str(title).strip().casefold():return ''
+    c=urlsplit(urljoin(url,canonical.get('href','')))
+    if (c.hostname or '').removeprefix('www.')!=(p.hostname or '').removeprefix('www.') or c.path.rstrip('/')!=p.path.rstrip('/'):return ''
+    root=titles[0].find_parent(class_=re.compile(r'^maali-prod-wrapper-'))
+    if root is None:return ''
+    facts={}
+    for panel in root.select('[class*="maali-stats-"]'):
+        for label in panel.find_all('div'):
+            key=label.get_text(' ',strip=True).casefold()
+            if key not in ('light','water','size','pet-safe'):continue
+            value=label.find_next_sibling('div')
+            if value is not None and value.get_text(' ',strip=True):facts[key]=value.get_text(' ',strip=True)
+    if not {'light','water'}<=facts.keys():return ''
+    lines=['<h3>Live plant care</h3>']
+    for key in ('light','water','size','pet-safe'):
+        if key in facts:lines.append('<p>'+html.escape({'light':'Light','water':'Watering','size':'Plant size','pet-safe':'Source-listed pet-safe'}[key])+': '+html.escape(facts[key])+'</p>')
+    return '\n'.join(lines)

@@ -913,8 +913,8 @@ def storefront_cover(base, product, pictures, log):
         product['_popularity_page_note']=product_page_evidence(soup,url)
         # Only product-detail areas; do not harvest recommendation/global tables.
         # CHOTUAPP_COMPLETE_DETAIL_PANELS_V1
-        from complete_description_support import collect_product_details
-        product['_storefront_specs_html'] = collect_product_details(soup)
+        from complete_description_support import collect_product_details,collect_maali_plant_details
+        product['_storefront_specs_html'] = collect_product_details(soup)+'\n'+collect_maali_plant_details(soup,product.get('title'),url)
         hero = soup.select_one('media-gallery .product__media img, [id^="MediaGallery"] .product__media img, .product__media img')
         meta = soup.find('meta', property='og:image')
         candidate = (hero.get('data-src') or hero.get('src')) if hero else (meta.get('content') if meta else None)
