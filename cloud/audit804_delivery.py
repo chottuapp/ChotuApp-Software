@@ -88,6 +88,12 @@ def completed_files(stage):
  if len(summaries)!=1:return []
  return [{'store':row['name'],'name':row.get('file'),'complete':True} for row in json.loads(summaries[0].read_text()).get('stores',[]) if row.get('status')=='done' and row.get('file')]
 
+def refresh_source_ids(all_runs,generation,campaign,carry_roots):
+ from fresh804_dispatch import chain_ids
+ prefix='Cloud group audit804-'+campaign+'-'+generation+'-'
+ roots={str(run['databaseId']) for run in all_runs if run.get('displayTitle','').startswith(prefix)}
+ return chain_ids(all_runs,roots),chain_ids(all_runs,carry_roots)
+
 def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
  from importlib.util import spec_from_file_location,module_from_spec
  spec=spec_from_file_location('audit_groups',root/'catalog-tools/start_fresh26_rule804_drive_windows.py');helper=module_from_spec(spec);spec.loader.exec_module(helper)
@@ -99,6 +105,12 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
  groups={run['displayTitle'].removeprefix('Cloud group ') for run in all_runs if run.get('displayTitle','').startswith(prefix)}
  runs=helper.related(all_runs,groups);registry=json.loads((root/'cloud/fetch-update-release.json').read_text())['fresh_stores'];sites={s['name']:s for s in registry}
  codes=json.loads((root/'cloud/confirmed-shop-codes.json').read_text())
+ generation=config.get('refresh_generation');refresh_stores=set(config.get('refresh_stores',[]))
+ refresh_runs,carried_runs=refresh_source_ids(all_runs,generation,campaign,config.get('preserve_active_run_ids',[])) if generation else (set(),set())
+ if generation:
+  runs=[run for run in all_runs if str(run['databaseId']) in refresh_runs|carried_runs]
+  state.update(audit804_refresh_generation=generation,audit804_refresh_stores=sorted(refresh_stores),audit804_refresh_requested_utc=config.get('refresh_requested_utc'))
+
  evidence_revision=''
  try:
   from audit804_automation import refresh
@@ -136,6 +148,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
    report['owner_authorized_exclusions']=owner_exclusions
    report.update(description_repairs_count=len(repairs),description_repairs_examples=repairs[:10])
    report.update(campaign_id=campaign,source_run=str(source_run),source_artifact=artifact_id,source_sha256=source_sha)
+   if generation and str(source_run) in refresh_runs:report['refresh_generation']=generation
    if report['status']!='pass':
     if not marker:marker=save_held(source,store,campaign,str(source_run))
     report['held_input']=marker
@@ -145,7 +158,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
       marker=save_held(path,'rollback-'+shop_code,campaign,'drive-before-replace');state.setdefault('audit804_replacement_backups',{})[shop_code]=marker
      identity=DriveIdentity(rc,folder,backup_old);identity.__enter__()
     replaced=identity.replace(output,code,store+'.xlsx')
-    record={'shop_code':code,'source_run':str(source_run),'sha256':report['workbook_sha256'],'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'folder':folder,'verified_utc':datetime.now(timezone.utc).isoformat(),'audit804':{'name':'804 Audit','status':'pass','checked_utc':report['checked_utc'],'products_checked':report['products_checked'],'workbook_sha256':report['workbook_sha256']},'rule804':'applied; 804 Audit passed','campaign_id':campaign,**replaced}
+    record={'shop_code':code,'source_run':str(source_run),'sha256':report['workbook_sha256'],'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'folder':folder,'verified_utc':datetime.now(timezone.utc).isoformat(),'audit804':{'name':'804 Audit','status':'pass','checked_utc':report['checked_utc'],'products_checked':report['products_checked'],'workbook_sha256':report['workbook_sha256']},'rule804':'applied; 804 Audit passed','campaign_id':campaign,**({'refresh_generation':generation} if generation and str(source_run) in refresh_runs else {}),**replaced}
     state.setdefault('uploaded',{})[store]=record
     state.setdefault('original_uploads',{}).pop(store,None)
     state.setdefault('daily_uploads',{}).setdefault(folder,{})[store]=record
@@ -164,6 +177,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
  try:
   # Recheck durable held inputs after code/policy updates, even if Actions artifacts expired.
   for store,report in list(state['audit804_results'].items()):
+   if generation and store in refresh_stores and str(report.get('source_run')) not in refresh_runs:continue
    key='source:'+report.get('source_sha256','')+':'+store+':'+revision
    code_changed=bool(codes.get(store) and state.get('uploaded',{}).get(store,{}).get('shop_code')!=codes[store])
    if report.get('status')!='hold' and not (report.get('status')=='pass' and code_changed):continue
@@ -184,6 +198,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
     stage=Path(tmp);gh('run','download',rid,'--repo','chottuapp/ChotuApp-Software','--name','chotuapp-excel-files','--dir',str(stage))
     for entry in completed_files(stage):
      store=entry.get('store');name=entry.get('name','')
+     if generation and store in refresh_stores and rid not in refresh_runs:continue
      if store not in config['stores']:raise ValueError('Unapproved store in completed source')
      key=base+':'+store+':'+revision
      if store not in config['stores'] or Path(name).name!=name or name!=store+'.xlsx':raise ValueError('Completed source outside approved batch')

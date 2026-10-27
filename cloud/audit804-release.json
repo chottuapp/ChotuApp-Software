@@ -1,7 +1,7 @@
 {
   "campaign_id": "fresh804-20261026-5d42fe35",
-  "request": "Owner explicitly requested all selected stores from zero, one store per runner; LAAM and Khaadi remain off. Preserve old verified Drive copies until audited replacement.",
-  "requested_date_pkt": "2026-10-26",
+  "request": "Owner latest instruction: immediately start all enabled stores except Stylo from zero, one separate runner per store. Preserve current Stylo chain without stopping or restarting it. LAAM and Khaadi remain off.",
+  "requested_date_pkt": "2026-10-27",
   "destination_folder": "ChotuApp 19-10-2026 11-36AM",
   "audit_name": "804 Audit",
   "maximum_stores_per_runner": 1,
@@ -21,10 +21,12 @@
   "runner_plan": "solo",
   "resume_sources": {},
   "completed_stores": [],
-  "owner_authorized_blank_shop_codes": [
-    "Bata",
-    "Aerosoft Studio",
-    "Servis",
-    "Ndure"
+  "owner_authorized_blank_shop_codes": [],
+  "refresh_generation": "refresh20261027-f31e6f08",
+  "preserve_active_run_ids": [
+    "40477303521"
+  ],
+  "skip_fresh_stores": [
+    "Stylo"
   ]
 }
