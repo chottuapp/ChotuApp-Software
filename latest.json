@@ -1,28 +1,32 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-27T17:24:51.328281+00:00",
-  "run_id": "40549963309",
+  "generated_utc": "2026-10-27T19:13:40.178021+00:00",
+  "run_id": "40538196554",
   "attempt": "1",
-  "source_commit": "ae66205854535f7a614ff386705a8be50ab9c704",
-  "status": "incomplete",
+  "source_commit": "3eab3d6fdb40eab346678ffd3b7ea2ab57b44c39",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 114.2,
+  "elapsed_seconds": 10945.0,
   "stores": [
     {
-      "name": "Sapphire",
-      "status": "failed",
-      "review_required": false,
+      "name": "Bonanza Satrangi",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
-        "ADAPTER_ERROR"
+        "HTTP_503",
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "5c089b2427b47d0a",
+      "software_revision": "abfcf5ae3efadcd6",
+      "products": 1251,
+      "variants": 3806,
       "http_statuses": {
-        "200": 32
+        "200": 4300,
+        "502": 1
       },
-      "network_seconds": 43.4,
-      "max_response_seconds": 1.6,
-      "cache_events": 0
+      "network_seconds": 10744.6,
+      "max_response_seconds": 3.3,
+      "cache_events": 18678
     }
   ]
 }
