@@ -2033,7 +2033,7 @@
     "Outfitters": "source:c530e6933d0af0b0507040d65d758420a14720d93a242b45a4021334d51bff9a:Outfitters:8dcd4b96a6e014362db3825d934eca95a3c7e845e3a91bab148e299cd9fd4779",
     "Bonanza Satrangi": "source:3e2fe231c3fa83cc61d2eb3544187b3be163321469bf377692ba8d3d31fec2c8:Bonanza Satrangi:8dcd4b96a6e014362db3825d934eca95a3c7e845e3a91bab148e299cd9fd4779",
     "Junaid Jamshed": "source:a5fc3c702474fccebebeb117a4125127ed7a0fec9710f236e973c95777a15c22:Junaid Jamshed:8dcd4b96a6e014362db3825d934eca95a3c7e845e3a91bab148e299cd9fd4779",
-    "Zellbury": "source:9507fa78c95cca57d9a08688a828387526cfc747177e4246906a748f145c2f89:Zellbury:4ef62bafdaa0ae7799b6993533e9674b876b5241ae910446e38f273d2a9d4d4f",
+    "Zellbury": "source:95b398c5178ecb6abcfeb674e92acb2f51cc37a8963544e3a9d75bc0eb346783:Zellbury:8dcd4b96a6e014362db3825d934eca95a3c7e845e3a91bab148e299cd9fd4779",
     "Gul Ahmed": "source:0ee230c91b9b3de0db4d4161abb05b26de99491a670a38b99ad092812d4cdf9f:Gul Ahmed:4ef62bafdaa0ae7799b6993533e9674b876b5241ae910446e38f273d2a9d4d4f",
     "Hello Maali": "source:db6230f1b9754e232d6b56094dfb665db67b05a741ac3b10c94b73eaa09e6bb4:Hello Maali:8dcd4b96a6e014362db3825d934eca95a3c7e845e3a91bab148e299cd9fd4779",
     "Sapphire": "source:873c012fe956ed52a6073cb95ea21bf8ca989ce25498746e7b4cb8616b01c7ee:Sapphire:4ef62bafdaa0ae7799b6993533e9674b876b5241ae910446e38f273d2a9d4d4f",
@@ -3447,19 +3447,43 @@
       "store": "Zellbury",
       "shop_code": "SE10028",
       "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 5861,
-      "findings_count": 0,
-      "findings": [],
+      "status": "hold",
+      "products_checked": 5841,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CP5f255ad22393",
+          "name": "Co-Ord Set Pant - 5001",
+          "source_url": "https://zellbury.com/products/co-ord-set-pant-5001",
+          "issues": [
+            "Primary product type and Category disagree: trousers"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "afbbd56f621aabbed66c1f717b07dd415551114b8728d69eee321d4189f496eb",
-      "checked_utc": "2026-10-27T09:21:34.256081+00:00",
+      "workbook_sha256": "4d935c631f7d55919f0740787079f5e4b6e7d8662410e4f8853bc026cf7ed6a3",
+      "checked_utc": "2026-10-27T21:13:40.080810+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-27T21:13:40.089511+00:00",
+        "updated_utc": "2026-10-27T21:13:40.089511+00:00",
+        "next_source_check_due_utc": "2026-10-27T21:28:40.089511+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Primary product type and Category disagree: trousers"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
       "description_repairs_count": 8,
       "description_repairs_examples": [
         {
@@ -3504,9 +3528,11 @@
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "40352242120",
-      "source_artifact": 12685487319,
-      "source_sha256": "9507fa78c95cca57d9a08688a828387526cfc747177e4246906a748f145c2f89"
+      "source_run": "40538340922",
+      "source_artifact": 12771700648,
+      "source_sha256": "95b398c5178ecb6abcfeb674e92acb2f51cc37a8963544e3a9d75bc0eb346783",
+      "refresh_generation": "refresh20261027-f31e6f08",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/zellbury/95b398c5178ecb6a/manifest.json"
     },
     "Gul Ahmed": {
       "name": "804 Audit",
@@ -3814,7 +3840,8 @@
     "40493518749": "40493518749:12748179806:8dcd4b96a6e014362db3825d934eca95a3c7e845e3a91bab148e299cd9fd4779",
     "40549963309": "40549963309:12755081418:8dcd4b96a6e014362db3825d934eca95a3c7e845e3a91bab148e299cd9fd4779",
     "40538196554": "40538196554:12762508954:8dcd4b96a6e014362db3825d934eca95a3c7e845e3a91bab148e299cd9fd4779",
-    "40537469039": "40537469039:12766579054:8dcd4b96a6e014362db3825d934eca95a3c7e845e3a91bab148e299cd9fd4779"
+    "40537469039": "40537469039:12766579054:8dcd4b96a6e014362db3825d934eca95a3c7e845e3a91bab148e299cd9fd4779",
+    "40537558973": "40537558973:12769639305:8dcd4b96a6e014362db3825d934eca95a3c7e845e3a91bab148e299cd9fd4779"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-10-27T20:47:11.173965+00:00",
@@ -3859,8 +3886,8 @@
     "SE10030": "inputs/fresh804-20261026-5d42fe35/rollback-se10030/bd57cc99843552c1/manifest.json",
     "CAS01": "inputs/fresh804-20261026-5d42fe35/rollback-cas01/1606be69fe5dd771/manifest.json"
   },
-  "audit804_last_store": "Junaid Jamshed",
-  "audit804_progress_utc": "2026-10-27T20:18:33.064841+00:00",
+  "audit804_last_store": "Zellbury",
+  "audit804_progress_utc": "2026-10-27T21:14:39.446635+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Gul Ahmed",
