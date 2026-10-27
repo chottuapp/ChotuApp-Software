@@ -54,9 +54,9 @@ def product_overview(row,label,source=None):
  if label=='Shawls' and re.search('velvet',str(row.get('description')),re.I):phrases[label]='a velvet shawl'
  return name+' is '+phrases[label]+'.' if label in phrases else None
 
-def patch_sheet(source,out,patches):
+def patch_sheet(source,out,patches,sheet_name='Products'):
  with zipfile.ZipFile(source) as z:
-  book=ET.fromstring(z.read('xl/workbook.xml'));sheets=book.find('{'+NS+'}sheets');rid=next(s.attrib['{'+REL+'}id'] for s in sheets if s.attrib['name']=='Products')
+  book=ET.fromstring(z.read('xl/workbook.xml'));sheets=book.find('{'+NS+'}sheets');rid=next(s.attrib['{'+REL+'}id'] for s in sheets if s.attrib['name']==sheet_name)
   rels=ET.fromstring(z.read('xl/_rels/workbook.xml.rels'));target=next(r.attrib['Target'] for r in rels if r.attrib['Id']==rid);part=target.lstrip('/') if target.startswith('/') else 'xl/'+target
   tree=ET.fromstring(z.read(part));data=tree.find('{'+NS+'}sheetData');byrow={int(r.attrib['r']):r for r in data}
   for address,value in patches.items():
@@ -76,7 +76,7 @@ def patch_sheet(source,out,patches):
    for info in z.infolist():target.writestr(info,content if info.filename==part else z.read(info.filename))
  return part
 
-def verify(source,out,part,patches):
+def verify(source,out,part,patches,sheet_name='Products'):
  with zipfile.ZipFile(source) as a,zipfile.ZipFile(out) as b:
   assert set(a.namelist())==set(b.namelist())
   for name in a.namelist():
@@ -90,7 +90,7 @@ def verify(source,out,part,patches):
   assert ET.tostring(before)==ET.tostring(after),'Non-authorised Products XML changed'
  w=load_workbook(out,read_only=True,data_only=False)
  try:
-  s=w['Products']
+  s=w[sheet_name]
   seen=set()
   for row in s.iter_rows():
    for cell in row:

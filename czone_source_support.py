@@ -437,6 +437,7 @@ def export(g,base,name,template,log):
     for sheet in ('Products','Product Images','Option Groups','Options','Variant Combinations'):
         if sheet not in wb.sheetnames:raise RuntimeError('Template missing '+sheet)
         if wb[sheet].max_row>1:wb[sheet].delete_rows(2,wb[sheet].max_row-1)
+    g['ensure_variant_image_fields'](wb['Variant Combinations'])
     rows=[];images=[];combos=[]
     for p in products:
         pid=g['uid']('CP',BASE+'|'+p['id']);sale=float(p['price']) if p['base']>p['price'] else None
@@ -444,6 +445,8 @@ def export(g,base,name,template,log):
         row={'product_id':pid,'category':p['category'],'subcategory':p['subcategory'],'name':p['name'],'description':p['description'],'brand':p['brand'],'condition (new/used)':p['condition'],'warranty_months (agar ho)':int(warranty[1]) if warranty else '', 'base_price (PKR)':float(p['base']),'sale_price (PKR, agar discount ho)':sale,'sku':p['sku'],'scraped_image_url (cover, auto)':p['images'][0],'final_image_url (cover/thumbnail — hosted link)':'','option_groups':'','available (yes/no)':'yes','stock_quantity (kitni quantity bechni hai)':(int(str(p['stock_quantity'])) if re.fullmatch(r'[0-9]+',str(p.get('stock_quantity'))) else ''),'source_url':p['url'],'gallery_urls (extra photos, separate with |)':'|'.join(p['images']),**p.get('category_evidence',{})}
         rows.append(row);g['write_row'](wb['Products'],row)
         combo={'combination_id':g['uid']('CC',BASE+'|'+p['id']),'product_id':pid,'source_variant_id':p['id'],'sku':p['sku'],'base_price (PKR)':float(p['base']),'sale_price (PKR, agar discount ho)':sale,'available (yes/no)':'yes','variant_image_url':p['images'][0],'source_url':p['url']}
+        combo.update(g['variant_image_metadata'](p['images'][0],p['images'][0]))
+        combo['variant_image_note']='Identity-verified source product image for this single-SKU product; no separate size/colour variants.'
         combos.append(combo);g['write_row'](wb['Variant Combinations'],combo)
         for i,url in enumerate(p['images'],1):
             image={'image_id':g['uid']('CI',pid+'|'+str(i)),'product_id':pid,'image_order':i,'scraped_image_url (auto)':url,'is_primary (yes/no)':'yes' if i==1 else 'no','source_url':p['url']}

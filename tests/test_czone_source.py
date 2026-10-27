@@ -180,7 +180,7 @@ class CzoneTests(unittest.TestCase):
             pages={c.BASE+'/products':listing.encode(),c.BASE+'/sitemap.xml':sitemap.encode(),URL:page().encode()}
             class Session:
                 def get(self,url,**kw):return SimpleNamespace(status_code=200,content=pages[url],raise_for_status=lambda:None)
-            g={'S':Session(),'_chotu_wait':lambda:None,'OUT':root,'load_workbook':openpyxl.load_workbook,'uid':main.uid,'write_row':main.write_row}
+            g={'S':Session(),'_chotu_wait':lambda:None,'OUT':root,'load_workbook':openpyxl.load_workbook,'uid':main.uid,'write_row':main.write_row,'ensure_variant_image_fields':main.ensure_variant_image_fields,'variant_image_metadata':main.variant_image_metadata}
             c.export(g,c.BASE,'Computer Zone',Path(main.__file__).parent/'ChotuApp_Template.xlsx',lambda x:None)
             result=openpyxl.load_workbook(root/'Computer Zone - REFRESH REVIEW.xlsx')
             products=list(result['Products'].values);r=dict(zip(products[0],products[1]))
@@ -188,5 +188,6 @@ class CzoneTests(unittest.TestCase):
             self.assertEqual(result['Product Images'].max_row,3)
             self.assertEqual(result['Variant Combinations'].max_row,2)
             self.assertEqual(r['source_url'],URL)
+            variants=list(result['Variant Combinations'].values);v=dict(zip(variants[0],variants[1]));self.assertEqual(v['variant_image_status'],'source_linked');self.assertEqual(v['variant_image_url'],r['scraped_image_url (cover, auto)'])
 
 if __name__=='__main__':unittest.main()
