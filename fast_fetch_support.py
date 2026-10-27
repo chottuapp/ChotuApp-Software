@@ -19,6 +19,9 @@ CAUTIOUS_SOURCES={'hellomaali.com','rawayat.com.pk','rivaj-uk.com','junaidjamshe
 
 def source_policy(host):
     host=host.lower().removeprefix('www.')
+    # Stylo has sustained healthy responses; bounded overlap and gradual recovery
+    # replace the permanent single-worker cap. Recent throttle holds still win.
+    if host=='stylo.pk':return (1.5,2)
     if host in RECENTLY_LIMITED_SOURCES:return (2.5,1)
     if host in ('outfitters.com.pk','zellbury.com','laam.com','pk.khaadi.com','khaadi.com','sapphireonline.pk','pk.sapphireonline.pk'):return (1.5,2)
     return (1.0,2) if host in CAUTIOUS_SOURCES or host=='shopmodest.pk' else (1.0,5) if host=='elitecosmeticspk.com' else (0.25,5)
@@ -30,8 +33,8 @@ def needs_live_product_page(live):
 
 
 class RequestGate:
-    def __init__(self, pause, log, baseline=0.25, state_path=None, error_factory=RuntimeError):
-        self.pause=pause;self.log=log;self.baseline=baseline;self.interval=baseline
+    def __init__(self, pause, log, baseline=0.25, state_path=None, error_factory=RuntimeError, initial_interval=None):
+        self.pause=pause;self.log=log;self.baseline=baseline;self.interval=max(baseline,initial_interval or baseline)
         self.lock=threading.RLock();self.next_start=0.0;self.cooldown=0.0;self.limited=False
         self.success_streak=0;self.recovery_window=20;self.recovery_not_before=0.0
         self.state_path=Path(state_path) if state_path else None;self.error_factory=error_factory
@@ -181,7 +184,7 @@ def enable_fast_fetch(g):
         host=(urlparse(base).hostname or 'unknown').lower().removeprefix('www.')
         floor,configured_workers=source_policy(host)
         state_path=Path(g['__file__']).resolve().parent/'source_pacing'/(host+'.json')
-        tls.fast_gate=RequestGate(g['_chotu_wait'],g['_chotu_debug'],floor,state_path,g['ChotuRateLimited']);tls.fast_products=[]
+        tls.fast_gate=RequestGate(g['_chotu_wait'],g['_chotu_debug'],floor,state_path,g['ChotuRateLimited'],initial_interval=2.5 if host=='stylo.pk' else None);tls.fast_products=[]
         tls.fast_worker_count=1 if time.time()<tls.fast_gate.recovery_not_before else configured_workers
         if tls.fast_worker_count==1:g['_chotu_debug']('STABLE PACING: single worker; learned spacing retained; no acceleration during recent-throttle recovery hold.')
         return result
