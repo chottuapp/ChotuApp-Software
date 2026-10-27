@@ -2018,7 +2018,8 @@
     "Zellbury": "source:9507fa78c95cca57d9a08688a828387526cfc747177e4246906a748f145c2f89:Zellbury:4ef62bafdaa0ae7799b6993533e9674b876b5241ae910446e38f273d2a9d4d4f",
     "Gul Ahmed": "source:0ee230c91b9b3de0db4d4161abb05b26de99491a670a38b99ad092812d4cdf9f:Gul Ahmed:4ef62bafdaa0ae7799b6993533e9674b876b5241ae910446e38f273d2a9d4d4f",
     "Hello Maali": "source:db6230f1b9754e232d6b56094dfb665db67b05a741ac3b10c94b73eaa09e6bb4:Hello Maali:91fafea327f5bbe828a6422e6395de233b4d67d0daa0405b7a5e9d9463f4878f",
-    "Sapphire": "source:873c012fe956ed52a6073cb95ea21bf8ca989ce25498746e7b4cb8616b01c7ee:Sapphire:4ef62bafdaa0ae7799b6993533e9674b876b5241ae910446e38f273d2a9d4d4f"
+    "Sapphire": "source:873c012fe956ed52a6073cb95ea21bf8ca989ce25498746e7b4cb8616b01c7ee:Sapphire:4ef62bafdaa0ae7799b6993533e9674b876b5241ae910446e38f273d2a9d4d4f",
+    "Stylo": "source:7dfe44a98758ee42a3055a8905d64b1d4b152f54236eb649739c424e0dfc511d:Stylo:91fafea327f5bbe828a6422e6395de233b4d67d0daa0405b7a5e9d9463f4878f"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -4738,6 +4739,107 @@
       "source_run": "40427653389",
       "source_artifact": 12701746900,
       "source_sha256": "873c012fe956ed52a6073cb95ea21bf8ca989ce25498746e7b4cb8616b01c7ee"
+    },
+    "Stylo": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Stylo",
+      "shop_code": "SE10010",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 9357,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CP0d4cff74ef4d",
+          "name": "Red Canvas Slip Ons WN6200",
+          "source_url": "https://stylo.pk/products/red-canvas-slip-ons-wn6200",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "details_truncated": false,
+      "workbook_sha256": "5bbd725d5d91b71353b21ab990ad1e70517590f368663ac94b4d19669eab489f",
+      "checked_utc": "2026-10-27T12:00:29.966206+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-27T12:00:29.980448+00:00",
+        "updated_utc": "2026-10-27T12:00:29.980448+00:00",
+        "next_source_check_due_utc": "2026-10-27T12:15:29.980448+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category lacks clear product-purpose evidence; manual review required"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "owner_authorized_exclusions": [],
+      "description_repairs_count": 82,
+      "description_repairs_examples": [
+        {
+          "product_id": "CP7b6979f678c8",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPdbc6b5515b37",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP0045ee6fc98d",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP7f3b66f4c692",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP670daeb3f592",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPb112f3af0cce",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPb050628ae2a9",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP6b07a7792a0e",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP7620a593e7da",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP39d7f5015334",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        }
+      ],
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "source_run": "40477303521",
+      "source_artifact": 12732317341,
+      "source_sha256": "7dfe44a98758ee42a3055a8905d64b1d4b152f54236eb649739c424e0dfc511d",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/stylo/7dfe44a98758ee42/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -4855,8 +4957,8 @@
     "SE10030": "inputs/fresh804-20261026-5d42fe35/rollback-se10030/385326bb64b40e86/manifest.json",
     "CAS01": "inputs/fresh804-20261026-5d42fe35/rollback-cas01/c1d945284ac64bbd/manifest.json"
   },
-  "audit804_last_store": "Hello Maali",
-  "audit804_progress_utc": "2026-10-27T11:57:56.656874+00:00",
+  "audit804_last_store": "Stylo",
+  "audit804_progress_utc": "2026-10-27T12:01:05.261021+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Astore Bags",
