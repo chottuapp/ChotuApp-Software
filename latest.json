@@ -1,28 +1,30 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-27T08:57:53.665026+00:00",
-  "run_id": "40446974478",
+  "generated_utc": "2026-10-27T11:05:31.509136+00:00",
+  "run_id": "40493404055",
   "attempt": "1",
-  "source_commit": "c61b13eae75d7c55e13fa60e1c82e095a191e8de",
-  "status": "incomplete",
+  "source_commit": "3eab3d6fdb40eab346678ffd3b7ea2ab57b44c39",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 18000.6,
+  "elapsed_seconds": 20.5,
   "stores": [
     {
-      "name": "Stylo",
-      "status": "pending",
-      "review_required": false,
+      "name": "Islamabad Tea",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "abfcf5ae3efadcd6",
+      "products": 29,
+      "variants": 29,
       "http_statuses": {
-        "200": 10462
+        "200": 39
       },
-      "network_seconds": 31215.2,
-      "max_response_seconds": 30.0,
-      "cache_events": 24836
+      "network_seconds": 17.6,
+      "max_response_seconds": 1.6,
+      "cache_events": 65
     }
   ]
 }
