@@ -1,31 +1,32 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-27T14:00:59.118351+00:00",
-  "run_id": "40493336317",
+  "generated_utc": "2026-10-27T14:47:46.458094+00:00",
+  "run_id": "40493499945",
   "attempt": "1",
   "source_commit": "3eab3d6fdb40eab346678ffd3b7ea2ab57b44c39",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 10568.9,
+  "elapsed_seconds": 13131.7,
   "stores": [
     {
-      "name": "Rawayat",
+      "name": "Outfitters",
       "status": "done",
       "review_required": true,
       "issue_codes": [
-        "HTTP_404"
+        "HTTP_404",
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "abfcf5ae3efadcd6",
-      "products": 4287,
-      "variants": 5697,
+      "products": 3871,
+      "variants": 29924,
       "http_statuses": {
-        "200": 4452,
-        "404": 2
+        "200": 3905,
+        "404": 4
       },
-      "network_seconds": 7720.0,
-      "max_response_seconds": 19.7,
-      "cache_events": 8610
+      "network_seconds": 10054.1,
+      "max_response_seconds": 31.1,
+      "cache_events": 7758
     }
   ]
 }
