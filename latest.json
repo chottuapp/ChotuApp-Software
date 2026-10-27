@@ -1,28 +1,28 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-27T11:21:08.114573+00:00",
-  "run_id": "40493573758",
+  "generated_utc": "2026-10-27T11:18:54.490845+00:00",
+  "run_id": "40493441722",
   "attempt": "1",
   "source_commit": "3eab3d6fdb40eab346678ffd3b7ea2ab57b44c39",
-  "status": "complete",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 103.6,
+  "elapsed_seconds": 810.6,
   "stores": [
     {
-      "name": "Hello Maali",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
+      "name": "Sapphire",
+      "status": "failed",
+      "review_required": false,
+      "issue_codes": [
+        "ADAPTER_ERROR"
+      ],
       "software_revision": "abfcf5ae3efadcd6",
-      "products": 40,
-      "variants": 378,
       "http_statuses": {
-        "200": 55
+        "200": 539
       },
-      "network_seconds": 82.1,
-      "max_response_seconds": 5.9,
-      "cache_events": 80
+      "network_seconds": 769.6,
+      "max_response_seconds": 4.4,
+      "cache_events": 0
     }
   ]
 }
