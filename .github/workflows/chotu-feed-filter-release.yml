@@ -10,6 +10,10 @@ on:
         description: Successful customer cloud browser build
         required: true
         type: string
+      build_sha:
+        description: Source commit recorded in the tested browser artifact
+        required: false
+        type: string
 permissions:
   contents: read
   actions: read
@@ -25,6 +29,7 @@ jobs:
     env:
       SOURCE_SHA: ${{ inputs.source_sha }}
       BUILD_RUN: ${{ inputs.build_run }}
+      BUILD_SHA: ${{ inputs.build_sha || inputs.source_sha }}
     steps:
       - name: Require reviewed source and restricted build credential
         env:
