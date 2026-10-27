@@ -1,28 +1,31 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-27T13:14:05.372678+00:00",
-  "run_id": "40493458634",
+  "generated_utc": "2026-10-27T14:00:59.118351+00:00",
+  "run_id": "40493336317",
   "attempt": "1",
   "source_commit": "3eab3d6fdb40eab346678ffd3b7ea2ab57b44c39",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 7678.8,
+  "elapsed_seconds": 10568.9,
   "stores": [
     {
-      "name": "Hemani Herbals",
+      "name": "Rawayat",
       "status": "done",
       "review_required": true,
-      "issue_codes": [],
+      "issue_codes": [
+        "HTTP_404"
+      ],
       "software_revision": "abfcf5ae3efadcd6",
-      "products": 1069,
-      "variants": 1069,
+      "products": 4287,
+      "variants": 5697,
       "http_statuses": {
-        "200": 1911
+        "200": 4452,
+        "404": 2
       },
-      "network_seconds": 4461.1,
-      "max_response_seconds": 2.9,
-      "cache_events": 2881
+      "network_seconds": 7720.0,
+      "max_response_seconds": 19.7,
+      "cache_events": 8610
     }
   ]
 }
