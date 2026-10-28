@@ -1,5 +1,8 @@
 """Allowlisted public WooCommerce Store API adapter; exact variation offers only."""
-import csv,html,json,re,time,itertools
+import csv,html,json,re,time,itertools,hashlib,base64,gzip
+from pathlib import Path
+from datetime import datetime,timezone
+from types import SimpleNamespace
 from decimal import Decimal
 from urllib.parse import urlsplit
 from bs4 import BeautifulSoup
@@ -69,6 +72,22 @@ def removed_listing(p,response):
  target=urlsplit(canonical.get('href',''));allowed={c.get('link','').rstrip('/') for c in p.get('categories',[])}
  return target.scheme=='https' and target.hostname==before.hostname and target.geturl().rstrip('/')==response.url.rstrip('/') and target.geturl().rstrip('/') in allowed and bool(soup.select_one('h1'))
 
+def removal_fingerprint(p):
+ keys=('id','name','permalink','images','description','short_description','type','variations','categories')
+ return hashlib.sha256(json.dumps({k:p.get(k) for k in keys},sort_keys=True,separators=(',',':')).encode()).hexdigest()
+
+def reviewed_removed_listing(p,evidence_path=None):
+ path=Path(evidence_path) if evidence_path else Path(__file__).with_name('woocommerce_removed_pages.json')
+ if not path.exists():return False
+ for proof in json.loads(path.read_text()).get('products',[]):
+  if proof.get('source_url')!=p.get('permalink') or proof.get('source_fingerprint')!=removal_fingerprint(p):continue
+  age=(datetime.now(timezone.utc)-datetime.fromisoformat(proof['checked_utc'])).total_seconds()
+  if not 0<=age<=86400:continue
+  raw=gzip.decompress(base64.b64decode(proof['page_gzip_base64']))
+  if hashlib.sha256(raw).hexdigest()!=proof.get('page_sha256'):raise ValueError('Reviewed removal evidence checksum mismatch')
+  if removed_listing(p,SimpleNamespace(status_code=proof['page_status'],url=proof['final_url'],text=raw.decode('utf-8'))):return True
+ return False
+
 def recovered_media(p,response):
  """Use only a current canonical PDP that explicitly owns this cart product ID."""
  before=urlsplit(p['permalink']);after=urlsplit(response.url)
@@ -137,6 +156,8 @@ def export(g,base,name,template,log):
   if not available:continue
   cover=p['images'][0]['src'] if p.get('images') else ''
   if not cover or not str(p.get('name') or '').strip():
+   if reviewed_removed_listing(p):
+    log('WOO SOURCE EXCLUSION: unchanged removed listing matches recent checksum-verified public redirect evidence: '+url);continue
    g['_chotu_wait']();response=g['S'].get(url,timeout=(15,60))
    if removed_listing(p,response):
     log('WOO SOURCE EXCLUSION: exact product has no current public PDP; confirmed removal, stock not inferred: '+url);continue

@@ -55,3 +55,15 @@ class WooTests(unittest.TestCase):
   text='.product-card-container { width:800px; } Handmade Crochet Fruit-Themed Glasses Cover Size: 16 cm'
   self.assertEqual(content_text(text),'Handmade Crochet Fruit-Themed Glasses Cover Size: 16 cm')
   self.assertEqual(tokens(text),{'16'})
+ def test_reviewed_removal_is_exact_and_expires(self):
+  import tempfile,json,gzip,base64,hashlib
+  from pathlib import Path
+  from datetime import datetime,timezone,timedelta
+  from woocommerce_source_support import reviewed_removed_listing,removal_fingerprint
+  p={'id':12,'name':'','permalink':'https://xcessorieshub.com/product/removed/','images':[],'categories':[{'link':'https://xcessorieshub.com/product-category/chargers/'}]}
+  url=p['categories'][0]['link'];raw=('<link rel="canonical" href="'+url+'"><h1>Chargers</h1>').encode()
+  proof=dict(source_url=p['permalink'],source_fingerprint=removal_fingerprint(p),checked_utc=datetime.now(timezone.utc).isoformat(),page_status=200,final_url=url,page_sha256=hashlib.sha256(raw).hexdigest(),page_gzip_base64=base64.b64encode(gzip.compress(raw)).decode())
+  with tempfile.TemporaryDirectory() as temp:
+   path=Path(temp)/'proof.json';path.write_text(json.dumps({'products':[proof]}));self.assertTrue(reviewed_removed_listing(p,path))
+   changed=dict(p,name='Restored product');self.assertFalse(reviewed_removed_listing(changed,path))
+   proof['checked_utc']=(datetime.now(timezone.utc)-timedelta(days=2)).isoformat();path.write_text(json.dumps({'products':[proof]}));self.assertFalse(reviewed_removed_listing(p,path))
