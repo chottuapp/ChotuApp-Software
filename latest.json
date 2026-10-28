@@ -1,8 +1,18 @@
 {
-  "run_id": "40580911178",
-  "checked_utc": "2026-10-27T20:46:00.197786+00:00",
-  "active_queued": 2,
+  "run_id": "40605912851",
+  "checked_utc": "2026-10-28T00:00:38.162774+00:00",
+  "active_queued": 0,
   "runs": [
+    {
+      "conclusion": "success",
+      "databaseId": 40584154918,
+      "displayTitle": "Automatic continuation of 40537558973",
+      "status": "completed",
+      "updatedAt": "2026-10-27T21:55:36Z",
+      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40584154918",
+      "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261027-f31e6f08-solo-17",
+      "snapshot_pending": true
+    },
     {
       "conclusion": "failure",
       "databaseId": 40549963309,
@@ -11,77 +21,17 @@
       "updatedAt": "2026-10-27T17:26:32Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40549963309",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261027-f31e6f08-solo-16",
-      "snapshot": "Updated (UTC): 2026-10-27T17:24:49.264264+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nSapphire: failed\n  Stage: Idle\n  Last successful HTTP response (UTC): 2026-10-27T17:24:46.830664+00:00\n",
-      "snapshot_utc": "2026-10-27T17:24:49.264264+00:00",
-      "stores": {
-        "Sapphire": "failed"
-      },
-      "snapshot_age_seconds": 12071,
-      "snapshot_stale": true,
-      "failure_details": [
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2638581Z [Sapphire] [17:24:43] HTTP START attempt=1 https://pk.sapphireonline.pk/collections/kurta-shalwar/products/MST2P26V6300.html",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2640522Z [Sapphire] [17:24:45] HTTP END status=200 elapsed=1.5s bytes=230110 https://pk.sapphireonline.pk/collections/kurta-shalwar/products/MST2P26V6300.html",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2642465Z [Sapphire] [17:24:45] HTTP START attempt=1 https://pk.sapphireonline.pk/collections/kurta-shalwar/products/MST2P26V6300.html",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2644084Z [Sapphire] [17:24:46] HTTP END status=200 elapsed=1.6s bytes=230110 https://pk.sapphireonline.pk/collections/kurta-shalwar/products/MST2P26V6300.html",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2645391Z __CHOTU_PROGRESS__|1|Active: Sapphire",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2647201Z [Sapphire] [17:24:46] EXCEPTION: RuntimeError('ADAPTER ERROR: Sapphire Exact Sapphire product scope missing or ambiguous: https://pk.sapphireonline.pk/collections/kurta-shalwar/products/MST2P26V6300.html. Saved work retained; no price/stock guessed.')",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2649108Z [Sapphire] [17:24:46] Traceback (most recent call last):",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2657500Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 225, in catalog",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2660105Z     master=inspect_page(page,url)",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2660380Z            ^^^^^^^^^^^^^^^^^^^^^^",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2661001Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 33, in inspect_page",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2662068Z     if len(scopes)!=1:raise ValueError('Exact Sapphire product scope missing or ambiguous: '+url)",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2662662Z                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2663382Z ValueError: Exact Sapphire product scope missing or ambiguous: https://pk.sapphireonline.pk/collections/kurta-shalwar/products/MST2P26V6300.html",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2663940Z ",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2664143Z During handling of the above exception, another exception occurred:",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2679606Z     master=inspect_page(page,url)",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2679866Z            ^^^^^^^^^^^^^^^^^^^^^^",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2680457Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 33, in inspect_page",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2681242Z     if len(scopes)!=1:raise ValueError('Exact Sapphire product scope missing or ambiguous: '+url)",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2681746Z                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2682597Z ValueError: Exact Sapphire product scope missing or ambiguous: https://pk.sapphireonline.pk/collections/kurta-shalwar/products/MST2P26V6300.html",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2683171Z ",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2683368Z The above exception was the direct cause of the following exception:",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2688218Z     _chotuapp_run_site_original(base, name, template, intercept)",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2688878Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2689758Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2690458Z                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2691323Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 260, in run",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2692300Z     except (ValueError,TypeError,KeyError) as exc:raise RuntimeError('ADAPTER ERROR: Sapphire '+str(exc)+'. Saved work retained; no price/stock guessed.') from exc",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2693132Z                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2694175Z RuntimeError: ADAPTER ERROR: Sapphire Exact Sapphire product scope missing or ambiguous: https://pk.sapphireonline.pk/collections/kurta-shalwar/products/MST2P26V6300.html. Saved work retained; no price/stock guessed.",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2695116Z ",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2695873Z [Sapphire] FAILED: Sapphire: ADAPTER ERROR: Sapphire Exact Sapphire product scope missing or ambiguous: https://pk.sapphireonline.pk/collections/kurta-shalwar/products/MST2P26V6300.html. Saved work retained; no price/stock guessed.",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2696817Z [Sapphire] [17:24:46] STAGE: Idle",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2697770Z FAILED: Sapphire: FAILED: Sapphire: ADAPTER ERROR: Sapphire Exact Sapphire product scope missing or ambiguous: https://pk.sapphireonline.pk/collections/kurta-shalwar/products/MST2P26V6300.html. Saved work retained; no price/stock guessed.",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2698723Z False",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2699152Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2699808Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2700247Z RUN SUMMARY:",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2701498Z Sapphire: FAILED \u2014 FAILED: Sapphire: ADAPTER ERROR: Sapphire Exact Sapphire product scope missing or ambiguous: https://pk.sapphireonline.pk/collections/kurta-shalwar/products/MST2P26V6300.html. Saved work retained; no price/stock guessed.",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2702490Z Checkpoint: saved",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2702960Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2718069Z ##[error]Process completed with exit code 2.",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2766044Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
-        "fetch\tUNKNOWN STEP\t2026-10-27T17:24:51.2766764Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m"
-      ]
+      "snapshot_pending": true
     },
     {
-      "conclusion": "",
+      "conclusion": "success",
       "databaseId": 40538340922,
       "displayTitle": "Automatic continuation of 40493518749",
-      "status": "in_progress",
-      "updatedAt": "2026-10-27T16:11:38Z",
+      "status": "completed",
+      "updatedAt": "2026-10-27T21:12:25Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40538340922",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261027-f31e6f08-solo-25",
-      "snapshot": "Updated (UTC): 2026-10-27T20:41:34.674084+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nZellbury: running\n  Stage: Building Excel rows\n  building Excel rows: 2999/16188 tasks; sample age 18s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-10-27T20:31:43.311097+00:00\n",
-      "snapshot_utc": "2026-10-27T20:41:34.674084+00:00",
-      "stores": {
-        "Zellbury": "running"
-      },
-      "snapshot_age_seconds": 266,
-      "snapshot_stale": false
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -91,29 +41,7 @@
       "updatedAt": "2026-10-27T19:14:44Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40538196554",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261027-f31e6f08-solo-24",
-      "snapshot": "Updated (UTC): 2026-10-27T19:13:33.541757+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Bonanza Satrangi.xlsx\n\nSTORE STATUS\nBonanza Satrangi: done\n  Last successful HTTP response (UTC): 2026-10-27T19:11:17.711987+00:00\n",
-      "snapshot_utc": "2026-10-27T19:13:33.541757+00:00",
-      "stores": {
-        "Bonanza Satrangi": "done"
-      },
-      "snapshot_age_seconds": 5547,
-      "snapshot_stale": true
-    },
-    {
-      "conclusion": "",
-      "databaseId": 40537558973,
-      "displayTitle": "Automatic continuation of 40493450331",
-      "status": "in_progress",
-      "updatedAt": "2026-10-27T16:06:46Z",
-      "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40537558973",
-      "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261027-f31e6f08-solo-17",
-      "snapshot": "Updated (UTC): 2026-10-27T20:44:38.370148+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nGul Ahmed: running\n  Stage: Building Excel rows\n  building Excel rows: 399/6815 tasks; sample age 4s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-10-27T20:43:11.105965+00:00\n",
-      "snapshot_utc": "2026-10-27T20:44:38.370148+00:00",
-      "stores": {
-        "Gul Ahmed": "running"
-      },
-      "snapshot_age_seconds": 82,
-      "snapshot_stale": false
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -123,13 +51,7 @@
       "updatedAt": "2026-10-27T20:10:38Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40537469039",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261027-f31e6f08-solo-4",
-      "snapshot": "Updated (UTC): 2026-10-27T20:10:01.143480+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Junaid Jamshed.xlsx\n\nSTORE STATUS\nJunaid Jamshed: done\n  Last successful HTTP response (UTC): 2026-10-27T19:31:34.706361+00:00\n",
-      "snapshot_utc": "2026-10-27T20:10:01.143480+00:00",
-      "stores": {
-        "Junaid Jamshed": "done"
-      },
-      "snapshot_age_seconds": 2159,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -139,13 +61,7 @@
       "updatedAt": "2026-10-27T11:22:28Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40493573758",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261027-f31e6f08-solo-32",
-      "snapshot": "Updated (UTC): 2026-10-27T11:21:03.943682+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Hello Maali.xlsx\n\nSTORE STATUS\nHello Maali: done\n  Last successful HTTP response (UTC): 2026-10-27T11:20:55.657282+00:00\n",
-      "snapshot_utc": "2026-10-27T11:21:03.943682+00:00",
-      "stores": {
-        "Hello Maali": "done"
-      },
-      "snapshot_age_seconds": 33896,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -155,13 +71,7 @@
       "updatedAt": "2026-10-27T11:22:13Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40493566266",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261027-f31e6f08-solo-31",
-      "snapshot": "Updated (UTC): 2026-10-27T11:18:37.373493+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Astore Bags.xlsx\n\nSTORE STATUS\nAstore Bags: done\n  Last successful HTTP response (UTC): 2026-10-27T11:18:19.801717+00:00\n",
-      "snapshot_utc": "2026-10-27T11:18:37.373493+00:00",
-      "stores": {
-        "Astore Bags": "done"
-      },
-      "snapshot_age_seconds": 34043,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -171,13 +81,7 @@
       "updatedAt": "2026-10-27T11:34:31Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40493558205",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261027-f31e6f08-solo-30",
-      "snapshot": "Updated (UTC): 2026-10-27T11:33:58.906804+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Ndure.xlsx\n\nSTORE STATUS\nNdure: done\n  Last successful HTTP response (UTC): 2026-10-27T11:31:10.292540+00:00\n",
-      "snapshot_utc": "2026-10-27T11:33:58.906804+00:00",
-      "stores": {
-        "Ndure": "done"
-      },
-      "snapshot_age_seconds": 33121,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -187,13 +91,7 @@
       "updatedAt": "2026-10-27T11:38:52Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40493550381",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261027-f31e6f08-solo-29",
-      "snapshot": "Updated (UTC): 2026-10-27T11:38:25.667099+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Servis.xlsx\n\nSTORE STATUS\nServis: done\n  Last successful HTTP response (UTC): 2026-10-27T11:32:41.455970+00:00\n",
-      "snapshot_utc": "2026-10-27T11:38:25.667099+00:00",
-      "stores": {
-        "Servis": "done"
-      },
-      "snapshot_age_seconds": 32855,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -203,13 +101,7 @@
       "updatedAt": "2026-10-27T11:22:13Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40493542958",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261027-f31e6f08-solo-28",
-      "snapshot": "Updated (UTC): 2026-10-27T11:14:39.568909+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Aerosoft Studio.xlsx\n\nSTORE STATUS\nAerosoft Studio: done\n  Last successful HTTP response (UTC): 2026-10-27T11:14:10.977731+00:00\n",
-      "snapshot_utc": "2026-10-27T11:14:39.568909+00:00",
-      "stores": {
-        "Aerosoft Studio": "done"
-      },
-      "snapshot_age_seconds": 34281,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -219,13 +111,7 @@
       "updatedAt": "2026-10-27T11:36:40Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40493535049",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261027-f31e6f08-solo-27",
-      "snapshot": "Updated (UTC): 2026-10-27T11:36:11.553439+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Bata.xlsx\n\nSTORE STATUS\nBata: done\n  Last successful HTTP response (UTC): 2026-10-27T11:27:45.339346+00:00\n",
-      "snapshot_utc": "2026-10-27T11:36:11.553439+00:00",
-      "stores": {
-        "Bata": "done"
-      },
-      "snapshot_age_seconds": 32989,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -235,13 +121,7 @@
       "updatedAt": "2026-10-27T11:21:55Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40493526689",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261027-f31e6f08-solo-26",
-      "snapshot": "Updated (UTC): 2026-10-27T11:11:56.032048+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Zero Lifestyle.xlsx\n\nSTORE STATUS\nZero Lifestyle: done\n  Last successful HTTP response (UTC): 2026-10-27T11:11:39.823536+00:00\n",
-      "snapshot_utc": "2026-10-27T11:11:56.032048+00:00",
-      "stores": {
-        "Zero Lifestyle": "done"
-      },
-      "snapshot_age_seconds": 34444,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -251,13 +131,7 @@
       "updatedAt": "2026-10-27T14:48:22Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40493499945",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261027-f31e6f08-solo-23",
-      "snapshot": "Updated (UTC): 2026-10-27T14:47:40.400219+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Outfitters.xlsx\n\nSTORE STATUS\nOutfitters: done\n  Last successful HTTP response (UTC): 2026-10-27T14:23:10.231281+00:00\n",
-      "snapshot_utc": "2026-10-27T14:47:40.400219+00:00",
-      "stores": {
-        "Outfitters": "done"
-      },
-      "snapshot_age_seconds": 21500,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -267,13 +141,7 @@
       "updatedAt": "2026-10-27T11:20:29Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40493492099",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261027-f31e6f08-solo-22",
-      "snapshot": "Updated (UTC): 2026-10-27T11:08:20.441163+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Skin Factor.xlsx\n\nSTORE STATUS\nSkin Factor: done\n  Last successful HTTP response (UTC): 2026-10-27T11:08:12.965003+00:00\n",
-      "snapshot_utc": "2026-10-27T11:08:20.441163+00:00",
-      "stores": {
-        "Skin Factor": "done"
-      },
-      "snapshot_age_seconds": 34660,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -283,13 +151,7 @@
       "updatedAt": "2026-10-27T11:21:09Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40493483864",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261027-f31e6f08-solo-21",
-      "snapshot": "Updated (UTC): 2026-10-27T11:09:28.621431+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Denim Leftover.xlsx\n\nSTORE STATUS\nDenim Leftover: done\n  Last successful HTTP response (UTC): 2026-10-27T11:09:06.034607+00:00\n",
-      "snapshot_utc": "2026-10-27T11:09:28.621431+00:00",
-      "stores": {
-        "Denim Leftover": "done"
-      },
-      "snapshot_age_seconds": 34592,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -299,13 +161,7 @@
       "updatedAt": "2026-10-27T11:21:41Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40493476111",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261027-f31e6f08-solo-20",
-      "snapshot": "Updated (UTC): 2026-10-27T11:11:09.391900+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Cool and Cool.xlsx\n\nSTORE STATUS\nCool and Cool: done\n  Last successful HTTP response (UTC): 2026-10-27T11:10:32.017848+00:00\n",
-      "snapshot_utc": "2026-10-27T11:11:09.391900+00:00",
-      "stores": {
-        "Cool and Cool": "done"
-      },
-      "snapshot_age_seconds": 34491,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -315,13 +171,7 @@
       "updatedAt": "2026-10-27T11:47:35Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40493466999",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261027-f31e6f08-solo-19",
-      "snapshot": "Updated (UTC): 2026-10-27T11:47:06.095790+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Saeed Ghani.xlsx\n\nSTORE STATUS\nSaeed Ghani: done\n  Last successful HTTP response (UTC): 2026-10-27T11:46:06.338695+00:00\n",
-      "snapshot_utc": "2026-10-27T11:47:06.095790+00:00",
-      "stores": {
-        "Saeed Ghani": "done"
-      },
-      "snapshot_age_seconds": 32334,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -331,13 +181,7 @@
       "updatedAt": "2026-10-27T13:14:33Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40493458634",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261027-f31e6f08-solo-18",
-      "snapshot": "Updated (UTC): 2026-10-27T13:14:00.901298+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Hemani Herbals.xlsx\n\nSTORE STATUS\nHemani Herbals: done\n  Last successful HTTP response (UTC): 2026-10-27T13:10:08.644769+00:00\n",
-      "snapshot_utc": "2026-10-27T13:14:00.901298+00:00",
-      "stores": {
-        "Hemani Herbals": "done"
-      },
-      "snapshot_age_seconds": 27119,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -347,13 +191,7 @@
       "updatedAt": "2026-10-27T11:20:00Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40493434267",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261027-f31e6f08-solo-15",
-      "snapshot": "Updated (UTC): 2026-10-27T11:06:20.752009+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Nisa Naturals.xlsx\n\nSTORE STATUS\nNisa Naturals: done\n  Last successful HTTP response (UTC): 2026-10-27T11:06:10.727138+00:00\n",
-      "snapshot_utc": "2026-10-27T11:06:20.752009+00:00",
-      "stores": {
-        "Nisa Naturals": "done"
-      },
-      "snapshot_age_seconds": 34779,
-      "snapshot_stale": true
+      "snapshot_pending": true
     },
     {
       "conclusion": "success",
@@ -363,363 +201,9 @@
       "updatedAt": "2026-10-27T11:35:33Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/40493426122",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261027-f31e6f08-solo-14",
-      "snapshot": "Updated (UTC): 2026-10-27T11:34:58.061573+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Computer Zone.xlsx\n\nSTORE STATUS\nComputer Zone: done\n  Last successful HTTP response (UTC): 2026-10-27T11:34:48.270140+00:00\n",
-      "snapshot_utc": "2026-10-27T11:34:58.061573+00:00",
-      "stores": {
-        "Computer Zone": "done"
-      },
-      "snapshot_age_seconds": 33062,
-      "snapshot_stale": true
+      "snapshot_pending": true
     }
   ],
-  "fresh_stores": {
-    "Sapphire": "failed",
-    "Zellbury": "running",
-    "Bonanza Satrangi": "done",
-    "Gul Ahmed": "running",
-    "Junaid Jamshed": "done",
-    "Hello Maali": "done",
-    "Astore Bags": "done",
-    "Ndure": "done",
-    "Servis": "done",
-    "Aerosoft Studio": "done",
-    "Bata": "done",
-    "Zero Lifestyle": "done",
-    "Outfitters": "done",
-    "Skin Factor": "done",
-    "Denim Leftover": "done",
-    "Cool and Cool": "done",
-    "Saeed Ghani": "done",
-    "Hemani Herbals": "done",
-    "Nisa Naturals": "done",
-    "Computer Zone": "done"
-  },
-  "local_khaadi": {
-    "store": "Khaadi",
-    "execution": "Windows local",
-    "observed_utc": "2026-10-20T19:22:58.769213+00:00",
-    "worker_active": true,
-    "status": "unknown_stale_heartbeat",
-    "worker_updated": "2026-10-21 00:22:57",
-    "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
-    "error": "",
-    "progress_age_seconds": 1,
-    "report_age_seconds": 609791,
-    "status_confirmed": false
-  },
-  "collection_completed_utc": "2026-10-27T20:46:09.014921+00:00",
-  "collection_seconds": 9,
-  "store_overview": {
-    "Sapphire": {
-      "state": "drive_verified",
-      "run_id": "40549963309",
-      "snapshot_utc": "2026-10-27T17:24:49.264264+00:00",
-      "uploaded_utc": "2026-10-27T09:23:59.828886+00:00"
-    },
-    "Zellbury": {
-      "state": "drive_verified",
-      "run_id": "40538340922",
-      "snapshot_utc": "2026-10-27T20:41:34.674084+00:00",
-      "uploaded_utc": "2026-10-27T09:21:43.058354+00:00"
-    },
-    "Bonanza Satrangi": {
-      "state": "drive_verified",
-      "run_id": "40538196554",
-      "snapshot_utc": "2026-10-27T19:13:33.541757+00:00",
-      "uploaded_utc": "2026-10-27T19:23:30.982466+00:00"
-    },
-    "Gul Ahmed": {
-      "state": "drive_verified",
-      "run_id": "40537558973",
-      "snapshot_utc": "2026-10-27T20:44:38.370148+00:00",
-      "uploaded_utc": "2026-10-27T09:22:54.077723+00:00"
-    },
-    "Junaid Jamshed": {
-      "state": "drive_verified",
-      "run_id": "40537469039",
-      "snapshot_utc": "2026-10-27T20:10:01.143480+00:00",
-      "uploaded_utc": "2026-10-27T20:18:33.063858+00:00"
-    },
-    "Hello Maali": {
-      "state": "drive_verified",
-      "run_id": "40493573758",
-      "snapshot_utc": "2026-10-27T11:21:03.943682+00:00",
-      "uploaded_utc": "2026-10-27T17:44:01.454212+00:00"
-    },
-    "Astore Bags": {
-      "state": "drive_verified",
-      "run_id": "40493566266",
-      "snapshot_utc": "2026-10-27T11:18:37.373493+00:00",
-      "uploaded_utc": "2026-10-27T17:43:47.689973+00:00"
-    },
-    "Ndure": {
-      "state": "drive_verified",
-      "run_id": "40493558205",
-      "snapshot_utc": "2026-10-27T11:33:58.906804+00:00",
-      "uploaded_utc": "2026-10-27T17:43:33.320236+00:00"
-    },
-    "Servis": {
-      "state": "drive_verified",
-      "run_id": "40493550381",
-      "snapshot_utc": "2026-10-27T11:38:25.667099+00:00",
-      "uploaded_utc": "2026-10-27T17:42:47.223144+00:00"
-    },
-    "Aerosoft Studio": {
-      "state": "drive_verified",
-      "run_id": "40493542958",
-      "snapshot_utc": "2026-10-27T11:14:39.568909+00:00",
-      "uploaded_utc": "2026-10-27T17:42:04.100800+00:00"
-    },
-    "Bata": {
-      "state": "drive_verified",
-      "run_id": "40493535049",
-      "snapshot_utc": "2026-10-27T11:36:11.553439+00:00",
-      "uploaded_utc": "2026-10-27T17:29:31.771617+00:00"
-    },
-    "Zero Lifestyle": {
-      "state": "drive_verified",
-      "run_id": "40493526689",
-      "snapshot_utc": "2026-10-27T11:11:56.032048+00:00",
-      "uploaded_utc": "2026-10-27T17:41:46.545188+00:00"
-    },
-    "Outfitters": {
-      "state": "drive_verified",
-      "run_id": "40493499945",
-      "snapshot_utc": "2026-10-27T14:47:40.400219+00:00",
-      "issues_count": 2,
-      "issues": [
-        "Category blank or unresolved"
-      ],
-      "audit_checked_utc": "2026-10-27T17:30:21.907926+00:00",
-      "recovery": {
-        "stage": "correction_pending_source_recheck",
-        "unfinished": true,
-        "owner": "804 automated recovery",
-        "opened_utc": "2026-10-27T14:48:57.320061+00:00",
-        "updated_utc": "2026-10-27T17:30:21.915158+00:00",
-        "next_source_check_due_utc": "2026-10-27T17:45:21.915158+00:00",
-        "actions": [
-          "Refresh exact public product facts",
-          "Apply supported description and category repairs",
-          "Rerun independent all-row audit",
-          "Upload and verify only after audit passes"
-        ],
-        "issues": [
-          "Category blank or unresolved"
-        ],
-        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
-      },
-      "uploaded_utc": "2026-10-27T09:14:58.604548+00:00"
-    },
-    "Skin Factor": {
-      "state": "drive_verified",
-      "run_id": "40493492099",
-      "snapshot_utc": "2026-10-27T11:08:20.441163+00:00",
-      "uploaded_utc": "2026-10-27T17:41:29.194506+00:00"
-    },
-    "Denim Leftover": {
-      "state": "drive_verified",
-      "run_id": "40493483864",
-      "snapshot_utc": "2026-10-27T11:09:28.621431+00:00",
-      "uploaded_utc": "2026-10-27T17:41:03.472096+00:00"
-    },
-    "Cool and Cool": {
-      "state": "drive_verified",
-      "run_id": "40493476111",
-      "snapshot_utc": "2026-10-27T11:11:09.391900+00:00",
-      "uploaded_utc": "2026-10-27T17:40:48.916515+00:00"
-    },
-    "Saeed Ghani": {
-      "state": "drive_verified",
-      "run_id": "40493466999",
-      "snapshot_utc": "2026-10-27T11:47:06.095790+00:00",
-      "uploaded_utc": "2026-10-27T17:40:02.268786+00:00"
-    },
-    "Hemani Herbals": {
-      "state": "drive_verified",
-      "run_id": "40493458634",
-      "snapshot_utc": "2026-10-27T13:14:00.901298+00:00",
-      "uploaded_utc": "2026-10-27T17:39:47.125795+00:00"
-    },
-    "Nisa Naturals": {
-      "state": "drive_verified",
-      "run_id": "40493434267",
-      "snapshot_utc": "2026-10-27T11:06:20.752009+00:00",
-      "uploaded_utc": "2026-10-27T17:38:50.744092+00:00"
-    },
-    "Computer Zone": {
-      "state": "drive_verified",
-      "run_id": "40493426122",
-      "snapshot_utc": "2026-10-27T11:34:58.061573+00:00",
-      "uploaded_utc": "2026-10-27T17:28:56.219831+00:00"
-    },
-    "Miss Rose": {
-      "state": "drive_verified",
-      "uploaded_utc": "2026-10-27T17:32:56.104962+00:00"
-    },
-    "Rivaj UK": {
-      "state": "drive_verified",
-      "uploaded_utc": "2026-10-27T17:28:34.572058+00:00"
-    },
-    "Tawakkal Fabrics": {
-      "state": "drive_verified",
-      "uploaded_utc": "2026-10-27T17:34:49.241599+00:00"
-    },
-    "Elite Cosmetics": {
-      "state": "drive_verified",
-      "uploaded_utc": "2026-10-27T17:35:34.515871+00:00"
-    },
-    "The Hanger Pakistan": {
-      "state": "drive_verified",
-      "uploaded_utc": "2026-10-27T17:35:46.813335+00:00"
-    },
-    "Vince Care": {
-      "state": "drive_verified",
-      "uploaded_utc": "2026-10-27T17:35:01.884350+00:00"
-    },
-    "Islamabad Tea": {
-      "state": "drive_verified",
-      "uploaded_utc": "2026-10-27T17:37:47.061596+00:00"
-    },
-    "Seran": {
-      "state": "drive_verified",
-      "uploaded_utc": "2026-10-27T17:37:02.771085+00:00"
-    },
-    "Shop Modest": {
-      "state": "drive_verified",
-      "uploaded_utc": "2026-10-27T17:35:59.027167+00:00"
-    },
-    "Adam Cheese": {
-      "state": "drive_verified",
-      "uploaded_utc": "2026-10-27T17:37:56.822347+00:00"
-    },
-    "Farda Foods": {
-      "state": "drive_verified",
-      "uploaded_utc": "2026-10-27T17:38:06.466472+00:00"
-    },
-    "Rawayat": {
-      "state": "drive_verified",
-      "uploaded_utc": "2026-10-27T17:33:42.807865+00:00"
-    },
-    "Stylo": {
-      "state": "drive_verified",
-      "uploaded_utc": "2026-10-27T17:32:36.621643+00:00"
-    }
-  },
-  "drive": {
-    "current_campaign": "fresh804-20261026-5d42fe35",
-    "fresh_verified_files": 33,
-    "audit_progress_utc": "2026-10-27T20:18:33.064841+00:00",
-    "sync_status": "finished",
-    "sync_error": null,
-    "last_scan_utc": "2026-10-27T20:45:10.748808+00:00",
-    "held": {
-      "39450775009": [],
-      "39450778729": [],
-      "39450782519": [],
-      "39450786298": [],
-      "39450789858": [],
-      "39450793299": [],
-      "39450796831": [],
-      "39450802086": [],
-      "39450806726": [],
-      "39494289423": [],
-      "39494295410": [],
-      "39494348075": [],
-      "39529042706": [
-        {
-          "store": "Stylo",
-          "error": "Unconfirmed shop code; held for review"
-        }
-      ],
-      "39529095851": []
-    },
-    "verified_files": 33,
-    "original_uploads": {},
-    "verified_utc": "2026-10-21T06:41:31.265056+00:00",
-    "folders": {
-      "ChotuApp 20-10-2026 Fresh": 20,
-      "ChotuApp 19-10-2026 11-36AM": 33
-    },
-    "latest_move": [
-      {
-        "source": "ChotuApp 20-10-2026 Fresh",
-        "destination": "ChotuApp 19-10-2026 11-36AM",
-        "verified_files": [
-          "Adam Cheese.xlsx",
-          "Bonanza Satrangi.xlsx",
-          "Computer Zone.xlsx",
-          "Cool and Cool.xlsx",
-          "Denim Leftover.xlsx",
-          "Elite Cosmetics.xlsx",
-          "Farda Foods.xlsx",
-          "Hemani Herbals.xlsx",
-          "Islamabad Tea.xlsx",
-          "Miss Rose.xlsx",
-          "Nisa Naturals.xlsx",
-          "Rivaj UK.xlsx",
-          "Saeed Ghani.xlsx",
-          "Seran.xlsx",
-          "Shop Modest.xlsx",
-          "Skin Factor.xlsx",
-          "Tawakkal Fabrics.xlsx",
-          "The Hanger Pakistan.xlsx",
-          "Vince Care.xlsx",
-          "Zero Lifestyle.xlsx"
-        ],
-        "destination_file_count": 24,
-        "preserved_other_files": 4,
-        "verified_utc": "2026-10-20T18:41:53.309795+00:00",
-        "source_removed": [
-          "Adam Cheese.xlsx",
-          "Bonanza Satrangi.xlsx",
-          "Computer Zone.xlsx",
-          "Cool and Cool.xlsx",
-          "Denim Leftover.xlsx",
-          "Elite Cosmetics.xlsx",
-          "Farda Foods.xlsx",
-          "Hemani Herbals.xlsx",
-          "Islamabad Tea.xlsx",
-          "Miss Rose.xlsx",
-          "Nisa Naturals.xlsx",
-          "Rivaj UK.xlsx",
-          "Saeed Ghani.xlsx",
-          "Seran.xlsx",
-          "Shop Modest.xlsx",
-          "Skin Factor.xlsx",
-          "Tawakkal Fabrics.xlsx",
-          "The Hanger Pakistan.xlsx",
-          "Vince Care.xlsx",
-          "Zero Lifestyle.xlsx"
-        ]
-      }
-    ]
-  },
-  "khaadi_devices": [
-    {
-      "store": "Khaadi",
-      "execution": "Windows local",
-      "observed_utc": "2026-10-20T19:22:58.769213+00:00",
-      "worker_active": true,
-      "status": "unknown_stale_heartbeat",
-      "worker_updated": "2026-10-21 00:22:57",
-      "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
-      "error": "",
-      "progress_age_seconds": 1,
-      "report_age_seconds": 609791,
-      "status_confirmed": false
-    }
-  ],
-  "phone_heartbeat": {
-    "status": "not_connected_or_no_report",
-    "status_confirmed": false,
-    "message": "No Android heartbeat received. Connect GitHub in app Settings and start or resume fetching."
-  },
-  "monitoring": {
-    "phone_heartbeat_seconds": 30,
-    "phone_stale_after_seconds": 180,
-    "cloud_schedule_minutes": 5,
-    "note": "Scheduled cloud checks can be delayed. Query local-run-status directly for latest phone heartbeat."
-  },
-  "fresh_completed": 17
+  "fresh_stores": {},
+  "local_khaadi": "Not visible to cloud monitoring; no local activity claimed"
 }
