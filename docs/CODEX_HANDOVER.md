@@ -59,3 +59,7 @@ GitHub Actions artifacts expire independently of git branches. Uncommitted works
 ## Owner additions later on 28 October
 
 Registry is now43 stores (41 enabled; LAAM/Khaadi off). Eight previously absent stores were added: Bachaa Party, Prime Ticks, Hilm Chapals, Xcessories Hub, Design by DAS, Golden Rose, Zyren and Pyari Walls. Shop codes remain owner-authorized blank. These use the same refresh generation, solo lanes33–40 (in that listed order), same audit/delivery folder. Do not redispatch merely because the original32-store refresh count changed. Xcessories Hub and Design by DAS use the allowlisted public WooCommerce Store API adapter; exact variation IDs/prices/stock are checked. Unsupported types/wildcard variants remain explicit exceptions, never a fabricated pass. Remaining six use Shopify source. Read current reports before giving counts.
+
+## Verified upload before old-file replacement
+
+Owner requires the new workbook to exist and pass checksum verification on Drive before touching the old store filename. DriveIdentity.replace stages under _incoming/<sha256>/, checks it, promotes to the existing filename, checks the final destination and then removes the staging copy. Rollback preserves/restores the original on failure. Do not revert this to delete-first delivery.

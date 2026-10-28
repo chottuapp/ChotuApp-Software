@@ -68,15 +68,25 @@ class DriveIdentity:
   if old:self.rc('check',str(self.root),self.remote,'--include',old,'--one-way')
   with tempfile.TemporaryDirectory() as tmp:
    stage=Path(tmp);target=stage/destination;shutil.copy2(file,target)
+   # Upload and verify a separate Drive copy before touching the old filename.
+   digest=hashlib.sha256(file.read_bytes()).hexdigest()
+   incoming=self.remote+'/_incoming/'+digest
+   promoted=False
    try:
-    self.rc('copy',str(stage),self.remote,'--include',destination,'--checksum')
+    self.rc('copy',str(stage),incoming,'--include',destination,'--checksum')
+    self.rc('check',str(stage),incoming,'--include',destination,'--one-way')
+    promoted=True
+    self.rc('copyto',incoming+'/'+destination,self.remote+'/'+destination,'--checksum')
     self.rc('check',str(stage),self.remote,'--include',destination,'--one-way')
    except Exception:
-    if old and (self.root/old).exists():self.rc('copyto',str(self.root/old),self.remote+'/'+old,'--checksum')
-    elif destination not in self.names:
+    if promoted and old and (self.root/old).exists():self.rc('copyto',str(self.root/old),self.remote+'/'+old,'--checksum')
+    elif promoted and destination not in self.names:
      try:self.rc('deletefile',self.remote+'/'+destination)
      except Exception:pass
     raise
+   # Cleanup only after final verification; a cleanup failure must not undo delivery.
+   try:self.rc('deletefile',incoming+'/'+destination)
+   except Exception:pass
    shutil.copy2(file,self.root/destination);self.names[destination]={'Name':destination}
    if code:self.index[code]=[destination]
   return {'replaced_file':old,'file_name':destination}
