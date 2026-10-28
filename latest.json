@@ -1,28 +1,30 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-28T09:21:55.408593+00:00",
-  "run_id": "40662987855",
+  "generated_utc": "2026-10-28T09:30:59.915053+00:00",
+  "run_id": "40663256557",
   "attempt": "1",
-  "source_commit": "159755b1a5b124dd340116271abd6b7971aa6d1e",
-  "status": "complete",
+  "source_commit": "41a5109df73147d07951983602f7f982ec77571b",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 291.4,
+  "elapsed_seconds": 701.5,
   "stores": [
     {
-      "name": "Pyari Walls",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "d66031e2226d6e33",
-      "products": 330,
-      "variants": 837,
+      "name": "Xcessories Hub",
+      "status": "failed",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_403",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "36aaa4e133010452",
       "http_statuses": {
-        "200": 395
+        "403": 1,
+        "200": 830
       },
-      "network_seconds": 170.0,
-      "max_response_seconds": 4.7,
-      "cache_events": 660
+      "network_seconds": 687.1,
+      "max_response_seconds": 8.1,
+      "cache_events": 0
     }
   ]
 }
