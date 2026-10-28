@@ -76,7 +76,7 @@ jobs:
           client=os.environ['CLIENT']; base=root/('chotu_app' if client=='user' else 'chotu-admin')/'build/web'
           info=json.loads((base/'build-info.json').read_text())
           assert info['commit']==os.environ['SOURCE_SHA'] and info['client']==client
-          assert info['environment']=='production' and info['api_base']=='https://app.chotuapp.com'
+          assert info['environment']=='production' and info['api_base']=='https://app.developerschotuapp.online'
           for p in base.rglob('*'):
               assert not p.is_symlink(), 'No symlinks allowed in public build output'
               assert p.name not in {'.env','key.properties','.git'}
