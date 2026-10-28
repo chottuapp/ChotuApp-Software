@@ -97,15 +97,48 @@ def recovered_media(p,response):
  identity=str(p['id'])
  owns=any(x.get('value')==identity for x in soup.select('button[name="add-to-cart"],input[name="add-to-cart"]')) or any(x.get('data-product_id')==identity for x in soup.select('form[data-product_id]'))
  if not owns:return None
- heading=soup.select_one('h1.product_title');title=heading.get_text(' ',strip=True) if heading else ''
+ heading=soup.select_one('h1.product_title');headings=soup.select('h1')
+ if heading is None and len(headings)==1:heading=headings[0]
+ title=heading.get_text(' ',strip=True) if heading else ''
  if not title or p.get('name') and html.unescape(p['name']).strip()!=title:return None
  images=[]
  for im in soup.select('.woocommerce-product-gallery img'):
   url=im.get('data-large_image') or im.get('src') or ''
   if not url.startswith('https://') or 'placeholder' in url.lower():continue
   if url not in images:images.append(url)
+ if not images:
+  # Some Woo themes publish the real photos only in the description and Product JSON-LD.
+  inline=[im.get('src','') for im in soup.select('.woocommerce-Tabs-panel--description img') if im.get('src','').startswith('https://')]
+  structured=[]
+  def visit(value):
+   if isinstance(value,list):
+    for x in value:visit(x)
+   elif isinstance(value,dict):
+    if value.get('@type')=='Product':structured.append(value)
+    if '@graph' in value:visit(value['@graph'])
+  for script in soup.select('script[type="application/ld+json"]'):
+   try:visit(json.loads(script.string or script.get_text()))
+   except (ValueError,TypeError):continue
+  for product in structured:
+   offers=product.get('offers',{});link=offers.get('url','') if isinstance(offers,dict) else ''
+   image=product.get('image');image=image.get('@id',image.get('url','')) if isinstance(image,dict) else image
+   if link.rstrip('/')==p['permalink'].rstrip('/') and isinstance(image,str) and image in inline:
+    images=list(dict.fromkeys([image]+inline));break
  if not images:return None
  result=dict(p);result['name']=title;result['images']=[{'src':u} for u in images];return result
+
+def reviewed_media(p,evidence_path=None):
+ path=Path(evidence_path) if evidence_path else Path(__file__).with_name('woocommerce_removed_pages.json')
+ if not path.exists():return None
+ for proof in json.loads(path.read_text()).get('media_products',[]):
+  if proof.get('source_url')!=p.get('permalink') or proof.get('source_fingerprint')!=removal_fingerprint(p):continue
+  age=(datetime.now(timezone.utc)-datetime.fromisoformat(proof['checked_utc'])).total_seconds()
+  if not 0<=age<=86400:continue
+  raw=gzip.decompress(base64.b64decode(proof['page_gzip_base64']))
+  if hashlib.sha256(raw).hexdigest()!=proof['page_sha256']:raise ValueError('Reviewed media evidence checksum mismatch')
+  result=recovered_media(p,SimpleNamespace(status_code=proof['page_status'],url=proof['final_url'],text=raw.decode('utf-8')))
+  if result:return result
+ return None
 
 def content_text(value):
  soup=BeautifulSoup(value or '', 'html.parser')
@@ -158,10 +191,12 @@ def export(g,base,name,template,log):
   if not cover or not str(p.get('name') or '').strip():
    if reviewed_removed_listing(p):
     log('WOO SOURCE EXCLUSION: unchanged removed listing matches recent checksum-verified public redirect evidence: '+url);continue
-   g['_chotu_wait']();response=g['S'].get(url,timeout=(15,60))
-   if removed_listing(p,response):
-    log('WOO SOURCE EXCLUSION: exact product has no current public PDP; confirmed removal, stock not inferred: '+url);continue
-   response.raise_for_status();recovered=recovered_media(p,response)
+   recovered=reviewed_media(p)
+   if not recovered:
+    g['_chotu_wait']();response=g['S'].get(url,timeout=(15,60))
+    if removed_listing(p,response):
+     log('WOO SOURCE EXCLUSION: exact product has no current public PDP; confirmed removal, stock not inferred: '+url);continue
+    response.raise_for_status();recovered=recovered_media(p,response)
    if not recovered:raise ValueError('Product photo/title missing on current source; exact identity review required: '+url)
    p=recovered;cover=p['images'][0]['src'];log('WOO MEDIA RECOVERED: canonical PDP and exact cart product identity verified: '+url)
 

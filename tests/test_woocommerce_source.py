@@ -67,3 +67,15 @@ class WooTests(unittest.TestCase):
    path=Path(temp)/'proof.json';path.write_text(json.dumps({'products':[proof]}));self.assertTrue(reviewed_removed_listing(p,path))
    changed=dict(p,name='Restored product');self.assertFalse(reviewed_removed_listing(changed,path))
    proof['checked_utc']=(datetime.now(timezone.utc)-timedelta(days=2)).isoformat();path.write_text(json.dumps({'products':[proof]}));self.assertFalse(reviewed_removed_listing(p,path))
+ def test_inline_images_require_product_offer_association(self):
+  import json
+  from types import SimpleNamespace
+  from woocommerce_source_support import recovered_media
+  p={'id':12,'name':'Phone case','permalink':'https://xcessorieshub.com/product/case/'};photo='https://cdn.example/case.jpg'
+  product={'@type':'Product','offers':{'url':p['permalink']},'image':{'@id':photo}}
+  page='<link rel="canonical" href="'+p['permalink']+'"><h1>Phone case</h1><button name="add-to-cart" value="12"></button><div class="woocommerce-Tabs-panel--description"><img src="'+photo+'"></div><script type="application/ld+json">'+json.dumps({'@graph':[product]})+'</script>'
+  r=SimpleNamespace(status_code=200,url=p['permalink'],text=page)
+  self.assertEqual(recovered_media(p,r)['images'],[{'src':photo}])
+  product['offers']['url']='https://xcessorieshub.com/product/another/'
+  r.text=page[:page.index('<script')]+ '<script type="application/ld+json">'+json.dumps({'@graph':[product]})+'</script>'
+  self.assertIsNone(recovered_media(p,r))

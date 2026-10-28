@@ -167,7 +167,9 @@ class CloudService:
     def close(self):
         # Never hold the event lock while joining: the scheduler may still write a log.
         if self.scheduler:self.scheduler.shutdown()
-        if self.thread:self.thread.join(timeout=20)
+        # A bounded in-flight HTTP request may outlast the old20-second join.
+        # Keep the lease until the worker has exited, before checkpoint packaging.
+        if self.thread:self.thread.join(timeout=120)
         if self.running:raise RuntimeError('Worker has not stopped; lease retained')
         self.diagnostics.flush()
         self.lease.release()
