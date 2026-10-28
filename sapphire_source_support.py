@@ -114,7 +114,7 @@ def confirmed_collection_redirect(response,requested):
     soup=BeautifulSoup(response.text,'html.parser');canonical=soup.select_one('link[rel="canonical"]')
     if canonical is None or soup.select_one('.product-wrapper[data-pid]'):return False
     target=urlsplit(urljoin(BASE,canonical.get('href','')))
-    return target.hostname==after.hostname and target.path.rstrip('/')==after.path.rstrip('/') and bool(soup.select_one('.product-tile'))
+    return target.hostname==after.hostname and target.path.rstrip('/')==after.path.rstrip('/') and bool(soup.select_one('.product-tile, h1.category-heading'))
 
 def confirmed_unavailable_redirect(response,requested):
     if confirmed_collection_redirect(response,requested):return True

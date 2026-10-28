@@ -16,6 +16,9 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  # Only explicit source garment-type strings; a generic vendor/brand is not purpose evidence.
  if re.fullmatch(r'(?i)(?:women|men|teens|kids|infants)\s+(?:stitched\s+[234]\s+piece(?:\s+shirt\s+trouser)?|(?:cotton\s+silk\s+)?shalwar|(?:special\s+)?kurta|trouser|earrings|bracelet|necklace|ring|eyebrow\s+kit|waistcoat\s+with\s+kurta\s+trouser)',str(source_type or '').strip()):body+=' Source-listed garment type: '+str(source_type)
  evidence=title+' '+body
+ if cat=='trousers' and has(r'^Co-Ord Set Pant\s*[-–]',title):return []
+ if cat=='headbands' and has(r'^Pack Of \d+ Hair Bands$',title):return []
+ if cat=='hair clips & pins' and has(r'^Pack Of 3 Floral Clips$',title):return []
  if cat=='face serums' and has(r'^facial capsules$',title) and has(r'\bserum\b.*\bface\b',body):return []
  if cat=='sneaker mules' and has(r'\bcanvas\s+slip[ -]?ons?\b',title) and has(r'\bmule[ -]style\s+sneaker\b',body):return []
 

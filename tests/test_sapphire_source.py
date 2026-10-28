@@ -21,6 +21,12 @@ class SapphireTests(unittest.TestCase):
   self.assertFalse(source.confirmed_collection_redirect(response(html+'<div class="product-wrapper" data-pid="X"></div>',collection),UNS))
 
 
+ def test_empty_own_collection_still_confirms_removed_pdp(self):
+  collection=source.BASE+'/collections/unstitched'
+  html='<link rel="canonical" href="'+collection+'"><h1 class="category-heading">Outfits</h1>'
+  self.assertTrue(source.confirmed_collection_redirect(response(html,collection),UNS))
+  self.assertFalse(source.confirmed_collection_redirect(response(html.replace('category-heading','other'),collection),UNS))
+
  def test_actual_single_regular_fit_preserved_in_public_size_selectors(self):
   url=source.BASE+'/collections/kurtas/products/MSTEKR26V610.html'
   page=source.inspect_page(fixture('regular_fit.html'),url)

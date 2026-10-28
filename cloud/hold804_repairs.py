@@ -317,6 +317,10 @@ def category(row,store):
  name=str(row.get('name') or '');body=str(row.get('description') or '')
  if store=='Rivaj UK' and re.fullmatch(r'Facial Capsules',name,re.I) and re.search(r'\bserum\b.*\bface\b',body,re.I):return 'Face Serums','reviewed_source_purpose','Primary source explicitly describes a serum for face and neck; capsules are not oral supplements.'
  if store=='Stylo' and re.search(r'\bcanvas\s+slip[ -]?ons?\b',name,re.I) and re.search(r'\bmule[ -]style\s+sneaker\b',body,re.I):return 'Sneaker Mules','reviewed_source_purpose','Primary source explicitly describes a mule-style sneaker with slip-on closure; all materials and care retained.'
+ if store=='Outfitters':
+  if re.fullmatch(r'Pack Of 2 Hair Bands',name,re.I):return 'Headbands','reviewed_product_name','Source explicitly names a two-pack of hair bands.'
+  if re.fullmatch(r'Pack Of 3 Floral Clips',name,re.I):return 'Hair Clips & Pins','reviewed_source_photo','Identity-matched source photo shows three floral hair clips; source care retained.'
+ if store=='Zellbury' and re.search(r'^Co-Ord Set Pant\s*[-–]',name,re.I):return 'Trousers','reviewed_product_name','Pant is the sold component; co-ord set is the style name, not included contents.'
  if store=='Hello Maali':
   fact=public_facts(row,store);kind=maali_kind(row,fact)
   if kind:return kind,'reviewed_product_plant_identity','Identity-matched source plant type/care panels: '+str(row.get('source_url'))
