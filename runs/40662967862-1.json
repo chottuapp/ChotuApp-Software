@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-28T10:39:49.318544+00:00",
+  "run_id": "40662967862",
+  "attempt": "1",
+  "source_commit": "159755b1a5b124dd340116271abd6b7971aa6d1e",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.15",
+  "elapsed_seconds": 4972.6,
+  "stores": [
+    {
+      "name": "Bachaa Party",
+      "status": "source_paused",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "d66031e2226d6e33",
+      "http_statuses": {
+        "200": 1608,
+        "429": 6
+      },
+      "network_seconds": 4399.8,
+      "max_response_seconds": 6.3,
+      "cache_events": 4062
+    }
+  ]
+}

@@ -1,28 +1,31 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-28T10:32:45.301311+00:00",
-  "run_id": "40661398972",
+  "generated_utc": "2026-10-28T10:39:49.318544+00:00",
+  "run_id": "40662967862",
   "attempt": "1",
-  "source_commit": "da8d4cbf5a6c0f51beb7193c6828287d28a5f775",
-  "status": "complete",
+  "source_commit": "159755b1a5b124dd340116271abd6b7971aa6d1e",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 5277.3,
+  "elapsed_seconds": 4972.6,
   "stores": [
     {
-      "name": "Sapphire",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
+      "name": "Bachaa Party",
+      "status": "source_paused",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
       "software_revision": "d66031e2226d6e33",
-      "products": 987,
-      "variants": 3579,
       "http_statuses": {
-        "200": 3480
+        "200": 1608,
+        "429": 6
       },
-      "network_seconds": 5036.1,
+      "network_seconds": 4399.8,
       "max_response_seconds": 6.3,
-      "cache_events": 0
+      "cache_events": 4062
     }
   ]
 }
