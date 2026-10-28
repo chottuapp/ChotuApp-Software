@@ -1,28 +1,28 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-28T09:19:25.406977+00:00",
-  "run_id": "40662984168",
+  "generated_utc": "2026-10-28T09:20:57.475094+00:00",
+  "run_id": "40663260664",
   "attempt": "1",
-  "source_commit": "159755b1a5b124dd340116271abd6b7971aa6d1e",
-  "status": "complete",
+  "source_commit": "41a5109df73147d07951983602f7f982ec77571b",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 138.2,
+  "elapsed_seconds": 94.6,
   "stores": [
     {
-      "name": "Zyren",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "d66031e2226d6e33",
-      "products": 167,
-      "variants": 1142,
+      "name": "Design by DAS",
+      "status": "failed",
+      "review_required": false,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "36aaa4e133010452",
       "http_statuses": {
-        "200": 197
+        "200": 83
       },
-      "network_seconds": 85.2,
-      "max_response_seconds": 2.0,
-      "cache_events": 334
+      "network_seconds": 93.3,
+      "max_response_seconds": 3.1,
+      "cache_events": 0
     }
   ]
 }
