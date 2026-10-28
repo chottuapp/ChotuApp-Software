@@ -1,5 +1,5 @@
 import unittest,copy
-from woocommerce_source_support import offer,variants
+from woocommerce_source_support import offer,variants,unpriced_unpurchasable
 class WooTests(unittest.TestCase):
  def product(self):return dict(id=10,type='simple',is_in_stock=True,is_purchasable=True,is_on_backorder=False,prices=dict(currency_code='PKR',currency_minor_unit=0,price='1469',regular_price='2099'))
  def test_exact_currency_scale_and_discount(self):
@@ -16,3 +16,8 @@ class WooTests(unittest.TestCase):
  def test_wildcard_options_rejected(self):
   p=self.product();p.update(type='variable',variations=[dict(id=11,attributes=[dict(name='Size',value='')])]);v=self.product();v.update(id=11,parent=10,type='variation')
   with self.assertRaises(ValueError):variants(p,lambda path:v)
+
+ def test_zero_price_is_excluded_only_when_explicitly_unpurchasable(self):
+  p=self.product();p['prices'].update(price='0',regular_price='0');p['is_purchasable']=False
+  self.assertTrue(unpriced_unpurchasable(p));p['is_purchasable']=True;self.assertFalse(unpriced_unpurchasable(p))
+  with self.assertRaises(ValueError):offer(p)

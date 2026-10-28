@@ -20,6 +20,10 @@ def offer(p):
  if p.get('is_on_backorder'):raise ValueError('Backorder policy requires explicit review')
  return regular,price,p['is_in_stock'] and p['is_purchasable']
 
+def unpriced_unpurchasable(p):
+ q=p.get('prices',{})
+ return p.get('is_purchasable') is False and q.get('currency_code')=='PKR' and str(q.get('price'))=='0' and str(q.get('regular_price'))=='0'
+
 def variants(parent,get):
  if parent['type']=='simple':return [(parent,{})]
  if parent['type']!='variable' or not parent.get('variations'):raise ValueError('Unsupported WooCommerce product type: '+str(parent.get('type')))
@@ -65,6 +69,8 @@ def export(g,base,name,template,log):
   p=current
   if p.get('is_password_protected'):continue
   if p.get('is_in_stock') is False:continue
+  if unpriced_unpurchasable(p):
+   log('WOO SOURCE EXCLUSION: zero-priced, explicitly unpurchasable listing '+str(p['id'])+' '+p['permalink']);continue
   url=p['permalink']
   if urlsplit(url).hostname.removeprefix('www.')!=host:raise ValueError('Product belongs to another host')
   vs=variants(p,get);offers=[(v,a,offer(v)) for v,a in vs]
