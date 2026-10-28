@@ -63,3 +63,5 @@ Registry is now43 stores (41 enabled; LAAM/Khaadi off). Eight previously absent 
 ## Verified upload before old-file replacement
 
 Owner requires the new workbook to exist and pass checksum verification on Drive before touching the old store filename. DriveIdentity.replace stages under _incoming/<sha256>/, checks it, promotes to the existing filename, checks the final destination and then removes the staging copy. Rollback preserves/restores the original on failure. Do not revert this to delete-first delivery.
+
+Owner supplied codes for all eight additions on28 October: Bachaa Party SE10035, Prime Ticks SE10036, Hilm Chapals SE10037, Xcessories Hub SE10038, Design by DAS SE10039, Golden Rose SE10040, Zyren SE10041, Pyari Walls SE10042. Earlier blank-code instructions are superseded. cloud/confirmed-shop-codes.json is the authoritative canonical-name mapping; Golden Rose Pakistan and ZYREN are owner aliases, not additional stores.
