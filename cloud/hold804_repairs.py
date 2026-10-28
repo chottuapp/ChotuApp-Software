@@ -315,6 +315,9 @@ def maali_kind(row,fact=None):
 
 def category(row,store):
  name=str(row.get('name') or '');body=str(row.get('description') or '')
+ if store=='Design by DAS':
+  if re.search(r'(?i)\bcrochet\b.*\b(?:tulip|rose)\b',name) and re.search(r'(?i)\byarn\b',body):return 'Crochet Flowers','reviewed_source_material_and_name','Named crochet flower, source explicitly states yarn; not a live plant.'
+  if name=='Fruit-Themed Glasses Cover' and re.search(r'(?i)\beyewear\b',body):return 'Eyeglass Cases','reviewed_source_purpose','Source explicitly describes crochet cases for sunglasses and reading glasses.'
  if store=='Sapphire' and re.search(r'\bzip.up\s+jumper\b',name,re.I) and re.search(r'\bjumper\b',body,re.I):return 'Jumpers','reviewed_source_garment','Explicit source jumper; fibre composition and zipper details retained.'
  if store=='Prime Ticks' and re.search(r'\b(?:watch|dial|movement|quartz)\b',name+' '+body,re.I):return 'Wrist Watches','reviewed_source_specifications','Named watch or watch movement/dial specifications; no gender inferred from navigation.'
  if store=='Hilm Chapals' and re.search(r'\b(?:chapals?|chapal|chappals?|norozi)\b',name+' '+body,re.I):return 'Chappals','reviewed_source_footwear','Source explicitly names regional chapal footwear; no material added.'
@@ -528,7 +531,7 @@ def category(row,store):
    if label:return label,'reviewed_public_product_type','Exact public product type: '+source['product_type']+'; '+source['source_url']
   bundle=source.get('reviewed_bundle',{})
   if store=='Bonanza Satrangi' and bundle.get('status')=='active' and bundle.get('category') in ('Fragrance Bundles','Makeup Bundles') and bundle.get('configuration_sha256') and bundle.get('products'):return bundle['category'],'reviewed_public_bundle_configuration',source['description']+'; '+bundle['configuration_source_url']
-  types={'earring':'Earrings','earrings':'Earrings','earstuds':'Stud Earrings','jhumka':'Jhumka Earrings','karay':'Bangles & Karas','bangles':'Bangles & Karas','necklace':'Necklaces','necklaces':'Necklaces','bracelets':'Bracelets','anklet':'Anklets','anklets':'Anklets','ring':'Rings','pendent':'Pendants & Lockets','nath':'Nose Jewellery','bindiya kanta':'Forehead Jewellery','choker set':'Jewellery Sets','mala set':'Jewellery Sets','locket set':'Jewellery Sets','bridal set':'Jewellery Sets','jeans':'Jeans'}
+  types={'earring':'Earrings','earrings':'Earrings','earstuds':'Stud Earrings','jhumka':'Jhumka Earrings','karay':'Bangles & Karas','bangles':'Bangles & Karas','necklace':'Necklaces','necklaces':'Necklaces','bracelets':'Bracelets','anklet':'Anklets','anklets':'Anklets','ring':'Rings','rings':'Rings','pendent':'Pendants & Lockets','nath':'Nose Jewellery','bindiya kanta':'Forehead Jewellery','choker set':'Jewellery Sets','mala set':'Jewellery Sets','locket set':'Jewellery Sets','bridal set':'Jewellery Sets','jeans':'Jeans'}
   if source.get('reviewed_visual_type')=='Jeans' and source.get('reviewed_visual_evidence',{}).get('sha256'):return 'Jeans','reviewed_product_image','Actual product image reviewed: '+source['reviewed_visual_evidence']['source_url']
   if str(source.get('product_type') or '').casefold()=='luxury unstitch' and re.search(r'(?i)\bshirt\s+shalwar\s+dupatta\b',name):return 'Unstitched Suits','reviewed_public_product_type','Source-listed Luxury Unstitch and named shirt, shalwar, dupatta; '+source['source_url']
   if str(source.get('product_type') or '').strip().casefold()=='necklace' and re.search(r'(?i)\bset\b',name):return 'Jewellery Sets','reviewed_public_product_type','Source necklace family and explicit set name: '+name+'; '+source['source_url']
@@ -587,6 +590,9 @@ def category(row,store):
 
 def description(row,store):
  original=str(row.get('description') or '');name=str(row.get('name') or '');body=original.strip()
+ if store=='Design by DAS' and name=='Fruit-Themed Glasses Cover' and body.lstrip('\ufeff ').startswith('.product-card-container {'):
+  marker='Handmade Crochet Fruit-Themed Glasses Cover'
+  if marker in body:return body[body.index(marker):],'Removed only accidental source CSS prefix; all product text, dimensions, options and care retained.'
  if store=='Pyari Walls' and (len(re.findall(r'\w+',body))<5 or body==name):
   if name=='clock Nut':return 'A clock nut supplied as a clock component.','Rewrote explicitly named clock part; size and material not assumed.'
   if re.search(r'(?i)\b(?:lamp|wall|clock|office decor|room sign)\b',name):return name+' is a decorative item for the named setting.'+('\n\n'+original if body and body!=name else ''),'Rewrote source-named decorative object only; no new material, contents or performance claims.'
@@ -631,9 +637,9 @@ def description(row,store):
   if kind in types:
    lead=name+' is a footwear style listed as '+types[kind]+'.'
    if not body.startswith(lead):return lead+'\n\n'+original,'Added exact public footwear type; original specifications and options retained.'
- if source and store=='Rawayat':
+ if source and store in ('Rawayat','Design by DAS'):
   kind=str(source.get('product_type') or '').strip().casefold()
-  overview={'necklace':'a necklace design','earring':'an earring design','earrings':'an earring design','earstuds':'a stud-earring design','nath':'a nose jewellery design','bindiya kanta':'a forehead jewellery design','ring':'a ring design','bracelets':'a bracelet design','anklet':'an anklet design','anklets':'an anklet design','pendent/chain':'a pendant necklace design','pendent/necklace':'a pendant necklace design','choker set':'a jewellery set','mala set':'a jewellery set','locket set':'a jewellery set','bridal set':'a jewellery set'}.get(kind)
+  overview={'necklace':'a necklace design','earring':'an earring design','earrings':'an earring design','earstuds':'a stud-earring design','nath':'a nose jewellery design','bindiya kanta':'a forehead jewellery design','ring':'a ring design','rings':'a ring design','bracelets':'a bracelet design','anklet':'an anklet design','anklets':'an anklet design','pendent/chain':'a pendant necklace design','pendent/necklace':'a pendant necklace design','choker set':'a jewellery set','mala set':'a jewellery set','locket set':'a jewellery set','bridal set':'a jewellery set'}.get(kind)
   if overview and re.search(r'(?i)\bset\b',name) and kind in ('necklace','choker set','mala set','locket set','bridal set'):overview='a jewellery set'
   if overview:
    lead=name+' is '+overview+'.'

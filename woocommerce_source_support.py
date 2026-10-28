@@ -59,6 +59,44 @@ def variants(parent,get):
 
  return result
 
+def removed_listing(p,response):
+ before=urlsplit(p['permalink']);after=urlsplit(response.url)
+ if before.hostname!=after.hostname:return False
+ if response.status_code in (404,410) and before.path.rstrip('/')==after.path.rstrip('/'):return True
+ if response.status_code!=200:return False
+ soup=BeautifulSoup(response.text,'html.parser');canonical=soup.select_one('link[rel="canonical"]')
+ if not canonical or soup.select_one('form.cart, .woocommerce-product-gallery'):return False
+ target=urlsplit(canonical.get('href',''));allowed={c.get('link','').rstrip('/') for c in p.get('categories',[])}
+ return target.scheme=='https' and target.hostname==before.hostname and target.geturl().rstrip('/')==response.url.rstrip('/') and target.geturl().rstrip('/') in allowed and bool(soup.select_one('h1'))
+
+def recovered_media(p,response):
+ """Use only a current canonical PDP that explicitly owns this cart product ID."""
+ before=urlsplit(p['permalink']);after=urlsplit(response.url)
+ if response.status_code!=200 or (before.hostname,before.path.rstrip('/'))!=(after.hostname,after.path.rstrip('/')):return None
+ soup=BeautifulSoup(response.text,'html.parser');canonical=soup.select_one('link[rel="canonical"]')
+ if not canonical or canonical.get('href','').rstrip('/')!=p['permalink'].rstrip('/'):return None
+ identity=str(p['id'])
+ owns=any(x.get('value')==identity for x in soup.select('button[name="add-to-cart"],input[name="add-to-cart"]')) or any(x.get('data-product_id')==identity for x in soup.select('form[data-product_id]'))
+ if not owns:return None
+ heading=soup.select_one('h1.product_title');title=heading.get_text(' ',strip=True) if heading else ''
+ if not title or p.get('name') and html.unescape(p['name']).strip()!=title:return None
+ images=[]
+ for im in soup.select('.woocommerce-product-gallery img'):
+  url=im.get('data-large_image') or im.get('src') or ''
+  if not url.startswith('https://') or 'placeholder' in url.lower():continue
+  if url not in images:images.append(url)
+ if not images:return None
+ result=dict(p);result['name']=title;result['images']=[{'src':u} for u in images];return result
+
+def content_text(value):
+ soup=BeautifulSoup(value or '', 'html.parser')
+ for el in soup.select('style,script,noscript'):el.decompose()
+ text=soup.get_text(' ',strip=True)
+ # This source accidentally publishes CSS as visible text before its actual product heading.
+ marker='Handmade Crochet Fruit-Themed Glasses Cover'
+ if text.lstrip('\ufeff ').startswith('.product-card-container {') and marker in text:text=text[text.index(marker):]
+ return text
+
 def export(g,base,name,template,log):
  host=urlsplit(base).hostname.removeprefix('www.');base=base.rstrip('/')
  if host not in HOSTS:raise ValueError('Unapproved WooCommerce host')
@@ -98,7 +136,14 @@ def export(g,base,name,template,log):
   available=[x for x in offers if x[2][2]]
   if not available:continue
   cover=p['images'][0]['src'] if p.get('images') else ''
-  if not cover:raise ValueError('Product photo missing')
+  if not cover or not str(p.get('name') or '').strip():
+   g['_chotu_wait']();response=g['S'].get(url,timeout=(15,60))
+   if removed_listing(p,response):
+    log('WOO SOURCE EXCLUSION: exact product has no current public PDP; confirmed removal, stock not inferred: '+url);continue
+   response.raise_for_status();recovered=recovered_media(p,response)
+   if not recovered:raise ValueError('Product photo/title missing on current source; exact identity review required: '+url)
+   p=recovered;cover=p['images'][0]['src'];log('WOO MEDIA RECOVERED: canonical PDP and exact cart product identity verified: '+url)
+
   pid=g['uid']('CP',base+'|'+str(p['id']));dimensions=[]
   for _,attrs,_ in offers:
    for label in attrs:
@@ -123,7 +168,7 @@ def export(g,base,name,template,log):
   if p.get('formatted_dimensions'):description+='\nDimensions: '+p['formatted_dimensions']
   # Preserve exact API taxonomy as source labels, never fabricate website order.
   labels=[html.unescape(c['name']) for c in p.get('categories',[])]
-  g['write_row'](wb['Products'],{'product_id':pid,'name':html.unescape(p['name']),'description':g['txt'](description),'category':labels[-1] if labels else '', 'subcategory':'','brand':name,'condition (new/used)':'new','sku':cheapest[0].get('sku',''),'base_price (PKR)':float(regular),'sale_price (PKR, agar discount ho)':float(price) if price<regular else None,'available (yes/no)':'yes','scraped_image_url (cover, auto)':cover,'source_url':url,'option_groups':','.join(gids.values()),'website_order_status':'unverified','analysis_note':'Public WooCommerce taxonomy: '+' > '.join(labels)+'; API order is not verified website display order.'})
+  g['write_row'](wb['Products'],{'product_id':pid,'name':html.unescape(p['name']),'description':content_text(description),'category':labels[-1] if labels else '', 'subcategory':'','brand':name,'condition (new/used)':'new','sku':cheapest[0].get('sku',''),'base_price (PKR)':float(regular),'sale_price (PKR, agar discount ho)':float(price) if price<regular else None,'available (yes/no)':'yes','scraped_image_url (cover, auto)':cover,'source_url':url,'option_groups':','.join(gids.values()),'website_order_status':'unverified','analysis_note':'Public WooCommerce taxonomy: '+' > '.join(labels)+'; API order is not verified website display order.'})
   for pos,im in enumerate(p['images'],1):g['write_row'](wb['Product Images'],{'image_id':g['uid']('CI',pid+'|'+str(pos)),'product_id':pid,'image_order':pos,'scraped_image_url (auto)':im['src'],'is_primary (yes/no)':'yes' if pos==1 else 'no','source_url':url})
   checked.append(url);retained+=1
   log('WOO PRODUCT PROGRESS: '+str(index)+'/'+str(len(products))+' checked; '+str(retained)+' retained')

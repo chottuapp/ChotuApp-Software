@@ -30,3 +30,28 @@ class WooTests(unittest.TestCase):
   def get(path):
    v=self.product();v.update(id=int(path.split('/')[-1]),parent=10,type='variation');v['prices']['price']='1400' if v['id']==12 else '1469';return v
   with self.assertRaises(ValueError):variants(p,get)
+ def test_removed_product_requires_own_declared_category_redirect(self):
+  from woocommerce_source_support import removed_listing
+  from types import SimpleNamespace
+  p={'permalink':'https://xcessorieshub.com/product/removed/','categories':[{'link':'https://xcessorieshub.com/product-category/chargers/'}]}
+  url=p['categories'][0]['link'];page='<link rel="canonical" href="'+url+'"><h1>Chargers</h1>'
+  self.assertTrue(removed_listing(p,SimpleNamespace(status_code=200,url=url,text=page)))
+  self.assertFalse(removed_listing(p,SimpleNamespace(status_code=200,url=url,text=page+'<form class="cart"></form>')))
+  self.assertFalse(removed_listing(p,SimpleNamespace(status_code=200,url='https://other.example/',text=page)))
+ def test_styles_removed_without_losing_product_facts(self):
+  from woocommerce_source_support import content_text
+  self.assertEqual(content_text('<style>.x{width:800px}</style><p>Size: 16 cm</p><script>test()</script>'),'Size: 16 cm')
+ def test_media_recovery_requires_exact_cart_identity_and_canonical(self):
+  from woocommerce_source_support import recovered_media
+  from types import SimpleNamespace
+  p=dict(id=12,name='Watch',permalink='https://xcessorieshub.com/product/watch/')
+  page='<link rel="canonical" href="'+p['permalink']+'"><h1 class="product_title">Watch</h1><button name="add-to-cart" value="12"></button><div class="woocommerce-product-gallery"><img src="https://xcessorieshub.com/watch.jpg"></div>'
+  r=SimpleNamespace(status_code=200,url=p['permalink'],text=page)
+  self.assertEqual(recovered_media(p,r)['images'][0]['src'],'https://xcessorieshub.com/watch.jpg')
+  r.text=page.replace('value="12"','value="99"');self.assertIsNone(recovered_media(p,r))
+ def test_rendered_css_prefix_does_not_remove_actual_numeric_facts(self):
+  from woocommerce_source_support import content_text
+  from audit804 import tokens
+  text='.product-card-container { width:800px; } Handmade Crochet Fruit-Themed Glasses Cover Size: 16 cm'
+  self.assertEqual(content_text(text),'Handmade Crochet Fruit-Themed Glasses Cover Size: 16 cm')
+  self.assertEqual(tokens(text),{'16'})

@@ -113,7 +113,11 @@ REVIEW_TYPES=[
 TYPES=REVIEW_TYPES+TYPES
 TYPES=[(name,re.compile(a,re.I),re.compile(b,re.I)) for name,a,b in TYPES]
 CARE=re.compile(r'\b(?:(?:jewellery|jewelry)\s+care|care instructions|how to use|directions|usage|precautions|avoid contact|apply to|wash with)\b',re.I)
-def plain(value):return re.sub(r'\s+',' ',html.unescape(re.sub('<[^>]*>',' ',str(value or '')))).strip()
+def plain(value):
+ result=re.sub(r'\s+',' ',html.unescape(re.sub('<[^>]*>',' ',str(value or '')))).strip()
+ marker='Handmade Crochet Fruit-Themed Glasses Cover'
+ if result.lstrip('\ufeff ').startswith('.product-card-container {') and marker in result:result=result[result.index(marker):]
+ return result
 def tokens(value):return set(re.findall(r'\d+(?:[.,]\d+)?',plain(value)))
 def issues_for(row,source=None):
  name=plain(row.get('name'));description=plain(row.get('description'));category=plain(row.get('Category'));issues=[]
