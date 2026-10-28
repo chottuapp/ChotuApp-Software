@@ -775,6 +775,26 @@
       "refresh_generation": "refresh20261027-f31e6f08",
       "replaced_file": "Prime Ticks.xlsx",
       "file_name": "Prime Ticks.xlsx"
+    },
+    "Design by DAS": {
+      "shop_code": "SE10039",
+      "source_run": "40689195929",
+      "sha256": "56c8e6b1754649d451985bd5b4273505af9bb872b25c03289871d1f65e1d7053",
+      "source_sha256": "ad127665415734a6e13927380fa5d8c81633685a0052afaf07d8386fcb6d3467",
+      "folder": "ChotuApp 19-10-2026 11-36AM",
+      "verified_utc": "2026-10-28T14:34:49.197433+00:00",
+      "audit804": {
+        "name": "804 Audit",
+        "status": "pass",
+        "checked_utc": "2026-10-28T14:33:48.796443+00:00",
+        "products_checked": 77,
+        "workbook_sha256": "56c8e6b1754649d451985bd5b4273505af9bb872b25c03289871d1f65e1d7053"
+      },
+      "rule804": "applied; 804 Audit passed",
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "refresh_generation": "refresh20261027-f31e6f08",
+      "replaced_file": null,
+      "file_name": "Design by DAS.xlsx"
     }
   },
   "daily_uploads": {
@@ -1820,6 +1840,26 @@
         "refresh_generation": "refresh20261027-f31e6f08",
         "replaced_file": "Prime Ticks.xlsx",
         "file_name": "Prime Ticks.xlsx"
+      },
+      "Design by DAS": {
+        "shop_code": "SE10039",
+        "source_run": "40689195929",
+        "sha256": "56c8e6b1754649d451985bd5b4273505af9bb872b25c03289871d1f65e1d7053",
+        "source_sha256": "ad127665415734a6e13927380fa5d8c81633685a0052afaf07d8386fcb6d3467",
+        "folder": "ChotuApp 19-10-2026 11-36AM",
+        "verified_utc": "2026-10-28T14:34:49.197433+00:00",
+        "audit804": {
+          "name": "804 Audit",
+          "status": "pass",
+          "checked_utc": "2026-10-28T14:33:48.796443+00:00",
+          "products_checked": 77,
+          "workbook_sha256": "56c8e6b1754649d451985bd5b4273505af9bb872b25c03289871d1f65e1d7053"
+        },
+        "rule804": "applied; 804 Audit passed",
+        "campaign_id": "fresh804-20261026-5d42fe35",
+        "refresh_generation": "refresh20261027-f31e6f08",
+        "replaced_file": null,
+        "file_name": "Design by DAS.xlsx"
       }
     }
   },
@@ -1951,7 +1991,7 @@
     "Zyren": "source:2fc1f69694288eae24c01c5bf08429b1888d41e25db83c2ceb44e838bea1f4ea:Zyren:9f23cff697e30cb16dffbba3b33bdfc2565cca3309f2738b92859364f08ed49c",
     "Pyari Walls": "source:751fd35cf122e22c8985394882866bc0af0ae8c72ca9caf44499926fa567f1ac:Pyari Walls:9f23cff697e30cb16dffbba3b33bdfc2565cca3309f2738b92859364f08ed49c",
     "Prime Ticks": "source:3002414c54dba437bcf35013fd5d5b44f0fc2dcf957470d4f78d78674cc094e0:Prime Ticks:9f23cff697e30cb16dffbba3b33bdfc2565cca3309f2738b92859364f08ed49c",
-    "Design by DAS": "source:ad127665415734a6e13927380fa5d8c81633685a0052afaf07d8386fcb6d3467:Design by DAS:abaa868c52a26d7dc292f8a8ddd3384d2172e25fb358032bf8244dd58119249e"
+    "Design by DAS": "source:ad127665415734a6e13927380fa5d8c81633685a0052afaf07d8386fcb6d3467:Design by DAS:9f23cff697e30cb16dffbba3b33bdfc2565cca3309f2738b92859364f08ed49c"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -3827,344 +3867,75 @@
       "name": "804 Audit",
       "version": "804-audit-v2",
       "store": "Design by DAS",
-      "shop_code": null,
-      "identity_policy": "owner_authorized_blank_code_exact_store_filename",
-      "status": "hold",
+      "shop_code": "SE10039",
+      "identity_policy": "confirmed_code",
+      "status": "pass",
       "products_checked": 77,
-      "findings_count": 38,
-      "findings": [
-        {
-          "product_id": "CP76f32a529db1",
-          "name": "Fruit-Themed Glasses Cover",
-          "source_url": "https://designbydas.com/product/fruit-themed-glasses-cover/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP61b7044aaec9",
-          "name": "Golden Leaf Elegance",
-          "source_url": "https://designbydas.com/product/golden-leaf-elegance/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP0f92a9fff192",
-          "name": "Aurelia Chain Drops",
-          "source_url": "https://designbydas.com/product/aurelia-chain-drops/",
-          "issues": [
-            "Category lacks clear product-purpose evidence; manual review required"
-          ]
-        },
-        {
-          "product_id": "CPcdb48f06d22a",
-          "name": "Handmade Crochet Pink Tulip",
-          "source_url": "https://designbydas.com/product/handmade-crochet-pink-tulip/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPad9fa367f069",
-          "name": "Handmade Crochet Red Rose",
-          "source_url": "https://designbydas.com/product/handmade-crochet-red-rose/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP180dd8a67714",
-          "name": "Moonlit Glow",
-          "source_url": "https://designbydas.com/product/moonlit-glow/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP2f4a8a4ba91f",
-          "name": "Gold-Tone Crystal Link",
-          "source_url": "https://designbydas.com/product/gold-tone-crystal-link/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP2bc8e451b2b3",
-          "name": "Blue Crystal",
-          "source_url": "https://designbydas.com/product/blue-crystal/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP9ee3ff8f5c4e",
-          "name": "Purple Majesty",
-          "source_url": "https://designbydas.com/product/purple-majesty/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPa691f490815b",
-          "name": "Square Cut",
-          "source_url": "https://designbydas.com/product/square-cut/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPa6dc10574dfa",
-          "name": "Golden Galaxy",
-          "source_url": "https://designbydas.com/product/golden-galaxy/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP9a3c40ed659c",
-          "name": "Oval Pearl",
-          "source_url": "https://designbydas.com/product/oval-pearl/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPb21bee0e5d91",
-          "name": "Celestial Charm",
-          "source_url": "https://designbydas.com/product/celestial-charm/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPa3ae03d8b258",
-          "name": "Golden Flutter",
-          "source_url": "https://designbydas.com/product/golden-flutter/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP135771ea4892",
-          "name": "Petal Bloom",
-          "source_url": "https://designbydas.com/product/petal-bloom/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP18f376fbb4f1",
-          "name": "Dark Pearl",
-          "source_url": "https://designbydas.com/product/dark-pearl/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP10d5546a82b4",
-          "name": "Pearl Essence",
-          "source_url": "https://designbydas.com/product/pearl-essence/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP097de38dd347",
-          "name": "White Petal",
-          "source_url": "https://designbydas.com/product/white-petal/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP74978963ffe7",
-          "name": "Golden Pandent",
-          "source_url": "https://designbydas.com/product/golden-pendent/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP8d3165f5651c",
-          "name": "Golden Horizon",
-          "source_url": "https://designbydas.com/product/golden-horizon/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPd533f1154a78",
-          "name": "Royal Radiance",
-          "source_url": "https://designbydas.com/product/royal-radiance/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPcbbe88c71add",
-          "name": "Hexa Pearl",
-          "source_url": "https://designbydas.com/product/hexa-pearl/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP939e96a1af03",
-          "name": "Aura Noir",
-          "source_url": "https://designbydas.com/product/aura-noor/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPac56c8b59fec",
-          "name": "Nova",
-          "source_url": "https://designbydas.com/product/nova/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPd2611d6a1093",
-          "name": "Peafowl Pearl",
-          "source_url": "https://designbydas.com/product/peafowl-pearl/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP2edece9969a0",
-          "name": "Lala-Rukh",
-          "source_url": "https://designbydas.com/product/lala-rukh/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPd92b3546c2f6",
-          "name": "Neelam Drop",
-          "source_url": "https://designbydas.com/product/luna-blue/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP5741a02773de",
-          "name": "White Pearl",
-          "source_url": "https://designbydas.com/product/white-pearl-bracelet/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP2b9dacc32ccb",
-          "name": "Peony Bloom",
-          "source_url": "https://designbydas.com/product/silver-drop-necklace/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPf1b251764cfc",
-          "name": "Blue Aura",
-          "source_url": "https://designbydas.com/product/center-blue-necklace/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPe713149226be",
-          "name": "Silver Dome",
-          "source_url": "https://designbydas.com/product/silver-dome-necklace/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPd17c1fa56a81",
-          "name": "Silver Dome",
-          "source_url": "https://designbydas.com/product/silver-tomb/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP670accb5b21e",
-          "name": "Silver knot",
-          "source_url": "https://designbydas.com/product/silver-knot/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP3bbbc2a6adfd",
-          "name": "Golden Swirl",
-          "source_url": "https://designbydas.com/product/golden-swirl/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPcba90989fa20",
-          "name": "Oval Pink Cut",
-          "source_url": "https://designbydas.com/product/oval-pink-cut/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP5444fc950363",
-          "name": "Oval Blue Cut",
-          "source_url": "https://designbydas.com/product/oval-blue-cut/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP0d16d0ba1577",
-          "name": "Gul-e-Rana",
-          "source_url": "https://designbydas.com/product/royal-turkish-earrings/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP362f3edc0905",
-          "name": "Isera Bloom",
-          "source_url": "https://designbydas.com/product/isera-bloom/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        }
-      ],
+      "findings_count": 0,
+      "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "24aa840e48ae37f321704b8ac25656d29feaffe87e12f258b0a9477b7a7bc023",
-      "checked_utc": "2026-10-28T13:40:20.376188+00:00",
+      "workbook_sha256": "56c8e6b1754649d451985bd5b4273505af9bb872b25c03289871d1f65e1d7053",
+      "checked_utc": "2026-10-28T14:33:48.796443+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
-        "stage": "correction_pending_source_recheck",
-        "unfinished": true,
-        "owner": "804 automated recovery",
-        "opened_utc": "2026-10-28T13:38:20.340095+00:00",
-        "updated_utc": "2026-10-28T13:40:20.376297+00:00",
-        "next_source_check_due_utc": "2026-10-28T13:55:20.376297+00:00",
-        "actions": [
-          "Refresh exact public product facts",
-          "Apply supported description and category repairs",
-          "Rerun independent all-row audit",
-          "Upload and verify only after audit passes"
-        ],
-        "issues": [
-          "Category blank or unresolved",
-          "Category lacks clear product-purpose evidence; manual review required"
-        ],
-        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
-      "description_repairs_count": 0,
-      "description_repairs_examples": [],
+      "description_repairs_count": 36,
+      "description_repairs_examples": [
+        {
+          "product_id": "CP76f32a529db1",
+          "issue": "Removed only accidental source CSS prefix; all product text, dimensions, options and care retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP61b7044aaec9",
+          "issue": "Added exact matching public product_type as a factual overview; all existing product/care details retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP0f92a9fff192",
+          "issue": "Added exact matching public product_type as a factual overview; all existing product/care details retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP180dd8a67714",
+          "issue": "Added exact matching public product_type as a factual overview; all existing product/care details retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP2f4a8a4ba91f",
+          "issue": "Added exact matching public product_type as a factual overview; all existing product/care details retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP2bc8e451b2b3",
+          "issue": "Added exact matching public product_type as a factual overview; all existing product/care details retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP9ee3ff8f5c4e",
+          "issue": "Added exact matching public product_type as a factual overview; all existing product/care details retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPa691f490815b",
+          "issue": "Added exact matching public product_type as a factual overview; all existing product/care details retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPa6dc10574dfa",
+          "issue": "Added exact matching public product_type as a factual overview; all existing product/care details retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP9a3c40ed659c",
+          "issue": "Added exact matching public product_type as a factual overview; all existing product/care details retained.",
+          "repair_kind": "description"
+        }
+      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "40689195929",
       "source_artifact": 12815988195,
@@ -4322,8 +4093,8 @@
     "SE10042": "inputs/fresh804-20261026-5d42fe35/rollback-se10042/216e085bae54e4bd/manifest.json",
     "SE10036": "inputs/fresh804-20261026-5d42fe35/rollback-se10036/a1513704589c1f9a/manifest.json"
   },
-  "audit804_last_store": "Prime Ticks",
-  "audit804_progress_utc": "2026-10-28T14:33:43.319471+00:00",
+  "audit804_last_store": "Design by DAS",
+  "audit804_progress_utc": "2026-10-28T14:34:49.197754+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rivaj UK",
