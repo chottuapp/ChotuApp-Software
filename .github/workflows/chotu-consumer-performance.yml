@@ -15,7 +15,7 @@ jobs:
   apply:
     if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 45
     environment: chotu-cloud-release
     env:
       SOURCE_SHA: ${{ inputs.source_sha }}
