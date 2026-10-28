@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-28T13:33:00.503753+00:00",
+  "run_id": "40687876813",
+  "attempt": "1",
+  "source_commit": "f8a42305192c3eb0ee246bbe5ab8867987ac7bd5",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.15",
+  "elapsed_seconds": 3940.2,
+  "stores": [
+    {
+      "name": "Xcessories Hub",
+      "status": "failed",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_403",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "9cbaf3b3f42aa932",
+      "http_statuses": {
+        "403": 1,
+        "200": 5923
+      },
+      "network_seconds": 3931.0,
+      "max_response_seconds": 4.2,
+      "cache_events": 830
+    }
+  ]
+}
