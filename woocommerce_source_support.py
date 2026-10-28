@@ -1,5 +1,5 @@
 """Allowlisted public WooCommerce Store API adapter; exact variation offers only."""
-import csv,html,json,re,time
+import csv,html,json,re,time,itertools
 from decimal import Decimal
 from urllib.parse import urlsplit
 from bs4 import BeautifulSoup
@@ -27,15 +27,36 @@ def unpriced_unpurchasable(p):
 def variants(parent,get):
  if parent['type']=='simple':return [(parent,{})]
  if parent['type']!='variable' or not parent.get('variations'):raise ValueError('Unsupported WooCommerce product type: '+str(parent.get('type')))
- result=[];seen=set()
+ result=[];seen=set();combinations={}
+ dimensions={a['name']:a for a in parent.get('attributes',[]) if a.get('has_variations')}
  for entry in parent['variations']:
   ident=entry['id'];v=get('/wp-json/wc/store/v1/products/'+str(ident))
   if v.get('id')!=ident or v.get('parent')!=parent['id'] or v.get('type')!='variation':raise ValueError('Variation parent identity mismatch')
-  attrs=entry['attributes'];values={a['name']:html.unescape(a['value']) for a in attrs}
-  if not values or any(not value for value in values.values()) or len(values)>3:raise ValueError('Wildcard/unsupported variation dimensions')
-  key=tuple(sorted(values.items()))
-  if ident in seen or any(tuple(sorted(x[1].items()))==key for x in result):raise ValueError('Duplicate variation identity')
-  seen.add(ident);offer(v);result.append((v,values))
+  if ident in seen:raise ValueError('Duplicate variation identity')
+  seen.add(ident);attrs=entry['attributes'];choices=[];names=[]
+  if not attrs or len(attrs)>3:raise ValueError('Unsupported variation dimensions')
+  for a in attrs:
+   names.append(a['name']);terms=dimensions.get(a['name'],{}).get('terms',[])
+   if a.get('value') in (None,''):
+    values=[html.unescape(t['name']) for t in terms]
+    if not values:raise ValueError('Wildcard has no declared source terms')
+   else:
+    value=html.unescape(str(a['value']));matched=[html.unescape(t['name']) for t in terms if value.casefold() in (str(t.get('name','')).casefold(),str(t.get('slug','')).casefold())]
+    values=matched or [value]
+   choices.append(values)
+  if len(set(names))!=len(names) or any(not x for x in choices):raise ValueError('Invalid variation dimensions')
+  if __import__('math').prod(map(len,choices))>500:raise ValueError('Wildcard expansion bound exceeded')
+  facts=offer(v)
+  for values in itertools.product(*choices):
+   selected=dict(zip(names,values));key=tuple(sorted(selected.items()))
+   if key in combinations:
+    old=combinations[key]
+    # Two matching source rules may be merged only when all commercial/image facts agree.
+    signature=lambda x:(offer(x),x.get('sku'),[im.get('src') for im in x.get('images',[])])
+    if signature(old)!=signature(v):raise ValueError('Overlapping source variation rules disagree; exact storefront resolution required')
+    continue
+   combinations[key]=v;result.append((v,selected))
+
  return result
 
 def export(g,base,name,template,log):
@@ -92,7 +113,7 @@ def export(g,base,name,template,log):
   for v,attrs,(regular,price,available_now) in offers:
    image=v['images'][0]['src'] if v.get('images') else ''
    if v.get('type')=='variation' and image==cover:image='' # inherited cover is a labelled fallback
-   row={'combination_id':g['uid']('CC',base+'|'+str(v['id'])),'product_id':pid,'source_variant_id':str(v['id']),'sku':v.get('sku',''),'base_price (PKR)':float(regular),'sale_price (PKR, agar discount ho)':float(price) if price<regular else None,'available (yes/no)':'yes' if available_now else 'no','variant_image_url':image,'source_url':url}
+   row={'combination_id':g['uid']('CC',base+'|'+str(v['id'])+'|'+json.dumps(attrs,sort_keys=True)),'product_id':pid,'source_variant_id':str(v['id']),'sku':v.get('sku',''),'base_price (PKR)':float(regular),'sale_price (PKR, agar discount ho)':float(price) if price<regular else None,'available (yes/no)':'yes' if available_now else 'no','variant_image_url':image,'source_url':url}
    row.update(g['variant_image_metadata'](image,cover))
    for pos,label in enumerate(dimensions,1):row.update({f'option_{pos}_group_id':gids[label],f'option_{pos}_value':attrs[label]})
    g['write_row'](wb['Variant Combinations'],row)
