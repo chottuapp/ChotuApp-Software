@@ -114,8 +114,8 @@ jobs:
         with:
           name: production-user-apk
           path: |
-            ${{ runner.temp }}/ChotuApp-User-1.1.26-68.apk
-            ${{ runner.temp }}/ChotuApp-User-1.1.26-68.aab
+            ${{ runner.temp }}/ChotuApp-User-1.1.27-69.apk
+            ${{ runner.temp }}/ChotuApp-User-1.1.27-69.aab
             ${{ runner.temp }}/customer-apk-build-info.json
           retention-days: 1
       - name: Remove private build source and temporary files
@@ -187,9 +187,9 @@ jobs:
           from pathlib import Path
           p=Path(os.environ['RUNNER_TEMP'])/'customer-apk'
           m=json.loads((p/'customer-apk-build-info.json').read_text())
-          assert m['commit']==os.environ['SOURCE_SHA'] and m['version_code']==68 and m['version_name']=='1.1.26'
+          assert m['commit']==os.environ['SOURCE_SHA'] and m['version_code']==69 and m['version_name']=='1.1.27'
           assert m['package']=='com.app.chotu' and m['api_base']=='https://app.chotuapp.com'
-          assert hashlib.sha256((p/'ChotuApp-User-1.1.26-68.apk').read_bytes()).hexdigest()==m['sha256']
+          assert hashlib.sha256((p/'ChotuApp-User-1.1.27-69.apk').read_bytes()).hexdigest()==m['sha256']
           PY
       - name: Enable native emulator acceleration on cloud runner
         run: |
@@ -288,8 +288,8 @@ jobs:
           text=re.sub(r'\x1b\[[0-9;]*m','',text)
           assert re.search(r'\brun-id:\s*'+re.escape(os.environ['BUILD_RUN'])+r'\b',text),'Native check used a different artifact run'
           assert re.search(r'\bSOURCE_SHA:\s*'+re.escape(os.environ['SOURCE_SHA'])+r'\b',text),'Native check used different source'
-          assert m['commit']==os.environ['SOURCE_SHA'] and m['version_name']=='1.1.26' and m['version_code']==68
-          assert hashlib.sha256((p/'customer-apk/ChotuApp-User-1.1.26-68.apk').read_bytes()).hexdigest()==m['sha256']
+          assert m['commit']==os.environ['SOURCE_SHA'] and m['version_name']=='1.1.27' and m['version_code']==69
+          assert hashlib.sha256((p/'customer-apk/ChotuApp-User-1.1.27-69.apk').read_bytes()).hexdigest()==m['sha256']
           print('Verified successful original build, matching signed artifact, approved source and completed native upgrade test.')
           PYIDENTITY
       - name: Clean only this release’s failed partial transfers and inspect temporary storage
@@ -318,7 +318,7 @@ jobs:
           import json,os
           from pathlib import Path
           p=Path(os.environ['RUNNER_TEMP']);m=json.loads((p/'customer-publication.json').read_text())
-          assert m['version']=='1.1.26' and m['version_code']==68
+          assert m['version']=='1.1.27' and m['version_code']==69
           print('Verified User APK download: '+m['download_url'])
           print('Verified User AAB download: '+m['aab_url'])
           PY
