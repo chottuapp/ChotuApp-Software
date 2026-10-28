@@ -9,7 +9,7 @@ ROOT=Path(__file__).resolve().parents[1];REPO='chottuapp/ChotuApp-Software'
 def gh(*args):return subprocess.run(['gh',*args],capture_output=True,text=True,check=True,timeout=90).stdout
 
 def selected_sites(registry,request):
- if not 1<=len(registry)<=40 or len({row['name'] for row in registry})!=len(registry):raise ValueError('Unique approved registry stores required')
+ if not 1<=len(registry)<=100 or len({row['name'] for row in registry})!=len(registry):raise ValueError('Unique approved registry stores required')
  excluded=set(request.get('excluded_stores',[]))
  if request.get('khaadi_fresh_enabled') is False:excluded.add('Khaadi')
  if not excluded<={row['name'] for row in registry}:raise ValueError('Unknown excluded store')
