@@ -188,7 +188,7 @@ jobs:
           p=Path(os.environ['RUNNER_TEMP'])/'customer-apk'
           m=json.loads((p/'customer-apk-build-info.json').read_text())
           assert m['commit']==os.environ['SOURCE_SHA'] and m['version_code']==69 and m['version_name']=='1.1.27'
-          assert m['package']=='com.app.chotu' and m['api_base']=='https://app.chotuapp.com'
+          assert m['package']=='com.app.chotu' and m['api_base']=='https://app.developerschotuapp.online'
           assert hashlib.sha256((p/'ChotuApp-User-1.1.27-69.apk').read_bytes()).hexdigest()==m['sha256']
           PY
       - name: Enable native emulator acceleration on cloud runner
