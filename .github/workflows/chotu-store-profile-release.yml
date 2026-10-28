@@ -10,6 +10,12 @@ on:
         description: Successful tested User and Admin browser build ID
         required: true
         type: string
+      operation:
+        description: Publish or read-only live verification
+        required: true
+        default: deploy
+        type: choice
+        options: [deploy, verify]
 permissions:
   contents: read
   actions: read
@@ -25,6 +31,7 @@ jobs:
     env:
       SOURCE_SHA: ${{ inputs.source_sha }}
       BUILD_RUN: ${{ inputs.build_run }}
+      OPERATION: ${{ inputs.operation }}
     steps:
       - name: Require reviewed source and restricted build credential
         env:
@@ -57,6 +64,7 @@ jobs:
         with:
           node-version: '22'
       - name: Download tested browser artifacts
+        if: ${{ inputs.operation != 'verify' }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -71,6 +79,7 @@ jobs:
           cd "$RUNNER_TEMP/chotu-private-source"
           bash scripts/cloud/publish-store-profile.sh
       - name: Publish tested customer browser
+        if: ${{ inputs.operation != 'verify' }}
         env:
           SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
           GH_TOKEN: ${{ github.token }}
@@ -78,6 +87,7 @@ jobs:
           cd "$RUNNER_TEMP/chotu-private-source"
           bash scripts/cloud/publish-user-search-web.sh
       - name: Publish tested Admin timing controls
+        if: ${{ inputs.operation != 'verify' }}
         env:
           FIREBASE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CHOTU_ADMIN_APP }}
           GH_TOKEN: ${{ github.token }}
