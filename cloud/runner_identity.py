@@ -10,3 +10,11 @@ def validate_runner_sources(state,group):
             if len(state.get('sites',[]))!=1 or not actual<=hosts:
                 raise ValueError('RUNNER CHECKPOINT MISMATCH: '+group+' expects only '+name+'; restored stores: '+', '.join(str(s.get('name','')) for s in state.get('sites',[]))+'. No fetching started; select the correct checkpoint or explicitly partition it.')
             return
+
+
+def paused_sources(sites):
+    import json
+    from pathlib import Path
+    registry=json.loads((Path(__file__).resolve().parent/'fetch-update-release.json').read_text())['fresh_stores']
+    paused={r['name'] for r in registry if r.get('enabled',True) is False}
+    return {s.get('name') for s in sites}&paused

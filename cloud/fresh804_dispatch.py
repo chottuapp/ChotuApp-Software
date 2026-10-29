@@ -13,7 +13,7 @@ def selected_sites(registry,request):
  excluded=set(request.get('excluded_stores',[]))
  if request.get('khaadi_fresh_enabled') is False:excluded.add('Khaadi')
  if not excluded<={row['name'] for row in registry}:raise ValueError('Unknown excluded store')
- sites=[row for row in registry if row['name'] not in excluded]
+ sites=[row for row in registry if row['name'] not in excluded and row.get('enabled',True) is not False]
  if not sites:raise ValueError('No stores selected for fresh fetching')
  return sites
 

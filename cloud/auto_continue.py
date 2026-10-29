@@ -15,6 +15,8 @@ def run_minutes(summary):
     return value if value>=30 else 300
 
 def eligible(run,repo,summary,console,checkpoint):
+    from runner_identity import paused_sources
+    if paused_sources(summary.get('stores',[])):return False
     if run.get('event')!='workflow_dispatch' or run.get('head_branch')!='main' or run.get('head_repository',{}).get('full_name')!=repo:return False
     if run.get('conclusion')=='cancelled' or not checkpoint:return False
     limit,index=budget(summary)
