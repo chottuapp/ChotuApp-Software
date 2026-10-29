@@ -16,6 +16,16 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  # Only explicit source garment-type strings; a generic vendor/brand is not purpose evidence.
  if re.fullmatch(r'(?i)(?:women|men|teens|kids|infants)\s+(?:stitched\s+[234]\s+piece(?:\s+shirt\s+trouser)?|(?:cotton\s+silk\s+)?shalwar|(?:special\s+)?kurta|trouser|earrings|bracelet|necklace|ring|eyebrow\s+kit|waistcoat\s+with\s+kurta\s+trouser)',str(source_type or '').strip()):body+=' Source-listed garment type: '+str(source_type)
  evidence=title+' '+body
+ if cat=='heeled sandals' and has(r'\bheel\b',title) and has(r'\bheel\s+sandals\b',body):return []
+ if cat=='abaya sets' and has(r'\babaya\b.*\b4\s*pieces?\b',title) and all(has(r'\b'+x+r'\b',body) for x in ('gown','inner','hijab','niqab')):return []
+ if cat=='jilbabs' and has(r'\bjilbab\b',title):return []
+ if cat=='prayer chaddars' and has(r'\bchaddar\b',title) and has(r'\b(?:namaz|prayer)\b',body):return []
+ if cat=='handbags' and has(r'\beveryday handbag\b',body):return []
+ if cat=='usb docking stations' and has(r'\bUSB.C\s+(?:Travel\s+)?Dock\b',title) and has(r'\bDP\s+Alt.Mode\b',body):return []
+ if cat=='computer cases' and has(r'\bchassis\b',title) and has(r'\b(?:M.ATX|ITX|motherboard)\b',body):return []
+ named_garments={'shrugs':r'\bshrug\b','hoodies':r'\bzipper\s+hood\b','jumpers':r'\bjumper\b','shorts':r'\bknit\s+short\b','niqabs':r'\bniqab\b','hijab pins':r'\bhijab\s+pins\b','hair accessories':r'\bparanda\b'}
+ if cat in named_garments and has(named_garments[cat],title):return []
+ if cat=='bed sheet sets' and has(r'\bbed\s*sheet\b',title) and has(r'\b(?:package|set)\s+includes\b',body) and has(r'\bpillow\s*(?:covers?|cases?)\b',body):return []
  if cat=='tablet screen protectors' and has(r'\b(?:ipad|tablet)\b.*\b(?:glass|screen)\s+protector\b',title):return []
  if cat=='smartwatches' and has(r'\b(?:smartwatch|watch)\s+(?:charger|strap|band|case|protector)\b|\b(?:charger|strap|case|protector)\s+for\b',title):return ['Watch accessory cannot be classified as the watch device']
  if cat=='tablets' and has(r'\b(?:stylus|pencil|stand|holder|keyboard|case|cover)\b.*\bfor\b|\b(?:ipad|tablet)\b.*\b(?:case|cover|protector)\b',title):return ['Tablet accessory cannot be classified as the tablet device']

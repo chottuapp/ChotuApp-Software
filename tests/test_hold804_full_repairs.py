@@ -2,6 +2,14 @@ import unittest
 from hold804_repairs import category,description
 from audit804 import issues_for
 class SourceBoundHoldTests(unittest.TestCase):
+ def test_fresh_store_objects_preserve_contents_and_compatibility(self):
+  cases=[('Computer Zone','USB-C Travel Dock','USB-C Dock with DP Alt-Mode for laptops.','USB Docking Stations'),('Computer Zone','Micro Form Factor Chassis','M-ATX motherboard and radiator support.','Computer Cases'),('ChenOne','Home Cotton Bed Sheet D14','Package Includes: bed sheet with 2 pillow covers.','Bed Sheet Sets'),('Beechtree','Textured Knit Shrug','Acrylic knitted shrug.','Shrugs'),('Mala','Kaftan Abaya - 4 Piece','Gown + Inner + Hijab + Niqab.','Abaya Sets')]
+  for store,name,body,label in cases:
+   with self.subTest(store=store,name=name):
+    row=self.row(name,body);self.assertEqual(category(row,store)[0],label)
+    from audit804_semantics import review
+    self.assertEqual(review(name,body,label),[])
+  self.assertNotEqual(category(self.row('Khimar with Niqab','Khimar includes niqab.'),'Mala'),('Niqabs','reviewed_source_object','Explicit sold object in source title: Khimar with Niqab'))
  def row(self,name,body='Source product specifications retained.',**kwargs):return dict(name=name,description=body,source_url='https://stylo.pk/products/example',**kwargs)
  def test_real_sold_objects_outrank_colours_components_and_promotions(self):
   cases=[('Mehndi Ethnic Khussa For Women EC8785','Khussa Shoes'),('Skin Seamless Bra For Women LB5383','Bras'),('Thermalright AM5 CPU Contact Frame V2','CPU Contact Frames'),('Thermalright ARGB Fan Hub X10','Fan & Lighting Controllers'),('Lian Li UNI Fan SL Infinity FLEX 120mm Wireless Normal Blade ARGB Fan 3 Pack, L-Wireless Controller Included','Cooling Fans')]

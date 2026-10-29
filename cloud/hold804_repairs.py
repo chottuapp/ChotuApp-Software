@@ -5,7 +5,7 @@ from functools import lru_cache
 from datetime import datetime,timezone
 from urllib.parse import urlsplit
 SOURCE_TYPES={'SYNCC - Women Sweater':'Sweaters','Women Stitched Sari':'Sarees','Men Peshawari Chappal':'Chappals','Women Trouser':'Trousers','Women Earrings':'Earrings','Women Bracelet':'Bracelets','Women Necklace':'Necklaces','Women Ring':'Rings','Women Eyebrow Kit':'Eyebrow Kits','Infants Stitched 3 Piece':'Stitched Outfit Sets','Men Waistcoat With Kurta Trouser':'Clothing Sets'}
-STORES={'Prime Ticks','Hilm Chapals','Golden Rose','Zyren','Pyari Walls','Design by DAS','Xcessories Hub','Bachaa Party','Gul Ahmed','Miss Rose','Cool and Cool','Rivaj UK','Computer Zone','Saeed Ghani','Elite Cosmetics','Hemani Herbals','Bonanza Satrangi','Rawayat','Junaid Jamshed','Outfitters','Zellbury','Stylo'}
+STORES={'Sana Safinaz','Edenrobe','Beechtree','Breakout','Liberty Books','ChenOne','Generation','Saya','Hush Puppies','Habitt','Beyond East','Rios','Mala','Limelight','Alkaram Studio','Prime Ticks','Hilm Chapals','Golden Rose','Zyren','Pyari Walls','Design by DAS','Xcessories Hub','Bachaa Party','Gul Ahmed','Miss Rose','Cool and Cool','Rivaj UK','Computer Zone','Saeed Ghani','Elite Cosmetics','Hemani Herbals','Bonanza Satrangi','Rawayat','Junaid Jamshed','Outfitters','Zellbury','Stylo'}
 # Explicit object names. Compatibility targets, ingredients and care text are not classifiers.
 NAMED=[
  ('Hand & Foot Creams','\\b(?:hand\\s*&\\s*feet|foot\\s+hand)\\b.*\\bcream\\b'),
@@ -315,6 +315,24 @@ def maali_kind(row,fact=None):
 
 def category(row,store):
  name=str(row.get('name') or '');body=str(row.get('description') or '')
+ if store=='Tawakkal Fabrics':
+  if re.search(r'\bslipper\b',name,re.I):return 'Slippers','reviewed_source_object','Explicit slipper title and footwear specifications: '+body[:250]
+  if re.search(r'\bheel\b',name,re.I) and re.search(r'\bheel\s+sandals\b',body,re.I):return 'Heeled Sandals','reviewed_source_object','Source explicitly describes high heel sandals: '+body[:250]
+  if name=='Born For Victory' and all(re.search(p,body,re.I) for p in [r'Fragrance Notes',r'Top Notes',r'Base Notes']):return 'Perfumes & Fragrances','reviewed_source_notes','Explicit source fragrance type and top/middle/base notes retained.'
+ if store=='Mala':
+  if re.search(r'\babaya\b.*\b4\s*pieces?\b',name,re.I) and all(re.search(r'\b'+x+r'\b',body,re.I) for x in ['gown','inner','hijab','niqab']):return 'Abaya Sets','reviewed_source_contents','Four source-listed components: gown, inner, hijab and niqab.'
+  if re.search(r'\bjilbab\b',name,re.I):return 'Jilbabs','reviewed_source_object','Source names a full-length jilbab.'
+  if re.search(r'\bchaddar\b',name,re.I):return 'Prayer Chaddars','reviewed_source_object','Source names chaddar with full coverage and prayer use.'
+  if name=='HerBag' and re.search(r'\bEveryday Handbag\b',body,re.I):return 'Handbags','reviewed_source_object','Source explicitly identifies the everyday handbag.'
+ # Sold-object names take precedence over incidental compatibility/care terms.
+ if store=='Computer Zone':
+  if re.search(r'\bUSB-C\s+(?:Travel\s+)?Dock\b',name,re.I) and re.search(r'\bDP\s+Alt.Mode\b',body,re.I):return 'USB Docking Stations','reviewed_source_object','Source names USB-C dock and DP Alt-Mode; laptop is the compatibility target.'
+  if re.search(r'\bChassis\b',name,re.I) and re.search(r'\b(?:M-ATX|ITX|motherboard)\b',body,re.I):return 'Computer Cases','reviewed_source_object','Source names computer chassis with motherboard support; radiator is a supported component.'
+ if store in STORES:
+  explicit=[('Shrugs',r'\bshrug\b'),('Hoodies',r'\bzipper\s+hood\b'),('Jumpers',r'\bjumper\b'),('Shorts',r'\bknit\s+short\b'),('Niqabs',r'^niqab\b'),('Hijab Pins',r'\bhijab\s+pins\b'),('Hair Accessories',r'\bparanda\b')]
+  for label,pattern in explicit:
+   if re.search(pattern,name,re.I):return label,'reviewed_source_object','Explicit sold object in source title: '+name
+  if re.search(r'\bbed\s*sheet\b',name,re.I) and re.search(r'\b(?:package\s+includes|set\s+includes)\b',body,re.I) and re.search(r'\bpillow\s*(?:covers?|cases?)\b',body,re.I):return 'Bed Sheet Sets','reviewed_source_contents','Source explicitly includes bed sheet and pillow covers; package contents retained.'
  if store=='Xcessories Hub':
   from xcessories_purpose_support import classify
   found=classify(row)
@@ -533,6 +551,9 @@ def category(row,store):
    footwear={'slippers':'Slippers','slipper':'Slippers','sandals':'Sandals','running sneakers':'Sneakers & Trainers','walking sneakers':'Sneakers & Trainers','shoes':'Shoes'}
    label=footwear.get(str(source.get('product_type') or '').strip().casefold())
    if label:return label,'reviewed_public_product_type','Exact public product type: '+source['product_type']+'; '+source['source_url']
+  if store=='Hush Puppies':
+   label={'formals':'Formal Shoes','slipper':'Slippers','slippers':'Slippers','sandals':'Sandals','sandal':'Sandals','school shoes':'School Shoes','slides':'Slides','pumps':'Heels & Pumps','sneakers':'Sneakers & Trainers','sneaker':'Sneakers & Trainers','belt':'Belts','insole':'Insoles','mule shoes':'Mules'}.get(str(source.get('product_type') or '').strip().casefold())
+   if label:return label,'reviewed_public_product_type','Exact identity-matched merchant product type: '+source['product_type']+'; '+source['source_url']
   bundle=source.get('reviewed_bundle',{})
   if store=='Bonanza Satrangi' and bundle.get('status')=='active' and bundle.get('category') in ('Fragrance Bundles','Makeup Bundles') and bundle.get('configuration_sha256') and bundle.get('products'):return bundle['category'],'reviewed_public_bundle_configuration',source['description']+'; '+bundle['configuration_source_url']
   types={'earring':'Earrings','earrings':'Earrings','earstuds':'Stud Earrings','jhumka':'Jhumka Earrings','karay':'Bangles & Karas','bangles':'Bangles & Karas','necklace':'Necklaces','necklaces':'Necklaces','bracelets':'Bracelets','anklet':'Anklets','anklets':'Anklets','ring':'Rings','rings':'Rings','pendent':'Pendants & Lockets','nath':'Nose Jewellery','bindiya kanta':'Forehead Jewellery','choker set':'Jewellery Sets','mala set':'Jewellery Sets','locket set':'Jewellery Sets','bridal set':'Jewellery Sets','jeans':'Jeans'}
@@ -630,6 +651,12 @@ def description(row,store):
   lead=name+' is a fragrance'+(' in the '+leaf+' range.' if leaf.casefold()!='fragrances' else '.')
   if not body.startswith(lead):return lead+('\n\n'+original if body and body!=name else ''),'Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.'
  source=public_facts(row,store)
+ if source and store=='Hush Puppies':
+  kind=str(source.get('product_type') or '').strip().casefold()
+  allowed={'formals':'formal shoes','slipper':'slippers','slippers':'slippers','sandals':'sandals','sandal':'sandals','school shoes':'school shoes','slides':'slides','pumps':'pumps','sneakers':'sneakers','sneaker':'sneakers','belt':'a belt','insole':'insoles','mule shoes':'mules'}
+  if kind in allowed:
+   lead=name+' is listed by the source as '+allowed[kind]+'.'
+   if not body.startswith(lead):return lead+'\n\n'+original,'Added exact source product type; all supplied specifications retained.'
  if source and store=='Junaid Jamshed' and str(source.get('product_type') or '').casefold()=='shalwar' and not body.startswith(name+' is a shalwar garment.'):
   return name+' is a shalwar garment.\n\n'+original,'Added exact matching primary source product type; preserved every supplied size and option.'
  if source and store=='Bata' and source.get('reviewed_tag_overview'):
