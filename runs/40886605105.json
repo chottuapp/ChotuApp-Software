@@ -910,6 +910,26 @@
       "refresh_generation": "refresh20261029-b80f4ca4",
       "replaced_file": null,
       "file_name": "Habitt.xlsx"
+    },
+    "Mala": {
+      "shop_code": null,
+      "source_run": "40842710993",
+      "sha256": "042f21b7ad43f93cbe5cecf18b12450940e151878577bdc0c49fab0a7beac39b",
+      "source_sha256": "a7fb984e063e2a705c4562845d17530515892af3204ac7fbe499a7881942c165",
+      "folder": "ChotuApp 19-10-2026 11-36AM",
+      "verified_utc": "2026-10-29T14:18:58.754252+00:00",
+      "audit804": {
+        "name": "804 Audit",
+        "status": "pass",
+        "checked_utc": "2026-10-29T14:17:57.893870+00:00",
+        "products_checked": 90,
+        "workbook_sha256": "042f21b7ad43f93cbe5cecf18b12450940e151878577bdc0c49fab0a7beac39b"
+      },
+      "rule804": "applied; 804 Audit passed",
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "refresh_generation": "refresh20261029-b80f4ca4",
+      "replaced_file": null,
+      "file_name": "Mala.xlsx"
     }
   },
   "daily_uploads": {
@@ -2090,6 +2110,26 @@
         "refresh_generation": "refresh20261029-b80f4ca4",
         "replaced_file": null,
         "file_name": "Habitt.xlsx"
+      },
+      "Mala": {
+        "shop_code": null,
+        "source_run": "40842710993",
+        "sha256": "042f21b7ad43f93cbe5cecf18b12450940e151878577bdc0c49fab0a7beac39b",
+        "source_sha256": "a7fb984e063e2a705c4562845d17530515892af3204ac7fbe499a7881942c165",
+        "folder": "ChotuApp 19-10-2026 11-36AM",
+        "verified_utc": "2026-10-29T14:18:58.754252+00:00",
+        "audit804": {
+          "name": "804 Audit",
+          "status": "pass",
+          "checked_utc": "2026-10-29T14:17:57.893870+00:00",
+          "products_checked": 90,
+          "workbook_sha256": "042f21b7ad43f93cbe5cecf18b12450940e151878577bdc0c49fab0a7beac39b"
+        },
+        "rule804": "applied; 804 Audit passed",
+        "campaign_id": "fresh804-20261026-5d42fe35",
+        "refresh_generation": "refresh20261029-b80f4ca4",
+        "replaced_file": null,
+        "file_name": "Mala.xlsx"
       }
     }
   },
@@ -2227,7 +2267,7 @@
     "ChenOne": "source:f83a70b1e3a3b28123aa7fe8798f04f2720ba2b7596cc0feeff522e9f128e261:ChenOne:5151875be00bc7e6ff13a8c6f4e2ae948b6bcd742496ba7ec4696d30a16093c0",
     "Hush Puppies": "source:45e6a2543ef6fc48610b9036962092d05fab12a80aaa5f8f64a9a36affb625de:Hush Puppies:5151875be00bc7e6ff13a8c6f4e2ae948b6bcd742496ba7ec4696d30a16093c0",
     "Habitt": "source:c8aab12f8d634ccb6904b4b51ef9cc298fffe29b7b7d2c945e26bb18fbac50f1:Habitt:5151875be00bc7e6ff13a8c6f4e2ae948b6bcd742496ba7ec4696d30a16093c0",
-    "Mala": "source:a7fb984e063e2a705c4562845d17530515892af3204ac7fbe499a7881942c165:Mala:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
+    "Mala": "source:a7fb984e063e2a705c4562845d17530515892af3204ac7fbe499a7881942c165:Mala:5151875be00bc7e6ff13a8c6f4e2ae948b6bcd742496ba7ec4696d30a16093c0",
     "Sana Safinaz": "source:437ddc4778ecd017fc7bd36d62499401409fa1ee326f67f063ae05d5b88ac564:Sana Safinaz:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Beyond East": "source:9f2aa1fa209148631b29dd48a08f6cf23d343f5e7191dc9ad62ae45db2152412:Beyond East:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Alkaram Studio": "source:096fe77a2b7cbd9e733a31c6646ed9a64e12985fee697c4136bd4dd9f6e1ae6b:Alkaram Studio:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
@@ -4595,15 +4635,38 @@
     },
     "Mala": {
       "name": "804 Audit",
-      "status": "hold",
+      "version": "804-audit-v2",
       "store": "Mala",
+      "shop_code": null,
+      "identity_policy": "owner_authorized_blank_code_exact_store_filename",
+      "status": "pass",
+      "products_checked": 90,
+      "findings_count": 0,
+      "findings": [],
+      "details_truncated": false,
+      "workbook_sha256": "042f21b7ad43f93cbe5cecf18b12450940e151878577bdc0c49fab0a7beac39b",
+      "checked_utc": "2026-10-29T14:17:57.893870+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "description_repairs_count": 1,
+      "description_repairs_examples": [
+        {
+          "product_id": "CPb1d8c07c3d6b",
+          "issue": "Rewrote explicitly named circular hijab pins; no quantity, material or size invented.",
+          "repair_kind": "description"
+        }
+      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "40842710993",
       "source_artifact": 12885365527,
-      "error": "No module named 'ftfy'",
       "source_sha256": "a7fb984e063e2a705c4562845d17530515892af3204ac7fbe499a7881942c165",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/mala/a7fb984e063e2a70/manifest.json",
-      "checked_utc": "2026-10-29T12:57:04.485571+00:00"
+      "refresh_generation": "refresh20261029-b80f4ca4",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/mala/a7fb984e063e2a70/manifest.json"
     },
     "Sana Safinaz": {
       "name": "804 Audit",
@@ -4900,8 +4963,8 @@
     "SE10036": "inputs/fresh804-20261026-5d42fe35/rollback-se10036/447e954cc7c6ddcb/manifest.json",
     "SE10039": "inputs/fresh804-20261026-5d42fe35/rollback-se10039/038c9f201d898fde/manifest.json"
   },
-  "audit804_last_store": "Habitt",
-  "audit804_progress_utc": "2026-10-29T14:17:54.337771+00:00",
+  "audit804_last_store": "Mala",
+  "audit804_progress_utc": "2026-10-29T14:18:58.754618+00:00",
   "audit804_auto_evidence_cache": [],
   "audit804_auto_evidence": {
     "status": "checked",
