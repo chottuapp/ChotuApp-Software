@@ -62,7 +62,7 @@ def variants(parent,get):
 
  return result
 
-def removed_listing(p,response):
+def removed_listing(p,response,*,api_absent=False):
  before=urlsplit(p['permalink']);after=urlsplit(response.url)
  if before.hostname!=after.hostname:return False
  if response.status_code in (404,410) and before.path.rstrip('/')==after.path.rstrip('/'):return True
@@ -70,13 +70,14 @@ def removed_listing(p,response):
  soup=BeautifulSoup(response.text,'html.parser');canonical=soup.select_one('link[rel="canonical"]')
  if not canonical or soup.select_one('form.cart, .woocommerce-product-gallery'):return False
  target=urlsplit(canonical.get('href',''));allowed={c.get('link','').rstrip('/') for c in p.get('categories',[])}
+ if api_absent and before.path.startswith('/product/') and target.scheme=='https' and target.hostname==before.hostname and target.path.startswith('/product-category/') and target.geturl().rstrip('/')==response.url.rstrip('/') and soup.select_one('h1'):return True
  return target.scheme=='https' and target.hostname==before.hostname and target.geturl().rstrip('/')==response.url.rstrip('/') and target.geturl().rstrip('/') in allowed and bool(soup.select_one('h1'))
 
 def removal_fingerprint(p):
  keys=('id','name','permalink','images','description','short_description','type','variations','categories')
  return hashlib.sha256(json.dumps({k:p.get(k) for k in keys},sort_keys=True,separators=(',',':')).encode()).hexdigest()
 
-def reviewed_removed_listing(p,evidence_path=None):
+def reviewed_removed_listing(p,evidence_path=None,*,api_absent=False):
  path=Path(evidence_path) if evidence_path else Path(__file__).with_name('woocommerce_removed_pages.json')
  if not path.exists():return False
  for proof in json.loads(path.read_text()).get('products',[]):
@@ -85,7 +86,9 @@ def reviewed_removed_listing(p,evidence_path=None):
   if not 0<=age<=86400:continue
   raw=gzip.decompress(base64.b64decode(proof['page_gzip_base64']))
   if hashlib.sha256(raw).hexdigest()!=proof.get('page_sha256'):raise ValueError('Reviewed removal evidence checksum mismatch')
-  if removed_listing(p,SimpleNamespace(status_code=proof['page_status'],url=proof['final_url'],text=raw.decode('utf-8'))):return True
+  requires_missing=proof.get('product_status') in (404,410)
+  if requires_missing and not api_absent:continue
+  if removed_listing(p,SimpleNamespace(status_code=proof['page_status'],url=proof['final_url'],text=raw.decode('utf-8')),api_absent=requires_missing and api_absent):return True
  return False
 
 def recovered_media(p,response):
@@ -175,7 +178,17 @@ def export(g,base,name,template,log):
  checked=[];retained=0
  for index,p in enumerate(products,1):
   # A separate detail read verifies identity and current offers, not catalog aggregate prices.
-  current=get('/wp-json/wc/store/v1/products/'+str(p['id']))
+  try:current=get('/wp-json/wc/store/v1/products/'+str(p['id']))
+  except Exception as exc:
+   status=getattr(getattr(exc,'response',None),'status_code',None)
+   missing=status in (404,410) or bool(re.search(r'\((?:404|410)\)|\b(?:404|410) Client Error',str(exc)))
+   if not missing:raise
+   if reviewed_removed_listing(p,api_absent=True):
+    log('WOO SOURCE EXCLUSION: current API missing and exact recent public non-product landing proof: '+p['permalink']);continue
+   g['_chotu_wait']();page=g['S'].get(p['permalink'],timeout=(15,60))
+   if removed_listing(p,page,api_absent=True):
+    log('WOO SOURCE EXCLUSION: current API missing and current public PDP removed: '+p['permalink']);continue
+   raise RuntimeError('Source API missing but public product identity unresolved; no price/stock guessed: '+p['permalink']) from exc
   if current.get('id')!=p['id'] or current.get('permalink')!=p['permalink']:raise ValueError('Primary product identity changed')
   p=current
   if p.get('is_password_protected'):continue

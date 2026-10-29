@@ -79,3 +79,11 @@ class WooTests(unittest.TestCase):
   product['offers']['url']='https://xcessorieshub.com/product/another/'
   r.text=page[:page.index('<script')]+ '<script type="application/ld+json">'+json.dumps({'@graph':[product]})+'</script>'
   self.assertIsNone(recovered_media(p,r))
+ def test_api_missing_and_changed_category_requires_both_proofs(self):
+  from woocommerce_source_support import removed_listing
+  from types import SimpleNamespace
+  p={'permalink':'https://xcessorieshub.com/product/old/','categories':[{'link':'https://xcessorieshub.com/product-category/old/'}]}
+  url='https://xcessorieshub.com/product-category/new/'
+  page=SimpleNamespace(status_code=200,url=url,text='<link rel="canonical" href="'+url+'"><h1>Speakers</h1>')
+  self.assertFalse(removed_listing(p,page));self.assertTrue(removed_listing(p,page,api_absent=True))
+  page.text+='<form class="cart"></form>';self.assertFalse(removed_listing(p,page,api_absent=True))
