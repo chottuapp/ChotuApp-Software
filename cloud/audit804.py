@@ -240,6 +240,9 @@ def run(path,store,codes,hosts,*,source=None,strict_commercial=False):
    confirmed=visual_review(row,store)
    image_bag=confirmed and confirmed.get('category') in {'Bags','Handbags','Crossbody Bags','Wallets','Mini Pouches'}
    if not allowed_product('https://astorebags.pk',{'title':row.get('name'),'product_type':row.get('brand')}) and not image_bag:issues.append('Rule Astore: only bags and wallets; product purpose unresolved or outside scope')
+  if store=='ChenOne':
+   from locked_store_rules import chenone_furniture
+   if chenone_furniture(row):issues.append('Rule ChenOne: furniture is excluded by owner')
   if store=='Seran' and conflicting_name(row,catalogue):issues.append('Description names a different known catalog product')
   if not pid or pid in seen:issues.append('Missing or duplicate product ID')
   seen.add(pid);output_order.append(pid)

@@ -26,13 +26,23 @@ def source_removed_rules(source,store):
 def apply(source,out,store):
  source_removed=source_removed_rules(source,store)
  rules=dict(EXCLUSIONS.get(store,{}));rules.update(source_removed)
- if not rules:return source,[]
+ if not rules and store!='ChenOne':return source,[]
  book=load_workbook(source,read_only=True,data_only=False)
  try:
   rows={}
   for sheet in book:
    iterator=sheet.iter_rows(values_only=True);headers=next(iterator)
    rows[sheet.title]=[dict(zip(headers,values)) for values in iterator]
+  if store=='ChenOne':
+   from locked_store_rules import chenone_furniture
+   facts={(str(r.get('product_id')),r.get('source_url')):r for r in json.loads(Path(__file__).with_name('audit804-reviewed-source.json').read_text()).get('products',[]) if r.get('store')=='ChenOne'}
+   for r in rows['Products']:
+    fact=facts.get((str(r.get('product_id')),r.get('source_url')), {})
+    from hold804_repairs import category
+    classified=category(r,store)
+    candidate=dict(r,product_type=fact.get('product_type',''),Category=classified[0] if classified else r.get('Category',''))
+    if not candidate['product_type']:candidate['product_type']=candidate['Category']
+    if chenone_furniture(candidate):rules[str(r['product_id'])]=r['source_url']
   removed=set()
   for r in rows['Products']:
    pid=str(r.get('product_id') or '')
@@ -63,4 +73,4 @@ def apply(source,out,store):
      if int(row.attrib['r']) in bypath[info.filename]:sheet.remove(row)
     data=ET.tostring(tree,encoding='utf-8',xml_declaration=True)
    dst.writestr(info,data)
- return out,[{'product_id':pid,'source_url':rules[pid],'reason':('Source-confirmed removed product: exact page and product endpoint both 404/410; absent current public catalog; proof bound to this workbook hash' if pid in source_removed else 'Outside owner-locked Astore bags/wallets/mini-pouches scope: laptop sleeve' if store=='Astore Bags' else 'Owner explicitly requested deletion of conflicting product on 25 October 2026')} for pid in sorted(removed)]
+ return out,[{'product_id':pid,'source_url':rules[pid],'reason':('Source-confirmed removed product: exact page and product endpoint both 404/410; absent current public catalog; proof bound to this workbook hash' if pid in source_removed else 'Owner-locked ChenOne rule: furniture excluded; all other goods retained' if store=='ChenOne' else 'Outside owner-locked Astore bags/wallets/mini-pouches scope: laptop sleeve' if store=='Astore Bags' else 'Owner explicitly requested deletion of conflicting product on 25 October 2026')} for pid in sorted(removed)]
