@@ -1030,6 +1030,26 @@
       "refresh_generation": "refresh20261029-b80f4ca4",
       "replaced_file": null,
       "file_name": "Breakout.xlsx"
+    },
+    "Saya": {
+      "shop_code": null,
+      "source_run": "40842690964",
+      "sha256": "361ccca463739b8adae81421fb41e7d4bfb2e1ada65f7999622b1b6faba21d6d",
+      "source_sha256": "ba7fc258c15fa7fae43075cad4e0eceb2206423afa8e951244b73537a3c51bec",
+      "folder": "ChotuApp 19-10-2026 11-36AM",
+      "verified_utc": "2026-10-29T14:24:40.503875+00:00",
+      "audit804": {
+        "name": "804 Audit",
+        "status": "pass",
+        "checked_utc": "2026-10-29T14:24:11.971264+00:00",
+        "products_checked": 3878,
+        "workbook_sha256": "361ccca463739b8adae81421fb41e7d4bfb2e1ada65f7999622b1b6faba21d6d"
+      },
+      "rule804": "applied; 804 Audit passed",
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "refresh_generation": "refresh20261029-b80f4ca4",
+      "replaced_file": null,
+      "file_name": "Saya.xlsx"
     }
   },
   "daily_uploads": {
@@ -2330,6 +2350,26 @@
         "refresh_generation": "refresh20261029-b80f4ca4",
         "replaced_file": null,
         "file_name": "Breakout.xlsx"
+      },
+      "Saya": {
+        "shop_code": null,
+        "source_run": "40842690964",
+        "sha256": "361ccca463739b8adae81421fb41e7d4bfb2e1ada65f7999622b1b6faba21d6d",
+        "source_sha256": "ba7fc258c15fa7fae43075cad4e0eceb2206423afa8e951244b73537a3c51bec",
+        "folder": "ChotuApp 19-10-2026 11-36AM",
+        "verified_utc": "2026-10-29T14:24:40.503875+00:00",
+        "audit804": {
+          "name": "804 Audit",
+          "status": "pass",
+          "checked_utc": "2026-10-29T14:24:11.971264+00:00",
+          "products_checked": 3878,
+          "workbook_sha256": "361ccca463739b8adae81421fb41e7d4bfb2e1ada65f7999622b1b6faba21d6d"
+        },
+        "rule804": "applied; 804 Audit passed",
+        "campaign_id": "fresh804-20261026-5d42fe35",
+        "refresh_generation": "refresh20261029-b80f4ca4",
+        "replaced_file": null,
+        "file_name": "Saya.xlsx"
       }
     }
   },
@@ -2473,7 +2513,7 @@
     "Alkaram Studio": "source:096fe77a2b7cbd9e733a31c6646ed9a64e12985fee697c4136bd4dd9f6e1ae6b:Alkaram Studio:5151875be00bc7e6ff13a8c6f4e2ae948b6bcd742496ba7ec4696d30a16093c0",
     "Generation": "source:4b4b9894240083669a8cf95f983d6d4a74e85ffaa4bc1c363d3513fa22b30f33:Generation:5151875be00bc7e6ff13a8c6f4e2ae948b6bcd742496ba7ec4696d30a16093c0",
     "Breakout": "source:159bb63b32b2ca2fbddc39f2ef42f23b86febde3cab88f27a81b761e7d1924c3:Breakout:5151875be00bc7e6ff13a8c6f4e2ae948b6bcd742496ba7ec4696d30a16093c0",
-    "Saya": "source:ba7fc258c15fa7fae43075cad4e0eceb2206423afa8e951244b73537a3c51bec:Saya:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
+    "Saya": "source:ba7fc258c15fa7fae43075cad4e0eceb2206423afa8e951244b73537a3c51bec:Saya:5151875be00bc7e6ff13a8c6f4e2ae948b6bcd742496ba7ec4696d30a16093c0",
     "Rios": "source:55c417a7bb2576a0ef12336ba2782c48c37a9d39f56a45f19a64e77b3ff840e7:Rios:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Edenrobe": "source:052234557ba97ab4bb5111bf19e777c258f60e83bc5c53293c3a1544b850089e:Edenrobe:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Limelight": "source:1a91ff9680a47bd4d65291b8bc646e899fff0c2fc53ce72833e2a9c07fb8f308:Limelight:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0"
@@ -5215,15 +5255,83 @@
     },
     "Saya": {
       "name": "804 Audit",
-      "status": "hold",
+      "version": "804-audit-v2",
       "store": "Saya",
+      "shop_code": null,
+      "identity_policy": "owner_authorized_blank_code_exact_store_filename",
+      "status": "pass",
+      "products_checked": 3878,
+      "findings_count": 0,
+      "findings": [],
+      "details_truncated": false,
+      "workbook_sha256": "361ccca463739b8adae81421fb41e7d4bfb2e1ada65f7999622b1b6faba21d6d",
+      "checked_utc": "2026-10-29T14:24:11.971264+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "description_repairs_count": 3852,
+      "description_repairs_examples": [
+        {
+          "product_id": "CP2d6061120d01",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP41de4eb907fd",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPfcfcf09e8a8e",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPcddc8ded4be5",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPe093f30a0d7c",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP5ed6d50e40cb",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPbde5ff9c5068",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP3a3b21d4d942",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPfcc08a8f167e",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP317e4753477b",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        }
+      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "40842690964",
       "source_artifact": 12887792989,
-      "error": "No module named 'ftfy'",
       "source_sha256": "ba7fc258c15fa7fae43075cad4e0eceb2206423afa8e951244b73537a3c51bec",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/saya/ba7fc258c15fa7fa/manifest.json",
-      "checked_utc": "2026-10-29T12:57:24.630585+00:00"
+      "refresh_generation": "refresh20261029-b80f4ca4",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/saya/ba7fc258c15fa7fa/manifest.json"
     },
     "Rios": {
       "name": "804 Audit",
@@ -5448,8 +5556,8 @@
     "SE10036": "inputs/fresh804-20261026-5d42fe35/rollback-se10036/447e954cc7c6ddcb/manifest.json",
     "SE10039": "inputs/fresh804-20261026-5d42fe35/rollback-se10039/038c9f201d898fde/manifest.json"
   },
-  "audit804_last_store": "Breakout",
-  "audit804_progress_utc": "2026-10-29T14:23:35.605059+00:00",
+  "audit804_last_store": "Saya",
+  "audit804_progress_utc": "2026-10-29T14:24:40.507325+00:00",
   "audit804_auto_evidence_cache": [],
   "audit804_auto_evidence": {
     "status": "checked",
