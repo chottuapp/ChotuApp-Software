@@ -2064,7 +2064,7 @@
   "original_uploads": {},
   "audit804_processed": {
     "Miss Rose": "source:561fcadb4a04cac4399f1f0226376e4a4a3e9c6791da85838242128edee58ebb:Miss Rose:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
-    "The Hanger Pakistan": "source:3590430fe4ec01b68de7cab5e877c5af400d7414ed8e5aca9da06c115d512703:The Hanger Pakistan:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
+    "The Hanger Pakistan": "source:3590430fe4ec01b68de7cab5e877c5af400d7414ed8e5aca9da06c115d512703:The Hanger Pakistan:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Shop Modest": "source:57a264243c76f7954bad08ab613574c802c42238840f109c9abdd6454ab10114:Shop Modest:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Seran": "source:55c60c77175cfff3c9f53d279f1e207bbe287ed3164afdd274e9ffe91cc4c595:Seran:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
     "Islamabad Tea": "source:422ff436edc7fbecce9cb38b3df67b1bac431fc438722150dae3fefa5cb5495e:Islamabad Tea:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
@@ -2133,31 +2133,15 @@
     },
     "The Hanger Pakistan": {
       "name": "804 Audit",
-      "version": "804-audit-v2",
+      "status": "hold",
       "store": "The Hanger Pakistan",
-      "shop_code": "SE10007",
-      "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 383,
-      "findings_count": 0,
-      "findings": [],
-      "details_truncated": false,
-      "workbook_sha256": "b09f88220b496221fc4aa46f931085a0cb6cbd489becb48821b423511dd721ab",
-      "checked_utc": "2026-10-29T12:26:46.601233+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
-      },
-      "owner_authorized_exclusions": [],
-      "image_metadata_repairs": 0,
-      "description_repairs_count": 0,
-      "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "40842546166",
       "source_artifact": 12883996390,
+      "error": "No module named 'ftfy'",
       "source_sha256": "3590430fe4ec01b68de7cab5e877c5af400d7414ed8e5aca9da06c115d512703",
-      "refresh_generation": "refresh20261029-b80f4ca4"
+      "held_input": "inputs/fresh804-20261026-5d42fe35/the-hanger-pakistan/3590430fe4ec01b6/manifest.json",
+      "checked_utc": "2026-10-29T12:58:14.819638+00:00"
     },
     "Shop Modest": {
       "name": "804 Audit",
@@ -4011,8 +3995,8 @@
     "SE10036": "inputs/fresh804-20261026-5d42fe35/rollback-se10036/b135ba6e802dd2e7/manifest.json",
     "SE10039": "inputs/fresh804-20261026-5d42fe35/rollback-se10039/36f360439f5b78e9/manifest.json"
   },
-  "audit804_last_store": "Shop Modest",
-  "audit804_progress_utc": "2026-10-29T12:58:10.581218+00:00",
+  "audit804_last_store": "The Hanger Pakistan",
+  "audit804_progress_utc": "2026-10-29T12:58:14.819766+00:00",
   "audit804_auto_evidence_cache": [],
   "audit804_auto_evidence": {
     "status": "checked",
