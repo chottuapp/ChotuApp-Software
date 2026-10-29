@@ -1,44 +1,43 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-29T14:54:27.750281+00:00",
-  "run_id": "40852995728",
+  "generated_utc": "2026-10-29T17:59:58.408235+00:00",
+  "run_id": "40882645569",
   "attempt": "1",
-  "source_commit": "e2219f9b058a38b5ba36eaa58cc19ad867b6b92e",
-  "status": "incomplete",
-  "checkpoint_saved": false,
+  "source_commit": "c54feeb55c5b92667cb87bde46c25477204c7cbc",
+  "status": "complete",
+  "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 18001.5,
+  "elapsed_seconds": 16033.9,
   "stores": [
     {
-      "name": "Liberty Books",
-      "status": "pending",
-      "review_required": false,
-      "issue_codes": [
-        "HTTP_404",
-        "WEBSITE_CATEGORY_UNVERIFIED",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "5c4a5331f70a5729",
-      "http_statuses": {
-        "404": 1,
-        "200": 24360
-      },
-      "network_seconds": 5376.4,
-      "max_response_seconds": 5.4,
-      "cache_events": 1796
-    },
-    {
-      "name": "ChenOne",
+      "name": "Rivaj UK",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "5c4a5331f70a5729",
-      "products": 372,
-      "variants": 1202,
+      "products": 305,
+      "variants": 954,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
       "cache_events": 0
+    },
+    {
+      "name": "Junaid Jamshed",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "609da908ab1d0533",
+      "products": 5913,
+      "variants": 25168,
+      "http_statuses": {
+        "200": 9656
+      },
+      "network_seconds": 18276.1,
+      "max_response_seconds": 24.5,
+      "cache_events": 47931
     }
   ]
 }
