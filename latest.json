@@ -2084,7 +2084,7 @@
     "Ndure": "source:ad221a8e643f303e4985c5703b79c2505c6ab0c8784f57c2f6301e8b06dafb17:Ndure:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
     "Saeed Ghani": "source:6940add07c99b87f1dc579408770fb469de6c06d00ecaac419d5a8e1d80c7fe8:Saeed Ghani:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Tawakkal Fabrics": "source:db5c6db1c188815d2b65d36989f29f6b8a1a8517cf8b6f1dd2826e104d6fcd6d:Tawakkal Fabrics:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
-    "Elite Cosmetics": "source:c03d83ba7135c185639d349300ce6eb45833f95e602cf3c3f5cc2b1b56d367e9:Elite Cosmetics:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
+    "Elite Cosmetics": "source:c03d83ba7135c185639d349300ce6eb45833f95e602cf3c3f5cc2b1b56d367e9:Elite Cosmetics:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Hemani Herbals": "source:0e0ef6416ad588d914422b3b5105c86697cd01fa320e6939cf1f321d5d4f5ce9:Hemani Herbals:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
     "Astore Bags": "source:6d02f3d97fbe66b9f5b4d7c17a5b62b4080ac67667971b3d4f7ca1381b846e80:Astore Bags:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
     "Rawayat": "source:4a4a5026f905f9a585f61c31ef663298e1ddb722fc4ce146f56407035adc0f14:Rawayat:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
@@ -2851,88 +2851,15 @@
     },
     "Elite Cosmetics": {
       "name": "804 Audit",
-      "version": "804-audit-v2",
+      "status": "hold",
       "store": "Elite Cosmetics",
-      "shop_code": "SH10003",
-      "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 1564,
-      "findings_count": 0,
-      "findings": [],
-      "details_truncated": false,
-      "workbook_sha256": "a467603987493413e0b0d2c7d586052445ebe01ccaf5614fad5eea24464c0b80",
-      "checked_utc": "2026-10-29T12:22:06.193944+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
-      },
-      "owner_authorized_exclusions": [
-        {
-          "product_id": "CPaeabf1fd66f3",
-          "source_url": "https://elitecosmeticspk.com/products/comfor-beauty-aloe-vera-essence-oil-40ml",
-          "reason": "Owner explicitly requested deletion of conflicting product on 25 October 2026"
-        }
-      ],
-      "image_metadata_repairs": 0,
-      "description_repairs_count": 12,
-      "description_repairs_examples": [
-        {
-          "product_id": "CP2a5695f0be86",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP17566c351cbb",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP2a27fac58d7d",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP9d26fcad5d75",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP8b829c90d70e",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP71062cbdd319",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPef075f1a2731",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP2a02d899cb50",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP815360dae141",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP3e94ea015625",
-          "issue": "Rewrote exact named deodorant identity; scent, audience, duration label and volume retained.",
-          "repair_kind": "description"
-        }
-      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "40842539161",
       "source_artifact": 12887286846,
+      "error": "No module named 'ftfy'",
       "source_sha256": "c03d83ba7135c185639d349300ce6eb45833f95e602cf3c3f5cc2b1b56d367e9",
-      "refresh_generation": "refresh20261029-b80f4ca4"
+      "held_input": "inputs/fresh804-20261026-5d42fe35/elite-cosmetics/c03d83ba7135c185/manifest.json",
+      "checked_utc": "2026-10-29T12:58:04.810989+00:00"
     },
     "Hemani Herbals": {
       "name": "804 Audit",
@@ -4151,8 +4078,8 @@
     "SE10036": "inputs/fresh804-20261026-5d42fe35/rollback-se10036/b135ba6e802dd2e7/manifest.json",
     "SE10039": "inputs/fresh804-20261026-5d42fe35/rollback-se10039/36f360439f5b78e9/manifest.json"
   },
-  "audit804_last_store": "Vince Care",
-  "audit804_progress_utc": "2026-10-29T12:57:57.187499+00:00",
+  "audit804_last_store": "Elite Cosmetics",
+  "audit804_progress_utc": "2026-10-29T12:58:04.811274+00:00",
   "audit804_auto_evidence_cache": [],
   "audit804_auto_evidence": {
     "status": "checked",
