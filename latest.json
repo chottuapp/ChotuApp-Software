@@ -990,6 +990,26 @@
       "refresh_generation": "refresh20261029-b80f4ca4",
       "replaced_file": null,
       "file_name": "Alkaram Studio.xlsx"
+    },
+    "Generation": {
+      "shop_code": null,
+      "source_run": "40842690964",
+      "sha256": "bf354768223155d7babd2eda08883dffd90cbc0d0f637adae3798909bf2bbf5d",
+      "source_sha256": "4b4b9894240083669a8cf95f983d6d4a74e85ffaa4bc1c363d3513fa22b30f33",
+      "folder": "ChotuApp 19-10-2026 11-36AM",
+      "verified_utc": "2026-10-29T14:22:58.539727+00:00",
+      "audit804": {
+        "name": "804 Audit",
+        "status": "pass",
+        "checked_utc": "2026-10-29T14:21:58.714662+00:00",
+        "products_checked": 736,
+        "workbook_sha256": "bf354768223155d7babd2eda08883dffd90cbc0d0f637adae3798909bf2bbf5d"
+      },
+      "rule804": "applied; 804 Audit passed",
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "refresh_generation": "refresh20261029-b80f4ca4",
+      "replaced_file": null,
+      "file_name": "Generation.xlsx"
     }
   },
   "daily_uploads": {
@@ -2250,6 +2270,26 @@
         "refresh_generation": "refresh20261029-b80f4ca4",
         "replaced_file": null,
         "file_name": "Alkaram Studio.xlsx"
+      },
+      "Generation": {
+        "shop_code": null,
+        "source_run": "40842690964",
+        "sha256": "bf354768223155d7babd2eda08883dffd90cbc0d0f637adae3798909bf2bbf5d",
+        "source_sha256": "4b4b9894240083669a8cf95f983d6d4a74e85ffaa4bc1c363d3513fa22b30f33",
+        "folder": "ChotuApp 19-10-2026 11-36AM",
+        "verified_utc": "2026-10-29T14:22:58.539727+00:00",
+        "audit804": {
+          "name": "804 Audit",
+          "status": "pass",
+          "checked_utc": "2026-10-29T14:21:58.714662+00:00",
+          "products_checked": 736,
+          "workbook_sha256": "bf354768223155d7babd2eda08883dffd90cbc0d0f637adae3798909bf2bbf5d"
+        },
+        "rule804": "applied; 804 Audit passed",
+        "campaign_id": "fresh804-20261026-5d42fe35",
+        "refresh_generation": "refresh20261029-b80f4ca4",
+        "replaced_file": null,
+        "file_name": "Generation.xlsx"
       }
     }
   },
@@ -2391,7 +2431,7 @@
     "Sana Safinaz": "source:437ddc4778ecd017fc7bd36d62499401409fa1ee326f67f063ae05d5b88ac564:Sana Safinaz:5151875be00bc7e6ff13a8c6f4e2ae948b6bcd742496ba7ec4696d30a16093c0",
     "Beyond East": "source:9f2aa1fa209148631b29dd48a08f6cf23d343f5e7191dc9ad62ae45db2152412:Beyond East:5151875be00bc7e6ff13a8c6f4e2ae948b6bcd742496ba7ec4696d30a16093c0",
     "Alkaram Studio": "source:096fe77a2b7cbd9e733a31c6646ed9a64e12985fee697c4136bd4dd9f6e1ae6b:Alkaram Studio:5151875be00bc7e6ff13a8c6f4e2ae948b6bcd742496ba7ec4696d30a16093c0",
-    "Generation": "source:4b4b9894240083669a8cf95f983d6d4a74e85ffaa4bc1c363d3513fa22b30f33:Generation:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
+    "Generation": "source:4b4b9894240083669a8cf95f983d6d4a74e85ffaa4bc1c363d3513fa22b30f33:Generation:5151875be00bc7e6ff13a8c6f4e2ae948b6bcd742496ba7ec4696d30a16093c0",
     "Breakout": "source:159bb63b32b2ca2fbddc39f2ef42f23b86febde3cab88f27a81b761e7d1924c3:Breakout:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Saya": "source:ba7fc258c15fa7fae43075cad4e0eceb2206423afa8e951244b73537a3c51bec:Saya:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Rios": "source:55c417a7bb2576a0ef12336ba2782c48c37a9d39f56a45f19a64e77b3ff840e7:Rios:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
@@ -4995,15 +5035,63 @@
     },
     "Generation": {
       "name": "804 Audit",
-      "status": "hold",
+      "version": "804-audit-v2",
       "store": "Generation",
+      "shop_code": null,
+      "identity_policy": "owner_authorized_blank_code_exact_store_filename",
+      "status": "pass",
+      "products_checked": 736,
+      "findings_count": 0,
+      "findings": [],
+      "details_truncated": false,
+      "workbook_sha256": "bf354768223155d7babd2eda08883dffd90cbc0d0f637adae3798909bf2bbf5d",
+      "checked_utc": "2026-10-29T14:21:58.714662+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "description_repairs_count": 6,
+      "description_repairs_examples": [
+        {
+          "product_id": "CP6940de3a22c5",
+          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP61cdea458909",
+          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP314ee99e1762",
+          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP477bff1b4f41",
+          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPb38ee38190a9",
+          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP791d9ef19409",
+          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "repair_kind": "description"
+        }
+      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "40842690964",
       "source_artifact": 12886255879,
-      "error": "No module named 'ftfy'",
       "source_sha256": "4b4b9894240083669a8cf95f983d6d4a74e85ffaa4bc1c363d3513fa22b30f33",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/generation/4b4b989424008366/manifest.json",
-      "checked_utc": "2026-10-29T12:57:16.216712+00:00"
+      "refresh_generation": "refresh20261029-b80f4ca4",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/generation/4b4b989424008366/manifest.json"
     },
     "Breakout": {
       "name": "804 Audit",
@@ -5252,8 +5340,8 @@
     "SE10036": "inputs/fresh804-20261026-5d42fe35/rollback-se10036/447e954cc7c6ddcb/manifest.json",
     "SE10039": "inputs/fresh804-20261026-5d42fe35/rollback-se10039/038c9f201d898fde/manifest.json"
   },
-  "audit804_last_store": "Alkaram Studio",
-  "audit804_progress_utc": "2026-10-29T14:21:49.294480+00:00",
+  "audit804_last_store": "Generation",
+  "audit804_progress_utc": "2026-10-29T14:22:58.540280+00:00",
   "audit804_auto_evidence_cache": [],
   "audit804_auto_evidence": {
     "status": "checked",
