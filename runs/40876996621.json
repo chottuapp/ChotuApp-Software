@@ -2093,7 +2093,7 @@
     "Junaid Jamshed": "source:a5fc3c702474fccebebeb117a4125127ed7a0fec9710f236e973c95777a15c22:Junaid Jamshed:12ca0d891b74d46a5c0aa0eef8bd89e14744c35d5bbb3f24a6c2205d8610866e",
     "Zellbury": "source:95b398c5178ecb6abcfeb674e92acb2f51cc37a8963544e3a9d75bc0eb346783:Zellbury:12ca0d891b74d46a5c0aa0eef8bd89e14744c35d5bbb3f24a6c2205d8610866e",
     "Gul Ahmed": "source:6c823087b99eea895fcc0a60a3fbac36b55d3f59b0a8c5e0f750e9a3cd6fa949:Gul Ahmed:12ca0d891b74d46a5c0aa0eef8bd89e14744c35d5bbb3f24a6c2205d8610866e",
-    "Hello Maali": "source:f0982b8ec31dc04f941ab0b195e79a7e9d4341bdf4259ff969ec1b0fa0395310:Hello Maali:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
+    "Hello Maali": "source:f0982b8ec31dc04f941ab0b195e79a7e9d4341bdf4259ff969ec1b0fa0395310:Hello Maali:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Sapphire": "source:30ceac6a6cd580038d7b98aa0af997f01431fbfb5a16f2642c5eb7b8098caca6:Sapphire:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Stylo": "source:7dfe44a98758ee42a3055a8905d64b1d4b152f54236eb649739c424e0dfc511d:Stylo:12ca0d891b74d46a5c0aa0eef8bd89e14744c35d5bbb3f24a6c2205d8610866e",
     "Hilm Chapals": "source:bc8d47409d595065ca3e5511de0b5a07ed62de4ee488ab914c02cee5890e8995:Hilm Chapals:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
@@ -2660,82 +2660,15 @@
     },
     "Hello Maali": {
       "name": "804 Audit",
-      "version": "804-audit-v2",
+      "status": "hold",
       "store": "Hello Maali",
-      "shop_code": "CAS01",
-      "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 61,
-      "findings_count": 0,
-      "findings": [],
-      "details_truncated": false,
-      "workbook_sha256": "ff8047de1e17675e5014b2b7e65feb1b515735e3f26074f5d808f3ce3628c230",
-      "checked_utc": "2026-10-29T12:47:03.657840+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
-      },
-      "owner_authorized_exclusions": [],
-      "image_metadata_repairs": 0,
-      "description_repairs_count": 61,
-      "description_repairs_examples": [
-        {
-          "product_id": "CP60fdb6218f3f",
-          "issue": "Retained all saved details and added identity-verified source plant care; no care or pet-safety claims inferred.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP628bef1dab0f",
-          "issue": "Retained all saved details and added identity-verified source plant care; no care or pet-safety claims inferred.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP694a4b85da75",
-          "issue": "Retained all saved details and added identity-verified source plant care; no care or pet-safety claims inferred.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP7cf3141387aa",
-          "issue": "Retained all saved details and added identity-verified source plant care; no care or pet-safety claims inferred.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP2db360b8cd90",
-          "issue": "Retained all saved details and added identity-verified source plant care; no care or pet-safety claims inferred.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP77118ab5da37",
-          "issue": "Retained all saved details and added identity-verified source plant care; no care or pet-safety claims inferred.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPdbb66c86785f",
-          "issue": "Retained all saved details and added identity-verified source plant care; no care or pet-safety claims inferred.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP4b93e6aaee0b",
-          "issue": "Retained all saved details and added identity-verified source plant care; no care or pet-safety claims inferred.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPd55c97b3a032",
-          "issue": "Retained all saved details and added identity-verified source plant care; no care or pet-safety claims inferred.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP0b7225c4631f",
-          "issue": "Retained all saved details and added identity-verified source plant care; no care or pet-safety claims inferred.",
-          "repair_kind": "description"
-        }
-      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "40842640249",
       "source_artifact": 12884935761,
+      "error": "No module named 'ftfy'",
       "source_sha256": "f0982b8ec31dc04f941ab0b195e79a7e9d4341bdf4259ff969ec1b0fa0395310",
-      "refresh_generation": "refresh20261029-b80f4ca4"
+      "held_input": "inputs/fresh804-20261026-5d42fe35/hello-maali/f0982b8ec31dc04f/manifest.json",
+      "checked_utc": "2026-10-29T12:59:52.369701+00:00"
     },
     "Sapphire": {
       "name": "804 Audit",
@@ -3440,7 +3373,7 @@
     "40842599968": "40842599968:12897036029:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "40842617645": "40842617645:12885280418:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "40842625441": "40842625441:12884662762:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
-    "40842632961": "40842632961:12884701782:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
+    "40842632961": "40842632961:12884701782:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "40842640249": "40842640249:12884935761:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
     "40842647762": "40842647762:12888400176:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
     "40842654821": "40842654821:12883696569:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
@@ -3514,8 +3447,8 @@
     "SE10036": "inputs/fresh804-20261026-5d42fe35/rollback-se10036/b135ba6e802dd2e7/manifest.json",
     "SE10039": "inputs/fresh804-20261026-5d42fe35/rollback-se10039/36f360439f5b78e9/manifest.json"
   },
-  "audit804_last_store": "Astore Bags",
-  "audit804_progress_utc": "2026-10-29T12:59:47.175317+00:00",
+  "audit804_last_store": "Hello Maali",
+  "audit804_progress_utc": "2026-10-29T12:59:52.369841+00:00",
   "audit804_auto_evidence_cache": [],
   "audit804_auto_evidence": {
     "status": "checked",
