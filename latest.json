@@ -1,43 +1,45 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-29T11:38:09.269695+00:00",
-  "run_id": "40842518420",
+  "generated_utc": "2026-10-29T12:25:11.740971+00:00",
+  "run_id": "40842599968",
   "attempt": "1",
   "source_commit": "86c9743ad68cfe17b4e665ef18403cb36ac96f4e",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 11284.1,
+  "elapsed_seconds": 14067.7,
   "stores": [
     {
-      "name": "Miss Rose",
+      "name": "Skin Factor",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "5c4a5331f70a5729",
-      "products": 180,
-      "variants": 1787,
+      "products": 28,
+      "variants": 28,
       "http_statuses": {
-        "200": 697
+        "200": 82
       },
-      "network_seconds": 345.6,
-      "max_response_seconds": 3.3,
-      "cache_events": 811
+      "network_seconds": 53.8,
+      "max_response_seconds": 1.8,
+      "cache_events": 56
     },
     {
-      "name": "Rawayat",
+      "name": "Outfitters",
       "status": "done",
       "review_required": true,
-      "issue_codes": [],
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
       "software_revision": "5c4a5331f70a5729",
-      "products": 4972,
-      "variants": 6404,
+      "products": 3905,
+      "variants": 29978,
       "http_statuses": {
-        "200": 5156
+        "200": 3940
       },
-      "network_seconds": 8803.6,
-      "max_response_seconds": 22.8,
-      "cache_events": 9976
+      "network_seconds": 9984.1,
+      "max_response_seconds": 37.1,
+      "cache_events": 7827
     }
   ]
 }
