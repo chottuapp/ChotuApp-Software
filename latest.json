@@ -2088,7 +2088,7 @@
     "Hemani Herbals": "source:0e0ef6416ad588d914422b3b5105c86697cd01fa320e6939cf1f321d5d4f5ce9:Hemani Herbals:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Astore Bags": "source:6d02f3d97fbe66b9f5b4d7c17a5b62b4080ac67667971b3d4f7ca1381b846e80:Astore Bags:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
     "Rawayat": "source:4a4a5026f905f9a585f61c31ef663298e1ddb722fc4ce146f56407035adc0f14:Rawayat:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
-    "Outfitters": "source:aa2b5c7214051a00d6663815291a95d9ad18cf5237e45112133aa2fda7109124:Outfitters:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
+    "Outfitters": "source:aa2b5c7214051a00d6663815291a95d9ad18cf5237e45112133aa2fda7109124:Outfitters:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Bonanza Satrangi": "source:3e2fe231c3fa83cc61d2eb3544187b3be163321469bf377692ba8d3d31fec2c8:Bonanza Satrangi:12ca0d891b74d46a5c0aa0eef8bd89e14744c35d5bbb3f24a6c2205d8610866e",
     "Junaid Jamshed": "source:a5fc3c702474fccebebeb117a4125127ed7a0fec9710f236e973c95777a15c22:Junaid Jamshed:12ca0d891b74d46a5c0aa0eef8bd89e14744c35d5bbb3f24a6c2205d8610866e",
     "Zellbury": "source:95b398c5178ecb6abcfeb674e92acb2f51cc37a8963544e3a9d75bc0eb346783:Zellbury:12ca0d891b74d46a5c0aa0eef8bd89e14744c35d5bbb3f24a6c2205d8610866e",
@@ -2604,42 +2604,15 @@
     },
     "Outfitters": {
       "name": "804 Audit",
-      "version": "804-audit-v2",
+      "status": "hold",
       "store": "Outfitters",
-      "shop_code": "SE10026",
-      "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 3905,
-      "findings_count": 0,
-      "findings": [],
-      "details_truncated": false,
-      "workbook_sha256": "95856ea3d686c86121b72e7a39bc9d24cc487ffa1d7875a1cd34db190dd74d9a",
-      "checked_utc": "2026-10-29T12:37:44.415013+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
-      },
-      "owner_authorized_exclusions": [],
-      "image_metadata_repairs": 0,
-      "description_repairs_count": 2,
-      "description_repairs_examples": [
-        {
-          "product_id": "CPb8dc685d9fcb",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPe50507f3b987",
-          "issue": "Added the public product_type Jeans; every saved option retained.",
-          "repair_kind": "description"
-        }
-      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "40842599968",
       "source_artifact": 12897036029,
+      "error": "No module named 'ftfy'",
       "source_sha256": "aa2b5c7214051a00d6663815291a95d9ad18cf5237e45112133aa2fda7109124",
-      "refresh_generation": "refresh20261029-b80f4ca4"
+      "held_input": "inputs/fresh804-20261026-5d42fe35/outfitters/aa2b5c7214051a00/manifest.json",
+      "checked_utc": "2026-10-29T12:59:17.697228+00:00"
     },
     "Bonanza Satrangi": {
       "name": "804 Audit",
@@ -3724,8 +3697,8 @@
     "SE10036": "inputs/fresh804-20261026-5d42fe35/rollback-se10036/b135ba6e802dd2e7/manifest.json",
     "SE10039": "inputs/fresh804-20261026-5d42fe35/rollback-se10039/36f360439f5b78e9/manifest.json"
   },
-  "audit804_last_store": "Skin Factor",
-  "audit804_progress_utc": "2026-10-29T12:59:09.307334+00:00",
+  "audit804_last_store": "Outfitters",
+  "audit804_progress_utc": "2026-10-29T12:59:17.697348+00:00",
   "audit804_auto_evidence_cache": [],
   "audit804_auto_evidence": {
     "status": "checked",
