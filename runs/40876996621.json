@@ -2073,7 +2073,7 @@
     "Nisa Naturals": "source:333b15fe89fd7bb935f5dbbb37b3abdcb12763df22a2ecaadfcb3a0eeb488b5c:Nisa Naturals:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Cool and Cool": "source:38e499369b6477845a91bd37ae4c808c89c10de4fcbc0f89a07cbc387f432b41:Cool and Cool:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Denim Leftover": "source:05ef236b8f6af517395cf01257fd78b3906618c9cac4ab13249499899ada3c18:Denim Leftover:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
-    "Skin Factor": "source:12a1e1ff072a239aba8e49323581b7aff2a76f9f3771ff1a94f56de7767bb549:Skin Factor:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
+    "Skin Factor": "source:12a1e1ff072a239aba8e49323581b7aff2a76f9f3771ff1a94f56de7767bb549:Skin Factor:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Zero Lifestyle": "source:64ae1c94b5fd628fd74a8badc6c7289f49632df5fa7c41372fa44b5a3ac2e0aa:Zero Lifestyle:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
     "Aerosoft Studio": "source:74a11a493ac0151d3152ff970e262c9c4e6e1d2aa2ee41c9ed9bfc210245f17a:Aerosoft Studio:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
     "Rivaj UK": "source:19251a0f2ffbd1f36634ad6a8071504ab3c88838b1c06f070737dcd4bd3770fd:Rivaj UK:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
@@ -2241,52 +2241,15 @@
     },
     "Skin Factor": {
       "name": "804 Audit",
-      "version": "804-audit-v2",
+      "status": "hold",
       "store": "Skin Factor",
-      "shop_code": "SE10025",
-      "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 28,
-      "findings_count": 0,
-      "findings": [],
-      "details_truncated": false,
-      "workbook_sha256": "1b677590e052adb401b5689876da0df1a3e67c58fefe08dba3b8f3e41e5b0053",
-      "checked_utc": "2026-10-29T12:36:44.265406+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
-      },
-      "owner_authorized_exclusions": [],
-      "image_metadata_repairs": 0,
-      "description_repairs_count": 4,
-      "description_repairs_examples": [
-        {
-          "product_id": "CPe0d4bbf61177",
-          "issue": "Combined the supplied product identity and concentration with its complete source-listed skin concerns; no ingredients, kit contents or efficacy added.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPec888bab1f0d",
-          "issue": "Combined the supplied product identity and concentration with its complete source-listed skin concerns; no ingredients, kit contents or efficacy added.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP77a2d5357aeb",
-          "issue": "Combined the supplied product identity and concentration with its complete source-listed skin concerns; no ingredients, kit contents or efficacy added.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP018a1065e181",
-          "issue": "Combined the supplied product identity and concentration with its complete source-listed skin concerns; no ingredients, kit contents or efficacy added.",
-          "repair_kind": "description"
-        }
-      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "40842599968",
       "source_artifact": 12897036029,
+      "error": "No module named 'ftfy'",
       "source_sha256": "12a1e1ff072a239aba8e49323581b7aff2a76f9f3771ff1a94f56de7767bb549",
-      "refresh_generation": "refresh20261029-b80f4ca4"
+      "held_input": "inputs/fresh804-20261026-5d42fe35/skin-factor/12a1e1ff072a239a/manifest.json",
+      "checked_utc": "2026-10-29T12:59:09.307237+00:00"
     },
     "Zero Lifestyle": {
       "name": "804 Audit",
@@ -3683,7 +3646,7 @@
     "40752411603": "40752411603:12859825964:12ca0d891b74d46a5c0aa0eef8bd89e14744c35d5bbb3f24a6c2205d8610866e",
     "40842560128": "40842560128:12883890773:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "40842568289": "40842568289:12884004891:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
-    "40842592571": "40842592571:12884335609:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
+    "40842592571": "40842592571:12884335609:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "40842599968": "40842599968:12897036029:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
     "40842617645": "40842617645:12885280418:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
     "40842625441": "40842625441:12884662762:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
@@ -3761,8 +3724,8 @@
     "SE10036": "inputs/fresh804-20261026-5d42fe35/rollback-se10036/b135ba6e802dd2e7/manifest.json",
     "SE10039": "inputs/fresh804-20261026-5d42fe35/rollback-se10039/36f360439f5b78e9/manifest.json"
   },
-  "audit804_last_store": "Cool and Cool",
-  "audit804_progress_utc": "2026-10-29T12:59:03.505607+00:00",
+  "audit804_last_store": "Skin Factor",
+  "audit804_progress_utc": "2026-10-29T12:59:09.307334+00:00",
   "audit804_auto_evidence_cache": [],
   "audit804_auto_evidence": {
     "status": "checked",
