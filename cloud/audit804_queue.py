@@ -32,14 +32,30 @@ def save(source,store,campaign,source_run):
 def restore(marker,out,store,campaign):
  prefix='inputs/'+campaign+'/'+slug(store)+'/'
  if not marker.startswith(prefix) or not re.fullmatch(r'[a-zA-Z0-9_./-]+',marker) or '..' in marker:raise ValueError('Invalid held-input identity')
- subprocess.run(['git','fetch','--depth=1','origin',BRANCH],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
- def blob(path):return subprocess.check_output(['git','show','FETCH_HEAD:'+path])
+ remote=subprocess.check_output(['git','remote','get-url','origin'],text=True).strip()
+ if remote in {'https://github.com/chottuapp/ChotuApp-Software.git','https://github.com/chottuapp/ChotuApp-Software','git@github.com:chottuapp/ChotuApp-Software.git'}:
+  # Restore only this store's immutable parts, not every held workbook in Git.
+  import requests
+  token=os.environ.get('GH_TOKEN') or os.environ.get('GITHUB_TOKEN') or subprocess.check_output(['gh','auth','token'],text=True).strip()
+  def blob(path):
+   if '..' in path or not re.fullmatch(r'[a-zA-Z0-9_./-]+',path):raise ValueError('Invalid held input part path')
+   url='https://raw.githubusercontent.com/chottuapp/ChotuApp-Software/'+BRANCH+'/'+path
+   with requests.get(url,headers={'Authorization':'Bearer '+token},timeout=(15,90),stream=True) as response:
+    response.raise_for_status();parts=[];size=0
+    for chunk in response.iter_content(1024*1024):
+     size+=len(chunk)
+     if size>CHUNK+1024*1024:raise ValueError('Held input part exceeds queue bounds')
+     parts.append(chunk)
+    return b''.join(parts)
+ else:
+  subprocess.run(['git','fetch','--depth=1','origin',BRANCH],check=True,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+  def blob(path):return subprocess.check_output(['git','show','FETCH_HEAD:'+path])
  record=json.loads(blob(marker))
  if record.get('store')!=store or record.get('campaign_id')!=campaign or not 1<=len(record.get('parts',[]))<=13:raise ValueError('Held queue identity mismatch')
  digest=hashlib.sha256();out=Path(out)
  with out.open('wb') as stream:
   for part in record['parts']:
-   if not part['path'].startswith(marker.rsplit('/',1)[0]+'/source.xlsx.part-'):raise ValueError('Unexpected held input part')
+   if not re.fullmatch(re.escape(marker.rsplit('/',1)[0])+r'/source\.xlsx\.part-\d{3}',part['path']):raise ValueError('Unexpected held input part')
    data=blob(part['path'])
    if len(data)!=part['bytes'] or hashlib.sha256(data).hexdigest()!=part['sha256']:raise ValueError('Held input part changed')
    stream.write(data);digest.update(data)
