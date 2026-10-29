@@ -2102,7 +2102,7 @@
     "Pyari Walls": "source:ac470c8df431758bc12b7f87982c6dd62128586df4cf71711ff5e7c1edf9168e:Pyari Walls:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Prime Ticks": "source:191bdf26e04fe8aceddacb73b93fe8775e364217ba10c24fdf9fd725ef7744bd:Prime Ticks:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Design by DAS": "source:a192a8e6454e6c0397f830a58edcc1ba3f0eeb38f6115c5d6e3b29c580c3b2ea:Design by DAS:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
-    "Xcessories Hub": "source:d2883c0bad9634c4f76d01da07ac85c73f0d6283755afe0e4dae9963debf180b:Xcessories Hub:12ca0d891b74d46a5c0aa0eef8bd89e14744c35d5bbb3f24a6c2205d8610866e",
+    "Xcessories Hub": "source:0e548be2e8594ade8805158cb6c96170b6d7a916722695f866d6642dab9802be:Xcessories Hub:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Beechtree": "source:ae3761df899b61a05207c868eb074db064243aa4129885d655cff2df1dbaff92:Beechtree:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "ChenOne": "source:f83a70b1e3a3b28123aa7fe8798f04f2720ba2b7596cc0feeff522e9f128e261:ChenOne:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Hush Puppies": "source:45e6a2543ef6fc48610b9036962092d05fab12a80aaa5f8f64a9a36affb625de:Hush Puppies:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
@@ -2835,58 +2835,15 @@
     },
     "Xcessories Hub": {
       "name": "804 Audit",
-      "version": "804-audit-v2",
+      "status": "hold",
       "store": "Xcessories Hub",
-      "shop_code": "SE10038",
-      "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 3044,
-      "findings_count": 0,
-      "findings": [],
-      "details_truncated": false,
-      "workbook_sha256": "efa8824610b6fc0ef7c9afcb2c394f8ef502730f1f04740c735bd387966668a7",
-      "checked_utc": "2026-10-29T07:00:12.919127+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
-      },
-      "owner_authorized_exclusions": [],
-      "image_metadata_repairs": 0,
-      "description_repairs_count": 5,
-      "description_repairs_examples": [
-        {
-          "product_id": "CP3ef8585c648e",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP3fb5ddad0de2",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP255fd3a95375",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP2a7d4faf24f9",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP62e8d7cbd73e",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        }
-      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "40752406774",
-      "source_artifact": 12844827262,
-      "source_sha256": "d2883c0bad9634c4f76d01da07ac85c73f0d6283755afe0e4dae9963debf180b",
-      "refresh_generation": "refresh20261027-f31e6f08",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/xcessories-hub/d2883c0bad9634c4/manifest.json"
+      "source_run": "40871470513",
+      "source_artifact": 12897951667,
+      "error": "No module named 'ftfy'",
+      "source_sha256": "0e548be2e8594ade8805158cb6c96170b6d7a916722695f866d6642dab9802be",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/xcessories-hub/0e548be2e8594ade/manifest.json",
+      "checked_utc": "2026-10-29T13:00:43.927783+00:00"
     },
     "Beechtree": {
       "name": "804 Audit",
@@ -3172,26 +3129,26 @@
     "40842640249": "40842640249:12884935761:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "40842647762": "40842647762:12888400176:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "40842654821": "40842654821:12883696569:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
-    "40842662384": "40842662384:12884335870:1e9c3686ab21e96f12650e1d7d2659e16f07e39446b5471a670bcf04c4df56e4",
-    "40842676884": "40842676884:12886943321:1e9c3686ab21e96f12650e1d7d2659e16f07e39446b5471a670bcf04c4df56e4",
-    "40842683420": "40842683420:12888305994:1e9c3686ab21e96f12650e1d7d2659e16f07e39446b5471a670bcf04c4df56e4",
-    "40842697904": "40842697904:12884052765:1e9c3686ab21e96f12650e1d7d2659e16f07e39446b5471a670bcf04c4df56e4",
-    "40842710993": "40842710993:12891184352:1e9c3686ab21e96f12650e1d7d2659e16f07e39446b5471a670bcf04c4df56e4",
+    "40842662384": "40842662384:12884335870:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
+    "40842676884": "40842676884:12886943321:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
+    "40842683420": "40842683420:12888305994:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
+    "40842697904": "40842697904:12884052765:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
+    "40842710993": "40842710993:12891184352:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "40842518420": "40842518420:12893657779:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "40842525049": "40842525049:12884153007:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "40842539161": "40842539161:12887286846:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "40842546166": "40842546166:12883996390:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "40842552568": "40842552568:12883921069:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
-    "40842669582": "40842669582:12890594655:1e9c3686ab21e96f12650e1d7d2659e16f07e39446b5471a670bcf04c4df56e4",
-    "40842703791": "40842703791:12889423763:1e9c3686ab21e96f12650e1d7d2659e16f07e39446b5471a670bcf04c4df56e4",
+    "40842669582": "40842669582:12890594655:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
+    "40842703791": "40842703791:12889423763:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "40842584666": "40842584666:12890502664:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
-    "40842718499": "40842718499:12885284332:1e9c3686ab21e96f12650e1d7d2659e16f07e39446b5471a670bcf04c4df56e4",
-    "40842690964": "40842690964:12887792989:1e9c3686ab21e96f12650e1d7d2659e16f07e39446b5471a670bcf04c4df56e4",
+    "40842718499": "40842718499:12885284332:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
+    "40842690964": "40842690964:12887792989:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "40842532649": "40842532649:12886443157:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
-    "40852995728": "40852995728:12888102178:1e9c3686ab21e96f12650e1d7d2659e16f07e39446b5471a670bcf04c4df56e4",
+    "40852995728": "40852995728:12888102178:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "40842576938": "40842576938:12890417314:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
-    "40855660126": "40855660126:12889176765:1e9c3686ab21e96f12650e1d7d2659e16f07e39446b5471a670bcf04c4df56e4",
-    "40857068743": "40857068743:12889981838:1e9c3686ab21e96f12650e1d7d2659e16f07e39446b5471a670bcf04c4df56e4"
+    "40855660126": "40855660126:12889176765:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
+    "40857068743": "40857068743:12889981838:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-10-29T12:09:37.790197+00:00",
@@ -3242,8 +3199,8 @@
     "SE10036": "inputs/fresh804-20261026-5d42fe35/rollback-se10036/b135ba6e802dd2e7/manifest.json",
     "SE10039": "inputs/fresh804-20261026-5d42fe35/rollback-se10039/36f360439f5b78e9/manifest.json"
   },
-  "audit804_last_store": "Pyari Walls",
-  "audit804_progress_utc": "2026-10-29T13:00:22.716655+00:00",
+  "audit804_last_store": "Xcessories Hub",
+  "audit804_progress_utc": "2026-10-29T13:00:43.927890+00:00",
   "audit804_auto_evidence_cache": [],
   "audit804_auto_evidence": {
     "status": "checked",
