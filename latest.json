@@ -2109,7 +2109,7 @@
     "Habitt": "source:c8aab12f8d634ccb6904b4b51ef9cc298fffe29b7b7d2c945e26bb18fbac50f1:Habitt:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Mala": "source:a7fb984e063e2a705c4562845d17530515892af3204ac7fbe499a7881942c165:Mala:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Sana Safinaz": "source:437ddc4778ecd017fc7bd36d62499401409fa1ee326f67f063ae05d5b88ac564:Sana Safinaz:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
-    "Beyond East": "source:9f2aa1fa209148631b29dd48a08f6cf23d343f5e7191dc9ad62ae45db2152412:Beyond East:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
+    "Beyond East": "source:9f2aa1fa209148631b29dd48a08f6cf23d343f5e7191dc9ad62ae45db2152412:Beyond East:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Alkaram Studio": "source:096fe77a2b7cbd9e733a31c6646ed9a64e12985fee697c4136bd4dd9f6e1ae6b:Alkaram Studio:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
     "Generation": "source:4b4b9894240083669a8cf95f983d6d4a74e85ffaa4bc1c363d3513fa22b30f33:Generation:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
     "Breakout": "source:159bb63b32b2ca2fbddc39f2ef42f23b86febde3cab88f27a81b761e7d1924c3:Breakout:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
@@ -3987,132 +3987,15 @@
     },
     "Beyond East": {
       "name": "804 Audit",
-      "version": "804-audit-v2",
-      "store": "Beyond East",
-      "shop_code": null,
-      "identity_policy": "owner_authorized_blank_code_exact_store_filename",
       "status": "hold",
-      "products_checked": 495,
-      "findings_count": 9,
-      "findings": [
-        {
-          "product_id": "CP3453edeebbb7",
-          "name": "1 Piece Embroidered Lawn Shirt",
-          "source_url": "https://www.beyondeast.com/products/wtse361039",
-          "issues": [
-            "Complete outfit classified as one component"
-          ]
-        },
-        {
-          "product_id": "CP2c0d397ee65a",
-          "name": "1 Piece Printed Cambric Shirt",
-          "source_url": "https://www.beyondeast.com/products/wtb161061",
-          "issues": [
-            "Complete outfit classified as one component"
-          ]
-        },
-        {
-          "product_id": "CP827c339fc6a5",
-          "name": "1 Piece Printed Cambric Shirt",
-          "source_url": "https://www.beyondeast.com/products/wtb161062",
-          "issues": [
-            "Complete outfit classified as one component"
-          ]
-        },
-        {
-          "product_id": "CP516d8c021f16",
-          "name": "1 Piece Printed Cambric Shirt",
-          "source_url": "https://www.beyondeast.com/products/wtb161066",
-          "issues": [
-            "Complete outfit classified as one component"
-          ]
-        },
-        {
-          "product_id": "CP25611146916e",
-          "name": "1 Piece Printed Cambric Shirt",
-          "source_url": "https://www.beyondeast.com/products/wtb161060",
-          "issues": [
-            "Complete outfit classified as one component"
-          ]
-        },
-        {
-          "product_id": "CP3f0167da61a1",
-          "name": "2 Piece Printed Co-Ord Set",
-          "source_url": "https://www.beyondeast.com/products/wtf161011",
-          "issues": [
-            "Category lacks clear product-purpose evidence; manual review required"
-          ]
-        },
-        {
-          "product_id": "CP8e21ae3688b2",
-          "name": "2 Piece Co-Ord Set",
-          "source_url": "https://www.beyondeast.com/products/wtf452054",
-          "issues": [
-            "Category lacks clear product-purpose evidence; manual review required"
-          ]
-        },
-        {
-          "product_id": "CP7994c7009ca1",
-          "name": "1 Piece Printed Lawn Suit",
-          "source_url": "https://www.beyondeast.com/products/wte251017",
-          "issues": [
-            "Category lacks clear product-purpose evidence; manual review required"
-          ]
-        },
-        {
-          "product_id": "CP1d18afcc79fe",
-          "name": "Windbreaker Jacket",
-          "source_url": "https://www.beyondeast.com/products/mtp421026",
-          "issues": [
-            "Primary product type and Category disagree: hoodie"
-          ]
-        }
-      ],
-      "details_truncated": false,
-      "workbook_sha256": "7d869eea66c70f3f681d30a3384b6181a6aa5adf7df1a9da850b4ba5fec34b85",
-      "checked_utc": "2026-10-29T12:12:38.029338+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "recovery": {
-        "stage": "correction_pending_source_recheck",
-        "unfinished": true,
-        "owner": "804 automated recovery",
-        "opened_utc": "2026-10-29T09:15:19.518032+00:00",
-        "updated_utc": "2026-10-29T12:12:38.030250+00:00",
-        "next_source_check_due_utc": "2026-10-29T12:27:38.030250+00:00",
-        "actions": [
-          "Refresh exact public product facts",
-          "Apply supported description and category repairs",
-          "Rerun independent all-row audit",
-          "Upload and verify only after audit passes"
-        ],
-        "issues": [
-          "Category lacks clear product-purpose evidence; manual review required",
-          "Complete outfit classified as one component",
-          "Primary product type and Category disagree: hoodie"
-        ],
-        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
-      },
-      "owner_authorized_exclusions": [],
-      "image_metadata_repairs": 0,
-      "description_repairs_count": 2,
-      "description_repairs_examples": [
-        {
-          "product_id": "CPc6ef36d33b0b",
-          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPb43a06c5ca13",
-          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
-          "repair_kind": "description"
-        }
-      ],
+      "store": "Beyond East",
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "40842703791",
       "source_artifact": 12885126819,
+      "error": "No module named 'ftfy'",
       "source_sha256": "9f2aa1fa209148631b29dd48a08f6cf23d343f5e7191dc9ad62ae45db2152412",
-      "refresh_generation": "refresh20261029-b80f4ca4",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/beyond-east/9f2aa1fa20914863/manifest.json"
+      "held_input": "inputs/fresh804-20261026-5d42fe35/beyond-east/9f2aa1fa20914863/manifest.json",
+      "checked_utc": "2026-10-29T12:57:10.311572+00:00"
     },
     "Alkaram Studio": {
       "name": "804 Audit",
@@ -8814,8 +8697,8 @@
     "SE10036": "inputs/fresh804-20261026-5d42fe35/rollback-se10036/b135ba6e802dd2e7/manifest.json",
     "SE10039": "inputs/fresh804-20261026-5d42fe35/rollback-se10039/36f360439f5b78e9/manifest.json"
   },
-  "audit804_last_store": "Sana Safinaz",
-  "audit804_progress_utc": "2026-10-29T12:57:07.645148+00:00",
+  "audit804_last_store": "Beyond East",
+  "audit804_progress_utc": "2026-10-29T12:57:10.311645+00:00",
   "audit804_auto_evidence_cache": [],
   "audit804_auto_evidence": {
     "status": "checked",
