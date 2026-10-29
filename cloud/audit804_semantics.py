@@ -16,6 +16,13 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  # Only explicit source garment-type strings; a generic vendor/brand is not purpose evidence.
  if re.fullmatch(r'(?i)(?:women|men|teens|kids|infants)\s+(?:stitched\s+[234]\s+piece(?:\s+shirt\s+trouser)?|(?:cotton\s+silk\s+)?shalwar|(?:special\s+)?kurta|trouser|earrings|bracelet|necklace|ring|eyebrow\s+kit|waistcoat\s+with\s+kurta\s+trouser)',str(source_type or '').strip()):body+=' Source-listed garment type: '+str(source_type)
  evidence=title+' '+body
+ if cat=='earrings' and has(r'^\s*Earrings\b',str(description)):return []
+ if cat=='necklaces' and has(r'^\s*Necklace\b',str(description)):return []
+ if cat=='jewellery sets' and has(r'^\s*Rings\b',str(description)) and has(r'\bearrings\b',body[:300]):return []
+ if cat=='hair claws' and has(r'\bcatcher\b',title) and has(r'\bclaw\s+clip\b',body):return []
+ if cat=='espadrilles' and has(r'\bespadrille\b',title):return []
+ if cat=='flip-flops' and has(r'\bfilp\s+flops?\b',title):return []
+ if cat=='woven shoes' and has(r'^Woven Shoes$',title):return []
  if cat=='unstitched suits' and has(r'Component Details\s*\(3 Piece\)',body) and len(re.findall(r'\d+(?:\.\d+)?\s*meters?\b',body,re.I))>=2 and has(r'\btrouser\b',body):return []
  if cat=='clothing sets' and has(r'(?im)^Trouser(?: Fabric)?[ \t]*:[ \t]*(?![ \t]*(?:Not\b|None\b|N/A\b))(?![^\n]*\bnot\s+included\b)[^\n]+',str(description)) and has(r'(?im)^(?:Shirt Fabric|Shirt Cut|Cut)\s*:',str(description)):return []
  if cat=='clothing sets' and has(r'^(?:SS\d+FOR|[BRDP]-)',title) and has(r'\b(?:shirt|kurta)\b.*\bpaired\s+with\b.*\b(?:trousers?|shalwar)\b',body):return []

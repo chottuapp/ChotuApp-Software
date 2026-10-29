@@ -119,6 +119,27 @@ def plain(value):
  if result.lstrip('\ufeff ').startswith('.product-card-container {') and marker in result:result=result[result.index(marker):]
  return result
 def tokens(value):return set(re.findall(r'\d+(?:[.,]\d+)?',plain(value)))
+def reviewed_photo_purpose(row,source):
+ """Independently validate source-bound inspected-image evidence, not classifier output.
+
+ Only supplies missing purpose evidence. Explicit stitching/contents conflicts,
+ commercial checks and source numeric preservation remain independent gates.
+ """
+ if not source:return False
+ path=Path(__file__).with_name('audit804-image-reviews.json')
+ if not path.exists():return False
+ from review_evidence_cache import read_review_evidence
+ identity=(str(source.get('product_id')),source.get('name'),source.get('source_url'))
+ cover={str(source.get(k) or '') for k in ('scraped_image_url (cover, auto)','final_image_url (cover/thumbnail — hosted link)')}
+ for fact in read_review_evidence(path).get('products',[]):
+  if (fact.get('product_id'),fact.get('name'),fact.get('source_url'))!=identity:continue
+  if fact.get('category')!=row.get('Category') or fact.get('image_url') not in cover:continue
+  if not str(fact.get('image_url','')).startswith('https://') or not re.fullmatch('[a-f0-9]{64}',fact.get('image_sha256','')):continue
+  if hashlib.sha256(str(source.get('description') or '').encode()).hexdigest()!=fact.get('input_description_sha256'):continue
+  if not fact.get('reviewed_utc') or not fact.get('scope'):continue
+  if fact.get('overview') and str(row.get('description') or '').startswith(fact['overview']):return True
+ return False
+
 def issues_for(row,source=None):
  name=plain(row.get('name'));description=plain(row.get('description'));category=plain(row.get('Category'));issues=[]
  from description_readability import issues as readability_issues
@@ -176,6 +197,7 @@ def issues_for(row,source=None):
   if (urlsplit(str(row['website_category_source_url'])).hostname or '').removeprefix('www.')==(urlsplit(str(row.get('source_url') or '')).hostname or '').removeprefix('www.'):
    verified_path=str(row.get('website_category_path') or '')
  semantic=review(name,review_description,category,str(row.get("sku") or ""),source_type=str(row.get("brand") or ""),verified_path=verified_path)
+ if semantic is None and reviewed_photo_purpose(row,source):semantic=[]
  if category and plain(row.get('brand')) and category.casefold()==plain(row.get('brand')).casefold() and semantic!=[]:issues.append('Brand name used as product Category')
  if semantic is not None:issues.extend(semantic)
  else:

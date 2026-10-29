@@ -24,6 +24,7 @@ def product_content(row):
  if host=='saya.pk':
   # A review widget follows the SKU/contents and precedes retained product options.
   raw=re.sub(r'(?ims)^Based on \d+ reviews? Write a review\s*\n.*?(?=^Product Options:|\Z)','',raw)
+  raw=re.sub(r'(?ims)^Be the first to write a review Write a review\s*\n.*?(?=^Product Options:|\Z)','',raw)
  if host=='shopmodest.pk':
   marker=re.search(r'(?i)Four bulk inquiry contact us at',raw)
   if marker:

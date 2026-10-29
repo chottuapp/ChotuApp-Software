@@ -302,7 +302,8 @@ def visual_review(row,store):
   if (item['store'],item['product_id'],item['name'],item['source_url'])!=(store,str(row.get('product_id')),row.get('name'),row.get('source_url')):continue
   if not item.get('image_url','').startswith('https://') or not re.fullmatch('[a-f0-9]{64}',item.get('image_sha256','')):continue
   description=str(row.get('description') or '')
-  if hashlib.sha256(description.encode()).hexdigest()==item['input_description_sha256'] or description.startswith(item['overview']):return item
+  digest=hashlib.sha256(description.encode()).hexdigest()
+  if digest==item['input_description_sha256'] or digest==item.get('cleaned_description_sha256') or description.startswith(item['overview']):return item
  return None
 
 def maali_kind(row,fact=None):
@@ -315,6 +316,8 @@ def maali_kind(row,fact=None):
 
 def category(row,store):
  name=str(row.get('name') or '');body=str(row.get('description') or '')
+ visual=visual_review(row,store)
+ if visual:return visual['category'],'reviewed_primary_product_image',visual['overview']+' Image: '+visual['image_url']+' SHA256: '+visual['image_sha256']
  if store=='Rios':
   strong_names=[('Lipsticks', '\\blipstick\\b'), ('Hair Brushes', '\\bhair\\s*brush\\b'), ('Hair Combs', '\\bcomb\\b'), ('Toothbrushes', '\\btooth\\s*brush\\b'), ('Face Serums', '\\bface\\s+serum\\b'), ('Face Scrubs & Exfoliators', '\\bfacial\\s+scrub\\b'), ('Face Wash', '\\bface\\s+wash\\b'), ('Sunscreen Sticks', '\\bsun\\s+stick\\b'), ('Makeup Primers', '\\bprimer\\b'), ('Highlighters', '\\b(?:strobe\\s+cream|ill+uminator)\\b'), ('Eyeshadow Palettes', '\\beyeshadow\\s+palette\\b'), ('Makeup Palettes', '\\b(?:face\\s+palette|3\\s+in\\s+1\\s+palette)\\b'), ('Eyebrow Pencils', '\\bbrow\\s+pencil\\b'), ('Eyebrow Pomades', '\\b(?:brow\\s+pomade|pomade\\s+brow)\\b'), ('Cosmetic Mirrors', '\\bcosmetic\\s+mirror\\b'), ('Foot Files', '\\bfoot\\s+filer\\b'), ('Cuticle Scissors', '\\bcuticle\\s+scissor\\b'), ('Makeup Puffs', '\\b(?:makeup\\s+puff|large\\s+puff|touch\\s+me\\s+puff)\\b'), ('Bath Brushes', '\\bbath\\s+brush\\b'), ('Scissors', '\\bscissor\\b'), ('Shaving Foams', '\\bshaving\\s+foam\\b'), ('Panty Liners', '\\bpanty\\s+liners\\b'), ('Sanitary Pads', '\\b(?:Kotex|Always)\\b.*\\bpads\\b'), ('Baby Skin Creams', '\\bbaby\\s+moisturizing\\s+cream\\b'), ('Travel Bottle Sets', '\\btravel\\s+bottle\\s*\\d+\\s*pc\\b'), ('Skin Soothing Gels', '\\bskin\\s+repairing\\b.*\\bsoothing\\s+gel\\b'), ('Stretch Mark Creams', '\\bstretch\\s+marks\\s+cream\\b'), ('Hair Removal Waxes', '\\b(?:sugar\\s+wax|hard\\s+wax\\s+beads)\\b'), ('Blemish Treatments', '\\bblemish\\s+control\\s+gel\\b')]
   for label,pattern in strong_names:
@@ -354,6 +357,13 @@ def category(row,store):
    for label,pattern in [('Tea Cup & Saucer Sets',r'\btea\s+cup\s+and\s+saucer\b'),('Robes',r'\brobe\b'),('Mugs',r'\bmug\b'),('Decorative Books',r'\bdummy\s+book\b'),('Serving Plates',r'\bplate\b'),('Bowls',r'\bbowl\b'),('Candy Jars',r'\bcandy\s+jar\b')]:
     if re.search(pattern,name,re.I):return label,'reviewed_source_object','Source explicitly names the sold object: '+name
   if store=='Limelight':
+   primary=clean.lstrip().splitlines()[0].strip().casefold() if clean.strip() else ''
+   if primary=='earrings':return 'Earrings','reviewed_primary_source_heading','Primary product description explicitly identifies earrings; chain/tassel are design details.'
+   if primary=='necklace':return 'Necklaces','reviewed_primary_source_heading','Primary product description explicitly identifies a necklace.'
+   if primary=='rings' and re.search(r'\bearrings\b',clean[:300],re.I):return 'Jewellery Sets','reviewed_source_pack_contents','Source pack lists both rings and earrings; no component-only classification.'
+   if re.search(r'\bcatcher\b',name,re.I) and re.search(r'\bclaw\s+clip\b',clean,re.I):return 'Hair Claws','reviewed_source_object','Primary description explicitly identifies a claw clip.'
+   for label,pattern in [('Espadrilles',r'\bespadrille\b'),('Flip-Flops',r'\bfilp\s+flops?\b'),('Woven Shoes',r'^Woven Shoes$')]:
+    if re.search(pattern,name,re.I):return label,'reviewed_source_object','Explicit source footwear object: '+name
    if re.search(r'\bco[ -]?ord\b',name,re.I) and re.search(r'\b(?:trousers?|shalwar|pants)\b',clean,re.I):return 'Clothing Sets','reviewed_source_contents','Source co-ord names coordinated upper and lower garments.'
    if re.search(r'\bset\b',name,re.I) and re.search(r'\b(?:top|shirt|blazer)\b',clean,re.I) and re.search(r'\b(?:trouser|bottom|shalwar)\b',clean,re.I):return 'Clothing Sets','reviewed_source_contents','Source set supplies labelled upper and lower garments.'
    if re.search(r'\b2\s*Piece\b.*\bKaftan\b',name,re.I):return 'Kaftan Sets','reviewed_source_object','Explicit source two-piece kaftan article; all supplied components retained.'
@@ -692,6 +702,20 @@ def category(row,store):
 
 def description(row,store):
  original=str(row.get('description') or '');name=str(row.get('name') or '');body=original.strip()
+ visual=visual_review(row,store)
+ if visual and not body.startswith(visual['overview']):
+  useful=original if body not in ('',name,'Rawayat','dsasd') else ''
+  if visual.get('replace_wrong_product_body'):useful=''
+  if visual.get('correct_leading_copy'):
+   old,new=visual['correct_leading_copy']
+   if useful.startswith(old):useful=new+useful[len(old):]
+  return visual['overview']+('\n\n'+useful if useful else '\n\nListing: '+name),'Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.'
+ if store=='Rios' and (body.split('\n\nProduct Options:')[0].strip() in ('',name) or len(re.findall(r'\w+',body))<5):
+  chosen=category(row,store)
+  kinds={'Hair Brushes':'a hairbrush','Makeup Brushes':'a makeup brush','Shaving Foams':'a shaving foam','Panty Liners':'a pack of panty liners','Face Scrubs & Exfoliators':'a facial scrub','Hair Removal Waxes':'a hair-removal wax','Skin Soothing Gels':'a skin-soothing gel','Lip Balms & Treatments':'a lip balm','Makeup Puffs':'a makeup puff','Travel Bottle Sets':'a travel bottle set'}
+  if chosen and chosen[0] in kinds:
+   lead=name+' is '+kinds[chosen[0]]+'.';tail=original[len(name):] if body.startswith(name) else '\n\n'+original
+   return lead+tail,'Rewrote explicit named object only; original pack quantities and options retained.'
  from reviewed_source_types import matched
  fact=public_facts(row,store);kind=matched(fact,store)
  if kind:
@@ -720,14 +744,6 @@ def description(row,store):
    return result,'Retained all saved details and added identity-verified source plant care; no care or pet-safety claims inferred.'
  if store=='Elite Cosmetics' and body==name and re.search(r'(?i)\broll.on\s+deodorant',name):return name+' is a roll-on deodorant.','Rewrote exact named deodorant identity; scent, audience, duration label and volume retained.'
  if store=='Rawayat' and name=='Gift Box' and body=='Add Gift Box & Bag':return 'Gift packaging comprising a gift box and bag.','Rewrote both explicitly offered packaging items; no size or material invented.'
- visual=visual_review(row,store)
- if visual and not body.startswith(visual['overview']):
-  useful=original if body not in ('',name,'Rawayat','dsasd') else ''
-  if visual.get('replace_wrong_product_body'):useful=''
-  if visual.get('correct_leading_copy'):
-   old,new=visual['correct_leading_copy']
-   if useful.startswith(old):useful=new+useful[len(old):]
-  return visual['overview']+('\n\n'+useful if useful else '\n\nListing: '+name),'Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.'
  if store not in STORES and store not in {'Aerosoft Studio','Bata','Servis','Ndure','Zero Lifestyle','Astore Bags'}:return original,None
  if (str(row.get('website_category_status') or '') in ('verified_navigation_membership','verified_product_breadcrumb')
      and str(row.get('website_category_path') or '').split(' > ')[0].casefold()=='fragrances'
