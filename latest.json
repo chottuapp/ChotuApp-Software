@@ -2062,7 +2062,7 @@
     "Pyari Walls": "source:ac470c8df431758bc12b7f87982c6dd62128586df4cf71711ff5e7c1edf9168e:Pyari Walls:5151875be00bc7e6ff13a8c6f4e2ae948b6bcd742496ba7ec4696d30a16093c0",
     "Prime Ticks": "source:191bdf26e04fe8aceddacb73b93fe8775e364217ba10c24fdf9fd725ef7744bd:Prime Ticks:5151875be00bc7e6ff13a8c6f4e2ae948b6bcd742496ba7ec4696d30a16093c0",
     "Design by DAS": "source:a192a8e6454e6c0397f830a58edcc1ba3f0eeb38f6115c5d6e3b29c580c3b2ea:Design by DAS:5151875be00bc7e6ff13a8c6f4e2ae948b6bcd742496ba7ec4696d30a16093c0",
-    "Xcessories Hub": "source:0e548be2e8594ade8805158cb6c96170b6d7a916722695f866d6642dab9802be:Xcessories Hub:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
+    "Xcessories Hub": "source:0e548be2e8594ade8805158cb6c96170b6d7a916722695f866d6642dab9802be:Xcessories Hub:5151875be00bc7e6ff13a8c6f4e2ae948b6bcd742496ba7ec4696d30a16093c0",
     "Beechtree": "source:ae3761df899b61a05207c868eb074db064243aa4129885d655cff2df1dbaff92:Beechtree:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "ChenOne": "source:f83a70b1e3a3b28123aa7fe8798f04f2720ba2b7596cc0feeff522e9f128e261:ChenOne:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Hush Puppies": "source:45e6a2543ef6fc48610b9036962092d05fab12a80aaa5f8f64a9a36affb625de:Hush Puppies:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
@@ -4053,15 +4053,121 @@
     },
     "Xcessories Hub": {
       "name": "804 Audit",
-      "status": "hold",
+      "version": "804-audit-v2",
       "store": "Xcessories Hub",
+      "shop_code": "SE10038",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 3042,
+      "findings_count": 9,
+      "findings": [
+        {
+          "product_id": "CP710be4c7476a",
+          "name": "Tapo C230 Pan/Tilt AI Home Security Wi-Fi Camera",
+          "source_url": "https://xcessorieshub.com/product/tapo-c230-pan-tilt-ai-home-security-wi-fi-camera/",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CP3ef8585c648e",
+          "name": "Amazfit Active 3 Premium",
+          "source_url": "https://xcessorieshub.com/product/amazfit-active-3-premium/",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP3f44bfb0184f",
+          "name": "BOYAMIC 2 AI-Powered Mini Dual Wireless Microphone",
+          "source_url": "https://xcessorieshub.com/product/boyamic-2-ai-powered-mini-dual-wireless-microphone/",
+          "issues": [
+            "Description lost source numeric facts"
+          ]
+        },
+        {
+          "product_id": "CP3fb5ddad0de2",
+          "name": "Huawei FreeBuds Pro 4",
+          "source_url": "https://xcessorieshub.com/product/huawei-freebuds-pro-4/",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPb368d4d10cc1",
+          "name": "Ugreen 90225 V5.3 Usb Bluetooth Adapter",
+          "source_url": "https://xcessorieshub.com/product/ugreen-90225-v5-3-usb-bluetooth-adapter/",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CPa5f2ac9095b8",
+          "name": "Youksh Samsung Galaxy S25 Anti Static Clear Glass Protector",
+          "source_url": "https://xcessorieshub.com/product/youksh-samsung-galaxy-s25-anti-static-clear-glass-protector/",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CP255fd3a95375",
+          "name": "Benks iPhone 16 Plus Aurora Armorpro Magnetic Kevlar Limited Edition",
+          "source_url": "https://xcessorieshub.com/product/benks-iphone-16-plus-aurora-armorpro-magnetic-kevlar-limited-edition/",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP2a7d4faf24f9",
+          "name": "Benks Iphone 16 Pro Magnetic Kevlar Limited Edition-Aurora",
+          "source_url": "https://xcessorieshub.com/product/benk-iphone-16-pro-magnetic-kevlar-limited-edition-aurora/",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP62e8d7cbd73e",
+          "name": "Benks iPhone 16 Pro Max  Montage Kevlar Limited  Edition \u2013 Aurora",
+          "source_url": "https://xcessorieshub.com/product/benks-iphone-16-pro-max-montage-kevlar-limited-edition-aurora/",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        }
+      ],
+      "details_truncated": false,
+      "workbook_sha256": "283847e161e8b142c1ed6362debf9d6739ff6f7759bb80fd8d61df5ca34cd15a",
+      "checked_utc": "2026-10-29T14:14:41.763867+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-29T14:14:41.768661+00:00",
+        "updated_utc": "2026-10-29T14:14:41.768661+00:00",
+        "next_source_check_due_utc": "2026-10-29T14:29:41.768661+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved",
+          "Description lacks enough product-specific content for review",
+          "Description lost source numeric facts"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "40871470513",
       "source_artifact": 12897951667,
-      "error": "No module named 'ftfy'",
       "source_sha256": "0e548be2e8594ade8805158cb6c96170b6d7a916722695f866d6642dab9802be",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/xcessories-hub/0e548be2e8594ade/manifest.json",
-      "checked_utc": "2026-10-29T13:00:43.927783+00:00"
+      "refresh_generation": "refresh20261029-b80f4ca4",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/xcessories-hub/0e548be2e8594ade/manifest.json"
     },
     "Beechtree": {
       "name": "804 Audit",
@@ -4418,8 +4524,8 @@
     "SE10036": "inputs/fresh804-20261026-5d42fe35/rollback-se10036/447e954cc7c6ddcb/manifest.json",
     "SE10039": "inputs/fresh804-20261026-5d42fe35/rollback-se10039/038c9f201d898fde/manifest.json"
   },
-  "audit804_last_store": "Design by DAS",
-  "audit804_progress_utc": "2026-10-29T14:13:58.578219+00:00",
+  "audit804_last_store": "Xcessories Hub",
+  "audit804_progress_utc": "2026-10-29T14:14:41.769162+00:00",
   "audit804_auto_evidence_cache": [],
   "audit804_auto_evidence": {
     "status": "checked",
