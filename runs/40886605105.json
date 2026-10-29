@@ -950,6 +950,26 @@
       "refresh_generation": "refresh20261029-b80f4ca4",
       "replaced_file": null,
       "file_name": "Sana Safinaz.xlsx"
+    },
+    "Beyond East": {
+      "shop_code": null,
+      "source_run": "40842703791",
+      "sha256": "1ac6ff8d51f1a5dcc28de1855106e514197ddaa3f675bb1f85864ce7784c1e42",
+      "source_sha256": "9f2aa1fa209148631b29dd48a08f6cf23d343f5e7191dc9ad62ae45db2152412",
+      "folder": "ChotuApp 19-10-2026 11-36AM",
+      "verified_utc": "2026-10-29T14:20:51.435238+00:00",
+      "audit804": {
+        "name": "804 Audit",
+        "status": "pass",
+        "checked_utc": "2026-10-29T14:19:50.272438+00:00",
+        "products_checked": 495,
+        "workbook_sha256": "1ac6ff8d51f1a5dcc28de1855106e514197ddaa3f675bb1f85864ce7784c1e42"
+      },
+      "rule804": "applied; 804 Audit passed",
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "refresh_generation": "refresh20261029-b80f4ca4",
+      "replaced_file": null,
+      "file_name": "Beyond East.xlsx"
     }
   },
   "daily_uploads": {
@@ -2170,6 +2190,26 @@
         "refresh_generation": "refresh20261029-b80f4ca4",
         "replaced_file": null,
         "file_name": "Sana Safinaz.xlsx"
+      },
+      "Beyond East": {
+        "shop_code": null,
+        "source_run": "40842703791",
+        "sha256": "1ac6ff8d51f1a5dcc28de1855106e514197ddaa3f675bb1f85864ce7784c1e42",
+        "source_sha256": "9f2aa1fa209148631b29dd48a08f6cf23d343f5e7191dc9ad62ae45db2152412",
+        "folder": "ChotuApp 19-10-2026 11-36AM",
+        "verified_utc": "2026-10-29T14:20:51.435238+00:00",
+        "audit804": {
+          "name": "804 Audit",
+          "status": "pass",
+          "checked_utc": "2026-10-29T14:19:50.272438+00:00",
+          "products_checked": 495,
+          "workbook_sha256": "1ac6ff8d51f1a5dcc28de1855106e514197ddaa3f675bb1f85864ce7784c1e42"
+        },
+        "rule804": "applied; 804 Audit passed",
+        "campaign_id": "fresh804-20261026-5d42fe35",
+        "refresh_generation": "refresh20261029-b80f4ca4",
+        "replaced_file": null,
+        "file_name": "Beyond East.xlsx"
       }
     }
   },
@@ -2309,7 +2349,7 @@
     "Habitt": "source:c8aab12f8d634ccb6904b4b51ef9cc298fffe29b7b7d2c945e26bb18fbac50f1:Habitt:5151875be00bc7e6ff13a8c6f4e2ae948b6bcd742496ba7ec4696d30a16093c0",
     "Mala": "source:a7fb984e063e2a705c4562845d17530515892af3204ac7fbe499a7881942c165:Mala:5151875be00bc7e6ff13a8c6f4e2ae948b6bcd742496ba7ec4696d30a16093c0",
     "Sana Safinaz": "source:437ddc4778ecd017fc7bd36d62499401409fa1ee326f67f063ae05d5b88ac564:Sana Safinaz:5151875be00bc7e6ff13a8c6f4e2ae948b6bcd742496ba7ec4696d30a16093c0",
-    "Beyond East": "source:9f2aa1fa209148631b29dd48a08f6cf23d343f5e7191dc9ad62ae45db2152412:Beyond East:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
+    "Beyond East": "source:9f2aa1fa209148631b29dd48a08f6cf23d343f5e7191dc9ad62ae45db2152412:Beyond East:5151875be00bc7e6ff13a8c6f4e2ae948b6bcd742496ba7ec4696d30a16093c0",
     "Alkaram Studio": "source:096fe77a2b7cbd9e733a31c6646ed9a64e12985fee697c4136bd4dd9f6e1ae6b:Alkaram Studio:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Generation": "source:4b4b9894240083669a8cf95f983d6d4a74e85ffaa4bc1c363d3513fa22b30f33:Generation:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Breakout": "source:159bb63b32b2ca2fbddc39f2ef42f23b86febde3cab88f27a81b761e7d1924c3:Breakout:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
@@ -4790,15 +4830,48 @@
     },
     "Beyond East": {
       "name": "804 Audit",
-      "status": "hold",
+      "version": "804-audit-v2",
       "store": "Beyond East",
+      "shop_code": null,
+      "identity_policy": "owner_authorized_blank_code_exact_store_filename",
+      "status": "pass",
+      "products_checked": 495,
+      "findings_count": 0,
+      "findings": [],
+      "details_truncated": false,
+      "workbook_sha256": "1ac6ff8d51f1a5dcc28de1855106e514197ddaa3f675bb1f85864ce7784c1e42",
+      "checked_utc": "2026-10-29T14:19:50.272438+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "description_repairs_count": 3,
+      "description_repairs_examples": [
+        {
+          "product_id": "CP3453edeebbb7",
+          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPc6ef36d33b0b",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPb43a06c5ca13",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        }
+      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "40842703791",
       "source_artifact": 12885126819,
-      "error": "No module named 'ftfy'",
       "source_sha256": "9f2aa1fa209148631b29dd48a08f6cf23d343f5e7191dc9ad62ae45db2152412",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/beyond-east/9f2aa1fa20914863/manifest.json",
-      "checked_utc": "2026-10-29T12:57:10.311572+00:00"
+      "refresh_generation": "refresh20261029-b80f4ca4",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/beyond-east/9f2aa1fa20914863/manifest.json"
     },
     "Alkaram Studio": {
       "name": "804 Audit",
@@ -5071,8 +5144,8 @@
     "SE10036": "inputs/fresh804-20261026-5d42fe35/rollback-se10036/447e954cc7c6ddcb/manifest.json",
     "SE10039": "inputs/fresh804-20261026-5d42fe35/rollback-se10039/038c9f201d898fde/manifest.json"
   },
-  "audit804_last_store": "Sana Safinaz",
-  "audit804_progress_utc": "2026-10-29T14:19:43.643950+00:00",
+  "audit804_last_store": "Beyond East",
+  "audit804_progress_utc": "2026-10-29T14:20:51.435716+00:00",
   "audit804_auto_evidence_cache": [],
   "audit804_auto_evidence": {
     "status": "checked",
