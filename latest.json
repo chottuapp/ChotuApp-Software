@@ -2086,7 +2086,7 @@
     "Tawakkal Fabrics": "source:db5c6db1c188815d2b65d36989f29f6b8a1a8517cf8b6f1dd2826e104d6fcd6d:Tawakkal Fabrics:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Elite Cosmetics": "source:c03d83ba7135c185639d349300ce6eb45833f95e602cf3c3f5cc2b1b56d367e9:Elite Cosmetics:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Hemani Herbals": "source:0e0ef6416ad588d914422b3b5105c86697cd01fa320e6939cf1f321d5d4f5ce9:Hemani Herbals:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
-    "Astore Bags": "source:6d02f3d97fbe66b9f5b4d7c17a5b62b4080ac67667971b3d4f7ca1381b846e80:Astore Bags:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
+    "Astore Bags": "source:6d02f3d97fbe66b9f5b4d7c17a5b62b4080ac67667971b3d4f7ca1381b846e80:Astore Bags:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Rawayat": "source:4a4a5026f905f9a585f61c31ef663298e1ddb722fc4ce146f56407035adc0f14:Rawayat:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Outfitters": "source:aa2b5c7214051a00d6663815291a95d9ad18cf5237e45112133aa2fda7109124:Outfitters:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Bonanza Satrangi": "source:3e2fe231c3fa83cc61d2eb3544187b3be163321469bf377692ba8d3d31fec2c8:Bonanza Satrangi:12ca0d891b74d46a5c0aa0eef8bd89e14744c35d5bbb3f24a6c2205d8610866e",
@@ -2397,42 +2397,15 @@
     },
     "Astore Bags": {
       "name": "804 Audit",
-      "version": "804-audit-v2",
+      "status": "hold",
       "store": "Astore Bags",
-      "shop_code": "SE10030",
-      "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 228,
-      "findings_count": 0,
-      "findings": [],
-      "details_truncated": false,
-      "workbook_sha256": "7bed19c9c2ce4fcd18438b1ded0f8e33f3a412db02565d4a35e4e272c3fb13f0",
-      "checked_utc": "2026-10-29T12:46:45.165913+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
-      },
-      "owner_authorized_exclusions": [],
-      "image_metadata_repairs": 0,
-      "description_repairs_count": 2,
-      "description_repairs_examples": [
-        {
-          "product_id": "CPa88220ee85fc",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP0a7f2473504d",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        }
-      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "40842632961",
       "source_artifact": 12884701782,
+      "error": "No module named 'ftfy'",
       "source_sha256": "6d02f3d97fbe66b9f5b4d7c17a5b62b4080ac67667971b3d4f7ca1381b846e80",
-      "refresh_generation": "refresh20261029-b80f4ca4"
+      "held_input": "inputs/fresh804-20261026-5d42fe35/astore-bags/6d02f3d97fbe66b9/manifest.json",
+      "checked_utc": "2026-10-29T12:59:47.175221+00:00"
     },
     "Rawayat": {
       "name": "804 Audit",
@@ -3541,8 +3514,8 @@
     "SE10036": "inputs/fresh804-20261026-5d42fe35/rollback-se10036/b135ba6e802dd2e7/manifest.json",
     "SE10039": "inputs/fresh804-20261026-5d42fe35/rollback-se10039/36f360439f5b78e9/manifest.json"
   },
-  "audit804_last_store": "Ndure",
-  "audit804_progress_utc": "2026-10-29T12:59:42.831911+00:00",
+  "audit804_last_store": "Astore Bags",
+  "audit804_progress_utc": "2026-10-29T12:59:47.175317+00:00",
   "audit804_auto_evidence_cache": [],
   "audit804_auto_evidence": {
     "status": "checked",
