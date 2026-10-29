@@ -2078,7 +2078,7 @@
     "Aerosoft Studio": "source:74a11a493ac0151d3152ff970e262c9c4e6e1d2aa2ee41c9ed9bfc210245f17a:Aerosoft Studio:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
     "Rivaj UK": "source:19251a0f2ffbd1f36634ad6a8071504ab3c88838b1c06f070737dcd4bd3770fd:Rivaj UK:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Vince Care": "source:0616b267d7dd24d01eb41af455463a2b8835340a703deb2603de73080e223eb4:Vince Care:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
-    "Computer Zone": "source:f47fb6677a447bf4e5d51d037ddcab138ac4c78ab25204cb10cba2d17e6b7410:Computer Zone:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
+    "Computer Zone": "source:f47fb6677a447bf4e5d51d037ddcab138ac4c78ab25204cb10cba2d17e6b7410:Computer Zone:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Bata": "source:e69c658528007ff8a988bd464e3ca24e54cd39c97384a106ee7375a063001ba1:Bata:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Servis": "source:00b49a41b746bd30722c8a43e36e09fac716a1984d55748b02ef3ba7d0232407:Servis:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
     "Ndure": "source:ad221a8e643f303e4985c5703b79c2505c6ab0c8784f57c2f6301e8b06dafb17:Ndure:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
@@ -2504,32 +2504,15 @@
     },
     "Computer Zone": {
       "name": "804 Audit",
-      "version": "804-audit-v2",
+      "status": "hold",
       "store": "Computer Zone",
-      "shop_code": "SE10015",
-      "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 855,
-      "findings_count": 0,
-      "findings": [],
-      "details_truncated": false,
-      "workbook_sha256": "68a9261927b4ae3b0bb6b7df01772b51b5cc86c20866dd33cb1367ddd7dde4fc",
-      "checked_utc": "2026-10-29T12:32:43.869499+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
-      },
-      "owner_authorized_exclusions": [],
-      "image_metadata_repairs": 0,
-      "description_repairs_count": 0,
-      "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "40842568289",
       "source_artifact": 12884004891,
+      "error": "No module named 'ftfy'",
       "source_sha256": "f47fb6677a447bf4e5d51d037ddcab138ac4c78ab25204cb10cba2d17e6b7410",
-      "refresh_generation": "refresh20261029-b80f4ca4",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/computer-zone/f47fb6677a447bf4/manifest.json"
+      "held_input": "inputs/fresh804-20261026-5d42fe35/computer-zone/f47fb6677a447bf4/manifest.json",
+      "checked_utc": "2026-10-29T12:58:41.124313+00:00"
     },
     "Bata": {
       "name": "804 Audit",
@@ -3893,8 +3876,8 @@
     "SE10036": "inputs/fresh804-20261026-5d42fe35/rollback-se10036/b135ba6e802dd2e7/manifest.json",
     "SE10039": "inputs/fresh804-20261026-5d42fe35/rollback-se10039/36f360439f5b78e9/manifest.json"
   },
-  "audit804_last_store": "Nisa Naturals",
-  "audit804_progress_utc": "2026-10-29T12:58:38.044872+00:00",
+  "audit804_last_store": "Computer Zone",
+  "audit804_progress_utc": "2026-10-29T12:58:41.124385+00:00",
   "audit804_auto_evidence_cache": [],
   "audit804_auto_evidence": {
     "status": "checked",
