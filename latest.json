@@ -1,47 +1,48 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-29T09:51:55.175486+00:00",
-  "run_id": "40842690964",
+  "generated_utc": "2026-10-29T09:51:54.439348+00:00",
+  "run_id": "40842683420",
   "attempt": "1",
   "source_commit": "86c9743ad68cfe17b4e665ef18403cb36ac96f4e",
-  "status": "complete",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 4487.5,
+  "elapsed_seconds": 4589.1,
   "stores": [
     {
-      "name": "Generation",
-      "status": "done",
-      "review_required": true,
+      "name": "Liberty Books",
+      "status": "source_paused",
+      "review_required": false,
       "issue_codes": [
+        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "5c4a5331f70a5729",
-      "products": 736,
-      "variants": 6018,
       "http_statuses": {
-        "200": 7659
+        "200": 1410,
+        "404": 3,
+        "429": 6
       },
-      "network_seconds": 3766.8,
-      "max_response_seconds": 7.2,
-      "cache_events": 8367
+      "network_seconds": 4228.7,
+      "max_response_seconds": 5.1,
+      "cache_events": 996
     },
     {
-      "name": "Saya",
+      "name": "ChenOne",
       "status": "done",
       "review_required": true,
-      "issue_codes": [
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
+      "issue_codes": [],
       "software_revision": "5c4a5331f70a5729",
-      "products": 3878,
-      "variants": 14480,
+      "products": 372,
+      "variants": 1202,
       "http_statuses": {
-        "200": 12089
+        "200": 883
       },
-      "network_seconds": 5584.9,
-      "max_response_seconds": 6.2,
-      "cache_events": 15917
+      "network_seconds": 418.6,
+      "max_response_seconds": 2.6,
+      "cache_events": 1397
     }
   ]
 }
