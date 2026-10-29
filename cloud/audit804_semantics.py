@@ -16,6 +16,37 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  # Only explicit source garment-type strings; a generic vendor/brand is not purpose evidence.
  if re.fullmatch(r'(?i)(?:women|men|teens|kids|infants)\s+(?:stitched\s+[234]\s+piece(?:\s+shirt\s+trouser)?|(?:cotton\s+silk\s+)?shalwar|(?:special\s+)?kurta|trouser|earrings|bracelet|necklace|ring|eyebrow\s+kit|waistcoat\s+with\s+kurta\s+trouser)',str(source_type or '').strip()):body+=' Source-listed garment type: '+str(source_type)
  evidence=title+' '+body
+ if cat=='unstitched suits' and has(r'Component Details\s*\(3 Piece\)',body) and len(re.findall(r'\d+(?:\.\d+)?\s*meters?\b',body,re.I))>=2 and has(r'\btrouser\b',body):return []
+ if cat=='clothing sets' and has(r'(?im)^Trouser(?: Fabric)?[ \t]*:[ \t]*(?![ \t]*(?:Not\b|None\b|N/A\b))(?![^\n]*\bnot\s+included\b)[^\n]+',str(description)) and has(r'(?im)^(?:Shirt Fabric|Shirt Cut|Cut)\s*:',str(description)):return []
+ if cat=='clothing sets' and has(r'^(?:SS\d+FOR|[BRDP]-)',title) and has(r'\b(?:shirt|kurta)\b.*\bpaired\s+with\b.*\b(?:trousers?|shalwar)\b',body):return []
+ household_objects={'tea cup & saucer sets':r'\btea\s+cup\s+and\s+saucer\b','robes':r'\brobe\b','mugs':r'\bmug\b','decorative books':r'\bdummy\s+book\b','serving plates':r'\bplate\b','bowls':r'\bbowl\b','candy jars':r'\bcandy\s+jar\b'}
+ if cat in household_objects and has(household_objects[cat],title):return []
+ primary_cosmetic_objects={'lipsticks': '\\blipstick\\b', 'hair brushes': '\\bhair\\s*brush\\b', 'hair combs': '\\bcomb\\b', 'toothbrushes': '\\btooth\\s*brush\\b', 'face serums': '\\bface\\s+serum\\b', 'face scrubs & exfoliators': '\\bfacial\\s+scrub\\b', 'face wash': '\\bface\\s+wash\\b', 'sunscreen sticks': '\\bsun\\s+stick\\b', 'makeup primers': '\\bprimer\\b', 'highlighters': '\\b(?:strobe\\s+cream|ill+uminator)\\b', 'eyeshadow palettes': '\\beyeshadow\\s+palette\\b', 'makeup palettes': '\\b(?:face\\s+palette|3\\s+in\\s+1\\s+palette)\\b', 'eyebrow pencils': '\\bbrow\\s+pencil\\b', 'eyebrow pomades': '\\b(?:brow\\s+pomade|pomade\\s+brow)\\b', 'cosmetic mirrors': '\\bcosmetic\\s+mirror\\b', 'foot files': '\\bfoot\\s+filer\\b', 'cuticle scissors': '\\bcuticle\\s+scissor\\b', 'makeup puffs': '\\b(?:makeup\\s+puff|large\\s+puff|touch\\s+me\\s+puff)\\b', 'bath brushes': '\\bbath\\s+brush\\b', 'scissors': '\\bscissor\\b', 'shaving foams': '\\bshaving\\s+foam\\b', 'panty liners': '\\bpanty\\s+liners\\b', 'sanitary pads': '\\b(?:Kotex|Always)\\b.*\\bpads\\b', 'baby skin creams': '\\bbaby\\s+moisturizing\\s+cream\\b', 'travel bottle sets': '\\btravel\\s+bottle\\s*\\d+\\s*pc\\b', 'skin soothing gels': '\\bskin\\s+repairing\\b.*\\bsoothing\\s+gel\\b', 'stretch mark creams': '\\bstretch\\s+marks\\s+cream\\b', 'hair removal waxes': '\\b(?:sugar\\s+wax|hard\\s+wax\\s+beads)\\b', 'blemish treatments': '\\bblemish\\s+control\\s+gel\\b'}
+ if cat in primary_cosmetic_objects and has(primary_cosmetic_objects[cat],title):return []
+ taxonomy_objects={'bridal outfits':r'\b(?:Sana Safinaz bridal outfit|bridal outfit from Sana Safinaz)\b','couture outfits':r'\b(?:Sana Safinaz couture outfit|couture outfit from Sana Safinaz)\b','ashtrays':r'\bashtray\b','serving platters':r'\bserving\s+platter\b','wrapping papers':r'\bgift.wrapping\s+sheet\b','cushions & covers':r'\bdecorative\s+cushion\s+item\b'}
+ if cat in taxonomy_objects and has(taxonomy_objects[cat],body[:180]):return []
+ if cat=='clothing sets' and has(r'\bis a coordinated clothing set\b',body[:len(title)+120]):return []
+ if cat=='clothing sets' and has(r'\b(?:co[ -]?ord|set)\b',title) and has(r'\b(?:top|shirt|blazer)\b',body) and has(r'\b(?:trouser|bottom|shalwar)\b',body):return []
+ if cat=='kaftan sets' and has(r'\b2\s*Piece\b.*\bKaftan\b',title):return []
+ more_objects={'palazzo trousers':r'\bplazzo\b','pishwas dresses':r'\bpishwas\b','headbands':r'\bhair\s+band\b','heels':r'\bheels\b','slingback shoes':r'\bslingback\b','loafers':r'\bloafers\b','boots':r'\bboots\b','gharara trousers':r'\bgharara\b','ear cuffs':r'\bear\s+cuff\b'}
+ if cat in more_objects and has(more_objects[cat],title):return []
+ if cat=='hair claws' and has(r'\bclaw\s+clip\b',body) and has(r'\bcatcher\b',title):return []
+ if cat=='unstitched suits' and has(r'\bsuit\b',title) and len(re.findall(r'\d+(?:\.\d+)?\s*M(?:eters?|etres?|tr)?\b',body,re.I))>=2 and all(has(r'\b'+x+r'\b',body) for x in ('shirt','trouser','dupatta','fabric')) and not has(r'\bfit type\b',body):return []
+ if cat=='bedroom furniture sets' and has(r'\bbed\s+with\s+side\s+tables\b',title+' '+body):return []
+ if cat=='bedroom furniture sets' and has(r'\bpackage\b',title) and has(r'\bbed\b',body) and has(r'\bdressing\s+table\b',body):return []
+ if cat=='dining sets' and has(r'\bpackage\b',title) and has(r'\btable\b.*\bchairs\b',body):return []
+ if cat=='coffee table sets' and has(r'\bcoffee\s+table\b',title) and has(r'TABLE-A.*TABLE-B',body):return []
+ if cat=='duvets' and has(r'\bduvet\b',title) and not has(r'\bcover\b',title):return []
+ if cat=='pillows' and has(r'\bpillow\b',title) and not has(r'\bcover\b',title):return []
+ photo_objects={'french press coffee makers':r'\bFrench\s+press\s+coffee\s+maker\b','kitchen knives':r'\bkitchen\s+knife\b','kitchen utensil holders':r'\bholder\s+for\s+kitchen\s+utensils\b','fruit knife sets':r'\bfruit\s+knife\s+set\b','storage jar sets':r'\bstorage\s+jar\s+set\b'}
+ if cat in photo_objects and has(photo_objects[cat],title+' '+body[:180]):return []
+ type_aliases={'lip glosses':r'\blip\s+gloss\b','lip liners':r'\blip\s+(?:pencil|liner)\b','body sprays':r'\bbody\s+spray\b','concealers':r'\bconcealer\b','skin cleansers':r'\bskin\s+cleanser\b','skin moisturisers':r'\bskin\s+moisturiser\b','skincare pads':r'\bampoule\s+skincare\s+pad\b','caps':r'\bcap\b','coats':r'\bcoat\b','decorative charms':r'\bdecorative\s+charm\b','knitted throws':r'\bknitted\s+throw\b','coverlet sets':r'\bcoverlet\s+set\b','sectional sofas':r'\bL-shaped\s+sofa\b','filled cushions':r'\bfilled\s+cushion\b','storage baskets':r'\bstorage\s+basket\b'}
+ if cat in type_aliases and has(type_aliases[cat],title+' '+body[:len(title)+120]):return []
+ if cat=='clothing sets' and has(r'\bset\b',title) and has(r'\bpaired\s+with\b',body) and has(r'\b(?:shirt|kurta|kameez)\b',body) and has(r'\b(?:trousers?|shalwar|culottes|lower|dupatta)\b',body):return []
+ if cat=='potli bags' and has(r'\bpotli\b',title):return []
+ if cat=='reading kits' and has(r'\breading\s+kit\b',title):return []
+ if cat=='sarees' and has(r'\bsaree\b',title):return []
+ if cat=='tunics' and has(r'^1 Piece .*Suit$',title) and has(r'\btunic\b',body):return []
  if cat=='clothing sets' and has(r'\bsuit\b.*-3P\b',title):return []
  if cat=='unstitched suits' and has(r'\bsuit\b',title) and len(re.findall(r'\d+(?:\.\d+)?\s*M(?:eters?|etres?|tr)?\b',body,re.I))>=2 and has(r'\b(?:front|back|sleeves)\b',body) and has(r'\b(?:trouser|dupatta)\b',body) and not has(r'\bfit type\b',body):return []
  explicit_accessories={'lapel pins':r'\blapel\s+pin\b','cufflinks':r'\bcufflinks?\b','bow ties':r'\bbow\s+tie\b','pocket squares':r'\bpocket\s+square\b','collar bars':r'\bcollar\s+bar\b','lehenga sets':r'\blehenga\s+suit\b','maxi dresses':r'\bmaxi\b','formal suits':r'\b(?:tuxedo|formal)\s+suit\b','satchel bags':r'\bsatchel\b'}
@@ -34,7 +65,7 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  if cat in reviewed_objects and has(reviewed_objects[cat],evidence):return []
  if cat=='clothing sets' and has(r'\b(?:co[ -]?ords?\s+set|duo[ -]set|suit)\b',title) and has(r'\b(?:shirt|top|kurta|kameez)\b',body) and has(r'\b(?:trouser|pants?|shalwar|lower|gharara)\b',body):return []
  if cat=='clothing sets' and has(r'\bstitched\b',title) and has(r'\b2\s*Pcs\b.*\bS\+T\b',body):return []
- if cat=='clothing sets' and all(has(r'(?im)^'+x+r'\s*:\s*(?!Not\b|None\b|N/A\b)[^\n]+\bIncluded\b',str(description)) for x in ('Dupatta','Trouser')):return []
+ if cat=='clothing sets' and all(has(r'(?im)^'+x+r'[ \t]*:[ \t]*(?![ \t]*(?:Not\b|None\b|N/A\b))(?![^\n]*\bnot\s+included\b)[^\n]+\bIncluded\b',str(description)) for x in ('Dupatta','Trouser')):return []
  if cat=='unstitched fabric' and has(r'\bready\s+to\s+stitch\b',title) and has(r'\b\d+(?:\.\d+)?\s*meters?\b',body):return []
  if cat=='niqabs' and has(r'\bniqab\b',title) and not has(r'\b(?:khimar|abaya)\b',title):return []
  if cat=='khimar sets' and has(r'\bkhimar\b.*\bwith\s+niqab\b',title):return []
@@ -167,7 +198,10 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  clothing=has(r'\brtw\b|\bun[ -]?stitched\b|\b(?:stitched|shirts?|kurt[ai]s?|kameez|trousers?|dupattas?|kaftans?|hoodies?|sweaters?|polo|tees?|frocks?|gharara|sharara|suits?|dress(?:es)?|maxi|outfits?|ensembles?|shawls?|boxers?)\b',evidence)
  if has(r'\bmother size\s*:',description) and has(r'\bkid size\s*:',description) and has(r'\b[234]\s*piece\b',title):clothing=True
  if cat=='shawls' and has(r'^SHAWL[-_]',sku) and has(r'velvet|shawl',evidence):return []
- multi=has(r'\b[234]\s*[- ]?\s*(?:pc|piece)s?\b',title) or has(r'\b(?:rtw|unstitched|stitched|suit|outfit)\s*[:-]?\s*[234]\s*(?:pc|piece)s?\b|\b[234]\s*[- ]?(?:pc|piece)s?\b.{0,70}\b(?:outfit|ensemble|suit|stitched)\b',body)
+ multi_body=body
+ if has(r'^1\s*Piece\b.*\bShirt\b',title):
+  multi_body=re.sub(r'(?i)(?:matching(?:\s+piece)?\s*:|(?:to\s+)?pairs?\s+(?:(?:beautifully|perfectly)\s+)?with)[^.!?]*(?:[.!?]|$)',' ',body)
+ multi=has(r'\b[234]\s*[- ]?\s*(?:pc|piece)s?\b',title) or has(r'\b(?:rtw|unstitched|stitched|suit|outfit)\s*[:-]?\s*[234]\s*(?:pc|piece)s?\b|\b[234]\s*[- ]?(?:pc|piece)s?\b.{0,70}\b(?:outfit|ensemble|suit|stitched)\b',multi_body)
  state_evidence=re.split(r'(?i)Note: Stitched Orders|Product Options:',evidence,maxsplit=1)[0]
  unstitched=has(r'\bun[ -]?stitched\b',state_evidence)
  ready=has(r'\brtw\b|ready[ -]to[ -]wear|\bstitched\b',re.sub(r'\b(?:un|semi)[ -]?stitched\b','',state_evidence,flags=re.I))

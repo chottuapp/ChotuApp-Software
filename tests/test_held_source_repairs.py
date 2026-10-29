@@ -23,3 +23,12 @@ class HeldSourceRepairs(unittest.TestCase):
  def test_named_pins_do_not_gain_invented_material_or_pack_count(self):
   fixed,_=description({'name':'circle hijab pins','description':'circle hijab pins'},'Mala')
   self.assertIn('Circular pins',fixed);self.assertNotIn('metal',fixed);self.assertNotIn('set',fixed)
+ def test_not_included_cannot_be_read_as_included_after_whitespace(self):
+  for space in (' ','   ','\t'):
+   body='Cut: Basic\nDupatta:'+space+'Not Included\nTrouser:'+space+'Not Included'
+   row={'name':'SX24BSP302','description':body}
+   self.assertIsNone(category(row,'Sana Safinaz'))
+   self.assertIsNone(review(row['name'],body,'Clothing Sets'))
+ def test_cross_sell_is_not_outfit_contents_but_real_conflict_stays_visible(self):
+  self.assertEqual(review('1 Piece Printed Cambric Shirt',"A printed cambric shirt. Matching Piece: Pairs beautifully with Girls' 2-Piece Suit.",'Shirts'),[])
+  self.assertEqual(review('1 Piece Embroidered Lawn Shirt','A black 2-piece stitched suit.','Shirts'),['Complete outfit classified as one component'])

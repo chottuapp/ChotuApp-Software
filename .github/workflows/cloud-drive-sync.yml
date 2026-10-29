@@ -24,7 +24,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m pip install requests beautifulsoup4 openpyxl
+      - run: python -m pip install requests beautifulsoup4 openpyxl ftfy==6.3.1
+      - name: Verify description-repair dependencies before touching Drive
+        env:
+          PYTHONPATH: cloud:.
+        run: python -c "from description_readability import format_description; from reviewed_source_types import matched; assert 'Green' in format_description('Color Green Ã‚Â '); assert matched({'product_type':'Accessories'},'Rios') is None"
       - run: sudo apt-get update -qq && sudo apt-get install -y rclone
       - name: Rule 804 checked files only, then checksum verification
         env:

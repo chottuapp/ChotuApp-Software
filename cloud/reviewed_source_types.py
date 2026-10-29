@@ -31,7 +31,7 @@ TYPES={
  'alpha collection coverlet sets':('Coverlet Sets','a coverlet set'),'ottomans':('Ottomans','an ottoman'),
  'l-shape sofas':('Sectional Sofas','an L-shaped sofa'),'jeggings':('Jeggings','a pair of jeggings'),
  'co-ord sets':('Clothing Sets','a coordinated clothing set'),'co-ords':('Clothing Sets','a coordinated clothing set'),
- 'cap':('Caps','a cap'),'coat':('Coats','a coat'),'shoes':('Shoes','footwear'),
+ 'cap':('Caps','a cap'),'coat':('Coats','a coat'),
  'charms':('Decorative Charms','a decorative charm'),
 }
 STORES={'Rios','ChenOne','Breakout','Limelight'}
