@@ -1,5 +1,6 @@
 """Allowlisted public WooCommerce Store API adapter; exact variation offers only."""
 import csv,html,json,re,time,itertools,hashlib,base64,gzip
+import requests
 from pathlib import Path
 from datetime import datetime,timezone
 from types import SimpleNamespace
@@ -61,6 +62,20 @@ def variants(parent,get):
    combinations[key]=v;result.append((v,selected))
 
  return result
+
+def absent_public_catalog(p,response):
+ """A fresh exact-slug lookup corroborates a missing public detail record.
+
+ Only an explicit empty successful Store API list is evidence. Redirects,
+ blocked pages, invalid JSON and ignored filters are never removal proof.
+ """
+ before=urlsplit(p['permalink']);after=urlsplit(response.url)
+ if response.status_code!=200 or after.hostname!=before.hostname or after.path.rstrip('/')!='/wp-json/wc/store/v1/products':return False
+ try:value=response.json()
+ except (ValueError,TypeError):return False
+ from urllib.parse import parse_qs
+ slug=before.path.rstrip('/').split('/')[-1]
+ return parse_qs(after.query).get('slug')==[slug] and value==[]
 
 def removed_listing(p,response,*,api_absent=False):
  before=urlsplit(p['permalink']);after=urlsplit(response.url)
@@ -146,7 +161,8 @@ def reviewed_media(p,evidence_path=None):
 def content_text(value):
  soup=BeautifulSoup(value or '', 'html.parser')
  for el in soup.select('style,script,noscript'):el.decompose()
- text=soup.get_text(' ',strip=True)
+ from electronics_description_support import html_text
+ text=html_text(str(soup))
  # This source accidentally publishes CSS as visible text before its actual product heading.
  marker='Handmade Crochet Fruit-Themed Glasses Cover'
  if text.lstrip('\ufeff ').startswith('.product-card-container {') and marker in text:text=text[text.index(marker):]
@@ -185,6 +201,12 @@ def export(g,base,name,template,log):
    if not missing:raise
    if reviewed_removed_listing(p,api_absent=True):
     log('WOO SOURCE EXCLUSION: current API missing and exact recent public non-product landing proof: '+p['permalink']);continue
+   # Saved listing checkpoints can retain removed IDs. Recheck the public
+   # exact-slug catalog without the saved-response cache before touching PDPs.
+   from urllib.parse import quote
+   g['_chotu_wait']();lookup=g['S'].get(base.rstrip('/')+'/wp-json/wc/store/v1/products?slug='+quote(urlsplit(p['permalink']).path.rstrip('/').split('/')[-1],safe=''),timeout=(15,60))
+   if absent_public_catalog(p,lookup):
+    log('WOO SOURCE EXCLUSION: detail missing and fresh exact-slug public catalog empty: '+p['permalink']);continue
    g['_chotu_wait']();page=g['S'].get(p['permalink'],timeout=(15,60))
    if removed_listing(p,page,api_absent=True):
     log('WOO SOURCE EXCLUSION: current API missing and current public PDP removed: '+p['permalink']);continue
@@ -233,11 +255,25 @@ def export(g,base,name,template,log):
    g['write_row'](wb['Variant Combinations'],row)
   cheapest=min(available,key=lambda x:x[2][1]);regular,price,_=cheapest[2]
   description=(p.get('description') or '')+'\n'+(p.get('short_description') or '')
+  from electronics_description_support import warranty_attributes,warranty_panels,warranty_months
+  warranty=warranty_attributes(p)
+  if warranty:description+='\n'+warranty
+  # Product-specific warranty tabs may be absent from the Store API body.
+  if host=='xcessorieshub.com':
+   try:
+    g['_chotu_wait']();response=g['S'].get(url,timeout=(15,60))
+    actual=urlsplit(response.url);expected=urlsplit(url)
+    if response.status_code==200 and (actual.hostname,actual.path.rstrip('/'))==(expected.hostname,expected.path.rstrip('/')):
+     panels=warranty_panels(BeautifulSoup(response.text,'html.parser'))
+     if panels and panels.casefold() not in content_text(description).casefold():description+='\n'+panels
+    elif response.status_code in (429,503):response.raise_for_status()
+   except requests.RequestException as exc:
+    log('WOO WARRANTY REVIEW: product warranty page could not be verified: '+url+'; '+str(exc))
   if p.get('formatted_weight'):description+='\nWeight: '+p['formatted_weight']
   if p.get('formatted_dimensions'):description+='\nDimensions: '+p['formatted_dimensions']
   # Preserve exact API taxonomy as source labels, never fabricate website order.
   labels=[html.unescape(c['name']) for c in p.get('categories',[])]
-  g['write_row'](wb['Products'],{'product_id':pid,'name':html.unescape(p['name']),'description':content_text(description),'category':labels[-1] if labels else '', 'subcategory':'','brand':name,'condition (new/used)':'new','sku':cheapest[0].get('sku',''),'base_price (PKR)':float(regular),'sale_price (PKR, agar discount ho)':float(price) if price<regular else None,'available (yes/no)':'yes','scraped_image_url (cover, auto)':cover,'source_url':url,'option_groups':','.join(gids.values()),'website_order_status':'unverified','analysis_note':'Public WooCommerce taxonomy: '+' > '.join(labels)+'; API order is not verified website display order.'})
+  g['write_row'](wb['Products'],{'product_id':pid,'name':html.unescape(p['name']),'description':content_text(description),'warranty_months (agar ho)':warranty_months(content_text(description)),'category':labels[-1] if labels else '', 'subcategory':'','brand':name,'condition (new/used)':'new','sku':cheapest[0].get('sku',''),'base_price (PKR)':float(regular),'sale_price (PKR, agar discount ho)':float(price) if price<regular else None,'available (yes/no)':'yes','scraped_image_url (cover, auto)':cover,'source_url':url,'option_groups':','.join(gids.values()),'website_order_status':'unverified','analysis_note':'Public WooCommerce taxonomy: '+' > '.join(labels)+'; API order is not verified website display order.'})
   for pos,im in enumerate(p['images'],1):g['write_row'](wb['Product Images'],{'image_id':g['uid']('CI',pid+'|'+str(pos)),'product_id':pid,'image_order':pos,'scraped_image_url (auto)':im['src'],'is_primary (yes/no)':'yes' if pos==1 else 'no','source_url':url})
   checked.append(url);retained+=1
   log('WOO PRODUCT PROGRESS: '+str(index)+'/'+str(len(products))+' checked; '+str(retained)+' retained')

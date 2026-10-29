@@ -7,7 +7,8 @@ def format_description(value):
  for paragraph in re.split(r'\n\s*\n',text):
   paragraph='\n'.join(line.strip() for line in paragraph.splitlines()).strip()
   if not paragraph:continue
-  if len(paragraph.split())>110 and '\n' not in paragraph:
+  if len(paragraph.split())>110 and not any(line.lstrip().startswith(('- ','• ')) for line in paragraph.splitlines()):
+   paragraph=' '.join(paragraph.splitlines())
    sentences=re.split(r'(?<=[.!?])\s+(?=[A-Z])',paragraph)
    group=[];size=0
    for sentence in sentences:
@@ -22,7 +23,7 @@ def issues(value):
  text=str(value or '')
  problems=[]
  for paragraph in re.split(r'\n\s*\n',text):
-  if '\n' not in paragraph and len(paragraph.split())>110 and len(re.findall(r'[.!?]\s+[A-Z]',paragraph))>=2:
+  if any(len(line.split())>110 and len(re.findall(r'[.!?]\s+[A-Z]',line))>=2 for line in paragraph.splitlines()):
    problems.append('Description readability: split dense prose into clear paragraphs without losing facts');break
  if any(line.startswith(('   ','\t')) for line in text.splitlines()):problems.append('Description alignment: remove inconsistent leading indentation')
  return problems

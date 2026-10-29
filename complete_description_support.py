@@ -34,6 +34,9 @@ def collect_product_details(soup):
                 label=soup.find(id=node.get('aria-labelledby'))
                 if label:heading=label.get_text(' ',strip=True)
             selected.append(('<h3>'+html.escape(heading)+'</h3>' if heading else '')+str(fragment));used.add(id(node))
+    from electronics_description_support import warranty_panels
+    warranty=warranty_panels(soup)
+    if warranty and warranty.casefold() not in BeautifulSoup('\n'.join(selected),'html.parser').get_text(' ',strip=True).casefold():selected.append('<div data-product-warranty>'+html.escape(warranty)+'</div>')
     return '\n'.join(selected)
 
 
@@ -46,6 +49,9 @@ def complete_description(product,txt,detailed_description,debug):
     for text in list(soup.find_all(string=True)):
         if re.fullmatch(r'\s*(?:add to cart|buy now|shop now|order now|subscribe|share|read more)\s*[!.]?\s*',str(text),re.I):text.extract()
     result=detailed_description(product,soup)
+    from electronics_description_support import warranty_panels
+    warranty=warranty_panels(soup)
+    if warranty and warranty.casefold() not in result.casefold():result+='\n\n'+warranty
     option_lines=[]
     for i,option in enumerate((product.get('options') or [])[:3],1):
         label=txt(option.get('name')) or f'Option {i}';values=[]

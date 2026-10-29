@@ -1,6 +1,15 @@
 import unittest,copy
 from woocommerce_source_support import offer,variants,unpriced_unpurchasable
 class WooTests(unittest.TestCase):
+ def test_fresh_absence_requires_successful_exact_slug_empty_list(self):
+  from types import SimpleNamespace
+  from woocommerce_source_support import absent_public_catalog
+  p={'permalink':'https://xcessorieshub.com/product/removed-item/'}
+  r=SimpleNamespace(status_code=200,url='https://xcessorieshub.com/wp-json/wc/store/v1/products?slug=removed-item',json=lambda:[])
+  self.assertTrue(absent_public_catalog(p,r))
+  r.json=lambda:[{'id':1}];self.assertFalse(absent_public_catalog(p,r))
+  r.json=lambda:[];r.status_code=403;self.assertFalse(absent_public_catalog(p,r))
+  r.status_code=200;r.url='https://xcessorieshub.com/wp-json/wc/store/v1/products?slug=other';self.assertFalse(absent_public_catalog(p,r))
  def product(self):return dict(id=10,type='simple',is_in_stock=True,is_purchasable=True,is_on_backorder=False,prices=dict(currency_code='PKR',currency_minor_unit=0,price='1469',regular_price='2099'))
  def test_exact_currency_scale_and_discount(self):
   p=self.product();self.assertEqual(tuple(map(str,offer(p)[:2])),('2099','1469'));p['prices']['currency_minor_unit']=2;p['prices']['price']='146900';p['prices']['regular_price']='209900';self.assertEqual(tuple(map(str,offer(p)[:2])),('2099','1469'))

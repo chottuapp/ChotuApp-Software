@@ -6,6 +6,7 @@ def normalized(value):
  return re.sub('[‐‑‒–—−]','-',value)
 # Accessories before the devices they fit; compound sold objects before components.
 RULES=[
+ ('USB Chargers',r'\bUSB.C\s+Power\s+Adapter\b'),
  ('Stylus Pens',r'\b(?:stylus|Apple\s+Pencil|Focus\s+Pen|S\s+Pen)\b'),
  ('Tablet Screen Protectors',r'\b(?:ipad|tablet)\b.*\b(?:glass|screen)\s+protector\b'),
  ('Keyboards',r'\bkeyboard\b.*\bfor\s+(?:ipad|tablet)\b'),

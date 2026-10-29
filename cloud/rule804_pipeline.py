@@ -62,7 +62,10 @@ def process(source,out,store,codes,*,mobile_khaadi=False,approved_original=False
                     if label!=old:changes.update(Category=label,subcategory_source=origin,subcategory_evidence=quote,subcategory_checked_at=stamp)
             if not label:warnings.append({'product_id':pid,'issue':'Ambiguous product category retained blank'})
             from description_readability import format_description
-            polished=format_description(tools.tidy_description(description))
+            from electronics_description_support import electronic,format_electronics
+            electronics=electronic(store,label)
+            if electronics and row.get('warranty_months (agar ho)') and not re.search(r'\bwarranty\b',description,re.I):description+='\nWarranty: '+str(row['warranty_months (agar ho)'])+' months.'
+            polished=format_description(format_electronics(tools.tidy_description(description)) if electronics else tools.tidy_description(description))
             if re.findall(r'\d+(?:[.,]\d+)?',description)!=re.findall(r'\d+(?:[.,]\d+)?',polished):raise ValueError('Description numeric facts changed')
             overview=tools.product_overview(row,label)
             lead=str(row.get('name') or '')+'.'

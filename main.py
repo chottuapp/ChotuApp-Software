@@ -8,6 +8,7 @@ from decimal import Decimal, InvalidOperation
 from urllib.parse import urlparse, urljoin, urlsplit, urlunsplit, parse_qsl, urlencode
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
+from electronics_description_support import warranty_months as source_warranty_months
 import requests
 
 # CHOTUAPP_MANUAL_RESUME_CHECKPOINT_V1
@@ -1193,7 +1194,7 @@ def run_site(base, name, template, log):
             entry.update(variant_image_metadata(image_url,cover))
             combos.append(entry)
         if len(p.get('options') or [])>3: review.append(f'More than 3 dimensions: {url}')
-        rows.append({'product_id':pid,'analysis_note':'\n'.join(([p['_popularity_page_note']] if p.get('_popularity_page_note') else [])+getattr(_chotu_tls,'collection_popularity_evidence',{}).get(p.get('id'),[])),'category':category,'subcategory':'','name':txt(p.get('title')),'description':desc,'brand':txt(p.get('vendor')) or name,'material':'','weight_grams (agar ho)':'','condition (new/used)':'new','warranty_months (agar ho)':'','base_price (PKR)':float(baseprice),'sale_price (PKR, agar discount ho)':float(sale) if sale is not None else None,'sku':str(cheapest.get('sku') or ''),'scraped_image_url (cover, auto)':cover,'final_image_url (cover/thumbnail — hosted link)':'','option_groups':gid,'available (yes/no)':'yes' if any(v.get('available') is True for v in variants) else 'no','stock_quantity (kitni quantity bechni hai)':product_stock_quantity(p,variants),'max_qty_per_user (ek user zyada se zyada kitni le sakta hai)':'','source_url':url,**category_data})
+        rows.append({'product_id':pid,'analysis_note':'\n'.join(([p['_popularity_page_note']] if p.get('_popularity_page_note') else [])+getattr(_chotu_tls,'collection_popularity_evidence',{}).get(p.get('id'),[])),'category':category,'subcategory':'','name':txt(p.get('title')),'description':desc,'brand':txt(p.get('vendor')) or name,'material':'','weight_grams (agar ho)':'','condition (new/used)':'new','warranty_months (agar ho)':source_warranty_months(desc),'base_price (PKR)':float(baseprice),'sale_price (PKR, agar discount ho)':float(sale) if sale is not None else None,'sku':str(cheapest.get('sku') or ''),'scraped_image_url (cover, auto)':cover,'final_image_url (cover/thumbnail — hosted link)':'','option_groups':gid,'available (yes/no)':'yes' if any(v.get('available') is True for v in variants) else 'no','stock_quantity (kitni quantity bechni hai)':product_stock_quantity(p,variants),'max_qty_per_user (ek user zyada se zyada kitni le sakta hai)':'','source_url':url,**category_data})
         if not pictures: review.append(f'No image: {p.get("title")}')
         for i,im in enumerate(pictures,1):
             src=im.get('src')

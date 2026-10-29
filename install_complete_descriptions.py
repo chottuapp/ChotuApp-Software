@@ -34,12 +34,13 @@ def install(target):
     updated=transform(before.decode('utf-8-sig'));after=(b'\xef\xbb\xbf' if before.startswith(b'\xef\xbb\xbf') else b'')+updated.encode()
     payload=(Path(__file__).parent/'complete_description_support.py').read_bytes();compile(payload,'complete_description_support.py','exec')
     backup=target/'backups'/('before_complete_descriptions_'+datetime.datetime.now().strftime('%Y%m%d_%H%M%S_%f'));backup.mkdir(parents=True)
-    for path in (main,target/'complete_description_support.py'):
+    for path in (main,target/'complete_description_support.py',target/'electronics_description_support.py'):
         if path.exists():
             shutil.copy2(path,backup/path.name)
             if (backup/path.name).read_bytes()!=path.read_bytes():raise RuntimeError('Backup verification failed.')
     if main.read_bytes()!=before:raise RuntimeError('App changed during installation; stopped.')
     atomic_write(target/'complete_description_support.py',payload)
+    atomic_write(target/'electronics_description_support.py',(Path(__file__).parent/'electronics_description_support.py').read_bytes())
     if before!=after:atomic_write(main,after)
     print('SUCCESS: Full source descriptions enabled for all product categories.')
     print('Ingredients, usage, care and specification panels are retained when present in the fetched product page.')
