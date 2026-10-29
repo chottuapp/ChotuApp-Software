@@ -114,7 +114,7 @@ TYPES=REVIEW_TYPES+TYPES
 TYPES=[(name,re.compile(a,re.I),re.compile(b,re.I)) for name,a,b in TYPES]
 CARE=re.compile(r'\b(?:(?:jewellery|jewelry)\s+care|care instructions|how to use|directions|usage|precautions|avoid contact|apply to|wash with)\b',re.I)
 def plain(value):
- result=re.sub(r'\s+',' ',html.unescape(re.sub('<[^>]*>',' ',str(value or '')))).strip()
+ result=re.sub(r'\s+',' ',html.unescape(re.sub(r'</?[A-Za-z][A-Za-z0-9:-]*(?:\s[^<>]*?)?/?>',' ',str(value or '')))).strip()
  marker='Handmade Crochet Fruit-Themed Glasses Cover'
  if result.lstrip('\ufeff ').startswith('.product-card-container {') and marker in result:result=result[result.index(marker):]
  return result

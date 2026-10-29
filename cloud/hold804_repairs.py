@@ -8,6 +8,10 @@ SOURCE_TYPES={'SYNCC - Women Sweater':'Sweaters','Women Stitched Sari':'Sarees',
 STORES={'Sana Safinaz','Edenrobe','Beechtree','Breakout','Liberty Books','ChenOne','Generation','Saya','Hush Puppies','Habitt','Beyond East','Rios','Mala','Limelight','Alkaram Studio','Prime Ticks','Hilm Chapals','Golden Rose','Zyren','Pyari Walls','Design by DAS','Xcessories Hub','Bachaa Party','Gul Ahmed','Miss Rose','Cool and Cool','Rivaj UK','Computer Zone','Saeed Ghani','Elite Cosmetics','Hemani Herbals','Bonanza Satrangi','Rawayat','Junaid Jamshed','Outfitters','Zellbury','Stylo'}
 # Explicit object names. Compatibility targets, ingredients and care text are not classifiers.
 NAMED=[
+ ('Makeup Sponges',r'\bsilicon(?:e)?\s+(?:makeup\s+)?blender\b'),
+ ('Quilt Covers',r'\bquilt\s+cover\b'),
+ ('Duvet Covers',r'\bduvet\s+cover\b'),
+ ('Peshawari Chappals',r'\bpeshawari\b'),
  ('Hand & Foot Creams','\\b(?:hand\\s*&\\s*feet|foot\\s+hand)\\b.*\\bcream\\b'),
  ('Face & Body Creams','\\bface\\s*&\\s*body\\b.*\\bcream\\b'),
  ('Face & Body Emulsions','\\bemulsion\\b.*\\bface\\s*&\\s*body\\b'),
@@ -316,6 +320,7 @@ def maali_kind(row,fact=None):
 
 def category(row,store):
  name=str(row.get('name') or '');body=str(row.get('description') or '')
+ if re.search(r'\b(?:quilt|duvet)\s+cover\b',name,re.I) and re.search(r'\b[12]\s+pillow\s*cases?\b',body,re.I):return 'Duvet Cover Sets','reviewed_source_contents','Explicit cover and pillowcases supplied; no duvet filling inferred.'
  visual=visual_review(row,store)
  if visual:return visual['category'],'reviewed_primary_product_image',visual['overview']+' Image: '+visual['image_url']+' SHA256: '+visual['image_sha256']
  if store=='Rios':
@@ -702,6 +707,13 @@ def category(row,store):
 
 def description(row,store):
  original=str(row.get('description') or '');name=str(row.get('name') or '');body=original.strip()
+ if store in {'Zellbury','Gul Ahmed','Xcessories Hub'}:
+  named_types=[(r'\bbath\s+sheet\b','a bath sheet'),(r'\bbath\s+towel\b','a bath towel'),(r'\bshoulder\s+bag\b','a shoulder bag'),(r'\bsecurity\b.*\bcamera\b','a home security camera'),(r'\busb\s+bluetooth\s+adapter\b','a USB Bluetooth adapter'),(r'\bglass\s+protector\b','a glass screen protector')]
+  for pattern,kind in named_types:
+   sparse=re.sub(r'(?im)^.*(?:Exclusively at|Weight: N/A|Dimensions: N/A).*$', '',body).strip()
+   if re.search(pattern,name,re.I) and (sparse.split('Product Options:')[0].strip().rstrip('.') in {'',name.rstrip('.')} or store=='Zellbury' and re.fullmatch(r'(?:LUXURY|SIGNATURE)\s*-\s*\d+x\d+cm\s*-\s*Bath (?:Sheet|Towel)',body,re.I)):
+    lead=name+' is '+kind+'.'
+    return lead+('\n\n'+original if body else ''),'Expressed exact named sold object; retained original product identity and every supplied option/specification.'
  visual=visual_review(row,store)
  if visual and not body.startswith(visual['overview']):
   useful=original if body not in ('',name,'Rawayat','dsasd') else ''
