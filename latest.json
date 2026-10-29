@@ -2161,7 +2161,8 @@
     "Sana Safinaz": "source:437ddc4778ecd017fc7bd36d62499401409fa1ee326f67f063ae05d5b88ac564:Sana Safinaz:3d9030aa69f8f9834fa70eceb03f064667c7d7190811f00be074ba5ff168141e",
     "Beyond East": "source:9f2aa1fa209148631b29dd48a08f6cf23d343f5e7191dc9ad62ae45db2152412:Beyond East:3d9030aa69f8f9834fa70eceb03f064667c7d7190811f00be074ba5ff168141e",
     "Alkaram Studio": "source:096fe77a2b7cbd9e733a31c6646ed9a64e12985fee697c4136bd4dd9f6e1ae6b:Alkaram Studio:3d9030aa69f8f9834fa70eceb03f064667c7d7190811f00be074ba5ff168141e",
-    "Generation": "source:4b4b9894240083669a8cf95f983d6d4a74e85ffaa4bc1c363d3513fa22b30f33:Generation:3d9030aa69f8f9834fa70eceb03f064667c7d7190811f00be074ba5ff168141e"
+    "Generation": "source:4b4b9894240083669a8cf95f983d6d4a74e85ffaa4bc1c363d3513fa22b30f33:Generation:3d9030aa69f8f9834fa70eceb03f064667c7d7190811f00be074ba5ff168141e",
+    "Breakout": "source:159bb63b32b2ca2fbddc39f2ef42f23b86febde3cab88f27a81b761e7d1924c3:Breakout:3d9030aa69f8f9834fa70eceb03f064667c7d7190811f00be074ba5ff168141e"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -9370,6 +9371,855 @@
       "source_sha256": "4b4b9894240083669a8cf95f983d6d4a74e85ffaa4bc1c363d3513fa22b30f33",
       "refresh_generation": "refresh20261029-b80f4ca4",
       "held_input": "inputs/fresh804-20261026-5d42fe35/generation/4b4b989424008366/manifest.json"
+    },
+    "Breakout": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Breakout",
+      "shop_code": null,
+      "identity_policy": "owner_authorized_blank_code_exact_store_filename",
+      "status": "hold",
+      "products_checked": 2075,
+      "findings_count": 258,
+      "findings": [
+        {
+          "product_id": "CP1a70e14fbd87",
+          "name": "GIRLS CONTRAST TRIM SPORTY ZIPPER HOOD",
+          "source_url": "https://checkout.breakout.com.pk/products/k26wu306-nvy",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0fa538a44ee9",
+          "name": "GIRLS HELLO KITTY ZIPPER HOOD",
+          "source_url": "https://checkout.breakout.com.pk/products/k26wu305-gre",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPbe36653a61b6",
+          "name": "GIRLS LOBSTER GRAPHIC ZIPPER HOOD",
+          "source_url": "https://checkout.breakout.com.pk/products/k26wu304-wht",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPed0658a272ca",
+          "name": "BOYS MOCK NECK ZIPPER",
+          "source_url": "https://checkout.breakout.com.pk/products/k26wu206-mst",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPebe17581db78",
+          "name": "BALLON FIT DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/26fwd521-blk",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP71f536d53aee",
+          "name": "WIDE LEG DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/26fwd516-blk",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd085d28e2153",
+          "name": "STRAIGHT FIT DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/26fwd515-chr",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPbdbc16de683b",
+          "name": "ORIGINAL STRAIGHT FIT DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/26fmd438-blk",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8146d84bfece",
+          "name": "CARROT FIT DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/26fmd437-blu",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4989cf498d51",
+          "name": "GIRLS FLORAL BUBBLE HEM HOODED TOP",
+          "source_url": "https://checkout.breakout.com.pk/products/k26wu316-dpk",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP46fcd9b287bd",
+          "name": "BOYS BASIC HOODED TOP",
+          "source_url": "https://checkout.breakout.com.pk/products/k26wu218-nvy",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CPdce7d5680edc",
+          "name": "GIRLS PLEATED PUFFER TWILL JACKET",
+          "source_url": "https://checkout.breakout.com.pk/products/k26wj911-mrn",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP7af964ccf5bc",
+          "name": "GIRLS BOXY PARKA PUFFER JACKET",
+          "source_url": "https://checkout.breakout.com.pk/products/k26wj907-buy",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CPe893fff9cdbf",
+          "name": "GIRLS EMBELLISHED RIBBED HIGHNECK",
+          "source_url": "https://checkout.breakout.com.pk/products/k26ft338-lmy",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP524a0aa5855f",
+          "name": "GIRLS LOOSE FIT DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/k26fd766-gbu",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1efb160460b4",
+          "name": "BOYS LOOSE CARGO DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/k26fd620-blk",
+          "issues": [
+            "Primary product type and Category disagree: hoodie"
+          ]
+        },
+        {
+          "product_id": "CP370299457475",
+          "name": "KNIT SHORT",
+          "source_url": "https://checkout.breakout.com.pk/products/26fms414-olv",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa0256e224a22",
+          "name": "KNIT SHORT",
+          "source_url": "https://checkout.breakout.com.pk/products/26fms414-gry",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0aedb6663c8a",
+          "name": "CASHMERE HAND FEEL CROPPED JUMPER",
+          "source_url": "https://checkout.breakout.com.pk/products/25wfs335-rto",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa3058bb2cf8c",
+          "name": "V-NECK OVERSIZED JUMPER",
+          "source_url": "https://checkout.breakout.com.pk/products/25wfs545-brg",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP692b5652702c",
+          "name": "CHUNKY FAUX FUR JUMPER",
+          "source_url": "https://checkout.breakout.com.pk/products/25wfs527-cml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4798d1c2cf5b",
+          "name": "OVERSIZED KNIT JUMPER",
+          "source_url": "https://checkout.breakout.com.pk/products/25wfs362-bge",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP85af0b58cde0",
+          "name": "CROPPED JUMPER",
+          "source_url": "https://checkout.breakout.com.pk/products/25wfs323-buy",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3290f8ebf9a9",
+          "name": "CROPPED OVERSIZED JUMPER",
+          "source_url": "https://checkout.breakout.com.pk/products/25wfs311-pnk",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP31d4012dd853",
+          "name": "CABLE KNIT OVERSIZED JUMPER",
+          "source_url": "https://checkout.breakout.com.pk/products/25wfs312-pnk",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5074764d58e4",
+          "name": "CABLE KNIT OVERSIZED JUMPER",
+          "source_url": "https://checkout.breakout.com.pk/products/25wfs312-bge",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP25fd3da914b6",
+          "name": "OVERSIZED TEXTURED JUMPER",
+          "source_url": "https://checkout.breakout.com.pk/products/25wfs308-ofw",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe997af7aafd3",
+          "name": "SLIM RELAXED FIT DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/26fmd404-blu",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb855c4cb02ce",
+          "name": "GIRLS METAL GLASSES",
+          "source_url": "https://checkout.breakout.com.pk/products/k26fgg59-tnt",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPba1038dfdc87",
+          "name": "GIRLS METAL GLASSES",
+          "source_url": "https://checkout.breakout.com.pk/products/k26fgg58-tnt",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1cdc48cc2df0",
+          "name": "CARROT FIT DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/26fmd420-blu",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPebe5f69f5523",
+          "name": "CARROT FIT DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/26fmd413-blu",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7886cd2117c4",
+          "name": "WIDE LEG FIT CARGO DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/26fmd423-gry",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa265127107d4",
+          "name": "BOYS BASIC ZIPPER HOODED TOP",
+          "source_url": "https://checkout.breakout.com.pk/products/k26wu217-blk",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP516e94e78e25",
+          "name": "BOYS FLOCK PRINT HOODED TOP",
+          "source_url": "https://checkout.breakout.com.pk/products/k26wu204-bri",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP4d63f7051c30",
+          "name": "BOYS QUILTED KNIT JACKET",
+          "source_url": "https://checkout.breakout.com.pk/products/k26wj611-blu",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CPa21a88061c08",
+          "name": "GIRLS LOOSE FIT MINNIE DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/k26fd762-dbl",
+          "issues": [
+            "Primary product type and Category disagree: computer mouse"
+          ]
+        },
+        {
+          "product_id": "CPb7bca845a74b",
+          "name": "GIRLS PRINTED DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/k26fd760-lbl",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPebd51ccc2de5",
+          "name": "RIB COLLAR ZIPPER UPPER",
+          "source_url": "https://checkout.breakout.com.pk/products/26wup254-brn",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CPee441e5eb781",
+          "name": "RIB COLLAR ZIPPER UPPER",
+          "source_url": "https://checkout.breakout.com.pk/products/26wup254-bge",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CPfe36a20eab3b",
+          "name": "TEXTURED MOCK NECK UPPER",
+          "source_url": "https://checkout.breakout.com.pk/products/26wup241-nvy",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP3cb5fc68eb06",
+          "name": "TEXTURED MOCK NECK UPPER",
+          "source_url": "https://checkout.breakout.com.pk/products/26wup241-brn",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP7877906c0b5c",
+          "name": "MOCK NECK QUILTED JACKET",
+          "source_url": "https://checkout.breakout.com.pk/products/26wjk253-nvy",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CPf9feba84a4c8",
+          "name": "MOCK NECK QUILTED JACKET",
+          "source_url": "https://checkout.breakout.com.pk/products/26wjk253-gry",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP2ea5ea95b6f7",
+          "name": "MOCK NECK QUILTED JACKET",
+          "source_url": "https://checkout.breakout.com.pk/products/26wjk253-blk",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CPb9077125d73b",
+          "name": "DENIM JACKET",
+          "source_url": "https://checkout.breakout.com.pk/products/26wjk247-blk",
+          "issues": [
+            "Primary product type and Category disagree: trousers"
+          ]
+        },
+        {
+          "product_id": "CP954eea585542",
+          "name": "LOOSE CROPPED FIT DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/26fmd430-blu",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP1eaea758d8e0",
+          "name": "EMBROIDERED KIMONO TOP",
+          "source_url": "https://checkout.breakout.com.pk/products/26fwt364-bge",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP34ce6c1e6d87",
+          "name": "CARPENTER FIT DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/26fwd505-blk",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa2e0ae19ae1f",
+          "name": "FITTED SQUARE-NECK TOP",
+          "source_url": "https://checkout.breakout.com.pk/products/26fnt386-pnk",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP06689a04996b",
+          "name": "WIDE LEG DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/26wwd511-blu",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP58fe7b1ae6ff",
+          "name": "DENIM CORSET JACKET",
+          "source_url": "https://checkout.breakout.com.pk/products/26wjk511-blu",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP7b752e4d611b",
+          "name": "BASIC BUTTON-DOWN CARDIGAN",
+          "source_url": "https://checkout.breakout.com.pk/products/26wfs513-brg",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP1e989ddbbd03",
+          "name": "RIBBED BUTTON DOWN SWEATER",
+          "source_url": "https://checkout.breakout.com.pk/products/26wfs501-olv",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP5dc3d5ddaec5",
+          "name": "RIBBED BUTTON DOWN SWEATER",
+          "source_url": "https://checkout.breakout.com.pk/products/26wfs501-brg",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP5081e4ab49ef",
+          "name": "CABLE KNIT BUTTON DOWN SWEATER",
+          "source_url": "https://checkout.breakout.com.pk/products/26wfs398-pnk",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CPcc56940c5360",
+          "name": "CABLE KNIT BUTTON DOWN SWEATER",
+          "source_url": "https://checkout.breakout.com.pk/products/26wfs398-brn",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CPe3b4e6ce7685",
+          "name": "CHENILLE BUTTON DOWN SWEATER",
+          "source_url": "https://checkout.breakout.com.pk/products/26wfs395-plm",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP4e057143ebfc",
+          "name": "CHENILLE BUTTON DOWN SWEATER",
+          "source_url": "https://checkout.breakout.com.pk/products/26wfs395-brn",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CPdf23f9954372",
+          "name": "ALL-OVER EMBROIDERED TOP",
+          "source_url": "https://checkout.breakout.com.pk/products/26fwt394-wbl",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CPa6c8242d36fd",
+          "name": "EMBROIDERED BUTTON DOWN DRESS",
+          "source_url": "https://checkout.breakout.com.pk/products/26fwt384-blk",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPceddc3321b73",
+          "name": "GIRLS WARM GLOVES",
+          "source_url": "https://checkout.breakout.com.pk/products/k25wgl39-wht",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP14391c6f80d9",
+          "name": "GIRLS WARM GLOVES",
+          "source_url": "https://checkout.breakout.com.pk/products/k25wgl38-bpk",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5fc5eb7717d4",
+          "name": "GIRLS WARM GLOVES",
+          "source_url": "https://checkout.breakout.com.pk/products/k25wgl37-pnk",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP613ad722a162",
+          "name": "GIRLS WARM GLOVES",
+          "source_url": "https://checkout.breakout.com.pk/products/k25wgl36-blk",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP09b9e2b74c4b",
+          "name": "GIRLS WARM GLOVES",
+          "source_url": "https://checkout.breakout.com.pk/products/k25wgl35-dpk",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP02b2fe7a2536",
+          "name": "GIRLS WARM GLOVES",
+          "source_url": "https://checkout.breakout.com.pk/products/k25wgl34-red",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP08d55a7cd24e",
+          "name": "BOYS WARM GLOVES",
+          "source_url": "https://checkout.breakout.com.pk/products/k25wgl31-mst",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP297cfbddb7cf",
+          "name": "GIRLS WOOL BLEND HOODED CAPE",
+          "source_url": "https://checkout.breakout.com.pk/products/k25wc374-rst",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP19ed75c9d3ad",
+          "name": "GIRLS COLOR BLOCK WARM SET",
+          "source_url": "https://checkout.breakout.com.pk/products/k25wgc28-bwe",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP6ef235e041e3",
+          "name": "GIRLS BOW DETAIL WARM SET",
+          "source_url": "https://checkout.breakout.com.pk/products/k25wgc26-wht",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPdaeefc2cbf8d",
+          "name": "BOYS CONTRAST PANEL HOODED TOP",
+          "source_url": "https://checkout.breakout.com.pk/products/k26wu205-wng",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CPa911e870d57f",
+          "name": "BUTTON DOWN SWEATER",
+          "source_url": "https://checkout.breakout.com.pk/products/26wfs393-brg",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa31615ba8d56",
+          "name": "BUTTON DOWN SWEATER",
+          "source_url": "https://checkout.breakout.com.pk/products/26wfs393-blk",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP06e66c0b1cfd",
+          "name": "BUTTON DOWN SWEATER WITH GATHERED DETAIL",
+          "source_url": "https://checkout.breakout.com.pk/products/26wfs392-brg",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP57355a254825",
+          "name": "BUTTON DOWN SWEATER WITH GATHERED DETAIL",
+          "source_url": "https://checkout.breakout.com.pk/products/26wfs392-blk",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd3e3da4e0fe2",
+          "name": "BAGGY FIT CARGO DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/26fmd416-lbu",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4eba4ca54fbe",
+          "name": "SLIM RELAXED FIT DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/26fmd401-blu",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8236404dbb79",
+          "name": "ORIGINAL STRAIGHT FIT DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/26fmd275-blk",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3f5b9236c9d1",
+          "name": "BOYS GRAPHIC PRINT HOODED TOP",
+          "source_url": "https://checkout.breakout.com.pk/products/k26wu216-rst",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP9ecb29e0f13a",
+          "name": "BOYS SPONGE BOB HOODED TOP",
+          "source_url": "https://checkout.breakout.com.pk/products/k26wu202-mst",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CPadb7cf873fac",
+          "name": "GIRLS BOXY FIT VARSITY JACKET",
+          "source_url": "https://checkout.breakout.com.pk/products/k26wj908-dpk",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP1da7a6359ce4",
+          "name": "BOYS CONTRAST LINING DENIM JACKET",
+          "source_url": "https://checkout.breakout.com.pk/products/k26wj609-blu",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CPc5634f701a00",
+          "name": "BOYS WARM DENIM JACKET",
+          "source_url": "https://checkout.breakout.com.pk/products/k26wj606-blk",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CPe4857b26e9b5",
+          "name": "BOYS HOODED PUFFER JACKET",
+          "source_url": "https://checkout.breakout.com.pk/products/k26wj603-grn",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CPf2314e3af1e1",
+          "name": "BOYS HOODED PUFFER JACKET",
+          "source_url": "https://checkout.breakout.com.pk/products/k26wj603-blu",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CPce0498035ba3",
+          "name": "BOYS EMBROIDERED VARSITY JACKET",
+          "source_url": "https://checkout.breakout.com.pk/products/k26wj601-grn",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP4cc81d0c842c",
+          "name": "GIRLS FLORAL PRINTED TOP",
+          "source_url": "https://checkout.breakout.com.pk/products/k26fw520-pnk",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CPd8d81eafa1be",
+          "name": "GIRLS BASIC HIGHNECK",
+          "source_url": "https://checkout.breakout.com.pk/products/k26ft325-blk",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CPd6098736afa7",
+          "name": "PEPLUM SAFARI TOP",
+          "source_url": "https://checkout.breakout.com.pk/products/26fwt398-chr",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP54ca1be33287",
+          "name": "STRIPED OVERSIZED TOP",
+          "source_url": "https://checkout.breakout.com.pk/products/26fwt383-mto",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP578e432a4eda",
+          "name": "EMBROIDERED BUTTON DOWN TOP",
+          "source_url": "https://checkout.breakout.com.pk/products/26fwt377-wht",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CPad9860b4a9ec",
+          "name": "RUFFLE TOP WITH TIE DETAIL",
+          "source_url": "https://checkout.breakout.com.pk/products/26fwt366-bge",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CPb4e35dac5280",
+          "name": "CONTRAST RIB TANK TOP",
+          "source_url": "https://checkout.breakout.com.pk/products/26fnt375-brg",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP5cbde119d7f3",
+          "name": "CONTRAST RIB TANK TOP",
+          "source_url": "https://checkout.breakout.com.pk/products/26fnt375-blk",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CPfdfd280dac9e",
+          "name": "DENIM JACKET",
+          "source_url": "https://checkout.breakout.com.pk/products/26wjk231-blk",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CP80f596b30f91",
+          "name": "ORIGINAL STRAIGHT FIT CARGO DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/26fmd298-blu",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPbee87b868995",
+          "name": "REGULAR FIT DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/26fmd297-blu",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8db10112ce55",
+          "name": "GIRLS APPLIQUE DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/k26fd761-blu",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8858b70a1231",
+          "name": "BOYS 3-QUARTER CARGO DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/k26fb652-lbl",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "details_truncated": true,
+      "workbook_sha256": "159bb63b32b2ca2fbddc39f2ef42f23b86febde3cab88f27a81b761e7d1924c3",
+      "checked_utc": "2026-10-29T09:57:09.485184+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-29T09:57:09.488203+00:00",
+        "updated_utc": "2026-10-29T09:57:09.488203+00:00",
+        "next_source_check_due_utc": "2026-10-29T10:12:09.488203+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved",
+          "Category lacks clear product-purpose evidence; manual review required",
+          "Primary product type and Category disagree: computer mouse",
+          "Primary product type and Category disagree: hoodie",
+          "Primary product type and Category disagree: jeans",
+          "Primary product type and Category disagree: trousers"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "source_run": "40842676884",
+      "source_artifact": 12886943321,
+      "source_sha256": "159bb63b32b2ca2fbddc39f2ef42f23b86febde3cab88f27a81b761e7d1924c3",
+      "refresh_generation": "refresh20261029-b80f4ca4",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/breakout/159bb63b32b2ca2f/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -9487,7 +10337,7 @@
     "40842640249": "40842640249:12884935761:3d9030aa69f8f9834fa70eceb03f064667c7d7190811f00be074ba5ff168141e",
     "40842647762": "40842647762:12888400176:3d9030aa69f8f9834fa70eceb03f064667c7d7190811f00be074ba5ff168141e",
     "40842654821": "40842654821:12883696569:3d9030aa69f8f9834fa70eceb03f064667c7d7190811f00be074ba5ff168141e",
-    "40842662384": "40842662384:12884335870:70eb1a6b85a206f30a6c91712447452748d0aac9d6cb083bf0efc7ef9518641f",
+    "40842662384": "40842662384:12884335870:3d9030aa69f8f9834fa70eceb03f064667c7d7190811f00be074ba5ff168141e",
     "40842676884": "40842676884:12884257772:70eb1a6b85a206f30a6c91712447452748d0aac9d6cb083bf0efc7ef9518641f",
     "40842683420": "40842683420:12884132755:70eb1a6b85a206f30a6c91712447452748d0aac9d6cb083bf0efc7ef9518641f",
     "40842697904": "40842697904:12884052765:70eb1a6b85a206f30a6c91712447452748d0aac9d6cb083bf0efc7ef9518641f",
@@ -9497,7 +10347,7 @@
     "40842539161": "40842539161:12883829622:3d9030aa69f8f9834fa70eceb03f064667c7d7190811f00be074ba5ff168141e",
     "40842546166": "40842546166:12883996390:3d9030aa69f8f9834fa70eceb03f064667c7d7190811f00be074ba5ff168141e",
     "40842552568": "40842552568:12883921069:3d9030aa69f8f9834fa70eceb03f064667c7d7190811f00be074ba5ff168141e",
-    "40842669582": "40842669582:12885517355:70eb1a6b85a206f30a6c91712447452748d0aac9d6cb083bf0efc7ef9518641f",
+    "40842669582": "40842669582:12885517355:3d9030aa69f8f9834fa70eceb03f064667c7d7190811f00be074ba5ff168141e",
     "40842703791": "40842703791:12885126819:70eb1a6b85a206f30a6c91712447452748d0aac9d6cb083bf0efc7ef9518641f",
     "40842584666": "40842584666:12885229426:3d9030aa69f8f9834fa70eceb03f064667c7d7190811f00be074ba5ff168141e",
     "40842718499": "40842718499:12885284332:70eb1a6b85a206f30a6c91712447452748d0aac9d6cb083bf0efc7ef9518641f",
@@ -9553,8 +10403,8 @@
     "SE10036": "inputs/fresh804-20261026-5d42fe35/rollback-se10036/0ded9b545323c12a/manifest.json",
     "SE10039": "inputs/fresh804-20261026-5d42fe35/rollback-se10039/aa819b96a1f39827/manifest.json"
   },
-  "audit804_last_store": "Pyari Walls",
-  "audit804_progress_utc": "2026-10-29T09:56:50.536033+00:00",
+  "audit804_last_store": "Breakout",
+  "audit804_progress_utc": "2026-10-29T09:57:12.487165+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Golden Rose",
