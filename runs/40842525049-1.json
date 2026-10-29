@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-29T13:30:29.234385+00:00",
+  "run_id": "40842525049",
+  "attempt": "1",
+  "source_commit": "86c9743ad68cfe17b4e665ef18403cb36ac96f4e",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.15",
+  "elapsed_seconds": 18001.2,
+  "stores": [
+    {
+      "name": "Rivaj UK",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "5c4a5331f70a5729",
+      "products": 305,
+      "variants": 954,
+      "http_statuses": {
+        "200": 651
+      },
+      "network_seconds": 1105.3,
+      "max_response_seconds": 17.0,
+      "cache_events": 950
+    },
+    {
+      "name": "Junaid Jamshed",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "5c4a5331f70a5729",
+      "http_statuses": {
+        "200": 14799
+      },
+      "network_seconds": 27836.9,
+      "max_response_seconds": 25.0,
+      "cache_events": 1
+    }
+  ]
+}

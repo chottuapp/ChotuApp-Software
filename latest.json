@@ -1,31 +1,33 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-29T13:30:28.234549+00:00",
-  "run_id": "40842532649",
+  "generated_utc": "2026-10-29T13:30:29.234385+00:00",
+  "run_id": "40842525049",
   "attempt": "1",
   "source_commit": "86c9743ad68cfe17b4e665ef18403cb36ac96f4e",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 18002.5,
+  "elapsed_seconds": 18001.2,
   "stores": [
     {
-      "name": "Tawakkal Fabrics",
+      "name": "Rivaj UK",
       "status": "done",
       "review_required": true,
-      "issue_codes": [],
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
       "software_revision": "5c4a5331f70a5729",
-      "products": 1505,
-      "variants": 3584,
+      "products": 305,
+      "variants": 954,
       "http_statuses": {
-        "200": 1790
+        "200": 651
       },
-      "network_seconds": 3421.7,
-      "max_response_seconds": 19.9,
-      "cache_events": 3202
+      "network_seconds": 1105.3,
+      "max_response_seconds": 17.0,
+      "cache_events": 950
     },
     {
-      "name": "Stylo",
+      "name": "Junaid Jamshed",
       "status": "pending",
       "review_required": false,
       "issue_codes": [
@@ -33,11 +35,11 @@
       ],
       "software_revision": "5c4a5331f70a5729",
       "http_statuses": {
-        "200": 6992
+        "200": 14799
       },
-      "network_seconds": 18601.8,
-      "max_response_seconds": 34.3,
-      "cache_events": 348
+      "network_seconds": 27836.9,
+      "max_response_seconds": 25.0,
+      "cache_events": 1
     }
   ]
 }
