@@ -1,10 +1,10 @@
 {
   "campaign_id": "fresh804-20261026-5d42fe35",
-  "request": "Owner latest instruction: immediately start all enabled stores except Stylo from zero, one separate runner per store. Preserve current Stylo chain without stopping or restarting it. LAAM and Khaadi remain off.",
-  "requested_date_pkt": "2026-10-27",
+  "request": "Owner: deduplicate new URLs; fresh from zero for all enabled old and new stores, two websites per runner. Habitt kitchen only. Leave new shop codes blank until supplied. Bachaa Party, LAAM and Khaadi stay off.",
+  "requested_date_pkt": "2026-10-29",
   "destination_folder": "ChotuApp 19-10-2026 11-36AM",
   "audit_name": "804 Audit",
-  "maximum_stores_per_runner": 1,
+  "maximum_stores_per_runner": 2,
   "require_confirmed_shop_code": true,
   "khaadi_fresh_enabled": false,
   "laam_rule": "Active, visible, source-confirmed in-stock clothing only; stitched, unstitched and ready-made included; bags, jewellery and non-clothing excluded",
@@ -12,21 +12,34 @@
   "khaadi_execution": "excluded_by_owner_request",
   "excluded_stores": [
     "Khaadi",
-    "LAAM"
+    "LAAM",
+    "Bachaa Party"
   ],
   "stock_policy": "Exclude fully out-of-stock products; retain source-confirmed unavailable variants of included products. LAAM active visible in-stock clothing only.",
   "price_policy": "Live variant identity, PKR prices and availability verified; no cached-price fallback on failed verification; sale only where actual payable price is below source compare-at price.",
   "fetch_segment_minutes": 300,
   "laam_fresh_enabled": false,
-  "runner_plan": "solo",
+  "runner_plan": "paired",
   "resume_sources": {},
   "completed_stores": [],
-  "owner_authorized_blank_shop_codes": [],
-  "refresh_generation": "refresh20261027-f31e6f08",
-  "preserve_active_run_ids": [
-    "40477303521"
+  "owner_authorized_blank_shop_codes": [
+    "Sana Safinaz",
+    "Edenrobe",
+    "Beechtree",
+    "Breakout",
+    "Liberty Books",
+    "ChenOne",
+    "Generation",
+    "Saya",
+    "Hush Puppies",
+    "Habitt",
+    "Beyond East",
+    "Rios",
+    "Mala",
+    "Limelight",
+    "Alkaram Studio"
   ],
-  "skip_fresh_stores": [
-    "Stylo"
-  ]
+  "refresh_generation": "refresh20261029-b80f4ca4",
+  "preserve_active_run_ids": [],
+  "skip_fresh_stores": []
 }

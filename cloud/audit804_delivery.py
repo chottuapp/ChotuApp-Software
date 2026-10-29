@@ -150,6 +150,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
    processing=process(normalized,output,store,codes,approved_original=store in {'LAAM','Sapphire','Khaadi'})
    host=(urlsplit(sites[store]['url']).hostname or '').removeprefix('www.');hosts={host}
    if store=='Sapphire':hosts={'pk.sapphireonline.pk'}
+   if store=='Breakout':hosts.add('checkout.breakout.com.pk')
    if store=='Farda Foods':
     from farda_source_support import SHOP
     hosts.add(urlsplit(SHOP).hostname)

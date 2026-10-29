@@ -97,7 +97,16 @@ class Capture:
             robots=self.page(self.base+'/robots.txt')
             # BeautifulSoup.get_text preserves plain robots.txt responses.
             self.robot=RobotFileParser();self.robot.parse(robots.get_text().splitlines())
-            home=self.page(self.base+'/');categories=navigation(home,self.base);self.navigation=categories
+            from collection_scope_support import collection_for
+            scope=collection_for(self.base)
+            if scope:
+                scoped_url=self.base+'/collections/'+scope;home=self.page(scoped_url)
+                heading=home.select_one('h1');label=heading.get_text(' ',strip=True) if heading else ''
+                if not label:raise ValueError('Selected collection heading missing; no root navigation fallback')
+                categories=[dict(category_path=[label],url=scoped_url,category=label,subcategory='',category_order=1,subcategory_order=1)]
+            else:
+                home=self.page(self.base+'/');categories=navigation(home,self.base)
+            self.navigation=categories
             if not categories:
                 for anchor in home.select('a[href]'):
                     url=public_link(self.base,anchor['href'])

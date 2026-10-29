@@ -20,7 +20,8 @@ def selected_sites(registry,request):
 def planned_groups(sites,request):
  skipped=set(request.get('completed_stores',[]))|set(request.get('skip_fresh_stores',[]))
  remaining=[site for site in sites if site['name'] not in skipped]
- if request.get('maximum_stores_per_runner')==1:return [[site] for site in remaining]
+ size=request.get('maximum_stores_per_runner')
+ if size in (1,2):return [remaining[i:i+size] for i in range(0,len(remaining),size)]
  return groups(remaining) if remaining else []
 
 def lane_prefix(request):
@@ -44,7 +45,7 @@ def main():
  request=json.loads((ROOT/'cloud/audit804-release.json').read_text());campaign=request['campaign_id'];prefix='Cloud group '+lane_prefix(request)
  registry=json.loads((ROOT/'cloud/fetch-update-release.json').read_text())['fresh_stores']
  sites=selected_sites(registry,request)
- if request.get('maximum_stores_per_runner') not in (1,3) or request.get('destination_folder')!='ChotuApp 19-10-2026 11-36AM':raise ValueError('Unexpected requested fresh policy')
+ if request.get('maximum_stores_per_runner') not in (1,2,3) or request.get('destination_folder')!='ChotuApp 19-10-2026 11-36AM':raise ValueError('Unexpected requested fresh policy')
  report={'run_id':os.environ['GITHUB_RUN_ID'],'campaign_id':campaign,'checked_utc':datetime.now(timezone.utc).isoformat(),'groups':[],'phone':{'store':'Khaadi','status':'cloud_fresh_attempt_requested_no_phone_required' if any(site['name']=='Khaadi' for site in sites) else 'excluded_by_owner_request','fresh_campaign_id':campaign},'stopped':[]}
  publish(report,branch='fetch-update-reports')
  # Block old auto-continuation roots, including already running jobs that use old source code.
