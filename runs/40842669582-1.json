@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-10-29T10:56:03.882568+00:00",
+  "run_id": "40842669582",
+  "attempt": "1",
+  "source_commit": "86c9743ad68cfe17b4e665ef18403cb36ac96f4e",
+  "status": "complete",
+  "checkpoint_saved": true,
+  "python": "3.12.15",
+  "elapsed_seconds": 8540.9,
+  "stores": [
+    {
+      "name": "Sana Safinaz",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "5c4a5331f70a5729",
+      "products": 1752,
+      "variants": 5935,
+      "http_statuses": {
+        "200": 5078
+      },
+      "network_seconds": 2224.1,
+      "max_response_seconds": 5.3,
+      "cache_events": 6802
+    },
+    {
+      "name": "Edenrobe",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "5c4a5331f70a5729",
+      "products": 3107,
+      "variants": 16674,
+      "http_statuses": {
+        "200": 19027,
+        "429": 2
+      },
+      "network_seconds": 5487.9,
+      "max_response_seconds": 5.2,
+      "cache_events": 22212
+    }
+  ]
+}
