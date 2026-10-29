@@ -315,6 +315,10 @@ def maali_kind(row,fact=None):
 
 def category(row,store):
  name=str(row.get('name') or '');body=str(row.get('description') or '')
+ if store=='Xcessories Hub':
+  from xcessories_purpose_support import classify
+  found=classify(row)
+  if found:return found
  if store=='Design by DAS':
   if re.search(r'(?i)\bcrochet\b.*\b(?:tulip|rose)\b',name) and re.search(r'(?i)\byarn\b',body):return 'Crochet Flowers','reviewed_source_material_and_name','Named crochet flower, source explicitly states yarn; not a live plant.'
   if name=='Fruit-Themed Glasses Cover' and re.search(r'(?i)\beyewear\b',body):return 'Eyeglass Cases','reviewed_source_purpose','Source explicitly describes crochet cases for sunglasses and reading glasses.'
