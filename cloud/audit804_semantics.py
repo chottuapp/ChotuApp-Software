@@ -2,7 +2,7 @@
 import re
 
 def text(value):
- return re.sub(r'\s+',' ',re.sub('<[^>]*>',' ',str(value or ''))).strip()
+ return re.sub(r'\s+',' ',re.sub(r'</?[A-Za-z][A-Za-z0-9:-]*(?:\s[^<>]*?)?/?>',' ',str(value or ''))).strip()
 def has(pattern,value):return bool(re.search(pattern,value,re.I))
 def extend_proofs(proofs,additions):
  # New aliases extend existing evidence instead of erasing supported spellings.
@@ -16,6 +16,7 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  # Only explicit source garment-type strings; a generic vendor/brand is not purpose evidence.
  if re.fullmatch(r'(?i)(?:women|men|teens|kids|infants)\s+(?:stitched\s+[234]\s+piece(?:\s+shirt\s+trouser)?|(?:cotton\s+silk\s+)?shalwar|(?:special\s+)?kurta|trouser|earrings|bracelet|necklace|ring|eyebrow\s+kit|waistcoat\s+with\s+kurta\s+trouser)',str(source_type or '').strip()):body+=' Source-listed garment type: '+str(source_type)
  evidence=title+' '+body
+ if cat in {'quilt covers','duvet covers'} and has(r'\b(?:quilt|duvet)\s+cover\b',title):return []
  if cat=='earrings' and has(r'^\s*Earrings\b',str(description)):return []
  if cat=='necklaces' and has(r'^\s*Necklace\b',str(description)):return []
  if cat=='jewellery sets' and has(r'^\s*Rings\b',str(description)) and has(r'\bearrings\b',body[:300]):return []

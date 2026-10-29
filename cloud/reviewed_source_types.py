@@ -1,5 +1,6 @@
 """Exact, identity-bound public merchant object types; generic ranges excluded."""
 TYPES={
+ 'smart watches':('Smartwatches','a smartwatch'),'true wireless earbuds':('Earbuds','true wireless earbuds'),
  'lipstick':('Lipsticks','a lipstick'),'liquid lipstick':('Lipsticks','a liquid lipstick'),
  'face wash':('Face Wash','a face wash'),'face serum':('Face Serums','a face serum'),
  'foot cream':('Foot Creams','a foot cream'),'hand cream':('Hand Creams','a hand cream'),
@@ -34,6 +35,6 @@ TYPES={
  'cap':('Caps','a cap'),'coat':('Coats','a coat'),
  'charms':('Decorative Charms','a decorative charm'),
 }
-STORES={'Rios','ChenOne','Breakout','Limelight'}
+STORES={'Xcessories Hub','Rios','ChenOne','Breakout','Limelight'}
 def matched(fact,store):
  return TYPES.get(str(fact.get('product_type') or '').strip().casefold()) if fact and store in STORES else None
