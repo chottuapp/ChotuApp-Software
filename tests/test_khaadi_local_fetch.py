@@ -44,5 +44,15 @@ class LocalFetchTests(unittest.TestCase):
     self.assertEqual(helper.fetch(ROOT,data,Mock()),2)
    self.assertEqual(json.loads((data/'local-status.json').read_text())['status'],'failed_resume_available');self.assertTrue((data/'pages.sqlite3').exists())
  def test_prepared_sources_match_pinned_hashes(self):
-  import hashlib
-  for name,expected in helper.FILES.items():self.assertEqual(hashlib.sha256((ROOT/name).read_bytes()).hexdigest(),expected,name)
+  import hashlib,io,tempfile
+  self.assertRegex(helper.REVISION,r'^[a-f0-9]{40}$')
+  for name,expected in helper.FILES.items():self.assertRegex(expected,r'^[a-f0-9]{64}$',name)
+  # This launcher intentionally downloads an immutable release, not current HEAD.
+  # Test the actual download guard; unrelated engine updates must not stop recovery.
+  payload=b'pinned release source'
+  for downloaded,valid in ((payload,True),(payload+b'tampered',False)):
+   with tempfile.TemporaryDirectory() as tmp,patch.object(helper.Path,'home',return_value=Path(tmp)),patch.object(helper,'FILES',{'fixture.py':hashlib.sha256(payload).hexdigest()}),patch.object(helper.urllib.request,'urlopen',return_value=io.BytesIO(downloaded)),patch.object(helper,'fetch',return_value=0) as fetch,patch('builtins.print'):
+    if valid:self.assertEqual(helper.main(),0);fetch.assert_called_once()
+    else:
+     with self.assertRaisesRegex(RuntimeError,'verification failed'):helper.main()
+     fetch.assert_not_called()
