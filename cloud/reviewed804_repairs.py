@@ -21,6 +21,9 @@ def conflicting_name(row,catalogue):
 def product_content(row):
  raw=str(row.get('description') or '')
  host=(urlsplit(str(row.get('source_url') or '')).hostname or '').removeprefix('www.')
+ if host=='saya.pk':
+  # A review widget follows the SKU/contents and precedes retained product options.
+  raw=re.sub(r'(?ims)^Based on \d+ reviews? Write a review\s*\n.*?(?=^Product Options:|\Z)','',raw)
  if host=='shopmodest.pk':
   marker=re.search(r'(?i)Four bulk inquiry contact us at',raw)
   if marker:

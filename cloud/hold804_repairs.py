@@ -315,6 +315,42 @@ def maali_kind(row,fact=None):
 
 def category(row,store):
  name=str(row.get('name') or '');body=str(row.get('description') or '')
+ if store=='Edenrobe':
+  for label,pattern in [('Lapel Pins',r'\blapel\s+pin\b'),('Cufflinks',r'\bcufflinks?\b'),('Bow Ties',r'\bbow\s+tie\b'),('Pocket Squares',r'\bpocket\s+square\b'),('Collar Bars',r'\bcollar\s+bar\b'),('Lehenga Sets',r'\blehenga\s+suit\b'),('Maxi Dresses',r'\bmaxi\b'),('Formal Suits',r'\b(?:tuxedo|formal)\s+suit\b')]:
+   if re.search(pattern,name,re.I):return label,'reviewed_source_object','Explicit source sold object: '+name
+  if re.search(r'\bsuit\b',name,re.I) and re.search(r'\d+(?:\.\d+)?\s*M(?:eters?|etres?|tr)?\b',body,re.I) and re.search(r'\b(?:trouser|dupatta)\b',body,re.I) and not re.search(r'\bFit Type\b',body,re.I):return 'Unstitched Suits','reviewed_source_fabric_contents','Source measured fabric panels and suit components; no stitched garments inferred.'
+  if re.search(r'\bsuit\b.*-3P\b',name,re.I):return 'Clothing Sets','reviewed_source_object','Source suit title explicitly identifies a three-piece article.'
+ if re.search(r'\bsatchel\b',name,re.I):return 'Satchel Bags','reviewed_source_object','Source explicitly names a satchel bag.'
+ reviewed_named=[]
+ if store=='ChenOne' and re.search(r'\bpackage\b',name,re.I) and re.search(r'\bbed\s+with\s+side\s+tables\b',body,re.I):return 'Bedroom Furniture Sets','reviewed_source_contents','Source package explicitly includes bed and side tables; additional supplied pieces retained.'
+ if store in {'ChenOne','Alkaram Studio','Sana Safinaz'}:reviewed_named+=[('Bath Mats', '\\bbath\\s+mat\\b'), ('Mattress Protectors', '\\bmattress\\s+protector\\b'), ('Rugs', '\\brug\\b'), ('Duvet Cover Sets', '\\b(?:\\d+\\s*pcs?\\s+duvet\\s+cover|duvet\\s+cover\\s+set)\\b'), ('Duvet Covers', '\\bduvet\\s+cover(?:\\s+sheet)?\\b'), ('Quilt Covers', '\\bquilt\\s+cover\\b'), ('Cushion Covers', '\\bcushion\\s+covers?\\b'), ('Pillow Covers', '\\bpillow\\s+covers?\\b'), ('Filled Cushions', '\\bfilled\\s+cushion\\b'), ('Cushions', '\\bcushion\\b'), ('Fitted Sheets', '\\bfitted\\s+sheet\\b'), ('Placemats', '\\bplace\\s*mat\\b'), ('Table Runners', '\\btable\\s+runner\\b'), ('Sofa Beds', '\\bsofa\\s+cum\\s+bed\\b'), ('Coffee Table Sets', '\\bcoffee\\s+table\\s+set\\b'), ('Coffee Tables', '\\bcoffee\\s+table\\b'), ('Dressers', '\\bdresser\\b'), ('Trinket Trays', '\\btrinket\\s+tray\\b'), ('Tissue Boxes', '\\btissue\\s+box\\b'), ('Wrapping Papers', '\\bwrapping\\s+(?:paper|sheet)\\b')]
+ if store=='Habitt':reviewed_named+=[('Basting Brushes', '\\bsilicone\\s+broom\\b'), ('Snack & Drink Cups', '\\bsnack\\s+tub\\s+with\\s+straw\\b'), ('Snack Storage Boxes', '\\bdry\\s+fruit\\s*&\\s*snack\\s+box\\b'), ('Karahis', '\\bkarahi\\b'), ('Straw & Spoon Sets', '\\bstraw\\s*&\\s*spoon\\s+set\\b'), ('Cutlery & Napkin Holders', '\\bcutlery\\s*&\\s*napkin\\s+holder\\b'), ('Milk Cups', '\\bmilk\\s+cup\\b'), ('Salt Shakers', '\\bsalt\\s+sprayer\\b'), ('Storage Containers', '\\bacrylic\\s+push\\s+box\\s+with\\s+lid\\b'), ('Salt & Pepper Sets', '\\bsalt\\s*&\\s*pepper\\s+set\\b'), ('Milk & Sugar Pot Sets', '\\bmilk\\s+pot\\s*&\\s*sugar\\s+pot\\s+set\\b'), ('Coffee Pots', '\\bcoffee\\s+pot\\b'), ('Oil Pots', '\\boil\\s+pot\\b'), ('Glass Holders', '\\bglass\\s+holder\\b'), ('Strainers & Colanders', '\\bstainer\\b'), ('Storage Racks', '\\bstorage\\s+rack\\b'), ('Oil Bottles', '\\boil\\s+bottle\\b'), ('Dinner Knife Sets', '\\b\\d+\\s*pcs?\\s+dinner\\s+knife\\b'), ('Casseroles', '\\bcasserole\\s*\\d*cm?\\b')]
+ if store=='Breakout':reviewed_named+=[('Hoodies', '\\bhooded\\s+top\\b'), ('Tank Tops', '\\btank\\s+top\\b'), ('Tops', '\\btop\\b'), ('Jackets', '\\bjacket\\b'), ('Sweaters', '\\bsweaters?\\b'), ('Gloves', '\\bgloves\\b'), ('Shorts', '\\bshort\\b'), ('Bodysuits', '\\bbody\\s*suit\\b'), ('Glasses', '\\bglasses\\b'), ('High-Neck Tops', '\\bhighneck\\b')]
+ if store=='Rios':reviewed_named+=[('Body Shapers', '\\bg[ui]rdle\\b'), ('Hair Colour Developers', '\\bdeveloper\\b'), ('Hair Removal Waxes', '\\bliposoluble\\s+wax\\b'), ('Perfumes & Fragrances', '\\beau\\s+de\\s+(?:toilette|parfum)\\b'), ('Lip Liners', '\\blip\\s*liner\\b'), ('Lip Powders', '\\blip\\s+powder\\b'), ('Eyebrow Kits', '\\beye\\s*brow\\s+designer\\s+kit\\b'), ('Highlighters', '\\billuminator\\b'), ('Makeup Remover Wipes', '\\bmakeup\\s+wet\\s+wipes\\b'), ('Face Powders', '\\bfit\\s*me\\b.*\\bpowder\\b'), ('Cleansing Gels', '\\bcleansing\\s+gel\\b')]
+ for label,pattern in reviewed_named:
+  if re.search(pattern,name,re.I) and not (store=='ChenOne' and re.search(r'\bpackage\b',name,re.I)):return label,'reviewed_named_sold_object','Explicit source sold object: '+name
+ from reviewed_source_types import matched
+ source_fact=public_facts(row,store);source_kind=matched(source_fact,store)
+ if source_kind and not (store=='ChenOne' and re.search(r'\b(?:package|bed\s+with\s+side\s+tables)\b',name,re.I)):return source_kind[0],'reviewed_public_product_type','Exact identity-matched merchant type: '+source_fact['product_type']+'; '+source_fact['source_url']
+ apparel={'Sana Safinaz','Edenrobe','Beechtree','Generation','Saya','Beyond East','Limelight','Mala','Alkaram Studio'}
+ if store in apparel:
+  from ftfy import fix_text
+  clean=fix_text(body)
+  if re.search(r'\bco[ -]?ords?\s+set\b',name,re.I):return 'Clothing Sets','reviewed_source_object','Source explicitly names a coordinated clothing set.'
+  if store in {'Beechtree','Saya'} and re.search(r'\btops?\b',name,re.I):return 'Tops','reviewed_source_object','Source explicitly names the sold top; separate matching bottoms and measurements do not imply inclusion.'
+  if re.search(r'\b(?:co[ -]?ords?\s+set|duo[ -]set)\b',name,re.I) and re.search(r'\b(?:shirt|top|kurta|kameez)\b',clean,re.I) and re.search(r'\b(?:trouser|pants?|shalwar|lower)\b',clean,re.I):return 'Clothing Sets','reviewed_source_components','Source explicitly lists coordinated upper and lower garments; all contents retained.'
+  if store=='Saya' and re.search(r'\bstitched\b',name,re.I) and re.search(r'\b2\s*Pcs\b.*\bS\+T\b',clean,re.I):return 'Clothing Sets','reviewed_source_components','Source two-piece S+T article configuration; Mom/Kid are variant choices, not extra included outfits.'
+  if store=='Sana Safinaz' and all(re.search(r'(?im)^'+x+r'\s*:\s*(?!Not\b|None\b|N/A\b)[^\n]+\bIncluded\b',clean) for x in ('Dupatta','Trouser')):return 'Clothing Sets','reviewed_source_included_garments','Source explicitly marks both dupatta and trouser included; no extra garment or piece count inferred.'
+  if re.search(r'\bsuit\b',name,re.I) and re.search(r'\b(?:shirt|frock)\b',clean,re.I) and re.search(r'\b(?:trouser|shalwar|gharara|pants?)\b',clean,re.I):
+   if re.search(r'\bun[ -]?stitched\b|\b(?:shirt|trouser|dupatta)[^\n]{0,50}\b\d+(?:\.\d+)?\s*(?:meters?|metres?|mtr)\b',clean,re.I):return 'Unstitched Suits','reviewed_source_fabric_contents','Source supplies named suit components as measured fabric cuts.'
+   if re.search(r'\b(?:fit\s+type|ready\s+to\s+wear|stitched|paired\s+with)\b|\b3P\b',clean+' '+name,re.I):return 'Clothing Sets','reviewed_source_components','Source names complete suit components and garment fit; no component-only category.'
+  if store=='Beechtree' and re.search(r'\benvelopes?\b',clean,re.I):return 'Gift Envelopes','reviewed_source_object','Source explicitly names an envelope; fabric option 0 is not a garment.'
+ if store=='ChenOne' and re.search(r'\bready\s+to\s+stitch\b',name,re.I) and re.search(r'\b\d+(?:\.\d+)?\s*meters?\b',body,re.I):return 'Unstitched Fabric','reviewed_source_measured_fabric','Source explicitly sells a ready-to-stitch measured fabric length.'
+ if store=='Mala' and re.search(r'\bniqab\b',name,re.I) and not re.search(r'\b(?:khimar|abaya)\b',name,re.I):return 'Niqabs','reviewed_source_object','Niqab explicitly named as the sold object.'
+ if store=='Mala' and re.search(r'\bkhimar\b',name,re.I):return 'Khimar Sets' if re.search(r'\bwith\s+niqab\b',name,re.I) else 'Khimars','reviewed_source_contents','Named khimar with only explicitly included niqab retained.'
+ if store=='Mala' and re.search(r'\bkids\b',name,re.I) and re.search(r'\bkids\s+abaya\b',body,re.I):return 'Kids Abayas','reviewed_source_object','Source explicitly names a hoodie-style kids abaya.'
+ if store=='Alkaram Studio':
+  if re.search(r'\bbedsheet(?:\s+set)?\b',name,re.I) and re.search(r'\b\d+\s*x\s*pillow\s+cases?\b',body,re.I):return 'Bed Sheet Sets','reviewed_source_contents','Source explicitly lists sheet and pillow case quantities and measurements.'
  if store=='Tawakkal Fabrics':
   if re.search(r'\bslipper\b',name,re.I):return 'Slippers','reviewed_source_object','Explicit slipper title and footwear specifications: '+body[:250]
   if re.search(r'\bheel\b',name,re.I) and re.search(r'\bheel\s+sandals\b',body,re.I):return 'Heeled Sandals','reviewed_source_object','Source explicitly describes high heel sandals: '+body[:250]
@@ -623,6 +659,13 @@ def category(row,store):
 
 def description(row,store):
  original=str(row.get('description') or '');name=str(row.get('name') or '');body=original.strip()
+ from reviewed_source_types import matched
+ fact=public_facts(row,store);kind=matched(fact,store)
+ if kind:
+  chosen=category(row,store)
+  lead=name+' is '+kind[1]+'.'
+  if chosen and chosen[0]==kind[0] and not body.startswith(lead):return lead+'\n\n'+original,'Added exact identity-matched public merchant object type; all original details retained.'
+ if store=='Mala' and re.fullmatch(r'circle hijab pins',name,re.I) and body.casefold()==name.casefold():return 'Circular pins for securing a hijab.','Rewrote explicitly named circular hijab pins; no quantity, material or size invented.'
  if store=='Design by DAS' and name=='Fruit-Themed Glasses Cover' and body.lstrip('\ufeff ').startswith('.product-card-container {'):
   marker='Handmade Crochet Fruit-Themed Glasses Cover'
   if marker in body:return body[body.index(marker):],'Removed only accidental source CSS prefix; all product text, dimensions, options and care retained.'

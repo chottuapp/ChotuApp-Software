@@ -2,6 +2,8 @@
 import re
 
 def format_description(value):
+ from ftfy import fix_text
+ value=fix_text(str(value or ''))
  text=str(value or '').replace('\r\n','\n').replace('\r','\n')
  result=[]
  for paragraph in re.split(r'\n\s*\n',text):
