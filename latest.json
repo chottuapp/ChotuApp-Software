@@ -2097,7 +2097,7 @@
     "Sapphire": "source:30ceac6a6cd580038d7b98aa0af997f01431fbfb5a16f2642c5eb7b8098caca6:Sapphire:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Stylo": "source:7dfe44a98758ee42a3055a8905d64b1d4b152f54236eb649739c424e0dfc511d:Stylo:12ca0d891b74d46a5c0aa0eef8bd89e14744c35d5bbb3f24a6c2205d8610866e",
     "Hilm Chapals": "source:bc8d47409d595065ca3e5511de0b5a07ed62de4ee488ab914c02cee5890e8995:Hilm Chapals:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
-    "Golden Rose": "source:6c5faa0b1bc15a24ea4b0be44e7898667308a6148a9dab8fe8f28006e43191bb:Golden Rose:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
+    "Golden Rose": "source:6c5faa0b1bc15a24ea4b0be44e7898667308a6148a9dab8fe8f28006e43191bb:Golden Rose:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Zyren": "source:893e56f4ca9f35894c1f23a34d089e584282658f4e5caf79e9af86edd24516d0:Zyren:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
     "Pyari Walls": "source:ac470c8df431758bc12b7f87982c6dd62128586df4cf71711ff5e7c1edf9168e:Pyari Walls:1e9c3686ab21e96f12650e1d7d2659e16f07e39446b5471a670bcf04c4df56e4",
     "Prime Ticks": "source:191bdf26e04fe8aceddacb73b93fe8775e364217ba10c24fdf9fd725ef7744bd:Prime Ticks:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
@@ -2775,31 +2775,15 @@
     },
     "Golden Rose": {
       "name": "804 Audit",
-      "version": "804-audit-v2",
+      "status": "hold",
       "store": "Golden Rose",
-      "shop_code": "SE10040",
-      "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 142,
-      "findings_count": 0,
-      "findings": [],
-      "details_truncated": false,
-      "workbook_sha256": "b6db75ca633f70d4b4725781a6d65afac977fb7320f3fb755a84728d4338de7d",
-      "checked_utc": "2026-10-29T12:51:58.831521+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
-      },
-      "owner_authorized_exclusions": [],
-      "image_metadata_repairs": 0,
-      "description_repairs_count": 0,
-      "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "40842654821",
       "source_artifact": 12883696569,
+      "error": "No module named 'ftfy'",
       "source_sha256": "6c5faa0b1bc15a24ea4b0be44e7898667308a6148a9dab8fe8f28006e43191bb",
-      "refresh_generation": "refresh20261029-b80f4ca4"
+      "held_input": "inputs/fresh804-20261026-5d42fe35/golden-rose/6c5faa0b1bc15a24/manifest.json",
+      "checked_utc": "2026-10-29T13:00:12.832901+00:00"
     },
     "Zyren": {
       "name": "804 Audit",
@@ -3342,8 +3326,8 @@
     "SE10036": "inputs/fresh804-20261026-5d42fe35/rollback-se10036/b135ba6e802dd2e7/manifest.json",
     "SE10039": "inputs/fresh804-20261026-5d42fe35/rollback-se10039/36f360439f5b78e9/manifest.json"
   },
-  "audit804_last_store": "Design by DAS",
-  "audit804_progress_utc": "2026-10-29T13:00:08.665268+00:00",
+  "audit804_last_store": "Golden Rose",
+  "audit804_progress_utc": "2026-10-29T13:00:12.833002+00:00",
   "audit804_auto_evidence_cache": [],
   "audit804_auto_evidence": {
     "status": "checked",
