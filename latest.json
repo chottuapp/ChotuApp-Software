@@ -1,32 +1,49 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-29T10:23:42.896996+00:00",
-  "run_id": "40857068743",
+  "generated_utc": "2026-10-29T10:31:42.843903+00:00",
+  "run_id": "40842703791",
   "attempt": "1",
-  "source_commit": "aab1ce6ac25b2a931e20ae6ee34ac6da968fc433",
-  "status": "incomplete",
+  "source_commit": "86c9743ad68cfe17b4e665ef18403cb36ac96f4e",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 39.2,
+  "elapsed_seconds": 6401.9,
   "stores": [
     {
-      "name": "Xcessories Hub",
-      "status": "failed",
-      "review_required": false,
+      "name": "Beyond East",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "5c4a5331f70a5729",
+      "products": 495,
+      "variants": 1725,
+      "http_statuses": {
+        "200": 1742
+      },
+      "network_seconds": 832.7,
+      "max_response_seconds": 9.3,
+      "cache_events": 2137
+    },
+    {
+      "name": "Rios",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
-        "HTTP_403",
-        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "91df63449ea86fe1",
+      "software_revision": "5c4a5331f70a5729",
+      "products": 2183,
+      "variants": 5690,
       "http_statuses": {
-        "403": 1,
-        "404": 3,
-        "200": 48
+        "200": 9579,
+        "429": 2
       },
-      "network_seconds": 29.1,
-      "max_response_seconds": 1.0,
-      "cache_events": 6967
+      "network_seconds": 3703.0,
+      "max_response_seconds": 4.8,
+      "cache_events": 12029
     }
   ]
 }
