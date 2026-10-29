@@ -205,12 +205,32 @@ jobs:
           force-avd-creation: true
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
-          script: bash "$RUNNER_TEMP/chotu-private-source/scripts/cloud/smoke-user-apk.sh" > "$RUNNER_TEMP/private-native-test.log" 2>&1
+          script: bash "$RUNNER_TEMP/chotu-private-source/scripts/cloud/smoke-user-apk.sh" > "$RUNNER_TEMP/private-native-test.log" 2>&1 || { adb exec-out screencap -p > "$RUNNER_TEMP/native-failed.png"; adb shell uiautomator dump /sdcard/native-failed.xml > /dev/null 2>&1; adb pull /sdcard/native-failed.xml "$RUNNER_TEMP/native-failed.xml" > /dev/null 2>&1; exit 1; }
       - uses: actions/upload-artifact@v4
         if: success()
         with:
           name: customer-native-launch
           path: ${{ runner.temp }}/customer-apk/customer-native-launch.png
+          retention-days: 1
+      - name: Encrypt private native failure evidence
+        if: failure()
+        run: |
+          set -euo pipefail
+          printf '%s' LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURMVENDQWhXZ0F3SUJBZ0lVVUtsQkZyTE9xWmFHN2kzSEN6blAycGUrUW5Rd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0pqRWtNQ0lHQTFVRUF3d2JRMmh2ZEhVdFFVRkNMVzVoZEdsMlpTMWthV0ZuYm05emRHbGpNQjRYRFRJMgpNVEF5T1RJeU1qTTFOMW9YRFRJMk1UQXpNVEl5TWpNMU4xb3dKakVrTUNJR0ExVUVBd3diUTJodmRIVXRRVUZDCkxXNWhkR2wyWlMxa2FXRm5ibTl6ZEdsak1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0MKQVFFQXJBSnFIRHF4T0V2Q3BiZFFuSkpFeFl4anJEZ2s1UDVvakw3dWpZRzM2KzdJWU9LalJSM1AvT2dvSG92UQphRUYrZTVvVGFCbStBaE1kL2dRRFRhLzhEZEpIS1JwTytMdmlGMDkvVkdXRlF6QXpKYTN3dm1IVWRPQzlqWlZDCjBGNFRGdE8wYXBheVBjemRGVTkwWFVLWGorZEFvRkt5c0xnQXBuZTFVQVNrR0dLMHY2Qmw0bHVyb0U5eUp6MEYKYWdnT1R5K2cwSFNzVGJyc0d4ellRQ1NxRkxZalg1ckhxYjRSdkdzOWtaQXRLUkFlUGpUU0IrcjF2RHNNektKeQpoamlzZDZGcDREYnJua3hXazBCZjRHT3hFQWNJTHZ6bHZ2d1hSaEV5K08wV1ZncWZVeDZqQ2lVSHdTMHpGS29UCnJyUFdSQW9EVUdpMS9JS2g1SzA3alFsQ0t3SURBUUFCbzFNd1VUQWRCZ05WSFE0RUZnUVVkSWVWbjJIem1TSWoKcDhXbzcyaVNFLzhQQS9Zd0h3WURWUjBqQkJnd0ZvQVVkSWVWbjJIem1TSWpwOFdvNzJpU0UvOFBBL1l3RHdZRApWUjBUQVFIL0JBVXdBd0VCL3pBTkJna3Foa2lHOXcwQkFRc0ZBQU9DQVFFQU5ucWtYTmxGNllTL2lRTFBvTzBiCmYraHBkUXROUEloZVhrajEyelcxTzNIODRHdWNUOG9SYituaTB2WTM1eEc0WDZQRkc2YUUxT0p2VmpaVUEwUHgKNklIY0VpbDJabHF6TnExS0doTUxjZno3U3NmYUF1QWtsbyswcU9sTE5rZ1lwaFBzMDhCN1k3d3k1WlVGV2NWMgpHZDA4TEJJSk85cXJZKy9kV0hBajIrTGV0cHVyNEMvM1pmNTRMSEtoS0s2RjJkZFVkT0pTNWxhVEhrRnFhMzdRCkZoOE1QdkpTYUhVbHR2L214aTk2eGdqRlBTcUpoR3JKK21nUTZ2MmdXd09KVWJkaTZpRzNTRCs1T1hSYThHYnYKbGl6Nk0yZFhoWldaeEJiekFDM3RMNWd0cWNBbXdTSE1vc0RPRHpPNTI4S0FyZlluaUs4bDFMOTV2eW80YW1EUgo5Zz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K | base64 -d > "$RUNNER_TEMP/native-diagnostic-public.crt"
+          python3 - <<'PYTAR'
+          import os,tarfile
+          from pathlib import Path
+          p=Path(os.environ['RUNNER_TEMP'])
+          with tarfile.open(p/'native-private-evidence.tar.gz','w:gz') as t:
+            for name in ['private-native-test.log','native-failed.png','native-failed.xml','customer-launch-log.txt']:
+              if (p/name).exists():t.add(p/name,arcname=name)
+          PYTAR
+          openssl cms -encrypt -aes256 -binary -outform DER -in "$RUNNER_TEMP/native-private-evidence.tar.gz" -out "$RUNNER_TEMP/native-diagnostic.enc" "$RUNNER_TEMP/native-diagnostic-public.crt"
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: encrypted-native-diagnostic
+          path: ${{ runner.temp }}/native-diagnostic.enc
           retention-days: 1
       - name: Remove private native-test source and logs
         if: always()
