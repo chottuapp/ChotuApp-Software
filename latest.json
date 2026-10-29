@@ -2075,7 +2075,7 @@
     "Denim Leftover": "source:05ef236b8f6af517395cf01257fd78b3906618c9cac4ab13249499899ada3c18:Denim Leftover:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Skin Factor": "source:12a1e1ff072a239aba8e49323581b7aff2a76f9f3771ff1a94f56de7767bb549:Skin Factor:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Zero Lifestyle": "source:64ae1c94b5fd628fd74a8badc6c7289f49632df5fa7c41372fa44b5a3ac2e0aa:Zero Lifestyle:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
-    "Aerosoft Studio": "source:74a11a493ac0151d3152ff970e262c9c4e6e1d2aa2ee41c9ed9bfc210245f17a:Aerosoft Studio:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
+    "Aerosoft Studio": "source:74a11a493ac0151d3152ff970e262c9c4e6e1d2aa2ee41c9ed9bfc210245f17a:Aerosoft Studio:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Rivaj UK": "source:19251a0f2ffbd1f36634ad6a8071504ab3c88838b1c06f070737dcd4bd3770fd:Rivaj UK:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Vince Care": "source:0616b267d7dd24d01eb41af455463a2b8835340a703deb2603de73080e223eb4:Vince Care:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "Computer Zone": "source:f47fb6677a447bf4e5d51d037ddcab138ac4c78ab25204cb10cba2d17e6b7410:Computer Zone:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
@@ -2265,82 +2265,15 @@
     },
     "Aerosoft Studio": {
       "name": "804 Audit",
-      "version": "804-audit-v2",
+      "status": "hold",
       "store": "Aerosoft Studio",
-      "shop_code": "SE10032",
-      "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 322,
-      "findings_count": 0,
-      "findings": [],
-      "details_truncated": false,
-      "workbook_sha256": "ab67ba6b58100112cb69ed8056e36e9af4b7ad428e6ed822bfea3ef20735d84f",
-      "checked_utc": "2026-10-29T12:41:06.153765+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
-      },
-      "owner_authorized_exclusions": [],
-      "image_metadata_repairs": 0,
-      "description_repairs_count": 241,
-      "description_repairs_examples": [
-        {
-          "product_id": "CP884f29733d25",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP1b47aa5d61c7",
-          "issue": "Added exact public footwear type; original specifications and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPb63f7837677c",
-          "issue": "Added exact public footwear type; original specifications and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP5a6e6d90d5f0",
-          "issue": "Added exact public footwear type; original specifications and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPc275f7276041",
-          "issue": "Added exact public footwear type; original specifications and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPbe0c7c1c2267",
-          "issue": "Added exact public footwear type; original specifications and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP88fc8cbcf6cd",
-          "issue": "Added exact public footwear type; original specifications and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP6322b36138da",
-          "issue": "Added exact public footwear type; original specifications and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPda269d6689b9",
-          "issue": "Added exact public footwear type; original specifications and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPb798ceeaf5ac",
-          "issue": "Added exact public footwear type; original specifications and options retained.",
-          "repair_kind": "description"
-        }
-      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "40842625441",
       "source_artifact": 12884662762,
+      "error": "No module named 'ftfy'",
       "source_sha256": "74a11a493ac0151d3152ff970e262c9c4e6e1d2aa2ee41c9ed9bfc210245f17a",
-      "refresh_generation": "refresh20261029-b80f4ca4"
+      "held_input": "inputs/fresh804-20261026-5d42fe35/aerosoft-studio/74a11a493ac0151d/manifest.json",
+      "checked_utc": "2026-10-29T12:59:30.078192+00:00"
     },
     "Rivaj UK": {
       "name": "804 Audit",
@@ -3605,7 +3538,7 @@
     "40842568289": "40842568289:12884004891:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "40842592571": "40842592571:12884335609:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "40842599968": "40842599968:12897036029:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
-    "40842617645": "40842617645:12885280418:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
+    "40842617645": "40842617645:12885280418:bbe13b5cc9468b1f2d36361d542c246094229dc4bb9d24621ef81be9674808c0",
     "40842625441": "40842625441:12884662762:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
     "40842632961": "40842632961:12884701782:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
     "40842640249": "40842640249:12884935761:0a64df24109169e3e39244896719d8c0f507bac0fb255642fdf0a0adf8d62f87",
@@ -3681,8 +3614,8 @@
     "SE10036": "inputs/fresh804-20261026-5d42fe35/rollback-se10036/b135ba6e802dd2e7/manifest.json",
     "SE10039": "inputs/fresh804-20261026-5d42fe35/rollback-se10039/36f360439f5b78e9/manifest.json"
   },
-  "audit804_last_store": "Zero Lifestyle",
-  "audit804_progress_utc": "2026-10-29T12:59:24.358312+00:00",
+  "audit804_last_store": "Aerosoft Studio",
+  "audit804_progress_utc": "2026-10-29T12:59:30.078293+00:00",
   "audit804_auto_evidence_cache": [],
   "audit804_auto_evidence": {
     "status": "checked",
