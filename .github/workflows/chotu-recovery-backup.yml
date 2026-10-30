@@ -50,7 +50,7 @@ jobs:
       - name: Prepare private backup tools
         run: |
           python3 -m pip install --quiet boto3
-          npm install --prefix "$RUNNER_TEMP/artifact-tools" @actions/artifact@2.3.3
+          npm install --prefix "$RUNNER_TEMP/artifact-tools" @actions/artifact@2.3.2
           mkdir -p "$GITHUB_WORKSPACE/workflows"
         env:
           GH_TOKEN: ${{ github.token }}
