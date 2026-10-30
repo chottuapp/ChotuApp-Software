@@ -176,7 +176,7 @@ jobs:
           import json,os
           from pathlib import Path
           p=Path(os.environ['RUNNER_TEMP']);r=json.loads((p/'apk-build-run.json').read_text());jobs=json.loads((p/'apk-build-jobs.json').read_text())['jobs']
-          assert r['path']=='.github/workflows/chotu-user-aab-cloud.yml' and r['event']=='workflow_dispatch'
+          assert r['path']=='.github/workflows/chotu-android-github-files.yml' and r['event']=='workflow_dispatch'
           assert r['repository']['full_name']=='chottuapp/ChotuApp-Software'
           assert any(j['name']=='build' and j['conclusion']=='success' for j in jobs),'Original APK build job did not succeed'
           PY
@@ -187,7 +187,7 @@ jobs:
           from pathlib import Path
           p=Path(os.environ['RUNNER_TEMP'])/'customer-apk'
           m=json.loads((p/'customer-apk-build-info.json').read_text())
-          assert m['commit']==os.environ['SOURCE_SHA'] and m['version_code']==70 and m['version_name']=='1.1.28'
+          assert m['commit']==os.environ['SOURCE_SHA'] and m['version_code']==71 and m['version_name']=='1.1.29'
           assert m['package']=='com.app.chotu' and m['api_base']=='https://app.developerschotuapp.online'
           assert hashlib.sha256((p/'ChotuApp-User-1.1.29-71.apk').read_bytes()).hexdigest()==m['sha256']
           PY
@@ -251,6 +251,8 @@ jobs:
         with:
           name: production-user-apk
           path: ${{ runner.temp }}/android-downloads
+          run-id: ${{ inputs.build_run || github.run_id }}
+          github-token: ${{ github.token }}
       - name: Verify signed file identities before GitHub upload
         run: |
           python3 - <<'PY'
