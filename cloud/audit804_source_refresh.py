@@ -65,8 +65,13 @@ def main():
    handle=unquote(p.path.rstrip('/').split('/')[-1]);product=None
    if '/products/' in p.path:
     try:
-     raw=read(url+'.js').json()
+     response=read(url+'.js');raw=response.json()
      if raw.get('handle')!=handle:raise ValueError('Product handle mismatch')
+     if item.get('inspect_commercial') is True:
+      import hashlib
+      rec['product_response_sha256']=hashlib.sha256(response.content).hexdigest()
+      rec['commercial_source']={'endpoint':url+'.js','id':raw.get('id'),'available':raw.get('available'),'price':raw.get('price'),'compare_at_price':raw.get('compare_at_price'),'variants':[{k:v.get(k) for k in ('id','title','price','compare_at_price','available','sku')} for v in raw.get('variants',[])]}
+
      product={k:raw.get(k) for k in ('id','handle','title','description','body_html','type','product_type','vendor','tags','options','images')}
     except (requests.RequestException,ValueError):product=None
    if product:rec['product']=product

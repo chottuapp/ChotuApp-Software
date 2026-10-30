@@ -51,6 +51,22 @@ def dispatch_plan(request,runs,ready,additional_active=()):
    plan.append(dict(runner_group=lane,stores=[dict(name=s['name'],url=s['url']) for s in selected]))
  return plan,active,launched
 
+def resume_allowed(request,store,rid,runs,run,summary,artifacts):
+ from fresh804_dispatch import chain_ids
+ from continuation_policy import budget
+ sites={s['name']:s for s in request['stores']}
+ if store not in sites or not str(rid).isdigit():raise ValueError('Unapproved requested checkpoint')
+ title=run.get('display_title','');prefix='Cloud group audit804-'+request['campaign_id']+'-'+request['refresh_generation']+'-'+request['request_id']+'-'
+ if str(run.get('id'))!=str(rid) or run.get('event')!='workflow_dispatch' or run.get('head_branch')!='main' or run.get('head_repository',{}).get('full_name')!=REPO or not title.startswith(prefix) or sites[store]['shop_code'] not in title.removeprefix('Cloud group ').split('-'):raise ValueError('Checkpoint is outside this exact requested store')
+ if run.get('status')!='completed' or run.get('conclusion') in ('success','cancelled'):return False
+ owned=chain_ids(runs,{str(rid)})
+ if owned!={str(rid)} or any(r['status']!='completed' and r.get('displayTitle')==title for r in runs):return False
+ if summary.get('status')=='complete' or summary.get('stop_reason')=='stop_requested':return False
+ if summary.get('runner_group')!=title.removeprefix('Cloud group ') or {s['name'] for s in summary.get('stores',[])}!={store}:raise ValueError('Checkpoint source store mismatch')
+ if summary.get('checkpoint')!='saved' or not any(a.get('name')=='chotuapp-checkpoint' and not a.get('expired') for a in artifacts):raise ValueError('No intact saved checkpoint; no fresh fallback')
+ limit,index=budget(summary)
+ return index<limit
+
 def probe(site):
  base=site['url'].rstrip('/');host=urlsplit(base).hostname.removeprefix('www.');session=requests.Session();session.headers['User-Agent']='ChotuAppRequestedStoreCheck/1.0';observations=[]
  def read(path):
@@ -142,5 +158,22 @@ def main():
  for group in plan:
   lane=group['runner_group'];gh('workflow','run','cloud-fetch.yml','--repo',REPO,'--ref','main','-f','stores='+json.dumps(group['stores'],separators=(',',':')),'-f','runner_group='+lane,'-f','minutes=300','-f','save_checkpoint=true','-f','auto_continue_limit=48','-f','auto_continue_once=false')
   report['groups'].append(dict(group,status='dispatched'));save()
+ for store,rid in request.get('resume_sources',{}).items():
+  if store not in ready:
+   report.setdefault('resumes',[]).append(dict(store=store,status='provider_validation_pending'));save();continue
+  import tempfile
+  run=json.loads(gh('api','repos/'+REPO+'/actions/runs/'+str(rid)))
+  artifacts=json.loads(gh('api','repos/'+REPO+'/actions/runs/'+str(rid)+'/artifacts'))['artifacts']
+  with tempfile.TemporaryDirectory() as tmp:
+   gh('run','download',str(rid),'--repo',REPO,'--name','chotuapp-excel-files','--dir',tmp)
+   paths=list(Path(tmp).rglob('run-summary.json'))
+   if len(paths)!=1:raise ValueError('Unique checkpoint summary required')
+   summary=json.loads(paths[0].read_text())
+  if not resume_allowed(request,store,rid,runs,run,summary,artifacts):
+   report.setdefault('resumes',[]).append(dict(store=store,status='existing_or_completed_chain_preserved'));save();continue
+  from continuation_policy import budget
+  limit,index=budget(summary);site=next(s for s in stores if s['name']==store);lane=run['display_title'].removeprefix('Cloud group ')
+  gh('workflow','run','cloud-fetch.yml','--repo',REPO,'--ref','main','-f','stores='+json.dumps([dict(name=store,url=site['url'])]),'-f','runner_group='+lane,'-f','resume_run_id='+str(rid),'-f','partition_resume=true','-f','continuation_parent='+str(rid),'-f','continuation_index='+str(index+1),'-f','minutes=300','-f','save_checkpoint=true','-f','auto_continue_limit='+str(limit),'-f','auto_continue_once=false')
+  report.setdefault('resumes',[]).append(dict(store=store,status='saved_checkpoint_resume_dispatched',source_run=str(rid)));save()
  report['status']='dispatch_complete';save();print(json.dumps(report,ensure_ascii=False))
 if __name__=='__main__':main()

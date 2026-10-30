@@ -32,7 +32,6 @@ class RequestedStoreTests(unittest.TestCase):
   self.assertNotEqual(plan[0]['runner_group'],next_plan[0]['runner_group'])
  def test_no_supported_provider_means_no_fetch(self):
   self.assertEqual(dispatch_plan(self.request,[],set())[0],[])
-if __name__=='__main__':unittest.main()
 
 class ProviderProbeTests(unittest.TestCase):
  def response(self,path,data=None,status=200,text=''):
@@ -72,8 +71,34 @@ class ApprovedWooOffersTests(unittest.TestCase):
    p=dict(prices=dict(currency_code='PKR',currency_minor_unit=scale,price=sale,regular_price=regular),is_in_stock=True,is_purchasable=True)
    actual=offer(p);self.assertEqual(actual,(Decimal(want_regular),Decimal(want_sale),True))
 
-class HomepageProviderTests(ProviderProbeTests):
+class HomepageProviderTests(unittest.TestCase):
+ response=ProviderProbeTests.response
+ probe=ProviderProbeTests.probe
  def test_verified_wordpress_homepage_uses_its_native_store_api(self):
   result,session=self.probe([self.response('/robots.txt',text='User-agent: *\nAllow: /'),self.response('',text='<script src="/wp-content/plugins/woocommerce/shop.js"></script>'),self.response('/wp-json/wc/store/v1/products',[dict(id=1,prices=dict(currency_code='PKR'))])])
   self.assertEqual(result['provider'],'woocommerce');self.assertEqual(result['homepage_platform_hint'],'wordpress')
   self.assertFalse(any('products.json' in call.args[0] for call in session.get.call_args_list))
+
+class RequestedResumeTests(unittest.TestCase):
+ setUp=RequestedStoreTests.setUp
+ def fixtures(self):
+  lane='audit804-'+self.request['campaign_id']+'-'+self.request['refresh_generation']+'-'+self.request['request_id']+'-2-SE10058'
+  run=dict(id=123,event='workflow_dispatch',head_branch='main',head_repository=dict(full_name='chottuapp/ChotuApp-Software'),display_title='Cloud group '+lane,status='completed',conclusion='failure')
+  summary=dict(runner_group=lane,stores=[dict(name='Paklap')],status='incomplete',checkpoint='saved',stop_reason='source_failure',auto_continue_limit=48,continuation_index=0)
+  return run,summary,[dict(name='chotuapp-checkpoint',expired=False)]
+ def test_only_exact_failed_checkpoint_can_resume_once(self):
+  from requested_stores import resume_allowed
+  run,summary,artifacts=self.fixtures()
+  self.assertTrue(resume_allowed(self.request,'Paklap','123',[],run,summary,artifacts))
+  runs=[dict(databaseId=124,displayTitle='Automatic continuation of 123',status='in_progress')]
+  self.assertFalse(resume_allowed(self.request,'Paklap','123',runs,run,summary,artifacts))
+  with self.assertRaises(ValueError):resume_allowed(self.request,'Paklap','123',[],run,summary,[])
+  summary['stores']=[dict(name='Other Store')]
+  with self.assertRaises(ValueError):resume_allowed(self.request,'Paklap','123',[],run,summary,artifacts)
+ def test_success_manual_stop_and_active_parent_are_preserved(self):
+  from requested_stores import resume_allowed
+  run,summary,artifacts=self.fixtures()
+  for change in ({'status':'in_progress'},{'conclusion':'success'}):self.assertFalse(resume_allowed(self.request,'Paklap','123',[],dict(run,**change),summary,artifacts))
+  self.assertFalse(resume_allowed(self.request,'Paklap','123',[],run,dict(summary,stop_reason='stop_requested'),artifacts))
+
+if __name__=='__main__':unittest.main()

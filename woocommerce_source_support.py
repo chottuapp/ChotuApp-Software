@@ -254,6 +254,12 @@ def export(g,base,name,template,log,*,provider=None):
    for value in values:
     linked={v['images'][0]['src'] for v,a,_ in offers if a[label]==value and v.get('images') and v['images'][0]['src']!=cover}
     g['write_row'](wb['Options'],{'option_id':g['uid']('CO',gid+'|'+value),'group_id':gid,'option_name':value,'extra_price (PKR)':0,'option_image_url (agar size/color/variant ki apni image ho)':next(iter(linked)) if len(linked)==1 else '', 'available (yes/no)':'yes' if any(a[label]==value and o[2] for v,a,o in offers) else 'no'})
+  # Native custom add-ons are independent source options, not invented SKU variants.
+  for custom in p.get('custom_options') or []:
+   gid=g['uid']('CG',pid+'|custom|'+str(custom['id']));gids['custom:'+str(custom['id'])]=gid
+   g['write_row'](wb['Option Groups'],{'group_id':gid,'title (customer ko dikhega)':custom['title'],'select_type':custom['select_type'],'min':1 if custom['required'] else 0,'max':1 if custom['select_type']=='single' else len(custom['choices']),'required (yes/no)':'yes' if custom['required'] else 'no'})
+   for choice in custom['choices']:
+    g['write_row'](wb['Options'],{'option_id':g['uid']('CO',gid+'|'+str(choice['id'])),'group_id':gid,'option_name':choice['title'],'extra_price (PKR)':float(choice['extra_price']),'available (yes/no)':'yes'})
   for v,attrs,(regular,price,available_now) in offers:
    image=v['images'][0]['src'] if v.get('images') else ''
    if v.get('type')=='variation' and image==cover:image='' # inherited cover is a labelled fallback

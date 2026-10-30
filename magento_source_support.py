@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 BASE='https://www.paklap.pk'
 PRICE='price_range{minimum_price{regular_price{value currency}final_price{value currency}}}'
 BASIC='__typename id sku name url_key stock_status '+PRICE
-DETAIL=BASIC+' url_suffix description{html} short_description{html} image{url label} media_gallery{url label disabled} categories{id name url_path} ... on CustomizableProductInterface{options{title required}} ... on ConfigurableProduct{configurable_options{attribute_code label values{value_index label}} variants{attributes{code label value_index} product{'+BASIC+' image{url label}}}}'
+DETAIL=BASIC+' url_suffix description{html} short_description{html} image{url label} media_gallery{url label disabled} categories{id name url_path} ... on CustomizableProductInterface{options{__typename option_id title required ... on CustomizableDropDownOption{value{option_type_id title price price_type}} ... on CustomizableRadioOption{value{option_type_id title price price_type}} ... on CustomizableMultipleOption{value{option_type_id title price price_type}} ... on CustomizableCheckboxOption{value{option_type_id title price price_type}}}} ... on ConfigurableProduct{configurable_options{attribute_code label values{value_index label}} variants{attributes{code label value_index} product{'+BASIC+' image{url label}}}}'
 
 def prices(raw):
  p=raw['price_range']['minimum_price'];regular=p['regular_price'];final=p['final_price']
@@ -16,12 +16,27 @@ def prices(raw):
  if any(not v.is_finite() or v<=0 or v*10000!=(v*10000).to_integral_value() for v in values) or values[1]>values[0]:raise ValueError('Invalid exact Magento prices')
  return dict(currency_code='PKR',currency_minor_unit=4,regular_price=str(int(values[0]*10000)),price=str(int(values[1]*10000)),sale_price=str(int(values[1]*10000)))
 
+def custom_options(options):
+ result=[];seen=set()
+ kinds={'CustomizableDropDownOption':'single','CustomizableRadioOption':'single','CustomizableMultipleOption':'multi','CustomizableCheckboxOption':'multi'}
+ for option in options or []:
+  kind=kinds.get(option.get('__typename'));ident=option.get('option_id')
+  if not kind or not isinstance(ident,int) or ident in seen or not option.get('title') or not isinstance(option.get('required'),bool):raise ValueError('Custom option requires explicit supported selectable identity')
+  seen.add(ident);choices=[];values=set()
+  for value in option.get('value') or []:
+   vid=value.get('option_type_id');fee=Decimal(str(value.get('price')))
+   if not isinstance(vid,int) or vid in values or not value.get('title') or value.get('price_type')!='FIXED' or not fee.is_finite() or fee<0 or fee*10000!=(fee*10000).to_integral_value():raise ValueError('Custom option price/identity is not an exact fixed PKR amount')
+   values.add(vid);choices.append(dict(id=vid,title=value['title'],extra_price=fee))
+  if not 1<=len(choices)<=500:raise ValueError('Custom option choices missing or excessive')
+  result.append(dict(id=ident,title=option['title'],select_type=kind,required=option['required'],choices=choices))
+ return result
+
 def normalize(raw,base=BASE,*,parent=None,permalink=None):
  kind=raw.get('__typename');identity=raw.get('id');stock=raw.get('stock_status')
  if not isinstance(identity,int) or not raw.get('sku') or not raw.get('name'):raise ValueError('Magento product identity missing')
  if stock not in ('IN_STOCK','OUT_OF_STOCK'):raise ValueError('Magento availability unknown')
  if kind not in ('SimpleProduct','ConfigurableProduct'):raise ValueError('Unsupported Magento type: '+str(kind))
- if raw.get('options'):raise ValueError('Custom product options need exact selectable offers; no guessed options')
+ custom=custom_options(raw.get('options'))
  if permalink is None:
   key=raw.get('url_key');suffix=raw.get('url_suffix')
   if not isinstance(suffix,str) or not isinstance(key,str) or not key or any(x in key+suffix for x in ('..','?','#',':','/')):raise ValueError('Magento source URL is not explicit')
@@ -31,6 +46,7 @@ def normalize(raw,base=BASE,*,parent=None,permalink=None):
   url=(image or {}).get('url','')
   if url.startswith('https://') and url not in [i['src'] for i in photos]:photos.append(dict(src=url))
  result=dict(id=identity,sku=raw['sku'],name=raw['name'],type='variation' if parent else 'variable' if kind=='ConfigurableProduct' else 'simple',parent=parent,permalink=permalink,is_in_stock=stock=='IN_STOCK',is_purchasable=stock=='IN_STOCK',is_on_backorder=False,prices=prices(raw),images=photos,description=(raw.get('description') or {}).get('html',''),short_description=(raw.get('short_description') or {}).get('html',''),categories=[dict(name=c['name']) for c in raw.get('categories',[]) if c.get('name')],condition='used' if re.search(r'\bused\b',raw['name'],re.I) else '')
+ result['custom_options']=custom
  if kind=='ConfigurableProduct':
   options=raw.get('configurable_options') or []
   if not options or not 1<=len(options)<=3:raise ValueError('Unsupported configurable dimensions')

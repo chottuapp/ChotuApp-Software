@@ -52,4 +52,42 @@ class MagentoTests(unittest.TestCase):
   g=dict(S=None,get_json=lambda _:None,_chotu_wait=lambda:None);catalog=PublicCatalog(g,BASE,lambda _:None)
   with patch.object(catalog,'query',return_value=dict(total_count=2,items=[self.product(),self.product()])):
    with self.assertRaises(ValueError):catalog.catalog()
+
+
+class CustomAddOnTests(unittest.TestCase):
+ product=MagentoTests.product
+ def option(self):
+  return dict(__typename='CustomizableDropDownOption',option_id=7,title='Memory',required=True,value=[dict(option_type_id=71,title='8 GB',price=0,price_type='FIXED'),dict(option_type_id=72,title='16 GB',price=5000,price_type='FIXED')])
+ def test_native_custom_prices_do_not_create_fake_sku_combinations(self):
+  raw=self.product();raw['options']=[self.option()];p=normalize(raw)
+  self.assertEqual([str(c['extra_price']) for c in p['custom_options'][0]['choices']],['0','5000'])
+  self.assertEqual(len(variants(p,lambda _:None)),1)
+  self.assertEqual(variants(p,lambda _:None)[0][1],{})
+  self.assertEqual(p['custom_options'][0]['required'],True)
+ def test_percent_and_unpriced_custom_choices_remain_unresolved(self):
+  from magento_source_support import custom_options
+  for changes in ({'price_type':'PERCENT'},{'price':-1}):
+   option=self.option();option['value'][1].update(changes)
+   with self.assertRaises(ValueError):custom_options([option])
+
+ def test_custom_addon_workbook_retains_prices_and_one_real_sku(self):
+  from test_app import main
+  from openpyxl import load_workbook
+  raw=self.product();raw['options']=[self.option()]
+  def read(url):
+   query=parse_qs(urlsplit(url).query)['query'][0]
+   return {'data':{'products':{'items':[copy.deepcopy(raw)]}}} if 'filter:' in query else {'data':{'products':{'total_count':1,'items':[copy.deepcopy(raw)]}}}
+  robots=SimpleNamespace(url=BASE+'/robots.txt',text='User-agent: *\nAllow: /',raise_for_status=lambda:None)
+  session=SimpleNamespace(get=lambda *a,**k:robots)
+  with tempfile.TemporaryDirectory() as tmp:
+   g=dict(vars(main),OUT=Path(tmp),S=session,get_json=read,_chotu_wait=lambda:None)
+   export(g,BASE,'Paklap',Path(__file__).resolve().parents[1]/'importer-files/Chotu_Products_Import_Template_Discount_Tags.xlsx',lambda _:None,provider=PublicCatalog(g,BASE,lambda _:None))
+   file=Path(tmp)/'Paklap - REFRESH REVIEW.xlsx';book=load_workbook(file,read_only=True)
+   try:
+    it=book['Options'].iter_rows(values_only=True);headers=next(it);choices=[dict(zip(headers,r)) for r in it]
+    self.assertEqual([r['option_name'] for r in choices],['8 GB','16 GB']);self.assertEqual([r['extra_price (PKR)'] for r in choices],[0,5000]);self.assertEqual(book['Option Groups'].max_row,2);self.assertEqual(book['Variant Combinations'].max_row,2)
+   finally:book.close()
+   from price_stock_gate import workbook_issues
+   self.assertEqual(workbook_issues(file),{})
+
 if __name__=='__main__':unittest.main()
