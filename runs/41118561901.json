@@ -5869,7 +5869,7 @@
     "41039458985": "41039458985:12970420789:bbb3183c4468e391fada12bf48c8a1c2400ab97467c53245f79766bb00938558",
     "41039465105": "41039465105:12969611740:bbb3183c4468e391fada12bf48c8a1c2400ab97467c53245f79766bb00938558",
     "41039471049": "41039471049:12970642113:bbb3183c4468e391fada12bf48c8a1c2400ab97467c53245f79766bb00938558",
-    "41039490338": "41039490338:12969092933:e4dcb19842ea75c8f97c2e0952ed20e041c202317a5a95601ab9ba08198cf10f",
+    "41039490338": "41039490338:12969092933:bbb3183c4468e391fada12bf48c8a1c2400ab97467c53245f79766bb00938558",
     "41039496120": "41039496120:12984161049:e4dcb19842ea75c8f97c2e0952ed20e041c202317a5a95601ab9ba08198cf10f",
     "41039508705": "41039508705:12971710354:e4dcb19842ea75c8f97c2e0952ed20e041c202317a5a95601ab9ba08198cf10f",
     "41039514850": "41039514850:12970852224:e4dcb19842ea75c8f97c2e0952ed20e041c202317a5a95601ab9ba08198cf10f",
@@ -6175,5 +6175,14 @@
     "Zyren"
   ],
   "audit804_refresh_requested_utc": "2026-10-29T08:11:41.119060+00:00",
-  "audit804_source_download_errors": {}
+  "audit804_source_download_errors": {
+    "41039496120": {
+      "source_run": "41039496120",
+      "artifact_id": 12984161049,
+      "attempts": 3,
+      "checked_utc": "2026-10-30T20:15:03.432069+00:00",
+      "error": "GitHub operation failed: run download; saved Drive files retained; error downloading chotuapp-excel-files: HTTP 503: 503 Egress is over the account limit. (https://productionresultssa3.blob.core.windows.net/actions-results/19e455d4-4bef-4de6-934e-e77b8f9629b3/workflow-job-run-0cabbeab-e802-53df-a0a9-b63b36b79131/artifacts/64e33c704dc17f089a8fe900fa9a34d200071af426a80b1b3cc7acff23b675ce.zip?redacted\n",
+      "action": "Retry intact artifact; existing verified workbooks retained"
+    }
+  }
 }
