@@ -2837,7 +2837,7 @@
   "audit804_processed": {
     "Miss Rose": "source:cb8de4bfd1607ea9f1c4361db57a8a71c447f089bdeafcb41bc7a9f76393fc39:Miss Rose:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "The Hanger Pakistan": "source:3590430fe4ec01b68de7cab5e877c5af400d7414ed8e5aca9da06c115d512703:The Hanger Pakistan:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
-    "Shop Modest": "source:57a264243c76f7954bad08ab613574c802c42238840f109c9abdd6454ab10114:Shop Modest:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
+    "Shop Modest": "source:69d2ceff2977523696e47a459d795c4416378763d445039f815f804271a2abea:Shop Modest:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "Seran": "source:2760522ade332cc0a14d04c31a8ded27fa4c31910662386f91352329b3079ae1:Seran:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "Islamabad Tea": "source:1e04e7cc96d86ee8b14f7db1e13774a70b30958c9f86da537b5c29d55d190f5f:Islamabad Tea:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "Adam Cheese": "source:a7bd3ba0e97b1e4c823f29d36b388ba8c5127117afd5d8aacd00428e39b729dc:Adam Cheese:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
@@ -2954,21 +2954,44 @@
       "store": "Shop Modest",
       "shop_code": "SE10006",
       "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 141,
-      "findings_count": 0,
-      "findings": [],
+      "status": "hold",
+      "products_checked": 133,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CPed06e1dede40",
+          "name": "Girls Rawsilk Blue Formal Outfit",
+          "source_url": "https://www.shopmodest.pk/products/girls-rawsilk-blue-formal-outfit",
+          "issues": [
+            "Primary product type and Category disagree: kurta"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "45bb4476d050feefca75eda50694add6b53363be26b95d8c714e3d23eb4d3516",
-      "checked_utc": "2026-10-30T07:54:53.649976+00:00",
+      "workbook_sha256": "5266d2c3a234aca141a4cc0abd1884009a291ff927c57a921a6c3869df33fc73",
+      "checked_utc": "2026-10-30T11:12:54.344243+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-30T11:12:54.344465+00:00",
+        "updated_utc": "2026-10-30T11:12:54.344465+00:00",
+        "next_source_check_due_utc": "2026-10-30T11:27:54.344465+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Primary product type and Category disagree: kurta"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
-      "description_repairs_count": 141,
+      "description_repairs_count": 133,
       "description_repairs_examples": [
         {
           "product_id": "CP87b7615559ac",
@@ -3022,11 +3045,11 @@
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "40842546166",
-      "source_artifact": 12883996390,
-      "source_sha256": "57a264243c76f7954bad08ab613574c802c42238840f109c9abdd6454ab10114",
-      "refresh_generation": "refresh20261029-b80f4ca4",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/shop-modest/57a264243c76f795/manifest.json"
+      "source_run": "41039453006",
+      "source_artifact": 12969683151,
+      "source_sha256": "69d2ceff2977523696e47a459d795c4416378763d445039f815f804271a2abea",
+      "refresh_generation": "refresh20261030-31dd8bb1",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/shop-modest/69d2ceff29775236/manifest.json"
     },
     "Seran": {
       "name": "804 Audit",
@@ -6417,7 +6440,8 @@
     "41039545888": "41039545888:12970021627:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "41039552154": "41039552154:12972021102:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "41039428174": "41039428174:12970261666:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
-    "41039434526": "41039434526:12971285222:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de"
+    "41039434526": "41039434526:12971285222:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
+    "41039446853": "41039446853:12971201319:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-10-30T10:16:12.400385+00:00",
@@ -6494,8 +6518,8 @@
     "SE10053": "inputs/fresh804-20261026-5d42fe35/rollback-se10053/ee1500a5cc854b0a/manifest.json",
     "SE10044": "inputs/fresh804-20261026-5d42fe35/rollback-se10044/82467cce36b38582/manifest.json"
   },
-  "audit804_last_store": "Vince Care",
-  "audit804_progress_utc": "2026-10-30T11:12:49.761065+00:00",
+  "audit804_last_store": "Shop Modest",
+  "audit804_progress_utc": "2026-10-30T11:12:56.555537+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Gul Ahmed",
