@@ -1,29 +1,42 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-30T21:02:44.450341+00:00",
-  "run_id": "41127892544",
+  "generated_utc": "2026-10-30T21:05:44.363324+00:00",
+  "run_id": "41122150892",
   "attempt": "1",
-  "source_commit": "f34fcd3a1417df10e8db9dda224a157060e435aa",
+  "source_commit": "2ad9c87d89c99be730812d7d46c8b8ed31ab4991",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 13.5,
+  "elapsed_seconds": 2536.0,
   "stores": [
     {
-      "name": "G7 Leather",
+      "name": "Gul Ahmed",
       "status": "done",
       "review_required": true,
       "issue_codes": [
         "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "f92b0eee7d0479bf",
-      "products": 12,
-      "variants": 37,
+      "software_revision": "ce15fbb76a7b0dcb",
+      "products": 7030,
+      "variants": 28221,
       "http_statuses": {
-        "200": 28
+        "200": 117
       },
-      "network_seconds": 12.6,
-      "max_response_seconds": 1.4,
+      "network_seconds": 249.0,
+      "max_response_seconds": 2.3,
+      "cache_events": 28570
+    },
+    {
+      "name": "Sapphire",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "ce15fbb76a7b0dcb",
+      "products": 993,
+      "variants": 3646,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
       "cache_events": 0
     }
   ]
