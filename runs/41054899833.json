@@ -3077,7 +3077,7 @@
     "Saeed Ghani": "source:2cb4b26a626ba3ac79c9d15e17fdb72339fddf7f78175e780bdacd20d704340f:Saeed Ghani:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "Tawakkal Fabrics": "source:195941337e3b89c69b9e643c1ea0e8abe14d2bcebd953c1c15b2f03c9391a3d7:Tawakkal Fabrics:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "Elite Cosmetics": "source:4d06aa59b83215be2ad8dbfea0433b939eb13d8c59f8871c71ba4923bf7a535b:Elite Cosmetics:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
-    "Hemani Herbals": "source:0e0ef6416ad588d914422b3b5105c86697cd01fa320e6939cf1f321d5d4f5ce9:Hemani Herbals:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
+    "Hemani Herbals": "source:505cabf78499b1972b1979901c9495e45cc4e78f56d52aee9835ece1dd4995ee:Hemani Herbals:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "Astore Bags": "source:ace9d9ac886496a30d93952fa845ec5b2cefb536f87bef6ba783126fb1fb9aca:Astore Bags:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "Rawayat": "source:4a4a5026f905f9a585f61c31ef663298e1ddb722fc4ce146f56407035adc0f14:Rawayat:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "Outfitters": "source:aa2b5c7214051a00d6663815291a95d9ad18cf5237e45112133aa2fda7109124:Outfitters:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
@@ -4524,28 +4524,51 @@
       "store": "Hemani Herbals",
       "shop_code": "SE10021",
       "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 1073,
-      "findings_count": 0,
-      "findings": [],
+      "status": "hold",
+      "products_checked": 1072,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CP9fa20e507bd7",
+          "name": "Monarchist Pour Homme",
+          "source_url": "https://pk.hemaniherbals.com/products/monarchist-pour-homme",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "152ff3f9b0c496c920273484c6274ed1e4d5f8bf0cb6412d416cded3cb2df533",
-      "checked_utc": "2026-10-30T08:00:59.028280+00:00",
+      "workbook_sha256": "b2bab5a1f478de51997eea05e5ffc0239d12196f0b4797e9a150a77b80e1debb",
+      "checked_utc": "2026-10-30T12:32:01.607774+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-30T12:32:01.609570+00:00",
+        "updated_utc": "2026-10-30T12:32:01.609570+00:00",
+        "next_source_check_due_utc": "2026-10-30T12:47:01.609570+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category lacks clear product-purpose evidence; manual review required"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
       "description_repairs_count": 0,
       "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "40842584666",
-      "source_artifact": 12890502664,
-      "source_sha256": "0e0ef6416ad588d914422b3b5105c86697cd01fa320e6939cf1f321d5d4f5ce9",
-      "refresh_generation": "refresh20261029-b80f4ca4",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/hemani-herbals/0e0ef6416ad588d9/manifest.json"
+      "source_run": "41039483114",
+      "source_artifact": 12975284414,
+      "source_sha256": "505cabf78499b1972b1979901c9495e45cc4e78f56d52aee9835ece1dd4995ee",
+      "refresh_generation": "refresh20261030-31dd8bb1",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/hemani-herbals/505cabf78499b197/manifest.json"
     },
     "Astore Bags": {
       "name": "804 Audit",
@@ -6820,7 +6843,8 @@
     "41039590665": "41039590665:12970518908:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "41039597644": "41039597644:12972261753:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "41039441018": "41039441018:12972931823:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
-    "41049513750": "41049513750:12973349361:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de"
+    "41049513750": "41049513750:12973349361:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
+    "41039476905": "41039476905:12976601436:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-10-30T11:43:43.391270+00:00",
@@ -6897,8 +6921,8 @@
     "SE10053": "inputs/fresh804-20261026-5d42fe35/rollback-se10053/ee1500a5cc854b0a/manifest.json",
     "SE10044": "inputs/fresh804-20261026-5d42fe35/rollback-se10044/82467cce36b38582/manifest.json"
   },
-  "audit804_last_store": "Sapphire",
-  "audit804_progress_utc": "2026-10-30T12:31:50.353473+00:00",
+  "audit804_last_store": "Hemani Herbals",
+  "audit804_progress_utc": "2026-10-30T12:32:03.646007+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Gul Ahmed",
