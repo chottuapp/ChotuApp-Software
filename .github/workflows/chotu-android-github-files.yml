@@ -239,7 +239,7 @@ jobs:
           rm -f -- "$RUNNER_TEMP/private-checkout.log" "$RUNNER_TEMP/private-native-test.log" "$RUNNER_TEMP/customer-launch-log.txt" "$RUNNER_TEMP/chotu-source-key" "$RUNNER_TEMP/chotu-source-hosts"
   github-downloads:
     needs: native-test
-    if: ${{ needs['native-test'].result == 'success' }}
+    if: ${{ always() && (needs['native-test'].result == 'success' || (needs['native-test'].result == 'skipped' && inputs.native_run != '')) }}
     runs-on: ubuntu-24.04
     permissions:
       contents: write
@@ -253,6 +253,38 @@ jobs:
           path: ${{ runner.temp }}/android-downloads
           run-id: ${{ inputs.build_run || github.run_id }}
           github-token: ${{ github.token }}
+      - name: Require successful native check of this exact signed build
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BUILD_RUN: ${{ inputs.build_run || github.run_id }}
+          NATIVE_RUN: ${{ inputs.native_run || github.run_id }}
+        run: |
+          set -euo pipefail
+          [[ "$BUILD_RUN" =~ ^[0-9]+$ && "$NATIVE_RUN" =~ ^[0-9]+$ ]]
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$NATIVE_RUN" > "$RUNNER_TEMP/native-run.json"
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$NATIVE_RUN/jobs?per_page=100" > "$RUNNER_TEMP/native-jobs.json"
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$BUILD_RUN/jobs?per_page=100" > "$RUNNER_TEMP/build-jobs.json"
+          python3 - <<'PYGATE'
+          import os,json
+          from pathlib import Path
+          p=Path(os.environ['RUNNER_TEMP']);r=json.loads((p/'native-run.json').read_text());jobs=json.loads((p/'native-jobs.json').read_text())['jobs']
+          assert r['path']=='.github/workflows/chotu-android-github-files.yml' and r['event']=='workflow_dispatch' and r['head_branch']=='main'
+          assert r['repository']['full_name']=='chottuapp/ChotuApp-Software'
+          assert any(j['name']=='build' and j['conclusion']=='success' for j in json.loads((p/'build-jobs.json').read_text())['jobs'])
+          native=[j for j in jobs if j['name']=='native-test' and j['conclusion']=='success'];assert len(native)==1
+          (p/'native-job-id').write_text(str(native[0]['id']))
+          PYGATE
+          native_job=$(cat "$RUNNER_TEMP/native-job-id")
+          gh api --allow-escape-sequences "repos/$GITHUB_REPOSITORY/actions/jobs/$native_job/logs" > "$RUNNER_TEMP/native-log.txt"
+          python3 - <<'PYIDENTITY'
+          import os,re
+          from pathlib import Path
+          text=(Path(os.environ['RUNNER_TEMP'])/'native-log.txt').read_text()
+          text=re.sub(r'\x1b\[[0-9;]*m','',text)
+          assert re.search(r'\brun-id:\s*'+re.escape(os.environ['BUILD_RUN'])+r'\b',text),'Native check used another artifact'
+          assert re.search(r'\bSOURCE_SHA:\s*'+re.escape(os.environ['SOURCE_SHA'])+r'\b',text),'Native check used another source'
+          print('Native check matches the exact build artifact and source commit.')
+          PYIDENTITY
       - name: Verify signed file identities before GitHub upload
         run: |
           python3 - <<'PY'
