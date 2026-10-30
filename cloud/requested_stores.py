@@ -83,6 +83,16 @@ def probe(site):
    from woocommerce_source_support import HOSTS
    result.update(provider='woocommerce',status='supported' if host in HOSTS else 'adapter_registration_required',sample={k:data[0].get(k) for k in ('id','name','permalink','type','prices','is_in_stock','is_purchasable','has_options','attributes')});return result
   r=read('');html=r.text.lower();result.update(provider='magento' if 'magento' in html or 'mage/cookies' in html else 'unknown',status='adapter_required')
+  if result['provider']=='magento':
+   from urllib.parse import urlencode
+   query='{products(search:"",pageSize:1,currentPage:1){total_count items{__typename sku name url_key stock_status price_range{minimum_price{regular_price{value currency}final_price{value currency}}}}}}'
+   r=read('/graphql?'+urlencode({'query':query}))
+   result['graphql_status']=r.status_code
+   if r.ok:
+    try:
+     value=r.json();result['public_graphql_sample']=(value.get('data') or {}).get('products');result['graphql_errors']=[str(x.get('message',''))[:300] for x in value.get('errors',[])][:3]
+    except ValueError:result['graphql_error']='Public endpoint did not return JSON'
+
  except (requests.RequestException,ValueError) as exc:result.update(status='source_blocked',error=str(exc)[:500])
  return result
 

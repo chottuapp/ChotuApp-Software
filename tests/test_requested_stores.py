@@ -61,3 +61,13 @@ class ProviderProbeTests(unittest.TestCase):
  def test_robots_disallow_stops_before_catalog_request(self):
   result,session=self.probe([self.response('/robots.txt',text='User-agent: *\nDisallow: /')])
   self.assertEqual(result['status'],'source_blocked');self.assertEqual(session.get.call_count,1)
+
+
+class ApprovedWooOffersTests(unittest.TestCase):
+ def test_observed_house_tools_and_g7_currency_scales(self):
+  from decimal import Decimal
+  from woocommerce_source_support import offer,HOSTS
+  self.assertTrue({'houseoftools.com.pk','gsevenleather.com'}<=HOSTS)
+  for scale,regular,sale,want_regular,want_sale in [(2,'29705000','26734500','297050','267345'),(0,'14999','14999','14999','14999')]:
+   p=dict(prices=dict(currency_code='PKR',currency_minor_unit=scale,price=sale,regular_price=regular),is_in_stock=True,is_purchasable=True)
+   actual=offer(p);self.assertEqual(actual,(Decimal(want_regular),Decimal(want_sale),True))

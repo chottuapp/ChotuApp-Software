@@ -7,7 +7,7 @@ from types import SimpleNamespace
 from decimal import Decimal
 from urllib.parse import urlsplit
 from bs4 import BeautifulSoup
-HOSTS={'xcessorieshub.com','designbydas.com'}
+HOSTS={'xcessorieshub.com','designbydas.com','houseoftools.com.pk','gsevenleather.com'}
 
 def offer(p):
  q=p['prices']
