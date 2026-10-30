@@ -1,29 +1,43 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-30T18:32:45.630841+00:00",
-  "run_id": "41106167849",
+  "generated_utc": "2026-10-30T19:50:50.519246+00:00",
+  "run_id": "41079278597",
   "attempt": "1",
-  "source_commit": "9e0576d1f10badf6cc7e88c3908eb0d281a02dd7",
-  "status": "incomplete",
+  "source_commit": "1818b6dc59c5ef5082b47a7e78577a7679319d93",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 670.9,
+  "elapsed_seconds": 16355.7,
   "stores": [
     {
-      "name": "Xcessories Hub",
-      "status": "failed",
-      "review_required": false,
+      "name": "Rivaj UK",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "ce15fbb76a7b0dcb",
+      "products": 310,
+      "variants": 969,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    },
+    {
+      "name": "Junaid Jamshed",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
-        "HTTP_403",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "ce15fbb76a7b0dcb",
+      "products": 6016,
+      "variants": 25731,
       "http_statuses": {
-        "403": 1
+        "200": 9779
       },
-      "network_seconds": 0.1,
-      "max_response_seconds": 0.1,
-      "cache_events": 6775
+      "network_seconds": 17850.3,
+      "max_response_seconds": 24.3,
+      "cache_events": 48105
     }
   ]
 }
