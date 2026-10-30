@@ -46,6 +46,11 @@ def checkpoint(data,destination,max_bytes=250*1024*1024):
                 if db.execute('SELECT COUNT(*) FROM parsed_products WHERE revision IN ('+','.join('?' for _ in revisions)+')',revisions).fetchone()[0]:compacted.add(parsed.parent)
         except (sqlite3.Error,OSError):continue
     if compacted:print('Checkpoint compaction: retaining LAAM parsed products; omitting redundant raw HTML response caches in '+str(len(compacted))+' store folders.',flush=True)
+    from checkpoint_compaction import compact_responses
+    for cache in (data/'saved_runs').rglob('pages.sqlite3'):
+        if cache.parent in compacted:continue
+        changed=compact_responses(cache)
+        if changed:print('Checkpoint lossless cache migration: '+str(changed)+' legacy responses compressed; all source bytes and hashes remain verifiable.',flush=True)
     def needed(path):
         relative=path.relative_to(data).parts
         if path.parent in compacted and path.name in ('pages.sqlite3','pages.sqlite3-wal','pages.sqlite3-shm'):return False

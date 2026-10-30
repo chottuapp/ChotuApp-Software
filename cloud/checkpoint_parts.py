@@ -2,12 +2,13 @@
 import hashlib,json,re,shutil,tempfile
 from contextlib import contextmanager
 from pathlib import Path
-MAX_ARCHIVE=2*1024**3
+MAX_ARCHIVE=4*1024**3
 PART_BYTES=250*1024**2
 
 def split_archive(source,folder,part_bytes=PART_BYTES,max_bytes=MAX_ARCHIVE):
     source=Path(source);folder=Path(folder)
-    if source.stat().st_size>max_bytes:raise ValueError('Checkpoint exceeds 2 GB compressed safety limit; outputs remain available')
+    if source.stat().st_size>max_bytes:raise ValueError('Checkpoint exceeds bounded 4 GB compressed safety limit; outputs remain available')
+    if shutil.disk_usage(source.parent).free<source.stat().st_size+256*1024**2:raise ValueError('Insufficient disk space to split checkpoint; original work retained')
     folder.mkdir(parents=True,exist_ok=True);records=[]
     with source.open('rb') as incoming:
         index=0
@@ -27,7 +28,7 @@ def archive_path(path):
     folder=path/'checkpoint.parts' if (path/'checkpoint.parts').is_dir() else path
     manifest=json.loads((folder/'manifest.json').read_text())
     parts=manifest.get('parts',[]);total=manifest.get('total_bytes')
-    if manifest.get('version')!=1 or not isinstance(parts,list) or not 1<=len(parts)<=16 or not isinstance(total,int) or not 0<total<=MAX_ARCHIVE:raise ValueError('Invalid multipart checkpoint manifest')
+    if manifest.get('version')!=1 or not isinstance(parts,list) or not 1<=len(parts)<=32 or not isinstance(total,int) or not 0<total<=MAX_ARCHIVE:raise ValueError('Invalid multipart checkpoint manifest')
     if sum(p.get('bytes',0) for p in parts)!=total:raise ValueError('Checkpoint byte count mismatch')
     if shutil.disk_usage(folder).free<total+256*1024**2:raise ValueError('Insufficient disk space to assemble checkpoint')
     with tempfile.TemporaryDirectory(prefix='chotu-checkpoint-',dir=folder.parent) as tmp:

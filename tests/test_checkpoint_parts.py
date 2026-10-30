@@ -16,6 +16,15 @@ class PartTests(unittest.TestCase):
    (parts/'part-0000.bin').write_bytes(b'x'*100)
    with self.assertRaisesRegex(ValueError,'checksum'):
     with archive_path(parts):self.fail('Corrupt checkpoint accepted')
+ def test_bounded_compressed_size_and_split_disk_reserve(self):
+  from unittest.mock import patch
+  from types import SimpleNamespace
+  with tempfile.TemporaryDirectory() as tmp:
+   root=Path(tmp);source=root/'input';source.write_bytes(b'abc'*100)
+   with self.assertRaisesRegex(ValueError,'safety limit'):split_archive(source,root/'parts',max_bytes=100)
+   with patch('checkpoint_parts.shutil.disk_usage',return_value=SimpleNamespace(free=100)):
+    with self.assertRaisesRegex(ValueError,'disk space'):split_archive(source,root/'parts')
+   self.assertEqual(source.read_bytes(),b'abc'*100)
  def test_legacy_zip_still_works(self):
   with tempfile.TemporaryDirectory() as tmp:
    root=Path(tmp);path=root/'checkpoint.zip';path.write_bytes(b'legacy')
