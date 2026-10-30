@@ -16,6 +16,21 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  # Only explicit source garment-type strings; a generic vendor/brand is not purpose evidence.
  if re.fullmatch(r'(?i)(?:women|men|teens|kids|infants)\s+(?:stitched\s+[234]\s+piece(?:\s+shirt\s+trouser)?|(?:cotton\s+silk\s+)?shalwar|(?:special\s+)?kurta|trouser|earrings|bracelet|necklace|ring|eyebrow\s+kit|waistcoat\s+with\s+kurta\s+trouser)',str(source_type or '').strip()):body+=' Source-listed garment type: '+str(source_type)
  evidence=title+' '+body
+ # Independently require the sold object in original title/details, not Category metadata.
+ if cat=='clothing sets' and has(r'\boutfit\b',title) and all(has(r'(?m)^\s*'+field+r'\s*:',str(description)) for field in ('Top','Bottom','Dupatta')):return []
+ if cat=='bag & key charms' and has(r'\bsunflower\s+charm\b',title) and has(r'\bcrochet\b',body) and has(r'\b(?:keychain|bag charm)\b',body):return []
+ if cat=='sewing buttons' and has(r'\bcrochet\s+flower\s+buttons\b',title) and has(r'\b(?:sewing|garments)\b',body):return []
+ if cat=='kimonos' and has(r'\bkimono\b',title) and has(r'\bFabric\s*:',body) and has(r'\bwearing\s+size\b',body):return []
+ named_household={'oil dispensers':r'\boil\s+(?:jug|dispenser)\b','strainers & colanders':r'\bmilk\s+straner\b','beverage dispensers':r'\b(?:juice|beverage)\s+dispenser\b','grain dispensers':r'\brice\s+dispenser\b','serving bowls':r'\bstainless\s+steel\b.*\bbowl\b','sipper cups':r'\bsipper\s+cup\b','snack serving trays':r'\brotating\s+snack\s+tray\b'}
+ if cat in named_household and has(named_household[cat],title) and not has(r'\b(?:replacement|spare)\b|\b(?:lid|cover|tap|stand|straw)\s+for\b',title):return []
+ if cat=='bag & hair charms' and has(r'\bbow\s+tie\b',title) and all(has(p,body) for p in (r'\bbow\s+charm\b',r'\bbag\s+tie\b',r'\bhair\s+accessory\b')):return []
+ if cat=='lip colours' and has(r'\blip\s*colou?r\b',title) and has(r'\b(?:lips|lipcolor)\b',body):return []
+ if cat=='makeup setting sprays' and has(r'\bmakeup\s+fixer\s+spray\b',title):return []
+ if cat=='facial cleansing sponges' and has(r'\bface\s+sponge\b',title) and has(r'\bcleansing\s+and\s+exfoliation\b',body):return []
+ if cat=='dental floss' and has(r'\bfloss\b',title):return []
+ if cat=='ear cuffs' and has(r'\bear[ -]cuff\b',title):return []
+ if cat=='saree & blouse sets' and has(r'\b2\s+piece\b.*\bsaree\b',title) and all(has(r'(?m)^\s*'+part+r'\s*$',str(description)) for part in ('Blouse','Saree')):return []
+ if cat=='live plant sets' and has(r'\b[2-9]\s+(?:[A-Za-z]+\s+){0,4}plants\b',body) and has(r"what.s included in this combo",body) and len(re.findall(r'(?m)^.+?\s+[–—-]\s+\S',str(description)))>=2:return []
  if cat in {'quilt covers','duvet covers'} and has(r'\b(?:quilt|duvet)\s+cover\b',title):return []
  if cat=='earrings' and has(r'^\s*Earrings\b',str(description)):return []
  if cat=='necklaces' and has(r'^\s*Necklace\b',str(description)):return []
@@ -549,6 +564,7 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  if cat=='canvas shoes' and has(r'\bcasual\s+canvas\b',title) and has(r'\b(?:heel|sole|footbed|shoes)\b',body):return []
  if cat=='toners & tonics' and 'toner' in str(verified_path).casefold() and has(r'\b(?:rose water|aloe vera)\b',evidence):return []
  if cat=='perfumes & fragrances':
+  if has(r'\bfragrance\b',body) and has(r'\bit opens with\b',body) and has(r'\bpulse points\b',body) and has(r'\bafter spraying\b',body) and not has(r'body lotion|body wash|hair|soap|cream|candle',title):return []
   if has(r'\bfragrance\b.{0,80}\bopens\b',body) and has(r'\b(?:pulse points|notes|musk)\b',body) and not has(r'\b(?:soap|wash|cream|lotion|candle|hair)\b',title):return []
   if has(r'\bapply perfume\b',body) and has(r'\btop\s+note',body) and has(r'\b(?:base|dry)\s+note',body):return []
   if any(part.casefold() in ('fragrance','fragrances','perfume','perfumes',"men's fragrance","women's fragrance",'arabia perfumes','attar') for part in str(verified_path).split(' > ')) and not has(r'body lotion|body wash|hair|soap|cream',title):return []

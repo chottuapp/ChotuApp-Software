@@ -315,14 +315,47 @@ def maali_kind(row,fact=None):
  proof=bool(fact and (str(fact.get('product_type') or '').upper()=='PLANTS' or fact.get('plant_care_description')))
  proof=proof or ('Live plant care' in body and 'Light:' in body and 'Watering:' in body)
  proof=proof or bool(re.search(r'\bplant\s+with\s+grow\s+bag\b',title,re.I))
+ # A source combo explicitly lists multiple plants even when its title says Offer.
+ listed_set=bool(re.search(r'\b[2-9]\s+(?:[A-Za-z]+\s+){0,4}plants\b',body,re.I)
+                 and re.search(r"what.s included in this combo",body,re.I)
+                 and len(re.findall(r'(?m)^.+?\s+[–—-]\s+\S',body))>=2)
+ proof=proof or listed_set
  if not proof:return None
- return 'Live Plant Sets' if re.search(r'\bbundle\b|\bset\s+of\s+\d+\b',title,re.I) else 'Live Plants'
+ return 'Live Plant Sets' if listed_set or re.search(r'\bbundle\b|\bset\s+of\s+\d+\b',title,re.I) else 'Live Plants'
+
+def fresh_source_category(row,store):
+ """Explicit sold objects in held source rows; no price, stock or website inference."""
+ name=str(row.get('name') or '');body=str(row.get('description') or '')
+ def has(pattern,value):return bool(re.search(pattern,value,re.I))
+ label=None
+ if store=='Shop Modest' and has(r'\boutfit\b',name) and all(has(r'(?m)^\s*'+field+r'\s*:',body) for field in ('Top','Bottom','Dupatta')):
+  label='Clothing Sets'
+ if store=='Design by DAS':
+  if has(r'\bsunflower\s+charm\b',name) and has(r'\bcrochet\b',body) and has(r'\b(?:keychain|bag charm)\b',body):label='Bag & Key Charms'
+  if has(r'\bcrochet\s+flower\s+buttons\b',name) and has(r'\b(?:sewing|garments)\b',body):label='Sewing Buttons'
+  if has(r'\bkimono\b',name) and has(r'(?m)^Fabric\s*:',body) and has(r'\bwearing\s+size\b',body):label='Kimonos'
+ if store=='Habitt' and not has(r'\b(?:replacement|spare)\b|\b(?:lid|cover|tap|stand|straw)\s+for\b',name):
+  objects=[('Oil Dispensers',r'\boil\s+(?:jug|dispenser)\b'),('Strainers & Colanders',r'\bmilk\s+straner\b'),('Beverage Dispensers',r'\b(?:juice|beverage)\s+dispenser\b'),('Grain Dispensers',r'\brice\s+dispenser\b'),('Serving Bowls',r'\bstainless\s+steel\b.*\bbowl\b'),('Sipper Cups',r'\bsipper\s+cup\b'),('Snack Serving Trays',r'\brotating\s+snack\s+tray\b')]
+  for candidate,pattern in objects:
+   if has(pattern,name):label=candidate;break
+ if store=='Generation' and has(r'\bbow\s+tie\b',name) and has(r'\bbow\s+charm\b',body) and has(r'\bbag\s+tie\b',body) and has(r'\bhair\s+accessory\b',body):label='Bag & Hair Charms'
+ if store=='Rios':
+  if has(r'\blip\s*colou?r\b',name) and has(r'\b(?:lips|lipcolor)\b',body):label='Lip Colours'
+  if has(r'\bmakeup\s+fixer\s+spray\b',name):label='Makeup Setting Sprays'
+  if has(r'\bface\s+sponge\b',name) and has(r'\bcleansing\s+and\s+exfoliation\b',body):label='Facial Cleansing Sponges'
+  if has(r'\bfloss\b',name):label='Dental Floss'
+ if store=='Rawayat' and has(r'\bear[ -]cuff\b',name):label='Ear Cuffs'
+ if store=='Limelight' and has(r'\b2\s+piece\b.*\bsaree\b',name) and has(r'(?m)^\s*Blouse\s*$',body) and has(r'(?m)^\s*Saree\s*$',body):label='Saree & Blouse Sets'
+ if label:return label,'reviewed_source_sold_object','Exact source title and supplied product details: '+name
+ return None
 
 def category(row,store):
  name=str(row.get('name') or '');body=str(row.get('description') or '')
  if re.search(r'\b(?:quilt|duvet)\s+cover\b',name,re.I) and re.search(r'\b[12]\s+pillow\s*cases?\b',body,re.I):return 'Duvet Cover Sets','reviewed_source_contents','Explicit cover and pillowcases supplied; no duvet filling inferred.'
  visual=visual_review(row,store)
  if visual:return visual['category'],'reviewed_primary_product_image',visual['overview']+' Image: '+visual['image_url']+' SHA256: '+visual['image_sha256']
+ explicit=fresh_source_category(row,store)
+ if explicit:return explicit
  if store=='Rios':
   strong_names=[('Lipsticks', '\\blipstick\\b'), ('Hair Brushes', '\\bhair\\s*brush\\b'), ('Hair Combs', '\\bcomb\\b'), ('Toothbrushes', '\\btooth\\s*brush\\b'), ('Face Serums', '\\bface\\s+serum\\b'), ('Face Scrubs & Exfoliators', '\\bfacial\\s+scrub\\b'), ('Face Wash', '\\bface\\s+wash\\b'), ('Sunscreen Sticks', '\\bsun\\s+stick\\b'), ('Makeup Primers', '\\bprimer\\b'), ('Highlighters', '\\b(?:strobe\\s+cream|ill+uminator)\\b'), ('Eyeshadow Palettes', '\\beyeshadow\\s+palette\\b'), ('Makeup Palettes', '\\b(?:face\\s+palette|3\\s+in\\s+1\\s+palette)\\b'), ('Eyebrow Pencils', '\\bbrow\\s+pencil\\b'), ('Eyebrow Pomades', '\\b(?:brow\\s+pomade|pomade\\s+brow)\\b'), ('Cosmetic Mirrors', '\\bcosmetic\\s+mirror\\b'), ('Foot Files', '\\bfoot\\s+filer\\b'), ('Cuticle Scissors', '\\bcuticle\\s+scissor\\b'), ('Makeup Puffs', '\\b(?:makeup\\s+puff|large\\s+puff|touch\\s+me\\s+puff)\\b'), ('Bath Brushes', '\\bbath\\s+brush\\b'), ('Scissors', '\\bscissor\\b'), ('Shaving Foams', '\\bshaving\\s+foam\\b'), ('Panty Liners', '\\bpanty\\s+liners\\b'), ('Sanitary Pads', '\\b(?:Kotex|Always)\\b.*\\bpads\\b'), ('Baby Skin Creams', '\\bbaby\\s+moisturizing\\s+cream\\b'), ('Travel Bottle Sets', '\\btravel\\s+bottle\\s*\\d+\\s*pc\\b'), ('Skin Soothing Gels', '\\bskin\\s+repairing\\b.*\\bsoothing\\s+gel\\b'), ('Stretch Mark Creams', '\\bstretch\\s+marks\\s+cream\\b'), ('Hair Removal Waxes', '\\b(?:sugar\\s+wax|hard\\s+wax\\s+beads)\\b'), ('Blemish Treatments', '\\bblemish\\s+control\\s+gel\\b')]
   for label,pattern in strong_names:
@@ -707,6 +740,8 @@ def category(row,store):
 
 def description(row,store):
  original=str(row.get('description') or '');name=str(row.get('name') or '');body=original.strip()
+ if store=='Rawayat' and re.search(r'\bear[ -]cuff\b',name,re.I) and body.rstrip('.')==name.rstrip('.'):
+  return name+' is an ear-cuff jewellery design.','Expressed the exact source-named ear cuff; no pair count, material or stone authenticity inferred.'
  if store in {'Zellbury','Gul Ahmed','Xcessories Hub'}:
   named_types=[(r'\bbath\s+sheet\b','a bath sheet'),(r'\bbath\s+towel\b','a bath towel'),(r'\bshoulder\s+bag\b','a shoulder bag'),(r'\bsecurity\b.*\bcamera\b','a home security camera'),(r'\busb\s+bluetooth\s+adapter\b','a USB Bluetooth adapter'),(r'\bglass\s+protector\b','a glass screen protector')]
   for pattern,kind in named_types:
@@ -724,7 +759,7 @@ def description(row,store):
   return visual['overview']+('\n\n'+useful if useful else '\n\nListing: '+name),'Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.'
  if store=='Rios' and (body.split('\n\nProduct Options:')[0].strip() in ('',name) or len(re.findall(r'\w+',body))<5):
   chosen=category(row,store)
-  kinds={'Hair Brushes':'a hairbrush','Makeup Brushes':'a makeup brush','Shaving Foams':'a shaving foam','Panty Liners':'a pack of panty liners','Face Scrubs & Exfoliators':'a facial scrub','Hair Removal Waxes':'a hair-removal wax','Skin Soothing Gels':'a skin-soothing gel','Lip Balms & Treatments':'a lip balm','Makeup Puffs':'a makeup puff','Travel Bottle Sets':'a travel bottle set'}
+  kinds={'Hair Brushes':'a hairbrush','Makeup Brushes':'a makeup brush','Shaving Foams':'a shaving foam','Panty Liners':'a pack of panty liners','Face Scrubs & Exfoliators':'a facial scrub','Hair Removal Waxes':'a hair-removal wax','Skin Soothing Gels':'a skin-soothing gel','Lip Balms & Treatments':'a lip balm','Makeup Puffs':'a makeup puff','Travel Bottle Sets':'a travel bottle set','Toothbrushes':'a toothbrush','Dental Floss':'dental floss','Makeup Setting Sprays':'a makeup-setting spray'}
   if chosen and chosen[0] in kinds:
    lead=name+' is '+kinds[chosen[0]]+'.';tail=original[len(name):] if body.startswith(name) else '\n\n'+original
    return lead+tail,'Rewrote explicit named object only; original pack quantities and options retained.'
