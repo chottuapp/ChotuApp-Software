@@ -1,5 +1,5 @@
 """Fail-closed 804 Audit delivery, matching existing Drive workbooks by confirmed shop code."""
-import hashlib,json,shutil,tempfile
+import hashlib,json,shutil,tempfile,time
 from pathlib import Path
 from datetime import datetime,timezone
 from urllib.parse import urlsplit
@@ -103,6 +103,22 @@ def refresh_source_ids(all_runs,generation,campaign,carry_roots):
  prefix='Cloud group audit804-'+campaign+'-'+generation+'-'
  roots={str(run['databaseId']) for run in all_runs if run.get('displayTitle','').startswith(prefix)}
  return chain_ids(all_runs,roots),chain_ids(all_runs,carry_roots)
+
+def download_source(gh,rid,artifact_id,root,state,progress=None):
+ """An unavailable artifact must not block unrelated completed workbooks."""
+ for attempt in range(1,4):
+  stage=Path(root)/('attempt-'+str(attempt));stage.mkdir()
+  try:
+   gh('run','download',rid,'--repo','chottuapp/ChotuApp-Software','--name','chotuapp-excel-files','--dir',str(stage))
+   state.setdefault('audit804_source_download_errors',{}).pop(rid,None)
+   return stage
+  except RuntimeError as exc:
+   if getattr(exc,'transient',False) and attempt<3:
+    time.sleep(2**attempt);continue
+   from diagnostics import redact
+   state.setdefault('audit804_source_download_errors',{})[rid]={'source_run':rid,'artifact_id':artifact_id,'attempts':attempt,'checked_utc':datetime.now(timezone.utc).isoformat(),'error':redact(str(exc))[:1500],'action':'Retry intact artifact; existing verified workbooks retained'}
+   if progress:progress(state)
+   return None
 
 def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
  from importlib.util import spec_from_file_location,module_from_spec
@@ -209,7 +225,8 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
    item=max(found,key=lambda a:a['id']);base=rid+':'+str(item['id'])
    if state.setdefault('audit804_artifacts',{}).get(rid)==base+':'+revision:continue
    with tempfile.TemporaryDirectory() as tmp:
-    stage=Path(tmp);gh('run','download',rid,'--repo','chottuapp/ChotuApp-Software','--name','chotuapp-excel-files','--dir',str(stage))
+    stage=download_source(gh,rid,item['id'],tmp,state,progress)
+    if stage is None:continue
     for entry in completed_files(stage):
      store=entry.get('store');name=entry.get('name','')
      if generation and store in refresh_stores and rid not in refresh_runs:continue
@@ -241,5 +258,5 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
      if state['audit804_processed'].get('Khaadi')!=key:safe_handle(source,'Khaadi','phone',None,key)
  finally:
   if identity:identity.__exit__(None,None,None)
- state['sync_status']='finished';state['audit804_checked_utc']=datetime.now(timezone.utc).isoformat()
+ state['sync_status']='pending_source_artifacts' if state.get('audit804_source_download_errors') else 'finished';state['audit804_checked_utc']=datetime.now(timezone.utc).isoformat()
  return state

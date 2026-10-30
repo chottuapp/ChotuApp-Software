@@ -1,13 +1,22 @@
 """Upload only checksum-validated Rule 804 fresh-batch artifacts; never raw exports."""
-import base64,configparser,datetime,hashlib,importlib.util,json,os,subprocess,sys,tempfile
+import base64,configparser,datetime,hashlib,importlib.util,json,os,subprocess,sys,tempfile,re
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from source_research import publish
 ROOT=Path(__file__).resolve().parents[1];REPO='chottuapp/ChotuApp-Software'
 spec=importlib.util.spec_from_file_location('drive_checked',ROOT/'catalog-tools/start_fresh26_rule804_drive_windows.py');checked=importlib.util.module_from_spec(spec);spec.loader.exec_module(checked)
+class GitHubOperationError(RuntimeError):
+ def __init__(self,args,detail,*,timeout=False):
+  from diagnostics import redact
+  safe=redact(str(detail))[:1200]
+  self.not_found=bool(re.search(r'(?i)HTTP\s+404\b',safe))
+  self.transient=timeout or bool(re.search(r'(?i)HTTP\s+(?:429|50[0234])|timed?\s*out|unexpected EOF|connection reset|temporary failure|TLS handshake timeout',safe))
+  super().__init__('GitHub operation failed: '+' '.join(args[:2])+'; saved Drive files retained; '+safe)
+
 def gh(*args):
- r=subprocess.run(['gh',*args],capture_output=True,text=True,timeout=600)
- if r.returncode:raise RuntimeError('GitHub operation failed: '+args[0]+'; saved Drive files retained')
+ try:r=subprocess.run(['gh',*args],capture_output=True,text=True,timeout=600)
+ except subprocess.TimeoutExpired as exc:raise GitHubOperationError(args,'command timeout',timeout=True) from exc
+ if r.returncode:raise GitHubOperationError(args,r.stderr)
  return r.stdout
 
 def config_text(value):
@@ -26,7 +35,9 @@ def main():
  try:
   old=json.loads(gh('api','repos/'+REPO+'/contents/latest.json?ref=drive-sync-reports'))
   state=json.loads(base64.b64decode(old['content']))
- except RuntimeError:state={}
+ except GitHubOperationError as exc:
+  if not exc.not_found:raise
+  state={}
  if state.get('dispatcher')!=root:
   if config.get('audit804_enabled'):
    state.update(dispatcher=root,processed_artifacts={},audit804_processed={},audit804_results={},audit804_artifacts={})

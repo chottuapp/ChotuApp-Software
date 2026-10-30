@@ -12,7 +12,7 @@ class DriveSyncTests(unittest.TestCase):
  def exercise(self,fail=False):
   record={'name':'Miss Rose.xlsx','store':'Miss Rose','sha256':hashlib.sha256(b'checked').hexdigest(),'source_sha256':'a'*64,'pipeline_revision':'b'*64,'rule804':'automated pass'}
   def gh(*args):
-   if args[0]=='api' and 'contents/latest' in args[1]:raise RuntimeError('No prior state')
+   if args[0]=='api' and 'contents/latest' in args[1]:raise sync.GitHubOperationError(args,'HTTP 404: report does not exist')
    if args[:2]==('run','list'):return json.dumps([{'databaseId':123,'displayTitle':'Cloud group fresh26-39450710625-1','status':'in_progress'}])
    if args[0]=='api':return json.dumps({'artifacts':[{'name':'chotuapp-rule804-files','id':9}]})
    if args[:2]==('run','download'):
