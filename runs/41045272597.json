@@ -2843,7 +2843,7 @@
     "Sana Safinaz": "source:eb89e8f485336e7922fb54be93739ef6875a8761e7bdfd097f5f47caa6991ea8:Sana Safinaz:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "Beyond East": "source:9f2aa1fa209148631b29dd48a08f6cf23d343f5e7191dc9ad62ae45db2152412:Beyond East:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "Alkaram Studio": "source:096fe77a2b7cbd9e733a31c6646ed9a64e12985fee697c4136bd4dd9f6e1ae6b:Alkaram Studio:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
-    "Generation": "source:4b4b9894240083669a8cf95f983d6d4a74e85ffaa4bc1c363d3513fa22b30f33:Generation:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
+    "Generation": "source:87cd769161b455ab972ad3bf7df54cc8c885db59d7ae4c495db0485a76a16f54:Generation:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "Breakout": "source:159bb63b32b2ca2fbddc39f2ef42f23b86febde3cab88f27a81b761e7d1924c3:Breakout:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "Saya": "source:ba7fc258c15fa7fae43075cad4e0eceb2206423afa8e951244b73537a3c51bec:Saya:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "Rios": "source:55c417a7bb2576a0ef12336ba2782c48c37a9d39f56a45f19a64e77b3ff840e7:Rios:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
@@ -5873,17 +5873,40 @@
       "store": "Generation",
       "shop_code": "SE10048",
       "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 736,
-      "findings_count": 0,
-      "findings": [],
+      "status": "hold",
+      "products_checked": 722,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CP944eb02dfaaf",
+          "name": "Hand-Crochet Bow Tie",
+          "source_url": "https://generation.com.pk/products/w25a3886",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "e8221c248d342d4a38f8576647089e71709d1fb40fadd228af24e80e3f8d2422",
-      "checked_utc": "2026-10-30T08:24:09.731065+00:00",
+      "workbook_sha256": "37a9ed1b0df13b5bdf8d88263c5b5b41c8cc0ce344cbaf48791e63f398e17dff",
+      "checked_utc": "2026-10-30T11:16:55.055201+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-30T11:16:55.056298+00:00",
+        "updated_utc": "2026-10-30T11:16:55.056298+00:00",
+        "next_source_check_due_utc": "2026-10-30T11:31:55.056298+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category lacks clear product-purpose evidence; manual review required"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
@@ -5921,11 +5944,11 @@
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "40842690964",
-      "source_artifact": 12887792989,
-      "source_sha256": "4b4b9894240083669a8cf95f983d6d4a74e85ffaa4bc1c363d3513fa22b30f33",
-      "refresh_generation": "refresh20261029-b80f4ca4",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/generation/4b4b989424008366/manifest.json"
+      "source_run": "41039571338",
+      "source_artifact": 12971828378,
+      "source_sha256": "87cd769161b455ab972ad3bf7df54cc8c885db59d7ae4c495db0485a76a16f54",
+      "refresh_generation": "refresh20261030-31dd8bb1",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/generation/87cd769161b455ab/manifest.json"
     },
     "Breakout": {
       "name": "804 Audit",
@@ -6439,7 +6462,8 @@
     "41039446853": "41039446853:12971201319:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "41039453006": "41039453006:12969683151:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "41039483114": "41039483114:12972615211:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
-    "41039558641": "41039558641:12971045685:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de"
+    "41039558641": "41039558641:12971045685:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
+    "41039565023": "41039565023:12969019725:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-10-30T10:16:12.400385+00:00",
@@ -6516,8 +6540,8 @@
     "SE10053": "inputs/fresh804-20261026-5d42fe35/rollback-se10053/ee1500a5cc854b0a/manifest.json",
     "SE10044": "inputs/fresh804-20261026-5d42fe35/rollback-se10044/82467cce36b38582/manifest.json"
   },
-  "audit804_last_store": "ChenOne",
-  "audit804_progress_utc": "2026-10-30T11:16:46.414069+00:00",
+  "audit804_last_store": "Generation",
+  "audit804_progress_utc": "2026-10-30T11:16:57.583453+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Gul Ahmed",
