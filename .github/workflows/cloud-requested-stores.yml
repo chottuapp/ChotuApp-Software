@@ -1,0 +1,31 @@
+name: ChotuApp Requested Stores Additive Fetch
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [cloud/requested-stores.json]
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: chotuapp-requested-stores
+  cancel-in-progress: false
+jobs:
+  dispatch:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - name: Validate exact store identities and additive dispatch guards
+        env:
+          PYTHONPATH: tests:cloud:.
+        run: python -m unittest test_requested_stores -q
+      - name: Check public source adapters and fetch only requested idle stores
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PYTHONPATH: cloud:.
+        run: python cloud/requested_stores.py

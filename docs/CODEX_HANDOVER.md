@@ -1,5 +1,7 @@
 # ChotuApp: start here in a new Codex session
 
+31 October owner requested ten fetches: Limelight SE10055, Alkaram Studio SE10056, Gift4U SE10057, Paklap SE10058, House of Tools SE10059, Fresh Basket SE10060, The Glossy Quill SE10061, G7 Leather SE10062, Bin Fahad SE10063, Dairy Dream SE10064. Lime Light is the existing Limelight, not a duplicate. Eight new exact domains are registered; codes are in confirmed-shop-codes.json. cloud/requested-stores.json and cloud-requested-stores.yml provide additive, idempotent dispatch with at most two requested stores per runner and public-provider preflight. Existing active stores/continuation chains are preserved; unsupported providers remain explicit adapter/source blockers. Do not run the global fresh dispatcher to launch this subset. Existing audit804-release.json was deliberately unchanged to avoid stopping/restarting the old batch. Delivery includes the eight new stores under the current refresh lineage. Old pending files also remain in scope for evidence-backed recovery; Beyond East stays held by explicit owner decision.
+
 Owner-authorized GitHub handover prepared 28 October 2026. This repository is the durable context; a new ChatGPT account does not inherit the old chat or identity. Read this document before acting. Use the latest main branch for continued work; backup branches are historical snapshots.
 
 ## Read first
