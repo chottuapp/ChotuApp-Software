@@ -50,14 +50,14 @@ class ProviderProbeTests(unittest.TestCase):
   with patch('requested_stores.requests.Session',return_value=session),patch('requested_stores.time.sleep'):
    return probe(dict(name='Gift4U',url='https://gift4u.pk')),session
  def test_valid_shopify_source_is_supported(self):
-  result,_=self.probe([self.response('/robots.txt',text='User-agent: *\nAllow: /'),self.response('/products.json',{'products':[dict(id=1,handle='x',variants=[dict(id=2)])]})])
+  result,_=self.probe([self.response('/robots.txt',text='User-agent: *\nAllow: /'),self.response('',text='Shopify storefront'),self.response('/products.json',{'products':[dict(id=1,handle='x',variants=[dict(id=2)])]})])
   self.assertEqual(result['status'],'supported');self.assertEqual(result['provider'],'shopify')
  def test_woo_requires_existing_adapter_registration(self):
-  result,_=self.probe([self.response('/robots.txt',text='User-agent: *\nAllow: /'),self.response('/products.json',status=404),self.response('/wp-json/wc/store/v1/products',[dict(id=1,prices=dict(currency_code='PKR'))])])
+  result,_=self.probe([self.response('/robots.txt',text='User-agent: *\nAllow: /'),self.response('',text='Shopify storefront'),self.response('/products.json',status=404),self.response('/wp-json/wc/store/v1/products',[dict(id=1,prices=dict(currency_code='PKR'))])])
   self.assertEqual(result['status'],'adapter_registration_required')
  def test_denied_source_is_not_retried_through_other_endpoint(self):
-  result,session=self.probe([self.response('/robots.txt',text='User-agent: *\nAllow: /'),self.response('/products.json',status=403)])
-  self.assertEqual(result['status'],'source_blocked');self.assertEqual(session.get.call_count,2)
+  result,session=self.probe([self.response('/robots.txt',text='User-agent: *\nAllow: /'),self.response('',text='Shopify storefront'),self.response('/products.json',status=403)])
+  self.assertEqual(result['status'],'source_blocked');self.assertEqual(session.get.call_count,3)
  def test_robots_disallow_stops_before_catalog_request(self):
   result,session=self.probe([self.response('/robots.txt',text='User-agent: *\nDisallow: /')])
   self.assertEqual(result['status'],'source_blocked');self.assertEqual(session.get.call_count,1)
@@ -71,3 +71,9 @@ class ApprovedWooOffersTests(unittest.TestCase):
   for scale,regular,sale,want_regular,want_sale in [(2,'29705000','26734500','297050','267345'),(0,'14999','14999','14999','14999')]:
    p=dict(prices=dict(currency_code='PKR',currency_minor_unit=scale,price=sale,regular_price=regular),is_in_stock=True,is_purchasable=True)
    actual=offer(p);self.assertEqual(actual,(Decimal(want_regular),Decimal(want_sale),True))
+
+class HomepageProviderTests(ProviderProbeTests):
+ def test_verified_wordpress_homepage_uses_its_native_store_api(self):
+  result,session=self.probe([self.response('/robots.txt',text='User-agent: *\nAllow: /'),self.response('',text='<script src="/wp-content/plugins/woocommerce/shop.js"></script>'),self.response('/wp-json/wc/store/v1/products',[dict(id=1,prices=dict(currency_code='PKR'))])])
+  self.assertEqual(result['provider'],'woocommerce');self.assertEqual(result['homepage_platform_hint'],'wordpress')
+  self.assertFalse(any('products.json' in call.args[0] for call in session.get.call_args_list))

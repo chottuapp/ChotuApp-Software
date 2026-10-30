@@ -67,10 +67,17 @@ def probe(site):
   robots=RobotFileParser();r=read('/robots.txt')
   if r.status_code==404:robots.parse([])
   else:r.raise_for_status();robots.parse(r.text.splitlines())
-  r=read('/products.json?limit=1');data=None
-  if r.ok:
-   try:data=r.json()
-   except ValueError:pass
+  home=read('');home.raise_for_status();homepage=home.text.lower()
+  # Establish the platform from its public homepage before choosing an API.
+  # A WooCommerce shop need not expose Shopify's products.json route.
+  wordpress='woocommerce' in homepage or '/wp-content/' in homepage
+  result['homepage_platform_hint']='wordpress' if wordpress else 'shopify' if 'shopify' in homepage else 'unknown'
+  data=None
+  if not wordpress:
+   r=read('/products.json?limit=1')
+   if r.ok:
+    try:data=r.json()
+    except ValueError:pass
   if isinstance(data,dict) and isinstance(data.get('products'),list) and data['products']:
    p=data['products'][0]
    if p.get('id') and p.get('handle') and isinstance(p.get('variants'),list) and p['variants']:
@@ -82,7 +89,7 @@ def probe(site):
   if isinstance(data,list) and data and isinstance(data[0],dict) and data[0].get('id') and data[0].get('prices',{}).get('currency_code')=='PKR':
    from woocommerce_source_support import HOSTS
    result.update(provider='woocommerce',status='supported' if host in HOSTS else 'adapter_registration_required',sample={k:data[0].get(k) for k in ('id','name','permalink','type','prices','is_in_stock','is_purchasable','has_options','attributes')});return result
-  r=read('');html=r.text.lower();result.update(provider='magento' if 'magento' in html or 'mage/cookies' in html else 'unknown',status='adapter_required')
+  html=homepage;result.update(provider='magento' if 'magento' in html or 'mage/cookies' in html else 'unknown',status='adapter_required')
   if result['provider']=='magento':
    from urllib.parse import urlencode
    query='{products(search:"",pageSize:1,currentPage:1){total_count items{__typename sku name url_key stock_status price_range{minimum_price{regular_price{value currency}final_price{value currency}}}}}}'

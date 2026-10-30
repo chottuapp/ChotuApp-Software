@@ -202,6 +202,7 @@ def export(g,base,name,template,log,*,provider=None):
   # A separate detail read verifies identity and current offers, not catalog aggregate prices.
   try:current=get('/wp-json/wc/store/v1/products/'+str(p['id']))
   except Exception as exc:
+   if provider is not None:raise
    status=getattr(getattr(exc,'response',None),'status_code',None)
    missing=status in (404,410) or bool(re.search(r'\((?:404|410)\)|\b(?:404|410) Client Error',str(exc)))
    if not missing:raise
