@@ -15,7 +15,7 @@ jobs:
   apply:
     if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 150
     environment: chotu-cloud-release
     env:
       SOURCE_SHA: ${{ inputs.source_sha }}
@@ -40,19 +40,47 @@ jobs:
             git init -q "$RUNNER_TEMP/chotu-private-source"
             cd "$RUNNER_TEMP/chotu-private-source"
             git remote add origin git@github.com:chottuapp/ChotuProject-development.git
-            git fetch -q --depth=1 origin "$SOURCE_SHA"
+            git fetch -q origin "$SOURCE_SHA"
             git checkout -q --detach FETCH_HEAD
             test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
           ) > "$RUNNER_TEMP/private-checkout.log" 2>&1; then
             echo '::error::Private checkout failed. Check the read-only deploy key and approved commit; private logs are not uploaded.'
             exit 1
           fi
-      - name: Inspect recovery backup storage without changing data
+      - name: Prepare private backup tools
+        run: |
+          python3 -m pip install --quiet boto3
+          npm install --prefix "$RUNNER_TEMP/artifact-tools" @actions/artifact
+          mkdir -p "$GITHUB_WORKSPACE/workflows"
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - name: Archive cloud workflow definitions
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api repos/chottuapp/ChotuApp-Software/contents/.github/workflows --jq '.[].download_url' | while read -r url; do curl -fsS "$url" -o "$GITHUB_WORKSPACE/workflows/$(basename "$url")"; done
+      - name: Create encrypted recovery backup
         env:
           SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+          SOURCE_KEY: ${{ secrets.CHOTU_APP_SOURCE_KEY }}
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEY_PROPERTIES: ${{ secrets.ANDROID_KEY_PROPERTIES }}
         run: |
           cd "$RUNNER_TEMP/chotu-private-source"
-          bash scripts/cloud/recovery-backup-inventory.sh
+          bash scripts/cloud/create-recovery-backup.sh
+      - name: Upload encrypted parts only
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            const {DefaultArtifactClient} = require(process.env.RUNNER_TEMP+'/artifact-tools/node_modules/@actions/artifact');
+            const dir = process.env.RUNNER_TEMP+'/recovery';
+            const client = new DefaultArtifactClient();
+            for (const name of fs.readdirSync(dir).sort()) {
+              await client.uploadArtifact('recovery-'+name,[path.join(dir,name)],dir,{retentionDays:90,compressionLevel:0});
+              core.info('Uploaded encrypted backup file: '+name);
+            }
       - name: Remove private temporary checkout
         if: always()
         run: |
