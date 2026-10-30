@@ -1,48 +1,45 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-30T11:38:10.104869+00:00",
-  "run_id": "41039565023",
+  "generated_utc": "2026-10-30T11:49:29.282963+00:00",
+  "run_id": "41039532918",
   "attempt": "1",
   "source_commit": "5ee1892e4e84adefdb0d645e50645f6d22229188",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 4607.9,
+  "elapsed_seconds": 5559.4,
   "stores": [
     {
-      "name": "Liberty Books",
-      "status": "source_paused",
-      "review_required": false,
-      "issue_codes": [
-        "HTTP_404",
-        "HTTP_429",
-        "RATE_LIMIT",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "ce15fbb76a7b0dcb",
-      "http_statuses": {
-        "200": 1412,
-        "404": 3,
-        "429": 6
-      },
-      "network_seconds": 4240.5,
-      "max_response_seconds": 5.2,
-      "cache_events": 1005
-    },
-    {
-      "name": "ChenOne",
+      "name": "Hilm Chapals",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "ce15fbb76a7b0dcb",
-      "products": 310,
-      "variants": 1102,
+      "products": 98,
+      "variants": 636,
       "http_statuses": {
-        "200": 825
+        "200": 117
       },
-      "network_seconds": 402.3,
-      "max_response_seconds": 2.8,
-      "cache_events": 1267
+      "network_seconds": 59.4,
+      "max_response_seconds": 2.9,
+      "cache_events": 201
+    },
+    {
+      "name": "Xcessories Hub",
+      "status": "failed",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_403",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "ce15fbb76a7b0dcb",
+      "http_statuses": {
+        "403": 1,
+        "200": 6775
+      },
+      "network_seconds": 5495.3,
+      "max_response_seconds": 7.3,
+      "cache_events": 0
     }
   ]
 }
