@@ -8,6 +8,31 @@ import requests
 from bs4 import BeautifulSoup
 from source_research import publish
 AGENT='ChotuAppCatalogRefresh'
+def saved_input_cover(item):
+ """Read a cover only from the checksum-verified exact held workbook identity."""
+ import tempfile,hashlib
+ from audit804_queue import restore
+ from audit804 import rows
+ campaign=json.loads(Path('cloud/audit804-release.json').read_text())['campaign_id']
+ if item.get('campaign_id')!=campaign:raise ValueError('Saved cover campaign mismatch')
+ with tempfile.TemporaryDirectory() as tmp:
+  source=restore(item['held_input'],Path(tmp)/'source.xlsx',item['store'],campaign)
+  found=[r for r in rows(source) if (str(r.get('product_id')),r.get('name'),r.get('source_url'))==(str(item['product_id']),item['name'],item['source_url'])]
+  if len(found)!=1:raise ValueError('Saved cover product identity mismatch')
+  row=found[0];url=str(row.get('scraped_image_url (cover, auto)') or '')
+  parsed=urlsplit(url)
+  if parsed.scheme!='https' or parsed.hostname!='cdn.shopify.com' or parsed.username or parsed.password:raise ValueError('Saved cover must use approved public image CDN')
+  return url,{'input_workbook_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'input_description_sha256':hashlib.sha256(str(row.get('description') or '').encode()).hexdigest(),'saved_input_verified':True}
+
+def capture_saved_cover(item,session):
+ import base64,hashlib
+ url,proof=saved_input_cover(item);render=url+('&' if urlsplit(url).query else '?')+'width=800'
+ response=session.get(render,timeout=40);response.raise_for_status()
+ final=urlsplit(response.url)
+ if final.scheme!='https' or final.hostname!='cdn.shopify.com':raise ValueError('Image redirected away from approved CDN')
+ if len(response.content)>250000 or not response.headers.get('Content-Type','').startswith('image/'):raise ValueError('Saved cover exceeds image review bounds')
+ return dict(source_url=render,sha256=hashlib.sha256(response.content).hexdigest(),content_type=response.headers['Content-Type'],base64=base64.b64encode(response.content).decode(),**proof)
+
 def main():
  request=json.loads(Path('cloud/audit804-source-request.json').read_text());items=request['products']
  if not items:print('No actionable public source holds');return
@@ -78,6 +103,9 @@ def main():
     rec['public_description_fragments']=[n.get_text(' ',strip=True)[:8000] for n in parts[:10] if n.get_text(' ',strip=True)]
    rec['status']='review_evidence_collected'
   except Exception as exc:rec['error']=str(exc)[:500]
+  if item.get('inspect_saved_cover') is True:
+   try:rec['public_image']=capture_saved_cover(item,session)
+   except Exception as exc:rec['image_error']=str(exc)[:500]
   request.setdefault('recent_checks',{})[item['store']+'|'+str(item['product_id'])]=datetime.now(timezone.utc).isoformat()
   results.append(rec);print(item['store'],item['product_id'],rec.get('error','public facts captured'),flush=True)
   if len(results)%20==0:emit(False)
