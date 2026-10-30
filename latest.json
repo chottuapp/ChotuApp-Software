@@ -1,16 +1,33 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-30T15:16:40.597547+00:00",
-  "run_id": "41039476905",
+  "generated_utc": "2026-10-30T15:16:33.822947+00:00",
+  "run_id": "41039434526",
   "attempt": "1",
   "source_commit": "5ee1892e4e84adefdb0d645e50645f6d22229188",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 18000.4,
+  "elapsed_seconds": 18001.0,
   "stores": [
     {
-      "name": "Gul Ahmed",
+      "name": "Rivaj UK",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "ce15fbb76a7b0dcb",
+      "products": 310,
+      "variants": 969,
+      "http_statuses": {
+        "200": 656
+      },
+      "network_seconds": 1084.9,
+      "max_response_seconds": 14.0,
+      "cache_events": 962
+    },
+    {
+      "name": "Junaid Jamshed",
       "status": "pending",
       "review_required": false,
       "issue_codes": [
@@ -18,26 +35,11 @@
       ],
       "software_revision": "ce15fbb76a7b0dcb",
       "http_statuses": {
-        "200": 3864
+        "200": 14745
       },
-      "network_seconds": 8381.0,
-      "max_response_seconds": 6.6,
-      "cache_events": 2
-    },
-    {
-      "name": "Sapphire",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "ce15fbb76a7b0dcb",
-      "products": 993,
-      "variants": 3646,
-      "http_statuses": {
-        "200": 4894
-      },
-      "network_seconds": 6830.8,
-      "max_response_seconds": 10.6,
-      "cache_events": 0
+      "network_seconds": 27560.7,
+      "max_response_seconds": 50.0,
+      "cache_events": 1
     }
   ]
 }
