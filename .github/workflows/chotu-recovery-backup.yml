@@ -50,7 +50,7 @@ jobs:
       - name: Prepare private backup tools
         run: |
           python3 -m pip install --quiet boto3
-          npm install --prefix "$RUNNER_TEMP/artifact-tools" @actions/artifact
+          npm install --prefix "$RUNNER_TEMP/artifact-tools" @actions/artifact@2.3.3
           mkdir -p "$GITHUB_WORKSPACE/workflows"
         env:
           GH_TOKEN: ${{ github.token }}
@@ -65,22 +65,15 @@ jobs:
           SOURCE_KEY: ${{ secrets.CHOTU_APP_SOURCE_KEY }}
           ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
           ANDROID_KEY_PROPERTIES: ${{ secrets.ANDROID_KEY_PROPERTIES }}
-        run: |
-          cd "$RUNNER_TEMP/chotu-private-source"
-          bash scripts/cloud/create-recovery-backup.sh
-      - name: Upload encrypted parts only
         uses: actions/github-script@v7
         with:
           script: |
-            const fs = require('fs');
-            const path = require('path');
-            const {DefaultArtifactClient} = require(process.env.RUNNER_TEMP+'/artifact-tools/node_modules/@actions/artifact');
-            const dir = process.env.RUNNER_TEMP+'/recovery';
-            const client = new DefaultArtifactClient();
-            for (const name of fs.readdirSync(dir).sort()) {
-              await client.uploadArtifact('recovery-'+name,[path.join(dir,name)],dir,{retentionDays:90,compressionLevel:0});
-              core.info('Uploaded encrypted backup file: '+name);
-            }
+            const cp = require('child_process');
+            await new Promise((resolve,reject)=>{
+              const child=cp.spawn('bash',['scripts/cloud/create-recovery-backup.sh'],{cwd:process.env.RUNNER_TEMP+'/chotu-private-source',env:process.env,stdio:'inherit'});
+              child.on('error',reject);
+              child.on('exit',code=>code===0?resolve():reject(new Error('Recovery backup component failed')));
+            });
       - name: Remove private temporary checkout
         if: always()
         run: |
