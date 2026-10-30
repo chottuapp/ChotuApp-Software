@@ -1,0 +1,600 @@
+{
+  "run_id": "41129446613",
+  "checked_utc": "2026-10-30T21:14:09.595178+00:00",
+  "targets": [
+    {
+      "target": "41128849745",
+      "state": {
+        "conclusion": "failure",
+        "displayTitle": "Cloud group audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-requested20261031-2-SE10058",
+        "headSha": "993d469ff2f3e21afd8a07d04decccf1de001a7a",
+        "jobs": [
+          {
+            "completedAt": "2026-10-30T21:10:39Z",
+            "conclusion": "failure",
+            "databaseId": 124314289720,
+            "name": "fetch",
+            "startedAt": "2026-10-30T21:09:23Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-30T21:09:25Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-30T21:09:24Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:09:34Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-30T21:09:25Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:09:34Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-30T21:09:34Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:09:37Z",
+                "conclusion": "success",
+                "name": "Install extraction dependencies",
+                "number": 4,
+                "startedAt": "2026-10-30T21:09:34Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:09:37Z",
+                "conclusion": "skipped",
+                "name": "Restore optional saved run",
+                "number": 5,
+                "startedAt": "2026-10-30T21:09:37Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:09:37Z",
+                "conclusion": "skipped",
+                "name": "Install Czone browser fallback when needed",
+                "number": 6,
+                "startedAt": "2026-10-30T21:09:37Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:09:37Z",
+                "conclusion": "success",
+                "name": "Start continuous fetching on the cloud runner",
+                "number": 7,
+                "startedAt": "2026-10-30T21:09:37Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:10:31Z",
+                "conclusion": "success",
+                "name": "Live progress, logs and completed-file uploads",
+                "number": 8,
+                "startedAt": "2026-10-30T21:09:37Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:10:31Z",
+                "conclusion": "failure",
+                "name": "Fetch result",
+                "number": 9,
+                "startedAt": "2026-10-30T21:10:31Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:10:31Z",
+                "conclusion": "success",
+                "name": "Collect diagnostic report even if fetching failed",
+                "number": 10,
+                "startedAt": "2026-10-30T21:10:31Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:10:32Z",
+                "conclusion": "success",
+                "name": "Upload diagnostic report and redacted log",
+                "number": 11,
+                "startedAt": "2026-10-30T21:10:31Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:10:34Z",
+                "conclusion": "success",
+                "name": "Upload Excel files and audits, including completed stores from a partial run",
+                "number": 12,
+                "startedAt": "2026-10-30T21:10:32Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:10:34Z",
+                "conclusion": "skipped",
+                "name": "Final automated Rule 804 pass for fresh batch",
+                "number": 13,
+                "startedAt": "2026-10-30T21:10:34Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:10:34Z",
+                "conclusion": "skipped",
+                "name": "Upload automated Rule 804 fresh workbooks",
+                "number": 14,
+                "startedAt": "2026-10-30T21:10:34Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:10:35Z",
+                "conclusion": "success",
+                "name": "Upload saved checkpoint when available",
+                "number": 15,
+                "startedAt": "2026-10-30T21:10:34Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:10:36Z",
+                "conclusion": "success",
+                "name": "Dispatch authorized continuation after verified checkpoint upload",
+                "number": 16,
+                "startedAt": "2026-10-30T21:10:35Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:10:36Z",
+                "conclusion": "success",
+                "name": "Post Live progress, logs and completed-file uploads",
+                "number": 30,
+                "startedAt": "2026-10-30T21:10:36Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:10:36Z",
+                "conclusion": "skipped",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 31,
+                "startedAt": "2026-10-30T21:10:36Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:10:36Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 32,
+                "startedAt": "2026-10-30T21:10:36Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:10:36Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 33,
+                "startedAt": "2026-10-30T21:10:36Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41128849745/job/124314289720"
+          },
+          {
+            "completedAt": "2026-10-30T21:10:57Z",
+            "conclusion": "success",
+            "databaseId": 124314885441,
+            "name": "Archive structured diagnostics",
+            "startedAt": "2026-10-30T21:10:42Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-30T21:10:43Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-30T21:10:42Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:10:52Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-30T21:10:43Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:10:52Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-30T21:10:52Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:10:53Z",
+                "conclusion": "success",
+                "name": "Run actions/download-artifact@v4",
+                "number": 4,
+                "startedAt": "2026-10-30T21:10:52Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:10:55Z",
+                "conclusion": "success",
+                "name": "Archive credential-free JSON on the cloud-reports branch",
+                "number": 5,
+                "startedAt": "2026-10-30T21:10:53Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:10:55Z",
+                "conclusion": "success",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 9,
+                "startedAt": "2026-10-30T21:10:55Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:10:55Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 10,
+                "startedAt": "2026-10-30T21:10:55Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:10:55Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 11,
+                "startedAt": "2026-10-30T21:10:55Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41128849745/job/124314885441"
+          }
+        ],
+        "status": "completed"
+      },
+      "failed_log": "fetch\tFetch result\t2026-10-30T21:10:31.3733957Z [Paklap] [21:10:25] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\nfetch\tFetch result\t2026-10-30T21:10:31.3735012Z [Paklap] [21:10:26] HTTP END status=200 elapsed=0.6s bytes=2594 https://www.paklap.pk/graphql?redacted\nfetch\tFetch result\t2026-10-30T21:10:31.3735536Z [Paklap] WOO PRODUCT PROGRESS: 15/1634 checked; 15 retained\nfetch\tFetch result\t2026-10-30T21:10:31.3735956Z [Paklap] [21:10:27] GET_JSON: https://www.paklap.pk/graphql?redacted\nfetch\tFetch result\t2026-10-30T21:10:31.3736449Z [Paklap] [21:10:27] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\nfetch\tFetch result\t2026-10-30T21:10:31.3737006Z [Paklap] [21:10:28] HTTP END status=200 elapsed=0.7s bytes=7091 https://www.paklap.pk/graphql?redacted\nfetch\tFetch result\t2026-10-30T21:10:31.3737488Z __CHOTU_PROGRESS__|1|Active: Paklap\nfetch\tFetch result\t2026-10-30T21:10:31.3738001Z [Paklap] [21:10:28] EXCEPTION: ValueError('Custom product options need exact selectable offers; no guessed options')\nfetch\tFetch result\t2026-10-30T21:10:31.3738571Z [Paklap] [21:10:28] Traceback (most recent call last):\nfetch\tFetch result\t2026-10-30T21:10:31.3745897Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2033, in _run_checked\nfetch\tFetch result\t2026-10-30T21:10:31.3746522Z     run_site(site['url'], name, template, log_line)\nfetch\tFetch result\t2026-10-30T21:10:31.3747296Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\nfetch\tFetch result\t2026-10-30T21:10:31.3747922Z     if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\nfetch\tFetch result\t2026-10-30T21:10:31.3748344Z                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-10-30T21:10:31.3748853Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1526, in run_site\nfetch\tFetch result\t2026-10-30T21:10:31.3749346Z     _chotuapp_run_site_original(base, name, template, intercept)\nfetch\tFetch result\t2026-10-30T21:10:31.3749895Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\nfetch\tFetch result\t2026-10-30T21:10:31.3750594Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\nfetch\tFetch result\t2026-10-30T21:10:31.3751163Z                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-10-30T21:10:31.3751751Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 245, in run\nfetch\tFetch result\t2026-10-30T21:10:31.3762227Z                                    ^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-10-30T21:10:31.3762762Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 88, in read\nfetch\tFetch result\t2026-10-30T21:10:31.3763310Z     raw=items[0];product=normalize(raw,self.base)\nfetch\tFetch result\t2026-10-30T21:10:31.3763604Z                          ^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-10-30T21:10:31.3764286Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 24, in normalize\nfetch\tFetch result\t2026-10-30T21:10:31.3765172Z     if raw.get('options'):raise ValueError('Custom product options need exact selectable offers; no guessed options')\nfetch\tFetch result\t2026-10-30T21:10:31.3765710Z                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-10-30T21:10:31.3766176Z ValueError: Custom product options need exact selectable offers; no guessed options\nfetch\tFetch result\t2026-10-30T21:10:31.3766495Z \nfetch\tFetch result\t2026-10-30T21:10:31.3766748Z [Paklap] FAILED: Paklap: Custom product options need exact selectable offers; no guessed options\nfetch\tFetch result\t2026-10-30T21:10:31.3767180Z [Paklap] [21:10:28] STAGE: Idle\nfetch\tFetch result\t2026-10-30T21:10:31.3767591Z FAILED: Paklap: FAILED: Paklap: Custom product options need exact selectable offers; no guessed options\nfetch\tFetch result\t2026-10-30T21:10:31.3768019Z False\nfetch\tFetch result\t2026-10-30T21:10:31.3768366Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nfetch\tFetch result\t2026-10-30T21:10:31.3768950Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nfetch\tFetch result\t2026-10-30T21:10:31.3769357Z RUN SUMMARY:\nfetch\tFetch result\t2026-10-30T21:10:31.3770059Z Paklap: FAILED \u2014 FAILED: Paklap: Custom product options need exact selectable offers; no guessed options\nfetch\tFetch result\t2026-10-30T21:10:31.3770493Z Checkpoint: saved\nfetch\tFetch result\t2026-10-30T21:10:31.3770908Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH\nfetch\tFetch result\t2026-10-30T21:10:31.3817245Z ##[error]Process completed with exit code 2.",
+      "artifacts": [
+        {
+          "name": "chotuapp-live-logs",
+          "id": 13012112444,
+          "expired": false,
+          "size_in_bytes": 7498
+        },
+        {
+          "name": "chotuapp-excel-files",
+          "id": 13012052574,
+          "expired": false,
+          "size_in_bytes": 603
+        },
+        {
+          "name": "chotuapp-checkpoint",
+          "id": 13011848082,
+          "expired": false,
+          "size_in_bytes": 729229
+        },
+        {
+          "name": "chotuapp-diagnostics",
+          "id": 13011164589,
+          "expired": false,
+          "size_in_bytes": 5802
+        }
+      ],
+      "annotations": [
+        {
+          "level": "warning",
+          "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+        },
+        {
+          "level": "failure",
+          "message": "Process completed with exit code 2."
+        }
+      ],
+      "console-tail.txt": "[Paklap] WOO PRODUCT PROGRESS: 9/1634 checked; 9 retained\n[Paklap] [21:10:17] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:17] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:18] HTTP END status=200 elapsed=0.6s bytes=3120 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 10/1634 checked; 10 retained\n[Paklap] [21:10:19] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:19] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:20] HTTP END status=200 elapsed=0.6s bytes=2501 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 11/1634 checked; 11 retained\n[Paklap] [21:10:21] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:21] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:21] HTTP END status=200 elapsed=0.6s bytes=3240 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 12/1634 checked; 12 retained\n[Paklap] [21:10:22] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:22] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:23] HTTP END status=200 elapsed=0.6s bytes=3394 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 13/1634 checked; 13 retained\n[Paklap] [21:10:24] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:24] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:25] HTTP END status=200 elapsed=0.6s bytes=4129 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 14/1634 checked; 14 retained\n[Paklap] [21:10:25] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:25] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:26] HTTP END status=200 elapsed=0.6s bytes=2594 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 15/1634 checked; 15 retained\n[Paklap] [21:10:27] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:27] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:28] HTTP END status=200 elapsed=0.7s bytes=7091 https://www.paklap.pk/graphql?redacted\n__CHOTU_PROGRESS__|1|Active: Paklap\n[Paklap] [21:10:28] EXCEPTION: ValueError('Custom product options need exact selectable offers; no guessed options')\n[Paklap] [21:10:28] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2033, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1526, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 245, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 216, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 120, in run\n    return export(g,base,name,template,log,provider=catalog)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 203, in export\n    try:current=get('/wp-json/wc/store/v1/products/'+str(p['id']))\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 177, in get\n    if provider is not None:return provider.read(path)\n                                   ^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 88, in read\n    raw=items[0];product=normalize(raw,self.base)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 24, in normalize\n    if raw.get('options'):raise ValueError('Custom product options need exact selectable offers; no guessed options')\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Custom product options need exact selectable offers; no guessed options\n\n[Paklap] FAILED: Paklap: Custom product options need exact selectable offers; no guessed options\n[Paklap] [21:10:28] STAGE: Idle\nFAILED: Paklap: FAILED: Paklap: Custom product options need exact selectable offers; no guessed options\nFalse\nCheckpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nCheckpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nRUN SUMMARY:\nPaklap: FAILED \u2014 FAILED: Paklap: Custom product options need exact selectable offers; no guessed options\nCheckpoint: saved\nRun finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+      "store-status.txt": "Updated (UTC): 2026-10-30T21:10:29.407790+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nPaklap: failed\n  Stage: Idle\n  Last successful HTTP response (UTC): 2026-10-30T21:10:28.377284+00:00",
+      "fetch-log.txt": "[Paklap] [21:09:51] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:09:52] HTTP END status=200 elapsed=0.7s bytes=18930 https://www.paklap.pk/graphql?redacted\n[Paklap] MAGENTO CATALOG: 800/1634\n[Paklap] [21:09:52] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:09:52] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:09:53] HTTP END status=200 elapsed=0.7s bytes=17793 https://www.paklap.pk/graphql?redacted\n[Paklap] MAGENTO CATALOG: 850/1634\n[Paklap] [21:09:53] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:09:53] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:09:53] HTTP END status=200 elapsed=0.7s bytes=17719 https://www.paklap.pk/graphql?redacted\n[Paklap] MAGENTO CATALOG: 900/1634\n[Paklap] [21:09:53] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:09:53] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:09:54] HTTP END status=200 elapsed=0.7s bytes=18276 https://www.paklap.pk/graphql?redacted\n[Paklap] MAGENTO CATALOG: 950/1634\n[Paklap] [21:09:54] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:09:54] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:09:55] HTTP END status=200 elapsed=0.6s bytes=17483 https://www.paklap.pk/graphql?redacted\n[Paklap] MAGENTO CATALOG: 1000/1634\n[Paklap] [21:09:55] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:09:55] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:09:55] HTTP END status=200 elapsed=0.9s bytes=17698 https://www.paklap.pk/graphql?redacted\n[Paklap] MAGENTO CATALOG: 1050/1634\n[Paklap] [21:09:55] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:09:55] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:09:57] HTTP END status=200 elapsed=1.5s bytes=18458 https://www.paklap.pk/graphql?redacted\n[Paklap] MAGENTO CATALOG: 1100/1634\n[Paklap] [21:09:57] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:09:57] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:09:58] HTTP END status=200 elapsed=0.8s bytes=18278 https://www.paklap.pk/graphql?redacted\n[Paklap] MAGENTO CATALOG: 1150/1634\n[Paklap] [21:09:58] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:09:58] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:09:58] HTTP END status=200 elapsed=0.7s bytes=16678 https://www.paklap.pk/graphql?redacted\n[Paklap] MAGENTO CATALOG: 1200/1634\n[Paklap] [21:09:58] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:09:58] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:09:59] HTTP END status=200 elapsed=0.7s bytes=16429 https://www.paklap.pk/graphql?redacted\n[Paklap] MAGENTO CATALOG: 1250/1634\n[Paklap] [21:09:59] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:09:59] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:00] HTTP END status=200 elapsed=0.7s bytes=16749 https://www.paklap.pk/graphql?redacted\n[Paklap] MAGENTO CATALOG: 1300/1634\n[Paklap] [21:10:00] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:00] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:00] HTTP END status=200 elapsed=0.7s bytes=18062 https://www.paklap.pk/graphql?redacted\n[Paklap] MAGENTO CATALOG: 1350/1634\n[Paklap] [21:10:00] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:00] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:01] HTTP END status=200 elapsed=0.7s bytes=17234 https://www.paklap.pk/graphql?redacted\n[Paklap] MAGENTO CATALOG: 1400/1634\n[Paklap] [21:10:01] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:01] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:02] HTTP END status=200 elapsed=0.8s bytes=16779 https://www.paklap.pk/graphql?redacted\n[Paklap] MAGENTO CATALOG: 1450/1634\n[Paklap] [21:10:02] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:02] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:03] HTTP END status=200 elapsed=0.7s bytes=17971 https://www.paklap.pk/graphql?redacted\n[Paklap] MAGENTO CATALOG: 1500/1634\n[Paklap] [21:10:03] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:03] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:03] HTTP END status=200 elapsed=0.6s bytes=17225 https://www.paklap.pk/graphql?redacted\n[Paklap] MAGENTO CATALOG: 1550/1634\n[Paklap] [21:10:03] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:03] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:04] HTTP END status=200 elapsed=0.7s bytes=16837 https://www.paklap.pk/graphql?redacted\n[Paklap] MAGENTO CATALOG: 1600/1634\n[Paklap] [21:10:04] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:04] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:05] HTTP END status=200 elapsed=0.6s bytes=11184 https://www.paklap.pk/graphql?redacted\n[Paklap] MAGENTO CATALOG: 1634/1634\n[Paklap] [21:10:05] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:05] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:05] HTTP END status=200 elapsed=0.2s bytes=1543 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1/1634 checked; 1 retained\n[Paklap] [21:10:06] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:06] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:07] HTTP END status=200 elapsed=0.7s bytes=2141 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 2/1634 checked; 2 retained\n[Paklap] [21:10:07] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:07] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:08] HTTP END status=200 elapsed=0.8s bytes=2541 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 3/1634 checked; 3 retained\n[Paklap] [21:10:09] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:09] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:10] HTTP END status=200 elapsed=0.6s bytes=3043 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 4/1634 checked; 4 retained\n[Paklap] [21:10:10] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:10] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:11] HTTP END status=200 elapsed=0.6s bytes=2397 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 5/1634 checked; 5 retained\n[Paklap] [21:10:12] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:12] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:13] HTTP END status=200 elapsed=1.4s bytes=3783 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 6/1634 checked; 6 retained\n[Paklap] [21:10:13] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:13] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:14] HTTP END status=200 elapsed=0.6s bytes=4231 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 7/1634 checked; 7 retained\n[Paklap] [21:10:14] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:14] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:15] HTTP END status=200 elapsed=0.6s bytes=3969 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 8/1634 checked; 8 retained\n[Paklap] [21:10:15] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:15] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:16] HTTP END status=200 elapsed=0.6s bytes=3168 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 9/1634 checked; 9 retained\n[Paklap] [21:10:17] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:17] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:18] HTTP END status=200 elapsed=0.6s bytes=3120 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 10/1634 checked; 10 retained\n[Paklap] [21:10:19] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:19] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:20] HTTP END status=200 elapsed=0.6s bytes=2501 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 11/1634 checked; 11 retained\n[Paklap] [21:10:21] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:21] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:21] HTTP END status=200 elapsed=0.6s bytes=3240 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 12/1634 checked; 12 retained\n[Paklap] [21:10:22] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:22] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:23] HTTP END status=200 elapsed=0.6s bytes=3394 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 13/1634 checked; 13 retained\n[Paklap] [21:10:24] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:24] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:25] HTTP END status=200 elapsed=0.6s bytes=4129 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 14/1634 checked; 14 retained\n[Paklap] [21:10:25] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:25] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:26] HTTP END status=200 elapsed=0.6s bytes=2594 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 15/1634 checked; 15 retained\n[Paklap] [21:10:27] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:27] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:10:28] HTTP END status=200 elapsed=0.7s bytes=7091 https://www.paklap.pk/graphql?redacted\n__CHOTU_PROGRESS__|1|Active: Paklap\n[Paklap] [21:10:28] EXCEPTION: ValueError('Custom product options need exact selectable offers; no guessed options')\n[Paklap] [21:10:28] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2033, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1526, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 245, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 216, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 120, in run\n    return export(g,base,name,template,log,provider=catalog)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 203, in export\n    try:current=get('/wp-json/wc/store/v1/products/'+str(p['id']))\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 177, in get\n    if provider is not None:return provider.read(path)\n                                   ^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 88, in read\n    raw=items[0];product=normalize(raw,self.base)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 24, in normalize\n    if raw.get('options'):raise ValueError('Custom product options need exact selectable offers; no guessed options')\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Custom product options need exact selectable offers; no guessed options\n\n[Paklap] FAILED: Paklap: Custom product options need exact selectable offers; no guessed options\n[Paklap] [21:10:28] STAGE: Idle\nFAILED: Paklap: FAILED: Paklap: Custom product options need exact selectable offers; no guessed options\nFalse"
+    },
+    {
+      "target": "41106167849",
+      "state": {
+        "conclusion": "failure",
+        "displayTitle": "Automatic continuation of 41039532918",
+        "headSha": "9e0576d1f10badf6cc7e88c3908eb0d281a02dd7",
+        "jobs": [
+          {
+            "completedAt": "2026-10-30T18:32:56Z",
+            "conclusion": "failure",
+            "databaseId": 124236455392,
+            "name": "fetch",
+            "startedAt": "2026-10-30T18:21:05Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-30T18:21:07Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-30T18:21:06Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:21:22Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-30T18:21:07Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:21:22Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-30T18:21:22Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:21:26Z",
+                "conclusion": "success",
+                "name": "Install extraction dependencies",
+                "number": 4,
+                "startedAt": "2026-10-30T18:21:22Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:21:29Z",
+                "conclusion": "success",
+                "name": "Restore optional saved run",
+                "number": 5,
+                "startedAt": "2026-10-30T18:21:26Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:21:29Z",
+                "conclusion": "skipped",
+                "name": "Install Czone browser fallback when needed",
+                "number": 6,
+                "startedAt": "2026-10-30T18:21:29Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:21:29Z",
+                "conclusion": "success",
+                "name": "Start continuous fetching on the cloud runner",
+                "number": 7,
+                "startedAt": "2026-10-30T18:21:29Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:32:45Z",
+                "conclusion": "success",
+                "name": "Live progress, logs and completed-file uploads",
+                "number": 8,
+                "startedAt": "2026-10-30T18:21:29Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:32:45Z",
+                "conclusion": "failure",
+                "name": "Fetch result",
+                "number": 9,
+                "startedAt": "2026-10-30T18:32:45Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:32:46Z",
+                "conclusion": "success",
+                "name": "Collect diagnostic report even if fetching failed",
+                "number": 10,
+                "startedAt": "2026-10-30T18:32:45Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:32:47Z",
+                "conclusion": "success",
+                "name": "Upload diagnostic report and redacted log",
+                "number": 11,
+                "startedAt": "2026-10-30T18:32:46Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:32:49Z",
+                "conclusion": "success",
+                "name": "Upload Excel files and audits, including completed stores from a partial run",
+                "number": 12,
+                "startedAt": "2026-10-30T18:32:47Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:32:49Z",
+                "conclusion": "skipped",
+                "name": "Final automated Rule 804 pass for fresh batch",
+                "number": 13,
+                "startedAt": "2026-10-30T18:32:49Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:32:49Z",
+                "conclusion": "skipped",
+                "name": "Upload automated Rule 804 fresh workbooks",
+                "number": 14,
+                "startedAt": "2026-10-30T18:32:49Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:32:52Z",
+                "conclusion": "success",
+                "name": "Upload saved checkpoint when available",
+                "number": 15,
+                "startedAt": "2026-10-30T18:32:49Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:32:53Z",
+                "conclusion": "success",
+                "name": "Dispatch authorized continuation after verified checkpoint upload",
+                "number": 16,
+                "startedAt": "2026-10-30T18:32:52Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:32:53Z",
+                "conclusion": "success",
+                "name": "Post Live progress, logs and completed-file uploads",
+                "number": 30,
+                "startedAt": "2026-10-30T18:32:53Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:32:53Z",
+                "conclusion": "skipped",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 31,
+                "startedAt": "2026-10-30T18:32:53Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:32:53Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 32,
+                "startedAt": "2026-10-30T18:32:53Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:32:53Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 33,
+                "startedAt": "2026-10-30T18:32:53Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41106167849/job/124236455392"
+          },
+          {
+            "completedAt": "2026-10-30T18:33:17Z",
+            "conclusion": "success",
+            "databaseId": 124242351285,
+            "name": "Archive structured diagnostics",
+            "startedAt": "2026-10-30T18:33:00Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-30T18:33:01Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-30T18:33:00Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:33:11Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-30T18:33:01Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:33:11Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-30T18:33:11Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:33:12Z",
+                "conclusion": "success",
+                "name": "Run actions/download-artifact@v4",
+                "number": 4,
+                "startedAt": "2026-10-30T18:33:11Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:33:14Z",
+                "conclusion": "success",
+                "name": "Archive credential-free JSON on the cloud-reports branch",
+                "number": 5,
+                "startedAt": "2026-10-30T18:33:12Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:33:14Z",
+                "conclusion": "success",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 9,
+                "startedAt": "2026-10-30T18:33:14Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:33:14Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 10,
+                "startedAt": "2026-10-30T18:33:14Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T18:33:14Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 11,
+                "startedAt": "2026-10-30T18:33:14Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41106167849/job/124242351285"
+          }
+        ],
+        "status": "completed"
+      },
+      "failed_log": "fetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5450602Z [Xcessories Hub] [18:32:40] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84417\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5451872Z [Xcessories Hub] [18:32:40] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84417\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5452713Z [Xcessories Hub] WOO PRODUCT PROGRESS: 4180/4990 checked; 2671 retained\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5453437Z [Xcessories Hub] [18:32:40] STAGE: WooCommerce public product prices and pages\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5454275Z [Xcessories Hub] [18:32:40] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84396\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5455202Z [Xcessories Hub] [18:32:40] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84396\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5455935Z __CHOTU_PROGRESS__|1|Active: Xcessories Hub\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5457143Z [Xcessories Hub] [18:32:40] EXCEPTION: HTTPError('403 Client Error: Forbidden for url: https://xcessorieshub.com/product/choetech-quick-charge-3-0-18w-3a-usb-wall-charger-q5003/')\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5458414Z [Xcessories Hub] [18:32:40] Traceback (most recent call last):\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5467600Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2033, in _run_checked\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5468612Z     run_site(site['url'], name, template, log_line)\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5470158Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5471396Z     if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5472207Z                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5473180Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1526, in run_site\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5474145Z     _chotuapp_run_site_original(base, name, template, intercept)\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5475199Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5476610Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5477688Z                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5478804Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 245, in run\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5492720Z     return export(g,base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5493195Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5494139Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 234, in export\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5495224Z     response.raise_for_status();recovered=recovered_media(p,response)\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5495798Z     ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5496669Z   File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/requests/models.py\", line 1167, in raise_for_status\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5497630Z     raise HTTPError(http_error_msg, response=self)\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5498783Z requests.exceptions.HTTPError: 403 Client Error: Forbidden for url: https://xcessorieshub.com/product/choetech-quick-charge-3-0-18w-3a-usb-wall-charger-q5003/\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5499996Z \nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5500845Z [Xcessories Hub] FAILED: Xcessories Hub: 403 Client Error: Forbidden for url: https://xcessorieshub.com/product/choetech-quick-charge-3-0-18w-3a-usb-wall-charger-q5003/\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5501974Z [Xcessories Hub] [18:32:40] STAGE: Idle\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5503123Z FAILED: Xcessories Hub: FAILED: Xcessories Hub: 403 Client Error: Forbidden for url: https://xcessorieshub.com/product/choetech-quick-charge-3-0-18w-3a-usb-wall-charger-q5003/\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5504244Z False\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5504894Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5505924Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5506603Z RUN SUMMARY:\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5508106Z Xcessories Hub: FAILED \u2014 FAILED: Xcessories Hub: 403 Client Error: Forbidden for url: https://xcessorieshub.com/product/choetech-quick-charge-3-0-18w-3a-usb-wall-charger-q5003/\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5509280Z Checkpoint: saved\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5510230Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5561814Z ##[error]Process completed with exit code 2.\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5636685Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5637805Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5666953Z shell: /usr/bin/bash -e {0}\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5667392Z env:\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5668050Z   CHOTUAPP_CLOUD_DATA: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5669027Z   CLOUD_RUNNER_GROUP: audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-18\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5670310Z   CLOUD_PARTITION_RESUME: true\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5670949Z   CLOUD_STORES: [{\"name\":\"Xcessories Hub\",\"url\":\"https://xcessorieshub.com\"}]\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5671591Z   CLOUD_MINUTES: 300\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5671990Z   RESUME_RUN_ID: 41039532918\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:45.5672389Z   SAVE_CHECKPOINT: true\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:52.7377746Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:52.7378377Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:52.7379003Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:52.7379844Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:52.7380467Z   CLOUD_NEEDS_CZONE_BROWSER: false\n[credential-bearing log line removed]\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:52.7385102Z ##[endgroup]\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:53.4157580Z No continuation: completed, stopped manually, unauthorized or not a time-budget stop.\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:53.4587855Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:53.4750468Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:53.6087071Z [command]/usr/bin/git version\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:53.6163285Z git version 2.56.0\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:53.6233638Z Temporarily overriding HOME='/home/runner/work/_temp/bd47ec20-ac6d-49e8-af10-8d17076c16d6' before making global git config changes\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:53.6235980Z Adding repository directory to the temporary git global config as a safe directory\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:53.6244230Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ChotuApp-Software/ChotuApp-Software\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:53.6320696Z [command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:53.6405219Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:53.6957359Z [command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nfetch\tUNKNOWN STEP\t2026-10-30T18:32:53.7016083Z http.https://github.com/.extraheader",
+      "artifacts": [
+        {
+          "name": "chotuapp-checkpoint",
+          "id": 13001906388,
+          "expired": false,
+          "size_in_bytes": 20200054
+        },
+        {
+          "name": "chotuapp-live-logs",
+          "id": 13001746918,
+          "expired": false,
+          "size_in_bytes": 97765
+        },
+        {
+          "name": "chotuapp-diagnostics",
+          "id": 13001113712,
+          "expired": false,
+          "size_in_bytes": 96118
+        },
+        {
+          "name": "chotuapp-excel-files",
+          "id": 13001098934,
+          "expired": false,
+          "size_in_bytes": 20567
+        }
+      ],
+      "annotations": [
+        {
+          "level": "warning",
+          "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+        },
+        {
+          "level": "failure",
+          "message": "Process completed with exit code 2."
+        }
+      ],
+      "console-tail.txt": "[Xcessories Hub] [18:32:39] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84470\n[Xcessories Hub] [18:32:39] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84470\n[Xcessories Hub] [18:32:39] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:39] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84457\n[Xcessories Hub] [18:32:39] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84457\n[Xcessories Hub] [18:32:39] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:39] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84443\n[Xcessories Hub] [18:32:39] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84443\n[Xcessories Hub] WOO PRODUCT PROGRESS: 4177/4990 checked; 2669 retained\n[Xcessories Hub] [18:32:40] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:40] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84425\n[Xcessories Hub] [18:32:40] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84425\n[Xcessories Hub] [18:32:40] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:40] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84423\n[Xcessories Hub] [18:32:40] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84423\n[Xcessories Hub] [18:32:40] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:40] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/118554\n[Xcessories Hub] [18:32:40] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/118554\n[Xcessories Hub] [18:32:40] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:40] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/92811\n[Xcessories Hub] [18:32:40] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/92811\n[Xcessories Hub] [18:32:40] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:40] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/92812\n[Xcessories Hub] [18:32:40] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/92812\n[Xcessories Hub] [18:32:40] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:40] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/92813\n[Xcessories Hub] [18:32:40] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/92813\n[Xcessories Hub] WOO PRODUCT PROGRESS: 4179/4990 checked; 2670 retained\n[Xcessories Hub] [18:32:40] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:40] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84417\n[Xcessories Hub] [18:32:40] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84417\n[Xcessories Hub] WOO PRODUCT PROGRESS: 4180/4990 checked; 2671 retained\n[Xcessories Hub] [18:32:40] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:40] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84396\n[Xcessories Hub] [18:32:40] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84396\n__CHOTU_PROGRESS__|1|Active: Xcessories Hub\n[Xcessories Hub] [18:32:40] EXCEPTION: HTTPError('403 Client Error: Forbidden for url: https://xcessorieshub.com/product/choetech-quick-charge-3-0-18w-3a-usb-wall-charger-q5003/')\n[Xcessories Hub] [18:32:40] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2033, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1526, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 245, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 216, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 292, in run\n    return export(g,base,name,template,log)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 234, in export\n    response.raise_for_status();recovered=recovered_media(p,response)\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/requests/models.py\", line 1167, in raise_for_status\n    raise HTTPError(http_error_msg, response=self)\nrequests.exceptions.HTTPError: 403 Client Error: Forbidden for url: https://xcessorieshub.com/product/choetech-quick-charge-3-0-18w-3a-usb-wall-charger-q5003/\n\n[Xcessories Hub] FAILED: Xcessories Hub: 403 Client Error: Forbidden for url: https://xcessorieshub.com/product/choetech-quick-charge-3-0-18w-3a-usb-wall-charger-q5003/\n[Xcessories Hub] [18:32:40] STAGE: Idle\nFAILED: Xcessories Hub: FAILED: Xcessories Hub: 403 Client Error: Forbidden for url: https://xcessorieshub.com/product/choetech-quick-charge-3-0-18w-3a-usb-wall-charger-q5003/\nFalse\nCheckpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nCheckpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nRUN SUMMARY:\nXcessories Hub: FAILED \u2014 FAILED: Xcessories Hub: 403 Client Error: Forbidden for url: https://xcessorieshub.com/product/choetech-quick-charge-3-0-18w-3a-usb-wall-charger-q5003/\nCheckpoint: saved\nRun finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+      "store-status.txt": "Updated (UTC): 2026-10-30T18:32:42.943324+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nXcessories Hub: failed\n  Stage: Idle",
+      "fetch-log.txt": "[Xcessories Hub] [18:32:37] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:37] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/85511\n[Xcessories Hub] [18:32:37] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/85511\n[Xcessories Hub] WOO PRODUCT PROGRESS: 4147/4990 checked; 2660 retained\n[Xcessories Hub] [18:32:37] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:37] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/85416\n[Xcessories Hub] [18:32:37] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/85416\n[Xcessories Hub] [18:32:37] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:37] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/85388\n[Xcessories Hub] [18:32:37] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/85388\n[Xcessories Hub] [18:32:37] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:37] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/85328\n[Xcessories Hub] [18:32:37] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/85328\n[Xcessories Hub] [18:32:37] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:37] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84870\n[Xcessories Hub] [18:32:37] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84870\n[Xcessories Hub] [18:32:37] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:37] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84827\n[Xcessories Hub] [18:32:37] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84827\n[Xcessories Hub] [18:32:37] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:37] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84801\n[Xcessories Hub] [18:32:37] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84801\n[Xcessories Hub] [18:32:37] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:37] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84721\n[Xcessories Hub] [18:32:37] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84721\n[Xcessories Hub] [18:32:37] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:37] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84701\n[Xcessories Hub] [18:32:37] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84701\n[Xcessories Hub] [18:32:37] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:37] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84697\n[Xcessories Hub] [18:32:37] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84697\n[Xcessories Hub] WOO PRODUCT PROGRESS: 4156/4990 checked; 2661 retained\n[Xcessories Hub] [18:32:38] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:38] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84691\n[Xcessories Hub] [18:32:38] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84691\n[Xcessories Hub] [18:32:38] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:38] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84683\n[Xcessories Hub] [18:32:38] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84683\n[Xcessories Hub] [18:32:38] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:38] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84677\n[Xcessories Hub] [18:32:38] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84677\n[Xcessories Hub] [18:32:38] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:38] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84674\n[Xcessories Hub] [18:32:38] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84674\n[Xcessories Hub] WOO PRODUCT PROGRESS: 4160/4990 checked; 2662 retained\n[Xcessories Hub] [18:32:38] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:38] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84629\n[Xcessories Hub] [18:32:38] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84629\n[Xcessories Hub] [18:32:38] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:38] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84624\n[Xcessories Hub] [18:32:38] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84624\n[Xcessories Hub] WOO PRODUCT PROGRESS: 4162/4990 checked; 2663 retained\n[Xcessories Hub] [18:32:38] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:38] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84620\n[Xcessories Hub] [18:32:38] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84620\n[Xcessories Hub] [18:32:38] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:38] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/105040\n[Xcessories Hub] [18:32:38] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/105040\n[Xcessories Hub] [18:32:38] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:38] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/105041\n[Xcessories Hub] [18:32:38] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/105041\n[Xcessories Hub] WOO PRODUCT PROGRESS: 4163/4990 checked; 2664 retained\n[Xcessories Hub] [18:32:38] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:38] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84603\n[Xcessories Hub] [18:32:38] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84603\n[Xcessories Hub] WOO PRODUCT PROGRESS: 4164/4990 checked; 2665 retained\n[Xcessories Hub] [18:32:39] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:39] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84597\n[Xcessories Hub] [18:32:39] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84597\n[Xcessories Hub] [18:32:39] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:39] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84588\n[Xcessories Hub] [18:32:39] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84588\n[Xcessories Hub] WOO PRODUCT PROGRESS: 4166/4990 checked; 2666 retained\n[Xcessories Hub] [18:32:39] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:39] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84581\n[Xcessories Hub] [18:32:39] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84581\n[Xcessories Hub] [18:32:39] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:39] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/104876\n[Xcessories Hub] [18:32:39] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/104876\n[Xcessories Hub] [18:32:39] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:39] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/104877\n[Xcessories Hub] [18:32:39] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/104877\n[Xcessories Hub] WOO PRODUCT PROGRESS: 4167/4990 checked; 2667 retained\n[Xcessories Hub] [18:32:39] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:39] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84574\n[Xcessories Hub] [18:32:39] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84574\n[Xcessories Hub] WOO PRODUCT PROGRESS: 4168/4990 checked; 2668 retained\n[Xcessories Hub] [18:32:39] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:39] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84570\n[Xcessories Hub] [18:32:39] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84570\n[Xcessories Hub] [18:32:39] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:39] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84564\n[Xcessories Hub] [18:32:39] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84564\n[Xcessories Hub] [18:32:39] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:39] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84483\n[Xcessories Hub] [18:32:39] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84483\n[Xcessories Hub] [18:32:39] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:39] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84480\n[Xcessories Hub] [18:32:39] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84480\n[Xcessories Hub] [18:32:39] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:39] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84476\n[Xcessories Hub] [18:32:39] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84476\n[Xcessories Hub] [18:32:39] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:39] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84469\n[Xcessories Hub] [18:32:39] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84469\n[Xcessories Hub] [18:32:39] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:39] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84470\n[Xcessories Hub] [18:32:39] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84470\n[Xcessories Hub] [18:32:39] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:39] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84457\n[Xcessories Hub] [18:32:39] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84457\n[Xcessories Hub] [18:32:39] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:39] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84443\n[Xcessories Hub] [18:32:39] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84443\n[Xcessories Hub] WOO PRODUCT PROGRESS: 4177/4990 checked; 2669 retained\n[Xcessories Hub] [18:32:40] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:40] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84425\n[Xcessories Hub] [18:32:40] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84425\n[Xcessories Hub] [18:32:40] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:40] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84423\n[Xcessories Hub] [18:32:40] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84423\n[Xcessories Hub] [18:32:40] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:40] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/118554\n[Xcessories Hub] [18:32:40] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/118554\n[Xcessories Hub] [18:32:40] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:40] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/92811\n[Xcessories Hub] [18:32:40] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/92811\n[Xcessories Hub] [18:32:40] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:40] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/92812\n[Xcessories Hub] [18:32:40] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/92812\n[Xcessories Hub] [18:32:40] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:40] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/92813\n[Xcessories Hub] [18:32:40] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/92813\n[Xcessories Hub] WOO PRODUCT PROGRESS: 4179/4990 checked; 2670 retained\n[Xcessories Hub] [18:32:40] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:40] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84417\n[Xcessories Hub] [18:32:40] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84417\n[Xcessories Hub] WOO PRODUCT PROGRESS: 4180/4990 checked; 2671 retained\n[Xcessories Hub] [18:32:40] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [18:32:40] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84396\n[Xcessories Hub] [18:32:40] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84396\n__CHOTU_PROGRESS__|1|Active: Xcessories Hub\n[Xcessories Hub] [18:32:40] EXCEPTION: HTTPError('403 Client Error: Forbidden for url: https://xcessorieshub.com/product/choetech-quick-charge-3-0-18w-3a-usb-wall-charger-q5003/')\n[Xcessories Hub] [18:32:40] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2033, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1526, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 245, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 216, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 292, in run\n    return export(g,base,name,template,log)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 234, in export\n    response.raise_for_status();recovered=recovered_media(p,response)\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/site-packages/requests/models.py\", line 1167, in raise_for_status\n    raise HTTPError(http_error_msg, response=self)\nrequests.exceptions.HTTPError: 403 Client Error: Forbidden for url: https://xcessorieshub.com/product/choetech-quick-charge-3-0-18w-3a-usb-wall-charger-q5003/\n\n[Xcessories Hub] FAILED: Xcessories Hub: 403 Client Error: Forbidden for url: https://xcessorieshub.com/product/choetech-quick-charge-3-0-18w-3a-usb-wall-charger-q5003/\n[Xcessories Hub] [18:32:40] STAGE: Idle\nFAILED: Xcessories Hub: FAILED: Xcessories Hub: 403 Client Error: Forbidden for url: https://xcessorieshub.com/product/choetech-quick-charge-3-0-18w-3a-usb-wall-charger-q5003/\nFalse"
+    }
+  ]
+}
