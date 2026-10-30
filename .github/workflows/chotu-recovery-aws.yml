@@ -55,7 +55,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           cd "$RUNNER_TEMP/chotu-private-source"
-          python3 -m pip install --quiet boto3
+          python3 -m pip install --quiet boto3 cryptography
           bash scripts/cloud/persist-recovery-to-aws.sh
       - name: Remove private temporary checkout
         if: always()
