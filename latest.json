@@ -1,30 +1,53 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-30T11:03:27.258893+00:00",
-  "run_id": "41039597644",
+  "generated_utc": "2026-10-30T11:22:01.520346+00:00",
+  "run_id": "41039558641",
   "attempt": "1",
   "source_commit": "5ee1892e4e84adefdb0d645e50645f6d22229188",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 1417.8,
+  "elapsed_seconds": 3671.8,
   "stores": [
     {
-      "name": "Alkaram Studio",
+      "name": "Beechtree",
       "status": "done",
       "review_required": true,
       "issue_codes": [
+        "HTTP_404",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "ce15fbb76a7b0dcb",
-      "products": 1566,
-      "variants": 5323,
+      "products": 703,
+      "variants": 3134,
       "http_statuses": {
-        "200": 1741
+        "200": 1694,
+        "404": 4
       },
-      "network_seconds": 512.7,
-      "max_response_seconds": 2.3,
-      "cache_events": 3174
+      "network_seconds": 868.5,
+      "max_response_seconds": 4.2,
+      "cache_events": 2372
+    },
+    {
+      "name": "Breakout",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "ce15fbb76a7b0dcb",
+      "products": 2068,
+      "variants": 10181,
+      "http_statuses": {
+        "200": 2501,
+        "429": 2
+      },
+      "network_seconds": 1465.9,
+      "max_response_seconds": 4.6,
+      "cache_events": 4577
     }
   ]
 }
