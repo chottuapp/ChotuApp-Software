@@ -1,7 +1,7 @@
 {
-  "run_id": "41127781655",
+  "run_id": "41128757148",
   "request_id": "requested20261031",
-  "checked_utc": "2026-10-30T21:02:07.733855+00:00",
+  "checked_utc": "2026-10-30T21:09:11.022702+00:00",
   "stores": [
     {
       "name": "Limelight",
@@ -85,10 +85,15 @@
           "path": "/graphql?query=%7Bproducts%28search%3A%22%22%2CpageSize%3A1%2CcurrentPage%3A1%29%7Btotal_count+items%7B__typename+sku+name+url_key+stock_status+price_range%7Bminimum_price%7Bregular_price%7Bvalue+currency%7Dfinal_price%7Bvalue+currency%7D%7D%7D%7D%7D%7D",
           "status": 200,
           "final_url": "https://www.paklap.pk/graphql?query=%7Bproducts%28search%3A%22%22%2CpageSize%3A1%2CcurrentPage%3A1%29%7Btotal_count+items%7B__typename+sku+name+url_key+stock_status+price_range%7Bminimum_price%7Bregular_price%7Bvalue+currency%7Dfinal_price%7Bvalue+currency%7D%7D%7D%7D%7D%7D"
+        },
+        {
+          "path": "/graphql?query=%7Bproducts%28filter%3A%7Bsku%3A%7Beq%3A%22Lenovo+ThinkPad+T580+8th+ci5+used+Laptop%22%7D%7D%2CpageSize%3A2%29%7Bitems%7B__typename+id+sku+name+url_key+stock_status+price_range%7Bminimum_price%7Bregular_price%7Bvalue+currency%7Dfinal_price%7Bvalue+currency%7D%7D%7D+url_suffix+description%7Bhtml%7D+short_description%7Bhtml%7D+image%7Burl+label%7D+media_gallery%7Burl+label+disabled%7D+categories%7Bid+name+url_path%7D+...+on+CustomizableProductInterface%7Boptions%7Btitle+required%7D%7D+...+on+ConfigurableProduct%7Bconfigurable_options%7Battribute_code+label+values%7Bvalue_index+label%7D%7D+variants%7Battributes%7Bcode+label+value_index%7D+product%7B__typename+id+sku+name+url_key+stock_status+price_range%7Bminimum_price%7Bregular_price%7Bvalue+currency%7Dfinal_price%7Bvalue+currency%7D%7D%7D+image%7Burl+label%7D%7D%7D%7D%7D%7D%7D",
+          "status": 200,
+          "final_url": "https://www.paklap.pk/graphql?query=%7Bproducts%28filter%3A%7Bsku%3A%7Beq%3A%22Lenovo+ThinkPad+T580+8th+ci5+used+Laptop%22%7D%7D%2CpageSize%3A2%29%7Bitems%7B__typename+id+sku+name+url_key+stock_status+price_range%7Bminimum_price%7Bregular_price%7Bvalue+currency%7Dfinal_price%7Bvalue+currency%7D%7D%7D+url_suffix+description%7Bhtml%7D+short_description%7Bhtml%7D+image%7Burl+label%7D+media_gallery%7Burl+label+disabled%7D+categories%7Bid+name+url_path%7D+...+on+CustomizableProductInterface%7Boptions%7Btitle+required%7D%7D+...+on+ConfigurableProduct%7Bconfigurable_options%7Battribute_code+label+values%7Bvalue_index+label%7D%7D+variants%7Battributes%7Bcode+label+value_index%7D+product%7B__typename+id+sku+name+url_key+stock_status+price_range%7Bminimum_price%7Bregular_price%7Bvalue+currency%7Dfinal_price%7Bvalue+currency%7D%7D%7D+image%7Burl+label%7D%7D%7D%7D%7D%7D%7D"
         }
       ],
       "provider": "magento",
-      "status": "adapter_required",
+      "status": "supported",
       "graphql_status": 200,
       "public_graphql_sample": {
         "total_count": 1634,
@@ -114,7 +119,69 @@
           }
         ]
       },
-      "graphql_errors": []
+      "graphql_errors": [],
+      "detail_sample": {
+        "__typename": "SimpleProduct",
+        "id": 16763,
+        "sku": "Lenovo ThinkPad T580 8th ci5 used Laptop",
+        "name": "Lenovo ThinkPad T580 - 8th Gen Core i5 8350u Quadcore Processor 16-GB 256-GB SSD Intel UHD 620 GC 15.6\" Full HD 1080p WVA Display Dolby Audio Premium W11 Pro (Black, Used)",
+        "url_key": "lenovo-thinkpad-t580-8th-gen-corei5-used-laptop-pakistan",
+        "stock_status": "IN_STOCK",
+        "price_range": {
+          "minimum_price": {
+            "regular_price": {
+              "value": 59500,
+              "currency": "PKR"
+            },
+            "final_price": {
+              "value": 59500,
+              "currency": "PKR"
+            }
+          }
+        },
+        "url_suffix": ".html",
+        "description": {
+          "html": ""
+        },
+        "short_description": {
+          "html": ""
+        },
+        "image": {
+          "url": "https://www.paklap.pk/media/catalog/product/cache/702d85193f4c6af6bb773c850e52617f/t/h/thinkpad_t580__1.jpg",
+          "label": "Lenovo ThinkPad T580 - 8th Gen Core i5 8350u Quadcore Processor 16-GB 256-GB SSD Intel UHD 620 GC 15.6\" Full HD 1080p WVA Display Dolby Audio Premium W11 Pro (Black, Used)"
+        },
+        "media_gallery": [
+          {
+            "url": "https://www.paklap.pk/media/catalog/product/cache/702d85193f4c6af6bb773c850e52617f/t/h/thinkpad_t580__1.jpg",
+            "label": null,
+            "disabled": false
+          },
+          {
+            "url": "https://www.paklap.pk/media/catalog/product/cache/702d85193f4c6af6bb773c850e52617f/t/5/t580_used_laptop_1.jpg",
+            "label": null,
+            "disabled": false
+          }
+        ],
+        "categories": [
+          {
+            "id": 85,
+            "name": "Used Laptops",
+            "url_path": "used-laptop-price-pakistan"
+          },
+          {
+            "id": 202,
+            "name": "8th Generation",
+            "url_path": "used-laptop-price-pakistan/8th-gen-laptops-pakistan"
+          },
+          {
+            "id": 285,
+            "name": "Lenovo",
+            "url_path": "used-laptop-price-pakistan/lenovo"
+          }
+        ],
+        "options": null
+      },
+      "source_url": "https://www.paklap.pk/lenovo-thinkpad-t580-8th-gen-corei5-used-laptop-pakistan.html"
     },
     {
       "name": "House of Tools",
@@ -295,48 +362,6 @@
       "status": "supported"
     }
   ],
-  "groups": [
-    {
-      "runner_group": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-requested20261031-3-SE10059",
-      "stores": [
-        {
-          "name": "House of Tools",
-          "url": "https://houseoftools.com.pk"
-        }
-      ],
-      "status": "dispatched"
-    },
-    {
-      "runner_group": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-requested20261031-4-SE10062",
-      "stores": [
-        {
-          "name": "G7 Leather",
-          "url": "https://gsevenleather.com"
-        }
-      ],
-      "status": "dispatched"
-    }
-  ],
-  "status": "dispatch_complete",
-  "active_stores_preserved": [
-    "Alkaram Studio",
-    "Bonanza Satrangi",
-    "ChenOne",
-    "Fresh Basket",
-    "Gul Ahmed",
-    "Liberty Books",
-    "Limelight",
-    "Sapphire",
-    "Stylo",
-    "Tawakkal Fabrics",
-    "Zellbury"
-  ],
-  "already_dispatched": [
-    "Alkaram Studio",
-    "Bin Fahad",
-    "Dairy Dream",
-    "Fresh Basket",
-    "Limelight",
-    "The Glossy Quill"
-  ]
+  "groups": [],
+  "status": "checking"
 }
