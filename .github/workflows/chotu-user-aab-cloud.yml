@@ -237,3 +237,55 @@ jobs:
         run: |
           rm -rf -- "$RUNNER_TEMP/chotu-private-source"
           rm -f -- "$RUNNER_TEMP/private-checkout.log" "$RUNNER_TEMP/private-native-test.log" "$RUNNER_TEMP/customer-launch-log.txt" "$RUNNER_TEMP/chotu-source-key" "$RUNNER_TEMP/chotu-source-hosts"
+  github-downloads:
+    needs: native-test
+    if: ${{ needs['native-test'].result == 'success' }}
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      actions: read
+    env:
+      SOURCE_SHA: ${{ inputs.source_sha }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: production-user-apk
+          path: ${{ runner.temp }}/android-downloads
+      - name: Verify signed file identities before GitHub upload
+        run: |
+          python3 - <<'PY'
+          import os,json,hashlib,zipfile
+          from pathlib import Path
+          p=Path(os.environ['RUNNER_TEMP'])/'android-downloads'
+          m=json.loads((p/'customer-apk-build-info.json').read_text())
+          assert m['commit']==os.environ['SOURCE_SHA'] and m['version_name']=='1.1.29' and m['version_code']==71
+          assert m['certificate_sha256']=='b2067fea0ed2c29e081131f08e5c9bf4761d7b7d4cf44c71bcbd997124cd5352'
+          for name,size,sha in [('ChotuApp-User-1.1.29-71.apk',m['bytes'],m['sha256']),('ChotuApp-User-1.1.29-71.aab',m['aab']['bytes'],m['aab']['sha256'])]:
+              f=p/name
+              assert f.stat().st_size==size and hashlib.sha256(f.read_bytes()).hexdigest()==sha
+              with zipfile.ZipFile(f) as z:
+                  assert z.testzip() is None
+                  assert not any(n.endswith(('assets/chotu.json','.jks','.keystore','.pem','/.env')) for n in z.namelist())
+          print('Signed APK and AAB identity, hashes, certificate metadata and archives verified.')
+          PY
+      - name: Store requested Android files as a GitHub prerelease
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag=user-v1.1.29-71
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo '::error::This release already exists; refusing to overwrite files.'
+            exit 1
+          fi
+          cat > "$RUNNER_TEMP/android-release-notes.md" <<'NOTES'
+          Signed ChotuApp User 1.1.29 (71), with the original customer signing certificate.
+
+          Includes updated Feed search suggestions, three-column Brands layout, and the shop filter UI.
+          IMPORTANT: the new shop price/discount sorting requires the separate pending backend release; that backend has not been deployed by this build.
+
+          APK and AAB were built from the same source and checked for identity, archive integrity and signature metadata. The APK passed the existing native upgrade/startup check. SHA256 values and exact source commit are in customer-apk-build-info.json.
+
+          GitHub downloads only. This workflow does not activate an APK on the production server or upload to Google Play.
+          NOTES
+          gh release create "$tag" "$RUNNER_TEMP/android-downloads/ChotuApp-User-1.1.29-71.apk" "$RUNNER_TEMP/android-downloads/ChotuApp-User-1.1.29-71.aab" "$RUNNER_TEMP/android-downloads/customer-apk-build-info.json" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title "ChotuApp User 1.1.29 (71) — APK and AAB" --notes-file "$RUNNER_TEMP/android-release-notes.md" --prerelease --latest=false
