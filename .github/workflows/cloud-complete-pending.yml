@@ -1,0 +1,26 @@
+name: Continue Owner-Requested Pending Fetch
+on:
+  push:
+    branches: [main]
+    paths: [cloud/pending-recovery-request.json]
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: chotuapp-owner-pending-recovery
+  cancel-in-progress: false
+jobs:
+  recover:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install requests beautifulsoup4 openpyxl
+      - run: PYTHONPATH=tests:cloud:. python -m unittest test_pending_fetch_recovery -q
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          PYTHONPATH: cloud:.
+        run: python cloud/recover_pending_fetches.py

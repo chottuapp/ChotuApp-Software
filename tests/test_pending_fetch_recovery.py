@@ -1,0 +1,28 @@
+import json,unittest,copy
+from pathlib import Path
+from recover_pending_fetches import recovery_plan,REPO
+class PendingRecoveryTests(unittest.TestCase):
+ def setUp(self):
+  root=Path(__file__).resolve().parents[1];self.policy=json.loads((root/'cloud/audit804-release.json').read_text());self.registry=json.loads((root/'cloud/fetch-update-release.json').read_text())['fresh_stores'];group='audit804-'+self.policy['campaign_id']+'-'+self.policy['refresh_generation']+'-18'
+  self.request=dict(campaign_id=self.policy['campaign_id'],refresh_generation=self.policy['refresh_generation'],source_run='41039532918',runner_group=group,stores=['Xcessories Hub']);self.runs=[dict(databaseId=41039532918,displayTitle='Cloud group '+group,status='completed')];self.run=dict(id=41039532918,event='workflow_dispatch',head_branch='main',head_repository={'full_name':REPO},display_title='Cloud group '+group,status='completed',conclusion='failure');self.summary=dict(runner_group=group,status='incomplete',checkpoint='saved',stop_reason='completed_or_source_failure',stores=[dict(name='Hilm Chapals',status='done'),dict(name='Xcessories Hub',status='failed')]);self.artifacts=[dict(name='chotuapp-checkpoint',expired=False)]
+ def plan(self,**updates):
+  args=dict(request=self.request,policy=self.policy,registry=self.registry,runs=self.runs,run=self.run,summary=self.summary,artifacts=self.artifacts);args.update(updates);return recovery_plan(**args)
+ def test_only_failed_source_is_selected_and_completed_partner_is_preserved(self):self.assertEqual([s['name'] for s in self.plan()],['Xcessories Hub'])
+ def test_existing_continuation_active_or_complete_never_duplicates(self):
+  for status in ('in_progress','queued','completed'):
+   self.assertIsNone(self.plan(runs=self.runs+[dict(databaseId=2,displayTitle='Automatic continuation of 41039532918',status=status)]))
+ def test_newer_separately_completed_lane_is_not_replaced(self):
+  newer=dict(databaseId=41039532919,displayTitle=self.runs[0]['displayTitle'],status='completed')
+  self.assertIsNone(self.plan(runs=[newer]+self.runs))
+ def test_disabled_foreign_and_wrong_generation_sources_are_rejected(self):
+  for update in ({'stores':['LAAM']},{'stores':['Hilm Chapals','Xcessories Hub','Bata']},{'refresh_generation':'old'}):
+   with self.assertRaises(ValueError):self.plan(request=dict(self.request,**update))
+ def test_missing_expired_or_wrong_checkpoint_cannot_start_fresh(self):
+  for artifacts in ([],[dict(name='chotuapp-checkpoint',expired=True)]):
+   with self.assertRaises(ValueError):self.plan(artifacts=artifacts)
+  with self.assertRaises(ValueError):self.plan(summary=dict(self.summary,runner_group='another-group'))
+ def test_manual_stop_or_completed_target_is_retained(self):
+  self.assertIsNone(self.plan(summary=dict(self.summary,stop_reason='stop_requested')))
+  summary=copy.deepcopy(self.summary);summary['stores'][1]['status']='done';self.assertIsNone(self.plan(summary=summary))
+ def test_untrusted_run_is_rejected(self):
+  with self.assertRaises(ValueError):self.plan(run=dict(self.run,head_branch='other'))
