@@ -323,6 +323,11 @@ def maali_kind(row,fact=None):
  if not proof:return None
  return 'Live Plant Sets' if listed_set or re.search(r'\bbundle\b|\bset\s+of\s+\d+\b',title,re.I) else 'Live Plants'
 
+def explicit_source_service(row,store):
+ # Preserve the merchant's TEST qualification; do not imply real service scope.
+ name=str(row.get('name') or '').strip()
+ return store=='Beyond East' and bool(re.fullmatch(r'(?:TEST[- ]+)?STIT?CHING SERVICE',name,re.I)) and public_facts(row,store) is not None
+
 def fresh_source_category(row,store):
  """Explicit sold objects in held source rows; no price, stock or website inference."""
  name=str(row.get('name') or '');body=str(row.get('description') or '')
@@ -354,6 +359,7 @@ def category(row,store):
  if re.search(r'\b(?:quilt|duvet)\s+cover\b',name,re.I) and re.search(r'\b[12]\s+pillow\s*cases?\b',body,re.I):return 'Duvet Cover Sets','reviewed_source_contents','Explicit cover and pillowcases supplied; no duvet filling inferred.'
  visual=visual_review(row,store)
  if visual:return visual['category'],'reviewed_primary_product_image',visual['overview']+' Image: '+visual['image_url']+' SHA256: '+visual['image_sha256']
+ if explicit_source_service(row,store):return 'Stitching Services','reviewed_exact_public_service_name','Exact identity-matched source service title; test qualification retained: '+name
  explicit=fresh_source_category(row,store)
  if explicit:return explicit
  if store=='Rios':
@@ -740,6 +746,9 @@ def category(row,store):
 
 def description(row,store):
  original=str(row.get('description') or '');name=str(row.get('name') or '');body=original.strip()
+ if explicit_source_service(row,store) and body.casefold()==name.casefold():
+  text='A test listing for a stitching service.' if re.match(r'TEST[- ]',name,re.I) else 'A listing for a stitching service.'
+  return text,'Expressed only the exact source-named service and retained its test qualification; no garment, fabric, duration or fulfilment facts inferred.'
  if store=='Rawayat' and re.search(r'\bear[ -]cuff\b',name,re.I) and body.rstrip('.')==name.rstrip('.'):
   return name+' is an ear-cuff jewellery design.','Expressed the exact source-named ear cuff; no pair count, material or stone authenticity inferred.'
  if store in {'Zellbury','Gul Ahmed','Xcessories Hub'}:

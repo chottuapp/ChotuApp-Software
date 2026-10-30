@@ -16,6 +16,8 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  # Only explicit source garment-type strings; a generic vendor/brand is not purpose evidence.
  if re.fullmatch(r'(?i)(?:women|men|teens|kids|infants)\s+(?:stitched\s+[234]\s+piece(?:\s+shirt\s+trouser)?|(?:cotton\s+silk\s+)?shalwar|(?:special\s+)?kurta|trouser|earrings|bracelet|necklace|ring|eyebrow\s+kit|waistcoat\s+with\s+kurta\s+trouser)',str(source_type or '').strip()):body+=' Source-listed garment type: '+str(source_type)
  evidence=title+' '+body
+ if cat=='stitching services' and has(r'^(?:TEST[- ]+)?STIT?CHING SERVICE$',title) and has(r'\bstitching service\b',body):
+  return [] if not has(r'^TEST[- ]',title) or has(r'\btest listing\b',body) else ['Source test qualification removed from service description']
  # Independently require the sold object in original title/details, not Category metadata.
  if cat=='clothing sets' and has(r'\boutfit\b',title) and all(has(r'(?m)^\s*'+field+r'\s*:',str(description)) for field in ('Top','Bottom','Dupatta')):return []
  if cat=='bag & key charms' and has(r'\bsunflower\s+charm\b',title) and has(r'\bcrochet\b',body) and has(r'\b(?:keychain|bag charm)\b',body):return []
