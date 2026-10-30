@@ -26,3 +26,12 @@ class PendingRecoveryTests(unittest.TestCase):
   summary=copy.deepcopy(self.summary);summary['stores'][1]['status']='done';self.assertIsNone(self.plan(summary=summary))
  def test_untrusted_run_is_rejected(self):
   with self.assertRaises(ValueError):self.plan(run=dict(self.run,head_branch='other'))
+
+class RecoveryPublicationTests(unittest.TestCase):
+ def test_recovery_report_branch_is_supported_by_publisher(self):
+  from unittest.mock import patch
+  from types import SimpleNamespace
+  import source_research
+  with patch.object(source_research.subprocess,'run',return_value=SimpleNamespace(stdout=b'a'*40)) as run:
+   source_research._publish_once({'run_id':'1','status':'checking'},'pending-recovery-reports')
+  self.assertTrue(any(call.args[0][:2]==['git','push'] for call in run.call_args_list))
