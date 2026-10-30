@@ -3118,7 +3118,7 @@
     "Saya": "source:8c08df2235789d3514539c344a7973b983a3cf994aabb4ae34982078177c20b7:Saya:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "Rios": "source:c40bbad72c8c85669ad90ed103d80ae5a7a342b0b926e23614246eadc500a751:Rios:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "Edenrobe": "source:052234557ba97ab4bb5111bf19e777c258f60e83bc5c53293c3a1544b850089e:Edenrobe:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
-    "Limelight": "source:1a91ff9680a47bd4d65291b8bc646e899fff0c2fc53ce72833e2a9c07fb8f308:Limelight:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de"
+    "Limelight": "source:63ee1798171f06b893e86829ff232af99fb9009331c8f8a53c9664fe0c1ed085:Limelight:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -6691,21 +6691,44 @@
       "store": "Limelight",
       "shop_code": null,
       "identity_policy": "owner_authorized_blank_code_exact_store_filename",
-      "status": "pass",
-      "products_checked": 6247,
-      "findings_count": 0,
-      "findings": [],
+      "status": "hold",
+      "products_checked": 6105,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CP90b194d0b1fe",
+          "name": "2 Piece Lawn Saree-Embroidered (Pret)",
+          "source_url": "https://www.limelight.pk/products/p7218se-xsl-plm",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "a145d89a613e884aa9af07afe7fbb7773c2298ae308f20882a117f133db17e75",
-      "checked_utc": "2026-10-30T09:17:43.123486+00:00",
+      "workbook_sha256": "a67717fd457ebc99c744bff8b844d9172114af623a8a8feef00f4aa1d63a8d6a",
+      "checked_utc": "2026-10-30T12:40:10.550899+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-30T12:40:10.559785+00:00",
+        "updated_utc": "2026-10-30T12:40:10.559785+00:00",
+        "next_source_check_due_utc": "2026-10-30T12:55:10.559785+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
-      "description_repairs_count": 249,
+      "description_repairs_count": 242,
       "description_repairs_examples": [
         {
           "product_id": "CP8fa9ce450045",
@@ -6759,11 +6782,11 @@
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "40842710993",
-      "source_artifact": 12891184352,
-      "source_sha256": "1a91ff9680a47bd4d65291b8bc646e899fff0c2fc53ce72833e2a9c07fb8f308",
-      "refresh_generation": "refresh20261029-b80f4ca4",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/limelight/1a91ff9680a47bd4/manifest.json"
+      "source_run": "41039590665",
+      "source_artifact": 12977081363,
+      "source_sha256": "63ee1798171f06b893e86829ff232af99fb9009331c8f8a53c9664fe0c1ed085",
+      "refresh_generation": "refresh20261030-31dd8bb1",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/limelight/63ee1798171f06b8/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -7014,8 +7037,8 @@
     "SE10053": "inputs/fresh804-20261026-5d42fe35/rollback-se10053/ee1500a5cc854b0a/manifest.json",
     "SE10044": "inputs/fresh804-20261026-5d42fe35/rollback-se10044/82467cce36b38582/manifest.json"
   },
-  "audit804_last_store": "Rios",
-  "audit804_progress_utc": "2026-10-30T12:32:28.926147+00:00",
+  "audit804_last_store": "Limelight",
+  "audit804_progress_utc": "2026-10-30T12:40:41.958315+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Gul Ahmed",
