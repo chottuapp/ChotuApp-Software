@@ -1,43 +1,28 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-30T21:05:44.363324+00:00",
-  "run_id": "41122150892",
+  "generated_utc": "2026-10-30T21:10:31.417250+00:00",
+  "run_id": "41128849745",
   "attempt": "1",
-  "source_commit": "2ad9c87d89c99be730812d7d46c8b8ed31ab4991",
-  "status": "complete",
+  "source_commit": "993d469ff2f3e21afd8a07d04decccf1de001a7a",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 2536.0,
+  "elapsed_seconds": 50.7,
   "stores": [
     {
-      "name": "Gul Ahmed",
-      "status": "done",
-      "review_required": true,
+      "name": "Paklap",
+      "status": "failed",
+      "review_required": false,
       "issue_codes": [
         "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "ce15fbb76a7b0dcb",
-      "products": 7030,
-      "variants": 28221,
+      "software_revision": "b0b5346c44d47e0f",
       "http_statuses": {
-        "200": 117
+        "200": 51
       },
-      "network_seconds": 249.0,
-      "max_response_seconds": 2.3,
-      "cache_events": 28570
-    },
-    {
-      "name": "Sapphire",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "ce15fbb76a7b0dcb",
-      "products": 993,
-      "variants": 3646,
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "network_seconds": 37.1,
+      "max_response_seconds": 1.5,
+      "cache_events": 1
     }
   ]
 }
