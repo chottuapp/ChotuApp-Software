@@ -1,28 +1,30 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-30T21:10:31.417250+00:00",
-  "run_id": "41128849745",
+  "generated_utc": "2026-10-30T21:10:42.696733+00:00",
+  "run_id": "41127366241",
   "attempt": "1",
-  "source_commit": "993d469ff2f3e21afd8a07d04decccf1de001a7a",
-  "status": "incomplete",
+  "source_commit": "5dd1145caf7084ffa59bcf7b2dba0e3975631840",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 50.7,
+  "elapsed_seconds": 728.7,
   "stores": [
     {
-      "name": "Paklap",
-      "status": "failed",
-      "review_required": false,
+      "name": "Fresh Basket",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
         "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "b0b5346c44d47e0f",
+      "software_revision": "ce15fbb76a7b0dcb",
+      "products": 1328,
+      "variants": 1378,
       "http_statuses": {
-        "200": 51
+        "200": 1347
       },
-      "network_seconds": 37.1,
-      "max_response_seconds": 1.5,
-      "cache_events": 1
+      "network_seconds": 531.3,
+      "max_response_seconds": 1.9,
+      "cache_events": 2667
     }
   ]
 }
