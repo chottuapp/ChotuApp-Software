@@ -2,6 +2,11 @@ name: Chotu Encrypted Recovery AWS Persistence
 on:
   workflow_dispatch:
     inputs:
+      verify_only:
+        description: Verify existing immutable AWS backup without uploading again
+        required: false
+        default: false
+        type: boolean
       source_sha:
         description: Reviewed bounded read-only profiling source
         required: true
@@ -21,6 +26,7 @@ jobs:
     env:
       SOURCE_SHA: ${{ inputs.source_sha }}
       BACKUP_RUN: "41026878462"
+      RECOVERY_VERIFY_ONLY: ${{ inputs.verify_only && '1' || '0' }}
     steps:
       - name: Require reviewed source and restricted build credential
         env:
