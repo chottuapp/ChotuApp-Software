@@ -2831,7 +2831,7 @@
     "Habitt": "source:c58e63576cfed4749d72bbdd67584ca7174c9e317757f372b4f1fba269a2d141:Habitt:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "Mala": "source:a7fb984e063e2a705c4562845d17530515892af3204ac7fbe499a7881942c165:Mala:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "Sana Safinaz": "source:eb89e8f485336e7922fb54be93739ef6875a8761e7bdfd097f5f47caa6991ea8:Sana Safinaz:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
-    "Beyond East": "source:9f2aa1fa209148631b29dd48a08f6cf23d343f5e7191dc9ad62ae45db2152412:Beyond East:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
+    "Beyond East": "source:c3988d842f3de50859b37c0bce8dbfba846b02cfc7a160e2952932bd33687e56:Beyond East:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "Alkaram Studio": "source:096fe77a2b7cbd9e733a31c6646ed9a64e12985fee697c4136bd4dd9f6e1ae6b:Alkaram Studio:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "Generation": "source:87cd769161b455ab972ad3bf7df54cc8c885db59d7ae4c495db0485a76a16f54:Generation:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "Breakout": "source:159bb63b32b2ca2fbddc39f2ef42f23b86febde3cab88f27a81b761e7d1924c3:Breakout:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
@@ -5808,17 +5808,44 @@
       "store": "Beyond East",
       "shop_code": "SE10052",
       "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 495,
-      "findings_count": 0,
-      "findings": [],
+      "status": "hold",
+      "products_checked": 490,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CP2f95fef50699",
+          "name": "TEST-STICHING SERVICE",
+          "source_url": "https://www.beyondeast.com/products/test-stiching-service",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category is too broad or promotional for product-purpose classification",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "c5f704ec6052557ba634b0ab2891099eeec0872b777425990b3590c7b4414ead",
-      "checked_utc": "2026-10-30T09:11:00.047327+00:00",
+      "workbook_sha256": "2f3d37463e330abd05f0097eb89fe6b91444d44f58cc10b1eface71a07e01bd2",
+      "checked_utc": "2026-10-30T11:18:11.759256+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-30T11:18:11.760079+00:00",
+        "updated_utc": "2026-10-30T11:18:11.760079+00:00",
+        "next_source_check_due_utc": "2026-10-30T11:33:11.760079+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category is too broad or promotional for product-purpose classification",
+          "Category lacks clear product-purpose evidence; manual review required",
+          "Description lacks enough product-specific content for review"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
@@ -5841,11 +5868,11 @@
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "40842703791",
-      "source_artifact": 12889423763,
-      "source_sha256": "9f2aa1fa209148631b29dd48a08f6cf23d343f5e7191dc9ad62ae45db2152412",
-      "refresh_generation": "refresh20261029-b80f4ca4",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/beyond-east/9f2aa1fa20914863/manifest.json"
+      "source_run": "41039584316",
+      "source_artifact": 12970588916,
+      "source_sha256": "c3988d842f3de50859b37c0bce8dbfba846b02cfc7a160e2952932bd33687e56",
+      "refresh_generation": "refresh20261030-31dd8bb1",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/beyond-east/c3988d842f3de508/manifest.json"
     },
     "Alkaram Studio": {
       "name": "804 Audit",
@@ -6524,7 +6551,8 @@
     "41039483114": "41039483114:12972615211:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "41039558641": "41039558641:12971045685:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "41039565023": "41039565023:12969019725:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
-    "41039571338": "41039571338:12971828378:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de"
+    "41039571338": "41039571338:12971828378:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
+    "41039577725": "41039577725:12970028104:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-10-30T10:16:12.400385+00:00",
@@ -6601,8 +6629,8 @@
     "SE10053": "inputs/fresh804-20261026-5d42fe35/rollback-se10053/ee1500a5cc854b0a/manifest.json",
     "SE10044": "inputs/fresh804-20261026-5d42fe35/rollback-se10044/82467cce36b38582/manifest.json"
   },
-  "audit804_last_store": "Habitt",
-  "audit804_progress_utc": "2026-10-30T11:18:05.981247+00:00",
+  "audit804_last_store": "Beyond East",
+  "audit804_progress_utc": "2026-10-30T11:18:13.834419+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Gul Ahmed",
