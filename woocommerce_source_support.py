@@ -168,24 +168,30 @@ def content_text(value):
  if text.lstrip('\ufeff ').startswith('.product-card-container {') and marker in text:text=text[text.index(marker):]
  return text
 
-def export(g,base,name,template,log):
+def export(g,base,name,template,log,*,provider=None):
  host=urlsplit(base).hostname.removeprefix('www.');base=base.rstrip('/')
- if host not in HOSTS:raise ValueError('Unapproved WooCommerce host')
+ if host not in HOSTS and provider is None:raise ValueError('Unapproved WooCommerce host')
+ if provider is not None and not provider.supports(base):raise ValueError('Unapproved normalized catalog provider')
+ provider_label=provider.label if provider is not None else 'WooCommerce Store API'
  def get(path):
+  if provider is not None:return provider.read(path)
   url=base+path;g['_chotu_wait']();g['_chotu_debug_stage']('WooCommerce public product prices and pages')
   return g['get_json'](url)
- products=[];ids=set();page=1
- while True:
-  batch=get('/wp-json/wc/store/v1/products?per_page=100&page='+str(page))
-  if not isinstance(batch,list):raise ValueError('Public WooCommerce catalog unavailable')
-  for p in batch:
-   if p['id'] in ids:raise ValueError('Duplicate catalog pagination identity')
-   ids.add(p['id']);products.append(p)
-  log('WOO LISTING PROGRESS: '+str(len(products))+' distinct public products; page '+str(page))
-  if len(batch)<100:break
-  page+=1
-  if page>1000:raise ValueError('WooCommerce pagination bound reached')
- if not products:raise ValueError('Empty public catalog')
+ if provider is not None:
+  products=provider.catalog()
+ else:
+  products=[];ids=set();page=1
+  while True:
+   batch=get('/wp-json/wc/store/v1/products?per_page=100&page='+str(page))
+   if not isinstance(batch,list):raise ValueError('Public WooCommerce catalog unavailable')
+   for p in batch:
+    if p['id'] in ids:raise ValueError('Duplicate catalog pagination identity')
+    ids.add(p['id']);products.append(p)
+   log('WOO LISTING PROGRESS: '+str(len(products))+' distinct public products; page '+str(page))
+   if len(batch)<100:break
+   page+=1
+   if page>1000:raise ValueError('WooCommerce pagination bound reached')
+  if not products:raise ValueError('Empty public catalog')
  wb=g['load_workbook'](template)
  for sheet in ('Products','Product Images','Option Groups','Options','Variant Combinations'):
   if wb[sheet].max_row>1:wb[sheet].delete_rows(2,wb[sheet].max_row-1)
@@ -224,6 +230,7 @@ def export(g,base,name,template,log):
   if not available:continue
   cover=p['images'][0]['src'] if p.get('images') else ''
   if not cover or not str(p.get('name') or '').strip():
+   if provider is not None:raise ValueError('Public provider product lacks title or photo; source review required: '+url)
    if reviewed_removed_listing(p):
     log('WOO SOURCE EXCLUSION: unchanged removed listing matches recent checksum-verified public redirect evidence: '+url);continue
    recovered=reviewed_media(p)
@@ -273,7 +280,7 @@ def export(g,base,name,template,log):
   if p.get('formatted_dimensions'):description+='\nDimensions: '+p['formatted_dimensions']
   # Preserve exact API taxonomy as source labels, never fabricate website order.
   labels=[html.unescape(c['name']) for c in p.get('categories',[])]
-  g['write_row'](wb['Products'],{'product_id':pid,'name':html.unescape(p['name']),'description':content_text(description),'warranty_months (agar ho)':warranty_months(content_text(description)),'category':labels[-1] if labels else '', 'subcategory':'','brand':name,'condition (new/used)':'new','sku':cheapest[0].get('sku',''),'base_price (PKR)':float(regular),'sale_price (PKR, agar discount ho)':float(price) if price<regular else None,'available (yes/no)':'yes','scraped_image_url (cover, auto)':cover,'source_url':url,'option_groups':','.join(gids.values()),'website_order_status':'unverified','analysis_note':'Public WooCommerce taxonomy: '+' > '.join(labels)+'; API order is not verified website display order.'})
+  g['write_row'](wb['Products'],{'product_id':pid,'name':html.unescape(p['name']),'description':content_text(description),'warranty_months (agar ho)':warranty_months(content_text(description)),'category':labels[-1] if labels else '', 'subcategory':'','brand':name,'condition (new/used)':p.get('condition','new'),'sku':cheapest[0].get('sku',''),'base_price (PKR)':float(regular),'sale_price (PKR, agar discount ho)':float(price) if price<regular else None,'available (yes/no)':'yes','scraped_image_url (cover, auto)':cover,'source_url':url,'option_groups':','.join(gids.values()),'website_order_status':'unverified','analysis_note':'Public '+provider_label+' taxonomy: '+' > '.join(labels)+'; API order is not verified website display order.'+(' '+p['source_notes'] if p.get('source_notes') else '')})
   for pos,im in enumerate(p['images'],1):g['write_row'](wb['Product Images'],{'image_id':g['uid']('CI',pid+'|'+str(pos)),'product_id':pid,'image_order':pos,'scraped_image_url (auto)':im['src'],'is_primary (yes/no)':'yes' if pos==1 else 'no','source_url':url})
   checked.append(url);retained+=1
   log('WOO PRODUCT PROGRESS: '+str(index)+'/'+str(len(products))+' checked; '+str(retained)+' retained')
@@ -282,7 +289,7 @@ def export(g,base,name,template,log):
  for suffix in ['PRICE AUDIT','STOREFRONT AUDIT','IMAGE AUDIT','QUALITY REPORT']:
   with (out/(name+' - '+suffix+'.csv')).open('w',encoding='utf-8-sig',newline='') as f:
    writer=csv.writer(f);writer.writerow(['source_url','status','detail'])
-   for url in checked:writer.writerow([url,'REVIEW','Exact public Store API detail and variation offers; website display order not independently proven.'])
+   for url in checked:writer.writerow([url,'REVIEW','Exact public '+provider_label+' detail and variation offers; website display order not independently proven.'])
  log('EXPORT BUILT: '+str(retained)+' products; full independent 804 Audit required before delivery');log('FILE: '+str(target))
 
 def enable_woocommerce_source(g):

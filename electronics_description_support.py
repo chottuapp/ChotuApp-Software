@@ -2,7 +2,7 @@
 import re
 from bs4 import BeautifulSoup
 
-STORES={'Computer Zone','Xcessories Hub','Zero Lifestyle','Prime Ticks'}
+STORES={'Paklap','Computer Zone','Xcessories Hub','Zero Lifestyle','Prime Ticks'}
 def electronic(store,category=''):
  return store in STORES or bool(re.search(r'\b(?:laptop|computer|earbuds?|headphones?|speakers?|chargers?|power banks?|smartwatches?|tablets?|monitors?|keyboards?|cameras?|routers?|usb hubs?|docking stations)\b',str(category),re.I))
 

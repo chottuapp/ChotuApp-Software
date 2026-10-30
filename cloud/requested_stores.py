@@ -92,6 +92,17 @@ def probe(site):
     try:
      value=r.json();result['public_graphql_sample']=(value.get('data') or {}).get('products');result['graphql_errors']=[str(x.get('message',''))[:300] for x in value.get('errors',[])][:3]
     except ValueError:result['graphql_error']='Public endpoint did not return JSON'
+   if (result.get('public_graphql_sample') or {}).get('items'):
+    from magento_source_support import DETAIL,normalize
+    item=result['public_graphql_sample']['items'][0]
+    detail_query='{products(filter:{sku:{eq:'+json.dumps(item['sku'])+'}},pageSize:2){items{'+DETAIL+'}}}'
+    r=read('/graphql?'+urlencode({'query':detail_query}));r.raise_for_status();value=r.json()
+    found=(value.get('data') or {}).get('products',{}).get('items',[])
+    if value.get('errors') or len(found)!=1 or found[0].get('sku')!=item['sku']:
+     result['detail_errors']=[str(x.get('message',''))[:300] for x in value.get('errors',[])][:5]
+    else:
+     normalized=normalize(found[0]);result.update(status='supported',detail_sample=found[0],source_url=normalized['permalink'])
+
 
  except (requests.RequestException,ValueError) as exc:result.update(status='source_blocked',error=str(exc)[:500])
  return result
