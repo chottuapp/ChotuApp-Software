@@ -3106,7 +3106,7 @@
     "Generation": "source:87cd769161b455ab972ad3bf7df54cc8c885db59d7ae4c495db0485a76a16f54:Generation:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "Breakout": "source:40a8f56f3b61e15d73b80bd3992de63c1fcd0338d41d56096ff6418ca3f582f7:Breakout:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "Saya": "source:8c08df2235789d3514539c344a7973b983a3cf994aabb4ae34982078177c20b7:Saya:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
-    "Rios": "source:55c417a7bb2576a0ef12336ba2782c48c37a9d39f56a45f19a64e77b3ff840e7:Rios:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
+    "Rios": "source:c40bbad72c8c85669ad90ed103d80ae5a7a342b0b926e23614246eadc500a751:Rios:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "Edenrobe": "source:052234557ba97ab4bb5111bf19e777c258f60e83bc5c53293c3a1544b850089e:Edenrobe:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "Limelight": "source:1a91ff9680a47bd4d65291b8bc646e899fff0c2fc53ce72833e2a9c07fb8f308:Limelight:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de"
   },
@@ -6489,21 +6489,104 @@
       "store": "Rios",
       "shop_code": "SE10053",
       "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 2183,
-      "findings_count": 0,
-      "findings": [],
+      "status": "hold",
+      "products_checked": 2198,
+      "findings_count": 8,
+      "findings": [
+        {
+          "product_id": "CP54ca624ea196",
+          "name": "Amrij Matte Lip Color",
+          "source_url": "https://www.rios.pk/products/amrij-matte-lip-color",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb59d8d684513",
+          "name": "RHD MAKEUP FIXER SPRAY SET & SERVE150ML",
+          "source_url": "https://www.rios.pk/products/super-firm-hold-hair-spray-copy",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CPb52d161f2c17",
+          "name": "RUBY FACE SPONGE BIG GIFT PACKAGE 1 MZGJ01 1PC",
+          "source_url": "https://www.rios.pk/products/ruby-face-big-gift-sponge-zgj01-package-1-copy",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP83dee8823cd7",
+          "name": "Sensodyne Precision Extra Souple Tooth Brush",
+          "source_url": "https://www.rios.pk/products/sensodyne-precision-medium-tooth",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CP2766b5fe7bec",
+          "name": "AquaFresh Flex Protect Souple Tooth Brush",
+          "source_url": "https://www.rios.pk/products/aquafresh-flex-protect-souple-tooth-brush",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CP72989d457a54",
+          "name": "Sensodyne Interdentaires Floss",
+          "source_url": "https://www.rios.pk/products/sensodyne-interdentaires-floss",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Brand name used as product Category"
+          ]
+        },
+        {
+          "product_id": "CP45424ae8dc6c",
+          "name": "Sensodyne Bad Soin Interdentaire Souple Tooth Brush",
+          "source_url": "https://www.rios.pk/products/sensodyne-bad-soin-interdentaire-souple-tooth-brush",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CPed6004d64a72",
+          "name": "Sensodyne Bad Douceur Souple Tooth Brush",
+          "source_url": "https://www.rios.pk/products/sensodyne-bad-douceur-souple-tooth-brush",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "0c28d181cf73967e7d5f515b8ee79c1413443abce3871779e404f828c64a79e8",
-      "checked_utc": "2026-10-30T09:13:14.652977+00:00",
+      "workbook_sha256": "0cfe04635bf01ee7a34baac3b8d0379655bba149a8c49087268b1685937e5a3f",
+      "checked_utc": "2026-10-30T12:32:26.873317+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-30T12:32:26.877041+00:00",
+        "updated_utc": "2026-10-30T12:32:26.877041+00:00",
+        "next_source_check_due_utc": "2026-10-30T12:47:26.877041+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Brand name used as product Category",
+          "Category blank or unresolved",
+          "Category lacks clear product-purpose evidence; manual review required",
+          "Description lacks enough product-specific content for review"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
-      "description_repairs_count": 1180,
+      "description_repairs_count": 1169,
       "description_repairs_examples": [
         {
           "product_id": "CP0d8adc894b73",
@@ -6557,11 +6640,11 @@
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "40842703791",
-      "source_artifact": 12889423763,
-      "source_sha256": "55c417a7bb2576a0ef12336ba2782c48c37a9d39f56a45f19a64e77b3ff840e7",
-      "refresh_generation": "refresh20261029-b80f4ca4",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/rios/55c417a7bb2576a0/manifest.json"
+      "source_run": "41039584316",
+      "source_artifact": 12975668568,
+      "source_sha256": "c40bbad72c8c85669ad90ed103d80ae5a7a342b0b926e23614246eadc500a751",
+      "refresh_generation": "refresh20261030-31dd8bb1",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/rios/c40bbad72c8c8566/manifest.json"
     },
     "Edenrobe": {
       "name": "804 Audit",
@@ -6826,7 +6909,7 @@
     "41039514850": "41039514850:12970852224:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "41039521010": "41039521010:12969739655:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "41039527032": "41039527032:12970437979:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
-    "41039532918": "41039532918:12969124018:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
+    "41039532918": "41039532918:12975160112:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "41039539407": "41039539407:12969542888:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "41039545888": "41039545888:12970021627:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "41039552154": "41039552154:12972021102:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
@@ -6834,7 +6917,7 @@
     "41039434526": "41039434526:12971285222:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "41039446853": "41039446853:12973487598:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "41039453006": "41039453006:12969683151:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
-    "41039483114": "41039483114:12972615211:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
+    "41039483114": "41039483114:12975284414:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "41039558641": "41039558641:12973675294:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "41039565023": "41039565023:12974346098:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
     "41039571338": "41039571338:12974341130:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
@@ -6921,8 +7004,8 @@
     "SE10053": "inputs/fresh804-20261026-5d42fe35/rollback-se10053/ee1500a5cc854b0a/manifest.json",
     "SE10044": "inputs/fresh804-20261026-5d42fe35/rollback-se10044/82467cce36b38582/manifest.json"
   },
-  "audit804_last_store": "Hemani Herbals",
-  "audit804_progress_utc": "2026-10-30T12:32:03.646007+00:00",
+  "audit804_last_store": "Rios",
+  "audit804_progress_utc": "2026-10-30T12:32:28.926147+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Gul Ahmed",
