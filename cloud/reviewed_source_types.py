@@ -38,3 +38,23 @@ TYPES={
 STORES={'Xcessories Hub','Rios','ChenOne','Breakout','Limelight'}
 def matched(fact,store):
  return TYPES.get(str(fact.get('product_type') or '').strip().casefold()) if fact and store in STORES else None
+
+# Exact public merchant tags identify sold objects; brand/colour/promotion tags do not.
+BATA_TAGS={
+ 'chappal':('Chappals','A chappal footwear style.'),'chappals':('Chappals','A chappal footwear style.'),
+ 'kids chappal':('Chappals','A chappal footwear style.'),
+ 'sneakers':('Sneakers','A sneaker footwear style.'),'men sneakers':('Sneakers','A sneaker footwear style.'),
+ 'kids sneaker':('Sneakers','A sneaker footwear style.'),'new sneaker':('Sneakers','A sneaker footwear style.'),
+ 'ladies casual':('Casual Shoes','A casual shoe style.'),'men casual':('Casual Shoes','A casual shoe style.'),'kids casual':('Casual Shoes','A casual shoe style.'),
+ 'men formal':('Formal Shoes','A formal shoe style.'),'ladies formal':('Formal Shoes','A formal shoe style.'),
+ 'ladies pumps':('Pumps','A pump footwear style.'),'pumps':('Pumps','A pump footwear style.'),
+ 'men sandals':('Sandals','A sandal footwear style.'),'ladies sandal':('Sandals','A sandal footwear style.'),
+ 'kids sandal':('Sandals','A sandal footwear style.'),'boys sandal':('Sandals','A sandal footwear style.'),
+ 'flip flops':('Flip-Flops','A flip-flop footwear style.'),'football':('Footballs','A football listed by the merchant.'),
+}
+def merchant_tag_facts(tags,store):
+ if store!='Bata' or not isinstance(tags,list) or len(tags)>500:return {}
+ matches=[(tag,BATA_TAGS[tag.strip().casefold()]) for tag in tags if isinstance(tag,str) and len(tag)<=300 and tag.strip().casefold() in BATA_TAGS]
+ if not matches or len({value[0] for _,value in matches})!=1:return {}
+ tag,(category,overview)=matches[0]
+ return dict(published_tags=[t for t in tags if isinstance(t,str) and len(t)<=300],reviewed_type_tag=tag,reviewed_tag_category=category,reviewed_tag_overview=overview)

@@ -23,7 +23,8 @@ def validated_facts(report,sites,now=None):
   if '/products/' not in url.path or product.get('handle')!=url.path.rstrip('/').split('/')[-1]:continue
   body=product.get('description') or product.get('body_html') or ''
   if not isinstance(body,str) or len(body)>100000:continue
-  facts.append(dict(store=store,product_id=str(item['product_id']),source_url=item['source_url'],requested_name=item['name'],public_title=product['title'],product_type=str(product.get('type') or product.get('product_type') or '')[:300],description=BeautifulSoup(body,'html.parser').get_text('\n',strip=True),evidence_run=str(report.get('run_id','')),checked_utc=report['checked_utc']))
+  from reviewed_source_types import merchant_tag_facts
+  facts.append(dict(store=store,product_id=str(item['product_id']),source_url=item['source_url'],requested_name=item['name'],public_title=product['title'],product_type=str(product.get('type') or product.get('product_type') or '')[:300],description=BeautifulSoup(body,'html.parser').get_text('\n',strip=True),evidence_run=str(report.get('run_id','')),checked_utc=report['checked_utc'],**merchant_tag_facts(product.get('tags'),store)))
  return facts
 
 def refresh(root,gh,sites,cache=None):
@@ -32,7 +33,7 @@ def refresh(root,gh,sites,cache=None):
  merged={}
  for fact in cache or []:
   try:
-   record=dict(store=fact['store'],product_id=fact['product_id'],name=fact['requested_name'],source_url=fact['source_url'],product=dict(handle=urlsplit(fact['source_url']).path.rstrip('/').split('/')[-1],title=fact['public_title'],type=fact['product_type'],description=fact['description']))
+   record=dict(store=fact['store'],product_id=fact['product_id'],name=fact['requested_name'],source_url=fact['source_url'],product=dict(handle=urlsplit(fact['source_url']).path.rstrip('/').split('/')[-1],title=fact['public_title'],type=fact['product_type'],description=fact['description'],tags=fact.get('published_tags',[])))
    valid=validated_facts({'checked_utc':fact['checked_utc'],'run_id':fact['evidence_run'],'results':[record]},sites)
    if valid:merged[(fact['store'],fact['product_id'],fact['source_url'])]=valid[0]
   except (ValueError,KeyError,TypeError):continue
