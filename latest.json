@@ -1,43 +1,51 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-30T12:24:33.990368+00:00",
-  "run_id": "41039483114",
+  "generated_utc": "2026-10-30T12:26:55.960367+00:00",
+  "run_id": "41039584316",
   "attempt": "1",
   "source_commit": "5ee1892e4e84adefdb0d645e50645f6d22229188",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 7686.7,
+  "elapsed_seconds": 6849.8,
   "stores": [
     {
-      "name": "Saeed Ghani",
+      "name": "Beyond East",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "ce15fbb76a7b0dcb",
-      "products": 408,
-      "variants": 586,
+      "products": 490,
+      "variants": 1686,
       "http_statuses": {
-        "200": 557
+        "200": 1752
       },
-      "network_seconds": 1324.2,
-      "max_response_seconds": 6.7,
-      "cache_events": 847
+      "network_seconds": 861.5,
+      "max_response_seconds": 4.5,
+      "cache_events": 2140
     },
     {
-      "name": "Hemani Herbals",
+      "name": "Rios",
       "status": "done",
       "review_required": true,
-      "issue_codes": [],
+      "issue_codes": [
+        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
       "software_revision": "ce15fbb76a7b0dcb",
-      "products": 1072,
-      "variants": 1072,
+      "products": 2198,
+      "variants": 5797,
       "http_statuses": {
-        "200": 1911
+        "200": 9587,
+        "429": 2,
+        "404": 2
       },
-      "network_seconds": 4462.0,
-      "max_response_seconds": 3.1,
-      "cache_events": 2884
+      "network_seconds": 3676.0,
+      "max_response_seconds": 4.8,
+      "cache_events": 12055
     }
   ]
 }
