@@ -1,0 +1,291 @@
+name: Chotu Android GitHub Downloads
+on:
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Reviewed private User App source commit
+        required: true
+        type: string
+      publication_tools_sha:
+        description: Optional reviewed publishing-tools commit; signed app identity remains source_sha
+        required: false
+        default: ''
+        type: string
+      build_run:
+        description: Optional successful build job run to reuse for native checks
+        required: false
+        default: ''
+        type: string
+      native_run:
+        description: Optional successful native test run for publication-only resume
+        required: false
+        default: ''
+        type: string
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: chotu-signed-user-apk-cloud
+  cancel-in-progress: false
+jobs:
+  build:
+    if: ${{ inputs.build_run == '' && inputs.native_run == '' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 50
+    environment: chotu-cloud-release
+    env:
+      SOURCE_SHA: ${{ inputs.source_sha }}
+    steps:
+      - name: Require reviewed source and restricted build credential
+        env:
+          SOURCE_KEY: ${{ secrets.CHOTU_APP_SOURCE_KEY }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          [[ "$SOURCE_SHA" =~ ^[a-f0-9]{40}$ ]] || exit 1
+          test -n "$SOURCE_KEY" || { echo '::error::Run the one-time Chotu cloud setup. No PC runner or paid fallback is used.'; exit 1; }
+          umask 077
+          key="$RUNNER_TEMP/chotu-source-key"
+          trap 'rm -f "$key" "$RUNNER_TEMP/chotu-source-hosts"' EXIT
+          printf '%s\n' "$SOURCE_KEY" > "$key"
+          curl -fsS --retry 3 --max-time 60 -H "Authorization: Bearer $GH_TOKEN" https://api.github.com/meta | python3 -c 'import json,sys; print("\n".join("github.com "+k for k in json.load(sys.stdin)["ssh_keys"]))' > "$RUNNER_TEMP/chotu-source-hosts"
+          export GIT_SSH_COMMAND="ssh -i $key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$RUNNER_TEMP/chotu-source-hosts"
+          if ! (
+            git init -q "$RUNNER_TEMP/chotu-private-source"
+            cd "$RUNNER_TEMP/chotu-private-source"
+            git remote add origin git@github.com:chottuapp/ChotuProject-development.git
+            git fetch -q --depth=1 origin "$SOURCE_SHA"
+            git checkout -q --detach FETCH_HEAD
+            test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
+          ) > "$RUNNER_TEMP/private-checkout.log" 2>&1; then
+            echo '::error::Private checkout failed. Check the read-only deploy key and approved commit; private logs are not uploaded.'
+            exit 1
+          fi
+      - name: Require original customer signing configuration
+        env:
+          STORE: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          PROPERTIES: ${{ secrets.ANDROID_KEY_PROPERTIES }}
+        run: test -n "$STORE" && test -n "$PROPERTIES"
+      - name: Make disk space on this ephemeral cloud runner only
+        run: |
+          set -euo pipefail
+          sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/.ghcup /opt/hostedtoolcache/CodeQL /usr/local/share/powershell
+          if [[ -d "$ANDROID_HOME/ndk" ]]; then
+            for ndk in "$ANDROID_HOME"/ndk/*; do
+              [[ "$(basename "$ndk")" == 28.2.13676358 ]] || sudo rm -rf "$ndk"
+            done
+          fi
+          sudo docker image prune -af > /dev/null || true
+          python3 -c 'import shutil; assert shutil.disk_usage("/").free >= 24*1024**3, "Not enough cloud runner disk for APK"'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.41.3'
+          channel: stable
+          cache: false
+      - name: Test compile and sign User APK without public source logs
+        env:
+          ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          ANDROID_KEY_PROPERTIES: ${{ secrets.ANDROID_KEY_PROPERTIES }}
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/chotu-private-source"
+          if ! bash scripts/cloud/build-user-apk.sh 3>&1 > "$RUNNER_TEMP/private-apk-build.log" 2>&1; then
+            echo '::error::Customer APK build failed at the last reported stage. No private source/signing logs were uploaded; no APK was published.'
+            exit 1
+          fi
+      - name: Encrypt failed compilation diagnostics for private review
+        if: failure()
+        run: |
+          set -euo pipefail
+          test -f "$RUNNER_TEMP/private-apk-build.log" || exit 0
+          printf '%s' LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUVJekNDQW91Z0F3SUJBZ0lVWjYwazdQMWJtdTFORy95TUR4SW5GNXYzbktBd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0lURWZNQjBHQTFVRUF3d1dRMmh2ZEhVZ1luVnBiR1FnWkdsaFoyNXZjM1JwWXpBZUZ3MHlOakV3TWpZeApOelU1TURKYUZ3MHlOakV3TWpreE56VTVNREphTUNFeEh6QWRCZ05WQkFNTUZrTm9iM1IxSUdKMWFXeGtJR1JwCllXZHViM04wYVdNd2dnR2lNQTBHQ1NxR1NJYjNEUUVCQVFVQUE0SUJqd0F3Z2dHS0FvSUJnUURvM1Y1bEZQdmIKanM0WmF0aS92ZVlmMk1HZ1BMWlhGaGFpbXV5TFlsU3k0KzNuK1lQZkVhYUhKRjRSWnRtdDF5dEE2enFLdW9YSwo1RlE1eXFkUHc1T1pDc21HREE3eHZPZlRIQW5MTzN4OWdxR1BzZzZ5d2JiM2hIQWRUcUh4RUV3T3VlcjgrRnFvCkhBTXRNNG5HbHUzYjBzNU8xdWtRcUVkRlhyWDNOVTJVaHVjTFQrZTl1VFZzYlBqU1VJYmxiN2pFZC9CS09DZXIKWk9MaUVzdnV6c3NIRmFjL1kyRzVtK3hNWVFpRGRpbEI4U1poV1l4V0hSYmNybWxjNmt0NnJvOC9TMERGV3U1Kwp3cTNLQTIzckFNb2Z1TlVJQkU4MnBWUlBWNXh0aG9NRmhzaXRBYU5mTFFMVktFL3duY1pXQldYbmlGQlgwVGswCmhsbW9OZGkzV0g0NUxCM2N6OTYvL3ZTUGpxUDNYMDJxSDlwb2Z4eUdaVmNRQnc2STBxVktXbThOZCt6WEFkcHUKWXBBTDZGSGlvcVFjOWE5OVFmOEo1TTZRWmZYQlFVeXlReFNsTG9KM2d3REVrS2ZSSWtNTVU3ejZvdDcvWGlLbApRTVkxVWxhdnBFaUN4OWxZd3l0TnV2eWVITEdCUXNUblhWTldZTUFUaytTRmJ4bm9aUHREY2hFQ0F3RUFBYU5UCk1GRXdIUVlEVlIwT0JCWUVGRVVSdWh4WXh4VUhRMm1BSDZEdFVaSGhPdXVCTUI4R0ExVWRJd1FZTUJhQUZFVVIKdWh4WXh4VUhRMm1BSDZEdFVaSGhPdXVCTUE4R0ExVWRFd0VCL3dRRk1BTUJBZjh3RFFZSktvWklodmNOQVFFTApCUUFEZ2dHQkFBSXpwWWVvWVovdXRsYkRjOVFmUzRRanh1endudlF1QVZ3MW9tSHlSVkFnMkFGNldjZ0hrVHd1CmZzVzhpZ3dsTThoL3g2blZub1czbkFiNlljSUtCeUF3b0pQYVQwZkJSVDNuemZKamVBOEQ1SWZycmNYeG9TbkIKVGt5Y1V1VG1UYlQvaTVVQ3RGT2R6RithSDk5SUVCT3BuK25zM2tCdVNRcDJ6aE80UEVPSHJKdXNxekVjcW80RgpleGlCQjd1VDF5b0pwODJKR3FTaGx6WWw3TWYzR0pMNE5ScVI0RzNVcXlTL2lEVW5HQml1RkVNYlc4d0NrTENBCnRnTHN6OXZ1WnFSYklsdWNFQyttb21MYXZ2am9qMjBReHExbm9RU2dwMlV0RnJtKzJJdGdsS2pISGJwMjM3SzMKVkhiK1BWR1RVcERsN2YzOUo3UGR0KzZwZFgraDNMcjJkNlJqSE5GdnNRQU4zSmZrTlY0a3RGV1ZPYlVTWGlJbwpWUzRyd3oyb3NuL2pWbjRPK01CL3M0UDJuYlpjRGprM0RPVitVZWNWdzJGMVl1VWtzcTd0UmxqK3h4aEZKRkw5CnBpb3NZVTl6ZDZ5TFYxSHZjZVNyOVdFaWNobXZjdmdOR1g1bTFMNjV1enV2Tlh6U3JPcFBUdEhndUo0OWNNR0QKMmtGdU5Vc2dhZz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K | base64 -d > "$RUNNER_TEMP/diagnostic-public.crt"
+          openssl cms -encrypt -aes256 -binary -outform DER -in "$RUNNER_TEMP/private-apk-build.log" -out "$RUNNER_TEMP/android-diagnostic.enc" "$RUNNER_TEMP/diagnostic-public.crt"
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: encrypted-android-diagnostic
+          path: ${{ runner.temp }}/android-diagnostic.enc
+          retention-days: 90
+      - uses: actions/upload-artifact@v4
+        with:
+          name: production-user-apk
+          path: |
+            ${{ runner.temp }}/ChotuApp-User-1.1.29-71.apk
+            ${{ runner.temp }}/ChotuApp-User-1.1.29-71.aab
+            ${{ runner.temp }}/customer-apk-build-info.json
+          retention-days: 90
+      - name: Remove private build source and temporary files
+        if: always()
+        run: |
+          rm -rf -- "$RUNNER_TEMP/chotu-private-source" "$RUNNER_TEMP/customer-signing"
+          rm -f -- "$RUNNER_TEMP/private-checkout.log" "$RUNNER_TEMP/private-apk-build.log" "$RUNNER_TEMP/chotu-source-key" "$RUNNER_TEMP/chotu-source-hosts" "$RUNNER_TEMP/production-android.json" "$RUNNER_TEMP/original-resources.txt" "$RUNNER_TEMP/original-manifest.xml"
+  native-test:
+    needs: build
+    if: ${{ always() && inputs.native_run == '' && (needs.build.result == 'success' || (needs.build.result == 'skipped' && inputs.build_run != '')) }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    environment: chotu-cloud-release
+    env:
+      SOURCE_SHA: ${{ inputs.source_sha }}
+    steps:
+      - name: Require reviewed source and restricted build credential
+        env:
+          SOURCE_KEY: ${{ secrets.CHOTU_APP_SOURCE_KEY }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          [[ "$SOURCE_SHA" =~ ^[a-f0-9]{40}$ ]] || exit 1
+          test -n "$SOURCE_KEY" || { echo '::error::Run the one-time Chotu cloud setup. No PC runner or paid fallback is used.'; exit 1; }
+          umask 077
+          key="$RUNNER_TEMP/chotu-source-key"
+          trap 'rm -f "$key" "$RUNNER_TEMP/chotu-source-hosts"' EXIT
+          printf '%s\n' "$SOURCE_KEY" > "$key"
+          curl -fsS --retry 3 --max-time 60 -H "Authorization: Bearer $GH_TOKEN" https://api.github.com/meta | python3 -c 'import json,sys; print("\n".join("github.com "+k for k in json.load(sys.stdin)["ssh_keys"]))' > "$RUNNER_TEMP/chotu-source-hosts"
+          export GIT_SSH_COMMAND="ssh -i $key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$RUNNER_TEMP/chotu-source-hosts"
+          if ! (
+            git init -q "$RUNNER_TEMP/chotu-private-source"
+            cd "$RUNNER_TEMP/chotu-private-source"
+            git remote add origin git@github.com:chottuapp/ChotuProject-development.git
+            git fetch -q --depth=1 origin "$SOURCE_SHA"
+            git checkout -q --detach FETCH_HEAD
+            test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
+          ) > "$RUNNER_TEMP/private-checkout.log" 2>&1; then
+            echo '::error::Private checkout failed. Check the read-only deploy key and approved commit; private logs are not uploaded.'
+            exit 1
+          fi
+      - uses: actions/download-artifact@v4
+        with:
+          name: production-user-apk
+          path: ${{ runner.temp }}/customer-apk
+          run-id: ${{ inputs.build_run || github.run_id }}
+          github-token: ${{ github.token }}
+      - name: Verify reused signed build job succeeded
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BUILD_RUN: ${{ inputs.build_run || github.run_id }}
+        run: |
+          set -euo pipefail
+          [[ "$BUILD_RUN" =~ ^[0-9]+$ ]]
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$BUILD_RUN" > "$RUNNER_TEMP/apk-build-run.json"
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$BUILD_RUN/jobs?per_page=100" > "$RUNNER_TEMP/apk-build-jobs.json"
+          python3 - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=Path(os.environ['RUNNER_TEMP']);r=json.loads((p/'apk-build-run.json').read_text());jobs=json.loads((p/'apk-build-jobs.json').read_text())['jobs']
+          assert r['path']=='.github/workflows/chotu-user-aab-cloud.yml' and r['event']=='workflow_dispatch'
+          assert r['repository']['full_name']=='chottuapp/ChotuApp-Software'
+          assert any(j['name']=='build' and j['conclusion']=='success' for j in jobs),'Original APK build job did not succeed'
+          PY
+      - name: Verify signed artifact identity before native checks
+        run: |
+          python3 - <<'PY'
+          import os,json,hashlib
+          from pathlib import Path
+          p=Path(os.environ['RUNNER_TEMP'])/'customer-apk'
+          m=json.loads((p/'customer-apk-build-info.json').read_text())
+          assert m['commit']==os.environ['SOURCE_SHA'] and m['version_code']==70 and m['version_name']=='1.1.28'
+          assert m['package']=='com.app.chotu' and m['api_base']=='https://app.developerschotuapp.online'
+          assert hashlib.sha256((p/'ChotuApp-User-1.1.29-71.apk').read_bytes()).hexdigest()==m['sha256']
+          PY
+      - name: Enable native emulator acceleration on cloud runner
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          target: google_apis
+          arch: x86_64
+          profile: pixel_6
+          force-avd-creation: true
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
+          script: bash "$RUNNER_TEMP/chotu-private-source/scripts/cloud/smoke-user-apk.sh" > "$RUNNER_TEMP/private-native-test.log" 2>&1 || { adb exec-out screencap -p > "$RUNNER_TEMP/native-failed.png"; adb shell uiautomator dump /sdcard/native-failed.xml > /dev/null 2>&1; adb pull /sdcard/native-failed.xml "$RUNNER_TEMP/native-failed.xml" > /dev/null 2>&1; exit 1; }
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: customer-native-launch
+          path: ${{ runner.temp }}/customer-apk/customer-native-launch.png
+          retention-days: 90
+      - name: Encrypt private native failure evidence
+        if: failure()
+        run: |
+          set -euo pipefail
+          printf '%s' LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURMVENDQWhXZ0F3SUJBZ0lVVUtsQkZyTE9xWmFHN2kzSEN6blAycGUrUW5Rd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0pqRWtNQ0lHQTFVRUF3d2JRMmh2ZEhVdFFVRkNMVzVoZEdsMlpTMWthV0ZuYm05emRHbGpNQjRYRFRJMgpNVEF5T1RJeU1qTTFOMW9YRFRJMk1UQXpNVEl5TWpNMU4xb3dKakVrTUNJR0ExVUVBd3diUTJodmRIVXRRVUZDCkxXNWhkR2wyWlMxa2FXRm5ibTl6ZEdsak1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0MKQVFFQXJBSnFIRHF4T0V2Q3BiZFFuSkpFeFl4anJEZ2s1UDVvakw3dWpZRzM2KzdJWU9LalJSM1AvT2dvSG92UQphRUYrZTVvVGFCbStBaE1kL2dRRFRhLzhEZEpIS1JwTytMdmlGMDkvVkdXRlF6QXpKYTN3dm1IVWRPQzlqWlZDCjBGNFRGdE8wYXBheVBjemRGVTkwWFVLWGorZEFvRkt5c0xnQXBuZTFVQVNrR0dLMHY2Qmw0bHVyb0U5eUp6MEYKYWdnT1R5K2cwSFNzVGJyc0d4ellRQ1NxRkxZalg1ckhxYjRSdkdzOWtaQXRLUkFlUGpUU0IrcjF2RHNNektKeQpoamlzZDZGcDREYnJua3hXazBCZjRHT3hFQWNJTHZ6bHZ2d1hSaEV5K08wV1ZncWZVeDZqQ2lVSHdTMHpGS29UCnJyUFdSQW9EVUdpMS9JS2g1SzA3alFsQ0t3SURBUUFCbzFNd1VUQWRCZ05WSFE0RUZnUVVkSWVWbjJIem1TSWoKcDhXbzcyaVNFLzhQQS9Zd0h3WURWUjBqQkJnd0ZvQVVkSWVWbjJIem1TSWpwOFdvNzJpU0UvOFBBL1l3RHdZRApWUjBUQVFIL0JBVXdBd0VCL3pBTkJna3Foa2lHOXcwQkFRc0ZBQU9DQVFFQU5ucWtYTmxGNllTL2lRTFBvTzBiCmYraHBkUXROUEloZVhrajEyelcxTzNIODRHdWNUOG9SYituaTB2WTM1eEc0WDZQRkc2YUUxT0p2VmpaVUEwUHgKNklIY0VpbDJabHF6TnExS0doTUxjZno3U3NmYUF1QWtsbyswcU9sTE5rZ1lwaFBzMDhCN1k3d3k1WlVGV2NWMgpHZDA4TEJJSk85cXJZKy9kV0hBajIrTGV0cHVyNEMvM1pmNTRMSEtoS0s2RjJkZFVkT0pTNWxhVEhrRnFhMzdRCkZoOE1QdkpTYUhVbHR2L214aTk2eGdqRlBTcUpoR3JKK21nUTZ2MmdXd09KVWJkaTZpRzNTRCs1T1hSYThHYnYKbGl6Nk0yZFhoWldaeEJiekFDM3RMNWd0cWNBbXdTSE1vc0RPRHpPNTI4S0FyZlluaUs4bDFMOTV2eW80YW1EUgo5Zz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K | base64 -d > "$RUNNER_TEMP/native-diagnostic-public.crt"
+          python3 - <<'PYTAR'
+          import os,tarfile
+          from pathlib import Path
+          p=Path(os.environ['RUNNER_TEMP'])
+          with tarfile.open(p/'native-private-evidence.tar.gz','w:gz') as t:
+            for name in ['private-native-test.log','native-failed.png','native-failed.xml','customer-launch-log.txt']:
+              if (p/name).exists():t.add(p/name,arcname=name)
+          PYTAR
+          openssl cms -encrypt -aes256 -binary -outform DER -in "$RUNNER_TEMP/native-private-evidence.tar.gz" -out "$RUNNER_TEMP/native-diagnostic.enc" "$RUNNER_TEMP/native-diagnostic-public.crt"
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: encrypted-native-diagnostic
+          path: ${{ runner.temp }}/native-diagnostic.enc
+          retention-days: 90
+      - name: Remove private native-test source and logs
+        if: always()
+        run: |
+          rm -rf -- "$RUNNER_TEMP/chotu-private-source"
+          rm -f -- "$RUNNER_TEMP/private-checkout.log" "$RUNNER_TEMP/private-native-test.log" "$RUNNER_TEMP/customer-launch-log.txt" "$RUNNER_TEMP/chotu-source-key" "$RUNNER_TEMP/chotu-source-hosts"
+  github-downloads:
+    needs: native-test
+    if: ${{ needs['native-test'].result == 'success' }}
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      actions: read
+    env:
+      SOURCE_SHA: ${{ inputs.source_sha }}
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: production-user-apk
+          path: ${{ runner.temp }}/android-downloads
+      - name: Verify signed file identities before GitHub upload
+        run: |
+          python3 - <<'PY'
+          import os,json,hashlib,zipfile
+          from pathlib import Path
+          p=Path(os.environ['RUNNER_TEMP'])/'android-downloads'
+          m=json.loads((p/'customer-apk-build-info.json').read_text())
+          assert m['commit']==os.environ['SOURCE_SHA'] and m['version_name']=='1.1.29' and m['version_code']==71
+          assert m['certificate_sha256']=='b2067fea0ed2c29e081131f08e5c9bf4761d7b7d4cf44c71bcbd997124cd5352'
+          for name,size,sha in [('ChotuApp-User-1.1.29-71.apk',m['bytes'],m['sha256']),('ChotuApp-User-1.1.29-71.aab',m['aab']['bytes'],m['aab']['sha256'])]:
+              f=p/name
+              assert f.stat().st_size==size and hashlib.sha256(f.read_bytes()).hexdigest()==sha
+              with zipfile.ZipFile(f) as z:
+                  assert z.testzip() is None
+                  assert not any(n.endswith(('assets/chotu.json','.jks','.keystore','.pem','/.env')) for n in z.namelist())
+          print('Signed APK and AAB identity, hashes, certificate metadata and archives verified.')
+          PY
+      - name: Store requested Android files as a GitHub prerelease
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag=user-v1.1.29-71
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo '::error::This release already exists; refusing to overwrite files.'
+            exit 1
+          fi
+          cat > "$RUNNER_TEMP/android-release-notes.md" <<'NOTES'
+          Signed ChotuApp User 1.1.29 (71), with the original customer signing certificate.
+
+          Includes updated Feed search suggestions, three-column Brands layout, and the shop filter UI.
+          IMPORTANT: the new shop price/discount sorting requires the separate pending backend release; that backend has not been deployed by this build.
+
+          APK and AAB were built from the same source and checked for identity, archive integrity and signature metadata. The APK passed the existing native upgrade/startup check. SHA256 values and exact source commit are in customer-apk-build-info.json.
+
+          GitHub downloads only. This workflow does not activate an APK on the production server or upload to Google Play.
+          NOTES
+          gh release create "$tag" "$RUNNER_TEMP/android-downloads/ChotuApp-User-1.1.29-71.apk" "$RUNNER_TEMP/android-downloads/ChotuApp-User-1.1.29-71.aab" "$RUNNER_TEMP/android-downloads/customer-apk-build-info.json" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title "ChotuApp User 1.1.29 (71) — APK and AAB" --notes-file "$RUNNER_TEMP/android-release-notes.md" --prerelease --latest=false
