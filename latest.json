@@ -1,7 +1,7 @@
 {
-  "run_id": "41128757148",
+  "run_id": "41129097822",
   "request_id": "requested20261031",
-  "checked_utc": "2026-10-30T21:09:22.218045+00:00",
+  "checked_utc": "2026-10-30T21:11:57.090623+00:00",
   "stores": [
     {
       "name": "Limelight",
@@ -13,11 +13,17 @@
           "final_url": "https://www.limelight.pk/robots.txt"
         },
         {
+          "path": "",
+          "status": 200,
+          "final_url": "https://www.limelight.pk/"
+        },
+        {
           "path": "/products.json?limit=1",
           "status": 200,
           "final_url": "https://www.limelight.pk/products.json?limit=1"
         }
       ],
+      "homepage_platform_hint": "shopify",
       "provider": "shopify",
       "status": "supported"
     },
@@ -31,11 +37,17 @@
           "final_url": "https://www.alkaramstudio.com/robots.txt"
         },
         {
+          "path": "",
+          "status": 200,
+          "final_url": "https://www.alkaramstudio.com/"
+        },
+        {
           "path": "/products.json?limit=1",
           "status": 200,
           "final_url": "https://www.alkaramstudio.com/products.json?limit=1"
         }
       ],
+      "homepage_platform_hint": "shopify",
       "provider": "shopify",
       "status": "supported"
     },
@@ -49,13 +61,13 @@
           "final_url": "https://gift4u.pk/robots.txt"
         },
         {
-          "path": "/products.json?limit=1",
+          "path": "",
           "status": 403,
-          "final_url": "https://gift4u.pk/products.json?limit=1"
+          "final_url": "https://gift4u.pk/"
         }
       ],
       "status": "source_blocked",
-      "error": "403 Client Error: Forbidden for url: https://gift4u.pk/products.json?limit=1"
+      "error": "403 Client Error: Forbidden for url: https://gift4u.pk/"
     },
     {
       "name": "Paklap",
@@ -65,6 +77,11 @@
           "path": "/robots.txt",
           "status": 200,
           "final_url": "https://www.paklap.pk/robots.txt"
+        },
+        {
+          "path": "",
+          "status": 200,
+          "final_url": "https://www.paklap.pk/"
         },
         {
           "path": "/products.json?limit=1",
@@ -77,11 +94,6 @@
           "final_url": "https://www.paklap.pk/wp-json/wc/store/v1/products?per_page=1"
         },
         {
-          "path": "",
-          "status": 200,
-          "final_url": "https://www.paklap.pk/"
-        },
-        {
           "path": "/graphql?query=%7Bproducts%28search%3A%22%22%2CpageSize%3A1%2CcurrentPage%3A1%29%7Btotal_count+items%7B__typename+sku+name+url_key+stock_status+price_range%7Bminimum_price%7Bregular_price%7Bvalue+currency%7Dfinal_price%7Bvalue+currency%7D%7D%7D%7D%7D%7D",
           "status": 200,
           "final_url": "https://www.paklap.pk/graphql?query=%7Bproducts%28search%3A%22%22%2CpageSize%3A1%2CcurrentPage%3A1%29%7Btotal_count+items%7B__typename+sku+name+url_key+stock_status+price_range%7Bminimum_price%7Bregular_price%7Bvalue+currency%7Dfinal_price%7Bvalue+currency%7D%7D%7D%7D%7D%7D"
@@ -92,6 +104,7 @@
           "final_url": "https://www.paklap.pk/graphql?query=%7Bproducts%28filter%3A%7Bsku%3A%7Beq%3A%22Lenovo+ThinkPad+T580+8th+ci5+used+Laptop%22%7D%7D%2CpageSize%3A2%29%7Bitems%7B__typename+id+sku+name+url_key+stock_status+price_range%7Bminimum_price%7Bregular_price%7Bvalue+currency%7Dfinal_price%7Bvalue+currency%7D%7D%7D+url_suffix+description%7Bhtml%7D+short_description%7Bhtml%7D+image%7Burl+label%7D+media_gallery%7Burl+label+disabled%7D+categories%7Bid+name+url_path%7D+...+on+CustomizableProductInterface%7Boptions%7Btitle+required%7D%7D+...+on+ConfigurableProduct%7Bconfigurable_options%7Battribute_code+label+values%7Bvalue_index+label%7D%7D+variants%7Battributes%7Bcode+label+value_index%7D+product%7B__typename+id+sku+name+url_key+stock_status+price_range%7Bminimum_price%7Bregular_price%7Bvalue+currency%7Dfinal_price%7Bvalue+currency%7D%7D%7D+image%7Burl+label%7D%7D%7D%7D%7D%7D%7D"
         }
       ],
+      "homepage_platform_hint": "unknown",
       "provider": "magento",
       "status": "supported",
       "graphql_status": 200,
@@ -193,9 +206,9 @@
           "final_url": "https://houseoftools.com.pk/robots.txt"
         },
         {
-          "path": "/products.json?limit=1",
-          "status": 404,
-          "final_url": "https://houseoftools.com.pk/products.json?limit=1"
+          "path": "",
+          "status": 200,
+          "final_url": "https://houseoftools.com.pk/"
         },
         {
           "path": "/wp-json/wc/store/v1/products?per_page=1",
@@ -203,6 +216,7 @@
           "final_url": "https://houseoftools.com.pk/wp-json/wc/store/v1/products?per_page=1"
         }
       ],
+      "homepage_platform_hint": "wordpress",
       "provider": "woocommerce",
       "status": "supported",
       "sample": {
@@ -239,11 +253,17 @@
           "final_url": "https://freshbasket.com.pk/robots.txt"
         },
         {
+          "path": "",
+          "status": 200,
+          "final_url": "https://freshbasket.com.pk/"
+        },
+        {
           "path": "/products.json?limit=1",
           "status": 200,
           "final_url": "https://freshbasket.com.pk/products.json?limit=1"
         }
       ],
+      "homepage_platform_hint": "shopify",
       "provider": "shopify",
       "status": "supported"
     },
@@ -257,11 +277,17 @@
           "final_url": "https://theglossyquill.store/robots.txt"
         },
         {
+          "path": "",
+          "status": 200,
+          "final_url": "https://theglossyquill.store/"
+        },
+        {
           "path": "/products.json?limit=1",
           "status": 200,
           "final_url": "https://theglossyquill.store/products.json?limit=1"
         }
       ],
+      "homepage_platform_hint": "shopify",
       "provider": "shopify",
       "status": "supported"
     },
@@ -275,9 +301,9 @@
           "final_url": "https://gsevenleather.com/robots.txt"
         },
         {
-          "path": "/products.json?limit=1",
-          "status": 404,
-          "final_url": "https://gsevenleather.com/products.json?limit=1"
+          "path": "",
+          "status": 200,
+          "final_url": "https://gsevenleather.com/"
         },
         {
           "path": "/wp-json/wc/store/v1/products?per_page=1",
@@ -285,6 +311,7 @@
           "final_url": "https://gsevenleather.com/wp-json/wc/store/v1/products?per_page=1"
         }
       ],
+      "homepage_platform_hint": "wordpress",
       "provider": "woocommerce",
       "status": "supported",
       "sample": {
@@ -335,11 +362,17 @@
           "final_url": "https://www.binfahad.pk/robots.txt"
         },
         {
+          "path": "",
+          "status": 200,
+          "final_url": "https://www.binfahad.pk/"
+        },
+        {
           "path": "/products.json?limit=1",
           "status": 200,
           "final_url": "https://www.binfahad.pk/products.json?limit=1"
         }
       ],
+      "homepage_platform_hint": "shopify",
       "provider": "shopify",
       "status": "supported"
     },
@@ -353,46 +386,21 @@
           "final_url": "https://dairydream.pk/robots.txt"
         },
         {
+          "path": "",
+          "status": 200,
+          "final_url": "https://dairydream.pk/"
+        },
+        {
           "path": "/products.json?limit=1",
           "status": 200,
           "final_url": "https://dairydream.pk/products.json?limit=1"
         }
       ],
+      "homepage_platform_hint": "shopify",
       "provider": "shopify",
       "status": "supported"
     }
   ],
-  "groups": [
-    {
-      "runner_group": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-requested20261031-2-SE10058",
-      "stores": [
-        {
-          "name": "Paklap",
-          "url": "https://www.paklap.pk"
-        }
-      ],
-      "status": "dispatched"
-    }
-  ],
-  "status": "dispatch_complete",
-  "active_stores_preserved": [
-    "Alkaram Studio",
-    "ChenOne",
-    "Fresh Basket",
-    "House of Tools",
-    "Liberty Books",
-    "Limelight",
-    "Stylo",
-    "Tawakkal Fabrics"
-  ],
-  "already_dispatched": [
-    "Alkaram Studio",
-    "Bin Fahad",
-    "Dairy Dream",
-    "Fresh Basket",
-    "G7 Leather",
-    "House of Tools",
-    "Limelight",
-    "The Glossy Quill"
-  ]
+  "groups": [],
+  "status": "checking"
 }
