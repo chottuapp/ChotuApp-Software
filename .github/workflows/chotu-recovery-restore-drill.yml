@@ -9,7 +9,7 @@ on:
 permissions:
   contents: read
 concurrency:
-  group: chotu-cloud-production-inspection
+  group: chotu-isolated-recovery-restore
   cancel-in-progress: false
 jobs:
   apply:
