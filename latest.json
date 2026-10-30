@@ -1,53 +1,45 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-10-30T11:22:01.520346+00:00",
-  "run_id": "41039558641",
+  "generated_utc": "2026-10-30T11:30:03.915076+00:00",
+  "run_id": "41039446853",
   "attempt": "1",
   "source_commit": "5ee1892e4e84adefdb0d645e50645f6d22229188",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 3671.8,
+  "elapsed_seconds": 4430.4,
   "stores": [
     {
-      "name": "Beechtree",
+      "name": "Vince Care",
       "status": "done",
       "review_required": true,
-      "issue_codes": [
-        "HTTP_404",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
+      "issue_codes": [],
       "software_revision": "ce15fbb76a7b0dcb",
-      "products": 703,
-      "variants": 3134,
+      "products": 211,
+      "variants": 371,
       "http_statuses": {
-        "200": 1694,
-        "404": 4
+        "200": 327
       },
-      "network_seconds": 868.5,
-      "max_response_seconds": 4.2,
-      "cache_events": 2372
+      "network_seconds": 733.2,
+      "max_response_seconds": 3.1,
+      "cache_events": 422
     },
     {
-      "name": "Breakout",
+      "name": "Elite Cosmetics",
       "status": "done",
       "review_required": true,
       "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT",
-        "WEBSITE_CATEGORY_UNVERIFIED",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "ce15fbb76a7b0dcb",
-      "products": 2068,
-      "variants": 10181,
+      "products": 1565,
+      "variants": 2030,
       "http_statuses": {
-        "200": 2501,
-        "429": 2
+        "200": 1984
       },
-      "network_seconds": 1465.9,
-      "max_response_seconds": 4.6,
-      "cache_events": 4577
+      "network_seconds": 3322.5,
+      "max_response_seconds": 14.8,
+      "cache_events": 3321
     }
   ]
 }
