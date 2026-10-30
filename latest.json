@@ -1,7 +1,7 @@
 {
-  "run_id": "41127254710",
+  "run_id": "41127781655",
   "request_id": "requested20261031",
-  "checked_utc": "2026-10-30T20:58:16.508494+00:00",
+  "checked_utc": "2026-10-30T21:01:53.240822+00:00",
   "stores": [
     {
       "name": "Limelight",
@@ -80,10 +80,41 @@
           "path": "",
           "status": 200,
           "final_url": "https://www.paklap.pk/"
+        },
+        {
+          "path": "/graphql?query=%7Bproducts%28search%3A%22%22%2CpageSize%3A1%2CcurrentPage%3A1%29%7Btotal_count+items%7B__typename+sku+name+url_key+stock_status+price_range%7Bminimum_price%7Bregular_price%7Bvalue+currency%7Dfinal_price%7Bvalue+currency%7D%7D%7D%7D%7D%7D",
+          "status": 200,
+          "final_url": "https://www.paklap.pk/graphql?query=%7Bproducts%28search%3A%22%22%2CpageSize%3A1%2CcurrentPage%3A1%29%7Btotal_count+items%7B__typename+sku+name+url_key+stock_status+price_range%7Bminimum_price%7Bregular_price%7Bvalue+currency%7Dfinal_price%7Bvalue+currency%7D%7D%7D%7D%7D%7D"
         }
       ],
       "provider": "magento",
-      "status": "adapter_required"
+      "status": "adapter_required",
+      "graphql_status": 200,
+      "public_graphql_sample": {
+        "total_count": 1634,
+        "items": [
+          {
+            "__typename": "SimpleProduct",
+            "sku": "Lenovo ThinkPad T580 8th ci5 used Laptop",
+            "name": "Lenovo ThinkPad T580 - 8th Gen Core i5 8350u Quadcore Processor 16-GB 256-GB SSD Intel UHD 620 GC 15.6\" Full HD 1080p WVA Display Dolby Audio Premium W11 Pro (Black, Used)",
+            "url_key": "lenovo-thinkpad-t580-8th-gen-corei5-used-laptop-pakistan",
+            "stock_status": "IN_STOCK",
+            "price_range": {
+              "minimum_price": {
+                "regular_price": {
+                  "value": 59500,
+                  "currency": "PKR"
+                },
+                "final_price": {
+                  "value": 59500,
+                  "currency": "PKR"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "graphql_errors": []
     },
     {
       "name": "House of Tools",
@@ -106,7 +137,7 @@
         }
       ],
       "provider": "woocommerce",
-      "status": "adapter_registration_required",
+      "status": "supported",
       "sample": {
         "id": 24970,
         "name": "Cordless hydraulic cable cutter CRCLI2005",
@@ -188,7 +219,7 @@
         }
       ],
       "provider": "woocommerce",
-      "status": "adapter_registration_required",
+      "status": "supported",
       "sample": {
         "id": 515,
         "name": "G7 Shadow",
@@ -264,66 +295,6 @@
       "status": "supported"
     }
   ],
-  "groups": [
-    {
-      "runner_group": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-requested20261031-1-SE10055-SE10056",
-      "stores": [
-        {
-          "name": "Limelight",
-          "url": "https://www.limelight.pk"
-        },
-        {
-          "name": "Alkaram Studio",
-          "url": "https://www.alkaramstudio.com"
-        }
-      ],
-      "status": "dispatched"
-    },
-    {
-      "runner_group": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-requested20261031-3-SE10060",
-      "stores": [
-        {
-          "name": "Fresh Basket",
-          "url": "https://freshbasket.com.pk"
-        }
-      ],
-      "status": "dispatched"
-    },
-    {
-      "runner_group": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-requested20261031-4-SE10061",
-      "stores": [
-        {
-          "name": "The Glossy Quill",
-          "url": "https://theglossyquill.store"
-        }
-      ],
-      "status": "dispatched"
-    },
-    {
-      "runner_group": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-requested20261031-5-SE10063-SE10064",
-      "stores": [
-        {
-          "name": "Bin Fahad",
-          "url": "https://www.binfahad.pk"
-        },
-        {
-          "name": "Dairy Dream",
-          "url": "https://dairydream.pk"
-        }
-      ],
-      "status": "dispatched"
-    }
-  ],
-  "status": "dispatch_complete",
-  "active_stores_preserved": [
-    "Bonanza Satrangi",
-    "ChenOne",
-    "Gul Ahmed",
-    "Liberty Books",
-    "Sapphire",
-    "Stylo",
-    "Tawakkal Fabrics",
-    "Zellbury"
-  ],
-  "already_dispatched": []
+  "groups": [],
+  "status": "checking"
 }
