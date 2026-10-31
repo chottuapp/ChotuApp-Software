@@ -88,6 +88,9 @@ def main():
        rec['public_image']={'source_url':image,'sha256':hashlib.sha256(visual.content).hexdigest(),'content_type':visual.headers.get('Content-Type'),'base64':base64.b64encode(visual.content).decode()}
    if item.get('inspect_bundle') or not product or not (product.get('description') or product.get('body_html')):
     soup=BeautifulSoup(read(url).text,'html.parser')
+    if item.get('inspect_media') is True:
+     selectors=['.woocommerce-product-gallery img','.images img','.product img','meta[property="og:image"]']
+     rec['public_media_probe']={'canonical':[n.get('href') for n in soup.select('link[rel=canonical][href]')[:3]],'headings':[n.get_text(' ',strip=True)[:300] for n in soup.select('h1')[:5]],'cart_ids':[n.get('value') or n.get('data-product_id') for n in soup.select('button[name="add-to-cart"],input[name="add-to-cart"],form[data-product_id]')[:10]],'images':{selector:[{k:n.get(k) for k in ('src','data-src','data-lazy-src','data-large_image','content') if n.get(k) and not str(n.get(k)).startswith('data:')} for n in soup.select(selector)[:12]] for selector in selectors}}
     scripts=[]
     for node in soup.select('script[type="application/ld+json"]'):
      try:scripts.append(json.loads(node.get_text()))

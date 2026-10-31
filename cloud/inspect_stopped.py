@@ -23,6 +23,16 @@ def main():
    except subprocess.CalledProcessError as exc:record['log_unavailable']=redact(exc.stderr or '')[:1500]
    artifacts=json.loads(gh('api','repos/'+REPO+'/actions/runs/'+rid+'/artifacts'))['artifacts']
    record['artifacts']=[{k:a.get(k) for k in ('name','id','expired','size_in_bytes')} for a in artifacts]
+   if request.get('include_summary') is True:
+    with tempfile.TemporaryDirectory() as folder:
+     gh('run','download',rid,'--repo',REPO,'--name','chotuapp-excel-files','--dir',folder)
+     files=list(Path(folder).rglob('run-summary.json'))
+     if len(files)==1:
+      raw=json.loads(files[0].read_text());record['summary']={k:raw.get(k) for k in ('runner_group','status','stop_reason','checkpoint','auto_continue_limit','continuation_index','stalled_runs')}
+      record['summary']['stores']=[{k:s.get(k) for k in ('name','status','products')} for s in raw.get('stores',[])]
+    from resume_failed_stores import checkpoint_parent
+    try:parent,checked=checkpoint_parent(rid);record['available_checkpoint_ancestor']={'run_id':parent,'checked':checked}
+    except ValueError as exc:record['checkpoint_ancestor_error']=redact(str(exc))
    record['annotations']=[]
    for job in record['state'].get('jobs',[]):
     if job.get('conclusion')!='failure':continue
