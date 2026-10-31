@@ -1,0 +1,329 @@
+{
+  "run_id": "41149247998",
+  "checked_utc": "2026-10-31T00:16:37.098425+00:00",
+  "targets": [
+    {
+      "target": "41092372523",
+      "state": {
+        "conclusion": "failure",
+        "displayTitle": "Automatic continuation of 41049513750",
+        "headSha": "1818b6dc59c5ef5082b47a7e78577a7679319d93",
+        "jobs": [
+          {
+            "completedAt": "2026-10-30T21:48:52Z",
+            "conclusion": "failure",
+            "databaseId": 124189440956,
+            "name": "fetch",
+            "startedAt": "2026-10-30T16:43:12Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-30T16:43:13Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-30T16:43:12Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T16:43:20Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-30T16:43:13Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T16:43:20Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-30T16:43:20Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T16:43:23Z",
+                "conclusion": "success",
+                "name": "Install extraction dependencies",
+                "number": 4,
+                "startedAt": "2026-10-30T16:43:20Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T16:44:59Z",
+                "conclusion": "success",
+                "name": "Restore optional saved run",
+                "number": 5,
+                "startedAt": "2026-10-30T16:43:23Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T16:44:59Z",
+                "conclusion": "skipped",
+                "name": "Install Czone browser fallback when needed",
+                "number": 6,
+                "startedAt": "2026-10-30T16:44:59Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T16:45:00Z",
+                "conclusion": "success",
+                "name": "Start continuous fetching on the cloud runner",
+                "number": 7,
+                "startedAt": "2026-10-30T16:44:59Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:48:44Z",
+                "conclusion": "success",
+                "name": "Live progress, logs and completed-file uploads",
+                "number": 8,
+                "startedAt": "2026-10-30T16:45:00Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:48:44Z",
+                "conclusion": "failure",
+                "name": "Fetch result",
+                "number": 9,
+                "startedAt": "2026-10-30T21:48:44Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:48:47Z",
+                "conclusion": "success",
+                "name": "Collect diagnostic report even if fetching failed",
+                "number": 10,
+                "startedAt": "2026-10-30T21:48:44Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:48:48Z",
+                "conclusion": "success",
+                "name": "Upload diagnostic report and redacted log",
+                "number": 11,
+                "startedAt": "2026-10-30T21:48:47Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:48:50Z",
+                "conclusion": "success",
+                "name": "Upload Excel files and audits, including completed stores from a partial run",
+                "number": 12,
+                "startedAt": "2026-10-30T21:48:48Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:48:50Z",
+                "conclusion": "skipped",
+                "name": "Final automated Rule 804 pass for fresh batch",
+                "number": 13,
+                "startedAt": "2026-10-30T21:48:50Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:48:50Z",
+                "conclusion": "skipped",
+                "name": "Upload automated Rule 804 fresh workbooks",
+                "number": 14,
+                "startedAt": "2026-10-30T21:48:50Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:48:50Z",
+                "conclusion": "success",
+                "name": "Upload saved checkpoint when available",
+                "number": 15,
+                "startedAt": "2026-10-30T21:48:50Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:48:50Z",
+                "conclusion": "success",
+                "name": "Dispatch authorized continuation after verified checkpoint upload",
+                "number": 16,
+                "startedAt": "2026-10-30T21:48:50Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:48:50Z",
+                "conclusion": "success",
+                "name": "Post Live progress, logs and completed-file uploads",
+                "number": 30,
+                "startedAt": "2026-10-30T21:48:50Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:48:50Z",
+                "conclusion": "skipped",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 31,
+                "startedAt": "2026-10-30T21:48:50Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:48:50Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 32,
+                "startedAt": "2026-10-30T21:48:50Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:48:50Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 33,
+                "startedAt": "2026-10-30T21:48:50Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41092372523/job/124189440956"
+          },
+          {
+            "completedAt": "2026-10-30T21:49:08Z",
+            "conclusion": "success",
+            "databaseId": 124331028977,
+            "name": "Archive structured diagnostics",
+            "startedAt": "2026-10-30T21:48:55Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-30T21:48:56Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-30T21:48:55Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:49:03Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-30T21:48:56Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:49:04Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-30T21:49:03Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:49:04Z",
+                "conclusion": "success",
+                "name": "Run actions/download-artifact@v4",
+                "number": 4,
+                "startedAt": "2026-10-30T21:49:04Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:49:06Z",
+                "conclusion": "success",
+                "name": "Archive credential-free JSON on the cloud-reports branch",
+                "number": 5,
+                "startedAt": "2026-10-30T21:49:04Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:49:06Z",
+                "conclusion": "success",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 9,
+                "startedAt": "2026-10-30T21:49:06Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:49:06Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 10,
+                "startedAt": "2026-10-30T21:49:06Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:49:06Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 11,
+                "startedAt": "2026-10-30T21:49:06Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41092372523/job/124331028977"
+          }
+        ],
+        "status": "completed"
+      },
+      "failed_log": "fetch\tUNKNOWN STEP\t2026-10-30T21:48:44.4069847Z [Liberty Books] [21:45:02] GET_JSON: https://libertybooks.com/products/how-many-pikachus-would-it-take-to-power-a-lightbulb-2158.js\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:44.4072197Z [Liberty Books] [21:45:02] CACHE HIT: https://libertybooks.com/products/how-many-pikachus-would-it-take-to-power-a-lightbulb-2158.js\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:44.4073644Z [Liberty Books] LIVE VARIANT PRICES: How Many Pikachus Would It Take to Power a Lightbulb? \u2014 1 checked; 0 refreshed\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:44.4074726Z [Liberty Books] [21:45:02] CACHE HIT status=200 elapsed=0.0s bytes=855059\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:44.4075556Z Cloud time budget reached; saving unfinished work.\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:44.4076516Z Checkpoint packaging: excluding request caches for 1 completed stores; Excel files and audits retained.\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:44.4078014Z CHECKPOINT NOT SAVED: Checkpoint exceeds bounded 4 GB compressed safety limit; outputs remain available\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:44.4078899Z RUN SUMMARY:\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:44.4079649Z Liberty Books: PENDING \u2014 Stopped; successful requests retained\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:44.4080591Z ChenOne: DONE \u2014 310 products, 1102 variants; ChenOne.xlsx (REVIEW)\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:44.4081607Z Checkpoint: not saved: Checkpoint exceeds bounded 4 GB compressed safety limit; outputs remain available\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:44.4090005Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:44.4101244Z ##[error]Process completed with exit code 2.\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:44.4160177Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:44.4161293Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:44.4181684Z shell: /usr/bin/bash -e {0}\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:44.4182280Z env:\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:44.4183029Z   CHOTUAPP_CLOUD_DATA: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:44.4184060Z   CLOUD_RUNNER_GROUP: audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-23\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:44.4184890Z   CLOUD_PARTITION_RESUME: false\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:44.4185745Z   CLOUD_STORES: Farda Foods | https://fardafoods.com; Islamabad Tea | https://islamabadtea.pk\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:44.4186782Z   CLOUD_MINUTES: 300\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:44.4187565Z   RESUME_RUN_ID: 41049513750\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:44.4188189Z   SAVE_CHECKPOINT: true\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:50.3718644Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:50.3719450Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:50.3720245Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:50.3721075Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:50.3721799Z   CLOUD_NEEDS_CZONE_BROWSER: false\n[credential-bearing log line removed]\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:50.3725390Z ##[endgroup]\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:50.4276796Z No continuation: current fetch has no completed saved checkpoint.\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:50.4601136Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:50.4731145Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:50.5728045Z [command]/usr/bin/git version\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:50.5797770Z git version 2.56.0\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:50.5909482Z Temporarily overriding HOME='/home/runner/work/_temp/59ef64eb-1bdc-46bd-8ef7-f706582b9351' before making global git config changes\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:50.5912056Z Adding repository directory to the temporary git global config as a safe directory\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:50.5914357Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ChotuApp-Software/ChotuApp-Software\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:50.5920496Z [command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:50.5931300Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:50.6399005Z [command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nfetch\tUNKNOWN STEP\t2026-10-30T21:48:50.6465789Z http.https://github.com/.extraheader",
+      "artifacts": [
+        {
+          "name": "chotuapp-diagnostics",
+          "id": 13013548610,
+          "expired": false,
+          "size_in_bytes": 2190791
+        },
+        {
+          "name": "chotuapp-excel-files",
+          "id": 13013453802,
+          "expired": false,
+          "size_in_bytes": 508932
+        },
+        {
+          "name": "chotuapp-live-logs",
+          "id": 13013304436,
+          "expired": false,
+          "size_in_bytes": 2192671
+        }
+      ],
+      "summary": {
+        "runner_group": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-23",
+        "status": "incomplete",
+        "stop_reason": "time_budget",
+        "checkpoint": "not saved: Checkpoint exceeds bounded 4 GB compressed safety limit; outputs remain available",
+        "auto_continue_limit": 48,
+        "continuation_index": 2,
+        "stalled_runs": 0,
+        "stores": [
+          {
+            "name": "Liberty Books",
+            "status": "pending",
+            "products": null
+          },
+          {
+            "name": "ChenOne",
+            "status": "done",
+            "products": 310
+          }
+        ]
+      },
+      "available_checkpoint_ancestor": {
+        "run_id": "41049513750",
+        "checked": [
+          "41092372523",
+          "41049513750"
+        ]
+      },
+      "annotations": [
+        {
+          "level": "warning",
+          "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+        },
+        {
+          "level": "warning",
+          "message": "No files were found with the provided path: checkpoint.zip\ncheckpoint.parts/. No artifacts will be uploaded."
+        },
+        {
+          "level": "failure",
+          "message": "Process completed with exit code 2."
+        }
+      ],
+      "console-tail.txt": "[Liberty Books] [21:44:51] CACHE HIT status=200 elapsed=0.0s bytes=855560 \n[Liberty Books] [21:44:52] GET_JSON: https://libertybooks.com/products/the-fine-arms-2175.js\n[Liberty Books] [21:44:52] CACHE HIT: https://libertybooks.com/products/the-fine-arms-2175.js\n[Liberty Books] LIVE VARIANT PRICES: The Fine Arms \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:52] CACHE HIT status=200 elapsed=0.0s bytes=852920 \n[Liberty Books] [21:44:52] GET_JSON: https://libertybooks.com/products/diabesity-2174.js\n[Liberty Books] [21:44:52] CACHE HIT: https://libertybooks.com/products/diabesity-2174.js\n[Liberty Books] LIVE VARIANT PRICES: Diabesity \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:52] GET_JSON: https://libertybooks.com/products/adriano-amaral-2173.js\n[Liberty Books] [21:44:52] CACHE HIT: https://libertybooks.com/products/adriano-amaral-2173.js\n[Liberty Books] LIVE VARIANT PRICES: Adriano Amaral \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:52] CACHE HIT status=200 elapsed=0.0s bytes=854065 \n[Liberty Books] [21:44:53] GET_JSON: https://libertybooks.com/products/arik-levy-2172.js\n[Liberty Books] [21:44:53] CACHE HIT: https://libertybooks.com/products/arik-levy-2172.js\n[Liberty Books] LIVE VARIANT PRICES: Arik Levy \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:53] CACHE HIT status=200 elapsed=0.0s bytes=798558 \n[Liberty Books] [21:44:53] GET_JSON: https://libertybooks.com/products/painting-in-the-calouste-gulbenkian-museum-2171.js\n[Liberty Books] [21:44:53] CACHE HIT: https://libertybooks.com/products/painting-in-the-calouste-gulbenkian-museum-2171.js\n[Liberty Books] LIVE VARIANT PRICES: Painting in the Calouste Gulbenkian Museum \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:53] CACHE HIT status=200 elapsed=0.0s bytes=855073 \n[Liberty Books] [21:44:54] GET_JSON: https://libertybooks.com/products/golden-ink-2170.js\n[Liberty Books] [21:44:54] CACHE HIT: https://libertybooks.com/products/golden-ink-2170.js\n[Liberty Books] LIVE VARIANT PRICES: Golden Ink \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:54] CACHE HIT status=200 elapsed=0.0s bytes=852590 \n[Liberty Books] [21:44:55] GET_JSON: https://libertybooks.com/products/the-landscape-of-man-2169.js\n[Liberty Books] [21:44:55] CACHE HIT: https://libertybooks.com/products/the-landscape-of-man-2169.js\n[Liberty Books] LIVE VARIANT PRICES: The Landscape of Man \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:55] CACHE HIT status=200 elapsed=0.0s bytes=799629 \n[Liberty Books] [21:44:55] GET_JSON: https://libertybooks.com/products/the-invisible-masters-2168.js\n[Liberty Books] [21:44:55] CACHE HIT: https://libertybooks.com/products/the-invisible-masters-2168.js\n[Liberty Books] LIVE VARIANT PRICES: The Invisible Masters \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:55] CACHE HIT status=200 elapsed=0.0s bytes=852716 \n[Liberty Books] [21:44:56] GET_JSON: https://libertybooks.com/products/60-remarkable-rooms-of-the-national-trust-2167.js\n[Liberty Books] [21:44:56] CACHE HIT: https://libertybooks.com/products/60-remarkable-rooms-of-the-national-trust-2167.js\n[Liberty Books] LIVE VARIANT PRICES: 60 Remarkable Rooms of the National Trust \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:56] CACHE HIT status=200 elapsed=0.0s bytes=854153 \n[Liberty Books] [21:44:56] GET_JSON: https://libertybooks.com/products/david-chipperfield-architects-2166.js\n[Liberty Books] [21:44:56] CACHE HIT: https://libertybooks.com/products/david-chipperfield-architects-2166.js\n[Liberty Books] LIVE VARIANT PRICES: David Chipperfield Architects \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:56] CACHE HIT status=200 elapsed=0.0s bytes=852745 \n[Liberty Books] [21:44:57] GET_JSON: https://libertybooks.com/products/2g-95-2165.js\n[Liberty Books] [21:44:57] CACHE HIT: https://libertybooks.com/products/2g-95-2165.js\n[Liberty Books] LIVE VARIANT PRICES: 2G 95 \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:57] CACHE HIT status=200 elapsed=0.0s bytes=851355 \n[Liberty Books] [21:44:57] GET_JSON: https://libertybooks.com/products/domus-terrae-2164.js\n[Liberty Books] [21:44:57] CACHE HIT: https://libertybooks.com/products/domus-terrae-2164.js\n[Liberty Books] LIVE VARIANT PRICES: Domus Terrae \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:57] CACHE HIT status=200 elapsed=0.0s bytes=798373 \n[Liberty Books] [21:44:58] GET_JSON: https://libertybooks.com/products/the-newspaper-girls-2163.js\n[Liberty Books] [21:44:58] CACHE HIT: https://libertybooks.com/products/the-newspaper-girls-2163.js\n[Liberty Books] LIVE VARIANT PRICES: The Newspaper Girls \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:58] CACHE HIT status=200 elapsed=0.0s bytes=852787 \n[Liberty Books] [21:44:59] GET_JSON: https://libertybooks.com/products/epic-2162.js\n[Liberty Books] [21:44:59] CACHE HIT: https://libertybooks.com/products/epic-2162.js\n[Liberty Books] LIVE VARIANT PRICES: Epic \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:59] CACHE HIT status=200 elapsed=0.0s bytes=854152 \n[Liberty Books] [21:45:00] GET_JSON: https://libertybooks.com/products/did-harry-do-it-2161.js\n[Liberty Books] [21:45:00] CACHE HIT: https://libertybooks.com/products/did-harry-do-it-2161.js\n[Liberty Books] LIVE VARIANT PRICES: Did Harry Do It? \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:45:00] CACHE HIT status=200 elapsed=0.0s bytes=852140 \n[Liberty Books] [21:45:00] GET_JSON: https://libertybooks.com/products/quantum-2-0-2160.js\n[Liberty Books] [21:45:00] CACHE HIT: https://libertybooks.com/products/quantum-2-0-2160.js\n[Liberty Books] LIVE VARIANT PRICES: Quantum 2.0 \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:45:00] CACHE HIT status=200 elapsed=0.0s bytes=854916 \n[Liberty Books] [21:45:01] GET_JSON: https://libertybooks.com/products/my-book-of-days-2159.js\n[Liberty Books] [21:45:01] CACHE HIT: https://libertybooks.com/products/my-book-of-days-2159.js\n[Liberty Books] LIVE VARIANT PRICES: My Book of Days \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:45:01] CACHE HIT status=200 elapsed=0.0s bytes=855060 \n[Liberty Books] [21:45:02] GET_JSON: https://libertybooks.com/products/how-many-pikachus-would-it-take-to-power-a-lightbulb-2158.js\n[Liberty Books] [21:45:02] CACHE HIT: https://libertybooks.com/products/how-many-pikachus-would-it-take-to-power-a-lightbulb-2158.js\n[Liberty Books] LIVE VARIANT PRICES: How Many Pikachus Would It Take to Power a Lightbulb? \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:45:02] CACHE HIT status=200 elapsed=0.0s bytes=855059 \nCloud time budget reached; saving unfinished work.\nCheckpoint packaging: excluding request caches for 1 completed stores; Excel files and audits retained.\nCHECKPOINT NOT SAVED: Checkpoint exceeds bounded 4 GB compressed safety limit; outputs remain available\nRUN SUMMARY:\nLiberty Books: PENDING \u2014 Stopped; successful requests retained\nChenOne: DONE \u2014 310 products, 1102 variants; ChenOne.xlsx (REVIEW)\nCheckpoint: not saved: Checkpoint exceeds bounded 4 GB compressed safety limit; outputs remain available\nRun finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+      "store-status.txt": "Updated (UTC): 2026-10-30T21:48:42.202197+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. ChenOne.xlsx\n\nSTORE STATUS\nLiberty Books: pending\n  Stage: Building Excel rows\n  building Excel rows: 1799/61549 tasks; sample age 245s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-10-30T21:27:15.614254+00:00\nChenOne: done",
+      "fetch-log.txt": "[Liberty Books] [21:44:37] GET_JSON: https://libertybooks.com/products/marcel-duchamp-2203.js\n[Liberty Books] [21:44:37] CACHE HIT: https://libertybooks.com/products/marcel-duchamp-2203.js\n[Liberty Books] LIVE VARIANT PRICES: Marcel Duchamp \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:37] CACHE HIT status=200 elapsed=0.0s bytes=800648 \n[Liberty Books] [21:44:37] GET_JSON: https://libertybooks.com/products/walter-chandoha-2202.js\n[Liberty Books] [21:44:37] CACHE HIT: https://libertybooks.com/products/walter-chandoha-2202.js\n[Liberty Books] LIVE VARIANT PRICES: Walter Chandoha \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:37] CACHE HIT status=200 elapsed=0.0s bytes=852403 \n[Liberty Books] [21:44:38] GET_JSON: https://libertybooks.com/products/patterns-2201.js\n[Liberty Books] [21:44:38] CACHE HIT: https://libertybooks.com/products/patterns-2201.js\n[Liberty Books] LIVE VARIANT PRICES: Patterns \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:38] CACHE HIT status=200 elapsed=0.0s bytes=856212 \n[Liberty Books] [21:44:39] GET_JSON: https://libertybooks.com/products/joel-meyerowitz-morandis-objects-2200.js\n[Liberty Books] [21:44:39] CACHE HIT: https://libertybooks.com/products/joel-meyerowitz-morandis-objects-2200.js\n[Liberty Books] LIVE VARIANT PRICES: Joel Meyerowitz: Morandi's Objects \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:39] CACHE HIT status=200 elapsed=0.0s bytes=855729 \n[Liberty Books] [21:44:39] GET_JSON: https://libertybooks.com/products/pieter-henket-2199.js\n[Liberty Books] [21:44:39] CACHE HIT: https://libertybooks.com/products/pieter-henket-2199.js\n[Liberty Books] LIVE VARIANT PRICES: Pieter Henket \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:39] CACHE HIT status=200 elapsed=0.0s bytes=854495 \n[Liberty Books] [21:44:40] GET_JSON: https://libertybooks.com/products/walker-evans-2198.js\n[Liberty Books] [21:44:40] CACHE HIT: https://libertybooks.com/products/walker-evans-2198.js\n[Liberty Books] LIVE VARIANT PRICES: Walker Evans \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:40] CACHE HIT status=200 elapsed=0.0s bytes=853376 \n[Liberty Books] [21:44:40] GET_JSON: https://libertybooks.com/products/on-earth-as-it-is-not-in-heaven-2197.js\n[Liberty Books] [21:44:40] CACHE HIT: https://libertybooks.com/products/on-earth-as-it-is-not-in-heaven-2197.js\n[Liberty Books] LIVE VARIANT PRICES: On Earth As It Is Not In Heaven \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:40] CACHE HIT status=200 elapsed=0.0s bytes=800939 \n[Liberty Books] [21:44:41] GET_JSON: https://libertybooks.com/products/soviet-scientific-institutes-2196.js\n[Liberty Books] [21:44:41] CACHE HIT: https://libertybooks.com/products/soviet-scientific-institutes-2196.js\n[Liberty Books] LIVE VARIANT PRICES: Soviet Scientific Institutes \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:41] CACHE HIT status=200 elapsed=0.0s bytes=855461 \n[Liberty Books] [21:44:42] GET_JSON: https://libertybooks.com/products/loop-hook-loom-2195.js\n[Liberty Books] [21:44:42] CACHE HIT: https://libertybooks.com/products/loop-hook-loom-2195.js\n[Liberty Books] LIVE VARIANT PRICES: Loop, Hook, Loom \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:42] CACHE HIT status=200 elapsed=0.0s bytes=851840 \n[Liberty Books] [21:44:42] GET_JSON: https://libertybooks.com/products/new-fashion-designers-sketchbooks-2194.js\n[Liberty Books] [21:44:42] CACHE HIT: https://libertybooks.com/products/new-fashion-designers-sketchbooks-2194.js\n[Liberty Books] LIVE VARIANT PRICES: New Fashion Designers' Sketchbooks \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:42] GET_JSON: https://libertybooks.com/products/the-two-body-problem-2193.js\n[Liberty Books] [21:44:42] CACHE HIT: https://libertybooks.com/products/the-two-body-problem-2193.js\n[Liberty Books] LIVE VARIANT PRICES: The Two-Body Problem \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:42] CACHE HIT status=200 elapsed=0.0s bytes=858047 \n[Liberty Books] [21:44:43] GET_JSON: https://libertybooks.com/products/powerful-medicines-2192.js\n[Liberty Books] [21:44:43] CACHE HIT: https://libertybooks.com/products/powerful-medicines-2192.js\n[Liberty Books] LIVE VARIANT PRICES: Powerful Medicines: \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:43] GET_JSON: https://libertybooks.com/products/the-fire-from-the-multimillion-copy-bestselling-author-of-the-women-and-the-nightingale-2191.js\n[Liberty Books] [21:44:43] CACHE HIT: https://libertybooks.com/products/the-fire-from-the-multimillion-copy-bestselling-author-of-the-women-and-the-nightingale-2191.js\n[Liberty Books] LIVE VARIANT PRICES: The Fire: From the multimillion-copy bestselling author of The Women and The Nightingale \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:43] CACHE HIT status=200 elapsed=0.0s bytes=862531 \n[Liberty Books] [21:44:43] GET_JSON: https://libertybooks.com/products/raw-energy-food-combining-diet-2190.js\n[Liberty Books] [21:44:43] CACHE HIT: https://libertybooks.com/products/raw-energy-food-combining-diet-2190.js\n[Liberty Books] LIVE VARIANT PRICES: Raw Energy Food Combining Diet \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:43] CACHE HIT status=200 elapsed=0.0s bytes=855890 \n[Liberty Books] [21:44:44] GET_JSON: https://libertybooks.com/products/getting-past-no-2189.js\n[Liberty Books] [21:44:44] CACHE HIT: https://libertybooks.com/products/getting-past-no-2189.js\n[Liberty Books] LIVE VARIANT PRICES: Getting Past No: \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:44] CACHE HIT status=200 elapsed=0.0s bytes=854975 \n[Liberty Books] [21:44:45] GET_JSON: https://libertybooks.com/products/highway-to-health-2188.js\n[Liberty Books] [21:44:45] CACHE HIT: https://libertybooks.com/products/highway-to-health-2188.js\n[Liberty Books] LIVE VARIANT PRICES: Highway to Health \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:45] CACHE HIT status=200 elapsed=0.0s bytes=855685 \n[Liberty Books] [21:44:45] GET_JSON: https://libertybooks.com/products/you-cant-please-everyone-2187.js\n[Liberty Books] [21:44:45] CACHE HIT: https://libertybooks.com/products/you-cant-please-everyone-2187.js\n[Liberty Books] LIVE VARIANT PRICES: You Can\u2019t Please Everyone \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:45] GET_JSON: https://libertybooks.com/products/mortal-things-2186.js\n[Liberty Books] [21:44:45] CACHE HIT: https://libertybooks.com/products/mortal-things-2186.js\n[Liberty Books] LIVE VARIANT PRICES: Mortal Things \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:45] CACHE HIT status=200 elapsed=0.0s bytes=857157 \n[Liberty Books] [21:44:46] GET_JSON: https://libertybooks.com/products/the-courage-to-be-disliked-2185.js\n[Liberty Books] [21:44:46] CACHE HIT: https://libertybooks.com/products/the-courage-to-be-disliked-2185.js\n[Liberty Books] LIVE VARIANT PRICES: The Courage To Be Disliked \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:46] CACHE HIT status=200 elapsed=0.0s bytes=857864 \n[Liberty Books] [21:44:46] GET_JSON: https://libertybooks.com/products/harry-potter-and-the-philosophers-stone-2184.js\n[Liberty Books] [21:44:46] CACHE HIT: https://libertybooks.com/products/harry-potter-and-the-philosophers-stone-2184.js\n[Liberty Books] LIVE VARIANT PRICES: Harry Potter and the Philosophers Stone \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:46] CACHE HIT status=200 elapsed=0.0s bytes=859297 \n[Liberty Books] [21:44:47] GET_JSON: https://libertybooks.com/products/phenomenal-woman-and-other-poems-2183.js\n[Liberty Books] [21:44:47] CACHE HIT: https://libertybooks.com/products/phenomenal-woman-and-other-poems-2183.js\n[Liberty Books] LIVE VARIANT PRICES: Phenomenal Woman and Other Poems \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:47] CACHE HIT status=200 elapsed=0.0s bytes=857226 \n[Liberty Books] [21:44:47] GET_JSON: https://libertybooks.com/products/creating-health-pa-2182.js\n[Liberty Books] [21:44:47] CACHE HIT: https://libertybooks.com/products/creating-health-pa-2182.js\n[Liberty Books] LIVE VARIANT PRICES: Creating Health Pa: \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:47] CACHE HIT status=200 elapsed=0.0s bytes=857250 \n[Liberty Books] [21:44:48] GET_JSON: https://libertybooks.com/products/marine-inspiration-2181.js\n[Liberty Books] [21:44:48] CACHE HIT: https://libertybooks.com/products/marine-inspiration-2181.js\n[Liberty Books] LIVE VARIANT PRICES: Marine Inspiration \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:48] CACHE HIT status=200 elapsed=0.0s bytes=852531 \n[Liberty Books] [21:44:49] GET_JSON: https://libertybooks.com/products/pet-shop-boys-volume-2180.js\n[Liberty Books] [21:44:49] CACHE HIT: https://libertybooks.com/products/pet-shop-boys-volume-2180.js\n[Liberty Books] LIVE VARIANT PRICES: Pet Shop Boys Volume \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:49] CACHE HIT status=200 elapsed=0.0s bytes=856648 \n[Liberty Books] [21:44:49] GET_JSON: https://libertybooks.com/products/platform-2-2179.js\n[Liberty Books] [21:44:49] CACHE HIT: https://libertybooks.com/products/platform-2-2179.js\n[Liberty Books] LIVE VARIANT PRICES: Platform 2 \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:49] CACHE HIT status=200 elapsed=0.0s bytes=852620 \n[Liberty Books] [21:44:50] GET_JSON: https://libertybooks.com/products/poseuteo-poster-2178.js\n[Liberty Books] [21:44:50] CACHE HIT: https://libertybooks.com/products/poseuteo-poster-2178.js\n[Liberty Books] LIVE VARIANT PRICES: POSEUTEO POSTER \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:50] CACHE HIT status=200 elapsed=0.0s bytes=852756 \n[Liberty Books] [21:44:50] GET_JSON: https://libertybooks.com/products/alymamah-rashed-2177.js\n[Liberty Books] [21:44:50] CACHE HIT: https://libertybooks.com/products/alymamah-rashed-2177.js\n[Liberty Books] LIVE VARIANT PRICES: Alymamah Rashed \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:50] CACHE HIT status=200 elapsed=0.0s bytes=852944 \n[Liberty Books] [21:44:51] GET_JSON: https://libertybooks.com/products/mayo-clinic-on-high-blood-pressure-2176.js\n[Liberty Books] [21:44:51] CACHE HIT: https://libertybooks.com/products/mayo-clinic-on-high-blood-pressure-2176.js\n[Liberty Books] LIVE VARIANT PRICES: Mayo Clinic on High Blood Pressure: \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:51] CACHE HIT status=200 elapsed=0.0s bytes=855560 \n[Liberty Books] [21:44:52] GET_JSON: https://libertybooks.com/products/the-fine-arms-2175.js\n[Liberty Books] [21:44:52] CACHE HIT: https://libertybooks.com/products/the-fine-arms-2175.js\n[Liberty Books] LIVE VARIANT PRICES: The Fine Arms \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:52] CACHE HIT status=200 elapsed=0.0s bytes=852920 \n[Liberty Books] [21:44:52] GET_JSON: https://libertybooks.com/products/diabesity-2174.js\n[Liberty Books] [21:44:52] CACHE HIT: https://libertybooks.com/products/diabesity-2174.js\n[Liberty Books] LIVE VARIANT PRICES: Diabesity \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:52] GET_JSON: https://libertybooks.com/products/adriano-amaral-2173.js\n[Liberty Books] [21:44:52] CACHE HIT: https://libertybooks.com/products/adriano-amaral-2173.js\n[Liberty Books] LIVE VARIANT PRICES: Adriano Amaral \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:52] CACHE HIT status=200 elapsed=0.0s bytes=854065 \n[Liberty Books] [21:44:53] GET_JSON: https://libertybooks.com/products/arik-levy-2172.js\n[Liberty Books] [21:44:53] CACHE HIT: https://libertybooks.com/products/arik-levy-2172.js\n[Liberty Books] LIVE VARIANT PRICES: Arik Levy \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:53] CACHE HIT status=200 elapsed=0.0s bytes=798558 \n[Liberty Books] [21:44:53] GET_JSON: https://libertybooks.com/products/painting-in-the-calouste-gulbenkian-museum-2171.js\n[Liberty Books] [21:44:53] CACHE HIT: https://libertybooks.com/products/painting-in-the-calouste-gulbenkian-museum-2171.js\n[Liberty Books] LIVE VARIANT PRICES: Painting in the Calouste Gulbenkian Museum \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:53] CACHE HIT status=200 elapsed=0.0s bytes=855073 \n[Liberty Books] [21:44:54] GET_JSON: https://libertybooks.com/products/golden-ink-2170.js\n[Liberty Books] [21:44:54] CACHE HIT: https://libertybooks.com/products/golden-ink-2170.js\n[Liberty Books] LIVE VARIANT PRICES: Golden Ink \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:54] CACHE HIT status=200 elapsed=0.0s bytes=852590 \n[Liberty Books] [21:44:55] GET_JSON: https://libertybooks.com/products/the-landscape-of-man-2169.js\n[Liberty Books] [21:44:55] CACHE HIT: https://libertybooks.com/products/the-landscape-of-man-2169.js\n[Liberty Books] LIVE VARIANT PRICES: The Landscape of Man \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:55] CACHE HIT status=200 elapsed=0.0s bytes=799629 \n[Liberty Books] [21:44:55] GET_JSON: https://libertybooks.com/products/the-invisible-masters-2168.js\n[Liberty Books] [21:44:55] CACHE HIT: https://libertybooks.com/products/the-invisible-masters-2168.js\n[Liberty Books] LIVE VARIANT PRICES: The Invisible Masters \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:55] CACHE HIT status=200 elapsed=0.0s bytes=852716 \n[Liberty Books] [21:44:56] GET_JSON: https://libertybooks.com/products/60-remarkable-rooms-of-the-national-trust-2167.js\n[Liberty Books] [21:44:56] CACHE HIT: https://libertybooks.com/products/60-remarkable-rooms-of-the-national-trust-2167.js\n[Liberty Books] LIVE VARIANT PRICES: 60 Remarkable Rooms of the National Trust \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:56] CACHE HIT status=200 elapsed=0.0s bytes=854153 \n[Liberty Books] [21:44:56] GET_JSON: https://libertybooks.com/products/david-chipperfield-architects-2166.js\n[Liberty Books] [21:44:56] CACHE HIT: https://libertybooks.com/products/david-chipperfield-architects-2166.js\n[Liberty Books] LIVE VARIANT PRICES: David Chipperfield Architects \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:56] CACHE HIT status=200 elapsed=0.0s bytes=852745 \n[Liberty Books] [21:44:57] GET_JSON: https://libertybooks.com/products/2g-95-2165.js\n[Liberty Books] [21:44:57] CACHE HIT: https://libertybooks.com/products/2g-95-2165.js\n[Liberty Books] LIVE VARIANT PRICES: 2G 95 \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:57] CACHE HIT status=200 elapsed=0.0s bytes=851355 \n[Liberty Books] [21:44:57] GET_JSON: https://libertybooks.com/products/domus-terrae-2164.js\n[Liberty Books] [21:44:57] CACHE HIT: https://libertybooks.com/products/domus-terrae-2164.js\n[Liberty Books] LIVE VARIANT PRICES: Domus Terrae \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:57] CACHE HIT status=200 elapsed=0.0s bytes=798373 \n[Liberty Books] [21:44:58] GET_JSON: https://libertybooks.com/products/the-newspaper-girls-2163.js\n[Liberty Books] [21:44:58] CACHE HIT: https://libertybooks.com/products/the-newspaper-girls-2163.js\n[Liberty Books] LIVE VARIANT PRICES: The Newspaper Girls \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:58] CACHE HIT status=200 elapsed=0.0s bytes=852787 \n[Liberty Books] [21:44:59] GET_JSON: https://libertybooks.com/products/epic-2162.js\n[Liberty Books] [21:44:59] CACHE HIT: https://libertybooks.com/products/epic-2162.js\n[Liberty Books] LIVE VARIANT PRICES: Epic \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:44:59] CACHE HIT status=200 elapsed=0.0s bytes=854152 \n[Liberty Books] [21:45:00] GET_JSON: https://libertybooks.com/products/did-harry-do-it-2161.js\n[Liberty Books] [21:45:00] CACHE HIT: https://libertybooks.com/products/did-harry-do-it-2161.js\n[Liberty Books] LIVE VARIANT PRICES: Did Harry Do It? \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:45:00] CACHE HIT status=200 elapsed=0.0s bytes=852140 \n[Liberty Books] [21:45:00] GET_JSON: https://libertybooks.com/products/quantum-2-0-2160.js\n[Liberty Books] [21:45:00] CACHE HIT: https://libertybooks.com/products/quantum-2-0-2160.js\n[Liberty Books] LIVE VARIANT PRICES: Quantum 2.0 \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:45:00] CACHE HIT status=200 elapsed=0.0s bytes=854916 \n[Liberty Books] [21:45:01] GET_JSON: https://libertybooks.com/products/my-book-of-days-2159.js\n[Liberty Books] [21:45:01] CACHE HIT: https://libertybooks.com/products/my-book-of-days-2159.js\n[Liberty Books] LIVE VARIANT PRICES: My Book of Days \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:45:01] CACHE HIT status=200 elapsed=0.0s bytes=855060 \n[Liberty Books] [21:45:02] GET_JSON: https://libertybooks.com/products/how-many-pikachus-would-it-take-to-power-a-lightbulb-2158.js\n[Liberty Books] [21:45:02] CACHE HIT: https://libertybooks.com/products/how-many-pikachus-would-it-take-to-power-a-lightbulb-2158.js\n[Liberty Books] LIVE VARIANT PRICES: How Many Pikachus Would It Take to Power a Lightbulb? \u2014 1 checked; 0 refreshed\n[Liberty Books] [21:45:02] CACHE HIT status=200 elapsed=0.0s bytes=855059 "
+    }
+  ]
+}
