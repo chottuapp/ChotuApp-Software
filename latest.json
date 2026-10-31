@@ -1221,6 +1221,26 @@
       "refresh_generation": "refresh20261030-31dd8bb1",
       "replaced_file": null,
       "file_name": "House of Tools.xlsx"
+    },
+    "Fresh Basket": {
+      "shop_code": "SE10060",
+      "source_run": "41127366241",
+      "sha256": "e516b807c188c85e6043a0fb0c81549cd8dc374598055297ebe19f6967a7c6a6",
+      "source_sha256": "d91844a209cf2dc94ec71af4bda5b28b81c3ab74835f6eb837a2db26b0e369e6",
+      "folder": "ChotuApp 19-10-2026 11-36AM",
+      "verified_utc": "2026-10-31T11:04:53.280951+00:00",
+      "audit804": {
+        "name": "804 Audit",
+        "status": "pass",
+        "checked_utc": "2026-10-31T11:01:23.563496+00:00",
+        "products_checked": 1328,
+        "workbook_sha256": "e516b807c188c85e6043a0fb0c81549cd8dc374598055297ebe19f6967a7c6a6"
+      },
+      "rule804": "applied; 804 Audit passed",
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "refresh_generation": "refresh20261030-31dd8bb1",
+      "replaced_file": null,
+      "file_name": "Fresh Basket.xlsx"
     }
   },
   "daily_uploads": {
@@ -2712,6 +2732,26 @@
         "refresh_generation": "refresh20261030-31dd8bb1",
         "replaced_file": null,
         "file_name": "House of Tools.xlsx"
+      },
+      "Fresh Basket": {
+        "shop_code": "SE10060",
+        "source_run": "41127366241",
+        "sha256": "e516b807c188c85e6043a0fb0c81549cd8dc374598055297ebe19f6967a7c6a6",
+        "source_sha256": "d91844a209cf2dc94ec71af4bda5b28b81c3ab74835f6eb837a2db26b0e369e6",
+        "folder": "ChotuApp 19-10-2026 11-36AM",
+        "verified_utc": "2026-10-31T11:04:53.280951+00:00",
+        "audit804": {
+          "name": "804 Audit",
+          "status": "pass",
+          "checked_utc": "2026-10-31T11:01:23.563496+00:00",
+          "products_checked": 1328,
+          "workbook_sha256": "e516b807c188c85e6043a0fb0c81549cd8dc374598055297ebe19f6967a7c6a6"
+        },
+        "rule804": "applied; 804 Audit passed",
+        "campaign_id": "fresh804-20261026-5d42fe35",
+        "refresh_generation": "refresh20261030-31dd8bb1",
+        "replaced_file": null,
+        "file_name": "Fresh Basket.xlsx"
       }
     }
   },
@@ -2859,7 +2899,7 @@
     "Rios": "source:c40bbad72c8c85669ad90ed103d80ae5a7a342b0b926e23614246eadc500a751:Rios:08537308c86f55f7d131c1895675a7d07f50c7550da4adba7f14768e83ab6ef1",
     "Edenrobe": "source:399a01b5a00b28c6420014d9ac705db8f25b67ff24bf5a49367fea839ae92df3:Edenrobe:08537308c86f55f7d131c1895675a7d07f50c7550da4adba7f14768e83ab6ef1",
     "Limelight": "source:63ee1798171f06b893e86829ff232af99fb9009331c8f8a53c9664fe0c1ed085:Limelight:08537308c86f55f7d131c1895675a7d07f50c7550da4adba7f14768e83ab6ef1",
-    "Fresh Basket": "source:d91844a209cf2dc94ec71af4bda5b28b81c3ab74835f6eb837a2db26b0e369e6:Fresh Basket:b137fc3ef3a49a203aef576182b5f6525f65d2e1761919b3af507d1b9278122d",
+    "Fresh Basket": "source:d91844a209cf2dc94ec71af4bda5b28b81c3ab74835f6eb837a2db26b0e369e6:Fresh Basket:567de49bf3659ef6be4903fad496f4f501bef2a3b0ccf0bca2d7a9ca186bf274",
     "The Glossy Quill": "source:ca46d65833a64be8619ba047861c8499bf3b594441c68036f4411b8ca5fbb1df:The Glossy Quill:b137fc3ef3a49a203aef576182b5f6525f65d2e1761919b3af507d1b9278122d",
     "Bin Fahad": "source:c34429b0476dad10e1423003047069cbbf7ac68e8c25da3d5703b06acbce0685:Bin Fahad:b137fc3ef3a49a203aef576182b5f6525f65d2e1761919b3af507d1b9278122d",
     "Dairy Dream": "source:8b6bd1bfbe93c7ae511cdbf8e740ebecc77e28361e09070aee304a238478d334:Dairy Dream:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e",
@@ -5895,715 +5935,21 @@
       "store": "Fresh Basket",
       "shop_code": "SE10060",
       "identity_policy": "confirmed_code",
-      "status": "hold",
+      "status": "pass",
       "products_checked": 1328,
-      "findings_count": 76,
-      "findings": [
-        {
-          "product_id": "CP8a7692d7dd3a",
-          "name": "Takis - Smokin BBQ (92.3g)",
-          "source_url": "https://freshbasket.com.pk/products/takis-smokin-bbq-92-3g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP20baa402a3a5",
-          "name": "Dipitt - Promo Trio Pack (900g)",
-          "source_url": "https://freshbasket.com.pk/products/dipitt-promo-trio-pack-900g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPc70fb646a0f9",
-          "name": "Haf's - Zeera Goli 200gm",
-          "source_url": "https://freshbasket.com.pk/products/hafs-zeera-goli-200gm",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP14dfa87464e5",
-          "name": "Wrapster - Wholemeal Small (12Pc)",
-          "source_url": "https://freshbasket.com.pk/products/wrapster-wholemeal-small-12pc",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP25c14190fc04",
-          "name": "Loacker - Classic Napolitaner 45g",
-          "source_url": "https://freshbasket.com.pk/products/loacker-classic-napolitaner-45g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPe39ea6ee49b1",
-          "name": "Takis - Mini Fuego 35g",
-          "source_url": "https://freshbasket.com.pk/products/takis-mini-fuego-35g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPaf04c126203f",
-          "name": "Fit Foods - Sinless Kit Kat Bites",
-          "source_url": "https://freshbasket.com.pk/products/fit-foods-sinless-kit-kat-bites",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP0db5fec62a84",
-          "name": "Fit Foods - Sinless Snicker Bites",
-          "source_url": "https://freshbasket.com.pk/products/fit-foods-sinless-snicker-bites",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPbdc50a022f93",
-          "name": "Takis - Fuego (56g)",
-          "source_url": "https://freshbasket.com.pk/products/takis-hot-chilli-pepper-lime-chips-56g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP515159c3e606",
-          "name": "Waffles (Kitchen 71) - Classic",
-          "source_url": "https://freshbasket.com.pk/products/kitchen-71-classic-waffles",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP7de491cfbe18",
-          "name": "Marias - Classic",
-          "source_url": "https://freshbasket.com.pk/products/marias-classic",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPc20968016edd",
-          "name": "Haf's - Anar Dana Goli (200g)",
-          "source_url": "https://freshbasket.com.pk/products/hafs-anar-dana-goli-200g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP7b74911415fa",
-          "name": "Fitlicious - Chia Flax Bar (4Bars)",
-          "source_url": "https://freshbasket.com.pk/products/fitlicious-chia-flax-bar-4bars",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP4f08a516c92c",
-          "name": "Fruitamins - Yellow Peaches (850g)",
-          "source_url": "https://freshbasket.com.pk/products/fruitamins-yellow-peaches-850g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPbd5e5219a869",
-          "name": "B.Gutsy - Tropical Fusion (250ml)",
-          "source_url": "https://freshbasket.com.pk/products/b-gutsy-tropical-fusion-250ml",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP0c0ae4a0c8ea",
-          "name": "B.Gutsy - Immunity Boost (250ml)",
-          "source_url": "https://freshbasket.com.pk/products/b-gutsy-immunity-boost-250ml",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP9dd827c0bb2f",
-          "name": "That Guy Arif - Burger Pickles (250g)",
-          "source_url": "https://freshbasket.com.pk/products/that-guy-arif-burger-pickles-250g",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPc5f53a2ecae5",
-          "name": "Kelloggs - Froot Loops 150g",
-          "source_url": "https://freshbasket.com.pk/products/kelloggs-froot-loops-150g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP40569e8432e2",
-          "name": "Bone Broth Pk - Traditional Blend (330ml)",
-          "source_url": "https://freshbasket.com.pk/products/bone-broth-traditional-blend-330ml",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP9006978e8063",
-          "name": "Fit Scoop - Vanilla",
-          "source_url": "https://freshbasket.com.pk/products/fit-scoop-vanilla",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPd12d3f741bfb",
-          "name": "Kallar kahar - Extra Vigin Oil Signature Press (250ml)",
-          "source_url": "https://freshbasket.com.pk/products/kallar-kahar-extra-vigin-oil-signature-press-250ml",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPb9a98dd2eb04",
-          "name": "Loacker - Creme Noisette (100g)",
-          "source_url": "https://freshbasket.com.pk/products/loacker-creme-noisette-100g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP32e768eeb4b2",
-          "name": "Nescafe - Gold Blend Alta Rica (95g)",
-          "source_url": "https://freshbasket.com.pk/products/nescafe-gold-blend-alta-rica-95g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP4e974a6aada2",
-          "name": "Jacobs - Gold (95g)",
-          "source_url": "https://freshbasket.com.pk/products/jacobs-gold-95g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPb40ac66d3789",
-          "name": "Chicago Mix (100g)",
-          "source_url": "https://freshbasket.com.pk/products/chicago-mix-100g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP127781959367",
-          "name": "Takis - Mini Bule Heat (35g)",
-          "source_url": "https://freshbasket.com.pk/products/takis-mini-bule-heat-35g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP4df260e3bce3",
-          "name": "Kings - Hunter Spicy",
-          "source_url": "https://freshbasket.com.pk/products/kings-hunter-spicy",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP39707593a5b4",
-          "name": "Goldfish - Explosion De Pizza (180g)",
-          "source_url": "https://freshbasket.com.pk/products/goldfish-explosion-de-pizza-180g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP35e091b706c9",
-          "name": "De Nigris - Balsamic Vingar Of Modena (250ml)",
-          "source_url": "https://freshbasket.com.pk/products/de-nigris-balsamic-vingar-of-modena-250ml",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP50fab51c6e7d",
-          "name": "Bone Broth Pk - Signature Blend (330ml)",
-          "source_url": "https://freshbasket.com.pk/products/bone-broth-signature-blend-330ml",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP76e6c8142628",
-          "name": "Loacker - Quadratini Vanilla (125g)",
-          "source_url": "https://freshbasket.com.pk/products/loacker-quadratini-vanilla-125g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP7182babe79b3",
-          "name": "Nescafe - Gold Blend (95g)",
-          "source_url": "https://freshbasket.com.pk/products/nescafe-gold-blend-95g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP85267b831561",
-          "name": "Loacker - Quadratini Napolitaner (125g)",
-          "source_url": "https://freshbasket.com.pk/products/loacker-quadratini-napolitaner-125g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP7396b8c481ee",
-          "name": "Nescafe - Cap Colombia (95g)",
-          "source_url": "https://freshbasket.com.pk/products/nescafe-cap-colombia-95g",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPbf80914da41a",
-          "name": "Nature's Hug - Super Food Boost (200g)",
-          "source_url": "https://freshbasket.com.pk/products/natures-hug-super-food-boost-200g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP75d3152d30bb",
-          "name": "Fusion Mix (200g)",
-          "source_url": "https://freshbasket.com.pk/products/fusion-mix-200g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP3c8703ee2aaf",
-          "name": "Nescafe - Matinal Suave (200g)",
-          "source_url": "https://freshbasket.com.pk/products/nescafe-matinal-suave-200g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPd6de643b2698",
-          "name": "American Green - Foul Medammas (380g)",
-          "source_url": "https://freshbasket.com.pk/products/american-green-foul-medammas-380g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP5213b19e28aa",
-          "name": "Nestle - Nescafe Gold (190g)",
-          "source_url": "https://freshbasket.com.pk/products/nestle-nescafe-gold-190g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP4da569321682",
-          "name": "Yopokki - Rose Spicy Cup (120g)",
-          "source_url": "https://freshbasket.com.pk/products/yopokki-rose-spicy-cup-120g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP9d02ac47517d",
-          "name": "Opa - 4 Way Mix (500g)",
-          "source_url": "https://freshbasket.com.pk/products/opa-4-way-mix-500g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP33dd7429f464",
-          "name": "Lurpak - Slightly Salted Spreadable (250g)",
-          "source_url": "https://freshbasket.com.pk/products/lurpak-slightly-salted-spreadable-250g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPfc377f5eefa1",
-          "name": "Lavazza - Qualita Rossa Pack (250g)",
-          "source_url": "https://freshbasket.com.pk/products/lavazza-qualita-rossa-pack-250g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP946eb57f0212",
-          "name": "Nescafe - Classsic (2g)",
-          "source_url": "https://freshbasket.com.pk/products/nescafe-classsic-2g-1",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP56e82a24a70f",
-          "name": "Movenpick - Gold Decaf (100g)",
-          "source_url": "https://freshbasket.com.pk/products/movenpick-gold-decaf-100g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP0c1ebdb83298",
-          "name": "Barbican - Tropical Flavour (330ml)",
-          "source_url": "https://freshbasket.com.pk/products/barbican-tropical-flavour-330ml",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP971427371937",
-          "name": "Opa - 3 Way Mix (500g)",
-          "source_url": "https://freshbasket.com.pk/products/opa-3-way-mix-500g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP16dbb589ac58",
-          "name": "Italiano Glucose Syrp 400gm",
-          "source_url": "https://freshbasket.com.pk/products/italiano-glucose-syrp-400gm",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP60f6f4473295",
-          "name": "Bon Aroma - Gold (50g)",
-          "source_url": "https://freshbasket.com.pk/products/bon-aroma-gold-50g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP6aefdb1a54b7",
-          "name": "Bon Aroma - Classic Sachet (2g)",
-          "source_url": "https://freshbasket.com.pk/products/bon-aroma-classic-sachet-2g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPba12fafff7be",
-          "name": "Lotus - Biscoff (250g)",
-          "source_url": "https://freshbasket.com.pk/products/lotus-biscoff-250g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP8b427fc1d55b",
-          "name": "Novi - Mixed Vegetables (400g)",
-          "source_url": "https://freshbasket.com.pk/products/novi-mixed-vegetables-400g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP9736f6e46014",
-          "name": "President - Fat Free Slices (200g)",
-          "source_url": "https://freshbasket.com.pk/products/president-fat-free-slices-200g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPbd65c3a0d939",
-          "name": "Philadelphia - Light - 180g",
-          "source_url": "https://freshbasket.com.pk/products/philadelphia-light-180g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP075168196af3",
-          "name": "Happy Cow - Regular (200g)",
-          "source_url": "https://freshbasket.com.pk/products/happy-cow-regular-200g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP11e4bd344fb9",
-          "name": "Bon Aroma - Gold (100g)",
-          "source_url": "https://freshbasket.com.pk/products/bon-aroma-gold-100g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP2c27a8138d76",
-          "name": "Bon Aroma - Classic (200g)",
-          "source_url": "https://freshbasket.com.pk/products/bon-aroma-classic-200g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPdb33d1e8f200",
-          "name": "Loacker - Classic Cremkakao 45g",
-          "source_url": "https://freshbasket.com.pk/products/loacker-classic-cremkakao-45g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP4d1ce5e92156",
-          "name": "Loacker - Classic Vanilla 45g",
-          "source_url": "https://freshbasket.com.pk/products/loacker-classic-vanilla-45g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP8c3eca999565",
-          "name": "Movenpick - Gold Original (100g)",
-          "source_url": "https://freshbasket.com.pk/products/movenpick-gold-original-100g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP7eca18a7a71b",
-          "name": "Nescafe - Classic (50g)",
-          "source_url": "https://freshbasket.com.pk/products/nescafe-classic-50g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP4d6184e62f32",
-          "name": "Maliban - Krisco 170g",
-          "source_url": "https://freshbasket.com.pk/products/maliban-krisco-170g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPdc5723805154",
-          "name": "Lurpak - Unsalted Spreadable (250g)",
-          "source_url": "https://freshbasket.com.pk/products/lurpak-unsalted-spreadable-250g-1",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPb7a8e6d86a8a",
-          "name": "Yes Chef - Thai Red Curry 200g",
-          "source_url": "https://freshbasket.com.pk/products/yes-chef-thai-red-curry-40g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP2241f38387cd",
-          "name": "Nescafe - Gold (100g)",
-          "source_url": "https://freshbasket.com.pk/products/nescafe-gold-100g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP9da1896c141a",
-          "name": "Nescafe - Gold (50g)",
-          "source_url": "https://freshbasket.com.pk/products/nescafe-gold-50g-1",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP712057654124",
-          "name": "Nakuldana - Small (250g)",
-          "source_url": "https://freshbasket.com.pk/products/nakuldana-small-250g",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPfc8540c2e061",
-          "name": "Nakuldana - Big (250g)",
-          "source_url": "https://freshbasket.com.pk/products/nakuldana-big-250g",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP959f55e6273c",
-          "name": "Gond Katira - (250g)",
-          "source_url": "https://freshbasket.com.pk/products/gond-katira-250g",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPa05bb8b2bef9",
-          "name": "Movenpick - Gold Intense (100g)",
-          "source_url": "https://freshbasket.com.pk/products/movenpick-gold-intense-100g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP4ab06004da78",
-          "name": "Gond - (250g)",
-          "source_url": "https://freshbasket.com.pk/products/gond-250g",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP48f5dd72ae1d",
-          "name": "Emma - Loaded Bars",
-          "source_url": "https://freshbasket.com.pk/products/emma-loaded-bars",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPb7bd75983abb",
-          "name": "Happy Cow - Burger (200g)",
-          "source_url": "https://freshbasket.com.pk/products/happy-cow-burger-200g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CPd6bf978ddcba",
-          "name": "Happy Cow - Toast (200g)",
-          "source_url": "https://freshbasket.com.pk/products/happy-cow-toast-200g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP87a908da06e0",
-          "name": "Happy Cow - Sandwich (200g)",
-          "source_url": "https://freshbasket.com.pk/products/happy-cow-sandwich-200g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP84622c111b99",
-          "name": "Almarai - Sandwich 10 Slices (200g)",
-          "source_url": "https://freshbasket.com.pk/products/almarai-sandwich-10-slices-200g",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
-          ]
-        }
-      ],
+      "findings_count": 0,
+      "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "3746e175768fd1730142b75b9b89148e17134c27fdbdcf2abc97686aeecfb872",
-      "checked_utc": "2026-10-31T10:15:57.921510+00:00",
+      "workbook_sha256": "e516b807c188c85e6043a0fb0c81549cd8dc374598055297ebe19f6967a7c6a6",
+      "checked_utc": "2026-10-31T11:01:23.563496+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
-        "stage": "correction_pending_source_recheck",
-        "unfinished": true,
-        "owner": "804 automated recovery",
-        "opened_utc": "2026-10-31T02:48:59.669494+00:00",
-        "updated_utc": "2026-10-31T10:15:57.923114+00:00",
-        "next_source_check_due_utc": "2026-10-31T10:30:57.923114+00:00",
-        "actions": [
-          "Refresh exact public product facts",
-          "Apply supported description and category repairs",
-          "Rerun independent all-row audit",
-          "Upload and verify only after audit passes"
-        ],
-        "issues": [
-          "Category blank or unresolved",
-          "Description lacks enough product-specific content for review"
-        ],
-        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
-      "description_repairs_count": 974,
+      "description_repairs_count": 1046,
       "description_repairs_examples": [
         {
           "product_id": "CPd9cd6f15c674",
@@ -7152,8 +6498,8 @@
     "SE10055": "inputs/fresh804-20261026-5d42fe35/rollback-se10055/3191ba151b99ab4b/manifest.json",
     "SE10056": "inputs/fresh804-20261026-5d42fe35/rollback-se10056/fbcdd9551319e9ef/manifest.json"
   },
-  "audit804_last_store": "Skin Factor",
-  "audit804_progress_utc": "2026-10-31T10:58:49.445201+00:00",
+  "audit804_last_store": "Fresh Basket",
+  "audit804_progress_utc": "2026-10-31T11:04:53.281529+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
@@ -8119,21 +7465,6 @@
     },
     {
       "store": "Fresh Basket",
-      "product_id": "CP4df260e3bce3",
-      "source_url": "https://freshbasket.com.pk/products/kings-hunter-spicy",
-      "requested_name": "Kings - Hunter Spicy",
-      "public_title": "Kings - Hunter Spicy",
-      "product_type": "Frozen",
-      "description": "",
-      "evidence_run": "41191812551",
-      "checked_utc": "2026-10-31T10:15:01.979989+00:00",
-      "published_tags": [
-        "Category_KARACHI/Frozen",
-        "Chicken seafood meat"
-      ]
-    },
-    {
-      "store": "Fresh Basket",
       "product_id": "CP4e974a6aada2",
       "source_url": "https://freshbasket.com.pk/products/jacobs-gold-95g",
       "requested_name": "Jacobs - Gold (95g)",
@@ -8514,12 +7845,43 @@
         "Category_KARACHI/Dairy",
         "cheese"
       ]
+    },
+    {
+      "store": "Fresh Basket",
+      "product_id": "CP4df260e3bce3",
+      "source_url": "https://freshbasket.com.pk/products/kings-hunter-spicy",
+      "requested_name": "Kings - Hunter Spicy",
+      "public_title": "Kings - Hunter Spicy",
+      "product_type": "Frozen",
+      "description": "",
+      "evidence_run": "41192437328",
+      "checked_utc": "2026-10-31T10:22:03.346600+00:00",
+      "published_tags": [
+        "Category_KARACHI/Frozen",
+        "Chicken seafood meat"
+      ]
+    },
+    {
+      "store": "Fresh Basket",
+      "product_id": "CPba12fafff7be",
+      "source_url": "https://freshbasket.com.pk/products/lotus-biscoff-250g",
+      "requested_name": "Lotus - Biscoff (250g)",
+      "public_title": "Lotus - Biscoff (250g)",
+      "product_type": "Pantry",
+      "description": "Lotus - Biscoff (250g)",
+      "evidence_run": "41192437328",
+      "checked_utc": "2026-10-31T10:22:03.346600+00:00",
+      "published_tags": [
+        "breakfast options",
+        "Category_KARACHI/Pantry",
+        "honey jam spreads"
+      ]
     }
   ],
   "audit804_auto_evidence": {
     "status": "checked",
-    "facts": 102,
-    "digest": "0f9d1f84b6569b61dea27bfa73f83fa4ce01eb23392a038b3809d6fcb345472e"
+    "facts": 103,
+    "digest": "75bc1d28292a865c79df815d6700e886bb016235348058fc74b5c2deddb1a025"
   },
   "previous_audit804_campaign": {
     "campaign_id": "fresh804-20261026-a3f0b983",
