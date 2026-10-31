@@ -19,7 +19,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install requests beautifulsoup4 openpyxl
-      - run: PYTHONPATH=tests:cloud:. python -m unittest test_pending_fetch_recovery -q
+      - run: PYTHONPATH=tests:cloud:. python -m unittest test_pending_fetch_recovery test_magento_source -q
       - env:
           GH_TOKEN: ${{ github.token }}
           PYTHONPATH: cloud:.

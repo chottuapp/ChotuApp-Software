@@ -35,7 +35,7 @@ def normalize(raw,base=BASE,*,parent=None,permalink=None):
  kind=raw.get('__typename');identity=raw.get('id');stock=raw.get('stock_status')
  if not isinstance(identity,int) or not raw.get('sku') or not raw.get('name'):raise ValueError('Magento product identity missing')
  if stock not in ('IN_STOCK','OUT_OF_STOCK'):raise ValueError('Magento availability unknown')
- if kind not in ('SimpleProduct','ConfigurableProduct'):raise ValueError('Unsupported Magento type: '+str(kind))
+ if kind not in ('SimpleProduct','ConfigurableProduct','VirtualProduct'):raise ValueError('Unsupported Magento type: '+str(kind))
  custom=custom_options(raw.get('options'))
  if permalink is None:
   key=raw.get('url_key');suffix=raw.get('url_suffix')
@@ -47,6 +47,8 @@ def normalize(raw,base=BASE,*,parent=None,permalink=None):
   if url.startswith('https://') and url not in [i['src'] for i in photos]:photos.append(dict(src=url))
  result=dict(id=identity,sku=raw['sku'],name=raw['name'],type='variation' if parent else 'variable' if kind=='ConfigurableProduct' else 'simple',parent=parent,permalink=permalink,is_in_stock=stock=='IN_STOCK',is_purchasable=stock=='IN_STOCK',is_on_backorder=False,prices=prices(raw),images=photos,description=(raw.get('description') or {}).get('html',''),short_description=(raw.get('short_description') or {}).get('html',''),categories=[dict(name=c['name']) for c in raw.get('categories',[]) if c.get('name')],condition='used' if re.search(r'\bused\b',raw['name'],re.I) else '')
  result['custom_options']=custom
+ result['virtual']=kind=='VirtualProduct'
+ result['magento_product_type']=kind
  if kind=='ConfigurableProduct':
   options=raw.get('configurable_options') or []
   if not options or not 1<=len(options)<=3:raise ValueError('Unsupported configurable dimensions')

@@ -9,6 +9,16 @@ from woocommerce_source_support import offer,variants,export
 class MagentoTests(unittest.TestCase):
  def product(self):
   return dict(__typename='SimpleProduct',id=10,sku='USED-1',name='Lenovo Used Laptop',url_key='lenovo-used-laptop',url_suffix='.html',stock_status='IN_STOCK',price_range=dict(minimum_price=dict(regular_price=dict(value=59500,currency='PKR'),final_price=dict(value=58500,currency='PKR'))),description=dict(html='<p>Processor: Core i5</p><p>Memory: 16 GB</p>'),short_description=dict(html='<p>SSD: 256 GB</p>'),image=dict(url=BASE+'/media/laptop.jpg'),media_gallery=[],categories=[dict(name='Used Laptops')],options=[])
+ def test_virtual_product_keeps_explicit_offer_without_physical_or_stock_inference(self):
+  raw=self.product();raw.update(__typename='VirtualProduct',name='Software Licence',sku='LICENCE-1');p=normalize(raw)
+  self.assertTrue(p['virtual']);self.assertEqual(p['magento_product_type'],'VirtualProduct');self.assertEqual(p['sku'],'LICENCE-1');self.assertEqual(offer(p)[:2],(59500,58500));self.assertNotIn('stock_quantity',p)
+  raw['stock_status']='OUT_OF_STOCK';self.assertFalse(normalize(raw)['is_in_stock'])
+  raw['stock_status']=None
+  with self.assertRaises(ValueError):normalize(raw)
+ def test_unknown_magento_product_kinds_still_fail_closed(self):
+  for kind in ['BundleProduct','DownloadableProduct',None]:
+   raw=self.product();raw['__typename']=kind
+   with self.subTest(kind=kind),self.assertRaisesRegex(ValueError,'Unsupported Magento type'):normalize(raw)
  def test_missing_sku_index_uses_exact_url_key_and_keeps_offer_identity(self):
   from unittest.mock import Mock
   raw=self.product();reader=PublicCatalog({},BASE,lambda _:None);reader.byid[10]=copy.deepcopy(raw);reader.robot=SimpleNamespace(can_fetch=lambda *a:False)
