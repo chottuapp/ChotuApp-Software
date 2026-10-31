@@ -1,10 +1,12 @@
 {
-  "run_id": "41149247973",
-  "checked_utc": "2026-10-31T00:16:36.398019+00:00",
+  "run_id": "41149690964",
+  "checked_utc": "2026-10-31T00:21:38.635149+00:00",
   "complete": true,
   "next_cursor": 0,
   "recent_checks": {
-    "House of Tools|6306": "2026-10-31T00:16:36.397944+00:00"
+    "House of Tools|6306": "2026-10-31T00:21:35.213723+00:00",
+    "Xcessories Hub|84396": "2026-10-31T00:21:35.318629+00:00",
+    "Gift4U|public-source-probe": "2026-10-31T00:21:38.635115+00:00"
   },
   "results": [
     {
@@ -12,6 +14,15 @@
       "product_id": "6306",
       "source_url": "https://houseoftools.com.pk/product/mitre-saw-input-power-1800wwxd151800/",
       "name": "mitre-saw-input-power-1800wwxd151800",
+      "store_api_product": {
+        "id": 6306,
+        "name": "Mitre saw Input power: 1800WWXD151800",
+        "permalink": "https://houseoftools.com.pk/product/mitre-saw-input-power-1800wwxd151800/",
+        "type": "simple",
+        "images": [],
+        "description": "",
+        "short_description": "<p>Voltage: 220-240V~50/60Hz<br />\nInput power: 1800W<br />\nNo-load speed: 5000rpm Blade size: 255&#215;25.4mm Cutting capacity:<br />\n0?*0?: 135mm ? 70mm</p>"
+      },
       "public_media_probe": {
         "canonical": [
           "https://houseoftools.com.pk/product/mitre-saw-input-power-1800wwxd151800/"
@@ -88,6 +99,30 @@
         }
       ],
       "public_description_fragments": [],
+      "status": "review_evidence_collected"
+    },
+    {
+      "store": "Xcessories Hub",
+      "product_id": "84396",
+      "source_url": "https://xcessorieshub.com/product/choetech-quick-charge-3-0-18w-3a-usb-wall-charger-q5003/",
+      "name": "choetech-quick-charge-3-0-18w-3a-usb-wall-charger-q5003",
+      "error": "403 Client Error: Forbidden for url: https://xcessorieshub.com/robots.txt"
+    },
+    {
+      "store": "Gift4U",
+      "product_id": "public-source-probe",
+      "source_url": "https://gift4u.pk/",
+      "name": "Public catalog availability",
+      "public_catalog_checks": [
+        {
+          "endpoint": "/products.json?limit=1",
+          "error": "403 Client Error: Forbidden for url: https://gift4u.pk/products.json?limit=1"
+        },
+        {
+          "endpoint": "/wp-json/wc/store/v1/products?per_page=1",
+          "error": "403 Client Error: Forbidden for url: https://gift4u.pk/wp-json/wc/store/v1/products?per_page=1"
+        }
+      ],
       "status": "review_evidence_collected"
     }
   ]
