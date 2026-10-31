@@ -2642,7 +2642,8 @@
     "Fresh Basket": "source:d91844a209cf2dc94ec71af4bda5b28b81c3ab74835f6eb837a2db26b0e369e6:Fresh Basket:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e",
     "The Glossy Quill": "source:ca46d65833a64be8619ba047861c8499bf3b594441c68036f4411b8ca5fbb1df:The Glossy Quill:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e",
     "Bin Fahad": "source:c34429b0476dad10e1423003047069cbbf7ac68e8c25da3d5703b06acbce0685:Bin Fahad:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e",
-    "Dairy Dream": "source:8b6bd1bfbe93c7ae511cdbf8e740ebecc77e28361e09070aee304a238478d334:Dairy Dream:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e"
+    "Dairy Dream": "source:8b6bd1bfbe93c7ae511cdbf8e740ebecc77e28361e09070aee304a238478d334:Dairy Dream:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e",
+    "G7 Leather": "source:f55f4401817e7c390bb5ef22b5107e30d1cdb842dc434a807c796956e68427d8:G7 Leather:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -6984,6 +6985,75 @@
       "source_artifact": 13010004522,
       "source_sha256": "8b6bd1bfbe93c7ae511cdbf8e740ebecc77e28361e09070aee304a238478d334",
       "refresh_generation": "refresh20261030-31dd8bb1"
+    },
+    "G7 Leather": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "G7 Leather",
+      "shop_code": "SE10062",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 12,
+      "findings_count": 3,
+      "findings": [
+        {
+          "product_id": "CP3ce66159997d",
+          "name": "G7 Prestige",
+          "source_url": "https://gsevenleather.com/product/g7-prestige/",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP07a579f1ac6e",
+          "name": "G7 Milano",
+          "source_url": "https://gsevenleather.com/product/g7-milano/",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP2df0e91f796b",
+          "name": "G7 Eclipse \u2013 Slim Navy Leather Wallet",
+          "source_url": "https://gsevenleather.com/product/g7-eclipse-slim-leather-wallet/",
+          "issues": [
+            "Primary product type and Category disagree: trousers"
+          ]
+        }
+      ],
+      "details_truncated": false,
+      "workbook_sha256": "5deda0fa46289c24c5cc04b8e83dc77f8ee36021d56b122f48c28fd3ee0ebf4f",
+      "checked_utc": "2026-10-31T02:50:55.927416+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-31T02:50:55.927442+00:00",
+        "updated_utc": "2026-10-31T02:50:55.927442+00:00",
+        "next_source_check_due_utc": "2026-10-31T03:05:55.927442+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved",
+          "Primary product type and Category disagree: trousers"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "source_run": "41127892544",
+      "source_artifact": 13010744412,
+      "source_sha256": "f55f4401817e7c390bb5ef22b5107e30d1cdb842dc434a807c796956e68427d8",
+      "refresh_generation": "refresh20261030-31dd8bb1",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/g7-leather/f55f4401817e7c39/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -7170,7 +7240,9 @@
     "41122513969": "41122513969:13011247296:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e",
     "41127359995": "41127359995:13018556593:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e",
     "41127366241": "41127366241:13011882385:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e",
-    "41127372035": "41127372035:13012270041:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e"
+    "41127372035": "41127372035:13012270041:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e",
+    "41127377788": "41127377788:13010004522:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e",
+    "41127884128": "41127884128:13012327000:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-10-30T21:11:49.853857+00:00",
@@ -7249,8 +7321,8 @@
     "SE10055": "inputs/fresh804-20261026-5d42fe35/rollback-se10055/73cb55917ad74ba2/manifest.json",
     "SE10056": "inputs/fresh804-20261026-5d42fe35/rollback-se10056/fbcdd9551319e9ef/manifest.json"
   },
-  "audit804_last_store": "Dairy Dream",
-  "audit804_progress_utc": "2026-10-31T02:50:52.136531+00:00",
+  "audit804_last_store": "G7 Leather",
+  "audit804_progress_utc": "2026-10-31T02:50:57.844019+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Stylo",
