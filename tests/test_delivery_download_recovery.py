@@ -52,3 +52,31 @@ class DownloadRecoveryTests(unittest.TestCase):
   with patch('drive_sync.subprocess.run',return_value=SimpleNamespace(returncode=1,stderr='HTTP 502: https://user:pass@example.com/file?token=secret')):
    with self.assertRaises(GitHubOperationError) as raised:gh('run','download','1')
   self.assertNotIn('user:pass',str(raised.exception));self.assertNotIn('token=secret',str(raised.exception));self.assertTrue(raised.exception.transient)
+
+class HeldRestoreRecoveryTests(unittest.TestCase):
+ def test_missing_manifest_keeps_receipts_and_reaches_original_artifact_fallback(self):
+  import requests
+  root=delivery.ROOT;config=json.loads((root/'cloud/drive-sync-release.json').read_text());store='Alkaram Studio';campaign=config['dispatcher'];generation=config['refresh_generation']
+  report={'status':'pass','store':store,'source_run':'1','source_sha256':'a'*64};receipt={'sha256':'verified','shop_code':''}
+  state={'audit804_campaign':campaign,'uploaded':{store:receipt},'audit804_results':{store:report}};seen=[]
+  runs=[{'databaseId':1,'displayTitle':'Cloud group audit804-'+campaign+'-'+generation+'-1'}]
+  def fetch(*args):
+   seen.append(args)
+   if args[0]=='api':return json.dumps({'artifacts':[{'id':7,'name':'chotuapp-excel-files'}]})
+   if args[:2]==('run','download'):return ''
+   raise AssertionError(args)
+  with patch('audit804_automation.refresh',return_value=('',0,[])),patch.object(delivery,'restore_held',side_effect=requests.HTTPError('404 missing manifest')),patch.object(delivery,'completed_files',return_value=[]):
+   delivery.run_campaign(state,config,runs,fetch,lambda *a:None)
+  self.assertTrue(any(a[:2]==('run','download') for a in seen));self.assertEqual(state['uploaded'][store],receipt);self.assertEqual(state['audit804_results'][store],report);self.assertNotIn(store,state['audit804_processed']);self.assertIn(store,state['audit804_source_restore_errors']);self.assertEqual(state['sync_status'],'pending_source_artifacts')
+ def test_corrupt_input_is_not_used_or_marked_processed(self):
+  state={'uploaded':{'A':{'sha256':'verified'}}}
+  with tempfile.TemporaryDirectory() as tmp:
+   out=Path(tmp)/'A.xlsx'
+   def corrupt(*args):out.write_bytes(b'partial');raise ValueError('Held workbook changed')
+   with patch.object(delivery,'restore_held',side_effect=corrupt):self.assertIsNone(delivery.restore_source('marker',out,'A','campaign',state))
+   self.assertFalse(out.exists());self.assertEqual(state['uploaded'],{'A':{'sha256':'verified'}})
+ def test_successful_restore_clears_prior_source_error(self):
+  state={'audit804_source_restore_errors':{'A':{'error':'old'}}}
+  with patch.object(delivery,'restore_held',return_value=Path('A.xlsx')):
+   self.assertEqual(delivery.restore_source('marker',Path('A.xlsx'),'A','campaign',state),Path('A.xlsx'))
+  self.assertEqual(state['audit804_source_restore_errors'],{})

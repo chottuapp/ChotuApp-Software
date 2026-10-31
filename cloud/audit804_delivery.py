@@ -120,6 +120,20 @@ def download_source(gh,rid,artifact_id,root,state,progress=None):
    if progress:progress(state)
    return None
 
+def restore_source(marker,out,store,campaign,state,progress=None):
+ """Keep a missing/corrupt held input isolated; try original artifacts afterwards."""
+ import requests,subprocess
+ try:
+  restored=restore_held(marker,out,store,campaign)
+ except (requests.RequestException,OSError,ValueError,subprocess.CalledProcessError) as exc:
+  from diagnostics import redact
+  Path(out).unlink(missing_ok=True)
+  state.setdefault('audit804_source_restore_errors',{})[store]={'store':store,'marker':marker,'checked_utc':datetime.now(timezone.utc).isoformat(),'error':redact(str(exc))[:1500],'action':'Recover original completed artifact; retain existing verified file and unresolved audit state'}
+  if progress:progress(state)
+  return None
+ state.setdefault('audit804_source_restore_errors',{}).pop(store,None)
+ return restored
+
 def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
  from importlib.util import spec_from_file_location,module_from_spec
  spec=spec_from_file_location('audit_groups',root/'catalog-tools/start_fresh26_rule804_drive_windows.py');helper=module_from_spec(spec);spec.loader.exec_module(helper)
@@ -150,6 +164,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
  state['audit804_campaign']=campaign;state.setdefault('audit804_results',{});state.setdefault('audit804_processed',{});identity=None
  def handle(source,store,source_run,artifact_id,cache_key):
   nonlocal identity
+  state.setdefault('audit804_source_restore_errors',{}).pop(store,None)
   prior=state['audit804_results'].get(store,{});source_sha=hashlib.sha256(source.read_bytes()).hexdigest();marker=prior.get('held_input') if prior.get('source_sha256')==source_sha else None;code=codes.get(store)
   if store=='LAAM':
    import base64
@@ -218,7 +233,8 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
     marker='inputs/'+campaign+'/'+slug(store)+'/'+report['source_sha256'][:16]+'/manifest.json'
    if not marker:continue
    with tempfile.TemporaryDirectory() as tmp:
-    source=restore_held(marker,Path(tmp)/(store+'.xlsx'),store,campaign);safe_handle(source,store,report.get('source_run','phone'),report.get('source_artifact'),key)
+    source=restore_source(marker,Path(tmp)/(store+'.xlsx'),store,campaign,state,progress)
+    if source is not None:safe_handle(source,store,report.get('source_run','phone'),report.get('source_artifact'),key)
   for run in reversed(runs):
    rid=str(run['databaseId']);artifacts=json.loads(gh('api','repos/chottuapp/ChotuApp-Software/actions/runs/'+rid+'/artifacts?per_page=100'))['artifacts'];found=[a for a in artifacts if a.get('name')=='chotuapp-excel-files' and not a.get('expired')]
    if not found:continue
@@ -258,5 +274,5 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
      if state['audit804_processed'].get('Khaadi')!=key:safe_handle(source,'Khaadi','phone',None,key)
  finally:
   if identity:identity.__exit__(None,None,None)
- state['sync_status']='pending_source_artifacts' if state.get('audit804_source_download_errors') else 'finished';state['audit804_checked_utc']=datetime.now(timezone.utc).isoformat()
+ state['sync_status']='pending_source_artifacts' if state.get('audit804_source_download_errors') or state.get('audit804_source_restore_errors') else 'finished';state['audit804_checked_utc']=datetime.now(timezone.utc).isoformat()
  return state
