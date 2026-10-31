@@ -1,0 +1,303 @@
+{
+  "run_id": "41193139397",
+  "checked_utc": "2026-10-31T10:32:23.342544+00:00",
+  "targets": [
+    {
+      "target": "41148843169",
+      "state": {
+        "conclusion": "failure",
+        "displayTitle": "Automatic continuation of 41130345875",
+        "headSha": "b2f5b7691ab80722c92a0aa178d1899b07078683",
+        "jobs": [
+          {
+            "completedAt": "2026-10-31T00:57:09Z",
+            "conclusion": "failure",
+            "databaseId": 124380251651,
+            "name": "fetch",
+            "startedAt": "2026-10-31T00:12:05Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-31T00:12:06Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-31T00:12:06Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:12:14Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-31T00:12:06Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:12:15Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-31T00:12:14Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:12:18Z",
+                "conclusion": "success",
+                "name": "Install extraction dependencies",
+                "number": 4,
+                "startedAt": "2026-10-31T00:12:15Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:12:20Z",
+                "conclusion": "success",
+                "name": "Restore optional saved run",
+                "number": 5,
+                "startedAt": "2026-10-31T00:12:18Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:12:20Z",
+                "conclusion": "skipped",
+                "name": "Install Czone browser fallback when needed",
+                "number": 6,
+                "startedAt": "2026-10-31T00:12:20Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:12:20Z",
+                "conclusion": "success",
+                "name": "Start continuous fetching on the cloud runner",
+                "number": 7,
+                "startedAt": "2026-10-31T00:12:20Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:56:59Z",
+                "conclusion": "success",
+                "name": "Live progress, logs and completed-file uploads",
+                "number": 8,
+                "startedAt": "2026-10-31T00:12:20Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:56:59Z",
+                "conclusion": "failure",
+                "name": "Fetch result",
+                "number": 9,
+                "startedAt": "2026-10-31T00:56:59Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:56:59Z",
+                "conclusion": "success",
+                "name": "Collect diagnostic report even if fetching failed",
+                "number": 10,
+                "startedAt": "2026-10-31T00:56:59Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:57:01Z",
+                "conclusion": "success",
+                "name": "Upload diagnostic report and redacted log",
+                "number": 11,
+                "startedAt": "2026-10-31T00:56:59Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:57:02Z",
+                "conclusion": "success",
+                "name": "Upload Excel files and audits, including completed stores from a partial run",
+                "number": 12,
+                "startedAt": "2026-10-31T00:57:01Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:57:02Z",
+                "conclusion": "skipped",
+                "name": "Final automated Rule 804 pass for fresh batch",
+                "number": 13,
+                "startedAt": "2026-10-31T00:57:02Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:57:02Z",
+                "conclusion": "skipped",
+                "name": "Upload automated Rule 804 fresh workbooks",
+                "number": 14,
+                "startedAt": "2026-10-31T00:57:02Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:57:05Z",
+                "conclusion": "success",
+                "name": "Upload saved checkpoint when available",
+                "number": 15,
+                "startedAt": "2026-10-31T00:57:02Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:57:06Z",
+                "conclusion": "success",
+                "name": "Dispatch authorized continuation after verified checkpoint upload",
+                "number": 16,
+                "startedAt": "2026-10-31T00:57:05Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:57:06Z",
+                "conclusion": "success",
+                "name": "Post Live progress, logs and completed-file uploads",
+                "number": 30,
+                "startedAt": "2026-10-31T00:57:06Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:57:06Z",
+                "conclusion": "skipped",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 31,
+                "startedAt": "2026-10-31T00:57:06Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:57:06Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 32,
+                "startedAt": "2026-10-31T00:57:06Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:57:06Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 33,
+                "startedAt": "2026-10-31T00:57:06Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41148843169/job/124380251651"
+          },
+          {
+            "completedAt": "2026-10-31T00:57:26Z",
+            "conclusion": "success",
+            "databaseId": 124393210265,
+            "name": "Archive structured diagnostics",
+            "startedAt": "2026-10-31T00:57:12Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-31T00:57:14Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-31T00:57:13Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:57:21Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-31T00:57:14Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:57:21Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-31T00:57:21Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:57:22Z",
+                "conclusion": "success",
+                "name": "Run actions/download-artifact@v4",
+                "number": 4,
+                "startedAt": "2026-10-31T00:57:21Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:57:24Z",
+                "conclusion": "success",
+                "name": "Archive credential-free JSON on the cloud-reports branch",
+                "number": 5,
+                "startedAt": "2026-10-31T00:57:22Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:57:24Z",
+                "conclusion": "success",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 9,
+                "startedAt": "2026-10-31T00:57:24Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:57:24Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 10,
+                "startedAt": "2026-10-31T00:57:24Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:57:24Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 11,
+                "startedAt": "2026-10-31T00:57:24Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41148843169/job/124393210265"
+          }
+        ],
+        "status": "completed"
+      },
+      "failed_log": "fetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3666661Z [Paklap] [00:56:50] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3668258Z [Paklap] [00:56:51] HTTP END status=200 elapsed=0.6s bytes=3970 https://www.paklap.pk/graphql?redacted\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3669499Z [Paklap] WOO PRODUCT PROGRESS: 1490/1634 checked; 1490 retained\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3670526Z [Paklap] [00:56:53] GET_JSON: https://www.paklap.pk/graphql?redacted\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3671614Z [Paklap] [00:56:53] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3672927Z [Paklap] [00:56:54] HTTP END status=200 elapsed=0.7s bytes=1533 https://www.paklap.pk/graphql?redacted\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3674474Z __CHOTU_PROGRESS__|1|Active: Paklap\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3675339Z [Paklap] [00:56:54] EXCEPTION: ValueError('Unsupported Magento type: VirtualProduct')\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3676291Z [Paklap] [00:56:54] Traceback (most recent call last):\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3687145Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2033, in _run_checked\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3688444Z     run_site(site['url'], name, template, log_line)\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3689857Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3691371Z     if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3692256Z                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3693542Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1526, in run_site\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3694986Z     _chotuapp_run_site_original(base, name, template, intercept)\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3696354Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3698177Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3700132Z                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3702338Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 245, in run\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3729059Z                                    ^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3730321Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 109, in read\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3731454Z     raw=items[0];product=normalize(raw,self.base)\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3732188Z                          ^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3733388Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 38, in normalize\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3735232Z     if kind not in ('SimpleProduct','ConfigurableProduct'):raise ValueError('Unsupported Magento type: '+str(kind))\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3736699Z                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3737715Z ValueError: Unsupported Magento type: VirtualProduct\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3738183Z \nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3738569Z [Paklap] FAILED: Paklap: Unsupported Magento type: VirtualProduct\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3739624Z [Paklap] [00:56:54] STAGE: Idle\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3740415Z FAILED: Paklap: FAILED: Paklap: Unsupported Magento type: VirtualProduct\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3741325Z False\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3742160Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3743661Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3744868Z RUN SUMMARY:\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3746027Z Paklap: FAILED \u2014 FAILED: Paklap: Unsupported Magento type: VirtualProduct\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3746821Z Checkpoint: saved\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3747781Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3779894Z ##[error]Process completed with exit code 2.\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3831228Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3831948Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3846179Z shell: /usr/bin/bash -e {0}\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3846506Z env:\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3846929Z   CHOTUAPP_CLOUD_DATA: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3847798Z   CLOUD_RUNNER_GROUP: audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-requested20261031-2-SE10058\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3848393Z   CLOUD_PARTITION_RESUME: true\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3848812Z   CLOUD_STORES: [{\"name\": \"Paklap\", \"url\": \"https://www.paklap.pk\"}]\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3849307Z   CLOUD_MINUTES: 300\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3849578Z   RESUME_RUN_ID: 41130345875\nfetch\tUNKNOWN STEP\t2026-10-31T00:56:59.3849871Z   SAVE_CHECKPOINT: true\nfetch\tUNKNOWN STEP\t2026-10-31T00:57:05.9532701Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-31T00:57:05.9533156Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-31T00:57:05.9533619Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-31T00:57:05.9534305Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib\nfetch\tUNKNOWN STEP\t2026-10-31T00:57:05.9534729Z   CLOUD_NEEDS_CZONE_BROWSER: false\n[credential-bearing log line removed]\nfetch\tUNKNOWN STEP\t2026-10-31T00:57:05.9537403Z ##[endgroup]\nfetch\tUNKNOWN STEP\t2026-10-31T00:57:06.6955616Z No continuation: completed, stopped manually, unauthorized or not a time-budget stop.\nfetch\tUNKNOWN STEP\t2026-10-31T00:57:06.7254713Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-10-31T00:57:06.7357765Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-10-31T00:57:06.8216580Z [command]/usr/bin/git version\nfetch\tUNKNOWN STEP\t2026-10-31T00:57:06.8258123Z git version 2.56.0\nfetch\tUNKNOWN STEP\t2026-10-31T00:57:06.8296442Z Temporarily overriding HOME='/home/runner/work/_temp/f0e7d8bd-27b8-4ef2-b901-8db54199573e' before making global git config changes\nfetch\tUNKNOWN STEP\t2026-10-31T00:57:06.8298074Z Adding repository directory to the temporary git global config as a safe directory\nfetch\tUNKNOWN STEP\t2026-10-31T00:57:06.8303750Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ChotuApp-Software/ChotuApp-Software\nfetch\tUNKNOWN STEP\t2026-10-31T00:57:06.8341966Z [command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\nfetch\tUNKNOWN STEP\t2026-10-31T00:57:06.8376403Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\nfetch\tUNKNOWN STEP\t2026-10-31T00:57:06.8605004Z [command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nfetch\tUNKNOWN STEP\t2026-10-31T00:57:06.8655887Z http.https://github.com/.extraheader",
+      "artifacts": [
+        {
+          "name": "chotuapp-excel-files",
+          "id": 13024015095,
+          "expired": false,
+          "size_in_bytes": 591
+        },
+        {
+          "name": "chotuapp-live-logs",
+          "id": 13024000122,
+          "expired": false,
+          "size_in_bytes": 47489
+        },
+        {
+          "name": "chotuapp-diagnostics",
+          "id": 13023935252,
+          "expired": false,
+          "size_in_bytes": 45785
+        },
+        {
+          "name": "chotuapp-checkpoint",
+          "id": 13023024700,
+          "expired": false,
+          "size_in_bytes": 54036505
+        }
+      ],
+      "annotations": [
+        {
+          "level": "warning",
+          "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+        },
+        {
+          "level": "failure",
+          "message": "Process completed with exit code 2."
+        }
+      ],
+      "console-tail.txt": "[Paklap] WOO PRODUCT PROGRESS: 1484/1634 checked; 1484 retained\n[Paklap] [00:56:42] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:42] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:42] HTTP END status=200 elapsed=0.7s bytes=4172 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1485/1634 checked; 1485 retained\n[Paklap] [00:56:43] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:43] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:44] HTTP END status=200 elapsed=0.7s bytes=4564 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1486/1634 checked; 1486 retained\n[Paklap] [00:56:45] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:45] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:46] HTTP END status=200 elapsed=0.6s bytes=5866 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1487/1634 checked; 1487 retained\n[Paklap] [00:56:46] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:46] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:47] HTTP END status=200 elapsed=0.7s bytes=3927 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1488/1634 checked; 1488 retained\n[Paklap] [00:56:48] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:48] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:49] HTTP END status=200 elapsed=0.7s bytes=3870 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1489/1634 checked; 1489 retained\n[Paklap] [00:56:50] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:50] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:51] HTTP END status=200 elapsed=0.6s bytes=3970 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1490/1634 checked; 1490 retained\n[Paklap] [00:56:53] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:53] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:54] HTTP END status=200 elapsed=0.7s bytes=1533 https://www.paklap.pk/graphql?redacted\n__CHOTU_PROGRESS__|1|Active: Paklap\n[Paklap] [00:56:54] EXCEPTION: ValueError('Unsupported Magento type: VirtualProduct')\n[Paklap] [00:56:54] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2033, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1526, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 245, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 216, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 141, in run\n    return export(g,base,name,template,log,provider=catalog)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 203, in export\n    try:current=get('/wp-json/wc/store/v1/products/'+str(p['id']))\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 177, in get\n    if provider is not None:return provider.read(path)\n                                   ^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 109, in read\n    raw=items[0];product=normalize(raw,self.base)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 38, in normalize\n    if kind not in ('SimpleProduct','ConfigurableProduct'):raise ValueError('Unsupported Magento type: '+str(kind))\n                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Unsupported Magento type: VirtualProduct\n\n[Paklap] FAILED: Paklap: Unsupported Magento type: VirtualProduct\n[Paklap] [00:56:54] STAGE: Idle\nFAILED: Paklap: FAILED: Paklap: Unsupported Magento type: VirtualProduct\nFalse\nCheckpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nCheckpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nRUN SUMMARY:\nPaklap: FAILED \u2014 FAILED: Paklap: Unsupported Magento type: VirtualProduct\nCheckpoint: saved\nRun finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+      "store-status.txt": "Updated (UTC): 2026-10-31T00:56:57.280436+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nPaklap: failed\n  Stage: Idle\n  Last successful HTTP response (UTC): 2026-10-31T00:56:54.163444+00:00",
+      "fetch-log.txt": "[Paklap] [00:55:47] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:55:48] HTTP END status=200 elapsed=0.7s bytes=19711 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1458/1634 checked; 1458 retained\n[Paklap] [00:55:50] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:55:50] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:55:50] HTTP END status=200 elapsed=0.7s bytes=4040 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1459/1634 checked; 1459 retained\n[Paklap] [00:55:52] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:55:52] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:55:53] HTTP END status=200 elapsed=0.7s bytes=3592 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1460/1634 checked; 1460 retained\n[Paklap] [00:55:54] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:55:54] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:55:55] HTTP END status=200 elapsed=0.7s bytes=3313 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1461/1634 checked; 1461 retained\n[Paklap] [00:55:56] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:55:56] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:55:57] HTTP END status=200 elapsed=0.7s bytes=3416 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1462/1634 checked; 1462 retained\n[Paklap] [00:55:58] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:55:58] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:55:59] HTTP END status=200 elapsed=0.7s bytes=3543 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1463/1634 checked; 1463 retained\n[Paklap] [00:56:00] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:00] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:01] HTTP END status=200 elapsed=0.7s bytes=3190 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1464/1634 checked; 1464 retained\n[Paklap] [00:56:02] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:02] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:03] HTTP END status=200 elapsed=0.7s bytes=1737 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1465/1634 checked; 1465 retained\n[Paklap] [00:56:04] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:04] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:05] HTTP END status=200 elapsed=0.6s bytes=7682 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1466/1634 checked; 1466 retained\n[Paklap] [00:56:06] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:06] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:07] HTTP END status=200 elapsed=0.7s bytes=2805 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1467/1634 checked; 1467 retained\n[Paklap] [00:56:08] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:08] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:09] HTTP END status=200 elapsed=0.7s bytes=7339 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1468/1634 checked; 1468 retained\n[Paklap] [00:56:10] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:10] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:10] HTTP END status=200 elapsed=0.7s bytes=6868 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1469/1634 checked; 1469 retained\n[Paklap] [00:56:10] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:10] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:11] HTTP END status=200 elapsed=0.8s bytes=4621 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1470/1634 checked; 1470 retained\n[Paklap] [00:56:13] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:13] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:13] HTTP END status=200 elapsed=0.7s bytes=5124 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1471/1634 checked; 1471 retained\n[Paklap] [00:56:15] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:15] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:15] HTTP END status=200 elapsed=0.7s bytes=3467 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1472/1634 checked; 1472 retained\n[Paklap] [00:56:17] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:17] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:17] HTTP END status=200 elapsed=0.7s bytes=2711 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1473/1634 checked; 1473 retained\n[Paklap] [00:56:19] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:19] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:19] HTTP END status=200 elapsed=0.7s bytes=3587 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1474/1634 checked; 1474 retained\n[Paklap] [00:56:21] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:21] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:21] HTTP END status=200 elapsed=0.7s bytes=4108 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1475/1634 checked; 1475 retained\n[Paklap] [00:56:23] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:23] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:23] HTTP END status=200 elapsed=0.7s bytes=4036 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1476/1634 checked; 1476 retained\n[Paklap] [00:56:25] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:25] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:25] HTTP END status=200 elapsed=0.7s bytes=3849 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1477/1634 checked; 1477 retained\n[Paklap] [00:56:27] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:27] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:27] HTTP END status=200 elapsed=0.7s bytes=4010 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1478/1634 checked; 1478 retained\n[Paklap] [00:56:29] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:29] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:30] HTTP END status=200 elapsed=0.7s bytes=4592 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1479/1634 checked; 1479 retained\n[Paklap] [00:56:31] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:31] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:31] HTTP END status=200 elapsed=0.6s bytes=2665 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1480/1634 checked; 1480 retained\n[Paklap] [00:56:33] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:33] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:34] HTTP END status=200 elapsed=0.7s bytes=7094 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1481/1634 checked; 1481 retained\n[Paklap] [00:56:35] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:35] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:36] HTTP END status=200 elapsed=0.7s bytes=10097 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1482/1634 checked; 1482 retained\n[Paklap] [00:56:37] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:37] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:38] HTTP END status=200 elapsed=0.7s bytes=4092 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1483/1634 checked; 1483 retained\n[Paklap] [00:56:39] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:39] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:40] HTTP END status=200 elapsed=0.8s bytes=3660 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1484/1634 checked; 1484 retained\n[Paklap] [00:56:42] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:42] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:42] HTTP END status=200 elapsed=0.7s bytes=4172 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1485/1634 checked; 1485 retained\n[Paklap] [00:56:43] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:43] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:44] HTTP END status=200 elapsed=0.7s bytes=4564 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1486/1634 checked; 1486 retained\n[Paklap] [00:56:45] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:45] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:46] HTTP END status=200 elapsed=0.6s bytes=5866 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1487/1634 checked; 1487 retained\n[Paklap] [00:56:46] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:46] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:47] HTTP END status=200 elapsed=0.7s bytes=3927 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1488/1634 checked; 1488 retained\n[Paklap] [00:56:48] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:48] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:49] HTTP END status=200 elapsed=0.7s bytes=3870 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1489/1634 checked; 1489 retained\n[Paklap] [00:56:50] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:50] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:51] HTTP END status=200 elapsed=0.6s bytes=3970 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 1490/1634 checked; 1490 retained\n[Paklap] [00:56:53] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:53] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [00:56:54] HTTP END status=200 elapsed=0.7s bytes=1533 https://www.paklap.pk/graphql?redacted\n__CHOTU_PROGRESS__|1|Active: Paklap\n[Paklap] [00:56:54] EXCEPTION: ValueError('Unsupported Magento type: VirtualProduct')\n[Paklap] [00:56:54] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2033, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1526, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 245, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 216, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 141, in run\n    return export(g,base,name,template,log,provider=catalog)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 203, in export\n    try:current=get('/wp-json/wc/store/v1/products/'+str(p['id']))\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 177, in get\n    if provider is not None:return provider.read(path)\n                                   ^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 109, in read\n    raw=items[0];product=normalize(raw,self.base)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 38, in normalize\n    if kind not in ('SimpleProduct','ConfigurableProduct'):raise ValueError('Unsupported Magento type: '+str(kind))\n                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Unsupported Magento type: VirtualProduct\n\n[Paklap] FAILED: Paklap: Unsupported Magento type: VirtualProduct\n[Paklap] [00:56:54] STAGE: Idle\nFAILED: Paklap: FAILED: Paklap: Unsupported Magento type: VirtualProduct\nFalse"
+    }
+  ]
+}
