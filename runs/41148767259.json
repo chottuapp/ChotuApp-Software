@@ -1,0 +1,406 @@
+{
+  "run_id": "41148767259",
+  "request_id": "requested20261031",
+  "checked_utc": "2026-10-31T00:11:52.437575+00:00",
+  "stores": [
+    {
+      "name": "Limelight",
+      "url": "https://www.limelight.pk",
+      "observations": [
+        {
+          "path": "/robots.txt",
+          "status": 200,
+          "final_url": "https://www.limelight.pk/robots.txt"
+        },
+        {
+          "path": "",
+          "status": 200,
+          "final_url": "https://www.limelight.pk/"
+        },
+        {
+          "path": "/products.json?limit=1",
+          "status": 200,
+          "final_url": "https://www.limelight.pk/products.json?limit=1"
+        }
+      ],
+      "homepage_platform_hint": "shopify",
+      "provider": "shopify",
+      "status": "supported"
+    },
+    {
+      "name": "Alkaram Studio",
+      "url": "https://www.alkaramstudio.com",
+      "observations": [
+        {
+          "path": "/robots.txt",
+          "status": 200,
+          "final_url": "https://www.alkaramstudio.com/robots.txt"
+        },
+        {
+          "path": "",
+          "status": 200,
+          "final_url": "https://www.alkaramstudio.com/"
+        },
+        {
+          "path": "/products.json?limit=1",
+          "status": 200,
+          "final_url": "https://www.alkaramstudio.com/products.json?limit=1"
+        }
+      ],
+      "homepage_platform_hint": "shopify",
+      "provider": "shopify",
+      "status": "supported"
+    },
+    {
+      "name": "Gift4U",
+      "url": "https://gift4u.pk",
+      "observations": [
+        {
+          "path": "/robots.txt",
+          "status": 200,
+          "final_url": "https://gift4u.pk/robots.txt"
+        },
+        {
+          "path": "",
+          "status": 403,
+          "final_url": "https://gift4u.pk/"
+        }
+      ],
+      "status": "source_blocked",
+      "error": "403 Client Error: Forbidden for url: https://gift4u.pk/"
+    },
+    {
+      "name": "Paklap",
+      "url": "https://www.paklap.pk",
+      "observations": [
+        {
+          "path": "/robots.txt",
+          "status": 200,
+          "final_url": "https://www.paklap.pk/robots.txt"
+        },
+        {
+          "path": "",
+          "status": 200,
+          "final_url": "https://www.paklap.pk/"
+        },
+        {
+          "path": "/products.json?limit=1",
+          "status": 404,
+          "final_url": "https://www.paklap.pk/products.json?limit=1"
+        },
+        {
+          "path": "/wp-json/wc/store/v1/products?per_page=1",
+          "status": 404,
+          "final_url": "https://www.paklap.pk/wp-json/wc/store/v1/products?per_page=1"
+        },
+        {
+          "path": "/graphql?query=%7Bproducts%28search%3A%22%22%2CpageSize%3A1%2CcurrentPage%3A1%29%7Btotal_count+items%7B__typename+sku+name+url_key+stock_status+price_range%7Bminimum_price%7Bregular_price%7Bvalue+currency%7Dfinal_price%7Bvalue+currency%7D%7D%7D%7D%7D%7D",
+          "status": 200,
+          "final_url": "https://www.paklap.pk/graphql?query=%7Bproducts%28search%3A%22%22%2CpageSize%3A1%2CcurrentPage%3A1%29%7Btotal_count+items%7B__typename+sku+name+url_key+stock_status+price_range%7Bminimum_price%7Bregular_price%7Bvalue+currency%7Dfinal_price%7Bvalue+currency%7D%7D%7D%7D%7D%7D"
+        },
+        {
+          "path": "/graphql?query=%7Bproducts%28filter%3A%7Bsku%3A%7Beq%3A%22Lenovo+ThinkPad+T580+8th+ci5+used+Laptop%22%7D%7D%2CpageSize%3A2%29%7Bitems%7B__typename+id+sku+name+url_key+stock_status+price_range%7Bminimum_price%7Bregular_price%7Bvalue+currency%7Dfinal_price%7Bvalue+currency%7D%7D%7D+url_suffix+description%7Bhtml%7D+short_description%7Bhtml%7D+image%7Burl+label%7D+media_gallery%7Burl+label+disabled%7D+categories%7Bid+name+url_path%7D+...+on+CustomizableProductInterface%7Boptions%7B__typename+option_id+title+required+...+on+CustomizableDropDownOption%7Bvalue%7Boption_type_id+title+price+price_type%7D%7D+...+on+CustomizableRadioOption%7Bvalue%7Boption_type_id+title+price+price_type%7D%7D+...+on+CustomizableMultipleOption%7Bvalue%7Boption_type_id+title+price+price_type%7D%7D+...+on+CustomizableCheckboxOption%7Bvalue%7Boption_type_id+title+price+price_type%7D%7D%7D%7D+...+on+ConfigurableProduct%7Bconfigurable_options%7Battribute_code+label+values%7Bvalue_index+label%7D%7D+variants%7Battributes%7Bcode+label+value_index%7D+product%7B__typename+id+sku+name+url_key+stock_status+price_range%7Bminimum_price%7Bregular_price%7Bvalue+currency%7Dfinal_price%7Bvalue+currency%7D%7D%7D+image%7Burl+label%7D%7D%7D%7D%7D%7D%7D",
+          "status": 200,
+          "final_url": "https://www.paklap.pk/graphql?query=%7Bproducts%28filter%3A%7Bsku%3A%7Beq%3A%22Lenovo+ThinkPad+T580+8th+ci5+used+Laptop%22%7D%7D%2CpageSize%3A2%29%7Bitems%7B__typename+id+sku+name+url_key+stock_status+price_range%7Bminimum_price%7Bregular_price%7Bvalue+currency%7Dfinal_price%7Bvalue+currency%7D%7D%7D+url_suffix+description%7Bhtml%7D+short_description%7Bhtml%7D+image%7Burl+label%7D+media_gallery%7Burl+label+disabled%7D+categories%7Bid+name+url_path%7D+...+on+CustomizableProductInterface%7Boptions%7B__typename+option_id+title+required+...+on+CustomizableDropDownOption%7Bvalue%7Boption_type_id+title+price+price_type%7D%7D+...+on+CustomizableRadioOption%7Bvalue%7Boption_type_id+title+price+price_type%7D%7D+...+on+CustomizableMultipleOption%7Bvalue%7Boption_type_id+title+price+price_type%7D%7D+...+on+CustomizableCheckboxOption%7Bvalue%7Boption_type_id+title+price+price_type%7D%7D%7D%7D+...+on+ConfigurableProduct%7Bconfigurable_options%7Battribute_code+label+values%7Bvalue_index+label%7D%7D+variants%7Battributes%7Bcode+label+value_index%7D+product%7B__typename+id+sku+name+url_key+stock_status+price_range%7Bminimum_price%7Bregular_price%7Bvalue+currency%7Dfinal_price%7Bvalue+currency%7D%7D%7D+image%7Burl+label%7D%7D%7D%7D%7D%7D%7D"
+        }
+      ],
+      "homepage_platform_hint": "unknown",
+      "provider": "magento",
+      "status": "supported",
+      "graphql_status": 200,
+      "public_graphql_sample": {
+        "total_count": 1634,
+        "items": [
+          {
+            "__typename": "SimpleProduct",
+            "sku": "Lenovo ThinkPad T580 8th ci5 used Laptop",
+            "name": "Lenovo ThinkPad T580 - 8th Gen Core i5 8350u Quadcore Processor 16-GB 256-GB SSD Intel UHD 620 GC 15.6\" Full HD 1080p WVA Display Dolby Audio Premium W11 Pro (Black, Used)",
+            "url_key": "lenovo-thinkpad-t580-8th-gen-corei5-used-laptop-pakistan",
+            "stock_status": "IN_STOCK",
+            "price_range": {
+              "minimum_price": {
+                "regular_price": {
+                  "value": 59500,
+                  "currency": "PKR"
+                },
+                "final_price": {
+                  "value": 59500,
+                  "currency": "PKR"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "graphql_errors": [],
+      "detail_sample": {
+        "__typename": "SimpleProduct",
+        "id": 16763,
+        "sku": "Lenovo ThinkPad T580 8th ci5 used Laptop",
+        "name": "Lenovo ThinkPad T580 - 8th Gen Core i5 8350u Quadcore Processor 16-GB 256-GB SSD Intel UHD 620 GC 15.6\" Full HD 1080p WVA Display Dolby Audio Premium W11 Pro (Black, Used)",
+        "url_key": "lenovo-thinkpad-t580-8th-gen-corei5-used-laptop-pakistan",
+        "stock_status": "IN_STOCK",
+        "price_range": {
+          "minimum_price": {
+            "regular_price": {
+              "value": 59500,
+              "currency": "PKR"
+            },
+            "final_price": {
+              "value": 59500,
+              "currency": "PKR"
+            }
+          }
+        },
+        "url_suffix": ".html",
+        "description": {
+          "html": ""
+        },
+        "short_description": {
+          "html": ""
+        },
+        "image": {
+          "url": "https://www.paklap.pk/media/catalog/product/cache/702d85193f4c6af6bb773c850e52617f/t/h/thinkpad_t580__1.jpg",
+          "label": "Lenovo ThinkPad T580 - 8th Gen Core i5 8350u Quadcore Processor 16-GB 256-GB SSD Intel UHD 620 GC 15.6\" Full HD 1080p WVA Display Dolby Audio Premium W11 Pro (Black, Used)"
+        },
+        "media_gallery": [
+          {
+            "url": "https://www.paklap.pk/media/catalog/product/cache/702d85193f4c6af6bb773c850e52617f/t/h/thinkpad_t580__1.jpg",
+            "label": null,
+            "disabled": false
+          },
+          {
+            "url": "https://www.paklap.pk/media/catalog/product/cache/702d85193f4c6af6bb773c850e52617f/t/5/t580_used_laptop_1.jpg",
+            "label": null,
+            "disabled": false
+          }
+        ],
+        "categories": [
+          {
+            "id": 85,
+            "name": "Used Laptops",
+            "url_path": "used-laptop-price-pakistan"
+          },
+          {
+            "id": 202,
+            "name": "8th Generation",
+            "url_path": "used-laptop-price-pakistan/8th-gen-laptops-pakistan"
+          },
+          {
+            "id": 285,
+            "name": "Lenovo",
+            "url_path": "used-laptop-price-pakistan/lenovo"
+          }
+        ],
+        "options": null
+      },
+      "source_url": "https://www.paklap.pk/lenovo-thinkpad-t580-8th-gen-corei5-used-laptop-pakistan.html"
+    },
+    {
+      "name": "House of Tools",
+      "url": "https://houseoftools.com.pk",
+      "observations": [
+        {
+          "path": "/robots.txt",
+          "status": 200,
+          "final_url": "https://houseoftools.com.pk/robots.txt"
+        },
+        {
+          "path": "",
+          "status": 200,
+          "final_url": "https://houseoftools.com.pk/"
+        },
+        {
+          "path": "/wp-json/wc/store/v1/products?per_page=1",
+          "status": 200,
+          "final_url": "https://houseoftools.com.pk/wp-json/wc/store/v1/products?per_page=1"
+        }
+      ],
+      "homepage_platform_hint": "wordpress",
+      "provider": "woocommerce",
+      "status": "supported",
+      "sample": {
+        "id": 24970,
+        "name": "Cordless hydraulic cable cutter CRCLI2005",
+        "permalink": "https://houseoftools.com.pk/product/cordless-hydraulic-cable-cutter-crcli2005/",
+        "type": "simple",
+        "prices": {
+          "price": "26734500",
+          "regular_price": "29705000",
+          "sale_price": "26734500",
+          "price_range": null,
+          "currency_code": "PKR",
+          "currency_symbol": "\u20a8",
+          "currency_minor_unit": 2,
+          "currency_decimal_separator": ".",
+          "currency_thousand_separator": ",",
+          "currency_prefix": "\u20a8 ",
+          "currency_suffix": ""
+        },
+        "is_in_stock": true,
+        "is_purchasable": true,
+        "has_options": false,
+        "attributes": []
+      }
+    },
+    {
+      "name": "Fresh Basket",
+      "url": "https://freshbasket.com.pk",
+      "observations": [
+        {
+          "path": "/robots.txt",
+          "status": 200,
+          "final_url": "https://freshbasket.com.pk/robots.txt"
+        },
+        {
+          "path": "",
+          "status": 200,
+          "final_url": "https://freshbasket.com.pk/"
+        },
+        {
+          "path": "/products.json?limit=1",
+          "status": 200,
+          "final_url": "https://freshbasket.com.pk/products.json?limit=1"
+        }
+      ],
+      "homepage_platform_hint": "shopify",
+      "provider": "shopify",
+      "status": "supported"
+    },
+    {
+      "name": "The Glossy Quill",
+      "url": "https://theglossyquill.store",
+      "observations": [
+        {
+          "path": "/robots.txt",
+          "status": 200,
+          "final_url": "https://theglossyquill.store/robots.txt"
+        },
+        {
+          "path": "",
+          "status": 200,
+          "final_url": "https://theglossyquill.store/"
+        },
+        {
+          "path": "/products.json?limit=1",
+          "status": 200,
+          "final_url": "https://theglossyquill.store/products.json?limit=1"
+        }
+      ],
+      "homepage_platform_hint": "shopify",
+      "provider": "shopify",
+      "status": "supported"
+    },
+    {
+      "name": "G7 Leather",
+      "url": "https://gsevenleather.com",
+      "observations": [
+        {
+          "path": "/robots.txt",
+          "status": 200,
+          "final_url": "https://gsevenleather.com/robots.txt"
+        },
+        {
+          "path": "",
+          "status": 200,
+          "final_url": "https://gsevenleather.com/"
+        },
+        {
+          "path": "/wp-json/wc/store/v1/products?per_page=1",
+          "status": 200,
+          "final_url": "https://gsevenleather.com/wp-json/wc/store/v1/products?per_page=1"
+        }
+      ],
+      "homepage_platform_hint": "wordpress",
+      "provider": "woocommerce",
+      "status": "supported",
+      "sample": {
+        "id": 515,
+        "name": "G7 Shadow",
+        "permalink": "https://gsevenleather.com/product/g7-shadow/",
+        "type": "variable",
+        "prices": {
+          "price": "14999",
+          "regular_price": "14999",
+          "sale_price": "14999",
+          "price_range": null,
+          "currency_code": "PKR",
+          "currency_symbol": "Rs",
+          "currency_minor_unit": 0,
+          "currency_decimal_separator": ".",
+          "currency_thousand_separator": ",",
+          "currency_prefix": "Rs ",
+          "currency_suffix": ""
+        },
+        "is_in_stock": true,
+        "is_purchasable": true,
+        "has_options": true,
+        "attributes": [
+          {
+            "id": 0,
+            "name": "Color",
+            "taxonomy": null,
+            "has_variations": true,
+            "terms": [
+              {
+                "id": 0,
+                "name": "Black",
+                "slug": "Black"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "Bin Fahad",
+      "url": "https://www.binfahad.pk",
+      "observations": [
+        {
+          "path": "/robots.txt",
+          "status": 200,
+          "final_url": "https://www.binfahad.pk/robots.txt"
+        },
+        {
+          "path": "",
+          "status": 200,
+          "final_url": "https://www.binfahad.pk/"
+        },
+        {
+          "path": "/products.json?limit=1",
+          "status": 200,
+          "final_url": "https://www.binfahad.pk/products.json?limit=1"
+        }
+      ],
+      "homepage_platform_hint": "shopify",
+      "provider": "shopify",
+      "status": "supported"
+    },
+    {
+      "name": "Dairy Dream",
+      "url": "https://dairydream.pk",
+      "observations": [
+        {
+          "path": "/robots.txt",
+          "status": 200,
+          "final_url": "https://dairydream.pk/robots.txt"
+        },
+        {
+          "path": "",
+          "status": 200,
+          "final_url": "https://dairydream.pk/"
+        },
+        {
+          "path": "/products.json?limit=1",
+          "status": 200,
+          "final_url": "https://dairydream.pk/products.json?limit=1"
+        }
+      ],
+      "homepage_platform_hint": "shopify",
+      "provider": "shopify",
+      "status": "supported"
+    }
+  ],
+  "groups": [],
+  "status": "checking"
+}
