@@ -8,7 +8,7 @@ Tool Sets|\b(?:tools?\s*set|combination tools|combo kit|electrical test kit|mult
 Drill Bits|\b(?:drill bits?|drills bits|auger bits|masonry drill|hss drill|countersink|step drill|flat wood drill|twist drill)\b
 Screwdriver Bits & Holders|\b(?:screwdriver bits?|bit holder|bits? set)\b
 Saw Blades & Chains|\b(?:saw blades?|saw chain|multi tool blade|diamond disc|cutting disc|grinding disc|abrasive disc|saw teeth)\b
-Socket Sets|\b(?:sockets? set|bit socket|impact socket|hexagon(?:al)?\s+socket|extension socket|socket adaptor|socket adapter)\b
+Sockets & Socket Sets|\b(?:sockets? set|bit socket|impact socket|hexagon(?:al)?\s+socket|extension socket|socket adaptor|socket adapter)\b
 Wrenches & Spanners|\b(?:wrench|spanners?)\b
 Pliers|\b(?:pliers?|plier set|locking plier|pinching plier)\b
 Screwdrivers|\bscrewdrivers?\b
@@ -94,6 +94,10 @@ Sugar & Baking Ingredients|\b(?:sugar|sweetener|baking|cocoa|yeast|gelatin|gelat
 
 
 EXTRA_TOOLS=r"""
+Drills & Drivers|\b(?:hammer drill|rotary hammer|impact drill|drill driver)\b
+Saw Frames|\bhacksaw frame\b
+Extension Poles|\bextension pole\b
+Tool Adapters|\b(?:adapter|adaptor)\b
 Hex & Torx Keys|\b(?:hex key|torx key)\b
 Planers|\b(?:planer|block plane)\b
 Pullers & Removal Tools|\b(?:puller|remov(?:al|er))\b
@@ -170,6 +174,7 @@ def rules(table):
  return [(label,re.compile(pattern,re.I)) for label,pattern in (line.split('|',1) for line in table.strip().splitlines())]
 TOOLS_RULES=rules(EXTRA_TOOLS)+rules(TOOLS)
 FOOD_PRIORITY=r"""
+Cakes & Desserts|\b(?:cake|brownie|muffin|cupcake)\b
 Biscuits & Crackers|\b(?:biscuits?|cookies?|crackers?|pretzels?|shortbread|rusk|wafers?)\b
 Chocolate & Confectionery|\bmilk chocolate\b
 Nut & Fruit Mixes|\b(?:trail mix|cocktail.*(?:salted|unsalted)|exotic cocktail mix)\b
@@ -248,10 +253,10 @@ AUDIT_PROOFS = {
  'Drill Bits':r'bits?|countersink|step drill|flat wood drill|twist drill',
  'Screwdriver Bits & Holders':r'screwdriver bit|bit holder|bits? set',
  'Saw Blades & Chains':r'saw blade|saw chain|multi tool blade|diamond disc|cutting disc|grinding disc|abrasive disc|saw teeth',
- 'Socket Sets':r'socket', 'Wrenches & Spanners':r'wrench|spanners?', 'Pliers':r'plier',
+ 'Sockets & Socket Sets':r'socket', 'Wrenches & Spanners':r'wrench|spanners?', 'Pliers':r'plier',
  'Screwdrivers':r'screwdriver', 'Cutting Tools':r'folding knife|cutter|scissor|shear|lopper|snips|knife|bolt cut|cut off machine',
  'Hammers & Mallets':r'hammer|mallet', 'Chisels':r'chisel','Files & Rasps':r'wood file|steel file|rasp|files set',
- 'Clamps & Vices':r'clamp|vise|vice','Drills & Drivers':r'drill|impact driver|drive ratchet',
+ 'Clamps & Vices':r'clamp|vise|vice','Drills & Drivers':r'drill|rotary hammer|impact driver|drive ratchet',
  'Saws':r'saw|hacksaw','Sanders & Polishers':r'sander|polisher','Sandpaper & Sanding Accessories':r'sanding|sandpaper|abrasive paper|polishing pad|polishing sponge|polishing bonnet',
  'Grinders':r'grinder','Welding Equipment':r'welding|electrode holder','Pumps':r'pump',
  'Generators':r'generator','Air Compressors':r'air compressor','Air Tools':r'air blow gun|spray gun|foam producer|grease gun|caulking gun',
@@ -331,6 +336,7 @@ def audit(row,source):
  return None
 
 AUDIT_EXTRA = {
+ 'Saw Frames':r'hacksaw frame','Extension Poles':r'extension pole','Tool Adapters':r'adapter|adaptor',
  'Hex & Torx Keys':r'hex key|torx key','Planers':r'planer|block plane','Pullers & Removal Tools':r'puller|remov',
  'Knife Blades':r'knife blade','Putty & Taping Knives':r'taping knives|putty knife','Ratchets':r'ratchet',
  'Drill Chucks':r'chuck','Air Filters':r'hepa','Sprayers':r'sprayer','Crimping Tools':r'crimping',

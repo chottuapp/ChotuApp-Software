@@ -5,12 +5,15 @@ class NewCatalogueObjectTests(unittest.TestCase):
  def row(self,title,body='',host='houseoftools.com.pk'):
   return {'name':title,'description':body,'source_url':'https://'+host+'/products/test'}
  def test_accessories_are_not_the_machine_or_makeup(self):
-  cases=[('27 Pcs Hex key and torx key set','Hex & Torx Keys'),('Cordless hydraulic cable cutter CRCLI2005','Cutting Tools'),('Diamond disc for floor saw','Saw Blades & Chains'),('1/2 inch Impact socket','Socket Sets'),('USB socket HESST182US','Electrical Switches & Sockets'),('Pump pliers','Pliers'),('Saw chain','Saw Blades & Chains'),('Steel wire brush','Brushes')]
+  cases=[('27 Pcs Hex key and torx key set','Hex & Torx Keys'),('Cordless hydraulic cable cutter CRCLI2005','Cutting Tools'),('Diamond disc for floor saw','Saw Blades & Chains'),('1/2 inch Impact socket','Sockets & Socket Sets'),('USB socket HESST182US','Electrical Switches & Sockets'),('Pump pliers','Pliers'),('Saw chain','Saw Blades & Chains'),('Steel wire brush','Brushes')]
   for title,label in cases:
    with self.subTest(title=title):
     r=self.row(title);self.assertEqual(classify(r,'House of Tools')[0],label);self.assertEqual(audit(dict(r,Category=label),r),[])
+ def test_power_machine_and_accessory_names_keep_their_sold_identity(self):
+  for title,label in [('Cordless Rotary Hammer','Drills & Drivers'),('SDS plus hammer drill','Drills & Drivers'),('Mini Hacksaw frame','Saw Frames'),('Foldable Extension Pole','Extension Poles'),('Square to Hex Adapter','Tool Adapters')]:
+   r=self.row(title);self.assertEqual(classify(r,'House of Tools')[0],label);self.assertEqual(audit(dict(r,Category=label),r),[])
  def test_prepared_food_is_not_its_ingredient(self):
-  for title,label in [('Peanut Butter Pretzels (200g)','Biscuits & Crackers'),('Cheddar Cheese Crackers','Biscuits & Crackers'),('Strawberry Greek Yogurt','Yoghurt'),('Coconut Milk','Milk & Cream'),('Milk Chocolate','Chocolate & Confectionery'),('Strawberries 500g','Fruit')]:
+  for title,label in [('Chocolate Cake','Cakes & Desserts'),('Peanut Butter Pretzels (200g)','Biscuits & Crackers'),('Cheddar Cheese Crackers','Biscuits & Crackers'),('Strawberry Greek Yogurt','Yoghurt'),('Coconut Milk','Milk & Cream'),('Milk Chocolate','Chocolate & Confectionery'),('Strawberries 500g','Fruit')]:
    r=self.row(title,title,'freshbasket.com.pk');self.assertEqual(classify(r,'Fresh Basket')[0],label)
  def test_sparse_identity_keeps_quantities_without_claims(self):
   r=self.row('Anmol Strawberry Greek Yogurt 500g','Anmol Strawberry Greek Yogurt 500g','freshbasket.com.pk');text,reason=overview(r,'Fresh Basket');self.assertIn(r['name'],text);self.assertTrue(reason);self.assertNotIn('organic',text)
