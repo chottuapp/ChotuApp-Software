@@ -197,6 +197,9 @@ def issues_for(row,source=None):
   if (urlsplit(str(row['website_category_source_url'])).hostname or '').removeprefix('www.')==(urlsplit(str(row.get('source_url') or '')).hostname or '').removeprefix('www.'):
    verified_path=str(row.get('website_category_path') or '')
  semantic=review(name,review_description,category,str(row.get("sku") or ""),source_type=str(row.get("brand") or ""),verified_path=verified_path)
+ from catalogue_object_rules import audit as audit_explicit_object
+ original_proof=audit_explicit_object(row,source)
+ if original_proof is not None:semantic=original_proof
  if semantic is None and reviewed_photo_purpose(row,source):semantic=[]
  if category and plain(row.get('brand')) and category.casefold()==plain(row.get('brand')).casefold() and semantic!=[]:issues.append('Brand name used as product Category')
  if semantic is not None:issues.extend(semantic)

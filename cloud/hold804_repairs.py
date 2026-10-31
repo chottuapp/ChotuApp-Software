@@ -355,6 +355,9 @@ def fresh_source_category(row,store):
  return None
 
 def category(row,store):
+ from catalogue_object_rules import classify
+ recovered=classify(row,store)
+ if recovered and visual_review(row,store) is None:return recovered
  name=str(row.get('name') or '');body=str(row.get('description') or '')
  if re.search(r'\b(?:quilt|duvet)\s+cover\b',name,re.I) and re.search(r'\b[12]\s+pillow\s*cases?\b',body,re.I):return 'Duvet Cover Sets','reviewed_source_contents','Explicit cover and pillowcases supplied; no duvet filling inferred.'
  visual=visual_review(row,store)
@@ -745,6 +748,9 @@ def category(row,store):
  return None
 
 def description(row,store):
+ from catalogue_object_rules import overview
+ recovered,why=overview(row,store)
+ if why and visual_review(row,store) is None:return recovered,why
  original=str(row.get('description') or '');name=str(row.get('name') or '');body=original.strip()
  if explicit_source_service(row,store) and body.casefold()==name.casefold():
   text='A test listing for a stitching service.' if re.match(r'TEST[- ]',name,re.I) else 'A listing for a stitching service.'
