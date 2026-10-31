@@ -1,7 +1,10 @@
 {
-  "run_id": "41148767259",
+  "owner_paused_stores": [
+    "Gift4U"
+  ],
+  "run_id": "41151386907",
   "request_id": "requested20261031",
-  "checked_utc": "2026-10-31T00:12:02.654583+00:00",
+  "checked_utc": "2026-10-31T00:40:38.746656+00:00",
   "stores": [
     {
       "name": "Limelight",
@@ -50,24 +53,6 @@
       "homepage_platform_hint": "shopify",
       "provider": "shopify",
       "status": "supported"
-    },
-    {
-      "name": "Gift4U",
-      "url": "https://gift4u.pk",
-      "observations": [
-        {
-          "path": "/robots.txt",
-          "status": 200,
-          "final_url": "https://gift4u.pk/robots.txt"
-        },
-        {
-          "path": "",
-          "status": 403,
-          "final_url": "https://gift4u.pk/"
-        }
-      ],
-      "status": "source_blocked",
-      "error": "403 Client Error: Forbidden for url: https://gift4u.pk/"
     },
     {
       "name": "Paklap",
@@ -402,27 +387,5 @@
     }
   ],
   "groups": [],
-  "status": "dispatch_complete",
-  "active_stores_preserved": [
-    "Stylo",
-    "Tawakkal Fabrics"
-  ],
-  "already_dispatched": [
-    "Alkaram Studio",
-    "Bin Fahad",
-    "Dairy Dream",
-    "Fresh Basket",
-    "G7 Leather",
-    "House of Tools",
-    "Limelight",
-    "Paklap",
-    "The Glossy Quill"
-  ],
-  "resumes": [
-    {
-      "store": "Paklap",
-      "status": "saved_checkpoint_resume_dispatched",
-      "source_run": "41130345875"
-    }
-  ]
+  "status": "checking"
 }
