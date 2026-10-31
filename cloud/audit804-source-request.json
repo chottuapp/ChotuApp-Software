@@ -1,12 +1,28 @@
 {
-  "request": "Diagnose the exact House of Tools missing-media product from failure logs; no deletion or guessed product fields",
+  "request": "Bounded current public-source checks for remaining source blockers; no alternate IP, authentication bypass, guessed images or stock",
   "products": [
     {
       "store": "House of Tools",
       "product_id": "6306",
       "name": "mitre-saw-input-power-1800wwxd151800",
       "source_url": "https://houseoftools.com.pk/product/mitre-saw-input-power-1800wwxd151800/",
+      "inspect_store_api": true,
       "inspect_media": true
+    },
+    {
+      "store": "Xcessories Hub",
+      "product_id": "84396",
+      "name": "choetech-quick-charge-3-0-18w-3a-usb-wall-charger-q5003",
+      "source_url": "https://xcessorieshub.com/product/choetech-quick-charge-3-0-18w-3a-usb-wall-charger-q5003/",
+      "inspect_store_api": true,
+      "inspect_media": true
+    },
+    {
+      "store": "Gift4U",
+      "product_id": "public-source-probe",
+      "name": "Public catalog availability",
+      "source_url": "https://gift4u.pk/",
+      "inspect_public_catalog": true
     }
   ]
 }

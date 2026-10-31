@@ -16,3 +16,18 @@ class CacheCompactionTests(unittest.TestCase):
  def test_corrupt_legacy_body_never_gets_new_trusted_checksum(self):
   with tempfile.TemporaryDirectory() as tmp:
    p=Path(tmp)/'pages.sqlite3';cache=ResponseCache(p);cache.db.execute('INSERT INTO pages VALUES(?,?,?,?,?,?)',('url','url',b'x'*1000,'utf-8','text/html','bad'));cache.db.commit();cache.close();self.assertEqual(compact_responses(p),0)
+
+ def test_existing_fast_compressed_pages_shrink_without_changing_source_bytes(self):
+  import requests,zlib
+  with tempfile.TemporaryDirectory() as tmp:
+   p=Path(tmp)/'pages.sqlite3';cache=ResponseCache(p)
+   body=b'<html><p>Exact price 1234.50, stock false and size 38.</p></html>'*12000
+   response=requests.Response();response.status_code=200;response.url='https://source.test/item';response._content=body;cache.put(response.url,response)
+   before=cache.db.execute('SELECT length(body) FROM pages').fetchone()[0];cache.close()
+   self.assertEqual(compact_responses(p),1);cache=ResponseCache(p);self.assertEqual(cache.get(response.url).content,body)
+   self.assertLess(cache.db.execute('SELECT length(body) FROM pages').fetchone()[0],before);cache.close();self.assertEqual(compact_responses(p),0)
+ def test_invalid_compressed_payload_is_not_retrusted(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   p=Path(tmp)/'pages.sqlite3';cache=ResponseCache(p);payload=b'not zlib data'*100
+   cache.db.execute('INSERT INTO pages VALUES(?,?,?,?,?,?)',('url','url',payload,'utf-8','text/html',hashlib.sha256(payload).hexdigest()));cache.db.execute('INSERT INTO page_format VALUES(?,?,?)',('url','zlib-v1',1000));cache.db.commit();cache.close()
+   self.assertEqual(compact_responses(p),0)

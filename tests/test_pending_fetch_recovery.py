@@ -27,6 +27,18 @@ class PendingRecoveryTests(unittest.TestCase):
  def test_untrusted_run_is_rejected(self):
   with self.assertRaises(ValueError):self.plan(run=dict(self.run,head_branch='other'))
 
+class AncestorRecoveryTests(PendingRecoveryTests):
+ def ancestor(self,**updates):
+  from recover_pending_fetches import ancestor_recovery_plan
+  args=dict(request=self.request,policy=self.policy,registry=self.registry,runs=self.runs+[dict(databaseId=2,displayTitle='Automatic continuation of 41039532918',status='completed')],run=self.run,summary=self.summary,artifacts=self.artifacts,checkpoint_id='41039532918',latest_summary=self.summary);args.update(updates);return ancestor_recovery_plan(**args)
+ def test_intact_ancestor_recovers_only_failed_store(self):self.assertEqual([s['name'] for s in self.ancestor()],['Xcessories Hub'])
+ def test_foreign_checkpoint_or_latest_summary_is_rejected(self):
+  with self.assertRaises(ValueError):self.ancestor(checkpoint_id='999')
+  with self.assertRaises(ValueError):self.ancestor(latest_summary=dict(self.summary,runner_group='foreign'))
+ def test_active_chain_and_manual_stop_stay_untouched(self):
+  self.assertIsNone(self.ancestor(runs=self.runs+[dict(databaseId=2,displayTitle='Automatic continuation of 41039532918',status='in_progress')]))
+  self.assertIsNone(self.ancestor(latest_summary=dict(self.summary,stop_reason='stop_requested')))
+
 class RecoveryPublicationTests(unittest.TestCase):
  def test_recovery_report_branch_is_supported_by_publisher(self):
   from unittest.mock import patch

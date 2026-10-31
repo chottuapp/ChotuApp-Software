@@ -63,6 +63,18 @@ def main():
   try:
    if p.scheme!='https' or p.username or p.password or p.query:raise ValueError('Exact public HTTPS product URL required')
    handle=unquote(p.path.rstrip('/').split('/')[-1]);product=None
+   if item.get('inspect_store_api') is True:
+    if not str(item['product_id']).isdigit():raise ValueError('Numeric public Store API identity required')
+    raw=read('https://'+p.netloc+'/wp-json/wc/store/v1/products/'+str(item['product_id'])).json()
+    if raw.get('id')!=int(item['product_id']) or raw.get('permalink','').rstrip('/')!=url.rstrip('/'):raise ValueError('Store API product identity mismatch')
+    rec['store_api_product']={k:raw.get(k) for k in ('id','name','permalink','type','images','description','short_description')}
+   if item.get('inspect_public_catalog') is True:
+    rec['public_catalog_checks']=[]
+    for endpoint in ('/products.json?limit=1','/wp-json/wc/store/v1/products?per_page=1'):
+     try:
+      value=read('https://'+p.netloc+endpoint).json();entries=value.get('products') if isinstance(value,dict) else value
+      rec['public_catalog_checks'].append({'endpoint':endpoint,'is_product_list':isinstance(entries,list),'count':len(entries) if isinstance(entries,list) else None})
+     except (requests.RequestException,ValueError) as exc:rec['public_catalog_checks'].append({'endpoint':endpoint,'error':str(exc)[:300]})
    if '/products/' in p.path:
     try:
      response=read(url+'.js');raw=response.json()
@@ -86,7 +98,7 @@ def main():
       visual=session.get(image,timeout=40);visual.raise_for_status()
       if len(visual.content)<=250000 and visual.headers.get('Content-Type','').startswith('image/'):
        rec['public_image']={'source_url':image,'sha256':hashlib.sha256(visual.content).hexdigest(),'content_type':visual.headers.get('Content-Type'),'base64':base64.b64encode(visual.content).decode()}
-   if item.get('inspect_bundle') or not product or not (product.get('description') or product.get('body_html')):
+   if not item.get('inspect_public_catalog') and (item.get('inspect_bundle') or not product or not (product.get('description') or product.get('body_html'))):
     soup=BeautifulSoup(read(url).text,'html.parser')
     if item.get('inspect_media') is True:
      selectors=['.woocommerce-product-gallery img','.images img','.product img','meta[property="og:image"]']
