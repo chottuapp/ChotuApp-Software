@@ -6576,5 +6576,14 @@
     "Zyren"
   ],
   "audit804_refresh_requested_utc": "2026-10-29T08:11:41.119060+00:00",
-  "audit804_source_download_errors": {}
+  "audit804_source_download_errors": {},
+  "audit804_source_restore_errors": {
+    "Alkaram Studio": {
+      "store": "Alkaram Studio",
+      "marker": "inputs/fresh804-20261026-5d42fe35/alkaram-studio/e5e778e63d323050/manifest.json",
+      "checked_utc": "2026-10-31T00:06:19.373471+00:00",
+      "error": "404 Client Error: Not Found for url: https://raw.githubusercontent.com/chottuapp/ChotuApp-Software/audit804-held-inputs/inputs/fresh804-20261026-5d42fe35/alkaram-studio/e5e778e63d323050/manifest.json",
+      "action": "Recover original completed artifact; retain existing verified file and unresolved audit state"
+    }
+  }
 }
