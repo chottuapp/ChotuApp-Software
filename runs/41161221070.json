@@ -2600,7 +2600,8 @@
     "Edenrobe": "source:399a01b5a00b28c6420014d9ac705db8f25b67ff24bf5a49367fea839ae92df3:Edenrobe:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e",
     "Limelight": "source:541ef2303600618b402366aca709a26158dc53416734f62d1fd61f3763f2e093:Limelight:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e",
     "Fresh Basket": "source:d91844a209cf2dc94ec71af4bda5b28b81c3ab74835f6eb837a2db26b0e369e6:Fresh Basket:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e",
-    "The Glossy Quill": "source:ca46d65833a64be8619ba047861c8499bf3b594441c68036f4411b8ca5fbb1df:The Glossy Quill:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e"
+    "The Glossy Quill": "source:ca46d65833a64be8619ba047861c8499bf3b594441c68036f4411b8ca5fbb1df:The Glossy Quill:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e",
+    "Bin Fahad": "source:c34429b0476dad10e1423003047069cbbf7ac68e8c25da3d5703b06acbce0685:Bin Fahad:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -6815,6 +6816,105 @@
       "source_sha256": "ca46d65833a64be8619ba047861c8499bf3b594441c68036f4411b8ca5fbb1df",
       "refresh_generation": "refresh20261030-31dd8bb1",
       "held_input": "inputs/fresh804-20261026-5d42fe35/the-glossy-quill/ca46d65833a64be8/manifest.json"
+    },
+    "Bin Fahad": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Bin Fahad",
+      "shop_code": "SE10063",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 50,
+      "findings_count": 3,
+      "findings": [
+        {
+          "product_id": "CP6af07260ffe9",
+          "name": "Premium Cotton - Sand",
+          "source_url": "https://www.binfahad.pk/products/premium-cotton-fabric-sand",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP26ae93649438",
+          "name": "Premium Cotton - Copper",
+          "source_url": "https://www.binfahad.pk/products/premium-cotton-fabric-copper",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP64dd842f0992",
+          "name": "Premium Cotton - Clay",
+          "source_url": "https://www.binfahad.pk/products/premium-cotton-fabric-clay",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "details_truncated": false,
+      "workbook_sha256": "c019bbd467f11cb90707300ffe60607eaecb6441c6e20f680dbdcae6e8128f7f",
+      "checked_utc": "2026-10-31T02:49:11.227820+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-10-31T02:49:11.227882+00:00",
+        "updated_utc": "2026-10-31T02:49:11.227882+00:00",
+        "next_source_check_due_utc": "2026-10-31T03:04:11.227882+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category lacks clear product-purpose evidence; manual review required"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "owner_authorized_exclusions": [
+        {
+          "product_id": "CP4177deebfc48",
+          "source_url": "https://www.binfahad.pk/products/buy-any-3-boski-suits-in-just-rs-5499",
+          "reason": "Owner sale block: product has no real source photo; excluded from sellable export under explicit owner rule, source stock unchanged"
+        },
+        {
+          "product_id": "CP71873397f910",
+          "source_url": "https://www.binfahad.pk/products/buy-any-4-boski-suits-for-6400",
+          "reason": "Owner sale block: product has no real source photo; excluded from sellable export under explicit owner rule, source stock unchanged"
+        },
+        {
+          "product_id": "CPa0e5122abad4",
+          "source_url": "https://www.binfahad.pk/products/buy-more-get-more-flat-discount",
+          "reason": "Owner sale block: product has no real source photo; excluded from sellable export under explicit owner rule, source stock unchanged"
+        },
+        {
+          "product_id": "CPd581209cf5e2",
+          "source_url": "https://www.binfahad.pk/products/buy-any-2-boski-suits-in-just-rs-3-398",
+          "reason": "Owner sale block: product has no real source photo; excluded from sellable export under explicit owner rule, source stock unchanged"
+        },
+        {
+          "product_id": "CPdab05c14cd91",
+          "source_url": "https://www.binfahad.pk/products/buy-any-5-boski-suits-for-8000",
+          "reason": "Owner sale block: product has no real source photo; excluded from sellable export under explicit owner rule, source stock unchanged"
+        },
+        {
+          "product_id": "CPfb885b7d5bb1",
+          "source_url": "https://www.binfahad.pk/products/clone-of-buy-any-5-boski-suits-for-8000",
+          "reason": "Owner sale block: product has no real source photo; excluded from sellable export under explicit owner rule, source stock unchanged"
+        }
+      ],
+      "image_metadata_repairs": 0,
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "source_run": "41127377788",
+      "source_artifact": 13010004522,
+      "source_sha256": "c34429b0476dad10e1423003047069cbbf7ac68e8c25da3d5703b06acbce0685",
+      "refresh_generation": "refresh20261030-31dd8bb1",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/bin-fahad/c34429b0476dad10/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -7000,7 +7100,8 @@
     "41122275582": "41122275582:13025061558:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e",
     "41122513969": "41122513969:13011247296:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e",
     "41127359995": "41127359995:13018556593:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e",
-    "41127366241": "41127366241:13011882385:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e"
+    "41127366241": "41127366241:13011882385:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e",
+    "41127372035": "41127372035:13012270041:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-10-30T21:11:49.853857+00:00",
@@ -7079,8 +7180,8 @@
     "SE10055": "inputs/fresh804-20261026-5d42fe35/rollback-se10055/73cb55917ad74ba2/manifest.json",
     "SE10056": "inputs/fresh804-20261026-5d42fe35/rollback-se10056/fbcdd9551319e9ef/manifest.json"
   },
-  "audit804_last_store": "The Glossy Quill",
-  "audit804_progress_utc": "2026-10-31T02:49:08.104039+00:00",
+  "audit804_last_store": "Bin Fahad",
+  "audit804_progress_utc": "2026-10-31T02:49:13.015550+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Stylo",
