@@ -19,6 +19,20 @@ def recovery_plan(request,policy,registry,runs,run,summary,artifacts):
  lanes=json.loads((ROOT/'cloud/requested-stores.json').read_text()).get('existing_lanes',{})
  if group in lanes:
   byname={s['name']:s for s in registry};expected=[byname[name] for name in lanes[group]]
+ # Additive lanes retain their original pair position and exact shop-code suffix.
+ # Do not derive their identity from a newly filtered/reordered active registry.
+ if expected is None:
+  additive=json.loads((ROOT/'cloud/requested-stores.json').read_text())
+  prefix=lane_prefix(policy)+str(additive.get('request_id',''))+'-'
+  if additive.get('campaign_id')==policy['campaign_id'] and additive.get('refresh_generation')==policy['refresh_generation'] and group.startswith(prefix):
+   parts=group[len(prefix):].split('-')
+   if len(parts) in (2,3) and parts[0].isdigit() and int(parts[0])>0:
+    pair=additive['stores'][(int(parts[0])-1)*2:int(parts[0])*2];codes=parts[1:]
+    selected=[site for site in pair if site.get('shop_code') in codes]
+    registered={site['name']:site for site in registry}
+    confirmed=json.loads((ROOT/'cloud/confirmed-shop-codes.json').read_text())
+    if codes==[site.get('shop_code') for site in selected] and len(set(codes))==len(codes) and all(confirmed.get(site['name'])==site['shop_code'] and registered.get(site['name'],{}).get('url','').rstrip('/')==site['url'].rstrip('/') for site in selected):
+     expected=[registered[site['name']] for site in selected]
  if expected is None or not set(wanted)<={s['name'] for s in expected}:raise ValueError('Recovery outside approved enabled source group')
  if str(run.get('id'))!=rid or run.get('event')!='workflow_dispatch' or run.get('head_branch')!='main' or run.get('head_repository',{}).get('full_name')!=REPO or run.get('display_title')!='Cloud group '+group:raise ValueError('Untrusted source run identity')
  if run.get('status')!='completed':return None

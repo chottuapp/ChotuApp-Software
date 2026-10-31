@@ -47,3 +47,16 @@ class RecoveryPublicationTests(unittest.TestCase):
   with patch.object(source_research.subprocess,'run',return_value=SimpleNamespace(stdout=b'a'*40)) as run:
    source_research._publish_once({'run_id':'1','status':'checking'},'pending-recovery-reports')
   self.assertTrue(any(call.args[0][:2]==['git','push'] for call in run.call_args_list))
+
+class AdditiveLaneRecoveryTests(unittest.TestCase):
+ def test_current_requested_pair_and_code_are_verified_without_relabelling_pauses(self):
+  root=Path(__file__).resolve().parents[1];policy=json.loads((root/'cloud/audit804-release.json').read_text());registry=json.loads((root/'cloud/fetch-update-release.json').read_text())['fresh_stores']
+  group='audit804-'+policy['campaign_id']+'-'+policy['refresh_generation']+'-requested20261031-2-SE10058'
+  request=dict(campaign_id=policy['campaign_id'],refresh_generation=policy['refresh_generation'],source_run='77',runner_group=group,stores=['Paklap'])
+  run=dict(id=77,event='workflow_dispatch',head_branch='main',head_repository={'full_name':REPO},display_title='Cloud group '+group,status='completed',conclusion='failure')
+  summary=dict(runner_group=group,status='incomplete',checkpoint='saved',stores=[dict(name='Paklap',status='failed')])
+  artifacts=[dict(name='chotuapp-checkpoint',expired=False)]
+  self.assertEqual([s['name'] for s in recovery_plan(request,policy,registry,[],run,summary,artifacts)],['Paklap'])
+  for suffix in ['requested20261031-1-SE10058','requested20261031-2-SE10057','requested20261031-2-SE10058-SE10058']:
+   wrong=group.split('requested')[0]+suffix
+   with self.subTest(group=wrong),self.assertRaises(ValueError):recovery_plan(dict(request,runner_group=wrong),policy,registry,[],dict(run,display_title='Cloud group '+wrong),dict(summary,runner_group=wrong),artifacts)
