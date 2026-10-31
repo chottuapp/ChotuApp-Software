@@ -62,14 +62,15 @@ Cheese|\b(?:cheese|cheddar|mozzarella|parmesan|feta|labneh|labne|gouda|halloumi|
 Yoghurt|\b(?:yog[hu]urt|yogurt|curd|raita|laban)\b
 Sauces & Condiments|\b(?:sauce|ketchup|mayonnaise|mustard|dressing|hummus|humus|chutney|salsa|guacamole|sambal|kimchi|pickle|pickled|chilli crisp)\b
 Jams & Preserves|\b(?:jam|marm[ae]lade|preserve)\b
-Vinegar|\bvinegar\b
+Vinegar|\b(?:vinegar|balsamic vingar)\b
 Syrups|\bsyrup\b
 Ice Cream|\bice\s*cream\b
 Juices & Drinks|\b(?:juice|drink|lemonade|tonic water|coconut water|kefir|kombucha|kambucha|smoothie|nectar|soda|beverage)\b
 Milk & Cream|\b(?:milk|cream|creamer)\b
 Butter & Ghee|\b(?:butter|ghee|margarine)\b
-Chocolate & Confectionery|\b(?:chocolate|candy|candies|toffee|toffees|gummies|lollipop|marshmallow|ferrero|raffaello|kitkat|kinder|bounty|snickers|twix|m&m|mentos|skittles|jelly beans|chewing gum|turkish delight|mithai|halwa)\b
-Biscuits & Crackers|\b(?:biscuits?|cookies?|crackers?|pretzels?|shortbread|rusk|wafer|waffle|crostini|croutons)\b
+Chocolate & Confectionery|\b(?:chocolate|candy|candies|toffee|toffees|gummies|lollipop|marshmallow|ferrero|raffaello|kit\s*kat|kinder|bounty|snickers?|twix|m&m|mentos|skittles|jelly beans|chewing gum|turkish delight|mithai|halwa)\b
+Cakes & Desserts|\b(?:cake|brownie|muffin|cupcake)\b
+Biscuits & Crackers|\b(?:biscuits?|cookies?|crackers?|pretzels?|shortbread|rusk|wafer|waffles?|crostini|croutons)\b
 Snack Foods|\b(?:chips|crisps|puffs|popcorn|nachos|tortilla chips|snack|makhana)\b
 Cakes & Desserts|\b(?:cake|brownie|muffin|croissant|donut|doughnut|pudding|dessert|tart|cupcake|custard)\b
 Pasta & Noodles|\b(?:pasta|noodles?|ramen|spaghetti|sphagettini|fettuccine|fusilli|penne|lasagn[ae]|macaroni|vermicelli|farfalle|linguine|tagliatelle)\b
@@ -84,7 +85,10 @@ Tea & Coffee|\b(?:tea|coffee|matcha|espresso|cappuccino|kehwa|kahwa|chai)\b
 Spices & Seasonings|\b(?:spice|seasoning|masala|pepper whole|pepper powder|cinnamon|turmeric|cumin|zaatar|oregano|paprika|cardamom|cloves|saffron|coriander powder|nutmeg|garlic powder|onion powder|chilli powder|salt)\b
 Nuts & Seeds|\b(?:nuts?|almonds?|cashew|pistachio|hazelnut|walnut|peanuts?|pecans?|macadamia|seeds?|pine nuts|chilgoza)\b
 Fruit|\b(?:grapes?|guava|amrood|mosambi|apples?|pomegranate|anaar|melon|malta|papaya|banana|kela|avocado|pear|mango|blueberr(?:y|ies)|strawberr(?:y|ies)|raspberr(?:y|ies)|blackberr(?:y|ies)|pineapple|plum|apricot|peach|nectarine|persimmon|amlok|amla|chickoo?|dates?|ajwa|kiwi|figs?|anjeer|coconut|cherr(?:y|ies)|orange|mandarin|citrus|fruit)\b
-Vegetables & Herbs|\b(?:vegetable|zucchini|kadoo|peas|matar|cilantro|dhanya|mushrooms?|bell pepper|capsicum|shimla|rocket leaves|lemon grass|lime leaves|onions?|pyaz|chill?i|jalapeno|tomato|sprouts?|garlic|okra|bhindi|spinach|karela|gourd|potato|corn|arvi|turnip|shaljam|celery|cauliflower|gobi|brocc?ol?li|cucumber|carrot|cabbage|lettuce|beetroot|brinjal|eggplant|radish|ginger|adrak|lemon|lime|basil|mint|podina|parsley|rosemary|thyme|dill|leek|asparagus|artichoke|pumpkin|squash|beans?|lentils?|daal|dal|chana|chickpeas)\b
+Vegetables & Herbs|\b(?:vegetables?|zucchini|kadoo|peas|matar|cilantro|dhanya|mushrooms?|bell pepper|capsicum|shimla|rocket leaves|lemon grass|lime leaves|onions?|pyaz|chill?i|jalapeno|tomato|sprouts?|garlic|okra|bhindi|spinach|karela|gourd|potato|corn|arvi|turnip|shaljam|celery|cauliflower|gobi|brocc?ol?li|cucumber|carrot|cabbage|lettuce|beetroot|brinjal|eggplant|radish|ginger|adrak|lemon|lime|basil|mint|podina|parsley|rosemary|thyme|dill|leek|asparagus|artichoke|pumpkin|squash|beans?|lentils?|daal|dal|chana|chickpeas)\b
+Broths|\bbone broth\b
+Prepared Beans|\bfoul medammas\b
+Syrups|\bglucose syrp\b
 Sugar & Baking Ingredients|\b(?:sugar|sweetener|baking|cocoa|yeast|gelatin|gelatine|corn starch|cornstarch|icing|vanilla essence)\b
 '''
 
@@ -147,7 +151,7 @@ Sugar & Sweeteners|\b(?:stevia|sweetn?er|sweetener|gur|shakkar|sugar)\b
 Nuts & Seeds|\b(?:almonds?|peanuts?|pecans?|till|malanga|maghaz|channa)\b
 Milk Drinks|\blassi\b
 Bread & Rolls|\b(?:ciabatta|panini|baguette|dinner roll|focaccia|brioche|sourdough|multigrain loaf|breadsticks|pain au chocolat)\b
-Cooking Fats & Oils|\b(?:tallow|sesame oil|sarson oil|pomace oil|extra virgin oil)\b
+Cooking Fats & Oils|\b(?:tallow|sesame oil|sarson oil|pomace oil|extra vig(?:r)?in oil|extra virgin oil)\b
 Cheese|\b(?:parmigiano|brie|camembert|emmental|edam|grana padano|pepperjack|pepper jack)\b
 Dips & Cooking Pastes|\b(?:dip|relish|curry paste|tom yum|tahina|tahini)\b
 Water & Malt Drinks|\b(?:water|malt flavour)\b
@@ -173,6 +177,28 @@ Spices & Seasonings|\b(?:garlic powder|onion powder|ginger powder|shawarma|peppe
 """
 FOOD_RULES=rules(FOOD_PRIORITY)+rules(FOOD)+rules(EXTRA_FOOD)
 
+
+MERCHANT_TYPES={
+ 'snacks':'Snack Foods','beverages':'Juices & Drinks','kefir & kombucha':'Juices & Drinks','gelato & ice cream':'Ice Cream',
+ 'crisps and snacks':'Snack Foods','crisps & snacks':'Snack Foods','energy snacks':'Snack Foods',
+ 'cooking sauces & ingredients':'Sauces & Condiments','cooking sauces':'Sauces & Condiments',
+ 'dried spices & herbs':'Spices & Seasonings','spices and herbs':'Spices & Seasonings',
+ 'butter & ghee':'Butter & Ghee','crackers & biscuits':'Biscuits & Crackers','iced tea & coffee':'Tea & Coffee',
+ 'mix nuts':'Nuts & Seeds','seeds':'Nuts & Seeds','frozen fruits & veges':'Frozen Fruit & Vegetable Mixes',
+ 'juices':'Juices & Drinks',
+ 'flatbreads':'Bread & Wraps','nuts':'Nuts & Seeds','chocolates':'Chocolate & Confectionery',
+ 'tea & coffee':'Tea & Coffee','coffee':'Tea & Coffee','cheese':'Cheese',
+}
+def merchant_labels(fact):
+ labels=[]
+ for value in [fact.get('product_type','')]+fact.get('published_tags',[]):
+  text=str(value).split('/')[-1].strip()
+  mapped=MERCHANT_TYPES.get(text.casefold())
+  if mapped:labels.append(mapped);continue
+  found=[label for label,pattern in FOOD_RULES if re.fullmatch('(?:'+pattern.pattern+')(?:s)?',text,re.I)]
+  if found:labels.append(found[0])
+ return set(labels)
+
 def classify(row,store):
  title=str(row.get('name') or '');body=str(row.get('description') or '')
  if store=='House of Tools':
@@ -187,11 +213,8 @@ def classify(row,store):
   from hold804_repairs import public_facts
   fact=public_facts(row,store)
   if fact:
-   candidates=[]
-   for text in [fact.get('product_type','')]+fact.get('published_tags',[]):
-    found=[label for label,pattern in FOOD_RULES if re.fullmatch('(?:'+pattern.pattern+')(?:s)?',str(text).strip(),re.I)]
-    if found:candidates.append(found[0])
-   if len(set(candidates))==1:return candidates[0],'verified_public_merchant_type',str(fact['source_url'])+'; exact type '+str(fact.get('product_type'))
+   candidates=merchant_labels(fact)
+   if len(candidates)==1:return next(iter(candidates)),'verified_public_merchant_type',str(fact['source_url'])+'; exact merchant type/tags retained'
  if store=='Bin Fahad' and re.search(r'\b(?:suit fabric|unstitched)\b',body,re.I):return 'Unstitched Fabric','inferred_measured_source_fabric',body[:350]
  if store=='G7 Leather':
   for label,pattern in [('Wallets',r'\bwallet\b'),('Loafers',r'\bloafers\b')]:
@@ -254,11 +277,11 @@ AUDIT_PROOFS = {
  'Cheese':r'cheese|cheddar|mozzarella|parmesan|feta|labneh|labne|gouda|halloumi|burrata|mascarpone|ricotta|paneer|parmesano',
  'Yoghurt':r'yog[hu]urt|yogurt|curd|raita|laban',
  'Sauces & Condiments':r'sauce|ketchup|mayonnaise|mustard|dressing|hummus|humus|chutney|salsa|guacamole|sambal|kimchi|pickle|chilli crisp',
- 'Jams & Preserves':r'jam|marm[ae]lade|preserve','Vinegar':r'vinegar','Syrups':r'syrup',
+ 'Jams & Preserves':r'jam|marm[ae]lade|preserve','Vinegar':r'vinegar|balsamic vingar','Syrups':r'syrup|glucose syrp',
  'Juices & Drinks':r'juice|drink|lemonade|tonic water|coconut water|kefir|kombucha|kambucha|smoothie|nectar|soda|beverage',
  'Milk & Cream':r'milk|cream|creamer','Butter & Ghee':r'butter|ghee|margarine',
- 'Chocolate & Confectionery':r'chocolate|candy|candies|toffee|gummies|lollipop|marshmallow|ferrero|raffaello|kitkat|kinder|bounty|snickers|twix|m&m|mentos|skittles|jelly beans|chewing gum|turkish delight|mithai|halwa',
- 'Biscuits & Crackers':r'biscuit|cookie|cracker|pretzel|shortbread|rusk|wafer|waffle|crostini|crouton',
+ 'Chocolate & Confectionery':r'chocolate|candy|candies|toffee|gummies|lollipop|marshmallow|ferrero|raffaello|kit\s*kat|kinder|bounty|snickers?|twix|m&m|mentos|skittles|jelly beans|chewing gum|turkish delight|mithai|halwa',
+ 'Biscuits & Crackers':r'biscuit|cookie|cracker|pretzel|shortbread|rusk|wafer|waffles?|crostini|crouton',
  'Snack Foods':r'chips|crisps|puffs|popcorn|nachos|tortilla chips|snack|makhana',
  'Cakes & Desserts':r'cake|brownie|muffin|croissant|donut|doughnut|pudding|dessert|tart|cupcake|custard',
  'Pasta & Noodles':r'pasta|noodle|ramen|spaghetti|sphagettini|fettuccine|fusilli|penne|lasagn|macaroni|vermicelli|farfalle|linguine|tagliatelle',
@@ -271,7 +294,9 @@ AUDIT_PROOFS = {
  'Spices & Seasonings':r'spice|seasoning|masala|pepper whole|pepper powder|cinnamon|turmeric|cumin|zaatar|oregano|paprika|cardamom|cloves|saffron|coriander powder|nutmeg|garlic powder|onion powder|chilli powder|salt',
  'Nuts & Seeds':r'nut|almond|cashew|pistachio|hazelnut|walnut|peanuts?|pecans?|macadamia|seed|chilgoza',
  'Fruit':r'grape|guava|amrood|mosambi|apple|pomegranate|anaar|melon|malta|papaya|banana|kela|avocado|pear|mango|berr|pineapple|plum|apricot|peach|nectarine|persimmon|amlok|amla|chick|date|ajwa|kiwi|fig|anjeer|coconut|cherr|orange|mandarin|citrus|fruit',
- 'Vegetables & Herbs':r'vegetable|zucchini|kadoo|peas|matar|cilantro|dhanya|mushrooms?|bell pepper|capsicum|shimla|rocket leaves|lemon grass|lime leaves|onion|pyaz|chill?i|jalapeno|tomato|sprout|garlic|okra|bhindi|spinach|karela|gourd|potato|corn|arvi|turnip|shaljam|celery|cauliflower|gobi|brocc|cucumber|carrot|cabbage|lettuce|beetroot|brinjal|eggplant|radish|ginger|adrak|lemon|lime|basil|mint|podina|parsley|rosemary|thyme|dill|leek|asparagus|artichoke|pumpkin|squash|bean|lentil|daal|dal|chana|chickpea',
+ 'Vegetables & Herbs':r'vegetables?|zucchini|kadoo|peas|matar|cilantro|dhanya|mushrooms?|bell pepper|capsicum|shimla|rocket leaves|lemon grass|lime leaves|onion|pyaz|chill?i|jalapeno|tomato|sprout|garlic|okra|bhindi|spinach|karela|gourd|potato|corn|arvi|turnip|shaljam|celery|cauliflower|gobi|brocc|cucumber|carrot|cabbage|lettuce|beetroot|brinjal|eggplant|radish|ginger|adrak|lemon|lime|basil|mint|podina|parsley|rosemary|thyme|dill|leek|asparagus|artichoke|pumpkin|squash|bean|lentil|daal|dal|chana|chickpea',
+ 'Broths':r'bone broth',
+ 'Frozen Fruit & Vegetable Mixes':r'fruit|vegetable|frozen','Prepared Beans':r'foul medammas',
  'Sugar & Baking Ingredients':r'sugar|sweetener|baking|cocoa|yeast|gelatin|gelatine|corn starch|cornstarch|icing|vanilla essence',
 }
 
@@ -287,7 +312,10 @@ def audit(row,source):
   from hold804_repairs import public_facts
   fact=public_facts(source,'Fresh Basket')
   pattern=AUDIT_PROOFS.get(label)
-  if fact and pattern and any(re.fullmatch('(?:'+pattern+')(?:s)?',str(t).strip(),re.I) for t in [fact.get('product_type','')]+fact.get('published_tags',[])):return []
+  if fact and pattern:
+   for t in [fact.get('product_type','')]+fact.get('published_tags',[]):
+    value=str(t).split('/')[-1].strip()
+    if MERCHANT_TYPES.get(value.casefold())==label or re.fullmatch('(?:'+pattern+')(?:s)?',value,re.I):return []
  if host in {'houseoftools.com.pk','freshbasket.com.pk'}:
   pattern=AUDIT_PROOFS.get(label)
   if pattern and re.search(r'\b(?:'+pattern+r')',title,re.I):return []
@@ -319,7 +347,7 @@ AUDIT_EXTRA = {
  'Shavers':r'shaver','Hair Curlers':r'curling tong','Waffle & Sandwich Makers':r'waffle maker|sandwich maker','Kettles':r'kettle',
  'Sugar & Sweeteners':r'stevia|sweetn?er|sweetener|gur|shakkar|sugar','Milk Drinks':r'lassi',
  'Bread & Rolls':r'ciabatta|panini|baguette|dinner roll|focaccia|brioche|sourdough|multigrain loaf|breadsticks|pain au chocolat',
- 'Cooking Fats & Oils':r'tallow|sesame oil|sarson oil|pomace oil|extra virgin oil','Dips & Cooking Pastes':r'dip|relish|curry paste|tom yum|tahina|tahini',
+ 'Cooking Fats & Oils':r'tallow|sesame oil|sarson oil|pomace oil|extra vig(?:r)?in oil|extra virgin oil','Dips & Cooking Pastes':r'dip|relish|curry paste|tom yum|tahina|tahini',
  'Water & Malt Drinks':r'water|malt flavour','Flour Mixes':r'batter mix|pancake mix|pizza crust mix',
  'Potato Fries':r'fries','Traditional Foods':r'panjiri|panjeeri|talbina|chicki|maroonda','Sausages':r'frankfurter',
  'Food Supplements':r'moringa.*powder|maca root powder|salajeet','Cosmetic Oils':r'castor oil|argan oil|kalonji oil',
