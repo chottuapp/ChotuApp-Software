@@ -32,7 +32,7 @@ jobs:
       - name: Verify source repair safeguards before touching Drive
         env:
           PYTHONPATH: tests:cloud:.
-        run: python -m unittest test_audit804_queue test_source_stock_exclusion test_source_numeric_comparisons test_held_source_repairs test_reviewed_photo_gate test_description_readability test_electronics_descriptions test_fresh_hold_recovery test_delivery_download_recovery test_merchant_tag_recovery test_source_named_service test_owner_photo_pause -q
+        run: python -m unittest test_audit804_queue test_source_stock_exclusion test_source_numeric_comparisons test_held_source_repairs test_reviewed_photo_gate test_description_readability test_electronics_descriptions test_fresh_hold_recovery test_delivery_download_recovery test_merchant_tag_recovery test_source_named_service test_owner_photo_pause test_new_catalogue_objects -q
       - run: sudo apt-get update -qq && sudo apt-get install -y rclone
       - name: Rule 804 checked files only, then checksum verification
         env:

@@ -24,7 +24,7 @@ def validated_facts(report,sites,now=None):
   body=product.get('description') or product.get('body_html') or ''
   if not isinstance(body,str) or len(body)>100000:continue
   from reviewed_source_types import merchant_tag_facts
-  facts.append(dict(store=store,product_id=str(item['product_id']),source_url=item['source_url'],requested_name=item['name'],public_title=product['title'],product_type=str(product.get('type') or product.get('product_type') or '')[:300],description=BeautifulSoup(body,'html.parser').get_text('\n',strip=True),evidence_run=str(report.get('run_id','')),checked_utc=report['checked_utc'],**merchant_tag_facts(product.get('tags'),store),published_tags=[t for t in product.get('tags',[]) if isinstance(t,str) and len(t)<=300][:500] if isinstance(product.get('tags'),list) else []))
+  facts.append(dict(store=store,product_id=str(item['product_id']),source_url=item['source_url'],requested_name=item['name'],public_title=product['title'],product_type=str(product.get('type') or product.get('product_type') or '')[:300],description=BeautifulSoup(body,'html.parser').get_text('\n',strip=True),evidence_run=str(report.get('run_id','')),checked_utc=report['checked_utc'],**{**merchant_tag_facts(product.get('tags'),store),'published_tags':[t for t in product.get('tags',[]) if isinstance(t,str) and len(t)<=300][:500] if isinstance(product.get('tags'),list) else []}))
  return facts
 
 def refresh(root,gh,sites,cache=None):
