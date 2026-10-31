@@ -100,7 +100,12 @@ class PublicCatalog:
   if ident in self.children:return self.children[ident]
   item=self.byid[ident];query='{products(filter:{sku:{eq:'+json.dumps(item['sku'])+'}},pageSize:2){items{'+DETAIL+'}}}'
   data=self.query(query);items=data.get('items',[])
-  if len(items)!=1 or items[0].get('id')!=ident or items[0].get('sku')!=item['sku']:raise ValueError('Exact Magento SKU/product identity mismatch')
+  # Some public SKU indexes omit a catalogued product. Its exact published URL
+  # key offers another lookup, never permission to accept another ID or SKU.
+  if items==[] and isinstance(item.get('url_key'),str) and item['url_key']:
+   data=self.query('{products(filter:{url_key:{eq:'+json.dumps(item['url_key'])+'}},pageSize:2){items{'+DETAIL+'}}}')
+   items=data.get('items',[])
+  if len(items)!=1 or items[0].get('id')!=ident or items[0].get('sku')!=item['sku'] or items[0].get('url_key')!=item.get('url_key'):raise ValueError('Exact Magento SKU/product identity mismatch: id='+str(ident)+' sku='+str(item['sku']))
   raw=items[0];product=normalize(raw,self.base)
   if self.robot.can_fetch('ChotuAppCatalog',product['permalink']):
    self.g['_chotu_wait']()

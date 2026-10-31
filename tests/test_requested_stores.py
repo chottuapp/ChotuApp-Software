@@ -95,6 +95,14 @@ class RequestedResumeTests(unittest.TestCase):
   with self.assertRaises(ValueError):resume_allowed(self.request,'Paklap','123',[],run,summary,[])
   summary['stores']=[dict(name='Other Store')]
   with self.assertRaises(ValueError):resume_allowed(self.request,'Paklap','123',[],run,summary,artifacts)
+ def test_completed_leaf_resume_requires_verified_requested_ancestry(self):
+  from requested_stores import resume_allowed
+  root,summary,artifacts=self.fixtures();leaf=dict(root,id=124,display_title='Automatic continuation of 123')
+  runs=[dict(databaseId=123,displayTitle=root['display_title'],status='completed'),dict(databaseId=124,displayTitle=leaf['display_title'],status='completed')]
+  self.assertTrue(resume_allowed(self.request,'Paklap','124',runs,leaf,summary,artifacts))
+  with self.assertRaises(ValueError):resume_allowed(self.request,'Paklap','124',[],leaf,summary,artifacts)
+  runs.append(dict(databaseId=125,displayTitle='Automatic continuation of 124',status='in_progress'))
+  self.assertFalse(resume_allowed(self.request,'Paklap','124',runs,leaf,summary,artifacts))
  def test_success_manual_stop_and_active_parent_are_preserved(self):
   from requested_stores import resume_allowed
   run,summary,artifacts=self.fixtures()

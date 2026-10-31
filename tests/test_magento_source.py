@@ -9,6 +9,17 @@ from woocommerce_source_support import offer,variants,export
 class MagentoTests(unittest.TestCase):
  def product(self):
   return dict(__typename='SimpleProduct',id=10,sku='USED-1',name='Lenovo Used Laptop',url_key='lenovo-used-laptop',url_suffix='.html',stock_status='IN_STOCK',price_range=dict(minimum_price=dict(regular_price=dict(value=59500,currency='PKR'),final_price=dict(value=58500,currency='PKR'))),description=dict(html='<p>Processor: Core i5</p><p>Memory: 16 GB</p>'),short_description=dict(html='<p>SSD: 256 GB</p>'),image=dict(url=BASE+'/media/laptop.jpg'),media_gallery=[],categories=[dict(name='Used Laptops')],options=[])
+ def test_missing_sku_index_uses_exact_url_key_and_keeps_offer_identity(self):
+  from unittest.mock import Mock
+  raw=self.product();reader=PublicCatalog({},BASE,lambda _:None);reader.byid[10]=copy.deepcopy(raw);reader.robot=SimpleNamespace(can_fetch=lambda *a:False)
+  reader.query=Mock(side_effect=[{'items':[]},{'items':[raw]}])
+  product=reader.read('/wp-json/wc/store/v1/products/10')
+  self.assertEqual(product['id'],10);self.assertEqual(product['sku'],'USED-1');self.assertEqual(offer(product)[1],58500);self.assertIn('url_key:{eq:"lenovo-used-laptop"}',reader.query.call_args_list[1].args[0])
+ def test_url_key_fallback_cannot_accept_different_sku_or_product(self):
+  from unittest.mock import Mock
+  for field,value in [('id',11),('sku','OTHER'),('url_key','other')]:
+   raw=self.product();reader=PublicCatalog({},BASE,lambda _:None);reader.byid[10]=copy.deepcopy(raw);reader.robot=SimpleNamespace(can_fetch=lambda *a:False);wrong=dict(raw,**{field:value});reader.query=Mock(side_effect=[{'items':[]},{'items':[wrong]}])
+   with self.subTest(field=field),self.assertRaisesRegex(ValueError,'identity mismatch'):reader.read('/wp-json/wc/store/v1/products/10')
  def test_exact_pkr_prices_and_used_condition_without_quantity_guess(self):
   p=normalize(self.product());self.assertEqual(offer(p)[0],59500);self.assertEqual(offer(p)[1],58500);self.assertEqual(p['condition'],'used');self.assertEqual(p['permalink'],BASE+'/lenovo-used-laptop.html');self.assertNotIn('stock_quantity',p)
  def test_invalid_currency_stock_url_and_custom_options_fail_closed(self):
