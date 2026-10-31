@@ -10,7 +10,7 @@ class FreshTests(unittest.TestCase):
   from fresh804_dispatch import selected_sites
   sites=json.loads((Path(__file__).resolve().parents[1]/'cloud/fetch-update-release.json').read_text())['fresh_stores'][:29]
   selected=selected_sites(sites,{'excluded_stores':['Khaadi'],'khaadi_fresh_enabled':False})
-  self.assertEqual(len(selected),len(sites)-1);self.assertNotIn('Khaadi',{s['name'] for s in selected})
+  self.assertEqual(len(selected),len([s for s in sites if s['name'] not in {'LAAM','Khaadi','Bachaa Party','Gift4U','Xcessories Hub'}]));self.assertNotIn('Khaadi',{s['name'] for s in selected})
   self.assertEqual(len(groups(selected)),(len(selected)+2)//3);self.assertTrue(all(len(group)<=3 for group in groups(selected)))
 
  def test_expanded_registry_solo_plan_preserves_completed_and_excludes_paused(self):
@@ -18,7 +18,7 @@ class FreshTests(unittest.TestCase):
   root=Path(__file__).resolve().parents[1]
   registry=json.loads((root/'cloud/fetch-update-release.json').read_text())['fresh_stores']
   request=json.loads((root/'cloud/audit804-release.json').read_text())
-  sites=selected_sites(registry,request);self.assertEqual(len(sites),sum(r.get('enabled',True) is not False and r['name'] not in request['excluded_stores'] for r in registry))
+  sites=selected_sites(registry,request);self.assertEqual(len(sites),sum(r.get('enabled',True) is not False and r['name'] not in set(request['excluded_stores'])|{'Gift4U','Xcessories Hub','LAAM','Khaadi','Bachaa Party'} for r in registry))
   remaining=len(sites)-len([v for v in sites if v['name'] in set(request.get('completed_stores',[]))|set(request.get('skip_fresh_stores',[]))]);size=request['maximum_stores_per_runner'];plan=planned_groups(sites,request);self.assertEqual(len(plan),(remaining+size-1)//size);self.assertTrue(all(1<=len(g)<=size for g in plan))
   self.assertTrue(({'Stylo','Bata','Aerosoft Studio','Servis','Ndure'}-set(request.get('completed_stores',[]))-set(request.get('skip_fresh_stores',[])))<={site['name'] for g in plan for site in g})
 

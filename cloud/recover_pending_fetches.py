@@ -11,8 +11,14 @@ def recovery_plan(request,policy,registry,runs,run,summary,artifacts):
  if request.get('campaign_id')!=policy['campaign_id'] or request.get('refresh_generation')!=policy['refresh_generation']:raise ValueError('Recovery generation mismatch')
  rid=str(request['source_run']);group=request['runner_group'];wanted=request['stores']
  if not rid.isdigit() or not wanted or len(wanted)!=len(set(wanted)):raise ValueError('Unique approved recovery stores required')
+ from locked_store_rules import owner_paused
+ if any(owner_paused(name) for name in wanted):raise ValueError('Owner-paused source cannot resume')
  groups=planned_groups(selected_sites(registry,policy),policy)
  expected=next((sites for i,sites in enumerate(groups,1) if lane_prefix(policy)+str(i)==group),None)
+ # New pauses must not relabel the source identity of an existing checkpoint.
+ lanes=json.loads((ROOT/'cloud/requested-stores.json').read_text()).get('existing_lanes',{})
+ if group in lanes:
+  byname={s['name']:s for s in registry};expected=[byname[name] for name in lanes[group]]
  if expected is None or not set(wanted)<={s['name'] for s in expected}:raise ValueError('Recovery outside approved enabled source group')
  if str(run.get('id'))!=rid or run.get('event')!='workflow_dispatch' or run.get('head_branch')!='main' or run.get('head_repository',{}).get('full_name')!=REPO or run.get('display_title')!='Cloud group '+group:raise ValueError('Untrusted source run identity')
  if run.get('status')!='completed':return None

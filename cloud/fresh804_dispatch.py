@@ -10,10 +10,12 @@ def gh(*args):return subprocess.run(['gh',*args],capture_output=True,text=True,c
 
 def selected_sites(registry,request):
  if not 1<=len(registry)<=100 or len({row['name'] for row in registry})!=len(registry):raise ValueError('Unique approved registry stores required')
+ from locked_store_rules import OWNER_PAUSED_STORES
  excluded=set(request.get('excluded_stores',[]))
+ owner_paused=OWNER_PAUSED_STORES
  if request.get('khaadi_fresh_enabled') is False:excluded.add('Khaadi')
  if not excluded<={row['name'] for row in registry}:raise ValueError('Unknown excluded store')
- sites=[row for row in registry if row['name'] not in excluded and row.get('enabled',True) is not False]
+ sites=[row for row in registry if row['name'] not in excluded|owner_paused and row.get('enabled',True) is not False]
  if not sites:raise ValueError('No stores selected for fresh fetching')
  return sites
 

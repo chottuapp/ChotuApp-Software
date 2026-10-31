@@ -169,6 +169,8 @@ def content_text(value):
  return text
 
 def export(g,base,name,template,log,*,provider=None):
+ from locked_store_rules import owner_paused,has_source_photo
+ if owner_paused(name,base):raise ValueError('OWNER PAUSED: '+name+'; explicit owner instruction required to enable.')
  host=urlsplit(base).hostname.removeprefix('www.');base=base.rstrip('/')
  if host not in HOSTS and provider is None:raise ValueError('Unapproved WooCommerce host')
  if provider is not None and not provider.supports(base):raise ValueError('Unapproved normalized catalog provider')
@@ -197,7 +199,7 @@ def export(g,base,name,template,log,*,provider=None):
   if wb[sheet].max_row>1:wb[sheet].delete_rows(2,wb[sheet].max_row-1)
  from ranking_support import ensure_columns
  ensure_columns(wb['Products']);g['ensure_variant_image_fields'](wb['Variant Combinations'])
- checked=[];retained=0
+ checked=[];retained=0;photo_holds=[]
  for index,p in enumerate(products,1):
   # A separate detail read verifies identity and current offers, not catalog aggregate prices.
   try:current=get('/wp-json/wc/store/v1/products/'+str(p['id']))
@@ -229,7 +231,16 @@ def export(g,base,name,template,log,*,provider=None):
   vs=variants(p,get);offers=[(v,a,offer(v)) for v,a in vs]
   available=[x for x in offers if x[2][2]]
   if not available:continue
-  cover=p['images'][0]['src'] if p.get('images') else ''
+  images=[]
+  for item in [p]+[v for v,_ in vs]:
+   for im in item.get('images',[]) or []:
+    if has_source_photo({'images':[im]}) and im not in images:images.append(im)
+  p=dict(p,images=images)
+  cover=images[0]['src'] if images else ''
+  if not has_source_photo(p) and str(p.get('name') or '').strip():
+   photo_holds.append(dict(source_product_id=p['id'],name=p['name'],source_url=url,source_is_in_stock=p.get('is_in_stock'),catalog_available='no',reason='Owner rule: missing source photo'))
+   log('OWNER SALE BLOCK: photo missing; product '+str(p['id'])+' '+url+' excluded as owner-unavailable; source stock='+str(p.get('is_in_stock'))+' unchanged')
+   continue
   if not cover or not str(p.get('name') or '').strip():
    if provider is not None:raise ValueError('Public provider product lacks title or photo; source review required: '+url)
    if reviewed_removed_listing(p):
@@ -297,6 +308,9 @@ def export(g,base,name,template,log,*,provider=None):
   with (out/(name+' - '+suffix+'.csv')).open('w',encoding='utf-8-sig',newline='') as f:
    writer=csv.writer(f);writer.writerow(['source_url','status','detail'])
    for url in checked:writer.writerow([url,'REVIEW','Exact public '+provider_label+' detail and variation offers; website display order not independently proven.'])
+ if photo_holds:
+  with (out/(name+' - OWNER PHOTO HOLDS.csv')).open('w',encoding='utf-8-sig',newline='') as f:
+   writer=csv.DictWriter(f,fieldnames=list(photo_holds[0]));writer.writeheader();writer.writerows(photo_holds)
  log('EXPORT BUILT: '+str(retained)+' products; full independent 804 Audit required before delivery');log('FILE: '+str(target))
 
 def enable_woocommerce_source(g):

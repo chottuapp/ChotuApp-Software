@@ -52,7 +52,9 @@ def request_from_holds(state,sites,previous=None,limit=160,now=None):
  """Rotate bounded batches fairly across stores; no credentials or workbook contacts."""
  now=now or datetime.now(timezone.utc);previous=previous or {};recent=previous.get('recent_checks',{})
  groups=[]
+ from locked_store_rules import OWNER_PAUSED_STORES
  for store,report in sorted(state.get('audit804_results',{}).items()):
+  if store in OWNER_PAUSED_STORES:continue
   if store not in sites or report.get('status')!='hold':continue
   group=[]
   for row in report.get('findings',[]):

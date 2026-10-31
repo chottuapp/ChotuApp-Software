@@ -54,6 +54,8 @@ def main():
     if marker.get('schema')!=1 or not re.fullmatch('[a-f0-9]{40}',release):raise ValueError('Reviewed software commit required')
     runs=json.loads(gh('run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','100','--json','databaseId,displayTitle,status,conclusion,headSha'))
     for lane in marker['cloud_lanes']:
+        from locked_store_rules import owner_paused
+        if owner_paused(lane.get('name',''),lane.get('url','')):print(lane['name']+': owner paused; no dispatch');continue
         if lane.get('enabled') is False:print(lane['group']+': source repair pending; unchanged');continue
         roots={str(lane['root_run_id'])}|{str(r['databaseId']) for r in runs if r.get('displayTitle')=='Cloud group '+lane['group'] and int(r['databaseId'])>=int(lane['root_run_id'])}
         identities={str(r['databaseId']) for root in roots for r in descendants(runs,root)}

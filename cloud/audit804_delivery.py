@@ -145,7 +145,10 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
  groups={run['displayTitle'].removeprefix('Cloud group ') for run in all_runs if run.get('displayTitle','').startswith(prefix)}
  runs=helper.related(all_runs,groups);registry=json.loads((root/'cloud/fetch-update-release.json').read_text())['fresh_stores'];sites={s['name']:s for s in registry}
  codes=json.loads((root/'cloud/confirmed-shop-codes.json').read_text())
- generation=config.get('refresh_generation');refresh_stores=set(config.get('refresh_stores',[]))
+ from locked_store_rules import OWNER_PAUSED_STORES
+ paused=OWNER_PAUSED_STORES
+ generation=config.get('refresh_generation');refresh_stores=set(config.get('refresh_stores',[]))-paused
+ state['owner_paused_stores']=sorted(paused)
  refresh_runs,carried_runs=refresh_source_ids(all_runs,generation,campaign,config.get('preserve_active_run_ids',[])) if generation else (set(),set())
  if generation:
   runs=[run for run in all_runs if str(run['databaseId']) in refresh_runs|carried_runs]
@@ -222,6 +225,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
  try:
   # Recheck durable held inputs after code/policy updates, even if Actions artifacts expired.
   for store,report in list(state['audit804_results'].items()):
+   if store in paused:continue
    if generation and store in refresh_stores and str(report.get('source_run')) not in refresh_runs:continue
    key='source:'+report.get('source_sha256','')+':'+store+':'+revision
    code_changed=bool(codes.get(store) and state.get('uploaded',{}).get(store,{}).get('shop_code')!=codes[store])
@@ -245,6 +249,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
     if stage is None:continue
     for entry in completed_files(stage):
      store=entry.get('store');name=entry.get('name','')
+     if store in paused:continue
      if generation and store in refresh_stores and rid not in refresh_runs:continue
      if store not in config['stores']:raise ValueError('Unapproved store in completed source')
      key=base+':'+store+':'+revision

@@ -35,6 +35,8 @@ def capture_saved_cover(item,session):
 
 def main():
  request=json.loads(Path('cloud/audit804-source-request.json').read_text());items=request['products']
+ from locked_store_rules import OWNER_PAUSED_STORES
+ items=[item for item in items if item['store'] not in OWNER_PAUSED_STORES]
  if not items:print('No actionable public source holds');return
  if not 1<=len(items)<=160:raise ValueError('Bounded public review required')
  hosts={urlsplit(s['url']).hostname.removeprefix('www.') for s in json.loads(Path('cloud/fetch-update-release.json').read_text())['fresh_stores']}

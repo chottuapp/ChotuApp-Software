@@ -16,5 +16,6 @@ def paused_sources(sites):
     import json
     from pathlib import Path
     registry=json.loads((Path(__file__).resolve().parent/'fetch-update-release.json').read_text())['fresh_stores']
-    paused={r['name'] for r in registry if r.get('enabled',True) is False}
-    return {s.get('name') for s in sites}&paused
+    from locked_store_rules import OWNER_PAUSED_STORES,owner_paused
+    paused={r['name'] for r in registry if r.get('enabled',True) is False}|OWNER_PAUSED_STORES
+    return {s.get('name') for s in sites if s.get('name') in paused or owner_paused(url=s.get('url',''))}

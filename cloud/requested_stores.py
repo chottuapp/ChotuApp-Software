@@ -19,7 +19,8 @@ def validate(request,registry,codes,policy):
  registered={s['name']:s for s in registry}
  for s in stores:
   r=registered.get(s['name']);u=urlsplit(s['url'])
-  if not r or r.get('enabled',True) is False or s['name'] in policy.get('excluded_stores',[]):raise ValueError('Paused or unapproved requested store')
+  from locked_store_rules import owner_paused
+  if owner_paused(s['name'],s['url']) or not r or r.get('enabled',True) is False or s['name'] in policy.get('excluded_stores',[]):raise ValueError('Paused or unapproved requested store')
   if u.scheme!='https' or u.username or u.password or u.query or u.path not in ('','/') or u.port is not None:raise ValueError('Exact approved HTTPS homepage required')
   if u.hostname.removeprefix('www.')!=urlsplit(r['url']).hostname.removeprefix('www.') or codes.get(s['name'])!=s.get('shop_code'):raise ValueError('Requested source/code mismatch')
  return stores
@@ -35,6 +36,7 @@ def root_lane(run,runs):
  return None
 
 def dispatch_plan(request,runs,ready,additional_active=()):
+ from locked_store_rules import owner_paused
  prefix='audit804-'+request['campaign_id']+'-'+request['refresh_generation']+'-'+request['request_id']+'-'
  lanes=request['existing_lanes'];codes={s['shop_code']:s['name'] for s in request['stores']};active=set(additional_active);launched=set()
  for r in runs:
@@ -45,7 +47,7 @@ def dispatch_plan(request,runs,ready,additional_active=()):
   elif r['status']!='completed' and lane in lanes:active.update(lanes[lane])
  plan=[]
  for i in range(0,len(request['stores']),2):
-  selected=[s for s in request['stores'][i:i+2] if s['name'] in ready and s['name'] not in active|launched]
+  selected=[s for s in request['stores'][i:i+2] if s['name'] in ready and s['name'] not in active|launched and not owner_paused(s['name'],s['url'])]
   if selected:
    lane=prefix+str(i//2+1)+'-'+'-'.join(s['shop_code'] for s in selected)
    plan.append(dict(runner_group=lane,stores=[dict(name=s['name'],url=s['url']) for s in selected]))
@@ -56,6 +58,8 @@ def resume_allowed(request,store,rid,runs,run,summary,artifacts):
  from continuation_policy import budget
  sites={s['name']:s for s in request['stores']}
  if store not in sites or not str(rid).isdigit():raise ValueError('Unapproved requested checkpoint')
+ from locked_store_rules import owner_paused
+ if owner_paused(store,sites[store]['url']):raise ValueError('Owner-paused source cannot resume')
  title=run.get('display_title','');lane=root_lane({'displayTitle':title},runs);prefix='audit804-'+request['campaign_id']+'-'+request['refresh_generation']+'-'+request['request_id']+'-'
  if str(run.get('id'))!=str(rid) or run.get('event')!='workflow_dispatch' or run.get('head_branch')!='main' or run.get('head_repository',{}).get('full_name')!=REPO or not lane or not lane.startswith(prefix) or sites[store]['shop_code'] not in lane.split('-'):raise ValueError('Checkpoint is outside this exact requested store')
  if run.get('status')!='completed' or run.get('conclusion') in ('success','cancelled'):return False
@@ -68,6 +72,8 @@ def resume_allowed(request,store,rid,runs,run,summary,artifacts):
  return index<limit
 
 def probe(site):
+ from locked_store_rules import owner_paused
+ if owner_paused(site['name'],site['url']):return dict(name=site['name'],url=site['url'],status='owner_paused',observations=[])
  base=site['url'].rstrip('/');host=urlsplit(base).hostname.removeprefix('www.');session=requests.Session();session.headers['User-Agent']='ChotuAppRequestedStoreCheck/1.0';observations=[]
  def read(path):
   time.sleep(1.5);url=base+path
@@ -132,8 +138,12 @@ def probe(site):
 
 def main():
  read=lambda n:json.loads((ROOT/'cloud'/n).read_text())
- request=read('requested-stores.json');stores=validate(request,read('fetch-update-release.json')['fresh_stores'],read('confirmed-shop-codes.json'),read('audit804-release.json'))
- report=dict(run_id=os.environ['GITHUB_RUN_ID'],request_id=request['request_id'],checked_utc=datetime.now(timezone.utc).isoformat(),stores=[],groups=[],status='checking')
+ request=read('requested-stores.json')
+ from locked_store_rules import owner_paused
+ paused=[s['name'] for s in request['stores'] if owner_paused(s['name'],s['url'])]
+ request=dict(request,stores=[s for s in request['stores'] if s['name'] not in paused])
+ stores=validate(request,read('fetch-update-release.json')['fresh_stores'],read('confirmed-shop-codes.json'),read('audit804-release.json'))
+ report=dict(owner_paused_stores=paused,run_id=os.environ['GITHUB_RUN_ID'],request_id=request['request_id'],checked_utc=datetime.now(timezone.utc).isoformat(),stores=[],groups=[],status='checking')
  def save():report['checked_utc']=datetime.now(timezone.utc).isoformat();publish(report,branch='requested-store-reports')
  with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:report['stores']=list(pool.map(probe,stores))
  save();ready={s['name'] for s in report['stores'] if s['status']=='supported'}

@@ -1063,6 +1063,8 @@ def verified_sellable_variants(base, product, log):
 
 
 def run_site(base, name, template, log):
+    from locked_store_rules import owner_paused
+    if owner_paused(name,base):raise ValueError('OWNER PAUSED: '+name+'; explicit owner instruction required to enable.')
     # CHOTUAPP_MULTIDIM_VARIANTS_V1
     OUT.mkdir(exist_ok=True)
     _chotu_tls.stylo_collections_rate_limited = False
@@ -1129,6 +1131,10 @@ def run_site(base, name, template, log):
         variants, available_priced = verified
         if not available_priced:
             skipped_out_of_stock += 1
+            continue
+        from locked_store_rules import has_source_photo
+        if not has_source_photo(p):
+            log('OWNER SALE BLOCK: photo missing; excluded as owner-unavailable, source stock unchanged: '+txt(p.get('handle')))
             continue
         cheapest=min(available_priced,key=lambda v:money(v['price']))
         lowest=money(cheapest['price'])
