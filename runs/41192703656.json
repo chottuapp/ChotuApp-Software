@@ -1,0 +1,598 @@
+{
+  "run_id": "41192703656",
+  "checked_utc": "2026-10-31T10:25:52.972458+00:00",
+  "targets": [
+    {
+      "target": "41149733071",
+      "state": {
+        "conclusion": "failure",
+        "displayTitle": "Automatic continuation of 41092372523",
+        "headSha": "d0a5eb20644647ae015d6499fc0004d3944ce771",
+        "jobs": [
+          {
+            "completedAt": "2026-10-31T05:45:11Z",
+            "conclusion": "failure",
+            "databaseId": 124383137819,
+            "name": "fetch",
+            "startedAt": "2026-10-31T00:21:39Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-31T00:21:40Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-31T00:21:40Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:21:49Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-31T00:21:40Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:21:49Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-31T00:21:49Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:21:51Z",
+                "conclusion": "success",
+                "name": "Install extraction dependencies",
+                "number": 4,
+                "startedAt": "2026-10-31T00:21:49Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:26:21Z",
+                "conclusion": "success",
+                "name": "Restore optional saved run",
+                "number": 5,
+                "startedAt": "2026-10-31T00:21:51Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:26:21Z",
+                "conclusion": "skipped",
+                "name": "Install Czone browser fallback when needed",
+                "number": 6,
+                "startedAt": "2026-10-31T00:26:21Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T00:26:21Z",
+                "conclusion": "success",
+                "name": "Start continuous fetching on the cloud runner",
+                "number": 7,
+                "startedAt": "2026-10-31T00:26:21Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T05:30:48Z",
+                "conclusion": "success",
+                "name": "Live progress, logs and completed-file uploads",
+                "number": 8,
+                "startedAt": "2026-10-31T00:26:21Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T05:45:03Z",
+                "conclusion": "failure",
+                "name": "Fetch result",
+                "number": 9,
+                "startedAt": "2026-10-31T05:30:48Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T05:45:04Z",
+                "conclusion": "success",
+                "name": "Collect diagnostic report even if fetching failed",
+                "number": 10,
+                "startedAt": "2026-10-31T05:45:03Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T05:45:06Z",
+                "conclusion": "success",
+                "name": "Upload diagnostic report and redacted log",
+                "number": 11,
+                "startedAt": "2026-10-31T05:45:04Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T05:45:08Z",
+                "conclusion": "success",
+                "name": "Upload Excel files and audits, including completed stores from a partial run",
+                "number": 12,
+                "startedAt": "2026-10-31T05:45:06Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T05:45:08Z",
+                "conclusion": "skipped",
+                "name": "Final automated Rule 804 pass for fresh batch",
+                "number": 13,
+                "startedAt": "2026-10-31T05:45:08Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T05:45:08Z",
+                "conclusion": "skipped",
+                "name": "Upload automated Rule 804 fresh workbooks",
+                "number": 14,
+                "startedAt": "2026-10-31T05:45:08Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T05:45:08Z",
+                "conclusion": "success",
+                "name": "Upload saved checkpoint when available",
+                "number": 15,
+                "startedAt": "2026-10-31T05:45:08Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T05:45:08Z",
+                "conclusion": "success",
+                "name": "Dispatch authorized continuation after verified checkpoint upload",
+                "number": 16,
+                "startedAt": "2026-10-31T05:45:08Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T05:45:08Z",
+                "conclusion": "success",
+                "name": "Post Live progress, logs and completed-file uploads",
+                "number": 30,
+                "startedAt": "2026-10-31T05:45:08Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T05:45:08Z",
+                "conclusion": "skipped",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 31,
+                "startedAt": "2026-10-31T05:45:08Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T05:45:08Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 32,
+                "startedAt": "2026-10-31T05:45:08Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T05:45:08Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 33,
+                "startedAt": "2026-10-31T05:45:08Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41149733071/job/124383137819"
+          },
+          {
+            "completedAt": "2026-10-31T05:45:46Z",
+            "conclusion": "success",
+            "databaseId": 124457167181,
+            "name": "Archive structured diagnostics",
+            "startedAt": "2026-10-31T05:45:15Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-31T05:45:16Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-31T05:45:15Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T05:45:39Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-31T05:45:16Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T05:45:40Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-31T05:45:39Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T05:45:41Z",
+                "conclusion": "success",
+                "name": "Run actions/download-artifact@v4",
+                "number": 4,
+                "startedAt": "2026-10-31T05:45:40Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T05:45:43Z",
+                "conclusion": "success",
+                "name": "Archive credential-free JSON on the cloud-reports branch",
+                "number": 5,
+                "startedAt": "2026-10-31T05:45:41Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T05:45:43Z",
+                "conclusion": "success",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 9,
+                "startedAt": "2026-10-31T05:45:43Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T05:45:44Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 10,
+                "startedAt": "2026-10-31T05:45:43Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-31T05:45:44Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 11,
+                "startedAt": "2026-10-31T05:45:44Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41149733071/job/124457167181"
+          }
+        ],
+        "status": "completed"
+      },
+      "failed_log": "fetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2096303Z [Liberty Books] [05:26:18] GET_JSON: https://libertybooks.com/products/the-crux-how-leaders-become-strategists-109.js\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2097442Z [Liberty Books] [05:26:18] CACHE HIT: https://libertybooks.com/products/the-crux-how-leaders-become-strategists-109.js\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2098563Z [Liberty Books] LIVE VARIANT PRICES: The Crux - How Leaders Become Strategists \u2014 1 checked; 0 refreshed\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2099549Z [Liberty Books] [05:26:18] GET_JSON: https://libertybooks.com/products/between-the-bridge-and-the-river-107.js\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2100622Z [Liberty Books] [05:26:18] CACHE HIT: https://libertybooks.com/products/between-the-bridge-and-the-river-107.js\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2101732Z [Liberty Books] LIVE VARIANT PRICES: Between the Bridge and the River \u2014 1 checked; 0 refreshed\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2102622Z [Liberty Books] [05:26:18] CACHE HIT status=200 elapsed=0.0s bytes=863980\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2103645Z [Liberty Books] [05:26:18] GET_JSON: https://libertybooks.com/products/who-killed-daniel-pearl-104.js\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2104705Z [Liberty Books] [05:26:18] CACHE HIT: https://libertybooks.com/products/who-killed-daniel-pearl-104.js\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2105708Z [Liberty Books] LIVE VARIANT PRICES: Who Killed Daniel Pearl \u2014 1 checked; 0 refreshed\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2106784Z [Liberty Books] [05:26:18] GET_JSON: https://libertybooks.com/products/dork-diaries-friendship-kit-hardcover-3-nov-2016-102.js\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2107988Z [Liberty Books] [05:26:18] CACHE HIT: https://libertybooks.com/products/dork-diaries-friendship-kit-hardcover-3-nov-2016-102.js\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2109211Z [Liberty Books] LIVE VARIANT PRICES: Dork Diaries: Friendship Kit Hardcover - 3 Nov. 2016 \u2014 1 checked; 0 refreshed\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2110120Z [Liberty Books] [05:26:18] CACHE HIT status=200 elapsed=0.0s bytes=865616\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2110951Z [Liberty Books] [05:26:19] GET_JSON: https://libertybooks.com/products/the-white-tiger-101.js\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2111827Z [Liberty Books] [05:26:19] CACHE HIT: https://libertybooks.com/products/the-white-tiger-101.js\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2112739Z [Liberty Books] LIVE VARIANT PRICES: The White Tiger \u2014 1 checked; 0 refreshed\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2113636Z [Liberty Books] [05:26:19] CACHE HIT status=200 elapsed=0.0s bytes=848035\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2114474Z [Liberty Books] [05:26:20] GET_JSON: https://libertybooks.com/products/vidal-the-autobiography-71.js\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2115396Z [Liberty Books] [05:26:20] CACHE HIT: https://libertybooks.com/products/vidal-the-autobiography-71.js\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2116505Z [Liberty Books] LIVE VARIANT PRICES: Vidal - The Autobiography \u2014 1 checked; 0 refreshed\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2147289Z [Liberty Books] [05:26:21] CACHE HIT: https://libertybooks.com/products/while-america-aged-32.js\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2148201Z [Liberty Books] LIVE VARIANT PRICES: While America Aged \u2014 1 checked; 0 refreshed\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2148842Z [Liberty Books] [05:26:21] CACHE HIT status=200 elapsed=0.0s bytes=853340\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2149321Z Cloud time budget reached; saving unfinished work.\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2149895Z Checkpoint lossless cache migration: 47442 legacy responses compressed; all source bytes and hashes remain verifiable.\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2150522Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2151214Z CHECKPOINT NOT SAVED: Checkpoint exceeds bounded 4 GB compressed safety limit; outputs remain available\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2152018Z RUN SUMMARY:\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2152672Z Liberty Books: PENDING \u2014 Stopped; successful requests retained\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2153582Z Checkpoint: not saved: Checkpoint exceeds bounded 4 GB compressed safety limit; outputs remain available\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2154333Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2165031Z ##[error]Process completed with exit code 2.\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2215096Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2215702Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2257942Z shell: /usr/bin/bash -e {0}\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2258291Z env:\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2258715Z   CHOTUAPP_CLOUD_DATA: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2259294Z   CLOUD_RUNNER_GROUP: audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-23\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2259756Z   CLOUD_PARTITION_RESUME: true\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2260222Z   CLOUD_STORES: [{\"name\":\"Liberty Books\",\"url\":\"https://libertybooks.com\"}]\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2260659Z   CLOUD_MINUTES: 300\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2261002Z   RESUME_RUN_ID: 41049513750\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:03.2261363Z   SAVE_CHECKPOINT: true\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:08.4786430Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:08.4787142Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:08.4787868Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:08.4788515Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:08.4789066Z   CLOUD_NEEDS_CZONE_BROWSER: false\n[credential-bearing log line removed]\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:08.4791053Z ##[endgroup]\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:08.5114124Z No continuation: current fetch has no completed saved checkpoint.\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:08.5300991Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:08.5379599Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:08.5917416Z [command]/usr/bin/git version\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:08.5951097Z git version 2.56.0\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:08.6002437Z Temporarily overriding HOME='/home/runner/work/_temp/bf651ff5-e2f9-48e4-b514-431f144cf855' before making global git config changes\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:08.6003429Z Adding repository directory to the temporary git global config as a safe directory\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:08.6004091Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ChotuApp-Software/ChotuApp-Software\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:08.6010404Z [command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:08.6068997Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:08.6301331Z [command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nfetch\tUNKNOWN STEP\t2026-10-31T05:45:08.6325574Z http.https://github.com/.extraheader",
+      "artifacts": [
+        {
+          "name": "chotuapp-excel-files",
+          "id": 13032177549,
+          "expired": false,
+          "size_in_bytes": 63160
+        },
+        {
+          "name": "chotuapp-live-logs",
+          "id": 13032135936,
+          "expired": false,
+          "size_in_bytes": 2251422
+        },
+        {
+          "name": "chotuapp-diagnostics",
+          "id": 13031923227,
+          "expired": false,
+          "size_in_bytes": 2249427
+        }
+      ],
+      "annotations": [
+        {
+          "level": "warning",
+          "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+        },
+        {
+          "level": "warning",
+          "message": "No files were found with the provided path: checkpoint.zip\ncheckpoint.parts/. No artifacts will be uploaded."
+        },
+        {
+          "level": "failure",
+          "message": "Process completed with exit code 2."
+        }
+      ],
+      "console-tail.txt": "[Liberty Books] [05:26:15] CACHE HIT status=200 elapsed=0.0s bytes=853895 \n[Liberty Books] [05:26:15] GET_JSON: https://libertybooks.com/products/do-it-yourself-decorating-170.js\n[Liberty Books] [05:26:15] CACHE HIT: https://libertybooks.com/products/do-it-yourself-decorating-170.js\n[Liberty Books] LIVE VARIANT PRICES: Do-it-yourself Decorating \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:15] GET_JSON: https://libertybooks.com/products/curious-minds-how-a-child-becomes-a-scientist-146.js\n[Liberty Books] [05:26:15] CACHE HIT: https://libertybooks.com/products/curious-minds-how-a-child-becomes-a-scientist-146.js\n[Liberty Books] LIVE VARIANT PRICES: Curious Minds - How a Child Becomes a Scientist \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:15] GET_JSON: https://libertybooks.com/products/a-place-to-spa-exceptional-destination-spas-from-around-the-world-138.js\n[Liberty Books] [05:26:15] CACHE HIT: https://libertybooks.com/products/a-place-to-spa-exceptional-destination-spas-from-around-the-world-138.js\n[Liberty Books] LIVE VARIANT PRICES: A Place to Spa - Exceptional Destination Spas from Around the World \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:15] CACHE HIT status=200 elapsed=0.0s bytes=858661 \n[Liberty Books] [05:26:16] GET_JSON: https://libertybooks.com/products/our-missing-hearts-136.js\n[Liberty Books] [05:26:16] CACHE HIT: https://libertybooks.com/products/our-missing-hearts-136.js\n[Liberty Books] LIVE VARIANT PRICES: Our Missing Hearts \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:16] CACHE HIT status=200 elapsed=0.0s bytes=855765 \n[Liberty Books] [05:26:16] GET_JSON: https://libertybooks.com/products/teach-yourself-bridge-by-terrence-reese-trade-paperback-133.js\n[Liberty Books] [05:26:16] CACHE HIT: https://libertybooks.com/products/teach-yourself-bridge-by-terrence-reese-trade-paperback-133.js\n[Liberty Books] LIVE VARIANT PRICES: Teach Yourself Bridge by Terrence Reese (Trade Paperback) \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:16] CACHE HIT status=200 elapsed=0.0s bytes=856505 \n[Liberty Books] [05:26:16] GET_JSON: https://libertybooks.com/products/marketing-communications-integrating-offline-and-online-with-social-media-132.js\n[Liberty Books] [05:26:16] CACHE HIT: https://libertybooks.com/products/marketing-communications-integrating-offline-and-online-with-social-media-132.js\n[Liberty Books] LIVE VARIANT PRICES: Marketing Communications - Integrating Offline and Online with Social Media \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:16] GET_JSON: https://libertybooks.com/products/animal-farm-128.js\n[Liberty Books] [05:26:16] CACHE HIT: https://libertybooks.com/products/animal-farm-128.js\n[Liberty Books] LIVE VARIANT PRICES: ANIMAL FARM \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:16] CACHE HIT status=200 elapsed=0.0s bytes=856719 \n[Liberty Books] [05:26:17] GET_JSON: https://libertybooks.com/products/taj-mahal-111.js\n[Liberty Books] [05:26:17] CACHE HIT: https://libertybooks.com/products/taj-mahal-111.js\n[Liberty Books] LIVE VARIANT PRICES: Taj Mahal \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:17] CACHE HIT status=200 elapsed=0.0s bytes=853326 \n[Liberty Books] [05:26:18] GET_JSON: https://libertybooks.com/products/love-110.js\n[Liberty Books] [05:26:18] CACHE HIT: https://libertybooks.com/products/love-110.js\n[Liberty Books] LIVE VARIANT PRICES: Love \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:18] CACHE HIT status=200 elapsed=0.0s bytes=852987 \n[Liberty Books] [05:26:18] GET_JSON: https://libertybooks.com/products/the-crux-how-leaders-become-strategists-109.js\n[Liberty Books] [05:26:18] CACHE HIT: https://libertybooks.com/products/the-crux-how-leaders-become-strategists-109.js\n[Liberty Books] LIVE VARIANT PRICES: The Crux - How Leaders Become Strategists \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:18] GET_JSON: https://libertybooks.com/products/between-the-bridge-and-the-river-107.js\n[Liberty Books] [05:26:18] CACHE HIT: https://libertybooks.com/products/between-the-bridge-and-the-river-107.js\n[Liberty Books] LIVE VARIANT PRICES: Between the Bridge and the River \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:18] CACHE HIT status=200 elapsed=0.0s bytes=863980 \n[Liberty Books] [05:26:18] GET_JSON: https://libertybooks.com/products/who-killed-daniel-pearl-104.js\n[Liberty Books] [05:26:18] CACHE HIT: https://libertybooks.com/products/who-killed-daniel-pearl-104.js\n[Liberty Books] LIVE VARIANT PRICES: Who Killed Daniel Pearl \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:18] GET_JSON: https://libertybooks.com/products/dork-diaries-friendship-kit-hardcover-3-nov-2016-102.js\n[Liberty Books] [05:26:18] CACHE HIT: https://libertybooks.com/products/dork-diaries-friendship-kit-hardcover-3-nov-2016-102.js\n[Liberty Books] LIVE VARIANT PRICES: Dork Diaries: Friendship Kit Hardcover - 3 Nov. 2016 \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:18] CACHE HIT status=200 elapsed=0.0s bytes=865616 \n[Liberty Books] [05:26:19] GET_JSON: https://libertybooks.com/products/the-white-tiger-101.js\n[Liberty Books] [05:26:19] CACHE HIT: https://libertybooks.com/products/the-white-tiger-101.js\n[Liberty Books] LIVE VARIANT PRICES: The White Tiger \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:19] CACHE HIT status=200 elapsed=0.0s bytes=848035 \n[Liberty Books] [05:26:20] GET_JSON: https://libertybooks.com/products/vidal-the-autobiography-71.js\n[Liberty Books] [05:26:20] CACHE HIT: https://libertybooks.com/products/vidal-the-autobiography-71.js\n[Liberty Books] LIVE VARIANT PRICES: Vidal - The Autobiography \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:20] GET_JSON: https://libertybooks.com/products/flying-colours-the-epic-story-of-douglas-bader-68.js\n[Liberty Books] [05:26:20] CACHE HIT: https://libertybooks.com/products/flying-colours-the-epic-story-of-douglas-bader-68.js\n[Liberty Books] LIVE VARIANT PRICES: Flying Colours - The Epic Story of Douglas Bader \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:20] CACHE HIT status=200 elapsed=0.0s bytes=857698 \n[Liberty Books] [05:26:20] GET_JSON: https://libertybooks.com/products/disney-princess-sing-along-board-book-36.js\n[Liberty Books] [05:26:20] CACHE HIT: https://libertybooks.com/products/disney-princess-sing-along-board-book-36.js\n[Liberty Books] LIVE VARIANT PRICES: Disney Princess Sing Along Board book \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:20] CACHE HIT status=200 elapsed=0.0s bytes=854704 \n[Liberty Books] [05:26:20] GET_JSON: https://libertybooks.com/products/good-to-great-and-the-social-sectors-a-monograph-to-accompany-good-to-great-35.js\n[Liberty Books] [05:26:20] CACHE HIT: https://libertybooks.com/products/good-to-great-and-the-social-sectors-a-monograph-to-accompany-good-to-great-35.js\n[Liberty Books] LIVE VARIANT PRICES: Good To Great And The Social Sectors: A Monograph To Accompany Good To Great \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:20] CACHE HIT status=200 elapsed=0.0s bytes=857337 \n[Liberty Books] [05:26:21] GET_JSON: https://libertybooks.com/products/puerto-vallarta-squeeze-34.js\n[Liberty Books] [05:26:21] CACHE HIT: https://libertybooks.com/products/puerto-vallarta-squeeze-34.js\n[Liberty Books] LIVE VARIANT PRICES: Puerto Vallarta Squeeze \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:21] CACHE HIT status=200 elapsed=0.0s bytes=854559 \n[Liberty Books] [05:26:21] GET_JSON: https://libertybooks.com/products/the-individualized-corporation-a-fundamentally-new-approach-to-management-33.js\n[Liberty Books] [05:26:21] CACHE HIT: https://libertybooks.com/products/the-individualized-corporation-a-fundamentally-new-approach-to-management-33.js\n[Liberty Books] LIVE VARIANT PRICES: The Individualized Corporation: A Fundamentally New Approach To Management \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:21] CACHE HIT status=200 elapsed=0.0s bytes=857420 \n[Liberty Books] [05:26:21] GET_JSON: https://libertybooks.com/products/while-america-aged-32.js\n[Liberty Books] [05:26:21] CACHE HIT: https://libertybooks.com/products/while-america-aged-32.js\n[Liberty Books] LIVE VARIANT PRICES: While America Aged \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:21] CACHE HIT status=200 elapsed=0.0s bytes=853340 \nCloud time budget reached; saving unfinished work.",
+      "store-status.txt": "Updated (UTC): 2026-10-31T05:30:46.082183+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nLiberty Books: pending\n  Stage: Building Excel rows\n  building Excel rows: 3199/61549 tasks; sample age 284s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-10-31T05:05:35.747351+00:00",
+      "fetch-log.txt": "[Liberty Books] [05:26:06] GET_JSON: https://libertybooks.com/products/mistakes-were-made-618.js\n[Liberty Books] [05:26:06] CACHE HIT: https://libertybooks.com/products/mistakes-were-made-618.js\n[Liberty Books] LIVE VARIANT PRICES: Mistakes Were Made \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:06] CACHE HIT status=200 elapsed=0.0s bytes=854274 \n[Liberty Books] [05:26:06] GET_JSON: https://libertybooks.com/products/the-blood-and-the-shroud-616.js\n[Liberty Books] [05:26:06] CACHE HIT: https://libertybooks.com/products/the-blood-and-the-shroud-616.js\n[Liberty Books] LIVE VARIANT PRICES: The Blood and the Shroud \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:06] GET_JSON: https://libertybooks.com/products/sab-rang-kahaniyan-607.js\n[Liberty Books] [05:26:06] CACHE HIT: https://libertybooks.com/products/sab-rang-kahaniyan-607.js\n[Liberty Books] LIVE VARIANT PRICES: Sab Rang Kahaniyan \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:06] CACHE HIT status=200 elapsed=0.0s bytes=848566 \n[Liberty Books] [05:26:07] GET_JSON: https://libertybooks.com/products/mullahs-on-the-mainframe-islam-and-modernity-among-the-daudi-bohras-606.js\n[Liberty Books] [05:26:07] CACHE HIT: https://libertybooks.com/products/mullahs-on-the-mainframe-islam-and-modernity-among-the-daudi-bohras-606.js\n[Liberty Books] LIVE VARIANT PRICES: Mullahs on the Mainframe: Islam and Modernity among the Daudi Bohras \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:07] GET_JSON: https://libertybooks.com/products/the-secrets-between-us-601.js\n[Liberty Books] [05:26:07] CACHE HIT: https://libertybooks.com/products/the-secrets-between-us-601.js\n[Liberty Books] LIVE VARIANT PRICES: The Secrets Between Us: \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:07] GET_JSON: https://libertybooks.com/products/quest-for-realisation-578.js\n[Liberty Books] [05:26:07] CACHE HIT: https://libertybooks.com/products/quest-for-realisation-578.js\n[Liberty Books] LIVE VARIANT PRICES: Quest for Realisation \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:07] CACHE HIT status=200 elapsed=0.0s bytes=855000 \n[Liberty Books] [05:26:08] GET_JSON: https://libertybooks.com/products/my-friends-559.js\n[Liberty Books] [05:26:08] CACHE HIT: https://libertybooks.com/products/my-friends-559.js\n[Liberty Books] LIVE VARIANT PRICES: My Friends \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:08] CACHE HIT status=200 elapsed=0.0s bytes=852944 \n[Liberty Books] [05:26:08] GET_JSON: https://libertybooks.com/products/fdr-drive-556.js\n[Liberty Books] [05:26:08] CACHE HIT: https://libertybooks.com/products/fdr-drive-556.js\n[Liberty Books] LIVE VARIANT PRICES: FDR Drive \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:08] CACHE HIT status=200 elapsed=0.0s bytes=847793 \n[Liberty Books] [05:26:08] GET_JSON: https://libertybooks.com/products/100-pakistanis-the-famous-influential-537.js\n[Liberty Books] [05:26:08] CACHE HIT: https://libertybooks.com/products/100-pakistanis-the-famous-influential-537.js\n[Liberty Books] LIVE VARIANT PRICES: 100 Pakistanis: The Famous & Influential \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:08] GET_JSON: https://libertybooks.com/products/sachin-tendulkar-masterful-474.js\n[Liberty Books] [05:26:08] CACHE HIT: https://libertybooks.com/products/sachin-tendulkar-masterful-474.js\n[Liberty Books] LIVE VARIANT PRICES: Sachin Tendulkar Masterful \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:08] CACHE HIT status=200 elapsed=0.0s bytes=854328 \n[Liberty Books] [05:26:09] GET_JSON: https://libertybooks.com/products/chinese-cookery-426.js\n[Liberty Books] [05:26:09] CACHE HIT: https://libertybooks.com/products/chinese-cookery-426.js\n[Liberty Books] LIVE VARIANT PRICES: Chinese Cookery \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:09] CACHE HIT status=200 elapsed=0.0s bytes=854522 \n[Liberty Books] [05:26:09] GET_JSON: https://libertybooks.com/products/chinese-cookery-425.js\n[Liberty Books] [05:26:09] CACHE HIT: https://libertybooks.com/products/chinese-cookery-425.js\n[Liberty Books] LIVE VARIANT PRICES: Chinese Cookery \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:09] CACHE HIT status=200 elapsed=0.0s bytes=854798 \n[Liberty Books] [05:26:10] GET_JSON: https://libertybooks.com/products/disney-dumbo-408.js\n[Liberty Books] [05:26:10] CACHE HIT: https://libertybooks.com/products/disney-dumbo-408.js\n[Liberty Books] LIVE VARIANT PRICES: DISNEY DUMBO. \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:10] CACHE HIT status=200 elapsed=0.0s bytes=853757 \n[Liberty Books] [05:26:10] GET_JSON: https://libertybooks.com/products/puzzle-fun-brain-games-391.js\n[Liberty Books] [05:26:10] CACHE HIT: https://libertybooks.com/products/puzzle-fun-brain-games-391.js\n[Liberty Books] LIVE VARIANT PRICES: Puzzle Fun Brain Games \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:10] CACHE HIT status=200 elapsed=0.0s bytes=854490 \n[Liberty Books] [05:26:11] GET_JSON: https://libertybooks.com/products/goldilocks-and-the-three-bears-390.js\n[Liberty Books] [05:26:11] CACHE HIT: https://libertybooks.com/products/goldilocks-and-the-three-bears-390.js\n[Liberty Books] LIVE VARIANT PRICES: Goldilocks and the Three Bears \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:11] CACHE HIT status=200 elapsed=0.0s bytes=855209 \n[Liberty Books] [05:26:11] GET_JSON: https://libertybooks.com/products/the-gingerbread-man-389.js\n[Liberty Books] [05:26:11] CACHE HIT: https://libertybooks.com/products/the-gingerbread-man-389.js\n[Liberty Books] LIVE VARIANT PRICES: The Gingerbread Man \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:11] CACHE HIT status=200 elapsed=0.0s bytes=854456 \n[Liberty Books] [05:26:11] GET_JSON: https://libertybooks.com/products/my-first-abc-388.js\n[Liberty Books] [05:26:11] CACHE HIT: https://libertybooks.com/products/my-first-abc-388.js\n[Liberty Books] LIVE VARIANT PRICES: My First... ABC \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:11] CACHE HIT status=200 elapsed=0.0s bytes=854103 \n[Liberty Books] [05:26:11] GET_JSON: https://libertybooks.com/products/the-wheels-on-the-bus-387.js\n[Liberty Books] [05:26:11] CACHE HIT: https://libertybooks.com/products/the-wheels-on-the-bus-387.js\n[Liberty Books] LIVE VARIANT PRICES: The Wheels on the Bus \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:11] CACHE HIT status=200 elapsed=0.0s bytes=854554 \n[Liberty Books] [05:26:13] GET_JSON: https://libertybooks.com/products/nursery-rhymes-386.js\n[Liberty Books] [05:26:13] CACHE HIT: https://libertybooks.com/products/nursery-rhymes-386.js\n[Liberty Books] LIVE VARIANT PRICES: Nursery Rhymes \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:13] CACHE HIT status=200 elapsed=0.0s bytes=854051 \n[Liberty Books] [05:26:13] GET_JSON: https://libertybooks.com/products/tales-from-the-arabian-nights-383.js\n[Liberty Books] [05:26:13] CACHE HIT: https://libertybooks.com/products/tales-from-the-arabian-nights-383.js\n[Liberty Books] LIVE VARIANT PRICES: Tales from the Arabian Nights \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:13] CACHE HIT status=200 elapsed=0.0s bytes=855117 \n[Liberty Books] [05:26:13] GET_JSON: https://libertybooks.com/products/national-trust-tilly-plants-a-tree-381.js\n[Liberty Books] [05:26:13] CACHE HIT: https://libertybooks.com/products/national-trust-tilly-plants-a-tree-381.js\n[Liberty Books] LIVE VARIANT PRICES: National Trust: Tilly Plants a Tree \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:13] CACHE HIT status=200 elapsed=0.0s bytes=855542 \n[Liberty Books] [05:26:14] GET_JSON: https://libertybooks.com/products/my-first-123-380.js\n[Liberty Books] [05:26:14] CACHE HIT: https://libertybooks.com/products/my-first-123-380.js\n[Liberty Books] LIVE VARIANT PRICES: My First... 123 \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:14] CACHE HIT status=200 elapsed=0.0s bytes=854103 \n[Liberty Books] [05:26:14] GET_JSON: https://libertybooks.com/products/100-first-words-278.js\n[Liberty Books] [05:26:14] CACHE HIT: https://libertybooks.com/products/100-first-words-278.js\n[Liberty Books] LIVE VARIANT PRICES: 100 First Words \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:14] CACHE HIT status=200 elapsed=0.0s bytes=853641 \n[Liberty Books] [05:26:15] GET_JSON: https://libertybooks.com/products/my-first-xylophone-book-191.js\n[Liberty Books] [05:26:15] CACHE HIT: https://libertybooks.com/products/my-first-xylophone-book-191.js\n[Liberty Books] LIVE VARIANT PRICES: My First Xylophone Book \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:15] CACHE HIT status=200 elapsed=0.0s bytes=853876 \n[Liberty Books] [05:26:15] GET_JSON: https://libertybooks.com/products/the-invisible-bridge-the-fall-of-nixon-and-the-rise-of-reagan-175.js\n[Liberty Books] [05:26:15] CACHE HIT: https://libertybooks.com/products/the-invisible-bridge-the-fall-of-nixon-and-the-rise-of-reagan-175.js\n[Liberty Books] LIVE VARIANT PRICES: The Invisible Bridge: The Fall of Nixon and the Rise of Reagan \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:15] GET_JSON: https://libertybooks.com/products/my-war-at-home-174.js\n[Liberty Books] [05:26:15] CACHE HIT: https://libertybooks.com/products/my-war-at-home-174.js\n[Liberty Books] LIVE VARIANT PRICES: My War at Home \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:15] GET_JSON: https://libertybooks.com/products/true-to-life-why-truth-matters-171.js\n[Liberty Books] [05:26:15] CACHE HIT: https://libertybooks.com/products/true-to-life-why-truth-matters-171.js\n[Liberty Books] LIVE VARIANT PRICES: True to Life - Why Truth Matters \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:15] CACHE HIT status=200 elapsed=0.0s bytes=853895 \n[Liberty Books] [05:26:15] GET_JSON: https://libertybooks.com/products/do-it-yourself-decorating-170.js\n[Liberty Books] [05:26:15] CACHE HIT: https://libertybooks.com/products/do-it-yourself-decorating-170.js\n[Liberty Books] LIVE VARIANT PRICES: Do-it-yourself Decorating \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:15] GET_JSON: https://libertybooks.com/products/curious-minds-how-a-child-becomes-a-scientist-146.js\n[Liberty Books] [05:26:15] CACHE HIT: https://libertybooks.com/products/curious-minds-how-a-child-becomes-a-scientist-146.js\n[Liberty Books] LIVE VARIANT PRICES: Curious Minds - How a Child Becomes a Scientist \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:15] GET_JSON: https://libertybooks.com/products/a-place-to-spa-exceptional-destination-spas-from-around-the-world-138.js\n[Liberty Books] [05:26:15] CACHE HIT: https://libertybooks.com/products/a-place-to-spa-exceptional-destination-spas-from-around-the-world-138.js\n[Liberty Books] LIVE VARIANT PRICES: A Place to Spa - Exceptional Destination Spas from Around the World \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:15] CACHE HIT status=200 elapsed=0.0s bytes=858661 \n[Liberty Books] [05:26:16] GET_JSON: https://libertybooks.com/products/our-missing-hearts-136.js\n[Liberty Books] [05:26:16] CACHE HIT: https://libertybooks.com/products/our-missing-hearts-136.js\n[Liberty Books] LIVE VARIANT PRICES: Our Missing Hearts \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:16] CACHE HIT status=200 elapsed=0.0s bytes=855765 \n[Liberty Books] [05:26:16] GET_JSON: https://libertybooks.com/products/teach-yourself-bridge-by-terrence-reese-trade-paperback-133.js\n[Liberty Books] [05:26:16] CACHE HIT: https://libertybooks.com/products/teach-yourself-bridge-by-terrence-reese-trade-paperback-133.js\n[Liberty Books] LIVE VARIANT PRICES: Teach Yourself Bridge by Terrence Reese (Trade Paperback) \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:16] CACHE HIT status=200 elapsed=0.0s bytes=856505 \n[Liberty Books] [05:26:16] GET_JSON: https://libertybooks.com/products/marketing-communications-integrating-offline-and-online-with-social-media-132.js\n[Liberty Books] [05:26:16] CACHE HIT: https://libertybooks.com/products/marketing-communications-integrating-offline-and-online-with-social-media-132.js\n[Liberty Books] LIVE VARIANT PRICES: Marketing Communications - Integrating Offline and Online with Social Media \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:16] GET_JSON: https://libertybooks.com/products/animal-farm-128.js\n[Liberty Books] [05:26:16] CACHE HIT: https://libertybooks.com/products/animal-farm-128.js\n[Liberty Books] LIVE VARIANT PRICES: ANIMAL FARM \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:16] CACHE HIT status=200 elapsed=0.0s bytes=856719 \n[Liberty Books] [05:26:17] GET_JSON: https://libertybooks.com/products/taj-mahal-111.js\n[Liberty Books] [05:26:17] CACHE HIT: https://libertybooks.com/products/taj-mahal-111.js\n[Liberty Books] LIVE VARIANT PRICES: Taj Mahal \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:17] CACHE HIT status=200 elapsed=0.0s bytes=853326 \n[Liberty Books] [05:26:18] GET_JSON: https://libertybooks.com/products/love-110.js\n[Liberty Books] [05:26:18] CACHE HIT: https://libertybooks.com/products/love-110.js\n[Liberty Books] LIVE VARIANT PRICES: Love \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:18] CACHE HIT status=200 elapsed=0.0s bytes=852987 \n[Liberty Books] [05:26:18] GET_JSON: https://libertybooks.com/products/the-crux-how-leaders-become-strategists-109.js\n[Liberty Books] [05:26:18] CACHE HIT: https://libertybooks.com/products/the-crux-how-leaders-become-strategists-109.js\n[Liberty Books] LIVE VARIANT PRICES: The Crux - How Leaders Become Strategists \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:18] GET_JSON: https://libertybooks.com/products/between-the-bridge-and-the-river-107.js\n[Liberty Books] [05:26:18] CACHE HIT: https://libertybooks.com/products/between-the-bridge-and-the-river-107.js\n[Liberty Books] LIVE VARIANT PRICES: Between the Bridge and the River \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:18] CACHE HIT status=200 elapsed=0.0s bytes=863980 \n[Liberty Books] [05:26:18] GET_JSON: https://libertybooks.com/products/who-killed-daniel-pearl-104.js\n[Liberty Books] [05:26:18] CACHE HIT: https://libertybooks.com/products/who-killed-daniel-pearl-104.js\n[Liberty Books] LIVE VARIANT PRICES: Who Killed Daniel Pearl \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:18] GET_JSON: https://libertybooks.com/products/dork-diaries-friendship-kit-hardcover-3-nov-2016-102.js\n[Liberty Books] [05:26:18] CACHE HIT: https://libertybooks.com/products/dork-diaries-friendship-kit-hardcover-3-nov-2016-102.js\n[Liberty Books] LIVE VARIANT PRICES: Dork Diaries: Friendship Kit Hardcover - 3 Nov. 2016 \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:18] CACHE HIT status=200 elapsed=0.0s bytes=865616 \n[Liberty Books] [05:26:19] GET_JSON: https://libertybooks.com/products/the-white-tiger-101.js\n[Liberty Books] [05:26:19] CACHE HIT: https://libertybooks.com/products/the-white-tiger-101.js\n[Liberty Books] LIVE VARIANT PRICES: The White Tiger \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:19] CACHE HIT status=200 elapsed=0.0s bytes=848035 \n[Liberty Books] [05:26:20] GET_JSON: https://libertybooks.com/products/vidal-the-autobiography-71.js\n[Liberty Books] [05:26:20] CACHE HIT: https://libertybooks.com/products/vidal-the-autobiography-71.js\n[Liberty Books] LIVE VARIANT PRICES: Vidal - The Autobiography \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:20] GET_JSON: https://libertybooks.com/products/flying-colours-the-epic-story-of-douglas-bader-68.js\n[Liberty Books] [05:26:20] CACHE HIT: https://libertybooks.com/products/flying-colours-the-epic-story-of-douglas-bader-68.js\n[Liberty Books] LIVE VARIANT PRICES: Flying Colours - The Epic Story of Douglas Bader \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:20] CACHE HIT status=200 elapsed=0.0s bytes=857698 \n[Liberty Books] [05:26:20] GET_JSON: https://libertybooks.com/products/disney-princess-sing-along-board-book-36.js\n[Liberty Books] [05:26:20] CACHE HIT: https://libertybooks.com/products/disney-princess-sing-along-board-book-36.js\n[Liberty Books] LIVE VARIANT PRICES: Disney Princess Sing Along Board book \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:20] CACHE HIT status=200 elapsed=0.0s bytes=854704 \n[Liberty Books] [05:26:20] GET_JSON: https://libertybooks.com/products/good-to-great-and-the-social-sectors-a-monograph-to-accompany-good-to-great-35.js\n[Liberty Books] [05:26:20] CACHE HIT: https://libertybooks.com/products/good-to-great-and-the-social-sectors-a-monograph-to-accompany-good-to-great-35.js\n[Liberty Books] LIVE VARIANT PRICES: Good To Great And The Social Sectors: A Monograph To Accompany Good To Great \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:20] CACHE HIT status=200 elapsed=0.0s bytes=857337 \n[Liberty Books] [05:26:21] GET_JSON: https://libertybooks.com/products/puerto-vallarta-squeeze-34.js\n[Liberty Books] [05:26:21] CACHE HIT: https://libertybooks.com/products/puerto-vallarta-squeeze-34.js\n[Liberty Books] LIVE VARIANT PRICES: Puerto Vallarta Squeeze \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:21] CACHE HIT status=200 elapsed=0.0s bytes=854559 \n[Liberty Books] [05:26:21] GET_JSON: https://libertybooks.com/products/the-individualized-corporation-a-fundamentally-new-approach-to-management-33.js\n[Liberty Books] [05:26:21] CACHE HIT: https://libertybooks.com/products/the-individualized-corporation-a-fundamentally-new-approach-to-management-33.js\n[Liberty Books] LIVE VARIANT PRICES: The Individualized Corporation: A Fundamentally New Approach To Management \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:21] CACHE HIT status=200 elapsed=0.0s bytes=857420 \n[Liberty Books] [05:26:21] GET_JSON: https://libertybooks.com/products/while-america-aged-32.js\n[Liberty Books] [05:26:21] CACHE HIT: https://libertybooks.com/products/while-america-aged-32.js\n[Liberty Books] LIVE VARIANT PRICES: While America Aged \u2014 1 checked; 0 refreshed\n[Liberty Books] [05:26:21] CACHE HIT status=200 elapsed=0.0s bytes=853340 "
+    },
+    {
+      "target": "41130345875",
+      "state": {
+        "conclusion": "failure",
+        "displayTitle": "Automatic continuation of 41128849745",
+        "headSha": "5d83955a6d2f43786c53d42e7cc85ca096a1bafa",
+        "jobs": [
+          {
+            "completedAt": "2026-10-30T21:24:12Z",
+            "conclusion": "failure",
+            "databaseId": 124319330023,
+            "name": "fetch",
+            "startedAt": "2026-10-30T21:20:49Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-30T21:20:50Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-30T21:20:49Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:21:01Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-30T21:20:50Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:21:01Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-30T21:21:01Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:21:07Z",
+                "conclusion": "success",
+                "name": "Install extraction dependencies",
+                "number": 4,
+                "startedAt": "2026-10-30T21:21:01Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:21:08Z",
+                "conclusion": "success",
+                "name": "Restore optional saved run",
+                "number": 5,
+                "startedAt": "2026-10-30T21:21:07Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:21:08Z",
+                "conclusion": "skipped",
+                "name": "Install Czone browser fallback when needed",
+                "number": 6,
+                "startedAt": "2026-10-30T21:21:08Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:21:08Z",
+                "conclusion": "success",
+                "name": "Start continuous fetching on the cloud runner",
+                "number": 7,
+                "startedAt": "2026-10-30T21:21:08Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:24:04Z",
+                "conclusion": "success",
+                "name": "Live progress, logs and completed-file uploads",
+                "number": 8,
+                "startedAt": "2026-10-30T21:21:08Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:24:04Z",
+                "conclusion": "failure",
+                "name": "Fetch result",
+                "number": 9,
+                "startedAt": "2026-10-30T21:24:04Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:24:05Z",
+                "conclusion": "success",
+                "name": "Collect diagnostic report even if fetching failed",
+                "number": 10,
+                "startedAt": "2026-10-30T21:24:04Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:24:06Z",
+                "conclusion": "success",
+                "name": "Upload diagnostic report and redacted log",
+                "number": 11,
+                "startedAt": "2026-10-30T21:24:05Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:24:07Z",
+                "conclusion": "success",
+                "name": "Upload Excel files and audits, including completed stores from a partial run",
+                "number": 12,
+                "startedAt": "2026-10-30T21:24:06Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:24:07Z",
+                "conclusion": "skipped",
+                "name": "Final automated Rule 804 pass for fresh batch",
+                "number": 13,
+                "startedAt": "2026-10-30T21:24:07Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:24:07Z",
+                "conclusion": "skipped",
+                "name": "Upload automated Rule 804 fresh workbooks",
+                "number": 14,
+                "startedAt": "2026-10-30T21:24:07Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:24:09Z",
+                "conclusion": "success",
+                "name": "Upload saved checkpoint when available",
+                "number": 15,
+                "startedAt": "2026-10-30T21:24:07Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:24:10Z",
+                "conclusion": "success",
+                "name": "Dispatch authorized continuation after verified checkpoint upload",
+                "number": 16,
+                "startedAt": "2026-10-30T21:24:09Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:24:10Z",
+                "conclusion": "success",
+                "name": "Post Live progress, logs and completed-file uploads",
+                "number": 30,
+                "startedAt": "2026-10-30T21:24:10Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:24:10Z",
+                "conclusion": "skipped",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 31,
+                "startedAt": "2026-10-30T21:24:10Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:24:10Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 32,
+                "startedAt": "2026-10-30T21:24:10Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:24:10Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 33,
+                "startedAt": "2026-10-30T21:24:10Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41130345875/job/124319330023"
+          },
+          {
+            "completedAt": "2026-10-30T21:24:28Z",
+            "conclusion": "success",
+            "databaseId": 124320827826,
+            "name": "Archive structured diagnostics",
+            "startedAt": "2026-10-30T21:24:15Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-10-30T21:24:16Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-10-30T21:24:16Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:24:23Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-10-30T21:24:16Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:24:23Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-10-30T21:24:23Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:24:24Z",
+                "conclusion": "success",
+                "name": "Run actions/download-artifact@v4",
+                "number": 4,
+                "startedAt": "2026-10-30T21:24:23Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:24:26Z",
+                "conclusion": "success",
+                "name": "Archive credential-free JSON on the cloud-reports branch",
+                "number": 5,
+                "startedAt": "2026-10-30T21:24:24Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:24:26Z",
+                "conclusion": "success",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 9,
+                "startedAt": "2026-10-30T21:24:26Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:24:27Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 10,
+                "startedAt": "2026-10-30T21:24:26Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-10-30T21:24:27Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 11,
+                "startedAt": "2026-10-30T21:24:27Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41130345875/job/124320827826"
+          }
+        ],
+        "status": "completed"
+      },
+      "failed_log": "fetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9367425Z [Paklap] [21:23:57] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9368240Z [Paklap] [21:23:58] HTTP END status=200 elapsed=0.6s bytes=3873 https://www.paklap.pk/graphql?redacted\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9368992Z [Paklap] WOO PRODUCT PROGRESS: 104/1634 checked; 104 retained\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9369599Z [Paklap] [21:23:59] GET_JSON: https://www.paklap.pk/graphql?redacted\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9370292Z [Paklap] [21:23:59] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9371097Z [Paklap] [21:24:00] HTTP END status=200 elapsed=0.7s bytes=34 https://www.paklap.pk/graphql?redacted\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9371748Z __CHOTU_PROGRESS__|1|Active: Paklap\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9372346Z [Paklap] [21:24:00] EXCEPTION: ValueError('Exact Magento SKU/product identity mismatch')\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9373028Z [Paklap] [21:24:00] Traceback (most recent call last):\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9381479Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2033, in _run_checked\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9382236Z     run_site(site['url'], name, template, log_line)\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9382871Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9383599Z     if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9384127Z                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9384722Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1526, in run_site\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9385315Z     _chotuapp_run_site_original(base, name, template, intercept)\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9386341Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9387190Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9387829Z                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9388553Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 245, in run\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9398751Z                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9399329Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 177, in get\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9399931Z     if provider is not None:return provider.read(path)\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9400255Z                                    ^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9400817Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 103, in read\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9401618Z     if len(items)!=1 or items[0].get('id')!=ident or items[0].get('sku')!=item['sku']:raise ValueError('Exact Magento SKU/product identity mismatch')\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9402238Z                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9402655Z ValueError: Exact Magento SKU/product identity mismatch\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9402882Z \nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9403063Z [Paklap] FAILED: Paklap: Exact Magento SKU/product identity mismatch\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9403419Z [Paklap] [21:24:00] STAGE: Idle\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9403775Z FAILED: Paklap: FAILED: Paklap: Exact Magento SKU/product identity mismatch\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9404132Z False\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9404518Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9405116Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9405514Z RUN SUMMARY:\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9406192Z Paklap: FAILED \u2014 FAILED: Paklap: Exact Magento SKU/product identity mismatch\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9406575Z Checkpoint: saved\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9407003Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9450759Z ##[error]Process completed with exit code 2.\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9497281Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9497920Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9511113Z shell: /usr/bin/bash -e {0}\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9511387Z env:\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9511749Z   CHOTUAPP_CLOUD_DATA: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9512405Z   CLOUD_RUNNER_GROUP: audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-requested20261031-2-SE10058\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9512931Z   CLOUD_PARTITION_RESUME: true\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9513281Z   CLOUD_STORES: [{\"name\": \"Paklap\", \"url\": \"https://www.paklap.pk\"}]\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9513637Z   CLOUD_MINUTES: 300\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9513927Z   RESUME_RUN_ID: 41128849745\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:04.9514171Z   SAVE_CHECKPOINT: true\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:09.6072049Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:09.6072440Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:09.6072839Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:09.6073232Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:09.6073573Z   CLOUD_NEEDS_CZONE_BROWSER: false\n[credential-bearing log line removed]\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:09.6076897Z ##[endgroup]\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:10.2594197Z No continuation: completed, stopped manually, unauthorized or not a time-budget stop.\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:10.2868767Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:10.2951396Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:10.3781899Z [command]/usr/bin/git version\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:10.3823335Z git version 2.56.0\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:10.3863327Z Temporarily overriding HOME='/home/runner/work/_temp/617bf5df-20de-4f6c-aed7-f74925cb8923' before making global git config changes\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:10.3864689Z Adding repository directory to the temporary git global config as a safe directory\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:10.3869496Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ChotuApp-Software/ChotuApp-Software\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:10.3907793Z [command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:10.3940927Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:10.4169558Z [command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nfetch\tUNKNOWN STEP\t2026-10-30T21:24:10.4200957Z http.https://github.com/.extraheader",
+      "artifacts": [
+        {
+          "name": "chotuapp-diagnostics",
+          "id": 13013056697,
+          "expired": false,
+          "size_in_bytes": 9579
+        },
+        {
+          "name": "chotuapp-excel-files",
+          "id": 13012932204,
+          "expired": false,
+          "size_in_bytes": 590
+        },
+        {
+          "name": "chotuapp-live-logs",
+          "id": 13012867362,
+          "expired": false,
+          "size_in_bytes": 11270
+        },
+        {
+          "name": "chotuapp-checkpoint",
+          "id": 13012343395,
+          "expired": false,
+          "size_in_bytes": 4040438
+        }
+      ],
+      "annotations": [
+        {
+          "level": "warning",
+          "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+        },
+        {
+          "level": "failure",
+          "message": "Process completed with exit code 2."
+        }
+      ],
+      "console-tail.txt": "[Paklap] [21:23:44] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:44] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:45] HTTP END status=200 elapsed=0.6s bytes=3934 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 98/1634 checked; 98 retained\n[Paklap] [21:23:46] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:46] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:47] HTTP END status=200 elapsed=0.7s bytes=1484 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 99/1634 checked; 99 retained\n[Paklap] [21:23:48] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:48] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:49] HTTP END status=200 elapsed=0.6s bytes=2077 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 100/1634 checked; 100 retained\n[Paklap] [21:23:50] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:50] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:51] HTTP END status=200 elapsed=1.0s bytes=3798 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 101/1634 checked; 101 retained\n[Paklap] [21:23:53] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:53] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:54] HTTP END status=200 elapsed=0.6s bytes=4073 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 102/1634 checked; 102 retained\n[Paklap] [21:23:55] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:55] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:56] HTTP END status=200 elapsed=0.7s bytes=3759 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 103/1634 checked; 103 retained\n[Paklap] [21:23:57] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:57] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:58] HTTP END status=200 elapsed=0.6s bytes=3873 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 104/1634 checked; 104 retained\n[Paklap] [21:23:59] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:59] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:24:00] HTTP END status=200 elapsed=0.7s bytes=34 https://www.paklap.pk/graphql?redacted\n__CHOTU_PROGRESS__|1|Active: Paklap\n[Paklap] [21:24:00] EXCEPTION: ValueError('Exact Magento SKU/product identity mismatch')\n[Paklap] [21:24:00] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2033, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1526, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 245, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 216, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 136, in run\n    return export(g,base,name,template,log,provider=catalog)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 203, in export\n    try:current=get('/wp-json/wc/store/v1/products/'+str(p['id']))\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 177, in get\n    if provider is not None:return provider.read(path)\n                                   ^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 103, in read\n    if len(items)!=1 or items[0].get('id')!=ident or items[0].get('sku')!=item['sku']:raise ValueError('Exact Magento SKU/product identity mismatch')\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Exact Magento SKU/product identity mismatch\n\n[Paklap] FAILED: Paklap: Exact Magento SKU/product identity mismatch\n[Paklap] [21:24:00] STAGE: Idle\nFAILED: Paklap: FAILED: Paklap: Exact Magento SKU/product identity mismatch\nFalse\nCheckpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nCheckpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nRUN SUMMARY:\nPaklap: FAILED \u2014 FAILED: Paklap: Exact Magento SKU/product identity mismatch\nCheckpoint: saved\nRun finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+      "store-status.txt": "Updated (UTC): 2026-10-30T21:24:02.805700+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nPaklap: failed\n  Stage: Idle\n  Last successful HTTP response (UTC): 2026-10-30T21:24:00.397252+00:00",
+      "fetch-log.txt": "[Paklap] [21:22:54] HTTP END status=200 elapsed=0.7s bytes=1656 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 71/1634 checked; 71 retained\n[Paklap] [21:22:55] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:22:55] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:22:56] HTTP END status=200 elapsed=0.6s bytes=1722 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 72/1634 checked; 72 retained\n[Paklap] [21:22:57] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:22:57] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:22:58] HTTP END status=200 elapsed=0.7s bytes=1570 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 73/1634 checked; 73 retained\n[Paklap] [21:22:59] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:22:59] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:00] HTTP END status=200 elapsed=0.7s bytes=1510 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 74/1634 checked; 74 retained\n[Paklap] [21:23:01] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:01] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:02] HTTP END status=200 elapsed=0.6s bytes=1831 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 75/1634 checked; 75 retained\n[Paklap] [21:23:03] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:03] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:04] HTTP END status=200 elapsed=0.6s bytes=4533 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 76/1634 checked; 76 retained\n[Paklap] [21:23:05] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:05] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:06] HTTP END status=200 elapsed=0.6s bytes=2015 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 77/1634 checked; 77 retained\n[Paklap] [21:23:07] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:07] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:08] HTTP END status=200 elapsed=0.7s bytes=1979 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 78/1634 checked; 78 retained\n[Paklap] [21:23:09] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:09] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:10] HTTP END status=200 elapsed=1.0s bytes=4075 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 79/1634 checked; 79 retained\n[Paklap] [21:23:11] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:11] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:12] HTTP END status=200 elapsed=0.6s bytes=1692 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 80/1634 checked; 80 retained\n[Paklap] [21:23:13] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:13] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:14] HTTP END status=200 elapsed=0.7s bytes=4072 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 81/1634 checked; 81 retained\n[Paklap] [21:23:15] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:15] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:16] HTTP END status=200 elapsed=0.7s bytes=4082 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 82/1634 checked; 82 retained\n[Paklap] [21:23:17] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:17] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:18] HTTP END status=200 elapsed=0.7s bytes=1677 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 83/1634 checked; 83 retained\n[Paklap] [21:23:19] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:19] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:20] HTTP END status=200 elapsed=0.6s bytes=4018 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 84/1634 checked; 84 retained\n[Paklap] [21:23:21] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:21] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:21] HTTP END status=200 elapsed=0.6s bytes=4043 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 85/1634 checked; 85 retained\n[Paklap] [21:23:23] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:23] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:23] HTTP END status=200 elapsed=0.6s bytes=1638 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 86/1634 checked; 86 retained\n[Paklap] [21:23:25] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:25] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:26] HTTP END status=200 elapsed=0.6s bytes=4554 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 87/1634 checked; 87 retained\n[Paklap] [21:23:27] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:27] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:28] HTTP END status=200 elapsed=0.7s bytes=6662 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 88/1634 checked; 88 retained\n[Paklap] [21:23:28] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:28] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:30] HTTP END status=200 elapsed=1.6s bytes=4362 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 89/1634 checked; 89 retained\n[Paklap] [21:23:30] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:30] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:31] HTTP END status=200 elapsed=0.6s bytes=6668 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 90/1634 checked; 90 retained\n[Paklap] [21:23:32] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:32] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:33] HTTP END status=200 elapsed=0.9s bytes=7119 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 91/1634 checked; 91 retained\n[Paklap] [21:23:34] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:34] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:35] HTTP END status=200 elapsed=0.7s bytes=6849 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 92/1634 checked; 92 retained\n[Paklap] [21:23:36] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:36] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:37] HTTP END status=200 elapsed=0.7s bytes=6675 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 93/1634 checked; 93 retained\n[Paklap] [21:23:38] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:38] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:39] HTTP END status=200 elapsed=0.7s bytes=8087 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 94/1634 checked; 94 retained\n[Paklap] [21:23:39] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:39] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:40] HTTP END status=200 elapsed=0.6s bytes=5082 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 95/1634 checked; 95 retained\n[Paklap] [21:23:40] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:40] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:41] HTTP END status=200 elapsed=0.6s bytes=2085 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 96/1634 checked; 96 retained\n[Paklap] [21:23:42] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:42] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:43] HTTP END status=200 elapsed=0.7s bytes=2064 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 97/1634 checked; 97 retained\n[Paklap] [21:23:44] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:44] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:45] HTTP END status=200 elapsed=0.6s bytes=3934 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 98/1634 checked; 98 retained\n[Paklap] [21:23:46] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:46] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:47] HTTP END status=200 elapsed=0.7s bytes=1484 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 99/1634 checked; 99 retained\n[Paklap] [21:23:48] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:48] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:49] HTTP END status=200 elapsed=0.6s bytes=2077 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 100/1634 checked; 100 retained\n[Paklap] [21:23:50] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:50] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:51] HTTP END status=200 elapsed=1.0s bytes=3798 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 101/1634 checked; 101 retained\n[Paklap] [21:23:53] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:53] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:54] HTTP END status=200 elapsed=0.6s bytes=4073 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 102/1634 checked; 102 retained\n[Paklap] [21:23:55] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:55] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:56] HTTP END status=200 elapsed=0.7s bytes=3759 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 103/1634 checked; 103 retained\n[Paklap] [21:23:57] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:57] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:58] HTTP END status=200 elapsed=0.6s bytes=3873 https://www.paklap.pk/graphql?redacted\n[Paklap] WOO PRODUCT PROGRESS: 104/1634 checked; 104 retained\n[Paklap] [21:23:59] GET_JSON: https://www.paklap.pk/graphql?redacted\n[Paklap] [21:23:59] HTTP START attempt=1 https://www.paklap.pk/graphql?redacted\n[Paklap] [21:24:00] HTTP END status=200 elapsed=0.7s bytes=34 https://www.paklap.pk/graphql?redacted\n__CHOTU_PROGRESS__|1|Active: Paklap\n[Paklap] [21:24:00] EXCEPTION: ValueError('Exact Magento SKU/product identity mismatch')\n[Paklap] [21:24:00] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2033, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1526, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 245, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 216, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 136, in run\n    return export(g,base,name,template,log,provider=catalog)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 203, in export\n    try:current=get('/wp-json/wc/store/v1/products/'+str(p['id']))\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 177, in get\n    if provider is not None:return provider.read(path)\n                                   ^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 103, in read\n    if len(items)!=1 or items[0].get('id')!=ident or items[0].get('sku')!=item['sku']:raise ValueError('Exact Magento SKU/product identity mismatch')\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Exact Magento SKU/product identity mismatch\n\n[Paklap] FAILED: Paklap: Exact Magento SKU/product identity mismatch\n[Paklap] [21:24:00] STAGE: Idle\nFAILED: Paklap: FAILED: Paklap: Exact Magento SKU/product identity mismatch\nFalse"
+    }
+  ]
+}
