@@ -1091,6 +1091,26 @@
       "refresh_generation": "refresh20261030-31dd8bb1",
       "replaced_file": "Limelight.xlsx",
       "file_name": "Limelight.xlsx"
+    },
+    "Dairy Dream": {
+      "shop_code": "SE10064",
+      "source_run": "41127377788",
+      "sha256": "3c5c7b0e243c5bf57c466a0e30cf61a097174960f1785db06eab3349f7f5716c",
+      "source_sha256": "8b6bd1bfbe93c7ae511cdbf8e740ebecc77e28361e09070aee304a238478d334",
+      "folder": "ChotuApp 19-10-2026 11-36AM",
+      "verified_utc": "2026-10-31T02:50:52.136268+00:00",
+      "audit804": {
+        "name": "804 Audit",
+        "status": "pass",
+        "checked_utc": "2026-10-31T02:49:15.428427+00:00",
+        "products_checked": 10,
+        "workbook_sha256": "3c5c7b0e243c5bf57c466a0e30cf61a097174960f1785db06eab3349f7f5716c"
+      },
+      "rule804": "applied; 804 Audit passed",
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "refresh_generation": "refresh20261030-31dd8bb1",
+      "replaced_file": null,
+      "file_name": "Dairy Dream.xlsx"
     }
   },
   "daily_uploads": {
@@ -2452,6 +2472,26 @@
         "refresh_generation": "refresh20261030-31dd8bb1",
         "replaced_file": "Limelight.xlsx",
         "file_name": "Limelight.xlsx"
+      },
+      "Dairy Dream": {
+        "shop_code": "SE10064",
+        "source_run": "41127377788",
+        "sha256": "3c5c7b0e243c5bf57c466a0e30cf61a097174960f1785db06eab3349f7f5716c",
+        "source_sha256": "8b6bd1bfbe93c7ae511cdbf8e740ebecc77e28361e09070aee304a238478d334",
+        "folder": "ChotuApp 19-10-2026 11-36AM",
+        "verified_utc": "2026-10-31T02:50:52.136268+00:00",
+        "audit804": {
+          "name": "804 Audit",
+          "status": "pass",
+          "checked_utc": "2026-10-31T02:49:15.428427+00:00",
+          "products_checked": 10,
+          "workbook_sha256": "3c5c7b0e243c5bf57c466a0e30cf61a097174960f1785db06eab3349f7f5716c"
+        },
+        "rule804": "applied; 804 Audit passed",
+        "campaign_id": "fresh804-20261026-5d42fe35",
+        "refresh_generation": "refresh20261030-31dd8bb1",
+        "replaced_file": null,
+        "file_name": "Dairy Dream.xlsx"
       }
     }
   },
@@ -2601,7 +2641,8 @@
     "Limelight": "source:541ef2303600618b402366aca709a26158dc53416734f62d1fd61f3763f2e093:Limelight:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e",
     "Fresh Basket": "source:d91844a209cf2dc94ec71af4bda5b28b81c3ab74835f6eb837a2db26b0e369e6:Fresh Basket:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e",
     "The Glossy Quill": "source:ca46d65833a64be8619ba047861c8499bf3b594441c68036f4411b8ca5fbb1df:The Glossy Quill:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e",
-    "Bin Fahad": "source:c34429b0476dad10e1423003047069cbbf7ac68e8c25da3d5703b06acbce0685:Bin Fahad:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e"
+    "Bin Fahad": "source:c34429b0476dad10e1423003047069cbbf7ac68e8c25da3d5703b06acbce0685:Bin Fahad:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e",
+    "Dairy Dream": "source:8b6bd1bfbe93c7ae511cdbf8e740ebecc77e28361e09070aee304a238478d334:Dairy Dream:deddbd892da52703f9139c94e7cb7499b4f18dbf37d8953c21a9c4ae243e888e"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -6915,6 +6956,34 @@
       "source_sha256": "c34429b0476dad10e1423003047069cbbf7ac68e8c25da3d5703b06acbce0685",
       "refresh_generation": "refresh20261030-31dd8bb1",
       "held_input": "inputs/fresh804-20261026-5d42fe35/bin-fahad/c34429b0476dad10/manifest.json"
+    },
+    "Dairy Dream": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Dairy Dream",
+      "shop_code": "SE10064",
+      "identity_policy": "confirmed_code",
+      "status": "pass",
+      "products_checked": 10,
+      "findings_count": 0,
+      "findings": [],
+      "details_truncated": false,
+      "workbook_sha256": "3c5c7b0e243c5bf57c466a0e30cf61a097174960f1785db06eab3349f7f5716c",
+      "checked_utc": "2026-10-31T02:49:15.428427+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "source_run": "41127377788",
+      "source_artifact": 13010004522,
+      "source_sha256": "8b6bd1bfbe93c7ae511cdbf8e740ebecc77e28361e09070aee304a238478d334",
+      "refresh_generation": "refresh20261030-31dd8bb1"
     }
   },
   "audit804_artifacts": {
@@ -7180,8 +7249,8 @@
     "SE10055": "inputs/fresh804-20261026-5d42fe35/rollback-se10055/73cb55917ad74ba2/manifest.json",
     "SE10056": "inputs/fresh804-20261026-5d42fe35/rollback-se10056/fbcdd9551319e9ef/manifest.json"
   },
-  "audit804_last_store": "Bin Fahad",
-  "audit804_progress_utc": "2026-10-31T02:49:13.015550+00:00",
+  "audit804_last_store": "Dairy Dream",
+  "audit804_progress_utc": "2026-10-31T02:50:52.136531+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Stylo",
