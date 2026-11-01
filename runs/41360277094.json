@@ -205,16 +205,16 @@
     "Computer Zone": {
       "shop_code": "SE10015",
       "source_run": "41039471049",
-      "sha256": "e81a9fe374e12fc84a1f8d29c89c2efe07f768f0108b1ad0db1c33503c8a848d",
+      "sha256": "cae629044eb0ed00cdcaae8d69af258c7b0ae2ec1303e07bb4ab99f283111f1d",
       "source_sha256": "29a360d8d7a1ca464a52a91bc5ac90c5693ba4fde38d6cdd04288121efca57cd",
       "folder": "ChotuApp 19-10-2026 11-36AM",
-      "verified_utc": "2026-11-01T20:30:46.700827+00:00",
+      "verified_utc": "2026-11-01T23:41:34.424195+00:00",
       "audit804": {
         "name": "804 Audit",
         "status": "pass",
-        "checked_utc": "2026-11-01T20:27:57.592658+00:00",
+        "checked_utc": "2026-11-01T23:39:00.218884+00:00",
         "products_checked": 867,
-        "workbook_sha256": "e81a9fe374e12fc84a1f8d29c89c2efe07f768f0108b1ad0db1c33503c8a848d"
+        "workbook_sha256": "cae629044eb0ed00cdcaae8d69af258c7b0ae2ec1303e07bb4ab99f283111f1d"
       },
       "rule804": "applied; 804 Audit passed",
       "campaign_id": "fresh804-20261026-5d42fe35",
@@ -1521,16 +1521,16 @@
       "Computer Zone": {
         "shop_code": "SE10015",
         "source_run": "41039471049",
-        "sha256": "e81a9fe374e12fc84a1f8d29c89c2efe07f768f0108b1ad0db1c33503c8a848d",
+        "sha256": "cae629044eb0ed00cdcaae8d69af258c7b0ae2ec1303e07bb4ab99f283111f1d",
         "source_sha256": "29a360d8d7a1ca464a52a91bc5ac90c5693ba4fde38d6cdd04288121efca57cd",
         "folder": "ChotuApp 19-10-2026 11-36AM",
-        "verified_utc": "2026-11-01T20:30:46.700827+00:00",
+        "verified_utc": "2026-11-01T23:41:34.424195+00:00",
         "audit804": {
           "name": "804 Audit",
           "status": "pass",
-          "checked_utc": "2026-11-01T20:27:57.592658+00:00",
+          "checked_utc": "2026-11-01T23:39:00.218884+00:00",
           "products_checked": 867,
-          "workbook_sha256": "e81a9fe374e12fc84a1f8d29c89c2efe07f768f0108b1ad0db1c33503c8a848d"
+          "workbook_sha256": "cae629044eb0ed00cdcaae8d69af258c7b0ae2ec1303e07bb4ab99f283111f1d"
         },
         "rule804": "applied; 804 Audit passed",
         "campaign_id": "fresh804-20261026-5d42fe35",
@@ -2790,7 +2790,7 @@
     "Aerosoft Studio": "source:979d3664325a6499b646d8c391565a07c356f8fdc926036b5c2731eb72ec05e1:Aerosoft Studio:86af3a88c4abfb699f19242738bfb9ed7d909689c7dfda103ba31bb354b5dba3",
     "Rivaj UK": "source:6e67d6b4038ba6d17b7090016881e356afb6216c55b4f5cde0f6ff07b384ae40:Rivaj UK:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "Vince Care": "source:06f5dc429ebc47e6c282db981d978e4d30a92f4f802aafdff17323726a84eb5a:Vince Care:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
-    "Computer Zone": "source:5c1e8ee42f9d689c46c1249b2706c85ab0641223239b0b0f397d92011b4b6c1f:Computer Zone:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
+    "Computer Zone": "source:29a360d8d7a1ca464a52a91bc5ac90c5693ba4fde38d6cdd04288121efca57cd:Computer Zone:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "Bata": "source:1a3aea0e7b3fb835b9d34aa9c0fd21d42ba27274a43c39ce830d30352f524892:Bata:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "Servis": "source:a8be2138270dfd0676fdb950955cc1c2c5a022cf6860e2b06a51893911ab0809:Servis:86af3a88c4abfb699f19242738bfb9ed7d909689c7dfda103ba31bb354b5dba3",
     "Ndure": "source:6c67d50da3bc7bdabb15a09019f126da7922f3a7f87e4f58dba95df016752675:Ndure:86af3a88c4abfb699f19242738bfb9ed7d909689c7dfda103ba31bb354b5dba3",
@@ -3510,59 +3510,27 @@
       "store": "Computer Zone",
       "shop_code": "SE10015",
       "identity_policy": "confirmed_code",
-      "status": "hold",
-      "products_checked": 855,
-      "findings_count": 2,
-      "findings": [
-        {
-          "product_id": "CP47043ba71c77",
-          "name": "Dell Precision 3551 Mobile Workstation, Intel Core I7-10850H, 16GB DDR4, 512GB SSD, Nvidia Quadro P620 4GB GDDR5, 15.6\" FHD Display, Backlit KB, Windows 11 Pro",
-          "source_url": "https://www.czone.com.pk/dell-precision-3551-mobile-workstation-intel-core-i710850h-16gb-ddr4-512gb-ssd-nvidia-quadro-p620-4g",
-          "issues": [
-            "Primary product type and Category disagree: ram"
-          ]
-        },
-        {
-          "product_id": "CP76bb503905ed",
-          "name": "HP ZBOOK Firefly 14 G8, Intel Core i5-1145G7, 16GB DDR4 RAM, 256GB SSD, 14\" FHD Display, Intel Iris Xe Graphics, Backlit KB, Windows 11 Pro",
-          "source_url": "https://www.czone.com.pk/hp-zbook-firefly-14-g8",
-          "issues": [
-            "Primary product type and Category disagree: ram"
-          ]
-        }
-      ],
+      "status": "pass",
+      "products_checked": 867,
+      "findings_count": 0,
+      "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "205a1c9c8e27669e2497cd3bc0f69de1ff74179623a0e41fb899862462be4537",
-      "checked_utc": "2026-11-01T23:11:44.339054+00:00",
+      "workbook_sha256": "cae629044eb0ed00cdcaae8d69af258c7b0ae2ec1303e07bb4ab99f283111f1d",
+      "checked_utc": "2026-11-01T23:39:00.218884+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
-        "stage": "correction_pending_source_recheck",
-        "unfinished": true,
-        "owner": "804 automated recovery",
-        "opened_utc": "2026-11-01T22:30:00.433449+00:00",
-        "updated_utc": "2026-11-01T23:11:44.340280+00:00",
-        "next_source_check_due_utc": "2026-11-01T23:26:44.340280+00:00",
-        "actions": [
-          "Refresh exact public product facts",
-          "Apply supported description and category repairs",
-          "Rerun independent all-row audit",
-          "Upload and verify only after audit passes"
-        ],
-        "issues": [
-          "Primary product type and Category disagree: ram"
-        ],
-        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
       "description_repairs_count": 0,
       "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41341911115",
-      "source_artifact": 13097528949,
-      "source_sha256": "5c1e8ee42f9d689c46c1249b2706c85ab0641223239b0b0f397d92011b4b6c1f",
-      "refresh_generation": "refresh20261030-31dd8bb1",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/computer-zone/5c1e8ee42f9d689c/manifest.json"
+      "source_run": "41039471049",
+      "source_artifact": 12970642113,
+      "source_sha256": "29a360d8d7a1ca464a52a91bc5ac90c5693ba4fde38d6cdd04288121efca57cd",
+      "refresh_generation": "refresh20261030-31dd8bb1"
     },
     "Bata": {
       "name": "804 Audit",
@@ -7602,7 +7570,7 @@
     "SE10019": "inputs/fresh804-20261026-5d42fe35/rollback-se10019/0c1f5e468c67007d/manifest.json",
     "SE10023": "inputs/fresh804-20261026-5d42fe35/rollback-se10023/a3fa74a04cf36cce/manifest.json",
     "SE10012": "inputs/fresh804-20261026-5d42fe35/rollback-se10012/6209d8e304027be8/manifest.json",
-    "SE10015": "inputs/fresh804-20261026-5d42fe35/rollback-se10015/7d9d6d95ffb0e88e/manifest.json",
+    "SE10015": "inputs/fresh804-20261026-5d42fe35/rollback-se10015/e81a9fe374e12fc8/manifest.json",
     "SE10022": "inputs/fresh804-20261026-5d42fe35/rollback-se10022/85072a2b2cd8b246/manifest.json",
     "SE10011": "inputs/fresh804-20261026-5d42fe35/rollback-se10011/be4c2bdadeddbc22/manifest.json",
     "SE10026": "inputs/fresh804-20261026-5d42fe35/rollback-se10026/871bfd4ebd9a3d0b/manifest.json",
@@ -7664,8 +7632,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/f09640f2ab353350/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/40097c82706a8fbb/manifest.json"
   },
-  "audit804_last_store": "Nisa Naturals",
-  "audit804_progress_utc": "2026-11-01T23:38:50.432456+00:00",
+  "audit804_last_store": "Computer Zone",
+  "audit804_progress_utc": "2026-11-01T23:41:34.430106+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
