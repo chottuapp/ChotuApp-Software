@@ -1,52 +1,43 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-01T22:31:51.681748+00:00",
-  "run_id": "41341951009",
+  "generated_utc": "2026-11-01T22:38:07.277022+00:00",
+  "run_id": "41341895117",
   "attempt": "1",
   "source_commit": "4bd315053be7303e1fec7092b3ae31325c70c02c",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 9383.3,
+  "elapsed_seconds": 11276.4,
   "stores": [
     {
-      "name": "Mala",
+      "name": "Miss Rose",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "507bf46c9cf642bc",
-      "products": 88,
-      "variants": 236,
+      "products": 181,
+      "variants": 1823,
       "http_statuses": {
-        "200": 138
+        "200": 699
       },
-      "network_seconds": 81.9,
-      "max_response_seconds": 1.9,
-      "cache_events": 177
+      "network_seconds": 339.5,
+      "max_response_seconds": 2.5,
+      "cache_events": 814
     },
     {
-      "name": "Limelight",
+      "name": "Rawayat",
       "status": "done",
       "review_required": true,
-      "issue_codes": [
-        "HTTP_404",
-        "HTTP_429",
-        "RATE_LIMIT",
-        "WEBSITE_CATEGORY_UNVERIFIED",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
+      "issue_codes": [],
       "software_revision": "507bf46c9cf642bc",
-      "products": 6123,
-      "variants": 14239,
+      "products": 4670,
+      "variants": 6038,
       "http_statuses": {
-        "200": 6329,
-        "429": 2,
-        "404": 4,
-        "500": 1
+        "200": 4997
       },
-      "network_seconds": 2103.1,
-      "max_response_seconds": 4.6,
-      "cache_events": 16950
+      "network_seconds": 8237.7,
+      "max_response_seconds": 17.8,
+      "cache_events": 9518
     }
   ]
 }
