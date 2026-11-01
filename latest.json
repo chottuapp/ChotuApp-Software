@@ -1,29 +1,30 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-01T22:53:18.319571+00:00",
-  "run_id": "41358389866",
+  "generated_utc": "2026-11-01T23:03:14.377918+00:00",
+  "run_id": "41359800275",
   "attempt": "1",
-  "source_commit": "eddd4fde555360c0518a1b55149f854a4fa0b790",
-  "status": "incomplete",
+  "source_commit": "e35b98e1338b961af1977623686d7bd3303daecf",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 673.0,
+  "elapsed_seconds": 227.3,
   "stores": [
     {
-      "name": "Xcessories Hub",
-      "status": "failed",
-      "review_required": false,
+      "name": "Paklap",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
-        "HTTP_403",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "795aa7a618652b33",
+      "software_revision": "94c2b979bf2d96ae",
+      "products": 1632,
+      "variants": 1632,
       "http_statuses": {
-        "403": 1
+        "200": 73
       },
-      "network_seconds": 0.1,
-      "max_response_seconds": 0.1,
-      "cache_events": 6796
+      "network_seconds": 41.3,
+      "max_response_seconds": 2.3,
+      "cache_events": 3157
     }
   ]
 }
