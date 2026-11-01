@@ -1,33 +1,30 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-01T20:27:59.804375+00:00",
-  "run_id": "41340445575",
+  "generated_utc": "2026-11-01T20:33:36.670297+00:00",
+  "run_id": "41340440200",
   "attempt": "1",
   "source_commit": "4bd315053be7303e1fec7092b3ae31325c70c02c",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 4582.7,
+  "elapsed_seconds": 4928.8,
   "stores": [
     {
-      "name": "Liberty Books",
-      "status": "source_paused",
+      "name": "Xcessories Hub",
+      "status": "failed",
       "review_required": false,
       "issue_codes": [
-        "HTTP_404",
-        "HTTP_429",
-        "RATE_LIMIT",
+        "HTTP_403",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "507bf46c9cf642bc",
       "http_statuses": {
-        "200": 1404,
-        "404": 3,
-        "429": 6
+        "403": 1,
+        "200": 6796
       },
-      "network_seconds": 4215.4,
+      "network_seconds": 4851.9,
       "max_response_seconds": 4.9,
-      "cache_events": 994
+      "cache_events": 0
     }
   ]
 }
