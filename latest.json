@@ -1,45 +1,47 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-01T20:43:32.040561+00:00",
-  "run_id": "41341902155",
+  "generated_utc": "2026-11-01T20:57:12.541944+00:00",
+  "run_id": "41341944463",
   "attempt": "1",
   "source_commit": "4bd315053be7303e1fec7092b3ae31325c70c02c",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 4442.5,
+  "elapsed_seconds": 4456.2,
   "stores": [
     {
-      "name": "Vince Care",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "507bf46c9cf642bc",
-      "products": 211,
-      "variants": 371,
-      "http_statuses": {
-        "200": 328
-      },
-      "network_seconds": 740.2,
-      "max_response_seconds": 3.2,
-      "cache_events": 422
-    },
-    {
-      "name": "Elite Cosmetics",
+      "name": "Generation",
       "status": "done",
       "review_required": true,
       "issue_codes": [
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "507bf46c9cf642bc",
-      "products": 1564,
-      "variants": 2029,
+      "products": 736,
+      "variants": 5990,
       "http_statuses": {
-        "200": 1984
+        "200": 7696
       },
-      "network_seconds": 3257.5,
-      "max_response_seconds": 19.8,
-      "cache_events": 3320
+      "network_seconds": 3777.0,
+      "max_response_seconds": 6.0,
+      "cache_events": 8391
+    },
+    {
+      "name": "Saya",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "507bf46c9cf642bc",
+      "products": 3520,
+      "variants": 13246,
+      "http_statuses": {
+        "200": 12133
+      },
+      "network_seconds": 5686.6,
+      "max_response_seconds": 5.5,
+      "cache_events": 15604
     }
   ]
 }
