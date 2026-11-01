@@ -93,7 +93,7 @@ jobs:
       - name: Verify standalone continuation and owner-policy guards
         env:
           PYTHONPATH: tests:cloud:.
-        run: python -m unittest test_auto_continue_entrypoint test_auto_continue test_continuation_policy test_runner_identity test_owner_photo_pause test_woocommerce_source test_requested_stores test_magento_source -q
+        run: python -m unittest test_auto_continue_entrypoint test_auto_continue test_continuation_policy test_runner_identity test_owner_photo_pause test_woocommerce_source test_requested_stores test_magento_source test_magento_option_page -q
       - name: Restore optional saved run
         if: inputs.resume_run_id != ''
         env:

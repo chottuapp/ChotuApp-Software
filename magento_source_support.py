@@ -1,6 +1,6 @@
 """Paklap's public Magento GraphQL catalog; exact offers, no guessed options/stock."""
-import json,re,requests
-from decimal import Decimal
+import copy,json,re,requests
+from decimal import Decimal,InvalidOperation
 from urllib.parse import urlsplit,urlencode,urljoin
 from urllib.robotparser import RobotFileParser
 from bs4 import BeautifulSoup
@@ -24,11 +24,55 @@ def custom_options(options):
   if not kind or not isinstance(ident,int) or ident in seen or not option.get('title') or not isinstance(option.get('required'),bool):raise ValueError('Custom option requires explicit supported selectable identity')
   seen.add(ident);choices=[];values=set()
   for value in option.get('value') or []:
-   vid=value.get('option_type_id');fee=Decimal(str(value.get('price')))
+   vid=value.get('option_type_id')
+   try:fee=Decimal(str(value.get('price')))
+   except InvalidOperation as exc:raise ValueError('Custom option price requires exact public-page verification') from exc
    if not isinstance(vid,int) or vid in values or not value.get('title') or value.get('price_type')!='FIXED' or not fee.is_finite() or fee<0 or fee*10000!=(fee*10000).to_integral_value():raise ValueError('Custom option price/identity is not an exact fixed PKR amount')
    values.add(vid);choices.append(dict(id=vid,title=value['title'],extra_price=fee))
   if not 1<=len(choices)<=500:raise ValueError('Custom option choices missing or excessive')
   result.append(dict(id=ident,title=option['title'],select_type=kind,required=option['required'],choices=choices))
+ return result
+
+def unresolved_option_prices(raw):
+ return any(value.get('price') is None and value.get('price_type')=='DYNAMIC' for option in raw.get('options') or [] for value in option.get('value') or [])
+
+def verified_page_options(raw,response,base=BASE):
+ """Resolve missing API fees only from the exact product's explicit PKR config."""
+ key=raw.get('url_key');suffix=raw.get('url_suffix')
+ if not isinstance(key,str) or not key or not isinstance(suffix,str) or any(x in key+suffix for x in ('..','?','#',':','/')):raise ValueError('Magento source URL is not explicit')
+ url=base.rstrip('/')+'/'+key+suffix;soup=BeautifulSoup(response.text,'html.parser')
+ canonical=soup.select_one('link[rel=canonical][href]');title=soup.select_one('h1');sku=soup.select_one('.product.attribute.sku .value')
+ norm=lambda value:re.sub(r'\s+',' ',str(value)).strip()
+ if response.status_code!=200 or response.url.rstrip('/')!=url.rstrip('/') or not canonical or urljoin(response.url,canonical['href']).rstrip('/')!=url.rstrip('/') or not title or norm(title.get_text(' ',strip=True))!=norm(raw['name']) or not sku or norm(sku.get_text(' ',strip=True))!=norm(raw['sku']):raise ValueError('Custom option product-page identity unverified')
+ configs=[];option_configs=[];currency_verified=False
+ def walk(value):
+  nonlocal currency_verified
+  if isinstance(value,dict):
+   if value.get('productId')==raw['id'] and isinstance(value.get('prices'),dict):configs.append(value['prices'])
+   if str(value.get('id'))==str(raw['id']) and value.get('currency_code')=='PKR' and value.get('url','').rstrip('/')==url.rstrip('/'):currency_verified=True
+   if isinstance(value.get('optionConfig'),dict) and value.get('priceHolderSelector')=="[data-product-id='"+str(raw['id'])+"'][data-role=priceBox]":option_configs.append(value['optionConfig'])
+   for child in value.values():walk(child)
+  elif isinstance(value,list):
+   for child in value:walk(child)
+ for script in soup.select('script[type="text/x-magento-init"]'):
+  try:walk(json.loads(script.get_text()))
+  except (ValueError,TypeError):continue
+ if not currency_verified or len(configs)!=1 or len(option_configs)!=1:raise ValueError('Exact PKR product/option price configuration unverified')
+ api=raw['price_range']['minimum_price'];config=configs[0]
+ try:base_matches=all(Decimal(str(config.get(page,{}).get('amount')))==Decimal(str(api[remote]['value'])) for page,remote in [('oldPrice','regular_price'),('finalPrice','final_price')])
+ except (InvalidOperation,KeyError,TypeError) as exc:raise ValueError('Page/API base prices lack exact numeric proof') from exc
+ if not base_matches:raise ValueError('Page/API base prices disagree; option fee held')
+ result=copy.deepcopy(raw)
+ for option in result.get('options') or []:
+  for value in option.get('value') or []:
+   if value.get('price') is not None or value.get('price_type')!='DYNAMIC':continue
+   proof=option_configs[0].get(str(option['option_id']),{}).get(str(value['option_type_id']),{})
+   if norm(proof.get('name',''))!=norm(value.get('title','')):raise ValueError('Custom option label identity unverified')
+   try:amounts=[Decimal(str(proof['prices'][k]['amount'])) for k in ('oldPrice','basePrice','finalPrice')]
+   except (KeyError,InvalidOperation,TypeError) as exc:raise ValueError('Custom option fee has no explicit numeric proof') from exc
+   fee=amounts[0]
+   if any(not x.is_finite() or x!=fee for x in amounts) or fee<0 or fee*10000!=(fee*10000).to_integral_value() or proof.get('type') not in ('fixed',None) or proof.get('type') is None and fee!=0:raise ValueError('Custom option fee is not an exact fixed PKR amount')
+   value.update(price=str(fee),price_type='FIXED')
  return result
 
 def normalize(raw,base=BASE,*,parent=None,permalink=None):
@@ -108,11 +152,19 @@ class PublicCatalog:
    data=self.query('{products(filter:{url_key:{eq:'+json.dumps(item['url_key'])+'}},pageSize:2){items{'+DETAIL+'}}}')
    items=data.get('items',[])
   if len(items)!=1 or items[0].get('id')!=ident or items[0].get('sku')!=item['sku'] or items[0].get('url_key')!=item.get('url_key'):raise ValueError('Exact Magento SKU/product identity mismatch: id='+str(ident)+' sku='+str(item['sku']))
-  raw=items[0];product=normalize(raw,self.base)
+  raw=items[0];page_response=None
+  if unresolved_option_prices(raw):
+   key=raw.get('url_key');suffix=raw.get('url_suffix')
+   if not isinstance(key,str) or not key or not isinstance(suffix,str) or any(x in key+suffix for x in ('..','?','#',':','/')):raise ValueError('Magento source URL is not explicit')
+   url=self.base+'/'+key+suffix
+   if not self.robot.can_fetch('ChotuAppCatalog',url):raise ValueError('Custom option public-page verification disallowed; no price guessed')
+   self.g['_chotu_wait']();page_response=self.g['S'].get(url,timeout=(15,40))
+   raw=verified_page_options(raw,page_response,self.base)
+  product=normalize(raw,self.base)
   if self.robot.can_fetch('ChotuAppCatalog',product['permalink']):
    self.g['_chotu_wait']()
    try:
-    response=self.g['S'].get(product['permalink'],timeout=(15,40))
+    response=page_response if page_response is not None else self.g['S'].get(product['permalink'],timeout=(15,40))
     soup=BeautifulSoup(response.text,'html.parser');canonical=soup.select_one('link[rel=canonical][href]');title=soup.select_one('h1')
     norm=lambda value:re.sub(r'\s+',' ',str(value)).strip().casefold()
     matched=(getattr(response,'status_code',None)==200 and response.url.rstrip('/')==product['permalink'].rstrip('/') and canonical and urljoin(response.url,canonical['href']).rstrip('/')==product['permalink'].rstrip('/') and title and norm(title.get_text(' ',strip=True))==norm(product['name']))

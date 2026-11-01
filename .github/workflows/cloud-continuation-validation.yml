@@ -11,6 +11,7 @@ on:
       - magento_source_support.py
       - tests/test_woocommerce_source.py
       - tests/test_requested_stores.py
+      - tests/test_magento_option_page.py
       - tests/test_auto_continue_entrypoint.py
       - .github/workflows/cloud-continuation-validation.yml
 permissions:
@@ -32,4 +33,4 @@ jobs:
       - name: Verify real CLI invocation without inherited Python path
         env:
           PYTHONPATH: tests:cloud:.
-        run: python -m unittest test_auto_continue_entrypoint test_auto_continue test_continuation_policy test_runner_identity test_owner_photo_pause test_woocommerce_source test_requested_stores test_magento_source -v
+        run: python -m unittest test_auto_continue_entrypoint test_auto_continue test_continuation_policy test_runner_identity test_owner_photo_pause test_woocommerce_source test_requested_stores test_magento_source test_magento_option_page -v
