@@ -1,0 +1,22 @@
+name: Chotu Review Browser MIME Maintenance
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    environment: chotu-cloud-release
+    steps:
+      - name: Set MIME types only inside existing review apps
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$SSH_PRIVATE_KEY" || { echo '::error::Review SSH credential unavailable'; exit 1; }
+          umask 077
+          key="$RUNNER_TEMP/review-key"
+          trap 'rm -f "$key"' EXIT
+          printf '%s\n' "$SSH_PRIVATE_KEY" > "$key"
+          ssh -i "$key" -o BatchMode=yes -o ConnectTimeout=20 -o StrictHostKeyChecking=accept-new ec2-user@46.137.199.32 'set -eu; for app in customer admin; do p="/var/www/html/public/reviews/notifications-review/$app/.htaccess"; test -f "$p"; if ! grep -q "AddType application/wasm" "$p"; then printf "\nAddType application/wasm .wasm\nAddType text/javascript .js .mjs\n" >> "$p"; fi; done'
