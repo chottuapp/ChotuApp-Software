@@ -62,7 +62,13 @@ jobs:
           opts=(-i "$key" -o BatchMode=yes -o ConnectTimeout=20 -o StrictHostKeyChecking=accept-new)
           remote=ec2-user@46.137.199.32
           scp "${opts[@]}" tools/live/backend.manifest "$remote:/tmp/chotu-notifications-$GITHUB_RUN_ID.manifest"
-          ssh "${opts[@]}" "$remote" "cd /var/www/html; while IFS= read -r file; do if test -f \"\$file\"; then printf '%s\\n' \"\$file\"; fi; done < /tmp/chotu-notifications-$GITHUB_RUN_ID.manifest | tar -czf - -T -" > "$RUNNER_TEMP/live-code.tar.gz"
+          ssh "${opts[@]}" "$remote" bash -s -- "$GITHUB_RUN_ID" > "$RUNNER_TEMP/live-code.tar.gz" <<'REMOTE'
+          set -euo pipefail
+          cd /var/www/html
+          while IFS= read -r file; do
+            if test -f "$file"; then printf '%s\n' "$file"; fi
+          done < "/tmp/chotu-notifications-$1.manifest" | tar -czf - -T -
+          REMOTE
           python3 tools/live/plan-backend.py well-known "$RUNNER_TEMP/live-code.tar.gz" "$RUNNER_TEMP/live-candidate"
       - uses: subosito/flutter-action@v2
         with:
