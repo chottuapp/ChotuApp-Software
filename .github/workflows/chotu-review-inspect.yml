@@ -1,0 +1,22 @@
+name: Chotu Isolated Review Host Inspection
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    environment: chotu-cloud-release
+    steps:
+      - name: Inspect runtime paths without production data
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$SSH_PRIVATE_KEY" || { echo '::error::Review SSH credential unavailable'; exit 1; }
+          umask 077
+          key="$RUNNER_TEMP/review-key"
+          trap 'rm -f "$key"' EXIT
+          printf '%s\n' "$SSH_PRIVATE_KEY" > "$key"
+          ssh -i "$key" -o BatchMode=yes -o ConnectTimeout=20 -o StrictHostKeyChecking=accept-new ec2-user@46.137.199.32 'php -v | head -1; php -m | rg -i "sqlite|pdo"; stat -c "%U %a %n" /var/www/html/public /var/www/html/vendor /var/www/html/public/.htaccess; head -65 /var/www/html/public/.htaccess'
