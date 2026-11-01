@@ -21,6 +21,8 @@ jobs:
           printf '%s\n' "$SSH_PRIVATE_KEY" > "$key"
           ssh -i "$key" -o BatchMode=yes -o ConnectTimeout=20 -o StrictHostKeyChecking=accept-new ec2-user@46.137.199.32 'bash -s' <<'REMOTE'
           set -eu
+          df -h /tmp /var/tmp /var/www/html
+          du -sh /tmp/chotu-review-* /tmp/chotu-live-notifications-* /var/www/chotu-reviews 2>/dev/null || true
           for p in /var/www/html/public/user /var/www/html/public/admin /var/www/html/public/index.html; do
             if test -e "$p"; then stat -c "%F %U %n" "$p"; readlink "$p" || true; fi
           done
