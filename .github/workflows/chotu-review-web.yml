@@ -60,6 +60,7 @@ jobs:
               flutter pub get --enforce-lockfile
               if [[ "$app" == chotu_app ]]; then
                 flutter test --no-pub test/session_http_test.dart test/session_expiry_guard_test.dart test/order_receipt_test.dart
+                (cd ../packages/chotu_ui && flutter pub get --enforce-lockfile && flutter test --no-pub test/delivery_fee_receipt_test.dart test/checkout_receipt_test.dart)
                 folder=customer
               else
                 folder=admin
