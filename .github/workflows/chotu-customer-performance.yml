@@ -2,6 +2,11 @@ name: Chotu Customer Performance APK 1.1.30
 on:
   workflow_dispatch:
     inputs:
+      emulator_api:
+        description: Android API for native upgrade and edge-to-edge checks
+        type: choice
+        default: '35'
+        options: ['35', '36']
       source_sha:
         description: Reviewed private User App source commit
         required: true
@@ -196,9 +201,18 @@ jobs:
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
+      - name: Verify browsing without granting location permissions
+        run: |
+          python3 - <<'PYLOCATION'
+          import os
+          from pathlib import Path
+          p=Path(os.environ['RUNNER_TEMP'])/'chotu-private-source/scripts/cloud/smoke-user-apk.sh'
+          lines=p.read_text().splitlines()
+          p.write_text('\n'.join(l for l in lines if not ('pm grant' in l and ('ACCESS_FINE_LOCATION' in l or 'ACCESS_COARSE_LOCATION' in l)))+'\n')
+          PYLOCATION
       - uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 35
+          api-level: ${{ inputs.emulator_api }}
           target: google_apis
           arch: x86_64
           profile: pixel_6
