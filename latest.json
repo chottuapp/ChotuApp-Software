@@ -2825,7 +2825,7 @@
     "Alkaram Studio": "source:b755c3ff445fc449e1c39683f7f1c8ca158ce90ccafeaf177a5f4c8c089c3884:Alkaram Studio:86af3a88c4abfb699f19242738bfb9ed7d909689c7dfda103ba31bb354b5dba3",
     "Generation": "source:3351b94b6dba167085e4f6d7c0ff208afd2b8e37f315c2f0e54329290011b71b:Generation:86af3a88c4abfb699f19242738bfb9ed7d909689c7dfda103ba31bb354b5dba3",
     "Breakout": "source:76aa934fcdda85841d4b7b1e9f7479f5236e04c897e81658b599146aa9430b99:Breakout:86af3a88c4abfb699f19242738bfb9ed7d909689c7dfda103ba31bb354b5dba3",
-    "Saya": "source:8c08df2235789d3514539c344a7973b983a3cf994aabb4ae34982078177c20b7:Saya:86af3a88c4abfb699f19242738bfb9ed7d909689c7dfda103ba31bb354b5dba3",
+    "Saya": "source:b74bae1da0504575a3c27b6a9a86d0aca0faf973249b0c18faa8193d13951ae0:Saya:86af3a88c4abfb699f19242738bfb9ed7d909689c7dfda103ba31bb354b5dba3",
     "Rios": "source:c40bbad72c8c85669ad90ed103d80ae5a7a342b0b926e23614246eadc500a751:Rios:86af3a88c4abfb699f19242738bfb9ed7d909689c7dfda103ba31bb354b5dba3",
     "Edenrobe": "source:e78bb1c6345c82b257db76a7de506d3a15a7207e5175879d04085d63ac4707b2:Edenrobe:86af3a88c4abfb699f19242738bfb9ed7d909689c7dfda103ba31bb354b5dba3",
     "Limelight": "source:541ef2303600618b402366aca709a26158dc53416734f62d1fd61f3763f2e093:Limelight:86af3a88c4abfb699f19242738bfb9ed7d909689c7dfda103ba31bb354b5dba3",
@@ -5728,22 +5728,70 @@
       "store": "Saya",
       "shop_code": "SE10049",
       "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 3682,
-      "findings_count": 0,
-      "findings": [],
+      "status": "hold",
+      "products_checked": 3520,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CPed26ba47e3df",
+          "name": "SAYA Cotton jacquard Stitched For Mom And Daughter",
+          "source_url": "https://saya.pk/products/saya-cotton-jacquard-stitched-for-mom-and-daughter-wp1j-757",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "af0408f9a0bfc1433420a68f10686b5f0485ffc04477d3f08684c483e7d69065",
-      "checked_utc": "2026-11-01T21:18:37.012696+00:00",
+      "workbook_sha256": "c736f155cff9f7c05271db2a0d41e0111e64fe4854c0a151ddabdcc74b1ea721",
+      "checked_utc": "2026-11-01T23:10:12.554668+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-01T23:10:12.560799+00:00",
+        "updated_utc": "2026-11-01T23:10:12.560799+00:00",
+        "next_source_check_due_utc": "2026-11-01T23:25:12.560799+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
-      "description_repairs_count": 3656,
+      "description_repairs_count": 3495,
       "description_repairs_examples": [
+        {
+          "product_id": "CPc4ec78482479",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP10dbe51d4254",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP7202cc485c42",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP306becbd3ac5",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP47e075d47cb2",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
         {
           "product_id": "CP0841654894a2",
           "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
@@ -5755,51 +5803,27 @@
           "repair_kind": "description"
         },
         {
+          "product_id": "CPad3a6e739bc1",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP0025f81ac39f",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
           "product_id": "CP31736306a275",
-          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP2d6061120d01",
-          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP41de4eb907fd",
-          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP530c6fb9d193",
-          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPfcfcf09e8a8e",
-          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPcddc8ded4be5",
-          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPe093f30a0d7c",
-          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP5ed6d50e40cb",
           "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
           "repair_kind": "description"
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41039571338",
-      "source_artifact": 12974341130,
-      "source_sha256": "8c08df2235789d3514539c344a7973b983a3cf994aabb4ae34982078177c20b7",
-      "refresh_generation": "refresh20261030-31dd8bb1"
+      "source_run": "41341944463",
+      "source_artifact": 13101045230,
+      "source_sha256": "b74bae1da0504575a3c27b6a9a86d0aca0faf973249b0c18faa8193d13951ae0",
+      "refresh_generation": "refresh20261030-31dd8bb1",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/saya/b74bae1da0504575/manifest.json"
     },
     "Rios": {
       "name": "804 Audit",
@@ -7673,8 +7697,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/f09640f2ab353350/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/40097c82706a8fbb/manifest.json"
   },
-  "audit804_last_store": "Generation",
-  "audit804_progress_utc": "2026-11-01T23:09:34.533370+00:00",
+  "audit804_last_store": "Saya",
+  "audit804_progress_utc": "2026-11-01T23:10:15.143283+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Fresh Basket",
