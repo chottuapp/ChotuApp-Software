@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-01T22:41:45.526154+00:00",
+  "run_id": "41358387386",
+  "attempt": "1",
+  "source_commit": "eddd4fde555360c0518a1b55149f854a4fa0b790",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.15",
+  "elapsed_seconds": 2.5,
+  "stores": [
+    {
+      "name": "Gift4U",
+      "status": "failed",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_403",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "795aa7a618652b33",
+      "http_statuses": {
+        "200": 1,
+        "403": 2
+      },
+      "network_seconds": 1.8,
+      "max_response_seconds": 1.4,
+      "cache_events": 0
+    }
+  ]
+}
