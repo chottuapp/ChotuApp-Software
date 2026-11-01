@@ -1,43 +1,43 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-01T19:34:32.897518+00:00",
-  "run_id": "41341904308",
+  "generated_utc": "2026-11-01T19:35:39.463715+00:00",
+  "run_id": "41341781916",
   "attempt": "1",
   "source_commit": "4bd315053be7303e1fec7092b3ae31325c70c02c",
-  "status": "complete",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 336.4,
+  "elapsed_seconds": 468.0,
   "stores": [
     {
-      "name": "Shop Modest",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
+      "name": "House of Tools",
+      "status": "failed",
+      "review_required": false,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
       "software_revision": "507bf46c9cf642bc",
-      "products": 125,
-      "variants": 973,
       "http_statuses": {
-        "200": 181
+        "200": 166
       },
-      "network_seconds": 295.1,
-      "max_response_seconds": 10.8,
-      "cache_events": 277
+      "network_seconds": 95.9,
+      "max_response_seconds": 1.4,
+      "cache_events": 0
     },
     {
-      "name": "The Hanger Pakistan",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
+      "name": "Fresh Basket",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
       "software_revision": "507bf46c9cf642bc",
-      "products": 374,
-      "variants": 1659,
       "http_statuses": {
-        "200": 537
+        "200": 922
       },
-      "network_seconds": 263.6,
-      "max_response_seconds": 1.7,
-      "cache_events": 880
+      "network_seconds": 341.0,
+      "max_response_seconds": 1.8,
+      "cache_events": 0
     }
   ]
 }
