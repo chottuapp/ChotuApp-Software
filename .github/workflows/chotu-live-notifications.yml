@@ -70,7 +70,7 @@ jobs:
             done
           done
           rm -f /tmp/chotu-live-notifications-41359067532/package.tar.gz
-          df -h /tmp /var/tmp
+          df -h /tmp /var/tmp >&2
           cd /var/www/html
           while IFS= read -r file; do
             if test -f "$file"; then printf '%s\n' "$file"; fi
