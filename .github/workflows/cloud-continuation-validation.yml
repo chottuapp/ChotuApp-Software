@@ -1,0 +1,31 @@
+name: Validate standalone fetch continuation
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - cloud/auto_continue.py
+      - cloud/runner_identity.py
+      - locked_store_rules.py
+      - tests/test_auto_continue_entrypoint.py
+      - .github/workflows/cloud-continuation-validation.yml
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned dependencies and Tk imports
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y python3-tk
+          python -m pip install -r requirements.txt
+      - name: Verify real CLI invocation without inherited Python path
+        env:
+          PYTHONPATH: tests:cloud:.
+        run: python -m unittest test_auto_continue_entrypoint test_auto_continue test_continuation_policy test_runner_identity test_owner_photo_pause -v

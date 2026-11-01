@@ -90,6 +90,10 @@ jobs:
             sudo apt-get install -y python3-tk
           fi
           python -m pip install -r requirements.txt
+      - name: Verify standalone continuation and owner-policy guards
+        env:
+          PYTHONPATH: tests:cloud:.
+        run: python -m unittest test_auto_continue_entrypoint test_auto_continue test_continuation_policy test_runner_identity test_owner_photo_pause -q
       - name: Restore optional saved run
         if: inputs.resume_run_id != ''
         env:

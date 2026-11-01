@@ -1,6 +1,9 @@
 """Checkpoint continuations with an explicit chain limit and no-progress guard."""
-import argparse,json,os,subprocess,tempfile,time
+import argparse,json,os,subprocess,sys,tempfile,time
 from pathlib import Path
+# Actions executes this file directly, so Python otherwise exposes only cloud/.
+# Shared owner policy lives at the repository root and must load in this context.
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from continuation_policy import budget, recoverable, integer
 
 # User explicitly authorized one additional 300-minute run for this active run.
