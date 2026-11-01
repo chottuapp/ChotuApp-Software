@@ -465,16 +465,16 @@
     "Zellbury": {
       "shop_code": "SE10028",
       "source_run": "41122513969",
-      "sha256": "05300c074415abc3435796670ce0f5cf1f37be264f97b0bebbc05a7371bd9ac4",
+      "sha256": "41815cb7647064679da2631e5e96214d202d75c3d095619d30bfd17b345ef2ff",
       "source_sha256": "22d441c7ea0d5934cd7c38acf5b224217a6a81e35184d75c8bbfe33744ef8b1d",
       "folder": "ChotuApp 19-10-2026 11-36AM",
-      "verified_utc": "2026-11-01T19:21:45.692402+00:00",
+      "verified_utc": "2026-11-01T23:16:52.281339+00:00",
       "audit804": {
         "name": "804 Audit",
         "status": "pass",
-        "checked_utc": "2026-11-01T19:21:27.121820+00:00",
+        "checked_utc": "2026-11-01T23:13:19.484739+00:00",
         "products_checked": 6134,
-        "workbook_sha256": "05300c074415abc3435796670ce0f5cf1f37be264f97b0bebbc05a7371bd9ac4"
+        "workbook_sha256": "41815cb7647064679da2631e5e96214d202d75c3d095619d30bfd17b345ef2ff"
       },
       "rule804": "applied; 804 Audit passed",
       "campaign_id": "fresh804-20261026-5d42fe35",
@@ -1941,16 +1941,16 @@
       "Zellbury": {
         "shop_code": "SE10028",
         "source_run": "41122513969",
-        "sha256": "05300c074415abc3435796670ce0f5cf1f37be264f97b0bebbc05a7371bd9ac4",
+        "sha256": "41815cb7647064679da2631e5e96214d202d75c3d095619d30bfd17b345ef2ff",
         "source_sha256": "22d441c7ea0d5934cd7c38acf5b224217a6a81e35184d75c8bbfe33744ef8b1d",
         "folder": "ChotuApp 19-10-2026 11-36AM",
-        "verified_utc": "2026-11-01T19:21:45.692402+00:00",
+        "verified_utc": "2026-11-01T23:16:52.281339+00:00",
         "audit804": {
           "name": "804 Audit",
           "status": "pass",
-          "checked_utc": "2026-11-01T19:21:27.121820+00:00",
+          "checked_utc": "2026-11-01T23:13:19.484739+00:00",
           "products_checked": 6134,
-          "workbook_sha256": "05300c074415abc3435796670ce0f5cf1f37be264f97b0bebbc05a7371bd9ac4"
+          "workbook_sha256": "41815cb7647064679da2631e5e96214d202d75c3d095619d30bfd17b345ef2ff"
         },
         "rule804": "applied; 804 Audit passed",
         "campaign_id": "fresh804-20261026-5d42fe35",
@@ -2803,7 +2803,7 @@
     "Outfitters": "source:edc68e65f789fcef9639301acb135e88d55899a0da13c0febfd006def102b04e:Outfitters:86af3a88c4abfb699f19242738bfb9ed7d909689c7dfda103ba31bb354b5dba3",
     "Bonanza Satrangi": "source:cad7a8d95a5210a4da468eae12b1c4932fe5e7447d4375bd4cfed64f33287f49:Bonanza Satrangi:86af3a88c4abfb699f19242738bfb9ed7d909689c7dfda103ba31bb354b5dba3",
     "Junaid Jamshed": "source:b66fd7e2a049847c16a2c201c9cca25448ae791f856b77bba97bd43ce3b63149:Junaid Jamshed:86af3a88c4abfb699f19242738bfb9ed7d909689c7dfda103ba31bb354b5dba3",
-    "Zellbury": "source:22d441c7ea0d5934cd7c38acf5b224217a6a81e35184d75c8bbfe33744ef8b1d:Zellbury:86af3a88c4abfb699f19242738bfb9ed7d909689c7dfda103ba31bb354b5dba3",
+    "Zellbury": "source:22d441c7ea0d5934cd7c38acf5b224217a6a81e35184d75c8bbfe33744ef8b1d:Zellbury:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "Gul Ahmed": "source:7f41b7d4073b0284855d6e047f85c826c5c995900d81e35eb4293d8646fa4c52:Gul Ahmed:86af3a88c4abfb699f19242738bfb9ed7d909689c7dfda103ba31bb354b5dba3",
     "Hello Maali": "source:afd79e0619b144b0aa7ded632f078334dec3c3fe290b77c3f85c28affeddcfd7:Hello Maali:86af3a88c4abfb699f19242738bfb9ed7d909689c7dfda103ba31bb354b5dba3",
     "Sapphire": "source:7684dcf0ec0e8ca92b848d64c285e78e018f7a5c4a8ab71e605c30bfd97de4a6:Sapphire:86af3a88c4abfb699f19242738bfb9ed7d909689c7dfda103ba31bb354b5dba3",
@@ -4342,15 +4342,83 @@
     },
     "Zellbury": {
       "name": "804 Audit",
-      "status": "hold",
+      "version": "804-audit-v2",
       "store": "Zellbury",
+      "shop_code": "SE10028",
+      "identity_policy": "confirmed_code",
+      "status": "pass",
+      "products_checked": 6134,
+      "findings_count": 0,
+      "findings": [],
+      "details_truncated": false,
+      "workbook_sha256": "41815cb7647064679da2631e5e96214d202d75c3d095619d30bfd17b345ef2ff",
+      "checked_utc": "2026-11-01T23:13:19.484739+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "description_repairs_count": 11,
+      "description_repairs_examples": [
+        {
+          "product_id": "CP1575d176d1a1",
+          "issue": "Expressed exact named sold object; retained original product identity and every supplied option/specification.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP35458fe72d6a",
+          "issue": "Expressed exact named sold object; retained original product identity and every supplied option/specification.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPdb7575ccb51a",
+          "issue": "Expressed exact named sold object; retained original product identity and every supplied option/specification.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP63f6d170f695",
+          "issue": "Added the public product_type Jeans; every saved option retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP538d178f5f35",
+          "issue": "Added the public product_type Jeans; every saved option retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP92271bf47478",
+          "issue": "Added the public product_type Jeans; every saved option retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP46ef4f68b318",
+          "issue": "Added the public product_type Jeans; every saved option retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP8509e7edc62f",
+          "issue": "Added the public product_type Jeans; every saved option retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP2c0f054253e0",
+          "issue": "Added the public product_type Jeans; every saved option retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP4c5ff627c86a",
+          "issue": "Added the public product_type Jeans; every saved option retained.",
+          "repair_kind": "description"
+        }
+      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "41122513969",
       "source_artifact": 13011247296,
-      "error": "Command '['git', 'ls-remote', '--heads', 'origin', 'refs/heads/audit804-held-inputs']' returned non-zero exit status 128.",
       "source_sha256": "22d441c7ea0d5934cd7c38acf5b224217a6a81e35184d75c8bbfe33744ef8b1d",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/zellbury/22d441c7ea0d5934/manifest.json",
-      "checked_utc": "2026-11-01T21:50:25.126475+00:00"
+      "refresh_generation": "refresh20261030-31dd8bb1",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/zellbury/22d441c7ea0d5934/manifest.json"
     },
     "Gul Ahmed": {
       "name": "804 Audit",
@@ -7538,7 +7606,7 @@
     "SE10022": "inputs/fresh804-20261026-5d42fe35/rollback-se10022/85072a2b2cd8b246/manifest.json",
     "SE10011": "inputs/fresh804-20261026-5d42fe35/rollback-se10011/be4c2bdadeddbc22/manifest.json",
     "SE10026": "inputs/fresh804-20261026-5d42fe35/rollback-se10026/871bfd4ebd9a3d0b/manifest.json",
-    "SE10028": "inputs/fresh804-20261026-5d42fe35/rollback-se10028/ba839c6a72c5a555/manifest.json",
+    "SE10028": "inputs/fresh804-20261026-5d42fe35/rollback-se10028/05300c074415abc3/manifest.json",
     "SE10021": "inputs/fresh804-20261026-5d42fe35/rollback-se10021/03f4b55cb1f0598d/manifest.json",
     "SE10013": "inputs/fresh804-20261026-5d42fe35/rollback-se10013/f404cfcf2e869ff9/manifest.json",
     "SE10027": "inputs/fresh804-20261026-5d42fe35/rollback-se10027/cb86f0ff8a2e90e9/manifest.json",
@@ -7596,8 +7664,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/f09640f2ab353350/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/40097c82706a8fbb/manifest.json"
   },
-  "audit804_last_store": "Hemani Herbals",
-  "audit804_progress_utc": "2026-11-01T23:12:16.139775+00:00",
+  "audit804_last_store": "Zellbury",
+  "audit804_progress_utc": "2026-11-01T23:16:52.286737+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
