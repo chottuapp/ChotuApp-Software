@@ -1,46 +1,45 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-01T20:01:28.006963+00:00",
-  "run_id": "41341946735",
+  "generated_utc": "2026-11-01T20:11:44.487211+00:00",
+  "run_id": "41342336816",
   "attempt": "1",
-  "source_commit": "4bd315053be7303e1fec7092b3ae31325c70c02c",
-  "status": "complete",
+  "source_commit": "14b24cfcf332d7e4e054d5b24971be2f6c5698d3",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 495.2,
+  "elapsed_seconds": 576.2,
   "stores": [
     {
-      "name": "Hush Puppies",
+      "name": "House of Tools",
+      "status": "failed",
+      "review_required": false,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "2a0eac838969ea88",
+      "http_statuses": {
+        "200": 166
+      },
+      "network_seconds": 103.8,
+      "max_response_seconds": 3.6,
+      "cache_events": 0
+    },
+    {
+      "name": "Fresh Basket",
       "status": "done",
       "review_required": true,
       "issue_codes": [
-        "HTTP_404"
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "507bf46c9cf642bc",
-      "products": 220,
-      "variants": 3056,
+      "software_revision": "2a0eac838969ea88",
+      "products": 1056,
+      "variants": 1067,
       "http_statuses": {
-        "200": 343,
-        "404": 2
+        "200": 1071
       },
-      "network_seconds": 206.8,
-      "max_response_seconds": 1.7,
-      "cache_events": 687
-    },
-    {
-      "name": "Habitt",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "507bf46c9cf642bc",
-      "products": 535,
-      "variants": 690,
-      "http_statuses": {
-        "200": 552
-      },
-      "network_seconds": 202.7,
-      "max_response_seconds": 4.5,
-      "cache_events": 1113
+      "network_seconds": 413.9,
+      "max_response_seconds": 1.8,
+      "cache_events": 2119
     }
   ]
 }

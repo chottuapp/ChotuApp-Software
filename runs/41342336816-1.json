@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-01T20:11:44.487211+00:00",
+  "run_id": "41342336816",
+  "attempt": "1",
+  "source_commit": "14b24cfcf332d7e4e054d5b24971be2f6c5698d3",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.15",
+  "elapsed_seconds": 576.2,
+  "stores": [
+    {
+      "name": "House of Tools",
+      "status": "failed",
+      "review_required": false,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "2a0eac838969ea88",
+      "http_statuses": {
+        "200": 166
+      },
+      "network_seconds": 103.8,
+      "max_response_seconds": 3.6,
+      "cache_events": 0
+    },
+    {
+      "name": "Fresh Basket",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "2a0eac838969ea88",
+      "products": 1056,
+      "variants": 1067,
+      "http_statuses": {
+        "200": 1071
+      },
+      "network_seconds": 413.9,
+      "max_response_seconds": 1.8,
+      "cache_events": 2119
+    }
+  ]
+}
