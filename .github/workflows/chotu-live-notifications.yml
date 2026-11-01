@@ -61,13 +61,20 @@ jobs:
           printf '%s\n' "$SSH_PRIVATE_KEY" > "$key"
           opts=(-i "$key" -o BatchMode=yes -o ConnectTimeout=20 -o StrictHostKeyChecking=accept-new)
           remote=ec2-user@46.137.199.32
-          scp "${opts[@]}" tools/live/backend.manifest "$remote:/tmp/chotu-notifications-$GITHUB_RUN_ID.manifest"
+          scp "${opts[@]}" tools/live/backend.manifest "$remote:/var/tmp/chotu-notifications-$GITHUB_RUN_ID.manifest"
           ssh "${opts[@]}" "$remote" bash -s -- "$GITHUB_RUN_ID" > "$RUNNER_TEMP/live-code.tar.gz" <<'REMOTE'
           set -euo pipefail
+          for run in 41356386029 41357744877; do
+            for archive in customer.tar.gz admin.tar.gz backend.tar.gz; do
+              rm -f "/tmp/chotu-review-$run/$archive"
+            done
+          done
+          rm -f /tmp/chotu-live-notifications-41359067532/package.tar.gz
+          df -h /tmp /var/tmp
           cd /var/www/html
           while IFS= read -r file; do
             if test -f "$file"; then printf '%s\n' "$file"; fi
-          done < "/tmp/chotu-notifications-$1.manifest" | tar -czf - -T -
+          done < "/var/tmp/chotu-notifications-$1.manifest" | tar -czf - -T -
           REMOTE
           python3 tools/live/plan-backend.py well-known "$RUNNER_TEMP/live-code.tar.gz" "$RUNNER_TEMP/live-candidate"
       - uses: subosito/flutter-action@v2
@@ -104,6 +111,13 @@ jobs:
             }
             echo "$app production browser build passed"
           done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: production-browser-builds
+          path: |
+            ${{ runner.temp }}/customer.tar.gz
+            ${{ runner.temp }}/admin.tar.gz
+          retention-days: 7
       - name: Apply only matched live backend changes and customer web
         env:
           SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
@@ -117,7 +131,7 @@ jobs:
           printf '%s\n' "$SSH_PRIVATE_KEY" > "$key"
           opts=(-i "$key" -o BatchMode=yes -o ConnectTimeout=20 -o StrictHostKeyChecking=accept-new)
           remote=ec2-user@46.137.199.32
-          stage="/tmp/chotu-live-notifications-$GITHUB_RUN_ID"
+          stage="/var/tmp/chotu-live-notifications-$GITHUB_RUN_ID"
           mkdir -p "$RUNNER_TEMP/live-stage/candidate"
           cp -a "$RUNNER_TEMP/live-candidate/." "$RUNNER_TEMP/live-stage/candidate/"
           cp tools/live/backend.manifest "$RUNNER_TEMP/live-stage/manifest"
