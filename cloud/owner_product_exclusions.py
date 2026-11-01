@@ -55,6 +55,12 @@ def apply(source,out,store):
    pid=str(r.get('product_id') or '')
    if pid and not has_source_photo(r) and pid not in photographed:
     photo_removed.add(pid);rules[pid]=r['source_url']
+  produce_removed=set()
+  if store=='Fresh Basket':
+   from locked_store_rules import freshbasket_produce
+   for r in rows['Products']:
+    if freshbasket_produce(r):
+     pid=str(r['product_id']);produce_removed.add(pid);rules[pid]=r['source_url']
   if store=='ChenOne':
    from locked_store_rules import chenone_furniture
    facts={(str(r.get('product_id')),r.get('source_url')):r for r in json.loads(Path(__file__).with_name('audit804-reviewed-source.json').read_text()).get('products',[]) if r.get('store')=='ChenOne'}
@@ -95,4 +101,4 @@ def apply(source,out,store):
      if int(row.attrib['r']) in bypath[info.filename]:sheet.remove(row)
     data=ET.tostring(tree,encoding='utf-8',xml_declaration=True)
    dst.writestr(info,data)
- return out,[{'product_id':pid,'source_url':rules[pid],'reason':('Owner sale block: product has no real source photo; excluded from sellable export under explicit owner rule, source stock unchanged' if pid in photo_removed else 'Source-confirmed removed product: exact page and product endpoint both 404/410; absent current public catalog; proof bound to this workbook hash' if pid in source_removed else 'Current exact public product endpoint confirms every variant out of stock; excluded under owner stock rule' if pid in stock_removed else 'Owner-locked ChenOne rule: furniture excluded; all other goods retained' if store=='ChenOne' else 'Outside owner-locked Astore bags/wallets/mini-pouches scope: laptop sleeve' if store=='Astore Bags' else 'Owner explicitly requested deletion of conflicting product on 25 October 2026')} for pid in sorted(removed)]
+ return out,[{'product_id':pid,'source_url':rules[pid],'reason':('Owner-locked Fresh Basket rule: fruits and vegetables excluded; source stock unchanged' if pid in produce_removed else 'Owner sale block: product has no real source photo; excluded from sellable export under explicit owner rule, source stock unchanged' if pid in photo_removed else 'Source-confirmed removed product: exact page and product endpoint both 404/410; absent current public catalog; proof bound to this workbook hash' if pid in source_removed else 'Current exact public product endpoint confirms every variant out of stock; excluded under owner stock rule' if pid in stock_removed else 'Owner-locked ChenOne rule: furniture excluded; all other goods retained' if store=='ChenOne' else 'Outside owner-locked Astore bags/wallets/mini-pouches scope: laptop sleeve' if store=='Astore Bags' else 'Owner explicitly requested deletion of conflicting product on 25 October 2026')} for pid in sorted(removed)]

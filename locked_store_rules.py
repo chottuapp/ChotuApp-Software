@@ -7,6 +7,7 @@ MAALI_GIFTBOX_HANDLES={'ralli-patchwork','desi-pop','colour-playground','clay-sa
 
 def allowed_product(base,product):
  host=(urlsplit(base).hostname or '').lower().removeprefix('www.')
+ if host=='freshbasket.com.pk':return not freshbasket_produce(product)
  if host=='chenone.com':return not chenone_furniture(product)
  if host=='hellomaali.com':return product.get('handle') not in MAALI_GIFTBOX_HANDLES
  if host!=ASTORE_HOST:return True
@@ -15,6 +16,22 @@ def allowed_product(base,product):
  # Evaluate sold objects, not cross-selling/care prose or unrelated collection tags.
  if re.search(r'\b(?:bag\s+(?:charms?|straps?|covers?|organizers?)|sleeves?|straps?|watches|watch|shoes?|perfumes?|jewellery|jewelry|clothes?|sunglasses|belts?)\b',title,re.I):return False
  return bool(re.search(r'\b(?:bags?|wallets?|handbags?|backpacks?|rucksacks?|totes?|clutches|clutch|purses?|satchels?|briefcases?|duffels?|crossbody|mini\s+pouches|mini\s+pouch)\b',title+' '+kind,re.I))
+
+
+def freshbasket_produce(product):
+ """Owner lock: Fresh Basket fruit/vegetable goods cannot enter sale exports.
+
+ Use sold-object names and explicit taxonomy, never ingredients/descriptions.
+ Fruit-flavoured dairy, drinks, preserves and other prepared foods are retained.
+ """
+ title=str(product.get('title') or product.get('name') or '')
+ if re.search(r'\b(?:yog[hu]rt|juice|nectar|drink|smoothie|jam|jelly|marmalade|sauce|ketchup|pickle|chutney|chips|crisps|biscuit|cookie|cake|chocolate|ice\s*cream|tea|shampoo|soap|oil|vinegar|soup|cereal)\b',title,re.I):return False
+ labels=[str(product.get(k) or '') for k in ('product_type','Category','category','source_category','source_product_type')]
+ for value in product.get('categories',[]) or []:
+  labels.append(str(value.get('name','') if isinstance(value,dict) else value))
+ if any(re.search(r'\b(?:fruits?|vegetables?|veggies|fresh produce)\b',label,re.I) for label in labels):return True
+ names=r'apples?|bananas?|oranges?|mandarins?|tangerines?|mango(?:es|s)?|grapes?|guavas?|peach(?:es)?|pears?|plums?|apricots?|cherr(?:y|ies)|strawberr(?:y|ies)|blueberr(?:y|ies)|raspberr(?:y|ies)|blackberr(?:y|ies)|pomegranates?|pineapples?|watermelons?|melons?|papayas?|kiwi|avocados?|lemons?|limes?|coconuts?|dates|potato(?:es|s)?|tomato(?:es|s)?|onions?|carrots?|cucumbers?|capsicums?|bell peppers?|spinach|lettuce|cabbage|cauliflower|broccoli|okra|lady\s*fingers?|aubergines?|eggplants?|brinjals?|zucchini|courgettes?|pumpkins?|gourds?|radish(?:es)?|turnips?|beetroot|sweet\s*corn|peas|green\s*beans|mushrooms?|ginger|garlic|coriander|cilantro|mint|green\s*chill?i(?:es)?|aloo|aalu|pyaz|pyaaz|tamatar|bhindi|palak|baingan|gajar|kheera|karela|tinda|lauki|kaddu|matar|gobhi|gobi|adrak|lehsan|dhaniya|pudina'
+ return bool(re.search(r'\b(?:'+names+r')\b',title,re.I))
 
 
 def chenone_furniture(product):
