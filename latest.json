@@ -1,28 +1,51 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-01T20:35:45.336481+00:00",
-  "run_id": "41341931420",
+  "generated_utc": "2026-11-01T20:41:07.152502+00:00",
+  "run_id": "41341939937",
   "attempt": "1",
   "source_commit": "4bd315053be7303e1fec7092b3ae31325c70c02c",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 77.1,
+  "elapsed_seconds": 3829.9,
   "stores": [
     {
-      "name": "Hilm Chapals",
+      "name": "Beechtree",
       "status": "done",
       "review_required": true,
-      "issue_codes": [],
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
       "software_revision": "507bf46c9cf642bc",
-      "products": 98,
-      "variants": 636,
+      "products": 638,
+      "variants": 2884,
       "http_statuses": {
-        "200": 117
+        "200": 1616
       },
-      "network_seconds": 54.6,
-      "max_response_seconds": 2.9,
-      "cache_events": 201
+      "network_seconds": 789.8,
+      "max_response_seconds": 5.0,
+      "cache_events": 2219
+    },
+    {
+      "name": "Breakout",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "507bf46c9cf642bc",
+      "products": 2029,
+      "variants": 9937,
+      "http_statuses": {
+        "200": 2501,
+        "429": 2
+      },
+      "network_seconds": 1444.5,
+      "max_response_seconds": 4.6,
+      "cache_events": 4542
     }
   ]
 }
