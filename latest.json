@@ -11,7 +11,13 @@
       "updatedAt": "2026-11-01T23:03:41Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41359800275",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-requested20261031-2-SE10058",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-01T23:03:09.607240+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Paklap.xlsx\n\nSTORE STATUS\nPaklap: done\n  Last successful HTTP response (UTC): 2026-11-01T23:02:47.533732+00:00\n",
+      "snapshot_utc": "2026-11-01T23:03:09.607240+00:00",
+      "stores": {
+        "Paklap": "done"
+      },
+      "snapshot_age_seconds": 477,
+      "snapshot_stale": false
     },
     {
       "conclusion": "",
@@ -21,7 +27,13 @@
       "updatedAt": "2026-11-01T22:41:32Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41358392262",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-23",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-01T23:07:14.131071+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nLiberty Books: running\n  Stage: Discover catalog\n  Last successful HTTP response (UTC): 2026-11-01T23:07:02.445767+00:00\n",
+      "snapshot_utc": "2026-11-01T23:07:14.131071+00:00",
+      "stores": {
+        "Liberty Books": "running"
+      },
+      "snapshot_age_seconds": 232,
+      "snapshot_stale": false
     },
     {
       "conclusion": "failure",
@@ -31,7 +43,29 @@
       "updatedAt": "2026-11-01T22:53:43Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41358389866",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-18",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-01T22:53:15.877211+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nXcessories Hub: failed\n  Stage: Idle\n",
+      "snapshot_utc": "2026-11-01T22:53:15.877211+00:00",
+      "stores": {
+        "Xcessories Hub": "failed"
+      },
+      "snapshot_age_seconds": 1070,
+      "snapshot_stale": true,
+      "failure_details": [
+        "fetch\tFetch result\t2026-11-01T22:53:18.2632323Z [Xcessories Hub] WOO PRODUCT PROGRESS: 4191/5001 checked; 2684 retained",
+        "fetch\tFetch result\t2026-11-01T22:53:18.2633241Z [Xcessories Hub] [22:53:14] STAGE: WooCommerce public product prices and pages",
+        "fetch\tFetch result\t2026-11-01T22:53:18.2634530Z [Xcessories Hub] [22:53:14] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/84396",
+        "fetch\tFetch result\t2026-11-01T22:53:18.2635725Z [Xcessories Hub] [22:53:14] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/84396",
+        "fetch\tFetch result\t2026-11-01T22:53:18.2636644Z __CHOTU_PROGRESS__|1|Active: Xcessories Hub",
+        "fetch\tFetch result\t2026-11-01T22:53:18.2638041Z [Xcessories Hub] [22:53:14] EXCEPTION: HTTPError('403 Client Error: Forbidden for url: https://xcessorieshub.com/product/choetech-quick-charge-3-0-18w-3a-usb-wall-charger-q5003/')",
+        "fetch\tFetch result\t2026-11-01T22:53:18.2639561Z [Xcessories Hub] [22:53:14] Traceback (most recent call last):",
+        "fetch\tFetch result\t2026-11-01T22:53:18.2648117Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2039, in _run_checked",
+        "fetch\tFetch result\t2026-11-01T22:53:18.2694514Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip",
+        "fetch\tFetch result\t2026-11-01T22:53:18.2695370Z RUN SUMMARY:",
+        "fetch\tFetch result\t2026-11-01T22:53:18.2696700Z Xcessories Hub: FAILED \u2014 FAILED: Xcessories Hub: 403 Client Error: Forbidden for url: https://xcessorieshub.com/product/choetech-quick-charge-3-0-18w-3a-usb-wall-charger-q5003/",
+        "fetch\tFetch result\t2026-11-01T22:53:18.2697689Z Checkpoint: saved",
+        "fetch\tFetch result\t2026-11-01T22:53:18.2698191Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+        "fetch\tFetch result\t2026-11-01T22:53:18.2708235Z ##[error]Process completed with exit code 2."
+      ]
     },
     {
       "conclusion": "failure",
@@ -41,7 +75,37 @@
       "updatedAt": "2026-11-01T22:42:08Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41358387386",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-requested20261031-2-SE10057",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-01T22:41:44.252958+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nGift4U: failed\n  Stage: Idle\n  Last successful HTTP response (UTC): 2026-11-01T22:41:39.991384+00:00\n",
+      "snapshot_utc": "2026-11-01T22:41:44.252958+00:00",
+      "stores": {
+        "Gift4U": "failed"
+      },
+      "snapshot_age_seconds": 1762,
+      "snapshot_stale": true,
+      "failure_details": [
+        "fetch\tFetch result\t2026-11-01T22:41:45.4910530Z [Gift4U] [22:41:41] STAGE: WooCommerce public product prices and pages",
+        "fetch\tFetch result\t2026-11-01T22:41:45.4910925Z [Gift4U] [22:41:41] GET_JSON: https://gift4u.pk/wp-json/wc/store/v1/products?redacted",
+        "fetch\tFetch result\t2026-11-01T22:41:45.4911370Z [Gift4U] [22:41:41] HTTP START attempt=1 https://gift4u.pk/wp-json/wc/store/v1/products?redacted",
+        "fetch\tFetch result\t2026-11-01T22:41:45.4911819Z [Gift4U] [22:41:41] HTTP END status=403 elapsed=0.3s bytes=5605 https://gift4u.pk/wp-json/wc/store/v1/products?redacted",
+        "fetch\tFetch result\t2026-11-01T22:41:45.4912081Z __CHOTU_PROGRESS__|1|Active: Gift4U",
+        "fetch\tFetch result\t2026-11-01T22:41:45.4912375Z [Gift4U] [22:41:41] EXCEPTION: RuntimeError('Website endpoint unavailable (403): https://gift4u.pk/wp-json/wc/store/v1/products?redacted')",
+        "fetch\tFetch result\t2026-11-01T22:41:45.4912899Z [Gift4U] [22:41:41] Traceback (most recent call last):",
+        "fetch\tFetch result\t2026-11-01T22:41:45.4916752Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2039, in _run_checked",
+        "fetch\tFetch result\t2026-11-01T22:41:45.4927593Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/fast_fetch_support.py\", line 167, in get_json",
+        "fetch\tFetch result\t2026-11-01T22:41:45.4927889Z     try:return old_get_json(*args,**kwargs)",
+        "fetch\tFetch result\t2026-11-01T22:41:45.4928037Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tFetch result\t2026-11-01T22:41:45.4928300Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 150, in get_json",
+        "fetch\tFetch result\t2026-11-01T22:41:45.4928645Z     raise RuntimeError(f'Website endpoint unavailable ({r.status_code}): {url}')",
+        "fetch\tFetch result\t2026-11-01T22:41:45.4928964Z RuntimeError: Website endpoint unavailable (403): https://gift4u.pk/wp-json/wc/store/v1/products?redacted",
+        "fetch\tFetch result\t2026-11-01T22:41:45.4929171Z ",
+        "fetch\tFetch result\t2026-11-01T22:41:45.4929344Z [Gift4U] FAILED: Gift4U: Website endpoint unavailable (403): https://gift4u.pk/wp-json/wc/store/v1/products?redacted",
+        "fetch\tFetch result\t2026-11-01T22:41:45.4930680Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip",
+        "fetch\tFetch result\t2026-11-01T22:41:45.4930901Z RUN SUMMARY:",
+        "fetch\tFetch result\t2026-11-01T22:41:45.4931233Z Gift4U: FAILED \u2014 FAILED: Gift4U: Website endpoint unavailable (403): https://gift4u.pk/wp-json/wc/store/v1/products?redacted",
+        "fetch\tFetch result\t2026-11-01T22:41:45.4931508Z Checkpoint: saved",
+        "fetch\tFetch result\t2026-11-01T22:41:45.4931736Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+        "fetch\tFetch result\t2026-11-01T22:41:45.4958067Z ##[error]Process completed with exit code 2."
+      ]
     },
     {
       "conclusion": "failure",
@@ -51,7 +115,32 @@
       "updatedAt": "2026-11-01T20:12:06Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41342336816",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-requested20261031-3-SE10059-SE10060",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-01T20:11:40.228736+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Fresh Basket.xlsx\n\nSTORE STATUS\nHouse of Tools: failed\n  Stage: Idle\n  Last successful HTTP response (UTC): 2026-11-01T20:03:20.052946+00:00\nFresh Basket: done\n  Last successful HTTP response (UTC): 2026-11-01T20:10:32.830863+00:00\n",
+      "snapshot_utc": "2026-11-01T20:11:40.228736+00:00",
+      "stores": {
+        "House of Tools": "failed",
+        "Fresh Basket": "done"
+      },
+      "snapshot_age_seconds": 10766,
+      "snapshot_stale": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:11:44.4376158Z RUN SUMMARY:",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:11:44.4376690Z House of Tools: FAILED \u2014 FAILED: House of Tools: Unsupported WooCommerce product type: easy_product_bundle",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:11:44.4377388Z Fresh Basket: DONE \u2014 1056 products, 1067 variants; Fresh Basket.xlsx (REVIEW)",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:11:44.4377823Z Checkpoint: saved",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:11:44.4378317Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:11:44.4397418Z ##[error]Process completed with exit code 2.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:11:44.4445274Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:11:44.4445982Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:11:48.5834201Z     if paused_sources(summary.get('stores',[])):return False",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:11:48.5834585Z        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:11:48.5835222Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/runner_identity.py\", line 19, in paused_sources",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:11:48.5835912Z     from locked_store_rules import OWNER_PAUSED_STORES,owner_paused",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:11:48.5840819Z ModuleNotFoundError: No module named 'locked_store_rules'",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:11:48.5901360Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:11:48.6137173Z Post job cleanup.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:11:48.6222299Z Post job cleanup."
+      ]
     },
     {
       "conclusion": "failure",
@@ -61,7 +150,23 @@
       "updatedAt": "2026-11-01T20:21:39Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41341953923",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-28",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-01T20:21:11.990675+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Alkaram Studio.xlsx\n\nSTORE STATUS\nAlkaram Studio: done\n  Last successful HTTP response (UTC): 2026-11-01T20:10:15.240432+00:00\n",
+      "snapshot_utc": "2026-11-01T20:21:11.990675+00:00",
+      "stores": {
+        "Alkaram Studio": "done"
+      },
+      "snapshot_age_seconds": 10194,
+      "snapshot_stale": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:21:20.6755021Z     if paused_sources(summary.get('stores',[])):return False",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:21:20.6755605Z        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:21:20.6756620Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/runner_identity.py\", line 19, in paused_sources",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:21:20.6757854Z     from locked_store_rules import OWNER_PAUSED_STORES,owner_paused",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:21:20.6758648Z ModuleNotFoundError: No module named 'locked_store_rules'",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:21:20.6846819Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:21:20.7092329Z Post job cleanup.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:21:20.7184132Z Post job cleanup."
+      ]
     },
     {
       "conclusion": "failure",
@@ -71,7 +176,22 @@
       "updatedAt": "2026-11-01T22:32:16Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41341951009",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-27",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-01T22:31:49.541130+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Mala.xlsx\n2. Limelight.xlsx\n\nSTORE STATUS\nMala: done\n  Last successful HTTP response (UTC): 2026-11-01T19:56:03.012707+00:00\nLimelight: done\n  Last successful HTTP response (UTC): 2026-11-01T21:28:22.773958+00:00\n",
+      "snapshot_utc": "2026-11-01T22:31:49.541130+00:00",
+      "stores": {
+        "Mala": "done",
+        "Limelight": "done"
+      },
+      "snapshot_age_seconds": 2357,
+      "snapshot_stale": true,
+      "failure_details": [
+        "fetch\tDispatch authorized continuation after verified checkpoint upload\t2026-11-01T22:31:57.8846053Z     if paused_sources(summary.get('stores',[])):return False",
+        "fetch\tDispatch authorized continuation after verified checkpoint upload\t2026-11-01T22:31:57.8846492Z        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tDispatch authorized continuation after verified checkpoint upload\t2026-11-01T22:31:57.8847062Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/runner_identity.py\", line 19, in paused_sources",
+        "fetch\tDispatch authorized continuation after verified checkpoint upload\t2026-11-01T22:31:57.8847684Z     from locked_store_rules import OWNER_PAUSED_STORES,owner_paused",
+        "fetch\tDispatch authorized continuation after verified checkpoint upload\t2026-11-01T22:31:57.8848183Z ModuleNotFoundError: No module named 'locked_store_rules'",
+        "fetch\tDispatch authorized continuation after verified checkpoint upload\t2026-11-01T22:31:57.8913995Z ##[error]Process completed with exit code 1."
+      ]
     },
     {
       "conclusion": "failure",
@@ -81,7 +201,32 @@
       "updatedAt": "2026-11-01T21:43:58Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41341949080",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-26",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-01T21:43:21.965526+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Beyond East.xlsx\n2. Rios.xlsx\n\nSTORE STATUS\nBeyond East: done\n  Last successful HTTP response (UTC): 2026-11-01T20:04:22.421630+00:00\nRios: done\n  Last successful HTTP response (UTC): 2026-11-01T21:29:07.377479+00:00\n",
+      "snapshot_utc": "2026-11-01T21:43:21.965526+00:00",
+      "stores": {
+        "Beyond East": "done",
+        "Rios": "done"
+      },
+      "snapshot_age_seconds": 5264,
+      "snapshot_stale": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-01T21:43:29.0309138Z RUN SUMMARY:",
+        "fetch\tUNKNOWN STEP\t2026-11-01T21:43:29.0310171Z Beyond East: DONE \u2014 474 products, 1639 variants; Beyond East.xlsx (REVIEW)",
+        "fetch\tUNKNOWN STEP\t2026-11-01T21:43:29.0311168Z Rios: DONE \u2014 2218 products, 5809 variants; Rios.xlsx (REVIEW)",
+        "fetch\tUNKNOWN STEP\t2026-11-01T21:43:29.0311910Z Checkpoint: saved",
+        "fetch\tUNKNOWN STEP\t2026-11-01T21:43:29.0312566Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+        "fetch\tUNKNOWN STEP\t2026-11-01T21:43:29.0323988Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T21:43:29.0376754Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-11-01T21:43:29.0377643Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m",
+        "fetch\tUNKNOWN STEP\t2026-11-01T21:43:37.5512867Z     if paused_sources(summary.get('stores',[])):return False",
+        "fetch\tUNKNOWN STEP\t2026-11-01T21:43:37.5513397Z        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-01T21:43:37.5514191Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/runner_identity.py\", line 19, in paused_sources",
+        "fetch\tUNKNOWN STEP\t2026-11-01T21:43:37.5515050Z     from locked_store_rules import OWNER_PAUSED_STORES,owner_paused",
+        "fetch\tUNKNOWN STEP\t2026-11-01T21:43:37.5515694Z ModuleNotFoundError: No module named 'locked_store_rules'",
+        "fetch\tUNKNOWN STEP\t2026-11-01T21:43:37.5579718Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T21:43:37.5822042Z Post job cleanup.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T21:43:37.5921818Z Post job cleanup."
+      ]
     },
     {
       "conclusion": "failure",
@@ -91,7 +236,24 @@
       "updatedAt": "2026-11-01T20:02:34Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41341946735",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-25",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-01T20:01:23.277688+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Hush Puppies.xlsx\n2. Habitt.xlsx\n\nSTORE STATUS\nHush Puppies: done\n  Last successful HTTP response (UTC): 2026-11-01T19:56:32.926573+00:00\nHabitt: done\n  Last successful HTTP response (UTC): 2026-11-01T19:57:36.465227+00:00\n",
+      "snapshot_utc": "2026-11-01T20:01:23.277688+00:00",
+      "stores": {
+        "Hush Puppies": "done",
+        "Habitt": "done"
+      },
+      "snapshot_age_seconds": 11383,
+      "snapshot_stale": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:01:32.8744943Z     if paused_sources(summary.get('stores',[])):return False",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:01:32.8745323Z        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:01:32.8745909Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/runner_identity.py\", line 19, in paused_sources",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:01:32.8746542Z     from locked_store_rules import OWNER_PAUSED_STORES,owner_paused",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:01:32.8747012Z ModuleNotFoundError: No module named 'locked_store_rules'",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:01:32.8816090Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:01:32.9029856Z Post job cleanup.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:01:32.9113936Z Post job cleanup."
+      ]
     },
     {
       "conclusion": "failure",
@@ -101,7 +263,24 @@
       "updatedAt": "2026-11-01T20:57:42Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41341944463",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-24",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-01T20:57:06.488778+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Generation.xlsx\n2. Saya.xlsx\n\nSTORE STATUS\nGeneration: done\n  Last successful HTTP response (UTC): 2026-11-01T20:17:51.504236+00:00\nSaya: done\n  Last successful HTTP response (UTC): 2026-11-01T20:48:05.957942+00:00\n",
+      "snapshot_utc": "2026-11-01T20:57:06.488778+00:00",
+      "stores": {
+        "Generation": "done",
+        "Saya": "done"
+      },
+      "snapshot_age_seconds": 8040,
+      "snapshot_stale": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:57:19.3542341Z     if paused_sources(summary.get('stores',[])):return False",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:57:19.3542630Z        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:57:19.3543040Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/runner_identity.py\", line 19, in paused_sources",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:57:19.3543740Z     from locked_store_rules import OWNER_PAUSED_STORES,owner_paused",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:57:19.3544371Z ModuleNotFoundError: No module named 'locked_store_rules'",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:57:19.3619721Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:57:19.3766154Z Post job cleanup.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:57:19.3836261Z Post job cleanup."
+      ]
     },
     {
       "conclusion": "failure",
@@ -111,7 +290,24 @@
       "updatedAt": "2026-11-01T20:41:34Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41341939937",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-22",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-01T20:41:00.819974+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Beechtree.xlsx\n2. Breakout.xlsx\n\nSTORE STATUS\nBeechtree: done\n  Last successful HTTP response (UTC): 2026-11-01T19:47:49.074119+00:00\nBreakout: done\n  Last successful HTTP response (UTC): 2026-11-01T20:33:06.862044+00:00\n",
+      "snapshot_utc": "2026-11-01T20:41:00.819974+00:00",
+      "stores": {
+        "Beechtree": "done",
+        "Breakout": "done"
+      },
+      "snapshot_age_seconds": 9005,
+      "snapshot_stale": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:41:13.6788688Z     if paused_sources(summary.get('stores',[])):return False",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:41:13.6789170Z        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:41:13.6789898Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/runner_identity.py\", line 19, in paused_sources",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:41:13.6790693Z     from locked_store_rules import OWNER_PAUSED_STORES,owner_paused",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:41:13.6791536Z ModuleNotFoundError: No module named 'locked_store_rules'",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:41:13.6866723Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:41:13.7267106Z Post job cleanup.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T20:41:13.7654520Z Post job cleanup."
+      ]
     },
     {
       "conclusion": "failure",
@@ -121,7 +317,24 @@
       "updatedAt": "2026-11-01T22:08:43Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41341938055",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-21",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-01T22:08:13.517137+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Sana Safinaz.xlsx\n2. Edenrobe.xlsx\n\nSTORE STATUS\nSana Safinaz: done\n  Last successful HTTP response (UTC): 2026-11-01T20:05:21.550522+00:00\nEdenrobe: done\n  Last successful HTTP response (UTC): 2026-11-01T21:50:12.691566+00:00\n",
+      "snapshot_utc": "2026-11-01T22:08:13.517137+00:00",
+      "stores": {
+        "Sana Safinaz": "done",
+        "Edenrobe": "done"
+      },
+      "snapshot_age_seconds": 3773,
+      "snapshot_stale": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-01T22:08:22.2702874Z     if paused_sources(summary.get('stores',[])):return False",
+        "fetch\tUNKNOWN STEP\t2026-11-01T22:08:22.2703440Z        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-01T22:08:22.2704567Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/runner_identity.py\", line 19, in paused_sources",
+        "fetch\tUNKNOWN STEP\t2026-11-01T22:08:22.2705530Z     from locked_store_rules import OWNER_PAUSED_STORES,owner_paused",
+        "fetch\tUNKNOWN STEP\t2026-11-01T22:08:22.2706230Z ModuleNotFoundError: No module named 'locked_store_rules'",
+        "fetch\tUNKNOWN STEP\t2026-11-01T22:08:22.2775087Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T22:08:22.3032801Z Post job cleanup.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T22:08:22.3139197Z Post job cleanup."
+      ]
     },
     {
       "conclusion": "failure",
@@ -131,7 +344,24 @@
       "updatedAt": "2026-11-01T19:59:25Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41341935929",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-20",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-01T19:41:07.038889+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Zyren.xlsx\n2. Pyari Walls.xlsx\n\nSTORE STATUS\nZyren: done\n  Last successful HTTP response (UTC): 2026-11-01T19:38:09.257492+00:00\nPyari Walls: done\n  Last successful HTTP response (UTC): 2026-11-01T19:40:03.276554+00:00\n",
+      "snapshot_utc": "2026-11-01T19:41:07.038889+00:00",
+      "stores": {
+        "Zyren": "done",
+        "Pyari Walls": "done"
+      },
+      "snapshot_age_seconds": 12599,
+      "snapshot_stale": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:41:14.9989573Z     if paused_sources(summary.get('stores',[])):return False",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:41:14.9989976Z        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:41:14.9990618Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/runner_identity.py\", line 19, in paused_sources",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:41:14.9991327Z     from locked_store_rules import OWNER_PAUSED_STORES,owner_paused",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:41:14.9991808Z ModuleNotFoundError: No module named 'locked_store_rules'",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:41:15.0028855Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:41:15.0268891Z Post job cleanup.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:41:15.0373147Z Post job cleanup."
+      ]
     },
     {
       "conclusion": "failure",
@@ -141,7 +371,24 @@
       "updatedAt": "2026-11-01T19:59:16Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41341933781",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-19",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-01T19:36:07.990883+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Design by DAS.xlsx\n2. Golden Rose.xlsx\n\nSTORE STATUS\nDesign by DAS: done\n  Last successful HTTP response (UTC): 2026-11-01T19:35:56.574551+00:00\nGolden Rose: done\n  Last successful HTTP response (UTC): 2026-11-01T19:35:36.356965+00:00\n",
+      "snapshot_utc": "2026-11-01T19:36:07.990883+00:00",
+      "stores": {
+        "Design by DAS": "done",
+        "Golden Rose": "done"
+      },
+      "snapshot_age_seconds": 12898,
+      "snapshot_stale": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:36:20.4762991Z     if paused_sources(summary.get('stores',[])):return False",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:36:20.4763640Z        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:36:20.4764694Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/runner_identity.py\", line 19, in paused_sources",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:36:20.4765905Z     from locked_store_rules import OWNER_PAUSED_STORES,owner_paused",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:36:20.4767153Z ModuleNotFoundError: No module named 'locked_store_rules'",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:36:20.4839611Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:36:20.5076994Z Post job cleanup.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:36:20.5183404Z Post job cleanup."
+      ]
     },
     {
       "conclusion": "failure",
@@ -151,7 +398,24 @@
       "updatedAt": "2026-11-01T20:00:09Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41341929126",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-17",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-01T19:54:07.802945+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Hello Maali.xlsx\n2. Prime Ticks.xlsx\n\nSTORE STATUS\nHello Maali: done\n  Last successful HTTP response (UTC): 2026-11-01T19:36:58.885699+00:00\nPrime Ticks: done\n  Last successful HTTP response (UTC): 2026-11-01T19:50:27.231715+00:00\n",
+      "snapshot_utc": "2026-11-01T19:54:07.802945+00:00",
+      "stores": {
+        "Hello Maali": "done",
+        "Prime Ticks": "done"
+      },
+      "snapshot_age_seconds": 11818,
+      "snapshot_stale": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:54:20.6450261Z     if paused_sources(summary.get('stores',[])):return False",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:54:20.6450649Z        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:54:20.6451260Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/runner_identity.py\", line 19, in paused_sources",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:54:20.6451929Z     from locked_store_rules import OWNER_PAUSED_STORES,owner_paused",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:54:20.6452422Z ModuleNotFoundError: No module named 'locked_store_rules'",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:54:20.6528191Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:54:20.6750490Z Post job cleanup.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:54:20.6833107Z Post job cleanup."
+      ]
     },
     {
       "conclusion": "failure",
@@ -161,7 +425,24 @@
       "updatedAt": "2026-11-01T19:59:56Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41341927027",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-16",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-01T19:53:18.909667+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Ndure.xlsx\n2. Astore Bags.xlsx\n\nSTORE STATUS\nNdure: done\n  Last successful HTTP response (UTC): 2026-11-01T19:50:10.462879+00:00\nAstore Bags: done\n  Last successful HTTP response (UTC): 2026-11-01T19:33:35.359420+00:00\n",
+      "snapshot_utc": "2026-11-01T19:53:18.909667+00:00",
+      "stores": {
+        "Ndure": "done",
+        "Astore Bags": "done"
+      },
+      "snapshot_age_seconds": 11867,
+      "snapshot_stale": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:53:29.9287878Z     if paused_sources(summary.get('stores',[])):return False",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:53:29.9288289Z        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:53:29.9288929Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/runner_identity.py\", line 19, in paused_sources",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:53:29.9289639Z     from locked_store_rules import OWNER_PAUSED_STORES,owner_paused",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:53:29.9290214Z ModuleNotFoundError: No module named 'locked_store_rules'",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:53:29.9358600Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:53:29.9543753Z Post job cleanup.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:53:29.9618789Z Post job cleanup."
+      ]
     },
     {
       "conclusion": "failure",
@@ -171,7 +452,24 @@
       "updatedAt": "2026-11-01T20:01:01Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41341924981",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-15",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-01T19:58:31.312316+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Aerosoft Studio.xlsx\n2. Servis.xlsx\n\nSTORE STATUS\nAerosoft Studio: done\n  Last successful HTTP response (UTC): 2026-11-01T19:33:25.772031+00:00\nServis: done\n  Last successful HTTP response (UTC): 2026-11-01T19:51:27.487118+00:00\n",
+      "snapshot_utc": "2026-11-01T19:58:31.312316+00:00",
+      "stores": {
+        "Aerosoft Studio": "done",
+        "Servis": "done"
+      },
+      "snapshot_age_seconds": 11555,
+      "snapshot_stale": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:58:40.7466110Z     if paused_sources(summary.get('stores',[])):return False",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:58:40.7466726Z        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:58:40.7467584Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/runner_identity.py\", line 19, in paused_sources",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:58:40.7468475Z     from locked_store_rules import OWNER_PAUSED_STORES,owner_paused",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:58:40.7469105Z ModuleNotFoundError: No module named 'locked_store_rules'",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:58:40.7531974Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:58:40.7775923Z Post job cleanup.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:58:40.7867667Z Post job cleanup."
+      ]
     },
     {
       "conclusion": "failure",
@@ -181,7 +479,24 @@
       "updatedAt": "2026-11-01T19:59:50Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41341922957",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-14",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-01T19:53:17.339741+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Zero Lifestyle.xlsx\n2. Bata.xlsx\n\nSTORE STATUS\nZero Lifestyle: done\n  Last successful HTTP response (UTC): 2026-11-01T19:30:32.840133+00:00\nBata: done\n  Last successful HTTP response (UTC): 2026-11-01T19:46:51.496372+00:00\n",
+      "snapshot_utc": "2026-11-01T19:53:17.339741+00:00",
+      "stores": {
+        "Zero Lifestyle": "done",
+        "Bata": "done"
+      },
+      "snapshot_age_seconds": 11869,
+      "snapshot_stale": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:53:27.6957225Z     if paused_sources(summary.get('stores',[])):return False",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:53:27.6957448Z        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:53:27.6957792Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/runner_identity.py\", line 19, in paused_sources",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:53:27.6958165Z     from locked_store_rules import OWNER_PAUSED_STORES,owner_paused",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:53:27.6958444Z ModuleNotFoundError: No module named 'locked_store_rules'",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:53:27.7021532Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:53:27.7150458Z Post job cleanup.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:53:27.7199537Z Post job cleanup."
+      ]
     },
     {
       "conclusion": "",
@@ -191,7 +506,14 @@
       "updatedAt": "2026-11-01T19:28:55Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41341920611",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-12",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-01T23:06:32.212370+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Skin Factor.xlsx\n\nSTORE STATUS\nSkin Factor: done\n  Last successful HTTP response (UTC): 2026-11-01T19:30:17.018284+00:00\nOutfitters: running\n  Stage: Building Excel rows\n  building Excel rows: 2499/3841 tasks; sample age 67s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-11-01T22:41:09.769862+00:00\n",
+      "snapshot_utc": "2026-11-01T23:06:32.212370+00:00",
+      "stores": {
+        "Skin Factor": "done",
+        "Outfitters": "running"
+      },
+      "snapshot_age_seconds": 274,
+      "snapshot_stale": false
     },
     {
       "conclusion": "failure",
@@ -201,9 +523,609 @@
       "updatedAt": "2026-11-01T19:58:21Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41341918272",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261030-31dd8bb1-11",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-01T19:33:09.180379+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Denim Leftover.xlsx\n2. Cool and Cool.xlsx\n\nSTORE STATUS\nDenim Leftover: done\n  Last successful HTTP response (UTC): 2026-11-01T19:31:10.297399+00:00\nCool and Cool: done\n  Last successful HTTP response (UTC): 2026-11-01T19:32:42.916261+00:00\n",
+      "snapshot_utc": "2026-11-01T19:33:09.180379+00:00",
+      "stores": {
+        "Denim Leftover": "done",
+        "Cool and Cool": "done"
+      },
+      "snapshot_age_seconds": 13077,
+      "snapshot_stale": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:33:18.0516572Z     if paused_sources(summary.get('stores',[])):return False",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:33:18.0516954Z        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:33:18.0517457Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/runner_identity.py\", line 19, in paused_sources",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:33:18.0518205Z     from locked_store_rules import OWNER_PAUSED_STORES,owner_paused",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:33:18.0518915Z ModuleNotFoundError: No module named 'locked_store_rules'",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:33:18.0579167Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:33:18.0715728Z Post job cleanup.",
+        "fetch\tUNKNOWN STEP\t2026-11-01T19:33:18.0782875Z Post job cleanup."
+      ]
     }
   ],
-  "fresh_stores": {},
-  "local_khaadi": "Not visible to cloud monitoring; no local activity claimed"
+  "fresh_stores": {
+    "Paklap": "done",
+    "Liberty Books": "running",
+    "Xcessories Hub": "failed",
+    "Gift4U": "failed",
+    "House of Tools": "failed",
+    "Fresh Basket": "done",
+    "Alkaram Studio": "done",
+    "Mala": "done",
+    "Limelight": "done",
+    "Beyond East": "done",
+    "Rios": "done",
+    "Hush Puppies": "done",
+    "Habitt": "done",
+    "Generation": "done",
+    "Saya": "done",
+    "Beechtree": "done",
+    "Breakout": "done",
+    "Sana Safinaz": "done",
+    "Edenrobe": "done",
+    "Zyren": "done",
+    "Pyari Walls": "done",
+    "Design by DAS": "done",
+    "Golden Rose": "done",
+    "Hello Maali": "done",
+    "Prime Ticks": "done",
+    "Ndure": "done",
+    "Astore Bags": "done",
+    "Aerosoft Studio": "done",
+    "Servis": "done",
+    "Zero Lifestyle": "done",
+    "Bata": "done",
+    "Skin Factor": "done",
+    "Outfitters": "running",
+    "Denim Leftover": "done",
+    "Cool and Cool": "done"
+  },
+  "local_khaadi": {
+    "store": "Khaadi",
+    "execution": "Windows local",
+    "observed_utc": "2026-10-20T19:22:58.769213+00:00",
+    "worker_active": true,
+    "status": "unknown_stale_heartbeat",
+    "worker_updated": "2026-10-21 00:22:57",
+    "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
+    "error": "",
+    "progress_age_seconds": 1,
+    "report_age_seconds": 1050505,
+    "status_confirmed": false
+  },
+  "collection_completed_utc": "2026-11-01T23:11:22.706990+00:00",
+  "collection_seconds": 16,
+  "store_overview": {
+    "Paklap": {
+      "state": "awaiting_804_audit",
+      "run_id": "41359800275",
+      "snapshot_utc": "2026-11-01T23:03:09.607240+00:00"
+    },
+    "Liberty Books": {
+      "state": "fetching",
+      "run_id": "41358392262",
+      "snapshot_utc": "2026-11-01T23:07:14.131071+00:00"
+    },
+    "Xcessories Hub": {
+      "state": "drive_verified",
+      "run_id": "41358389866",
+      "snapshot_utc": "2026-11-01T22:53:15.877211+00:00",
+      "uploaded_utc": "2026-10-30T09:21:45.243539+00:00"
+    },
+    "Gift4U": {
+      "state": "failed",
+      "run_id": "41358387386",
+      "snapshot_utc": "2026-11-01T22:41:44.252958+00:00"
+    },
+    "House of Tools": {
+      "state": "drive_verified",
+      "run_id": "41342336816",
+      "snapshot_utc": "2026-11-01T20:11:40.228736+00:00",
+      "uploaded_utc": "2026-11-01T21:58:08.161133+00:00"
+    },
+    "Fresh Basket": {
+      "state": "drive_verified",
+      "run_id": "41342336816",
+      "snapshot_utc": "2026-11-01T20:11:40.228736+00:00",
+      "uploaded_utc": "2026-11-01T21:53:36.105201+00:00"
+    },
+    "Alkaram Studio": {
+      "state": "drive_verified",
+      "run_id": "41341953923",
+      "snapshot_utc": "2026-11-01T20:21:11.990675+00:00",
+      "uploaded_utc": "2026-11-01T21:52:42.788443+00:00"
+    },
+    "Mala": {
+      "state": "drive_verified",
+      "run_id": "41341951009",
+      "snapshot_utc": "2026-11-01T22:31:49.541130+00:00",
+      "uploaded_utc": "2026-11-01T21:29:54.926584+00:00"
+    },
+    "Limelight": {
+      "state": "drive_verified",
+      "run_id": "41341951009",
+      "snapshot_utc": "2026-11-01T22:31:49.541130+00:00",
+      "uploaded_utc": "2026-11-01T21:51:54.229733+00:00"
+    },
+    "Beyond East": {
+      "state": "drive_verified",
+      "run_id": "41341949080",
+      "snapshot_utc": "2026-11-01T21:43:21.965526+00:00",
+      "uploaded_utc": "2026-11-01T22:02:37.908032+00:00"
+    },
+    "Rios": {
+      "state": "drive_verified",
+      "run_id": "41341949080",
+      "snapshot_utc": "2026-11-01T21:43:21.965526+00:00",
+      "uploaded_utc": "2026-11-01T21:28:45.985560+00:00"
+    },
+    "Hush Puppies": {
+      "state": "drive_verified",
+      "run_id": "41341946735",
+      "snapshot_utc": "2026-11-01T20:01:23.277688+00:00",
+      "uploaded_utc": "2026-11-01T23:10:37.576053+00:00"
+    },
+    "Habitt": {
+      "state": "drive_verified",
+      "run_id": "41341946735",
+      "snapshot_utc": "2026-11-01T20:01:23.277688+00:00",
+      "uploaded_utc": "2026-11-01T21:26:56.208260+00:00"
+    },
+    "Generation": {
+      "state": "drive_verified",
+      "run_id": "41341944463",
+      "snapshot_utc": "2026-11-01T20:57:06.488778+00:00",
+      "uploaded_utc": "2026-11-01T23:09:34.532935+00:00"
+    },
+    "Saya": {
+      "state": "drive_verified",
+      "run_id": "41341944463",
+      "snapshot_utc": "2026-11-01T20:57:06.488778+00:00",
+      "issues_count": 1,
+      "issues": [
+        "Category blank or unresolved"
+      ],
+      "audit_checked_utc": "2026-11-01T23:10:12.554668+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-01T23:10:12.560799+00:00",
+        "updated_utc": "2026-11-01T23:10:12.560799+00:00",
+        "next_source_check_due_utc": "2026-11-01T23:25:12.560799+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "uploaded_utc": "2026-11-01T21:18:55.446570+00:00"
+    },
+    "Beechtree": {
+      "state": "drive_verified",
+      "run_id": "41341939937",
+      "snapshot_utc": "2026-11-01T20:41:00.819974+00:00",
+      "uploaded_utc": "2026-11-01T23:03:32.243784+00:00"
+    },
+    "Breakout": {
+      "state": "drive_verified",
+      "run_id": "41341939937",
+      "snapshot_utc": "2026-11-01T20:41:00.819974+00:00",
+      "uploaded_utc": "2026-11-01T23:05:53.585557+00:00"
+    },
+    "Sana Safinaz": {
+      "state": "drive_verified",
+      "run_id": "41341938055",
+      "snapshot_utc": "2026-11-01T22:08:13.517137+00:00",
+      "uploaded_utc": "2026-11-01T23:00:52.296469+00:00"
+    },
+    "Edenrobe": {
+      "state": "drive_verified",
+      "run_id": "41341938055",
+      "snapshot_utc": "2026-11-01T22:08:13.517137+00:00",
+      "uploaded_utc": "2026-11-01T23:01:45.129153+00:00"
+    },
+    "Zyren": {
+      "state": "drive_verified",
+      "run_id": "41341935929",
+      "snapshot_utc": "2026-11-01T19:41:07.038889+00:00",
+      "uploaded_utc": "2026-11-01T22:55:54.222348+00:00"
+    },
+    "Pyari Walls": {
+      "state": "drive_verified",
+      "run_id": "41341935929",
+      "snapshot_utc": "2026-11-01T19:41:07.038889+00:00",
+      "uploaded_utc": "2026-11-01T22:57:51.091119+00:00"
+    },
+    "Design by DAS": {
+      "state": "drive_verified",
+      "run_id": "41341933781",
+      "snapshot_utc": "2026-11-01T19:36:07.990883+00:00",
+      "uploaded_utc": "2026-11-01T22:51:51.872602+00:00"
+    },
+    "Golden Rose": {
+      "state": "drive_verified",
+      "run_id": "41341933781",
+      "snapshot_utc": "2026-11-01T19:36:07.990883+00:00",
+      "uploaded_utc": "2026-11-01T22:53:56.288651+00:00"
+    },
+    "Hello Maali": {
+      "state": "drive_verified",
+      "run_id": "41341929126",
+      "snapshot_utc": "2026-11-01T19:54:07.802945+00:00",
+      "uploaded_utc": "2026-11-01T22:48:56.048928+00:00"
+    },
+    "Prime Ticks": {
+      "state": "drive_verified",
+      "run_id": "41341929126",
+      "snapshot_utc": "2026-11-01T19:54:07.802945+00:00",
+      "uploaded_utc": "2026-11-01T22:49:54.792206+00:00"
+    },
+    "Ndure": {
+      "state": "drive_verified",
+      "run_id": "41341927027",
+      "snapshot_utc": "2026-11-01T19:53:18.909667+00:00",
+      "uploaded_utc": "2026-11-01T22:44:55.095179+00:00"
+    },
+    "Astore Bags": {
+      "state": "drive_verified",
+      "run_id": "41341927027",
+      "snapshot_utc": "2026-11-01T19:53:18.909667+00:00",
+      "uploaded_utc": "2026-11-01T22:47:49.169892+00:00"
+    },
+    "Aerosoft Studio": {
+      "state": "drive_verified",
+      "run_id": "41341924981",
+      "snapshot_utc": "2026-11-01T19:58:31.312316+00:00",
+      "uploaded_utc": "2026-11-01T22:40:45.748923+00:00"
+    },
+    "Servis": {
+      "state": "drive_verified",
+      "run_id": "41341924981",
+      "snapshot_utc": "2026-11-01T19:58:31.312316+00:00",
+      "uploaded_utc": "2026-11-01T22:41:40.957784+00:00"
+    },
+    "Zero Lifestyle": {
+      "state": "drive_verified",
+      "run_id": "41341922957",
+      "snapshot_utc": "2026-11-01T19:53:17.339741+00:00",
+      "uploaded_utc": "2026-11-01T22:39:48.890529+00:00"
+    },
+    "Bata": {
+      "state": "drive_verified",
+      "run_id": "41341922957",
+      "snapshot_utc": "2026-11-01T19:53:17.339741+00:00",
+      "issues_count": 18,
+      "issues": [
+        "Category blank or unresolved"
+      ],
+      "audit_checked_utc": "2026-11-01T22:40:07.223344+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-01T22:40:07.226188+00:00",
+        "updated_utc": "2026-11-01T22:40:07.226188+00:00",
+        "next_source_check_due_utc": "2026-11-01T22:55:07.226188+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "uploaded_utc": "2026-11-01T20:46:31.713985+00:00"
+    },
+    "Skin Factor": {
+      "state": "drive_verified",
+      "run_id": "41341920611",
+      "snapshot_utc": "2026-11-01T23:06:32.212370+00:00",
+      "uploaded_utc": "2026-11-01T22:38:40.553024+00:00"
+    },
+    "Outfitters": {
+      "state": "drive_verified",
+      "run_id": "41341920611",
+      "snapshot_utc": "2026-11-01T23:06:32.212370+00:00",
+      "uploaded_utc": "2026-11-01T20:42:48.264049+00:00"
+    },
+    "Denim Leftover": {
+      "state": "drive_verified",
+      "run_id": "41341918272",
+      "snapshot_utc": "2026-11-01T19:33:09.180379+00:00",
+      "uploaded_utc": "2026-11-01T22:33:55.145704+00:00"
+    },
+    "Cool and Cool": {
+      "state": "drive_verified",
+      "run_id": "41341918272",
+      "snapshot_utc": "2026-11-01T19:33:09.180379+00:00",
+      "uploaded_utc": "2026-11-01T22:35:52.331899+00:00"
+    },
+    "Computer Zone": {
+      "state": "drive_verified",
+      "issues_count": 2,
+      "issues": [
+        "Primary product type and Category disagree: ram"
+      ],
+      "audit_checked_utc": "2026-11-01T22:30:00.432359+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-01T22:30:00.433449+00:00",
+        "updated_utc": "2026-11-01T22:30:00.433449+00:00",
+        "next_source_check_due_utc": "2026-11-01T22:45:00.433449+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Primary product type and Category disagree: ram"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "uploaded_utc": "2026-11-01T20:30:46.700827+00:00"
+    },
+    "Hemani Herbals": {
+      "state": "drive_verified",
+      "issues_count": 1,
+      "issues": [
+        "Category lacks clear product-purpose evidence; manual review required"
+      ],
+      "audit_checked_utc": "2026-11-01T22:31:55.692206+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-01T22:31:55.693938+00:00",
+        "updated_utc": "2026-11-01T22:31:55.693938+00:00",
+        "next_source_check_due_utc": "2026-11-01T22:46:55.693938+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category lacks clear product-purpose evidence; manual review required"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "uploaded_utc": "2026-11-01T20:37:53.561018+00:00"
+    },
+    "Zellbury": {
+      "state": "drive_verified",
+      "issues_count": null,
+      "issues": [],
+      "audit_checked_utc": "2026-11-01T21:50:25.126475+00:00",
+      "recovery": {},
+      "uploaded_utc": "2026-11-01T19:21:45.692402+00:00"
+    },
+    "Miss Rose": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-01T22:12:33.760240+00:00"
+    },
+    "Rivaj UK": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-01T22:13:42.044260+00:00"
+    },
+    "Tawakkal Fabrics": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-01T20:17:47.705377+00:00"
+    },
+    "Elite Cosmetics": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-01T22:16:52.248117+00:00"
+    },
+    "The Hanger Pakistan": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-01T22:18:43.530848+00:00"
+    },
+    "Vince Care": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-01T22:14:54.859885+00:00"
+    },
+    "Islamabad Tea": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-01T22:19:38.389313+00:00"
+    },
+    "Seran": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-01T22:21:55.910715+00:00"
+    },
+    "Shop Modest": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-01T22:17:41.452527+00:00"
+    },
+    "Adam Cheese": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-01T22:29:37.232785+00:00"
+    },
+    "Farda Foods": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-01T22:24:48.942757+00:00"
+    },
+    "Nisa Naturals": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-01T22:29:52.183430+00:00"
+    },
+    "Saeed Ghani": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-01T22:31:46.851417+00:00"
+    },
+    "Bonanza Satrangi": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-01T21:43:43.675210+00:00"
+    },
+    "Rawayat": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-01T20:15:42.528774+00:00"
+    },
+    "Junaid Jamshed": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-01T21:38:36.050085+00:00"
+    },
+    "Gul Ahmed": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-01T21:48:55.362911+00:00"
+    },
+    "Sapphire": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-01T20:32:54.828136+00:00"
+    },
+    "Stylo": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-01T22:00:49.013659+00:00"
+    },
+    "Hilm Chapals": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-01T22:51:33.684070+00:00"
+    },
+    "ChenOne": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-01T23:07:40.436420+00:00"
+    },
+    "Dairy Dream": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-01T22:09:51.365246+00:00"
+    },
+    "The Glossy Quill": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-01T22:04:50.057025+00:00"
+    },
+    "Bin Fahad": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-01T22:07:48.876270+00:00"
+    },
+    "G7 Leather": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-01T22:07:16.990677+00:00"
+    }
+  },
+  "drive": {
+    "current_campaign": "fresh804-20261026-5d42fe35",
+    "fresh_verified_files": 60,
+    "audit_progress_utc": "2026-11-01T23:10:37.576368+00:00",
+    "sync_status": "scanning",
+    "sync_error": null,
+    "last_scan_utc": "2026-11-01T22:25:54.179737+00:00",
+    "held": {
+      "39450775009": [],
+      "39450778729": [],
+      "39450782519": [],
+      "39450786298": [],
+      "39450789858": [],
+      "39450793299": [],
+      "39450796831": [],
+      "39450802086": [],
+      "39450806726": [],
+      "39494289423": [],
+      "39494295410": [],
+      "39494348075": [],
+      "39529042706": [
+        {
+          "store": "Stylo",
+          "error": "Unconfirmed shop code; held for review"
+        }
+      ],
+      "39529095851": []
+    },
+    "verified_files": 60,
+    "original_uploads": {},
+    "verified_utc": "2026-10-21T06:41:31.265056+00:00",
+    "folders": {
+      "ChotuApp 20-10-2026 Fresh": 20,
+      "ChotuApp 19-10-2026 11-36AM": 60
+    },
+    "latest_move": [
+      {
+        "source": "ChotuApp 20-10-2026 Fresh",
+        "destination": "ChotuApp 19-10-2026 11-36AM",
+        "verified_files": [
+          "Adam Cheese.xlsx",
+          "Bonanza Satrangi.xlsx",
+          "Computer Zone.xlsx",
+          "Cool and Cool.xlsx",
+          "Denim Leftover.xlsx",
+          "Elite Cosmetics.xlsx",
+          "Farda Foods.xlsx",
+          "Hemani Herbals.xlsx",
+          "Islamabad Tea.xlsx",
+          "Miss Rose.xlsx",
+          "Nisa Naturals.xlsx",
+          "Rivaj UK.xlsx",
+          "Saeed Ghani.xlsx",
+          "Seran.xlsx",
+          "Shop Modest.xlsx",
+          "Skin Factor.xlsx",
+          "Tawakkal Fabrics.xlsx",
+          "The Hanger Pakistan.xlsx",
+          "Vince Care.xlsx",
+          "Zero Lifestyle.xlsx"
+        ],
+        "destination_file_count": 24,
+        "preserved_other_files": 4,
+        "verified_utc": "2026-10-20T18:41:53.309795+00:00",
+        "source_removed": [
+          "Adam Cheese.xlsx",
+          "Bonanza Satrangi.xlsx",
+          "Computer Zone.xlsx",
+          "Cool and Cool.xlsx",
+          "Denim Leftover.xlsx",
+          "Elite Cosmetics.xlsx",
+          "Farda Foods.xlsx",
+          "Hemani Herbals.xlsx",
+          "Islamabad Tea.xlsx",
+          "Miss Rose.xlsx",
+          "Nisa Naturals.xlsx",
+          "Rivaj UK.xlsx",
+          "Saeed Ghani.xlsx",
+          "Seran.xlsx",
+          "Shop Modest.xlsx",
+          "Skin Factor.xlsx",
+          "Tawakkal Fabrics.xlsx",
+          "The Hanger Pakistan.xlsx",
+          "Vince Care.xlsx",
+          "Zero Lifestyle.xlsx"
+        ]
+      }
+    ]
+  },
+  "khaadi_devices": [
+    {
+      "store": "Khaadi",
+      "execution": "Windows local",
+      "observed_utc": "2026-10-20T19:22:58.769213+00:00",
+      "worker_active": true,
+      "status": "unknown_stale_heartbeat",
+      "worker_updated": "2026-10-21 00:22:57",
+      "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
+      "error": "",
+      "progress_age_seconds": 1,
+      "report_age_seconds": 1050505,
+      "status_confirmed": false
+    }
+  ],
+  "phone_heartbeat": {
+    "status": "not_connected_or_no_report",
+    "status_confirmed": false,
+    "message": "No Android heartbeat received. Connect GitHub in app Settings and start or resume fetching."
+  },
+  "monitoring": {
+    "phone_heartbeat_seconds": 30,
+    "phone_stale_after_seconds": 180,
+    "cloud_schedule_minutes": 5,
+    "note": "Scheduled cloud checks can be delayed. Query local-run-status directly for latest phone heartbeat."
+  },
+  "fresh_completed": 30
 }
