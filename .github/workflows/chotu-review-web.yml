@@ -1,0 +1,104 @@
+name: Chotu Isolated Notification Browser Review
+on:
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Reviewed private feature commit
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: chotu-isolated-notification-review
+  cancel-in-progress: false
+jobs:
+  review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    environment: chotu-cloud-release
+    env:
+      SOURCE_SHA: ${{ inputs.source_sha }}
+    steps:
+      - name: Require reviewed source and restricted build credential
+        env:
+          SOURCE_KEY: ${{ secrets.CHOTU_APP_SOURCE_KEY }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          [[ "$SOURCE_SHA" =~ ^[a-f0-9]{40}$ ]] || exit 1
+          test -n "$SOURCE_KEY" || { echo '::error::Run the one-time Chotu cloud setup. No PC runner or paid fallback is used.'; exit 1; }
+          umask 077
+          key="$RUNNER_TEMP/chotu-source-key"
+          trap 'rm -f "$key" "$RUNNER_TEMP/chotu-source-hosts"' EXIT
+          printf '%s\n' "$SOURCE_KEY" > "$key"
+          curl -fsS --retry 3 --max-time 60 -H "Authorization: Bearer $GH_TOKEN" https://api.github.com/meta | python3 -c 'import json,sys; print("\n".join("github.com "+k for k in json.load(sys.stdin)["ssh_keys"]))' > "$RUNNER_TEMP/chotu-source-hosts"
+          export GIT_SSH_COMMAND="ssh -i $key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$RUNNER_TEMP/chotu-source-hosts"
+          if ! (
+            git init -q "$RUNNER_TEMP/chotu-private-source"
+            cd "$RUNNER_TEMP/chotu-private-source"
+            git remote add origin git@github.com:chottuapp/ChotuProject-development.git
+            git fetch -q --depth=1 origin "$SOURCE_SHA"
+            git checkout -q --detach FETCH_HEAD
+            test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
+          ) > "$RUNNER_TEMP/private-checkout.log" 2>&1; then
+            echo '::error::Private checkout failed. Check the read-only deploy key and approved commit; private logs are not uploaded.'
+            exit 1
+          fi
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.41.3'
+          channel: stable
+          cache: false
+      - name: Verify and compile browser apps only
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/chotu-private-source"
+          for app in chotu_app chotu-admin; do
+            (
+              cd "$app"
+              flutter pub get --enforce-lockfile
+              if [[ "$app" == chotu_app ]]; then
+                flutter test --no-pub test/session_http_test.dart test/session_expiry_guard_test.dart test/order_receipt_test.dart
+                folder=customer
+              else
+                folder=admin
+              fi
+              flutter build web --no-pub --no-web-resources-cdn \
+                --base-href "/reviews/notifications-review/$folder/" \
+                --dart-define=CHOTU_REVIEW_DEMO=true \
+                --dart-define=CHOTU_ENV=development \
+                --dart-define=CHOTU_API_BASE=https://app.developerschotuapp.online/reviews/notifications-review/api \
+                --dart-define=CHOTU_STORAGE_BOX=notifications_review \
+                --dart-define=CHOTU_ADDRESS_BOX=notifications_review_addresses \
+                --dart-define=CHOTU_AUTH_PREFIX=notifications_review_ \
+                --dart-define=CHOTU_ADMIN_STORAGE_PREFIX=notifications_review_admin.
+              tar -czf "$RUNNER_TEMP/$folder.tar.gz" -C build/web .
+            ) > "$RUNNER_TEMP/$app-web.log" 2>&1 || {
+              echo "::error::$app browser verification/build failed; no deployment was attempted."
+              tail -35 "$RUNNER_TEMP/$app-web.log"
+              exit 1
+            }
+            echo "$app browser verification and build passed"
+          done
+          tar -czf "$RUNNER_TEMP/backend.tar.gz" -C well-known \
+            app bootstrap config database routes resources artisan composer.json composer.lock public/index.php
+      - name: Install isolated synthetic review
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$SSH_PRIVATE_KEY"
+          umask 077
+          key="$RUNNER_TEMP/review-key"
+          trap 'rm -f "$key"' EXIT
+          printf '%s\n' "$SSH_PRIVATE_KEY" > "$key"
+          opts=(-i "$key" -o BatchMode=yes -o ConnectTimeout=20 -o StrictHostKeyChecking=accept-new)
+          remote=ec2-user@46.137.199.32
+          stage="/tmp/chotu-review-$GITHUB_RUN_ID"
+          ssh "${opts[@]}" "$remote" "mkdir -m 700 '$stage'"
+          scp "${opts[@]}" "$RUNNER_TEMP/"{customer,admin,backend}.tar.gz "$RUNNER_TEMP/chotu-private-source/tools/review/install-isolated-review.sh" "$remote:$stage/"
+          ssh "${opts[@]}" "$remote" "sudo -n bash '$stage/install-isolated-review.sh' '$stage'"
+          echo 'Customer: https://app.developerschotuapp.online/reviews/notifications-review/customer/' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Admin: https://app.developerschotuapp.online/reviews/notifications-review/admin/' >> "$GITHUB_STEP_SUMMARY"
