@@ -1,6 +1,23 @@
 import unittest,copy
 from woocommerce_source_support import offer,variants,unpriced_unpurchasable
 class WooTests(unittest.TestCase):
+ def test_gift4u_uses_approved_woocommerce_adapter_without_shopify_fallback(self):
+  from unittest.mock import Mock,patch
+  from woocommerce_source_support import enable_woocommerce_source
+  fallback=Mock();g={'_chotuapp_run_site_original':fallback};enable_woocommerce_source(g)
+  with patch('woocommerce_source_support.export') as exported:
+   for base in ('https://gift4u.pk','https://www.gift4u.pk'):
+    g['_chotuapp_run_site_original'](base,'Gift4U','template.xlsx',print)
+    self.assertEqual(exported.call_args.args[1],base)
+   self.assertEqual(exported.call_count,2);fallback.assert_not_called()
+   g['_chotuapp_run_site_original']('https://unknown-shop.test','Unknown','template.xlsx',print)
+   fallback.assert_called_once()
+ def test_gift4u_public_sample_preserves_exact_price_stock_and_simple_identity(self):
+  product=dict(id=60137,type='simple',name='Premium 9-in-1 Deep Tissue Electric Massage Machine',is_in_stock=True,is_purchasable=True,is_on_backorder=False,prices=dict(currency_code='PKR',currency_minor_unit=0,price='4999',regular_price='6500',sale_price='4999'))
+  self.assertEqual(tuple(map(str,offer(product)[:2])),('6500','4999'))
+  from unittest.mock import Mock
+  get=Mock();selected=variants(product,get)
+  self.assertEqual(selected,[(product,{})]);get.assert_not_called()
  def test_fresh_absence_requires_successful_exact_slug_empty_list(self):
   from types import SimpleNamespace
   from woocommerce_source_support import absent_public_catalog

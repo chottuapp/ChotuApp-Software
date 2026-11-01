@@ -36,6 +36,16 @@ class RequestedStoreTests(unittest.TestCase):
   self.assertEqual(dispatch_plan(self.request,[],set())[0],[])
 
 class ProviderProbeTests(unittest.TestCase):
+ def test_gift4u_is_registered_for_verified_public_woocommerce_feed(self):
+  from unittest.mock import Mock,patch
+  from requested_stores import probe
+  def response(path,data=None,text=''):
+   r=Mock(status_code=200,ok=True,text=text,content=text.encode(),url='https://gift4u.pk'+path);r.json.return_value=data;return r
+  session=Mock();session.headers={};session.get.side_effect=[response('/robots.txt',text='User-agent: *\nAllow: /'),response('/',text='/wp-content/plugins/woocommerce/'),response('/wp-json/wc/store/v1/products',data=[dict(id=60137,prices=dict(currency_code='PKR'))])]
+  with patch('requested_stores.requests.Session',return_value=session),patch('requested_stores.time.sleep'):
+   result=probe(dict(name='Gift4U',url='https://gift4u.pk'))
+  self.assertEqual(result['status'],'supported');self.assertEqual(result['provider'],'woocommerce')
+  self.assertFalse(any('/products.json' in call.args[0] for call in session.get.call_args_list))
  def response(self,path,data=None,status=200,text=''):
   from unittest.mock import Mock
   r=Mock(status_code=status,ok=status<400,text=text,content=text.encode(),url='https://example-shop.test'+path)
