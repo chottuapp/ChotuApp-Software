@@ -25,9 +25,9 @@ def chenone_furniture(product):
  if re.search(r'\b(?:bed\s*(?:spreads?|sheets?|covers?|linen|skirts?)|table\s*(?:cloths?|runners?|mats?|linen|lamps?)|(?:cushion|pillow|sofa|chair|duvet|quilt|mattress)\s*(?:covers?|protectors?)|filled\s+cushions?)\b',title,re.I):return False
  return bool(re.search(r'\b(?:furniture|chairs?|sofas?|dressers?|wardrobes?|ottomans?|bookcases?|sideboards?|nightstands?|cabinets?|stools?|benches|recliners?|(?:coffee|dining|breakfast|side|bedside|console|end)\s+tables?)\b',title,re.I) or re.search(r'\bbed$',title,re.I))
 
-# Owner lock, 31 October: explicit owner instruction is required to re-enable.
-OWNER_PAUSED_STORES={'Gift4U','Xcessories Hub','LAAM','Khaadi','Bachaa Party'}
-OWNER_PAUSED_HOSTS={'gift4u.pk','xcessorieshub.com','laam.com','khaadi.com','pk.khaadi.com','bachaaparty.com'}
+# Owner re-enabled Gift4U and Xcessories Hub on 1 November 2026.
+OWNER_PAUSED_STORES={'LAAM','Khaadi','Bachaa Party'}
+OWNER_PAUSED_HOSTS={'laam.com','khaadi.com','pk.khaadi.com','bachaaparty.com'}
 
 def owner_paused(name='',url=''):
  return name in OWNER_PAUSED_STORES or (urlsplit(str(url)).hostname or '').lower().removeprefix('www.') in OWNER_PAUSED_HOSTS
