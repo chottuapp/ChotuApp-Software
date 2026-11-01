@@ -1,43 +1,49 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-01T19:30:13.213215+00:00",
-  "run_id": "41341908658",
+  "generated_utc": "2026-11-01T19:32:46.069601+00:00",
+  "run_id": "41341906822",
   "attempt": "1",
   "source_commit": "4bd315053be7303e1fec7092b3ae31325c70c02c",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 71.1,
+  "elapsed_seconds": 232.9,
   "stores": [
     {
-      "name": "Farda Foods",
+      "name": "Islamabad Tea",
       "status": "done",
       "review_required": true,
-      "issue_codes": [],
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
       "software_revision": "507bf46c9cf642bc",
-      "products": 51,
-      "variants": 53,
+      "products": 29,
+      "variants": 29,
       "http_statuses": {
-        "200": 64
+        "200": 39
       },
-      "network_seconds": 68.3,
-      "max_response_seconds": 7.4,
-      "cache_events": 103
+      "network_seconds": 15.7,
+      "max_response_seconds": 1.4,
+      "cache_events": 65
     },
     {
-      "name": "Adam Cheese",
+      "name": "Seran",
       "status": "done",
       "review_required": true,
-      "issue_codes": [],
+      "issue_codes": [
+        "HTTP_403",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
       "software_revision": "507bf46c9cf642bc",
-      "products": 58,
-      "variants": 58,
+      "products": 261,
+      "variants": 759,
       "http_statuses": {
-        "200": 63
+        "200": 267,
+        "403": 1
       },
-      "network_seconds": 24.1,
-      "max_response_seconds": 1.8,
-      "cache_events": 116
+      "network_seconds": 159.1,
+      "max_response_seconds": 1.7,
+      "cache_events": 525
     }
   ]
 }
