@@ -29,6 +29,12 @@ jobs:
           path: ${{ runner.temp }}/android-downloads
           run-id: ${{ inputs.build_run || github.run_id }}
           github-token: ${{ github.token }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: customer-native-launch
+          path: ${{ runner.temp }}/android-downloads/native
+          run-id: ${{ inputs.native_run }}
+          github-token: ${{ github.token }}
       - name: Require successful native check of this exact signed build
         env:
           GH_TOKEN: ${{ github.token }}
@@ -98,4 +104,4 @@ jobs:
 
           GitHub downloads only. This workflow does not activate an APK on the production server or upload to Google Play.
           NOTES
-          gh release create "$tag" "$RUNNER_TEMP/android-downloads/ChotuApp-User-1.1.30-72.apk" "$RUNNER_TEMP/android-downloads/ChotuApp-User-1.1.30-72.aab" "$RUNNER_TEMP/android-downloads/customer-apk-build-info.json" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title "ChotuApp User 1.1.30 (72) — APK and AAB" --notes-file "$RUNNER_TEMP/android-release-notes.md" --prerelease --latest=false
+          gh release create "$tag" "$RUNNER_TEMP/android-downloads/ChotuApp-User-1.1.30-72.apk" "$RUNNER_TEMP/android-downloads/ChotuApp-User-1.1.30-72.aab" "$RUNNER_TEMP/android-downloads/customer-apk-build-info.json" "$RUNNER_TEMP/android-downloads/native/customer-native-launch.png" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title "ChotuApp User 1.1.30 (72) — APK and AAB" --notes-file "$RUNNER_TEMP/android-release-notes.md" --prerelease --latest=false
