@@ -2830,7 +2830,7 @@
     "Hush Puppies": "source:73135670756d287c5c7d380ab91b8a3f770cb2005545cd29a63c1e689a6faa12:Hush Puppies:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Habitt": "source:c58e63576cfed4749d72bbdd67584ca7174c9e317757f372b4f1fba269a2d141:Habitt:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Mala": "source:7a60aa0b0f3a2e779af1f5e48c5861ee7e3431f1cae7558c8f581b0f931a5c6e:Mala:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "Sana Safinaz": "source:eb89e8f485336e7922fb54be93739ef6875a8761e7bdfd097f5f47caa6991ea8:Sana Safinaz:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
+    "Sana Safinaz": "source:5b9c543d2a55bf790dc876a436b32b8cc7856f9c697e9c83bd6b15abe15458c1:Sana Safinaz:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Beyond East": "source:22b71b16f6d6cb3f2bf023324f0467adcf9e5de39e3be37897e12ab0740da766:Beyond East:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Alkaram Studio": "source:b755c3ff445fc449e1c39683f7f1c8ca158ce90ccafeaf177a5f4c8c089c3884:Alkaram Studio:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Generation": "source:87cd769161b455ab972ad3bf7df54cc8c885db59d7ae4c495db0485a76a16f54:Generation:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
@@ -4473,82 +4473,15 @@
     },
     "Sana Safinaz": {
       "name": "804 Audit",
-      "version": "804-audit-v2",
+      "status": "hold",
       "store": "Sana Safinaz",
-      "shop_code": "SE10043",
-      "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 1740,
-      "findings_count": 0,
-      "findings": [],
-      "details_truncated": false,
-      "workbook_sha256": "d8b1ba2818f8a78547e785f02b69a2bb2ff9a039004ed915b462bb30765d38c6",
-      "checked_utc": "2026-11-02T04:44:18.322044+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
-      },
-      "owner_authorized_exclusions": [],
-      "image_metadata_repairs": 0,
-      "description_repairs_count": 365,
-      "description_repairs_examples": [
-        {
-          "product_id": "CPbe9f2da31561",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP85fa7d95ca19",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP0df5145872a3",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP73a185b9a126",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP4e1988ad9a02",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP6e073f5116fc",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPbede63f7f61c",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP1ff31a7de3d6",
-          "issue": "Added exact published product-family evidence; no unstated contents, fabric or piece count inferred.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPd572ee9e5774",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP8c6c73c3bef7",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        }
-      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41039552154",
-      "source_artifact": 12977077939,
-      "source_sha256": "eb89e8f485336e7922fb54be93739ef6875a8761e7bdfd097f5f47caa6991ea8",
-      "refresh_generation": "refresh20261030-31dd8bb1"
+      "source_run": "41341938055",
+      "source_artifact": 13103191511,
+      "error": "Drive copy failed; upload not marked verified",
+      "source_sha256": "5b9c543d2a55bf790dc876a436b32b8cc7856f9c697e9c83bd6b15abe15458c1",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/sana-safinaz/5b9c543d2a55bf79/manifest.json",
+      "checked_utc": "2026-11-02T07:13:49.810265+00:00"
     },
     "Beyond East": {
       "name": "804 Audit",
@@ -7523,7 +7456,7 @@
     "41341929126": "41341929126:13098655943:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41341931420": "41341931420:13099822849:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41341933781": "41341933781:13098156795:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "41341935929": "41341935929:13098371824:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
+    "41341935929": "41341935929:13098371824:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41341938055": "41341938055:13103191511:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "41341939937": "41341939937:13099962985:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "41341942092": "41341942092:13099529574:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
@@ -7612,7 +7545,7 @@
     "SE10050": "inputs/fresh804-20261026-5d42fe35/rollback-se10050/403ce9165421f9e4/manifest.json",
     "SE10051": "inputs/fresh804-20261026-5d42fe35/rollback-se10051/7e5fe587935d612c/manifest.json",
     "SE10054": "inputs/fresh804-20261026-5d42fe35/rollback-se10054/fb31b239ba61867d/manifest.json",
-    "SE10043": "inputs/fresh804-20261026-5d42fe35/rollback-se10043/225bed561aaffb40/manifest.json",
+    "SE10043": "inputs/fresh804-20261026-5d42fe35/rollback-se10043/d8b1ba2818f8a785/manifest.json",
     "SE10052": "inputs/fresh804-20261026-5d42fe35/rollback-se10052/4a3570b1f95b299a/manifest.json",
     "SE10048": "inputs/fresh804-20261026-5d42fe35/rollback-se10048/23dc428590574476/manifest.json",
     "SE10049": "inputs/fresh804-20261026-5d42fe35/rollback-se10049/3ab1efb0940f132b/manifest.json",
@@ -7627,8 +7560,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Pyari Walls",
-  "audit804_progress_utc": "2026-11-02T07:11:52.947674+00:00",
+  "audit804_last_store": "Sana Safinaz",
+  "audit804_progress_utc": "2026-11-02T07:13:49.810483+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
