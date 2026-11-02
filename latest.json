@@ -3367,7 +3367,6 @@
   "audit804_processed": {
     "Miss Rose": "source:05d7791ff807a60e6e551a91923d7842577c95c64f876c52df4ba843c039d2ff:Miss Rose:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Islamabad Tea": "source:0ba1cec0a463ded2a5cf2fc519b8724ae3c5a8916e7e2c4fcebb2b7e5575c858:Islamabad Tea:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "Denim Leftover": "source:8a0ecd578740753ac1b6680c5edb1a7fab2d554300765535d608d8656490c4e8:Denim Leftover:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
     "Skin Factor": "source:21e4e1136f435771353f5b96a82541ccf0d59bd4cbebf9a4fa53fb20b830d22d:Skin Factor:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
     "Zero Lifestyle": "source:d9206fd02482957f0f36ad166379337d91d9098aae36f561e0df400e2f6dc1fb:Zero Lifestyle:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
     "Aerosoft Studio": "source:979d3664325a6499b646d8c391565a07c356f8fdc926036b5c2731eb72ec05e1:Aerosoft Studio:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
@@ -3827,15 +3826,35 @@
     },
     "Denim Leftover": {
       "name": "804 Audit",
-      "status": "hold",
+      "version": "804-audit-v2",
       "store": "Denim Leftover",
+      "shop_code": "SE10024",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 177,
+      "findings_count": 0,
+      "findings": [],
+      "details_truncated": false,
+      "workbook_sha256": "69b2de8c8a4818781971e8e7dbfa135545726cf1c8392101ba1d5bc62383e2ce",
+      "checked_utc": "2026-11-02T13:17:55.491290+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "41341918272",
       "source_artifact": 13098375403,
-      "error": "Drive copy failed; upload not marked verified",
       "source_sha256": "8a0ecd578740753ac1b6680c5edb1a7fab2d554300765535d608d8656490c4e8",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/denim-leftover/8a0ecd578740753a/manifest.json",
-      "checked_utc": "2026-11-02T12:36:48.216680+00:00"
+      "refresh_generation": "refresh20261030-31dd8bb1",
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Drive copy failed; category=storage_quota; upload not marked verified",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/denim-leftover/8a0ecd578740753a/manifest.json"
     },
     "Skin Factor": {
       "name": "804 Audit",
@@ -7001,8 +7020,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Cool and Cool",
-  "audit804_progress_utc": "2026-11-02T13:16:52.343670+00:00",
+  "audit804_last_store": "Denim Leftover",
+  "audit804_progress_utc": "2026-11-02T13:17:55.491324+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
