@@ -2833,7 +2833,7 @@
     "Sana Safinaz": "source:5b9c543d2a55bf790dc876a436b32b8cc7856f9c697e9c83bd6b15abe15458c1:Sana Safinaz:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Beyond East": "source:22b71b16f6d6cb3f2bf023324f0467adcf9e5de39e3be37897e12ab0740da766:Beyond East:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Alkaram Studio": "source:b755c3ff445fc449e1c39683f7f1c8ca158ce90ccafeaf177a5f4c8c089c3884:Alkaram Studio:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "Generation": "source:87cd769161b455ab972ad3bf7df54cc8c885db59d7ae4c495db0485a76a16f54:Generation:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
+    "Generation": "source:3351b94b6dba167085e4f6d7c0ff208afd2b8e37f315c2f0e54329290011b71b:Generation:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Breakout": "source:76aa934fcdda85841d4b7b1e9f7479f5236e04c897e81658b599146aa9430b99:Breakout:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Saya": "source:8c08df2235789d3514539c344a7973b983a3cf994aabb4ae34982078177c20b7:Saya:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Rios": "source:c40bbad72c8c85669ad90ed103d80ae5a7a342b0b926e23614246eadc500a751:Rios:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
@@ -4464,62 +4464,15 @@
     },
     "Generation": {
       "name": "804 Audit",
-      "version": "804-audit-v2",
+      "status": "hold",
       "store": "Generation",
-      "shop_code": "SE10048",
-      "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 722,
-      "findings_count": 0,
-      "findings": [],
-      "details_truncated": false,
-      "workbook_sha256": "9e9d56e9394c05422da4e71a741e169f642117f5961ba08d3416b0a59af3e633",
-      "checked_utc": "2026-11-02T05:18:49.886081+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
-      },
-      "owner_authorized_exclusions": [],
-      "image_metadata_repairs": 0,
-      "description_repairs_count": 6,
-      "description_repairs_examples": [
-        {
-          "product_id": "CP6940de3a22c5",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP61cdea458909",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP314ee99e1762",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP477bff1b4f41",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPb38ee38190a9",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP791d9ef19409",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        }
-      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41039571338",
-      "source_artifact": 12974341130,
-      "source_sha256": "87cd769161b455ab972ad3bf7df54cc8c885db59d7ae4c495db0485a76a16f54",
-      "refresh_generation": "refresh20261030-31dd8bb1"
+      "source_run": "41341944463",
+      "source_artifact": 13101045230,
+      "error": "Drive copy failed; upload not marked verified",
+      "source_sha256": "3351b94b6dba167085e4f6d7c0ff208afd2b8e37f315c2f0e54329290011b71b",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/generation/3351b94b6dba1670/manifest.json",
+      "checked_utc": "2026-11-02T07:18:53.173481+00:00"
     },
     "Breakout": {
       "name": "804 Audit",
@@ -7232,7 +7185,7 @@
     "41341935929": "41341935929:13098371824:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41341938055": "41341938055:13103191511:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41341939937": "41341939937:13099962985:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "41341942092": "41341942092:13099529574:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
+    "41341942092": "41341942092:13099529574:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41341944463": "41341944463:13101045230:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "41341789287": "41341789287:13106924213:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41341792166": "41341792166:13107363975:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
@@ -7320,7 +7273,7 @@
     "SE10054": "inputs/fresh804-20261026-5d42fe35/rollback-se10054/fb31b239ba61867d/manifest.json",
     "SE10043": "inputs/fresh804-20261026-5d42fe35/rollback-se10043/d8b1ba2818f8a785/manifest.json",
     "SE10052": "inputs/fresh804-20261026-5d42fe35/rollback-se10052/4a3570b1f95b299a/manifest.json",
-    "SE10048": "inputs/fresh804-20261026-5d42fe35/rollback-se10048/23dc428590574476/manifest.json",
+    "SE10048": "inputs/fresh804-20261026-5d42fe35/rollback-se10048/9e9d56e9394c0542/manifest.json",
     "SE10049": "inputs/fresh804-20261026-5d42fe35/rollback-se10049/3ab1efb0940f132b/manifest.json",
     "SE10053": "inputs/fresh804-20261026-5d42fe35/rollback-se10053/31bc828ac61a4eff/manifest.json",
     "SE10044": "inputs/fresh804-20261026-5d42fe35/rollback-se10044/0f145732c1267273/manifest.json",
@@ -7333,8 +7286,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "ChenOne",
-  "audit804_progress_utc": "2026-11-02T07:17:57.243598+00:00",
+  "audit804_last_store": "Generation",
+  "audit804_progress_utc": "2026-11-02T07:18:53.173522+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
