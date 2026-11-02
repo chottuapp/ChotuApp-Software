@@ -6,6 +6,10 @@ ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 spec=importlib.util.spec_from_file_location('local_fetch',ROOT/'catalog-tools/start_khaadi_local_fetch_windows.py');helper=importlib.util.module_from_spec(spec);spec.loader.exec_module(helper)
 import khaadi_source_support as source
 class LocalFetchTests(unittest.TestCase):
+ def setUp(self):
+  # Offline adapter fixtures exercise parsing; production owner locks stay ON.
+  policy=patch('locked_store_rules.owner_paused',return_value=False)
+  policy.start();self.addCleanup(policy.stop)
  def test_local_export_writes_template_variants_and_status_without_network(self):
   from bs4 import BeautifulSoup
   from openpyxl import load_workbook

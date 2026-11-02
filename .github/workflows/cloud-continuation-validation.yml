@@ -13,6 +13,9 @@ on:
       - tests/test_requested_stores.py
       - tests/test_magento_option_page.py
       - tests/test_auto_continue_entrypoint.py
+      - tests/test_khaadi_local_fetch.py
+      - tests/test_laam_source.py
+      - cloud/recover_reviewed_fetches.py
       - .github/workflows/cloud-continuation-validation.yml
 permissions:
   contents: read
@@ -34,3 +37,7 @@ jobs:
         env:
           PYTHONPATH: tests:cloud:.
         run: python -m unittest test_auto_continue_entrypoint test_auto_continue test_continuation_policy test_runner_identity test_owner_photo_pause test_woocommerce_source test_requested_stores test_magento_source test_magento_option_page -v
+      - name: Verify scheduled recovery with offline source fixtures
+        env:
+          PYTHONPATH: tests:cloud:.
+        run: python -m unittest test_reviewed_recovery test_khaadi_recovery test_sapphire_source test_sapphire_fit_dimensions test_khaadi_source test_khaadi_local_fetch test_khaadi_local_check test_laam_source test_auto_continue test_continuation_policy test_runner_identity -q

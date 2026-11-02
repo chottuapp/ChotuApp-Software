@@ -30,6 +30,10 @@ def unpriced_unpurchasable(p):
 
 def variants(parent,get):
  if parent['type']=='simple':return [(parent,{})]
+ # This plugin exposes one fixed, purchasable bundle offer, not child SKU offers.
+ if parent['type']=='easy_product_bundle':
+  if parent.get('has_options') is not False or parent.get('variations') or any(a.get('has_variations') for a in parent.get('attributes',[])):raise ValueError('Selectable bundle options require exact source verification')
+  return [(parent,{})]
  if parent['type']!='variable' or not parent.get('variations'):raise ValueError('Unsupported WooCommerce product type: '+str(parent.get('type')))
  result=[];seen=set();combinations={}
  dimensions={a['name']:a for a in parent.get('attributes',[]) if a.get('has_variations')}
@@ -237,7 +241,7 @@ def export(g,base,name,template,log,*,provider=None):
     if has_source_photo({'images':[im]}) and im not in images:images.append(im)
   p=dict(p,images=images)
   cover=images[0]['src'] if images else ''
-  if not has_source_photo(p) and str(p.get('name') or '').strip():
+  if not has_source_photo(p):
    photo_holds.append(dict(source_product_id=p['id'],name=p['name'],source_url=url,source_is_in_stock=p.get('is_in_stock'),catalog_available='no',reason='Owner rule: missing source photo'))
    log('OWNER SALE BLOCK: photo missing; product '+str(p['id'])+' '+url+' excluded as owner-unavailable; source stock='+str(p.get('is_in_stock'))+' unchanged')
    continue

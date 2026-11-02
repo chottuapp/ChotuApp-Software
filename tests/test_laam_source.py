@@ -210,7 +210,7 @@ class LaamTests(unittest.TestCase):
   with tempfile.TemporaryDirectory() as tmp:
    engine.OUT=Path(tmp);products=[source.normalize(f['product'],f['product']['handle']) for f in FIXTURES]
    source.enable_laam_source(vars(engine));before=engine.discover;logs=[]
-   with patch.object(source.PublicCatalog,'catalog',return_value=(products,True)):
+   with patch.object(source.PublicCatalog,'catalog',return_value=(products,True)),patch('locked_store_rules.owner_paused',return_value=False):
     engine._chotuapp_run_site_original(source.BASE,'LAAM',ROOT/'importer-files/Chotu_Products_Import_Template_Discount_Tags.xlsx',logs.append)
    self.assertIs(engine.discover,before)
    book=load_workbook(Path(tmp)/'LAAM - REFRESH REVIEW.xlsx');sheet=book['Products'];rows=[dict(zip([c.value for c in sheet[1]],v)) for v in sheet.iter_rows(min_row=2,values_only=True)]

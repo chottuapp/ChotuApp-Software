@@ -1,6 +1,28 @@
 import unittest,copy
 from woocommerce_source_support import offer,variants,unpriced_unpurchasable
 class WooTests(unittest.TestCase):
+ def test_fixed_bundle_is_one_explicit_offer_without_invented_child_variants(self):
+  p=self.product();p.update(type='easy_product_bundle',has_options=False,variations=[],attributes=[])
+  from unittest.mock import Mock
+  get=Mock();self.assertEqual(variants(p,get),[(p,{})]);get.assert_not_called()
+  for changes in (dict(has_options=True),dict(has_options=None),dict(variations=[dict(id=99)]),dict(attributes=[dict(has_variations=True)])):
+   with self.subTest(changes=changes),self.assertRaises(ValueError):variants(dict(p,**changes),get)
+ def test_missing_name_and_photo_never_probes_denied_page_or_blocks_other_products(self):
+  import tempfile
+  from pathlib import Path
+  from types import SimpleNamespace
+  from unittest.mock import Mock
+  from openpyxl import load_workbook
+  from test_app import main
+  from woocommerce_source_support import export
+  missing=dict(self.product(),id=84396,name='',images=[],permalink='https://xcessorieshub.com/product/unverified/')
+  good=dict(self.product(),id=99,name='Verified charger',images=[dict(src='https://xcessorieshub.com/photo.jpg')],permalink='https://xcessorieshub.com/product/verified/')
+  products={p['id']:p for p in (missing,good)};provider=SimpleNamespace(label='fixture',supports=lambda _:True,catalog=lambda:[missing,good],read=lambda path:products[int(path.rsplit('/',1)[1])])
+  with tempfile.TemporaryDirectory() as tmp:
+   get=Mock(return_value=SimpleNamespace(status_code=200,url=good['permalink'],text='<html></html>'));g=dict(vars(main),OUT=Path(tmp),S=SimpleNamespace(get=get),_chotu_wait=lambda:None)
+   export(g,'https://xcessorieshub.com','Xcessories Hub',Path(__file__).resolve().parents[1]/'importer-files/Chotu_Products_Import_Template_Discount_Tags.xlsx',lambda _:None,provider=provider)
+   book=load_workbook(Path(tmp)/'Xcessories Hub - REFRESH REVIEW.xlsx',read_only=True);self.assertEqual(book['Products'].max_row,2);book.close()
+   self.assertTrue((Path(tmp)/'Xcessories Hub - OWNER PHOTO HOLDS.csv').exists());self.assertNotIn(missing['permalink'],[call.args[0] for call in get.call_args_list])
  def test_gift4u_uses_approved_woocommerce_adapter_without_shopify_fallback(self):
   from unittest.mock import Mock,patch
   from woocommerce_source_support import enable_woocommerce_source
