@@ -1,0 +1,19 @@
+name: Verify live browser release metadata
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Read fresh production metadata without account data
+        run: |
+          python3 - <<'PY'
+          import json,os,urllib.request
+          for name,base in [('customer','https://app.developerschotuapp.online/user/'),('admin','https://chotu-admin-app.web.app/')]:
+              q=urllib.request.Request(base+'build-info.json?verify='+os.environ['GITHUB_RUN_ID'],headers={'Cache-Control':'no-cache'})
+              with urllib.request.urlopen(q,timeout=30) as r:d=json.load(r)
+              assert d['environment']=='production' and d['review_demo'] is False
+              print(name,json.dumps(d))
+          PY
