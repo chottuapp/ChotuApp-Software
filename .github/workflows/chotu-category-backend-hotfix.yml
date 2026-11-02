@@ -1,0 +1,124 @@
+name: Chotu Live Category Backend Hotfix
+on:
+  workflow_dispatch:
+    inputs:
+      customer_only:
+        description: Update customer and backend without rebuilding unchanged admin
+        type: boolean
+        default: false
+      backend_base_sha:
+        description: Source base for preserving existing live edits
+        type: string
+        default: '34cd993e034af81e14f4524955cafb40d2daacf4'
+      source_sha:
+        description: Reviewed tested feature source
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: chotu-live-app-admin-release
+  cancel-in-progress: false
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 35
+    environment: chotu-cloud-release
+    env:
+      SOURCE_SHA: ${{ inputs.source_sha }}
+      BACKEND_BASE_SHA: ${{ inputs.backend_base_sha }}
+    steps:
+      - name: Require reviewed source and restricted build credential
+        env:
+          SOURCE_KEY: ${{ secrets.CHOTU_APP_SOURCE_KEY }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          [[ "$SOURCE_SHA" =~ ^[a-f0-9]{40}$ && "$BACKEND_BASE_SHA" =~ ^[a-f0-9]{40}$ ]] || exit 1
+          test -n "$SOURCE_KEY" || { echo '::error::Run the one-time Chotu cloud setup. No PC runner or paid fallback is used.'; exit 1; }
+          umask 077
+          key="$RUNNER_TEMP/chotu-source-key"
+          trap 'rm -f "$key" "$RUNNER_TEMP/chotu-source-hosts"' EXIT
+          printf '%s\n' "$SOURCE_KEY" > "$key"
+          curl -fsS --retry 3 --max-time 60 -H "Authorization: Bearer $GH_TOKEN" https://api.github.com/meta | python3 -c 'import json,sys; print("\n".join("github.com "+k for k in json.load(sys.stdin)["ssh_keys"]))' > "$RUNNER_TEMP/chotu-source-hosts"
+          export GIT_SSH_COMMAND="ssh -i $key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$RUNNER_TEMP/chotu-source-hosts"
+          if ! (
+            git init -q "$RUNNER_TEMP/chotu-private-source"
+            cd "$RUNNER_TEMP/chotu-private-source"
+            git remote add origin git@github.com:chottuapp/ChotuProject-development.git
+            git fetch -q --depth=1 origin "$SOURCE_SHA"
+            git fetch -q --depth=1 origin "$BACKEND_BASE_SHA"
+            git fetch -q --depth=1 origin 4195961c065e95dceb9a4e23c75624ddf0c4e8cc
+            git checkout -q --detach "$SOURCE_SHA"
+            git checkout -q --detach "$SOURCE_SHA"
+            test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
+          ) > "$RUNNER_TEMP/private-checkout.log" 2>&1; then
+            echo '::error::Private checkout failed. Check the read-only deploy key and approved commit; private logs are not uploaded.'
+            exit 1
+          fi
+      - name: Match selected backend changes against actual live files
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+          FIREBASE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CHOTU_ADMIN_APP }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$SSH_PRIVATE_KEY" && test -n "$FIREBASE_ACCOUNT"
+          cd "$RUNNER_TEMP/chotu-private-source"
+          umask 077
+          key="$RUNNER_TEMP/live-key"
+          trap 'rm -f "$key"' EXIT
+          printf '%s\n' "$SSH_PRIVATE_KEY" > "$key"
+          opts=(-i "$key" -o BatchMode=yes -o ConnectTimeout=20 -o StrictHostKeyChecking=accept-new)
+          remote=ec2-user@46.137.199.32
+          scp "${opts[@]}" tools/live/backend.manifest "$remote:/var/tmp/chotu-notifications-$GITHUB_RUN_ID.manifest"
+          ssh "${opts[@]}" "$remote" bash -s -- "$GITHUB_RUN_ID" > "$RUNNER_TEMP/live-code.tar.gz" <<'REMOTE'
+          set -euo pipefail
+          for run in 41356386029 41357744877; do
+            for archive in customer.tar.gz admin.tar.gz backend.tar.gz; do
+              rm -f "/tmp/chotu-review-$run/$archive"
+            done
+          done
+          rm -f /tmp/chotu-live-notifications-41359067532/package.tar.gz
+          df -h /tmp /var/tmp >&2
+          cd /var/www/html
+          while IFS= read -r file; do
+            if test -f "$file"; then printf '%s\n' "$file"; fi
+          done < "/var/tmp/chotu-notifications-$1.manifest" | tar -czf - -T -
+          REMOTE
+          python3 tools/live/plan-backend.py well-known "$RUNNER_TEMP/live-code.tar.gz" "$RUNNER_TEMP/live-candidate"
+      - name: Atomically apply only the checked catalog controller
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/chotu-private-source"
+          umask 077
+          key="$RUNNER_TEMP/category-live-key"
+          trap 'rm -f "$key"' EXIT
+          printf '%s\n' "$SSH_PRIVATE_KEY" > "$key"
+          opts=(-i "$key" -o BatchMode=yes -o ConnectTimeout=20 -o StrictHostKeyChecking=accept-new)
+          remote=ec2-user@46.137.199.32
+          candidate="$RUNNER_TEMP/live-candidate/app/Http/Controllers/api/UserLevelThree_con.php"
+          expected=$(python3 -c 'import json,sys; print(next(r["live_sha256"] for r in json.load(open(sys.argv[1])) if r["file"]=="app/Http/Controllers/api/UserLevelThree_con.php"))' "$RUNNER_TEMP/live-candidate/plan.json")
+          stage="/var/tmp/chotu-category-$GITHUB_RUN_ID.php"
+          scp "${opts[@]}" "$candidate" "$remote:$stage"
+          ssh "${opts[@]}" "$remote" bash -s -- "$stage" "$expected" "$GITHUB_RUN_ID" <<'REMOTE'
+          set -euo pipefail
+          target=/var/www/html/app/Http/Controllers/api/UserLevelThree_con.php
+          test "$(sha256sum "$target" | cut -d ' ' -f1)" = "$2" || { echo 'Live controller changed; refusing overwrite'; exit 1; }
+          php -l "$1"
+          backup="/var/tmp/chotu-category-$3.backup.php"
+          sudo -n cp -p "$target" "$backup"
+          rollback() { sudo -n cp -p "$backup" "$target"; sudo -n systemctl reload php-fpm; }
+          trap rollback ERR
+          sudo -n cp "$1" "$target.next"
+          sudo -n chown --reference="$target" "$target.next"
+          sudo -n chmod --reference="$target" "$target.next"
+          sudo -n mv "$target.next" "$target"
+          sudo -n systemctl reload php-fpm
+          trap - ERR
+          rm -f "$1"
+          echo 'Checked catalog controller applied; previous file retained for rollback.'
+          REMOTE
