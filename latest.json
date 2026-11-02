@@ -3404,7 +3404,7 @@
     "Pyari Walls": "source:1e2481e0121a52bbd30df7b9ed4a443a4b77fdbf0f5d5aceb68239ab117e7c23:Pyari Walls:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
     "Prime Ticks": "source:d7683abe625b3faed383fc9d2cc7e7afe157736106a96fc681a99139b07e3759:Prime Ticks:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
     "Design by DAS": "source:1f65a32dc04e8e84b14ad6fc320099e50e6a87abdb07a7af60b52f23e2a23d9b:Design by DAS:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
-    "Xcessories Hub": "source:46c9434590a319d08ed4963615f69f5e54f09b6ac9c527c7ad426b804eba403b:Xcessories Hub:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
+    "Xcessories Hub": "source:46c9434590a319d08ed4963615f69f5e54f09b6ac9c527c7ad426b804eba403b:Xcessories Hub:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
     "Beechtree": "source:77a07f2561e8ac07d3a25f70ad7b1af449caf4d01728cb1871cfc2cdf71cec8b:Beechtree:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "ChenOne": "source:ec22e99eb285a678b78be088caa88eb01ca835d84ed2137e1c99d8d53e6d12a1:ChenOne:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Hush Puppies": "source:fda270166456a8b969376313785386b0610d016715585f464ec575b6a6b7bc86:Hush Puppies:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
@@ -4524,112 +4524,15 @@
     },
     "Xcessories Hub": {
       "name": "804 Audit",
-      "version": "804-audit-v2",
-      "store": "Xcessories Hub",
-      "shop_code": "SE10038",
-      "identity_policy": "confirmed_code",
       "status": "hold",
-      "products_checked": 3057,
-      "findings_count": 3,
-      "findings": [
-        {
-          "product_id": "CP5173fab93e36",
-          "name": "Baseus IGBT Car Inverter 300W 110V",
-          "source_url": "https://xcessorieshub.com/product/baseus-igbt-car-inverter-300w-110v/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP6216f308469b",
-          "name": "UGREEN LP893 Metal Desktop Folding Stand \u2013 45859",
-          "source_url": "https://xcessorieshub.com/product/ugreen-lp893-metal-desktop-folding-stand/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        },
-        {
-          "product_id": "CP09d16628b971",
-          "name": "OnePlus Bullets Z3 Wireless Neckband",
-          "source_url": "https://xcessorieshub.com/product/oneplus-bullets-z3-wireless-neckband/",
-          "issues": [
-            "Category blank or unresolved"
-          ]
-        }
-      ],
-      "details_truncated": false,
-      "workbook_sha256": "437ac7adb40d88f23a51aa626a3cc6ba15bd4f1f15610f4d33b5bc66be73cfab",
-      "checked_utc": "2026-11-02T08:20:54.259171+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "recovery": {
-        "stage": "correction_pending_source_recheck",
-        "unfinished": true,
-        "owner": "804 automated recovery",
-        "opened_utc": "2026-11-02T08:20:54.263823+00:00",
-        "updated_utc": "2026-11-02T08:20:54.263823+00:00",
-        "next_source_check_due_utc": "2026-11-02T08:35:54.263823+00:00",
-        "actions": [
-          "Refresh exact public product facts",
-          "Apply supported description and category repairs",
-          "Rerun independent all-row audit",
-          "Upload and verify only after audit passes"
-        ],
-        "issues": [
-          "Category blank or unresolved"
-        ],
-        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
-      },
-      "owner_authorized_exclusions": [],
-      "image_metadata_repairs": 0,
-      "description_repairs_count": 8,
-      "description_repairs_examples": [
-        {
-          "product_id": "CP710be4c7476a",
-          "issue": "Expressed exact named sold object; retained original product identity and every supplied option/specification.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP3ef8585c648e",
-          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP3fb5ddad0de2",
-          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPb368d4d10cc1",
-          "issue": "Expressed exact named sold object; retained original product identity and every supplied option/specification.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPa5f2ac9095b8",
-          "issue": "Expressed exact named sold object; retained original product identity and every supplied option/specification.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP255fd3a95375",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP2a7d4faf24f9",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP62e8d7cbd73e",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        }
-      ],
+      "store": "Xcessories Hub",
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "41378447009",
       "source_artifact": 13112678966,
+      "error": "Drive copy failed; upload not marked verified",
       "source_sha256": "46c9434590a319d08ed4963615f69f5e54f09b6ac9c527c7ad426b804eba403b",
-      "refresh_generation": "refresh20261030-31dd8bb1",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/xcessories-hub/46c9434590a319d0/manifest.json"
+      "held_input": "inputs/fresh804-20261026-5d42fe35/xcessories-hub/46c9434590a319d0/manifest.json",
+      "checked_utc": "2026-11-02T13:05:52.298711+00:00"
     },
     "Beechtree": {
       "name": "804 Audit",
@@ -6820,7 +6723,7 @@
     "blank-Mala": "inputs/fresh804-20261026-5d42fe35/rollback-blank-mala/0930cf94831140cb/manifest.json",
     "blank-Limelight": "inputs/fresh804-20261026-5d42fe35/rollback-blank-limelight/f6949b0b0801e8e2/manifest.json",
     "blank-Alkaram Studio": "inputs/fresh804-20261026-5d42fe35/rollback-blank-alkaram-studio/90300e5fe6b3ce38/manifest.json",
-    "SE10038": "inputs/fresh804-20261026-5d42fe35/rollback-se10038/833da8a6643d4fb1/manifest.json",
+    "SE10038": "inputs/fresh804-20261026-5d42fe35/rollback-se10038/a18c9a565fe2c0af/manifest.json",
     "SE10045": "inputs/fresh804-20261026-5d42fe35/rollback-se10045/d745d6b045a2c6cb/manifest.json",
     "SE10047": "inputs/fresh804-20261026-5d42fe35/rollback-se10047/e776289925eb8b8f/manifest.json",
     "SE10050": "inputs/fresh804-20261026-5d42fe35/rollback-se10050/9a17755ccb1a6214/manifest.json",
@@ -6841,8 +6744,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Design by DAS",
-  "audit804_progress_utc": "2026-11-02T13:03:51.553262+00:00",
+  "audit804_last_store": "Xcessories Hub",
+  "audit804_progress_utc": "2026-11-02T13:05:52.298771+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
