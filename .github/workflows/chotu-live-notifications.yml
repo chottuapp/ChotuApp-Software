@@ -48,6 +48,7 @@ jobs:
             git remote add origin git@github.com:chottuapp/ChotuProject-development.git
             git fetch -q --depth=1 origin "$SOURCE_SHA"
             git fetch -q --depth=1 origin "$BACKEND_BASE_SHA"
+            git fetch -q --depth=1 origin 4195961c065e95dceb9a4e23c75624ddf0c4e8cc
             git checkout -q --detach "$SOURCE_SHA"
             git checkout -q --detach "$SOURCE_SHA"
             test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
