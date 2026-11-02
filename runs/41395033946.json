@@ -2792,7 +2792,7 @@
     "Islamabad Tea": "source:0ba1cec0a463ded2a5cf2fc519b8724ae3c5a8916e7e2c4fcebb2b7e5575c858:Islamabad Tea:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Adam Cheese": "source:8f1d25f690c26472ffaac61f7b16cc4008188807619a953111a248e0dcc52f27:Adam Cheese:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Farda Foods": "source:06288daa766b4492aa204ab4d512a6bd03b90dcde437bd114a7b30c08607034b:Farda Foods:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "Nisa Naturals": "source:6c0995edf70112890020bcf07dd173ec004f9786de5616dfd5a6173778b4d285:Nisa Naturals:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
+    "Nisa Naturals": "source:d2b3577e44d3ebddaf4f277136781965b06b2aafcaaae3bacdb9a6477dbf65d9:Nisa Naturals:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Cool and Cool": "source:e7ddce45fc5dab05581536bef0c21881cf636f729b0a87f3bab77369e839aef6:Cool and Cool:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Denim Leftover": "source:1a5fb0577b39a60795a5072e9f66d2a6602be553e2c0b3f670637a6c98670abb:Denim Leftover:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Skin Factor": "source:1e1250cda53af99499e495e0fa55def668179925e8feaf53d7306b59283971d2:Skin Factor:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
@@ -2966,31 +2966,15 @@
     },
     "Nisa Naturals": {
       "name": "804 Audit",
-      "version": "804-audit-v2",
+      "status": "hold",
       "store": "Nisa Naturals",
-      "shop_code": "SE10017",
-      "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 55,
-      "findings_count": 0,
-      "findings": [],
-      "details_truncated": false,
-      "workbook_sha256": "178c81039c3c1ebf23bc86e0b3a7a2325ae6e782f28e49ad4270767a927ec25d",
-      "checked_utc": "2026-11-02T03:46:49.692085+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
-      },
-      "owner_authorized_exclusions": [],
-      "image_metadata_repairs": 0,
-      "description_repairs_count": 0,
-      "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41039471049",
-      "source_artifact": 12970642113,
-      "source_sha256": "6c0995edf70112890020bcf07dd173ec004f9786de5616dfd5a6173778b4d285",
-      "refresh_generation": "refresh20261030-31dd8bb1"
+      "source_run": "41341911115",
+      "source_artifact": 13097528949,
+      "error": "Drive copy failed; upload not marked verified",
+      "source_sha256": "d2b3577e44d3ebddaf4f277136781965b06b2aafcaaae3bacdb9a6477dbf65d9",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/nisa-naturals/d2b3577e44d3ebdd/manifest.json",
+      "checked_utc": "2026-11-02T06:33:57.733023+00:00"
     },
     "Cool and Cool": {
       "name": "804 Audit",
@@ -8099,7 +8083,7 @@
     "41341902155": "41341902155:13099778237:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41341904308": "41341904308:13098370746:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41341906822": "41341906822:13097452026:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "41341908658": "41341908658:13096609933:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
+    "41341908658": "41341908658:13096609933:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41341911115": "41341911115:13097528949:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "41341915772": "41341915772:13101049915:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "41341918272": "41341918272:13098375403:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
@@ -8213,8 +8197,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Adam Cheese",
-  "audit804_progress_utc": "2026-11-02T06:32:55.076322+00:00",
+  "audit804_last_store": "Nisa Naturals",
+  "audit804_progress_utc": "2026-11-02T06:33:57.733054+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
