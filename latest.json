@@ -2831,7 +2831,7 @@
     "Habitt": "source:0405d78d4ab4d1205a4ad394daea352ff130e3ac72c24969d583775f3d6d90de:Habitt:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Mala": "source:7a60aa0b0f3a2e779af1f5e48c5861ee7e3431f1cae7558c8f581b0f931a5c6e:Mala:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Sana Safinaz": "source:5b9c543d2a55bf790dc876a436b32b8cc7856f9c697e9c83bd6b15abe15458c1:Sana Safinaz:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "Beyond East": "source:22b71b16f6d6cb3f2bf023324f0467adcf9e5de39e3be37897e12ab0740da766:Beyond East:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
+    "Beyond East": "source:c1916858276781d79c54221f1bfbd0f349a4278a8190e899b467ef97aaf0b969:Beyond East:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Alkaram Studio": "source:b755c3ff445fc449e1c39683f7f1c8ca158ce90ccafeaf177a5f4c8c089c3884:Alkaram Studio:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Generation": "source:3351b94b6dba167085e4f6d7c0ff208afd2b8e37f315c2f0e54329290011b71b:Generation:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Breakout": "source:76aa934fcdda85841d4b7b1e9f7479f5236e04c897e81658b599146aa9430b99:Breakout:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
@@ -4292,47 +4292,15 @@
     },
     "Beyond East": {
       "name": "804 Audit",
-      "version": "804-audit-v2",
+      "status": "hold",
       "store": "Beyond East",
-      "shop_code": "SE10052",
-      "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 475,
-      "findings_count": 0,
-      "findings": [],
-      "details_truncated": false,
-      "workbook_sha256": "e56eeee4ae978d43c41a87d755f912de67a1abec26bc8d5f60cda29ff8dc9981",
-      "checked_utc": "2026-11-02T06:04:04.724778+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
-      },
-      "owner_authorized_exclusions": [],
-      "image_metadata_repairs": 0,
-      "description_repairs_count": 3,
-      "description_repairs_examples": [
-        {
-          "product_id": "CP3453edeebbb7",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPc6ef36d33b0b",
-          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPb43a06c5ca13",
-          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
-          "repair_kind": "description"
-        }
-      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41340448438",
-      "source_artifact": 13097129505,
-      "source_sha256": "22b71b16f6d6cb3f2bf023324f0467adcf9e5de39e3be37897e12ab0740da766",
-      "refresh_generation": "refresh20261030-31dd8bb1"
+      "source_run": "41341949080",
+      "source_artifact": 13102481651,
+      "error": "Drive copy failed; upload not marked verified",
+      "source_sha256": "c1916858276781d79c54221f1bfbd0f349a4278a8190e899b467ef97aaf0b969",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/beyond-east/c1916858276781d7/manifest.json",
+      "checked_utc": "2026-11-02T07:21:41.606039+00:00"
     },
     "Alkaram Studio": {
       "name": "804 Audit",
@@ -7166,7 +7134,7 @@
     "41341792166": "41341792166:13107363975:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41341794493": "41341794493:13106899434:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41341899950": "41341899950:13109782804:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "41341946735": "41341946735:13098746680:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
+    "41341946735": "41341946735:13098746680:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41341949080": "41341949080:13102481651:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "41341951009": "41341951009:13103652114:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "41341953923": "41341953923:13099572330:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
@@ -7247,7 +7215,7 @@
     "SE10051": "inputs/fresh804-20261026-5d42fe35/rollback-se10051/7e5fe587935d612c/manifest.json",
     "SE10054": "inputs/fresh804-20261026-5d42fe35/rollback-se10054/fb31b239ba61867d/manifest.json",
     "SE10043": "inputs/fresh804-20261026-5d42fe35/rollback-se10043/d8b1ba2818f8a785/manifest.json",
-    "SE10052": "inputs/fresh804-20261026-5d42fe35/rollback-se10052/4a3570b1f95b299a/manifest.json",
+    "SE10052": "inputs/fresh804-20261026-5d42fe35/rollback-se10052/e56eeee4ae978d43/manifest.json",
     "SE10048": "inputs/fresh804-20261026-5d42fe35/rollback-se10048/9e9d56e9394c0542/manifest.json",
     "SE10049": "inputs/fresh804-20261026-5d42fe35/rollback-se10049/3ab1efb0940f132b/manifest.json",
     "SE10053": "inputs/fresh804-20261026-5d42fe35/rollback-se10053/31bc828ac61a4eff/manifest.json",
@@ -7261,8 +7229,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Habitt",
-  "audit804_progress_utc": "2026-11-02T07:21:06.568983+00:00",
+  "audit804_last_store": "Beyond East",
+  "audit804_progress_utc": "2026-11-02T07:21:41.606087+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
