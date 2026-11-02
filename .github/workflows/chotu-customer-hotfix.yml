@@ -6,6 +6,14 @@ on:
         description: Tested customer source
         type: string
         required: true
+      update_notification_api:
+        description: Update notification logo and inline-decision metadata
+        type: boolean
+        default: false
+      fresh_account_email:
+        description: Optional owner-authorized account for 20 fresh linked notifications after publication
+        type: string
+        default: ''
       example_email:
         description: Optional owner-requested generated customer account for inbox examples
         type: string
@@ -42,7 +50,8 @@ jobs:
             cd "$RUNNER_TEMP/chotu-private-source"
             git remote add origin git@github.com:chottuapp/ChotuProject-development.git
             git fetch -q --depth=1 origin "$SOURCE_SHA"
-            git checkout -q --detach FETCH_HEAD
+            git fetch -q --depth=1 origin 9160cf6a27c187e8e800e41a0eb17f993216163b
+            git checkout -q --detach "$SOURCE_SHA"
             test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
           ) > "$RUNNER_TEMP/private-checkout.log" 2>&1; then
             echo '::error::Private checkout failed. Check the read-only deploy key and approved commit; private logs are not uploaded.'
@@ -62,6 +71,30 @@ jobs:
           trap 'rm -f "$key"' EXIT
           printf '%s\n' "$SSH_PRIVATE_KEY" > "$key"
           ssh -i "$key" -o BatchMode=yes -o StrictHostKeyChecking=accept-new ec2-user@46.137.199.32 "cd /var/www/html && CHOTU_EXAMPLE_ACCOUNT='$EXAMPLE_EMAIL' php" < "$RUNNER_TEMP/chotu-private-source/tools/live/seed-customer-notification-examples.php"
+      - name: Preserve and prepare notification controller metadata change
+        if: ${{ inputs.update_notification_api }}
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/chotu-private-source"
+          umask 077
+          key="$RUNNER_TEMP/notification-api-key"
+          trap 'rm -f "$key"' EXIT
+          printf '%s\n' "$SSH_PRIVATE_KEY" > "$key"
+          file=app/Http/Controllers/api/AppNotificationController.php
+          ssh -i "$key" -o BatchMode=yes -o StrictHostKeyChecking=accept-new ec2-user@46.137.199.32 "cat '/var/www/html/$file'" > "$RUNNER_TEMP/notification-live.php"
+          git show "9160cf6a27c187e8e800e41a0eb17f993216163b:well-known/$file" > "$RUNNER_TEMP/notification-base.php"
+          cp "well-known/$file" "$RUNNER_TEMP/notification-new.php"
+          sha256sum "$RUNNER_TEMP/notification-live.php" | cut -d ' ' -f 1 > "$RUNNER_TEMP/notification-live.sha"
+          if ! cmp -s "$RUNNER_TEMP/notification-live.php" "$RUNNER_TEMP/notification-new.php"; then
+            if ! cmp -s "$RUNNER_TEMP/notification-live.php" "$RUNNER_TEMP/notification-base.php"; then
+              git merge-file -p "$RUNNER_TEMP/notification-live.php" "$RUNNER_TEMP/notification-base.php" "$RUNNER_TEMP/notification-new.php" > "$RUNNER_TEMP/notification-merged.php"
+              mv "$RUNNER_TEMP/notification-merged.php" "$RUNNER_TEMP/notification-new.php"
+            fi
+          fi
+          php -l "$RUNNER_TEMP/notification-new.php"
       - uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.41.3'
@@ -75,7 +108,7 @@ jobs:
           python3 chotu-admin/scripts/prepare-web-defines.py prod "$RUNNER_TEMP/web-defines.json"
           cd chotu_app
           flutter pub get --enforce-lockfile > "$RUNNER_TEMP/hotfix-pub.log" 2>&1
-          flutter test --no-pub test/notifications_loading_test.dart
+          flutter test --no-pub test/notifications_loading_test.dart test/notification_actions_test.dart
           flutter build web --no-pub --no-web-resources-cdn --base-href /user/ \
             --dart-define-from-file="$RUNNER_TEMP/web-defines.json" \
             --dart-define=CHOTU_REVIEW_DEMO=false > "$RUNNER_TEMP/hotfix-build.log" 2>&1 || { tail -20 "$RUNNER_TEMP/hotfix-build.log"; exit 1; }
@@ -90,6 +123,37 @@ jobs:
           name: customer-web-hotfix
           path: ${{ runner.temp }}/customer-web.tar.gz
           retention-days: 7
+      - name: Publish ownership-scoped notification metadata
+        if: ${{ inputs.update_notification_api }}
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          umask 077
+          key="$RUNNER_TEMP/notification-api-key"
+          trap 'rm -f "$key"' EXIT
+          printf '%s\n' "$SSH_PRIVATE_KEY" > "$key"
+          opts=(-i "$key" -o BatchMode=yes -o StrictHostKeyChecking=accept-new)
+          remote=ec2-user@46.137.199.32
+          scp "${opts[@]}" "$RUNNER_TEMP/notification-new.php" "$remote:/var/tmp/chotu-notification-api-$GITHUB_RUN_ID.php"
+          expected=$(cat "$RUNNER_TEMP/notification-live.sha")
+          ssh "${opts[@]}" "$remote" sudo -n bash -s -- "$GITHUB_RUN_ID" "$expected" <<'REMOTE'
+          set -euo pipefail
+          run=$1
+          expected=$2
+          [[ "$run" =~ ^[0-9]+$ && "$expected" =~ ^[a-f0-9]{64}$ ]]
+          file=/var/www/html/app/Http/Controllers/api/AppNotificationController.php
+          test "$(sha256sum "$file" | cut -d ' ' -f 1)" = "$expected"
+          cp -p "$file" "/var/backups/chotu-notification-api-$run.php"
+          chmod 600 "/var/backups/chotu-notification-api-$run.php"
+          php -l "/var/tmp/chotu-notification-api-$run.php"
+          owner=$(stat -c '%U' "$file")
+          group=$(stat -c '%G' "$file")
+          install -o "$owner" -g "$group" -m 644 "/var/tmp/chotu-notification-api-$run.php" "$file.next"
+          mv -Tf "$file.next" "$file"
+          systemctl reload php-fpm
+          REMOTE
       - name: Atomically replace the existing live customer web
         env:
           SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
@@ -121,3 +185,21 @@ jobs:
           REMOTE
           curl -fsS https://app.developerschotuapp.online/user/build-info.json > "$RUNNER_TEMP/published.json"
           python3 -c 'import json,os; assert json.load(open(os.environ["RUNNER_TEMP"]+"/published.json"))["commit"]==os.environ["SOURCE_SHA"]'
+      - name: Create the requested fresh linked notification batch after the update
+        if: ${{ inputs.fresh_account_email != '' }}
+        env:
+          ACCOUNT_EMAIL: ${{ inputs.fresh_account_email }}
+          SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$ACCOUNT_EMAIL" =~ ^chotu\.check\.[a-f0-9]+@example\.com$ ]]
+          umask 077
+          key="$RUNNER_TEMP/fresh-account-key"
+          trap 'rm -f "$key"' EXIT
+          printf '%s\n' "$SSH_PRIVATE_KEY" > "$key"
+          opts=(-i "$key" -o BatchMode=yes -o StrictHostKeyChecking=accept-new)
+          remote=ec2-user@46.137.199.32
+          tool="/var/tmp/chotu-owner-flow-actions-$GITHUB_RUN_ID.php"
+          scp "${opts[@]}" "$RUNNER_TEMP/chotu-private-source/tools/live/create-owner-account-workflows.php" "$remote:$tool"
+          ssh "${opts[@]}" "$remote" "CHOTU_ACCOUNT_EMAIL='$ACCOUNT_EMAIL' CHOTU_FLOW_BATCH=owner-account-notification-actions-v2 php '$tool'"
