@@ -3367,7 +3367,6 @@
   "audit804_processed": {
     "Miss Rose": "source:05d7791ff807a60e6e551a91923d7842577c95c64f876c52df4ba843c039d2ff:Miss Rose:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Islamabad Tea": "source:0ba1cec0a463ded2a5cf2fc519b8724ae3c5a8916e7e2c4fcebb2b7e5575c858:Islamabad Tea:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "Cool and Cool": "source:85e90b0b61304606d9a47c8762fa8859f6b5eaaa6076e8f0b26bb4c1e5cafd57:Cool and Cool:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
     "Denim Leftover": "source:8a0ecd578740753ac1b6680c5edb1a7fab2d554300765535d608d8656490c4e8:Denim Leftover:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
     "Skin Factor": "source:21e4e1136f435771353f5b96a82541ccf0d59bd4cbebf9a4fa53fb20b830d22d:Skin Factor:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
     "Zero Lifestyle": "source:d9206fd02482957f0f36ad166379337d91d9098aae36f561e0df400e2f6dc1fb:Zero Lifestyle:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
@@ -3745,15 +3744,86 @@
     },
     "Cool and Cool": {
       "name": "804 Audit",
-      "status": "hold",
+      "version": "804-audit-v2",
       "store": "Cool and Cool",
+      "shop_code": "SE10023",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 219,
+      "findings_count": 0,
+      "findings": [],
+      "details_truncated": false,
+      "workbook_sha256": "7fc632da7d653f9572ef2d19b5783658dc3f9310998aa14a46af8304e2635a10",
+      "checked_utc": "2026-11-02T13:16:52.343626+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "description_repairs_count": 32,
+      "description_repairs_examples": [
+        {
+          "product_id": "CP0d20d99fe212",
+          "issue": "Rewrote the explicitly named paid product and complimentary gift; all names and quantities retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPdad2bb5bdf44",
+          "issue": "Rewrote the explicitly named paid product and complimentary gift; all names and quantities retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPb5e70fe9449b",
+          "issue": "Rewrote the explicitly named paid product and complimentary gift; all names and quantities retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP3e9962e889e1",
+          "issue": "Rewrote the explicitly named paid product and complimentary gift; all names and quantities retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPe2eb72956b5b",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP6efead86fbea",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP45307b1b005a",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPa08f64760671",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPed713024f98a",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP2f4373716835",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        }
+      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "41341918272",
       "source_artifact": 13098375403,
-      "error": "Drive copy failed; upload not marked verified",
       "source_sha256": "85e90b0b61304606d9a47c8762fa8859f6b5eaaa6076e8f0b26bb4c1e5cafd57",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/cool-and-cool/85e90b0b61304606/manifest.json",
-      "checked_utc": "2026-11-02T12:35:46.779698+00:00"
+      "refresh_generation": "refresh20261030-31dd8bb1",
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Drive copy failed; category=storage_quota; upload not marked verified",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/cool-and-cool/85e90b0b61304606/manifest.json"
     },
     "Denim Leftover": {
       "name": "804 Audit",
@@ -6931,8 +7001,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Nisa Naturals",
-  "audit804_progress_utc": "2026-11-02T13:14:54.668968+00:00",
+  "audit804_last_store": "Cool and Cool",
+  "audit804_progress_utc": "2026-11-02T13:16:52.343670+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
