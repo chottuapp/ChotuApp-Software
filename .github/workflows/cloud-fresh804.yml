@@ -21,7 +21,7 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install -r requirements.txt
       - name: Verify audit safety gates before restarting fetches
-        run: PYTHONPATH=tests:cloud:. python -m unittest test_audit804 test_audit804_delivery test_fresh804 test_laam_owner_filter -q
+        run: PYTHONPATH=tests:cloud:. python -m unittest test_product_videos test_audit804 test_audit804_delivery test_fresh804 test_laam_owner_filter -q
       - name: Save and stop superseded fetches; dispatch fresh three-store groups
         env:
           GH_TOKEN: ${{ github.token }}

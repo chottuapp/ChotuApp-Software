@@ -659,6 +659,9 @@ def write_row(ws, vals):
     if ws.title in ('Products', 'Variant Combinations'):
         vals = discount_export_fields(vals)
     if ws.title == 'Products':
+        from product_video_support import ensure_fields,export_fields
+        ensure_fields(ws)
+        vals = dict(vals, **export_fields(vals, globals()))
         from subcategory_inference_support import export_values
         vals = export_values(vals)
         vals['sale_price (PKR, only if discounted)'] = vals.get('sale_price (PKR, agar discount ho)')
@@ -884,6 +887,7 @@ def image_key(url):
 
 def storefront_cover(base, product, pictures, log):
     url = base.rstrip('/') + '/products/' + product['handle']
+    product['_video_fields']={'video_urls':'','video_fetch_status':'page_unavailable','video_source_url':url}
     product['_storefront_specs_html'] = ''
     product['_popularity_page_note'] = ''
     fallback = pictures[0]['src'] if pictures else ''
@@ -907,6 +911,8 @@ def storefront_cover(base, product, pictures, log):
             _chotu_tls.image_throttled = True
         resp.raise_for_status()
         soup = BeautifulSoup(resp.text, 'html.parser')
+        from product_video_support import from_page
+        product['_video_fields']=from_page(resp.text,getattr(resp,'url',url),url)
         from website_category_support import breadcrumb
         from website_order_support import public_link,product_key
         product['_website_category_evidence']=breadcrumb(soup,url) if public_link(url,getattr(resp,'url','')) and getattr(resp,'url','') and product_key(resp.url)==product_key(url) else None
@@ -1200,7 +1206,7 @@ def run_site(base, name, template, log):
             entry.update(variant_image_metadata(image_url,cover))
             combos.append(entry)
         if len(p.get('options') or [])>3: review.append(f'More than 3 dimensions: {url}')
-        rows.append({'product_id':pid,'analysis_note':'\n'.join(([p['_popularity_page_note']] if p.get('_popularity_page_note') else [])+getattr(_chotu_tls,'collection_popularity_evidence',{}).get(p.get('id'),[])),'category':category,'subcategory':'','name':txt(p.get('title')),'description':desc,'brand':txt(p.get('vendor')) or name,'material':'','weight_grams (agar ho)':'','condition (new/used)':'new','warranty_months (agar ho)':source_warranty_months(desc),'base_price (PKR)':float(baseprice),'sale_price (PKR, agar discount ho)':float(sale) if sale is not None else None,'sku':str(cheapest.get('sku') or ''),'scraped_image_url (cover, auto)':cover,'final_image_url (cover/thumbnail — hosted link)':'','option_groups':gid,'available (yes/no)':'yes' if any(v.get('available') is True for v in variants) else 'no','stock_quantity (kitni quantity bechni hai)':product_stock_quantity(p,variants),'max_qty_per_user (ek user zyada se zyada kitni le sakta hai)':'','source_url':url,**category_data})
+        rows.append({**p.get('_video_fields', {}),'product_id':pid,'analysis_note':'\n'.join(([p['_popularity_page_note']] if p.get('_popularity_page_note') else [])+getattr(_chotu_tls,'collection_popularity_evidence',{}).get(p.get('id'),[])),'category':category,'subcategory':'','name':txt(p.get('title')),'description':desc,'brand':txt(p.get('vendor')) or name,'material':'','weight_grams (agar ho)':'','condition (new/used)':'new','warranty_months (agar ho)':source_warranty_months(desc),'base_price (PKR)':float(baseprice),'sale_price (PKR, agar discount ho)':float(sale) if sale is not None else None,'sku':str(cheapest.get('sku') or ''),'scraped_image_url (cover, auto)':cover,'final_image_url (cover/thumbnail — hosted link)':'','option_groups':gid,'available (yes/no)':'yes' if any(v.get('available') is True for v in variants) else 'no','stock_quantity (kitni quantity bechni hai)':product_stock_quantity(p,variants),'max_qty_per_user (ek user zyada se zyada kitni le sakta hai)':'','source_url':url,**category_data})
         if not pictures: review.append(f'No image: {p.get("title")}')
         for i,im in enumerate(pictures,1):
             src=im.get('src')
