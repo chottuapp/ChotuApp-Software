@@ -2791,7 +2791,7 @@
     "Seran": "source:38d2b84be10927d12e2608ffa96b04c4b4d6afa91601f72cf3dbf0c7c9d8cd71:Seran:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Islamabad Tea": "source:0ba1cec0a463ded2a5cf2fc519b8724ae3c5a8916e7e2c4fcebb2b7e5575c858:Islamabad Tea:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Adam Cheese": "source:a7bd3ba0e97b1e4c823f29d36b388ba8c5127117afd5d8aacd00428e39b729dc:Adam Cheese:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "Farda Foods": "source:a50a5a77cf1eb41e6bf4142872b19199f1bc70fe0c7e598256b8079e5b7e693c:Farda Foods:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
+    "Farda Foods": "source:06288daa766b4492aa204ab4d512a6bd03b90dcde437bd114a7b30c08607034b:Farda Foods:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Nisa Naturals": "source:6c0995edf70112890020bcf07dd173ec004f9786de5616dfd5a6173778b4d285:Nisa Naturals:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Cool and Cool": "source:e7ddce45fc5dab05581536bef0c21881cf636f729b0a87f3bab77369e839aef6:Cool and Cool:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Denim Leftover": "source:1a5fb0577b39a60795a5072e9f66d2a6602be553e2c0b3f670637a6c98670abb:Denim Leftover:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
@@ -2970,42 +2970,15 @@
     },
     "Farda Foods": {
       "name": "804 Audit",
-      "version": "804-audit-v2",
+      "status": "hold",
       "store": "Farda Foods",
-      "shop_code": "SE10002",
-      "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 51,
-      "findings_count": 0,
-      "findings": [],
-      "details_truncated": false,
-      "workbook_sha256": "a0dafeeb05171b721d3013323e293dfac55486f27fea20aaed0692ce8db0e95a",
-      "checked_utc": "2026-11-02T03:42:56.520567+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
-      },
-      "owner_authorized_exclusions": [],
-      "image_metadata_repairs": 0,
-      "description_repairs_count": 2,
-      "description_repairs_examples": [
-        {
-          "product_id": "CP908df4d43533",
-          "issue": "Copied prose about a different spice/form removed; exact product name and every supplied weight/option retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP7005395ab058",
-          "issue": "Copied prose about a different spice/form removed; exact product name and every supplied weight/option retained.",
-          "repair_kind": "description"
-        }
-      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41039465105",
-      "source_artifact": 12969611740,
-      "source_sha256": "a50a5a77cf1eb41e6bf4142872b19199f1bc70fe0c7e598256b8079e5b7e693c",
-      "refresh_generation": "refresh20261030-31dd8bb1"
+      "source_run": "41341908658",
+      "source_artifact": 13096609933,
+      "error": "Drive copy failed; upload not marked verified",
+      "source_sha256": "06288daa766b4492aa204ab4d512a6bd03b90dcde437bd114a7b30c08607034b",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/farda-foods/06288daa766b4492/manifest.json",
+      "checked_utc": "2026-11-02T06:31:53.721992+00:00"
     },
     "Nisa Naturals": {
       "name": "804 Audit",
@@ -8141,7 +8114,7 @@
     "41341897578": "41341897578:13107881900:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41341902155": "41341902155:13099778237:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41341904308": "41341904308:13098370746:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "41341906822": "41341906822:13097452026:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
+    "41341906822": "41341906822:13097452026:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41341908658": "41341908658:13096609933:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "41341911115": "41341911115:13097528949:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "41341915772": "41341915772:13101049915:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
@@ -8256,8 +8229,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Seran",
-  "audit804_progress_utc": "2026-11-02T06:29:57.086523+00:00",
+  "audit804_last_store": "Farda Foods",
+  "audit804_progress_utc": "2026-11-02T06:31:53.722039+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
