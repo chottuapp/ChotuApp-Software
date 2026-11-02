@@ -3367,7 +3367,6 @@
   "audit804_processed": {
     "Miss Rose": "source:05d7791ff807a60e6e551a91923d7842577c95c64f876c52df4ba843c039d2ff:Miss Rose:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Islamabad Tea": "source:0ba1cec0a463ded2a5cf2fc519b8724ae3c5a8916e7e2c4fcebb2b7e5575c858:Islamabad Tea:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "Zero Lifestyle": "source:d9206fd02482957f0f36ad166379337d91d9098aae36f561e0df400e2f6dc1fb:Zero Lifestyle:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
     "Aerosoft Studio": "source:979d3664325a6499b646d8c391565a07c356f8fdc926036b5c2731eb72ec05e1:Aerosoft Studio:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
     "Rivaj UK": "source:38d083117d7d2081a14a86fab0d21e7c1d456aef5505ec7fe154621930f2639d:Rivaj UK:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Vince Care": "source:f50c81979dfbd61ef16b4e6aaf3ec4d3bfb86cbe710b813bfbdb8ae9247adc46:Vince Care:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
@@ -3910,15 +3909,35 @@
     },
     "Zero Lifestyle": {
       "name": "804 Audit",
-      "status": "hold",
+      "version": "804-audit-v2",
       "store": "Zero Lifestyle",
+      "shop_code": "SE10029",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 57,
+      "findings_count": 0,
+      "findings": [],
+      "details_truncated": false,
+      "workbook_sha256": "b105e6983f0204debd0935d3b0ee233ea8916e2dde1505c48054a88d776ab3c7",
+      "checked_utc": "2026-11-02T13:20:32.331108+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "41341922957",
       "source_artifact": 13097994807,
-      "error": "Drive copy failed; upload not marked verified",
       "source_sha256": "d9206fd02482957f0f36ad166379337d91d9098aae36f561e0df400e2f6dc1fb",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/zero-lifestyle/d9206fd02482957f/manifest.json",
-      "checked_utc": "2026-11-02T12:37:46.786408+00:00"
+      "refresh_generation": "refresh20261030-31dd8bb1",
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Drive copy failed; category=storage_quota; upload not marked verified",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/zero-lifestyle/d9206fd02482957f/manifest.json"
     },
     "Aerosoft Studio": {
       "name": "804 Audit",
@@ -7060,8 +7079,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Skin Factor",
-  "audit804_progress_utc": "2026-11-02T13:18:57.939938+00:00",
+  "audit804_last_store": "Zero Lifestyle",
+  "audit804_progress_utc": "2026-11-02T13:20:32.331143+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
