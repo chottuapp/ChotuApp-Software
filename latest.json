@@ -2814,7 +2814,7 @@
     "Bonanza Satrangi": "source:607f3980708056219bd14f15a4a480352805365c6ee4f32ceb1222bc474b4cd9:Bonanza Satrangi:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Junaid Jamshed": "source:36e991d3c690633fb4c4a45076c83e08a457378bf1c766b4a6c902bf21d23152:Junaid Jamshed:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Zellbury": "source:e4412ce7aefcd5bc1efec574cd06f42a8c208479d8a7abdc8234d18a56e11061:Zellbury:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "Gul Ahmed": "source:7f41b7d4073b0284855d6e047f85c826c5c995900d81e35eb4293d8646fa4c52:Gul Ahmed:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
+    "Gul Ahmed": "source:f8b3f09d27bc161ac6f6222ef35feb81de31f69fb498cda26c9362e3e392036d:Gul Ahmed:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Hello Maali": "source:afd79e0619b144b0aa7ded632f078334dec3c3fe290b77c3f85c28affeddcfd7:Hello Maali:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Sapphire": "source:c33cf60e3763853b2c66fd47b7b6e0013e8f18a6559a5de5e6f3071924392630:Sapphire:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Stylo": "source:7bd32974dce2a79fae2bc0ce4acd58cb38bcf7db6c6ca76ec14bb4cf004c9f2c:Stylo:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
@@ -3824,42 +3824,15 @@
     },
     "Gul Ahmed": {
       "name": "804 Audit",
-      "version": "804-audit-v2",
+      "status": "hold",
       "store": "Gul Ahmed",
-      "shop_code": "SE10020",
-      "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 7030,
-      "findings_count": 0,
-      "findings": [],
-      "details_truncated": false,
-      "workbook_sha256": "5bd5e1f02aeee70188b5c4feb00ea8ef300b58908b54192e6ed7078069f1ba9e",
-      "checked_utc": "2026-11-02T05:37:36.351746+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
-      },
-      "owner_authorized_exclusions": [],
-      "image_metadata_repairs": 0,
-      "description_repairs_count": 2,
-      "description_repairs_examples": [
-        {
-          "product_id": "CP39e7b88130ec",
-          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP145341481750",
-          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
-          "repair_kind": "description"
-        }
-      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41122150892",
-      "source_artifact": 13011796596,
-      "source_sha256": "7f41b7d4073b0284855d6e047f85c826c5c995900d81e35eb4293d8646fa4c52",
-      "refresh_generation": "refresh20261030-31dd8bb1"
+      "source_run": "41407350295",
+      "source_artifact": 13125617005,
+      "error": "Drive copy failed; upload not marked verified",
+      "source_sha256": "f8b3f09d27bc161ac6f6222ef35feb81de31f69fb498cda26c9362e3e392036d",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/gul-ahmed/f8b3f09d27bc161a/manifest.json",
+      "checked_utc": "2026-11-02T08:24:44.682032+00:00"
     },
     "Hello Maali": {
       "name": "804 Audit",
@@ -6201,7 +6174,8 @@
     "41367499945": "41367499945:13118911381:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41367520557": "41367520557:13120794334:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41378447009": "41378447009:13112678966:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "41378451060": "41378451060:13112806414:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624"
+    "41378451060": "41378451060:13112806414:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
+    "41394887752": "41394887752:13120408835:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-11-02T02:35:20.355499+00:00",
@@ -6232,7 +6206,7 @@
     "SE10021": "inputs/fresh804-20261026-5d42fe35/rollback-se10021/db1ec3061dc0536d/manifest.json",
     "SE10013": "inputs/fresh804-20261026-5d42fe35/rollback-se10013/be59e572028bb96a/manifest.json",
     "SE10027": "inputs/fresh804-20261026-5d42fe35/rollback-se10027/b08fcf5195e5929b/manifest.json",
-    "SE10020": "inputs/fresh804-20261026-5d42fe35/rollback-se10020/b782edd2358a32ff/manifest.json",
+    "SE10020": "inputs/fresh804-20261026-5d42fe35/rollback-se10020/5bd5e1f02aeee701/manifest.json",
     "SE10010": "inputs/fresh804-20261026-5d42fe35/rollback-se10010/0981639efa8cf20e/manifest.json",
     "SH10003": "inputs/fresh804-20261026-5d42fe35/rollback-sh10003/76ac6c31d274f091/manifest.json",
     "blank-Aerosoft Studio": "inputs/fresh804-20261026-5d42fe35/rollback-blank-aerosoft-studio/2263ee7814c73172/manifest.json",
@@ -6286,8 +6260,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Zellbury",
-  "audit804_progress_utc": "2026-11-02T08:22:58.315135+00:00",
+  "audit804_last_store": "Gul Ahmed",
+  "audit804_progress_utc": "2026-11-02T08:24:44.682070+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
