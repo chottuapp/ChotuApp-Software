@@ -3366,7 +3366,6 @@
   "original_uploads": {},
   "audit804_processed": {
     "Miss Rose": "source:05d7791ff807a60e6e551a91923d7842577c95c64f876c52df4ba843c039d2ff:Miss Rose:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "Shop Modest": "source:5fc95662c08cb0100bb1879527135efd4817b80124e81859ea3cb640d53f9076:Shop Modest:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
     "Seran": "source:38d2b84be10927d12e2608ffa96b04c4b4d6afa91601f72cf3dbf0c7c9d8cd71:Seran:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
     "Islamabad Tea": "source:0ba1cec0a463ded2a5cf2fc519b8724ae3c5a8916e7e2c4fcebb2b7e5575c858:Islamabad Tea:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Adam Cheese": "source:8f1d25f690c26472ffaac61f7b16cc4008188807619a953111a248e0dcc52f27:Adam Cheese:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
@@ -3489,15 +3488,86 @@
     },
     "Shop Modest": {
       "name": "804 Audit",
-      "status": "hold",
+      "version": "804-audit-v2",
       "store": "Shop Modest",
+      "shop_code": "SE10006",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 125,
+      "findings_count": 0,
+      "findings": [],
+      "details_truncated": false,
+      "workbook_sha256": "a5feb3402cb3c232b3f2d62b2f154ed2d13098c781ad84d5b2215376b5bf3505",
+      "checked_utc": "2026-11-02T13:10:45.236057+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "description_repairs_count": 125,
+      "description_repairs_examples": [
+        {
+          "product_id": "CP87b7615559ac",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPdb3b55d481e0",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP785a2ceeab0a",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP7130f38ceefa",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPf4a0a3a03762",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP92aa626ff1f2",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP00de578d83e2",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP5baf2039d890",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP57780a417467",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPae4a043f84fe",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        }
+      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "41341904308",
       "source_artifact": 13098370746,
-      "error": "Drive copy failed; upload not marked verified",
       "source_sha256": "5fc95662c08cb0100bb1879527135efd4817b80124e81859ea3cb640d53f9076",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/shop-modest/5fc95662c08cb010/manifest.json",
-      "checked_utc": "2026-11-02T12:31:46.012176+00:00"
+      "refresh_generation": "refresh20261030-31dd8bb1",
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Drive copy failed; category=storage_quota; upload not marked verified",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/shop-modest/5fc95662c08cb010/manifest.json"
     },
     "Seran": {
       "name": "804 Audit",
@@ -6763,8 +6833,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "The Hanger Pakistan",
-  "audit804_progress_utc": "2026-11-02T13:09:56.756037+00:00",
+  "audit804_last_store": "Shop Modest",
+  "audit804_progress_utc": "2026-11-02T13:10:45.236135+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
