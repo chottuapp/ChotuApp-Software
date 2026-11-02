@@ -1,0 +1,25 @@
+name: Check public source access
+on:
+  workflow_dispatch:
+    inputs:
+      store:
+        description: Exact approved WooCommerce seller name
+        required: true
+        default: Gift4U
+        type: string
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - name: Probe only the robots-permitted public endpoint
+        env:
+          SELECTED_STORE: ${{ inputs.store }}
+        run: python cloud/source_access_check.py --store "$SELECTED_STORE"
