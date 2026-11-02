@@ -2791,7 +2791,7 @@
     "Rivaj UK": "source:38d083117d7d2081a14a86fab0d21e7c1d456aef5505ec7fe154621930f2639d:Rivaj UK:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "Vince Care": "source:f50c81979dfbd61ef16b4e6aaf3ec4d3bfb86cbe710b813bfbdb8ae9247adc46:Vince Care:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "Computer Zone": "source:5c1e8ee42f9d689c46c1249b2706c85ab0641223239b0b0f397d92011b4b6c1f:Computer Zone:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
-    "Bata": "source:817632005aeb9e1ef7e8f93f3b82ec8fdbcb5f4b6dba8f399bb6a9310b975834:Bata:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
+    "Bata": "source:1a3aea0e7b3fb835b9d34aa9c0fd21d42ba27274a43c39ce830d30352f524892:Bata:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "Servis": "source:02a65316467c71b02563f13191ba2a56abb9796b183bb83eb6421637bda466af:Servis:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "Ndure": "source:54825ca1644b8817145f87c6e99213605125c2d880267533007c33dcb4c039c2:Ndure:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "Saeed Ghani": "source:ff3625c2ce97bc6397f3e0a3306766dfd46bd072b855ba73115fdafba8df840b:Saeed Ghani:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
@@ -3570,78 +3570,142 @@
       "store": "Bata",
       "shop_code": "SE10031",
       "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 1888,
-      "findings_count": 0,
-      "findings": [],
+      "status": "hold",
+      "products_checked": 1876,
+      "findings_count": 6,
+      "findings": [
+        {
+          "product_id": "CP6577aa4e7249",
+          "name": "Bata Comfit - Men",
+          "source_url": "https://www.bata.com.pk/products/883-4539",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP55703d5570c6",
+          "name": "Bata - Men",
+          "source_url": "https://www.bata.com.pk/products/851-4541",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP0c1d9b96304a",
+          "name": "Reebok - Women",
+          "source_url": "https://www.bata.com.pk/products/549-6605",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP653b2e522150",
+          "name": "Reebok - Women",
+          "source_url": "https://www.bata.com.pk/products/549-6602",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP1328fe849101",
+          "name": "Reebok - Women",
+          "source_url": "https://www.bata.com.pk/products/549-5605",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPe96e068a9591",
+          "name": "Reebok - Women",
+          "source_url": "https://www.bata.com.pk/products/549-1603",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "def7128ef78a397ea38517c628f3a454d0d092261724380589ab08a70309e481",
-      "checked_utc": "2026-11-01T23:52:16.572902+00:00",
+      "workbook_sha256": "e054914ed00d2b872ebacb0e7b12ae87ac90a741c490f7a5620ec72656c9adc5",
+      "checked_utc": "2026-11-02T01:49:18.042350+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-02T01:49:18.045136+00:00",
+        "updated_utc": "2026-11-02T01:49:18.045136+00:00",
+        "next_source_check_due_utc": "2026-11-02T02:04:18.045136+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
-      "description_repairs_count": 1793,
+      "description_repairs_count": 1777,
       "description_repairs_examples": [
-        {
-          "product_id": "CP4b8ae5480d9d",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP581598ceaf15",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP8767fcdf27ba",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP7812bb5c0b0c",
-          "issue": "Added exact primary product-tag object type; original article code and options preserved.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP612ad3ea61f0",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
         {
           "product_id": "CPe922641d9153",
           "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
           "repair_kind": "description"
         },
         {
-          "product_id": "CP5d32ee5d293e",
-          "issue": "Added exact primary product-tag object type; original article code and options preserved.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP3c5d954166ae",
+          "product_id": "CP58d4373f2a63",
           "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
           "repair_kind": "description"
         },
         {
-          "product_id": "CPd2cc2ae9f3a5",
+          "product_id": "CP81584695a3d4",
           "issue": "Added exact primary product-tag object type; original article code and options preserved.",
           "repair_kind": "description"
         },
         {
-          "product_id": "CP6077ac037370",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "product_id": "CPabeddd356618",
+          "issue": "Added exact primary product-tag object type; original article code and options preserved.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPa69d9b53f801",
+          "issue": "Added exact primary product-tag object type; original article code and options preserved.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPd9fe53e0eabb",
+          "issue": "Added exact primary product-tag object type; original article code and options preserved.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP2eab9e213086",
+          "issue": "Added exact primary product-tag object type; original article code and options preserved.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPe19d42b9af10",
+          "issue": "Added exact primary product-tag object type; original article code and options preserved.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP99e2ffd8cc11",
+          "issue": "Added exact primary product-tag object type; original article code and options preserved.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP492d05a4d669",
+          "issue": "Added exact primary product-tag object type; original article code and options preserved.",
           "repair_kind": "description"
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41039508705",
-      "source_artifact": 12971710354,
-      "source_sha256": "817632005aeb9e1ef7e8f93f3b82ec8fdbcb5f4b6dba8f399bb6a9310b975834",
-      "refresh_generation": "refresh20261030-31dd8bb1"
+      "source_run": "41341922957",
+      "source_artifact": 13097994807,
+      "source_sha256": "1a3aea0e7b3fb835b9d34aa9c0fd21d42ba27274a43c39ce830d30352f524892",
+      "refresh_generation": "refresh20261030-31dd8bb1",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/bata/1a3aea0e7b3fb835/manifest.json"
     },
     "Servis": {
       "name": "804 Audit",
@@ -7709,8 +7773,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/a3f438ba2280ebb5/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/15341c6bae73dddb/manifest.json"
   },
-  "audit804_last_store": "Zero Lifestyle",
-  "audit804_progress_utc": "2026-11-02T01:48:53.703643+00:00",
+  "audit804_last_store": "Bata",
+  "audit804_progress_utc": "2026-11-02T01:49:20.052852+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
