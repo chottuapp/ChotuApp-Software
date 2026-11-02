@@ -2794,7 +2794,7 @@
     "Farda Foods": "source:06288daa766b4492aa204ab4d512a6bd03b90dcde437bd114a7b30c08607034b:Farda Foods:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Nisa Naturals": "source:d2b3577e44d3ebddaf4f277136781965b06b2aafcaaae3bacdb9a6477dbf65d9:Nisa Naturals:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Cool and Cool": "source:e7ddce45fc5dab05581536bef0c21881cf636f729b0a87f3bab77369e839aef6:Cool and Cool:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "Denim Leftover": "source:1a5fb0577b39a60795a5072e9f66d2a6602be553e2c0b3f670637a6c98670abb:Denim Leftover:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
+    "Denim Leftover": "source:8a0ecd578740753ac1b6680c5edb1a7fab2d554300765535d608d8656490c4e8:Denim Leftover:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Skin Factor": "source:1e1250cda53af99499e495e0fa55def668179925e8feaf53d7306b59283971d2:Skin Factor:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Zero Lifestyle": "source:55214219e00c6290649a436892604c7e25a312831f7fc50efa2c77010a39d930:Zero Lifestyle:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Aerosoft Studio": "source:d169594f8b47d8412d98e62e6948c3c2fc94b6d02153ed83b713f95b2578b61d:Aerosoft Studio:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
@@ -3057,31 +3057,15 @@
     },
     "Denim Leftover": {
       "name": "804 Audit",
-      "version": "804-audit-v2",
+      "status": "hold",
       "store": "Denim Leftover",
-      "shop_code": "SE10024",
-      "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 178,
-      "findings_count": 0,
-      "findings": [],
-      "details_truncated": false,
-      "workbook_sha256": "2cb7629bef52b40e696fb94f1a14dcb592f36d2ee300578ea266eb76c83a353d",
-      "checked_utc": "2026-11-02T03:55:57.258276+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
-      },
-      "owner_authorized_exclusions": [],
-      "image_metadata_repairs": 0,
-      "description_repairs_count": 0,
-      "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41039490338",
-      "source_artifact": 12969092933,
-      "source_sha256": "1a5fb0577b39a60795a5072e9f66d2a6602be553e2c0b3f670637a6c98670abb",
-      "refresh_generation": "refresh20261030-31dd8bb1"
+      "source_run": "41341918272",
+      "source_artifact": 13098375403,
+      "error": "Drive copy failed; upload not marked verified",
+      "source_sha256": "8a0ecd578740753ac1b6680c5edb1a7fab2d554300765535d608d8656490c4e8",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/denim-leftover/8a0ecd578740753a/manifest.json",
+      "checked_utc": "2026-11-02T06:46:49.493147+00:00"
     },
     "Skin Factor": {
       "name": "804 Audit",
@@ -8058,7 +8042,7 @@
     "41341906822": "41341906822:13097452026:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41341908658": "41341908658:13096609933:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41341911115": "41341911115:13097528949:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "41341915772": "41341915772:13101049915:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
+    "41341915772": "41341915772:13101049915:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41341918272": "41341918272:13098375403:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "41341920611": "41341920611:13105297214:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "41341922957": "41341922957:13097994807:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
@@ -8171,8 +8155,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Hemani Herbals",
-  "audit804_progress_utc": "2026-11-02T06:46:03.016971+00:00",
+  "audit804_last_store": "Denim Leftover",
+  "audit804_progress_utc": "2026-11-02T06:46:49.493181+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
