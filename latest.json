@@ -3371,7 +3371,6 @@
     "Vince Care": "source:f50c81979dfbd61ef16b4e6aaf3ec4d3bfb86cbe710b813bfbdb8ae9247adc46:Vince Care:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Computer Zone": "source:5c1e8ee42f9d689c46c1249b2706c85ab0641223239b0b0f397d92011b4b6c1f:Computer Zone:a1895578c3ef877ce79516d6f1a48093cdeebbb770f117903e5bb903a962759e",
     "Bata": "source:1a3aea0e7b3fb835b9d34aa9c0fd21d42ba27274a43c39ce830d30352f524892:Bata:a1895578c3ef877ce79516d6f1a48093cdeebbb770f117903e5bb903a962759e",
-    "Tawakkal Fabrics": "source:2a7781387cf2f54d6a713b9c65c43af940eeeb2f2c458d92b93c2c98173abc46:Tawakkal Fabrics:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
     "Elite Cosmetics": "source:b01e74a941d8b8b02032f158abd93807e27b771bb27bf3bd9558cdef90ab44b1:Elite Cosmetics:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
     "Hemani Herbals": "source:90c13bcfd2766048122c667921fd7acfe72edb6fcade7283003139af9a8fa874:Hemani Herbals:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
     "Astore Bags": "source:1edd16ba695a45fc01bd9b662be0817de0d8c8c991d42ccf4bbb9df23ff6ceeb:Astore Bags:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
@@ -4518,15 +4517,35 @@
     },
     "Tawakkal Fabrics": {
       "name": "804 Audit",
-      "status": "hold",
+      "version": "804-audit-v2",
       "store": "Tawakkal Fabrics",
+      "shop_code": "SE10009",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 1491,
+      "findings_count": 0,
+      "findings": [],
+      "details_truncated": false,
+      "workbook_sha256": "f143e7e6b5d30bc31001c1973035ad350a2736b07a7b4ec33d3cc46b4a7be04e",
+      "checked_utc": "2026-11-02T13:25:53.746216+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "41341899950",
       "source_artifact": 13109782804,
-      "error": "Drive copy failed; upload not marked verified",
       "source_sha256": "2a7781387cf2f54d6a713b9c65c43af940eeeb2f2c458d92b93c2c98173abc46",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/tawakkal-fabrics/2a7781387cf2f54d/manifest.json",
-      "checked_utc": "2026-11-02T12:42:48.882854+00:00"
+      "refresh_generation": "refresh20261030-31dd8bb1",
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Drive copy failed; category=storage_quota; upload not marked verified",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/tawakkal-fabrics/2a7781387cf2f54d/manifest.json"
     },
     "Elite Cosmetics": {
       "name": "804 Audit",
@@ -7298,8 +7317,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Saeed Ghani",
-  "audit804_progress_utc": "2026-11-02T13:23:49.707502+00:00",
+  "audit804_last_store": "Tawakkal Fabrics",
+  "audit804_progress_utc": "2026-11-02T13:25:53.746339+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
