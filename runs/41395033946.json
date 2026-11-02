@@ -2790,7 +2790,7 @@
     "Shop Modest": "source:5fc95662c08cb0100bb1879527135efd4817b80124e81859ea3cb640d53f9076:Shop Modest:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Seran": "source:38d2b84be10927d12e2608ffa96b04c4b4d6afa91601f72cf3dbf0c7c9d8cd71:Seran:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Islamabad Tea": "source:0ba1cec0a463ded2a5cf2fc519b8724ae3c5a8916e7e2c4fcebb2b7e5575c858:Islamabad Tea:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "Adam Cheese": "source:a7bd3ba0e97b1e4c823f29d36b388ba8c5127117afd5d8aacd00428e39b729dc:Adam Cheese:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
+    "Adam Cheese": "source:8f1d25f690c26472ffaac61f7b16cc4008188807619a953111a248e0dcc52f27:Adam Cheese:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Farda Foods": "source:06288daa766b4492aa204ab4d512a6bd03b90dcde437bd114a7b30c08607034b:Farda Foods:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Nisa Naturals": "source:6c0995edf70112890020bcf07dd173ec004f9786de5616dfd5a6173778b4d285:Nisa Naturals:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Cool and Cool": "source:e7ddce45fc5dab05581536bef0c21881cf636f729b0a87f3bab77369e839aef6:Cool and Cool:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
@@ -2942,31 +2942,15 @@
     },
     "Adam Cheese": {
       "name": "804 Audit",
-      "version": "804-audit-v2",
+      "status": "hold",
       "store": "Adam Cheese",
-      "shop_code": "SE10003",
-      "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 58,
-      "findings_count": 0,
-      "findings": [],
-      "details_truncated": false,
-      "workbook_sha256": "a4e04e2690a2aaf98d51d3f044ad243b5def1a3ea2f73b026a0307285c78c37b",
-      "checked_utc": "2026-11-02T03:44:52.603011+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
-      },
-      "owner_authorized_exclusions": [],
-      "image_metadata_repairs": 0,
-      "description_repairs_count": 0,
-      "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41039465105",
-      "source_artifact": 12969611740,
-      "source_sha256": "a7bd3ba0e97b1e4c823f29d36b388ba8c5127117afd5d8aacd00428e39b729dc",
-      "refresh_generation": "refresh20261030-31dd8bb1"
+      "source_run": "41341908658",
+      "source_artifact": 13096609933,
+      "error": "Drive copy failed; upload not marked verified",
+      "source_sha256": "8f1d25f690c26472ffaac61f7b16cc4008188807619a953111a248e0dcc52f27",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/adam-cheese/8f1d25f690c26472/manifest.json",
+      "checked_utc": "2026-11-02T06:32:55.076287+00:00"
     },
     "Farda Foods": {
       "name": "804 Audit",
@@ -8229,8 +8213,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Farda Foods",
-  "audit804_progress_utc": "2026-11-02T06:31:53.722039+00:00",
+  "audit804_last_store": "Adam Cheese",
+  "audit804_progress_utc": "2026-11-02T06:32:55.076322+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
