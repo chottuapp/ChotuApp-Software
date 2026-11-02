@@ -3374,7 +3374,6 @@
     "Hemani Herbals": "source:90c13bcfd2766048122c667921fd7acfe72edb6fcade7283003139af9a8fa874:Hemani Herbals:a1895578c3ef877ce79516d6f1a48093cdeebbb770f117903e5bb903a962759e",
     "Rawayat": "source:523eb8761183e7baedffe0b8036cbd1357f9fd57560f2f06ba38fb5e210f8395:Rawayat:a1895578c3ef877ce79516d6f1a48093cdeebbb770f117903e5bb903a962759e",
     "Junaid Jamshed": "source:36e991d3c690633fb4c4a45076c83e08a457378bf1c766b4a6c902bf21d23152:Junaid Jamshed:a1895578c3ef877ce79516d6f1a48093cdeebbb770f117903e5bb903a962759e",
-    "Gul Ahmed": "source:f8b3f09d27bc161ac6f6222ef35feb81de31f69fb498cda26c9362e3e392036d:Gul Ahmed:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
     "Hello Maali": "source:afd79e0619b144b0aa7ded632f078334dec3c3fe290b77c3f85c28affeddcfd7:Hello Maali:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
     "Sapphire": "source:c33cf60e3763853b2c66fd47b7b6e0013e8f18a6559a5de5e6f3071924392630:Sapphire:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
     "Stylo": "source:7bd32974dce2a79fae2bc0ce4acd58cb38bcf7db6c6ca76ec14bb4cf004c9f2c:Stylo:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
@@ -5213,15 +5212,41 @@
     },
     "Gul Ahmed": {
       "name": "804 Audit",
-      "status": "hold",
+      "version": "804-audit-v2",
       "store": "Gul Ahmed",
+      "shop_code": "SE10020",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 6786,
+      "findings_count": 0,
+      "findings": [],
+      "details_truncated": false,
+      "workbook_sha256": "3a2cc58ce889506b76fa22f7ca3594504ec363fe765ddc7557a477e55d0414e4",
+      "checked_utc": "2026-11-02T13:35:41.390387+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "description_repairs_count": 1,
+      "description_repairs_examples": [
+        {
+          "product_id": "CP145341481750",
+          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
+          "repair_kind": "description"
+        }
+      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "41407350295",
       "source_artifact": 13125617005,
-      "error": "Drive copy failed; upload not marked verified",
       "source_sha256": "f8b3f09d27bc161ac6f6222ef35feb81de31f69fb498cda26c9362e3e392036d",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/gul-ahmed/f8b3f09d27bc161a/manifest.json",
-      "checked_utc": "2026-11-02T12:54:51.784403+00:00"
+      "refresh_generation": "refresh20261030-31dd8bb1",
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Drive copy failed; category=storage_quota; upload not marked verified",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/gul-ahmed/f8b3f09d27bc161a/manifest.json"
     },
     "Hello Maali": {
       "name": "804 Audit",
@@ -7553,8 +7578,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Zellbury",
-  "audit804_progress_utc": "2026-11-02T13:33:56.135037+00:00",
+  "audit804_last_store": "Gul Ahmed",
+  "audit804_progress_utc": "2026-11-02T13:35:41.390540+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
