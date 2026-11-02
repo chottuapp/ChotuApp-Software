@@ -16,6 +16,41 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  # Only explicit source garment-type strings; a generic vendor/brand is not purpose evidence.
  if re.fullmatch(r'(?i)(?:women|men|teens|kids|infants)\s+(?:stitched\s+[234]\s+piece(?:\s+shirt\s+trouser)?|(?:cotton\s+silk\s+)?shalwar|(?:special\s+)?kurta|trouser|earrings|bracelet|necklace|ring|eyebrow\s+kit|waistcoat\s+with\s+kurta\s+trouser)',str(source_type or '').strip()):body+=' Source-listed garment type: '+str(source_type)
  evidence=title+' '+body
+ # Independently review the original sold object, not included PC components.
+ primary=re.split(r'\b(?:for|with|including|includes)\b',title,maxsplit=1,flags=re.I)[0]
+ whole_pc=has(r'\b(?:desktop\s+(?:pc|computer)|tower\s+pc|imac|thinkcentre|Mac\s+(?:Mini|Studio))\b',primary) and not has(r'\b(?:case|casing|cooler|sleeve|stand)\b',primary)
+ if whole_pc:return [] if cat=='desktop computers' else ['Complete desktop computer incorrectly classified as a component']
+ if cat=='desktop computers' and has(r'\b(?:case|casing|cooler|sleeve|stand)\b',primary):return ['Computer accessory incorrectly classified as a complete desktop']
+ if cat=='gaming consoles' and has(r'\bgaming\s+console\b',primary) and not has(r'\b(?:controller|shifter|wheel|case)\b',primary):return []
+ explicit_devices={
+  'projectors':r'\bprojector\b','projector screens':r'\b(?:projector|projection)\s+screen\b',
+  'car power inverters':r'\bcar\s+inverter\b',
+  'keyboards':r'\bkeyboar(?:d|ds)?\b','styluses':r'\b(?:stylus|apple\s+pencil)\b',
+  'earbuds':r'\b(?:ear\s*buds?|buds|airpods?|earpods?|airdots?|airbuds?|battlebuds?|budsace|yopod\w*|gopods?)\b',
+  'neckband earphones':r'\bneckband\b','fitness trackers':r'\b(?:fitness|activity.*tracker|smart\s+band|mi\s+\d+\s+pro\s+cn\s+band)\b',
+  'paper shredders':r'\bpaper\s+shredder\b','scanners':r'\b(?:scanner|scanjet)\b','barcode scanners':r'\bbarcode\s+scanner\b',
+  'wireless access points':r'\baccess\s+point\b','wireless network bridges':r'\boutdoor\s+CPE\b',
+  'network switches':r'\b(?:desktop|rackmount|managed|gigabit|ethernet)\b.*\bswitch\b',
+  'mesh wi-fi systems':r'\bmesh\s+wi[ -]?fi\b','wireless presenters':r'\bpresenter\b','laser pointers':r'\blaser\s+pen\b',
+  'trackball mice':r'\btrackball\b','computer fans':r'\b(?:ARGB|A-RGB|RGB|cooling)\b.*\bfans?\b',
+  'computer cases':r'\b(?:mid[ -]?tower|microATX|ATX|gaming)\b.*\b(?:case|casing)\b','wireless speakerphones':r'\bspeakerphone\b',
+  'soundbars':r'\bsoundbar\b','speakers':r'\bspeakers?\b','power banks':r'\bpower\s*bank\b',
+  'laptop sleeves':r'\bsleeves?\b|\bslip\s+case\b','protective sleeves':r'\bsleeves?\b|\bslip\s+case\b','graphics tablets':r'\b(?:graphic|graphics|drawing)\s+tablet\b',
+  'usb card readers':r'\bcard\s+reader\b','bluetooth trackers':r'\bair\s*tag\b',
+  'gaming gear shifters':r'\b(?:driving force shifter|gear shifter)\b','gaming controllers':r'\b(?:game\s*pad|gaming\s+pad)\b',
+ }
+ if cat in explicit_devices and has(explicit_devices[cat],title):
+  if cat=='projectors' and has(r'\b(?:screen|mount|lamp|bag)\b',primary):return ['Projector accessory incorrectly classified as projector']
+  if cat in {'earbuds','fitness trackers'} and has(r'\b(?:replacement|protector|case|strap)\b',primary):return ['Device accessory incorrectly classified as main device']
+  return []
+ if cat=='earbud cases' and has(r'\b(?:airpods?|earbuds?)\b',primary) and has(r'\bcase\b',primary):return []
+ if cat=='laser printers' and has(r'\blaserjet\b',primary) and has(r'\bprinter\b',body):return []
+ if cat=='phone stands' and has(r'\bstand\b',title) and has(r'\bphone\s+stand\b',body):return []
+ if cat=='usb chargers' and has(r'\bUSB(?:[ -]?C)?\s+Power\s+Adapter\b',title):return []
+ if cat=='wireless display adapters' and has(r'\bscreen\s+projector\b',title) and has(r'\bscreen\s+mirroring\b',body) and has(r'\bHDMI\s+output\b',body):return []
+ if cat=='gaming peripheral sets' and has(r'\bgaming\s+starter\s+pack\b',title) and has(r'keyboard|mouse|headset',body):return []
+ if cat=='wireless charging lamps' and has(r'\b(?:lamp|night light)\b',title) and has(r'\bcharg(?:er|ing)\b',title):return []
+ if cat=='smartphones' and has(r'\bdual\s+sim\b',primary) and has(r'operating system:\s*android',body) and has(r'screen size:',body):return []
  if cat=='stitching services' and has(r'^(?:TEST[- ]+)?STIT?CHING SERVICE$',title) and has(r'\bstitching service\b',body):
   return [] if not has(r'^TEST[- ]',title) or has(r'\btest listing\b',body) else ['Source test qualification removed from service description']
  # Independently require the sold object in original title/details, not Category metadata.

@@ -3,6 +3,14 @@ from pathlib import Path
 from checkpoint_compaction import compact_responses
 from resume_support import ResponseCache
 class CacheCompactionTests(unittest.TestCase):
+ def test_reclaims_obsolete_pages_even_when_live_responses_need_no_recompression(self):
+  import os,requests
+  with tempfile.TemporaryDirectory() as tmp:
+   path=Path(tmp)/'pages.sqlite3';cache=ResponseCache(path);url='https://source.test/catalog'
+   response=requests.Response();response.status_code=200;response.url=url;response._content=os.urandom(3*1024**2);cache.put(url,response)
+   latest=os.urandom(400);response._content=latest;cache.put(url,response);cache.close();before=path.stat().st_size
+   self.assertEqual(compact_responses(path),0);self.assertLess(path.stat().st_size,before//2)
+   cache=ResponseCache(path);self.assertEqual(cache.get(url).content,latest);cache.close()
  def test_legacy_and_new_responses_retain_exact_body_and_identity(self):
   import requests
   with tempfile.TemporaryDirectory() as tmp:

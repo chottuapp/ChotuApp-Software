@@ -748,6 +748,15 @@ def category(row,store):
  return None
 
 def description(row,store):
+ if store=='House of Tools':
+  fact=public_facts(row,store) or {};extra=fact.get('verified_bundle_description');original=str(row.get('description') or '')
+  if extra and fact.get('bundle_components') and re.fullmatch('[a-f0-9]{64}',fact.get('bundle_page_sha256','')) and extra not in original:return extra+('\n\n'+original if original.strip() else ''),'Retained exact identity-verified public bundle quantities, contents and full component specifications.'
+ if store in {'Paklap','Xcessories Hub','Computer Zone','Gift4U'}:
+  from catalogue_object_rules import electronics_object
+  named=electronics_object(row);original=str(row.get('description') or '');name=str(row.get('name') or '')
+  if named and named[0] in {'Laptop Cooling Pads','USB Chargers'} and (len(re.findall(r'\b\w+\b',original))<5 or original.strip().rstrip('.')==name.rstrip('.')):
+   kind='a laptop cooling pad' if named[0]=='Laptop Cooling Pads' else 'a USB power adapter'
+   return name+' is '+kind+'.'+('\n\n'+original if original.strip() else ''),'Expressed only the explicitly named sold object; retained source model, compatibility and all original details.'
  from catalogue_object_rules import overview
  recovered,why=overview(row,store)
  if why and visual_review(row,store) is None:return recovered,why

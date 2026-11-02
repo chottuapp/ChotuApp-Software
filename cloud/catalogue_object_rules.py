@@ -204,9 +204,61 @@ def merchant_labels(fact):
   if found:labels.append(found[0])
  return set(labels)
 
+def electronics_object(row):
+ title=str(row.get('name') or '');body=str(row.get('description') or '')
+ # Compatibility targets and included accessories are not the primary sold object.
+ primary=re.split(r'\b(?:for|with|including|includes)\b',title,maxsplit=1,flags=re.I)[0]
+ if re.search(r'\bscreen\s+projector\b',title,re.I) and re.search(r'\bscreen\s+mirroring\b',body,re.I) and re.search(r'\bHDMI\s+output\b',body,re.I):return 'Wireless Display Adapters','inferred_source_device_function','Source explicitly describes wireless screen mirroring and HDMI output: '+title
+ if re.search(r'\b(?:AirPods?|earbuds?)\b',primary,re.I) and re.search(r'\bcase\b',primary,re.I):return 'Earbud Cases','inferred_primary_sold_object','Named earbud case, not the compatible earbuds: '+title
+ patterns=[
+  ('Wireless Charging Lamps',r'\b(?:lamp|night light)\b.*\bcharg(?:er|ing)\b|\bcharg(?:er|ing)\b.*\blamp\b'),
+  ('Car Power Inverters',r'\bcar\s+inverter\b'),
+  ('Laptop Cooling Pads',r'\bcooling\s+pad\b'),('Protective Sleeves',r'\bsleeve(?:s)?\b|\bslip\s+case\b'),
+  ('Gaming Gear Shifters',r'\b(?:driving force shifter|gear shifter)\b'),
+  ('Barcode Scanners',r'\bbarcode\s+scanner\b'),('Projector Screens',r'\b(?:projector|projection)\s+screen\b'),
+  ('Wireless Access Points',r'\baccess\s+point\b'),('Wireless Network Bridges',r'\boutdoor\s+CPE\b'),
+  ('Network Switches',r'\b(?:desktop|rackmount|managed|gigabit|ethernet)\s+(?:[^\n]{0,45}\s)?switch\b'),
+  ('Mesh Wi-Fi Systems',r'\bmesh\s+wi[ -]?fi\b'),
+  ('Desktop Computers',r'\b(?:tower\s+pc|desktop\s+(?:pc|computer)|iMac|ThinkCentre)\b'),
+  ('Graphics Tablets',r'\b(?:graphic|graphics|drawing)\s+tablet\b'),
+  ('Keyboards',r'\bkeyboar(?:d|ds)?\b'),('Styluses',r'\b(?:stylus|Apple\s+Pencil)\b'),
+  ('Earbuds',r'\b(?:ear\s*buds?|buds|airpods?|earpods?|airdots?|airbuds?|battlebuds?|budsace|yopod\w*|gopods?)\b'),
+  ('Neckband Earphones',r'\bneckband\b'),('Fitness Trackers',r'\b(?:fitness\s+(?:wearable|tracker)|activity\s+and\s+sleep\s+tracker|smart\s+band|mi\s+\d+\s+pro\s+cn\s+band)\b'),
+  ('Paper Shredders',r'\bpaper\s+shredder\b'),('Scanners',r'\b(?:scanner|scanjet)\b'),
+  ('Projectors',r'\bprojector\b'),('Power Banks',r'\bpower\s*bank\b'),
+  ('Trackball Mice',r'\btrackball\b'),('Wireless Presenters',r'\b(?:wireless|laser)\s+(?:professional\s+)?presenter\b'),
+  ('Laser Pointers',r'\blaser\s+pen\b'),('Wireless Speakerphones',r'\bspeakerphone\b'),
+  ('Computer Fans',r'\b(?:ARGB|A-RGB|RGB|cooling)\s+(?:[^\n]{0,30}\s)?fans?\b'),
+  ('Computer Cases',r'\b(?:mid[ -]?tower|microATX|ATX|gaming)\s+(?:[^\n]{0,30}\s)?(?:case|casing)\b'),
+  ('USB Chargers',r'\bUSB\s+power\s+adapter\b'),
+  ('Soundbars',r'\bsoundbar\b'),('Speakers',r'\bspeakers?\b'),
+  ('USB Card Readers',r'\b(?:USB\s+)?card\s+reader\b'),('Bluetooth Trackers',r'\bAir\s*Tag\b'),
+  ('Gaming Controllers',r'\b(?:game\s*pad|gaming\s+pad)\b'),
+ ]
+ for label,pattern in patterns:
+  if label=='Desktop Computers' and re.search(r'\b(?:case|casing|stand|cooler)\b',primary,re.I):continue
+  evidence=title if label in {'Wireless Charging Lamps','Laptop Cooling Pads','Protective Sleeves','Projector Screens','Graphics Tablets'} else primary
+  if re.search(pattern,evidence,re.I):return label,'inferred_primary_sold_object','Explicit supplied product name: '+title
+ if re.search(r'\bMac\s+(?:Mini|Studio)\b',primary,re.I) and not re.search(r'\b(?:case|stand|sleeve|cooler)\b',primary,re.I):return 'Desktop Computers','inferred_source_device_family','Named desktop computer product family: '+title
+ if re.search(r'\b(?:gaming\s+starter\s+pack)\b',title,re.I) and re.search(r'keyboard|mouse|headset',body,re.I):return 'Gaming Peripheral Sets','inferred_source_bundle_contents','Gaming starter pack; source components retained: '+title
+ if re.search(r'\bstand\b',title,re.I) and re.search(r'\bphone\s+stand\b',body,re.I):return 'Phone Stands','inferred_source_product_description','Source explicitly identifies a phone stand: '+title
+ if re.search(r'\bLaserJet\b',title,re.I) and re.search(r'\bprinter\b',body,re.I):return 'Laser Printers','inferred_source_product_description','Source explicitly identifies a printer: '+title
+ if re.search(r'\bdual\s+sim\b',title,re.I) and re.search(r'Operating system:\s*Android',body,re.I) and re.search(r'Screen Size:',body,re.I):return 'Smartphones','inferred_source_device_specifications','Dual-SIM Android device with source screen and camera specifications.'
+ return None
+
 def classify(row,store):
  title=str(row.get('name') or '');body=str(row.get('description') or '')
+ if store in {'Paklap','Xcessories Hub','Computer Zone','Gift4U'}:
+  electronic=electronics_object(row)
+  if electronic:return electronic
  if store=='House of Tools':
+  if re.search(r'\bbundle\b',title,re.I):
+   from hold804_repairs import public_facts
+   fact=public_facts(row,store) or {};parts=fact.get('bundle_components',[])
+   names=' '.join(str(p.get('name') or '') for p in parts)
+   if re.fullmatch('[a-f0-9]{64}',fact.get('bundle_page_sha256','')) and len(parts)>=2:
+    if re.search(r'\b(?:Sockets?|Switches?)\b',title,re.I) and re.search(r'\b(?:switch|socket)\b',names,re.I):return 'Electrical Accessory Sets','verified_public_bundle_contents','Fixed source electrical components: '+names
+    if re.search(r'\b(?:drill|pliers?|wrench|hammer|screwdriver|tool|vacuum|saw|brush|washer|mop|ladder|ratchet|trowel|grinder|router|clamp|nibbler|snip|file|nailer)\b',names,re.I):return 'Tool Sets','verified_public_bundle_contents','Fixed source bundle components: '+names
   narrow=[('Switch & Socket Covers',r'^Cover\b',r'\b[123] gang cover\b'),('Tyre Inflators',r'air tire inflating gun',r'inflating|pressure'),('Power Tool Batteries & Chargers',r'battery pack',r'voltage|battery'),('Saw Blades & Chains',r'diamond disc',r'blade width|disc'),('Tool Sets',r'combo kit',r'cordless drill')]
   for label,t,b in narrow:
    if re.search(t,title,re.I) and re.search(b,body,re.I):return label,'inferred_explicit_source_object',title+'; '+body[:250]
@@ -311,6 +363,11 @@ def audit(row,source):
  host=(urlsplit(str(source.get('source_url') or '')).hostname or '').removeprefix('www.')
  title=str(source.get('name') or '');body=str(source.get('description') or '');label=row.get('Category')
  if host=='houseoftools.com.pk':
+  if label in {'Tool Sets','Electrical Accessory Sets'} and re.search(r'\bbundle\b',title,re.I):
+   from hold804_repairs import public_facts
+   fact=public_facts(source,'House of Tools') or {};parts=fact.get('bundle_components',[])
+   proof=r'\b(?:switch|socket)\b' if label=='Electrical Accessory Sets' else r'\b(?:tools?|drill|hammer|wrench|screwdriver|pliers?|vacuum|washer|saw|grinder|mop|brush|ladder|ratchet|trowel|router|clamp|nibbler|snip|file|nailer)\b'
+   if re.fullmatch('[a-f0-9]{64}',fact.get('bundle_page_sha256','')) and len(parts)>=2 and any(re.search(proof,str(p.get('name') or ''),re.I) for p in parts):return []
   checks={'Switch & Socket Covers':(r'^Cover\b',r'\b[123] gang cover\b'),'Tyre Inflators':(r'air tire inflating gun',r'inflating|pressure'),'Power Tool Batteries & Chargers':(r'battery pack',r'voltage|battery'),'Saw Blades & Chains':(r'diamond disc',r'blade width|disc'),'Tool Sets':(r'combo kit',r'cordless drill')}
   if label in checks and re.search(checks[label][0],title,re.I) and re.search(checks[label][1],body,re.I):return []
  if host=='freshbasket.com.pk':

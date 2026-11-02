@@ -182,10 +182,10 @@ cannot have those historical audits reconstructed from status counters alone.
 Large checkpoint handling
 -------------------------
 The former 250 MB compressed cutoff caused a real stopped run to lose its downloadable
-resume checkpoint. New saves keep legacy checkpoint.zip for small archives and split
-larger archives into checksummed 250 MB parts plus a manifest, uploaded together as
+resume checkpoint. New saves keep legacy checkpoint.zip for small archives and stream
+larger archives directly into checksummed 250 MB parts plus a manifest, uploaded together as
 chotuapp-checkpoint. Resume supports both formats and verifies part order, sizes and
-SHA-256 checksums before extraction. Limits are 2 GB compressed and 24 GiB expanded (also bounded by actual free disk space with 1 GiB reserved),
+SHA-256 checksums before extraction. Limits are 8 GiB compressed and 24 GiB expanded (also bounded by actual free disk space with 1 GiB reserved),
 with free-disk checks; GitHub artifact quotas and 1-day retention still apply. Splitting
 does not reduce total storage or guarantee an upload. Already deleted/expired checkpoints
 from earlier workflow revisions cannot be recovered by this code update.
@@ -268,4 +268,8 @@ Packing uses fast deflate level 1 and excludes per-store request caches only for
 stores whose saved workbook size and mtime still validate. Completed Excel/audit files,
 queue/template/pacing state and every unfinished store cache remain in the archive.
 This substantially avoids carrying completed-store raw page caches into each resume.
-The 2 GB compressed / 8 GB expanded safety limits and GitHub quotas still apply.
+The 8 GiB compressed / 24 GiB expanded safety limits, free-disk checks and GitHub quotas still apply.
+Saving no longer needs disk space for both a complete ZIP and a second full set of
+parts. SQLite free pages are reclaimed without changing retained source response
+bytes. A failed save preserves the preceding checkpoint; a published archive still
+requires successful artifact upload, and restore uses the updated cloud tooling.

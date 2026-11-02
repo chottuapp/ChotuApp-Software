@@ -25,7 +25,7 @@ def parse_stores(text):
 
 
 def checkpoint(data,destination,max_bytes=250*1024*1024):
-    data=Path(data);destination=Path(destination);temporary=destination.with_suffix('.pending.zip')
+    data=Path(data);destination=Path(destination)
     state={};completed=set()
     database=data/'saved_runs'/'run_state.sqlite3'
     if database.is_file():
@@ -55,21 +55,15 @@ def checkpoint(data,destination,max_bytes=250*1024*1024):
         relative=path.relative_to(data).parts
         if path.parent in compacted and path.name in ('pages.sqlite3','pages.sqlite3-wal','pages.sqlite3-shm'):return False
         return not (len(relative)>=4 and relative[0]=='saved_runs' and relative[1]==state.get('id') and relative[2] in completed)
-    try:
-        print('Checkpoint packaging: excluding request caches for '+str(len(completed))+' completed stores; Excel files and audits retained.',flush=True)
-        with zipfile.ZipFile(temporary,'w',zipfile.ZIP_DEFLATED,compresslevel=1) as archive:
-            for folder in (data/'saved_runs',data/'runtime'/'source_pacing',data/'ANAS_DATA_FETCH'):
-                for path in folder.rglob('*'):
-                    if path.is_file() and not path.is_symlink() and path.name!='active.lock' and needed(path):archive.write(path,path.relative_to(data).as_posix())
-            for name in ('template.xlsx','controls.json'):
-                if (data/name).is_file():archive.write(data/name,name)
-        if temporary.stat().st_size>max_bytes:
-            from checkpoint_parts import split_archive
-            parts=destination.with_suffix('.parts');split_archive(temporary,parts,part_bytes=max_bytes)
-            destination.unlink(missing_ok=True)
-            print('Large checkpoint saved in checksummed parts:',parts,flush=True)
-        else:temporary.replace(destination)
-    finally:temporary.unlink(missing_ok=True)
+    print('Checkpoint packaging: excluding request caches for '+str(len(completed))+' completed stores; Excel files and audits retained.',flush=True)
+    from checkpoint_parts import archive_writer
+    with archive_writer(destination,part_bytes=max_bytes) as archive:
+        for folder in (data/'saved_runs',data/'runtime'/'source_pacing',data/'ANAS_DATA_FETCH'):
+            for path in folder.rglob('*'):
+                if path.is_file() and not path.is_symlink() and path.name!='active.lock' and needed(path):archive.write(path,path.relative_to(data).as_posix())
+        for name in ('template.xlsx','controls.json'):
+            if (data/name).is_file():archive.write(data/name,name)
+    if not destination.exists():print('Large checkpoint streamed into checksummed parts:',destination.with_suffix('.parts'),flush=True)
 
 
 

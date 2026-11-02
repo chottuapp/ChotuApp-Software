@@ -172,6 +172,45 @@ def content_text(value):
  if text.lstrip('\ufeff ').startswith('.product-card-container {') and marker in text:text=text[text.index(marker):]
  return text
 
+def fixed_bundle_details(p,response):
+ """Read explicit fixed contents from Easy Product Bundles' public product config."""
+ from urllib.parse import urljoin
+ soup=BeautifulSoup(response.text,'html.parser');canonical=soup.select_one('link[rel=canonical][href]');heading=soup.select_one('h1.product_title,h1')
+ norm=lambda x:re.sub(r'\s+',' ',html.unescape(str(x))).strip()
+ if response.status_code!=200 or response.url.rstrip('/')!=p['permalink'].rstrip('/') or not canonical or urljoin(response.url,canonical['href']).rstrip('/')!=p['permalink'].rstrip('/') or not heading or norm(heading.get_text(' ',strip=True))!=norm(p['name']):raise ValueError('Bundle product-page identity unverified')
+ script=soup.select_one('#asnp-easy-product-bundles-shared-js-extra')
+ if script is None:raise ValueError('Fixed bundle contents unavailable')
+ match=re.search(r'\b(?:var\s+)?easyProductBundlesData\s*=\s*(\{.*\})\s*;?\s*$',script.get_text(),re.S)
+ if not match:raise ValueError('Unsupported public bundle configuration')
+ # Decode only JSON and the minifier's boolean literals; never execute JavaScript.
+ text=match[1];parts=[];index=0;quoted=False;escaped=False
+ while index<len(text):
+  char=text[index]
+  if quoted:
+   parts.append(char)
+   if escaped:escaped=False
+   elif char=='\\':escaped=True
+   elif char=='"':quoted=False
+  elif char=='"':quoted=True;parts.append(char)
+  elif text[index:index+2] in ('!0','!1'):parts.append('true' if text[index+1]=='0' else 'false');index+=1
+  else:parts.append(char)
+  index+=1
+ config=json.loads(''.join(parts));bundle=config.get('bundles',{});parent=bundle.get('product',{});regular,price,_=offer(p)
+ if config.get('currency_code')!='PKR' or parent.get('id')!=p['id'] or parent.get('is_fixed_price') is not True:raise ValueError('Exact fixed PKR bundle identity unverified')
+ payable=parent.get('sale_price');payable=parent.get('regular_price') if payable in (None,'') else payable
+ if Decimal(str(parent.get('regular_price')))!=regular or Decimal(str(payable))!=price:raise ValueError('Bundle page/API prices disagree')
+ entries=bundle.get('bundles',[])
+ if not isinstance(entries,list) or not 1<=len(entries)<=200:raise ValueError('Bundle contents missing or excessive')
+ components=[];lines=['Pack Contents']
+ for entry in entries:
+  child=entry.get('product',{});quantity=entry.get('quantity')
+  if any(entry.get(k) not in ('false',False) for k in ('optional','can_change_product','edit_quantity')) or entry.get('selected') not in ('true',True) or child.get('is_variable') not in ('false',False):raise ValueError('Selectable bundle contents require independent offer verification')
+  if isinstance(quantity,bool) or not str(quantity).isdigit() or not 1<=int(quantity)<=10000 or not isinstance(child.get('id'),int) or not child.get('name') or not str(child.get('link','')).startswith(p['permalink'].split('/product/')[0]+'/product/'):raise ValueError('Bundle component identity/quantity unverified')
+  component=dict(id=child['id'],name=content_text(child['name']),quantity=int(quantity),source_url=child['link'],description=content_text(child.get('description') or ''));components.append(component)
+  lines.append(str(quantity)+' × '+component['name'])
+  if component['description']:lines.append(component['description'])
+ return dict(description='\n\n'.join(lines),components=components,page_sha256=hashlib.sha256(getattr(response,'content',response.text.encode())).hexdigest())
+
 def export(g,base,name,template,log,*,provider=None):
  from locked_store_rules import owner_paused,has_source_photo
  if owner_paused(name,base):raise ValueError('OWNER PAUSED: '+name+'; explicit owner instruction required to enable.')
@@ -258,6 +297,9 @@ def export(g,base,name,template,log,*,provider=None):
    if not recovered:raise ValueError('Product photo/title missing on current source; exact identity review required: '+url)
    p=recovered;cover=p['images'][0]['src'];log('WOO MEDIA RECOVERED: canonical PDP and exact cart product identity verified: '+url)
 
+  if p.get('type')=='easy_product_bundle':
+   g['_chotu_wait']();page=g['S'].get(url,timeout=(15,60));details=fixed_bundle_details(p,page)
+   p=dict(p,description=(p.get('description') or '')+'\n'+details['description'])
   pid=g['uid']('CP',base+'|'+str(p['id']));dimensions=[]
   for _,attrs,_ in offers:
    for label in attrs:

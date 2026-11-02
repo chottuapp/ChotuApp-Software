@@ -1,5 +1,5 @@
 """Lossless migration of legacy raw response caches before checkpoint packaging."""
-import hashlib,sqlite3,zlib
+import hashlib,shutil,sqlite3,zlib
 from pathlib import Path
 
 def compact_responses(path):
@@ -24,7 +24,14 @@ def compact_responses(path):
    db.execute('UPDATE pages SET body=?,checksum=? WHERE url=?',(packed,hashlib.sha256(packed).hexdigest(),url))
    db.execute('INSERT OR REPLACE INTO page_format VALUES(?,?,?)',(url,'zlib-v1',len(original)));changed+=1
   db.commit()
-  if changed:
+  # Updated/deleted SQLite bodies leave obsolete bytes on free pages, even when
+  # every current response is already compressed. Do not archive those bytes.
+  free_pages=db.execute('PRAGMA freelist_count').fetchone()[0]
+  if changed or free_pages:
    db.execute('PRAGMA wal_checkpoint(TRUNCATE)')
-   db.execute('VACUUM')
+   page_size=db.execute('PRAGMA page_size').fetchone()[0]
+   live_bytes=(db.execute('PRAGMA page_count').fetchone()[0]-free_pages)*page_size
+   if shutil.disk_usage(path.parent).free>=live_bytes+256*1024**2:
+    db.execute('VACUUM')
+    db.execute('PRAGMA wal_checkpoint(TRUNCATE)')
  return changed

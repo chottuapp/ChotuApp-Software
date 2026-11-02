@@ -13,6 +13,15 @@ on:
       - tests/test_requested_stores.py
       - tests/test_magento_option_page.py
       - tests/test_auto_continue_entrypoint.py
+      - cloud/checkpoint_parts.py
+      - cloud/checkpoint_compaction.py
+      - cloud/cli.py
+      - cloud/catalogue_object_rules.py
+      - cloud/audit804_semantics.py
+      - cloud/hold804_repairs.py
+      - tests/test_checkpoint_streaming.py
+      - tests/test_fixed_bundle_contents.py
+      - tests/test_primary_electronics_objects.py
       - tests/test_khaadi_local_fetch.py
       - tests/test_laam_source.py
       - cloud/recover_reviewed_fetches.py
@@ -41,3 +50,7 @@ jobs:
         env:
           PYTHONPATH: tests:cloud:.
         run: python -m unittest test_reviewed_recovery test_khaadi_recovery test_sapphire_source test_sapphire_fit_dimensions test_khaadi_source test_khaadi_local_fetch test_khaadi_local_check test_laam_source test_auto_continue test_continuation_policy test_runner_identity -q
+      - name: Verify bundle facts, product purpose and lossless checkpoint streaming
+        env:
+          PYTHONPATH: tests:cloud:.
+        run: python -m unittest test_primary_electronics_objects test_fixed_bundle_contents test_checkpoint_streaming test_checkpoint_parts test_checkpoint_compaction test_checkpoint_finalization test_new_catalogue_objects test_source_numeric_comparisons test_reviewed_photo_gate -v
