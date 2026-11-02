@@ -2818,7 +2818,7 @@
     "Beechtree": "source:77a07f2561e8ac07d3a25f70ad7b1af449caf4d01728cb1871cfc2cdf71cec8b:Beechtree:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "ChenOne": "source:ec22e99eb285a678b78be088caa88eb01ca835d84ed2137e1c99d8d53e6d12a1:ChenOne:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "Hush Puppies": "source:fda270166456a8b969376313785386b0610d016715585f464ec575b6a6b7bc86:Hush Puppies:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
-    "Habitt": "source:c58e63576cfed4749d72bbdd67584ca7174c9e317757f372b4f1fba269a2d141:Habitt:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
+    "Habitt": "source:0405d78d4ab4d1205a4ad394daea352ff130e3ac72c24969d583775f3d6d90de:Habitt:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "Mala": "source:7a60aa0b0f3a2e779af1f5e48c5861ee7e3431f1cae7558c8f581b0f931a5c6e:Mala:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "Sana Safinaz": "source:5b9c543d2a55bf790dc876a436b32b8cc7856f9c697e9c83bd6b15abe15458c1:Sana Safinaz:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "Beyond East": "source:22b71b16f6d6cb3f2bf023324f0467adcf9e5de39e3be37897e12ab0740da766:Beyond East:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
@@ -5362,17 +5362,40 @@
       "store": "Habitt",
       "shop_code": "SE10051",
       "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 556,
-      "findings_count": 0,
-      "findings": [],
+      "status": "hold",
+      "products_checked": 535,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CPd2af77faf530",
+          "name": "Baroly Granite Tawa \u2013 35 cm",
+          "source_url": "https://habitt.com/products/premium-stainless-steel-non-stick-tawa-heavy-duty-cookware-with-dual-handles-28-cm-34-cm-sizes-induction-gas-compatible-flat-pan-copy",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "7e5fe587935d612c64c1632feb6637263a28419a7d5cd12d3fb92b314ed72af8",
-      "checked_utc": "2026-11-02T00:33:01.554788+00:00",
+      "workbook_sha256": "3ec25a50d7003e0c51adb1d5911cdf2790b4460a3d70ea6685046e7815f48526",
+      "checked_utc": "2026-11-02T02:24:43.570253+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-02T02:24:43.571291+00:00",
+        "updated_utc": "2026-11-02T02:24:43.571291+00:00",
+        "next_source_check_due_utc": "2026-11-02T02:39:43.571291+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category lacks clear product-purpose evidence; manual review required"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
@@ -5425,11 +5448,11 @@
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41039577725",
-      "source_artifact": 12970028104,
-      "source_sha256": "c58e63576cfed4749d72bbdd67584ca7174c9e317757f372b4f1fba269a2d141",
+      "source_run": "41341946735",
+      "source_artifact": 13098746680,
+      "source_sha256": "0405d78d4ab4d1205a4ad394daea352ff130e3ac72c24969d583775f3d6d90de",
       "refresh_generation": "refresh20261030-31dd8bb1",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/habitt/c58e63576cfed474/manifest.json"
+      "held_input": "inputs/fresh804-20261026-5d42fe35/habitt/0405d78d4ab4d120/manifest.json"
     },
     "Mala": {
       "name": "804 Audit",
@@ -7785,8 +7808,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/a3f438ba2280ebb5/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/15341c6bae73dddb/manifest.json"
   },
-  "audit804_last_store": "Hush Puppies",
-  "audit804_progress_utc": "2026-11-02T02:24:27.819023+00:00",
+  "audit804_last_store": "Habitt",
+  "audit804_progress_utc": "2026-11-02T02:24:45.661654+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
