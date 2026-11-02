@@ -2,6 +2,14 @@ name: Chotu Live Notifications App and Admin Update
 on:
   workflow_dispatch:
     inputs:
+      customer_only:
+        description: Update customer and backend without rebuilding unchanged admin
+        type: boolean
+        default: false
+      backend_base_sha:
+        description: Source base for preserving existing live edits
+        type: string
+        default: '34cd993e034af81e14f4524955cafb40d2daacf4'
       source_sha:
         description: Reviewed tested feature source
         required: true
@@ -18,6 +26,7 @@ jobs:
     environment: chotu-cloud-release
     env:
       SOURCE_SHA: ${{ inputs.source_sha }}
+      BACKEND_BASE_SHA: ${{ inputs.backend_base_sha }}
     steps:
       - name: Require reviewed source and restricted build credential
         env:
@@ -25,7 +34,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          [[ "$SOURCE_SHA" =~ ^[a-f0-9]{40}$ ]] || exit 1
+          [[ "$SOURCE_SHA" =~ ^[a-f0-9]{40}$ && "$BACKEND_BASE_SHA" =~ ^[a-f0-9]{40}$ ]] || exit 1
           test -n "$SOURCE_KEY" || { echo '::error::Run the one-time Chotu cloud setup. No PC runner or paid fallback is used.'; exit 1; }
           umask 077
           key="$RUNNER_TEMP/chotu-source-key"
@@ -38,7 +47,7 @@ jobs:
             cd "$RUNNER_TEMP/chotu-private-source"
             git remote add origin git@github.com:chottuapp/ChotuProject-development.git
             git fetch -q --depth=1 origin "$SOURCE_SHA"
-            git fetch -q --depth=1 origin 34cd993e034af81e14f4524955cafb40d2daacf4
+            git fetch -q --depth=1 origin "$BACKEND_BASE_SHA"
             git checkout -q --detach "$SOURCE_SHA"
             git checkout -q --detach "$SOURCE_SHA"
             test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
@@ -89,6 +98,7 @@ jobs:
           cd "$RUNNER_TEMP/chotu-private-source"
           python3 chotu-admin/scripts/prepare-web-defines.py prod "$RUNNER_TEMP/production-web.json"
           for app in chotu_app chotu-admin; do
+            if [[ "${{ inputs.customer_only }}" == true && "$app" == chotu-admin ]]; then continue; fi
             (
               cd "$app"
               flutter pub get --enforce-lockfile
@@ -144,9 +154,11 @@ jobs:
           curl -fsS https://app.developerschotuapp.online/user/build-info.json > "$RUNNER_TEMP/live-user-info.json"
           python3 -c 'import json,os; d=json.load(open(os.environ["RUNNER_TEMP"]+"/live-user-info.json"));assert d["commit"]==os.environ["SOURCE_SHA"] and not d["review_demo"]'
       - uses: actions/setup-node@v4
+        if: ${{ !inputs.customer_only }}
         with:
           node-version: '22'
       - name: Publish the existing production admin panel
+        if: ${{ !inputs.customer_only }}
         env:
           FIREBASE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_CHOTU_ADMIN_APP }}
         shell: bash
@@ -159,7 +171,7 @@ jobs:
           printf '%s' "$FIREBASE_ACCOUNT" > "$credentials"
           export GOOGLE_APPLICATION_CREDENTIALS="$credentials"
           npx --yes firebase-tools@14.12.0 deploy --only hosting:production --project chotu-admin-app --non-interactive > "$RUNNER_TEMP/firebase-live.log" 2>&1 || { tail -12 "$RUNNER_TEMP/firebase-live.log"; exit 1; }
-          curl -fsS https://chotu-admin-app.web.app/build-info.json > "$RUNNER_TEMP/live-admin-info.json"
+          curl -fsS "https://chotu-admin-app.web.app/build-info.json?release=$SOURCE_SHA" > "$RUNNER_TEMP/live-admin-info.json"
           python3 -c 'import json,os;d=json.load(open(os.environ["RUNNER_TEMP"]+"/live-admin-info.json"));assert d["commit"]==os.environ["SOURCE_SHA"] and not d["review_demo"]'
           echo 'Live app: https://app.developerschotuapp.online/user/' >> "$GITHUB_STEP_SUMMARY"
           echo 'Live admin: https://chotu-admin-app.web.app/' >> "$GITHUB_STEP_SUMMARY"
