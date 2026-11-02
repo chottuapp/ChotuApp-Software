@@ -2838,7 +2838,7 @@
     "Saya": "source:b74bae1da0504575a3c27b6a9a86d0aca0faf973249b0c18faa8193d13951ae0:Saya:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Rios": "source:ff61b1186b65bead7928686cc722d29cbf473ae9de047191fdffdb7439cc893e:Rios:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Edenrobe": "source:e78bb1c6345c82b257db76a7de506d3a15a7207e5175879d04085d63ac4707b2:Edenrobe:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "Limelight": "source:541ef2303600618b402366aca709a26158dc53416734f62d1fd61f3763f2e093:Limelight:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
+    "Limelight": "source:204cb045e4c5d1ebc453d8b1f862b89e3fa6aeeb3abba11b1842464eda149791:Limelight:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Fresh Basket": "source:d91844a209cf2dc94ec71af4bda5b28b81c3ab74835f6eb837a2db26b0e369e6:Fresh Basket:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "The Glossy Quill": "source:a0332999b7eb31102e408f4c8d4777d37a8d29bb4e1bb44a7c23215c135dfe84:The Glossy Quill:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Bin Fahad": "source:0d34bc37a13f8957d2cb47333cf3aed23d794c8e2cc4d24bca8b8e6edde39aa0:Bin Fahad:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
@@ -4817,82 +4817,15 @@
     },
     "Limelight": {
       "name": "804 Audit",
-      "version": "804-audit-v2",
+      "status": "hold",
       "store": "Limelight",
-      "shop_code": "SE10055",
-      "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 6227,
-      "findings_count": 0,
-      "findings": [],
-      "details_truncated": false,
-      "workbook_sha256": "9656363319b9ab448ac26ce28ed28d133ce63b80675fb8487532358fdf859726",
-      "checked_utc": "2026-11-02T05:44:42.648933+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
-      },
-      "owner_authorized_exclusions": [],
-      "image_metadata_repairs": 0,
-      "description_repairs_count": 236,
-      "description_repairs_examples": [
-        {
-          "product_id": "CP8fa9ce450045",
-          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP80929a0e1240",
-          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP6e8e936e84c5",
-          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPf26fa4cf6d1d",
-          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP13471edd0879",
-          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP8362da1735b2",
-          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP2e7fa46bd7c0",
-          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP5f31b93e4a99",
-          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP48674524115b",
-          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP6cb6a4b644c3",
-          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
-          "repair_kind": "description"
-        }
-      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41127359995",
-      "source_artifact": 13018556593,
-      "source_sha256": "541ef2303600618b402366aca709a26158dc53416734f62d1fd61f3763f2e093",
-      "refresh_generation": "refresh20261030-31dd8bb1"
+      "source_run": "41341951009",
+      "source_artifact": 13103652114,
+      "error": "Drive copy failed; upload not marked verified",
+      "source_sha256": "204cb045e4c5d1ebc453d8b1f862b89e3fa6aeeb3abba11b1842464eda149791",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/limelight/204cb045e4c5d1eb/manifest.json",
+      "checked_utc": "2026-11-02T08:15:41.339348+00:00"
     },
     "Fresh Basket": {
       "name": "804 Audit",
@@ -7436,7 +7369,7 @@
     "SE10049": "inputs/fresh804-20261026-5d42fe35/rollback-se10049/3ab1efb0940f132b/manifest.json",
     "SE10053": "inputs/fresh804-20261026-5d42fe35/rollback-se10053/31bc828ac61a4eff/manifest.json",
     "SE10044": "inputs/fresh804-20261026-5d42fe35/rollback-se10044/0f145732c1267273/manifest.json",
-    "SE10055": "inputs/fresh804-20261026-5d42fe35/rollback-se10055/4446f4d25eab3cee/manifest.json",
+    "SE10055": "inputs/fresh804-20261026-5d42fe35/rollback-se10055/9656363319b9ab44/manifest.json",
     "SE10056": "inputs/fresh804-20261026-5d42fe35/rollback-se10056/a693842e64b8ed9d/manifest.json",
     "SE10060": "inputs/fresh804-20261026-5d42fe35/rollback-se10060/5910347dee78a9a0/manifest.json",
     "SE10061": "inputs/fresh804-20261026-5d42fe35/rollback-se10061/48c565c82c9ee90f/manifest.json",
@@ -7445,8 +7378,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Mala",
-  "audit804_progress_utc": "2026-11-02T08:14:42.730539+00:00",
+  "audit804_last_store": "Limelight",
+  "audit804_progress_utc": "2026-11-02T08:15:41.339470+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
