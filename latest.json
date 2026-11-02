@@ -1,43 +1,46 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-02T05:07:21.713822+00:00",
-  "run_id": "41367666875",
+  "generated_utc": "2026-11-02T05:34:10.848757+00:00",
+  "run_id": "41367499945",
   "attempt": "1",
   "source_commit": "1fdb54dfebd94aa6a72fa904d49c2c5d6f750491",
-  "status": "complete",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 16313.7,
+  "elapsed_seconds": 18000.8,
   "stores": [
     {
-      "name": "Rivaj UK",
+      "name": "Bonanza Satrangi",
       "status": "done",
       "review_required": true,
-      "issue_codes": [],
-      "software_revision": "507bf46c9cf642bc",
-      "products": 310,
-      "variants": 958,
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "issue_codes": [
+        "HTTP_503",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "94c2b979bf2d96ae",
+      "products": 1253,
+      "variants": 3777,
+      "http_statuses": {
+        "200": 4339
+      },
+      "network_seconds": 10840.1,
+      "max_response_seconds": 4.1,
+      "cache_events": 18716
     },
     {
-      "name": "Junaid Jamshed",
-      "status": "done",
-      "review_required": true,
+      "name": "Zellbury",
+      "status": "pending",
+      "review_required": false,
       "issue_codes": [
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "94c2b979bf2d96ae",
-      "products": 5947,
-      "variants": 25532,
       "http_statuses": {
-        "200": 9769
+        "200": 8818
       },
-      "network_seconds": 18101.4,
-      "max_response_seconds": 20.6,
-      "cache_events": 48034
+      "network_seconds": 25944.7,
+      "max_response_seconds": 37.5,
+      "cache_events": 19725
     }
   ]
 }
