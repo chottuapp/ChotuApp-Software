@@ -2807,7 +2807,7 @@
     "Saeed Ghani": "source:ff3625c2ce97bc6397f3e0a3306766dfd46bd072b855ba73115fdafba8df840b:Saeed Ghani:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Tawakkal Fabrics": "source:2a7781387cf2f54d6a713b9c65c43af940eeeb2f2c458d92b93c2c98173abc46:Tawakkal Fabrics:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Elite Cosmetics": "source:b01e74a941d8b8b02032f158abd93807e27b771bb27bf3bd9558cdef90ab44b1:Elite Cosmetics:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "Hemani Herbals": "source:505cabf78499b1972b1979901c9495e45cc4e78f56d52aee9835ece1dd4995ee:Hemani Herbals:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
+    "Hemani Herbals": "source:90c13bcfd2766048122c667921fd7acfe72edb6fcade7283003139af9a8fa874:Hemani Herbals:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Astore Bags": "source:ace9d9ac886496a30d93952fa845ec5b2cefb536f87bef6ba783126fb1fb9aca:Astore Bags:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Rawayat": "source:523eb8761183e7baedffe0b8036cbd1357f9fd57560f2f06ba38fb5e210f8395:Rawayat:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Outfitters": "source:edc68e65f789fcef9639301acb135e88d55899a0da13c0febfd006def102b04e:Outfitters:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
@@ -3624,27 +3624,51 @@
       "store": "Hemani Herbals",
       "shop_code": "SE10021",
       "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 1072,
-      "findings_count": 0,
-      "findings": [],
+      "status": "hold",
+      "products_checked": 1077,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CP4a82d906bf91",
+          "name": "Anti Dandruff Hair Mist | Aijaz Aslam 100ml",
+          "source_url": "https://pk.hemaniherbals.com/products/anti-dandruff-hair-mist-aijaz-aslam",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "4200659471c8c419cf4a908d74fff69294e79391ae58a2eb6f061e4ae4fac9bf",
-      "checked_utc": "2026-11-02T03:53:05.245864+00:00",
+      "workbook_sha256": "8bc14d13759c57b7b84c8a3f9a710b3c63a87bbddfc63e79287d32d53980db1c",
+      "checked_utc": "2026-11-02T06:46:01.497302+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-02T06:46:01.499107+00:00",
+        "updated_utc": "2026-11-02T06:46:01.499107+00:00",
+        "next_source_check_due_utc": "2026-11-02T07:01:01.499107+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category lacks clear product-purpose evidence; manual review required"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
       "description_repairs_count": 0,
       "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41039483114",
-      "source_artifact": 12975284414,
-      "source_sha256": "505cabf78499b1972b1979901c9495e45cc4e78f56d52aee9835ece1dd4995ee",
-      "refresh_generation": "refresh20261030-31dd8bb1"
+      "source_run": "41341915772",
+      "source_artifact": 13101049915,
+      "source_sha256": "90c13bcfd2766048122c667921fd7acfe72edb6fcade7283003139af9a8fa874",
+      "refresh_generation": "refresh20261030-31dd8bb1",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/hemani-herbals/90c13bcfd2766048/manifest.json"
     },
     "Astore Bags": {
       "name": "804 Audit",
@@ -8147,8 +8171,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Saeed Ghani",
-  "audit804_progress_utc": "2026-11-02T06:45:50.050235+00:00",
+  "audit804_last_store": "Hemani Herbals",
+  "audit804_progress_utc": "2026-11-02T06:46:03.016971+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
