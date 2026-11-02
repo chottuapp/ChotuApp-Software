@@ -2824,7 +2824,7 @@
     "Pyari Walls": "source:1e2481e0121a52bbd30df7b9ed4a443a4b77fdbf0f5d5aceb68239ab117e7c23:Pyari Walls:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Prime Ticks": "source:d7683abe625b3faed383fc9d2cc7e7afe157736106a96fc681a99139b07e3759:Prime Ticks:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Design by DAS": "source:1f65a32dc04e8e84b14ad6fc320099e50e6a87abdb07a7af60b52f23e2a23d9b:Design by DAS:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "Xcessories Hub": "source:0e548be2e8594ade8805158cb6c96170b6d7a916722695f866d6642dab9802be:Xcessories Hub:b6a8202fd4782ad1648c517f01b02409c7d9f73ed69acedeb9a3c7b0344668de",
+    "Xcessories Hub": "source:46c9434590a319d08ed4963615f69f5e54f09b6ac9c527c7ad426b804eba403b:Xcessories Hub:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Beechtree": "source:77a07f2561e8ac07d3a25f70ad7b1af449caf4d01728cb1871cfc2cdf71cec8b:Beechtree:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "ChenOne": "source:ec22e99eb285a678b78be088caa88eb01ca835d84ed2137e1c99d8d53e6d12a1:ChenOne:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Hush Puppies": "source:fda270166456a8b969376313785386b0610d016715585f464ec575b6a6b7bc86:Hush Puppies:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
@@ -4043,17 +4043,56 @@
       "store": "Xcessories Hub",
       "shop_code": "SE10038",
       "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 3042,
-      "findings_count": 0,
-      "findings": [],
+      "status": "hold",
+      "products_checked": 3057,
+      "findings_count": 3,
+      "findings": [
+        {
+          "product_id": "CP5173fab93e36",
+          "name": "Baseus IGBT Car Inverter 300W 110V",
+          "source_url": "https://xcessorieshub.com/product/baseus-igbt-car-inverter-300w-110v/",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP6216f308469b",
+          "name": "UGREEN LP893 Metal Desktop Folding Stand \u2013 45859",
+          "source_url": "https://xcessorieshub.com/product/ugreen-lp893-metal-desktop-folding-stand/",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP09d16628b971",
+          "name": "OnePlus Bullets Z3 Wireless Neckband",
+          "source_url": "https://xcessorieshub.com/product/oneplus-bullets-z3-wireless-neckband/",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "a18c9a565fe2c0afd3cc08177fa6096c844347f02b9945c0b2f39074264f8db6",
-      "checked_utc": "2026-10-30T09:21:29.122582+00:00",
+      "workbook_sha256": "437ac7adb40d88f23a51aa626a3cc6ba15bd4f1f15610f4d33b5bc66be73cfab",
+      "checked_utc": "2026-11-02T08:20:54.259171+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-02T08:20:54.263823+00:00",
+        "updated_utc": "2026-11-02T08:20:54.263823+00:00",
+        "next_source_check_due_utc": "2026-11-02T08:35:54.263823+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
@@ -4101,11 +4140,11 @@
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "40871470513",
-      "source_artifact": 12897951667,
-      "source_sha256": "0e548be2e8594ade8805158cb6c96170b6d7a916722695f866d6642dab9802be",
-      "refresh_generation": "refresh20261029-b80f4ca4",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/xcessories-hub/0e548be2e8594ade/manifest.json"
+      "source_run": "41378447009",
+      "source_artifact": 13112678966,
+      "source_sha256": "46c9434590a319d08ed4963615f69f5e54f09b6ac9c527c7ad426b804eba403b",
+      "refresh_generation": "refresh20261030-31dd8bb1",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/xcessories-hub/46c9434590a319d0/manifest.json"
     },
     "Beechtree": {
       "name": "804 Audit",
@@ -6024,7 +6063,7 @@
     "41358389866": "41358389866:13104915510:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41358394630": "41358394630:13104431843:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41359800275": "41359800275:13104668752:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "41367666875": "41367666875:13108085582:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
+    "41367666875": "41367666875:13117003565:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41341913511": "41341913511:13111873712:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41358392262": "41358392262:13115081862:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41367424299": "41367424299:13123807579:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
@@ -6114,8 +6153,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Junaid Jamshed",
-  "audit804_progress_utc": "2026-11-02T08:20:21.034531+00:00",
+  "audit804_last_store": "Xcessories Hub",
+  "audit804_progress_utc": "2026-11-02T08:20:57.135097+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
