@@ -3375,7 +3375,6 @@
     "Rawayat": "source:523eb8761183e7baedffe0b8036cbd1357f9fd57560f2f06ba38fb5e210f8395:Rawayat:a1895578c3ef877ce79516d6f1a48093cdeebbb770f117903e5bb903a962759e",
     "Junaid Jamshed": "source:36e991d3c690633fb4c4a45076c83e08a457378bf1c766b4a6c902bf21d23152:Junaid Jamshed:a1895578c3ef877ce79516d6f1a48093cdeebbb770f117903e5bb903a962759e",
     "Stylo": "source:7bd32974dce2a79fae2bc0ce4acd58cb38bcf7db6c6ca76ec14bb4cf004c9f2c:Stylo:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "ChenOne": "source:ec22e99eb285a678b78be088caa88eb01ca835d84ed2137e1c99d8d53e6d12a1:ChenOne:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Hush Puppies": "source:fda270166456a8b969376313785386b0610d016715585f464ec575b6a6b7bc86:Hush Puppies:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Habitt": "source:0405d78d4ab4d1205a4ad394daea352ff130e3ac72c24969d583775f3d6d90de:Habitt:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Mala": "source:0dcb5eb7d5a61fb591b7e5269685852a3f039fa7379d256d790daf1df195486e:Mala:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
@@ -5773,15 +5772,147 @@
     },
     "ChenOne": {
       "name": "804 Audit",
-      "status": "hold",
+      "version": "804-audit-v2",
       "store": "ChenOne",
+      "shop_code": "SE10047",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 288,
+      "findings_count": 0,
+      "findings": [],
+      "details_truncated": false,
+      "workbook_sha256": "3011405cfca2a396753ed87e0c11548be1843640750d415cd8697b858ffc93aa",
+      "checked_utc": "2026-11-02T13:44:48.038855+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
+      },
+      "owner_authorized_exclusions": [
+        {
+          "product_id": "CP10a759b18d13",
+          "source_url": "https://chenone.com/products/package-3-garnet",
+          "reason": "Owner-locked ChenOne rule: furniture excluded; all other goods retained"
+        },
+        {
+          "product_id": "CP3a949cad109b",
+          "source_url": "https://chenone.com/products/package-2-devine-bed-with-mattress",
+          "reason": "Owner-locked ChenOne rule: furniture excluded; all other goods retained"
+        },
+        {
+          "product_id": "CP3ce1c6042217",
+          "source_url": "https://chenone.com/products/package-3-jupiter",
+          "reason": "Owner-locked ChenOne rule: furniture excluded; all other goods retained"
+        },
+        {
+          "product_id": "CP514c5a07216a",
+          "source_url": "https://chenone.com/products/copy-package-3-porter",
+          "reason": "Owner-locked ChenOne rule: furniture excluded; all other goods retained"
+        },
+        {
+          "product_id": "CP86258a233a54",
+          "source_url": "https://chenone.com/products/package-2-signature-bed-with-mattress",
+          "reason": "Owner-locked ChenOne rule: furniture excluded; all other goods retained"
+        },
+        {
+          "product_id": "CP9426831b4797",
+          "source_url": "https://chenone.com/products/package-4-special-package",
+          "reason": "Owner-locked ChenOne rule: furniture excluded; all other goods retained"
+        },
+        {
+          "product_id": "CP99b90e841532",
+          "source_url": "https://chenone.com/products/package-3-koko",
+          "reason": "Owner-locked ChenOne rule: furniture excluded; all other goods retained"
+        },
+        {
+          "product_id": "CP9def3c359a3f",
+          "source_url": "https://chenone.com/products/package-3-venus",
+          "reason": "Owner-locked ChenOne rule: furniture excluded; all other goods retained"
+        },
+        {
+          "product_id": "CPa0c9ae1eee93",
+          "source_url": "https://chenone.com/products/package-3-galaxy",
+          "reason": "Owner-locked ChenOne rule: furniture excluded; all other goods retained"
+        },
+        {
+          "product_id": "CPaa1526c7ae32",
+          "source_url": "https://chenone.com/products/package-3-suzanne",
+          "reason": "Owner-locked ChenOne rule: furniture excluded; all other goods retained"
+        },
+        {
+          "product_id": "CPde89c2985195",
+          "source_url": "https://chenone.com/products/package-3-vista",
+          "reason": "Owner-locked ChenOne rule: furniture excluded; all other goods retained"
+        },
+        {
+          "product_id": "CPf9ee98579440",
+          "source_url": "https://chenone.com/products/package-1",
+          "reason": "Owner-locked ChenOne rule: furniture excluded; all other goods retained"
+        }
+      ],
+      "image_metadata_repairs": 0,
+      "description_repairs_count": 56,
+      "description_repairs_examples": [
+        {
+          "product_id": "CPf61bc64e7698",
+          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPd601e7d61847",
+          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP8202ead94f5c",
+          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP9dce24a41704",
+          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPaaadd20ef924",
+          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP59250a7490d9",
+          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPf5052d671086",
+          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPad3e1bd7249a",
+          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP62e51125fef7",
+          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPdc990f1a2d65",
+          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
+          "repair_kind": "description"
+        }
+      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "41341942092",
       "source_artifact": 13099529574,
-      "error": "Drive copy failed; upload not marked verified",
       "source_sha256": "ec22e99eb285a678b78be088caa88eb01ca835d84ed2137e1c99d8d53e6d12a1",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/chenone/ec22e99eb285a678/manifest.json",
-      "checked_utc": "2026-11-02T07:17:57.243536+00:00"
+      "refresh_generation": "refresh20261030-31dd8bb1",
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Drive copy failed; category=storage_quota; upload not marked verified",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/chenone/ec22e99eb285a678/manifest.json"
     },
     "Hush Puppies": {
       "name": "804 Audit",
@@ -7969,8 +8100,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Beechtree",
-  "audit804_progress_utc": "2026-11-02T13:43:58.291054+00:00",
+  "audit804_last_store": "ChenOne",
+  "audit804_progress_utc": "2026-11-02T13:44:48.038912+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
