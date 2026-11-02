@@ -2788,7 +2788,7 @@
     "Miss Rose": "source:05d7791ff807a60e6e551a91923d7842577c95c64f876c52df4ba843c039d2ff:Miss Rose:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "The Hanger Pakistan": "source:1825a3518f7d507d0de3fff9961f8764e9c8b9bbe743e3ef32a8a8ad431b5509:The Hanger Pakistan:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Shop Modest": "source:5fc95662c08cb0100bb1879527135efd4817b80124e81859ea3cb640d53f9076:Shop Modest:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "Seran": "source:2760522ade332cc0a14d04c31a8ded27fa4c31910662386f91352329b3079ae1:Seran:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
+    "Seran": "source:38d2b84be10927d12e2608ffa96b04c4b4d6afa91601f72cf3dbf0c7c9d8cd71:Seran:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Islamabad Tea": "source:0ba1cec0a463ded2a5cf2fc519b8724ae3c5a8916e7e2c4fcebb2b7e5575c858:Islamabad Tea:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Adam Cheese": "source:a7bd3ba0e97b1e4c823f29d36b388ba8c5127117afd5d8aacd00428e39b729dc:Adam Cheese:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Farda Foods": "source:a50a5a77cf1eb41e6bf4142872b19199f1bc70fe0c7e598256b8079e5b7e693c:Farda Foods:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
@@ -2902,42 +2902,15 @@
     },
     "Seran": {
       "name": "804 Audit",
-      "version": "804-audit-v2",
+      "status": "hold",
       "store": "Seran",
-      "shop_code": "SE10005",
-      "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 264,
-      "findings_count": 0,
-      "findings": [],
-      "details_truncated": false,
-      "workbook_sha256": "9647780778b3980798b705201cbedacdd1663db9f64b3851e6b2865f27b6e6c6",
-      "checked_utc": "2026-11-02T03:40:56.751826+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
-      },
-      "owner_authorized_exclusions": [],
-      "image_metadata_repairs": 0,
-      "description_repairs_count": 2,
-      "description_repairs_examples": [
-        {
-          "product_id": "CPdce6f6b7be4d",
-          "issue": "Copied narrative naming a different catalog product removed; selected listing identity and complete PRODUCT DETAIL specifications retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP2a760af767e6",
-          "issue": "Copied narrative naming a different catalog product removed; selected listing identity and complete PRODUCT DETAIL specifications retained.",
-          "repair_kind": "description"
-        }
-      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41039458985",
-      "source_artifact": 12970420789,
-      "source_sha256": "2760522ade332cc0a14d04c31a8ded27fa4c31910662386f91352329b3079ae1",
-      "refresh_generation": "refresh20261030-31dd8bb1"
+      "source_run": "41341906822",
+      "source_artifact": 13097452026,
+      "error": "Drive copy failed; upload not marked verified",
+      "source_sha256": "38d2b84be10927d12e2608ffa96b04c4b4d6afa91601f72cf3dbf0c7c9d8cd71",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/seran/38d2b84be10927d1/manifest.json",
+      "checked_utc": "2026-11-02T06:29:57.086481+00:00"
     },
     "Islamabad Tea": {
       "name": "804 Audit",
@@ -8208,7 +8181,7 @@
     "SE10014": "inputs/fresh804-20261026-5d42fe35/rollback-se10014/f3c43a9c0d5223a6/manifest.json",
     "SE10007": "inputs/fresh804-20261026-5d42fe35/rollback-se10007/edad50805ea9dae9/manifest.json",
     "SE10006": "inputs/fresh804-20261026-5d42fe35/rollback-se10006/e95e1a0fbf99954c/manifest.json",
-    "SE10005": "inputs/fresh804-20261026-5d42fe35/rollback-se10005/072d289841453b96/manifest.json",
+    "SE10005": "inputs/fresh804-20261026-5d42fe35/rollback-se10005/9647780778b39807/manifest.json",
     "SE10002": "inputs/fresh804-20261026-5d42fe35/rollback-se10002/a0dafeeb05171b72/manifest.json",
     "SE10008": "inputs/fresh804-20261026-5d42fe35/rollback-se10008/3fc52d611d70319c/manifest.json",
     "SE10009": "inputs/fresh804-20261026-5d42fe35/rollback-se10009/209ae58d2254a6e1/manifest.json",
@@ -8283,8 +8256,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Islamabad Tea",
-  "audit804_progress_utc": "2026-11-02T06:28:53.904724+00:00",
+  "audit804_last_store": "Seran",
+  "audit804_progress_utc": "2026-11-02T06:29:57.086523+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
