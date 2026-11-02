@@ -6,6 +6,10 @@ on:
         description: Reviewed account setup tool source
         required: true
         type: string
+      fresh_actions:
+        description: Create the fresh inline-notification batch
+        type: boolean
+        default: false
       account_email:
         description: Owner-authorized generated customer account
         required: true
@@ -51,6 +55,7 @@ jobs:
       - name: Create actual account-scoped workflows and replace text-only examples
         env:
           ACCOUNT_EMAIL: ${{ inputs.account_email }}
+          FLOW_BATCH: ${{ inputs.fresh_actions && 'owner-account-notification-actions-v2' || 'owner-account-workflows-20261102-v1' }}
           SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
         shell: bash
         run: |
@@ -64,4 +69,4 @@ jobs:
           remote=ec2-user@46.137.199.32
           tool="/var/tmp/chotu-owner-flows-$GITHUB_RUN_ID.php"
           scp "${opts[@]}" "$RUNNER_TEMP/chotu-private-source/tools/live/create-owner-account-workflows.php" "$remote:$tool"
-          ssh "${opts[@]}" "$remote" "CHOTU_ACCOUNT_EMAIL='$ACCOUNT_EMAIL' php '$tool'"
+          ssh "${opts[@]}" "$remote" "CHOTU_ACCOUNT_EMAIL='$ACCOUNT_EMAIL' CHOTU_FLOW_BATCH='$FLOW_BATCH' php '$tool'"
