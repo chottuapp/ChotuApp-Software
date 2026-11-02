@@ -3373,7 +3373,6 @@
     "Bata": "source:1a3aea0e7b3fb835b9d34aa9c0fd21d42ba27274a43c39ce830d30352f524892:Bata:a1895578c3ef877ce79516d6f1a48093cdeebbb770f117903e5bb903a962759e",
     "Hemani Herbals": "source:90c13bcfd2766048122c667921fd7acfe72edb6fcade7283003139af9a8fa874:Hemani Herbals:a1895578c3ef877ce79516d6f1a48093cdeebbb770f117903e5bb903a962759e",
     "Rawayat": "source:523eb8761183e7baedffe0b8036cbd1357f9fd57560f2f06ba38fb5e210f8395:Rawayat:a1895578c3ef877ce79516d6f1a48093cdeebbb770f117903e5bb903a962759e",
-    "Bonanza Satrangi": "source:607f3980708056219bd14f15a4a480352805365c6ee4f32ceb1222bc474b4cd9:Bonanza Satrangi:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
     "Junaid Jamshed": "source:36e991d3c690633fb4c4a45076c83e08a457378bf1c766b4a6c902bf21d23152:Junaid Jamshed:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
     "Zellbury": "source:e4412ce7aefcd5bc1efec574cd06f42a8c208479d8a7abdc8234d18a56e11061:Zellbury:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
     "Gul Ahmed": "source:f8b3f09d27bc161ac6f6222ef35feb81de31f69fb498cda26c9362e3e392036d:Gul Ahmed:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
@@ -4986,15 +4985,46 @@
     },
     "Bonanza Satrangi": {
       "name": "804 Audit",
-      "status": "hold",
+      "version": "804-audit-v2",
       "store": "Bonanza Satrangi",
+      "shop_code": "SE10027",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 1253,
+      "findings_count": 0,
+      "findings": [],
+      "details_truncated": false,
+      "workbook_sha256": "442150867a43771737ebaf1eeb3c16778fc80ae55af39ff60090995f83ecbfeb",
+      "checked_utc": "2026-11-02T13:31:47.357291+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "description_repairs_count": 2,
+      "description_repairs_examples": [
+        {
+          "product_id": "CP04d02654c12b",
+          "issue": "Restored exact matching primary public product description; listing identity retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPa2d46de07c9f",
+          "issue": "Restored exact matching primary public product description; listing identity retained.",
+          "repair_kind": "description"
+        }
+      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "41367499945",
       "source_artifact": 13118911381,
-      "error": "Drive copy failed; upload not marked verified",
       "source_sha256": "607f3980708056219bd14f15a4a480352805365c6ee4f32ceb1222bc474b4cd9",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/bonanza-satrangi/607f398070805621/manifest.json",
-      "checked_utc": "2026-11-02T12:48:45.553022+00:00"
+      "refresh_generation": "refresh20261030-31dd8bb1",
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Drive copy failed; category=storage_quota; upload not marked verified",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/bonanza-satrangi/607f398070805621/manifest.json"
     },
     "Junaid Jamshed": {
       "name": "804 Audit",
@@ -7453,8 +7483,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Outfitters",
-  "audit804_progress_utc": "2026-11-02T13:29:48.143305+00:00",
+  "audit804_last_store": "Bonanza Satrangi",
+  "audit804_progress_utc": "2026-11-02T13:31:47.357329+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
