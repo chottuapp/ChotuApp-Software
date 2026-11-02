@@ -2834,7 +2834,7 @@
     "Beyond East": "source:22b71b16f6d6cb3f2bf023324f0467adcf9e5de39e3be37897e12ab0740da766:Beyond East:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Alkaram Studio": "source:b755c3ff445fc449e1c39683f7f1c8ca158ce90ccafeaf177a5f4c8c089c3884:Alkaram Studio:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Generation": "source:87cd769161b455ab972ad3bf7df54cc8c885db59d7ae4c495db0485a76a16f54:Generation:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "Breakout": "source:40a8f56f3b61e15d73b80bd3992de63c1fcd0338d41d56096ff6418ca3f582f7:Breakout:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
+    "Breakout": "source:76aa934fcdda85841d4b7b1e9f7479f5236e04c897e81658b599146aa9430b99:Breakout:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Saya": "source:8c08df2235789d3514539c344a7973b983a3cf994aabb4ae34982078177c20b7:Saya:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Rios": "source:c40bbad72c8c85669ad90ed103d80ae5a7a342b0b926e23614246eadc500a751:Rios:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Edenrobe": "source:e78bb1c6345c82b257db76a7de506d3a15a7207e5175879d04085d63ac4707b2:Edenrobe:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
@@ -4651,82 +4651,15 @@
     },
     "Breakout": {
       "name": "804 Audit",
-      "version": "804-audit-v2",
+      "status": "hold",
       "store": "Breakout",
-      "shop_code": null,
-      "identity_policy": "owner_authorized_blank_code_exact_store_filename",
-      "status": "pass",
-      "products_checked": 2068,
-      "findings_count": 0,
-      "findings": [],
-      "details_truncated": false,
-      "workbook_sha256": "831c73ec5ed0f6d2544b4195eac071ae97ce5ce6ed6d1aa0dd67549dfcb9b572",
-      "checked_utc": "2026-11-02T05:16:13.996113+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
-      },
-      "owner_authorized_exclusions": [],
-      "image_metadata_repairs": 0,
-      "description_repairs_count": 277,
-      "description_repairs_examples": [
-        {
-          "product_id": "CPed0658a272ca",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP7fb1550932ea",
-          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP3ac34053bdf1",
-          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP33ca2621fc3b",
-          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP652707317e5c",
-          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP165bd062e256",
-          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPb2de3fc503b8",
-          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP1efb160460b4",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP9afa2542ebbe",
-          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP7886cd2117c4",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        }
-      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41039558641",
-      "source_artifact": 12973675294,
-      "source_sha256": "40a8f56f3b61e15d73b80bd3992de63c1fcd0338d41d56096ff6418ca3f582f7",
-      "refresh_generation": "refresh20261030-31dd8bb1"
+      "source_run": "41341939937",
+      "source_artifact": 13099962985,
+      "error": "Drive copy failed; upload not marked verified",
+      "source_sha256": "76aa934fcdda85841d4b7b1e9f7479f5236e04c897e81658b599146aa9430b99",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/breakout/76aa934fcdda8584/manifest.json",
+      "checked_utc": "2026-11-02T07:17:41.084161+00:00"
     },
     "Saya": {
       "name": "804 Audit",
@@ -7496,7 +7429,7 @@
     "blank-Sana Safinaz": "inputs/fresh804-20261026-5d42fe35/rollback-blank-sana-safinaz/68a0b2a586ea93a3/manifest.json",
     "blank-Edenrobe": "inputs/fresh804-20261026-5d42fe35/rollback-blank-edenrobe/97a8b438d3b4b482/manifest.json",
     "blank-Beechtree": "inputs/fresh804-20261026-5d42fe35/rollback-blank-beechtree/9e8d5b9e2f040d1d/manifest.json",
-    "blank-Breakout": "inputs/fresh804-20261026-5d42fe35/rollback-blank-breakout/6dfbc5adc7abb69c/manifest.json",
+    "blank-Breakout": "inputs/fresh804-20261026-5d42fe35/rollback-blank-breakout/831c73ec5ed0f6d2/manifest.json",
     "blank-ChenOne": "inputs/fresh804-20261026-5d42fe35/rollback-blank-chenone/e4c84fe076e6e1c4/manifest.json",
     "blank-Generation": "inputs/fresh804-20261026-5d42fe35/rollback-blank-generation/659353577d2adb39/manifest.json",
     "blank-Saya": "inputs/fresh804-20261026-5d42fe35/rollback-blank-saya/37f4725102bf978e/manifest.json",
@@ -7528,8 +7461,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Beechtree",
-  "audit804_progress_utc": "2026-11-02T07:16:56.163662+00:00",
+  "audit804_last_store": "Breakout",
+  "audit804_progress_utc": "2026-11-02T07:17:41.084266+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
