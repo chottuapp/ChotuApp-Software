@@ -1,0 +1,20 @@
+name: Check Drive delivery access
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - run: sudo apt-get update -qq && sudo apt-get install -y rclone
+      - name: Verify isolated marker upload and checksum
+        env:
+          CHOTU_DRIVE_RCLONE_CONFIG: ${{ secrets.CHOTU_DRIVE_RCLONE_CONFIG }}
+        run: python cloud/drive_healthcheck.py

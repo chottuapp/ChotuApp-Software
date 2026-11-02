@@ -201,15 +201,24 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
     if not marker:marker=save_held(source,store,campaign,str(source_run))
     report['held_input']=marker
    else:
+    # Preserve the passed audit separately if remote delivery fails below.
+    report['delivery_status']='pending'
+    state['audit804_results'][store]=report
     if identity is None:
      def backup_old(path,shop_code):
       marker=save_held(path,'rollback-'+shop_code,campaign,'drive-before-replace');state.setdefault('audit804_replacement_backups',{})[shop_code]=marker
-     identity=DriveIdentity(rc,folder,backup_old);identity.__enter__()
+     candidate=DriveIdentity(rc,folder,backup_old)
+     try:candidate.__enter__()
+     except Exception:
+      candidate.__exit__(None,None,None)
+      raise
+     identity=candidate
     replaced=identity.replace(output,code,store+'.xlsx')
     record={'shop_code':code,'source_run':str(source_run),'sha256':report['workbook_sha256'],'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'folder':folder,'verified_utc':datetime.now(timezone.utc).isoformat(),'audit804':{'name':'804 Audit','status':'pass','checked_utc':report['checked_utc'],'products_checked':report['products_checked'],'workbook_sha256':report['workbook_sha256']},'rule804':'applied; 804 Audit passed','campaign_id':campaign,**({'refresh_generation':generation} if generation and str(source_run) in refresh_runs else {}),**replaced}
     state.setdefault('uploaded',{})[store]=record
     state.setdefault('original_uploads',{}).pop(store,None)
     state.setdefault('daily_uploads',{}).setdefault(folder,{})[store]=record
+    report['delivery_status']='verified'
    if marker:report['held_input']=marker
    state['audit804_results'][store]=report;state['audit804_processed'][store]=cache_key
  def safe_handle(source,store,rid,artifact_id,key):
@@ -218,8 +227,12 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
    prior=state['audit804_results'].get(store,{})
    marker=prior.get('held_input') if prior.get('source_sha256')==hashlib.sha256(source.read_bytes()).hexdigest() else None
    if not marker:marker=save_held(source,store,campaign,str(rid))
-   state['audit804_results'][store]={'name':'804 Audit','status':'hold','store':store,'campaign_id':campaign,'source_run':str(rid),'source_artifact':artifact_id,'error':str(exc),'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'held_input':marker,'checked_utc':datetime.now(timezone.utc).isoformat()}
-   state['audit804_processed'][store]=key
+   same_source=prior.get('source_sha256')==hashlib.sha256(source.read_bytes()).hexdigest()
+   passed=same_source and prior.get('status')=='pass'
+   state['audit804_results'][store]={**(prior if passed else {}),'name':'804 Audit','status':'hold','audit_status':'pass' if passed else 'incomplete','delivery_status':'blocked','store':store,'campaign_id':campaign,'source_run':str(rid),'source_artifact':artifact_id,'error':str(exc),'source_sha256':hashlib.sha256(source.read_bytes()).hexdigest(),'held_input':marker,'checked_utc':datetime.now(timezone.utc).isoformat()}
+   # An attempted operation is not a completed delivery. Keep the durable
+   # source retryable on the next scan even when the software is unchanged.
+   state['audit804_processed'].pop(store,None)
   if progress:
    state['audit804_last_store']=store;state['audit804_progress_utc']=datetime.now(timezone.utc).isoformat();progress(state)
  try:
@@ -230,7 +243,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
    key='source:'+report.get('source_sha256','')+':'+store+':'+revision
    code_changed=bool(codes.get(store) and state.get('uploaded',{}).get(store,{}).get('shop_code')!=codes[store])
    if report.get('status')!='hold' and not (report.get('status')=='pass' and code_changed):continue
-   if state['audit804_processed'].get(store,'').endswith(revision):continue
+   if not report.get('error') and state['audit804_processed'].get(store,'').endswith(revision):continue
    marker=report.get('held_input')
    if not marker and code_changed and report.get('source_sha256'):
     from audit804_queue import slug
@@ -279,5 +292,5 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
      if state['audit804_processed'].get('Khaadi')!=key:safe_handle(source,'Khaadi','phone',None,key)
  finally:
   if identity:identity.__exit__(None,None,None)
- state['sync_status']='pending_source_artifacts' if state.get('audit804_source_download_errors') or state.get('audit804_source_restore_errors') else 'finished';state['audit804_checked_utc']=datetime.now(timezone.utc).isoformat()
+ state['sync_status']='pending_source_artifacts' if state.get('audit804_source_download_errors') or state.get('audit804_source_restore_errors') else 'pending_drive_delivery' if any(r.get('delivery_status')=='blocked' for r in state['audit804_results'].values()) else 'finished';state['audit804_checked_utc']=datetime.now(timezone.utc).isoformat()
  return state

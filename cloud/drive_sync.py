@@ -24,6 +24,26 @@ def config_text(value):
  if cfg.sections()!=['chotudrive'] or cfg['chotudrive'].get('type')!='drive' or not cfg['chotudrive'].get('token'):raise ValueError('Only the existing chotudrive Google Drive remote may be configured')
  return value
 
+class DriveOperationError(RuntimeError):
+ """Expose an actionable category without logging remote paths or credentials."""
+ def __init__(self,operation,detail='',*,timeout=False):
+  text=str(detail).lower()
+  categories=(('storage_quota',('storagequotaexceeded','storage quota','quota exceeded for quota metric \'storage')),
+              ('rate_limit',('ratelimitexceeded','rate limit','too many requests','error 429')),
+              ('authentication',('invalid_grant','invalid credentials','token expired','error 401')),
+              ('permission',('insufficientpermissions','insufficientfilepermissions','permission denied','error 403')),
+              ('not_found',('not found','error 404')),
+              ('temporary_service',('error 500','error 502','error 503','error 504','connection reset','i/o timeout','temporary failure')))
+  self.category='timeout' if timeout else next((name for name,needles in categories if any(n in text for n in needles)),'unclassified')
+  self.transient=self.category in {'rate_limit','temporary_service','timeout'}
+  super().__init__('Drive '+operation+' failed; category='+self.category+'; upload not marked verified')
+
+def drive_command(config,*args):
+ try:result=subprocess.run(['rclone','--config',str(config),*args],capture_output=True,text=True,timeout=900)
+ except subprocess.TimeoutExpired as exc:raise DriveOperationError(args[0],timeout=True) from None
+ if result.returncode:raise DriveOperationError(args[0],result.stderr) from None
+ return getattr(result,'stdout','')
+
 def load_config():return json.loads((ROOT/'cloud/drive-sync-release.json').read_text())
 
 def main():
@@ -53,9 +73,7 @@ def main():
  with tempfile.TemporaryDirectory() as tmp:
   cfg=Path(tmp)/'rclone.conf';cfg.write_text(secret,encoding='utf-8');cfg.chmod(0o600)
   def rc(*args):
-   result=subprocess.run(['rclone','--config',str(cfg),*args],capture_output=True,text=True,timeout=900)
-   if result.returncode:raise RuntimeError('Drive '+args[0]+' failed; upload not marked verified')
-   return getattr(result,'stdout','')
+   return drive_command(cfg,*args)
   if config.get('audit804_enabled'):
    from audit804_delivery import run_campaign
    run_campaign(state,config,all_runs,gh,rc,progress=lambda current:publish(current,branch='drive-sync-reports'))
