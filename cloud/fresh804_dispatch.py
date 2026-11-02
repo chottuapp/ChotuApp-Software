@@ -1,6 +1,7 @@
 """Explicit one-time fresh restart: save/stop prior fetches, then at most three stores per runner."""
-import json,os,subprocess,time
+import json,os,subprocess,time,sys
 from pathlib import Path
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from datetime import datetime,timezone
 from group_fetch import groups
 from fetch_update_release import stop_previous
