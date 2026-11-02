@@ -2812,7 +2812,7 @@
     "Rawayat": "source:523eb8761183e7baedffe0b8036cbd1357f9fd57560f2f06ba38fb5e210f8395:Rawayat:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Outfitters": "source:5016042241695a1621a1ad9459d2c52d3721d61a4d8c3e58869be48e17848da2:Outfitters:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Bonanza Satrangi": "source:607f3980708056219bd14f15a4a480352805365c6ee4f32ceb1222bc474b4cd9:Bonanza Satrangi:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "Junaid Jamshed": "source:b66fd7e2a049847c16a2c201c9cca25448ae791f856b77bba97bd43ce3b63149:Junaid Jamshed:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
+    "Junaid Jamshed": "source:36e991d3c690633fb4c4a45076c83e08a457378bf1c766b4a6c902bf21d23152:Junaid Jamshed:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Zellbury": "source:22d441c7ea0d5934cd7c38acf5b224217a6a81e35184d75c8bbfe33744ef8b1d:Zellbury:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Gul Ahmed": "source:7f41b7d4073b0284855d6e047f85c826c5c995900d81e35eb4293d8646fa4c52:Gul Ahmed:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Hello Maali": "source:afd79e0619b144b0aa7ded632f078334dec3c3fe290b77c3f85c28affeddcfd7:Hello Maali:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
@@ -3713,29 +3713,47 @@
       "store": "Junaid Jamshed",
       "shop_code": "SE10011",
       "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 6016,
-      "findings_count": 0,
-      "findings": [],
+      "status": "hold",
+      "products_checked": 5947,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CP18bc40171394",
+          "name": "Black Classic Long Overcoat",
+          "source_url": "https://www.junaidjamshed.com/products/wcoat-25-0045-a-wcoat250045a",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "9059e4562574d3a341600e66a47a1c0d226254b144ef928b72245dce07a01d79",
-      "checked_utc": "2026-11-02T05:33:12.093841+00:00",
+      "workbook_sha256": "10d74a2af7faea7b7beab5b344a2fe98c17fe987ea152199da339109635cb42d",
+      "checked_utc": "2026-11-02T08:20:17.696380+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-02T08:20:17.705317+00:00",
+        "updated_utc": "2026-11-02T08:20:17.705317+00:00",
+        "next_source_check_due_utc": "2026-11-02T08:35:17.705317+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
-      "description_repairs_count": 275,
+      "description_repairs_count": 269,
       "description_repairs_examples": [
         {
           "product_id": "CP69ae788ee867",
-          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPec5ae447af35",
           "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
           "repair_kind": "description"
         },
@@ -3770,21 +3788,27 @@
           "repair_kind": "description"
         },
         {
-          "product_id": "CP9f22ede41ffb",
+          "product_id": "CPd66c2b7445eb",
           "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
           "repair_kind": "description"
         },
         {
-          "product_id": "CPd66c2b7445eb",
+          "product_id": "CP686e2fc8b780",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPc7486551b0df",
           "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
           "repair_kind": "description"
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41079278597",
-      "source_artifact": 13007326954,
-      "source_sha256": "b66fd7e2a049847c16a2c201c9cca25448ae791f856b77bba97bd43ce3b63149",
-      "refresh_generation": "refresh20261030-31dd8bb1"
+      "source_run": "41367666875",
+      "source_artifact": 13117003565,
+      "source_sha256": "36e991d3c690633fb4c4a45076c83e08a457378bf1c766b4a6c902bf21d23152",
+      "refresh_generation": "refresh20261030-31dd8bb1",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/junaid-jamshed/36e991d3c690633f/manifest.json"
     },
     "Zellbury": {
       "name": "804 Audit",
@@ -6003,7 +6027,9 @@
     "41367666875": "41367666875:13108085582:6bee7f1727cc9725012cc091784977f24fd1f8db7e75711388d4cf5eef0ddf9d",
     "41341913511": "41341913511:13111873712:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41358392262": "41358392262:13115081862:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "41367424299": "41367424299:13123807579:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624"
+    "41367424299": "41367424299:13123807579:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
+    "41367499945": "41367499945:13118911381:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
+    "41367520557": "41367520557:13120794334:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-11-02T02:35:20.355499+00:00",
@@ -6088,8 +6114,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Bonanza Satrangi",
-  "audit804_progress_utc": "2026-11-02T08:19:35.030489+00:00",
+  "audit804_last_store": "Junaid Jamshed",
+  "audit804_progress_utc": "2026-11-02T08:20:21.034531+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
