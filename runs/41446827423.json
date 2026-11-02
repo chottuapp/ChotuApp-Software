@@ -3375,7 +3375,6 @@
     "Rawayat": "source:523eb8761183e7baedffe0b8036cbd1357f9fd57560f2f06ba38fb5e210f8395:Rawayat:a1895578c3ef877ce79516d6f1a48093cdeebbb770f117903e5bb903a962759e",
     "Junaid Jamshed": "source:36e991d3c690633fb4c4a45076c83e08a457378bf1c766b4a6c902bf21d23152:Junaid Jamshed:a1895578c3ef877ce79516d6f1a48093cdeebbb770f117903e5bb903a962759e",
     "Stylo": "source:7bd32974dce2a79fae2bc0ce4acd58cb38bcf7db6c6ca76ec14bb4cf004c9f2c:Stylo:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "Xcessories Hub": "source:46c9434590a319d08ed4963615f69f5e54f09b6ac9c527c7ad426b804eba403b:Xcessories Hub:873241c72cda23fb49eb0da2098559146d4e2053c0a0e41f48afa1c7c472832f",
     "Beechtree": "source:77a07f2561e8ac07d3a25f70ad7b1af449caf4d01728cb1871cfc2cdf71cec8b:Beechtree:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "ChenOne": "source:ec22e99eb285a678b78be088caa88eb01ca835d84ed2137e1c99d8d53e6d12a1:ChenOne:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Hush Puppies": "source:fda270166456a8b969376313785386b0610d016715585f464ec575b6a6b7bc86:Hush Puppies:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
@@ -5670,15 +5669,76 @@
     },
     "Xcessories Hub": {
       "name": "804 Audit",
-      "status": "hold",
+      "version": "804-audit-v2",
       "store": "Xcessories Hub",
+      "shop_code": "SE10038",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 3057,
+      "findings_count": 0,
+      "findings": [],
+      "details_truncated": false,
+      "workbook_sha256": "56436c56297ecdc98d8d2b664d8ab99251b3cc730576b1081fc180435bb38026",
+      "checked_utc": "2026-11-02T13:43:38.203945+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "description_repairs_count": 8,
+      "description_repairs_examples": [
+        {
+          "product_id": "CP710be4c7476a",
+          "issue": "Expressed exact named sold object; retained original product identity and every supplied option/specification.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP3ef8585c648e",
+          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP3fb5ddad0de2",
+          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPb368d4d10cc1",
+          "issue": "Expressed exact named sold object; retained original product identity and every supplied option/specification.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPa5f2ac9095b8",
+          "issue": "Expressed exact named sold object; retained original product identity and every supplied option/specification.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP255fd3a95375",
+          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP2a7d4faf24f9",
+          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP62e8d7cbd73e",
+          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "repair_kind": "description"
+        }
+      ],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "41378447009",
       "source_artifact": 13112678966,
-      "error": "Drive copy failed; upload not marked verified",
       "source_sha256": "46c9434590a319d08ed4963615f69f5e54f09b6ac9c527c7ad426b804eba403b",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/xcessories-hub/46c9434590a319d0/manifest.json",
-      "checked_utc": "2026-11-02T13:05:52.298711+00:00"
+      "refresh_generation": "refresh20261030-31dd8bb1",
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Drive copy failed; category=storage_quota; upload not marked verified",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/xcessories-hub/46c9434590a319d0/manifest.json"
     },
     "Beechtree": {
       "name": "804 Audit",
@@ -7890,8 +7950,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Design by DAS",
-  "audit804_progress_utc": "2026-11-02T13:42:54.432090+00:00",
+  "audit804_last_store": "Xcessories Hub",
+  "audit804_progress_utc": "2026-11-02T13:43:38.203985+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
