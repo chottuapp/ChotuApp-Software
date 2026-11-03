@@ -11,7 +11,25 @@
       "updatedAt": "2026-11-02T17:08:07Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41487946749",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261102-552471aa-32",
-      "snapshot_pending": true
+      "snapshot_unavailable": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:11.7634600Z     stores=validate(request,self.registry,self.codes,self.policy);self.assertIn('Gift4U',{s['name'] for s in stores})",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:11.7635460Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:11.7636094Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/requested_stores.py\", line 15, in validate",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:11.7637061Z     if request.get('campaign_id')!=policy['campaign_id'] or request.get('refresh_generation')!=policy['refresh_generation']:raise ValueError('Requested generation mismatch')",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:11.7637925Z                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:11.7638375Z ValueError: Requested generation mismatch",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:11.7638579Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:11.7638723Z ----------------------------------------------------------------------",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:11.7639155Z Ran 75 tests in 5.837s",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:11.7639399Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:11.7639541Z FAILED (errors=1)",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:11.7640533Z Submitted continuation 1/1 of 38970499270; checkpoint and progress guards remain enabled.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:11.7641771Z Continuation already exists; duplicate dispatch skipped.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:11.8107671Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:11.8221129Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:11.8221815Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m"
+      ]
     },
     {
       "conclusion": "failure",
@@ -21,7 +39,25 @@
       "updatedAt": "2026-11-02T17:08:45Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41487937375",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261102-552471aa-31",
-      "snapshot_pending": true
+      "snapshot_unavailable": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:02.6297875Z     stores=validate(request,self.registry,self.codes,self.policy);self.assertIn('Gift4U',{s['name'] for s in stores})",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:02.6298764Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:02.6299682Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/requested_stores.py\", line 15, in validate",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:02.6301486Z     if request.get('campaign_id')!=policy['campaign_id'] or request.get('refresh_generation')!=policy['refresh_generation']:raise ValueError('Requested generation mismatch')",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:02.6302807Z                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:02.6303500Z ValueError: Requested generation mismatch",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:02.6303816Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:02.6304047Z ----------------------------------------------------------------------",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:02.6304925Z Ran 75 tests in 5.667s",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:02.6305146Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:02.6305295Z FAILED (errors=1)",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:02.6307053Z Submitted continuation 1/1 of 38970499270; checkpoint and progress guards remain enabled.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:02.6308213Z Continuation already exists; duplicate dispatch skipped.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:02.6804038Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:02.7004397Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:02.7005117Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m"
+      ]
     },
     {
       "conclusion": "failure",
@@ -31,7 +67,25 @@
       "updatedAt": "2026-11-02T17:08:08Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41487925935",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261102-552471aa-30",
-      "snapshot_pending": true
+      "snapshot_unavailable": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:08.6542146Z     stores=validate(request,self.registry,self.codes,self.policy);self.assertIn('Gift4U',{s['name'] for s in stores})",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:08.6543202Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:08.6544290Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/requested_stores.py\", line 15, in validate",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:08.6546969Z     if request.get('campaign_id')!=policy['campaign_id'] or request.get('refresh_generation')!=policy['refresh_generation']:raise ValueError('Requested generation mismatch')",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:08.6549509Z                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:08.6550505Z ValueError: Requested generation mismatch",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:08.6550817Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:08.6551054Z ----------------------------------------------------------------------",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:08.6551898Z Ran 75 tests in 5.298s",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:08.6552119Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:08.6552248Z FAILED (errors=1)",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:08.6552887Z Submitted continuation 1/1 of 38970499270; checkpoint and progress guards remain enabled.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:08.6553920Z Continuation already exists; duplicate dispatch skipped.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:08.7016633Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:08.7146941Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:07:08.7147761Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m"
+      ]
     },
     {
       "conclusion": "failure",
@@ -41,7 +95,33 @@
       "updatedAt": "2026-11-02T17:07:15Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41487914935",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261102-552471aa-29",
-      "snapshot_pending": true
+      "snapshot_unavailable": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.9505679Z     stores=validate(request,self.registry,self.codes,self.policy);self.assertIn('Gift4U',{s['name'] for s in stores})",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.9506373Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.9507104Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/requested_stores.py\", line 15, in validate",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.9508276Z     if request.get('campaign_id')!=policy['campaign_id'] or request.get('refresh_generation')!=policy['refresh_generation']:raise ValueError('Requested generation mismatch')",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.9509314Z                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.9509846Z ValueError: Requested generation mismatch",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.9510077Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.9510252Z ----------------------------------------------------------------------",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.9510884Z Ran 75 tests in 4.942s",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.9511050Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.9511146Z FAILED (errors=1)",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.9514084Z Submitted continuation 1/1 of 38970499270; checkpoint and progress guards remain enabled.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.9515471Z Continuation already exists; duplicate dispatch skipped.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.9925890Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:50.0034635Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:50.0035332Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:07:11.6360092Z     result=subprocess.run(['git',*args],cwd=repo,env=env,input=input,stdout=subprocess.PIPE,stderr=subprocess.PIPE,check=True)",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:07:11.6360743Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:07:11.6361325Z   File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/subprocess.py\", line 571, in run",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:07:11.6361849Z     raise CalledProcessError(retcode, process.args,",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:07:11.6362609Z subprocess.CalledProcessError: Command '['git', 'push', 'origin', 'a8049f323a6aec7009a79cd376818fc69a2d75a9:refs/heads/cloud-reports']' returned non-zero exit status 1.",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:07:11.6432007Z ##[error]Process completed with exit code 1.",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:07:11.6570567Z Post job cleanup.",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:07:11.7446734Z [command]/usr/bin/git version"
+      ]
     },
     {
       "conclusion": "failure",
@@ -51,7 +131,25 @@
       "updatedAt": "2026-11-02T17:07:15Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41487902997",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261102-552471aa-28",
-      "snapshot_pending": true
+      "snapshot_unavailable": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.5804985Z     stores=validate(request,self.registry,self.codes,self.policy);self.assertIn('Gift4U',{s['name'] for s in stores})",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.5821928Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.5822799Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/requested_stores.py\", line 15, in validate",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.5823777Z     if request.get('campaign_id')!=policy['campaign_id'] or request.get('refresh_generation')!=policy['refresh_generation']:raise ValueError('Requested generation mismatch')",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.5825009Z                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.5825453Z ValueError: Requested generation mismatch",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.5825656Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.5825807Z ----------------------------------------------------------------------",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.5826402Z Ran 75 tests in 5.158s",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.5826543Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.5826629Z FAILED (errors=1)",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.5827419Z Submitted continuation 1/1 of 38970499270; checkpoint and progress guards remain enabled.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.5828358Z Continuation already exists; duplicate dispatch skipped.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.6228591Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.6525955Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:49.6526637Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m"
+      ]
     },
     {
       "conclusion": "failure",
@@ -61,7 +159,33 @@
       "updatedAt": "2026-11-02T17:08:00Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41487894087",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261102-552471aa-27",
-      "snapshot_pending": true
+      "snapshot_unavailable": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:43.3375508Z     stores=validate(request,self.registry,self.codes,self.policy);self.assertIn('Gift4U',{s['name'] for s in stores})",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:43.3376651Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:43.3377569Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/requested_stores.py\", line 15, in validate",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:43.3379038Z     if request.get('campaign_id')!=policy['campaign_id'] or request.get('refresh_generation')!=policy['refresh_generation']:raise ValueError('Requested generation mismatch')",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:43.3380379Z                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:43.3381093Z ValueError: Requested generation mismatch",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:43.3381406Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:43.3381639Z ----------------------------------------------------------------------",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:43.3382162Z Ran 75 tests in 5.000s",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:43.3382730Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:43.3382868Z FAILED (errors=1)",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:43.3385143Z Submitted continuation 1/1 of 38970499270; checkpoint and progress guards remain enabled.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:43.3385980Z Continuation already exists; duplicate dispatch skipped.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:43.3859113Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:43.3972635Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:43.3973317Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:07:12.0873415Z     result=subprocess.run(['git',*args],cwd=repo,env=env,input=input,stdout=subprocess.PIPE,stderr=subprocess.PIPE,check=True)",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:07:12.0874119Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:07:12.0874773Z   File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/subprocess.py\", line 571, in run",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:07:12.0924376Z     raise CalledProcessError(retcode, process.args,",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:07:12.0925515Z subprocess.CalledProcessError: Command '['git', 'push', 'origin', 'c43d282296091ed8162aff06f5e9708a9ab5f9c5:refs/heads/cloud-reports']' returned non-zero exit status 1.",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:07:12.1005701Z ##[error]Process completed with exit code 1.",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:07:12.1157979Z Post job cleanup.",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:07:12.2069068Z [command]/usr/bin/git version"
+      ]
     },
     {
       "conclusion": "failure",
@@ -71,7 +195,25 @@
       "updatedAt": "2026-11-02T17:07:24Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41487873855",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261102-552471aa-26",
-      "snapshot_pending": true
+      "snapshot_unavailable": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.6726345Z     stores=validate(request,self.registry,self.codes,self.policy);self.assertIn('Gift4U',{s['name'] for s in stores})",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.6726948Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.6727665Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/requested_stores.py\", line 15, in validate",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.6728605Z     if request.get('campaign_id')!=policy['campaign_id'] or request.get('refresh_generation')!=policy['refresh_generation']:raise ValueError('Requested generation mismatch')",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.6729644Z                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.6730613Z ValueError: Requested generation mismatch",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.6731010Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.6731430Z ----------------------------------------------------------------------",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.6731886Z Ran 75 tests in 5.450s",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.6732080Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.6732236Z FAILED (errors=1)",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.6732722Z Submitted continuation 1/1 of 38970499270; checkpoint and progress guards remain enabled.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.6733446Z Continuation already exists; duplicate dispatch skipped.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.7189765Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.7281944Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.7282861Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m"
+      ]
     },
     {
       "conclusion": "failure",
@@ -81,7 +223,25 @@
       "updatedAt": "2026-11-02T17:07:30Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41487862388",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261102-552471aa-25",
-      "snapshot_pending": true
+      "snapshot_unavailable": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.4002487Z     stores=validate(request,self.registry,self.codes,self.policy);self.assertIn('Gift4U',{s['name'] for s in stores})",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.4003387Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.4004315Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/requested_stores.py\", line 15, in validate",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.4005834Z     if request.get('campaign_id')!=policy['campaign_id'] or request.get('refresh_generation')!=policy['refresh_generation']:raise ValueError('Requested generation mismatch')",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.4007196Z                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.4008214Z ValueError: Requested generation mismatch",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.4008526Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.4008765Z ----------------------------------------------------------------------",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.4009309Z Ran 75 tests in 7.064s",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.4009565Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.4009697Z FAILED (errors=1)",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.4011452Z Submitted continuation 1/1 of 38970499270; checkpoint and progress guards remain enabled.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.4012291Z Continuation already exists; duplicate dispatch skipped.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.4416507Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.4533875Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.4534553Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m"
+      ]
     },
     {
       "conclusion": "failure",
@@ -91,7 +251,33 @@
       "updatedAt": "2026-11-02T17:07:14Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41487849968",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261102-552471aa-24",
-      "snapshot_pending": true
+      "snapshot_unavailable": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.1541388Z     stores=validate(request,self.registry,self.codes,self.policy);self.assertIn('Gift4U',{s['name'] for s in stores})",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.1541700Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.1542036Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/requested_stores.py\", line 15, in validate",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.1542544Z     if request.get('campaign_id')!=policy['campaign_id'] or request.get('refresh_generation')!=policy['refresh_generation']:raise ValueError('Requested generation mismatch')",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.1542987Z                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.1543268Z ValueError: Requested generation mismatch",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.1543388Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.1543478Z ----------------------------------------------------------------------",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.1543664Z Ran 75 tests in 7.431s",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.1543747Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.1543799Z FAILED (errors=1)",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.1550660Z Submitted continuation 1/1 of 38970499270; checkpoint and progress guards remain enabled.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.1550975Z Continuation already exists; duplicate dispatch skipped.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.1874658Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.1943809Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:34.1944185Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:07:05.2501754Z     result=subprocess.run(['git',*args],cwd=repo,env=env,input=input,stdout=subprocess.PIPE,stderr=subprocess.PIPE,check=True)",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:07:05.2502570Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:07:05.2503325Z   File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/subprocess.py\", line 571, in run",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:07:05.2581370Z     raise CalledProcessError(retcode, process.args,",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:07:05.2582467Z subprocess.CalledProcessError: Command '['git', 'push', 'origin', '7b1b7e8652e4d99b878f68853e59cd7f6da5b7f5:refs/heads/cloud-reports']' returned non-zero exit status 1.",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:07:05.2657951Z ##[error]Process completed with exit code 1.",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:07:05.2807088Z Post job cleanup.",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:07:05.3714262Z [command]/usr/bin/git version"
+      ]
     },
     {
       "conclusion": "failure",
@@ -101,7 +287,25 @@
       "updatedAt": "2026-11-02T17:07:08Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41487841060",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261102-552471aa-23",
-      "snapshot_pending": true
+      "snapshot_unavailable": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:35.2653424Z     stores=validate(request,self.registry,self.codes,self.policy);self.assertIn('Gift4U',{s['name'] for s in stores})",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:35.2653995Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:35.2654721Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/requested_stores.py\", line 15, in validate",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:35.2655771Z     if request.get('campaign_id')!=policy['campaign_id'] or request.get('refresh_generation')!=policy['refresh_generation']:raise ValueError('Requested generation mismatch')",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:35.2656578Z                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:35.2657015Z ValueError: Requested generation mismatch",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:35.2657533Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:35.2657684Z ----------------------------------------------------------------------",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:35.2658027Z Ran 75 tests in 6.462s",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:35.2658175Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:35.2658257Z FAILED (errors=1)",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:35.2661532Z Submitted continuation 1/1 of 38970499270; checkpoint and progress guards remain enabled.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:35.2662359Z Continuation already exists; duplicate dispatch skipped.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:35.3252011Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:35.3374548Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:35.3375249Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m"
+      ]
     },
     {
       "conclusion": "failure",
@@ -111,7 +315,33 @@
       "updatedAt": "2026-11-02T17:06:55Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41487831806",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261102-552471aa-22",
-      "snapshot_pending": true
+      "snapshot_unavailable": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.3226602Z     stores=validate(request,self.registry,self.codes,self.policy);self.assertIn('Gift4U',{s['name'] for s in stores})",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.3227296Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.3227821Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/requested_stores.py\", line 15, in validate",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.3228567Z     if request.get('campaign_id')!=policy['campaign_id'] or request.get('refresh_generation')!=policy['refresh_generation']:raise ValueError('Requested generation mismatch')",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.3229205Z                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.3229553Z ValueError: Requested generation mismatch",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.3229716Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.3229835Z ----------------------------------------------------------------------",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.3230116Z Ran 75 tests in 4.835s",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.3230227Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.3230305Z FAILED (errors=1)",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.3233841Z Submitted continuation 1/1 of 38970499270; checkpoint and progress guards remain enabled.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.3234542Z Continuation already exists; duplicate dispatch skipped.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.3691222Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.3783321Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.3783872Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:06:52.2291642Z     result=subprocess.run(['git',*args],cwd=repo,env=env,input=input,stdout=subprocess.PIPE,stderr=subprocess.PIPE,check=True)",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:06:52.2292473Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:06:52.2293194Z   File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/subprocess.py\", line 571, in run",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:06:52.2473163Z     raise CalledProcessError(retcode, process.args,",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:06:52.2475459Z subprocess.CalledProcessError: Command '['git', 'push', 'origin', '8e7d63532a8302cd59cc350c76921adfb2ffb40e:refs/heads/cloud-reports']' returned non-zero exit status 1.",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:06:52.2556223Z ##[error]Process completed with exit code 1.",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:06:52.2706204Z Post job cleanup.",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:06:52.3607595Z [command]/usr/bin/git version"
+      ]
     },
     {
       "conclusion": "failure",
@@ -121,7 +351,25 @@
       "updatedAt": "2026-11-02T17:07:15Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41487822684",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261102-552471aa-21",
-      "snapshot_pending": true
+      "snapshot_unavailable": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:14.4425806Z     stores=validate(request,self.registry,self.codes,self.policy);self.assertIn('Gift4U',{s['name'] for s in stores})",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:14.4426693Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:14.4427505Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/requested_stores.py\", line 15, in validate",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:14.4428613Z     if request.get('campaign_id')!=policy['campaign_id'] or request.get('refresh_generation')!=policy['refresh_generation']:raise ValueError('Requested generation mismatch')",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:14.4429453Z                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:14.4429889Z ValueError: Requested generation mismatch",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:14.4430087Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:14.4430342Z ----------------------------------------------------------------------",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:14.4431291Z Ran 75 tests in 5.861s",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:14.4431531Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:14.4431668Z FAILED (errors=1)",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:14.4432340Z Submitted continuation 1/1 of 38970499270; checkpoint and progress guards remain enabled.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:14.4433493Z Continuation already exists; duplicate dispatch skipped.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:14.5004372Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:14.5119192Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:14.5119898Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m"
+      ]
     },
     {
       "conclusion": "failure",
@@ -131,7 +379,33 @@
       "updatedAt": "2026-11-02T17:08:30Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41487812618",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261102-552471aa-20",
-      "snapshot_pending": true
+      "snapshot_unavailable": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:08.1351855Z     stores=validate(request,self.registry,self.codes,self.policy);self.assertIn('Gift4U',{s['name'] for s in stores})",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:08.1352504Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:08.1353183Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/requested_stores.py\", line 15, in validate",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:08.1354277Z     if request.get('campaign_id')!=policy['campaign_id'] or request.get('refresh_generation')!=policy['refresh_generation']:raise ValueError('Requested generation mismatch')",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:08.1355257Z                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:08.1355754Z ValueError: Requested generation mismatch",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:08.1355969Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:08.1356120Z ----------------------------------------------------------------------",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:08.1356451Z Ran 75 tests in 5.268s",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:08.1356913Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:08.1357334Z FAILED (errors=1)",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:08.1358012Z Submitted continuation 1/1 of 38970499270; checkpoint and progress guards remain enabled.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:08.1358875Z Continuation already exists; duplicate dispatch skipped.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:08.1751980Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:08.1861089Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:08.1861786Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:06:48.2591726Z     result=subprocess.run(['git',*args],cwd=repo,env=env,input=input,stdout=subprocess.PIPE,stderr=subprocess.PIPE,check=True)",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:06:48.2592064Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:06:48.2592380Z   File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/subprocess.py\", line 571, in run",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:06:48.2650916Z     raise CalledProcessError(retcode, process.args,",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:06:48.2651737Z subprocess.CalledProcessError: Command '['git', 'push', 'origin', 'cd4aa6fadd01336b405551114791f4044868724a:refs/heads/cloud-reports']' returned non-zero exit status 1.",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:06:48.2714683Z ##[error]Process completed with exit code 1.",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:06:48.2805896Z Post job cleanup.",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:06:48.3353601Z [command]/usr/bin/git version"
+      ]
     },
     {
       "conclusion": "failure",
@@ -141,7 +415,25 @@
       "updatedAt": "2026-11-02T17:06:52Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41487802945",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261102-552471aa-19",
-      "snapshot_pending": true
+      "snapshot_unavailable": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.5682160Z     stores=validate(request,self.registry,self.codes,self.policy);self.assertIn('Gift4U',{s['name'] for s in stores})",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.5683076Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.5684025Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/requested_stores.py\", line 15, in validate",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.5685585Z     if request.get('campaign_id')!=policy['campaign_id'] or request.get('refresh_generation')!=policy['refresh_generation']:raise ValueError('Requested generation mismatch')",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.5686972Z                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.5687704Z ValueError: Requested generation mismatch",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.5688015Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.5688249Z ----------------------------------------------------------------------",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.5689179Z Ran 75 tests in 5.184s",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.5689515Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.5689731Z FAILED (errors=1)",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.5690731Z Submitted continuation 1/1 of 38970499270; checkpoint and progress guards remain enabled.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.5691806Z Continuation already exists; duplicate dispatch skipped.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.6105437Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.6213122Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:18.6213821Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m"
+      ]
     },
     {
       "conclusion": "failure",
@@ -151,7 +443,25 @@
       "updatedAt": "2026-11-02T17:06:58Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41487792429",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261102-552471aa-18",
-      "snapshot_pending": true
+      "snapshot_unavailable": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:06.4817330Z     stores=validate(request,self.registry,self.codes,self.policy);self.assertIn('Gift4U',{s['name'] for s in stores})",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:06.4817622Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:06.4817943Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/requested_stores.py\", line 15, in validate",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:06.4818421Z     if request.get('campaign_id')!=policy['campaign_id'] or request.get('refresh_generation')!=policy['refresh_generation']:raise ValueError('Requested generation mismatch')",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:06.4818845Z                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:06.4819075Z ValueError: Requested generation mismatch",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:06.4819182Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:06.4819271Z ----------------------------------------------------------------------",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:06.4819453Z Ran 75 tests in 6.728s",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:06.4819534Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:06.4819581Z FAILED (errors=1)",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:06.4822416Z Submitted continuation 1/1 of 38970499270; checkpoint and progress guards remain enabled.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:06.4823011Z Continuation already exists; duplicate dispatch skipped.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:06.5159693Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:06.5229106Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:06.5229656Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m"
+      ]
     },
     {
       "conclusion": "failure",
@@ -161,7 +471,25 @@
       "updatedAt": "2026-11-02T17:06:56Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41487780214",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261102-552471aa-17",
-      "snapshot_pending": true
+      "snapshot_unavailable": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:05.7452293Z     stores=validate(request,self.registry,self.codes,self.policy);self.assertIn('Gift4U',{s['name'] for s in stores})",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:05.7453391Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:05.7454104Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/requested_stores.py\", line 15, in validate",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:05.7455118Z     if request.get('campaign_id')!=policy['campaign_id'] or request.get('refresh_generation')!=policy['refresh_generation']:raise ValueError('Requested generation mismatch')",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:05.7455962Z                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:05.7456404Z ValueError: Requested generation mismatch",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:05.7456608Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:05.7456753Z ----------------------------------------------------------------------",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:05.7457366Z Ran 75 tests in 6.986s",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:05.7457502Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:05.7458407Z FAILED (errors=1)",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:05.7459073Z Submitted continuation 1/1 of 38970499270; checkpoint and progress guards remain enabled.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:05.7459970Z Continuation already exists; duplicate dispatch skipped.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:05.7845460Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:05.7961981Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:06:05.7962989Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m"
+      ]
     },
     {
       "conclusion": "failure",
@@ -171,7 +499,25 @@
       "updatedAt": "2026-11-02T17:07:07Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41487771300",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261102-552471aa-16",
-      "snapshot_pending": true
+      "snapshot_unavailable": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:57.4293898Z     stores=validate(request,self.registry,self.codes,self.policy);self.assertIn('Gift4U',{s['name'] for s in stores})",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:57.4294644Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:57.4295448Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/requested_stores.py\", line 15, in validate",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:57.4296706Z     if request.get('campaign_id')!=policy['campaign_id'] or request.get('refresh_generation')!=policy['refresh_generation']:raise ValueError('Requested generation mismatch')",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:57.4297544Z                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:57.4298020Z ValueError: Requested generation mismatch",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:57.4298217Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:57.4298369Z ----------------------------------------------------------------------",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:57.4298776Z Ran 75 tests in 4.973s",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:57.4299408Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:57.4299608Z FAILED (errors=1)",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:57.4300095Z Submitted continuation 1/1 of 38970499270; checkpoint and progress guards remain enabled.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:57.4300613Z Continuation already exists; duplicate dispatch skipped.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:57.4802271Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:57.4917120Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:57.4917828Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m"
+      ]
     },
     {
       "conclusion": "failure",
@@ -181,7 +527,33 @@
       "updatedAt": "2026-11-02T17:06:31Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41487759315",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261102-552471aa-15",
-      "snapshot_pending": true
+      "snapshot_unavailable": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:53.1509115Z     stores=validate(request,self.registry,self.codes,self.policy);self.assertIn('Gift4U',{s['name'] for s in stores})",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:53.1509768Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:53.1510462Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/requested_stores.py\", line 15, in validate",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:53.1511571Z     if request.get('campaign_id')!=policy['campaign_id'] or request.get('refresh_generation')!=policy['refresh_generation']:raise ValueError('Requested generation mismatch')",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:53.1512554Z                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:53.1513150Z ValueError: Requested generation mismatch",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:53.1513370Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:53.1513537Z ----------------------------------------------------------------------",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:53.1514222Z Ran 75 tests in 5.611s",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:53.1514379Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:53.1514471Z FAILED (errors=1)",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:53.1519993Z Submitted continuation 1/1 of 38970499270; checkpoint and progress guards remain enabled.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:53.1521020Z Continuation already exists; duplicate dispatch skipped.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:53.2038483Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:53.2158615Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:53.2159315Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:06:22.2879285Z     result=subprocess.run(['git',*args],cwd=repo,env=env,input=input,stdout=subprocess.PIPE,stderr=subprocess.PIPE,check=True)",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:06:22.2879940Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:06:22.2880535Z   File \"/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/subprocess.py\", line 571, in run",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:06:22.2927820Z     raise CalledProcessError(retcode, process.args,",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:06:22.2929151Z subprocess.CalledProcessError: Command '['git', 'push', 'origin', '3a6a90c3a46afcb7d8d22cc1d6eb8a43bbc1c052:refs/heads/cloud-reports']' returned non-zero exit status 1.",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:06:22.3006182Z ##[error]Process completed with exit code 1.",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:06:22.3158358Z Post job cleanup.",
+        "Archive structured diagnostics\tUNKNOWN STEP\t2026-11-02T17:06:22.4043404Z [command]/usr/bin/git version"
+      ]
     },
     {
       "conclusion": "failure",
@@ -191,7 +563,25 @@
       "updatedAt": "2026-11-02T17:06:44Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41487745423",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261102-552471aa-14",
-      "snapshot_pending": true
+      "snapshot_unavailable": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:41.3739620Z     stores=validate(request,self.registry,self.codes,self.policy);self.assertIn('Gift4U',{s['name'] for s in stores})",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:41.3740277Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:41.3740997Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/requested_stores.py\", line 15, in validate",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:41.3742046Z     if request.get('campaign_id')!=policy['campaign_id'] or request.get('refresh_generation')!=policy['refresh_generation']:raise ValueError('Requested generation mismatch')",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:41.3742967Z                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:41.3743460Z ValueError: Requested generation mismatch",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:41.3743685Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:41.3743847Z ----------------------------------------------------------------------",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:41.3744226Z Ran 75 tests in 5.034s",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:41.3744385Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:41.3744477Z FAILED (errors=1)",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:41.3750903Z Submitted continuation 1/1 of 38970499270; checkpoint and progress guards remain enabled.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:41.3751818Z Continuation already exists; duplicate dispatch skipped.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:41.4186824Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:41.4278985Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:41.4279516Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m"
+      ]
     },
     {
       "conclusion": "failure",
@@ -201,9 +591,672 @@
       "updatedAt": "2026-11-02T17:06:24Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41487730674",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261102-552471aa-13",
-      "snapshot_pending": true
+      "snapshot_unavailable": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:55.5094883Z     stores=validate(request,self.registry,self.codes,self.policy);self.assertIn('Gift4U',{s['name'] for s in stores})",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:55.5095533Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:55.5096273Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/requested_stores.py\", line 15, in validate",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:55.5097388Z     if request.get('campaign_id')!=policy['campaign_id'] or request.get('refresh_generation')!=policy['refresh_generation']:raise ValueError('Requested generation mismatch')",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:55.5098363Z                                                                                                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:55.5098871Z ValueError: Requested generation mismatch",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:55.5099095Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:55.5099256Z ----------------------------------------------------------------------",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:55.5099965Z Ran 75 tests in 5.428s",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:55.5100120Z ",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:55.5100209Z FAILED (errors=1)",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:55.5101653Z Submitted continuation 1/1 of 38970499270; checkpoint and progress guards remain enabled.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:55.5102527Z Continuation already exists; duplicate dispatch skipped.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:55.5641845Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:55.5756803Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-11-02T17:05:55.5757564Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m"
+      ]
     }
   ],
   "fresh_stores": {},
-  "local_khaadi": "Not visible to cloud monitoring; no local activity claimed"
+  "local_khaadi": {
+    "store": "Khaadi",
+    "execution": "Windows local",
+    "observed_utc": "2026-10-20T19:22:58.769213+00:00",
+    "worker_active": true,
+    "status": "unknown_stale_heartbeat",
+    "worker_updated": "2026-10-21 00:22:57",
+    "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
+    "error": "",
+    "progress_age_seconds": 1,
+    "report_age_seconds": 1216262,
+    "status_confirmed": false
+  },
+  "collection_completed_utc": "2026-11-03T21:14:00.162719+00:00",
+  "collection_seconds": 36,
+  "store_overview": {
+    "Computer Zone": {
+      "state": "drive_verified",
+      "issues_count": 2,
+      "issues": [
+        "Primary product type and Category disagree: ram"
+      ],
+      "audit_checked_utc": "2026-11-02T13:20:56.035315+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-02T06:34:05.345157+00:00",
+        "updated_utc": "2026-11-02T13:20:56.036625+00:00",
+        "next_source_check_due_utc": "2026-11-02T13:35:56.036625+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Primary product type and Category disagree: ram"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "uploaded_utc": "2026-11-02T03:48:52.880296+00:00"
+    },
+    "Bata": {
+      "state": "drive_verified",
+      "issues_count": 6,
+      "issues": [
+        "Category blank or unresolved"
+      ],
+      "audit_checked_utc": "2026-11-02T13:21:11.989800+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-02T06:55:08.152198+00:00",
+        "updated_utc": "2026-11-02T13:21:11.992676+00:00",
+        "next_source_check_due_utc": "2026-11-02T13:36:11.992676+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "uploaded_utc": "2026-11-02T04:21:48.947511+00:00"
+    },
+    "Hemani Herbals": {
+      "state": "drive_verified",
+      "issues_count": 1,
+      "issues": [
+        "Category lacks clear product-purpose evidence; manual review required"
+      ],
+      "audit_checked_utc": "2026-11-02T13:28:04.510150+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-02T06:46:01.499107+00:00",
+        "updated_utc": "2026-11-02T13:28:04.511278+00:00",
+        "next_source_check_due_utc": "2026-11-02T13:43:04.511278+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category lacks clear product-purpose evidence; manual review required"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "uploaded_utc": "2026-11-02T03:55:51.456560+00:00"
+    },
+    "Rawayat": {
+      "state": "drive_verified",
+      "issues_count": 13,
+      "issues": [
+        "Bundle appears classified as a single component",
+        "Category lacks clear product-purpose evidence; manual review required",
+        "Description lacks enough product-specific content for review"
+      ],
+      "audit_checked_utc": "2026-11-02T13:28:58.951883+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-02T06:18:18.705753+00:00",
+        "updated_utc": "2026-11-02T13:28:58.958506+00:00",
+        "next_source_check_due_utc": "2026-11-02T13:43:58.958506+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Bundle appears classified as a single component",
+          "Category lacks clear product-purpose evidence; manual review required",
+          "Description lacks enough product-specific content for review"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "uploaded_utc": "2026-11-02T03:28:54.716391+00:00"
+    },
+    "Junaid Jamshed": {
+      "state": "drive_verified",
+      "issues_count": 1,
+      "issues": [
+        "Category blank or unresolved"
+      ],
+      "audit_checked_utc": "2026-11-02T13:32:27.311136+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-02T08:20:17.705317+00:00",
+        "updated_utc": "2026-11-02T13:32:27.320062+00:00",
+        "next_source_check_due_utc": "2026-11-02T13:47:27.320062+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "uploaded_utc": "2026-11-02T05:33:54.464610+00:00"
+    },
+    "Stylo": {
+      "state": "drive_verified",
+      "issues_count": null,
+      "issues": [],
+      "audit_checked_utc": "2026-11-02T06:03:54.777316+00:00",
+      "recovery": {},
+      "uploaded_utc": "2026-11-02T01:15:51.808322+00:00"
+    },
+    "Habitt": {
+      "state": "drive_verified",
+      "issues_count": 1,
+      "issues": [
+        "Category lacks clear product-purpose evidence; manual review required"
+      ],
+      "audit_checked_utc": "2026-11-02T13:45:43.856221+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-02T07:21:05.022117+00:00",
+        "updated_utc": "2026-11-02T13:45:43.857181+00:00",
+        "next_source_check_due_utc": "2026-11-02T14:00:43.857181+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category lacks clear product-purpose evidence; manual review required"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "uploaded_utc": "2026-11-02T05:25:52.916343+00:00"
+    },
+    "Saya": {
+      "state": "drive_verified",
+      "issues_count": 1,
+      "issues": [
+        "Category blank or unresolved"
+      ],
+      "audit_checked_utc": "2026-11-02T13:51:24.673096+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-02T07:19:41.831360+00:00",
+        "updated_utc": "2026-11-02T13:51:24.679826+00:00",
+        "next_source_check_due_utc": "2026-11-02T14:06:24.679826+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "uploaded_utc": "2026-11-02T05:21:46.441777+00:00"
+    },
+    "Rios": {
+      "state": "drive_verified",
+      "issues_count": 30,
+      "issues": [
+        "Brand name used as product Category",
+        "Category is too broad or promotional for product-purpose classification",
+        "Category lacks clear product-purpose evidence; manual review required",
+        "Complete desktop computer incorrectly classified as a component",
+        "Description lacks enough product-specific content for review"
+      ],
+      "audit_checked_utc": "2026-11-02T13:51:40.054384+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-02T08:11:00.817431+00:00",
+        "updated_utc": "2026-11-02T13:51:40.057944+00:00",
+        "next_source_check_due_utc": "2026-11-02T14:06:40.057944+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Brand name used as product Category",
+          "Category is too broad or promotional for product-purpose classification",
+          "Category lacks clear product-purpose evidence; manual review required",
+          "Complete desktop computer incorrectly classified as a component",
+          "Description lacks enough product-specific content for review"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "uploaded_utc": "2026-11-02T05:27:46.434649+00:00"
+    },
+    "Edenrobe": {
+      "state": "drive_verified",
+      "issues_count": null,
+      "issues": [],
+      "audit_checked_utc": "2026-11-02T07:14:52.716753+00:00",
+      "recovery": {},
+      "uploaded_utc": "2026-11-02T04:48:48.927405+00:00"
+    },
+    "Limelight": {
+      "state": "drive_verified",
+      "issues_count": null,
+      "issues": [],
+      "audit_checked_utc": "2026-11-02T08:15:41.339348+00:00",
+      "recovery": {},
+      "uploaded_utc": "2026-11-02T05:46:55.520782+00:00"
+    },
+    "Fresh Basket": {
+      "state": "drive_verified",
+      "issues_count": null,
+      "issues": [],
+      "audit_checked_utc": "2026-11-02T08:18:59.011479+00:00",
+      "recovery": {},
+      "uploaded_utc": "2026-11-02T05:50:49.982411+00:00"
+    },
+    "House of Tools": {
+      "state": "drive_verified",
+      "issues_count": 23,
+      "issues": [
+        "Category blank or unresolved"
+      ],
+      "audit_checked_utc": "2026-11-02T08:21:05.693063+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-02T08:21:05.694634+00:00",
+        "updated_utc": "2026-11-02T08:21:05.694634+00:00",
+        "next_source_check_due_utc": "2026-11-02T08:36:05.694634+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "uploaded_utc": "2026-11-02T06:00:42.515849+00:00"
+    },
+    "Paklap": {
+      "state": "correction_queue",
+      "issues_count": 230,
+      "issues": [
+        "Category blank or unresolved",
+        "Category lacks clear product-purpose evidence; manual review required",
+        "Description lacks enough product-specific content for review",
+        "Gaming accessory incorrectly classified as console",
+        "Primary product type and Category disagree: computer mouse",
+        "Primary product type and Category disagree: solid state drive",
+        "Tablet accessory cannot be classified as the tablet device"
+      ],
+      "audit_checked_utc": "2026-11-02T03:23:28.325281+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-02T02:35:13.946701+00:00",
+        "updated_utc": "2026-11-02T03:23:28.327252+00:00",
+        "next_source_check_due_utc": "2026-11-02T03:38:28.327252+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved",
+          "Category lacks clear product-purpose evidence; manual review required",
+          "Description lacks enough product-specific content for review",
+          "Gaming accessory incorrectly classified as console",
+          "Primary product type and Category disagree: computer mouse",
+          "Primary product type and Category disagree: solid state drive",
+          "Tablet accessory cannot be classified as the tablet device"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      }
+    },
+    "Miss Rose": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-02T06:17:55.776795+00:00"
+    },
+    "Rivaj UK": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-02T06:18:43.340436+00:00"
+    },
+    "Tawakkal Fabrics": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T11:40:46.577406+00:00"
+    },
+    "Elite Cosmetics": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T11:43:52.128638+00:00"
+    },
+    "The Hanger Pakistan": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T11:20:52.631263+00:00"
+    },
+    "Vince Care": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-02T06:20:51.754608+00:00"
+    },
+    "Islamabad Tea": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-02T06:28:53.904098+00:00"
+    },
+    "Seran": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T11:25:50.723398+00:00"
+    },
+    "Shop Modest": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T11:22:52.468176+00:00"
+    },
+    "Adam Cheese": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T11:26:40.634450+00:00"
+    },
+    "Farda Foods": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T11:26:56.083248+00:00"
+    },
+    "Nisa Naturals": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T11:28:37.761236+00:00"
+    },
+    "Cool and Cool": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T11:28:56.493778+00:00"
+    },
+    "Denim Leftover": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T11:29:45.263068+00:00"
+    },
+    "Saeed Ghani": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T11:39:53.951858+00:00"
+    },
+    "Bonanza Satrangi": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T11:51:32.644181+00:00"
+    },
+    "Skin Factor": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T11:30:50.065954+00:00"
+    },
+    "Zero Lifestyle": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T11:32:49.246930+00:00"
+    },
+    "Outfitters": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T11:49:50.960169+00:00"
+    },
+    "Zellbury": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T11:54:53.608308+00:00"
+    },
+    "Gul Ahmed": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T12:07:53.116584+00:00"
+    },
+    "Sapphire": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T12:10:53.103380+00:00"
+    },
+    "Aerosoft Studio": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T11:34:49.551414+00:00"
+    },
+    "Servis": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T11:35:44.925205+00:00"
+    },
+    "Ndure": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T11:37:50.696268+00:00"
+    },
+    "Astore Bags": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T11:45:51.029973+00:00"
+    },
+    "Hello Maali": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T12:09:35.291219+00:00"
+    },
+    "Hilm Chapals": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T12:12:53.365449+00:00"
+    },
+    "Golden Rose": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T12:14:35.538531+00:00"
+    },
+    "Zyren": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T12:14:55.624997+00:00"
+    },
+    "Pyari Walls": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T12:17:57.409889+00:00"
+    },
+    "Prime Ticks": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T12:20:48.103179+00:00"
+    },
+    "Design by DAS": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T12:21:40.950843+00:00"
+    },
+    "Xcessories Hub": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T12:22:41.955637+00:00"
+    },
+    "Beechtree": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T12:23:39.685504+00:00"
+    },
+    "ChenOne": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T12:24:54.578415+00:00"
+    },
+    "Hush Puppies": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T12:26:55.336500+00:00"
+    },
+    "Mala": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T12:28:53.870018+00:00"
+    },
+    "Sana Safinaz": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T12:29:55.315098+00:00"
+    },
+    "Beyond East": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T12:31:40.510213+00:00"
+    },
+    "Alkaram Studio": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T12:32:41.247282+00:00"
+    },
+    "Generation": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T12:34:51.236962+00:00"
+    },
+    "Breakout": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T12:35:55.690947+00:00"
+    },
+    "Dairy Dream": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-02T06:16:41.499146+00:00"
+    },
+    "The Glossy Quill": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-02T06:08:53.535730+00:00"
+    },
+    "Bin Fahad": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-02T06:12:50.317468+00:00"
+    },
+    "G7 Leather": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-02T06:10:51.515589+00:00"
+    }
+  },
+  "drive": {
+    "current_campaign": "fresh804-20261026-5d42fe35",
+    "fresh_verified_files": 60,
+    "audit_progress_utc": "2026-11-03T12:35:55.691488+00:00",
+    "sync_status": "finished",
+    "sync_error": null,
+    "last_scan_utc": "2026-11-03T16:42:29.815535+00:00",
+    "held": {
+      "39450775009": [],
+      "39450778729": [],
+      "39450782519": [],
+      "39450786298": [],
+      "39450789858": [],
+      "39450793299": [],
+      "39450796831": [],
+      "39450802086": [],
+      "39450806726": [],
+      "39494289423": [],
+      "39494295410": [],
+      "39494348075": [],
+      "39529042706": [
+        {
+          "store": "Stylo",
+          "error": "Unconfirmed shop code; held for review"
+        }
+      ],
+      "39529095851": []
+    },
+    "verified_files": 60,
+    "original_uploads": {},
+    "verified_utc": "2026-10-21T06:41:31.265056+00:00",
+    "folders": {
+      "ChotuApp 20-10-2026 Fresh": 20,
+      "ChotuApp 19-10-2026 11-36AM": 60
+    },
+    "latest_move": [
+      {
+        "source": "ChotuApp 20-10-2026 Fresh",
+        "destination": "ChotuApp 19-10-2026 11-36AM",
+        "verified_files": [
+          "Adam Cheese.xlsx",
+          "Bonanza Satrangi.xlsx",
+          "Computer Zone.xlsx",
+          "Cool and Cool.xlsx",
+          "Denim Leftover.xlsx",
+          "Elite Cosmetics.xlsx",
+          "Farda Foods.xlsx",
+          "Hemani Herbals.xlsx",
+          "Islamabad Tea.xlsx",
+          "Miss Rose.xlsx",
+          "Nisa Naturals.xlsx",
+          "Rivaj UK.xlsx",
+          "Saeed Ghani.xlsx",
+          "Seran.xlsx",
+          "Shop Modest.xlsx",
+          "Skin Factor.xlsx",
+          "Tawakkal Fabrics.xlsx",
+          "The Hanger Pakistan.xlsx",
+          "Vince Care.xlsx",
+          "Zero Lifestyle.xlsx"
+        ],
+        "destination_file_count": 24,
+        "preserved_other_files": 4,
+        "verified_utc": "2026-10-20T18:41:53.309795+00:00",
+        "source_removed": [
+          "Adam Cheese.xlsx",
+          "Bonanza Satrangi.xlsx",
+          "Computer Zone.xlsx",
+          "Cool and Cool.xlsx",
+          "Denim Leftover.xlsx",
+          "Elite Cosmetics.xlsx",
+          "Farda Foods.xlsx",
+          "Hemani Herbals.xlsx",
+          "Islamabad Tea.xlsx",
+          "Miss Rose.xlsx",
+          "Nisa Naturals.xlsx",
+          "Rivaj UK.xlsx",
+          "Saeed Ghani.xlsx",
+          "Seran.xlsx",
+          "Shop Modest.xlsx",
+          "Skin Factor.xlsx",
+          "Tawakkal Fabrics.xlsx",
+          "The Hanger Pakistan.xlsx",
+          "Vince Care.xlsx",
+          "Zero Lifestyle.xlsx"
+        ]
+      }
+    ]
+  },
+  "khaadi_devices": [
+    {
+      "store": "Khaadi",
+      "execution": "Windows local",
+      "observed_utc": "2026-10-20T19:22:58.769213+00:00",
+      "worker_active": true,
+      "status": "unknown_stale_heartbeat",
+      "worker_updated": "2026-10-21 00:22:57",
+      "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
+      "error": "",
+      "progress_age_seconds": 1,
+      "report_age_seconds": 1216262,
+      "status_confirmed": false
+    }
+  ],
+  "phone_heartbeat": {
+    "status": "not_connected_or_no_report",
+    "status_confirmed": false,
+    "message": "No Android heartbeat received. Connect GitHub in app Settings and start or resume fetching."
+  },
+  "monitoring": {
+    "phone_heartbeat_seconds": 30,
+    "phone_stale_after_seconds": 180,
+    "cloud_schedule_minutes": 5,
+    "note": "Scheduled cloud checks can be delayed. Query local-run-status directly for latest phone heartbeat."
+  },
+  "fresh_completed": 0
 }
