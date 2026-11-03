@@ -6,6 +6,9 @@ class RequestedStoreTests(unittest.TestCase):
  def setUp(self):
   read=lambda n:json.loads((ROOT/'cloud'/n).read_text())
   self.request=read('requested-stores.json');self.registry=read('fetch-update-release.json')['fresh_stores'];self.codes=read('confirmed-shop-codes.json');self.policy=read('audit804-release.json')
+  # This historical additive-request fixture must use its own generation.
+  # A newer whole-catalog restart must not turn unrelated guard tests into failures.
+  self.policy=dict(self.policy,refresh_generation=self.request['refresh_generation'])
  def test_exact_ten_codes_unique_names_and_hosts(self):
   from locked_store_rules import owner_paused
   self.assertEqual([s['shop_code'] for s in self.request['stores']],['SE100'+str(n) for n in range(55,65)])
@@ -13,6 +16,9 @@ class RequestedStoreTests(unittest.TestCase):
   stores=validate(request,self.registry,self.codes,self.policy);self.assertIn('Gift4U',{s['name'] for s in stores})
   self.assertEqual(sum(s['name']=='Limelight' for s in self.registry),1);self.assertEqual(sum(s['name']=='Alkaram Studio' for s in self.registry),1)
   self.assertEqual(len(set(self.codes.values())),len(self.codes))
+ def test_mismatched_generation_still_refused(self):
+  request=copy.deepcopy(self.request);request['refresh_generation']='refresh20990101-deadbeef'
+  with self.assertRaisesRegex(ValueError,'generation mismatch'):validate(request,self.registry,self.codes,self.policy)
  def test_invalid_source_code_and_paused_names_refused(self):
   for change in ({'url':'https://other.example'},{'shop_code':'SE10014'},{'name':'Khaadi'}):
    request=copy.deepcopy(self.request);request['stores'][0].update(change)
