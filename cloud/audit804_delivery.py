@@ -134,6 +134,13 @@ def restore_source(marker,out,store,campaign,state,progress=None):
  state.setdefault('audit804_source_restore_errors',{}).pop(store,None)
  return restored
 
+def retry_prior_verified_delivery(report,uploaded,generation):
+ """Retry saved audit-pass delivery failures without replacing a newer fresh file."""
+ return bool(report.get('status')=='hold' and report.get('audit_status')=='pass'
+  and report.get('delivery_status')=='blocked' and report.get('findings_count')==0
+  and report.get('held_input') and str(report.get('error','')).startswith('Drive ')
+  and uploaded.get('refresh_generation')!=generation)
+
 def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
  from importlib.util import spec_from_file_location,module_from_spec
  spec=spec_from_file_location('audit_groups',root/'catalog-tools/start_fresh26_rule804_drive_windows.py');helper=module_from_spec(spec);spec.loader.exec_module(helper)
@@ -239,7 +246,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
   # Recheck durable held inputs after code/policy updates, even if Actions artifacts expired.
   for store,report in list(state['audit804_results'].items()):
    if store in paused:continue
-   if generation and store in refresh_stores and str(report.get('source_run')) not in refresh_runs:continue
+   if generation and store in refresh_stores and str(report.get('source_run')) not in refresh_runs and not retry_prior_verified_delivery(report,state.get('uploaded',{}).get(store,{}),generation):continue
    key='source:'+report.get('source_sha256','')+':'+store+':'+revision
    code_changed=bool(codes.get(store) and state.get('uploaded',{}).get(store,{}).get('shop_code')!=codes[store])
    if report.get('status')!='hold' and not (report.get('status')=='pass' and code_changed):continue
