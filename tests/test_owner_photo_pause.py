@@ -6,6 +6,15 @@ from runner_identity import paused_sources
 from owner_product_exclusions import apply
 
 class OwnerPolicyTests(unittest.TestCase):
+ def test_axis_permanent_owner_lock_blocks_name_host_dispatch_and_public_probe(self):
+  from fresh804_dispatch import selected_sites
+  from source_access_check import check
+  from unittest.mock import Mock
+  self.assertTrue(owner_paused('Axis PK'))
+  for url in ['https://axispk.shop','https://www.axispk.shop']:
+   self.assertTrue(owner_paused('Axis',url));session=Mock();self.assertEqual(check(dict(name='Axis PK',url=url),session)['status'],'owner_paused');session.get.assert_not_called()
+  selected=selected_sites([dict(name='Axis PK',url='https://www.axispk.shop',enabled=True),dict(name='House of Tools',url='https://houseoftools.com.pk')],{})
+  self.assertEqual([s['name'] for s in selected],['House of Tools'])
  def test_remaining_disabled_sources_remain_paused_even_if_registry_enabled(self):
   for name,url in [('LAAM','https://laam.com'),('Khaadi','https://pk.khaadi.com'),('Bachaa Party','https://bachaaparty.com')]:
    self.assertTrue(owner_paused(name,url));self.assertEqual(paused_sources([dict(name=name,url=url)]),{name})

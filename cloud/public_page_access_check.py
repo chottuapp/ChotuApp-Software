@@ -29,6 +29,8 @@ async def main():
   for name in dict.fromkeys(selected):
    base=sites[name]['url'].rstrip('/');record={'store':name,'status':'unchecked'};page=None
    try:
+    from locked_store_rules import owner_paused
+    if owner_paused(name,base):record['status']='owner_paused';continue
     robots=requests.get(base+'/robots.txt',headers={'User-Agent':AGENT},timeout=30,allow_redirects=False)
     record['robots_status']=robots.status_code
     if robots.status_code not in (200,404):record['status']='permissions_unverified';continue
