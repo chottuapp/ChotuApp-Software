@@ -1,46 +1,47 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-04T17:55:38.987547+00:00",
-  "run_id": "41861364912",
+  "generated_utc": "2026-11-04T18:56:20.396276+00:00",
+  "run_id": "41858592793",
   "attempt": "1",
   "source_commit": "831358bf3007265e39caec811c04432da08a7ef2",
-  "status": "complete",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 7605.7,
+  "elapsed_seconds": 12054.2,
   "stores": [
     {
-      "name": "Beyond East",
+      "name": "Liberty Books",
+      "status": "source_paused",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "12a07ae410136717",
+      "http_statuses": {
+        "404": 6,
+        "200": 3225,
+        "429": 2
+      },
+      "network_seconds": 5336.5,
+      "max_response_seconds": 5.8,
+      "cache_events": 79949
+    },
+    {
+      "name": "ChenOne",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "7130b3195d2ca625",
-      "products": 480,
-      "variants": 1668,
+      "products": 304,
+      "variants": 1088,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
       "cache_events": 0
-    },
-    {
-      "name": "Rios",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "12a07ae410136717",
-      "products": 2432,
-      "variants": 6140,
-      "http_statuses": {
-        "200": 2604,
-        "429": 2
-      },
-      "network_seconds": 5198.5,
-      "max_response_seconds": 15.2,
-      "cache_events": 54221
     }
   ]
 }
