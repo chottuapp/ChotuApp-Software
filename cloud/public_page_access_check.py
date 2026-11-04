@@ -86,6 +86,20 @@ async def main():
      from axis_source_support import page_products,public_render_props
      record['public_next_products']=page_products(body)
      record['public_render_props']=public_render_props(body)
+     record['selected_size_checks']=[]
+     for product in record['public_next_products']:
+      if product.get('slug')!=urlsplit(page.url).path.rstrip('/').split('/')[-1]:continue
+      variants=product.get('variants') or []
+      colors={v.get('color_name') for v in variants}
+      if len(colors)!=1 or not variants:continue
+      for variant in [variants[0],variants[-1]]:
+       label=variant.get('size_name')
+       if not isinstance(label,str):continue
+       button=page.get_by_role('button',name=label,exact=True)
+       if await button.count()!=1 or await button.is_disabled():continue
+       await button.click();await page.wait_for_timeout(300)
+       visible=await content.inner_text()
+       record['selected_size_checks'].append({'variant_id':variant.get('id'),'size':label,'source_variant_price':variant.get('price'),'visible_start':visible[:350]})
    except Exception as exc:record.update(status='check_unavailable',error_type=type(exc).__name__)
    finally:
     if page:await page.context.close()
