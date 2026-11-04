@@ -45,15 +45,25 @@ async def main():
     home_soup=BeautifulSoup(body,'html.parser')
     record['public_link_samples']=list(dict.fromkeys(urljoin(base,a['href']).split('?')[0] for a in home_soup.select('a[href]') if re.search('product|shop|catalog',a['href'],re.I)))[:8]
     url=product_link(home_soup,base,policy)
+    if name=='Computer Zone' and base+'/products' in record['public_link_samples'] and policy.can_fetch(AGENT,base+'/products'):url=base+'/products'
     record['status']='public_homepage_only'
     if not url:continue
     response=await page.goto(url,wait_until='domcontentloaded',timeout=45000);status=response.status if response else 0;body=await page.content();record['product_status']=status
     if (urlsplit(page.url).hostname or '').removeprefix('www.')!=(urlsplit(base).hostname or '').removeprefix('www.'):record['status']='external_redirect_unverified';continue
     if denied(status,body):record['status']='public_product_denied';continue
     if status!=200:record['status']='public_product_unavailable';continue
+    await page.wait_for_timeout(1500)
+    body=await page.content()
+    if denied(status,body):record['status']='public_product_denied';continue
     from source_probe import inspect_page
     info=inspect_page(body,page.url)
     record.update(status='public_product_readable',source_url=page.url.split('?')[0],platform_markers=info['platform_markers'],product_schema_samples=info['product_schema_samples'])
+    content=page.locator('main').first
+    if await content.count()==0:content=page.locator('body')
+    record['visible_product_text']=(await content.inner_text())[:18000]
+    record['public_controls']=await content.locator('button, select, input[type="radio"]').evaluate_all('(nodes)=>nodes.slice(0,60).map(n=>({tag:n.tagName,text:n.innerText,name:n.name,value:n.value,disabled:n.disabled,classes:n.className}))')
+    from source_research import public_product_state
+    record['public_product_state']=public_product_state(BeautifulSoup(body,'html.parser'))
    except Exception as exc:record.update(status='check_unavailable',error_type=type(exc).__name__)
    finally:
     if page:await page.context.close()
