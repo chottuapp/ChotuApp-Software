@@ -64,6 +64,9 @@ async def main():
     record['public_controls']=await content.locator('button, select, input[type="radio"]').evaluate_all('(nodes)=>nodes.slice(0,60).map(n=>({tag:n.tagName,text:n.innerText,name:n.name,value:n.value,disabled:n.disabled,classes:n.className}))')
     from source_research import public_product_state
     record['public_product_state']=public_product_state(BeautifulSoup(body,'html.parser'))
+    if name=='Axis PK':
+     from axis_source_support import page_products
+     record['public_next_products']=page_products(body)
    except Exception as exc:record.update(status='check_unavailable',error_type=type(exc).__name__)
    finally:
     if page:await page.context.close()

@@ -5,7 +5,7 @@ from source_access_check import check
 
 class PublicAccessTests(unittest.TestCase):
  def test_new_store_api_must_confirm_product_schema(self):
-  for name,url in [('Nayab Fashion','https://nayabfashion.com.pk'),('Axis PK','https://www.axispk.shop')]:
+  for name,url in [('Nayab Fashion','https://nayabfashion.com.pk')]:
    s=Mock();s.headers={};s.get.side_effect=[SimpleNamespace(status_code=200,text='User-agent: *\nAllow: /'),SimpleNamespace(status_code=200,json=lambda:[{'id':123}])]
    self.assertEqual(check(dict(name=name,url=url),s)['status'],'public_api_readable')
    self.assertEqual(s.get.call_args.args[0],url+'/wp-json/wc/store/v1/products?per_page=100&page=1')
