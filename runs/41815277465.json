@@ -3231,7 +3231,7 @@
     }
   ],
   "transfer_status": "finished",
-  "sync_status": "scanning",
+  "sync_status": "failed",
   "last_scan_utc": "2026-11-04T11:19:44.630372+00:00",
   "folder_id": "17GbkIwSowcPdqyK3rFxhfc9nqkI-yUan",
   "folder_url": "https://drive.google.com/drive/folders/17GbkIwSowcPdqyK3rFxhfc9nqkI-yUan",
@@ -3891,8 +3891,8 @@
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "a2c4c71e595a5dc14d686b82c7472d6ad5a0b308c528c7c547b8ec6ae52c9a03",
-      "checked_utc": "2026-11-04T10:41:00.895836+00:00",
+      "workbook_sha256": "b863edf34e0c456badd95a346171ee1d727da3f3e5c91f67a074f12c1097e9c8",
+      "checked_utc": "2026-11-04T11:20:23.712110+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
@@ -9811,5 +9811,6 @@
     "Bachaa Party",
     "Khaadi",
     "LAAM"
-  ]
+  ],
+  "sync_error": "Command '['git', 'push', 'origin', 'd6aca7784d395b578d86a8ff56c5e3826560b95b:refs/heads/audit804-held-inputs']' returned non-zero exit status 1."
 }
