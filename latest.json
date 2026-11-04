@@ -1,51 +1,28 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-04T14:58:59.737068+00:00",
-  "run_id": "41810895688",
+  "generated_utc": "2026-11-04T15:08:50.509585+00:00",
+  "run_id": "41854599356",
   "attempt": "1",
-  "source_commit": "2321f5b98c7c589c1852f5f65a3e6526f4a5c32b",
+  "source_commit": "831358bf3007265e39caec811c04432da08a7ef2",
   "status": "incomplete",
   "checkpoint_saved": true,
-  "python": "3.12.16",
-  "elapsed_seconds": 18000.8,
+  "python": "3.12.15",
+  "elapsed_seconds": 4.0,
   "stores": [
     {
-      "name": "Bonanza Satrangi",
-      "status": "pending",
+      "name": "Axis PK",
+      "status": "failed",
       "review_required": false,
       "issue_codes": [
-        "HTTP_503",
-        "RATE_LIMIT",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "7130b3195d2ca625",
+      "software_revision": "12a07ae410136717",
       "http_statuses": {
-        "200": 5543,
-        "503": 1
+        "200": 2
       },
-      "network_seconds": 14437.6,
-      "max_response_seconds": 4.7,
-      "cache_events": 5144
-    },
-    {
-      "name": "Zellbury",
-      "status": "pending",
-      "review_required": false,
-      "issue_codes": [
-        "HTTP_404",
-        "HTTP_503",
-        "RATE_LIMIT",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "7130b3195d2ca625",
-      "http_statuses": {
-        "200": 7277,
-        "404": 4,
-        "503": 1
-      },
-      "network_seconds": 18370.2,
-      "max_response_seconds": 116.6,
-      "cache_events": 8419
+      "network_seconds": 2.6,
+      "max_response_seconds": 2.5,
+      "cache_events": 0
     }
   ]
 }
