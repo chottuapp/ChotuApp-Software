@@ -1,28 +1,45 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-04T11:17:02.210625+00:00",
-  "run_id": "41811744694",
+  "generated_utc": "2026-11-04T11:12:49.210921+00:00",
+  "run_id": "41811736793",
   "attempt": "1",
   "source_commit": "88b1feb5651a61be50aa69d307b8ad9ead59255c",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 14.5,
+  "elapsed_seconds": 46.9,
   "stores": [
     {
-      "name": "Dairy Dream",
+      "name": "G7 Leather",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "7130b3195d2ca625",
+      "products": 12,
+      "variants": 37,
+      "http_statuses": {
+        "200": 28
+      },
+      "network_seconds": 8.9,
+      "max_response_seconds": 1.5,
+      "cache_events": 0
+    },
+    {
+      "name": "Bin Fahad",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "7130b3195d2ca625",
-      "products": 10,
-      "variants": 15,
+      "products": 51,
+      "variants": 96,
       "http_statuses": {
-        "200": 18
+        "200": 73
       },
-      "network_seconds": 10.5,
-      "max_response_seconds": 1.8,
-      "cache_events": 20
+      "network_seconds": 33.9,
+      "max_response_seconds": 1.9,
+      "cache_events": 111
     }
   ]
 }
