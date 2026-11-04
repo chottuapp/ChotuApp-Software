@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-04T10:02:18.471436+00:00",
+  "run_id": "41810875482",
+  "attempt": "1",
+  "source_commit": "2321f5b98c7c589c1852f5f65a3e6526f4a5c32b",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.15",
+  "elapsed_seconds": 265.9,
+  "stores": [
+    {
+      "name": "Nisa Naturals",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "7130b3195d2ca625",
+      "products": 53,
+      "variants": 53,
+      "http_statuses": {
+        "200": 79
+      },
+      "network_seconds": 111.7,
+      "max_response_seconds": 2.5,
+      "cache_events": 167
+    },
+    {
+      "name": "Computer Zone",
+      "status": "failed",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_403",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "7130b3195d2ca625",
+      "http_statuses": {
+        "403": 2
+      },
+      "network_seconds": 0.3,
+      "max_response_seconds": 0.2,
+      "cache_events": 0
+    }
+  ]
+}
