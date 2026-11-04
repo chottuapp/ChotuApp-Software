@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-04T10:30:39.540272+00:00",
+  "run_id": "41810860822",
+  "attempt": "1",
+  "source_commit": "2321f5b98c7c589c1852f5f65a3e6526f4a5c32b",
+  "status": "complete",
+  "checkpoint_saved": true,
+  "python": "3.12.15",
+  "elapsed_seconds": 2014.5,
+  "stores": [
+    {
+      "name": "Shop Modest",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "7130b3195d2ca625",
+      "products": 129,
+      "variants": 998,
+      "http_statuses": {
+        "200": 185
+      },
+      "network_seconds": 280.7,
+      "max_response_seconds": 6.8,
+      "cache_events": 283
+    },
+    {
+      "name": "The Hanger Pakistan",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "7130b3195d2ca625",
+      "products": 374,
+      "variants": 1659,
+      "http_statuses": {
+        "200": 537,
+        "429": 1
+      },
+      "network_seconds": 1084.0,
+      "max_response_seconds": 2.8,
+      "cache_events": 1027
+    }
+  ]
+}
