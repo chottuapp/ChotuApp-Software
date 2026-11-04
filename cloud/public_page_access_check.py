@@ -8,10 +8,13 @@ ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 AGENT='Mozilla/5.0 (compatible; ChotuAppCatalogRefresh/1.0)'
 STORES=('Computer Zone','Gift4U','Axis PK')
 def denied(status,text):
- return status in (401,403,429,503) or bool(re.search(r'cf-chl-|captcha|verify (?:that )?you are human|<title>\s*(?:just a moment|attention required)',text,re.I))
+ from bs4 import BeautifulSoup
+ soup=BeautifulSoup(text,'html.parser');title=soup.title.get_text(' ',strip=True) if soup.title else ''
+ visible=soup.get_text(' ',strip=True)
+ return status in (401,403,429,503) or bool(re.search(r'just a moment|attention required|captcha verification',title,re.I)) or bool(re.search(r'verify (?:that )?you are human',visible,re.I)) or bool(soup.select_one('#challenge-running, #challenge-form, .cf-challenge-running'))
 def product_link(soup,base,policy):
  host=(urlsplit(base).hostname or '').removeprefix('www.')
- for anchor in soup.select('.products .product a[href], .wx-listing-product-wrapper .listing-grid a[href], a.woocommerce-LoopProduct-link[href]'):
+ for anchor in soup.select('.products .product a[href], .wx-listing-product-wrapper .listing-grid a[href], a.woocommerce-LoopProduct-link[href], a[href*="/product/"], a[href*="/products/"]'):
   url=urljoin(base,anchor.get('href',''));p=urlsplit(url)
   if p.scheme=='https' and not p.username and not p.password and (p.hostname or '').removeprefix('www.')==host and not p.query and not p.fragment and policy.can_fetch(AGENT,url):return url
  return None
@@ -34,7 +37,12 @@ async def main():
     if (urlsplit(page.url).hostname or '').removeprefix('www.')!=(urlsplit(base).hostname or '').removeprefix('www.'):record['status']='external_redirect_unverified';continue
     if denied(status,body):record['status']='public_homepage_denied';continue
     if status!=200:record['status']='homepage_unavailable';continue
-    url=product_link(BeautifulSoup(body,'html.parser'),base,policy)
+    from source_probe import inspect_page
+    home_info=inspect_page(body,page.url)
+    record['platform_markers']=home_info['platform_markers']
+    home_soup=BeautifulSoup(body,'html.parser')
+    record['public_link_samples']=list(dict.fromkeys(urljoin(base,a['href']).split('?')[0] for a in home_soup.select('a[href]') if re.search('product|shop|catalog',a['href'],re.I)))[:8]
+    url=product_link(home_soup,base,policy)
     record['status']='public_homepage_only'
     if not url:continue
     response=await page.goto(url,wait_until='domcontentloaded',timeout=45000);status=response.status if response else 0;body=await page.content();record['product_status']=status
