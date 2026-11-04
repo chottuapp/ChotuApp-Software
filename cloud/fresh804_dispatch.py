@@ -81,6 +81,6 @@ def main():
    extra=['-f','resume_run_id='+str(resume),'-f','partition_resume=true'] if resume else []
    gh('workflow','run','cloud-fetch.yml','--repo',REPO,'--ref','main','-f','stores='+json.dumps(stores,separators=(',',':')),'-f','runner_group='+lane,'-f','minutes='+str(request.get('fetch_segment_minutes',90)),'-f','save_checkpoint=true','-f','auto_continue_limit=48','-f','auto_continue_once=false',*extra)
    item['status']='dispatched'
-  publish_progress(report)
+  print('Fresh lane '+str(index)+'/'+str(len(plan))+': '+item['status'],flush=True)
  report['dispatch']='complete';report['checked_utc']=datetime.now(timezone.utc).isoformat();publish_progress(report);print('Fresh dispatch complete:',len(report['groups']),'runners, store-isolated plan; selected stores: '+str(len(sites))+'; source failures remain explicit.')
 if __name__=='__main__':main()
