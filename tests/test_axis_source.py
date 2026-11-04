@@ -12,3 +12,7 @@ class AxisPublicState(unittest.TestCase):
   self.assertEqual(page_products('<script>self.config={"name":"Offer","price":1};</script>'),[])
  def test_malformed_script_is_not_executed(self):
   self.assertEqual(page_products('<script>self.__next_f.push(executeAnything());</script>'),[])
+ def test_named_render_record_can_supply_product_under_other_prop_name(self):
+  payload='a:'+json.dumps(['$','component',None,{'initialData':{'id':'p1','slug':'actual','name':'Actual','price':500}}])+'\n'
+  html='<script>self.__next_f.push('+json.dumps([1,payload])+')</script>'
+  self.assertEqual(page_products(html)[0]['id'],'p1')

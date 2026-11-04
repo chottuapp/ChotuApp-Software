@@ -83,8 +83,9 @@ async def main():
     from source_research import public_product_state
     record['public_product_state']=public_product_state(BeautifulSoup(body,'html.parser'))
     if name=='Axis PK':
-     from axis_source_support import page_products
+     from axis_source_support import page_products,public_render_props
      record['public_next_products']=page_products(body)
+     record['public_render_props']=public_render_props(body)
    except Exception as exc:record.update(status='check_unavailable',error_type=type(exc).__name__)
    finally:
     if page:await page.context.close()
