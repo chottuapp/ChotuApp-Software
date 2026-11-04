@@ -1,30 +1,47 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-04T15:31:48.631703+00:00",
-  "run_id": "41845590378",
+  "generated_utc": "2026-11-04T15:33:02.725499+00:00",
+  "run_id": "41811495654",
   "attempt": "1",
-  "source_commit": "6e9f7a384916b40b650d299b38bc64e3538bd1bb",
+  "source_commit": "88b1feb5651a61be50aa69d307b8ad9ead59255c",
   "status": "complete",
   "checkpoint_saved": true,
-  "python": "3.12.15",
-  "elapsed_seconds": 4599.3,
+  "python": "3.12.16",
+  "elapsed_seconds": 14779.1,
   "stores": [
     {
-      "name": "Nayab Fashion",
+      "name": "Skin Factor",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "7130b3195d2ca625",
+      "products": 28,
+      "variants": 28,
+      "http_statuses": {
+        "200": 82
+      },
+      "network_seconds": 785.0,
+      "max_response_seconds": 38.5,
+      "cache_events": 56
+    },
+    {
+      "name": "Outfitters",
       "status": "done",
       "review_required": true,
       "issue_codes": [
+        "HTTP_404",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "97d8d3a80a28b8e6",
-      "products": 498,
-      "variants": 498,
+      "software_revision": "7130b3195d2ca625",
+      "products": 3760,
+      "variants": 28697,
       "http_statuses": {
-        "200": 631
+        "200": 3801,
+        "404": 2
       },
-      "network_seconds": 1416.0,
-      "max_response_seconds": 17.1,
-      "cache_events": 0
+      "network_seconds": 10583.2,
+      "max_response_seconds": 53.4,
+      "cache_events": 7543
     }
   ]
 }
