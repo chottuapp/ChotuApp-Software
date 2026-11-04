@@ -1,49 +1,50 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-04T12:51:42.814929+00:00",
-  "run_id": "41811732225",
+  "generated_utc": "2026-11-04T12:52:23.945559+00:00",
+  "run_id": "41810904443",
   "attempt": "1",
-  "source_commit": "88b1feb5651a61be50aa69d307b8ad9ead59255c",
+  "source_commit": "2321f5b98c7c589c1852f5f65a3e6526f4a5c32b",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 5411.8,
+  "elapsed_seconds": 10471.6,
   "stores": [
     {
-      "name": "Fresh Basket",
+      "name": "Aerosoft Studio",
       "status": "done",
       "review_required": true,
       "issue_codes": [
         "HTTP_429",
-        "HTTP_503",
-        "RATE_LIMIT",
-        "WEBSITE_ORDER_UNVERIFIED"
+        "RATE_LIMIT"
       ],
       "software_revision": "7130b3195d2ca625",
-      "products": 1077,
-      "variants": 1088,
+      "products": 318,
+      "variants": 1918,
       "http_statuses": {
-        "200": 1092,
-        "429": 1
+        "200": 390
       },
-      "network_seconds": 2389.6,
-      "max_response_seconds": 5.3,
-      "cache_events": 5375
+      "network_seconds": 661.2,
+      "max_response_seconds": 2.6,
+      "cache_events": 932
     },
     {
-      "name": "The Glossy Quill",
+      "name": "Servis",
       "status": "done",
       "review_required": true,
-      "issue_codes": [],
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
       "software_revision": "7130b3195d2ca625",
-      "products": 62,
-      "variants": 97,
+      "products": 2345,
+      "variants": 12128,
       "http_statuses": {
-        "200": 99
+        "200": 2545,
+        "429": 2
       },
-      "network_seconds": 62.0,
-      "max_response_seconds": 2.2,
-      "cache_events": 127
+      "network_seconds": 4705.1,
+      "max_response_seconds": 2.7,
+      "cache_events": 15472
     }
   ]
 }
