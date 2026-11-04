@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-04T10:22:55.014369+00:00",
+  "run_id": "41811029950",
+  "attempt": "1",
+  "source_commit": "88b1feb5651a61be50aa69d307b8ad9ead59255c",
+  "status": "complete",
+  "checkpoint_saved": true,
+  "python": "3.12.15",
+  "elapsed_seconds": 1441.5,
+  "stores": [
+    {
+      "name": "Zyren",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "7130b3195d2ca625",
+      "products": 173,
+      "variants": 1184,
+      "http_statuses": {
+        "200": 206
+      },
+      "network_seconds": 282.5,
+      "max_response_seconds": 2.6,
+      "cache_events": 507
+    },
+    {
+      "name": "Pyari Walls",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "7130b3195d2ca625",
+      "products": 330,
+      "variants": 837,
+      "http_statuses": {
+        "200": 395
+      },
+      "network_seconds": 645.6,
+      "max_response_seconds": 2.8,
+      "cache_events": 873
+    }
+  ]
+}
