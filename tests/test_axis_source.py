@@ -48,6 +48,14 @@ class AxisRouting(unittest.TestCase):
   original.assert_not_called();self.assertEqual(g['_chotuapp_run_site_original']('https://other.example','Other','template',print),'other')
 
 class AxisCatalogShell(unittest.TestCase):
+ def test_icon_only_pagination_is_not_silently_treated_as_catalog_completion(self):
+  from types import SimpleNamespace
+  from axis_source_support import PublicCatalog,BASE
+  def get(url,**kwargs):
+   html='User-agent: *\nAllow: /' if url.endswith('robots.txt') else '<main><a href="/product/actual">Actual</a><button aria-label="Next page"></button></main>'
+   return SimpleNamespace(url=url,text=html,raise_for_status=lambda:None)
+  catalog=PublicCatalog({'S':SimpleNamespace(get=get),'_chotu_wait':lambda:None},BASE,lambda _:None)
+  with self.assertRaisesRegex(ValueError,'no partial catalog'):catalog.catalog()
  def test_normal_readable_js_shell_uses_renderer_and_keeps_exact_source_ids(self):
   from unittest.mock import Mock,patch
   from types import SimpleNamespace

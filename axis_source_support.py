@@ -127,7 +127,7 @@ def normalize_product(html,url):
 
 class PublicCatalog:
  label='Axis public Next.js product pages'
- def __init__(self,g,base,log):self.g=g;self.base=base.rstrip('/');self.log=log;self.byid={};self.children={};self.policy=None
+ def __init__(self,g,base,log):self.g=g;self.base=base.rstrip('/');self.log=log;self.byid={};self.children={};self.policy=None;self.rendered_catalog_links=[]
  def supports(self,base):return base.rstrip('/')==BASE and self.base==BASE
  def page(self,url):
   from urllib.parse import urlsplit
@@ -152,6 +152,21 @@ class PublicCatalog:
     if urlsplit(page.url).hostname!='www.axispk.shop' or urlsplit(page.url).path.rstrip('/')!=urlsplit(url).path.rstrip('/'):raise ValueError('Axis browser source identity changed')
     if access_challenge(page.content()):raise ValueError('Axis browser access challenge; stopped without interaction')
     page.wait_for_selector('main a[href*="/product/"]' if catalog else 'main h1',timeout=20000)
+    if catalog:
+     found=[];stagnant=0;denials=[]
+     page.on('response',lambda reply:denials.append(reply.status) if reply.status in (401,403,429,503) and reply.request.resource_type in ('document','xhr','fetch') and urlsplit(reply.url).hostname=='www.axispk.shop' else None)
+     for _ in range(300):
+      self.g['_chotu_wait']()
+      if denials or access_challenge(page.content()):raise ValueError('Axis catalog source denied/rate limited; stopped without retry')
+      before=len(found)
+      for link in page.eval_on_selector_all('main a[href]', '(nodes)=>nodes.map(n=>n.href)'):
+       parsed=urlsplit(link)
+       if parsed.scheme=='https' and parsed.hostname=='www.axispk.shop' and parsed.path.startswith('/product/') and not parsed.query and not parsed.fragment and link not in found:found.append(link)
+      stagnant=stagnant+1 if len(found)==before else 0
+      if stagnant>=8:break
+      page.evaluate('window.scrollTo(0,document.body.scrollHeight)');page.wait_for_timeout(1200)
+     else:raise ValueError('Axis public catalog scroll bound reached; no partial export')
+     self.rendered_catalog_links=found
     return page.content()
    finally:browser.close()
  def product_page(self,url):
@@ -169,10 +184,12 @@ class PublicCatalog:
    if len(visited)>=100:raise ValueError('Axis public pagination bound reached')
    html=self.page(url);soup=BeautifulSoup(html,'html.parser');main=soup.select_one('main')
    embedded=page_products(html)
-   if not embedded and (not main or not main.select('a[href*="/product/"]')):
+   if not main or not main.select('a[href*="/product/"]'):
     html=self.render(url,catalog=True);soup=BeautifulSoup(html,'html.parser');main=soup.select_one('main');embedded=page_products(html)
    if not main:raise ValueError('Axis shop content missing')
    visited.add(url)
+   for link in self.rendered_catalog_links:
+    if link not in urls:urls.append(link)
    for item in embedded:
     slug=item.get('slug')
     if not isinstance(slug,str):continue
@@ -184,7 +201,7 @@ class PublicCatalog:
     if p.hostname!='www.axispk.shop' or p.fragment:continue
     if p.path.startswith('/product/') and not p.query and link not in urls:urls.append(link)
     if p.path=='/shop' and p.query and set(parse_qs(p.query))=={'page'} and all(v.isdigit() for v in parse_qs(p.query)['page']) and link not in visited|set(queue):queue.append(link)
-   if any(re.fullmatch(r'(?:load|show) more|next',b.get_text(' ',strip=True),re.I) and not b.has_attr('disabled') for b in main.find_all('button')):raise ValueError('Axis catalog has an unverified interactive pagination control; no partial catalog exported')
+   if any(re.fullmatch(r'(?:load|show) more|next(?: page)?|[›→]',b.get_text(' ',strip=True) or b.get('aria-label','') or b.get('title',''),re.I) and not b.has_attr('disabled') for b in main.find_all('button')):raise ValueError('Axis catalog has an unverified interactive pagination control; no partial catalog exported')
   if not urls:raise ValueError('Axis public shop product links missing')
   result=[]
   for i,url in enumerate(urls,1):
