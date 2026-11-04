@@ -3249,7 +3249,7 @@
     }
   ],
   "transfer_status": "finished",
-  "sync_status": "scanning",
+  "sync_status": "failed",
   "last_scan_utc": "2026-11-04T10:07:05.337311+00:00",
   "folder_id": "17GbkIwSowcPdqyK3rFxhfc9nqkI-yUan",
   "folder_url": "https://drive.google.com/drive/folders/17GbkIwSowcPdqyK3rFxhfc9nqkI-yUan",
@@ -3608,12 +3608,12 @@
       "shop_code": "SE10017",
       "identity_policy": "confirmed_code",
       "status": "pass",
-      "products_checked": 55,
+      "products_checked": 53,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "c7091f9d25d5efa026a98766a973414353f1140f9e61c14945795ed8223b27ee",
-      "checked_utc": "2026-11-03T11:26:58.638403+00:00",
+      "workbook_sha256": "1d3de58788bc958a57bab642f33ed31153fed575baf107e20dab2cc429c1bc1d",
+      "checked_utc": "2026-11-04T10:18:09.797607+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
@@ -3624,11 +3624,11 @@
       "description_repairs_count": 0,
       "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41341911115",
-      "source_artifact": 13097528949,
-      "source_sha256": "d2b3577e44d3ebddaf4f277136781965b06b2aafcaaae3bacdb9a6477dbf65d9",
-      "delivery_status": "verified",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/nisa-naturals/d2b3577e44d3ebdd/manifest.json"
+      "source_run": "41810875482",
+      "source_artifact": 13311553715,
+      "source_sha256": "d3446f03190976854acde51701a2bdefa1daa63da72664c9bdad5178e1d7edd2",
+      "refresh_generation": "refresh20261104-6c42b57a",
+      "delivery_status": "pending"
     },
     "Cool and Cool": {
       "name": "804 Audit",
@@ -8253,7 +8253,8 @@
     "41394887752": "41394887752:13120408835:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41407350295": "41407350295:13125617005:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41810860822": "41810860822:13312837134:954387c78b225159215953546b678ef96afd6242bf25d7154d66ff88621f4d14",
-    "41810864168": "41810864168:13312411897:954387c78b225159215953546b678ef96afd6242bf25d7154d66ff88621f4d14"
+    "41810864168": "41810864168:13312411897:954387c78b225159215953546b678ef96afd6242bf25d7154d66ff88621f4d14",
+    "41810871756": "41810871756:13312885598:954387c78b225159215953546b678ef96afd6242bf25d7154d66ff88621f4d14"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-11-04T09:47:02.770461+00:00",
@@ -9826,5 +9827,6 @@
     "Bachaa Party",
     "Khaadi",
     "LAAM"
-  ]
+  ],
+  "sync_error": "Command '['git', 'push', 'origin', 'e704a66dc03cb9b7a05e1f79018707990a271961:refs/heads/audit804-held-inputs']' returned non-zero exit status 1."
 }
