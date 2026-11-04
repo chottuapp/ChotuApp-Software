@@ -1,28 +1,46 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-04T17:40:02.232081+00:00",
-  "run_id": "41879226885",
+  "generated_utc": "2026-11-04T17:55:38.987547+00:00",
+  "run_id": "41861364912",
   "attempt": "1",
-  "source_commit": "c00a249ca6740f27cb354e660f910cb5d9cc8c0b",
-  "status": "incomplete",
+  "source_commit": "831358bf3007265e39caec811c04432da08a7ef2",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 30.0,
+  "elapsed_seconds": 7605.7,
   "stores": [
     {
-      "name": "Axis PK",
-      "status": "failed",
-      "review_required": false,
+      "name": "Beyond East",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "7130b3195d2ca625",
+      "products": 480,
+      "variants": 1668,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    },
+    {
+      "name": "Rios",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "35e67d953d0e4d0c",
+      "software_revision": "12a07ae410136717",
+      "products": 2432,
+      "variants": 6140,
       "http_statuses": {
-        "200": 2
+        "200": 2604,
+        "429": 2
       },
-      "network_seconds": 3.2,
-      "max_response_seconds": 2.9,
-      "cache_events": 0
+      "network_seconds": 5198.5,
+      "max_response_seconds": 15.2,
+      "cache_events": 54221
     }
   ]
 }
