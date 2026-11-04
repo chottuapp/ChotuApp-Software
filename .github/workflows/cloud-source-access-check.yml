@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       store:
-        description: Exact approved WooCommerce seller name
+        description: Exact approved WooCommerce or Computer Zone seller name
         required: true
         default: Gift4U
         type: string

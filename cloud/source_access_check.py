@@ -12,11 +12,12 @@ from urllib.parse import urlsplit
 def check(site,session=None):
  result=dict(store=site['name'],host=urlsplit(site['url']).hostname,status='unchecked')
  if owner_paused(site['name'],site['url']):return dict(result,status='owner_paused')
- if result['host'].removeprefix('www.') not in HOSTS:raise ValueError('This diagnostic supports approved public WooCommerce sources only')
+ webx=result['host'].removeprefix('www.')=='czone.com.pk' and site['name']=='Computer Zone'
+ if not webx and result['host'].removeprefix('www.') not in HOSTS:raise ValueError('Unapproved public source diagnostic')
  session=session or requests.Session()
  session.headers.update({'User-Agent':'Mozilla/5.0 (compatible; ChotuAppCatalogRefresh/1.0)','Cache-Control':'no-cache','Pragma':'no-cache'})
  if os.environ.get('SSL_CERT_FILE'):session.verify=os.environ['SSL_CERT_FILE']
- base=site['url'].rstrip('/');api=base+'/wp-json/wc/store/v1/products?per_page=100&page=1'
+ base=site['url'].rstrip('/');api=base+('/products' if webx else '/wp-json/wc/store/v1/products?per_page=100&page=1')
  robots=session.get(base+'/robots.txt',timeout=(15,30),allow_redirects=False)
  result['robots_status']=robots.status_code
  if robots.status_code not in (200,404):return dict(result,status='source_permissions_unverified')
@@ -24,6 +25,12 @@ def check(site,session=None):
  if not policy.can_fetch(session.headers['User-Agent'],api):return dict(result,status='robots_disallowed')
  response=session.get(api,timeout=(15,30),allow_redirects=False);result['api_status']=response.status_code
  if response.status_code==200:
+  if webx:
+   from bs4 import BeautifulSoup
+   from czone_source_support import nuxt
+   try:nuxt(BeautifulSoup(response.text,'html.parser'))
+   except ValueError:return dict(result,status='source_schema_unverified')
+   return dict(result,status='public_catalog_readable')
   try:data=response.json()
   except ValueError:return dict(result,status='source_schema_unverified')
   if not isinstance(data,list) or not data or not isinstance(data[0],dict) or not data[0].get('id'):return dict(result,status='source_schema_unverified')

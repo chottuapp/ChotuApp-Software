@@ -4,6 +4,10 @@ from unittest.mock import Mock
 from source_access_check import check
 
 class PublicAccessTests(unittest.TestCase):
+ def test_czone_probes_only_normal_catalog_and_preserves_denial(self):
+  s=Mock();s.headers={};s.get.side_effect=[SimpleNamespace(status_code=200,text='User-agent: *\nAllow: /'),SimpleNamespace(status_code=403,text='Forbidden',headers={},json=Mock(side_effect=ValueError))]
+  result=check(dict(name='Computer Zone',url='https://www.czone.com.pk'),s)
+  self.assertEqual(result['status'],'source_denied');self.assertEqual(s.get.call_count,2);self.assertEqual(s.get.call_args.args[0],'https://www.czone.com.pk/products')
  def test_denial_is_classified_without_retry_or_body_publication(self):
   s=Mock();s.headers={};s.get.side_effect=[SimpleNamespace(status_code=200,text='User-agent: *\nAllow: /'),SimpleNamespace(status_code=403,text='<title>Just a moment</title>private body',headers={'cf-mitigated':'challenge'},json=Mock(side_effect=ValueError))]
   result=check(dict(name='Gift4U',url='https://gift4u.pk'),s)
