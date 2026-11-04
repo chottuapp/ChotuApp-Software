@@ -35,6 +35,21 @@ async def main():
     policy=RobotFileParser();policy.parse(robots.text.splitlines() if robots.status_code==200 else [])
     if not policy.can_fetch(AGENT,base+'/'):record['status']='robots_disallowed';continue
     context=await browser.new_context(user_agent=AGENT);page=await context.new_page()
+    if name=='Axis PK':
+     record['public_product_responses']=[]
+     async def observe_public_products(reply):
+      try:
+       parsed=urlsplit(reply.url)
+       if reply.status!=200 or reply.request.method!='GET' or (parsed.hostname or '').removeprefix('www.')!=(urlsplit(base).hostname or '').removeprefix('www.'):return
+       if re.search(r'cart|checkout|order|customer|auth|session|token|secret|api.?key',parsed.path+'?'+parsed.query,re.I) or 'authorization' in reply.request.headers:return
+       if 'json' not in reply.headers.get('content-type',''):return
+       data=await reply.body()
+       if len(data)>2*1024*1024:return
+       from axis_source_support import public_products
+       products=public_products(json.loads(data))
+       if products and len(record['public_product_responses'])<8:record['public_product_responses'].append({'source_url':reply.url,'products':products[:5]})
+      except Exception:return
+     page.on('response',observe_public_products)
     response=await page.goto(base+'/',wait_until='domcontentloaded',timeout=45000);status=response.status if response else 0;body=await page.content();record['homepage_status']=status
     if (urlsplit(page.url).hostname or '').removeprefix('www.')!=(urlsplit(base).hostname or '').removeprefix('www.'):record['status']='external_redirect_unverified';continue
     if denied(status,body):record['status']='public_homepage_denied';continue

@@ -1,6 +1,9 @@
 import json,unittest
-from axis_source_support import page_products
+from axis_source_support import page_products,public_products
 class AxisPublicState(unittest.TestCase):
+ def test_normal_public_json_keeps_only_product_objects(self):
+  rows=public_products({'data':{'product':{'id':'one','name':'Actual','price':500,'variants':[{'size':'M','stock':2}]}},'sessionToken':'NEVER'})
+  self.assertEqual(rows,[{'id':'one','name':'Actual','price':500,'variants':[{'size':'M','stock':2}]}])
  def test_exact_embedded_product_and_variants_preserved_without_eval(self):
   product={'id':'a','slug':'actual','name':'Actual tracksuit','price':8999,'salePrice':5999,'variants':[{'size':'L','stock':100,'price':5999}],'adminToken':'NEVER'}
   payload='3:'+json.dumps({'product':product});html='<script>self.__next_f.push('+json.dumps([1,payload])+')</script>'

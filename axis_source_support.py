@@ -2,6 +2,12 @@
 import json,re
 from bs4 import BeautifulSoup
 
+def public_products(value):
+ # Restrict extraction to product-shaped objects; unrelated session/config
+ # JSON is never retained. Escaping prevents data from creating HTML tags.
+ text=json.dumps({'product':value},ensure_ascii=True).replace('</','<\\/')
+ return page_products('<script id="__NEXT_DATA__">'+text+'</script>')
+
 def page_products(html):
  soup=BeautifulSoup(html,'html.parser');payloads=[];decoder=json.JSONDecoder()
  for script in soup.find_all('script'):
