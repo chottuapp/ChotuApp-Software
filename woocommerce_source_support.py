@@ -320,7 +320,7 @@ def export(g,base,name,template,log,*,provider=None):
   for v,attrs,(regular,price,available_now) in offers:
    image=v['images'][0]['src'] if v.get('images') else ''
    if v.get('type')=='variation' and image==cover:image='' # inherited cover is a labelled fallback
-   row={'combination_id':g['uid']('CC',base+'|'+str(v['id'])+'|'+json.dumps(attrs,sort_keys=True)),'product_id':pid,'source_variant_id':str(v['id']),'sku':v.get('sku',''),'base_price (PKR)':float(regular),'sale_price (PKR, agar discount ho)':float(price) if price<regular else None,'available (yes/no)':'yes' if available_now else 'no','variant_image_url':image,'source_url':url}
+   row={'combination_id':g['uid']('CC',base+'|'+str(v['id'])+'|'+json.dumps(attrs,sort_keys=True)),'product_id':pid,'source_variant_id':str(v['id']),'sku':v.get('sku',''),'base_price (PKR)':float(regular),'sale_price (PKR, agar discount ho)':float(price) if price<regular else None,'available (yes/no)':'yes' if available_now else 'no','stock_quantity (agar public ho)':v.get('stock_quantity',''),'variant_image_url':image,'source_url':url}
    row.update(g['variant_image_metadata'](image,cover))
    for pos,label in enumerate(dimensions,1):row.update({f'option_{pos}_group_id':gids[label],f'option_{pos}_value':attrs[label]})
    g['write_row'](wb['Variant Combinations'],row)

@@ -65,3 +65,111 @@ def page_products(html):
   except ValueError:continue
  for value in values:collect(value)
  return found
+
+BASE='https://www.axispk.shop'
+class SourcePriceConflict(ValueError):pass
+
+def normalize_product(html,url):
+ from decimal import Decimal,InvalidOperation
+ from urllib.parse import urlsplit,urljoin,parse_qs
+ soup=BeautifulSoup(html,'html.parser');path=urlsplit(url).path.rstrip('/');slug=path.split('/')[-1]
+ if urlsplit(url).hostname not in ('www.axispk.shop','axispk.shop') or not path.startswith('/product/'):raise ValueError('Axis product source identity invalid')
+ products=[p for p in page_products(html) if p.get('slug')==slug]
+ if len(products)!=1:raise ValueError('Exact Axis product state missing or ambiguous')
+ p=products[0];ident=p.get('productId',p.get('id'));main=soup.select_one('main');title=main.find('h1') if main else None
+ if isinstance(ident,bool) or not isinstance(ident,int) or ident<=0 or not title or title.get_text(' ',strip=True)!=p.get('name'):raise ValueError('Axis visible title and product identity disagree')
+ if not any(x.get('currencyCode')=='PKR' for x in public_render_props(html)):raise ValueError('Axis PKR currency not verified')
+ visible=main.get_text('\n',strip=True);head=re.split(r'(?m)^(?:COLOR|SIZE)$',visible,maxsplit=1)[0]
+ amounts=re.findall(r'(?:Rs\.?|PKR)\s*([\d,]+(?:\.\d+)?)',head)
+ if not amounts or len(amounts)>2:raise ValueError('Axis displayed product prices ambiguous')
+ def amount(value):
+  try:v=Decimal(str(value).replace(',',''))
+  except InvalidOperation as exc:raise ValueError('Axis price invalid') from exc
+  if not v.is_finite() or v<=0 or v*100!=(v*100).to_integral_value():raise ValueError('Axis price invalid')
+  return v
+ displayed=amount(amounts[0]);regular=amount(amounts[1]) if len(amounts)==2 else displayed
+ if regular<displayed or amount(p.get('basePrice'))!=displayed:raise SourcePriceConflict('Axis displayed and product base prices disagree; no prices exported')
+ raw=p.get('variants')
+ if not isinstance(raw,list) or not raw:raise ValueError('Axis exact source variants missing')
+ photos=[]
+ def image(value):
+  if not isinstance(value,str):return
+  value=urljoin(BASE,value);parts=urlsplit(value)
+  if parts.path=='/_next/image':value=parse_qs(parts.query).get('url',[''])[0];parts=urlsplit(value)
+  if parts.scheme=='https' and parts.hostname and not parts.username and not parts.password and value not in photos:photos.append(value)
+ image(p.get('image'))
+ for tag in main.select('button[class*="aspect-square"] img[src]'):image(tag.get('src'))
+ body=head.split('\n',1)[-1]
+ body=re.sub(r'(?:Rs\.?|PKR)\s*[\d,]+(?:\.\d+)?|^-\d+%\s*$', '',body,flags=re.M).strip()
+ base=dict(id=ident,name=p['name'],permalink=BASE+path,description=body,short_description='',images=[{'src':u} for u in photos],categories=[],condition='',sku='',type='variable')
+ def prices(price):return dict(currency_code='PKR',currency_minor_unit=2,price=str(int(price*100)),regular_price=str(int(regular*100)),sale_price=str(int(price*100)) if price<regular else '')
+ children=[];seen=set();dimensions={}
+ for v in raw:
+  vid=v.get('id');stock=v.get('stock');active=v.get('is_active');price=amount(v.get('price'))
+  if isinstance(vid,bool) or not isinstance(vid,int) or vid<=0 or vid==ident or vid in seen or v.get('product_id')!=ident:raise ValueError('Axis variant identity invalid')
+  if not isinstance(active,bool) or isinstance(stock,bool) or not isinstance(stock,int) or stock<0:raise ValueError('Axis variant availability not explicit')
+  # This source currently renders one fixed price even after size selection.
+  # Conflicting embedded variant prices are held, never silently substituted.
+  if active and price!=displayed:raise SourcePriceConflict('Axis price conflict for variant '+str(vid)+': page PKR '+str(displayed)+', variant PKR '+str(price)+'; source correction required, no price guessed')
+  attrs=[]
+  for label,key in [('Color','color_name'),('Size','size_name')]:
+   value=v.get(key)
+   if not isinstance(value,str) or not value.strip():raise ValueError('Axis variant '+label+' missing')
+   attrs.append(dict(name=label,value=value));dimensions.setdefault(label,[])
+   if value not in dimensions[label]:dimensions[label].append(value)
+  seen.add(vid);children.append(dict(base,id=vid,parent=ident,type='variation',sku=v.get('sku') or '',prices=prices(price),is_in_stock=active and stock>0,is_purchasable=active,stock_quantity=stock,attributes=attrs))
+ base.update(prices=prices(displayed),is_in_stock=any(c['is_in_stock'] for c in children),is_purchasable=any(c['is_purchasable'] for c in children),attributes=[dict(name=k,has_variations=True,terms=[dict(name=v,slug=v) for v in vals]) for k,vals in dimensions.items()],variations=[dict(id=c['id'],attributes=c['attributes']) for c in children])
+ return base,children
+
+class PublicCatalog:
+ label='Axis public Next.js product pages'
+ def __init__(self,g,base,log):self.g=g;self.base=base.rstrip('/');self.log=log;self.byid={};self.children={};self.policy=None
+ def supports(self,base):return base.rstrip('/')==BASE and self.base==BASE
+ def page(self,url):
+  from urllib.parse import urlsplit
+  parsed=urlsplit(url)
+  if parsed.scheme!='https' or parsed.username or parsed.password or parsed.hostname!='www.axispk.shop':raise ValueError('Axis cross-source URL rejected')
+  if self.policy and not self.policy.can_fetch('ChotuAppCatalogRefresh',url):raise ValueError('Axis robots disallows page; source retained')
+  self.g['_chotu_wait']();reader=getattr(self.g['S'],'get_fresh',self.g['S'].get);response=reader(url,timeout=(15,45));response.raise_for_status()
+  if urlsplit(response.url).hostname!='www.axispk.shop' or urlsplit(response.url).path.rstrip('/')!=urlsplit(url).path.rstrip('/'):raise ValueError('Axis page redirected to another identity')
+  return response.text
+ def catalog(self):
+  from urllib.robotparser import RobotFileParser
+  from urllib.parse import urljoin,urlsplit,parse_qs
+  raw=self.page(BASE+'/robots.txt');self.policy=RobotFileParser();self.policy.parse(raw.splitlines())
+  queue=[BASE+'/shop'];visited=set();urls=[]
+  while queue:
+   url=queue.pop(0)
+   if url in visited:continue
+   if len(visited)>=100:raise ValueError('Axis public pagination bound reached')
+   soup=BeautifulSoup(self.page(url),'html.parser');main=soup.select_one('main')
+   if not main:raise ValueError('Axis shop content missing')
+   visited.add(url)
+   for a in main.select('a[href]'):
+    link=urljoin(BASE,a['href']);p=urlsplit(link)
+    if p.hostname!='www.axispk.shop' or p.fragment:continue
+    if p.path.startswith('/product/') and not p.query and link not in urls:urls.append(link)
+    if p.path=='/shop' and p.query and set(parse_qs(p.query))=={'page'} and all(v.isdigit() for v in parse_qs(p.query)['page']) and link not in visited|set(queue):queue.append(link)
+   if any(re.fullmatch(r'(?:load|show) more|next',b.get_text(' ',strip=True),re.I) and not b.has_attr('disabled') for b in main.find_all('button')):raise ValueError('Axis catalog has an unverified interactive pagination control; no partial catalog exported')
+  if not urls:raise ValueError('Axis public shop product links missing')
+  result=[]
+  for i,url in enumerate(urls,1):
+   parent,children=normalize_product(self.page(url),url)
+   if parent['id'] in self.byid:raise ValueError('Axis duplicate source identity')
+   self.byid[parent['id']]=parent;self.children.update({c['id']:c for c in children});result.append(parent)
+   self.log('AXIS: verified '+str(i)+'/'+str(len(urls))+' exact public products')
+  return result
+ def read(self,path):
+  key=int(path.rstrip('/').split('/')[-1])
+  if key in self.children:return self.children[key]
+  item=self.byid[key];parent,children=normalize_product(self.page(item['permalink']),item['permalink'])
+  if parent['id']!=key:raise ValueError('Axis fresh product identity changed')
+  self.children.update({c['id']:c for c in children});return parent
+
+def enable_axis_source(g):
+ original=g['_chotuapp_run_site_original']
+ def run(base,name,template,log):
+  if base.rstrip('/')!=BASE:return original(base,name,template,log)
+  from woocommerce_source_support import export
+  return export(g,base,name,template,log,provider=PublicCatalog(g,base,log))
+ g['_chotuapp_run_site_original']=run

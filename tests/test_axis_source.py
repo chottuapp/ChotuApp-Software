@@ -16,3 +16,33 @@ class AxisPublicState(unittest.TestCase):
   payload='a:'+json.dumps(['$','component',None,{'initialData':{'id':'p1','slug':'actual','name':'Actual','price':500}}])+'\n'
   html='<script>self.__next_f.push('+json.dumps([1,payload])+')</script>'
   self.assertEqual(page_products(html)[0]['id'],'p1')
+
+class AxisCommercialGuards(unittest.TestCase):
+ def html(self,variant_price=5999,stock=100,active=True):
+  p={'productId':35,'slug':'actual','name':'Actual tracksuit','image':'https://images.example/actual.jpg','basePrice':5999,'variants':[{'id':1347,'product_id':35,'size_name':'L','color_name':'Navy','price':variant_price,'stock':stock,'is_active':active,'sku':None}]}
+  payload='a:'+json.dumps(['$','component',None,{'currencyCode':'PKR','initialData':p}])+'\n'
+  return '<main><h1>Actual tracksuit</h1><p>Rs. 5,999</p><p>Rs. 8,999</p><p>Source 300 GSM fabric details.</p><div>COLOR</div><div>SIZE</div></main><script>self.__next_f.push('+json.dumps([1,payload])+')</script>'
+ def test_exact_ids_prices_options_and_stock_are_preserved(self):
+  from axis_source_support import normalize_product
+  parent,children=normalize_product(self.html(),'https://www.axispk.shop/product/actual')
+  self.assertEqual(parent['id'],35);self.assertEqual(children[0]['id'],1347);self.assertEqual(children[0]['stock_quantity'],100);self.assertEqual(children[0]['prices']['price'],'599900');self.assertEqual(children[0]['prices']['regular_price'],'899900');self.assertEqual(children[0]['attributes'],[{'name':'Color','value':'Navy'},{'name':'Size','value':'L'}]);self.assertIn('300 GSM',parent['description'])
+ def test_observed_axis_price_conflict_never_silently_selects_one_price(self):
+  from axis_source_support import normalize_product,SourcePriceConflict
+  with self.assertRaises(SourcePriceConflict):normalize_product(self.html(4699),'https://www.axispk.shop/product/actual')
+ def test_unknown_stock_or_wrong_source_identity_is_held(self):
+  from axis_source_support import normalize_product
+  for html,url in [(self.html(stock=None),'https://www.axispk.shop/product/actual'),(self.html(),'https://www.axispk.shop/product/another'),(self.html(),'https://other.example/product/actual')]:
+   with self.subTest(url=url),self.assertRaises(ValueError):normalize_product(html,url)
+ def test_explicit_unavailable_variant_remains_unavailable(self):
+  from axis_source_support import normalize_product
+  parent,children=normalize_product(self.html(stock=0),'https://www.axispk.shop/product/actual');self.assertFalse(parent['is_in_stock']);self.assertFalse(children[0]['is_in_stock'])
+
+class AxisRouting(unittest.TestCase):
+ def test_axis_uses_its_public_source_and_other_stores_keep_their_adapter(self):
+  from unittest.mock import Mock,patch
+  from axis_source_support import enable_axis_source,PublicCatalog,BASE
+  original=Mock(return_value='other');g={'_chotuapp_run_site_original':original};enable_axis_source(g)
+  with patch('woocommerce_source_support.export',return_value='axis') as export:
+   self.assertEqual(g['_chotuapp_run_site_original'](BASE,'Axis PK','template',print),'axis')
+   self.assertIsInstance(export.call_args.kwargs['provider'],PublicCatalog)
+  original.assert_not_called();self.assertEqual(g['_chotuapp_run_site_original']('https://other.example','Other','template',print),'other')
