@@ -26,7 +26,7 @@ def page_products(html):
   if isinstance(value,list):
    for item in value:collect(item)
   elif isinstance(value,dict):
-   if any(k in value for k in ('name','title')) and any(k in value for k in ('id','slug','handle')) and any('price' in k.lower() for k in value):
+   if any(k in value for k in ('name','title','productName','product_name')) and any(k in value for k in ('id','_id','productId','product_id','slug','handle')) and any('price' in k.lower() for k in value):
     value=clean(value)
     if value not in found:found.append(value)
    else:
