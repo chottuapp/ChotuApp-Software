@@ -37,12 +37,15 @@ async def main():
     context=await browser.new_context(user_agent=AGENT);page=await context.new_page()
     if name=='Axis PK':
      record['public_product_responses']=[]
+     record['public_json_request_paths']=[]
      async def observe_public_products(reply):
       try:
        parsed=urlsplit(reply.url)
-       if reply.status!=200 or reply.request.method!='GET' or (parsed.hostname or '').removeprefix('www.')!=(urlsplit(base).hostname or '').removeprefix('www.'):return
+       if reply.request.method!='GET' or parsed.scheme!='https' or parsed.username or parsed.password:return
        if re.search(r'cart|checkout|order|customer|auth|session|token|secret|api.?key',parsed.path+'?'+parsed.query,re.I) or 'authorization' in reply.request.headers:return
        if 'json' not in reply.headers.get('content-type',''):return
+       if len(record['public_json_request_paths'])<25:record['public_json_request_paths'].append({'url':parsed._replace(query='',fragment='').geturl(),'status':reply.status})
+       if reply.status!=200 or (parsed.hostname or '').removeprefix('www.')!=(urlsplit(base).hostname or '').removeprefix('www.'):return
        data=await reply.body()
        if len(data)>2*1024*1024:return
        from axis_source_support import public_products
