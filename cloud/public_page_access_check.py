@@ -1,0 +1,53 @@
+"""One normal anonymous browser check per approved homepage; stop on access controls."""
+import asyncio,json,os,re,sys
+from pathlib import Path
+from urllib.parse import urljoin,urlsplit
+from urllib.robotparser import RobotFileParser
+import requests
+ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
+AGENT='Mozilla/5.0 (compatible; ChotuAppCatalogRefresh/1.0)'
+STORES=('Computer Zone','Gift4U','Axis PK')
+def denied(status,text):
+ return status in (401,403,429,503) or bool(re.search(r'cf-chl-|captcha|verify (?:that )?you are human|<title>\s*(?:just a moment|attention required)',text,re.I))
+def product_link(soup,base,policy):
+ host=(urlsplit(base).hostname or '').removeprefix('www.')
+ for anchor in soup.select('.products .product a[href], .wx-listing-product-wrapper .listing-grid a[href], a.woocommerce-LoopProduct-link[href]'):
+  url=urljoin(base,anchor.get('href',''));p=urlsplit(url)
+  if p.scheme=='https' and not p.username and not p.password and (p.hostname or '').removeprefix('www.')==host and not p.query and not p.fragment and policy.can_fetch(AGENT,url):return url
+ return None
+async def main():
+ from bs4 import BeautifulSoup
+ from playwright.async_api import async_playwright
+ sites={s['name']:s for s in json.loads((ROOT/'cloud/fetch-update-release.json').read_text())['fresh_stores']};results=[]
+ async with async_playwright() as driver:
+  browser=await driver.chromium.launch(headless=True)
+  for name in STORES:
+   base=sites[name]['url'].rstrip('/');record={'store':name,'status':'unchecked'};page=None
+   try:
+    robots=requests.get(base+'/robots.txt',headers={'User-Agent':AGENT},timeout=30,allow_redirects=False)
+    record['robots_status']=robots.status_code
+    if robots.status_code not in (200,404):record['status']='permissions_unverified';continue
+    policy=RobotFileParser();policy.parse(robots.text.splitlines() if robots.status_code==200 else [])
+    if not policy.can_fetch(AGENT,base+'/'):record['status']='robots_disallowed';continue
+    context=await browser.new_context(user_agent=AGENT);page=await context.new_page()
+    response=await page.goto(base+'/',wait_until='domcontentloaded',timeout=45000);status=response.status if response else 0;body=await page.content();record['homepage_status']=status
+    if (urlsplit(page.url).hostname or '').removeprefix('www.')!=(urlsplit(base).hostname or '').removeprefix('www.'):record['status']='external_redirect_unverified';continue
+    if denied(status,body):record['status']='public_homepage_denied';continue
+    if status!=200:record['status']='homepage_unavailable';continue
+    url=product_link(BeautifulSoup(body,'html.parser'),base,policy)
+    record['status']='public_homepage_only'
+    if not url:continue
+    response=await page.goto(url,wait_until='domcontentloaded',timeout=45000);status=response.status if response else 0;body=await page.content();record['product_status']=status
+    if (urlsplit(page.url).hostname or '').removeprefix('www.')!=(urlsplit(base).hostname or '').removeprefix('www.'):record['status']='external_redirect_unverified';continue
+    if denied(status,body):record['status']='public_product_denied';continue
+    if status!=200:record['status']='public_product_unavailable';continue
+    from source_probe import inspect_page
+    info=inspect_page(body,page.url)
+    record.update(status='public_product_readable',source_url=page.url.split('?')[0],platform_markers=info['platform_markers'],product_schema_samples=info['product_schema_samples'])
+   except Exception as exc:record.update(status='check_unavailable',error_type=type(exc).__name__)
+   finally:
+    if page:await page.context.close()
+    results.append(record);print(json.dumps(record,sort_keys=True),flush=True)
+  await browser.close()
+ Path('public-page-access-results.json').write_text(json.dumps(results,indent=2))
+if __name__=='__main__':asyncio.run(main())
