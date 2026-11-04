@@ -3275,7 +3275,7 @@
     }
   ],
   "transfer_status": "finished",
-  "sync_status": "scanning",
+  "sync_status": "failed",
   "last_scan_utc": "2026-11-04T09:46:38.924420+00:00",
   "folder_id": "17GbkIwSowcPdqyK3rFxhfc9nqkI-yUan",
   "folder_url": "https://drive.google.com/drive/folders/17GbkIwSowcPdqyK3rFxhfc9nqkI-yUan",
@@ -8277,7 +8277,7 @@
     "41407350295": "41407350295:13125617005:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
-  "audit804_checked_utc": "2026-11-04T08:16:15.552971+00:00",
+  "audit804_checked_utc": "2026-11-04T09:47:02.770461+00:00",
   "audit804_replacement_backups": {
     "SE10004": "inputs/fresh804-20261026-5d42fe35/rollback-se10004/e5c4ff75eb416fb4/manifest.json",
     "SE10003": "inputs/fresh804-20261026-5d42fe35/rollback-se10003/a4e04e2690a2aaf9/manifest.json",
@@ -9774,7 +9774,7 @@
     "campaign_id": "fresh804-20261026-a3f0b983",
     "results": {}
   },
-  "audit804_refresh_generation": "refresh20261102-552471aa",
+  "audit804_refresh_generation": "refresh20261104-6c42b57a",
   "audit804_refresh_stores": [
     "Adam Cheese",
     "Aerosoft Studio",
@@ -9840,12 +9840,13 @@
     "Zero Lifestyle",
     "Zyren"
   ],
-  "audit804_refresh_requested_utc": "2026-11-02T16:51:17.541915+00:00",
+  "audit804_refresh_requested_utc": "2026-11-04T09:45:22.567590+00:00",
   "audit804_source_download_errors": {},
   "audit804_source_restore_errors": {},
   "owner_paused_stores": [
     "Bachaa Party",
     "Khaadi",
     "LAAM"
-  ]
+  ],
+  "sync_error": "Command '['git', 'push', 'origin', 'b2f094b97445a9f24c2d0ebda7859156dcb3d72a:refs/heads/drive-sync-reports']' returned non-zero exit status 1."
 }
