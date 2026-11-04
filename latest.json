@@ -1,44 +1,47 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-04T20:57:58.817545+00:00",
-  "run_id": "41902935005",
+  "generated_utc": "2026-11-04T22:12:04.819872+00:00",
+  "run_id": "41892160043",
   "attempt": "1",
   "source_commit": "c00a249ca6740f27cb354e660f910cb5d9cc8c0b",
-  "status": "complete",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 3107.6,
+  "elapsed_seconds": 11350.2,
   "stores": [
     {
-      "name": "Bonanza Satrangi",
+      "name": "Liberty Books",
+      "status": "source_paused",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "35e67d953d0e4d0c",
+      "http_statuses": {
+        "404": 6,
+        "200": 2653,
+        "429": 3
+      },
+      "network_seconds": 5812.3,
+      "max_response_seconds": 3.1,
+      "cache_events": 111187
+    },
+    {
+      "name": "ChenOne",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
-      "software_revision": "1a52ef30f50c653e",
-      "products": 1308,
-      "variants": 3981,
+      "software_revision": "7130b3195d2ca625",
+      "products": 304,
+      "variants": 1088,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
       "cache_events": 0
-    },
-    {
-      "name": "Zellbury",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [
-        "HTTP_404",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "35e67d953d0e4d0c",
-      "products": 6288,
-      "variants": 25317,
-      "http_statuses": {
-        "404": 4
-      },
-      "network_seconds": 2.4,
-      "max_response_seconds": 1.7,
-      "cache_events": 45505
     }
   ]
 }
