@@ -1,43 +1,46 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-04T19:28:18.129525+00:00",
-  "run_id": "41852408876",
+  "generated_utc": "2026-11-04T19:50:08.857047+00:00",
+  "run_id": "41867707150",
   "attempt": "1",
-  "source_commit": "b0f1bdc682ef58d4b042491337af59b43a2d7bf4",
+  "source_commit": "831358bf3007265e39caec811c04432da08a7ef2",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 16065.3,
+  "elapsed_seconds": 11859.4,
   "stores": [
     {
-      "name": "Rivaj UK",
+      "name": "Generation",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "7130b3195d2ca625",
-      "products": 293,
-      "variants": 931,
+      "products": 751,
+      "variants": 6129,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
       "cache_events": 0
     },
     {
-      "name": "Junaid Jamshed",
+      "name": "Saya",
       "status": "done",
       "review_required": true,
       "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "1a52ef30f50c653e",
-      "products": 5774,
-      "variants": 24862,
+      "software_revision": "12a07ae410136717",
+      "products": 3673,
+      "variants": 13776,
       "http_statuses": {
-        "200": 9789
+        "200": 4668,
+        "429": 5
       },
-      "network_seconds": 18480.7,
-      "max_response_seconds": 26.6,
-      "cache_events": 47869
+      "network_seconds": 9731.4,
+      "max_response_seconds": 8.1,
+      "cache_events": 94631
     }
   ]
 }
