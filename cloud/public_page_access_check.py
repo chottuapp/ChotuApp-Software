@@ -1,5 +1,5 @@
 """One normal anonymous browser check per approved homepage; stop on access controls."""
-import asyncio,json,os,re,sys
+import asyncio,json,os,re,sys,shutil
 from pathlib import Path
 from urllib.parse import urljoin,urlsplit
 from urllib.robotparser import RobotFileParser
@@ -25,7 +25,7 @@ async def main():
  selected=json.loads(os.environ.get('PUBLIC_STORE_NAMES',json.dumps(STORES)))
  if not isinstance(selected,list) or not selected or len(selected)>len(STORES) or any(s not in STORES for s in selected):raise ValueError('Only approved exact source names may be checked')
  async with async_playwright() as driver:
-  browser=await driver.chromium.launch(headless=True)
+  browser=await driver.chromium.launch(headless=True,**({'channel':'chrome'} if shutil.which('google-chrome') else {}))
   for name in dict.fromkeys(selected):
    base=sites[name]['url'].rstrip('/');record={'store':name,'status':'unchecked'};page=None
    try:

@@ -18,7 +18,8 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install requests beautifulsoup4 playwright==1.55.0
-      - run: python -m playwright install --with-deps chromium
+      - name: Reuse the runner's installed normal Chrome
+        run: google-chrome --version
       - name: Normal anonymous browser; stop at denial or challenge
         env:
           PUBLIC_STORE_NAMES: ${{ inputs.stores }}
