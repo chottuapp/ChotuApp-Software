@@ -1,47 +1,47 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-04T10:30:39.540272+00:00",
-  "run_id": "41810860822",
+  "generated_utc": "2026-11-04T11:11:24.813525+00:00",
+  "run_id": "41811683153",
   "attempt": "1",
-  "source_commit": "2321f5b98c7c589c1852f5f65a3e6526f4a5c32b",
-  "status": "complete",
+  "source_commit": "88b1feb5651a61be50aa69d307b8ad9ead59255c",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 2014.5,
+  "elapsed_seconds": 1728.0,
   "stores": [
     {
-      "name": "Shop Modest",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "7130b3195d2ca625",
-      "products": 129,
-      "variants": 998,
-      "http_statuses": {
-        "200": 185
-      },
-      "network_seconds": 280.7,
-      "max_response_seconds": 6.8,
-      "cache_events": 283
-    },
-    {
-      "name": "The Hanger Pakistan",
+      "name": "Alkaram Studio",
       "status": "done",
       "review_required": true,
       "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT"
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "7130b3195d2ca625",
-      "products": 374,
-      "variants": 1659,
+      "products": 1542,
+      "variants": 5263,
       "http_statuses": {
-        "200": 537,
-        "429": 1
+        "200": 1717
       },
-      "network_seconds": 1084.0,
-      "max_response_seconds": 2.8,
-      "cache_events": 1027
+      "network_seconds": 503.9,
+      "max_response_seconds": 2.6,
+      "cache_events": 3126
+    },
+    {
+      "name": "Gift4U",
+      "status": "failed",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_403",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "7130b3195d2ca625",
+      "http_statuses": {
+        "200": 1,
+        "403": 2
+      },
+      "network_seconds": 1.8,
+      "max_response_seconds": 1.4,
+      "cache_events": 0
     }
   ]
 }
