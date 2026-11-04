@@ -1,31 +1,36 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-04T12:18:46.286233+00:00",
-  "run_id": "41810912306",
+  "generated_utc": "2026-11-04T12:19:38.425071+00:00",
+  "run_id": "41810907719",
   "attempt": "1",
-  "source_commit": "88b1feb5651a61be50aa69d307b8ad9ead59255c",
+  "source_commit": "2321f5b98c7c589c1852f5f65a3e6526f4a5c32b",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 8465.4,
+  "elapsed_seconds": 8515.9,
   "stores": [
     {
-      "name": "Hello Maali",
+      "name": "Ndure",
       "status": "done",
       "review_required": true,
-      "issue_codes": [],
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
       "software_revision": "7130b3195d2ca625",
-      "products": 100,
-      "variants": 439,
+      "products": 1857,
+      "variants": 12368,
       "http_statuses": {
-        "200": 119
+        "200": 2399,
+        "429": 2
       },
-      "network_seconds": 231.2,
-      "max_response_seconds": 8.9,
-      "cache_events": 200
+      "network_seconds": 4153.2,
+      "max_response_seconds": 2.8,
+      "cache_events": 10992
     },
     {
-      "name": "Prime Ticks",
+      "name": "Astore Bags",
       "status": "done",
       "review_required": true,
       "issue_codes": [
@@ -33,15 +38,15 @@
         "RATE_LIMIT"
       ],
       "software_revision": "7130b3195d2ca625",
-      "products": 1961,
-      "variants": 1961,
+      "products": 228,
+      "variants": 242,
       "http_statuses": {
-        "200": 2001,
-        "429": 3
+        "200": 281,
+        "429": 1
       },
-      "network_seconds": 3741.0,
-      "max_response_seconds": 4.2,
-      "cache_events": 10472
+      "network_seconds": 472.4,
+      "max_response_seconds": 2.6,
+      "cache_events": 596
     }
   ]
 }
