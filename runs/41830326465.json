@@ -3153,7 +3153,7 @@
     "Pyari Walls": "source:1e2481e0121a52bbd30df7b9ed4a443a4b77fdbf0f5d5aceb68239ab117e7c23:Pyari Walls:3e09d6a85025316ed09e5060cf9c6b1be8bb126f4f9e0927de40cad628d087e6",
     "Prime Ticks": "source:b63a8e765cda0a9d95b7055e485d804b1a8277447a7744d9199ddb27ee7c0dbf:Prime Ticks:954387c78b225159215953546b678ef96afd6242bf25d7154d66ff88621f4d14",
     "Design by DAS": "source:1f65a32dc04e8e84b14ad6fc320099e50e6a87abdb07a7af60b52f23e2a23d9b:Design by DAS:3e09d6a85025316ed09e5060cf9c6b1be8bb126f4f9e0927de40cad628d087e6",
-    "Xcessories Hub": "source:46c9434590a319d08ed4963615f69f5e54f09b6ac9c527c7ad426b804eba403b:Xcessories Hub:3e09d6a85025316ed09e5060cf9c6b1be8bb126f4f9e0927de40cad628d087e6",
+    "Xcessories Hub": "source:f889e78575fcb588ff82c3d28a56289a6f8dc3d93d84c99a0a6b8158b41a3e4e:Xcessories Hub:954387c78b225159215953546b678ef96afd6242bf25d7154d66ff88621f4d14",
     "Beechtree": "source:77a07f2561e8ac07d3a25f70ad7b1af449caf4d01728cb1871cfc2cdf71cec8b:Beechtree:3e09d6a85025316ed09e5060cf9c6b1be8bb126f4f9e0927de40cad628d087e6",
     "ChenOne": "source:ec22e99eb285a678b78be088caa88eb01ca835d84ed2137e1c99d8d53e6d12a1:ChenOne:3e09d6a85025316ed09e5060cf9c6b1be8bb126f4f9e0927de40cad628d087e6",
     "Hush Puppies": "source:fda270166456a8b969376313785386b0610d016715585f464ec575b6a6b7bc86:Hush Puppies:3e09d6a85025316ed09e5060cf9c6b1be8bb126f4f9e0927de40cad628d087e6",
@@ -5655,17 +5655,48 @@
       "store": "Xcessories Hub",
       "shop_code": "SE10038",
       "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 3057,
-      "findings_count": 0,
-      "findings": [],
+      "status": "hold",
+      "products_checked": 3062,
+      "findings_count": 2,
+      "findings": [
+        {
+          "product_id": "CP8a1cce8b4193",
+          "name": "Xiaomi Smart Graphene Heater",
+          "source_url": "https://xcessorieshub.com/product/xiaomi-smart-graphene-heater/",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP76bb9e89032c",
+          "name": "TORRAS Q3 Air Pro Phone Cases for iPhone 17/18 Pro Max",
+          "source_url": "https://xcessorieshub.com/product/torras-q3-air-pro-phone-cases-for-iphone-17-18-pro-max/",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "ee631df57fb2ddaf78b869d9f808e2b04bde3790eb78f2cd673d106e7fd1c324",
-      "checked_utc": "2026-11-03T12:22:14.955850+00:00",
+      "workbook_sha256": "4f15484c76b497bf6f29a937a7b469321f2bf776408024dc40f4ff74fdbe4bc3",
+      "checked_utc": "2026-11-04T12:45:29.842346+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-04T12:45:29.846706+00:00",
+        "updated_utc": "2026-11-04T12:45:29.846706+00:00",
+        "next_source_check_due_utc": "2026-11-04T13:00:29.846706+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
@@ -5713,11 +5744,11 @@
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41378447009",
-      "source_artifact": 13112678966,
-      "source_sha256": "46c9434590a319d08ed4963615f69f5e54f09b6ac9c527c7ad426b804eba403b",
-      "delivery_status": "verified",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/xcessories-hub/46c9434590a319d0/manifest.json"
+      "source_run": "41810916660",
+      "source_artifact": 13319540918,
+      "source_sha256": "f889e78575fcb588ff82c3d28a56289a6f8dc3d93d84c99a0a6b8158b41a3e4e",
+      "refresh_generation": "refresh20261104-6c42b57a",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/xcessories-hub/f889e78575fcb588/manifest.json"
     },
     "Beechtree": {
       "name": "804 Audit",
@@ -8403,7 +8434,7 @@
     "41810884187": "41810884187:13320085596:954387c78b225159215953546b678ef96afd6242bf25d7154d66ff88621f4d14",
     "41810887681": "41810887681:13313920402:954387c78b225159215953546b678ef96afd6242bf25d7154d66ff88621f4d14",
     "41810891091": "41810891091:13311664880:954387c78b225159215953546b678ef96afd6242bf25d7154d66ff88621f4d14",
-    "41810900552": "41810900552:13312901327:954387c78b225159215953546b678ef96afd6242bf25d7154d66ff88621f4d14",
+    "41810900552": "41810900552:13322235398:954387c78b225159215953546b678ef96afd6242bf25d7154d66ff88621f4d14",
     "41810904443": "41810904443:13313197963:954387c78b225159215953546b678ef96afd6242bf25d7154d66ff88621f4d14",
     "41810907719": "41810907719:13319514176:954387c78b225159215953546b678ef96afd6242bf25d7154d66ff88621f4d14",
     "41810912306": "41810912306:13321280878:954387c78b225159215953546b678ef96afd6242bf25d7154d66ff88621f4d14"
@@ -8491,8 +8522,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Bata",
-  "audit804_progress_utc": "2026-11-04T12:44:30.115432+00:00",
+  "audit804_last_store": "Xcessories Hub",
+  "audit804_progress_utc": "2026-11-04T12:45:32.717767+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
