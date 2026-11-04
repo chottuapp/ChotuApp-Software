@@ -28,11 +28,16 @@ def flight_values(html):
 
 def public_render_props(html):
  _,values=flight_values(html);found=[]
+ def scrub(value):
+  if isinstance(value,dict):return {k:scrub(v) for k,v in value.items() if not re.search(r'token|secret|password|authorization|api.?key|email|phone|session|cookie|customer|address',k,re.I)}
+  if isinstance(value,list):return [scrub(v) for v in value]
+  return value
  def walk(value):
   if isinstance(value,list):
    for v in value:walk(v)
   elif isinstance(value,dict):
    fields={k:v for k,v in value.items() if re.search(r'product|variant|size|colou?r|price|stock|inventory|currency|sku|slug',k,re.I) and not re.search(r'token|secret|password|authorization|api.?key|email|phone|session|cookie|customer|address',k,re.I)}
+   fields=scrub(fields)
    if fields and len(json.dumps(fields))<40000 and fields not in found:found.append(fields)
    for v in value.values():
     if isinstance(v,(dict,list)):walk(v)
