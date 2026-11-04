@@ -3181,7 +3181,7 @@
     "Vince Care": "source:e3b09c4e8679f13f17efbf729ec891740c249c414581e756757b01d0ef670b5a:Vince Care:954387c78b225159215953546b678ef96afd6242bf25d7154d66ff88621f4d14",
     "Computer Zone": "source:5c1e8ee42f9d689c46c1249b2706c85ab0641223239b0b0f397d92011b4b6c1f:Computer Zone:a1895578c3ef877ce79516d6f1a48093cdeebbb770f117903e5bb903a962759e",
     "Bata": "source:1a3aea0e7b3fb835b9d34aa9c0fd21d42ba27274a43c39ce830d30352f524892:Bata:a1895578c3ef877ce79516d6f1a48093cdeebbb770f117903e5bb903a962759e",
-    "Hemani Herbals": "source:90c13bcfd2766048122c667921fd7acfe72edb6fcade7283003139af9a8fa874:Hemani Herbals:a1895578c3ef877ce79516d6f1a48093cdeebbb770f117903e5bb903a962759e",
+    "Hemani Herbals": "source:d31c857c4ac38f97692e2bac29b680d62fc9fc87ada60feb57fe853ff48f2176:Hemani Herbals:954387c78b225159215953546b678ef96afd6242bf25d7154d66ff88621f4d14",
     "Rawayat": "source:523eb8761183e7baedffe0b8036cbd1357f9fd57560f2f06ba38fb5e210f8395:Rawayat:a1895578c3ef877ce79516d6f1a48093cdeebbb770f117903e5bb903a962759e",
     "Junaid Jamshed": "source:36e991d3c690633fb4c4a45076c83e08a457378bf1c766b4a6c902bf21d23152:Junaid Jamshed:a1895578c3ef877ce79516d6f1a48093cdeebbb770f117903e5bb903a962759e",
     "Stylo": "source:7bd32974dce2a79fae2bc0ce4acd58cb38bcf7db6c6ca76ec14bb4cf004c9f2c:Stylo:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
@@ -4425,8 +4425,8 @@
       "shop_code": "SE10021",
       "identity_policy": "confirmed_code",
       "status": "hold",
-      "products_checked": 1077,
-      "findings_count": 1,
+      "products_checked": 1089,
+      "findings_count": 3,
       "findings": [
         {
           "product_id": "CP4a82d906bf91",
@@ -4435,19 +4435,35 @@
           "issues": [
             "Category lacks clear product-purpose evidence; manual review required"
           ]
+        },
+        {
+          "product_id": "CP14613590eeee",
+          "name": "K-Brightening Face Bar 120gm",
+          "source_url": "https://pk.hemaniherbals.com/products/k-brightening-face-bar-120gm",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9c586bdd02ca",
+          "name": "Quick Fit Plus - Roller Massaging Cream (100Gm)",
+          "source_url": "https://pk.hemaniherbals.com/products/quick-fit-plus-roller-massaging-cream-100gm",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
         }
       ],
       "details_truncated": false,
-      "workbook_sha256": "1888c76bb0cc53d65c3f4fa9bdb9c7f3e026471ecb90a92fc041daadf58c19d6",
-      "checked_utc": "2026-11-02T13:28:04.510150+00:00",
+      "workbook_sha256": "85dc1e5c8770ea666ec60b04a3e62811fb9d60fbe4a070f43183fc07304f15f1",
+      "checked_utc": "2026-11-04T12:21:02.813235+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
         "stage": "correction_pending_source_recheck",
         "unfinished": true,
         "owner": "804 automated recovery",
         "opened_utc": "2026-11-02T06:46:01.499107+00:00",
-        "updated_utc": "2026-11-02T13:28:04.511278+00:00",
-        "next_source_check_due_utc": "2026-11-02T13:43:04.511278+00:00",
+        "updated_utc": "2026-11-04T12:21:02.814987+00:00",
+        "next_source_check_due_utc": "2026-11-04T12:36:02.814987+00:00",
         "actions": [
           "Refresh exact public product facts",
           "Apply supported description and category repairs",
@@ -4464,11 +4480,11 @@
       "description_repairs_count": 0,
       "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41341915772",
-      "source_artifact": 13101049915,
-      "source_sha256": "90c13bcfd2766048122c667921fd7acfe72edb6fcade7283003139af9a8fa874",
-      "refresh_generation": "refresh20261030-31dd8bb1",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/hemani-herbals/90c13bcfd2766048/manifest.json"
+      "source_run": "41810884187",
+      "source_artifact": 13320085596,
+      "source_sha256": "d31c857c4ac38f97692e2bac29b680d62fc9fc87ada60feb57fe853ff48f2176",
+      "refresh_generation": "refresh20261104-6c42b57a",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/hemani-herbals/d31c857c4ac38f97/manifest.json"
     },
     "Astore Bags": {
       "name": "804 Audit",
@@ -8260,8 +8276,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Saeed Ghani",
-  "audit804_progress_utc": "2026-11-04T12:20:53.006695+00:00",
+  "audit804_last_store": "Hemani Herbals",
+  "audit804_progress_utc": "2026-11-04T12:21:05.315036+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
