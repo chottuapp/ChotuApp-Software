@@ -1,46 +1,49 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-04T13:01:49.108533+00:00",
-  "run_id": "41809878573",
+  "generated_utc": "2026-11-04T13:08:33.729780+00:00",
+  "run_id": "41811607166",
   "attempt": "1",
-  "source_commit": "e2b766f4d3978c67b8e577d208fdf367dac5762f",
-  "status": "complete",
+  "source_commit": "88b1feb5651a61be50aa69d307b8ad9ead59255c",
+  "status": "incomplete",
   "checkpoint_saved": true,
-  "python": "3.12.16",
-  "elapsed_seconds": 11583.5,
+  "python": "3.12.15",
+  "elapsed_seconds": 10184.4,
   "stores": [
     {
-      "name": "Miss Rose",
-      "status": "done",
-      "review_required": true,
+      "name": "Generation",
+      "status": "source_paused",
+      "review_required": false,
       "issue_codes": [
         "HTTP_429",
-        "RATE_LIMIT"
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "7130b3195d2ca625",
-      "products": 184,
-      "variants": 1832,
       "http_statuses": {
-        "200": 699
+        "200": 4403,
+        "429": 3
       },
-      "network_seconds": 1338.7,
-      "max_response_seconds": 2.8,
-      "cache_events": 1060
+      "network_seconds": 8314.5,
+      "max_response_seconds": 3.5,
+      "cache_events": 11062
     },
     {
-      "name": "Rawayat",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
+      "name": "Saya",
+      "status": "source_paused",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
       "software_revision": "7130b3195d2ca625",
-      "products": 4620,
-      "variants": 5957,
       "http_statuses": {
-        "200": 4811
+        "200": 2958,
+        "429": 4
       },
-      "network_seconds": 8719.9,
-      "max_response_seconds": 29.8,
-      "cache_events": 9268
+      "network_seconds": 5430.5,
+      "max_response_seconds": 2.8,
+      "cache_events": 10648
     }
   ]
 }
