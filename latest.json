@@ -1,49 +1,46 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-04T12:55:43.178524+00:00",
-  "run_id": "41811339126",
+  "generated_utc": "2026-11-04T13:01:49.108533+00:00",
+  "run_id": "41809878573",
   "attempt": "1",
-  "source_commit": "88b1feb5651a61be50aa69d307b8ad9ead59255c",
-  "status": "incomplete",
+  "source_commit": "e2b766f4d3978c67b8e577d208fdf367dac5762f",
+  "status": "complete",
   "checkpoint_saved": true,
-  "python": "3.12.15",
-  "elapsed_seconds": 10391.8,
+  "python": "3.12.16",
+  "elapsed_seconds": 11583.5,
   "stores": [
     {
-      "name": "Sana Safinaz",
-      "status": "source_paused",
-      "review_required": false,
+      "name": "Miss Rose",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
         "HTTP_429",
-        "HTTP_503",
         "RATE_LIMIT"
       ],
       "software_revision": "7130b3195d2ca625",
+      "products": 184,
+      "variants": 1832,
       "http_statuses": {
-        "200": 2876,
-        "429": 3
+        "200": 699
       },
-      "network_seconds": 5139.9,
-      "max_response_seconds": 2.9,
-      "cache_events": 10395
+      "network_seconds": 1338.7,
+      "max_response_seconds": 2.8,
+      "cache_events": 1060
     },
     {
-      "name": "Edenrobe",
-      "status": "source_paused",
-      "review_required": false,
-      "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
+      "name": "Rawayat",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
       "software_revision": "7130b3195d2ca625",
+      "products": 4620,
+      "variants": 5957,
       "http_statuses": {
-        "200": 3516,
-        "429": 3
+        "200": 4811
       },
-      "network_seconds": 6006.9,
-      "max_response_seconds": 4.5,
-      "cache_events": 11401
+      "network_seconds": 8719.9,
+      "max_response_seconds": 29.8,
+      "cache_events": 9268
     }
   ]
 }
