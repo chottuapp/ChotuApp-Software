@@ -22,9 +22,11 @@ async def main():
  from bs4 import BeautifulSoup
  from playwright.async_api import async_playwright
  sites={s['name']:s for s in json.loads((ROOT/'cloud/fetch-update-release.json').read_text())['fresh_stores']};results=[]
+ selected=json.loads(os.environ.get('PUBLIC_STORE_NAMES',json.dumps(STORES)))
+ if not isinstance(selected,list) or not selected or len(selected)>len(STORES) or any(s not in STORES for s in selected):raise ValueError('Only approved exact source names may be checked')
  async with async_playwright() as driver:
   browser=await driver.chromium.launch(headless=True)
-  for name in STORES:
+  for name in dict.fromkeys(selected):
    base=sites[name]['url'].rstrip('/');record={'store':name,'status':'unchecked'};page=None
    try:
     robots=requests.get(base+'/robots.txt',headers={'User-Agent':AGENT},timeout=30,allow_redirects=False)
