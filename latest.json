@@ -1,44 +1,48 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-04T20:00:58.654083+00:00",
-  "run_id": "41852960472",
+  "generated_utc": "2026-11-04T20:03:08.502083+00:00",
+  "run_id": "41853087853",
   "attempt": "1",
   "source_commit": "ad335378c5d3ec21ae017ca2ea48040a5426a1ad",
   "status": "incomplete",
   "checkpoint_saved": true,
-  "python": "3.12.16",
-  "elapsed_seconds": 18000.6,
+  "python": "3.12.15",
+  "elapsed_seconds": 18001.0,
   "stores": [
     {
-      "name": "Gul Ahmed",
+      "name": "Bonanza Satrangi",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_503",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "1a52ef30f50c653e",
+      "products": 1308,
+      "variants": 3981,
+      "http_statuses": {
+        "200": 4824
+      },
+      "network_seconds": 12058.4,
+      "max_response_seconds": 9.5,
+      "cache_events": 18457
+    },
+    {
+      "name": "Zellbury",
       "status": "pending",
       "review_required": false,
       "issue_codes": [
+        "HTTP_404",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "1a52ef30f50c653e",
       "http_statuses": {
-        "200": 3586,
-        "504": 1
+        "404": 4,
+        "200": 9369
       },
-      "network_seconds": 7694.7,
-      "max_response_seconds": 18.8,
-      "cache_events": 7121
-    },
-    {
-      "name": "Sapphire",
-      "status": "failed",
-      "review_required": false,
-      "issue_codes": [
-        "ADAPTER_ERROR"
-      ],
-      "software_revision": "1a52ef30f50c653e",
-      "http_statuses": {
-        "200": 9
-      },
-      "network_seconds": 11.4,
-      "max_response_seconds": 1.6,
-      "cache_events": 0
+      "network_seconds": 27547.2,
+      "max_response_seconds": 43.2,
+      "cache_events": 13581
     }
   ]
 }
