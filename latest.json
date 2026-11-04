@@ -1,53 +1,29 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-04T12:01:44.789118+00:00",
-  "run_id": "41811346821",
+  "generated_utc": "2026-11-04T12:04:01.699128+00:00",
+  "run_id": "41825069879",
   "attempt": "1",
-  "source_commit": "88b1feb5651a61be50aa69d307b8ad9ead59255c",
+  "source_commit": "c7cbe82d1927cf82d01964756a163e34484ac72b",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 7101.1,
+  "elapsed_seconds": 1.0,
   "stores": [
     {
-      "name": "Liberty Books",
-      "status": "source_paused",
+      "name": "Computer Zone",
+      "status": "failed",
       "review_required": false,
       "issue_codes": [
-        "HTTP_404",
-        "HTTP_429",
-        "RATE_LIMIT",
-        "WEBSITE_CATEGORY_UNVERIFIED",
+        "HTTP_403",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "7130b3195d2ca625",
       "http_statuses": {
-        "200": 2781,
-        "404": 4,
-        "429": 5
+        "403": 2
       },
-      "network_seconds": 5329.2,
-      "max_response_seconds": 4.9,
-      "cache_events": 5220
-    },
-    {
-      "name": "ChenOne",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT"
-      ],
-      "software_revision": "7130b3195d2ca625",
-      "products": 304,
-      "variants": 1088,
-      "http_statuses": {
-        "200": 803,
-        "429": 2
-      },
-      "network_seconds": 1685.4,
-      "max_response_seconds": 2.8,
-      "cache_events": 2226
+      "network_seconds": 0.3,
+      "max_response_seconds": 0.3,
+      "cache_events": 0
     }
   ]
 }
