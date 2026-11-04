@@ -16,6 +16,24 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  # Only explicit source garment-type strings; a generic vendor/brand is not purpose evidence.
  if re.fullmatch(r'(?i)(?:women|men|teens|kids|infants)\s+(?:stitched\s+[234]\s+piece(?:\s+shirt\s+trouser)?|(?:cotton\s+silk\s+)?shalwar|(?:special\s+)?kurta|trouser|earrings|bracelet|necklace|ring|eyebrow\s+kit|waistcoat\s+with\s+kurta\s+trouser)',str(source_type or '').strip()):body+=' Source-listed garment type: '+str(source_type)
  evidence=title+' '+body
+ # Independently validate source garment purpose; colour words such as Blush
+ # and individual pieces of a complete outfit cannot override the sold object.
+ if cat=='rompers' and has(r'\brompers?\b',title) and not has(r'\breplacement|sewing pattern|zipper|\b(?:set|pack|bundle)\b',title):return []
+ if cat=='tracksuits' and has(r'\btracksuits?\b',title):return []
+ if cat in {'sarees','saree sets'} and has(r'\b(?:saree|sari)\b',title):
+  if cat=='sarees' or has(r'\bblouse\b',body):return []
+ if cat in {'lehengas','lehenga sets','maxi dresses','maxi sets'}:
+  noun=r'\bleh(?:e|a)?nga\b' if cat.startswith('lehenga') else r'\bmaxi\b'
+  if has(noun,evidence) and ('sets' not in cat or has(r'(?im)^\s*dup+p?a?t+t?a\s*:',str(description))):return []
+ if cat=='sleepwear sets' and has(r'\bsleepwear\b',body) and has(r'\bmatching\s+pajamas?\b',body):return []
+ if cat=='clothing sets':
+  source_fields=re.findall(r'(?im)^[ \t*•\u2060\ufeff]*(shirt|blouse|trousers?|leh(?:e|a)?nga|gharara|sharara|dupata|dupatta|duppata|duppatta)\s*(?:&\s*sleeves)?\s*:[ \t]*(\S[^\n]*)',str(description))
+  valid_fields={part.lower() for part,value in source_fields if not has(r'^(?:not|none|n/?a)\b|\bnot\s+included\b|\bsold\s+separately\b',value)}
+  if len(valid_fields)>=2:return []
+  if any(has(r'\bnot\s+included\b|\bsold\s+separately\b',value) for _,value in source_fields):return None
+  named_pack=has(r'\b(?:set|co[ -]?ord)\b',title) or has(r'\b(?:two|three|four|five|six|[2-6])[ -]*(?:piece|pc)s?\b|\b(?:co[ -]?ord|combo)\b|\b(?:paired|comes)\s+with\b',body) or has(r'\boutfit\b',body) and has(r'\bfeatures\b',body)
+  if named_pack and has(r'\b(?:shirt|top|tee|kurta|kameez|sweater|sweatshirt|cardigan|jacket|vest|hoodie|blouse|romper|dress|neckline|sleeve)s?\b',body) and has(r'\b(?:trousers?|pants?|jeans|joggers?|shalwar|sharara|gharara|leggings?|palazzo|plazzo|plazo|pajamas?|bottoms?)\b',body):return []
+  if named_pack and has(r'\b(?:newborn|baby|children|kids?|little one)\b',body) and has(r'\b(?:wardrobe|outfit|dressing|dress up)\b',body):return []
  # Independently review the original sold object, not included PC components.
  primary=re.split(r'\b(?:for|with|including|includes)\b',title,maxsplit=1,flags=re.I)[0]
  whole_pc=has(r'\b(?:desktop\s+(?:pc|computer)|tower\s+pc|imac|thinkcentre|Mac\s+(?:Mini|Studio))\b',primary) and not has(r'\b(?:case|casing|cooler|sleeve|stand)\b',primary)

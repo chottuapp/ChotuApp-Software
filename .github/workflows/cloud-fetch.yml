@@ -107,6 +107,11 @@ jobs:
         run: |
           python -m pip install playwright==1.55.0
           python -m playwright install --with-deps chromium
+      - name: Install Axis public JS renderer when needed
+        if: env.CLOUD_NEEDS_AXIS_RENDERER == 'true' || contains(inputs.stores, 'axispk.shop')
+        run: |
+          python -m pip install playwright==1.55.0
+          google-chrome --version
       - name: Start continuous fetching on the cloud runner
         id: launch
         run: python cloud/background_run.py start .cloud-data

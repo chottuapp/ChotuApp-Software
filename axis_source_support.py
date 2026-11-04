@@ -69,6 +69,10 @@ def page_products(html):
 BASE='https://www.axispk.shop'
 class SourcePriceConflict(ValueError):pass
 
+def access_challenge(html):
+ soup=BeautifulSoup(html,'html.parser');title=soup.title.get_text(' ',strip=True) if soup.title else ''
+ return bool(re.search(r'just a moment|attention required|captcha verification',title,re.I) or re.search(r'verify (?:that )?you are human',soup.get_text(' ',strip=True),re.I) or soup.select_one('#challenge-form, #challenge-running'))
+
 def normalize_product(html,url):
  from decimal import Decimal,InvalidOperation
  from urllib.parse import urlsplit,urljoin,parse_qs
@@ -132,7 +136,28 @@ class PublicCatalog:
   if self.policy and not self.policy.can_fetch('ChotuAppCatalogRefresh',url):raise ValueError('Axis robots disallows page; source retained')
   self.g['_chotu_wait']();reader=getattr(self.g['S'],'get_fresh',self.g['S'].get);response=reader(url,timeout=(15,45));response.raise_for_status()
   if urlsplit(response.url).hostname!='www.axispk.shop' or urlsplit(response.url).path.rstrip('/')!=urlsplit(url).path.rstrip('/'):raise ValueError('Axis page redirected to another identity')
+  if access_challenge(response.text):raise ValueError('Axis public source access challenge; no renderer fallback attempted')
   return response.text
+ def render(self,url,catalog=False):
+  # Used only for a successfully readable JS shell, never after an HTTP denial.
+  from playwright.sync_api import sync_playwright
+  from urllib.parse import urlsplit
+  self.g['_chotu_wait']()
+  with sync_playwright() as driver:
+   browser=driver.chromium.launch(channel='chrome',headless=True)
+   try:
+    context=browser.new_context(user_agent=self.g.get('HEADERS',{}).get('User-Agent','Mozilla/5.0 (compatible; ChotuAppCatalogRefresh/1.0)'));page=context.new_page()
+    response=page.goto(url,wait_until='domcontentloaded',timeout=45000)
+    if not response or response.status!=200:raise ValueError('Axis rendered page not permitted/readable; stopped without retry')
+    if urlsplit(page.url).hostname!='www.axispk.shop' or urlsplit(page.url).path.rstrip('/')!=urlsplit(url).path.rstrip('/'):raise ValueError('Axis browser source identity changed')
+    if access_challenge(page.content()):raise ValueError('Axis browser access challenge; stopped without interaction')
+    page.wait_for_selector('main a[href*="/product/"]' if catalog else 'main h1',timeout=20000)
+    return page.content()
+   finally:browser.close()
+ def product_page(self,url):
+  html=self.page(url)
+  if not BeautifulSoup(html,'html.parser').select_one('main h1'):html=self.render(url)
+  return html
  def catalog(self):
   from urllib.robotparser import RobotFileParser
   from urllib.parse import urljoin,urlsplit,parse_qs
@@ -142,9 +167,18 @@ class PublicCatalog:
    url=queue.pop(0)
    if url in visited:continue
    if len(visited)>=100:raise ValueError('Axis public pagination bound reached')
-   soup=BeautifulSoup(self.page(url),'html.parser');main=soup.select_one('main')
+   html=self.page(url);soup=BeautifulSoup(html,'html.parser');main=soup.select_one('main')
+   embedded=page_products(html)
+   if not embedded and (not main or not main.select('a[href*="/product/"]')):
+    html=self.render(url,catalog=True);soup=BeautifulSoup(html,'html.parser');main=soup.select_one('main');embedded=page_products(html)
    if not main:raise ValueError('Axis shop content missing')
    visited.add(url)
+   for item in embedded:
+    slug=item.get('slug')
+    if not isinstance(slug,str):continue
+    if not re.fullmatch(r'[A-Za-z0-9_-]{1,200}',slug):raise ValueError('Axis catalog slug format needs source review')
+    link=BASE+'/product/'+slug
+    if link not in urls:urls.append(link)
    for a in main.select('a[href]'):
     link=urljoin(BASE,a['href']);p=urlsplit(link)
     if p.hostname!='www.axispk.shop' or p.fragment:continue
@@ -154,7 +188,7 @@ class PublicCatalog:
   if not urls:raise ValueError('Axis public shop product links missing')
   result=[]
   for i,url in enumerate(urls,1):
-   parent,children=normalize_product(self.page(url),url)
+   parent,children=normalize_product(self.product_page(url),url)
    if parent['id'] in self.byid:raise ValueError('Axis duplicate source identity')
    self.byid[parent['id']]=parent;self.children.update({c['id']:c for c in children});result.append(parent)
    self.log('AXIS: verified '+str(i)+'/'+str(len(urls))+' exact public products')
@@ -162,7 +196,7 @@ class PublicCatalog:
  def read(self,path):
   key=int(path.rstrip('/').split('/')[-1])
   if key in self.children:return self.children[key]
-  item=self.byid[key];parent,children=normalize_product(self.page(item['permalink']),item['permalink'])
+  item=self.byid[key];parent,children=normalize_product(self.product_page(item['permalink']),item['permalink'])
   if parent['id']!=key:raise ValueError('Axis fresh product identity changed')
   self.children.update({c['id']:c for c in children});return parent
 

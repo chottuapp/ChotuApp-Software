@@ -46,3 +46,30 @@ class AxisRouting(unittest.TestCase):
    self.assertEqual(g['_chotuapp_run_site_original'](BASE,'Axis PK','template',print),'axis')
    self.assertIsInstance(export.call_args.kwargs['provider'],PublicCatalog)
   original.assert_not_called();self.assertEqual(g['_chotuapp_run_site_original']('https://other.example','Other','template',print),'other')
+
+class AxisCatalogShell(unittest.TestCase):
+ def test_normal_readable_js_shell_uses_renderer_and_keeps_exact_source_ids(self):
+  from unittest.mock import Mock,patch
+  from types import SimpleNamespace
+  from axis_source_support import PublicCatalog,BASE
+  html=AxisCommercialGuards().html()
+  def get(url,**kwargs):
+   text='User-agent: *\nAllow: /' if url.endswith('robots.txt') else html if '/product/' in url else '<main>Loading public products</main>'
+   return SimpleNamespace(url=url,text=text,raise_for_status=lambda:None)
+  g={'S':SimpleNamespace(get=get),'_chotu_wait':lambda:None};catalog=PublicCatalog(g,BASE,lambda _:None)
+  with patch.object(catalog,'render',return_value='<main><a href="/product/actual">Actual tracksuit</a></main>') as render:
+   products=catalog.catalog()
+  self.assertEqual(products[0]['id'],35);self.assertEqual(catalog.children[1347]['stock_quantity'],100);render.assert_called_once_with(BASE+'/shop',catalog=True)
+ def test_http_denial_never_triggers_browser_fallback(self):
+  from unittest.mock import Mock,patch
+  from types import SimpleNamespace
+  import requests
+  from axis_source_support import PublicCatalog,BASE
+  def get(url,**kwargs):
+   def check():
+    if not url.endswith('robots.txt'):raise requests.HTTPError('403 source denial')
+   return SimpleNamespace(url=url,text='User-agent: *\nAllow: /',raise_for_status=check)
+  catalog=PublicCatalog({'S':SimpleNamespace(get=get),'_chotu_wait':lambda:None},BASE,lambda _:None)
+  with patch.object(catalog,'render') as render:
+   with self.assertRaises(requests.HTTPError):catalog.catalog()
+   render.assert_not_called()

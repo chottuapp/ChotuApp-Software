@@ -204,6 +204,31 @@ def merchant_labels(fact):
   if found:labels.append(found[0])
  return set(labels)
 
+def apparel_object(row):
+ title=str(row.get('name') or '');body=str(row.get('description') or '')
+ body=re.sub(r'[\u2060\ufeff]','',body);body=re.sub(r'(?m)^\s*[*•]\s*','',body)
+ has=lambda p,v:bool(re.search(p,v,re.I))
+ if has(r'\b(?:replacement|sewing pattern|zipper|buttons? for)\b',title):return None
+ upper=r'\b(?:shirt|top|tee|kurta|kameez|sweater|sweatshirt|cardigan|jacket|vest|hoodie|blouse|romper|dress|neckline|sleeve)s?\b'
+ lower=r'\b(?:trousers?|pants?|jeans|joggers?|shalwar|sharara|gharara|leggings?|palazzo|plazzo|plazo|pajamas?|bottoms?)\b'
+ pack=has(r'\b(?:set|co[ -]?ord)\b',title) or has(r'\b(?:[2-6]|two|three|four|five|six)[ -]*(?:pieces?|pcs?)\b|\b(?:co[ -]?ord|combo)\b|\b(?:paired|comes)\s+with\b',body) or has(r'\boutfit\b',body) and has(r'\bfeatures\b',body)
+ fields=re.findall(r'(?im)^\s*(shirt|blouse|trousers?|leh[ae]?nga|gharara|sharara|dupp?att?a)\s*(?:&\s*sleeves)?\s*:\s*(\S[^\n]*)',body)
+ parts={k.lower() for k,v in fields if not has(r'^(?:none|no|n/?a)\b|\bnot\s+included\b|\bsold\s+separately\b',v)}
+ if has(r'\bsleepwear\b',body) and has(r'\bmatching\s+pajamas?\b',body):label='Sleepwear Sets'
+ elif pack and has(upper,body) and has(lower,body):label='Clothing Sets'
+ elif pack and has(r'\b(?:newborn|baby|children|kids?|little one)\b',body) and has(r'\b(?:wardrobe|outfit|dressing|dress up)\b',body):label='Clothing Sets'
+ elif len(parts)>=2:label='Clothing Sets'
+ elif has(r'\b(?:saree|sari)\b',title):label='Saree Sets' if has(r'\bblouse\b',body) else 'Sarees'
+ elif has(r'\bmaxi\b',title+' '+body):label='Maxi Sets' if has(r'(?m)^\s*dupp?att?a\s*:',body) else 'Maxi Dresses'
+ elif has(r'\bleh[ae]?nga\b',title+' '+body):label='Lehenga Sets' if has(r'(?m)^\s*dupp?att?a\s*:',body) else 'Lehengas'
+ elif has(r'\btracksuits?\b',title):label='Tracksuits'
+ elif has(r'\brompers?\b',title):label='Rompers'
+ elif has(r'\b(?:shirt|top)\b',body) and not has(lower,body):label='Shirts' if has(r'\bshirt\b',body) else 'Tops'
+ elif has(r'\bdress\b(?!\s*(?:code|up|down|for|your|them|him|her|me|to)\b)',body):label='Dresses'
+ elif has(r'\bmaxi\b',title):label='Maxi Dresses'
+ else:return None
+ return label,'inferred_source_garment_contents','Explicit source garment name/components; no stitching state, materials or piece count inferred: '+title
+
 def electronics_object(row):
  title=str(row.get('name') or '');body=str(row.get('description') or '')
  # Compatibility targets and included accessories are not the primary sold object.
@@ -248,6 +273,14 @@ def electronics_object(row):
 
 def classify(row,store):
  title=str(row.get('name') or '');body=str(row.get('description') or '')
+ if store in {'Nayab Fashion','Babysaurus','Deflexxi'}:
+  garment=apparel_object(row)
+  if garment:return garment
+  if store=='Nayab Fashion' and (urlsplit(str(row.get('source_url') or '')).hostname or '').removeprefix('www.')=='nayabfashion.com.pk':
+   note=str(row.get('analysis_note') or '');matched=re.search(r'^Public WooCommerce Store API taxonomy:\s*([^;\n]+);',note)
+   labels={s.strip().lower() for s in matched[1].split('>')} if matched else set()
+   if 'saree outfit' in labels:return 'Sarees','inferred_published_source_taxonomy','Exact product Store API taxonomy: saree outfit; merchant path retained separately.'
+   if 'unstitched' in labels and not re.search(r'\b(?:fully stitched|ready.to.wear|semi.stitched)\b',body,re.I):return 'Unstitched Fabric','inferred_published_source_taxonomy','Exact product Store API explicitly lists unstitched; no garment cut or finished outfit inferred.'
  if store in {'Paklap','Xcessories Hub','Computer Zone','Gift4U'}:
   electronic=electronics_object(row)
   if electronic:return electronic
@@ -362,6 +395,11 @@ def audit(row,source):
  from urllib.parse import urlsplit
  host=(urlsplit(str(source.get('source_url') or '')).hostname or '').removeprefix('www.')
  title=str(source.get('name') or '');body=str(source.get('description') or '');label=row.get('Category')
+ if host=='nayabfashion.com.pk':
+  match=re.match(r'Public WooCommerce Store API taxonomy:\s*([^;\n]+);',str(source.get('analysis_note') or ''))
+  terms=[x.strip().casefold() for x in match[1].split('>')] if match else []
+  if label=='Unstitched Fabric' and 'unstitched' in terms and not re.search(r'\b(?:fully stitched|ready.to.wear|semi.stitched)\b',body,re.I):return []
+  if label=='Sarees' and 'saree outfit' in terms:return []
  if host=='houseoftools.com.pk':
   if label in {'Tool Sets','Electrical Accessory Sets'} and re.search(r'\bbundle\b',title,re.I):
    from hold804_repairs import public_facts

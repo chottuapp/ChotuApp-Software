@@ -23,7 +23,8 @@ def prepare(archive,data,source_run):
         output=site.get('output') or {};file=data/'ANAS_DATA_FETCH'/Path(output.get('path','')).name
         return site.get('status')=='done' and RunStore.output_valid(dict(site,output=dict(output,path=str(file))))
     needs_browser=any(not complete(site) and (urlsplit(str(site.get('url',''))).hostname or '').lower().removeprefix('www.')=='czone.com.pk' for site in state['sites'])
-    atomic_json(ready,{'source_run':str(source_run),'state_id':state.get('id')})
+    needs_axis=any(not complete(site) and (urlsplit(str(site.get('url',''))).hostname or '').lower().removeprefix('www.')=='axispk.shop' for site in state['sites'])
+    atomic_json(ready,{'source_run':str(source_run),'state_id':state.get('id'),'needs_axis_renderer':needs_axis})
     print('Resume checkpoint restored; '+str(sum(complete(s) for s in state['sites']))+' completed stores retained. Czone browser needed: '+str(needs_browser).lower()+'.',flush=True)
     return needs_browser
 
@@ -38,5 +39,6 @@ def main():
     p=argparse.ArgumentParser();p.add_argument('--archive',type=Path,required=True);p.add_argument('--data',type=Path,required=True);a=p.parse_args()
     needs=prepare(a.archive,a.data,os.environ.get('RESUME_RUN_ID',''))
     if os.environ.get('GITHUB_ENV'):
-        with open(os.environ['GITHUB_ENV'],'a') as stream:stream.write('CLOUD_NEEDS_CZONE_BROWSER='+str(needs).lower()+'\n')
+        marker=json.loads((a.data/'restore-ready.json').read_text())
+        with open(os.environ['GITHUB_ENV'],'a') as stream:stream.write('CLOUD_NEEDS_CZONE_BROWSER='+str(needs).lower()+'\nCLOUD_NEEDS_AXIS_RENDERER='+str(marker.get('needs_axis_renderer',False)).lower()+'\n')
 if __name__=='__main__':main()
