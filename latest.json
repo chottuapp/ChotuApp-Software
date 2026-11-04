@@ -1,35 +1,16 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-04T12:24:25.124149+00:00",
-  "run_id": "41810900552",
+  "generated_utc": "2026-11-04T12:33:41.142077+00:00",
+  "run_id": "41811343293",
   "attempt": "1",
-  "source_commit": "2321f5b98c7c589c1852f5f65a3e6526f4a5c32b",
+  "source_commit": "88b1feb5651a61be50aa69d307b8ad9ead59255c",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 8787.9,
+  "elapsed_seconds": 9021.8,
   "stores": [
     {
-      "name": "Zero Lifestyle",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT"
-      ],
-      "software_revision": "7130b3195d2ca625",
-      "products": 58,
-      "variants": 235,
-      "http_statuses": {
-        "200": 129,
-        "429": 1
-      },
-      "network_seconds": 95.6,
-      "max_response_seconds": 3.0,
-      "cache_events": 304
-    },
-    {
-      "name": "Bata",
+      "name": "Beechtree",
       "status": "done",
       "review_required": true,
       "issue_codes": [
@@ -38,15 +19,35 @@
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "7130b3195d2ca625",
-      "products": 1892,
-      "variants": 10648,
+      "products": 700,
+      "variants": 3129,
       "http_statuses": {
-        "200": 2318,
+        "200": 1689,
         "429": 2
       },
-      "network_seconds": 4069.4,
-      "max_response_seconds": 2.6,
-      "cache_events": 15146
+      "network_seconds": 3026.8,
+      "max_response_seconds": 3.0,
+      "cache_events": 5742
+    },
+    {
+      "name": "Breakout",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "7130b3195d2ca625",
+      "products": 1924,
+      "variants": 9501,
+      "http_statuses": {
+        "200": 2337,
+        "429": 3
+      },
+      "network_seconds": 4096.0,
+      "max_response_seconds": 3.3,
+      "cache_events": 14721
     }
   ]
 }
