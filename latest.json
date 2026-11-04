@@ -3310,7 +3310,6 @@
     "House of Tools": "source:21eea3bff1cc88b61250e4270249ba36a8ab36e79bc5815d37d9354ffc36825b:House of Tools:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "Paklap": "source:07858caf53cf7e257cabc47777a12d6e89f796caf6bbcfbdb1d6e2e0dca5ac79:Paklap:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "The Hanger Pakistan": "source:1825a3518f7d507d0de3fff9961f8764e9c8b9bbe743e3ef32a8a8ad431b5509:The Hanger Pakistan:3e09d6a85025316ed09e5060cf9c6b1be8bb126f4f9e0927de40cad628d087e6",
-    "Shop Modest": "source:5fc95662c08cb0100bb1879527135efd4817b80124e81859ea3cb640d53f9076:Shop Modest:3e09d6a85025316ed09e5060cf9c6b1be8bb126f4f9e0927de40cad628d087e6",
     "Seran": "source:38d2b84be10927d12e2608ffa96b04c4b4d6afa91601f72cf3dbf0c7c9d8cd71:Seran:3e09d6a85025316ed09e5060cf9c6b1be8bb126f4f9e0927de40cad628d087e6",
     "Adam Cheese": "source:8f1d25f690c26472ffaac61f7b16cc4008188807619a953111a248e0dcc52f27:Adam Cheese:3e09d6a85025316ed09e5060cf9c6b1be8bb126f4f9e0927de40cad628d087e6",
     "Farda Foods": "source:06288daa766b4492aa204ab4d512a6bd03b90dcde437bd114a7b30c08607034b:Farda Foods:3e09d6a85025316ed09e5060cf9c6b1be8bb126f4f9e0927de40cad628d087e6",
@@ -3413,13 +3412,13 @@
       "store": "Shop Modest",
       "shop_code": "SE10006",
       "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 125,
+      "status": "hold",
+      "products_checked": 129,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "c5bb779672276a2e31c068a7e859a959bbd61d786d88a30c36f7c21079d43a5b",
-      "checked_utc": "2026-11-03T11:20:56.953551+00:00",
+      "workbook_sha256": "d15228e7c3ab457f16fcc968b657cc101de7e99d41335e00cc5d16e2cac05e0c",
+      "checked_utc": "2026-11-04T10:15:06.401263+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
@@ -3427,7 +3426,7 @@
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
-      "description_repairs_count": 125,
+      "description_repairs_count": 129,
       "description_repairs_examples": [
         {
           "product_id": "CP87b7615559ac",
@@ -3481,11 +3480,14 @@
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41341904308",
-      "source_artifact": 13098370746,
-      "source_sha256": "5fc95662c08cb0100bb1879527135efd4817b80124e81859ea3cb640d53f9076",
-      "delivery_status": "verified",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/shop-modest/5fc95662c08cb010/manifest.json"
+      "source_run": "41810860822",
+      "source_artifact": 13312837134,
+      "source_sha256": "d7cba029dd74ab408edb56fcce45423156b49416753b4b140a957db9c7a9e69a",
+      "refresh_generation": "refresh20261104-6c42b57a",
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Command '['git', 'push', 'origin', '2a8238ad767f6f4fa6fcab08404c3e1c557a288c:refs/heads/audit804-held-inputs']' returned non-zero exit status 1.",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/shop-modest/d7cba029dd74ab40/manifest.json"
     },
     "Seran": {
       "name": "804 Audit",
@@ -8359,8 +8361,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Breakout",
-  "audit804_progress_utc": "2026-11-03T12:35:55.691488+00:00",
+  "audit804_last_store": "Shop Modest",
+  "audit804_progress_utc": "2026-11-04T10:15:06.401353+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
