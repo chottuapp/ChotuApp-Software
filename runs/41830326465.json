@@ -3049,7 +3049,7 @@
     "Rawayat": "source:523eb8761183e7baedffe0b8036cbd1357f9fd57560f2f06ba38fb5e210f8395:Rawayat:a1895578c3ef877ce79516d6f1a48093cdeebbb770f117903e5bb903a962759e",
     "Junaid Jamshed": "source:36e991d3c690633fb4c4a45076c83e08a457378bf1c766b4a6c902bf21d23152:Junaid Jamshed:a1895578c3ef877ce79516d6f1a48093cdeebbb770f117903e5bb903a962759e",
     "Stylo": "source:7bd32974dce2a79fae2bc0ce4acd58cb38bcf7db6c6ca76ec14bb4cf004c9f2c:Stylo:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
-    "Habitt": "source:0405d78d4ab4d1205a4ad394daea352ff130e3ac72c24969d583775f3d6d90de:Habitt:a1895578c3ef877ce79516d6f1a48093cdeebbb770f117903e5bb903a962759e",
+    "Habitt": "source:29cf1e0eea6c695775a82a86a176eb7962d2b8bd8b8ddc3ea9667defc526ceda:Habitt:954387c78b225159215953546b678ef96afd6242bf25d7154d66ff88621f4d14",
     "Saya": "source:b74bae1da0504575a3c27b6a9a86d0aca0faf973249b0c18faa8193d13951ae0:Saya:a1895578c3ef877ce79516d6f1a48093cdeebbb770f117903e5bb903a962759e",
     "Rios": "source:ff61b1186b65bead7928686cc722d29cbf473ae9de047191fdffdb7439cc893e:Rios:a1895578c3ef877ce79516d6f1a48093cdeebbb770f117903e5bb903a962759e",
     "Edenrobe": "source:e78bb1c6345c82b257db76a7de506d3a15a7207e5175879d04085d63ac4707b2:Edenrobe:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
@@ -5943,7 +5943,7 @@
       "shop_code": "SE10051",
       "identity_policy": "confirmed_code",
       "status": "hold",
-      "products_checked": 535,
+      "products_checked": 514,
       "findings_count": 1,
       "findings": [
         {
@@ -5956,16 +5956,16 @@
         }
       ],
       "details_truncated": false,
-      "workbook_sha256": "de687d3f14bb456a27e8590810fdfb279fb1b14129d246394b93076a734a9bbc",
-      "checked_utc": "2026-11-02T13:45:43.856221+00:00",
+      "workbook_sha256": "1dec42fbcf9b0e43165e55a78f56c1dfacd54e41a709a781908f493d56473769",
+      "checked_utc": "2026-11-04T13:02:56.750410+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
         "stage": "correction_pending_source_recheck",
         "unfinished": true,
         "owner": "804 automated recovery",
         "opened_utc": "2026-11-02T07:21:05.022117+00:00",
-        "updated_utc": "2026-11-02T13:45:43.857181+00:00",
-        "next_source_check_due_utc": "2026-11-02T14:00:43.857181+00:00",
+        "updated_utc": "2026-11-04T13:02:56.751262+00:00",
+        "next_source_check_due_utc": "2026-11-04T13:17:56.751262+00:00",
         "actions": [
           "Refresh exact public product facts",
           "Apply supported description and category repairs",
@@ -5979,7 +5979,7 @@
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
-      "description_repairs_count": 9,
+      "description_repairs_count": 8,
       "description_repairs_examples": [
         {
           "product_id": "CP304dc25b0f4a",
@@ -6017,22 +6017,17 @@
           "repair_kind": "description"
         },
         {
-          "product_id": "CPa85e8711bdb0",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
           "product_id": "CPdf451cd46afb",
           "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
           "repair_kind": "description"
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41341946735",
-      "source_artifact": 13098746680,
-      "source_sha256": "0405d78d4ab4d1205a4ad394daea352ff130e3ac72c24969d583775f3d6d90de",
-      "refresh_generation": "refresh20261030-31dd8bb1",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/habitt/0405d78d4ab4d120/manifest.json"
+      "source_run": "41811611300",
+      "source_artifact": 13314673364,
+      "source_sha256": "29cf1e0eea6c695775a82a86a176eb7962d2b8bd8b8ddc3ea9667defc526ceda",
+      "refresh_generation": "refresh20261104-6c42b57a",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/habitt/29cf1e0eea6c6957/manifest.json"
     },
     "Mala": {
       "name": "804 Audit",
@@ -8488,8 +8483,8 @@
     "SE10062": "inputs/fresh804-20261026-5d42fe35/rollback-se10062/6b5ec830a78fa2ea/manifest.json",
     "SE10059": "inputs/fresh804-20261026-5d42fe35/rollback-se10059/c892b86dfd919034/manifest.json"
   },
-  "audit804_last_store": "Hush Puppies",
-  "audit804_progress_utc": "2026-11-04T13:02:41.933416+00:00",
+  "audit804_last_store": "Habitt",
+  "audit804_progress_utc": "2026-11-04T13:02:59.423450+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
