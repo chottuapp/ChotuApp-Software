@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-04T16:29:02.957078+00:00",
+  "run_id": "41835460296",
+  "attempt": "1",
+  "source_commit": "c7cbe82d1927cf82d01964756a163e34484ac72b",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.15",
+  "elapsed_seconds": 11892.7,
+  "stores": [
+    {
+      "name": "Generation",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "7130b3195d2ca625",
+      "products": 751,
+      "variants": 6129,
+      "http_statuses": {
+        "200": 3319,
+        "429": 3
+      },
+      "network_seconds": 6899.5,
+      "max_response_seconds": 3.9,
+      "cache_events": 34653
+    },
+    {
+      "name": "Saya",
+      "status": "source_paused",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "7130b3195d2ca625",
+      "http_statuses": {
+        "200": 4576,
+        "429": 4
+      },
+      "network_seconds": 8963.0,
+      "max_response_seconds": 4.6,
+      "cache_events": 44419
+    }
+  ]
+}

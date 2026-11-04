@@ -1,35 +1,36 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-04T16:18:03.855035+00:00",
-  "run_id": "41833533944",
+  "generated_utc": "2026-11-04T16:29:02.957078+00:00",
+  "run_id": "41835460296",
   "attempt": "1",
   "source_commit": "c7cbe82d1927cf82d01964756a163e34484ac72b",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 12015.4,
+  "elapsed_seconds": 11892.7,
   "stores": [
     {
-      "name": "Sana Safinaz",
+      "name": "Generation",
       "status": "done",
       "review_required": true,
       "issue_codes": [
         "HTTP_429",
-        "RATE_LIMIT"
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "7130b3195d2ca625",
-      "products": 1693,
-      "variants": 5804,
+      "products": 751,
+      "variants": 6129,
       "http_statuses": {
-        "200": 2216,
-        "429": 2
+        "200": 3319,
+        "429": 3
       },
-      "network_seconds": 4132.8,
-      "max_response_seconds": 31.7,
-      "cache_events": 27569
+      "network_seconds": 6899.5,
+      "max_response_seconds": 3.9,
+      "cache_events": 34653
     },
     {
-      "name": "Edenrobe",
+      "name": "Saya",
       "status": "source_paused",
       "review_required": false,
       "issue_codes": [
@@ -39,12 +40,12 @@
       ],
       "software_revision": "7130b3195d2ca625",
       "http_statuses": {
-        "200": 5045,
+        "200": 4576,
         "429": 4
       },
-      "network_seconds": 9869.1,
-      "max_response_seconds": 5.7,
-      "cache_events": 46371
+      "network_seconds": 8963.0,
+      "max_response_seconds": 4.6,
+      "cache_events": 44419
     }
   ]
 }
