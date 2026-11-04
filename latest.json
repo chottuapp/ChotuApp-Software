@@ -11,7 +11,7 @@
       "updatedAt": "2026-11-04T13:09:22Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41835460296",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261104-6c42b57a-24",
-      "snapshot_pending": true
+      "snapshot_unavailable": true
     },
     {
       "conclusion": "",
@@ -21,7 +21,14 @@
       "updatedAt": "2026-11-04T12:56:30Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41833533944",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261104-6c42b57a-21",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-04T13:07:15.219253+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nSana Safinaz: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 3131/5037 tasks; sample age 30s\n  Approximate ETA for this stage only: 76.3 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-11-04T13:07:11.804223+00:00\nEdenrobe: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 3362/18746 tasks; sample age 134s\n  Approximate ETA for this stage only: 834.3 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-11-04T13:07:12.943466+00:00\n",
+      "snapshot_utc": "2026-11-04T13:07:15.219253+00:00",
+      "stores": {
+        "Sana Safinaz": "running",
+        "Edenrobe": "running"
+      },
+      "snapshot_age_seconds": 152,
+      "snapshot_stale": false
     },
     {
       "conclusion": "",
@@ -31,7 +38,14 @@
       "updatedAt": "2026-11-04T12:50:47Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41832738994",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261104-6c42b57a-26",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-04T13:06:30.432609+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Beyond East.xlsx\n\nSTORE STATUS\nBeyond East: done\nRios: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 2982/9284 tasks; sample age 52s\n  Approximate ETA for this stage only: 352.0 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-11-04T13:06:18.179467+00:00\n",
+      "snapshot_utc": "2026-11-04T13:06:30.432609+00:00",
+      "stores": {
+        "Beyond East": "done",
+        "Rios": "running"
+      },
+      "snapshot_age_seconds": 196,
+      "snapshot_stale": false
     },
     {
       "conclusion": "",
@@ -41,7 +55,14 @@
       "updatedAt": "2026-11-04T12:05:15Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41825785443",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261104-6c42b57a-23",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-04T13:06:46.719754+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. ChenOne.xlsx\n\nSTORE STATUS\nLiberty Books: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 1677/63403 tasks; sample age 115s\n  Approximate ETA for this stage only: 5142.4 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-11-04T13:06:40.043062+00:00\nChenOne: done\n",
+      "snapshot_utc": "2026-11-04T13:06:46.719754+00:00",
+      "stores": {
+        "Liberty Books": "running",
+        "ChenOne": "done"
+      },
+      "snapshot_age_seconds": 180,
+      "snapshot_stale": false
     },
     {
       "conclusion": "failure",
@@ -51,7 +72,31 @@
       "updatedAt": "2026-11-04T12:05:13Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41825069879",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261104-6c42b57a-8-computer-zone-recovery",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-04T12:03:59.934906+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nComputer Zone: failed\n  Stage: Idle\n",
+      "snapshot_utc": "2026-11-04T12:03:59.934906+00:00",
+      "stores": {
+        "Computer Zone": "failed"
+      },
+      "snapshot_age_seconds": 3947,
+      "snapshot_stale": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-04T12:04:01.6585955Z [Computer Zone] [12:03:58] HTTP END status=403 elapsed=0.0s bytes=5553 https://www.czone.com.pk/robots.txt",
+        "fetch\tUNKNOWN STEP\t2026-11-04T12:04:01.6586976Z [Computer Zone] WEBSITE ORDER UNVERIFIED: Storefront order response/locale unavailable; observed prefix retained, no price/bestseller fallback",
+        "fetch\tUNKNOWN STEP\t2026-11-04T12:04:01.6587489Z [Computer Zone] [12:03:58] HTTP START attempt=1 https://www.czone.com.pk/products",
+        "fetch\tUNKNOWN STEP\t2026-11-04T12:04:01.6587904Z [Computer Zone] [12:03:58] HTTP END status=403 elapsed=0.3s bytes=5526 https://www.czone.com.pk/products",
+        "fetch\tUNKNOWN STEP\t2026-11-04T12:04:01.6588249Z __CHOTU_PROGRESS__|1|Active: Computer Zone",
+        "fetch\tUNKNOWN STEP\t2026-11-04T12:04:01.6588629Z [Computer Zone] [12:03:58] EXCEPTION: HTTPError('403 Client Error: Forbidden for url: https://www.czone.com.pk/products')",
+        "fetch\tUNKNOWN STEP\t2026-11-04T12:04:01.6589048Z [Computer Zone] [12:03:58] Traceback (most recent call last):",
+        "fetch\tUNKNOWN STEP\t2026-11-04T12:04:01.6593083Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2045, in _run_checked",
+        "fetch\tUNKNOWN STEP\t2026-11-04T12:04:01.6616584Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip",
+        "fetch\tUNKNOWN STEP\t2026-11-04T12:04:01.6616918Z RUN SUMMARY:",
+        "fetch\tUNKNOWN STEP\t2026-11-04T12:04:01.6617425Z Computer Zone: FAILED \u2014 FAILED: Computer Zone: 403 Client Error: Forbidden for url: https://www.czone.com.pk/products",
+        "fetch\tUNKNOWN STEP\t2026-11-04T12:04:01.6617808Z Checkpoint: saved",
+        "fetch\tUNKNOWN STEP\t2026-11-04T12:04:01.6618171Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+        "fetch\tUNKNOWN STEP\t2026-11-04T12:04:01.6641142Z ##[error]Process completed with exit code 1.",
+        "fetch\tUNKNOWN STEP\t2026-11-04T12:04:01.6672035Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-11-04T12:04:01.6672523Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m"
+      ]
     },
     {
       "conclusion": "success",
@@ -61,7 +106,13 @@
       "updatedAt": "2026-11-04T12:02:41Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41811744694",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261104-6c42b57a-32",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-04T11:16:45.466058+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Dairy Dream.xlsx\n\nSTORE STATUS\nDairy Dream: done\n  Last successful HTTP response (UTC): 2026-11-04T11:16:41.005947+00:00\n",
+      "snapshot_utc": "2026-11-04T11:16:45.466058+00:00",
+      "stores": {
+        "Dairy Dream": "done"
+      },
+      "snapshot_age_seconds": 6781,
+      "snapshot_stale": true
     },
     {
       "conclusion": "success",
@@ -71,7 +122,14 @@
       "updatedAt": "2026-11-04T12:02:51Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41811736793",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261104-6c42b57a-31",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-04T11:12:43.503771+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. G7 Leather.xlsx\n2. Bin Fahad.xlsx\n\nSTORE STATUS\nG7 Leather: done\n  Last successful HTTP response (UTC): 2026-11-04T11:12:07.489213+00:00\nBin Fahad: done\n  Last successful HTTP response (UTC): 2026-11-04T11:12:35.569124+00:00\n",
+      "snapshot_utc": "2026-11-04T11:12:43.503771+00:00",
+      "stores": {
+        "G7 Leather": "done",
+        "Bin Fahad": "done"
+      },
+      "snapshot_age_seconds": 7023,
+      "snapshot_stale": true
     },
     {
       "conclusion": "success",
@@ -81,7 +139,14 @@
       "updatedAt": "2026-11-04T12:52:07Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41811732225",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261104-6c42b57a-30",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-04T12:51:37.366937+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Fresh Basket.xlsx\n2. The Glossy Quill.xlsx\n\nSTORE STATUS\nFresh Basket: done\n  Last successful HTTP response (UTC): 2026-11-04T12:50:25.010793+00:00\nThe Glossy Quill: done\n  Last successful HTTP response (UTC): 2026-11-04T11:22:00.135820+00:00\n",
+      "snapshot_utc": "2026-11-04T12:51:37.366937+00:00",
+      "stores": {
+        "Fresh Basket": "done",
+        "The Glossy Quill": "done"
+      },
+      "snapshot_age_seconds": 1090,
+      "snapshot_stale": true
     },
     {
       "conclusion": "success",
@@ -91,7 +156,14 @@
       "updatedAt": "2026-11-04T12:03:09Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41811727258",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261104-6c42b57a-29",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-04T11:54:59.879302+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Paklap.xlsx\n2. House of Tools.xlsx\n\nSTORE STATUS\nPaklap: done\n  Last successful HTTP response (UTC): 2026-11-04T11:54:24.113600+00:00\nHouse of Tools: done\n  Last successful HTTP response (UTC): 2026-11-04T11:23:50.436849+00:00\n",
+      "snapshot_utc": "2026-11-04T11:54:59.879302+00:00",
+      "stores": {
+        "Paklap": "done",
+        "House of Tools": "done"
+      },
+      "snapshot_age_seconds": 4487,
+      "snapshot_stale": true
     },
     {
       "conclusion": "failure",
@@ -101,7 +173,24 @@
       "updatedAt": "2026-11-04T12:02:25Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41811683153",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261104-6c42b57a-28",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-04T11:11:17.429058+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Alkaram Studio.xlsx\n\nSTORE STATUS\nAlkaram Studio: done\n  Last successful HTTP response (UTC): 2026-11-04T10:57:21.309674+00:00\nGift4U: failed\n  Stage: Idle\n  Last successful HTTP response (UTC): 2026-11-04T10:41:56.756756+00:00\n",
+      "snapshot_utc": "2026-11-04T11:11:17.429058+00:00",
+      "stores": {
+        "Alkaram Studio": "done",
+        "Gift4U": "failed"
+      },
+      "snapshot_age_seconds": 7109,
+      "snapshot_stale": true,
+      "failure_details": [
+        "fetch\tUNKNOWN STEP\t2026-11-04T11:11:24.7639138Z RUN SUMMARY:",
+        "fetch\tUNKNOWN STEP\t2026-11-04T11:11:24.7639617Z Alkaram Studio: DONE \u2014 1542 products, 5263 variants; Alkaram Studio.xlsx (REVIEW)",
+        "fetch\tUNKNOWN STEP\t2026-11-04T11:11:24.7640446Z Gift4U: FAILED \u2014 FAILED: Gift4U: Website endpoint unavailable (403): https://gift4u.pk/wp-json/wc/store/v1/products?redacted",
+        "fetch\tUNKNOWN STEP\t2026-11-04T11:11:24.7641004Z Checkpoint: saved",
+        "fetch\tUNKNOWN STEP\t2026-11-04T11:11:24.7641497Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+        "fetch\tUNKNOWN STEP\t2026-11-04T11:11:24.7669479Z ##[error]Process completed with exit code 2.",
+        "fetch\tUNKNOWN STEP\t2026-11-04T11:11:24.7719403Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics",
+        "fetch\tUNKNOWN STEP\t2026-11-04T11:11:24.7720110Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m"
+      ]
     },
     {
       "conclusion": "",
@@ -111,7 +200,14 @@
       "updatedAt": "2026-11-04T10:30:47Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41811637515",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261104-6c42b57a-27",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-04T13:05:42.549870+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Mala.xlsx\n\nSTORE STATUS\nMala: done\n  Last successful HTTP response (UTC): 2026-11-04T10:34:18.537932+00:00\nLimelight: running\n  Stage: Building Excel rows\n  building Excel rows: 2399/5883 tasks; sample age 14s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-11-04T13:01:33.177659+00:00\n",
+      "snapshot_utc": "2026-11-04T13:05:42.549870+00:00",
+      "stores": {
+        "Mala": "done",
+        "Limelight": "running"
+      },
+      "snapshot_age_seconds": 244,
+      "snapshot_stale": false
     },
     {
       "conclusion": "success",
@@ -121,7 +217,14 @@
       "updatedAt": "2026-11-04T12:02:26Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41811611300",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261104-6c42b57a-25",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-04T10:57:21.142006+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Hush Puppies.xlsx\n2. Habitt.xlsx\n\nSTORE STATUS\nHush Puppies: done\n  Last successful HTTP response (UTC): 2026-11-04T10:33:31.315158+00:00\nHabitt: done\n  Last successful HTTP response (UTC): 2026-11-04T10:53:14.795419+00:00\n",
+      "snapshot_utc": "2026-11-04T10:57:21.142006+00:00",
+      "stores": {
+        "Hush Puppies": "done",
+        "Habitt": "done"
+      },
+      "snapshot_age_seconds": 7946,
+      "snapshot_stale": true
     },
     {
       "conclusion": "",
@@ -131,7 +234,14 @@
       "updatedAt": "2026-11-04T11:25:14Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41811495654",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261104-6c42b57a-12",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-04T13:06:37.029327+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Skin Factor.xlsx\n\nSTORE STATUS\nSkin Factor: done\n  Last successful HTTP response (UTC): 2026-11-04T11:38:09.942414+00:00\nOutfitters: running\n  Stage: Parallel product prices and pages\n  product prices and pages: 1800/3784 tasks; sample age 44s\n  Approximate ETA for this stage only: 100.4 minutes; excludes later processing/audits\n  Last successful HTTP response (UTC): 2026-11-04T13:06:32.230963+00:00\n",
+      "snapshot_utc": "2026-11-04T13:06:37.029327+00:00",
+      "stores": {
+        "Skin Factor": "done",
+        "Outfitters": "running"
+      },
+      "snapshot_age_seconds": 190,
+      "snapshot_stale": false
     },
     {
       "conclusion": "success",
@@ -141,7 +251,14 @@
       "updatedAt": "2026-11-04T12:34:07Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41811343293",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261104-6c42b57a-22",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-04T12:33:35.221309+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Beechtree.xlsx\n2. Breakout.xlsx\n\nSTORE STATUS\nBeechtree: done\n  Last successful HTTP response (UTC): 2026-11-04T11:22:02.421204+00:00\nBreakout: done\n  Last successful HTTP response (UTC): 2026-11-04T12:25:38.218880+00:00\n",
+      "snapshot_utc": "2026-11-04T12:33:35.221309+00:00",
+      "stores": {
+        "Beechtree": "done",
+        "Breakout": "done"
+      },
+      "snapshot_age_seconds": 2172,
+      "snapshot_stale": true
     },
     {
       "conclusion": "success",
@@ -151,7 +268,14 @@
       "updatedAt": "2026-11-04T11:55:39Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41811029950",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261104-6c42b57a-20",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-04T10:22:48.166114+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Zyren.xlsx\n2. Pyari Walls.xlsx\n\nSTORE STATUS\nZyren: done\n  Last successful HTTP response (UTC): 2026-11-04T10:09:01.407416+00:00\nPyari Walls: done\n  Last successful HTTP response (UTC): 2026-11-04T10:21:12.900631+00:00\n",
+      "snapshot_utc": "2026-11-04T10:22:48.166114+00:00",
+      "stores": {
+        "Zyren": "done",
+        "Pyari Walls": "done"
+      },
+      "snapshot_age_seconds": 10019,
+      "snapshot_stale": true
     },
     {
       "conclusion": "success",
@@ -161,7 +285,14 @@
       "updatedAt": "2026-11-04T11:24:53Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41811026367",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261104-6c42b57a-19",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-04T10:05:42.628548+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Design by DAS.xlsx\n2. Golden Rose.xlsx\n\nSTORE STATUS\nDesign by DAS: done\n  Last successful HTTP response (UTC): 2026-11-04T10:03:51.211040+00:00\nGolden Rose: done\n  Last successful HTTP response (UTC): 2026-11-04T10:04:55.893533+00:00\n",
+      "snapshot_utc": "2026-11-04T10:05:42.628548+00:00",
+      "stores": {
+        "Design by DAS": "done",
+        "Golden Rose": "done"
+      },
+      "snapshot_age_seconds": 11044,
+      "snapshot_stale": true
     },
     {
       "conclusion": "success",
@@ -171,7 +302,14 @@
       "updatedAt": "2026-11-04T12:03:59Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41810916660",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261104-6c42b57a-18",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-04T12:01:30.981967+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Hilm Chapals.xlsx\n2. Xcessories Hub.xlsx\n\nSTORE STATUS\nHilm Chapals: done\n  Last successful HTTP response (UTC): 2026-11-04T09:58:29.268171+00:00\nXcessories Hub: done\n  Last successful HTTP response (UTC): 2026-11-04T12:00:49.382788+00:00\n",
+      "snapshot_utc": "2026-11-04T12:01:30.981967+00:00",
+      "stores": {
+        "Hilm Chapals": "done",
+        "Xcessories Hub": "done"
+      },
+      "snapshot_age_seconds": 4096,
+      "snapshot_stale": true
     },
     {
       "conclusion": "success",
@@ -181,7 +319,14 @@
       "updatedAt": "2026-11-04T12:19:17Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41810912306",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261104-6c42b57a-17",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-04T12:18:39.073731+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Hello Maali.xlsx\n2. Prime Ticks.xlsx\n\nSTORE STATUS\nHello Maali: done\n  Last successful HTTP response (UTC): 2026-11-04T10:01:01.658722+00:00\nPrime Ticks: done\n  Last successful HTTP response (UTC): 2026-11-04T12:12:04.112988+00:00\n",
+      "snapshot_utc": "2026-11-04T12:18:39.073731+00:00",
+      "stores": {
+        "Hello Maali": "done",
+        "Prime Ticks": "done"
+      },
+      "snapshot_age_seconds": 3068,
+      "snapshot_stale": true
     },
     {
       "conclusion": "success",
@@ -191,7 +336,14 @@
       "updatedAt": "2026-11-04T12:20:06Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41810907719",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261104-6c42b57a-16",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-04T12:19:31.756662+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Ndure.xlsx\n2. Astore Bags.xlsx\n\nSTORE STATUS\nNdure: done\n  Last successful HTTP response (UTC): 2026-11-04T12:14:48.290269+00:00\nAstore Bags: done\n  Last successful HTTP response (UTC): 2026-11-04T10:13:39.257924+00:00\n",
+      "snapshot_utc": "2026-11-04T12:19:31.756662+00:00",
+      "stores": {
+        "Ndure": "done",
+        "Astore Bags": "done"
+      },
+      "snapshot_age_seconds": 3015,
+      "snapshot_stale": true
     },
     {
       "conclusion": "success",
@@ -201,9 +353,822 @@
       "updatedAt": "2026-11-04T12:53:37Z",
       "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/41810904443",
       "lane": "audit804-fresh804-20261026-5d42fe35-refresh20261104-6c42b57a-15",
-      "snapshot_pending": true
+      "snapshot": "Updated (UTC): 2026-11-04T12:52:16.569968+00:00\nSaved Excel files: 2\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Aerosoft Studio.xlsx\n2. Servis.xlsx\n\nSTORE STATUS\nAerosoft Studio: done\n  Last successful HTTP response (UTC): 2026-11-04T10:19:06.996267+00:00\nServis: done\n  Last successful HTTP response (UTC): 2026-11-04T12:44:46.018147+00:00\n",
+      "snapshot_utc": "2026-11-04T12:52:16.569968+00:00",
+      "stores": {
+        "Aerosoft Studio": "done",
+        "Servis": "done"
+      },
+      "snapshot_age_seconds": 1050,
+      "snapshot_stale": true
     }
   ],
-  "fresh_stores": {},
-  "local_khaadi": "Not visible to cloud monitoring; no local activity claimed"
+  "fresh_stores": {
+    "Sana Safinaz": "running",
+    "Edenrobe": "running",
+    "Beyond East": "done",
+    "Rios": "running",
+    "Liberty Books": "running",
+    "ChenOne": "done",
+    "Computer Zone": "failed",
+    "Dairy Dream": "done",
+    "G7 Leather": "done",
+    "Bin Fahad": "done",
+    "Fresh Basket": "done",
+    "The Glossy Quill": "done",
+    "Paklap": "done",
+    "House of Tools": "done",
+    "Alkaram Studio": "done",
+    "Gift4U": "failed",
+    "Mala": "done",
+    "Limelight": "running",
+    "Hush Puppies": "done",
+    "Habitt": "done",
+    "Skin Factor": "done",
+    "Outfitters": "running",
+    "Beechtree": "done",
+    "Breakout": "done",
+    "Zyren": "done",
+    "Pyari Walls": "done",
+    "Design by DAS": "done",
+    "Golden Rose": "done",
+    "Hilm Chapals": "done",
+    "Xcessories Hub": "done",
+    "Hello Maali": "done",
+    "Prime Ticks": "done",
+    "Ndure": "done",
+    "Astore Bags": "done",
+    "Aerosoft Studio": "done",
+    "Servis": "done"
+  },
+  "local_khaadi": {
+    "store": "Khaadi",
+    "execution": "Windows local",
+    "observed_utc": "2026-10-20T19:22:58.769213+00:00",
+    "worker_active": true,
+    "status": "unknown_stale_heartbeat",
+    "worker_updated": "2026-10-21 00:22:57",
+    "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
+    "error": "",
+    "progress_age_seconds": 1,
+    "report_age_seconds": 1273625,
+    "status_confirmed": false
+  },
+  "collection_completed_utc": "2026-11-04T13:10:02.451709+00:00",
+  "collection_seconds": 16,
+  "store_overview": {
+    "Sana Safinaz": {
+      "state": "drive_verified",
+      "run_id": "41833533944",
+      "snapshot_utc": "2026-11-04T13:07:15.219253+00:00",
+      "uploaded_utc": "2026-11-03T12:29:55.315098+00:00"
+    },
+    "Edenrobe": {
+      "state": "drive_verified",
+      "run_id": "41833533944",
+      "snapshot_utc": "2026-11-04T13:07:15.219253+00:00",
+      "issues_count": null,
+      "issues": [],
+      "audit_checked_utc": "2026-11-02T07:14:52.716753+00:00",
+      "recovery": {},
+      "uploaded_utc": "2026-11-02T04:48:48.927405+00:00"
+    },
+    "Beyond East": {
+      "state": "drive_verified",
+      "run_id": "41832738994",
+      "snapshot_utc": "2026-11-04T13:06:30.432609+00:00",
+      "uploaded_utc": "2026-11-04T13:05:53.940771+00:00"
+    },
+    "Rios": {
+      "state": "drive_verified",
+      "run_id": "41832738994",
+      "snapshot_utc": "2026-11-04T13:06:30.432609+00:00",
+      "issues_count": 30,
+      "issues": [
+        "Brand name used as product Category",
+        "Category is too broad or promotional for product-purpose classification",
+        "Category lacks clear product-purpose evidence; manual review required",
+        "Complete desktop computer incorrectly classified as a component",
+        "Description lacks enough product-specific content for review"
+      ],
+      "audit_checked_utc": "2026-11-02T13:51:40.054384+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-02T08:11:00.817431+00:00",
+        "updated_utc": "2026-11-02T13:51:40.057944+00:00",
+        "next_source_check_due_utc": "2026-11-02T14:06:40.057944+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Brand name used as product Category",
+          "Category is too broad or promotional for product-purpose classification",
+          "Category lacks clear product-purpose evidence; manual review required",
+          "Complete desktop computer incorrectly classified as a component",
+          "Description lacks enough product-specific content for review"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "uploaded_utc": "2026-11-02T05:27:46.434649+00:00"
+    },
+    "Liberty Books": {
+      "state": "fetching",
+      "run_id": "41825785443",
+      "snapshot_utc": "2026-11-04T13:06:46.719754+00:00"
+    },
+    "ChenOne": {
+      "state": "drive_verified",
+      "run_id": "41825785443",
+      "snapshot_utc": "2026-11-04T13:06:46.719754+00:00",
+      "uploaded_utc": "2026-11-04T13:00:44.005195+00:00"
+    },
+    "Computer Zone": {
+      "state": "drive_verified",
+      "run_id": "41825069879",
+      "snapshot_utc": "2026-11-04T12:03:59.934906+00:00",
+      "issues_count": 2,
+      "issues": [
+        "Primary product type and Category disagree: ram"
+      ],
+      "audit_checked_utc": "2026-11-02T13:20:56.035315+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-02T06:34:05.345157+00:00",
+        "updated_utc": "2026-11-02T13:20:56.036625+00:00",
+        "next_source_check_due_utc": "2026-11-02T13:35:56.036625+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Primary product type and Category disagree: ram"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "uploaded_utc": "2026-11-02T03:48:52.880296+00:00"
+    },
+    "Dairy Dream": {
+      "state": "drive_verified",
+      "run_id": "41811744694",
+      "snapshot_utc": "2026-11-04T11:16:45.466058+00:00",
+      "uploaded_utc": "2026-11-02T06:16:41.499146+00:00"
+    },
+    "G7 Leather": {
+      "state": "drive_verified",
+      "run_id": "41811736793",
+      "snapshot_utc": "2026-11-04T11:12:43.503771+00:00",
+      "uploaded_utc": "2026-11-02T06:10:51.515589+00:00"
+    },
+    "Bin Fahad": {
+      "state": "drive_verified",
+      "run_id": "41811736793",
+      "snapshot_utc": "2026-11-04T11:12:43.503771+00:00",
+      "uploaded_utc": "2026-11-02T06:12:50.317468+00:00"
+    },
+    "Fresh Basket": {
+      "state": "drive_verified",
+      "run_id": "41811732225",
+      "snapshot_utc": "2026-11-04T12:51:37.366937+00:00",
+      "issues_count": null,
+      "issues": [],
+      "audit_checked_utc": "2026-11-02T08:18:59.011479+00:00",
+      "recovery": {},
+      "uploaded_utc": "2026-11-02T05:50:49.982411+00:00"
+    },
+    "The Glossy Quill": {
+      "state": "drive_verified",
+      "run_id": "41811732225",
+      "snapshot_utc": "2026-11-04T12:51:37.366937+00:00",
+      "uploaded_utc": "2026-11-02T06:08:53.535730+00:00"
+    },
+    "Paklap": {
+      "state": "correction_queue",
+      "run_id": "41811727258",
+      "snapshot_utc": "2026-11-04T11:54:59.879302+00:00",
+      "issues_count": 230,
+      "issues": [
+        "Category blank or unresolved",
+        "Category lacks clear product-purpose evidence; manual review required",
+        "Description lacks enough product-specific content for review",
+        "Gaming accessory incorrectly classified as console",
+        "Primary product type and Category disagree: computer mouse",
+        "Primary product type and Category disagree: solid state drive",
+        "Tablet accessory cannot be classified as the tablet device"
+      ],
+      "audit_checked_utc": "2026-11-02T03:23:28.325281+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-02T02:35:13.946701+00:00",
+        "updated_utc": "2026-11-02T03:23:28.327252+00:00",
+        "next_source_check_due_utc": "2026-11-02T03:38:28.327252+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved",
+          "Category lacks clear product-purpose evidence; manual review required",
+          "Description lacks enough product-specific content for review",
+          "Gaming accessory incorrectly classified as console",
+          "Primary product type and Category disagree: computer mouse",
+          "Primary product type and Category disagree: solid state drive",
+          "Tablet accessory cannot be classified as the tablet device"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      }
+    },
+    "House of Tools": {
+      "state": "drive_verified",
+      "run_id": "41811727258",
+      "snapshot_utc": "2026-11-04T11:54:59.879302+00:00",
+      "issues_count": 23,
+      "issues": [
+        "Category blank or unresolved"
+      ],
+      "audit_checked_utc": "2026-11-02T08:21:05.693063+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-02T08:21:05.694634+00:00",
+        "updated_utc": "2026-11-02T08:21:05.694634+00:00",
+        "next_source_check_due_utc": "2026-11-02T08:36:05.694634+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "uploaded_utc": "2026-11-02T06:00:42.515849+00:00"
+    },
+    "Alkaram Studio": {
+      "state": "drive_verified",
+      "run_id": "41811683153",
+      "snapshot_utc": "2026-11-04T11:11:17.429058+00:00",
+      "uploaded_utc": "2026-11-04T13:08:50.024252+00:00"
+    },
+    "Gift4U": {
+      "state": "failed",
+      "run_id": "41811683153",
+      "snapshot_utc": "2026-11-04T11:11:17.429058+00:00"
+    },
+    "Mala": {
+      "state": "drive_verified",
+      "run_id": "41811637515",
+      "snapshot_utc": "2026-11-04T13:05:42.549870+00:00",
+      "uploaded_utc": "2026-11-04T13:07:54.464748+00:00"
+    },
+    "Limelight": {
+      "state": "drive_verified",
+      "run_id": "41811637515",
+      "snapshot_utc": "2026-11-04T13:05:42.549870+00:00",
+      "issues_count": null,
+      "issues": [],
+      "audit_checked_utc": "2026-11-02T08:15:41.339348+00:00",
+      "recovery": {},
+      "uploaded_utc": "2026-11-02T05:46:55.520782+00:00"
+    },
+    "Hush Puppies": {
+      "state": "drive_verified",
+      "run_id": "41811611300",
+      "snapshot_utc": "2026-11-04T10:57:21.142006+00:00",
+      "uploaded_utc": "2026-11-04T13:02:41.933032+00:00"
+    },
+    "Habitt": {
+      "state": "drive_verified",
+      "run_id": "41811611300",
+      "snapshot_utc": "2026-11-04T10:57:21.142006+00:00",
+      "issues_count": 1,
+      "issues": [
+        "Category lacks clear product-purpose evidence; manual review required"
+      ],
+      "audit_checked_utc": "2026-11-04T13:02:56.750410+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-02T07:21:05.022117+00:00",
+        "updated_utc": "2026-11-04T13:02:56.751262+00:00",
+        "next_source_check_due_utc": "2026-11-04T13:17:56.751262+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category lacks clear product-purpose evidence; manual review required"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "uploaded_utc": "2026-11-02T05:25:52.916343+00:00"
+    },
+    "Skin Factor": {
+      "state": "drive_verified",
+      "run_id": "41811495654",
+      "snapshot_utc": "2026-11-04T13:06:37.029327+00:00",
+      "uploaded_utc": "2026-11-04T13:01:51.334786+00:00"
+    },
+    "Outfitters": {
+      "state": "drive_verified",
+      "run_id": "41811495654",
+      "snapshot_utc": "2026-11-04T13:06:37.029327+00:00",
+      "uploaded_utc": "2026-11-03T11:49:50.960169+00:00"
+    },
+    "Beechtree": {
+      "state": "drive_verified",
+      "run_id": "41811343293",
+      "snapshot_utc": "2026-11-04T12:33:35.221309+00:00",
+      "uploaded_utc": "2026-11-04T12:59:50.740429+00:00"
+    },
+    "Breakout": {
+      "state": "drive_verified",
+      "run_id": "41811343293",
+      "snapshot_utc": "2026-11-04T12:33:35.221309+00:00",
+      "issues_count": 1,
+      "issues": [
+        "Category blank or unresolved"
+      ],
+      "audit_checked_utc": "2026-11-04T13:00:13.035395+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-04T13:00:13.038225+00:00",
+        "updated_utc": "2026-11-04T13:00:13.038225+00:00",
+        "next_source_check_due_utc": "2026-11-04T13:15:13.038225+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "uploaded_utc": "2026-11-03T12:35:55.690947+00:00"
+    },
+    "Zyren": {
+      "state": "drive_verified",
+      "run_id": "41811029950",
+      "snapshot_utc": "2026-11-04T10:22:48.166114+00:00",
+      "uploaded_utc": "2026-11-04T12:54:54.005582+00:00"
+    },
+    "Pyari Walls": {
+      "state": "drive_verified",
+      "run_id": "41811029950",
+      "snapshot_utc": "2026-11-04T10:22:48.166114+00:00",
+      "uploaded_utc": "2026-11-04T12:56:45.742535+00:00"
+    },
+    "Design by DAS": {
+      "state": "drive_verified",
+      "run_id": "41811026367",
+      "snapshot_utc": "2026-11-04T10:05:42.628548+00:00",
+      "uploaded_utc": "2026-11-04T12:50:52.435015+00:00"
+    },
+    "Golden Rose": {
+      "state": "drive_verified",
+      "run_id": "41811026367",
+      "snapshot_utc": "2026-11-04T10:05:42.628548+00:00",
+      "uploaded_utc": "2026-11-04T12:52:53.246073+00:00"
+    },
+    "Hilm Chapals": {
+      "state": "drive_verified",
+      "run_id": "41810916660",
+      "snapshot_utc": "2026-11-04T12:01:30.981967+00:00",
+      "uploaded_utc": "2026-11-04T12:42:33.948427+00:00"
+    },
+    "Xcessories Hub": {
+      "state": "drive_verified",
+      "run_id": "41810916660",
+      "snapshot_utc": "2026-11-04T12:01:30.981967+00:00",
+      "issues_count": 2,
+      "issues": [
+        "Category blank or unresolved"
+      ],
+      "audit_checked_utc": "2026-11-04T12:45:29.842346+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-04T12:45:29.846706+00:00",
+        "updated_utc": "2026-11-04T12:45:29.846706+00:00",
+        "next_source_check_due_utc": "2026-11-04T13:00:29.846706+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "uploaded_utc": "2026-11-03T12:22:41.955637+00:00"
+    },
+    "Hello Maali": {
+      "state": "drive_verified",
+      "run_id": "41810912306",
+      "snapshot_utc": "2026-11-04T12:18:39.073731+00:00",
+      "uploaded_utc": "2026-11-04T12:35:52.893605+00:00"
+    },
+    "Prime Ticks": {
+      "state": "drive_verified",
+      "run_id": "41810912306",
+      "snapshot_utc": "2026-11-04T12:18:39.073731+00:00",
+      "uploaded_utc": "2026-11-04T12:39:50.684907+00:00"
+    },
+    "Ndure": {
+      "state": "drive_verified",
+      "run_id": "41810907719",
+      "snapshot_utc": "2026-11-04T12:19:31.756662+00:00",
+      "uploaded_utc": "2026-11-04T12:30:40.178190+00:00"
+    },
+    "Astore Bags": {
+      "state": "drive_verified",
+      "run_id": "41810907719",
+      "snapshot_utc": "2026-11-04T12:19:31.756662+00:00",
+      "uploaded_utc": "2026-11-04T12:33:44.776931+00:00"
+    },
+    "Aerosoft Studio": {
+      "state": "drive_verified",
+      "run_id": "41810904443",
+      "snapshot_utc": "2026-11-04T12:52:16.569968+00:00",
+      "uploaded_utc": "2026-11-04T12:28:33.419653+00:00"
+    },
+    "Servis": {
+      "state": "drive_verified",
+      "run_id": "41810904443",
+      "snapshot_utc": "2026-11-04T12:52:16.569968+00:00",
+      "uploaded_utc": "2026-11-03T11:35:44.925205+00:00"
+    },
+    "Bata": {
+      "state": "drive_verified",
+      "issues_count": 41,
+      "issues": [
+        "Category blank or unresolved"
+      ],
+      "audit_checked_utc": "2026-11-04T12:43:52.253068+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-02T06:55:08.152198+00:00",
+        "updated_utc": "2026-11-04T12:43:52.256006+00:00",
+        "next_source_check_due_utc": "2026-11-04T12:58:52.256006+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "uploaded_utc": "2026-11-02T04:21:48.947511+00:00"
+    },
+    "Hemani Herbals": {
+      "state": "drive_verified",
+      "issues_count": 3,
+      "issues": [
+        "Category lacks clear product-purpose evidence; manual review required"
+      ],
+      "audit_checked_utc": "2026-11-04T12:21:02.813235+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-02T06:46:01.499107+00:00",
+        "updated_utc": "2026-11-04T12:21:02.814987+00:00",
+        "next_source_check_due_utc": "2026-11-04T12:36:02.814987+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category lacks clear product-purpose evidence; manual review required"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "uploaded_utc": "2026-11-02T03:55:51.456560+00:00"
+    },
+    "Rawayat": {
+      "state": "drive_verified",
+      "issues_count": 13,
+      "issues": [
+        "Bundle appears classified as a single component",
+        "Category lacks clear product-purpose evidence; manual review required",
+        "Description lacks enough product-specific content for review"
+      ],
+      "audit_checked_utc": "2026-11-02T13:28:58.951883+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-02T06:18:18.705753+00:00",
+        "updated_utc": "2026-11-02T13:28:58.958506+00:00",
+        "next_source_check_due_utc": "2026-11-02T13:43:58.958506+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Bundle appears classified as a single component",
+          "Category lacks clear product-purpose evidence; manual review required",
+          "Description lacks enough product-specific content for review"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "uploaded_utc": "2026-11-02T03:28:54.716391+00:00"
+    },
+    "Junaid Jamshed": {
+      "state": "drive_verified",
+      "issues_count": 1,
+      "issues": [
+        "Category blank or unresolved"
+      ],
+      "audit_checked_utc": "2026-11-02T13:32:27.311136+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-02T08:20:17.705317+00:00",
+        "updated_utc": "2026-11-02T13:32:27.320062+00:00",
+        "next_source_check_due_utc": "2026-11-02T13:47:27.320062+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "uploaded_utc": "2026-11-02T05:33:54.464610+00:00"
+    },
+    "Stylo": {
+      "state": "drive_verified",
+      "issues_count": null,
+      "issues": [],
+      "audit_checked_utc": "2026-11-02T06:03:54.777316+00:00",
+      "recovery": {},
+      "uploaded_utc": "2026-11-02T01:15:51.808322+00:00"
+    },
+    "Saya": {
+      "state": "drive_verified",
+      "issues_count": 1,
+      "issues": [
+        "Category blank or unresolved"
+      ],
+      "audit_checked_utc": "2026-11-02T13:51:24.673096+00:00",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-02T07:19:41.831360+00:00",
+        "updated_utc": "2026-11-02T13:51:24.679826+00:00",
+        "next_source_check_due_utc": "2026-11-02T14:06:24.679826+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "uploaded_utc": "2026-11-02T05:21:46.441777+00:00"
+    },
+    "Miss Rose": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-04T10:40:42.180884+00:00"
+    },
+    "Rivaj UK": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-04T12:09:37.354476+00:00"
+    },
+    "Tawakkal Fabrics": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-04T12:10:45.799863+00:00"
+    },
+    "Elite Cosmetics": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-04T12:15:34.047567+00:00"
+    },
+    "The Hanger Pakistan": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-04T12:16:38.537976+00:00"
+    },
+    "Vince Care": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-04T12:12:44.928290+00:00"
+    },
+    "Islamabad Tea": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-04T10:15:42.102706+00:00"
+    },
+    "Seran": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-04T12:17:47.209112+00:00"
+    },
+    "Shop Modest": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-04T10:39:51.043409+00:00"
+    },
+    "Adam Cheese": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-04T10:17:44.485128+00:00"
+    },
+    "Farda Foods": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-04T10:16:53.370123+00:00"
+    },
+    "Nisa Naturals": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-04T12:19:37.019413+00:00"
+    },
+    "Cool and Cool": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-04T12:23:51.465045+00:00"
+    },
+    "Denim Leftover": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-04T12:22:38.147590+00:00"
+    },
+    "Saeed Ghani": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-04T12:20:53.006256+00:00"
+    },
+    "Bonanza Satrangi": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T11:51:32.644181+00:00"
+    },
+    "Zero Lifestyle": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-04T12:25:49.451801+00:00"
+    },
+    "Zellbury": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T11:54:53.608308+00:00"
+    },
+    "Gul Ahmed": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T12:07:53.116584+00:00"
+    },
+    "Sapphire": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T12:10:53.103380+00:00"
+    },
+    "Generation": {
+      "state": "drive_verified",
+      "uploaded_utc": "2026-11-03T12:34:51.236962+00:00"
+    }
+  },
+  "drive": {
+    "current_campaign": "fresh804-20261026-5d42fe35",
+    "fresh_verified_files": 60,
+    "audit_progress_utc": "2026-11-04T13:08:50.024937+00:00",
+    "sync_status": "scanning",
+    "sync_error": null,
+    "last_scan_utc": "2026-11-04T12:43:09.173934+00:00",
+    "held": {
+      "39450775009": [],
+      "39450778729": [],
+      "39450782519": [],
+      "39450786298": [],
+      "39450789858": [],
+      "39450793299": [],
+      "39450796831": [],
+      "39450802086": [],
+      "39450806726": [],
+      "39494289423": [],
+      "39494295410": [],
+      "39494348075": [],
+      "39529042706": [
+        {
+          "store": "Stylo",
+          "error": "Unconfirmed shop code; held for review"
+        }
+      ],
+      "39529095851": []
+    },
+    "verified_files": 60,
+    "original_uploads": {},
+    "verified_utc": "2026-10-21T06:41:31.265056+00:00",
+    "folders": {
+      "ChotuApp 20-10-2026 Fresh": 20,
+      "ChotuApp 19-10-2026 11-36AM": 60
+    },
+    "latest_move": [
+      {
+        "source": "ChotuApp 20-10-2026 Fresh",
+        "destination": "ChotuApp 19-10-2026 11-36AM",
+        "verified_files": [
+          "Adam Cheese.xlsx",
+          "Bonanza Satrangi.xlsx",
+          "Computer Zone.xlsx",
+          "Cool and Cool.xlsx",
+          "Denim Leftover.xlsx",
+          "Elite Cosmetics.xlsx",
+          "Farda Foods.xlsx",
+          "Hemani Herbals.xlsx",
+          "Islamabad Tea.xlsx",
+          "Miss Rose.xlsx",
+          "Nisa Naturals.xlsx",
+          "Rivaj UK.xlsx",
+          "Saeed Ghani.xlsx",
+          "Seran.xlsx",
+          "Shop Modest.xlsx",
+          "Skin Factor.xlsx",
+          "Tawakkal Fabrics.xlsx",
+          "The Hanger Pakistan.xlsx",
+          "Vince Care.xlsx",
+          "Zero Lifestyle.xlsx"
+        ],
+        "destination_file_count": 24,
+        "preserved_other_files": 4,
+        "verified_utc": "2026-10-20T18:41:53.309795+00:00",
+        "source_removed": [
+          "Adam Cheese.xlsx",
+          "Bonanza Satrangi.xlsx",
+          "Computer Zone.xlsx",
+          "Cool and Cool.xlsx",
+          "Denim Leftover.xlsx",
+          "Elite Cosmetics.xlsx",
+          "Farda Foods.xlsx",
+          "Hemani Herbals.xlsx",
+          "Islamabad Tea.xlsx",
+          "Miss Rose.xlsx",
+          "Nisa Naturals.xlsx",
+          "Rivaj UK.xlsx",
+          "Saeed Ghani.xlsx",
+          "Seran.xlsx",
+          "Shop Modest.xlsx",
+          "Skin Factor.xlsx",
+          "Tawakkal Fabrics.xlsx",
+          "The Hanger Pakistan.xlsx",
+          "Vince Care.xlsx",
+          "Zero Lifestyle.xlsx"
+        ]
+      }
+    ]
+  },
+  "khaadi_devices": [
+    {
+      "store": "Khaadi",
+      "execution": "Windows local",
+      "observed_utc": "2026-10-20T19:22:58.769213+00:00",
+      "worker_active": true,
+      "status": "unknown_stale_heartbeat",
+      "worker_updated": "2026-10-21 00:22:57",
+      "last_event": "KHAADI LISTING PROGRESS: 622/626 categories; 1382 distinct product URLs",
+      "error": "",
+      "progress_age_seconds": 1,
+      "report_age_seconds": 1273625,
+      "status_confirmed": false
+    }
+  ],
+  "phone_heartbeat": {
+    "status": "not_connected_or_no_report",
+    "status_confirmed": false,
+    "message": "No Android heartbeat received. Connect GitHub in app Settings and start or resume fetching."
+  },
+  "monitoring": {
+    "phone_heartbeat_seconds": 30,
+    "phone_stale_after_seconds": 180,
+    "cloud_schedule_minutes": 5,
+    "note": "Scheduled cloud checks can be delayed. Query local-run-status directly for latest phone heartbeat."
+  },
+  "fresh_completed": 28
 }
