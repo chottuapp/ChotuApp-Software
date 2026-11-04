@@ -1,49 +1,45 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-04T13:08:33.729780+00:00",
-  "run_id": "41811607166",
+  "generated_utc": "2026-11-04T13:45:30.274681+00:00",
+  "run_id": "41840830952",
   "attempt": "1",
-  "source_commit": "88b1feb5651a61be50aa69d307b8ad9ead59255c",
+  "source_commit": "7c996b8421348e1752fbd78095073c8c17440ea3",
   "status": "incomplete",
   "checkpoint_saved": true,
-  "python": "3.12.15",
-  "elapsed_seconds": 10184.4,
+  "python": "3.12.16",
+  "elapsed_seconds": 40.0,
   "stores": [
     {
-      "name": "Generation",
-      "status": "source_paused",
+      "name": "Nayab Fashion",
+      "status": "failed",
       "review_required": false,
       "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT",
+        "HTTP_404",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "7130b3195d2ca625",
       "http_statuses": {
-        "200": 4403,
-        "429": 3
+        "200": 2,
+        "404": 1
       },
-      "network_seconds": 8314.5,
-      "max_response_seconds": 3.5,
-      "cache_events": 11062
+      "network_seconds": 5.2,
+      "max_response_seconds": 3.3,
+      "cache_events": 0
     },
     {
-      "name": "Saya",
-      "status": "source_paused",
-      "review_required": false,
-      "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
+      "name": "Babysaurus",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
       "software_revision": "7130b3195d2ca625",
+      "products": 40,
+      "variants": 185,
       "http_statuses": {
-        "200": 2958,
-        "429": 4
+        "200": 54
       },
-      "network_seconds": 5430.5,
-      "max_response_seconds": 2.8,
-      "cache_events": 10648
+      "network_seconds": 31.3,
+      "max_response_seconds": 1.7,
+      "cache_events": 80
     }
   ]
 }
