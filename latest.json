@@ -1,41 +1,47 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-05T08:50:58.253694+00:00",
-  "run_id": "41978337129",
+  "generated_utc": "2026-11-05T11:25:05.219128+00:00",
+  "run_id": "41992167079",
   "attempt": "1",
   "source_commit": "17792db873abe4ba2dd3245c2a09b03e341ee673",
-  "status": "complete",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.15",
-  "elapsed_seconds": 9603.3,
+  "elapsed_seconds": 11201.3,
   "stores": [
     {
-      "name": "Tawakkal Fabrics",
+      "name": "Liberty Books",
+      "status": "source_paused",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "313f318ef24369ee",
+      "http_statuses": {
+        "404": 73,
+        "200": 2652,
+        "429": 5
+      },
+      "network_seconds": 5643.5,
+      "max_response_seconds": 2.7,
+      "cache_events": 223448
+    },
+    {
+      "name": "ChenOne",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "7130b3195d2ca625",
-      "products": 1486,
-      "variants": 3539,
+      "products": 304,
+      "variants": 1088,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
       "cache_events": 0
-    },
-    {
-      "name": "Stylo",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "313f318ef24369ee",
-      "products": 11362,
-      "variants": 53199,
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 84472
     }
   ]
 }
