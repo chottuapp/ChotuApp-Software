@@ -16,6 +16,12 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  # Only explicit source garment-type strings; a generic vendor/brand is not purpose evidence.
  if re.fullmatch(r'(?i)(?:women|men|teens|kids|infants)\s+(?:stitched\s+[234]\s+piece(?:\s+shirt\s+trouser)?|(?:cotton\s+silk\s+)?shalwar|(?:special\s+)?kurta|trouser|earrings|bracelet|necklace|ring|eyebrow\s+kit|waistcoat\s+with\s+kurta\s+trouser)',str(source_type or '').strip()):body+=' Source-listed garment type: '+str(source_type)
  evidence=title+' '+body
+ # Independent original-title proof for explicit product forms, not collection names.
+ sold_forms={'hair mists':r'\bhair mist\b','facial cleansing bars':r'\bface bar\b',
+  'massage creams':r'\bmassaging cream\b','room heaters':r'\b(?:graphene|room) heater\b',
+  'phone cases':r'\bphone cases?\b','tawas':r'\btawa\b','sweaters':r'\bsweater\b',
+  'capes':r'\bcape\b','high-neck tops':r'\bhigh neck\b','overcoats':r'\bovercoat\b'}
+ if cat in sold_forms and has(sold_forms[cat],title) and not has(r'\b(?:replacement|pattern|cover for)\b',title):return []
  # Independently validate source garment purpose; colour words such as Blush
  # and individual pieces of a complete outfit cannot override the sold object.
  if cat=='rompers' and has(r'\brompers?\b',title) and not has(r'\breplacement|sewing pattern|zipper|\b(?:set|pack|bundle)\b',title):return []
@@ -30,13 +36,18 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
   source_fields=re.findall(r'(?im)^[ \t*•\u2060\ufeff]*(shirt|blouse|trousers?|leh(?:e|a)?nga|gharara|sharara|dupata|dupatta|duppata|duppatta)\s*(?:&\s*sleeves)?\s*:[ \t]*(\S[^\n]*)',str(description))
   valid_fields={part.lower() for part,value in source_fields if not has(r'^(?:not|none|n/?a)\b|\bnot\s+included\b|\bsold\s+separately\b',value)}
   if len(valid_fields)>=2:return []
+  # An excluded optional third piece does not negate the supplied pair.
+  if has(r'\b(?:shirt|kurta|kameez)\b\s*(?:\+|&|and|with)\s*(?:shalwar|trousers?|dupatta)\b',title):
+   paired_lower=has(r'\b(?:shalwar|trousers?)\b',title) and bool(valid_fields & {'trouser','trousers'})
+   paired_scarf=has(r'\bdupatta\b',title) and bool(valid_fields & {'dupatta','dupata','duppatta','duppata'})
+   if paired_lower or paired_scarf:return []
   if any(has(r'\bnot\s+included\b|\bsold\s+separately\b',value) for _,value in source_fields):return None
   named_pack=has(r'\b(?:set|co[ -]?ord)\b',title) or has(r'\b(?:two|three|four|five|six|[2-6])[ -]*(?:piece|pc)s?\b|\b(?:co[ -]?ord|combo)\b|\b(?:paired|comes)\s+with\b',body) or has(r'\boutfit\b',body) and has(r'\bfeatures\b',body)
   if named_pack and has(r'\b(?:shirt|top|tee|kurta|kameez|sweater|sweatshirt|cardigan|jacket|vest|hoodie|blouse|romper|dress|neckline|sleeve)s?\b',body) and has(r'\b(?:trousers?|pants?|jeans|joggers?|shalwar|sharara|gharara|leggings?|palazzo|plazzo|plazo|pajamas?|bottoms?)\b',body):return []
   if named_pack and has(r'\b(?:newborn|baby|children|kids?|little one)\b',body) and has(r'\b(?:wardrobe|outfit|dressing|dress up)\b',body):return []
  # Independently review the original sold object, not included PC components.
  primary=re.split(r'\b(?:for|with|including|includes)\b',title,maxsplit=1,flags=re.I)[0]
- whole_pc=has(r'\b(?:desktop\s+(?:pc|computer)|tower\s+pc|imac|thinkcentre|Mac\s+(?:Mini|Studio))\b',primary) and not has(r'\b(?:case|casing|cooler|sleeve|stand)\b',primary)
+ whole_pc=has(r'\b(?:desktop\s+(?:pc|computer)|tower\s+pc|imac|thinkcentre|Mac\s+(?:Mini|Studio(?!\s+Fix\b)))\b',primary) and not has(r'\b(?:case|casing|cooler|sleeve|stand)\b',primary)
  if whole_pc:return [] if cat=='desktop computers' else ['Complete desktop computer incorrectly classified as a component']
  if cat=='desktop computers' and has(r'\b(?:case|casing|cooler|sleeve|stand)\b',primary):return ['Computer accessory incorrectly classified as a complete desktop']
  if cat=='gaming consoles' and has(r'\bgaming\s+console\b',primary) and not has(r'\b(?:controller|shifter|wheel|case)\b',primary):return []

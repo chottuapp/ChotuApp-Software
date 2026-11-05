@@ -273,6 +273,19 @@ def electronics_object(row):
 
 def classify(row,store):
  title=str(row.get('name') or '');body=str(row.get('description') or '')
+ # Explicit sold nouns override broad merchant collections; compatibility text
+ # and incidental care instructions are never used to invent the sold object.
+ named_objects={
+  'Hemani Herbals':[('Hair Mists',r'\bhair mist\b'),('Facial Cleansing Bars',r'\bface bar\b'),('Massage Creams',r'\bmassaging cream\b')],
+  'Xcessories Hub':[('Room Heaters',r'\b(?:graphene|room) heater\b'),('Phone Cases',r'\bphone cases?\b')],
+  'Habitt':[('Tawas',r'\btawa\b')],
+  'Limelight':[('Sweaters',r'\bsweater\b'),('Capes',r'\bcape\b')],
+  'Edenrobe':[('High-Neck Tops',r'\bhigh neck\b')],
+  'Junaid Jamshed':[('Overcoats',r'\bovercoat\b')],
+ }
+ for label,pattern in named_objects.get(store,[]):
+  if re.search(pattern,title,re.I) and not re.search(r'\b(?:replacement|pattern|cover for)\b',title,re.I):
+   return label,'inferred_explicit_sold_object','Original source product title: '+title
  if store in {'Nayab Fashion','Babysaurus','Deflexxi'}:
   garment=apparel_object(row)
   if garment:return garment
