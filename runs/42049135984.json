@@ -3148,7 +3148,7 @@
     "Rivaj UK": "source:3d8b6d26dc844c7874478e60b70fe2f9ee1d0c126ec18a9c575ed0608547f588:Rivaj UK:2a5467020c5de203a493def02eb027952d2ac57272665f6b6464b75b46609ffb",
     "Vince Care": "source:e3b09c4e8679f13f17efbf729ec891740c249c414581e756757b01d0ef670b5a:Vince Care:2a5467020c5de203a493def02eb027952d2ac57272665f6b6464b75b46609ffb",
     "Computer Zone": "source:7fe9b00f8b50e55805439925c7c144910ffdab3e2a2f760e68ffe343d7b051a7:Computer Zone:619993dc191ff4bcaaf400bc6cec19f10ce3888fcd93154de664dc5ad91675bc",
-    "Bata": "source:b238303795f4dd3cbe02c9c3eb0005023aea23f5a4a453b31c4973c48807975b:Bata:2a5467020c5de203a493def02eb027952d2ac57272665f6b6464b75b46609ffb",
+    "Bata": "source:b238303795f4dd3cbe02c9c3eb0005023aea23f5a4a453b31c4973c48807975b:Bata:56af377667ed7a3a00b1ed2aad5340513b2072843b82e09bcf13912cb64e1bd8",
     "Hemani Herbals": "source:d31c857c4ac38f97692e2bac29b680d62fc9fc87ada60feb57fe853ff48f2176:Hemani Herbals:2a5467020c5de203a493def02eb027952d2ac57272665f6b6464b75b46609ffb",
     "Rawayat": "source:3b0b61d26bc5fca52ffbfad76eb93b0a174442fe15c98656031307bec84e806c:Rawayat:2a5467020c5de203a493def02eb027952d2ac57272665f6b6464b75b46609ffb",
     "Junaid Jamshed": "source:0308c45c6b0511529dc6edf2f84119a8f4128d618f7c9ec1df76e6c6c47cf230:Junaid Jamshed:2a5467020c5de203a493def02eb027952d2ac57272665f6b6464b75b46609ffb",
@@ -3929,8 +3929,16 @@
       "identity_policy": "confirmed_code",
       "status": "hold",
       "products_checked": 1892,
-      "findings_count": 10,
+      "findings_count": 17,
       "findings": [
+        {
+          "product_id": "CPe64b094a53a3",
+          "name": "Weinbrenner - Men",
+          "source_url": "https://www.bata.com.pk/products/861-6723",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
         {
           "product_id": "CP66fb9667cc14",
           "name": "Northstar - Women",
@@ -3940,9 +3948,49 @@
           ]
         },
         {
+          "product_id": "CP99538a256d3e",
+          "name": "Power - Women",
+          "source_url": "https://www.bata.com.pk/products/551-2096",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPe3018a6cd805",
+          "name": "Weinbrenner - Junior (10 Years - 14 Years)",
+          "source_url": "https://www.bata.com.pk/products/461-9002",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPc4ed1a0f82a0",
+          "name": "Mocassino - Men",
+          "source_url": "https://www.bata.com.pk/products/851-6093",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
           "product_id": "CPab9f71b28e8f",
           "name": "Bubble Gummers - Kids (5 Years - 10 Years)",
           "source_url": "https://www.bata.com.pk/products/371-5095",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPf5c11afb9f66",
+          "name": "Bubble Gummers - Girls (5 Years - 10 Years)",
+          "source_url": "https://www.bata.com.pk/products/361-9056",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPc0ea6d26b055",
+          "name": "B-first - Kids (5 Years - 10 Years)",
+          "source_url": "https://www.bata.com.pk/products/351-1088",
           "issues": [
             "Category blank or unresolved"
           ]
@@ -4010,19 +4058,27 @@
           "issues": [
             "Category blank or unresolved"
           ]
+        },
+        {
+          "product_id": "CP73c59dafd3a6",
+          "name": "Power - Men",
+          "source_url": "https://www.bata.com.pk/products/867-3501",
+          "issues": [
+            "Category blank or unresolved"
+          ]
         }
       ],
       "details_truncated": false,
-      "workbook_sha256": "a763f9c1f9b251aa9fcbbcfa73e9519660205fb1ce079a718abab0a7c498e3eb",
-      "checked_utc": "2026-11-05T12:55:06.400588+00:00",
+      "workbook_sha256": "601ab6a2a9bb1d302d78137614dfc0aba461efd972e9057a0ac1546fd252ce08",
+      "checked_utc": "2026-11-05T14:53:26.669300+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
         "stage": "correction_pending_source_recheck",
         "unfinished": true,
         "owner": "804 automated recovery",
         "opened_utc": "2026-11-02T06:55:08.152198+00:00",
-        "updated_utc": "2026-11-05T12:55:06.403611+00:00",
-        "next_source_check_due_utc": "2026-11-05T13:10:06.403611+00:00",
+        "updated_utc": "2026-11-05T14:53:26.672219+00:00",
+        "next_source_check_due_utc": "2026-11-05T15:08:26.672219+00:00",
         "actions": [
           "Refresh exact public product facts",
           "Apply supported description and category repairs",
@@ -4036,16 +4092,11 @@
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
-      "description_repairs_count": 1787,
+      "description_repairs_count": 1780,
       "description_repairs_examples": [
         {
           "product_id": "CP9d6c855b478c",
           "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPe64b094a53a3",
-          "issue": "Concrete identity-matched public object tag; all original SKUs, sizes and colours retained.",
           "repair_kind": "description"
         },
         {
@@ -4056,11 +4107,6 @@
         {
           "product_id": "CPff46fbba9a2e",
           "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP99538a256d3e",
-          "issue": "Concrete identity-matched public object tag; all original SKUs, sizes and colours retained.",
           "repair_kind": "description"
         },
         {
@@ -4086,6 +4132,16 @@
         {
           "product_id": "CP38296e8ae741",
           "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP288eeef5fb98",
+          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP17d63effd991",
+          "issue": "Added exact primary product-tag object type; original article code and options preserved.",
           "repair_kind": "description"
         }
       ],
@@ -7317,513 +7373,9 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/c3c804c495398f0f/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/6c2dc3caec8cdf1c/manifest.json"
   },
-  "audit804_last_store": "Cool and Cool",
-  "audit804_progress_utc": "2026-11-05T13:37:54.476348+00:00",
+  "audit804_last_store": "Bata",
+  "audit804_progress_utc": "2026-11-05T14:53:26.672953+00:00",
   "audit804_auto_evidence_cache": [
-    {
-      "store": "Bata",
-      "product_id": "CP73c59dafd3a6",
-      "source_url": "https://www.bata.com.pk/products/867-3501",
-      "requested_name": "Power - Men",
-      "public_title": "Power - Men",
-      "product_type": "Power",
-      "description": "867-3501",
-      "evidence_run": "41838927932",
-      "checked_utc": "2026-11-04T13:33:45.525736+00:00",
-      "published_tags": [
-        "15%Tax",
-        "Color_Black",
-        "Flashsale",
-        "FlashsaleMen",
-        "Flip Flops",
-        "Flip FlopsMen",
-        "FullPrice",
-        "Label | ONLINE EXCLUSIVE DISCOUNT",
-        "Men",
-        "Men new",
-        "New Arrivals",
-        "Power",
-        "Power - Men"
-      ],
-      "reviewed_type_tag": "Flip Flops",
-      "reviewed_tag_category": "Flip-Flops",
-      "reviewed_tag_overview": "A flip-flop footwear style."
-    },
-    {
-      "store": "Bata",
-      "product_id": "CP99538a256d3e",
-      "source_url": "https://www.bata.com.pk/products/551-2096",
-      "requested_name": "Power - Women",
-      "public_title": "Power - Women",
-      "product_type": "Power",
-      "description": "551-2096",
-      "evidence_run": "41838927932",
-      "checked_utc": "2026-11-04T13:33:45.525736+00:00",
-      "published_tags": [
-        "15%Tax",
-        "Color_Pink",
-        "FullPrice",
-        "Label | ONLINE EXCLUSIVE DISCOUNT",
-        "Ladies Sports",
-        "New Arrivals",
-        "Power",
-        "Power - Women",
-        "Sneakers",
-        "Supersale",
-        "SupersaleWomen",
-        "Women",
-        "Women new"
-      ],
-      "reviewed_type_tag": "Sneakers",
-      "reviewed_tag_category": "Sneakers",
-      "reviewed_tag_overview": "A sneaker footwear style."
-    },
-    {
-      "store": "Bata",
-      "product_id": "CPab9f71b28e8f",
-      "source_url": "https://www.bata.com.pk/products/371-5095",
-      "requested_name": "Bubble Gummers - Kids (5 Years - 10 Years)",
-      "public_title": "Bubble Gummers - Kids (5 Years - 10 Years)",
-      "product_type": "Bubble Gummers",
-      "description": "371-5095",
-      "evidence_run": "41838927932",
-      "checked_utc": "2026-11-04T13:33:45.525736+00:00",
-      "published_tags": [
-        "(5 Years - 10 Years)",
-        "15%TaxKids",
-        "Bubble Gummers",
-        "Bubble Gummers - Kids",
-        "Color_Red",
-        "Kids",
-        "kids New",
-        "Label | ONLINE EXCLUSIVE DISCOUNT",
-        "Supersale",
-        "SupersaleKids"
-      ]
-    },
-    {
-      "store": "Bata",
-      "product_id": "CPc0ea6d26b055",
-      "source_url": "https://www.bata.com.pk/products/351-1088",
-      "requested_name": "B-first - Kids (5 Years - 10 Years)",
-      "public_title": "B-first - Kids (5 Years - 10 Years)",
-      "product_type": "B-first",
-      "description": "351-1088",
-      "evidence_run": "41838927932",
-      "checked_utc": "2026-11-04T13:33:45.525736+00:00",
-      "published_tags": [
-        "(5 Years - 10 Years)",
-        "15%Tax",
-        "B-first",
-        "B-first - Kids",
-        "Color_White",
-        "Kids",
-        "kids New",
-        "Label | ONLINE EXCLUSIVE DISCOUNT",
-        "school",
-        "SchoolShoes",
-        "Supersale",
-        "SupersaleKids"
-      ]
-    },
-    {
-      "store": "Bata",
-      "product_id": "CPc4ed1a0f82a0",
-      "source_url": "https://www.bata.com.pk/products/851-6093",
-      "requested_name": "Mocassino - Men",
-      "public_title": "Mocassino - Men",
-      "product_type": "Mocassino",
-      "description": "851-6093",
-      "evidence_run": "41838927932",
-      "checked_utc": "2026-11-04T13:33:45.525736+00:00",
-      "published_tags": [
-        "15%Tax",
-        "Color_Black",
-        "FullPrice",
-        "Label | ONLINE EXCLUSIVE DISCOUNT",
-        "Men",
-        "Men Casual",
-        "Men new",
-        "Mocassino",
-        "Mocassino - Men",
-        "New Arrivals",
-        "Supersale",
-        "SupersaleMen"
-      ],
-      "reviewed_type_tag": "Men Casual",
-      "reviewed_tag_category": "Casual Shoes",
-      "reviewed_tag_overview": "A casual shoe style."
-    },
-    {
-      "store": "Bata",
-      "product_id": "CPe3018a6cd805",
-      "source_url": "https://www.bata.com.pk/products/461-9002",
-      "requested_name": "Weinbrenner - Junior (10 Years - 14 Years)",
-      "public_title": "Weinbrenner - Junior (10 Years - 14 Years)",
-      "product_type": "Weinbrenner",
-      "description": "461-9002",
-      "evidence_run": "41838927932",
-      "checked_utc": "2026-11-04T13:33:45.525736+00:00",
-      "published_tags": [
-        "(10 Years - 14 Years)",
-        "15%TaxKids",
-        "Boys sandal",
-        "Color_Blue",
-        "Kids",
-        "kids New",
-        "Label | ONLINE EXCLUSIVE DISCOUNT",
-        "Sandal+Peshawari",
-        "Summer-collection",
-        "Supersale",
-        "SupersaleKids",
-        "Weinbrenner",
-        "Weinbrenner - Boys"
-      ],
-      "reviewed_type_tag": "Boys sandal",
-      "reviewed_tag_category": "Sandals",
-      "reviewed_tag_overview": "A sandal footwear style."
-    },
-    {
-      "store": "Bata",
-      "product_id": "CPe64b094a53a3",
-      "source_url": "https://www.bata.com.pk/products/861-6723",
-      "requested_name": "Weinbrenner - Men",
-      "public_title": "Weinbrenner - Men",
-      "product_type": "Weinbrenner",
-      "description": "861-6723",
-      "evidence_run": "41838927932",
-      "checked_utc": "2026-11-04T13:33:45.525736+00:00",
-      "published_tags": [
-        "15%Tax",
-        "Color_Black",
-        "Label | ONLINE EXCLUSIVE DISCOUNT",
-        "Men",
-        "Men new",
-        "Men Sandals",
-        "New Arrivals",
-        "sandal",
-        "Sandal+Peshawari",
-        "Summer-collection",
-        "Supersale",
-        "SupersaleMen",
-        "Weinbrenner",
-        "Weinbrenner - Men"
-      ],
-      "reviewed_type_tag": "Men Sandals",
-      "reviewed_tag_category": "Sandals",
-      "reviewed_tag_overview": "A sandal footwear style."
-    },
-    {
-      "store": "Bata",
-      "product_id": "CPf5c11afb9f66",
-      "source_url": "https://www.bata.com.pk/products/361-9056",
-      "requested_name": "Bubble Gummers - Girls (5 Years - 10 Years)",
-      "public_title": "Bubble Gummers - Girls (5 Years - 10 Years)",
-      "product_type": "Bubble Gummers",
-      "description": "361-9056",
-      "evidence_run": "41838927932",
-      "checked_utc": "2026-11-04T13:33:45.525736+00:00",
-      "published_tags": [
-        "(5 Years - 10 Years)",
-        "15%TaxKids",
-        "Bubble Gummers",
-        "Bubble Gummers - Girls",
-        "Color_Black",
-        "Girls",
-        "Kids",
-        "kids chapal",
-        "Kids Chappal",
-        "kids New",
-        "Label | ONLINE EXCLUSIVE DISCOUNT",
-        "Supersale",
-        "SupersaleKids"
-      ],
-      "reviewed_type_tag": "Kids Chappal",
-      "reviewed_tag_category": "Chappals",
-      "reviewed_tag_overview": "A chappal footwear style."
-    },
-    {
-      "store": "Fresh Basket",
-      "product_id": "CP8faaf20c8ffc",
-      "source_url": "https://freshbasket.com.pk/products/davidoff-crema-intense-90g",
-      "requested_name": "Davidoff - Crema Intense (90g)",
-      "public_title": "Davidoff - Crema Intense (90g)",
-      "product_type": "Tea & Coffee",
-      "description": "Davidoff - Crema Intense (90g)",
-      "evidence_run": "41838927932",
-      "checked_utc": "2026-11-04T13:33:45.525736+00:00",
-      "published_tags": [
-        "Category_KARACHI/Tea & Coffee",
-        "Coffee"
-      ]
-    },
-    {
-      "store": "Fresh Basket",
-      "product_id": "CP93bb212b8121",
-      "source_url": "https://freshbasket.com.pk/products/davidoff-fine-aroma-100g",
-      "requested_name": "Davidoff - Fine Aroma (100g)",
-      "public_title": "Davidoff - Fine Aroma (100g)",
-      "product_type": "Tea & Coffee",
-      "description": "Davidoff - Fine Aroma (100g)",
-      "evidence_run": "41838927932",
-      "checked_utc": "2026-11-04T13:33:45.525736+00:00",
-      "published_tags": [
-        "Category_KARACHI/Tea & Coffee",
-        "coffee"
-      ]
-    },
-    {
-      "store": "Fresh Basket",
-      "product_id": "CP9c676a7c1cd0",
-      "source_url": "https://freshbasket.com.pk/products/davidoff-rich-aroma-100g",
-      "requested_name": "Davidoff - Rich Aroma (100g)",
-      "public_title": "Davidoff - Rich Aroma (100g)",
-      "product_type": "Tea & Coffee",
-      "description": "",
-      "evidence_run": "41838927932",
-      "checked_utc": "2026-11-04T13:33:45.525736+00:00",
-      "published_tags": [
-        "Category_KARACHI/Tea & Coffee",
-        "coffee"
-      ]
-    },
-    {
-      "store": "Habitt",
-      "product_id": "CPd2af77faf530",
-      "source_url": "https://habitt.com/products/premium-stainless-steel-non-stick-tawa-heavy-duty-cookware-with-dual-handles-28-cm-34-cm-sizes-induction-gas-compatible-flat-pan-copy",
-      "requested_name": "Baroly Granite Tawa \u2013 35 cm",
-      "public_title": "Baroly Granite Tawa \u2013 35 cm",
-      "product_type": "",
-      "description": "A spacious granite tawa designed for preparing everyday meals such as roti, paratha and other flatbreads.\nMaterial & Usage:\nMade with a granite-finish cooking surface. Suitable for regular stovetop cooking.\nCare Instructions:\nAllow it to cool before washing. Clean with a soft sponge and mild dishwashing liquid. Avoid abrasive cleaners and metal scrubbers.\nDelivery:\nDelivered within 10\u201312 working days.\nDisclaimer:\nColour and design details may vary slightly. Use on a compatible stovetop and handle with care when hot.",
-      "evidence_run": "41838927932",
-      "checked_utc": "2026-11-04T13:33:45.525736+00:00",
-      "published_tags": [
-        "cooking and baking",
-        "COOKWARE",
-        "COOKWARE & BAKEWARE",
-        "KITCHEN",
-        "KITCHEN & DINING",
-        "kitchen se dining",
-        "New - 2025"
-      ]
-    },
-    {
-      "store": "Hemani Herbals",
-      "product_id": "CP14613590eeee",
-      "source_url": "https://pk.hemaniherbals.com/products/k-brightening-face-bar-120gm",
-      "requested_name": "K-Brightening Face Bar 120gm",
-      "public_title": "K-Brightening Face Bar 120gm",
-      "product_type": "Daily Essential",
-      "description": "Reveal Clearer, Brighter & Healthier-Looking Skin\nK-Brightening Face Bar is a powerful, yet gentle cleansing formula designed to enhance your skin\u2019s natural radiance. Enriched with advanced brightening actives and nourishing natural extracts, it helps improve uneven skin tone while keeping the skin soft and balanced.\nInfused with Licorice Extract, it soothes redness and irritation while helping defend the skin against environmental stressors. Prickly Pear Extract delivers deep hydration with anti-aging benefits, leaving the skin supple and refreshed. Milk Extract gently exfoliates to remove dull surface cells while strengthening the skin\u2019s natural barrier. Powered by Kojic Acid, this face bar works effectively to visibly reduce dark spots, hyperpigmentation, age spots, and uneven skin tone revealing a clearer, more luminous complexion with regular use.\nHow to Use:\nLather with water and apply to damp face. Massage gently for a few seconds, then rinse thoroughly. Use daily for best results.\nCaution:\nFor external use only. Avoid contact with eyes. If contact occurs, rinse immediately. Discontinue use if irritation persists. As this product contains Kojic Acid, always apply SPF during the daytime. Keep out of reach of children.",
-      "evidence_run": "41838927932",
-      "checked_utc": "2026-11-04T13:33:45.525736+00:00",
-      "published_tags": [
-        "brighteningsoap",
-        "facebar",
-        "hemaniherbal"
-      ]
-    },
-    {
-      "store": "Hemani Herbals",
-      "product_id": "CP4a82d906bf91",
-      "source_url": "https://pk.hemaniherbals.com/products/anti-dandruff-hair-mist-aijaz-aslam",
-      "requested_name": "Anti Dandruff Hair Mist | Aijaz Aslam 100ml",
-      "public_title": "Anti Dandruff Hair Mist | Aijaz Aslam 100ml",
-      "product_type": "Glow UP",
-      "description": "Lightweight Scalp Refresh for Flake Control and Shine\nAnti Dandruff Hair Mist | Aijaz Aslam 100ml is designed to revitalize hair while supporting a balanced, refreshed scalp. This airy mist helps manage visible flakes and dryness without weighing strands down. Infused with Organic Argan Oil and Coconut Oil, the formula helps improve softness, smoothness, and natural shine while enhancing hair texture for styling. Suitable for all hair types, it delivers targeted scalp hydration and leaves hair looking polished and manageable throughout the day.",
-      "evidence_run": "41838927932",
-      "checked_utc": "2026-11-04T13:33:45.525736+00:00",
-      "published_tags": [
-        "aijaz aslam",
-        "anti dandruff",
-        "argan oil",
-        "hair care"
-      ]
-    },
-    {
-      "store": "Hemani Herbals",
-      "product_id": "CP9c586bdd02ca",
-      "source_url": "https://pk.hemaniherbals.com/products/quick-fit-plus-roller-massaging-cream-100gm",
-      "requested_name": "Quick Fit Plus - Roller Massaging Cream (100Gm)",
-      "public_title": "Quick Fit Plus - Roller Massaging Cream (100Gm)",
-      "product_type": "Wellness",
-      "description": "Instant Cooling Relief with Deep Massage Action\nQuick Fit Plus Roller Massaging Cream is formulated for fast, effective relief from muscle pain, stiffness, and swelling. Powered by herbal extracts including Camphor, Peppermint, Clove, and Eucalyptus, this cream delivers an immediate cooling sensation that helps relax tight muscles and ease discomfort. The integrated roller applicator provides deep pressure massage, improving absorption while stimulating circulation. Its fast-absorbing, non-greasy formula makes it ideal for use after workouts, long workdays, or sudden muscle strain. Designed for convenience and effectiveness, Quick Fit Plus supports quick recovery without messy application.",
-      "evidence_run": "41838927932",
-      "checked_utc": "2026-11-04T13:33:45.525736+00:00",
-      "published_tags": [
-        "100g",
-        "pain relief",
-        "wellness"
-      ]
-    },
-    {
-      "store": "Junaid Jamshed",
-      "product_id": "CP18bc40171394",
-      "source_url": "https://www.junaidjamshed.com/products/wcoat-25-0045-a-wcoat250045a",
-      "requested_name": "Black Classic Long Overcoat",
-      "public_title": "Black Classic Long Overcoat",
-      "product_type": "Women Division",
-      "description": "Long coat tailored in a structured silhouette for a sharp, elevated look. Designed with a double-breasted front and classic lapel collar, offering timeless sophistication with modern appeal.\nColor:\nBlack\nFit:\nStructured Fit",
-      "evidence_run": "41838927932",
-      "checked_utc": "2026-11-04T13:33:45.525736+00:00",
-      "published_tags": [
-        "11aprl",
-        "12/10/25",
-        "2025",
-        "2025-2026",
-        "2026_ALL",
-        "go-live",
-        "new-launch",
-        "P1280426",
-        "sales tax 15%",
-        "script-run-image-added",
-        "script-run-image-added-new",
-        "syncc",
-        "syncc-women-coat&jacket"
-      ]
-    },
-    {
-      "store": "Rawayat",
-      "product_id": "CP2d04e8960070",
-      "source_url": "https://rawayat.com.pk/products/elisa-gold-chain",
-      "requested_name": "Elisa Gold Chain",
-      "public_title": "Elisa Gold Chain",
-      "product_type": "Pendent/Chain",
-      "description": "Gold Platted Elisa Chain",
-      "evidence_run": "41838927932",
-      "checked_utc": "2026-11-04T13:33:45.525736+00:00",
-      "published_tags": [
-        "chain",
-        "gold platted chain",
-        "import_2020_09_29_230947",
-        "Necklace",
-        "Personalized Jewelry",
-        "RS499 & BELOW",
-        "Set",
-        "Shop"
-      ]
-    },
-    {
-      "store": "Rawayat",
-      "product_id": "CP400a55260db9",
-      "source_url": "https://rawayat.com.pk/products/single-layer-portable-round-jewelry-storage-box-with-mirror-01",
-      "requested_name": "Single Layer Portable Round Jewelry Storage Box With Mirror-01",
-      "public_title": "Single Layer Portable Round Jewelry Storage Box With Mirror-01",
-      "product_type": "Accessories",
-      "description": "1.Jewelry Organizer Leather jewelry case Boxes\n2.We provide 100% same & fine quality product as show in picture.\n3. Standard size.\nJewelry Care : Keep away from water perfume & other chemicals Clean it with dry and soft cloth.\nWe provide\u00a0very reasonable\u00a0prices as compared to other stores.",
-      "evidence_run": "41838927932",
-      "checked_utc": "2026-11-04T13:33:45.525736+00:00",
-      "published_tags": [
-        "bags",
-        "Clutches",
-        "New Arrival",
-        "New Year",
-        "Shop"
-      ]
-    },
-    {
-      "store": "Rawayat",
-      "product_id": "CPcf15e13bc218",
-      "source_url": "https://rawayat.com.pk/products/butterfly-pendant",
-      "requested_name": "Butterfly Pendant",
-      "public_title": "Butterfly Pendant",
-      "product_type": "Pendent/Chain",
-      "description": "Gold Platted Butterfly Pendant",
-      "evidence_run": "41838927932",
-      "checked_utc": "2026-11-04T13:33:45.525736+00:00",
-      "published_tags": [
-        "import_2020_09_29_230947",
-        "Necklace",
-        "Pendant",
-        "Personalized Jewelry",
-        "Set",
-        "Shop",
-        "Western Fashion"
-      ]
-    },
-    {
-      "store": "Rios",
-      "product_id": "CP222c6564da89",
-      "source_url": "https://www.rios.pk/products/party-queen-finishing-powdr-lite02-25gm-copy-2",
-      "requested_name": "PARTY QUEEN FACE POWDR 01 IVVORY 10GM",
-      "public_title": "PARTY QUEEN FACE POWDR 01 IVVORY 10GM",
-      "product_type": "Powder",
-      "description": "Set your makeup with Party Queen Finishing Powder in Lite 02. This 25 g powder helps give your makeup a smooth, finished look\u2014an easy final touch for your beauty routine.",
-      "evidence_run": "41838927932",
-      "checked_utc": "2026-11-04T13:33:45.525736+00:00",
-      "published_tags": [
-        "31 Dec Grand August",
-        "4/17/24",
-        "all products 2026",
-        "AZADI 79",
-        "Azadi Sale ' 24",
-        "Brands",
-        "Chosen For You",
-        "Clearance Sale 26",
-        "Eid Bachat Sale",
-        "Eid may 26",
-        "Face",
-        "Face Powder",
-        "Makeup",
-        "Mother's Day Sale 24",
-        "nada-hidden",
-        "new-arrivals",
-        "Party Queen",
-        "Powder",
-        "Rios-makeup",
-        "Season End Sale 2026",
-        "Summer Sale May'24",
-        "TN-0025700"
-      ]
-    },
-    {
-      "store": "Saya",
-      "product_id": "CPed26ba47e3df",
-      "source_url": "https://saya.pk/products/saya-cotton-jacquard-stitched-for-mom-and-daughter-wp1j-757",
-      "requested_name": "SAYA Cotton jacquard Stitched For Mom And Daughter",
-      "public_title": "SAYA Cotton jacquard Stitched For Mom And Daughter",
-      "product_type": "Jacquard",
-      "description": "SP-7323 (P18-25450-30A 1Pc)\nSP-10459 (P30-25450-30A 1Pc)",
-      "evidence_run": "41838927932",
-      "checked_utc": "2026-11-04T13:33:45.525736+00:00",
-      "published_tags": [
-        "11-12 Y",
-        "25450",
-        "3-4 Y",
-        "5-6 Y",
-        "7-8 Y",
-        "All Season",
-        "ColorName=PINK | Updated",
-        "COTTON JACQUARD",
-        "GUL",
-        "Jacquard",
-        "March",
-        "Medium",
-        "mom and me",
-        "new arrival",
-        "New Arrivals Non-Discounted",
-        "Non-Discounted",
-        "Non-Discounted Tag",
-        "NOT APPLICABLE",
-        "Not on Sale",
-        "Pink",
-        "Pret",
-        "PRET - 1 PC",
-        "PRET - 1 PC (JACQUARD SHIRT)",
-        "Product Description Done",
-        "SAYA",
-        "SHORT LENGTH",
-        "Size Chart Uploaded",
-        "Small",
-        "SP-10459 (P30-25450-30A 1Pc)",
-        "SP-7323 (P18-25450-30A 1Pc)",
-        "SS-P05-25",
-        "Women",
-        "X-Large",
-        "X-Small",
-        "Year 2026"
-      ]
-    },
     {
       "store": "Babysaurus",
       "product_id": "CP2294d23bd6e0",
@@ -14674,8 +14226,8 @@
   ],
   "audit804_auto_evidence": {
     "status": "checked",
-    "facts": 301,
-    "digest": "f25283e39b98ac94c9eda5f0e567d3bbf6a62c61bd9dceda5cd6db3ac7e6de83"
+    "facts": 280,
+    "digest": "a1141d24c16ccbdb85d0d24d3c2463e1e7aabb97f262d167a23abd73fd8110a6"
   },
   "previous_audit804_campaign": {
     "campaign_id": "fresh804-20261026-a3f0b983",
