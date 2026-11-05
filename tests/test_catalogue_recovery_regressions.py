@@ -23,3 +23,58 @@ class RecoveryRegressions(unittest.TestCase):
     self.assertEqual(review(title,row['description'],label),[])
     self.assertEqual(row,before)
   self.assertIsNone(classify({'name':'Replacement cover for room heater','description':''},'Xcessories Hub'))
+ def test_culotte_pair_with_optional_scarf_excluded(self):
+  self.assertEqual(review('Stitched Lawn Shirt + Culotte','Cut: Boxy\nDupatta: Not Included\nTrouser: Printed culotte Included','Clothing Sets'),[])
+  self.assertIsNone(review('Stitched Lawn Shirt + Culotte','Cut: Boxy\nTrouser: Not Included','Clothing Sets'))
+ def test_bundle_requires_multiple_explicit_supplied_items(self):
+  row={'name':'DIY Bundle','description':'Pack Contents\n1 × Spirit Level 60cm\n1 × Steel Measuring Tape 8m\n1 × Snap-Off Blade Knife 18mm','source_url':'https://houseoftools.com.pk/product/diy-bundle/'}
+  self.assertEqual(classify(row,'House of Tools')[0],'Tool Sets')
+  from catalogue_object_rules import audit
+  self.assertEqual(audit(dict(row,Category='Tool Sets'),row),[])
+  row['description']='Pack Contents\n1 × Spirit Level 60cm\nSuggested accessories: measuring tape and knife.'
+  self.assertIsNone(classify(row,'House of Tools'))
+  self.assertIsNone(audit(dict(row,Category='Tool Sets'),row))
+ def test_ambiguous_identical_names_use_each_original_body(self):
+  base={'name':'WISDOM FRESH EFFECT SENSITIVE 1S'}
+  a=dict(base,description='A toothpaste for everyday oral care.')
+  b=dict(base,description='A toothbrush for everyday oral care.')
+  self.assertEqual(classify(a,'Rios')[0],'Toothpastes')
+  self.assertEqual(classify(b,'Rios')[0],'Toothbrushes')
+  self.assertIsNone(classify(dict(base,description='Fresh effect.'),'Rios'))
+ def test_concrete_source_type_not_a_brand_guess(self):
+  row={'name':'JCS-102','brand':'Boys Cotton Silk Shalwar','description':'Size: 2 Y, 4 Y'}
+  self.assertEqual(classify(row,'Junaid Jamshed')[0],'Shalwars')
+  self.assertEqual(review(row['name'],row['description'],'Shalwars',source_type=row['brand']),[])
+  self.assertIsNone(classify(dict(row,brand='J.'),'Junaid Jamshed'))
+ def test_excluded_paired_trouser_does_not_turn_shirt_into_set(self):
+  row={'name':'SS23BSP226F','description':'SHOULDER: 18 | 19\nSLEEVE LENGTH 3/4: 14 | 15\nTrouser: Not Included but Paired with SS23TRE226'}
+  self.assertEqual(classify(row,'Sana Safinaz')[0],'Shirts')
+  self.assertEqual(review(row['name'],row['description'],'Shirts'),[])
+ def test_measured_lehenga_components_do_not_imply_stitched(self):
+  row={'name':'N243','description':'Component Details (3 Piece): Measurement\nShirt Lining: 2 Meters\nDupatta: 2.5 Meters\nLehnga: 5 Meters'}
+  self.assertEqual(classify(row,'Sana Safinaz')[0],'Unstitched Lehenga Sets')
+  self.assertEqual(review(row['name'],row['description'],'Unstitched Lehenga Sets'),[])
+ def test_public_tags_must_identify_exact_object_not_brand(self):
+  from unittest.mock import patch
+  from catalogue_object_rules import audit
+  row={'name':'Power - Women','source_url':'https://www.bata.com.pk/products/551-2096','description':'551-2096\nSize: 36'}
+  with patch('hold804_repairs.public_facts',return_value={'published_tags':['Sneakers','Women']}):
+   self.assertEqual(classify(row,'Bata')[0],'Sneakers')
+   self.assertEqual(audit(dict(row,Category='Sneakers'),row),[])
+  with patch('hold804_repairs.public_facts',return_value={'published_tags':['Power','Women']}):
+   self.assertIsNone(classify(row,'Bata'))
+ def test_bundle_source_recovery_reads_page_when_api_is_empty(self):
+  from audit804_automation import request_from_holds
+  state={'audit804_results':{'Rawayat':{'status':'hold','findings':[{'name':'Ruby Bundle','product_id':'p1','source_url':'https://rawayat.com.pk/products/ruby-bundle'}]}}}
+  request=request_from_holds(state,{'Rawayat':{'url':'https://rawayat.com.pk'}})
+  self.assertTrue(request['products'][0]['inspect_bundle'])
+ def test_conflicting_public_object_tags_stay_held(self):
+  from unittest.mock import patch
+  row={'name':'Power - Women','source_url':'https://www.bata.com.pk/products/551-2096','description':'551-2096'}
+  with patch('hold804_repairs.public_facts',return_value={'published_tags':['Sneakers','Men Sandals']}):
+   self.assertIsNone(classify(row,'Bata'))
+ def test_coded_outfit_uses_positive_fields_not_missing_scarf(self):
+  self.assertEqual(review('R-114','Cut: Short Shirt\nDupatta: Not Included\nTrouser: Raw Silk Culotte Included','Clothing Sets'),[])
+  self.assertIsNone(review('R-114','Cut: Short Shirt\nDupatta: Not Included\nTrouser: Not Included','Clothing Sets'))
+ def test_nonbreaking_spaces_in_source_component_fields(self):
+  self.assertEqual(review('Stitched Shirt + Culotte','Cut: Basic\nDupatta: Not Included\nTrouser:\u00a0Black Raw Silk Culotte Included','Clothing Sets'),[])

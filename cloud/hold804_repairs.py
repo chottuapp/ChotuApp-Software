@@ -748,6 +748,25 @@ def category(row,store):
  return None
 
 def description(row,store):
+ if store=='Rios':
+  fact=public_facts(row,store) or {};original=str(row.get('description') or '')
+  if str(fact.get('product_type') or '').casefold()=='body care' and re.search(r'\bhydro gel\b',str(row.get('name') or ''),re.I):
+   lead=str(row['name'])+' is a body-care hydrogel.'
+   if not original.startswith(lead):return lead+'\n\n'+original,'Source-named hydrogel and identity-matched body-care type; no benefits or ingredients inferred.'
+ if store=='Bata':
+  from catalogue_object_rules import classify
+  kind=classify(row,store);original=str(row.get('description') or '')
+  if kind and kind[1]=='verified_public_merchant_type':
+   lead='This '+str(row['name'])+' listing is for '+kind[0].lower()+'.'
+   if not original.startswith(lead):return lead+'\n\n'+original,'Concrete identity-matched public object tag; all original SKUs, sizes and colours retained.'
+ if store=='Junaid Jamshed' and re.fullmatch(r'(?:Boys|Men|Women|Kids) (?:Cotton |Cotton Silk )?Shalwar',str(row.get('brand') or ''),re.I):
+  original=str(row.get('description') or '');lead=str(row['name'])+' is a '+str(row['brand']).lower()+'.'
+  if not original.startswith(lead):return lead+'\n\n'+original,'Source-listed garment type added as factual overview; complete original options retained.'
+ if store=='Saya':
+  fact=public_facts(row,store) or {};original=str(row.get('description') or '')
+  if 'PRET - 1 PC (JACQUARD SHIRT)' in fact.get('published_tags',[]):
+   lead=str(row['name'])+' is a single jacquard shirt, with Mom and Kid options listed separately.'
+   if not original.startswith(lead):return lead+'\n\n'+original,'Exact public single-shirt tag; variant options are not combined into a bundle.'
  if store=='House of Tools':
   fact=public_facts(row,store) or {};extra=fact.get('verified_bundle_description');original=str(row.get('description') or '')
   if extra and fact.get('bundle_components') and re.fullmatch('[a-f0-9]{64}',fact.get('bundle_page_sha256','')) and extra not in original:return extra+('\n\n'+original if original.strip() else ''),'Retained exact identity-verified public bundle quantities, contents and full component specifications.'

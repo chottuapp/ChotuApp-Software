@@ -65,7 +65,11 @@ def request_from_holds(state,sites,previous=None,limit=160,now=None):
    except (ValueError,TypeError):pass
    url=urlsplit(str(row.get('source_url') or ''));host=urlsplit(sites[store]['url']).hostname
    if row.get('product_id') and row.get('name') and url.scheme=='https' and not url.query and not url.username and not url.password and url.hostname and url.hostname.removeprefix('www.')==host.removeprefix('www.'):
-    group.append(dict(store=store,product_id=row['product_id'],name=row['name'],source_url=row['source_url'],inspect_image=False))
+    item=dict(store=store,product_id=row['product_id'],name=row['name'],source_url=row['source_url'],inspect_image=False)
+    # Empty bundle JSON descriptions require the actual public product page,
+    # rather than repeatedly checking the same empty API field.
+    if re.search(r'\bbundle\b',row['name'],re.I):item['inspect_bundle']=True
+    group.append(item)
   if group:groups.append(group)
  pool=[]
  while any(groups):

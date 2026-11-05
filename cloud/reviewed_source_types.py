@@ -1,5 +1,6 @@
 """Exact, identity-bound public merchant object types; generic ranges excluded."""
 TYPES={
+ 'face mask':('Face Masks','a face mask'),
  'smart watches':('Smartwatches','a smartwatch'),'true wireless earbuds':('Earbuds','true wireless earbuds'),
  'lipstick':('Lipsticks','a lipstick'),'liquid lipstick':('Lipsticks','a liquid lipstick'),
  'face wash':('Face Wash','a face wash'),'face serum':('Face Serums','a face serum'),

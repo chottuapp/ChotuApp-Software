@@ -286,6 +286,61 @@ def classify(row,store):
  for label,pattern in named_objects.get(store,[]):
   if re.search(pattern,title,re.I) and not re.search(r'\b(?:replacement|pattern|cover for)\b',title,re.I):
    return label,'inferred_explicit_sold_object','Original source product title: '+title
+ if store=='Sana Safinaz':
+  if re.search(r'(?im)^Trouser\s*:\s*Not Included',body) and re.search(r'(?im)^SHOULDER\s*:',body) and re.search(r'(?im)^SLEEVE LENGTH',body):
+   return 'Shirts','inferred_explicit_source_upper_measurements','Source upper-garment measurements; trousers explicitly not included.'
+  if re.search(r'Component Details\s*\(3 Piece\)',body,re.I) and all(re.search(p,body,re.I) for p in [r'Shirt Lining',r'Dupatta',r'Lehnga',r'\d+(?:\.\d+)? Meters']):
+   return 'Unstitched Lehenga Sets','inferred_measured_source_components','Measured source shirt, dupatta and lehenga fabric components; no finished stitching inferred.'
+ if store=='Junaid Jamshed' and re.fullmatch(r'(?:Boys|Men|Women|Kids) (?:Cotton |Cotton Silk )?Shalwar',str(row.get('brand') or ''),re.I):
+  return 'Shalwars','inferred_explicit_source_type','Original source-listed garment type: '+str(row['brand'])
+ if store=='Breakout' and re.search(r'\bcharm\b',title,re.I) and re.search(r'\b(?:handbags|backpacks|keychains|wallets)\b',body,re.I):
+  return 'Bag & Key Charms','inferred_explicit_source_object',title+'; source describes bag/keychain decoration.'
+ if store=='Rawayat' and re.search(r'\bjewel(?:ry|lery) storage box\b',title,re.I):return 'Jewellery Boxes','inferred_explicit_source_object',title
+ if store=='Bata':
+  from hold804_repairs import public_facts
+  fact=public_facts(row,store) or {};tags={str(t).casefold() for t in fact.get('published_tags',[])}
+  matches=[]
+  for label,aliases in [('Flip-Flops',{'flip flops','flip flopsmen','flip flopswomen'}),('Sneakers',{'sneakers','kids sneaker'}),('School Shoes',{'schoolshoes'}),('Sandals',{'sandal','men sandals','boys sandal'}),('Chappals',{'kids chappal','kids chapal'}),('Court Shoes',{'ladies pumps','ladies pupms'}),('Bags',{'bags'})]:
+   if tags & aliases:matches.append((label,sorted(tags & aliases)[0]))
+  if len({label for label,_ in matches})==1:return matches[0][0],'verified_public_merchant_type','Exact identity-matched public object tag: '+matches[0][1]
+  if matches:return None
+  if re.search(r'\bBata\s*-\s*Bags\b',title,re.I):return 'Bags','inferred_explicit_source_object',title
+ if store=='Saya':
+  from hold804_repairs import public_facts
+  fact=public_facts(row,store) or {}
+  if any(re.fullmatch(r'PRET\s*-\s*1\s*PC\s*\(JACQUARD SHIRT\)',str(t),re.I) for t in fact.get('published_tags',[])):
+   return 'Shirts','verified_public_merchant_type','Identity-matched public tag explicitly identifies a single jacquard shirt; Mom/Kid are options, not pack contents.'
+ if store=='Limelight':
+  first=body.strip().splitlines()[0].strip() if body.strip() else ''
+  footwear=[('Slippers',r'\bslip+ers\b'),('Slip-On Shoes',r'\bslip[ -]?ons\b'),('Court Shoes',r'\bcourts\b'),('Slides',r'\bslides\b')]
+  for surface in (title,first):
+   for label,pattern in footwear:
+    if re.search(pattern,surface,re.I):return label,'inferred_explicit_source_object',title+'; original description heading: '+first
+  if re.search(r'(?im)^(?:Kurta|Kameez)\s*$',body) and re.search(r'(?im)^Shalwar\s*$',body):
+   return 'Kameez Shalwar Sets','inferred_explicit_source_contents','Source supplies separate upper garment and shalwar sections; all details retained.'
+ if store=='Rios':
+  # Concrete sold-object words only. Ambiguous ranges still require source evidence.
+  if re.search(r'^SENSODYNE\b',title,re.I) and re.search(r'\btoothpaste\b',body,re.I):return 'Toothpastes','inferred_explicit_source_description',body
+  if re.search(r'\bface frshner\b',title,re.I) and re.search(r'\bfacial freshener\b',body,re.I):return 'Facial Fresheners','inferred_explicit_source_description',body
+  from hold804_repairs import public_facts
+  fact=public_facts(row,store) or {}
+  if str(fact.get('product_type') or '').casefold()=='body care' and re.search(r'\bhydro gel\b',title,re.I):return 'Body Care Gels','verified_public_merchant_type','Explicit hydrogel product and identity-matched Body Care type.'
+  named=[('Body Shapers',r'\bgird[elal]+\b'),('Toothpastes',r'\btooth\s*paste\b'),('Tooth Stain Erasers',r'\btooth stain eraser\b'),
+   ('Dental Flossers',r'\bflossers\b'),('Baby Blankets',r'\bbaby blanket\b'),('Pedicure Sets',r'\bpedicure set\b'),
+   ('Cuticle Pushers',r'\bcuticle pusher\b'),('Bronzers',r'\bbronzer\b'),('Face Powders',r'\b(?:face|finishing) powdr\b'),
+   ('Makeup Cases',r'\bmakeup cases?\b'),('Makeup Bags',r'\bmakeup bag\b'),('Eyelash Oils',r'\beyelash oil\b'),
+   ('Facial Cleansers',r'\b(?:pore cleanser|dual action cleanser)\b'),('Facial Headbands',r'\bfacial band\b'),
+   ('Bras',r'\blingerie\b.*\bb\.dee\b'),('Foot Files',r'\bfoot file\b'),('Manicure Sets',r'\bmanicure set\b'),
+   ('Hair Rollers',r'\bhair roller\b'),('Pumice Stones',r'\bpedicure stone\b'),('Hair Gels',r'\bhair gel\b'),
+   ('Sanitary Pads',r'\bsanitary pads\b'),('Shampoos',r'\bshampoo\b'),('Leave-In Hair Creams',r'\bleave[ -]in cream\b'),
+   ('Facial Mists',r'\bfacial mist\b'),('Aftershaves',r'\bafter shave\b'),('Makeup Puffs',r'\b(?:powder puff|blender puff|pack of 12\) puff)\b'),
+   ('Face Scrubs & Exfoliators',r'\b(?:blackhead|daily).*\bscrub\b'),('Acne Extraction Tools',r'\bacne needle\b'),
+   ('Body Wash',r'\bbody wash\b'),('Face Masks',r'\bfacial mask\b')]
+  for label,pattern in named:
+   if re.search(pattern,title,re.I):return label,'inferred_explicit_source_object',title
+  if re.search(r'^WISDOM\b',title,re.I):
+   for label,pattern in [('Toothpastes',r'\btoothpaste\b'),('Toothbrushes',r'\btoothbrush(?:es)?\b')]:
+    if re.search(pattern,body,re.I):return label,'inferred_explicit_source_description',body
  if store in {'Nayab Fashion','Babysaurus','Deflexxi'}:
   garment=apparel_object(row)
   if garment:return garment
@@ -297,6 +352,11 @@ def classify(row,store):
  if store in {'Paklap','Xcessories Hub','Computer Zone','Gift4U'}:
   electronic=electronics_object(row)
   if electronic:return electronic
+ if store=='House of Tools' and re.search(r'\bbundle\b',title,re.I) and re.search(r'(?im)^Pack Contents\s*$',body):
+  parts=re.findall(r'(?im)^\s*\d+\s*[×x]\s+([^\n]+)',body)
+  if len(parts)>=2 and all(re.search(r'\b(?:tool|drill|level|tape|knife|accessories set)\b',part,re.I) for part in parts):
+   return 'Tool Sets','inferred_explicit_source_contents','Original source Pack Contents: '+'; '.join(parts)
+ if store=='House of Tools' and re.search(r'\baviation snips?\b',title,re.I):return 'Cutting Tools','inferred_explicit_source_object',title
  if store=='House of Tools':
   if re.search(r'\bbundle\b',title,re.I):
    from hold804_repairs import public_facts
@@ -408,6 +468,24 @@ def audit(row,source):
  from urllib.parse import urlsplit
  host=(urlsplit(str(source.get('source_url') or '')).hostname or '').removeprefix('www.')
  title=str(source.get('name') or '');body=str(source.get('description') or '');label=row.get('Category')
+ if host=='bata.com.pk':
+  from hold804_repairs import public_facts
+  fact=public_facts(source,'Bata') or {};tags=[str(t).casefold() for t in fact.get('published_tags',[])]
+  proofs={'Flip-Flops':r'flip flops(?:men|women)?','Sneakers':r'sneakers|kids sneaker','School Shoes':r'schoolshoes','Sandals':r'sandal|men sandals|boys sandal','Chappals':r'kids cha(?:p|pp)al','Court Shoes':r'ladies pu(?:mp|pm)s','Bags':r'bags'}
+  supported={kind for kind,pattern in proofs.items() if any(re.fullmatch(pattern,t) for t in tags)}
+  if supported=={label}:return []
+  if label=='Bags' and re.search(r'\bBata\s*-\s*Bags\b',title,re.I):return []
+ if host=='rios.pk' and label=='Body Care Gels' and re.search(r'\bhydro gel\b',title,re.I):
+  from hold804_repairs import public_facts
+  fact=public_facts(source,'Rios') or {}
+  if str(fact.get('product_type') or '').strip().lower()=='body care':return []
+ if host=='saya.pk' and label=='Shirts':
+  from hold804_repairs import public_facts
+  fact=public_facts(source,'Saya') or {}
+  if 'PRET - 1 PC (JACQUARD SHIRT)' in fact.get('published_tags',[]):return []
+ if host=='houseoftools.com.pk' and label=='Tool Sets' and re.search(r'\bbundle\b',title,re.I):
+  supplied=re.findall(r'(?im)^\s*[1-9]\d*\s*[×x]\s+([^\n]+)',body)
+  if re.search(r'(?im)^Pack Contents\s*$',body) and len(supplied)>=2 and all(re.search(r'\b(?:multi-tool|drill|spirit level|measuring tape|blade knife|accessories set)\b',part,re.I) for part in supplied):return []
  if host=='nayabfashion.com.pk':
   match=re.match(r'Public WooCommerce Store API taxonomy:\s*([^;\n]+);',str(source.get('analysis_note') or ''))
   terms=[x.strip().casefold() for x in match[1].split('>')] if match else []

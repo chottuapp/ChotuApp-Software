@@ -14,8 +14,31 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  title=text(name);body=text(description);cat=text(category).lower()
  if source_type in ('SYNCC - Women Sweater','Women Stitched Sari','Men Peshawari Chappal'):body+=' Source-listed product type: '+source_type
  # Only explicit source garment-type strings; a generic vendor/brand is not purpose evidence.
- if re.fullmatch(r'(?i)(?:women|men|teens|kids|infants)\s+(?:stitched\s+[234]\s+piece(?:\s+shirt\s+trouser)?|(?:cotton\s+silk\s+)?shalwar|(?:special\s+)?kurta|trouser|earrings|bracelet|necklace|ring|eyebrow\s+kit|waistcoat\s+with\s+kurta\s+trouser)',str(source_type or '').strip()):body+=' Source-listed garment type: '+str(source_type)
+ if re.fullmatch(r'(?i)(?:women|men|boys|girls|teens|kids|infants)\s+(?:stitched\s+[234]\s+piece(?:\s+shirt\s+trouser)?|(?:cotton\s+(?:silk\s+)?)?shalwar|(?:special\s+)?kurta|trouser|earrings|bracelet|necklace|ring|eyebrow\s+kit|waistcoat\s+with\s+kurta\s+trouser)',str(source_type or '').strip()):body+=' Source-listed garment type: '+str(source_type)
  evidence=title+' '+body
+ if cat=='shirts' and has(r'(?im)^Trouser\s*:\s*Not Included',str(description)) and has(r'(?im)^SHOULDER\s*:',str(description)) and has(r'(?im)^SLEEVE LENGTH',str(description)):return []
+ if cat=='unstitched lehenga sets' and has(r'Component Details\s*\(3 Piece\)',body) and all(has(p,body) for p in [r'Shirt Lining',r'Dupatta',r'Lehnga',r'\d+(?:\.\d+)? Meters']):return []
+ if cat=='toothpastes' and has(r'^SENSODYNE\b',title) and has(r'\btoothpaste\b',body):return []
+ if cat=='facial fresheners' and has(r'\bface frshner\b',title) and has(r'\bfacial freshener\b',body):return []
+ # Review exact original product nouns, including common supplier misspellings.
+ direct={'jewellery boxes':r'\bjewel(?:ry|lery) storage box\b','slippers':r'\bslip+ers\b',
+  'slip-on shoes':r'\bslip[ -]?ons\b','court shoes':r'\bcourts\b','slides':r'\bslides\b',
+  'body shapers':r'\bgird[elal]+\b','toothpastes':r'\btooth\s*paste\b','tooth stain erasers':r'\btooth stain eraser\b',
+  'dental flossers':r'\bflossers\b','baby blankets':r'\bbaby blanket\b','pedicure sets':r'\bpedicure set\b',
+  'cuticle pushers':r'\bcuticle pusher\b','bronzers':r'\bbronzer\b','face powders':r'\b(?:face|finishing) powdr\b',
+  'makeup cases':r'\bmakeup cases?\b','makeup bags':r'\bmakeup bag\b','eyelash oils':r'\beyelash oil\b',
+  'facial cleansers':r'\b(?:pore cleanser|dual action cleanser)\b','facial headbands':r'\bfacial band\b',
+  'bras':r'\blingerie\b.*\bb\.dee\b','foot files':r'\bfoot file\b','manicure sets':r'\bmanicure set\b',
+  'hair rollers':r'\bhair roller\b','pumice stones':r'\bpedicure stone\b','hair gels':r'\bhair gel\b',
+  'sanitary pads':r'\bsanitary pads\b','shampoos':r'\bshampoo\b','leave-in hair creams':r'\bleave[ -]in cream\b',
+  'facial mists':r'\bfacial mist\b','aftershaves':r'\bafter shave\b','makeup puffs':r'\b(?:powder puff|blender puff|pack of 12\) puff)\b',
+  'face scrubs & exfoliators':r'\b(?:blackhead|daily).*\bscrub\b','acne extraction tools':r'\bacne needle\b',
+  'body wash':r'\bbody wash\b','face masks':r'\bfacial mask\b','cutting tools':r'\baviation snips?\b'}
+ if cat in direct and has(direct[cat],title):return []
+ if cat=='slides' and has(r'^Slides\b',str(description)):return []
+ if cat=='kameez shalwar sets' and has(r'(?im)^(?:Kurta|Kameez)\s*$',str(description)) and has(r'(?im)^Shalwar\s*$',str(description)):return []
+ if cat=='bag & key charms' and has(r'\bcharm\b',title) and has(r'\b(?:handbags|backpacks|keychains|wallets)\b',body):return []
+ if has(r'^WISDOM\b',title) and cat in {'toothpastes','toothbrushes'} and has(r'\b'+('toothpaste' if cat=='toothpastes' else 'toothbrush(?:es)?')+r'\b',body):return []
  # Independent original-title proof for explicit product forms, not collection names.
  sold_forms={'hair mists':r'\bhair mist\b','facial cleansing bars':r'\bface bar\b',
   'massage creams':r'\bmassaging cream\b','room heaters':r'\b(?:graphene|room) heater\b',
@@ -33,12 +56,15 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
   if has(noun,evidence) and ('sets' not in cat or has(r'(?im)^\s*dup+p?a?t+t?a\s*:',str(description))):return []
  if cat=='sleepwear sets' and has(r'\bsleepwear\b',body) and has(r'\bmatching\s+pajamas?\b',body):return []
  if cat=='clothing sets':
-  source_fields=re.findall(r'(?im)^[ \t*•\u2060\ufeff]*(shirt|blouse|trousers?|leh(?:e|a)?nga|gharara|sharara|dupata|dupatta|duppata|duppatta)\s*(?:&\s*sleeves)?\s*:[ \t]*(\S[^\n]*)',str(description))
+  source_fields=re.findall(r'(?im)^[ \t*•\u2060\ufeff]*(shirt|blouse|trousers?|leh(?:e|a)?nga|gharara|sharara|dupata|dupatta|duppata|duppatta)\s*(?:&\s*sleeves)?\s*:[^\S\r\n]*(\S[^\n]*)',str(description))
   valid_fields={part.lower() for part,value in source_fields if not has(r'^(?:not|none|n/?a)\b|\bnot\s+included\b|\bsold\s+separately\b',value)}
   if len(valid_fields)>=2:return []
+  # Positive lower-garment field plus explicit upper cut/measurements identifies
+  # the supplied set; excluded optional scarf/slip fields cannot negate it.
+  if valid_fields & {'trouser','trousers'} and has(r'(?im)^(?:Shirt Fabric|Shirt Cut|Cut)\s*:',str(description)):return []
   # An excluded optional third piece does not negate the supplied pair.
-  if has(r'\b(?:shirt|kurta|kameez)\b\s*(?:\+|&|and|with)\s*(?:shalwar|trousers?|dupatta)\b',title):
-   paired_lower=has(r'\b(?:shalwar|trousers?)\b',title) and bool(valid_fields & {'trouser','trousers'})
+  if has(r'\b(?:shirt|kurta|kameez)\b\s*(?:\+|&|and|with)\s*(?:shalwar|trousers?|culottes?|bottom|skirt|dupatta)\b',title):
+   paired_lower=has(r'\b(?:shalwar|trousers?|culottes?|bottom|skirt)\b',title) and bool(valid_fields & {'trouser','trousers'})
    paired_scarf=has(r'\bdupatta\b',title) and bool(valid_fields & {'dupatta','dupata','duppatta','duppata'})
    if paired_lower or paired_scarf:return []
   if any(has(r'\bnot\s+included\b|\bsold\s+separately\b',value) for _,value in source_fields):return None
