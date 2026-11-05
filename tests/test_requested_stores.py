@@ -13,7 +13,7 @@ class RequestedStoreTests(unittest.TestCase):
   from locked_store_rules import owner_paused
   self.assertEqual([s['shop_code'] for s in self.request['stores']],['SE100'+str(n) for n in range(55,65)])
   request=dict(self.request,stores=[s for s in self.request['stores'] if not owner_paused(s['name'],s['url'])])
-  stores=validate(request,self.registry,self.codes,self.policy);self.assertIn('Gift4U',{s['name'] for s in stores})
+  stores=validate(request,self.registry,self.codes,self.policy);self.assertNotIn('Gift4U',{s['name'] for s in stores});self.assertIn('House of Tools',{s['name'] for s in stores})
   self.assertEqual(sum(s['name']=='Limelight' for s in self.registry),1);self.assertEqual(sum(s['name']=='Alkaram Studio' for s in self.registry),1)
   self.assertEqual(len(set(self.codes.values())),len(self.codes))
  def test_mismatched_generation_still_refused(self):
@@ -24,7 +24,8 @@ class RequestedStoreTests(unittest.TestCase):
    request=copy.deepcopy(self.request);request['stores'][0].update(change)
    with self.assertRaises(ValueError):validate(request,self.registry,self.codes,self.policy)
  def test_paired_plan_dispatches_only_requested_supported_stores(self):
-  ready={s['name'] for s in self.request['stores']};plan,_,_=dispatch_plan(self.request,[],ready)
+  from locked_store_rules import owner_paused
+  ready={s['name'] for s in self.request['stores'] if not owner_paused(s['name'],s['url'])};plan,_,_=dispatch_plan(self.request,[],ready)
   self.assertEqual(len(plan),5);self.assertTrue(all(1<=len(g['stores'])<=2 for g in plan))
   self.assertEqual({s['name'] for g in plan for s in g['stores']},ready)
  def test_active_original_lane_and_continuation_are_preserved(self):
@@ -42,14 +43,14 @@ class RequestedStoreTests(unittest.TestCase):
   self.assertEqual(dispatch_plan(self.request,[],set())[0],[])
 
 class ProviderProbeTests(unittest.TestCase):
- def test_gift4u_is_registered_for_verified_public_woocommerce_feed(self):
+ def test_nayab_is_registered_for_verified_public_woocommerce_feed(self):
   from unittest.mock import Mock,patch
   from requested_stores import probe
   def response(path,data=None,text=''):
-   r=Mock(status_code=200,ok=True,text=text,content=text.encode(),url='https://gift4u.pk'+path);r.json.return_value=data;return r
+   r=Mock(status_code=200,ok=True,text=text,content=text.encode(),url='https://nayabfashion.com.pk'+path);r.json.return_value=data;return r
   session=Mock();session.headers={};session.get.side_effect=[response('/robots.txt',text='User-agent: *\nAllow: /'),response('/',text='/wp-content/plugins/woocommerce/'),response('/wp-json/wc/store/v1/products',data=[dict(id=60137,prices=dict(currency_code='PKR'))])]
   with patch('requested_stores.requests.Session',return_value=session),patch('requested_stores.time.sleep'):
-   result=probe(dict(name='Gift4U',url='https://gift4u.pk'))
+   result=probe(dict(name='Nayab Fashion',url='https://nayabfashion.com.pk'))
   self.assertEqual(result['status'],'supported');self.assertEqual(result['provider'],'woocommerce')
   self.assertFalse(any('/products.json' in call.args[0] for call in session.get.call_args_list))
  def response(self,path,data=None,status=200,text=''):

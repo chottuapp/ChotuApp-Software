@@ -16,15 +16,15 @@ class OwnerPolicyTests(unittest.TestCase):
   selected=selected_sites([dict(name='Axis PK',url='https://www.axispk.shop',enabled=True),dict(name='House of Tools',url='https://houseoftools.com.pk')],{})
   self.assertEqual([s['name'] for s in selected],['House of Tools'])
  def test_remaining_disabled_sources_remain_paused_even_if_registry_enabled(self):
-  for name,url in [('LAAM','https://laam.com'),('Khaadi','https://pk.khaadi.com'),('Bachaa Party','https://bachaaparty.com')]:
+  for name,url in [('LAAM','https://laam.com'),('Khaadi','https://pk.khaadi.com'),('Bachaa Party','https://bachaaparty.com'),('Gift4U','https://gift4u.pk')]:
    self.assertTrue(owner_paused(name,url));self.assertEqual(paused_sources([dict(name=name,url=url)]),{name})
   self.assertFalse(owner_paused('House of Tools','https://houseoftools.com.pk'))
   from unittest.mock import patch
   from requested_stores import probe
   with patch('requested_stores.requests.Session') as session:
    self.assertEqual(probe(dict(name='Khaadi',url='https://pk.khaadi.com'))['status'],'owner_paused');session.assert_not_called()
- def test_owner_reenabled_five_sources_by_name_and_host(self):
-  sites=[dict(name=n,url=u) for n,u in [('Xcessories Hub','https://xcessorieshub.com'),('Gift4U','https://gift4u.pk'),('Liberty Books','https://libertybooks.com'),('Beyond East','https://www.beyondeast.com'),('Paklap','https://www.paklap.pk')]]
+ def test_owner_reenabled_remaining_four_sources_by_name_and_host(self):
+  sites=[dict(name=n,url=u) for n,u in [('Xcessories Hub','https://xcessorieshub.com'),('Liberty Books','https://libertybooks.com'),('Beyond East','https://www.beyondeast.com'),('Paklap','https://www.paklap.pk')]]
   for site in sites:
    self.assertFalse(owner_paused(**site));self.assertFalse(owner_paused(url=site['url']))
   self.assertEqual(paused_sources(sites),set())

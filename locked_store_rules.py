@@ -44,8 +44,9 @@ def chenone_furniture(product):
 
 # Owner re-enabled Gift4U and Xcessories Hub on 1 November 2026.
 # Owner permanently disabled Axis on 5 November 2026.
-OWNER_PAUSED_STORES={'LAAM','Khaadi','Bachaa Party','Axis PK'}
-OWNER_PAUSED_HOSTS={'laam.com','khaadi.com','pk.khaadi.com','bachaaparty.com','axispk.shop'}
+# Owner disabled Gift4U again on 5 November 2026.
+OWNER_PAUSED_STORES={'LAAM','Khaadi','Bachaa Party','Axis PK','Gift4U'}
+OWNER_PAUSED_HOSTS={'laam.com','khaadi.com','pk.khaadi.com','bachaaparty.com','axispk.shop','gift4u.pk'}
 
 def owner_paused(name='',url=''):
  return name in OWNER_PAUSED_STORES or (urlsplit(str(url)).hostname or '').lower().removeprefix('www.') in OWNER_PAUSED_HOSTS
