@@ -3118,7 +3118,7 @@
     "Rios": "source:173b36c3a1b3db326230c51ae46ed68fdacebd1835dcd8269818b9f097571418:Rios:68591c3f7c13023123fccbacdc39decc833e499b9ab84f2e9706a4d35b5fdf01",
     "Edenrobe": "source:f3df83476463532fedbf265a5f3fb273d6add78333763d15ae1e44628e0b3113:Edenrobe:997f872a9f355749993b62405766153d422fa566a8e7334b81fe369dfcd48df8",
     "Limelight": "source:9c922eb891a28d0acca98f19513fdb97d0eeb35b119f2b146be3f487aa137149:Limelight:68591c3f7c13023123fccbacdc39decc833e499b9ab84f2e9706a4d35b5fdf01",
-    "Fresh Basket": "source:afd59941e826be13b349c82d42481de96681ee55d7b259391b675d055752c19d:Fresh Basket:619993dc191ff4bcaaf400bc6cec19f10ce3888fcd93154de664dc5ad91675bc",
+    "Fresh Basket": "source:afd59941e826be13b349c82d42481de96681ee55d7b259391b675d055752c19d:Fresh Basket:68591c3f7c13023123fccbacdc39decc833e499b9ab84f2e9706a4d35b5fdf01",
     "The Glossy Quill": "source:21967714b78c38ac2c5caabfc000c6aa95242bc916f8026125adb5d28cb13e7a:The Glossy Quill:619993dc191ff4bcaaf400bc6cec19f10ce3888fcd93154de664dc5ad91675bc",
     "Bin Fahad": "source:fb195fe11f907566548490176df27b08b585ad67947a008c098a48f4693256f2:Bin Fahad:619993dc191ff4bcaaf400bc6cec19f10ce3888fcd93154de664dc5ad91675bc",
     "Dairy Dream": "source:cb433e7b9d9e454acc7131500746f4af83e5028045df01b9342c8e09ec94339b:Dairy Dream:619993dc191ff4bcaaf400bc6cec19f10ce3888fcd93154de664dc5ad91675bc",
@@ -6477,39 +6477,67 @@
       "store": "Fresh Basket",
       "shop_code": "SE10060",
       "identity_policy": "confirmed_code",
-      "status": "pass",
+      "status": "hold",
       "products_checked": 1077,
-      "findings_count": 0,
-      "findings": [],
-      "details_truncated": false,
-      "workbook_sha256": "90116140971249f4e3904792a9fad69e271e9b57d266167d4ecbcc7ba8e1e1f4",
-      "checked_utc": "2026-11-05T05:22:59.891873+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
-      },
-      "owner_authorized_exclusions": [],
-      "image_metadata_repairs": 0,
-      "description_repairs_count": 905,
-      "description_repairs_examples": [
-        {
-          "product_id": "CPe114d4666441",
-          "issue": "Expanded only the explicit source-named sold object; no missing specifications inferred.",
-          "repair_kind": "description"
-        },
+      "findings_count": 3,
+      "findings": [
         {
           "product_id": "CP8faaf20c8ffc",
-          "issue": "Expanded only the explicit source-named sold object; no missing specifications inferred.",
-          "repair_kind": "description"
+          "name": "Davidoff - Crema Intense (90g)",
+          "source_url": "https://freshbasket.com.pk/products/davidoff-crema-intense-90g",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category blank or unresolved"
+          ]
         },
         {
           "product_id": "CP9c676a7c1cd0",
-          "issue": "Expanded only the explicit source-named sold object; no missing specifications inferred.",
-          "repair_kind": "description"
+          "name": "Davidoff - Rich Aroma (100g)",
+          "source_url": "https://freshbasket.com.pk/products/davidoff-rich-aroma-100g",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category blank or unresolved"
+          ]
         },
         {
           "product_id": "CP93bb212b8121",
+          "name": "Davidoff - Fine Aroma (100g)",
+          "source_url": "https://freshbasket.com.pk/products/davidoff-fine-aroma-100g",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category blank or unresolved"
+          ]
+        }
+      ],
+      "details_truncated": false,
+      "workbook_sha256": "27323f20f1e1615825a09118667a940ad7803d9424f5b009016ddfba4463985b",
+      "checked_utc": "2026-11-05T18:59:59.536195+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-05T18:59:59.537658+00:00",
+        "updated_utc": "2026-11-05T18:59:59.537658+00:00",
+        "next_source_check_due_utc": "2026-11-05T19:14:59.537658+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category blank or unresolved",
+          "Description lacks enough product-specific content for review"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "description_repairs_count": 902,
+      "description_repairs_examples": [
+        {
+          "product_id": "CPe114d4666441",
           "issue": "Expanded only the explicit source-named sold object; no missing specifications inferred.",
           "repair_kind": "description"
         },
@@ -6542,6 +6570,21 @@
           "product_id": "CP0ad8aace494e",
           "issue": "Expanded only the explicit source-named sold object; no missing specifications inferred.",
           "repair_kind": "description"
+        },
+        {
+          "product_id": "CP47f1c8a6ee22",
+          "issue": "Expanded only the explicit source-named sold object; no missing specifications inferred.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPf1954d8c7842",
+          "issue": "Expanded only the explicit source-named sold object; no missing specifications inferred.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP055d571dce57",
+          "issue": "Expanded only the explicit source-named sold object; no missing specifications inferred.",
+          "repair_kind": "description"
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
@@ -6549,7 +6592,6 @@
       "source_artifact": 13324730230,
       "source_sha256": "afd59941e826be13b349c82d42481de96681ee55d7b259391b675d055752c19d",
       "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "verified",
       "held_input": "inputs/fresh804-20261026-5d42fe35/fresh-basket/afd59941e826be13/manifest.json"
     },
     "The Glossy Quill": {
@@ -7198,7 +7240,7 @@
     "41811616330": "41811616330:13322274655:68591c3f7c13023123fccbacdc39decc833e499b9ab84f2e9706a4d35b5fdf01",
     "41811637515": "41811637515:13330942688:68591c3f7c13023123fccbacdc39decc833e499b9ab84f2e9706a4d35b5fdf01",
     "41811683153": "41811683153:13316465863:68591c3f7c13023123fccbacdc39decc833e499b9ab84f2e9706a4d35b5fdf01",
-    "41811727258": "41811727258:13319225789:619993dc191ff4bcaaf400bc6cec19f10ce3888fcd93154de664dc5ad91675bc",
+    "41811727258": "41811727258:13319225789:68591c3f7c13023123fccbacdc39decc833e499b9ab84f2e9706a4d35b5fdf01",
     "41811732225": "41811732225:13324730230:619993dc191ff4bcaaf400bc6cec19f10ce3888fcd93154de664dc5ad91675bc",
     "41811736793": "41811736793:13315718324:619993dc191ff4bcaaf400bc6cec19f10ce3888fcd93154de664dc5ad91675bc",
     "41811744694": "41811744694:13316496988:619993dc191ff4bcaaf400bc6cec19f10ce3888fcd93154de664dc5ad91675bc",
@@ -7325,8 +7367,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/c3c804c495398f0f/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/6c2dc3caec8cdf1c/manifest.json"
   },
-  "audit804_last_store": "House of Tools",
-  "audit804_progress_utc": "2026-11-05T18:59:50.903929+00:00",
+  "audit804_last_store": "Fresh Basket",
+  "audit804_progress_utc": "2026-11-05T18:59:59.538094+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
