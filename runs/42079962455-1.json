@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-05T21:18:08.463342+00:00",
+  "run_id": "42079962455",
+  "attempt": "1",
+  "source_commit": "a315c539bb4bd49de4c0172af37a22772d6271b0",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 11262.6,
+  "stores": [
+    {
+      "name": "Liberty Books",
+      "status": "source_paused",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "267df82a4fce20a4",
+      "http_statuses": {
+        "404": 233,
+        "200": 2422,
+        "429": 5
+      },
+      "network_seconds": 5659.6,
+      "max_response_seconds": 2.7,
+      "cache_events": 303044
+    },
+    {
+      "name": "ChenOne",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "7130b3195d2ca625",
+      "products": 304,
+      "variants": 1088,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    }
+  ]
+}
