@@ -1,0 +1,213 @@
+{
+  "date": "2026-11-06",
+  "request": "16 owner-specified sources; preserve existing completed exports and saved work",
+  "paperworm_rule": "School supplies only; source title/taxonomy; no unrelated gifts, party, home/decor or uncertain items; shared fresh-fetch/export and saved-delivery enforcement",
+  "shop_codes": "Pending owner; blank, no invented codes",
+  "new_dispatch_groups": [
+    {
+      "runner_group": "requested-new20261106-5-srcabfa01639270",
+      "stores": [
+        {
+          "name": "So Komal",
+          "url": "https://www.sokamal.com"
+        }
+      ],
+      "status": "dispatched"
+    },
+    {
+      "runner_group": "requested-new20261106-6-srcab5c2c7f032f",
+      "stores": [
+        {
+          "name": "Bela",
+          "url": "https://bela.pk"
+        }
+      ],
+      "status": "dispatched"
+    },
+    {
+      "runner_group": "requested-new20261106-7-srcac893a9ce4bf-srcaf7ac9af7e13",
+      "stores": [
+        {
+          "name": "Taminzo",
+          "url": "https://taminzo.com"
+        },
+        {
+          "name": "Essence",
+          "url": "https://essencebyrubina.com"
+        }
+      ],
+      "status": "dispatched"
+    },
+    {
+      "runner_group": "requested-new20261106-8-src7c7042df11db-srcb4af68c96635",
+      "stores": [
+        {
+          "name": "Shoe Planet",
+          "url": "https://www.shoeplanet.pk"
+        },
+        {
+          "name": "The Paper Worm",
+          "url": "https://www.thepaperworm.com"
+        }
+      ],
+      "status": "dispatched"
+    }
+  ],
+  "saved_recovery": [
+    {
+      "group": "requested-new20261106-1-srcad9418d0852f-src514a91476555",
+      "status": "existing_active_retained",
+      "runs": [
+        {
+          "databaseId": 42215467660,
+          "displayTitle": "Automatic continuation of 42194719605",
+          "status": "in_progress"
+        }
+      ]
+    },
+    {
+      "group": "requested-new20261106-2-src5d700be3d5e2",
+      "parent": "42206069736",
+      "stores": [
+        {
+          "name": "VNS Collection",
+          "url": "https://www.vnscollection.com"
+        }
+      ],
+      "status": "saved_resume_dispatched"
+    },
+    {
+      "group": "requested-new20261106-4-src6362470d26eb",
+      "parent": "42194737497",
+      "stores": [
+        {
+          "name": "Makeup Gallery",
+          "url": "https://www.makeupgallery.pk"
+        }
+      ],
+      "status": "saved_resume_dispatched"
+    }
+  ],
+  "prior_fetch_exports": [
+    {
+      "store": "Rizen Watches",
+      "products": 166
+    },
+    {
+      "store": "Blackbeiger",
+      "products": 254
+    },
+    {
+      "store": "Afrozeh",
+      "products": 168
+    }
+  ],
+  "held_sources": [
+    {
+      "store": "Alfateh Garments",
+      "reason": "Public selected SKU/price differs from published variant selector; commercial conflict remains held, not bypassed",
+      "source_run": "42206167335"
+    },
+    {
+      "store": "Rung Rez",
+      "reason": "Octane/Nuxt headless storefront; anonymous homepage shows USD and product scope does not establish exact PKR variant offers; adapter required"
+    },
+    {
+      "store": "Mansab",
+      "reason": "Public Next storefront has a PKR aggregate product offer, but exact variant selection/stock is not present in the supported extractor; requires verified variant adapter. A guessed WooCommerce endpoint 403 is not evidence that the actual storefront itself is inaccessible."
+    }
+  ],
+  "recent_runs": [
+    {
+      "conclusion": "",
+      "databaseId": 42230871439,
+      "displayTitle": "Cloud group requested-new20261106-4-src6362470d26eb",
+      "headSha": "799105af26d2cf72b1d5c3394cb02bc7f594a928",
+      "status": "in_progress"
+    },
+    {
+      "conclusion": "",
+      "databaseId": 42230864051,
+      "displayTitle": "Cloud group requested-new20261106-2-src5d700be3d5e2",
+      "headSha": "799105af26d2cf72b1d5c3394cb02bc7f594a928",
+      "status": "in_progress"
+    },
+    {
+      "conclusion": "",
+      "databaseId": 42230135537,
+      "displayTitle": "Cloud group requested-new20261106-8-src7c7042df11db-srcb4af68c96635",
+      "headSha": "d54ee1de9a16047058053bbd745453455db4713d",
+      "status": "in_progress"
+    },
+    {
+      "conclusion": "",
+      "databaseId": 42230127124,
+      "displayTitle": "Cloud group requested-new20261106-7-srcac893a9ce4bf-srcaf7ac9af7e13",
+      "headSha": "d54ee1de9a16047058053bbd745453455db4713d",
+      "status": "in_progress"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 42230117866,
+      "displayTitle": "Cloud group requested-new20261106-6-srcab5c2c7f032f",
+      "headSha": "d54ee1de9a16047058053bbd745453455db4713d",
+      "status": "completed"
+    },
+    {
+      "conclusion": "",
+      "databaseId": 42230108399,
+      "displayTitle": "Cloud group requested-new20261106-5-srcabfa01639270",
+      "headSha": "d54ee1de9a16047058053bbd745453455db4713d",
+      "status": "in_progress"
+    },
+    {
+      "conclusion": "",
+      "databaseId": 42215467660,
+      "displayTitle": "Automatic continuation of 42194719605",
+      "headSha": "d9ca186c3ffbf62a782500dbf1e95471aaea1f7d",
+      "status": "in_progress"
+    },
+    {
+      "conclusion": "failure",
+      "databaseId": 42206167335,
+      "displayTitle": "Cloud group requested-new20261106-2-srccd9db21b3f3a",
+      "headSha": "365e5fff4bccac7650aa3d80b9896c2e03181556",
+      "status": "completed"
+    },
+    {
+      "conclusion": "failure",
+      "databaseId": 42206069736,
+      "displayTitle": "Cloud group requested-new20261106-2-src5d700be3d5e2",
+      "headSha": "365e5fff4bccac7650aa3d80b9896c2e03181556",
+      "status": "completed"
+    },
+    {
+      "conclusion": "failure",
+      "databaseId": 42194737497,
+      "displayTitle": "Cloud group requested-new20261106-4-srcb964458de49d-src6362470d26eb",
+      "headSha": "ce60d0c297618967811c85da225407c3317f054f",
+      "status": "completed"
+    },
+    {
+      "conclusion": "success",
+      "databaseId": 42194731838,
+      "displayTitle": "Cloud group requested-new20261106-3-src38a72e006025-src92c6e819c148",
+      "headSha": "ce60d0c297618967811c85da225407c3317f054f",
+      "status": "completed"
+    },
+    {
+      "conclusion": "failure",
+      "databaseId": 42194725766,
+      "displayTitle": "Cloud group requested-new20261106-2-src5d700be3d5e2",
+      "headSha": "ce60d0c297618967811c85da225407c3317f054f",
+      "status": "completed"
+    },
+    {
+      "conclusion": "failure",
+      "databaseId": 42194719605,
+      "displayTitle": "Cloud group requested-new20261106-1-srcad9418d0852f-src514a91476555",
+      "headSha": "ce60d0c297618967811c85da225407c3317f054f",
+      "status": "completed"
+    }
+  ]
+}
