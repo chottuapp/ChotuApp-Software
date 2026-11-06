@@ -1,26 +1,47 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-06T10:56:13.331733+00:00",
-  "run_id": "42206069736",
+  "generated_utc": "2026-11-06T12:08:46.050492+00:00",
+  "run_id": "42194719605",
   "attempt": "1",
-  "source_commit": "365e5fff4bccac7650aa3d80b9896c2e03181556",
+  "source_commit": "ce60d0c297618967811c85da225407c3317f054f",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 138.2,
+  "elapsed_seconds": 9821.0,
   "stores": [
     {
-      "name": "VNS Collection",
+      "name": "Toyzone",
+      "status": "source_paused",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "6ddad0479431918c",
+      "http_statuses": {
+        "200": 2143,
+        "429": 2
+      },
+      "network_seconds": 4669.0,
+      "max_response_seconds": 2.6,
+      "cache_events": 8356
+    },
+    {
+      "name": "Toynix",
       "status": "failed",
       "review_required": false,
       "issue_codes": [
-        "STORE_FAILED"
+        "HTTP_403",
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "b129865d0eaeecd5",
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 2460
+      "software_revision": "6ddad0479431918c",
+      "http_statuses": {
+        "403": 2
+      },
+      "network_seconds": 0.3,
+      "max_response_seconds": 0.2,
+      "cache_events": 0
     }
   ]
 }
