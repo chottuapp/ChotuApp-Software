@@ -1135,9 +1135,8 @@ def run_site(base, name, template, log):
         if incomplete_reasons:
             skipped_invalid += 1
             # Retain public source facts for later repair without selling the item.
-            receipt=OUT/(re.sub(r'[^A-Za-z0-9_. -]+','_',name)+' - INCOMPLETE PRODUCTS.jsonl')
-            with receipt.open('a',encoding='utf-8') as held:
-                held.write(json.dumps({'source_url':p.get('_source_url') or base+'/products/'+p.get('handle',''),'reasons':incomplete_reasons,'source_product':p},ensure_ascii=False,default=str)+'\n')
+            from locked_store_rules import record_incomplete_product
+            record_incomplete_product(p,base,name,__file__,incomplete_reasons)
             log('OWNER INCOMPLETE SKIP: '+txt(p.get('handle'))+'; '+'; '.join(incomplete_reasons))
             continue
         verified = verified_sellable_variants(base, p, log)

@@ -77,3 +77,18 @@ def incomplete_product_reasons(product):
  if len(re.findall(r'\b\w+\b',body))<5 or body.rstrip('.').casefold()==title.rstrip('.').casefold():reasons.append('Description lacks enough product-specific content for review')
  if re.search(r'(?i)\b(?:lorem ipsum|description coming soon|no description available)\b',body):reasons.append('Placeholder description')
  return reasons
+
+
+def record_incomplete_product(product,base,name,engine_file,reasons):
+ """Keep the public source receipt outside disposable export staging."""
+ import csv,json
+ from pathlib import Path
+ safe=re.sub(r'[^\w .-]','',name).strip() or 'Shopify'
+ folder=Path(engine_file).resolve().parent/'audit_reports'/safe
+ folder.mkdir(parents=True,exist_ok=True);target=folder/(safe+' - INCOMPLETE PRODUCTS.csv')
+ first=not target.exists()
+ with target.open('a',encoding='utf-8-sig',newline='') as stream:
+  writer=csv.writer(stream)
+  if first:writer.writerow(['product_id','name','source_url','skip_reasons','original_source_product_json'])
+  writer.writerow([product.get('id'),product.get('title') or product.get('name'),product.get('_source_url') or base+'/products/'+str(product.get('handle') or ''),'; '.join(reasons),json.dumps(product,ensure_ascii=False,default=str)])
+ return target

@@ -43,3 +43,13 @@ class IncompleteProductsTests(unittest.TestCase):
   from audit804_delivery import run_campaign
   with self.assertRaisesRegex(ValueError,'outside approved'):
    run_campaign({},dict(dispatcher='campaign',stores=['Bata']),[],lambda *a:'',lambda *a:'',held_stores=['Other'])
+
+ def test_fresh_skip_receipt_retains_exact_source_outside_temporary_export(self):
+  import csv
+  from locked_store_rules import record_incomplete_product
+  with tempfile.TemporaryDirectory() as tmp:
+   root=Path(tmp);product=dict(id=1,title='Incomplete',handle='one',body_html='',variants=[dict(price='456.75',available=True)])
+   target=record_incomplete_product(product,'https://shop.test','Store',root/'main.py',['Missing description'])
+   self.assertEqual(target.parent,root/'audit_reports'/'Store')
+   with target.open(encoding='utf-8-sig') as stream:row=next(csv.DictReader(stream))
+   self.assertEqual(json.loads(row['original_source_product_json']),product)
