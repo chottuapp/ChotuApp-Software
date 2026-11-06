@@ -1,31 +1,44 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-06T12:50:51.623348+00:00",
-  "run_id": "42180745608",
+  "generated_utc": "2026-11-06T13:03:55.285356+00:00",
+  "run_id": "42215515299",
   "attempt": "1",
-  "source_commit": "218a1de3863d1eb79d851c9ab4f7f14d7ec16228",
-  "status": "incomplete",
+  "source_commit": "d9ca186c3ffbf62a782500dbf1e95471aaea1f7d",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 18000.9,
+  "elapsed_seconds": 3191.3,
   "stores": [
     {
-      "name": "Liberty Books",
-      "status": "pending",
-      "review_required": false,
-      "issue_codes": [
-        "HTTP_404",
-        "WEBSITE_CATEGORY_UNVERIFIED",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
+      "name": "Afrozeh",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
       "software_revision": "6ddad0479431918c",
+      "products": 168,
+      "variants": 975,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    },
+    {
+      "name": "Makeup Gallery",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "1fcef16c645fb769",
+      "products": 1671,
+      "variants": 2037,
       "http_statuses": {
-        "404": 323,
-        "200": 3917
+        "200": 913
       },
-      "network_seconds": 9880.6,
-      "max_response_seconds": 3.5,
-      "cache_events": 62663
+      "network_seconds": 2144.9,
+      "max_response_seconds": 2.9,
+      "cache_events": 14072
     }
   ]
 }
