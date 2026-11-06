@@ -40,7 +40,7 @@ from next_public_support import public_next_product_state
 
 def probe(site):
  result=source_probe(site)
- if result.get('status')!='adapter_required':return result
+ if result.get('status')!='adapter_required' and not (result.get('status')=='source_blocked' and any(o.get('path')=='' and o.get('status')==200 for o in result.get('observations',[]))):return result
  # Bounded public evidence for an unknown storefront, never a guessed adapter.
  import requests
  from urllib.robotparser import RobotFileParser
@@ -67,7 +67,7 @@ def probe(site):
    time.sleep(1.5);r=session.get(url,timeout=30);r.raise_for_status()
    if len(r.content)>3*1024*1024:raise ValueError('Diagnostic response exceeds bound')
    return r
-  product_link=next((urljoin(base,a['href']) for a in soup.select('a[href]') if a['href'].startswith('/product/')),None)
+  product_link=next((urljoin(base,a['href']) for a in soup.select('a[href]') if a['href'].startswith(('/product/','/products/'))),None)
   if product_link:
    detail=public_read(product_link);detail_soup=BeautifulSoup(detail.text,'html.parser')
    result['public_product_page']={'url':product_link,'html':clean_html(detail.text),'structured':[],'hydration_products':[]}

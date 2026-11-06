@@ -5,6 +5,12 @@ from incomplete_products import exclude
 from locked_store_rules import incomplete_product_reasons
 
 class IncompleteProductsTests(unittest.TestCase):
+ def test_unexportable_source_sku_is_quarantined_without_rewriting_identity(self):
+  product=dict(title='Cotton Shirt',body_html='A cotton shirt with button closure.',variants=[dict(sku='EMERALD MARMARA\x0bTURK TARZI-D.GREEN-1000000053401-52',price='456.75',available=True)])
+  before=copy.deepcopy(product)
+  self.assertTrue(any('Excel-incompatible' in x for x in incomplete_product_reasons(product)))
+  self.assertEqual(product,before)
+  self.assertEqual(incomplete_product_reasons(dict(title='Cotton Shirt',body_html='A cotton shirt.\nWash at 30 degrees.\tDo not bleach.')),[])
  def test_durable_receipt_keeps_all_products_and_literal_cells(self):
   from incomplete_products import save_receipt
   with tempfile.TemporaryDirectory() as tmp:

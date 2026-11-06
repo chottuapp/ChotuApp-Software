@@ -1130,7 +1130,7 @@ def run_site(base, name, template, log):
         from locked_store_rules import allowed_product
         if not allowed_product(base,p):
             skipped_invalid += 1
-            log('OWNER STORE RULE: excluded non-bag/non-wallet product: ' + txt(p.get('title')))
+            log('OWNER STORE RULE: excluded product outside this store\'s permitted scope: ' + txt(p.get('title')))
             continue
         from locked_store_rules import incomplete_product_reasons
         incomplete_reasons=incomplete_product_reasons(p)

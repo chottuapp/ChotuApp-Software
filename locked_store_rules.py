@@ -89,6 +89,12 @@ def incomplete_product_reasons(product):
  body=re.sub(r'<(?:script|style)\b[^>]*>.*?</(?:script|style)>',' ',body,flags=re.I|re.S)
  body=unescape(re.sub(r'<[^>]+>',' ',body));body=re.sub(r'\s+',' ',body).strip()
  reasons=[]
+ def incompatible(value):
+  if isinstance(value,str):return bool(re.search(r'[\x00-\x08\x0b\x0c\x0e-\x1f]',value))
+  if isinstance(value,dict):return any(incompatible(v) for v in value.values())
+  if isinstance(value,list):return any(incompatible(v) for v in value)
+  return False
+ if incompatible(product):reasons.append('Source text contains Excel-incompatible control characters; original source retained without altering SKU or variant facts')
  if not title:reasons.append('Missing product name')
  from product_description_support import completeness_issues
  if completeness_issues(body,title):reasons.append('Description lacks enough product-specific content for review')
