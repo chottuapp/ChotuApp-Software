@@ -17,6 +17,11 @@ def html(raw,currency='PKR'):
  encode(raw)
  return '<script id="__NUXT_DATA__">'+json.dumps(flat)+'</script><script type="application/ld+json">'+json.dumps({'@type':'Product','offers':{'priceCurrency':currency,'price':raw['variants'][0]['price'] if raw['variants'] else raw.get('price',0)}})+'</script>'
 class LaamTests(unittest.TestCase):
+ def setUp(self):
+  # Source transport/parser fixtures are independent of the owner price scope.
+  policy=patch.object(source,'owner_price_allowed',return_value=True)
+  policy.start();self.addCleanup(policy.stop)
+
  def test_clothing_scope_uses_source_category_not_title_keywords(self):
   for raw in [x['product'] for x in FIXTURES]:self.assertTrue(source.is_clothing(raw))
   raw=copy.deepcopy(FIXTURES[0]['product']);raw['node_l2']='Jewellery';raw['title']='Embroidered Suit Necklace'

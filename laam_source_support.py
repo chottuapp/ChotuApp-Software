@@ -10,6 +10,16 @@ from bs4 import BeautifulSoup,SoupStrainer
 BASE='https://laam.com'
 AGENT='ChotuAppCatalogRefresh'
 
+def owner_price_allowed(product):
+    """Select by cheapest available source price; preserve exact variant facts."""
+    prices=[]
+    for variant in product.get('variants',[]):
+        if not variant.get('available'):continue
+        price=Decimal(str(variant['price']))
+        if not price.is_finite() or price<0:raise ValueError('Invalid LAAM selection price')
+        prices.append(price)
+    return bool(prices) and Decimal('2000')<=min(prices)<=Decimal('7000')
+
 class TemporaryProductError(RuntimeError):
     """A retryable page failure; never a missing or successfully exported product."""
 
@@ -271,7 +281,7 @@ class PublicCatalog:
                 if p.hostname=='laam.com' and re.fullmatch('/products/[^/]+',p.path) and not p.query:urls.add(loc)
             self.log('LAAM SITEMAP: '+str(len(urls))+' distinct public product URLs discovered')
         if not urls:raise ValueError('LAAM sitemap has no public product URLs')
-        deferred=[];consecutive=0
+        deferred=[];consecutive=0;health_product=None
         for index,url in enumerate(sorted(urls),1):
             self.g.get('_chotu_wait',lambda:None)()
             if index==1 or (index-1)%50==0:self.log(f'PUBLIC PRODUCT PAGES: {index-1}/{len(urls)} LAAM pages inspected; {len(self.products)} clothing products retained; {len(deferred)} pages deferred')
@@ -288,7 +298,7 @@ class PublicCatalog:
                     if self.cache:self.cache.defer(url)
                     self.log('LAAM PRODUCT DEFERRED: '+url+'; temporary server failure, not exported or marked complete')
                     if consecutive>=5:
-                        healthy=next(iter(self.products.values()),None)
+                        healthy=health_product
                         if not healthy:raise TemporaryProductError('SOURCE PAUSED: LAAM consecutive server failures with no verified health sample; checkpoint retained')
                         try:self.read(healthy['_source_url'],fresh=True)
                         except (RuntimeError,ValueError) as health_error:raise TemporaryProductError('SOURCE PAUSED: LAAM product service health check failed; checkpoint retained') from health_error
@@ -318,6 +328,10 @@ class PublicCatalog:
                 except (ValueError,TypeError,KeyError) as exc:raise ValueError('Product '+handle+': '+str(exc)) from exc
                 for warning in product.get('_source_warnings',[]):self.log('LAAM SOURCE WARNING: '+url+'; '+warning)
                 if self.cache:self.cache.put(url,product)
+            health_product=product
+            if not owner_price_allowed(product):
+                self.log('LAAM OWNER PRICE FILTER: excluded '+url+'; cheapest available price outside PKR 2000–7000')
+                continue
             if product['id'] in self.products:raise ValueError('LAAM sitemap returned repeated product identity')
             self.products[product['id']]=product
             if index==1 or index%50==0 or index==len(urls):self.log(f'PUBLIC PRODUCT PAGES: {index}/{len(urls)} LAAM pages inspected; {len(self.products)} clothing products retained')

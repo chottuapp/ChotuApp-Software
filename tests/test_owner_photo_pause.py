@@ -16,7 +16,7 @@ class OwnerPolicyTests(unittest.TestCase):
   selected=selected_sites([dict(name='Axis PK',url='https://www.axispk.shop',enabled=True),dict(name='House of Tools',url='https://houseoftools.com.pk')],{})
   self.assertEqual([s['name'] for s in selected],['House of Tools'])
  def test_remaining_disabled_sources_remain_paused_even_if_registry_enabled(self):
-  for name,url in [('LAAM','https://laam.com'),('Khaadi','https://pk.khaadi.com'),('Bachaa Party','https://bachaaparty.com'),('Gift4U','https://gift4u.pk')]:
+  for name,url in [('Khaadi','https://pk.khaadi.com'),('Bachaa Party','https://bachaaparty.com'),('Gift4U','https://gift4u.pk')]:
    self.assertTrue(owner_paused(name,url));self.assertEqual(paused_sources([dict(name=name,url=url)]),{name})
   self.assertFalse(owner_paused('House of Tools','https://houseoftools.com.pk'))
   from unittest.mock import patch
@@ -45,10 +45,10 @@ class OwnerPolicyTests(unittest.TestCase):
    b=load_workbook(result);self.assertEqual([r[1] for r in b['Products'].iter_rows(min_row=2,values_only=True) if r[1]],['good']);self.assertEqual(b['Products']['I3'].value,5678.25);self.assertEqual([r[0] for r in b['Variant Combinations'].iter_rows(min_row=2,values_only=True) if r[0]],['good']);b.close()
  def test_dispatch_and_direct_fetch_do_not_start_paused_source(self):
   from fresh804_dispatch import selected_sites
-  result=selected_sites([dict(name='LAAM'),dict(name='Khaadi'),dict(name='House of Tools')],{})
+  result=selected_sites([dict(name='Khaadi'),dict(name='House of Tools')],{})
   self.assertEqual([s['name'] for s in result],['House of Tools'])
   from woocommerce_source_support import export
-  with self.assertRaisesRegex(ValueError,'OWNER PAUSED'):export({},'https://laam.com','LAAM','unused',lambda _:None)
+  with self.assertRaisesRegex(ValueError,'OWNER PAUSED'):export({},'https://pk.khaadi.com','Khaadi','unused',lambda _:None)
 
  def test_export_continues_after_missing_photo_without_changing_source_stock(self):
   from types import SimpleNamespace
