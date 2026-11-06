@@ -62,7 +62,7 @@ def complete_description(product,txt,detailed_description,debug):
             option_lines.append(label+': '+', '.join(values))
     if option_lines:result+='\n\nProduct Options:\n'+'\n'.join(option_lines)
     if not result.strip():result=title
-    if len(result)>32767:
+    if len(result)>=32767:
         debug('DESCRIPTION LIMIT: Excel cell maximum reached for '+title+'; review the source for remaining detail.')
         from product_description_support import DescriptionCapacityError
         raise DescriptionCapacityError('Description exceeds Excel cell capacity; source facts must not be truncated')

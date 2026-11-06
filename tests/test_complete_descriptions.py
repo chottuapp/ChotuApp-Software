@@ -11,6 +11,10 @@ import main
 ROOT=Path(__file__).resolve().parents[1]
 
 class DescriptionTests(unittest.TestCase):
+    def test_oversized_source_is_never_silently_cut_before_rendering(self):
+        from product_description_support import DescriptionCapacityError
+        p={'title':'Technical product','body_html':'<p>'+('Exact source technical fact. '*1300)+'</p><p>Final warning: disconnect power.</p>'}
+        with self.assertRaises(DescriptionCapacityError):main.friendly_description(p)
     def test_non_electronic_ingredients_usage_and_cautions_not_cut(self):
         p={'title':'Food Mix','body_html':'<p>'+('Product information. '*40)+'</p><h3>Ingredients</h3><p>Salt, cumin and coriander.</p><h3>Directions</h3><p>Use 10 g per 500 g serving.</p><h3>Allergen Information</h3><p>Contains wheat.</p><h3>Storage</h3><p>Store below 25 C.</p>'}
         result=main.friendly_description(p)

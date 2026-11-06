@@ -860,7 +860,8 @@ def detailed_description(product, soup):
     result = '\n\n'.join(sections) or title
     if len(result) > 32767:
         _chotu_debug('DESCRIPTION LIMIT: Excel cell capacity reached for ' + title)
-        result = result[:32767]
+        from product_description_support import DescriptionCapacityError
+        raise DescriptionCapacityError('Description exceeds Excel cell capacity; source facts must not be truncated')
     return result
 
 
