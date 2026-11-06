@@ -1,7 +1,7 @@
 {
-  "run_id": "42195696259",
+  "run_id": "42205274453",
   "request_id": "new20261106",
-  "checked_utc": "2026-11-06T09:32:10.316351+00:00",
+  "checked_utc": "2026-11-06T10:47:30.759214+00:00",
   "shop_codes": "Pending owner; blank in exports",
   "stores": [
     {
@@ -199,7 +199,67 @@
             "variants"
           ]
         ],
-        "product_contexts": []
+        "product_contexts": [],
+        "public_variant_data": [
+          [
+            {
+              "id": "cmth96ily005cqfx93cbsvxa5",
+              "sku": "AFG-SKU-255-6",
+              "regularPrice": "2000",
+              "salePrice": null,
+              "size": {},
+              "color": {
+                "name": "Cream"
+              },
+              "isActive": true
+            },
+            {
+              "id": "cmth96slt005kqfx9uaig7opp",
+              "sku": "AFG-SKU-255-7",
+              "regularPrice": "2000",
+              "salePrice": null,
+              "size": {},
+              "color": {
+                "name": "Khaki"
+              },
+              "isActive": true
+            }
+          ]
+        ],
+        "public_variant_shapes": [
+          [
+            {
+              "id": "str",
+              "sku": "str",
+              "regularPrice": "str",
+              "salePrice": "NoneType",
+              "size": [
+                "value"
+              ],
+              "color": [
+                "hexCode",
+                "name"
+              ],
+              "isActive": "bool",
+              "availableStock": "int"
+            },
+            {
+              "id": "str",
+              "sku": "str",
+              "regularPrice": "str",
+              "salePrice": "NoneType",
+              "size": [
+                "value"
+              ],
+              "color": [
+                "hexCode",
+                "name"
+              ],
+              "isActive": "bool",
+              "availableStock": "int"
+            }
+          ]
+        ]
       },
       "public_client_route_clues": [
         "o.useState)(0),[n,a]=(0,o.useState)(i.DE),[s,l]=(0,o.useState)(4);return(0,o.useEffect)(()=>{fetch(\"/api/promotions\").then(e=>e.json()).then(e=>{var t,n;Array.isArray(null===(t=e.settings)||void 0===t?void 0:t.announcementMessages)&&e.settings.announcementMessages.length>0&&",
@@ -309,14 +369,5 @@
     }
   ],
   "groups": [],
-  "status": "dispatch_complete",
-  "already_dispatched": [
-    "Afrozeh",
-    "Blackbeiger",
-    "Makeup Gallery",
-    "Rizen Watches",
-    "Toynix",
-    "Toyzone",
-    "VNS Collection"
-  ]
+  "status": "checking"
 }
