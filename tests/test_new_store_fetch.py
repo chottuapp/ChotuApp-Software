@@ -25,3 +25,11 @@ class NewStoreFetchTests(unittest.TestCase):
   for change in ({'shop_code':'SE123'},{'url':'https://localhost/'},{'name':'Axis PK'},{'url':'https://www.toyzone.pk/private'}):
    r=copy.deepcopy(self.request);r['stores'][0].update(change)
    with self.assertRaises(ValueError):validate(r)
+
+ def test_public_next_json_stream_handles_split_product_records_without_execution(self):
+  from new_store_fetch import public_next_product_state
+  payload='5:'+json.dumps(['$', 'Component', None, {'product':{'id':'p1','name':'Shirt','retailPrice':2000,'password':'private'},'variants':[{'id':'v1','stockOnHand':3,'stockReserved':1}]}])+'\n'
+  scripts=''.join('<script>self.__next_f.push('+json.dumps([1,chunk])+')</script>' for chunk in (payload[:40],payload[40:]))
+  result=public_next_product_state(scripts)
+  product=next(p for p in result['hydration_products'] if p['id']=='p1')
+  self.assertEqual(product['retailPrice'],2000);self.assertNotIn('password',json.dumps(result));self.assertEqual(result['product_contexts'][0]['variants'][0]['stockOnHand'],3)

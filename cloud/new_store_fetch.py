@@ -36,6 +36,40 @@ def plan(request,stores,observations,runs):
   if selected:groups.append(dict(runner_group=prefix+str(i//2+1)+'-'+'-'.join(key(s) for s in selected),stores=selected))
  return groups,already
 
+def public_next_product_state(html):
+    """Read JSON-only public Next records, including split stream chunks."""
+    from bs4 import BeautifulSoup
+    fields={'id','name','title','slug','price','basePrice','salePrice','description','images','imageUrls','image','category','categoryId','variants','sizes','colors','stock','stockQuantity','isActive','active','currency','sku','isAvailable','inStock','quantity','sale','discount','sellingPrice','retailPrice','regularPrice','discountPrice','minPrice','maxPrice','stockOnHand','stockReserved','stockAvailable','inventoryQuantity','productId','colorName','sizeName','sizeLabel','colorHex','priceOverride','department','size','color','status','isPublished','trackStock','stockQty','baseRetailPrice'}
+    result={'hydration_products':[],'object_key_shapes':[],'product_contexts':[]}
+    def clean(value):
+        if isinstance(value,dict):return {k:clean(v) for k,v in value.items() if k in fields}
+        if isinstance(value,list):return [clean(v) for v in value[:500]]
+        return value
+    def walk(value):
+        if isinstance(value,dict):
+            if 'variants' in value or 'product' in value:
+                shape=sorted(value)
+                if shape not in result['object_key_shapes']:result['object_key_shapes'].append(shape)
+            if isinstance(value.get('product'),dict):
+                result['product_contexts'].append({k:clean(v) for k,v in value.items() if k in ('product','variants','images','sizes','colors')})
+            if value.get('id') and (value.get('name') or value.get('title')):
+                candidate=clean(value)
+                if len(json.dumps(candidate))<150000 and candidate not in result['hydration_products']:result['hydration_products'].append(candidate)
+            for v in value.values():walk(v)
+        elif isinstance(value,list):
+            for v in value:walk(v)
+    chunks=[]
+    for node in BeautifulSoup(html,'html.parser').find_all('script'):
+        text=node.get_text()
+        for match in re.finditer(r'self\.__next_f\.push\(',text):
+            try:array,_=json.JSONDecoder().raw_decode(text[match.end():])
+            except ValueError:continue
+            if isinstance(array,list) and len(array)>=2 and isinstance(array[1],str):chunks.append(array[1])
+    for line in ''.join(chunks).splitlines():
+        try:walk(json.loads(line.partition(':')[2]))
+        except ValueError:pass
+    return result
+
 def probe(site):
  result=source_probe(site)
  if result.get('status')!='adapter_required':return result
@@ -72,34 +106,7 @@ def probe(site):
    for node in detail_soup.select('script[type="application/ld+json"]'):
     try:result['public_product_page']['structured'].append(json.loads(node.get_text()))
     except ValueError:pass
-   allowed={'id','name','title','slug','price','basePrice','salePrice','description','images','imageUrls','image','category','categoryId','variants','sizes','colors','stock','stockQuantity','isActive','active','currency','sku','isAvailable','inStock','quantity','sale','discount','sellingPrice','retailPrice','regularPrice','discountPrice','minPrice','maxPrice','stockOnHand','stockReserved','stockAvailable','inventoryQuantity','productId','colorName','sizeName','sizeLabel','colorHex','priceOverride','department','size','color','status','isPublished','trackStock','stockQty','baseRetailPrice'}
-   result['public_product_page']['object_key_shapes']=[]
-  result['public_product_page']['product_contexts']=[]
-  def walk(value):
-    if isinstance(value,dict):
-     if 'variants' in value or 'product' in value:
-      shape=sorted(value)
-      if shape not in result['public_product_page']['object_key_shapes']:result['public_product_page']['object_key_shapes'].append(shape)
-     if isinstance(value.get('product'),dict):
-      result['public_product_page']['product_contexts'].append({k:v for k,v in value.items() if k in ('product','variants','images','sizes','colors')})
-     if value.get('id') and (value.get('name') or value.get('title')):
-      candidate={k:v for k,v in value.items() if k in allowed}
-      if len(json.dumps(candidate))<150000 and candidate not in result['public_product_page']['hydration_products']:result['public_product_page']['hydration_products'].append(candidate)
-     for v in value.values():walk(v)
-    elif isinstance(value,list):
-     for v in value:walk(v)
-   chunks=[]
-   for node in detail_soup.find_all('script'):
-    text=node.get_text()
-    for match in re.finditer(r'self\.__next_f\.push\(',text):
-     try:array,_=json.JSONDecoder().raw_decode(text[match.end():])
-     except ValueError:continue
-     if not isinstance(array,list) or len(array)<2 or not isinstance(array[1],str):continue
-     chunks.append(array[1])
-   for line in ''.join(chunks).splitlines():
-    payload=line.partition(':')[2]
-    try:walk(json.loads(payload))
-    except ValueError:pass
+   result['public_product_page'].update(public_next_product_state(detail.text))
    scripts=[urljoin(product_link,t['src']) for t in detail_soup.select('script[src]') if '/app/' in t['src'] and ('page-' in t['src'] or 'layout-' in t['src'])]
    result['public_client_route_clues']=[]
    for script in scripts[:3]:
