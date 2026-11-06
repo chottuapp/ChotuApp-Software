@@ -1,49 +1,31 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-06T16:47:42.767072+00:00",
-  "run_id": "42230127124",
+  "generated_utc": "2026-11-06T18:14:45.385607+00:00",
+  "run_id": "42221099662",
   "attempt": "1",
-  "source_commit": "d54ee1de9a16047058053bbd745453455db4713d",
+  "source_commit": "98bf80b42ac1de302258b3bb86e0614e7fbeca24",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 9968.0,
+  "elapsed_seconds": 18001.1,
   "stores": [
     {
-      "name": "Taminzo",
-      "status": "source_paused",
+      "name": "Liberty Books",
+      "status": "pending",
       "review_required": false,
       "issue_codes": [
         "HTTP_404",
-        "HTTP_429",
-        "RATE_LIMIT",
         "WEBSITE_CATEGORY_UNVERIFIED",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "14512cca297fa97c",
+      "software_revision": "476f8bbb34053cd5",
       "http_statuses": {
-        "200": 2449,
-        "429": 4,
-        "404": 205
+        "404": 347,
+        "200": 3930
       },
-      "network_seconds": 5694.0,
-      "max_response_seconds": 4.2,
-      "cache_events": 8043
-    },
-    {
-      "name": "Essence",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "14512cca297fa97c",
-      "products": 74,
-      "variants": 711,
-      "http_statuses": {
-        "200": 97
-      },
-      "network_seconds": 45.5,
-      "max_response_seconds": 2.2,
-      "cache_events": 148
+      "network_seconds": 9975.8,
+      "max_response_seconds": 5.4,
+      "cache_events": 69378
     }
   ]
 }
