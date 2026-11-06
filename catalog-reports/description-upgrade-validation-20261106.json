@@ -1,47 +1,50 @@
 {
-  "software_commit": "9e3fa306",
-  "scope": "Local full independent audit of unchanged original inputs; remote delivery receipts recorded separately",
+  "software_commit": "4ec24d28",
+  "scope": "Full independent local audit of unchanged original inputs using the final customer-copy-v3 gate; remote verification recorded separately",
+  "focused_tests_passed": 131,
+  "http_export_tests_passed": 8,
   "files": [
     {
       "store": "Bata",
       "status": "pass",
       "products_checked": 538,
       "findings_count": 0,
-      "checked_utc": "2026-11-06T11:51:36.311597+00:00",
-      "workbook_sha256": "8a8dc4f9093c2726f941b068e5decc34e49ccb3614651ba8d475bab0091f1fcb",
+      "checked_utc": "2026-11-06T12:18:16.720064+00:00",
+      "workbook_sha256": "587036093e95882682b3e2912f2b5c8b34aadf43695225bf42e0c51060a755e7",
       "original_source_sha256": "b238303795f4dd3cbe02c9c3eb0005023aea23f5a4a453b31c4973c48807975b",
       "incomplete_products_count": 1354
     },
     {
       "store": "Rawayat",
       "status": "pass",
-      "products_checked": 3982,
+      "products_checked": 4109,
       "findings_count": 0,
-      "checked_utc": "2026-11-06T11:52:35.801154+00:00",
-      "workbook_sha256": "96ceaf2ef1331d26e7eb9c6e1718cb2f08b41f0481beaa7ea27eb1a64e411567",
+      "checked_utc": "2026-11-06T12:19:17.318026+00:00",
+      "workbook_sha256": "3d86fc7420eaa1b781570fedaca38a0a6e5c97fdf65eb2db34cf8e24d1a45dfa",
       "original_source_sha256": "3b0b61d26bc5fca52ffbfad76eb93b0a174442fe15c98656031307bec84e806c",
-      "incomplete_products_count": 638
+      "incomplete_products_count": 511
     },
     {
       "store": "Rios",
       "status": "pass",
       "products_checked": 2390,
       "findings_count": 0,
-      "checked_utc": "2026-11-06T11:59:40.797115+00:00",
-      "workbook_sha256": "9c328441699d2ea112630ac9f47d8087038cfa6a4dd9c6cfb87bde88f45bd1eb",
+      "checked_utc": "2026-11-06T12:20:08.247698+00:00",
+      "workbook_sha256": "0bb9e0cf5190c693769f11c62c4539895705516dc227c78ebf1beaca145569af",
       "original_source_sha256": "173b36c3a1b3db326230c51ae46ed68fdacebd1835dcd8269818b9f097571418",
       "incomplete_products_count": 42
     },
     {
       "store": "Stylo",
       "status": "pass",
-      "products_checked": 8196,
+      "products_checked": 8197,
       "findings_count": 0,
-      "checked_utc": "2026-11-06T12:03:54.282712+00:00",
-      "workbook_sha256": "5fed8a33665af5d5aa9ae91128445e69ae5a6b1f102bc86759c243030ff8e5c7",
+      "checked_utc": "2026-11-06T12:24:19.194954+00:00",
+      "workbook_sha256": "335e039202d56edbd92a7592609b65af6470c26c5ed708ef3d2ad3c0db4661bc",
       "original_source_sha256": "7bd32974dce2a79fae2bc0ce4acd58cb38bcf7db6c6ca76ec14bb4cf004c9f2c",
-      "incomplete_products_count": 1283
+      "incomplete_products_count": 1282
     }
   ],
-  "delivery_run": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/42214329978"
+  "first_verified_delivery_run": "42214329978",
+  "refined_delivery_run": "42217505039"
 }
