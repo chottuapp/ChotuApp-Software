@@ -21,6 +21,7 @@ def source_policy(host):
     host=host.lower().removeprefix('www.')
     # Stylo has sustained healthy responses; bounded overlap and gradual recovery
     # replace the permanent single-worker cap. Recent throttle holds still win.
+    if host=='libertybooks.com':return (2.5,1)
     if host=='stylo.pk':return (1.5,2)
     if host in RECENTLY_LIMITED_SOURCES:return (2.5,1)
     if host in ('outfitters.com.pk','zellbury.com','laam.com','pk.khaadi.com','khaadi.com','sapphireonline.pk','pk.sapphireonline.pk'):return (1.5,2)
@@ -282,8 +283,9 @@ def enable_fast_fetch(g):
         if tls.fast_gate.limited:raise tls.fast_gate.blocked_error()
         eligible=[]
         for product in products:
-            from locked_store_rules import allowed_product
+            from locked_store_rules import allowed_product,incomplete_product_reasons
             if not allowed_product(base,product):continue
+            if incomplete_product_reasons(product):continue
             if str(product.get('status') or '').strip().lower() not in ('','active'):continue
             if 'published_at' in product and not product.get('published_at'):continue
             if not product.get('handle') or g['is_free_gift'](product):continue

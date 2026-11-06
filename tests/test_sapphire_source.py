@@ -91,6 +91,19 @@ class SapphireTests(unittest.TestCase):
    def read(self,url,**kwargs):return response(pages[url],url)
   logs=[];products,complete=Reader({'_chotu_wait':lambda:None},logs.append).catalog()
   self.assertEqual(len(products),1);self.assertFalse(complete);self.assertTrue(any('REVIEW REQUIRED' in x for x in logs))
+ def test_fresh_missing_pdp_does_not_block_other_products_or_hide_price_conflicts(self):
+  robot='User-agent: *\nAllow: /\nSitemap: '+source.BASE+'/sitemap.xml'
+  bad=source.BASE+'/collections/unstitched/products/missing.html'
+  pages={source.BASE+'/robots.txt':robot,source.BASE+'/sitemap.xml':'<urlset><url><loc>'+bad+'</loc></url><url><loc>'+UNS+'</loc></url></urlset>',bad:'<html><title>Incomplete listing</title></html>',UNS:fixture('product_unstitched.html')}
+  class Reader(source.PublicCatalog):
+   def read(self,url,**kwargs):return response(pages[url],url)
+  with tempfile.TemporaryDirectory() as tmp:
+   logs=[];products,complete=Reader({'_chotu_wait':lambda:None,'__file__':str(Path(tmp)/'main.py')},logs.append).catalog()
+   self.assertEqual(len(products),1);self.assertFalse(complete);self.assertTrue(any('OWNER INCOMPLETE SKIP' in x for x in logs))
+   self.assertTrue(list((Path(tmp)/'audit_reports'/'Sapphire').glob('*INCOMPLETE PRODUCTS.csv')))
+  duplicate='<div class="product-wrapper" data-pid="one"></div><div class="product-wrapper" data-pid="two"></div>'
+  with self.assertRaises(ValueError) as caught:source.inspect_page(duplicate,bad)
+  self.assertNotIsInstance(caught.exception,source.IncompleteProduct)
  def test_cloud_runtime_ships_and_enables_the_adapter(self):
   from runtime import prepare_engine
   with tempfile.TemporaryDirectory() as tmp:

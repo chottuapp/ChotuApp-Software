@@ -20,6 +20,10 @@ import install_fast_fetch
 import install_adaptive_speed
 
 class FastFetchTests(unittest.TestCase):
+    def test_liberty_uses_one_worker_and_conservative_spacing_after_observed_429(self):
+        self.assertEqual(fast.source_policy('libertybooks.com'),(2.5,1))
+        self.assertEqual(fast.source_policy('www.libertybooks.com'),(2.5,1))
+
     def test_live_stock_controls_html_preload_not_stale_snapshot(self):
         self.assertTrue(fast.needs_live_product_page({'variants':[{'available':False},{'available':True}]}))
         self.assertFalse(fast.needs_live_product_page({'variants':[{'available':False}]}))
@@ -34,6 +38,8 @@ class FastFetchTests(unittest.TestCase):
                              'options':[{'name':'Pack'}], 'images':[{'id':100+i,'src':'https://cdn.shopify.com/s/files/1/1/1/files/p'+str(i)+'.jpg','position':1}],
                              'variants':[{'id':1000+i,'price':'1490','compare_at_price':'1990','available':True,'option1':'Pack of 1'},
                                          {'id':2000+i,'price':'2680','compare_at_price':'2980','available':False,'option1':'Pack of 2'}]})
+        incomplete=copy.deepcopy(products[0]);incomplete.update(id=99,handle='incomplete',body_html='')
+        products.append(incomplete)
         visits=Counter();active=0;peak=0;guard=threading.Lock()
         class Handler(BaseHTTPRequestHandler):
             def do_GET(self):
@@ -77,6 +83,9 @@ class FastFetchTests(unittest.TestCase):
                     try:module.run_site(base,'Fixture',str(ROOT/'importer-files/Chotu_Products_Import_Template_Discount_Tags.xlsx'),logs.append)
                     finally:
                         module._chotu_close_checkpoint(False);module._chotu_tls.saved_response_cache.close()
+                    self.assertNotIn('/products/incomplete.js',visits)
+                    self.assertNotIn('/products/incomplete',visits)
+                    self.assertTrue(list((folder/'audit_reports'/'Fixture').glob('*INCOMPLETE PRODUCTS.csv')))
                     times.append(time.monotonic()-start);counts.append(copy.copy(visits));peaks.append(peak)
                     book=load_workbook(module.OUT/'Fixture.xlsx',data_only=True);outputs.append({name:list(book[name].values) for name in book.sheetnames});book.close()
                     requests.Session=original_factory

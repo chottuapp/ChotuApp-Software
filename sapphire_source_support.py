@@ -28,8 +28,12 @@ def primary_nodes(main,selector):
         else:result.append(node)
     return result
 
+class IncompleteProduct(ValueError):
+    """A public page has no product detail scope; no sale facts inferred."""
+
 def inspect_page(html,url):
     soup=BeautifulSoup(html,'html.parser');scopes=soup.select('.product-wrapper[data-pid]')
+    if not scopes:raise IncompleteProduct('Exact Sapphire product scope missing or ambiguous: '+url)
     if len(scopes)!=1:raise ValueError('Exact Sapphire product scope missing or ambiguous: '+url)
     main=scopes[0];master=main.get('data-master-id');pid=main.get('data-pid')
     if not master or not pid:raise ValueError('Source product identity missing')
@@ -229,7 +233,13 @@ class PublicCatalog:
                     if confirmed_unavailable_redirect(current,url):
                         self.log('SAPPHIRE SOURCE EXCLUSION: product address has no current PDP; confirmed unavailable public landing, stock not inferred: '+url)
                         continue
-                    product=normalize_product(current.text,url,self.read)
+                    try:product=normalize_product(current.text,url,self.read)
+                    except IncompleteProduct as exc:
+                        from locked_store_rules import record_incomplete_product
+                        import hashlib
+                        record_incomplete_product({'_source_url':url,'handle':urlsplit(url).path.rsplit('/',1)[-1],'source_response_sha256':hashlib.sha256(current.content).hexdigest()},BASE,'Sapphire',self.g.get('__file__',__file__),[str(exc)])
+                        self.log('OWNER INCOMPLETE SKIP: Sapphire product detail scope absent after fresh public-page recheck; no price or stock inferred: '+url)
+                        continue
                 if self.cache:self.cache.put(url,product)
             if product.get('_unverified_variant_selections'):self.log('SAPPHIRE VARIANT REVIEW: '+url+'; '+str(len(product['_unverified_variant_selections']))+' unverified combinations not exported; no stock or prices guessed')
             result.append(product)
