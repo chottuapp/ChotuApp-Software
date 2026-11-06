@@ -76,7 +76,8 @@ def main():
    return drive_command(cfg,*args)
   if config.get('audit804_enabled'):
    from audit804_delivery import run_campaign
-   run_campaign(state,config,all_runs,gh,rc,progress=lambda current:publish(current,branch='drive-sync-reports'))
+   held_stores=[s.strip() for s in os.environ.get('CHOTU_REPAIR_HELD_STORES','').split(',') if s.strip()] or None
+   run_campaign(state,config,all_runs,gh,rc,progress=lambda current:publish(current,branch='drive-sync-reports'),held_stores=held_stores)
    publish(state,branch='drive-sync-reports');print('804 Audit campaign scan complete; only passed shop-code-identified workbooks delivered.');return
   from mobile_khaadi_ingest import upload as upload_mobile
   if upload_mobile(state,folder,rc):

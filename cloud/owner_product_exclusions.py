@@ -36,10 +36,14 @@ def out_of_stock_rules(store):
   result[str(item['product_id'])]=item['source_url']
  return result
 
-def apply(source,out,store):
+def apply(source,out,store,*,incomplete=None):
+ incomplete=incomplete or {}
  source_removed=source_removed_rules(source,store)
  stock_removed=out_of_stock_rules(store)
  rules=dict(EXCLUSIONS.get(store,{}));rules.update(source_removed);rules.update(stock_removed)
+ for pid,entry in incomplete.items():
+  if not entry.get('source_url') or not entry.get('issues'):raise ValueError('Incomplete exclusion requires exact source identity and reasons')
+  rules[str(pid)]=entry['source_url']
  photo_removed=set()
  book=load_workbook(source,read_only=True,data_only=False)
  try:
@@ -83,7 +87,7 @@ def apply(source,out,store):
   for name,items in rows.items():
    if name not in ('Products','Variant Combinations'):continue
    for r in items:
-    groups={str(v) for k,v in r.items() if v and (str(k).endswith('group_id') or str(k).endswith('group_ids'))}
+    groups={part.strip() for k,v in r.items() if v and (str(k).endswith('group_id') or str(k).endswith('group_ids') or str(k)=='option_groups') for part in re.split(r'[,;|]',str(v)) if part.strip()}
     (candidates if str(r.get('product_id')) in removed else used).update(groups)
   exclusive=candidates-used
   for name,items in rows.items():
@@ -101,4 +105,4 @@ def apply(source,out,store):
      if int(row.attrib['r']) in bypath[info.filename]:sheet.remove(row)
     data=ET.tostring(tree,encoding='utf-8',xml_declaration=True)
    dst.writestr(info,data)
- return out,[{'product_id':pid,'source_url':rules[pid],'reason':('Owner-locked Fresh Basket rule: fruits and vegetables excluded; source stock unchanged' if pid in produce_removed else 'Owner sale block: product has no real source photo; excluded from sellable export under explicit owner rule, source stock unchanged' if pid in photo_removed else 'Source-confirmed removed product: exact page and product endpoint both 404/410; absent current public catalog; proof bound to this workbook hash' if pid in source_removed else 'Current exact public product endpoint confirms every variant out of stock; excluded under owner stock rule' if pid in stock_removed else 'Owner-locked ChenOne rule: furniture excluded; all other goods retained' if store=='ChenOne' else 'Outside owner-locked Astore bags/wallets/mini-pouches scope: laptop sleeve' if store=='Astore Bags' else 'Owner explicitly requested deletion of conflicting product on 25 October 2026')} for pid in sorted(removed)]
+ return out,[{'product_id':pid,'source_url':rules[pid],'reason':('Owner-authorized incomplete product excluded; original source facts preserved: '+ '; '.join(incomplete[pid]['issues']) if pid in incomplete else 'Owner-locked Fresh Basket rule: fruits and vegetables excluded; source stock unchanged' if pid in produce_removed else 'Owner sale block: product has no real source photo; excluded from sellable export under explicit owner rule, source stock unchanged' if pid in photo_removed else 'Source-confirmed removed product: exact page and product endpoint both 404/410; absent current public catalog; proof bound to this workbook hash' if pid in source_removed else 'Current exact public product endpoint confirms every variant out of stock; excluded under owner stock rule' if pid in stock_removed else 'Owner-locked ChenOne rule: furniture excluded; all other goods retained' if store=='ChenOne' else 'Outside owner-locked Astore bags/wallets/mini-pouches scope: laptop sleeve' if store=='Astore Bags' else 'Owner explicitly requested deletion of conflicting product on 25 October 2026')} for pid in sorted(removed)]

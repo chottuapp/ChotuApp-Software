@@ -147,10 +147,13 @@ def retry_prior_verified_delivery(report,uploaded,generation):
   and uploaded.get('audit804',{}).get('status')=='pass')
  return bool(modern or legacy)
 
-def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
+def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stores=None):
  from importlib.util import spec_from_file_location,module_from_spec
  spec=spec_from_file_location('audit_groups',root/'catalog-tools/start_fresh26_rule804_drive_windows.py');helper=module_from_spec(spec);spec.loader.exec_module(helper)
  campaign=config['dispatcher']
+ if held_stores is not None:
+  held_stores=set(held_stores)
+  if not held_stores or not held_stores<=set(config['stores']):raise ValueError('Targeted held repair outside approved stores')
  if state.get('audit804_campaign') not in (None,campaign):
   state['previous_audit804_campaign']={'campaign_id':state['audit804_campaign'],'results':state.get('audit804_results',{})}
   for key in ('audit804_results','audit804_processed','audit804_artifacts'):state[key]={}
@@ -175,7 +178,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
   state['audit804_auto_evidence']={'status':'checked','facts':evidence_count,'digest':evidence_revision}
  except Exception:
   state['audit804_auto_evidence']={'status':'unavailable','action':'Retain saved source facts; no unverified audit approval'}
- revision=hashlib.sha256(b''.join((root/name).read_bytes() for name in ('cloud/catalogue_object_rules.py','cloud/audit804-stock-exclusions.json','cloud/reviewed_source_types.py','electronics_description_support.py','xcessories_purpose_support.py','cloud/review_evidence_cache.py','cloud/image_provenance_repair.py','locked_store_rules.py','cloud/description_readability.py','cloud/owner_product_exclusions.py','cloud/audit804-removed-source.json','cloud/audit804.py','cloud/audit804_semantics.py','cloud/reviewed804_repairs.py','cloud/audit804_delivery.py','cloud/rule804_pipeline.py','cloud/hold804_repairs.py','cloud/audit804-reviewed-source.json','cloud/audit804-image-reviews.json','cloud/audit804_automation.py','cloud/price_stock_gate.py','cloud/legacy_original_schema.py','cloud/confirmed-shop-codes.json','subcategory_inference_support.py','catalog-tools/complete_rule804_batch.py'))).hexdigest()
+ revision=hashlib.sha256(b''.join((root/name).read_bytes() for name in ('cloud/catalogue_object_rules.py','cloud/audit804-stock-exclusions.json','cloud/reviewed_source_types.py','electronics_description_support.py','xcessories_purpose_support.py','cloud/review_evidence_cache.py','cloud/image_provenance_repair.py','locked_store_rules.py','cloud/description_readability.py','cloud/owner_product_exclusions.py','cloud/audit804-removed-source.json','cloud/audit804.py','cloud/audit804_semantics.py','cloud/reviewed804_repairs.py','cloud/audit804_delivery.py','cloud/incomplete_products.py','cloud/rule804_pipeline.py','cloud/hold804_repairs.py','cloud/audit804-reviewed-source.json','cloud/audit804-image-reviews.json','cloud/audit804_automation.py','cloud/price_stock_gate.py','cloud/legacy_original_schema.py','cloud/confirmed-shop-codes.json','subcategory_inference_support.py','catalog-tools/complete_rule804_batch.py'))).hexdigest()
  revision=hashlib.sha256((revision+evidence_revision).encode()).hexdigest()
  state['audit804_campaign']=campaign;state.setdefault('audit804_results',{});state.setdefault('audit804_processed',{});identity=None
  def handle(source,store,source_run,artifact_id,cache_key):
@@ -202,6 +205,16 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
     from farda_source_support import SHOP
     hosts.add(urlsplit(SHOP).hostname)
    report=audit(output,store,codes,hosts,source=normalized,strict_commercial=True)
+   from incomplete_products import exclude as exclude_incomplete
+   audit_source,filtered_output,incomplete=exclude_incomplete(normalized,output,store,report,stage/'incomplete')
+   if incomplete:
+    if not marker:marker=save_held(source,store,campaign,str(source_run))
+    output=filtered_output
+    report=audit(output,store,codes,hosts,source=audit_source,strict_commercial=True)
+    report['incomplete_products_excluded']=incomplete
+    report['incomplete_products_count']=len(incomplete)
+    report['original_source_sha256']=source_sha
+
    repairs=[r for r in processing.get('warnings',[]) if r.get('repair_kind')=='description' or r.get('issue','').startswith(('Copied','Removed'))]
    from audit804_automation import recovery_plan
    report['recovery']=recovery_plan(report,prior.get('recovery'))
@@ -251,6 +264,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
  try:
   # Recheck durable held inputs after code/policy updates, even if Actions artifacts expired.
   for store,report in list(state['audit804_results'].items()):
+   if held_stores is not None and store not in held_stores:continue
    if store in paused:continue
    if generation and store in refresh_stores and str(report.get('source_run')) not in refresh_runs and not retry_prior_verified_delivery(report,state.get('uploaded',{}).get(store,{}),generation):continue
    key='source:'+report.get('source_sha256','')+':'+store+':'+revision
@@ -265,7 +279,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
    with tempfile.TemporaryDirectory() as tmp:
     source=restore_source(marker,Path(tmp)/(store+'.xlsx'),store,campaign,state,progress)
     if source is not None:safe_handle(source,store,report.get('source_run','phone'),report.get('source_artifact'),key)
-  for run in reversed(runs):
+  for run in reversed(runs if held_stores is None else []):
    rid=str(run['databaseId']);artifacts=json.loads(gh('api','repos/chottuapp/ChotuApp-Software/actions/runs/'+rid+'/artifacts?per_page=100'))['artifacts'];found=[a for a in artifacts if a.get('name')=='chotuapp-excel-files' and not a.get('expired')]
    if not found:continue
    item=max(found,key=lambda a:a['id']);base=rid+':'+str(item['id'])
@@ -288,7 +302,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
      safe_handle(matches[0],store,rid,item['id'],key)
    state['audit804_artifacts'][rid]=base+':'+revision
   marker=root/'catalog-inputs/khaadi-mobile/latest.json'
-  if marker.exists():
+  if held_stores is None and marker.exists():
    metadata=json.loads(marker.read_text())
    approved_phone_campaigns={campaign}
    phone_release=root/'cloud/khaadi-session-release.json'

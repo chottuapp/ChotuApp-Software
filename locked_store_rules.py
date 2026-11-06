@@ -63,3 +63,17 @@ def has_source_photo(product):
  if any(image(v) for v in product.get('images',[]) or []):return True
  if any(image(v.get('image')) or image(v.get('featured_image')) or valid(v.get('image_url')) for v in product.get('variants',[]) or []):return True
  return any(valid(v) for k,v in product.items() if str(k).startswith(('scraped_image_url','final_image_url','variant_image_url','fallback_image_url','image_url')))
+
+
+def incomplete_product_reasons(product):
+ """Cheap preflight before per-product refresh: no invented sparse prose."""
+ from html import unescape
+ title=str(product.get('title') or product.get('name') or '').strip()
+ body=str(product.get('body_html') or product.get('description') or '')
+ body=re.sub(r'<(?:script|style)\b[^>]*>.*?</(?:script|style)>',' ',body,flags=re.I|re.S)
+ body=unescape(re.sub(r'<[^>]+>',' ',body));body=re.sub(r'\s+',' ',body).strip()
+ reasons=[]
+ if not title:reasons.append('Missing product name')
+ if len(re.findall(r'\b\w+\b',body))<5 or body.rstrip('.').casefold()==title.rstrip('.').casefold():reasons.append('Description lacks enough product-specific content for review')
+ if re.search(r'(?i)\b(?:lorem ipsum|description coming soon|no description available)\b',body):reasons.append('Placeholder description')
+ return reasons
