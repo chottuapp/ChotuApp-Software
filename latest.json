@@ -1,47 +1,49 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-06T12:08:46.050492+00:00",
-  "run_id": "42194719605",
+  "generated_utc": "2026-11-06T12:09:16.148780+00:00",
+  "run_id": "42194737497",
   "attempt": "1",
   "source_commit": "ce60d0c297618967811c85da225407c3317f054f",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 9821.0,
+  "elapsed_seconds": 9873.9,
   "stores": [
     {
-      "name": "Toyzone",
-      "status": "source_paused",
-      "review_required": false,
+      "name": "Afrozeh",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
         "HTTP_429",
         "RATE_LIMIT",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "6ddad0479431918c",
+      "products": 168,
+      "variants": 975,
       "http_statuses": {
-        "200": 2143,
-        "429": 2
+        "200": 421
       },
-      "network_seconds": 4669.0,
-      "max_response_seconds": 2.6,
-      "cache_events": 8356
+      "network_seconds": 947.8,
+      "max_response_seconds": 3.5,
+      "cache_events": 645
     },
     {
-      "name": "Toynix",
-      "status": "failed",
+      "name": "Makeup Gallery",
+      "status": "source_paused",
       "review_required": false,
       "issue_codes": [
-        "HTTP_403",
-        "WEBSITE_ORDER_UNVERIFIED"
+        "HTTP_429",
+        "RATE_LIMIT"
       ],
       "software_revision": "6ddad0479431918c",
       "http_statuses": {
-        "403": 2
+        "200": 2645,
+        "429": 5
       },
-      "network_seconds": 0.3,
-      "max_response_seconds": 0.2,
-      "cache_events": 0
+      "network_seconds": 5870.1,
+      "max_response_seconds": 2.6,
+      "cache_events": 8292
     }
   ]
 }
