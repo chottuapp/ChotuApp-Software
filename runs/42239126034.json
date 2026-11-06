@@ -3237,7 +3237,7 @@
     "Hush Puppies": "source:83340399f972e48d38889157f8eede7efd7ef4bcd4e573898725e2b070195bf5:Hush Puppies:7634cfd7b40ffbdb5989206b801df918c8bf8d9d1b6ced5ac9c7198d1a029fb6",
     "Mala": "source:5d73d4482f17da154ca5f2deb263f900498ecbda196f64e004e8d0f00552ea6f:Mala:0fb5c375840bc90e607ee1b96c73babf64196ad61b101da4db282515659baaa6",
     "Sana Safinaz": "source:d3a5c80bcb185cab8c51e4a3666a1f7f1122bba0ebb1a344411461f7469ada39:Sana Safinaz:0fb5c375840bc90e607ee1b96c73babf64196ad61b101da4db282515659baaa6",
-    "Beyond East": "source:520ba9a73e65eb23defb5ecdf26c85b48bf0d279f16faf458f8fc1d7f474dee0:Beyond East:0fb5c375840bc90e607ee1b96c73babf64196ad61b101da4db282515659baaa6",
+    "Beyond East": "source:520ba9a73e65eb23defb5ecdf26c85b48bf0d279f16faf458f8fc1d7f474dee0:Beyond East:7634cfd7b40ffbdb5989206b801df918c8bf8d9d1b6ced5ac9c7198d1a029fb6",
     "Alkaram Studio": "source:0b7e39dc324d0005778bdad0c0cd3a27354c37314e2bacfdf9501cbd92b682b5:Alkaram Studio:0fb5c375840bc90e607ee1b96c73babf64196ad61b101da4db282515659baaa6",
     "Generation": "source:f1eeb55cac6bba9c8e16c1151ab78f74769f8b4f0470800a42965ae2927421fb:Generation:0fb5c375840bc90e607ee1b96c73babf64196ad61b101da4db282515659baaa6",
     "Breakout": "source:baac9e2b7e77d1ab81eebe18a3d7ae8b7e2b4ff97d36c8b095968b99e3d8071e:Breakout:7634cfd7b40ffbdb5989206b801df918c8bf8d9d1b6ced5ac9c7198d1a029fb6",
@@ -10349,17 +10349,54 @@
       "store": "Beyond East",
       "shop_code": "SE10052",
       "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 480,
-      "findings_count": 0,
-      "findings": [],
+      "status": "hold",
+      "products_checked": 479,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CP3453edeebbb7",
+          "name": "1 Piece Embroidered Lawn Shirt",
+          "source_url": "https://www.beyondeast.com/products/wtse361039",
+          "issues": [
+            "Description lost source numeric facts"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "9ff3706b9f70fe2e844870013049e51e0dcd600acff98159f848339f920d8ea7",
-      "checked_utc": "2026-11-06T10:56:46.327404+00:00",
+      "workbook_sha256": "dc0898296b9d133cc82e143df8ccbccc1fff6fa568ad15c86773f0f024cca7e7",
+      "checked_utc": "2026-11-06T15:37:09.824622+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "incomplete_products_excluded": [
+        {
+          "product_id": "CP3c64c79e8905",
+          "source_url": "https://www.beyondeast.com/products/wau251156",
+          "name": "1 Piece solid chiffon dupatta",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        }
+      ],
+      "incomplete_products_count": 1,
+      "incomplete_products_truncated": false,
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/beyond-east-incomplete-products/f0bb2437062af37e/manifest.json",
+      "original_source_sha256": "520ba9a73e65eb23defb5ecdf26c85b48bf0d279f16faf458f8fc1d7f474dee0",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-06T15:37:11.790944+00:00",
+        "updated_utc": "2026-11-06T15:37:11.790944+00:00",
+        "next_source_check_due_utc": "2026-11-06T15:52:11.790944+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Description lost source numeric facts"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
@@ -10385,8 +10422,9 @@
       "source_run": "41811616330",
       "source_artifact": 13322274655,
       "source_sha256": "520ba9a73e65eb23defb5ecdf26c85b48bf0d279f16faf458f8fc1d7f474dee0",
+      "description_style_version": "customer-copy-v3",
       "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "verified"
+      "held_input": "inputs/fresh804-20261026-5d42fe35/beyond-east/520ba9a73e65eb23/manifest.json"
     },
     "Alkaram Studio": {
       "name": "804 Audit",
@@ -12767,7 +12805,7 @@
     "41811343293": "41811343293:13322082163:7634cfd7b40ffbdb5989206b801df918c8bf8d9d1b6ced5ac9c7198d1a029fb6",
     "41811346821": "41811346821:13318588272:7634cfd7b40ffbdb5989206b801df918c8bf8d9d1b6ced5ac9c7198d1a029fb6",
     "41811495654": "41811495654:13337908792:7634cfd7b40ffbdb5989206b801df918c8bf8d9d1b6ced5ac9c7198d1a029fb6",
-    "41811611300": "41811611300:13314673364:0fb5c375840bc90e607ee1b96c73babf64196ad61b101da4db282515659baaa6",
+    "41811611300": "41811611300:13314673364:7634cfd7b40ffbdb5989206b801df918c8bf8d9d1b6ced5ac9c7198d1a029fb6",
     "41811616330": "41811616330:13322274655:0fb5c375840bc90e607ee1b96c73babf64196ad61b101da4db282515659baaa6",
     "41811637515": "41811637515:13330942688:0fb5c375840bc90e607ee1b96c73babf64196ad61b101da4db282515659baaa6",
     "41811683153": "41811683153:13316465863:0fb5c375840bc90e607ee1b96c73babf64196ad61b101da4db282515659baaa6",
@@ -12898,8 +12936,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/76017d27ec2457a8/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/374402981bf933f4/manifest.json"
   },
-  "audit804_last_store": "Habitt",
-  "audit804_progress_utc": "2026-11-06T15:36:50.145980+00:00",
+  "audit804_last_store": "Beyond East",
+  "audit804_progress_utc": "2026-11-06T15:37:11.791396+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
