@@ -1,0 +1,28 @@
+name: Fetch New Stores With Pending Shop Codes
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: write
+concurrency:
+  group: chotuapp-new-store-fetch
+  cancel-in-progress: false
+jobs:
+  dispatch:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - name: Verify additive and blank-code safeguards
+        env:
+          PYTHONPATH: tests:cloud:.
+        run: python -m unittest test_new_store_fetch -q
+      - name: Check exact public sources and dispatch supported stores
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PYTHONPATH: cloud:.
+        run: python cloud/new_store_fetch.py
