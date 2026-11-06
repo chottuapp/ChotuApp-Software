@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-06T18:53:10.652989+00:00",
+  "run_id": "42255561575",
+  "attempt": "1",
+  "source_commit": "432648a856255b10427f8051052dfb3a3b5e2679",
+  "status": "complete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 7466.7,
+  "stores": [
+    {
+      "name": "So Komal",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "efe992dbd92ac979",
+      "products": 758,
+      "variants": 1232,
+      "http_statuses": {
+        "404": 15,
+        "200": 2921,
+        "429": 3
+      },
+      "network_seconds": 6982.8,
+      "max_response_seconds": 5.3,
+      "cache_events": 27952
+    }
+  ]
+}
