@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-06T10:31:13.826907+00:00",
+  "run_id": "42194725766",
+  "attempt": "1",
+  "source_commit": "ce60d0c297618967811c85da225407c3317f054f",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 4008.8,
+  "stores": [
+    {
+      "name": "VNS Collection",
+      "status": "failed",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "6ddad0479431918c",
+      "http_statuses": {
+        "200": 860,
+        "429": 1
+      },
+      "network_seconds": 1905.7,
+      "max_response_seconds": 2.6,
+      "cache_events": 1747
+    }
+  ]
+}
