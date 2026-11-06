@@ -2,6 +2,10 @@ import copy,json,unittest
 from pathlib import Path
 from new_store_fetch import validate,plan,ROOT
 class NewStoreFetchTests(unittest.TestCase):
+ def test_observed_throttled_sources_resume_with_bounded_pacing(self):
+  from fast_fetch_support import source_policy
+  for host in ('toyzone.pk','www.toyzone.pk','makeupgallery.pk','www.makeupgallery.pk'):
+   self.assertEqual(source_policy(host),(2.5,1))
  def setUp(self):
   self.request=json.loads((ROOT/'cloud/new-store-fetch-request.json').read_text());self.stores=validate(self.request)
   self.observations=[dict(name=s['name'],status='supported',provider='shopify') for s in self.stores]

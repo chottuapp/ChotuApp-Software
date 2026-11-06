@@ -1,7 +1,6 @@
 {
-  "run_ids": [
-    "41148843169"
-  ],
-  "reason": "Read latest Paklap failure after the earlier SKU lookup fix; preserve intact checkpoint and do not repeat obsolete diagnosis",
-  "requested": "2026-10-31-latest-paklap-failure"
+  "run_ids": ["42206069736", "42206167335", "42194719605"],
+  "include_summary": true,
+  "reason": "Diagnose VNS and Alfateh software failures and Toynix source denial before saved-checkpoint recovery; preserve all completed stores",
+  "requested": "2026-11-06-sixteen-owner-stores"
 }
