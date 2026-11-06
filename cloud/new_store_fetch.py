@@ -29,49 +29,14 @@ def plan(request,stores,observations,runs):
  for run in runs:
   lane=root_lane(run,runs)
   if lane and lane.startswith(prefix):already.update(s['name'] for s in stores if key(s) in lane.split('-'))
- ready={o['name'] for o in observations if o.get('status')=='supported' and o.get('provider')=='shopify'}
+ ready={o['name'] for o in observations if o.get('status')=='supported' and o.get('provider') in ('shopify','alfateh_public')}
  groups=[]
  for i in range(0,len(stores),2):
   selected=[s for s in stores[i:i+2] if s['name'] in ready-already]
   if selected:groups.append(dict(runner_group=prefix+str(i//2+1)+'-'+'-'.join(key(s) for s in selected),stores=selected))
  return groups,already
 
-def public_next_product_state(html):
-    """Read JSON-only public Next records, including split stream chunks."""
-    from bs4 import BeautifulSoup
-    fields={'id','name','title','slug','price','basePrice','salePrice','description','images','imageUrls','image','category','categoryId','variants','sizes','colors','stock','stockQuantity','isActive','active','currency','sku','isAvailable','inStock','quantity','sale','discount','sellingPrice','retailPrice','regularPrice','discountPrice','minPrice','maxPrice','stockOnHand','stockReserved','stockAvailable','inventoryQuantity','productId','colorName','sizeName','sizeLabel','colorHex','priceOverride','department','size','color','status','isPublished','trackStock','stockQty','baseRetailPrice','url','imageUrl','position','alt','onHand','reserved','available','isPrimary'}
-    result={'hydration_products':[],'object_key_shapes':[],'product_contexts':[],'public_variant_data':[],'public_variant_shapes':[]}
-    def clean(value):
-        if isinstance(value,dict):return {k:clean(v) for k,v in value.items() if k in fields}
-        if isinstance(value,list):return [clean(v) for v in value[:500]]
-        return value
-    def walk(value):
-        if isinstance(value,dict):
-            if 'variants' in value or 'product' in value:
-                shape=sorted(value)
-                if shape not in result['object_key_shapes']:result['object_key_shapes'].append(shape)
-            if isinstance(value.get('variants'),list):
-                result['public_variant_data'].append(clean(value['variants']))
-                result['public_variant_shapes'].append([{k:sorted(v) if isinstance(v,dict) else type(v).__name__ for k,v in variant.items()} for variant in value['variants'][:3] if isinstance(variant,dict)])
-            if isinstance(value.get('product'),dict):
-                result['product_contexts'].append({k:clean(v) for k,v in value.items() if k in ('product','variants','images','sizes','colors')})
-            if value.get('id') and (value.get('name') or value.get('title')):
-                candidate=clean(value)
-                if len(json.dumps(candidate))<150000 and candidate not in result['hydration_products']:result['hydration_products'].append(candidate)
-            for v in value.values():walk(v)
-        elif isinstance(value,list):
-            for v in value:walk(v)
-    chunks=[]
-    for node in BeautifulSoup(html,'html.parser').find_all('script'):
-        text=node.get_text()
-        for match in re.finditer(r'self\.__next_f\.push\(',text):
-            try:array,_=json.JSONDecoder().raw_decode(text[match.end():])
-            except ValueError:continue
-            if isinstance(array,list) and len(array)>=2 and isinstance(array[1],str):chunks.append(array[1])
-    for line in ''.join(chunks).splitlines():
-        try:walk(json.loads(line.partition(':')[2]))
-        except ValueError:pass
-    return result
+from next_public_support import public_next_product_state
 
 def probe(site):
  result=source_probe(site)
@@ -110,6 +75,10 @@ def probe(site):
     try:result['public_product_page']['structured'].append(json.loads(node.get_text()))
     except ValueError:pass
    result['public_product_page'].update(public_next_product_state(detail.text))
+   if urlsplit(base).hostname.removeprefix('www.')=='alfatehgarments.com':
+    from alfateh_source_support import normalize
+    product=normalize(detail.text,product_link)
+    result.update(status='supported',provider='alfateh_public',verified_sample={'id':product['id'],'variants':len(product['variants']),'available_variants':sum(v['available'] for v in product['variants'])})
    scripts=[urljoin(product_link,t['src']) for t in detail_soup.select('script[src]') if '/app/' in t['src'] and ('page-' in t['src'] or 'layout-' in t['src'])]
    result['public_client_route_clues']=[]
    for script in scripts[:3]:

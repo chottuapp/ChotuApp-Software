@@ -21,7 +21,7 @@ def source_policy(host):
     host=host.lower().removeprefix('www.')
     # Stylo has sustained healthy responses; bounded overlap and gradual recovery
     # replace the permanent single-worker cap. Recent throttle holds still win.
-    if host=='libertybooks.com':return (2.5,1)
+    if host in ('libertybooks.com','vnscollection.com'):return (2.5,1)
     if host=='stylo.pk':return (1.5,2)
     if host in RECENTLY_LIMITED_SOURCES:return (2.5,1)
     if host in ('outfitters.com.pk','zellbury.com','laam.com','pk.khaadi.com','khaadi.com','sapphireonline.pk','pk.sapphireonline.pk'):return (1.5,2)
