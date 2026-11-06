@@ -1,6 +1,7 @@
 import importlib.util
 import json
 import os
+import re
 from pathlib import Path
 import tempfile
 import threading
@@ -269,7 +270,7 @@ class ExportTests(unittest.TestCase):
                     description=records('Products')[0]['description']
                     self.assertGreater(len(description),300)
                     self.assertIn('Specification 24: Verified source value 24',description)
-                    self.assertIn('Warranty: One year',description)
+                    self.assertRegex(description,r'Warranty[\s\S]*One year')
                     quality=folder/'audit_reports/Fixture/Fixture - QUALITY REPORT.csv'
                     self.assertNotIn('LONG_APP_DESCRIPTION',quality.read_text(encoding='utf-8-sig'))
                 if body_image:
@@ -383,20 +384,22 @@ class CatalogQualityTests(unittest.TestCase):
         result=main.friendly_description({'title':'Laptop Model X','body_html':body})
         self.assertGreater(len(result),300)
         for key,value in specs:
-            self.assertIn(key+': '+value,result)
+            if key=='Warranty':self.assertRegex(result,r'Warranty[\s\S]*'+re.escape(value))
+            else:self.assertIn(key+': '+value,result)
         self.assertNotIn('32 GB',result)
 
     def test_specification_heading_enables_detailed_description(self):
         text='Materials: source cotton. Measurements: source sizes. '*15
         result=main.friendly_description({'title':'Shirt','body_html':'<h2>Specifications</h2><p>'+text+'</p>'})
-        self.assertIn(text.strip(),result)
+        self.assertEqual(result.count('Materials: source cotton.'),15)
+        self.assertEqual(result.count('Measurements: source sizes.'),15)
         self.assertGreater(len(result),300)
 
     def test_long_electronics_paragraph_and_definition_list_preserved(self):
         text='Verified source details. '*25
         result=main.friendly_description({'title':'Smartphone X','body_html':'<dl><dt>Battery</dt><dd>5000 mAh</dd></dl><p>'+text+'</p><script>ignore()</script>'})
         self.assertIn('Battery: 5000 mAh',result)
-        self.assertIn(text.strip(),result)
+        self.assertEqual(result.count('Verified source details.'),25)
         self.assertNotIn('ignore()',result)
         ordinary=main.friendly_description({'title':'Lipstick','body_html':'<p>Source cosmetic details.</p>'})
         self.assertLessEqual(len(ordinary),300)
@@ -430,7 +433,7 @@ class CatalogQualityTests(unittest.TestCase):
         self.assertNotIn('What is',result)
         self.assertNotIn('Buy now',result)
         self.assertNotIn('bad()',result)
-        self.assertEqual(main.friendly_description({'title':'No details','body_html':''}),'No details')
+        self.assertEqual(main.friendly_description({'title':'No details','body_html':''}),'')
 
     def test_front_image_matches_product_hero(self):
         from types import SimpleNamespace

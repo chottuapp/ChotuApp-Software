@@ -64,7 +64,8 @@ def complete_description(product,txt,detailed_description,debug):
     if not result.strip():result=title
     if len(result)>32767:
         debug('DESCRIPTION LIMIT: Excel cell maximum reached for '+title+'; review the source for remaining detail.')
-        result=result[:32767]
+        from product_description_support import DescriptionCapacityError
+        raise DescriptionCapacityError('Description exceeds Excel cell capacity; source facts must not be truncated')
     return result
 
 

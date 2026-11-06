@@ -126,6 +126,8 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  if cat in {'quilt covers','duvet covers'} and has(r'\b(?:quilt|duvet)\s+cover\b',title):return []
  if cat=='earrings' and has(r'^\s*Earrings\b',str(description)):return []
  if cat=='necklaces' and has(r'^\s*Necklace\b',str(description)):return []
+ if cat in ('hair colours','hair colors','hair colours & dyes') and has(r'\bno[ -]ammonia\b.{0,100}\bcreme\b',body) and has(r'\bcolou?r lasts\b.{0,60}\bshampoos\b',body) and not has(r'\b(?:mask|condi?tioner|developer|remover)\b',title):return []
+ if cat=='jewellery sets' and has(r'\b(?:mala|necklace|choker)\b.{0,80}\bset\b.{0,50}\bwith\s+(?:a\s+pair\s+of\s+)?(?:studs|earrings)\b',body[:200]) and not has(r'\b(?:not included|excluded|not supplied|without)\b',body[:200]):return []
  if cat=='jewellery sets' and has(r'^\s*Rings\b',str(description)) and has(r'\bearrings\b',body[:300]):return []
  if cat=='hair claws' and has(r'\bcatcher\b',title) and has(r'\bclaw\s+clip\b',body):return []
  if cat=='espadrilles' and has(r'\bespadrille\b',title):return []

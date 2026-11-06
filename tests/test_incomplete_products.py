@@ -5,6 +5,15 @@ from incomplete_products import exclude
 from locked_store_rules import incomplete_product_reasons
 
 class IncompleteProductsTests(unittest.TestCase):
+ def test_durable_receipt_keeps_all_products_and_literal_cells(self):
+  from incomplete_products import save_receipt
+  with tempfile.TemporaryDirectory() as tmp:
+   entries=[dict(product_id=str(i),name='=1+1',source_url='https://shop.test/'+str(i),issues=['Missing description']) for i in range(120)]
+   def save(path,store,campaign,run):
+    book=load_workbook(path);sheet=book.active
+    self.assertEqual(sheet.max_row,121);self.assertEqual(sheet['B2'].value,'=1+1');self.assertEqual(sheet['B2'].data_type,'s');self.assertEqual(sheet['E121'].value,'source-sha');book.close()
+    return 'durable-manifest'
+   self.assertEqual(save_receipt(entries,'Store','campaign','run','source-sha',tmp,save),'durable-manifest')
  def workbook(self,path):
   b=Workbook();p=b.active;p.title='Products'
   p.append(['product_id','name','source_url','description','scraped_image_url (cover, auto)','option_groups','base_price (PKR)'])
@@ -53,3 +62,10 @@ class IncompleteProductsTests(unittest.TestCase):
    self.assertEqual(target.parent,root/'audit_reports'/'Store')
    with target.open(encoding='utf-8-sig') as stream:row=next(csv.DictReader(stream))
    self.assertEqual(json.loads(row['original_source_product_json']),product)
+
+ def test_a_second_capacity_finding_cannot_hide_a_price_conflict(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   root=Path(tmp);source=root/'s.xlsx';self.workbook(source)
+   finding=dict(product_id='bad',name='Unknown bundle',source_url='https://shop.test/bad',issues=['Source price mismatch'])
+   report={'findings':[finding,dict(finding,issues=['Description exceeds Excel cell capacity'])]}
+   self.assertEqual(exclude(source,source,'House of Tools',report,root/'filtered')[2],[])

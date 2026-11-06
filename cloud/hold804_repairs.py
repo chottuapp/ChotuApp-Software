@@ -307,7 +307,8 @@ def visual_review(row,store):
   if not item.get('image_url','').startswith('https://') or not re.fullmatch('[a-f0-9]{64}',item.get('image_sha256','')):continue
   description=str(row.get('description') or '')
   digest=hashlib.sha256(description.encode()).hexdigest()
-  if digest==item['input_description_sha256'] or digest==item.get('cleaned_description_sha256') or description.startswith(item['overview']):return item
+  from product_description_support import overview_matches
+  if digest==item['input_description_sha256'] or digest==item.get('cleaned_description_sha256') or overview_matches(description,item['overview']):return item
  return None
 
 def maali_kind(row,fact=None):

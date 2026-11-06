@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       held_stores:
-        description: 'Optional comma-separated held stores; retry only their saved inputs'
+        description: 'Optional comma-separated stores; re-audit only their saved held or current verified inputs'
         required: false
         type: string
   schedule:
@@ -13,7 +13,7 @@ on:
     types: [completed]
   push:
     branches: [main]
-    paths: [cloud/incomplete_products.py, locked_store_rules.py, cloud/catalogue_object_rules.py, cloud/reviewed_source_types.py, electronics_description_support.py, cloud/description_readability.py, xcessories_purpose_support.py, catalog-inputs/khaadi-mobile/latest.json, cloud/mobile_khaadi_ingest.py, cloud/original_store_ingest.py, cloud/legacy_original_schema.py, cloud/audit804.py, cloud/audit804_automation.py, cloud/hold804_repairs.py, cloud/audit804-reviewed-source.json, cloud/audit804-image-reviews.json, cloud/audit804-removed-source.json, cloud/audit804_semantics.py, cloud/reviewed804_repairs.py, cloud/audit804_delivery.py, cloud/audit804_queue.py, cloud/confirmed-shop-codes.json, cloud/rule804_pipeline.py, cloud/drive_sync.py, cloud/source_research.py, cloud/drive-sync-release.json, .github/workflows/cloud-drive-sync.yml]
+    paths: [product_description_support.py, cloud/incomplete_products.py, locked_store_rules.py, cloud/catalogue_object_rules.py, cloud/reviewed_source_types.py, electronics_description_support.py, cloud/description_readability.py, xcessories_purpose_support.py, catalog-inputs/khaadi-mobile/latest.json, cloud/mobile_khaadi_ingest.py, cloud/original_store_ingest.py, cloud/legacy_original_schema.py, cloud/audit804.py, cloud/audit804_automation.py, cloud/hold804_repairs.py, cloud/audit804-reviewed-source.json, cloud/audit804-image-reviews.json, cloud/audit804-removed-source.json, cloud/audit804_semantics.py, cloud/reviewed804_repairs.py, cloud/audit804_delivery.py, cloud/audit804_queue.py, cloud/confirmed-shop-codes.json, cloud/rule804_pipeline.py, cloud/drive_sync.py, cloud/source_research.py, cloud/drive-sync-release.json, .github/workflows/cloud-drive-sync.yml]
 permissions:
   contents: write
   actions: read
@@ -37,7 +37,7 @@ jobs:
       - name: Verify source repair safeguards before touching Drive
         env:
           PYTHONPATH: tests:cloud:.
-        run: python -m unittest test_incomplete_products test_delivery_generation_retry test_catalogue_recovery_regressions test_audit804_queue test_source_stock_exclusion test_source_numeric_comparisons test_held_source_repairs test_reviewed_photo_gate test_description_readability test_electronics_descriptions test_fresh_hold_recovery test_delivery_download_recovery test_drive_delivery_retry test_merchant_tag_recovery test_source_named_service test_owner_photo_pause test_new_catalogue_objects test_new_store_garments -q
+        run: python -m unittest test_product_descriptions test_incomplete_products test_delivery_generation_retry test_catalogue_recovery_regressions test_audit804_queue test_source_stock_exclusion test_source_numeric_comparisons test_held_source_repairs test_reviewed_photo_gate test_description_readability test_electronics_descriptions test_fresh_hold_recovery test_delivery_download_recovery test_drive_delivery_retry test_merchant_tag_recovery test_source_named_service test_owner_photo_pause test_new_catalogue_objects test_new_store_garments -q
       - run: sudo apt-get update -qq && sudo apt-get install -y rclone
       - name: Rule 804 checked files only, then checksum verification
         env:

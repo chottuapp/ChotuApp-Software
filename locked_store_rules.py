@@ -74,7 +74,8 @@ def incomplete_product_reasons(product):
  body=unescape(re.sub(r'<[^>]+>',' ',body));body=re.sub(r'\s+',' ',body).strip()
  reasons=[]
  if not title:reasons.append('Missing product name')
- if len(re.findall(r'\b\w+\b',body))<5 or body.rstrip('.').casefold()==title.rstrip('.').casefold():reasons.append('Description lacks enough product-specific content for review')
+ from product_description_support import completeness_issues
+ if completeness_issues(body,title):reasons.append('Description lacks enough product-specific content for review')
  if re.search(r'(?i)\b(?:lorem ipsum|description coming soon|no description available)\b',body):reasons.append('Placeholder description')
  return reasons
 

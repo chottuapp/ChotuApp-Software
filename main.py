@@ -867,7 +867,8 @@ def detailed_description(product, soup):
 def friendly_description(p):
     # CHOTUAPP_COMPLETE_DESCRIPTIONS_V1: no short cosmetic/category cutoff.
     from complete_description_support import complete_description
-    return complete_description(p, txt, detailed_description, _chotu_debug)
+    from product_description_support import render_description
+    return render_description(complete_description(p, txt, detailed_description, _chotu_debug),name=txt(p.get('title')),category=txt(p.get('product_type')))
 
 
 # CHOTUAPP_TOP20_V1: best-selling ordering is used only when the storefront
@@ -1176,7 +1177,12 @@ def run_site(base, name, template, log):
         category_data=dict(p.get('_website_category_evidence') or {},source_url=p.get('_source_url') or f"{base}/products/{p['handle']}")
         strict_category(category_data,getattr(_chotu_tls,'website_category_evidence',{}))
         category=category_data['category']
-        desc=friendly_description(p)
+        try:desc=friendly_description(p)
+        except __import__('product_description_support').DescriptionCapacityError as exc:
+            from locked_store_rules import record_incomplete_product
+            record_incomplete_product(p,base,name,__file__,[str(exc)])
+            log('OWNER INCOMPLETE SKIP: '+txt(p.get('handle'))+'; source description exceeds Excel capacity')
+            continue
         url=p.get('_source_url') or f"{base}/products/{p['handle']}"
         dimensions=[]
         for idx,dim in enumerate((p.get('options') or [])[:3],1):

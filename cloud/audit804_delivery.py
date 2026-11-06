@@ -147,6 +147,13 @@ def retry_prior_verified_delivery(report,uploaded,generation):
   and uploaded.get('audit804',{}).get('status')=='pass')
  return bool(modern or legacy)
 
+def exact_verified_source(report,uploaded):
+ """A requested restyle may only reuse the source of the current verified copy."""
+ return bool(report.get('status')=='pass' and report.get('held_input')
+  and report.get('source_sha256') and report['source_sha256']==uploaded.get('source_sha256')
+  and report.get('source_run')==uploaded.get('source_run')
+  and uploaded.get('audit804',{}).get('status')=='pass')
+
 def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stores=None):
  from importlib.util import spec_from_file_location,module_from_spec
  spec=spec_from_file_location('audit_groups',root/'catalog-tools/start_fresh26_rule804_drive_windows.py');helper=module_from_spec(spec);spec.loader.exec_module(helper)
@@ -178,7 +185,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
   state['audit804_auto_evidence']={'status':'checked','facts':evidence_count,'digest':evidence_revision}
  except Exception:
   state['audit804_auto_evidence']={'status':'unavailable','action':'Retain saved source facts; no unverified audit approval'}
- revision=hashlib.sha256(b''.join((root/name).read_bytes() for name in ('cloud/catalogue_object_rules.py','cloud/audit804-stock-exclusions.json','cloud/reviewed_source_types.py','electronics_description_support.py','xcessories_purpose_support.py','cloud/review_evidence_cache.py','cloud/image_provenance_repair.py','locked_store_rules.py','cloud/description_readability.py','cloud/owner_product_exclusions.py','cloud/audit804-removed-source.json','cloud/audit804.py','cloud/audit804_semantics.py','cloud/reviewed804_repairs.py','cloud/audit804_delivery.py','cloud/incomplete_products.py','cloud/rule804_pipeline.py','cloud/hold804_repairs.py','cloud/audit804-reviewed-source.json','cloud/audit804-image-reviews.json','cloud/audit804_automation.py','cloud/price_stock_gate.py','cloud/legacy_original_schema.py','cloud/confirmed-shop-codes.json','subcategory_inference_support.py','catalog-tools/complete_rule804_batch.py'))).hexdigest()
+ revision=hashlib.sha256(b''.join((root/name).read_bytes() for name in ('product_description_support.py','cloud/catalogue_object_rules.py','cloud/audit804-stock-exclusions.json','cloud/reviewed_source_types.py','electronics_description_support.py','xcessories_purpose_support.py','cloud/review_evidence_cache.py','cloud/image_provenance_repair.py','locked_store_rules.py','cloud/description_readability.py','cloud/owner_product_exclusions.py','cloud/audit804-removed-source.json','cloud/audit804.py','cloud/audit804_semantics.py','cloud/reviewed804_repairs.py','cloud/audit804_delivery.py','cloud/incomplete_products.py','cloud/rule804_pipeline.py','cloud/hold804_repairs.py','cloud/audit804-reviewed-source.json','cloud/audit804-image-reviews.json','cloud/audit804_automation.py','cloud/price_stock_gate.py','cloud/legacy_original_schema.py','cloud/confirmed-shop-codes.json','subcategory_inference_support.py','catalog-tools/complete_rule804_batch.py'))).hexdigest()
  revision=hashlib.sha256((revision+evidence_revision).encode()).hexdigest()
  state['audit804_campaign']=campaign;state.setdefault('audit804_results',{});state.setdefault('audit804_processed',{});identity=None
  def handle(source,store,source_run,artifact_id,cache_key):
@@ -204,15 +211,25 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
    if store=='Farda Foods':
     from farda_source_support import SHOP
     hosts.add(urlsplit(SHOP).hostname)
-   report=audit(output,store,codes,hosts,source=normalized,strict_commercial=True)
+   report=audit(output,store,codes,hosts,source=normalized,strict_commercial=True,findings_limit=None)
+   capacity_ids={str(w['product_id']) for w in processing.get('warnings',[]) if w.get('repair_kind')=='description_capacity'}
+   if capacity_ids:
+    from audit804 import rows as description_rows
+    for row in description_rows(normalized):
+     if str(row.get('product_id')) in capacity_ids:
+      report['findings'].append({'product_id':str(row['product_id']),'name':row.get('name') or '', 'source_url':row.get('source_url'),'issues':['Description exceeds Excel cell capacity']})
+    report['status']='hold';report['findings_count']=len(report['findings'])
    from incomplete_products import exclude as exclude_incomplete
    audit_source,filtered_output,incomplete=exclude_incomplete(normalized,output,store,report,stage/'incomplete')
    if incomplete:
     if not marker:marker=save_held(source,store,campaign,str(source_run))
     output=filtered_output
     report=audit(output,store,codes,hosts,source=audit_source,strict_commercial=True)
-    report['incomplete_products_excluded']=incomplete
+    from incomplete_products import save_receipt
+    report['incomplete_products_excluded']=incomplete[:100]
     report['incomplete_products_count']=len(incomplete)
+    report['incomplete_products_truncated']=len(incomplete)>100
+    report['incomplete_products_receipt']=save_receipt(incomplete,store,campaign,str(source_run),source_sha,stage,save_held)
     report['original_source_sha256']=source_sha
 
    repairs=[r for r in processing.get('warnings',[]) if r.get('repair_kind')=='description' or r.get('issue','').startswith(('Copied','Removed'))]
@@ -221,7 +238,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
    report['owner_authorized_exclusions']=owner_exclusions
    report['image_metadata_repairs']=image_metadata_repairs
    report.update(description_repairs_count=len(repairs),description_repairs_examples=repairs[:10])
-   report.update(campaign_id=campaign,source_run=str(source_run),source_artifact=artifact_id,source_sha256=source_sha)
+   report.update(campaign_id=campaign,source_run=str(source_run),source_artifact=artifact_id,source_sha256=source_sha,description_style_version='customer-copy-v2')
    if generation and str(source_run) in refresh_runs:report['refresh_generation']=generation
    if report['status']!='pass':
     if not marker:marker=save_held(source,store,campaign,str(source_run))
@@ -266,10 +283,11 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
   for store,report in list(state['audit804_results'].items()):
    if held_stores is not None and store not in held_stores:continue
    if store in paused:continue
-   if generation and store in refresh_stores and str(report.get('source_run')) not in refresh_runs and not retry_prior_verified_delivery(report,state.get('uploaded',{}).get(store,{}),generation):continue
+   requested_restyle=held_stores is not None and exact_verified_source(report,state.get('uploaded',{}).get(store,{}))
+   if generation and store in refresh_stores and str(report.get('source_run')) not in refresh_runs and not requested_restyle and not retry_prior_verified_delivery(report,state.get('uploaded',{}).get(store,{}),generation):continue
    key='source:'+report.get('source_sha256','')+':'+store+':'+revision
    code_changed=bool(codes.get(store) and state.get('uploaded',{}).get(store,{}).get('shop_code')!=codes[store])
-   if report.get('status')!='hold' and not (report.get('status')=='pass' and code_changed):continue
+   if report.get('status')!='hold' and not requested_restyle and not (report.get('status')=='pass' and code_changed):continue
    if not report.get('error') and state['audit804_processed'].get(store,'').endswith(revision):continue
    marker=report.get('held_input')
    if not marker and code_changed and report.get('source_sha256'):

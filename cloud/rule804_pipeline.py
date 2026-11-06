@@ -42,7 +42,7 @@ def process(source,out,store,codes,*,mobile_khaadi=False,approved_original=False
             description,hold_reason=hold_description(dict(row,description=description),store)
             if hold_reason:description_repair=hold_reason
             if description_repair:warnings.append({'product_id':pid,'issue':description_repair,'repair_kind':'description'})
-            if len(description)>=32767:raise ValueError('Description reaches Excel limit; manual source review needed')
+            capacity_issue=False
             changes={};code=codes.get(store)
             if code and row.get('shop_code')!=code:changes['shop_code']=code
             if not code and row.get('shop_code'):raise ValueError('Unconfirmed shop code; held for review')
@@ -65,11 +65,22 @@ def process(source,out,store,codes,*,mobile_khaadi=False,approved_original=False
             from electronics_description_support import electronic,format_electronics
             electronics=electronic(store,label)
             if electronics and row.get('warranty_months (agar ho)') and not re.search(r'\bwarranty\b',description,re.I):description+='\nWarranty: '+str(row['warranty_months (agar ho)'])+' months.'
-            polished=format_description(format_electronics(tools.tidy_description(description)) if electronics else tools.tidy_description(description))
-            if re.findall(r'\d+(?:[.,]\d+)?',description)!=re.findall(r'\d+(?:[.,]\d+)?',polished):raise ValueError('Description numeric facts changed')
+            from product_description_support import retained_text
+            editorial_source=tools.tidy_description(retained_text(description))
+            polished=format_electronics(editorial_source) if electronics else editorial_source
+            from product_description_support import render_description,numeric_facts
+            from product_description_support import DescriptionCapacityError
+            try:polished=render_description(polished,name=str(row.get('name') or ''),category=label)
+            except DescriptionCapacityError:
+                polished=str(row.get('description') or '')
+                capacity_issue=True
+                warnings.append({'product_id':pid,'issue':'Description exceeds Excel cell capacity','repair_kind':'description_capacity'})
+            before_numbers=numeric_facts(description);after_numbers=numeric_facts(polished)
+            allowed_numbers=before_numbers|numeric_facts(row.get('name'))
+            if not capacity_issue and (not before_numbers<=after_numbers or not after_numbers<=allowed_numbers):raise ValueError('Description numeric facts changed for '+str(pid)+'; missing='+str(sorted(before_numbers-after_numbers))+'; added='+str(sorted(after_numbers-allowed_numbers)))
             overview=tools.product_overview(row,label)
             lead=str(row.get('name') or '')+'.'
-            if overview and polished.startswith(lead):polished=overview+polished[len(lead):]
+            # Product-specific source prose is rendered above; do not pad it with a category sentence.
             if not description.strip():warnings.append({'product_id':pid,'issue':'Missing description; source review required'})
             if polished!=str(row.get('description') or ''):changes['description']=polished
             for key,value in changes.items():patches[get_column_letter(indices[key])+str(number)]=value

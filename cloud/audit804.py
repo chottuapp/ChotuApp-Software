@@ -18,7 +18,9 @@ TYPES=[
  ('hand wash',r'\bhand\s+wash\b',r'\bhand\s+wash\b'),
  ('face wash',r'\b(?:face|facial)\s+wash\b',r'\b(?:face|facial)\s+(?:wash|cleanser)\b'),
  ('hair shampoo',r'\bshampoo\b',r'\bshampoo\b'),
- ('hair conditioner',r'\b(?:hair\s+)?conditioner\b',r'\bconditioner\b'),
+ ('hair mask',r'\bhair\s+mask\b',r'\bhair\s+masks?\b'),
+ ('hair colour',r'\bhair\s+(?:colou?r|dye)\b(?!\s+(?:protect|care|condition|shampoo|remov|brush|develop))',r'\bhair\s+(?:colou?rs?|dyes?)\b'),
+ ('hair conditioner',r'\b(?:hair\s+)?condi?tioner\b',r'\bconditioner\b'),
  ('hair oil',r'\bhair\s+oil\b',r'\bhair\s+oil\b'),
  ('fragrance',r'\b(?:perfume|eau\s+de\s+parfum|fragrance\s+mist)\b',r'\b(?:fragrance|perfume)\b'),
  ('sunscreen',r'\b(?:sunscreen|sunblock)\b',r'\b(?:sunscreen|sunblock|sun\s+protection)\b'),
@@ -137,7 +139,9 @@ def reviewed_photo_purpose(row,source):
   if not str(fact.get('image_url','')).startswith('https://') or not re.fullmatch('[a-f0-9]{64}',fact.get('image_sha256','')):continue
   if hashlib.sha256(str(source.get('description') or '').encode()).hexdigest()!=fact.get('input_description_sha256'):continue
   if not fact.get('reviewed_utc') or not fact.get('scope'):continue
-  if fact.get('overview') and str(row.get('description') or '').startswith(fact['overview']):return True
+  if fact.get('overview'):
+   from product_description_support import overview_matches
+   if overview_matches(row.get('description'),fact['overview']):return True
  return False
 
 def issues_for(row,source=None):
@@ -145,7 +149,8 @@ def issues_for(row,source=None):
  from description_readability import issues as readability_issues
  issues.extend(readability_issues(row.get('description')))
  if not name:issues.append('Missing product name')
- if not description or len(re.findall(r'\b\w+\b',description))<5 or description.rstrip('.')==name.rstrip('.'):
+ from product_description_support import completeness_issues,retained_text
+ if completeness_issues(row.get('description'),row.get('name')):
   issues.append('Description lacks enough product-specific content for review')
  if re.search(r'\b(?:lorem ipsum|description coming soon|no description available)\b',description,re.I):issues.append('Placeholder description')
  if not category:issues.append('Category blank or unresolved')
@@ -170,7 +175,7 @@ def issues_for(row,source=None):
     if not re.fullmatch('[a-f0-9]{64}',fact.get('image_sha256','')) or not fact.get('replacement_reason') or not fact.get('image_url','').startswith('https://'):continue
     if not str(row.get('description') or '').startswith(fact['overview']):continue
     source_content=fact['overview']
- if source and source_content.strip() not in ('0','None','') and not tokens(source_content)<=tokens(description):issues.append('Description lost source numeric facts')
+ if source and source_content.strip() not in ('0','None','') and not tokens(retained_text(source_content))<=tokens(retained_text(description)):issues.append('Description lost source numeric facts')
  body=CARE.split(description,1)[0][:1600]
  category_review=category
  for plural,singular in {'glosses':'gloss','washes':'wash','shampoos':'shampoo','conditioners':'conditioner','mascaras':'mascara','foundations':'foundation','serums':'serum','toners':'toner','lotions':'lotion','concealers':'concealer','eyeliners':'eyeliner','eyeshadows':'eyeshadow','lipsticks':'lipstick','perfumes':'perfume','fragrances':'fragrance','sunscreens':'sunscreen'}.items():category_review=re.sub(r'\b'+plural+r'\b',singular,category_review,flags=re.I)
@@ -228,7 +233,7 @@ def rows(path):
    if any(value is not None for value in values):yield dict(zip(headers,values))
  finally:book.close()
 
-def run(path,store,codes,hosts,*,source=None,strict_commercial=False):
+def run(path,store,codes,hosts,*,source=None,strict_commercial=False,findings_limit=100):
  path=Path(path);findings=[];expected=codes.get(store);seen=set();output_order=[];count=0;finding_count=0
  from price_stock_gate import workbook_issues
  commercial=workbook_issues(path) if strict_commercial else {}
@@ -257,7 +262,7 @@ def run(path,store,codes,hosts,*,source=None,strict_commercial=False):
   if plain(row.get('Category')).casefold()==store.casefold():issues.append('Store name used as product Category')
   if issues:
    finding_count+=1
-   if len(findings)<100:findings.append({'product_id':pid,'name':str(row.get('name') or ''),'source_url':str(row.get('source_url') or ''),'issues':issues})
+   if findings_limit is None or len(findings)<findings_limit:findings.append({'product_id':pid,'name':str(row.get('name') or ''),'source_url':str(row.get('source_url') or ''),'issues':issues})
  for pid,issues in commercial.items():
   if pid not in seen:
    finding_count+=1;findings.append({'product_id':pid,'issues':issues})
