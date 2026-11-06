@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-06T14:05:20.314258+00:00",
+  "run_id": "42230117866",
+  "attempt": "1",
+  "source_commit": "d54ee1de9a16047058053bbd745453455db4713d",
+  "status": "complete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 250.9,
+  "stores": [
+    {
+      "name": "Bela",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "14512cca297fa97c",
+      "products": 59,
+      "variants": 73,
+      "http_statuses": {
+        "200": 68,
+        "429": 1
+      },
+      "network_seconds": 99.4,
+      "max_response_seconds": 2.6,
+      "cache_events": 209
+    }
+  ]
+}
