@@ -136,10 +136,16 @@ def restore_source(marker,out,store,campaign,state,progress=None):
 
 def retry_prior_verified_delivery(report,uploaded,generation):
  """Retry saved audit-pass delivery failures without replacing a newer fresh file."""
- return bool(report.get('status')=='hold' and report.get('audit_status')=='pass'
-  and report.get('delivery_status')=='blocked' and report.get('findings_count')==0
-  and report.get('held_input') and str(report.get('error','')).startswith('Drive ')
-  and uploaded.get('refresh_generation')!=generation)
+ if uploaded.get('refresh_generation')==generation:return False
+ if report.get('status')!='hold' or not report.get('held_input') or not str(report.get('error','')).startswith('Drive '):return False
+ modern=(report.get('audit_status')=='pass' and report.get('delivery_status')=='blocked' and report.get('findings_count')==0)
+ # Legacy delivery errors predate separate audit/delivery fields. Retry only
+ # the exact source of an existing passed receipt, through a full new audit.
+ legacy=(not report.get('audit_status') and not report.get('delivery_status')
+  and report.get('findings_count') in (None,0) and not report.get('findings')
+  and bool(report.get('source_sha256')) and report['source_sha256']==uploaded.get('source_sha256')
+  and uploaded.get('audit804',{}).get('status')=='pass')
+ return bool(modern or legacy)
 
 def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None):
  from importlib.util import spec_from_file_location,module_from_spec
