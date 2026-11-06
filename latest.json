@@ -1,28 +1,32 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-06T15:00:45.524408+00:00",
-  "run_id": "42230871439",
+  "generated_utc": "2026-11-06T16:46:32.752890+00:00",
+  "run_id": "42230108399",
   "attempt": "1",
-  "source_commit": "799105af26d2cf72b1d5c3394cb02bc7f594a928",
-  "status": "complete",
+  "source_commit": "d54ee1de9a16047058053bbd745453455db4713d",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 3249.5,
+  "elapsed_seconds": 9878.7,
   "stores": [
     {
-      "name": "Makeup Gallery",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "efe992dbd92ac979",
-      "products": 1671,
-      "variants": 2037,
+      "name": "So Komal",
+      "status": "source_paused",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "14512cca297fa97c",
       "http_statuses": {
-        "200": 913
+        "200": 3364,
+        "429": 5,
+        "404": 5
       },
-      "network_seconds": 2247.8,
-      "max_response_seconds": 2.8,
-      "cache_events": 9220
+      "network_seconds": 7588.3,
+      "max_response_seconds": 6.6,
+      "cache_events": 8270
     }
   ]
 }
