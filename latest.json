@@ -1,7 +1,7 @@
 {
-  "run_id": "42195253284",
+  "run_id": "42195696259",
   "request_id": "new20261106",
-  "checked_utc": "2026-11-06T09:28:53.907891+00:00",
+  "checked_utc": "2026-11-06T09:32:02.709239+00:00",
   "shop_codes": "Pending owner; blank in exports",
   "stores": [
     {
@@ -192,7 +192,14 @@
             ]
           }
         ],
-        "hydration_products": []
+        "hydration_products": [],
+        "object_key_shapes": [
+          [
+            "children",
+            "variants"
+          ]
+        ],
+        "product_contexts": []
       },
       "public_client_route_clues": [
         "o.useState)(0),[n,a]=(0,o.useState)(i.DE),[s,l]=(0,o.useState)(4);return(0,o.useEffect)(()=>{fetch(\"/api/promotions\").then(e=>e.json()).then(e=>{var t,n;Array.isArray(null===(t=e.settings)||void 0===t?void 0:t.announcementMessages)&&e.settings.announcementMessages.length>0&&",
@@ -302,14 +309,5 @@
     }
   ],
   "groups": [],
-  "status": "dispatch_complete",
-  "already_dispatched": [
-    "Afrozeh",
-    "Blackbeiger",
-    "Makeup Gallery",
-    "Rizen Watches",
-    "Toynix",
-    "Toyzone",
-    "VNS Collection"
-  ]
+  "status": "checking"
 }
