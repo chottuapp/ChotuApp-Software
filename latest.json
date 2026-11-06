@@ -1,7 +1,7 @@
 {
-  "run_id": "42206065818",
+  "run_id": "42229957517",
   "request_id": "new20261106",
-  "checked_utc": "2026-11-06T10:54:07.134373+00:00",
+  "checked_utc": "2026-11-06T14:00:20.585073+00:00",
   "shop_codes": "Pending owner; blank in exports",
   "stores": [
     {
@@ -379,28 +379,216 @@
       "homepage_platform_hint": "shopify",
       "provider": "shopify",
       "status": "supported"
-    }
-  ],
-  "groups": [
+    },
     {
-      "runner_group": "requested-new20261106-2-srccd9db21b3f3a",
-      "stores": [
+      "name": "Rung Rez",
+      "url": "https://rungrez.com.pk",
+      "observations": [
         {
-          "name": "Alfateh Garments",
-          "url": "https://alfatehgarments.com"
+          "path": "/robots.txt",
+          "status": 200,
+          "final_url": "https://rungrez.com.pk/robots.txt"
+        },
+        {
+          "path": "",
+          "status": 200,
+          "final_url": "https://rungrez.com.pk/"
+        },
+        {
+          "path": "/products.json?limit=1",
+          "status": 404,
+          "final_url": "https://rungrez.com.pk/products.json?limit=1"
+        },
+        {
+          "path": "/wp-json/wc/store/v1/products?per_page=1",
+          "status": 404,
+          "final_url": "https://rungrez.com.pk/wp-json/wc/store/v1/products?per_page=1"
         }
       ],
-      "status": "dispatched"
+      "homepage_platform_hint": "shopify",
+      "provider": "unknown",
+      "status": "adapter_required",
+      "public_homepage_html": "<main class=\"contents\"><div class=\"homepage--components lg:py-8xl lg:gap-10xl flex flex-col gap-xl\" keep-alive=\"true\"><h1 class=\"visually-hidden\">Rungrez</h1><div><a as=\"button\" class=\"block w-full lg:rounded-3xl\" href=\"/drops/rungrez-lan-du-printemps\"><div class=\"relative w-full homepage__image-slider-image lg:rounded-3xl w-full bg-gray-100\"><div class=\"relative w-full mx-auto min-h-[100px] lg:rounded-3xl bg-gray-200 flex items-center justify-center\"><video class=\"w-fit lg:rounded-3xl bg-gray-200 content-center\" loop=\"\" muted=\"\" playsinline=\"true\" poster=\"\" src=\"https://cdn.shopify.com/videos/c/o/v/42cb65540ee141619a0f1941ded5df49.mp4\"></video></div></div></a></div><div class=\"gap-3xl lg:gap-7xl p-3xl md:py-8xl flex flex-col items-center\"><div class=\"gap-sm flex flex-col items-center\"><h2 class=\"text-lg font-semibold lg:display-xs text-[color:var(--brand-heading,theme(colors.gray.900))]\" data-section-heading=\"\">New Arrivals</h2></div><div class=\"entity-x-products-carousel--body py-md gap-3xl flex items-center justify-center w-full\"><div class=\"gap-7xl flex flex-col w-full\" data-orientation=\"horizontal\" dir=\"ltr\"><div class=\"flex justify-center w-full\"><div aria-orientation=\"horizontal\" class=\"tabs-list px-3xl gap-3xl w-fit flex overflow-auto no-scrollbar\" data-orientation=\"horizontal\" dir=\"ltr\" role=\"tablist\" style=\"outline:none;\" tabindex=\"-1\"><button aria-controls=\"radix-vue-tabs-v-0-0-0-1-1-0-0-content-21294\" aria-selected=\"true\" class=\"flex px-xs pb-lg text-sm font-semibold justify-center hover:text-gray text-gray-500 border-b-2 border-b-gray-200 data-[state=active]:text-gray-800 data-[state=active]:border-b-gray-500 w-fit whitespace-nowrap\" data-active=\"true\" data-orientation=\"horizontal\" data-radix-vue-collection-item=\"\" data-state=\"active\" id=\"radix-vue-tabs-v-0-0-0-1-1-0-0-trigger-21294\" role=\"tab\" tabindex=\"-1\" type=\"button\">\u00c9lan du Printemps</button></div></div><div aria-labelledby=\"radix-vue-tabs-v-0-0-0-1-1-0-0-trigger-21294\" class=\"\" data-orientation=\"horizontal\" data-state=\"active\" id=\"radix-vue-tabs-v-0-0-0-1-1-0-0-content-21294\" role=\"tabpanel\" style=\"animation-duration:0s;\" tabindex=\"0\"><section aria-label=\"Gallery\" class=\"carousel is-ltr is-effect-slide w-full\" dir=\"ltr\" style=\"--vc-slide-gap:0px;--vc-carousel-height:auto;--vc-cloned-offset:0px;\" tabindex=\"0\"><div class=\"carousel__viewport\"><ol class=\"carousel__track\" style=\"transform:translateX(0px);\"><li class=\"carousel__slide carousel__slide--visible carousel__slide--active\" id=\"v-0-0-0-1-1-0-2\" style=\"width:25%;\"><div class=\"product_card relative flex flex-col h-[350px] w-full p-sm\"><div class=\"animate-pulse rounded-medium bg-gray-100 w-full h-[220px] rounded-xxs\"></div><div class=\"absolute left-xs top-xs p-md\"><div class=\"animate-pulse rounded-medium bg-gray-200 w-[44px] h-[20px]\"></div></div><div class=\"absolute right-md bottom-md p-md bg-white\"><div class=\"animate-pulse rounded-medium bg-gray-200 w-[44px] h-[20px] rounded-full\"></div></div><div class=\"flex flex-col py-md gap-xs\"><div class=\"flex justify-between items-start\"><div class=\"animate-pulse rounded-medium bg-gray-200 w-[90px] h-[16px] rounded-full\"></div><div class=\"animate-pulse rounded-medium bg-gray-100 w-[20px] h-[20px]\"></div></div><div class=\"animate-pulse rounded-medium bg-gray-100 w-[60px] h-[16px] rounded-full\"></div><div class=\"animate-pulse rounded-medium bg-gray-100 w-full h-[12px] rounded-full\"></div></div></div></li><li class=\"carousel__slide carousel__slide--visible carousel__slide--next\" id=\"v-0-0-0-1-1-0-3\" style=\"width:25%;\"><div class=\"product_card relative flex flex-col h-[350px] w-full p-sm\"><div class=\"animate-pulse rounded-medium bg-gray-100 w-full h-[220px] rounded-xxs\"></div><div class=\"absolute left-xs top-xs p-md\"><div class=\"animate-pulse rounded-medium bg-gray-200 w-[44px] h-[20px]\"></div></div><div class=\"absolute right-md bottom-md p-md bg-white\"><div class=\"animate-pulse rounded-medium bg-gray-200 w-[44px] h-[20px] rounded-full\"></div></div><div class=\"flex flex-col py-md gap-xs\"><div class=\"flex justify-between items-start\"><div class=\"animate-pulse rounded-medium bg-gray-200 w-[90px] h-[16px] rounded-full\"></div><div class=\"animate-pulse rounded-medium bg-gray-100 w-[20px] h-[20px]\"></div></div><div class=\"animate-pulse rounded-medium bg-gray-100 w-[60px] h-[16px] rounded-full\"></div><div class=\"animate-pulse rounded-medium bg-gray-100 w-full h-[12px] rounded-full\"></div></div></div></li><li class=\"carousel__slide carousel__slide--visible\" id=\"v-0-0-0-1-1-0-4\" style=\"width:25%;\"><div class=\"product_card relative flex flex-col h-[350px] w-full p-sm\"><div class=\"animate-pulse rounded-medium bg-gray-100 w-full h-[220px] rounded-xxs\"></div><div class=\"absolute left-xs top-xs p-md\"><div class=\"animate-pulse rounded-medium bg-gray-200 w-[44px] h-[20px]\"></div></div><div class=\"absolute right-md bottom-md p-md bg-white\"><div class=\"animate-pulse rounded-medium bg-gray-200 w-[44px] h-[20px] rounded-full\"></div></div><div class=\"flex flex-col py-md gap-xs\"><div class=\"flex justify-between items-start\"><div class=\"animate-pulse rounded-medium bg-gray-200 w-[90px] h-[16px] rounded-full\"></div><div class=\"animate-pulse rounded-medium bg-gray-100 w-[20px] h-[20px]\"></div></div><div class=\"animate-pulse rounded-medium bg-gray-100 w-[60px] h-[16px] rounded-full\"></div><div class=\"animate-pulse rounded-medium bg-gray-100 w-full h-[12px] rounded-full\"></div></div></div></li><li class=\"carousel__slide carousel__slide--visible\" id=\"v-0-0-0-1-1-0-5\" style=\"width:25%;\"><div class=\"product_card relative flex flex-col h-[350px] w-full p-sm\"><div class=\"animate-pulse rounded-medium bg-gray-100 w-full h-[220px] rounded-xxs\"></div><div class=\"absolute left-xs top-xs p-md\"><div class=\"animate-pulse rounded-medium bg-gray-200 w-[44px] h-[20px]\"></div></div><div class=\"absolute right-md bottom-md p-md bg-white\"><div class=\"animate-pulse rounded-medium bg-gray-200 w-[44px] h-[20px] rounded-full\"></div></div><div class=\"flex flex-col py-md gap-xs\"><div class=\"flex justify-between items-start\"><div class=\"animate-pulse rounded-medium bg-gray-200 w-[90px] h-[16px] rounded-full\"></div><div class=\"animate-pulse rounded-medium bg-gray-100 w-[20px] h-[20px]\"></div></div><div class=\"animate-pulse rounded-medium bg-gray-100 w-[60px] h-[16px] rounded-full\"></div><div class=\"animate-pulse rounded-medium bg-gray-100 w-full h-[12px] rounded-full\"></div></div></div></li></ol></div><div aria-atomic=\"true\" aria-live=\"polite\" class=\"carousel__liveregion carousel__sr-only\">Item 1 of 4</div></section></div></div></div><a class=\"w-full lg:w-fit mx-auto\" href=\"/drops/rungrez-lan-du-printemps\"><button class=\"capitalize rounded-medium flex items-center gap-xs justify-center whitespace-nowrap ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-0 focus-visible:ring-opacity-15 disabled:pointer-events-none font-medium bg-white border-gray-300 border text-gray-700 [&amp;_svg]:fill-gray-700 hover:bg-gray-50 disabled:border-gray-300 disabled:text-gray-500 disabled:[&amp;_svg]:fill-gray-400 disabled:bg-gray-50 py-lg px-3xl text-md gap-sm [&amp;_svg]:h-5xl [&amp;_svg]:w-5xl w-full lg:w-fit mx-auto\"><span class=\"px-xxs\">View All</span></button></a></div><div class=\"\"><section aria-label=\"Gallery\" class=\"carousel is-ltr is-effect-slide hero-banner--carousel\" dir=\"ltr\" style=\"--vc-slide-gap:0px;--vc-carousel-height:auto;--vc-cloned-offset:0px;\" tabindex=\"0\"><div class=\"carousel__viewport\"><ol class=\"carousel__track\" style=\"transform:translateX(0px);\"><li class=\"carousel__slide carousel__slide--visible carousel__slide--active\" id=\"v-0-0-0-1-2-0\" style=\"width:100%;\"><a class=\"block w-full lg:rounded-3xl\" href=\"/drops/rungrez-lan-du-printemps\"><div class=\"w-full overflow-hidden lg:rounded-3xl\" data-testid=\"hero-slide-box\" style=\"\"><img alt=\"\u00c9lan du Printemps\" class=\"block w-full h-auto lazy_image homepage__image-slider-image lg:rounded-3xl homepage__image-slider-image lg:rounded-3xl\" data-nuxt-img=\"\" fetchpriority=\"high\" loading=\"eager\" onerror=\"this.setAttribute('data-error', 1)\" src=\"https://cdn.shopify.com/s/files/1/2337/7003/files/mobile-banner-7c775081a11142e5a2b76e6f2fc0f2e7.jpg?format=webp\" srcset=\"https://cdn.shopify.com/s/files/1/2337/7003/files/mobile-banner-7c775081a11142e5a2b76e6f2fc0f2e7.jpg?width=1032&amp;format=webp 1x, https://cdn.shopify.com/s/files/1/2337/7003/files/mobile-banner-7c775081a11142e5a2b76e6f2fc0f2e7.jpg?width=2064&amp;format=webp 2x\" style=\"\" width=\"1032\"/></div></a></li><li class=\"carousel__slide carousel__slide--next\" id=\"v-0-0-0-1-2-1\" style=\"width:100%;\"><a class=\"block w-full lg:rounded-3xl\" href=\"/drops/elegance-dorient\"><div class=\"w-full overflow-hidden lg:rounded-3xl\" data-testid=\"hero-slide-box\" style=\"\"><img alt=\"Elegance d'Orient\" class=\"block w-full h-auto lazy_image homepage__image-slider-image lg:rounded-3xl homepage__image-slider-image lg:rounded-3xl\" data-nuxt-img=\"\" fetchpriority=\"low\" loading=\"eager\" onerror=\"this.setAttribute('data-error', 1)\" src=\"https://cdn.shopify.com/s/files/1/2337/7003/files/octane-mobile-shop-c0af186745d243ba9490f8e01100b9b4.jpg?format=webp\" srcset=\"https://cdn.shopify.com/s/files/1/2337/7003/files/octane-mobile-shop-c0af186745d243ba9490f8e01100b9b4.jpg?width=1032&amp;format=webp 1x, https://cdn.shopify.com/s/files/1/2337/7003/files/octane-mobile-shop-c0af186745d243ba9490f8e01100b9b4.jpg?width=2064&amp;format=webp 2x\" style=\"\" width=\"1032\"/></div></a></li><li class=\"carousel__slide\" id=\"v-0-0-0-1-2-2\" style=\"width:100%;\"><a class=\"block w-full lg:rounded-3xl\" href=\"/drops/premium-lawn-collection\"><div class=\"w-full overflow-hidden lg:rounded-3xl\" data-testid=\"hero-slide-box\" style=\"\"><img alt=\"Premium Lawn Collection\" class=\"block w-full h-auto lazy_image homepage__image-slider-image lg:rounded-3xl homepage__image-slider-image lg:rounded-3xl\" data-nuxt-img=\"\" fetchpriority=\"low\" loading=\"eager\" onerror=\"this.setAttribute('data-error', 1)\" src=\"https://cdn.shopify.com/s/files/1/2337/7003/files/Mobile--Slider-174851476287156.jpg?format=webp\" srcset=\"https://cdn.shopify.com/s/files/1/2337/7003/files/Mobile--Slider-174851476287156.jpg?width=1032&amp;format=webp 1x, https://cdn.shopify.com/s/files/1/2337/7003/files/Mobile--Slider-174851476287156.jpg?width=2064&amp;format=webp 2x\" style=\"\" width=\"1032\"/></div></a></li><li class=\"carousel__slide\" id=\"v-0-0-0-1-2-3\" style=\"width:100%;\"><a class=\"block w-full lg:rounded-3xl\" href=\"/drops/basic-pret-july-edit\"><div class=\"w-full overflow-hidden lg:rounded-3xl\" data-testid=\"hero-slide-box\" style=\"\"><img alt=\"Basic Pret July Edit\" class=\"block w-full h-auto lazy_image homepage__image-slider-image lg:rounded-3xl homepage__image-slider-image lg:rounded-3xl\" data-nuxt-img=\"\" fetchpriority=\"low\" loading=\"eager\" onerror=\"this.setAttribute('data-error', 1)\" src=\"https://cdn.shopify.com/s/files/1/2337/7003/files/octane-mobile-rangrez-174808344446812.jpg?format=webp\" srcset=\"https://cdn.shopify.com/s/files/1/2337/7003/files/octane-mobile-rangrez-174808344446812.jpg?width=1032&amp;format=webp 1x, https://cdn.shopify.com/s/files/1/2337/7003/files/octane-mobile-rangrez-174808344446812.jpg?width=2064&amp;format=webp 2x\" style=\"\" width=\"1032\"/></div></a></li></ol></div><div aria-atomic=\"true\" aria-live=\"polite\" class=\"carousel__liveregion carousel__sr-only\">Item 1 of 4</div></section></div><div class=\"gap-3xl lg:px-0 px-3xl flex flex-col items-center\" data-v-415d2f37=\"\"><div class=\"gap-sm flex flex-col w-full\" data-v-415d2f37=\"\"><div class=\"gap-sm flex flex-row items-center justify-between w-full\" data-v-415d2f37=\"\"><h2 class=\"text-lg font-semibold lg:display-xs text-[color:var(--brand-heading,theme(colors.gray.900))]\" data-section-heading=\"\" data-v-415d2f37=\"\">Best Sellers</h2><div class=\"gap-sm flex items-center shrink-0\" data-v-415d2f37=\"\"></div></div></div><div aria-roledescription=\"carousel\" class=\"relative cms--carousel-products w-full\" data-v-415d2f37=\"\" role=\"region\" tabindex=\"0\"><div class=\"overflow-hidden\" data-v-415d2f37=\"\"><div class=\"flex -ml-xl\"><div aria-roledescription=\"slide\" class=\"min-w-0 shrink-0 grow-0 pl-xl basis-[45%] md:basis-1/4\" data-v-415d2f37=\"\" role=\"group\"><a class=\"w-full\" href=\"/products/brume-unstitched-lawn-suit-in-taupe-3-piece-embroidered-lawn-set\" index=\"0\"><div><div class=\"flex flex-col product_card w-full\" data-testid=\"product-card\" horizontal-index=\"0\" index=\"0\" vertical-index=\"3\"><div class=\"image-box aspect-product w-full rounded\"><img alt=\"Brown Unstitched for Women\" class=\"block w-full lazy_image h-full object-cover h-full object-cover\" data-nuxt-img=\"\" fetchpriority=\"low\" loading=\"lazy\" onerror=\"this.setAttribute('data-error', 1)\" src=\"https://cdn.shopify.com/s/files/1/2337/7003/files/media_image-10bdc369e2734a4080f03b3266216646_e5a11395-2c03-44af-ac4f-2a5d0f8a913b.jpg?format=webp\" srcset=\"https://cdn.shopify.com/s/files/1/2337/7003/files/media_image-10bdc369e2734a4080f03b3266216646_e5a11395-2c03-44af-ac4f-2a5d0f8a913b.jpg?v=1750249749&amp;width=150&amp;format=webp 1x, https://cdn.shopify.com/s/files/1/2337/7003/files/media_image-10bdc369e2734a4080f03b3266216646_e5a11395-2c03-44af-ac4f-2a5d0f8a913b.jpg?v=1750249749&amp;width=300&amp;format=webp 2x\" style=\"\" width=\"150\"/><div class=\"right-none top-none p-md absolute bg-transparent\"><div class=\"flex flex-col gap-3xl\"><div></div></div></div><div class=\"right-none p-md bottom-none absolute bg-transparent\"></div></div><div class=\"grow py-md gap-xs flex flex-col\"><div class=\"flex justify-between items-center\"><div class=\"flex items-start justify-between\"><div class=\"product_card_price gap-xxs lg:gap-xs flex flex-col\"><div class=\"gap-xs flex items-center\"><p class=\"display-price text-sm lg:text-md text-gray-800\" style=\"\"><span>$</span> <span class=\"font-semibold\">47.99</span></p></div></div></div><div class=\"bg-transparent\"><button aria-expanded=\"false\" aria-haspopup=\"dialog\" aria-label=\"Quick add to bag\" class=\"icon-button inline-flex items-center justify-center ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-0 focus-visible:ring-opacity-15 disabled:pointer-events-none bg-white border-gray-300 border text-black hover:bg-gray-50 disabled:border-gray-200 disabled:text-gray-400 disabled:[&amp;_svg]:fill-gray-400 p-md [&amp;_svg]:h-5xl [&amp;_svg]:w-5xl rounded-full w-[44px] h-[44px]\" data-quick-add=\"\" data-state=\"closed\" type=\"button\"></button></div></div><div class=\"gap-xs flex-nowrap flex items-center truncate\"><p class=\"text-xs text-gray-800\">Rungrez</p><p class=\"text-xs text-brand-muted capitalize truncate\">Shahana - Unstitched Lawn Suit in Taupe \u2013 3 Piece Embroidered Lawn Set</p></div><div class=\"gap-md flex items-center flex-wrap\"><div class=\"inline-flex text-nowrap items-center border rounded h-6xl lg:h-7xl px-xs lg:px-sm gap-xxs text-xs [&amp;_svg]:h-xl [&amp;_svg]:w-xl bg-blue-dark-50 border-blue-dark-200 text-blue-dark-600 [&amp;_svg]:fill-blue-dark-600 tracking-[-0.24px] font-semibold\" data-testid=\"shipping-days-badge\"> 5 Days</div></div></div></div></div></a></div><div aria-roledescription=\"slide\" class=\"min-w-0 shrink-0 grow-0 pl-xl basis-[45%] md:basis-1/4\" data-v-415d2f37=\"\" role=\"group\"><a class=\"w-full\" href=\"/products/brume-bleue\" index=\"1\"><div><div class=\"flex flex-col product_card w-full\" data-testid=\"product-card\" horizontal-index=\"1\" index=\"1\" vertical-index=\"3\"><div class=\"image-box aspect-product w-full rounded\"><img alt=\"Duck egg grey Kurta Set for Women\" class=\"block w-full lazy_image h-full object-cover h-full object-cover\" data-nuxt-img=\"\" fetchpriority=\"low\" loading=\"lazy\" onerror=\"this.setAttribute('data-error', 1)\" src=\"https://cdn.shopify.com/s/files/1/2337/7003/files/media_image-3293a4830cfb42b6b43cc39f6ec59713_2c4de47d-c4bb-4bb8-9318-f8573b70c6a8.jpg?format=webp\" srcset=\"https://cdn.shopify.com/s/files/1/2337/7003/files/media_image-3293a4830cfb42b6b43cc39f6ec59713_2c4de47d-c4bb-4bb8-9318-f8573b70c6a8.jpg?v=1752144573&amp;width=150&amp;format=webp 1x, https://cdn.shopify.com/s/files/1/2337/7003/files/media_image-3293a4830cfb42b6b43cc39f6ec59713_2c4de47d-c4bb-4bb8-9318-f8573b70c6a8.jpg?v=1752144573&amp;width=300&amp;format=webp 2x\" style=\"\" width=\"150\"/><div class=\"right-none top-none p-md absolute bg-transparent\"><div class=\"flex flex-col gap-3xl\"><div></div></div></div><div class=\"right-none p-md bottom-none absolute bg-transparent\"></div></div><div class=\"grow py-md gap-xs flex flex-col\"><div class=\"flex justify-between items-center\"><div class=\"flex items-start justify-between\"><div class=\"product_card_price gap-xxs lg:gap-xs flex flex-col\"><div class=\"gap-xs flex items-center\"><p class=\"display-price text-sm lg:text-md text-gray-800\" style=\"\"><span>$</span> <span class=\"font-semibold\">26.99</span></p></div></div></div><div class=\"bg-transparent\"><button aria-expanded=\"false\" aria-haspopup=\"dialog\" aria-label=\"Quick add to bag\" class=\"icon-button inline-flex items-center justify-center ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-0 focus-visible:ring-opacity-15 disabled:pointer-events-none bg-white border-gray-300 border text-black hover:bg-gray-50 disabled:border-gray-200 disabled:text-gray-400 disabled:[&amp;_svg]:fill-gray-400 p-md [&amp;_svg]:h-5xl [&amp;_svg]:w-5xl rounded-full w-[44px] h-[44px]\" data-quick-add=\"\" data-state=\"closed\" type=\"button\"></button></div></div><div class=\"gap-xs flex-nowrap flex items-center truncate\"><p class=\"text-xs text-gray-800\">Rungrez</p><p class=\"text-xs text-brand-muted capitalize truncate\">Brume Bleue</p></div><div class=\"gap-md flex items-center flex-wrap\"><div class=\"inline-flex text-nowrap items-center border rounded h-6xl lg:h-7xl px-xs lg:px-sm gap-xxs text-xs [&amp;_svg]:h-xl [&amp;_svg]:w-xl express-badge bg-blue-600 border-blue-600 text-white tracking-[-0.24px] italic font-bold\" data-testid=\"express-badge\"> Express </div></div></div></div></div></a></div><div aria-roledescription=\"slide\" class=\"min-w-0 shrink-0 grow-0 pl-xl basis-[45%] md:basis-1/4\" data-v-415d2f37=\"\" role=\"group\"><a class=\"w-full\" href=\"/products/jardin-peche\" index=\"2\"><div><div class=\"flex flex-col product_card w-full\" data-testid=\"product-card\" horizontal-index=\"2\" index=\"2\" vertical-index=\"3\"><div class=\"image-box aspect-product w-full rounded\"><img alt=\"Marmalade orange Kurta Set for Women\" class=\"block w-full lazy_image h-full object-cover h-full object-cover\" data-nuxt-img=\"\" fetchpriority=\"low\" loading=\"lazy\" onerror=\"this.setAttribute('data-error', 1)\" src=\"https://cdn.shopify.com/s/files/1/2337/7003/files/media_image-68e273ab748e430f9c428ccab620fdea_64d2f97f-4384-49ff-ab5b-936c1dd7d130.jpg?format=webp\" srcset=\"https://cdn.shopify.com/s/files/1/2337/7003/files/media_image-68e273ab748e430f9c428ccab620fdea_64d2f97f-4384-49ff-ab5b-936c1dd7d130.jpg?v=1750397773&amp;width=150&amp;format=webp 1x, https://cdn.shopify.com/s/files/1/2337/7003/files/media_image-68e273ab748e430f9c428ccab620fdea_64d2f97f-4384-49ff-ab5b-936c1dd7d130.jpg?v=1750397773&amp;width=300&amp;format=webp 2x\" style=\"\" width=\"150\"/><div class=\"right-none top-none p-md absolute bg-transparent\"><div class=\"flex flex-col gap-3xl\"><div></div></div></div><div class=\"right-none p-md bottom-none absolute bg-transparent\"></div></div><div class=\"grow py-md gap-xs flex flex-col\"><div class=\"flex justify-between items-center\"><div class=\"flex items-start justify-between\"><div class=\"product_card_price gap-xxs lg:gap-xs flex flex-col\"><div class=\"gap-xs flex items-center\"><p class=\"display-price text-sm lg:text-md text-gray-800\" style=\"\"><span>$</span> <span class=\"font-semibold\">26.99</span></p></div></div></div><div class=\"bg-transparent\"><button aria-expanded=\"false\" aria-haspopup=\"dialog\" aria-label=\"Quick add to bag\" class=\"icon-button inline-flex items-center justify-center ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-0 focus-visible:ring-opacity-15 disabled:pointer-events-none bg-white border-gray-300 border text-black hover:bg-gray-50 disabled:border-gray-200 disabled:text-gray-400 disabled:[&amp;_svg]:fill-gray-400 p-md [&amp;_svg]:h-5xl [&amp;_svg]:w-5xl rounded-full w-[44px] h-[44px]\" data-quick-add=\"\" data-state=\"closed\" type=\"button\"></button></div></div><div class=\"gap-xs flex-nowrap flex items-center truncate\"><p class=\"text-xs text-gray-800\">Rungrez</p><p class=\"text-xs text-brand-muted capitalize truncate\">Jardin P\u00eache</p></div><div class=\"gap-md flex items-center flex-wrap\"><div class=\"inline-flex text-nowrap items-center border rounded h-6xl lg:h-7xl px-xs lg:px-sm gap-xxs text-xs [&amp;_svg]:h-xl [&amp;_svg]:w-xl express-badge bg-blue-600 border-blue-600 text-white tracking-[-0.24px] italic font-bold\" data-testid=\"express-badge\"> Express </div></div></div></div></div></a></div><div aria-roledescription=\"slide\" class=\"min-w-0 shrink-0 grow-0 pl-xl basis-[45%] md:basis-1/4\" data-v-415d2f37=\"\" role=\"group\"><a class=\"w-full\" href=\"/products/soleil-dambre\" index=\"3\"><div><div class=\"flex flex-col product_card w-full\" data-testid=\"product-card\" horizontal-index=\"3\" index=\"3\" vertical-index=\"3\"><div class=\"image-box aspect-product w-full rounded\"><img alt=\"Peach orange Co Ord Sets for Women\" class=\"block w-full lazy_image h-full object-cover h-full object-cover\" data-nuxt-img=\"\" fetchpriority=\"low\" loading=\"lazy\" onerror=\"this.setAttribute('data-error', 1)\" src=\"https://cdn.shopify.com/s/files/1/2337/7003/files/media_image-ca38fa33bc8f4317a1c4de53972a8eb0_b1bcfaad-1aa2-4bfb-91e9-1f3aee6b1ad3.jpg?format=webp\" srcset=\"https://cdn.shopify.com/s/files/1/2337/7003/files/media_image-ca38fa33bc8f4317a1c4de53972a8eb0_b1bcfaad-1aa2-4bfb-91e9-1f3aee6b1ad3.jpg?v=1750318350&amp;width=150&amp;format=webp 1x, https://cdn.shopify.com/s/files/1/2337/7003/files/media_image-ca38fa33bc8f4317a1c4de53972a8eb0_b1bcfaad-1aa2-4bfb-91e9-1f3aee6b1ad3.jpg?v=1750318350&amp;width=300&amp;format=webp 2x\" style=\"\" width=\"150\"/><div class=\"right-none top-none p-md absolute bg-transparent\"><div class=\"flex flex-col gap-3xl\"><div></div></div></div><div class=\"right-none p-md bottom-none absolute bg-transparent\"></div></div><div class=\"grow py-md gap-xs flex flex-col\"><div class=\"flex justify-between items-center\"><div class=\"flex items-start justify-between\"><div class=\"product_card_price gap-xxs lg:gap-xs flex flex-col\"><div class=\"gap-xs flex items-center\"><p class=\"display-price text-sm lg:text-md text-gray-800\" style=\"\"><span>$</span> <span class=\"font-semibold\">26.99</span></p></div></div></div><div class=\"bg-transparent\"><button aria-expanded=\"false\" aria-haspopup=\"dialog\" aria-label=\"Quick add to bag\" class=\"icon-button inline-flex items-center justify-center ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-0 focus-visible:ring-opacity-15 disabled:pointer-events-none bg-white border-gray-300 border text-black hover:bg-gray-50 disabled:border-gray-200 disabled:text-gray-400 disabled:[&amp;_svg]:fill-gray-400 p-md [&amp;_svg]:h-5xl [&amp;_svg]:w-5xl rounded-full w-[44px] h-[44px]\" data-quick-add=\"\" data-state=\"closed\" type=\"button\"></button></div></div><div class=\"gap-xs flex-nowrap flex items-center truncate\"><p class=\"text-xs text-gray-800\">Rungrez</p><p class=\"text-xs text-brand-muted capitalize truncate\">Soleil d'Ambre</p></div><div class=\"gap-md flex items-center flex-wrap\"><div class=\"inline-flex text-nowrap items-center border rounded h-6xl lg:h-7xl px-xs lg:px-sm gap-xxs text-xs [&amp;_svg]:h-xl [&amp;_svg]:w-xl express-badge bg-blue-600 border-blue-600 text-white tracking-[-0.24px] italic font-bold\" data-testid=\"express-badge\"> Express </div></div></div></div></div></a></div><div aria-roledescription=\"slide\" class=\"min-w-0 shrink-0 grow-0 pl-xl basis-[45%] md:basis-1/4\" data-v-415d2f37=\"\" role=\"group\"><a class=\"w-full\" href=\"/products/farshi-shalwar-pakistani-ethnic-lawn-dress-1\" index=\"4\"><div><div class=\"flex flex-col product_card w-full\" data-testid=\"product-card\" horizontal-index=\"4\" index=\"4\" vertical-index=\"3\"><div class=\"image-box aspect-product w-full rounded\"><img alt=\"White Kurta Set for Women\" class=\"block w-full lazy_image h-full object-cover h-full object-cover\" data-nuxt-img=\"\" fetchpriority=\"low\" loading=\"lazy\" onerror=\"this.setAttribute('data-error', 1)\" src=\"https://cdn.shopify.com/s/files/1/2337/7003/files/media_image-c388d1a3cf7c49879c26881f5122ff92_835d64f6-7b69-4a13-b901-e11f6841ac2d.jpg?format=webp\" srcset=\"https://cdn.shopify.com/s/files/1/2337/7003/files/media_image-c388d1a3cf7c49879c26881f5122ff92_835d64f6-7b69-4a13-b901-e11f6841ac2d.jpg?v=1754563321&amp;width=150&amp;format=webp 1x, https://cdn.shopify.com/s/files/1/2337/7003/files/media_image-c388d1a3cf7c49879c26881f5122ff92_835d64f6-7b69-4a13-b901-e11f6841ac2d.jpg?v=1754563321&amp;width=300&amp;format=webp 2x\" style=\"\" width=\"150\"/><div class=\"left-none top-none p-md absolute bg-transparent flex flex-col items-start gap-xxs\"><div class=\"inline-flex text-nowrap items-center font-semibold border rounded-small h-fit py-xxs px-xs gap-xxs border-gray-200 [&amp;_svg]:fill-gray-200 [&amp;_svg]:h-lg [&amp;_svg]:w-lg px-sm py-xxs lg:px-md rounded-small text-sm text-white bg-red-600 border-none\" style=\"\"> -52% </div></div><div class=\"right-none top-none p-md absolute bg-transparent\"><div class=\"flex flex-col gap-3xl\"><div></div></div></div><div class=\"right-none p-md bottom-none absolute bg-transparent\"></div></div><div class=\"grow py-md gap-xs flex flex-col\"><div class=\"flex justify-between items-center\"><div class=\"flex items-start justify-between\"><div class=\"product_card_price gap-xxs lg:gap-xs flex flex-col\"><div class=\"gap-xs flex items-center\"><p class=\"display-price text-sm lg:text-md text-gray-800\" style=\"\"><span>$</span> <span class=\"font-semibold\">23.54</span></p></div><p class=\"text-xs lg:text-sm\"><span class=\"original-price line-through text-brand-muted\">$ <span class=\"lg:font-normal font-semibold\">47.99</span></span></p></div></div><div class=\"bg-transparent\"><button aria-expanded=\"false\" aria-haspopup=\"dialog\" aria-label=\"Quick add to bag\" class=\"icon-button inline-flex items-center justify-center ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-0 focus-visible:ring-opacity-15 disabled:pointer-events-none bg-white border-gray-300 border text-black hover:bg-gray-50 disabled:border-gray-200 disabled:text-gray-400 disabled:[&amp;_svg]:fill-gray-400 p-md [&amp;_svg]:h-5xl [&amp;_svg]:w-5xl rounded-full w-[44px] h-[44px]\" data-quick-add=\"\" data-state=\"closed\" type=\"button\"></button></div></div><div class=\"gap-xs flex-nowrap flex items-center truncate\"><p class=\"text-xs text-gray-800\">Rungrez</p><p class=\"text-xs text-brand-muted capitalize truncate\">Farshi Shalwar Pakistani Ethnic Lawn outfit</p></div><div class=\"gap-md flex items-center flex-wrap\"><div class=\"inline-flex text-nowrap items-center border rounded h-6xl lg:h-7xl px-xs lg:px-sm gap-xxs text-xs [&amp;_svg]:h-xl [&amp;_svg]:w-xl express-badge bg-blue-600 border-blue-600 text-white tracking-[-0.24px] italic font-bold\" data-testid=\"express-badge\"> Express </div></div></div></div></div></a></div><div aria-roledescription=\"slide\" class=\"min-w-0 shrink-0 grow-0 pl-xl basis-[45%] md:basis-1/4\" data-v-415d2f37=\"\" role=\"group\"><a class=\"w-full\" href=\"/products/ss23-rng-1\" index=\"5\"><div><div class=\"flex flex-col product_card w-full\" data-testid=\"product-card\" horizontal-index=\"5\" index=\"5\" vertical-index=\"3\"><div class=\"image-box aspect-product w-full rounded\"><img alt=\"Pumpkin orange Kurta Set for Women\" class=\"block w-full lazy_image h-full object-cover h-full object-cover\" data-nuxt-img=\"\" fetchpriority=\"low\" loading=\"lazy\" onerror=\"this.setAttribute('data-error', 1)\" src=\"https://cdn.shopify.com/s/files/1/2337/7003/files/3J1A5891-174842905684543_d99fe53d-d559-432b-a46e-ddb5308e16db.jpg?format=webp\" srcset=\"https://cdn.shopify.com/s/files/1/2337/7003/files/3J1A5891-174842905684543_d99fe53d-d559-432b-a46e-ddb5308e16db.jpg?v=1748429565&amp;width=150&amp;format=webp 1x, https://cdn.shopify.com/s/files/1/2337/7003/files/3J1A5891-174842905684543_d99fe53d-d559-432b-a46e-ddb5308e16db.jpg?v=1748429565&amp;width=300&amp;format=webp 2x\" style=\"\" width=\"150\"/><div class=\"right-none top-none p-md absolute bg-transparent\"><div class=\"flex flex-col gap-3xl\"><div></div></div></div><div class=\"right-none p-md bottom-none absolute bg-transparent\"></div></div><div class=\"grow py-md gap-xs flex flex-col\"><div class=\"flex justify-between items-center\"><div class=\"flex items-start justify-between\"><div class=\"product_card_price gap-xxs lg:gap-xs flex flex-col\"><div class=\"gap-xs flex items-center\"><p class=\"display-price text-sm lg:text-md text-gray-800\" style=\"\"><span>$</span> <span class=\"font-semibold\">52.99</span></p></div></div></div><div class=\"bg-transparent\"><span aria-hidden=\"true\" class=\"icon-button inline-flex items-center justify-center ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-0 focus-visible:ring-opacity-15 disabled:pointer-events-none bg-white border-gray-300 border text-black hover:bg-gray-50 disabled:border-gray-200 disabled:text-gray-400 disabled:[&amp;_svg]:fill-gray-400 p-md [&amp;_svg]:h-5xl [&amp;_svg]:w-5xl rounded-full w-[44px] h-[44px]\" data-testid=\"out-of-stock-bell\"></span></div></div><div class=\"gap-xs flex-nowrap flex items-center truncate\"><p class=\"text-xs text-gray-800\">Rungrez</p><p class=\"text-xs text-brand-muted capitalize truncate\">SS23 RNG-1</p></div><div class=\"gap-md flex items-center flex-wrap\"><div class=\"inline-flex text-nowrap items-center border rounded h-6xl lg:h-7xl px-xs lg:px-sm gap-xxs text-xs [&amp;_svg]:h-xl [&amp;_svg]:w-xl bg-error-50 text-error-600 border-error-200 font-semibold\" data-testid=\"out-of-stock-badge\"> Out of stock </div></div></div></div></div></a></div><div aria-roledescription=\"slide\" class=\"min-w-0 shrink-0 grow-0 pl-xl basis-[45%] md:basis-1/4\" data-v-415d2f37=\"\" role=\"group\"><a class=\"w-full\" href=\"/products/ss23-rng-2\" index=\"6\"><div><div class=\"flex flex-col product_card w-full\" data-testid=\"product-card\" horizontal-index=\"6\" index=\"6\" vertical-index=\"3\"><div class=\"image-box aspect-product w-full rounded\"><img alt=\"Yellow Kurta Set for Women\" class=\"block w-full lazy_image h-full object-cover h-full object-cover\" data-nuxt-img=\"\" fetchpriority=\"low\" loading=\"lazy\" onerror=\"this.setAttribute('data-error', 1)\" src=\"https://cdn.shopify.com/s/files/1/2337/7003/files/3J1A5965-174843022209970_42bd07a9-6110-4e07-b915-c5de1195f7c2.jpg?format=webp\" srcset=\"https://cdn.shopify.com/s/files/1/2337/7003/files/3J1A5965-174843022209970_42bd07a9-6110-4e07-b915-c5de1195f7c2.jpg?v=1748430340&amp;width=150&amp;format=webp 1x, https://cdn.shopify.com/s/files/1/2337/7003/files/3J1A5965-174843022209970_42bd07a9-6110-4e07-b915-c5de1195f7c2.jpg?v=1748430340&amp;width=300&amp;format=webp 2x\" style=\"\" width=\"150\"/><div class=\"right-none top-none p-md absolute bg-transparent\"><div class=\"flex flex-col gap-3xl\"><div></div></div></div><div class=\"right-none p-md bottom-none absolute bg-transparent\"></div></div><div class=\"grow py-md gap-xs flex flex-col\"><div class=\"flex justify-between items-center\"><div class=\"flex items-start justify-between\"><div class=\"product_card_price gap-xxs lg:gap-xs flex flex-col\"><div class=\"gap-xs flex items-center\"><p class=\"display-price text-sm lg:text-md text-gray-800\" style=\"\"><span>$</span> <span class=\"font-semibold\">40.99</span></p></div></div></div><div class=\"bg-transparent\"><span aria-hidden=\"true\" class=\"icon-button inline-flex items-center justify-center ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-0 focus-visible:ring-opacity-15 disabled:pointer-events-none bg-white border-gray-300 border text-black hover:bg-gray-50 disabled:border-gray-200 disabled:text-gray-400 disabled:[&amp;_svg]:fill-gray-400 p-md [&amp;_svg]:h-5xl [&amp;_svg]:w-5xl rounded-full w-[44px] h-[44px]\" data-testid=\"out-of-stock-bell\"></span></div></div><div class=\"gap-xs flex-nowrap flex items-center truncate\"><p class=\"text-xs text-gray-800\">Rungrez</p><p class=\"text-xs text-brand-muted capitalize truncate\">SS23 RNG-2</p></div><div class=\"gap-md flex items-center flex-wrap\"><div class=\"inline-flex text-nowrap items-center border rounded h-6xl lg:h-7xl px-xs lg:px-sm gap-xxs text-xs [&amp;_svg]:h-xl [&amp;_svg]:w-xl bg-error-50 text-error-600 border-error-200 font-semibold\" data-testid=\"out-of-stock-badge\"> Out of stock </div></div></div></div></div></a></div><div aria-roledescription=\"slide\" class=\"min-w-0 shrink-0 grow-0 pl-xl basis-[45%] md:basis-1/4\" data-v-415d2f37=\"\" role=\"group\"><a class=\"w-full\" href=\"/products/ss23-rng-3\" index=\"7\"><div><div class=\"flex flex-col product_card w-full\" data-testid=\"product-card\" horizontal-index=\"7\" index=\"7\" vertical-index=\"3\"><div class=\"image-box aspect-product w-full rounded\"><img alt=\"Yellow Kurta Set for Women\" class=\"block w-full lazy_image h-full object-cover h-full object-cover\" data-nuxt-img=\"\" fetchpriority=\"low\" loading=\"lazy\" onerror=\"this.setAttribute('data-error', 1)\" src=\"https://cdn.shopify.com/s/files/1/2337/7003/files/3J1A6077-174843075152426_67877386-1b3f-4f7d-9cfb-c2cb43395b99.jpg?format=webp\" srcset=\"https://cdn.shopify.com/s/files/1/2337/7003/files/3J1A6077-174843075152426_67877386-1b3f-4f7d-9cfb-c2cb43395b99.jpg?v=1748430785&amp;width=150&amp;format=webp 1x, https://cdn.shopify.com/s/files/1/2337/7003/files/3J1A6077-174843075152426_67877386-1b3f-4f7d-9cfb-c2cb43395b99.jpg?v=1748430785&amp;width=300&amp;format=webp 2x\" style=\"\" width=\"150\"/><div class=\"right-none top-none p-md absolute bg-transparent\"><div class=\"flex flex-col gap-3xl\"><div></div></div></div><div class=\"right-none p-md bottom-none absolute bg-transparent\"></div></div><div class=\"grow py-md gap-xs flex flex-col\"><div class=\"flex justify-between items-center\"><div class=\"flex items-start justify-between\"><div class=\"product_card_price gap-xxs lg:gap-xs flex flex-col\"><div class=\"gap-xs flex items-center\"><p class=\"display-price text-sm lg:text-md text-gray-800\" style=\"\"><span>$</span> <span class=\"font-semibold\">38.99</span></p></div></div></div><div class=\"bg-transparent\"><span aria-hidden=\"true\" class=\"icon-button inline-flex items-center justify-center ring-offset-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-0 focus-visible:ring-opacity-15 disabled:pointer-events-none bg-white border-gray-300 border text-black hover:bg-gray-50 disabled:border-gray-200 disabled:text-gray-400 disabled:[&amp;_svg]:fill-gray-400 p-md [&amp;_svg]:h-5xl [&amp;_svg]:w-5xl rounded-full w-[44px] h-[44px]\" data-testid=\"out-of-stock-bell\"></span></div></div><div class=\"gap-xs flex-nowrap flex items-center truncate\"><p class=\"text-xs text-gray-800\">Rungrez</p><p class=\"text-xs text-brand-muted capitalize truncate\">SS23 RNG-3</p></div><div class=\"gap-md flex items-center flex-wrap\"><div class=\"inline-flex text-nowrap items-center border rounded h-6xl lg:h-7xl px-xs lg:px-sm gap-xxs text-xs [&amp;_svg]:h-xl [&amp;_svg]:w-xl bg-error-50 text-error-600 border-error-200 font-semibold\" data-testid=\"out-of-stock-badge\"> Out of stock </div></div></div></div></div></a></div></div></div></div></div><div><a as=\"button\" class=\"block w-full lg:rounded-3xl\" href=\"/drops/elegance-dorient\"><div class=\"relative w-full homepage__image-slider-image lg:rounded-3xl w-full bg-gray-100\"><div class=\"relative w-full mx-auto min-h-[100px] lg:rounded-3xl bg-gray-200 flex items-center justify-center\"><video class=\"w-fit lg:rounded-3xl bg-gray-200 content-center\" loop=\"\" muted=\"\" playsinline=\"true\" poster=\"\" src=\"https://cdn.shopify.com/videos/c/o/v/1c25ec630f5140b79086b7d2a3883559.mp4\"></video></div></div></a></div><div class=\"p-lg infinite_loader flex items-center justify-center text-gray-300\">Loading more sections...</div></div></main>",
+      "public_script_paths": [
+        "https://www.googletagmanager.com/gtag/js",
+        "https://cdn.octane.store/_nuxt/Cim_9tvT.js"
+      ],
+      "public_page_title": "Rungrez \u2013 Women Lawn & Pret Wear Collections"
+    },
+    {
+      "name": "So Komal",
+      "url": "https://www.sokamal.com",
+      "observations": [
+        {
+          "path": "/robots.txt",
+          "status": 200,
+          "final_url": "https://www.sokamal.com/robots.txt"
+        },
+        {
+          "path": "",
+          "status": 200,
+          "final_url": "https://www.sokamal.com/"
+        },
+        {
+          "path": "/products.json?limit=1",
+          "status": 200,
+          "final_url": "https://www.sokamal.com/products.json?limit=1"
+        }
+      ],
+      "homepage_platform_hint": "shopify",
+      "provider": "shopify",
+      "status": "supported"
+    },
+    {
+      "name": "Mansab",
+      "url": "https://mansabpk.com",
+      "observations": [
+        {
+          "path": "/robots.txt",
+          "status": 200,
+          "final_url": "https://mansabpk.com/robots.txt"
+        },
+        {
+          "path": "",
+          "status": 200,
+          "final_url": "https://mansabpk.com/"
+        },
+        {
+          "path": "/products.json?limit=1",
+          "status": 404,
+          "final_url": "https://mansabpk.com/products.json?limit=1"
+        },
+        {
+          "path": "/wp-json/wc/store/v1/products?per_page=1",
+          "status": 403,
+          "final_url": "https://mansabpk.com/wp-json/wc/store/v1/products?per_page=1"
+        }
+      ],
+      "homepage_platform_hint": "unknown",
+      "status": "source_blocked",
+      "error": "403 Client Error: Forbidden for url: https://mansabpk.com/wp-json/wc/store/v1/products?per_page=1"
+    },
+    {
+      "name": "Bela",
+      "url": "https://bela.pk",
+      "observations": [
+        {
+          "path": "/robots.txt",
+          "status": 200,
+          "final_url": "https://bela.pk/robots.txt"
+        },
+        {
+          "path": "",
+          "status": 200,
+          "final_url": "https://bela.pk/"
+        },
+        {
+          "path": "/products.json?limit=1",
+          "status": 200,
+          "final_url": "https://bela.pk/products.json?limit=1"
+        }
+      ],
+      "homepage_platform_hint": "shopify",
+      "provider": "shopify",
+      "status": "supported"
+    },
+    {
+      "name": "Taminzo",
+      "url": "https://taminzo.com",
+      "observations": [
+        {
+          "path": "/robots.txt",
+          "status": 200,
+          "final_url": "https://taminzo.com/robots.txt"
+        },
+        {
+          "path": "",
+          "status": 200,
+          "final_url": "https://taminzo.com/"
+        },
+        {
+          "path": "/products.json?limit=1",
+          "status": 200,
+          "final_url": "https://taminzo.com/products.json?limit=1"
+        }
+      ],
+      "homepage_platform_hint": "shopify",
+      "provider": "shopify",
+      "status": "supported"
+    },
+    {
+      "name": "Essence",
+      "url": "https://essencebyrubina.com",
+      "observations": [
+        {
+          "path": "/robots.txt",
+          "status": 200,
+          "final_url": "https://essencebyrubina.com/robots.txt"
+        },
+        {
+          "path": "",
+          "status": 200,
+          "final_url": "https://essencebyrubina.com/"
+        },
+        {
+          "path": "/products.json?limit=1",
+          "status": 200,
+          "final_url": "https://essencebyrubina.com/products.json?limit=1"
+        }
+      ],
+      "homepage_platform_hint": "shopify",
+      "provider": "shopify",
+      "status": "supported"
+    },
+    {
+      "name": "Shoe Planet",
+      "url": "https://www.shoeplanet.pk",
+      "observations": [
+        {
+          "path": "/robots.txt",
+          "status": 200,
+          "final_url": "https://www.shoeplanet.pk/robots.txt"
+        },
+        {
+          "path": "",
+          "status": 200,
+          "final_url": "https://www.shoeplanet.pk/"
+        },
+        {
+          "path": "/products.json?limit=1",
+          "status": 200,
+          "final_url": "https://www.shoeplanet.pk/products.json?limit=1"
+        }
+      ],
+      "homepage_platform_hint": "shopify",
+      "provider": "shopify",
+      "status": "supported"
+    },
+    {
+      "name": "The Paper Worm",
+      "url": "https://www.thepaperworm.com",
+      "observations": [
+        {
+          "path": "/robots.txt",
+          "status": 200,
+          "final_url": "https://www.thepaperworm.com/robots.txt"
+        },
+        {
+          "path": "",
+          "status": 200,
+          "final_url": "https://www.thepaperworm.com/"
+        },
+        {
+          "path": "/products.json?limit=1",
+          "status": 200,
+          "final_url": "https://www.thepaperworm.com/products.json?limit=1"
+        }
+      ],
+      "homepage_platform_hint": "shopify",
+      "provider": "shopify",
+      "status": "supported"
     }
   ],
-  "status": "dispatch_complete",
-  "already_dispatched": [
-    "Afrozeh",
-    "Blackbeiger",
-    "Makeup Gallery",
-    "Rizen Watches",
-    "Toynix",
-    "Toyzone",
-    "VNS Collection"
-  ]
+  "groups": [],
+  "status": "checking"
 }
