@@ -4,7 +4,7 @@ from datetime import datetime,timezone
 from pathlib import Path
 from urllib.parse import urlsplit
 from runtime import validate_site
-from requested_stores import probe,root_lane,gh
+from requested_stores import probe as source_probe,root_lane,gh
 from source_research import publish
 ROOT=Path(__file__).resolve().parents[1]
 REPO='chottuapp/ChotuApp-Software'
@@ -35,6 +35,31 @@ def plan(request,stores,observations,runs):
   selected=[s for s in stores[i:i+2] if s['name'] in ready-already]
   if selected:groups.append(dict(runner_group=prefix+str(i//2+1)+'-'+'-'.join(key(s) for s in selected),stores=selected))
  return groups,already
+
+def probe(site):
+ result=source_probe(site)
+ if result.get('status')!='adapter_required':return result
+ # Bounded public evidence for an unknown storefront, never a guessed adapter.
+ import requests
+ from urllib.robotparser import RobotFileParser
+ from bs4 import BeautifulSoup
+ from source_research import clean_html,public_url
+ try:
+  agent='ChotuAppRequestedStoreCheck/1.0';base=site['url'].rstrip('/')
+  session=requests.Session();session.headers['User-Agent']=agent
+  robots=RobotFileParser();response=session.get(base+'/robots.txt',timeout=30)
+  if response.status_code==404:robots.parse([])
+  else:response.raise_for_status();robots.parse(response.text.splitlines())
+  if not robots.can_fetch(agent,base+'/'):raise ValueError('Public robots rule disallows homepage')
+  response=session.get(base+'/',timeout=30);response.raise_for_status()
+  if (urlsplit(response.url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):raise ValueError('Foreign storefront redirect')
+  if len(response.content)>5*1024*1024:raise ValueError('Homepage exceeds diagnostic bound')
+  soup=BeautifulSoup(response.text,'html.parser')
+  result['public_homepage_html']=clean_html(response.text)
+  result['public_script_paths']=[public_url(__import__('urllib.parse',fromlist=['urljoin']).urljoin(response.url,s['src'])) for s in soup.select('script[src]')][:25]
+  result['public_page_title']=soup.title.get_text(' ',strip=True) if soup.title else ''
+ except (requests.RequestException,ValueError) as exc:result['inspection_error']=str(exc)[:300]
+ return result
 
 def main():
  request=json.loads((ROOT/'cloud/new-store-fetch-request.json').read_text());stores=validate(request)
