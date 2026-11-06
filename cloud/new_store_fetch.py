@@ -39,8 +39,8 @@ def plan(request,stores,observations,runs):
 def public_next_product_state(html):
     """Read JSON-only public Next records, including split stream chunks."""
     from bs4 import BeautifulSoup
-    fields={'id','name','title','slug','price','basePrice','salePrice','description','images','imageUrls','image','category','categoryId','variants','sizes','colors','stock','stockQuantity','isActive','active','currency','sku','isAvailable','inStock','quantity','sale','discount','sellingPrice','retailPrice','regularPrice','discountPrice','minPrice','maxPrice','stockOnHand','stockReserved','stockAvailable','inventoryQuantity','productId','colorName','sizeName','sizeLabel','colorHex','priceOverride','department','size','color','status','isPublished','trackStock','stockQty','baseRetailPrice'}
-    result={'hydration_products':[],'object_key_shapes':[],'product_contexts':[]}
+    fields={'id','name','title','slug','price','basePrice','salePrice','description','images','imageUrls','image','category','categoryId','variants','sizes','colors','stock','stockQuantity','isActive','active','currency','sku','isAvailable','inStock','quantity','sale','discount','sellingPrice','retailPrice','regularPrice','discountPrice','minPrice','maxPrice','stockOnHand','stockReserved','stockAvailable','inventoryQuantity','productId','colorName','sizeName','sizeLabel','colorHex','priceOverride','department','size','color','status','isPublished','trackStock','stockQty','baseRetailPrice','url','imageUrl','position','alt','onHand','reserved','available','isPrimary'}
+    result={'hydration_products':[],'object_key_shapes':[],'product_contexts':[],'public_variant_data':[],'public_variant_shapes':[]}
     def clean(value):
         if isinstance(value,dict):return {k:clean(v) for k,v in value.items() if k in fields}
         if isinstance(value,list):return [clean(v) for v in value[:500]]
@@ -50,6 +50,9 @@ def public_next_product_state(html):
             if 'variants' in value or 'product' in value:
                 shape=sorted(value)
                 if shape not in result['object_key_shapes']:result['object_key_shapes'].append(shape)
+            if isinstance(value.get('variants'),list):
+                result['public_variant_data'].append(clean(value['variants']))
+                result['public_variant_shapes'].append([{k:sorted(v) if isinstance(v,dict) else type(v).__name__ for k,v in variant.items()} for variant in value['variants'][:3] if isinstance(variant,dict)])
             if isinstance(value.get('product'),dict):
                 result['product_contexts'].append({k:clean(v) for k,v in value.items() if k in ('product','variants','images','sizes','colors')})
             if value.get('id') and (value.get('name') or value.get('title')):
