@@ -72,25 +72,34 @@ def probe(site):
    for node in detail_soup.select('script[type="application/ld+json"]'):
     try:result['public_product_page']['structured'].append(json.loads(node.get_text()))
     except ValueError:pass
-   allowed={'id','name','title','slug','price','basePrice','salePrice','description','images','imageUrls','image','category','categoryId','variants','sizes','colors','stock','stockQuantity','isActive','active','currency','sku','isAvailable','inStock','quantity','sale','discount'}
-   def walk(value):
+   allowed={'id','name','title','slug','price','basePrice','salePrice','description','images','imageUrls','image','category','categoryId','variants','sizes','colors','stock','stockQuantity','isActive','active','currency','sku','isAvailable','inStock','quantity','sale','discount','sellingPrice','retailPrice','regularPrice','discountPrice','minPrice','maxPrice','stockOnHand','stockReserved','stockAvailable','inventoryQuantity','productId','colorName','sizeName','sizeLabel','colorHex','priceOverride','department','size','color','status','isPublished','trackStock','stockQty','baseRetailPrice'}
+   result['public_product_page']['object_key_shapes']=[]
+  result['public_product_page']['product_contexts']=[]
+  def walk(value):
     if isinstance(value,dict):
-     if value.get('id') and (value.get('name') or value.get('title')) and ('variants' in value or any(k in value for k in ('price','basePrice','salePrice'))):
+     if 'variants' in value or 'product' in value:
+      shape=sorted(value)
+      if shape not in result['public_product_page']['object_key_shapes']:result['public_product_page']['object_key_shapes'].append(shape)
+     if isinstance(value.get('product'),dict):
+      result['public_product_page']['product_contexts'].append({k:v for k,v in value.items() if k in ('product','variants','images','sizes','colors')})
+     if value.get('id') and (value.get('name') or value.get('title')):
       candidate={k:v for k,v in value.items() if k in allowed}
       if len(json.dumps(candidate))<150000 and candidate not in result['public_product_page']['hydration_products']:result['public_product_page']['hydration_products'].append(candidate)
      for v in value.values():walk(v)
     elif isinstance(value,list):
      for v in value:walk(v)
+   chunks=[]
    for node in detail_soup.find_all('script'):
     text=node.get_text()
     for match in re.finditer(r'self\.__next_f\.push\(',text):
      try:array,_=json.JSONDecoder().raw_decode(text[match.end():])
      except ValueError:continue
      if not isinstance(array,list) or len(array)<2 or not isinstance(array[1],str):continue
-     for line in array[1].splitlines():
-      payload=line.partition(':')[2]
-      try:walk(json.loads(payload))
-      except ValueError:pass
+     chunks.append(array[1])
+   for line in ''.join(chunks).splitlines():
+    payload=line.partition(':')[2]
+    try:walk(json.loads(payload))
+    except ValueError:pass
    scripts=[urljoin(product_link,t['src']) for t in detail_soup.select('script[src]') if '/app/' in t['src'] and ('page-' in t['src'] or 'layout-' in t['src'])]
    result['public_client_route_clues']=[]
    for script in scripts[:3]:
