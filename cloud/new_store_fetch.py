@@ -40,7 +40,7 @@ def main():
  request=json.loads((ROOT/'cloud/new-store-fetch-request.json').read_text());stores=validate(request)
  report=dict(run_id=os.environ['GITHUB_RUN_ID'],request_id=request['request_id'],checked_utc=datetime.now(timezone.utc).isoformat(),shop_codes='Pending owner; blank in exports',stores=[],groups=[],status='checking')
  def save():
-  report['checked_utc']=datetime.now(timezone.utc).isoformat();publish(report,branch='new-store-fetch-reports')
+  report['checked_utc']=datetime.now(timezone.utc).isoformat();publish(report,branch='requested-store-reports')
  with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:report['stores']=list(pool.map(probe,stores))
  save()
  runs=json.loads(gh('run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','200','--json','databaseId,displayTitle,status'))
