@@ -1,6 +1,7 @@
 """Source-bound customer copy and independent description completeness checks."""
 import html,re
 from collections import Counter,OrderedDict
+DESCRIPTION_STYLE_VERSION='customer-copy-v3'
 
 # Plain text headings work in Excel and native mobile text controls.
 HEADINGS=OrderedDict([
@@ -151,8 +152,8 @@ def body(value,name=''):
    parts.append(line)
  return '\n'.join(parts)
 
-PURPOSE=re.compile(r'(?i)\b(?:camisoles?|tank tops?|hair\s*brush(?:es)?|chappals?|pendants?|necklaces?|malas?|earrings?|lipsticks?|lip colours?|hair masks?|perfumes?|fragrances?|wrist\s*watches?|bedsheets?|bed sheets?|adapter|controllers?|shirts?|trousers?|sandals?|shoes?)\b')
-DISTINCTIVE=re.compile(r'(?i)\b(?:solid|printed|embroidered|beaded|layered|cushion(?:ed)?|peshawari|gold[ -]plated|silver[ -]plated|matte|floral|wireless|bluetooth|sulphate[ -]free|sulfate[ -]free|argan oil|closed[ -]toe|open[ -]toe|low[ -]cut)\b')
+PURPOSE=re.compile(r'(?i)\b(?:camisoles?|tank tops?|hair\s*brush(?:es)?|chappals?|pendants?|necklaces?|malas?|earrings?|studs|bangles?|karas?|rings?|bracelets?|lipsticks?|lip colours?|nail polish|nail paint|hair masks?|perfumes?|fragrances?|wrist\s*watches?|bedsheets?|bed sheets?|adapter|controllers?|shirts?|trousers?|sandals?|shoes?)\b')
+DISTINCTIVE=re.compile(r'(?i)\b(?:solid|printed|embroidered|beaded|layered|cushion(?:ed)?|peshawari|gold[ -]plated|silver[ -]plated|stainless steel|crystal|calligraphy|feather|cotton|polyester|matte|glitter|floral|wireless|bluetooth|sulphate[ -]free|sulfate[ -]free|argan oil|closed[ -]toe|open[ -]toe|low[ -]cut)\b')
 MEASURE=re.compile(r'(?i)\b\d+(?:\.\d+)?\s*(?:ml|litres?|liters?|g|kg|cm|mm|inches?)\b')
 
 def source_factual_summary(name,value):
@@ -180,7 +181,8 @@ def completeness_issues(value,name=''):
  if not useful or len(re.findall(r'\b\w+\b',useful))<5:
   summary=source_factual_summary(name,value)
   useful=summary or useful
-  specific=bool(PURPOSE.search(useful) and (DISTINCTIVE.search(useful) or MEASURE.search(useful)))
+  quantity=re.search(r'(?i)\b(?:set|pack)\s+of\s+\d+\b',useful)
+  specific=bool(useful and PURPOSE.search(useful+' '+str(name)) and (DISTINCTIVE.search(useful) or MEASURE.search(useful) or quantity))
   if not specific:return ['Description lacks product-specific detail beyond name, code, care and options']
  if len(str(value or ''))>=32767:return ['Description exceeds Excel cell capacity']
  return []

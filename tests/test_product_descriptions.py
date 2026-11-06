@@ -1,6 +1,11 @@
 import re,unittest
 from product_description_support import render_description,completeness_issues,numeric_facts,overview_matches
 class ProductDescriptionTests(unittest.TestCase):
+ def test_concise_material_design_and_pack_facts_are_complete(self):
+  for name,body in [('Stainless Steel Openable Kara -45','Stainless Steel Kara'),('Moti Mala -02 (Multi)','Crystal Mala'),('Gold Bangles-142 (Golden)','Set of 4 Bangles'),('Calligraphy Allah Pendant-11','Calligraphy Allah Pendant'),('Feather Earring (White)','Feather Earring')]:
+   with self.subTest(name=name):
+    self.assertFalse(completeness_issues(body,name))
+    self.assertFalse(completeness_issues(render_description(body,name),name))
  def test_options_codes_and_category_padding_cannot_pass_as_a_description(self):
   for name,body in [('Bata - Bags','901-6196\nProduct Info\n\nProduct Options:\nSize: 10\nColor: Black'),('Stella Perfum For Ladies PR0134','Stella Perfum For Ladies PR0134 is a fragrance.\nProduct Options:\nColor: Multy\nSize: Standard')]:
    with self.subTest(name=name):

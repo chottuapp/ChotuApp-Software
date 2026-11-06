@@ -238,7 +238,8 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
    report['owner_authorized_exclusions']=owner_exclusions
    report['image_metadata_repairs']=image_metadata_repairs
    report.update(description_repairs_count=len(repairs),description_repairs_examples=repairs[:10])
-   report.update(campaign_id=campaign,source_run=str(source_run),source_artifact=artifact_id,source_sha256=source_sha,description_style_version='customer-copy-v2')
+   from product_description_support import DESCRIPTION_STYLE_VERSION
+   report.update(campaign_id=campaign,source_run=str(source_run),source_artifact=artifact_id,source_sha256=source_sha,description_style_version=DESCRIPTION_STYLE_VERSION)
    if generation and str(source_run) in refresh_runs:report['refresh_generation']=generation
    if report['status']!='pass':
     if not marker:marker=save_held(source,store,campaign,str(source_run))
