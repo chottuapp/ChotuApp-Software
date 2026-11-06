@@ -92,7 +92,7 @@ This white camisole has a scoop neckline with wide straps for a comfortable, eve
 • Size: S, M, L
 ```
 
-## Bata — Bata - Bags
+## Bata — Bata - Bags (incomplete; excluded from the final export)
 
 https://www.bata.com.pk/products/901-6196
 
@@ -118,7 +118,7 @@ After:
 • Color: Black
 ```
 
-## Bata — Peshawari - Men
+## Bata — Peshawari - Men (incomplete source; excluded from the final export)
 
 https://www.bata.com.pk/products/864-9957
 
