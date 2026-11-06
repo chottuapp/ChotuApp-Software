@@ -58,6 +58,48 @@ def probe(site):
   result['public_homepage_html']=clean_html(response.text)
   result['public_script_paths']=[public_url(__import__('urllib.parse',fromlist=['urljoin']).urljoin(response.url,s['src'])) for s in soup.select('script[src]')][:25]
   result['public_page_title']=soup.title.get_text(' ',strip=True) if soup.title else ''
+  from urllib.parse import urljoin
+  import time
+  def public_read(url):
+   if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.') or not robots.can_fetch(agent,url):raise ValueError('Unapproved public diagnostic URL')
+   time.sleep(1.5);r=session.get(url,timeout=30);r.raise_for_status()
+   if len(r.content)>3*1024*1024:raise ValueError('Diagnostic response exceeds bound')
+   return r
+  product_link=next((urljoin(base,a['href']) for a in soup.select('a[href]') if a['href'].startswith('/product/')),None)
+  if product_link:
+   detail=public_read(product_link);detail_soup=BeautifulSoup(detail.text,'html.parser')
+   result['public_product_page']={'url':product_link,'html':clean_html(detail.text),'structured':[],'hydration_products':[]}
+   for node in detail_soup.select('script[type="application/ld+json"]'):
+    try:result['public_product_page']['structured'].append(json.loads(node.get_text()))
+    except ValueError:pass
+   allowed={'id','name','title','slug','price','basePrice','salePrice','description','images','imageUrls','image','category','categoryId','variants','sizes','colors','stock','stockQuantity','isActive','active','currency','sku','isAvailable','inStock','quantity','sale','discount'}
+   def walk(value):
+    if isinstance(value,dict):
+     if value.get('id') and (value.get('name') or value.get('title')) and ('variants' in value or any(k in value for k in ('price','basePrice','salePrice'))):
+      candidate={k:v for k,v in value.items() if k in allowed}
+      if len(json.dumps(candidate))<150000 and candidate not in result['public_product_page']['hydration_products']:result['public_product_page']['hydration_products'].append(candidate)
+     for v in value.values():walk(v)
+    elif isinstance(value,list):
+     for v in value:walk(v)
+   for node in detail_soup.find_all('script'):
+    text=node.get_text()
+    for match in re.finditer(r'self\.__next_f\.push\(',text):
+     try:array,_=json.JSONDecoder().raw_decode(text[match.end():])
+     except ValueError:continue
+     if not isinstance(array,list) or len(array)<2 or not isinstance(array[1],str):continue
+     for line in array[1].splitlines():
+      payload=line.partition(':')[2]
+      try:walk(json.loads(payload))
+      except ValueError:pass
+   scripts=[urljoin(product_link,t['src']) for t in detail_soup.select('script[src]') if '/app/' in t['src'] and ('page-' in t['src'] or 'layout-' in t['src'])]
+   result['public_client_route_clues']=[]
+   for script in scripts[:3]:
+    if not robots.can_fetch(agent,script):continue
+    text=public_read(script).text
+    for match in re.finditer(r'/api/[A-Za-z0-9_/?=&${}.:-]+',text):
+     context=text[max(0,match.start()-100):match.end()+160]
+     if not re.search(r'token|secret|authorization|password|session|email|phone',context,re.I):result['public_client_route_clues'].append(context[:400])
+
  except (requests.RequestException,ValueError) as exc:result['inspection_error']=str(exc)[:300]
  return result
 
