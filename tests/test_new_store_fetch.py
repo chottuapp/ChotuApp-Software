@@ -5,16 +5,16 @@ class NewStoreFetchTests(unittest.TestCase):
  def setUp(self):
   self.request=json.loads((ROOT/'cloud/new-store-fetch-request.json').read_text());self.stores=validate(self.request)
   self.observations=[dict(name=s['name'],status='supported',provider='shopify') for s in self.stores]
- def test_eight_exact_sources_export_no_invented_codes(self):
-  self.assertEqual(len(self.stores),8)
+ def test_sixteen_exact_sources_export_no_invented_codes(self):
+  self.assertEqual(len(self.stores),16)
   groups,already=plan(self.request,self.stores,self.observations,[])
-  self.assertEqual(len(groups),4);self.assertFalse(already)
+  self.assertEqual(len(groups),8);self.assertFalse(already)
   self.assertTrue(all('shop_code' not in s for g in groups for s in g['stores']))
  def test_reruns_and_continuations_cannot_duplicate_existing_stores(self):
   groups,_=plan(self.request,self.stores,self.observations,[])
   runs=[dict(databaseId=1,displayTitle='Cloud group '+groups[0]['runner_group'],status='completed'),dict(databaseId=2,displayTitle='Automatic continuation of 1',status='in_progress'),dict(databaseId=3,displayTitle='Cloud group unrelated-existing-run',status='in_progress')]
   remaining,already=plan(self.request,self.stores,self.observations,runs)
-  self.assertEqual(already,{'Toyzone','Toynix'});self.assertEqual(len(remaining),3)
+  self.assertEqual(already,{'Toyzone','Toynix'});self.assertEqual(len(remaining),7)
  def test_only_supported_exact_sources_start_and_later_registration_is_additive(self):
   observations=copy.deepcopy(self.observations);observations[1]['status']='source_blocked'
   first,_=plan(self.request,self.stores,observations,[])

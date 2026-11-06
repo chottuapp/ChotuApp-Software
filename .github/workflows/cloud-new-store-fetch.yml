@@ -20,7 +20,7 @@ jobs:
       - name: Verify additive and blank-code safeguards
         env:
           PYTHONPATH: tests:cloud:.
-        run: python -m unittest test_new_store_fetch test_alfateh_source -q
+        run: python -m unittest test_new_store_fetch test_alfateh_source test_paperworm_scope -q
       - name: Check exact public sources and dispatch supported stores
         env:
           GH_TOKEN: ${{ github.token }}

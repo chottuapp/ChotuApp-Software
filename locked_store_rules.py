@@ -9,6 +9,7 @@ def allowed_product(base,product):
  host=(urlsplit(base).hostname or '').lower().removeprefix('www.')
  if host=='freshbasket.com.pk':return not freshbasket_produce(product)
  if host=='chenone.com':return not chenone_furniture(product)
+ if host=='thepaperworm.com':return paperworm_school_supply(product)
  if host=='hellomaali.com':return product.get('handle') not in MAALI_GIFTBOX_HANDLES
  if host!=ASTORE_HOST:return True
  title=str(product.get('title') or '')
@@ -16,6 +17,21 @@ def allowed_product(base,product):
  # Evaluate sold objects, not cross-selling/care prose or unrelated collection tags.
  if re.search(r'\b(?:bag\s+(?:charms?|straps?|covers?|organizers?)|sleeves?|straps?|watches|watch|shoes?|perfumes?|jewellery|jewelry|clothes?|sunglasses|belts?)\b',title,re.I):return False
  return bool(re.search(r'\b(?:bags?|wallets?|handbags?|backpacks?|rucksacks?|totes?|clutches|clutch|purses?|satchels?|briefcases?|duffels?|crossbody|mini\s+pouches|mini\s+pouch)\b',title+' '+kind,re.I))
+
+
+def paperworm_school_supply(product):
+ """Owner lock: school supplies only; uncertain/general gifts stay excluded.
+
+ Use the sold-object title and explicit taxonomy, never marketing descriptions,
+ SEO tags or a recommendation mentioning school next to an unrelated product.
+ """
+ title=str(product.get('title') or product.get('name') or '')
+ if re.search(r'\b(?:gift\s+bags?|party|balloons?|bunting|confetti|cake\s+toppers?|home\s+decor|candles?|cushions?|plush|dolls?|action\s+figures?|remote\s+control|board\s+games?|travel\s+bags?|luggage|laptop\s+bags?|baby\s+(?:bottles?|feeding)|printers?|toner|ink\s+cartridges?)\b',title,re.I):return False
+ labels=[str(product.get(k) or '') for k in ('product_type','Category','category','source_category','source_product_type')]
+ for value in product.get('categories',[]) or []:
+  labels.append(str(value.get('name','') if isinstance(value,dict) else value))
+ kinds=r'school\s*bags?|backpacks?|rucksacks?|lunch\s*(?:boxes|box|bags?)|bento\s*(?:boxes|box)|water\s*bottles?|pencil\s*(?:cases?|boxes|box|pouches?)|stationery\s*(?:sets?|kits?)|notebooks?|exercise\s*books?|copy\s*books?|drawing\s*books?|sketch\s*(?:books?|pads?)|drawing\s*pads?|pens?|pencils?|erasers?|rubbers?|sharpeners?|rulers?|geometry\s*(?:sets?|boxes|box)|compass(?:es)?|protractors?|crayons?|colou?r\s*pencils?|felt\s*(?:tip\s*)?pens?|markers?|highlighters?|glue\s*sticks?|school\s*glue|scissors|paint\s*brush(?:es)?|water\s*colou?rs?|poster\s*colou?rs?|calculators?'
+ return bool(re.search(r'\b(?:'+kinds+r')\b',title,re.I) or any(re.fullmatch(r'\s*(?:school\s*(?:supplies|stationery|bags)|stationery|art\s*(?:and|&)\s*craft\s*supplies)\s*',v,re.I) for v in labels) or any(re.search(r'\b(?:'+kinds+r')\b',v,re.I) for v in labels))
 
 
 def freshbasket_produce(product):
