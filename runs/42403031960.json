@@ -3578,7 +3578,6 @@
     "The Hanger Pakistan": "source:e6b00da2e0d2f623124a79e5a06838257d2e77afc077f58e41580f6830845cf2:The Hanger Pakistan:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Seran": "source:b483899d2cf04f8a384009639e9317d0cbab7215f351dac3be5be6253512b657:Seran:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Adam Cheese": "source:944a8d9f53874731ee258c3805123f948fb01620c6ad50e9db20fba9d63f8428:Adam Cheese:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
-    "Farda Foods": "source:238e8263bced96a5672c937e5ff952b48fb1100a975b9a3a2e7129e3f9f0c1f3:Farda Foods:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Nisa Naturals": "source:d3446f03190976854acde51701a2bdefa1daa63da72664c9bdad5178e1d7edd2:Nisa Naturals:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Cool and Cool": "source:bb4409e48db1ffbf9f63718f171f3e9f1faa67f3d98454027b5a077805ef3bc8:Cool and Cool:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Denim Leftover": "source:a04e8fc5ed29028e738af5c33724f2b381123798fe3ab658d7d1b125d8062c83:Denim Leftover:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -4127,13 +4126,13 @@
       "store": "Farda Foods",
       "shop_code": "SE10002",
       "identity_policy": "confirmed_code",
-      "status": "pass",
+      "status": "hold",
       "products_checked": 51,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
       "workbook_sha256": "8821aa98bd016d7ed925b819ce71dfba3f4dbb287020ee24be82d43c9631a50a",
-      "checked_utc": "2026-11-07T08:25:53.898269+00:00",
+      "checked_utc": "2026-11-07T18:58:49.943979+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
@@ -4160,7 +4159,10 @@
       "source_sha256": "238e8263bced96a5672c937e5ff952b48fb1100a975b9a3a2e7129e3f9f0c1f3",
       "description_style_version": "customer-copy-v3",
       "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "verified"
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Duplicate Drive filenames require identity review",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/farda-foods/238e8263bced96a5/manifest.json"
     },
     "Nisa Naturals": {
       "name": "804 Audit",
@@ -18583,8 +18585,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Fresh Basket",
-  "audit804_progress_utc": "2026-11-07T18:57:54.193997+00:00",
+  "audit804_last_store": "Farda Foods",
+  "audit804_progress_utc": "2026-11-07T18:58:49.944049+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Limelight",
