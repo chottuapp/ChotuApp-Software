@@ -1,0 +1,319 @@
+{
+  "run_id": "42366930115",
+  "checked_utc": "2026-11-07T11:09:20.814801+00:00",
+  "targets": [
+    {
+      "target": "42366277899",
+      "state": {
+        "conclusion": "failure",
+        "displayTitle": "Cloud group requested-new20261106-5-src931add9ba95a",
+        "headSha": "6636abff80388796cb66f461d8db4841874e5698",
+        "jobs": [
+          {
+            "completedAt": "2026-11-07T11:01:05Z",
+            "conclusion": "failure",
+            "databaseId": 128384935227,
+            "name": "fetch",
+            "startedAt": "2026-11-07T11:00:09Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-11-07T11:00:11Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-11-07T11:00:10Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:00:19Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-11-07T11:00:11Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:00:20Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-11-07T11:00:19Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:00:22Z",
+                "conclusion": "success",
+                "name": "Install extraction dependencies",
+                "number": 4,
+                "startedAt": "2026-11-07T11:00:20Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:00:43Z",
+                "conclusion": "success",
+                "name": "Verify standalone continuation and owner-policy guards",
+                "number": 5,
+                "startedAt": "2026-11-07T11:00:22Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:00:43Z",
+                "conclusion": "skipped",
+                "name": "Restore optional saved run",
+                "number": 6,
+                "startedAt": "2026-11-07T11:00:43Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:00:43Z",
+                "conclusion": "skipped",
+                "name": "Install Czone browser fallback when needed",
+                "number": 7,
+                "startedAt": "2026-11-07T11:00:43Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:00:43Z",
+                "conclusion": "skipped",
+                "name": "Install Axis public JS renderer when needed",
+                "number": 8,
+                "startedAt": "2026-11-07T11:00:43Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:00:43Z",
+                "conclusion": "success",
+                "name": "Start continuous fetching on the cloud runner",
+                "number": 9,
+                "startedAt": "2026-11-07T11:00:43Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:00:59Z",
+                "conclusion": "success",
+                "name": "Live progress, logs and completed-file uploads",
+                "number": 10,
+                "startedAt": "2026-11-07T11:00:43Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:00:59Z",
+                "conclusion": "failure",
+                "name": "Fetch result",
+                "number": 11,
+                "startedAt": "2026-11-07T11:00:59Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:00:59Z",
+                "conclusion": "success",
+                "name": "Collect diagnostic report even if fetching failed",
+                "number": 12,
+                "startedAt": "2026-11-07T11:00:59Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:01:00Z",
+                "conclusion": "success",
+                "name": "Upload diagnostic report and redacted log",
+                "number": 13,
+                "startedAt": "2026-11-07T11:00:59Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:01:01Z",
+                "conclusion": "success",
+                "name": "Upload Excel files and audits, including completed stores from a partial run",
+                "number": 14,
+                "startedAt": "2026-11-07T11:01:00Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:01:01Z",
+                "conclusion": "skipped",
+                "name": "Final automated Rule 804 pass for fresh batch",
+                "number": 15,
+                "startedAt": "2026-11-07T11:01:01Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:01:01Z",
+                "conclusion": "skipped",
+                "name": "Upload automated Rule 804 fresh workbooks",
+                "number": 16,
+                "startedAt": "2026-11-07T11:01:01Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:01:02Z",
+                "conclusion": "success",
+                "name": "Upload saved checkpoint when available",
+                "number": 17,
+                "startedAt": "2026-11-07T11:01:01Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:01:03Z",
+                "conclusion": "success",
+                "name": "Dispatch authorized continuation after verified checkpoint upload",
+                "number": 18,
+                "startedAt": "2026-11-07T11:01:02Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:01:03Z",
+                "conclusion": "success",
+                "name": "Post Live progress, logs and completed-file uploads",
+                "number": 34,
+                "startedAt": "2026-11-07T11:01:03Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:01:03Z",
+                "conclusion": "skipped",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 35,
+                "startedAt": "2026-11-07T11:01:03Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:01:03Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 36,
+                "startedAt": "2026-11-07T11:01:03Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:01:03Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 37,
+                "startedAt": "2026-11-07T11:01:03Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/42366277899/job/128384935227"
+          },
+          {
+            "completedAt": "2026-11-07T11:01:24Z",
+            "conclusion": "success",
+            "databaseId": 128385165371,
+            "name": "Archive structured diagnostics",
+            "startedAt": "2026-11-07T11:01:08Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-11-07T11:01:10Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-11-07T11:01:09Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:01:18Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-11-07T11:01:10Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:01:18Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-11-07T11:01:18Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:01:19Z",
+                "conclusion": "success",
+                "name": "Run actions/download-artifact@v4",
+                "number": 4,
+                "startedAt": "2026-11-07T11:01:18Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:01:22Z",
+                "conclusion": "success",
+                "name": "Archive credential-free JSON on the cloud-reports branch",
+                "number": 5,
+                "startedAt": "2026-11-07T11:01:19Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:01:22Z",
+                "conclusion": "success",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 9,
+                "startedAt": "2026-11-07T11:01:22Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:01:22Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 10,
+                "startedAt": "2026-11-07T11:01:22Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:01:22Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 11,
+                "startedAt": "2026-11-07T11:01:22Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/42366277899/job/128385165371"
+          }
+        ],
+        "status": "completed"
+      },
+      "failed_log": "fetch\tFetch result\t2026-11-07T11:00:59.7010828Z [Rung Rez] [11:00:45] HTTP END status=200 elapsed=0.4s bytes=4513 https://rungrez.com.pk/robots.txt\nfetch\tFetch result\t2026-11-07T11:00:59.7011502Z [Rung Rez] [11:00:45] HTTP START attempt=1 https://rungrez.com.pk/\nfetch\tFetch result\t2026-11-07T11:00:59.7011972Z [Rung Rez] [11:00:46] HTTP END status=200 elapsed=1.4s bytes=351590 https://rungrez.com.pk/\nfetch\tFetch result\t2026-11-07T11:00:59.7012658Z [Rung Rez] WEBSITE ORDER UNVERIFIED: No supported public category navigation found; observed prefix retained, no price/bestseller fallback\nfetch\tFetch result\t2026-11-07T11:00:59.7013274Z [Rung Rez] SAVED RESPONSE: https://rungrez.com.pk/robots.txt\nfetch\tFetch result\t2026-11-07T11:00:59.7013686Z [Rung Rez] PUBLIC PRODUCTS: 1/15 exact source pages checked; 1 complete\nfetch\tFetch result\t2026-11-07T11:00:59.7014062Z __CHOTU_PROGRESS__|1|Active: Rung Rez\nfetch\tFetch result\t2026-11-07T11:00:59.7014432Z [Rung Rez] [11:00:56] EXCEPTION: ValueError('Rungrez displayed price conflict')\nfetch\tFetch result\t2026-11-07T11:00:59.7014847Z [Rung Rez] [11:00:56] Traceback (most recent call last):\nfetch\tFetch result\t2026-11-07T11:00:59.7021854Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2061, in _run_checked\nfetch\tFetch result\t2026-11-07T11:00:59.7022501Z     run_site(site['url'], name, template, log_line)\nfetch\tFetch result\t2026-11-07T11:00:59.7023137Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\nfetch\tFetch result\t2026-11-07T11:00:59.7023847Z     if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\nfetch\tFetch result\t2026-11-07T11:00:59.7024333Z                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-11-07T11:00:59.7024899Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1554, in run_site\nfetch\tFetch result\t2026-11-07T11:00:59.7025460Z     _chotuapp_run_site_original(base, name, template, intercept)\nfetch\tFetch result\t2026-11-07T11:00:59.7026081Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\nfetch\tFetch result\t2026-11-07T11:00:59.7027123Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\nfetch\tFetch result\t2026-11-07T11:00:59.7027764Z                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-11-07T11:00:59.7028569Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\nfetch\tFetch result\t2026-11-07T11:00:59.7057223Z                                 ^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-11-07T11:00:59.7057780Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 42, in catalog\nfetch\tFetch result\t2026-11-07T11:00:59.7058346Z     try:p=self.normalize(r.text,url)\nfetch\tFetch result\t2026-11-07T11:00:59.7058615Z           ^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-11-07T11:00:59.7059157Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/rungrez_source_support.py\", line 24, in normalize\nfetch\tFetch result\t2026-11-07T11:00:59.7059984Z     if q.get('display_price') is not None and Decimal(str(q['display_price']))!=Decimal(str(v['price'])):raise ValueError('Rungrez displayed price conflict')\nfetch\tFetch result\t2026-11-07T11:00:59.7060768Z                                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-11-07T11:00:59.7061180Z ValueError: Rungrez displayed price conflict\nfetch\tFetch result\t2026-11-07T11:00:59.7061389Z \nfetch\tFetch result\t2026-11-07T11:00:59.7061561Z [Rung Rez] FAILED: Rung Rez: Rungrez displayed price conflict\nfetch\tFetch result\t2026-11-07T11:00:59.7061904Z [Rung Rez] [11:00:56] STAGE: Idle\nfetch\tFetch result\t2026-11-07T11:00:59.7062230Z FAILED: Rung Rez: FAILED: Rung Rez: Rungrez displayed price conflict\nfetch\tFetch result\t2026-11-07T11:00:59.7062563Z False\nfetch\tFetch result\t2026-11-07T11:00:59.7062984Z Checkpoint lossless cache migration: 3 legacy responses compressed; all source bytes and hashes remain verifiable.\nfetch\tFetch result\t2026-11-07T11:00:59.7063644Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nfetch\tFetch result\t2026-11-07T11:00:59.7064234Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nfetch\tFetch result\t2026-11-07T11:00:59.7064634Z RUN SUMMARY:\nfetch\tFetch result\t2026-11-07T11:00:59.7065191Z Rung Rez: FAILED \u2014 FAILED: Rung Rez: Rungrez displayed price conflict\nfetch\tFetch result\t2026-11-07T11:00:59.7065538Z Checkpoint: saved\nfetch\tFetch result\t2026-11-07T11:00:59.7065966Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH\nfetch\tFetch result\t2026-11-07T11:00:59.7086659Z ##[error]Process completed with exit code 2.",
+      "artifacts": [
+        {
+          "name": "chotuapp-diagnostics",
+          "id": 13572165759,
+          "expired": false,
+          "size_in_bytes": 4126
+        },
+        {
+          "name": "chotuapp-excel-files",
+          "id": 13571906412,
+          "expired": false,
+          "size_in_bytes": 552
+        },
+        {
+          "name": "chotuapp-checkpoint",
+          "id": 13571846651,
+          "expired": false,
+          "size_in_bytes": 231744
+        },
+        {
+          "name": "chotuapp-live-logs",
+          "id": 13571732771,
+          "expired": false,
+          "size_in_bytes": 6089
+        }
+      ],
+      "annotations": [
+        {
+          "level": "warning",
+          "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+        },
+        {
+          "level": "failure",
+          "message": "Process completed with exit code 2."
+        }
+      ],
+      "console-tail.txt": "__CHOTU_PROGRESS__|1|Active: Rung Rez\n[Rung Rez] [11:00:44] STAGE: Website listing order\n[Rung Rez] [11:00:44] HTTP START attempt=1 https://rungrez.com.pk/robots.txt\n[Rung Rez] [11:00:45] HTTP END status=200 elapsed=0.4s bytes=4513 https://rungrez.com.pk/robots.txt\n[Rung Rez] [11:00:45] HTTP START attempt=1 https://rungrez.com.pk/\n[Rung Rez] [11:00:46] HTTP END status=200 elapsed=1.4s bytes=351590 https://rungrez.com.pk/\n[Rung Rez] WEBSITE ORDER UNVERIFIED: No supported public category navigation found; observed prefix retained, no price/bestseller fallback\n[Rung Rez] SAVED RESPONSE: https://rungrez.com.pk/robots.txt\n[Rung Rez] PUBLIC PRODUCTS: 1/15 exact source pages checked; 1 complete\n__CHOTU_PROGRESS__|1|Active: Rung Rez\n[Rung Rez] [11:00:56] EXCEPTION: ValueError('Rungrez displayed price conflict')\n[Rung Rez] [11:00:56] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2061, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1554, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 123, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='alfatehgarments.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 66, in run\n    try:return original(base,store,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 216, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 191, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 365, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.') not in HOSTS:return original(base,name,template,log)\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 347, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.')!='laam.com':return original(base,name,template,log)\n                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 478, in run\n    if host!='czone.com.pk':return original(base,name,template,log)\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1080, in run_site\n    products, complete_catalog=discover(base,log)\n                               ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 65, in <lambda>\n    g.update(discover=lambda *a:source.catalog(),collections=lambda *a:{},refresh_variant_prices=lambda b,p,l:p['variants'],storefront_cover=lambda *a:None,verified_top20=ranking,audit_fractional_prices=audit,storefront_price_audit=audit)\n                                ^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 42, in catalog\n    try:p=self.normalize(r.text,url)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/rungrez_source_support.py\", line 24, in normalize\n    if q.get('display_price') is not None and Decimal(str(q['display_price']))!=Decimal(str(v['price'])):raise ValueError('Rungrez displayed price conflict')\n                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Rungrez displayed price conflict\n\n[Rung Rez] FAILED: Rung Rez: Rungrez displayed price conflict\n[Rung Rez] [11:00:56] STAGE: Idle\nFAILED: Rung Rez: FAILED: Rung Rez: Rungrez displayed price conflict\nFalse\nCheckpoint lossless cache migration: 3 legacy responses compressed; all source bytes and hashes remain verifiable.\nCheckpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nCheckpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nRUN SUMMARY:\nRung Rez: FAILED \u2014 FAILED: Rung Rez: Rungrez displayed price conflict\nCheckpoint: saved\nRun finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+      "store-status.txt": "Updated (UTC): 2026-11-07T11:00:58.113798+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nRung Rez: failed\n  Stage: Idle\n  Last successful HTTP response (UTC): 2026-11-07T11:00:46.683997+00:00",
+      "fetch-log.txt": "QUEUE: smaller historical catalogs first; unknown counts last; fresh source data fetched again\nRUNNER STORES: Rung Rez\nPARALLEL STORES: up to 3 different websites together; source pacing, cooldowns and checks preserved.\nNEW FRESH RUN: Rung Rez\n[Rung Rez] SOFTWARE VERSION: 9216855db365a0a1 \u2014 installed code loaded\n[Rung Rez] [11:00:44] STAGE: Starting Rung Rez\n[Rung Rez] SAVED RUN: completed requests are durable; an incomplete request will be retried.\n[Rung Rez] FRESH FETCH: new run; previous request checkpoints ignored. Products, prices, availability and images fetched again.\n[Rung Rez] CHECKPOINT: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/saved_runs/519d50a0f8f6456fa4ec050d360cab91/0/api.sqlite3 (this run only; restarting Fetch begins from zero)\n__CHOTU_PROGRESS__|1|Active: Rung Rez\n[Rung Rez] [11:00:44] STAGE: Website listing order\n[Rung Rez] [11:00:44] HTTP START attempt=1 https://rungrez.com.pk/robots.txt\n[Rung Rez] [11:00:45] HTTP END status=200 elapsed=0.4s bytes=4513 https://rungrez.com.pk/robots.txt\n[Rung Rez] [11:00:45] HTTP START attempt=1 https://rungrez.com.pk/\n[Rung Rez] [11:00:46] HTTP END status=200 elapsed=1.4s bytes=351590 https://rungrez.com.pk/\n[Rung Rez] WEBSITE ORDER UNVERIFIED: No supported public category navigation found; observed prefix retained, no price/bestseller fallback\n[Rung Rez] SAVED RESPONSE: https://rungrez.com.pk/robots.txt\n[Rung Rez] PUBLIC PRODUCTS: 1/15 exact source pages checked; 1 complete\n__CHOTU_PROGRESS__|1|Active: Rung Rez\n[Rung Rez] [11:00:56] EXCEPTION: ValueError('Rungrez displayed price conflict')\n[Rung Rez] [11:00:56] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2061, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1554, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 123, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='alfatehgarments.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 66, in run\n    try:return original(base,store,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 216, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 191, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 365, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.') not in HOSTS:return original(base,name,template,log)\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 347, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.')!='laam.com':return original(base,name,template,log)\n                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 478, in run\n    if host!='czone.com.pk':return original(base,name,template,log)\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1080, in run_site\n    products, complete_catalog=discover(base,log)\n                               ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 65, in <lambda>\n    g.update(discover=lambda *a:source.catalog(),collections=lambda *a:{},refresh_variant_prices=lambda b,p,l:p['variants'],storefront_cover=lambda *a:None,verified_top20=ranking,audit_fractional_prices=audit,storefront_price_audit=audit)\n                                ^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 42, in catalog\n    try:p=self.normalize(r.text,url)\n          ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/rungrez_source_support.py\", line 24, in normalize\n    if q.get('display_price') is not None and Decimal(str(q['display_price']))!=Decimal(str(v['price'])):raise ValueError('Rungrez displayed price conflict')\n                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Rungrez displayed price conflict\n\n[Rung Rez] FAILED: Rung Rez: Rungrez displayed price conflict\n[Rung Rez] [11:00:56] STAGE: Idle\nFAILED: Rung Rez: FAILED: Rung Rez: Rungrez displayed price conflict\nFalse"
+    }
+  ]
+}
