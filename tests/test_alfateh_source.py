@@ -8,6 +8,17 @@ def page(variants=None,offer=None):
  stream='1:'+json.dumps(['$','Provider',None,{'variants':variants,'children':'Published product details'}])+'\n'
  return '<main><h1>Controlled Cotton Shirt</h1><div class="mt-8 space-y-4"><p>Cotton shirt with exact source specifications and care.</p><dl><dt>Care</dt><dd>Wash at 30 degrees.</dd></dl></div></main><script type="application/ld+json">'+json.dumps(raw)+'</script><script>self.__next_f.push('+json.dumps([1,stream])+')</script>'
 class AlfatehTests(unittest.TestCase):
+ def test_parent_product_code_can_differ_from_the_only_published_variant(self):
+  v=dict(id='real-variant',sku='AFG-SKU-727-4',regularPrice='285',salePrice=None,size={'value':"10-13 Men's"},color={'name':'Multi Color'},isActive=True,availableStock=10)
+  p=normalize(page([v],dict(url=URL,priceCurrency='PKR',price='285',availability='https://schema.org/InStock')),URL)
+  self.assertEqual(p['variants'][0]['sku'],'AFG-SKU-727-4');self.assertEqual(p['_source_product_code'],'sku1')
+  with self.assertRaisesRegex(ValueError,'price mismatch'):normalize(page([v],dict(url=URL,priceCurrency='PKR',price='280',availability='https://schema.org/InStock')),URL)
+ def test_absent_dimensions_are_not_invented_for_towels_or_belts(self):
+  v=dict(id='v1',sku='sku1',regularPrice='2000',salePrice=None,size=None,color={'name':'Multi Color'},isActive=True,availableStock=3)
+  p=normalize(page([v]),URL);self.assertEqual(p['options'],[{'name':'Color'}]);self.assertEqual(p['variants'][0]['option1'],'Multi Color');self.assertNotIn('option2',p['variants'][0])
+  v['color']=None;p=normalize(page([v]),URL);self.assertEqual(p['options'],[]);self.assertNotIn('option1',p['variants'][0])
+  v2=dict(v,id='v2',size={'value':'M'})
+  with self.assertRaises(IncompleteProduct):normalize(page([v,v2]),URL)
  def test_exact_pkr_prices_stock_sizes_colors_and_source_details_preserved(self):
   p=normalize(page(),URL)
   self.assertEqual([v['price'] for v in p['variants']],['2000','2100']);self.assertEqual(p['variants'][1]['compare_at_price'],'2500')

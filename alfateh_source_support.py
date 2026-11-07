@@ -38,17 +38,26 @@ def normalize(page,url):
  if not h1 or h1.get_text(' ',strip=True)!=title:raise ValueError('Public product heading/metadata mismatch')
  state=public_next_product_state(page);lists=state['public_variant_data']
  if len(lists)!=1 or not lists[0]:raise IncompleteProduct('Exact public variant selector missing')
- variants=[];sizes=[];colors=[];seen=set()
+ variants=[];sizes=[];colors=[];seen=set();dimensions=[]
+ for field,label,key in (('size','Size','value'),('color','Color','name')):
+  values=[(v.get(field) or {}).get(key) for v in lists[0]]
+  if all(v.get(field) is None for v in lists[0]):continue
+  if any(not isinstance(value,str) or not value for value in values):raise IncompleteProduct('Exact source '+field+' selection missing')
+  dimensions.append((field,label,key))
  for v in lists[0]:
   vid=v.get('id');size=(v.get('size') or {}).get('value');color=(v.get('color') or {}).get('name');stock=v.get('availableStock');active=v.get('isActive')
   if not vid or vid in seen:raise ValueError('Missing or duplicate source variant identity')
   if not isinstance(stock,int) or isinstance(stock,bool) or stock<0 or not isinstance(active,bool):raise IncompleteProduct('Explicit public stock or active state missing')
-  if not isinstance(size,str) or not size or not isinstance(color,str) or not color:raise IncompleteProduct('Exact source size/color selection missing')
   regular=amount(v.get('regularPrice'));sale=amount(v['salePrice']) if v.get('salePrice') is not None else regular
   if sale>regular:raise ValueError('Source sale exceeds regular price')
   seen.add(vid);sizes.append(size);colors.append(color)
-  variants.append(dict(id=vid,sku=str(v.get('sku') or ''),price=str(sale),compare_at_price=str(regular) if sale<regular else None,available=active and stock>0,inventory_quantity=stock,option1=size,option2=color))
+  row=dict(id=vid,sku=str(v.get('sku') or ''),price=str(sale),compare_at_price=str(regular) if sale<regular else None,available=active and stock>0,inventory_quantity=stock)
+  for index,(field,label,key) in enumerate(dimensions,1):row['option'+str(index)]=v[field][key]
+  variants.append(row)
  selected=[v for v in variants if v['sku']==raw.get('sku')]
+ # Product Code is a parent identifier, not necessarily the current variant SKU.
+ # With exactly one published variant the offer is unambiguous; retain its SKU.
+ if not selected and len(variants)==1:selected=variants
  if len(selected)!=1 or amount(selected[0]['price'])!=amount(offer.get('price')):raise ValueError('Published selected SKU/price mismatch')
  available=offer.get('availability')
  if available not in ('https://schema.org/InStock','https://schema.org/OutOfStock'):raise IncompleteProduct('Explicit selected offer availability missing')
@@ -61,7 +70,7 @@ def normalize(page,url):
  body=str(details[0]) if len(details)==1 else str(raw.get('description') or '')
  from locked_store_rules import incomplete_product_reasons
  if incomplete_product_reasons(dict(title=title,body_html=body)):raise IncompleteProduct('Incomplete source description')
- return dict(id=hashlib.sha256(urlsplit(url).path.encode()).hexdigest()[:20],handle=urlsplit(url).path.rstrip('/').rsplit('/',1)[-1],title=title,body_html=body,vendor=(raw.get('brand') or {}).get('name',''),images=images,variants=variants,options=[dict(name='Size'),dict(name='Color')],_source_url=url)
+ return dict(id=hashlib.sha256(urlsplit(url).path.encode()).hexdigest()[:20],handle=urlsplit(url).path.rstrip('/').rsplit('/',1)[-1],title=title,body_html=body,vendor=(raw.get('brand') or {}).get('name',''),images=images,variants=variants,options=[dict(name=label) for _,label,_ in dimensions],_source_url=url,_source_product_code=raw.get('sku'))
 
 class PublicCatalog:
  def __init__(self,g,log):self.g=g;self.log=log;self.robot=None;self.last=0
