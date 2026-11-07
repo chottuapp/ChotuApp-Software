@@ -3576,7 +3576,6 @@
     "Paklap": "source:7945258ebb692a0dea46acfc05de841d9feae207b39e15ec47fa86df45d14f9d:Paklap:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "The Hanger Pakistan": "source:e6b00da2e0d2f623124a79e5a06838257d2e77afc077f58e41580f6830845cf2:The Hanger Pakistan:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Seran": "source:b483899d2cf04f8a384009639e9317d0cbab7215f351dac3be5be6253512b657:Seran:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
-    "Cool and Cool": "source:bb4409e48db1ffbf9f63718f171f3e9f1faa67f3d98454027b5a077805ef3bc8:Cool and Cool:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Skin Factor": "source:0be1e037140638146c50a5164516fafa0370d767f217d933ae68320c76786951:Skin Factor:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Zero Lifestyle": "source:b8217d72906599c634ab94926535eb4b6e73ad5eb0482bb6e0a52197057cd926:Zero Lifestyle:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Aerosoft Studio": "source:f704a189b80a72f446c480de45bce76f2381f621048e21defbd3784e6339ed97:Aerosoft Studio:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -4201,13 +4200,13 @@
       "store": "Cool and Cool",
       "shop_code": "SE10023",
       "identity_policy": "confirmed_code",
-      "status": "pass",
+      "status": "hold",
       "products_checked": 219,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "95f83ab75e64ac0f5c229c0e4a832e2cb6c1d1aa032ab4f51d6f2c089ef15117",
-      "checked_utc": "2026-11-07T08:33:57.678944+00:00",
+      "workbook_sha256": "a31d14fedeecd5c0fb3e237f982b57817027fad726f73704eea4d5a5de83b269",
+      "checked_utc": "2026-11-07T19:06:48.186459+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
@@ -4274,7 +4273,10 @@
       "source_sha256": "bb4409e48db1ffbf9f63718f171f3e9f1faa67f3d98454027b5a077805ef3bc8",
       "description_style_version": "customer-copy-v3",
       "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "verified"
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Duplicate Drive filenames require identity review",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/cool-and-cool/bb4409e48db1ffbf/manifest.json"
     },
     "Denim Leftover": {
       "name": "804 Audit",
@@ -18594,8 +18596,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Denim Leftover",
-  "audit804_progress_utc": "2026-11-07T19:05:51.374976+00:00",
+  "audit804_last_store": "Cool and Cool",
+  "audit804_progress_utc": "2026-11-07T19:06:48.186537+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Limelight",
