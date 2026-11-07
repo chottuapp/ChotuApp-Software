@@ -3589,7 +3589,6 @@
     "Beyond East": "source:520ba9a73e65eb23defb5ecdf26c85b48bf0d279f16faf458f8fc1d7f474dee0:Beyond East:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "Alkaram Studio": "source:0b7e39dc324d0005778bdad0c0cd3a27354c37314e2bacfdf9501cbd92b682b5:Alkaram Studio:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Generation": "source:f1eeb55cac6bba9c8e16c1151ab78f74769f8b4f0470800a42965ae2927421fb:Generation:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
-    "Breakout": "source:baac9e2b7e77d1ab81eebe18a3d7ae8b7e2b4ff97d36c8b095968b99e3d8071e:Breakout:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Shop Modest": "source:d7cba029dd74ab408edb56fcce45423156b49416753b4b140a957db9c7a9e69a:Shop Modest:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Babysaurus": "source:f66a2df9cd2ebbabc9b2d6ed690b637764914c70ec8203f03f92dbe7b9fc75e9:Babysaurus:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Deflexxi": "source:47b839de0b1bd1a661efe4893a0404e91bc0c5ca13cb51828cf7c309b5406261:Deflexxi:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -15007,13 +15006,13 @@
       "store": "Breakout",
       "shop_code": null,
       "identity_policy": "owner_authorized_blank_code_exact_store_filename",
-      "status": "pass",
+      "status": "hold",
       "products_checked": 1442,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "4cd2093057659fe28ca688b14a68e6fec986606e29a6fb9398b5a16ceedb20e4",
-      "checked_utc": "2026-11-07T11:26:47.872664+00:00",
+      "workbook_sha256": "ca4e9f6de3d5c82aef81c3b8f46b35668a53349f53677d0d592a44c5041c58e6",
+      "checked_utc": "2026-11-07T19:19:37.482602+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "incomplete_products_excluded": [
         {
@@ -15819,7 +15818,7 @@
       ],
       "incomplete_products_count": 482,
       "incomplete_products_truncated": true,
-      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/breakout-incomplete-products/d8407e56db1df06d/manifest.json",
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/breakout-incomplete-products/559ee23643aaddee/manifest.json",
       "original_source_sha256": "baac9e2b7e77d1ab81eebe18a3d7ae8b7e2b4ff97d36c8b095968b99e3d8071e",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
@@ -15886,7 +15885,9 @@
       "source_sha256": "baac9e2b7e77d1ab81eebe18a3d7ae8b7e2b4ff97d36c8b095968b99e3d8071e",
       "description_style_version": "customer-copy-v3",
       "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "verified",
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Duplicate Drive filenames require identity review",
       "held_input": "inputs/fresh804-20261026-5d42fe35/breakout/baac9e2b7e77d1ab/manifest.json"
     },
     "Saya": {
@@ -18620,8 +18621,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Beechtree",
-  "audit804_progress_utc": "2026-11-07T19:18:27.884241+00:00",
+  "audit804_last_store": "Breakout",
+  "audit804_progress_utc": "2026-11-07T19:19:37.482904+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Limelight",
