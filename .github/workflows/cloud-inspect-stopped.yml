@@ -4,6 +4,11 @@ on:
     branches: [main]
     paths: [cloud/inspect-stopped-request.json]
   workflow_dispatch:
+    inputs:
+      run_ids:
+        description: 'Optional comma-separated completed run IDs, at most three'
+        required: false
+        type: string
 permissions:
   contents: write
   actions: read
@@ -19,4 +24,5 @@ jobs:
       - env:
           GH_TOKEN: ${{ github.token }}
           PYTHONPATH: cloud:.
+          SOURCE_INSPECT_RUNS: ${{ inputs.run_ids }}
         run: python cloud/inspect_stopped.py

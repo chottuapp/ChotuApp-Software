@@ -12,7 +12,10 @@ def evidence(text):
   if re.search(r'Traceback|(?:Error|Exception):|FAILED:|SOURCE PAUSED|SOURCE BLOCKED|exit code|No continuation:|RUN SUMMARY|Killed|out of memory',line,re.I):indices.update(range(max(0,i-7),min(len(lines),i+12)))
  return '\n'.join(redact(lines[i]) for i in sorted(indices))[-65000:]
 def main():
- request=json.loads((Path(__file__).parent/'inspect-stopped-request.json').read_text());targets=request.get('run_ids') or [request['run_id']]
+ request=json.loads((Path(__file__).parent/'inspect-stopped-request.json').read_text())
+ if os.environ.get('SOURCE_INSPECT_RUNS'):
+  request={'run_ids':[v.strip() for v in os.environ['SOURCE_INSPECT_RUNS'].split(',')]}
+ targets=request.get('run_ids') or [request['run_id']]
  if not 1<=len(targets)<=3 or not all(str(x).isdigit() for x in targets):raise ValueError('Bounded numeric targets required')
  result={'run_id':os.environ['GITHUB_RUN_ID'],'checked_utc':datetime.now(timezone.utc).isoformat(),'targets':[]}
  for rid in map(str,targets):
