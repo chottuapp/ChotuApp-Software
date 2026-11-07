@@ -3576,7 +3576,6 @@
     "Sana Safinaz": "source:d3a5c80bcb185cab8c51e4a3666a1f7f1122bba0ebb1a344411461f7469ada39:Sana Safinaz:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "Beyond East": "source:520ba9a73e65eb23defb5ecdf26c85b48bf0d279f16faf458f8fc1d7f474dee0:Beyond East:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "Shop Modest": "source:d7cba029dd74ab408edb56fcce45423156b49416753b4b140a957db9c7a9e69a:Shop Modest:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
-    "Babysaurus": "source:f66a2df9cd2ebbabc9b2d6ed690b637764914c70ec8203f03f92dbe7b9fc75e9:Babysaurus:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Deflexxi": "source:47b839de0b1bd1a661efe4893a0404e91bc0c5ca13cb51828cf7c309b5406261:Deflexxi:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Nayab Fashion": "source:a81795554db7a9e19dc7315f08102bb86770487fda1a9886e226e52026117fd6:Nayab Fashion:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750"
   },
@@ -18126,13 +18125,13 @@
       "store": "Babysaurus",
       "shop_code": "SE10066",
       "identity_policy": "confirmed_code",
-      "status": "pass",
+      "status": "hold",
       "products_checked": 40,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "3904558704154f438d53982ebb572111671334ebe92f905cdaec6d64bbaf61e4",
-      "checked_utc": "2026-11-07T11:57:42.612951+00:00",
+      "workbook_sha256": "43eef47400c3ac6a88cb334bd8c5021e7d9b9b835af59b249defad8983fcd164",
+      "checked_utc": "2026-11-07T20:13:49.697768+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
@@ -18148,7 +18147,9 @@
       "source_sha256": "f66a2df9cd2ebbabc9b2d6ed690b637764914c70ec8203f03f92dbe7b9fc75e9",
       "description_style_version": "customer-copy-v3",
       "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "verified",
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Duplicate Drive filenames require identity review",
       "held_input": "inputs/fresh804-20261026-5d42fe35/babysaurus/f66a2df9cd2ebbab/manifest.json"
     },
     "Deflexxi": {
@@ -18511,7 +18512,7 @@
     "41810880134": "41810880134:13336457175:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41810895688": "41810895688:13335327740:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41833533944": "41833533944:13341499427:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
-    "41835460296": "41835460296:13342064395:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
+    "41835460296": "41835460296:13342064395:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41840830952": "41840830952:13329340798:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "41840867463": "41840867463:13329416011:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "41845590378": "41845590378:13338577587:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -18642,8 +18643,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Generation",
-  "audit804_progress_utc": "2026-11-07T20:12:54.524180+00:00",
+  "audit804_last_store": "Babysaurus",
+  "audit804_progress_utc": "2026-11-07T20:13:49.697843+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Limelight",
