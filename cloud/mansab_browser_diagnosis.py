@@ -1,6 +1,6 @@
 """Inspect anonymous public Mansab product responses using normal Chrome."""
 import json,os,re
-from urllib.parse import urlsplit
+from urllib.parse import urlsplit,parse_qsl
 from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 from source_research import publish,clean_html,public_url
@@ -8,8 +8,10 @@ from urllib.robotparser import RobotFileParser
 import requests
 URL='https://mansabpk.com/product/charcoal-textured-2-piece-co-ord-suit-mansab'
 FIELDS={'id','name','title','slug','description','price','sale_price','original_price','regular_price','discount_price','stock','stock_quantity','inventory','inventory_quantity','available','is_available','is_active','color','size','sizes','colors','variants','product_variants','product_id','sku','image_url','images','quantity','category','category_id','attributes','option1','option2','compare_at_price','data','products','product','count','status','is_on_sale','base_price','salePrice','regularPrice','stockQuantity','isActive','availableStock','value'}
+MAPS={'size_stock','size_stocks','stock_by_size','sizeStock','inventory_by_size','size_inventory','variant_stock','stockBySize'}
+FIELDS.update(MAPS|{'available_sizes','fabric','care_instructions','included_items','measurements','size_guide','details','fit','piece_count'})
 def project(value):
- if isinstance(value,dict):return {k:project(v) for k,v in value.items() if k in FIELDS}
+ if isinstance(value,dict):return {k:({str(a):b for a,b in v.items() if isinstance(b,(int,float)) and not isinstance(b,bool)} if k in MAPS and isinstance(v,dict) else project(v)) for k,v in value.items() if k in FIELDS}
  if isinstance(value,list):return [project(v) for v in value[:150]]
  return value
 
@@ -27,7 +29,7 @@ def main():
    if r.status==200 and re.search(r'products?|variants?|inventory|sizes|colors',path,re.I) and 'json' in r.headers.get('content-type',''):
     try:
      data=project(r.json())
-     if len(json.dumps(data))<150000:result['responses'].append({'url':public_url(r.url),'data':data})
+     if len(json.dumps(data))<150000:result['responses'].append({'url':public_url(r.url),'public_query':{k:v for k,v in parse_qsl(urlsplit(r.url).query) if k in ('slug','id','category','limit','page','offset')},'product_keys':sorted(r.json()) if isinstance(r.json(),dict) else [],'data':data})
     except Exception:pass
   page.on('response',response)
   page.goto(URL,wait_until='domcontentloaded',timeout=60000)

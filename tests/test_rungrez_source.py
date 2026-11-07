@@ -10,6 +10,11 @@ def html(raw):
   return index
  encode(raw);return '<script id="__NUXT_DATA__">'+json.dumps(flat)+'</script>'
 class RungrezTests(unittest.TestCase):
+ def test_unrelated_nuxt_set_plugin_is_not_part_of_product_decoding(self):
+  raw=FIXTURE['product'];source=html(raw);flat=json.loads(source.partition('>')[2].partition('</script>')[0]);flat.insert(0,None)
+  # A separate wrapper is encoded with stable reference offsets by a second pass.
+  source=html({'product':raw,'once':[]});values=json.loads(source.partition('>')[2].partition('</script>')[0]);once=values[0]['once'];values[once]=['Set']
+  p=normalize('<script id="__NUXT_DATA__">'+json.dumps(values)+'</script>',FIXTURE['url']);self.assertEqual(p['variants'][0]['price'],'9900')
  def test_real_pkr_source_keeps_stock_options_prices_and_canonical_store(self):
   raw=copy.deepcopy(FIXTURE['product']);before=copy.deepcopy(raw);p=normalize(html(raw),FIXTURE['url'])
   self.assertEqual(raw,before);self.assertEqual(p['_source_url'],FIXTURE['url']);self.assertEqual(p['variants'][0]['price'],'9900');self.assertEqual(p['variants'][0]['inventory_quantity'],25);self.assertEqual(p['variants'][0]['option1'],'Unstitched');self.assertEqual(p['variants'][0]['sku'],'RUN-B-ULS-UNS');self.assertTrue(p['variants'][0]['available']);self.assertEqual(p['body_html'],raw['description'])
