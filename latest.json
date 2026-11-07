@@ -3571,7 +3571,6 @@
     "Dairy Dream": "source:cb433e7b9d9e454acc7131500746f4af83e5028045df01b9342c8e09ec94339b:Dairy Dream:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "G7 Leather": "source:1d8c844bb109e93f088fb5ec1f7481f5858300410ff1c31538124dc71add6315:G7 Leather:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "House of Tools": "source:e187bbe3ccdd886553f0688f1dd465256a196259397a0cfc039ffd2b9571586d:House of Tools:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
-    "Paklap": "source:7945258ebb692a0dea46acfc05de841d9feae207b39e15ec47fa86df45d14f9d:Paklap:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "The Hanger Pakistan": "source:e6b00da2e0d2f623124a79e5a06838257d2e77afc077f58e41580f6830845cf2:The Hanger Pakistan:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Seran": "source:b483899d2cf04f8a384009639e9317d0cbab7215f351dac3be5be6253512b657:Seran:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Tawakkal Fabrics": "source:a91c6e6b9119d670a4eb247164705535fa7abf5e7b6ec13699af050b7ddb979e:Tawakkal Fabrics:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -17967,13 +17966,13 @@
       "store": "Paklap",
       "shop_code": "SE10058",
       "identity_policy": "confirmed_code",
-      "status": "pass",
+      "status": "hold",
       "products_checked": 1642,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "6f15e9aca7ba51f3024957fa15404ea7df9f938d90fa4c746d504b2cc93effd6",
-      "checked_utc": "2026-11-07T11:51:29.034754+00:00",
+      "workbook_sha256": "8c530f026cf0ef1bfb833c9bbcf59c1798f070f326a8994decc8635351194c2e",
+      "checked_utc": "2026-11-07T19:27:46.814711+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "incomplete_products_excluded": [
         {
@@ -18059,7 +18058,7 @@
       ],
       "incomplete_products_count": 10,
       "incomplete_products_truncated": false,
-      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/paklap-incomplete-products/c23f342561a2b3d0/manifest.json",
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/paklap-incomplete-products/12234126726f4759/manifest.json",
       "original_source_sha256": "7945258ebb692a0dea46acfc05de841d9feae207b39e15ec47fa86df45d14f9d",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
@@ -18106,7 +18105,9 @@
       "source_sha256": "7945258ebb692a0dea46acfc05de841d9feae207b39e15ec47fa86df45d14f9d",
       "description_style_version": "customer-copy-v3",
       "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "verified",
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Duplicate Drive filenames require identity review",
       "held_input": "inputs/fresh804-20261026-5d42fe35/paklap/7945258ebb692a0d/manifest.json"
     },
     "Babysaurus": {
@@ -18488,7 +18489,7 @@
     "41811611300": "41811611300:13314673364:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41811616330": "41811616330:13322274655:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41811637515": "41811637515:13330942688:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
-    "41811683153": "41811683153:13316465863:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
+    "41811683153": "41811683153:13316465863:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41811727258": "41811727258:13319225789:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "41811732225": "41811732225:13324730230:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "41811736793": "41811736793:13315718324:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -18631,8 +18632,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Alkaram Studio",
-  "audit804_progress_utc": "2026-11-07T19:26:47.355022+00:00",
+  "audit804_last_store": "Paklap",
+  "audit804_progress_utc": "2026-11-07T19:27:46.814778+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Limelight",
