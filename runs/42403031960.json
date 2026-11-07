@@ -3582,7 +3582,6 @@
     "Bonanza Satrangi": "source:5f4f67958aabb6faa06cac4606537fb10487fa2848431cf3a9d25f30ead7735e:Bonanza Satrangi:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Zellbury": "source:3d8acbe845efe8163412632ac9d217f5c81e21cd9770dca4f1ff196df077ecb4:Zellbury:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Gul Ahmed": "source:500e5672c99300d6b0fd65d1e3fc12b43f877d8223c70d6dfe9011b1099d0bd1:Gul Ahmed:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
-    "Golden Rose": "source:d915ae481b4f44b583f8dedfcb79855e2d159596832b213a93721504d9fd131a:Golden Rose:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Zyren": "source:70f71e22827f05cbafca3beba239e68f514da58aed4c10eb85810cb9856bb669:Zyren:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Pyari Walls": "source:ea840ce404cb209a1cc5408535d5ad7d9ebfc0884cc943686ec5a3f6a023fbdc:Pyari Walls:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Beechtree": "source:bd6e40e8661915d1b3a4ff20e78f6e3de308ab0e67a8e5ee17da6c452af18d92:Beechtree:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -12291,13 +12290,13 @@
       "store": "Golden Rose",
       "shop_code": "SE10040",
       "identity_policy": "confirmed_code",
-      "status": "pass",
+      "status": "hold",
       "products_checked": 142,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "100471b63a3b2bbc7975599c4112660e004b4ada1a2ef80ae6bf2bac74291720",
-      "checked_utc": "2026-11-07T11:19:43.317761+00:00",
+      "workbook_sha256": "138d6d8fa584d6dbfdd3ad52b8c63672dfa7c585c520664d47dc855d75facf3a",
+      "checked_utc": "2026-11-07T19:15:55.489924+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
@@ -12313,7 +12312,10 @@
       "source_sha256": "d915ae481b4f44b583f8dedfcb79855e2d159596832b213a93721504d9fd131a",
       "description_style_version": "customer-copy-v3",
       "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "verified"
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Duplicate Drive filenames require identity review",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/golden-rose/d915ae481b4f44b5/manifest.json"
     },
     "Zyren": {
       "name": "804 Audit",
@@ -18614,8 +18616,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Design by DAS",
-  "audit804_progress_utc": "2026-11-07T19:15:47.023347+00:00",
+  "audit804_last_store": "Golden Rose",
+  "audit804_progress_utc": "2026-11-07T19:15:55.489994+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Limelight",
