@@ -3576,7 +3576,6 @@
     "The Hanger Pakistan": "source:e6b00da2e0d2f623124a79e5a06838257d2e77afc077f58e41580f6830845cf2:The Hanger Pakistan:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Seran": "source:b483899d2cf04f8a384009639e9317d0cbab7215f351dac3be5be6253512b657:Seran:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Skin Factor": "source:0be1e037140638146c50a5164516fafa0370d767f217d933ae68320c76786951:Skin Factor:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
-    "Servis": "source:66a837d8999ce94a4597a2a8c7bc6c4c7ec5173aaf7c4dd30a7c4e0953592aa3:Servis:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Ndure": "source:8b5961bdd2356c2358d8bd357e1a2d7b171449b1ab222dc78d0ee47c0611da2c:Ndure:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Tawakkal Fabrics": "source:a91c6e6b9119d670a4eb247164705535fa7abf5e7b6ec13699af050b7ddb979e:Tawakkal Fabrics:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Elite Cosmetics": "source:48a434a98de8413107c0c3b215400c0a3accacf5685e12300fd013484cfe8dc0:Elite Cosmetics:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -5548,13 +5547,13 @@
       "store": "Servis",
       "shop_code": "SE10033",
       "identity_policy": "confirmed_code",
-      "status": "pass",
+      "status": "hold",
       "products_checked": 910,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "53b1ceac74575abc9b88d8cdf4cd9b5f66b0370fecb64abac31787555a618258",
-      "checked_utc": "2026-11-07T10:59:37.749633+00:00",
+      "workbook_sha256": "7db7abae57acb050c59b025078a9d3e95417173cdecd3f32f23d6ab98ea5c270",
+      "checked_utc": "2026-11-07T19:11:47.280510+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "incomplete_products_excluded": [
         {
@@ -6360,7 +6359,7 @@
       ],
       "incomplete_products_count": 1435,
       "incomplete_products_truncated": true,
-      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/servis-incomplete-products/a7b883e18134fd63/manifest.json",
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/servis-incomplete-products/0e38b1871091391b/manifest.json",
       "original_source_sha256": "66a837d8999ce94a4597a2a8c7bc6c4c7ec5173aaf7c4dd30a7c4e0953592aa3",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
@@ -6417,7 +6416,9 @@
       "source_sha256": "66a837d8999ce94a4597a2a8c7bc6c4c7ec5173aaf7c4dd30a7c4e0953592aa3",
       "description_style_version": "customer-copy-v3",
       "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "verified",
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Duplicate Drive filenames require identity review",
       "held_input": "inputs/fresh804-20261026-5d42fe35/servis/66a837d8999ce94a/manifest.json"
     },
     "Ndure": {
@@ -18601,8 +18602,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Aerosoft Studio",
-  "audit804_progress_utc": "2026-11-07T19:09:49.862282+00:00",
+  "audit804_last_store": "Servis",
+  "audit804_progress_utc": "2026-11-07T19:11:47.281219+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Limelight",
