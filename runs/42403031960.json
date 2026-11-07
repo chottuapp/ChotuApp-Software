@@ -3585,7 +3585,6 @@
     "Golden Rose": "source:d915ae481b4f44b583f8dedfcb79855e2d159596832b213a93721504d9fd131a:Golden Rose:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Zyren": "source:70f71e22827f05cbafca3beba239e68f514da58aed4c10eb85810cb9856bb669:Zyren:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Pyari Walls": "source:ea840ce404cb209a1cc5408535d5ad7d9ebfc0884cc943686ec5a3f6a023fbdc:Pyari Walls:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
-    "Design by DAS": "source:e39f45da6ce69a718c2c678a1d625b37302d6131e8e0ad37775f2a95eed7739a:Design by DAS:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Beechtree": "source:bd6e40e8661915d1b3a4ff20e78f6e3de308ab0e67a8e5ee17da6c452af18d92:Beechtree:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "ChenOne": "source:199e23d210cf1d1f54da4b095e5b27476e61090318e383353c4a0c3d834a58f2:ChenOne:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Hush Puppies": "source:83340399f972e48d38889157f8eede7efd7ef4bcd4e573898725e2b070195bf5:Hush Puppies:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -12662,13 +12661,13 @@
       "store": "Design by DAS",
       "shop_code": "SE10039",
       "identity_policy": "confirmed_code",
-      "status": "pass",
+      "status": "hold",
       "products_checked": 77,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "04bd9d48518bfcf4c3ee946ff2b685e18e88b3214c9fbc8b3ccb17cde992c7be",
-      "checked_utc": "2026-11-07T11:18:47.580560+00:00",
+      "workbook_sha256": "02a53262a1278b589e4891346801ca5bd7b98faa7fc86ea16bb2eab765c27954",
+      "checked_utc": "2026-11-07T19:15:47.023271+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
@@ -12735,7 +12734,10 @@
       "source_sha256": "e39f45da6ce69a718c2c678a1d625b37302d6131e8e0ad37775f2a95eed7739a",
       "description_style_version": "customer-copy-v3",
       "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "verified"
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Duplicate Drive filenames require identity review",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/design-by-das/e39f45da6ce69a71/manifest.json"
     },
     "Xcessories Hub": {
       "name": "804 Audit",
@@ -18459,7 +18461,7 @@
     "41810904443": "41810904443:13323471627:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41810907719": "41810907719:13319514176:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41810912306": "41810912306:13321280878:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
-    "41810916660": "41810916660:13319540918:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
+    "41810916660": "41810916660:13319540918:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41811026367": "41811026367:13312577893:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "41811029950": "41811029950:13313821774:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "41811339126": "41811339126:13324980425:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -18612,8 +18614,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Xcessories Hub",
-  "audit804_progress_utc": "2026-11-07T19:15:39.872719+00:00",
+  "audit804_last_store": "Design by DAS",
+  "audit804_progress_utc": "2026-11-07T19:15:47.023347+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Limelight",
