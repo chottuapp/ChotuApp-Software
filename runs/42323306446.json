@@ -3026,7 +3026,7 @@
     "Rios": "source:173b36c3a1b3db326230c51ae46ed68fdacebd1835dcd8269818b9f097571418:Rios:7634cfd7b40ffbdb5989206b801df918c8bf8d9d1b6ced5ac9c7198d1a029fb6",
     "Edenrobe": "source:f3df83476463532fedbf265a5f3fb273d6add78333763d15ae1e44628e0b3113:Edenrobe:997f872a9f355749993b62405766153d422fa566a8e7334b81fe369dfcd48df8",
     "Limelight": "source:9c922eb891a28d0acca98f19513fdb97d0eeb35b119f2b146be3f487aa137149:Limelight:f460d0390f9f4bc3f15b58b5d29297af6dd323b1746b8495d87e1c209ea5cc45",
-    "Fresh Basket": "source:afd59941e826be13b349c82d42481de96681ee55d7b259391b675d055752c19d:Fresh Basket:ae7c0f938d657d7071c46bb4f9c9b1d6cdd6b4dd18a19a2e9c731ca7f3f565e9",
+    "Fresh Basket": "source:afd59941e826be13b349c82d42481de96681ee55d7b259391b675d055752c19d:Fresh Basket:f460d0390f9f4bc3f15b58b5d29297af6dd323b1746b8495d87e1c209ea5cc45",
     "The Glossy Quill": "source:21967714b78c38ac2c5caabfc000c6aa95242bc916f8026125adb5d28cb13e7a:The Glossy Quill:7634cfd7b40ffbdb5989206b801df918c8bf8d9d1b6ced5ac9c7198d1a029fb6",
     "Bin Fahad": "source:fb195fe11f907566548490176df27b08b585ad67947a008c098a48f4693256f2:Bin Fahad:7634cfd7b40ffbdb5989206b801df918c8bf8d9d1b6ced5ac9c7198d1a029fb6",
     "Dairy Dream": "source:cb433e7b9d9e454acc7131500746f4af83e5028045df01b9342c8e09ec94339b:Dairy Dream:7634cfd7b40ffbdb5989206b801df918c8bf8d9d1b6ced5ac9c7198d1a029fb6",
@@ -15963,7 +15963,7 @@
       "shop_code": "SE10060",
       "identity_policy": "confirmed_code",
       "status": "hold",
-      "products_checked": 981,
+      "products_checked": 978,
       "findings_count": 1,
       "findings": [
         {
@@ -15974,10 +15974,37 @@
         }
       ],
       "details_truncated": false,
-      "workbook_sha256": "7ca4802bec76ce312ae119cc547fa7541a776c7fef1529f7c1815e3a9422dd21",
-      "checked_utc": "2026-11-06T22:43:37.355248+00:00",
+      "workbook_sha256": "2d15aa3c9d114e37761e83351c9ce61c0564193421542ab1bf8a8c41a6edb155",
+      "checked_utc": "2026-11-07T01:24:39.518151+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "incomplete_products_excluded": [
+        {
+          "product_id": "CP8faaf20c8ffc",
+          "source_url": "https://freshbasket.com.pk/products/davidoff-crema-intense-90g",
+          "name": "Davidoff - Crema Intense (90g)",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP9c676a7c1cd0",
+          "source_url": "https://freshbasket.com.pk/products/davidoff-rich-aroma-100g",
+          "name": "Davidoff - Rich Aroma (100g)",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP93bb212b8121",
+          "source_url": "https://freshbasket.com.pk/products/davidoff-fine-aroma-100g",
+          "name": "Davidoff - Fine Aroma (100g)",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category blank or unresolved"
+          ]
+        },
         {
           "product_id": "CP99136c8587be",
           "source_url": "https://freshbasket.com.pk/products/fresh-st-pizza-sauce-380g",
@@ -16099,17 +16126,17 @@
           ]
         }
       ],
-      "incomplete_products_count": 15,
+      "incomplete_products_count": 18,
       "incomplete_products_truncated": false,
-      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/fresh-basket-incomplete-products/07b00ee6f863e326/manifest.json",
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/fresh-basket-incomplete-products/296aa3a21b9498de/manifest.json",
       "original_source_sha256": "afd59941e826be13b349c82d42481de96681ee55d7b259391b675d055752c19d",
       "recovery": {
         "stage": "correction_pending_source_recheck",
         "unfinished": true,
         "owner": "804 automated recovery",
         "opened_utc": "2026-11-06T15:46:09.655112+00:00",
-        "updated_utc": "2026-11-06T22:43:39.369578+00:00",
-        "next_source_check_due_utc": "2026-11-06T22:58:39.369578+00:00",
+        "updated_utc": "2026-11-07T01:24:41.699211+00:00",
+        "next_source_check_due_utc": "2026-11-07T01:39:41.699211+00:00",
         "actions": [
           "Refresh exact public product facts",
           "Apply supported description and category repairs",
@@ -16123,25 +16150,10 @@
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
-      "description_repairs_count": 905,
+      "description_repairs_count": 902,
       "description_repairs_examples": [
         {
           "product_id": "CPe114d4666441",
-          "issue": "Expanded only the explicit source-named sold object; no missing specifications inferred.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP8faaf20c8ffc",
-          "issue": "Expanded only the explicit source-named sold object; no missing specifications inferred.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP9c676a7c1cd0",
-          "issue": "Expanded only the explicit source-named sold object; no missing specifications inferred.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP93bb212b8121",
           "issue": "Expanded only the explicit source-named sold object; no missing specifications inferred.",
           "repair_kind": "description"
         },
@@ -16172,6 +16184,21 @@
         },
         {
           "product_id": "CP0ad8aace494e",
+          "issue": "Expanded only the explicit source-named sold object; no missing specifications inferred.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP47f1c8a6ee22",
+          "issue": "Expanded only the explicit source-named sold object; no missing specifications inferred.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPf1954d8c7842",
+          "issue": "Expanded only the explicit source-named sold object; no missing specifications inferred.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP055d571dce57",
           "issue": "Expanded only the explicit source-named sold object; no missing specifications inferred.",
           "repair_kind": "description"
         }
@@ -17112,8 +17139,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/dea8904f5803fa0d/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/5515151ab028471a/manifest.json"
   },
-  "audit804_last_store": "Limelight",
-  "audit804_progress_utc": "2026-11-07T01:24:23.347735+00:00",
+  "audit804_last_store": "Fresh Basket",
+  "audit804_progress_utc": "2026-11-07T01:24:41.699861+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
