@@ -1,0 +1,319 @@
+{
+  "run_id": "42367177482",
+  "checked_utc": "2026-11-07T11:12:24.254208+00:00",
+  "targets": [
+    {
+      "target": "42366977351",
+      "state": {
+        "conclusion": "failure",
+        "displayTitle": "Cloud group requested-new20261106-2-srccd9db21b3f3a",
+        "headSha": "f90a769719a9abf011473fdb81a9245be924318f",
+        "jobs": [
+          {
+            "completedAt": "2026-11-07T11:10:44Z",
+            "conclusion": "failure",
+            "databaseId": 128386984085,
+            "name": "fetch",
+            "startedAt": "2026-11-07T11:09:32Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-11-07T11:09:33Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-11-07T11:09:32Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:09:41Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-11-07T11:09:33Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:09:41Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-11-07T11:09:41Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:09:44Z",
+                "conclusion": "success",
+                "name": "Install extraction dependencies",
+                "number": 4,
+                "startedAt": "2026-11-07T11:09:41Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:09:52Z",
+                "conclusion": "success",
+                "name": "Verify standalone continuation and owner-policy guards",
+                "number": 5,
+                "startedAt": "2026-11-07T11:09:44Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:09:52Z",
+                "conclusion": "skipped",
+                "name": "Restore optional saved run",
+                "number": 6,
+                "startedAt": "2026-11-07T11:09:52Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:09:52Z",
+                "conclusion": "skipped",
+                "name": "Install Czone browser fallback when needed",
+                "number": 7,
+                "startedAt": "2026-11-07T11:09:52Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:09:52Z",
+                "conclusion": "skipped",
+                "name": "Install Axis public JS renderer when needed",
+                "number": 8,
+                "startedAt": "2026-11-07T11:09:52Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:09:52Z",
+                "conclusion": "success",
+                "name": "Start continuous fetching on the cloud runner",
+                "number": 9,
+                "startedAt": "2026-11-07T11:09:52Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:10:37Z",
+                "conclusion": "success",
+                "name": "Live progress, logs and completed-file uploads",
+                "number": 10,
+                "startedAt": "2026-11-07T11:09:52Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:10:37Z",
+                "conclusion": "failure",
+                "name": "Fetch result",
+                "number": 11,
+                "startedAt": "2026-11-07T11:10:37Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:10:37Z",
+                "conclusion": "success",
+                "name": "Collect diagnostic report even if fetching failed",
+                "number": 12,
+                "startedAt": "2026-11-07T11:10:37Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:10:38Z",
+                "conclusion": "success",
+                "name": "Upload diagnostic report and redacted log",
+                "number": 13,
+                "startedAt": "2026-11-07T11:10:37Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:10:39Z",
+                "conclusion": "success",
+                "name": "Upload Excel files and audits, including completed stores from a partial run",
+                "number": 14,
+                "startedAt": "2026-11-07T11:10:38Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:10:39Z",
+                "conclusion": "skipped",
+                "name": "Final automated Rule 804 pass for fresh batch",
+                "number": 15,
+                "startedAt": "2026-11-07T11:10:39Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:10:39Z",
+                "conclusion": "skipped",
+                "name": "Upload automated Rule 804 fresh workbooks",
+                "number": 16,
+                "startedAt": "2026-11-07T11:10:39Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:10:41Z",
+                "conclusion": "success",
+                "name": "Upload saved checkpoint when available",
+                "number": 17,
+                "startedAt": "2026-11-07T11:10:39Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:10:41Z",
+                "conclusion": "success",
+                "name": "Dispatch authorized continuation after verified checkpoint upload",
+                "number": 18,
+                "startedAt": "2026-11-07T11:10:41Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:10:41Z",
+                "conclusion": "success",
+                "name": "Post Live progress, logs and completed-file uploads",
+                "number": 34,
+                "startedAt": "2026-11-07T11:10:41Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:10:41Z",
+                "conclusion": "skipped",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 35,
+                "startedAt": "2026-11-07T11:10:41Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:10:42Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 36,
+                "startedAt": "2026-11-07T11:10:41Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:10:42Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 37,
+                "startedAt": "2026-11-07T11:10:42Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/42366977351/job/128386984085"
+          },
+          {
+            "completedAt": "2026-11-07T11:11:13Z",
+            "conclusion": "success",
+            "databaseId": 128387261595,
+            "name": "Archive structured diagnostics",
+            "startedAt": "2026-11-07T11:10:47Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-11-07T11:10:49Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-11-07T11:10:48Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:11:07Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-11-07T11:10:49Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:11:07Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-11-07T11:11:07Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:11:08Z",
+                "conclusion": "success",
+                "name": "Run actions/download-artifact@v4",
+                "number": 4,
+                "startedAt": "2026-11-07T11:11:07Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:11:10Z",
+                "conclusion": "success",
+                "name": "Archive credential-free JSON on the cloud-reports branch",
+                "number": 5,
+                "startedAt": "2026-11-07T11:11:08Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:11:10Z",
+                "conclusion": "success",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 9,
+                "startedAt": "2026-11-07T11:11:10Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:11:10Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 10,
+                "startedAt": "2026-11-07T11:11:10Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T11:11:10Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 11,
+                "startedAt": "2026-11-07T11:11:10Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/42366977351/job/128387261595"
+          }
+        ],
+        "status": "completed"
+      },
+      "failed_log": "fetch\tFetch result\t2026-11-07T11:10:37.6611437Z [Alfateh Garments] [11:09:58] HTTP END status=200 elapsed=1.5s bytes=66799 https://alfatehgarments.com/women\nfetch\tFetch result\t2026-11-07T11:10:37.6612563Z [Alfateh Garments] WEBSITE ORDER: Women /  \u2014 0 unique displayed products observed\nfetch\tFetch result\t2026-11-07T11:10:37.6613459Z [Alfateh Garments] WEBSITE ORDER CAPTURE: 0 product placements; bounded/partial capture; unknown positions remain unverified\nfetch\tFetch result\t2026-11-07T11:10:37.6614307Z [Alfateh Garments] SAVED RESPONSE: https://alfatehgarments.com/robots.txt\nfetch\tFetch result\t2026-11-07T11:10:37.6615007Z [Alfateh Garments] ALFATEH PUBLIC PRODUCTS: 1/138 exact pages inspected; 1 complete products\nfetch\tFetch result\t2026-11-07T11:10:37.6615788Z [Alfateh Garments] OWNER INCOMPLETE SKIP: https://www.alfatehgarments.com/product/boys-sky-blue-wash-wide-leg-denim-jeans; Exact public variant selector missing\nfetch\tFetch result\t2026-11-07T11:10:37.6616359Z __CHOTU_PROGRESS__|1|Active: Alfateh Garments\nfetch\tFetch result\t2026-11-07T11:10:37.6616723Z [Alfateh Garments] [11:10:34] EXCEPTION: ValueError('Published selected SKU/price mismatch')\nfetch\tFetch result\t2026-11-07T11:10:37.6617129Z [Alfateh Garments] [11:10:34] Traceback (most recent call last):\nfetch\tFetch result\t2026-11-07T11:10:37.6622349Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2061, in _run_checked\nfetch\tFetch result\t2026-11-07T11:10:37.6623139Z     run_site(site['url'], name, template, log_line)\nfetch\tFetch result\t2026-11-07T11:10:37.6623692Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\nfetch\tFetch result\t2026-11-07T11:10:37.6624290Z     if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\nfetch\tFetch result\t2026-11-07T11:10:37.6624692Z                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-11-07T11:10:37.6625166Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1554, in run_site\nfetch\tFetch result\t2026-11-07T11:10:37.6625640Z     _chotuapp_run_site_original(base, name, template, intercept)\nfetch\tFetch result\t2026-11-07T11:10:37.6626140Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\nfetch\tFetch result\t2026-11-07T11:10:37.6626800Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\nfetch\tFetch result\t2026-11-07T11:10:37.6627343Z                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-11-07T11:10:37.6628128Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\nfetch\tFetch result\t2026-11-07T11:10:37.6648878Z                                 ^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-11-07T11:10:37.6649353Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 109, in catalog\nfetch\tFetch result\t2026-11-07T11:10:37.6649813Z     try:product=normalize(response.text,url)\nfetch\tFetch result\t2026-11-07T11:10:37.6650056Z                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-11-07T11:10:37.6650497Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 61, in normalize\nfetch\tFetch result\t2026-11-07T11:10:37.6651162Z     if len(selected)!=1 or amount(selected[0]['price'])!=amount(offer.get('price')):raise ValueError('Published selected SKU/price mismatch')\nfetch\tFetch result\t2026-11-07T11:10:37.6651666Z                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-11-07T11:10:37.6651995Z ValueError: Published selected SKU/price mismatch\nfetch\tFetch result\t2026-11-07T11:10:37.6652164Z \nfetch\tFetch result\t2026-11-07T11:10:37.6652347Z [Alfateh Garments] FAILED: Alfateh Garments: Published selected SKU/price mismatch\nfetch\tFetch result\t2026-11-07T11:10:37.6652675Z [Alfateh Garments] [11:10:34] STAGE: Idle\nfetch\tFetch result\t2026-11-07T11:10:37.6653021Z FAILED: Alfateh Garments: FAILED: Alfateh Garments: Published selected SKU/price mismatch\nfetch\tFetch result\t2026-11-07T11:10:37.6653472Z False\nfetch\tFetch result\t2026-11-07T11:10:37.6653832Z Checkpoint lossless cache migration: 27 legacy responses compressed; all source bytes and hashes remain verifiable.\nfetch\tFetch result\t2026-11-07T11:10:37.6654397Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nfetch\tFetch result\t2026-11-07T11:10:37.6654885Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nfetch\tFetch result\t2026-11-07T11:10:37.6655227Z RUN SUMMARY:\nfetch\tFetch result\t2026-11-07T11:10:37.6655634Z Alfateh Garments: FAILED \u2014 FAILED: Alfateh Garments: Published selected SKU/price mismatch\nfetch\tFetch result\t2026-11-07T11:10:37.6655990Z Checkpoint: saved\nfetch\tFetch result\t2026-11-07T11:10:37.6656346Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH\nfetch\tFetch result\t2026-11-07T11:10:37.6678686Z ##[error]Process completed with exit code 2.",
+      "artifacts": [
+        {
+          "name": "chotuapp-checkpoint",
+          "id": 13572635047,
+          "expired": false,
+          "size_in_bytes": 306934
+        },
+        {
+          "name": "chotuapp-diagnostics",
+          "id": 13572610272,
+          "expired": false,
+          "size_in_bytes": 4491
+        },
+        {
+          "name": "chotuapp-excel-files",
+          "id": 13572167078,
+          "expired": false,
+          "size_in_bytes": 570
+        },
+        {
+          "name": "chotuapp-live-logs",
+          "id": 13571704679,
+          "expired": false,
+          "size_in_bytes": 6544
+        }
+      ],
+      "annotations": [
+        {
+          "level": "warning",
+          "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+        },
+        {
+          "level": "failure",
+          "message": "Process completed with exit code 2."
+        }
+      ],
+      "console-tail.txt": "[Alfateh Garments] [11:09:58] HTTP END status=200 elapsed=1.5s bytes=66799 https://alfatehgarments.com/women\n[Alfateh Garments] WEBSITE ORDER: Women /  \u2014 0 unique displayed products observed\n[Alfateh Garments] WEBSITE ORDER CAPTURE: 0 product placements; bounded/partial capture; unknown positions remain unverified\n[Alfateh Garments] SAVED RESPONSE: https://alfatehgarments.com/robots.txt\n[Alfateh Garments] ALFATEH PUBLIC PRODUCTS: 1/138 exact pages inspected; 1 complete products\n[Alfateh Garments] OWNER INCOMPLETE SKIP: https://www.alfatehgarments.com/product/boys-sky-blue-wash-wide-leg-denim-jeans; Exact public variant selector missing\n__CHOTU_PROGRESS__|1|Active: Alfateh Garments\n[Alfateh Garments] [11:10:34] EXCEPTION: ValueError('Published selected SKU/price mismatch')\n[Alfateh Garments] [11:10:34] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2061, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1554, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 134, in run\n    try:return original(BASE,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 216, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 191, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 365, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.') not in HOSTS:return original(base,name,template,log)\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 347, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.')!='laam.com':return original(base,name,template,log)\n                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 478, in run\n    if host!='czone.com.pk':return original(base,name,template,log)\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1080, in run_site\n    products, complete_catalog=discover(base,log)\n                               ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 133, in <lambda>\n    g.update(discover=lambda *a:source.catalog(),collections=lambda *a:{},refresh_variant_prices=lambda b,p,l:p['variants'],storefront_cover=lambda *a:None,verified_top20=ranking,audit_fractional_prices=audit,storefront_price_audit=audit)\n                                ^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 109, in catalog\n    try:product=normalize(response.text,url)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 61, in normalize\n    if len(selected)!=1 or amount(selected[0]['price'])!=amount(offer.get('price')):raise ValueError('Published selected SKU/price mismatch')\n                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Published selected SKU/price mismatch\n\n[Alfateh Garments] FAILED: Alfateh Garments: Published selected SKU/price mismatch\n[Alfateh Garments] [11:10:34] STAGE: Idle\nFAILED: Alfateh Garments: FAILED: Alfateh Garments: Published selected SKU/price mismatch\nFalse\nCheckpoint lossless cache migration: 27 legacy responses compressed; all source bytes and hashes remain verifiable.\nCheckpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nCheckpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nRUN SUMMARY:\nAlfateh Garments: FAILED \u2014 FAILED: Alfateh Garments: Published selected SKU/price mismatch\nCheckpoint: saved\nRun finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+      "store-status.txt": "Updated (UTC): 2026-11-07T11:10:35.809180+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nAlfateh Garments: failed\n  Stage: Idle\n  Last successful HTTP response (UTC): 2026-11-07T11:09:58.630719+00:00",
+      "fetch-log.txt": "QUEUE: smaller historical catalogs first; unknown counts last; fresh source data fetched again\nRUNNER STORES: Alfateh Garments\nPARALLEL STORES: up to 3 different websites together; source pacing, cooldowns and checks preserved.\nNEW FRESH RUN: Alfateh Garments\n[Alfateh Garments] SOFTWARE VERSION: 353499464391c211 \u2014 installed code loaded\n[Alfateh Garments] [11:09:53] STAGE: Starting Alfateh Garments\n[Alfateh Garments] SAVED RUN: completed requests are durable; an incomplete request will be retried.\n[Alfateh Garments] FRESH FETCH: new run; previous request checkpoints ignored. Products, prices, availability and images fetched again.\n[Alfateh Garments] CHECKPOINT: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/saved_runs/1eee3d7e892f460e81196d4c663f0191/0/api.sqlite3 (this run only; restarting Fetch begins from zero)\n__CHOTU_PROGRESS__|1|Active: Alfateh Garments\n[Alfateh Garments] [11:09:53] STAGE: Website listing order\n[Alfateh Garments] [11:09:53] HTTP START attempt=1 https://alfatehgarments.com/robots.txt\n[Alfateh Garments] [11:09:54] HTTP END status=200 elapsed=0.5s bytes=232 https://alfatehgarments.com/robots.txt\n[Alfateh Garments] [11:09:54] HTTP START attempt=1 https://alfatehgarments.com/\n[Alfateh Garments] [11:09:55] HTTP END status=200 elapsed=1.4s bytes=103397 https://alfatehgarments.com/\n[Alfateh Garments] [11:09:55] HTTP START attempt=1 https://alfatehgarments.com/men\n[Alfateh Garments] [11:09:57] HTTP END status=200 elapsed=1.3s bytes=124724 https://alfatehgarments.com/men\n[Alfateh Garments] WEBSITE ORDER: Men /  \u2014 0 unique displayed products observed\n[Alfateh Garments] [11:09:57] HTTP START attempt=1 https://alfatehgarments.com/women\n[Alfateh Garments] [11:09:58] HTTP END status=200 elapsed=1.5s bytes=66799 https://alfatehgarments.com/women\n[Alfateh Garments] WEBSITE ORDER: Women /  \u2014 0 unique displayed products observed\n[Alfateh Garments] WEBSITE ORDER CAPTURE: 0 product placements; bounded/partial capture; unknown positions remain unverified\n[Alfateh Garments] SAVED RESPONSE: https://alfatehgarments.com/robots.txt\n[Alfateh Garments] ALFATEH PUBLIC PRODUCTS: 1/138 exact pages inspected; 1 complete products\n[Alfateh Garments] OWNER INCOMPLETE SKIP: https://www.alfatehgarments.com/product/boys-sky-blue-wash-wide-leg-denim-jeans; Exact public variant selector missing\n__CHOTU_PROGRESS__|1|Active: Alfateh Garments\n[Alfateh Garments] [11:10:34] EXCEPTION: ValueError('Published selected SKU/price mismatch')\n[Alfateh Garments] [11:10:34] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2061, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1554, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 134, in run\n    try:return original(BASE,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 216, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 191, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 365, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.') not in HOSTS:return original(base,name,template,log)\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 347, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.')!='laam.com':return original(base,name,template,log)\n                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 478, in run\n    if host!='czone.com.pk':return original(base,name,template,log)\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1080, in run_site\n    products, complete_catalog=discover(base,log)\n                               ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 133, in <lambda>\n    g.update(discover=lambda *a:source.catalog(),collections=lambda *a:{},refresh_variant_prices=lambda b,p,l:p['variants'],storefront_cover=lambda *a:None,verified_top20=ranking,audit_fractional_prices=audit,storefront_price_audit=audit)\n                                ^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 109, in catalog\n    try:product=normalize(response.text,url)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 61, in normalize\n    if len(selected)!=1 or amount(selected[0]['price'])!=amount(offer.get('price')):raise ValueError('Published selected SKU/price mismatch')\n                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Published selected SKU/price mismatch\n\n[Alfateh Garments] FAILED: Alfateh Garments: Published selected SKU/price mismatch\n[Alfateh Garments] [11:10:34] STAGE: Idle\nFAILED: Alfateh Garments: FAILED: Alfateh Garments: Published selected SKU/price mismatch\nFalse"
+    }
+  ]
+}
