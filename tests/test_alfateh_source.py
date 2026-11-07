@@ -8,6 +8,12 @@ def page(variants=None,offer=None):
  stream='1:'+json.dumps(['$','Provider',None,{'variants':variants,'children':'Published product details'}])+'\n'
  return '<main><h1>Controlled Cotton Shirt</h1><div class="mt-8 space-y-4"><p>Cotton shirt with exact source specifications and care.</p><dl><dt>Care</dt><dd>Wash at 30 degrees.</dd></dl></div></main><script type="application/ld+json">'+json.dumps(raw)+'</script><script>self.__next_f.push('+json.dumps([1,stream])+')</script>'
 class AlfatehTests(unittest.TestCase):
+ def test_real_failed_socks_record_retains_parent_and_variant_identifiers(self):
+  import html
+  f=json.loads((Path(__file__).parent/'fixtures/alfateh_parent_product_code.json').read_text());r=f['product'];before=copy.deepcopy(f)
+  stream='1:'+json.dumps(['$','Provider',None,{'variants':f['variants']}])+'\n'
+  source='<main><h1>'+html.escape(r['name'])+'</h1><div class="mt-8 space-y-4">'+html.escape(r['description'])+'</div></main><script type="application/ld+json">'+json.dumps(r)+'</script><script>self.__next_f.push('+json.dumps([1,stream])+')</script>'
+  p=normalize(source,f['url']);self.assertEqual(f,before);self.assertEqual(p['_source_product_code'],'AFG-SKU-727-1');self.assertEqual(p['variants'][0]['sku'],'AFG-SKU-727-4');self.assertEqual(p['variants'][0]['price'],'285');self.assertEqual(p['variants'][0]['inventory_quantity'],10)
  def test_parent_product_code_can_differ_from_the_only_published_variant(self):
   v=dict(id='real-variant',sku='AFG-SKU-727-4',regularPrice='285',salePrice=None,size={'value':"10-13 Men's"},color={'name':'Multi Color'},isActive=True,availableStock=10)
   p=normalize(page([v],dict(url=URL,priceCurrency='PKR',price='285',availability='https://schema.org/InStock')),URL)

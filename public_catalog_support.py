@@ -37,7 +37,11 @@ class PublicCatalog:
   if not urls or len(urls)>20000:raise ValueError('Complete product sitemap unavailable or exceeds bound; no partial homepage fallback')
   products=[]
   for i,url in enumerate(urls,1):
-   r=self.read(url);p=self.normalize(r.text,url)
+   r=self.read(url)
+   from laam_source_support import ConfirmedOutOfStock
+   try:p=self.normalize(r.text,url)
+   except ConfirmedOutOfStock:
+    self.log('OWNER STOCK SKIP: '+url+'; source confirms no sellable variants');continue
    from locked_store_rules import incomplete_product_reasons,record_incomplete_product
    reasons=incomplete_product_reasons(p)
    if reasons:record_incomplete_product(p,self.base,self.name,self.g.get('__file__',__file__),reasons);continue
