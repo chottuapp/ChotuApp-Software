@@ -3576,7 +3576,6 @@
     "The Hanger Pakistan": "source:e6b00da2e0d2f623124a79e5a06838257d2e77afc077f58e41580f6830845cf2:The Hanger Pakistan:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Seran": "source:b483899d2cf04f8a384009639e9317d0cbab7215f351dac3be5be6253512b657:Seran:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Skin Factor": "source:0be1e037140638146c50a5164516fafa0370d767f217d933ae68320c76786951:Skin Factor:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
-    "Aerosoft Studio": "source:f704a189b80a72f446c480de45bce76f2381f621048e21defbd3784e6339ed97:Aerosoft Studio:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Servis": "source:66a837d8999ce94a4597a2a8c7bc6c4c7ec5173aaf7c4dd30a7c4e0953592aa3:Servis:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Ndure": "source:8b5961bdd2356c2358d8bd357e1a2d7b171449b1ab222dc78d0ee47c0611da2c:Ndure:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Tawakkal Fabrics": "source:a91c6e6b9119d670a4eb247164705535fa7abf5e7b6ec13699af050b7ddb979e:Tawakkal Fabrics:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -4399,13 +4398,13 @@
       "store": "Aerosoft Studio",
       "shop_code": "SE10032",
       "identity_policy": "confirmed_code",
-      "status": "pass",
+      "status": "hold",
       "products_checked": 318,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "4b2a044e0ae62bd59a96b3d2841b20ebf3e9dbaa6417b78d22c91127daa64d83",
-      "checked_utc": "2026-11-07T08:40:57.369021+00:00",
+      "workbook_sha256": "0e43e565e5128a1f55ed4c82bdfed0cd23ecd43de6cdeeab403419a844d5a5f5",
+      "checked_utc": "2026-11-07T19:09:49.862148+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
@@ -4472,7 +4471,10 @@
       "source_sha256": "f704a189b80a72f446c480de45bce76f2381f621048e21defbd3784e6339ed97",
       "description_style_version": "customer-copy-v3",
       "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "verified"
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Duplicate Drive filenames require identity review",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/aerosoft-studio/f704a189b80a72f4/manifest.json"
     },
     "Rivaj UK": {
       "name": "804 Audit",
@@ -18442,7 +18444,7 @@
     "41810884187": "41810884187:13320085596:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41810887681": "41810887681:13313920402:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41810891091": "41810891091:13311664880:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
-    "41810900552": "41810900552:13322235398:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
+    "41810900552": "41810900552:13322235398:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41810904443": "41810904443:13323471627:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "41810907719": "41810907719:13319514176:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "41810912306": "41810912306:13321280878:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -18599,8 +18601,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Bata",
-  "audit804_progress_utc": "2026-11-07T19:08:46.605890+00:00",
+  "audit804_last_store": "Aerosoft Studio",
+  "audit804_progress_utc": "2026-11-07T19:09:49.862282+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Limelight",
