@@ -3576,7 +3576,6 @@
     "The Hanger Pakistan": "source:e6b00da2e0d2f623124a79e5a06838257d2e77afc077f58e41580f6830845cf2:The Hanger Pakistan:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Seran": "source:b483899d2cf04f8a384009639e9317d0cbab7215f351dac3be5be6253512b657:Seran:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Skin Factor": "source:0be1e037140638146c50a5164516fafa0370d767f217d933ae68320c76786951:Skin Factor:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
-    "Ndure": "source:8b5961bdd2356c2358d8bd357e1a2d7b171449b1ab222dc78d0ee47c0611da2c:Ndure:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Tawakkal Fabrics": "source:a91c6e6b9119d670a4eb247164705535fa7abf5e7b6ec13699af050b7ddb979e:Tawakkal Fabrics:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Elite Cosmetics": "source:48a434a98de8413107c0c3b215400c0a3accacf5685e12300fd013484cfe8dc0:Elite Cosmetics:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Astore Bags": "source:9f56f23c44cdea3c31757f12451b18827b058b1980c565fd8c488ed37e2298a7:Astore Bags:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -6427,13 +6426,13 @@
       "store": "Ndure",
       "shop_code": "SE10034",
       "identity_policy": "confirmed_code",
-      "status": "pass",
+      "status": "hold",
       "products_checked": 1857,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "4f312eed5c840a63e643151d332aa3ac64cb0c33c837be1db3a0422974aa34ac",
-      "checked_utc": "2026-11-07T11:07:28.838628+00:00",
+      "workbook_sha256": "a1ba5f487420d7f9aeee33d74bb254baae6c7e18e57479f8996c4a44cef5d75c",
+      "checked_utc": "2026-11-07T19:12:31.323410+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
@@ -6449,7 +6448,10 @@
       "source_sha256": "8b5961bdd2356c2358d8bd357e1a2d7b171449b1ab222dc78d0ee47c0611da2c",
       "description_style_version": "customer-copy-v3",
       "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "verified"
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Duplicate Drive filenames require identity review",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/ndure/8b5961bdd2356c23/manifest.json"
     },
     "Saeed Ghani": {
       "name": "804 Audit",
@@ -18446,7 +18448,7 @@
     "41810887681": "41810887681:13313920402:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41810891091": "41810891091:13311664880:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41810900552": "41810900552:13322235398:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
-    "41810904443": "41810904443:13323471627:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
+    "41810904443": "41810904443:13323471627:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41810907719": "41810907719:13319514176:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "41810912306": "41810912306:13321280878:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "41810916660": "41810916660:13319540918:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -18602,8 +18604,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Servis",
-  "audit804_progress_utc": "2026-11-07T19:11:47.281219+00:00",
+  "audit804_last_store": "Ndure",
+  "audit804_progress_utc": "2026-11-07T19:12:31.323479+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Limelight",
