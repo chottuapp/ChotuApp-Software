@@ -1215,7 +1215,7 @@ def run_site(base, name, template, log):
             variant_sale=vp if vp is not None and variant_base is not None and variant_base>vp else None
             image=v.get('featured_image') or {}
             image_url=variant_image_url(p,v)
-            entry={'combination_id':uid('CC',base+'|'+str(v['id'])),'product_id':pid,'source_variant_id':str(v['id']),'sku':str(v.get('sku') or ''),'base_price (PKR)':float(variant_base) if variant_base is not None else None,'sale_price (PKR, agar discount ho)':float(variant_sale) if variant_sale is not None else None,'available (yes/no)':'yes' if v.get('available') is True else 'no','stock_quantity (agar public ho)':'','variant_image_url':image_url or '','source_url':url}
+            entry={'combination_id':uid('CC',base+'|'+str(v['id'])),'product_id':pid,'source_variant_id':str(v.get('_source_variant_id',v['id'])),'sku':str(v.get('sku') or ''),'base_price (PKR)':float(variant_base) if variant_base is not None else None,'sale_price (PKR, agar discount ho)':float(variant_sale) if variant_sale is not None else None,'available (yes/no)':'yes' if v.get('available') is True else 'no','stock_quantity (agar public ho)':v.get('_public_stock_quantity',''),'variant_image_url':image_url or '','source_url':url}
             for pos,(idx,group_id,title,values) in enumerate(dimensions,1):
                 entry[f'option_{pos}_group_id']=group_id
                 entry[f'option_{pos}_value']=txt(v.get(f'option{idx}'))
@@ -1450,7 +1450,7 @@ def quality_validation(rows, imgs, groups, opts, combos, output, log, storefront
         if o.get('available (yes/no)') not in ('yes', 'no'):
             flag('ERROR', 'INVALID_OPTION_AVAILABILITY', group_owner.get(gid, ''), str(o.get('available (yes/no)')))
 
-    variant_ids = Counter((c.get('product_id'), str(c.get('source_variant_id'))) for c in combos)
+    variant_ids = Counter((c.get('product_id'), str(c.get('source_variant_id'))) for c in combos if c.get('source_variant_id'))
     combos_by_pid = defaultdict(list)
     for c in combos:
         pid = c.get('product_id')

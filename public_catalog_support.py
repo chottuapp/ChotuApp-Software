@@ -49,12 +49,12 @@ class PublicCatalog:
    if i==1 or i%25==0:self.log(f'PUBLIC PRODUCTS: {i}/{len(urls)} exact source pages checked; {len(products)} complete')
   return products,False
 
-def enable_public_source(g,base,name,normalize,flag):
+def enable_public_source(g,base,name,normalize,flag,*,catalog_class=PublicCatalog):
  if g.get(flag):return
  original=g['_chotuapp_run_site_original']
  def run(url,store,template,log):
   if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)
-  source=PublicCatalog(g,log,base,normalize,store);keys=('discover','collections','refresh_variant_prices','storefront_cover','verified_top20','audit_fractional_prices','storefront_price_audit');old={k:g[k] for k in keys}
+  source=catalog_class(g,log,base,normalize,store);keys=('discover','collections','refresh_variant_prices','storefront_cover','verified_top20','audit_fractional_prices','storefront_price_audit');old={k:g[k] for k in keys}
   def audit(*args):
    for arg in args:
     if isinstance(arg,Path) and arg.suffix=='.csv':

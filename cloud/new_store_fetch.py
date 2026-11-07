@@ -29,7 +29,7 @@ def plan(request,stores,observations,runs):
  for run in runs:
   lane=root_lane(run,runs)
   if lane and lane.startswith(prefix):already.update(s['name'] for s in stores if key(s) in lane.split('-'))
- ready={o['name'] for o in observations if o.get('status')=='supported' and o.get('provider') in ('shopify','alfateh_public','rungrez_public')}
+ ready={o['name'] for o in observations if o.get('status')=='supported' and o.get('provider') in ('shopify','alfateh_public','rungrez_public','mansab_public')}
  groups=[]
  for i in range(0,len(stores),2):
   selected=[s for s in stores[i:i+2] if s['name'] in ready-already]
@@ -75,6 +75,11 @@ def probe(site):
     try:result['public_product_page']['structured'].append(json.loads(node.get_text()))
     except ValueError:pass
    result['public_product_page'].update(public_next_product_state(detail.text))
+   if urlsplit(base).hostname.removeprefix('www.')=='mansabpk.com':
+    from mansab_source_support import normalize
+    from urllib.parse import urlencode
+    product=normalize(detail.text,product_link,public_read(base+'/api/products?'+urlencode({'slug':urlsplit(product_link).path.rstrip('/').rsplit('/',1)[-1]})).json())
+    result.update(status='supported',provider='mansab_public',verified_sample={'id':product['id'],'variants':len(product['variants']),'available_variants':sum(v['available'] for v in product['variants'])})
    if urlsplit(base).hostname.removeprefix('www.')=='rungrez.com.pk':
     from rungrez_source_support import normalize
     product=normalize(detail.text,product_link)

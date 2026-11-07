@@ -11,7 +11,7 @@ def html(raw):
  encode(raw);return '<script id="__NUXT_DATA__">'+json.dumps(flat)+'</script>'
 class RungrezTests(unittest.TestCase):
  def test_unrelated_nuxt_set_plugin_is_not_part_of_product_decoding(self):
-  raw=FIXTURE['product'];source=html(raw);flat=json.loads(source.partition('>')[2].partition('</script>')[0]);flat.insert(0,None)
+  raw=FIXTURE['product']
   # A separate wrapper is encoded with stable reference offsets by a second pass.
   source=html({'product':raw,'once':[]});values=json.loads(source.partition('>')[2].partition('</script>')[0]);once=values[0]['once'];values[once]=['Set']
   p=normalize('<script id="__NUXT_DATA__">'+json.dumps(values)+'</script>',FIXTURE['url']);self.assertEqual(p['variants'][0]['price'],'9900')
