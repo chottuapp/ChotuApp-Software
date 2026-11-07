@@ -50,22 +50,23 @@ def inspect(item):
   home=read(base+'/');soup=BeautifulSoup(home.text,'html.parser')
   links=list(dict.fromkeys(urljoin(base,a['href']) for a in soup.select('a[href]') if a['href'].startswith(('/product/','/products/'))))
   out['home_nuxt']=public_product_state(soup)
-  if name=='Alfateh Garments':
+  if name in ('Alfateh Garments','Rung Rez'):
    maps=re.findall(r'(?im)^Sitemap:\s*(https://\S+)',r.text)
    for link in maps[:1]:
     tree=ET.fromstring(read(link).content);locs=[n.text for n in tree.iter() if n.tag.endswith('loc') and n.text]
     if tree.tag.endswith('sitemapindex'):
      child=next((u for u in locs if 'product' in u.lower()),locs[0]);tree=ET.fromstring(read(child).content);locs=[n.text for n in tree.iter() if n.tag.endswith('loc') and n.text]
-    links=list(dict.fromkeys([u for u in locs if '/product/' in u]+links))
+    links=list(dict.fromkeys([u for u in locs if '/product/' in u or '/products/' in u]+links))
   out['details']=[]
-  for link in links[:(25 if name=='Alfateh Garments' else 2)]:
+  for link in links[:(25 if name in ('Alfateh Garments','Rung Rez') else 2)]:
    d,html=detail(link)
-   if name=='Alfateh Garments':
-    from alfateh_source_support import normalize
+   if name in ('Alfateh Garments','Rung Rez'):
+    if name=='Alfateh Garments':from alfateh_source_support import normalize
+    else:from rungrez_source_support import normalize
     try:p=normalize(html,link);out.setdefault('valid_products',[]).append({'url':link,'variants':len(p['variants'])});continue
     except ValueError as e:d['normalize_error']=str(e)
    out['details'].append(d)
-   if name=='Alfateh Garments' and 'mismatch' in d.get('normalize_error',''):break
+   if name in ('Alfateh Garments','Rung Rez') and any(x in d.get('normalize_error','') for x in ('mismatch','conflict')):break
  except Exception as exc:out['error']=str(exc)[:350]
  finally:session.close()
  return out
