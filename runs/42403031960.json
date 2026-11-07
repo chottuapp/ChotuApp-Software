@@ -3577,7 +3577,6 @@
     "Paklap": "source:7945258ebb692a0dea46acfc05de841d9feae207b39e15ec47fa86df45d14f9d:Paklap:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "The Hanger Pakistan": "source:e6b00da2e0d2f623124a79e5a06838257d2e77afc077f58e41580f6830845cf2:The Hanger Pakistan:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Seran": "source:b483899d2cf04f8a384009639e9317d0cbab7215f351dac3be5be6253512b657:Seran:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
-    "Nisa Naturals": "source:d3446f03190976854acde51701a2bdefa1daa63da72664c9bdad5178e1d7edd2:Nisa Naturals:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Cool and Cool": "source:bb4409e48db1ffbf9f63718f171f3e9f1faa67f3d98454027b5a077805ef3bc8:Cool and Cool:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Denim Leftover": "source:a04e8fc5ed29028e738af5c33724f2b381123798fe3ab658d7d1b125d8062c83:Denim Leftover:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Skin Factor": "source:0be1e037140638146c50a5164516fafa0370d767f217d933ae68320c76786951:Skin Factor:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -4172,13 +4171,13 @@
       "store": "Nisa Naturals",
       "shop_code": "SE10017",
       "identity_policy": "confirmed_code",
-      "status": "pass",
+      "status": "hold",
       "products_checked": 53,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
       "workbook_sha256": "dd0357738c7a1837c51025999fb051f32494915e93a04941fbec1902ef2d4e1d",
-      "checked_utc": "2026-11-07T08:28:59.171630+00:00",
+      "checked_utc": "2026-11-07T18:59:52.492386+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
@@ -4194,7 +4193,10 @@
       "source_sha256": "d3446f03190976854acde51701a2bdefa1daa63da72664c9bdad5178e1d7edd2",
       "description_style_version": "customer-copy-v3",
       "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "verified"
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Duplicate Drive filenames require identity review",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/nisa-naturals/d3446f0319097685/manifest.json"
     },
     "Cool and Cool": {
       "name": "804 Audit",
@@ -18421,7 +18423,7 @@
     "41407350295": "41407350295:13125617005:cdc9e039d4d72510257c3f167392f8264df0c0593c7216ad51c72dba95215624",
     "41810860822": "41810860822:13313532881:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "41810864168": "41810864168:13314321371:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
-    "41810871756": "41810871756:13312885598:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
+    "41810871756": "41810871756:13312885598:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41809878573": "41809878573:13324307325:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "41810453768": "41810453768:13334044200:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "41810475977": "41810475977:13336151821:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -18587,8 +18589,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Adam Cheese",
-  "audit804_progress_utc": "2026-11-07T18:58:55.204204+00:00",
+  "audit804_last_store": "Nisa Naturals",
+  "audit804_progress_utc": "2026-11-07T18:59:52.492453+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Limelight",
