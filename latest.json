@@ -1,12 +1,28 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-07T10:56:57.285189+00:00",
-  "run_id": "42366048039",
+  "generated_utc": "2026-11-07T11:00:59.752895+00:00",
+  "run_id": "42366277899",
   "attempt": "1",
-  "source_commit": "3f1dc54559ab18378d27525a92ea8f91cad9339e",
-  "status": "no_saved_state",
-  "checkpoint_saved": false,
+  "source_commit": "6636abff80388796cb66f461d8db4841874e5698",
+  "status": "incomplete",
+  "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 0,
-  "stores": []
+  "elapsed_seconds": 12.0,
+  "stores": [
+    {
+      "name": "Rung Rez",
+      "status": "failed",
+      "review_required": false,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "9216855db365a0a1",
+      "http_statuses": {
+        "200": 2
+      },
+      "network_seconds": 1.8,
+      "max_response_seconds": 1.4,
+      "cache_events": 1
+    }
+  ]
 }
