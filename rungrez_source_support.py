@@ -1,5 +1,5 @@
 """Rungrez public Nuxt/Octane PKR offers; no USD conversion or LAAM owner filter."""
-from decimal import Decimal
+from decimal import Decimal,ROUND_HALF_UP
 from urllib.parse import urlsplit
 from bs4 import BeautifulSoup
 from czone_source_support import nuxt
@@ -21,7 +21,9 @@ def normalize(page,url):
  for v in raw['variants']:
   q=v.get('pricing_breakdown') or {}
   if str(q.get('currency','')).upper()!='PKR' or Decimal(str(q.get('price')))!=Decimal(str(v.get('price'))):raise ValueError('Rungrez variant PKR price conflict')
-  if q.get('display_price') is not None and Decimal(str(q['display_price']))!=Decimal(str(v['price'])):raise ValueError('Rungrez displayed price conflict')
+  if q.get('display_price') is not None:
+   exact=Decimal(str(v['price']));display=Decimal(str(q['display_price']))
+   if display not in (exact,exact.quantize(Decimal('1'),rounding=ROUND_HALF_UP)):raise ValueError('Rungrez displayed price conflict')
  selected=[v for v in raw['variants'] if (v.get('shopify_id') or v.get('id'))==pricing.get('display_variant_id')]
  if len(selected)!=1 or Decimal(str(selected[0]['price']))!=Decimal(str(pricing.get('price'))):raise ValueError('Rungrez product/variant price conflict')
  product=normalize_octane(raw,handle,active_only=True);product['_source_url']=BASE+'/products/'+handle

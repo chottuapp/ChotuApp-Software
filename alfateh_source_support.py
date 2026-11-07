@@ -55,13 +55,18 @@ def normalize(page,url):
   for index,(field,label,key) in enumerate(dimensions,1):row['option'+str(index)]=v[field][key]
   variants.append(row)
  selected=[v for v in variants if v['sku']==raw.get('sku')]
- # Product Code is a parent identifier, not necessarily the current variant SKU.
- # With exactly one published variant the offer is unambiguous; retain its SKU.
- if not selected and len(variants)==1:selected=variants
- if len(selected)!=1 or amount(selected[0]['price'])!=amount(offer.get('price')):raise ValueError('Published selected SKU/price mismatch')
  available=offer.get('availability')
  if available not in ('https://schema.org/InStock','https://schema.org/OutOfStock'):raise IncompleteProduct('Explicit selected offer availability missing')
- if (available.endswith('/InStock'))!=selected[0]['available']:raise ValueError('Selected source stock/offer conflict')
+ # Product Code identifies the parent. A uniform-price product offer does not
+ # claim to select a size/colour; keep every actual variant SKU and stock value.
+ uniform={amount(v['price']) for v in variants}
+ if len(uniform)==1:
+  if amount(offer.get('price')) not in uniform:raise ValueError('Published selected SKU/price mismatch')
+  expected_available=any(v['available'] for v in variants)
+ else:
+  if len(selected)!=1 or amount(selected[0]['price'])!=amount(offer.get('price')):raise ValueError('Published selected SKU/price mismatch')
+  expected_available=selected[0]['available']
+ if (available.endswith('/InStock'))!=expected_available:raise ValueError('Selected source stock/offer conflict')
  images=raw.get('image') or []
  if isinstance(images,str):images=[images]
  images=[dict(src=urljoin(BASE,i),position=index+1) for index,i in enumerate(images) if isinstance(i,str) and urljoin(BASE,i).startswith('https://')]

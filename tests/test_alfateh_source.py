@@ -8,6 +8,12 @@ def page(variants=None,offer=None):
  stream='1:'+json.dumps(['$','Provider',None,{'variants':variants,'children':'Published product details'}])+'\n'
  return '<main><h1>Controlled Cotton Shirt</h1><div class="mt-8 space-y-4"><p>Cotton shirt with exact source specifications and care.</p><dl><dt>Care</dt><dd>Wash at 30 degrees.</dd></dl></div></main><script type="application/ld+json">'+json.dumps(raw)+'</script><script>self.__next_f.push('+json.dumps([1,stream])+')</script>'
 class AlfatehTests(unittest.TestCase):
+ def test_uniform_price_parent_offer_preserves_every_variant_without_guessing_selection(self):
+  variants=[dict(id='v1',sku='child-1',regularPrice='4500',salePrice=None,size={'value':'24'},color={'name':'Navy'},isActive=True,availableStock=0),dict(id='v2',sku='child-2',regularPrice='4500',salePrice=None,size={'value':'18'},color={'name':'Coffee Brown'},isActive=True,availableStock=1)]
+  offer=dict(url=URL,priceCurrency='PKR',price='4500',availability='https://schema.org/InStock')
+  p=normalize(page(variants,offer),URL);self.assertEqual([v['sku'] for v in p['variants']],['child-1','child-2']);self.assertEqual([v['available'] for v in p['variants']],[False,True]);self.assertEqual([v['price'] for v in p['variants']],['4500','4500'])
+  variants[0]['regularPrice']='5000'
+  with self.assertRaisesRegex(ValueError,'price mismatch'):normalize(page(variants,offer),URL)
  def test_real_failed_socks_record_retains_parent_and_variant_identifiers(self):
   import html
   f=json.loads((Path(__file__).parent/'fixtures/alfateh_parent_product_code.json').read_text());r=f['product'];before=copy.deepcopy(f)

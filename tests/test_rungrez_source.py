@@ -10,6 +10,12 @@ def html(raw):
   return index
  encode(raw);return '<script id="__NUXT_DATA__">'+json.dumps(flat)+'</script>'
 class RungrezTests(unittest.TestCase):
+ def test_source_whole_rupee_display_does_not_round_the_exact_export_price(self):
+  raw=copy.deepcopy(FIXTURE['product']);raw['variants'][0]['price']='8242.5';raw['variants'][0]['compare_at_price']='8242.5'
+  raw['variants'][0]['pricing_breakdown'].update(price=8242.5,display_price=8243);raw['pricing_breakdown'].update(price=8242.5,display_price=8243)
+  p=normalize(html(raw),FIXTURE['url']);self.assertEqual(p['variants'][0]['price'],'8242.5')
+  raw['variants'][0]['pricing_breakdown']['display_price']=9000
+  with self.assertRaisesRegex(ValueError,'displayed price conflict'):normalize(html(raw),FIXTURE['url'])
  def test_unrelated_nuxt_set_plugin_is_not_part_of_product_decoding(self):
   raw=FIXTURE['product']
   # A separate wrapper is encoded with stable reference offsets by a second pass.
