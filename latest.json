@@ -3566,7 +3566,6 @@
     "Saya": "source:d75288929dcac346dcb0d171c03d98e9ea62e05c46b320aa425f6abc5d821cb7:Saya:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Limelight": "source:9c922eb891a28d0acca98f19513fdb97d0eeb35b119f2b146be3f487aa137149:Limelight:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "Fresh Basket": "source:afd59941e826be13b349c82d42481de96681ee55d7b259391b675d055752c19d:Fresh Basket:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
-    "The Glossy Quill": "source:21967714b78c38ac2c5caabfc000c6aa95242bc916f8026125adb5d28cb13e7a:The Glossy Quill:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Bin Fahad": "source:fb195fe11f907566548490176df27b08b585ad67947a008c098a48f4693256f2:Bin Fahad:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Dairy Dream": "source:cb433e7b9d9e454acc7131500746f4af83e5028045df01b9342c8e09ec94339b:Dairy Dream:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "G7 Leather": "source:1d8c844bb109e93f088fb5ec1f7481f5858300410ff1c31538124dc71add6315:G7 Leather:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -17692,13 +17691,13 @@
       "store": "The Glossy Quill",
       "shop_code": "SE10061",
       "identity_policy": "confirmed_code",
-      "status": "pass",
+      "status": "hold",
       "products_checked": 61,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "8f3ecf141ea734a1047e7d0804a9a9969fbc8ee03b16b4f7c2007ade81804432",
-      "checked_utc": "2026-11-07T11:52:51.536341+00:00",
+      "workbook_sha256": "f1c70f3849c7c68f663a09a1a2066d444edc75cb49e3e752ab8205519f498547",
+      "checked_utc": "2026-11-07T19:29:52.287588+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "incomplete_products_excluded": [
         {
@@ -17712,7 +17711,7 @@
       ],
       "incomplete_products_count": 1,
       "incomplete_products_truncated": false,
-      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/the-glossy-quill-incomplete-products/64d07296a677c838/manifest.json",
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/the-glossy-quill-incomplete-products/4dae062e7d5c80d0/manifest.json",
       "original_source_sha256": "21967714b78c38ac2c5caabfc000c6aa95242bc916f8026125adb5d28cb13e7a",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
@@ -17754,7 +17753,9 @@
       "source_sha256": "21967714b78c38ac2c5caabfc000c6aa95242bc916f8026125adb5d28cb13e7a",
       "description_style_version": "customer-copy-v3",
       "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "verified",
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Duplicate Drive filenames require identity review",
       "held_input": "inputs/fresh804-20261026-5d42fe35/the-glossy-quill/21967714b78c38ac/manifest.json"
     },
     "Bin Fahad": {
@@ -18491,7 +18492,7 @@
     "41811616330": "41811616330:13322274655:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41811637515": "41811637515:13330942688:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41811683153": "41811683153:13316465863:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
-    "41811727258": "41811727258:13319225789:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
+    "41811727258": "41811727258:13319225789:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41811732225": "41811732225:13324730230:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "41811736793": "41811736793:13315718324:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "41811744694": "41811744694:13316496988:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -18633,8 +18634,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "House of Tools",
-  "audit804_progress_utc": "2026-11-07T19:28:52.060895+00:00",
+  "audit804_last_store": "The Glossy Quill",
+  "audit804_progress_utc": "2026-11-07T19:29:52.287656+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Limelight",
