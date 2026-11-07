@@ -3570,7 +3570,6 @@
     "Bin Fahad": "source:fb195fe11f907566548490176df27b08b585ad67947a008c098a48f4693256f2:Bin Fahad:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Dairy Dream": "source:cb433e7b9d9e454acc7131500746f4af83e5028045df01b9342c8e09ec94339b:Dairy Dream:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "G7 Leather": "source:1d8c844bb109e93f088fb5ec1f7481f5858300410ff1c31538124dc71add6315:G7 Leather:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
-    "House of Tools": "source:e187bbe3ccdd886553f0688f1dd465256a196259397a0cfc039ffd2b9571586d:House of Tools:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "The Hanger Pakistan": "source:e6b00da2e0d2f623124a79e5a06838257d2e77afc077f58e41580f6830845cf2:The Hanger Pakistan:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Seran": "source:b483899d2cf04f8a384009639e9317d0cbab7215f351dac3be5be6253512b657:Seran:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Tawakkal Fabrics": "source:a91c6e6b9119d670a4eb247164705535fa7abf5e7b6ec13699af050b7ddb979e:Tawakkal Fabrics:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -17854,13 +17853,13 @@
       "store": "House of Tools",
       "shop_code": "SE10059",
       "identity_policy": "confirmed_code",
-      "status": "pass",
+      "status": "hold",
       "products_checked": 1367,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "378369a7bf6dad430225c336e5c44395f582e4c381166aebec2549a9eb91222d",
-      "checked_utc": "2026-11-07T11:52:15.051244+00:00",
+      "workbook_sha256": "afe04337b3a03c232529eb1a7e8ce97926910897f3e21f4ea94a13e666f0ce90",
+      "checked_utc": "2026-11-07T19:28:52.060800+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "incomplete_products_excluded": [
         {
@@ -17890,7 +17889,7 @@
       ],
       "incomplete_products_count": 3,
       "incomplete_products_truncated": false,
-      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/house-of-tools-incomplete-products/d78fa877793e2737/manifest.json",
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/house-of-tools-incomplete-products/8cc78712d01d8c9b/manifest.json",
       "original_source_sha256": "e187bbe3ccdd886553f0688f1dd465256a196259397a0cfc039ffd2b9571586d",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
@@ -17957,7 +17956,9 @@
       "source_sha256": "e187bbe3ccdd886553f0688f1dd465256a196259397a0cfc039ffd2b9571586d",
       "description_style_version": "customer-copy-v3",
       "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "verified",
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Duplicate Drive filenames require identity review",
       "held_input": "inputs/fresh804-20261026-5d42fe35/house-of-tools/e187bbe3ccdd8865/manifest.json"
     },
     "Paklap": {
@@ -18632,8 +18633,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Paklap",
-  "audit804_progress_utc": "2026-11-07T19:27:46.814778+00:00",
+  "audit804_last_store": "House of Tools",
+  "audit804_progress_utc": "2026-11-07T19:28:52.060895+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Limelight",
