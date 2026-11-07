@@ -3581,7 +3581,6 @@
     "Gul Ahmed": "source:500e5672c99300d6b0fd65d1e3fc12b43f877d8223c70d6dfe9011b1099d0bd1:Gul Ahmed:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Sana Safinaz": "source:d3a5c80bcb185cab8c51e4a3666a1f7f1122bba0ebb1a344411461f7469ada39:Sana Safinaz:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "Beyond East": "source:520ba9a73e65eb23defb5ecdf26c85b48bf0d279f16faf458f8fc1d7f474dee0:Beyond East:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
-    "Alkaram Studio": "source:0b7e39dc324d0005778bdad0c0cd3a27354c37314e2bacfdf9501cbd92b682b5:Alkaram Studio:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Generation": "source:f1eeb55cac6bba9c8e16c1151ab78f74769f8b4f0470800a42965ae2927421fb:Generation:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Shop Modest": "source:d7cba029dd74ab408edb56fcce45423156b49416753b4b140a957db9c7a9e69a:Shop Modest:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Babysaurus": "source:f66a2df9cd2ebbabc9b2d6ed690b637764914c70ec8203f03f92dbe7b9fc75e9:Babysaurus:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -14066,13 +14065,13 @@
       "store": "Alkaram Studio",
       "shop_code": "SE10056",
       "identity_policy": "confirmed_code",
-      "status": "pass",
+      "status": "hold",
       "products_checked": 1411,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "205f4cef6e203d392bc84367dde4fd7346eb414fb4f4f0c1e287ca008d485668",
-      "checked_utc": "2026-11-07T11:48:10.180897+00:00",
+      "workbook_sha256": "d2e436a0465359b2659abb32cb5862a54e8cfadb0d31b4da5eb190d2c958a1b6",
+      "checked_utc": "2026-11-07T19:26:47.354917+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "incomplete_products_excluded": [
         {
@@ -14878,7 +14877,7 @@
       ],
       "incomplete_products_count": 131,
       "incomplete_products_truncated": true,
-      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/alkaram-studio-incomplete-products/4b83a97e4de45b96/manifest.json",
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/alkaram-studio-incomplete-products/af580e5b09e731cd/manifest.json",
       "original_source_sha256": "0b7e39dc324d0005778bdad0c0cd3a27354c37314e2bacfdf9501cbd92b682b5",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
@@ -14945,7 +14944,9 @@
       "source_sha256": "0b7e39dc324d0005778bdad0c0cd3a27354c37314e2bacfdf9501cbd92b682b5",
       "description_style_version": "customer-copy-v3",
       "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "verified",
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Duplicate Drive filenames require identity review",
       "held_input": "inputs/fresh804-20261026-5d42fe35/alkaram-studio/0b7e39dc324d0005/manifest.json"
     },
     "Generation": {
@@ -18486,7 +18487,7 @@
     "41811495654": "41811495654:13337908792:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41811611300": "41811611300:13314673364:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41811616330": "41811616330:13322274655:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
-    "41811637515": "41811637515:13330942688:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
+    "41811637515": "41811637515:13330942688:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41811683153": "41811683153:13316465863:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "41811727258": "41811727258:13319225789:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "41811732225": "41811732225:13324730230:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -18630,8 +18631,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Mala",
-  "audit804_progress_utc": "2026-11-07T19:24:56.015893+00:00",
+  "audit804_last_store": "Alkaram Studio",
+  "audit804_progress_utc": "2026-11-07T19:26:47.355022+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Limelight",
