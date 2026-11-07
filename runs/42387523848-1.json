@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-07T21:05:17.461235+00:00",
+  "run_id": "42387523848",
+  "attempt": "1",
+  "source_commit": "5ed7fa39d3cb245aa086345f43567ebc68e8de6f",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 18001.0,
+  "stores": [
+    {
+      "name": "Liberty Books",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_404",
+        "WEBSITE_CATEGORY_UNVERIFIED",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "522ef8b7890d7b28",
+      "http_statuses": {
+        "404": 2215,
+        "200": 2262
+      },
+      "network_seconds": 10683.5,
+      "max_response_seconds": 4.7,
+      "cache_events": 102285
+    }
+  ]
+}
