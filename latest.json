@@ -3582,7 +3582,6 @@
     "Bonanza Satrangi": "source:5f4f67958aabb6faa06cac4606537fb10487fa2848431cf3a9d25f30ead7735e:Bonanza Satrangi:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Zellbury": "source:3d8acbe845efe8163412632ac9d217f5c81e21cd9770dca4f1ff196df077ecb4:Zellbury:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Gul Ahmed": "source:500e5672c99300d6b0fd65d1e3fc12b43f877d8223c70d6dfe9011b1099d0bd1:Gul Ahmed:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
-    "Zyren": "source:70f71e22827f05cbafca3beba239e68f514da58aed4c10eb85810cb9856bb669:Zyren:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Pyari Walls": "source:ea840ce404cb209a1cc5408535d5ad7d9ebfc0884cc943686ec5a3f6a023fbdc:Pyari Walls:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Beechtree": "source:bd6e40e8661915d1b3a4ff20e78f6e3de308ab0e67a8e5ee17da6c452af18d92:Beechtree:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "ChenOne": "source:199e23d210cf1d1f54da4b095e5b27476e61090318e383353c4a0c3d834a58f2:ChenOne:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -12323,13 +12322,13 @@
       "store": "Zyren",
       "shop_code": "SE10041",
       "identity_policy": "confirmed_code",
-      "status": "pass",
+      "status": "hold",
       "products_checked": 173,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "7df72fb361ade8816ede0c35f13e9a904d190eade60ec9fdf047a98d1c287b44",
-      "checked_utc": "2026-11-07T11:20:57.947711+00:00",
+      "workbook_sha256": "163d48c56c55bdf11d155c28e338c503e7ec5a41e481225100092bf46e96fc19",
+      "checked_utc": "2026-11-07T19:16:54.118522+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
@@ -12351,7 +12350,10 @@
       "source_sha256": "70f71e22827f05cbafca3beba239e68f514da58aed4c10eb85810cb9856bb669",
       "description_style_version": "customer-copy-v3",
       "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "verified"
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Duplicate Drive filenames require identity review",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/zyren/70f71e22827f05cb/manifest.json"
     },
     "Pyari Walls": {
       "name": "804 Audit",
@@ -18464,7 +18466,7 @@
     "41810907719": "41810907719:13319514176:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41810912306": "41810912306:13321280878:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41810916660": "41810916660:13319540918:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
-    "41811026367": "41811026367:13312577893:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
+    "41811026367": "41811026367:13312577893:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41811029950": "41811029950:13313821774:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "41811339126": "41811339126:13324980425:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "41811343293": "41811343293:13322082163:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -18616,8 +18618,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Golden Rose",
-  "audit804_progress_utc": "2026-11-07T19:15:55.489994+00:00",
+  "audit804_last_store": "Zyren",
+  "audit804_progress_utc": "2026-11-07T19:16:54.118592+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Limelight",
