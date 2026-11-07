@@ -1,1016 +1,298 @@
 {
-  "run_id": "42230209801",
-  "checked_utc": "2026-11-06T14:01:23.229773+00:00",
+  "run_id": "42366362072",
+  "checked_utc": "2026-11-07T11:01:21.784080+00:00",
   "targets": [
     {
-      "target": "42206069736",
-      "state": {
-        "conclusion": "failure",
-        "displayTitle": "Cloud group requested-new20261106-2-src5d700be3d5e2",
-        "headSha": "365e5fff4bccac7650aa3d80b9896c2e03181556",
-        "jobs": [
-          {
-            "completedAt": "2026-11-06T10:56:20Z",
-            "conclusion": "failure",
-            "databaseId": 127852906880,
-            "name": "fetch",
-            "startedAt": "2026-11-06T10:53:22Z",
-            "status": "completed",
-            "steps": [
-              {
-                "completedAt": "2026-11-06T10:53:23Z",
-                "conclusion": "success",
-                "name": "Set up job",
-                "number": 1,
-                "startedAt": "2026-11-06T10:53:22Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:53:30Z",
-                "conclusion": "success",
-                "name": "Run actions/checkout@v4",
-                "number": 2,
-                "startedAt": "2026-11-06T10:53:23Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:53:30Z",
-                "conclusion": "success",
-                "name": "Run actions/setup-python@v5",
-                "number": 3,
-                "startedAt": "2026-11-06T10:53:30Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:53:33Z",
-                "conclusion": "success",
-                "name": "Install extraction dependencies",
-                "number": 4,
-                "startedAt": "2026-11-06T10:53:30Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:53:43Z",
-                "conclusion": "success",
-                "name": "Verify standalone continuation and owner-policy guards",
-                "number": 5,
-                "startedAt": "2026-11-06T10:53:33Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:53:45Z",
-                "conclusion": "success",
-                "name": "Restore optional saved run",
-                "number": 6,
-                "startedAt": "2026-11-06T10:53:43Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:53:45Z",
-                "conclusion": "skipped",
-                "name": "Install Czone browser fallback when needed",
-                "number": 7,
-                "startedAt": "2026-11-06T10:53:45Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:53:45Z",
-                "conclusion": "skipped",
-                "name": "Install Axis public JS renderer when needed",
-                "number": 8,
-                "startedAt": "2026-11-06T10:53:45Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:53:45Z",
-                "conclusion": "success",
-                "name": "Start continuous fetching on the cloud runner",
-                "number": 9,
-                "startedAt": "2026-11-06T10:53:45Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:56:13Z",
-                "conclusion": "success",
-                "name": "Live progress, logs and completed-file uploads",
-                "number": 10,
-                "startedAt": "2026-11-06T10:53:45Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:56:13Z",
-                "conclusion": "failure",
-                "name": "Fetch result",
-                "number": 11,
-                "startedAt": "2026-11-06T10:56:13Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:56:13Z",
-                "conclusion": "success",
-                "name": "Collect diagnostic report even if fetching failed",
-                "number": 12,
-                "startedAt": "2026-11-06T10:56:13Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:56:14Z",
-                "conclusion": "success",
-                "name": "Upload diagnostic report and redacted log",
-                "number": 13,
-                "startedAt": "2026-11-06T10:56:13Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:56:15Z",
-                "conclusion": "success",
-                "name": "Upload Excel files and audits, including completed stores from a partial run",
-                "number": 14,
-                "startedAt": "2026-11-06T10:56:14Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:56:15Z",
-                "conclusion": "skipped",
-                "name": "Final automated Rule 804 pass for fresh batch",
-                "number": 15,
-                "startedAt": "2026-11-06T10:56:15Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:56:15Z",
-                "conclusion": "skipped",
-                "name": "Upload automated Rule 804 fresh workbooks",
-                "number": 16,
-                "startedAt": "2026-11-06T10:56:15Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:56:18Z",
-                "conclusion": "success",
-                "name": "Upload saved checkpoint when available",
-                "number": 17,
-                "startedAt": "2026-11-06T10:56:15Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:56:18Z",
-                "conclusion": "success",
-                "name": "Dispatch authorized continuation after verified checkpoint upload",
-                "number": 18,
-                "startedAt": "2026-11-06T10:56:18Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:56:18Z",
-                "conclusion": "success",
-                "name": "Post Live progress, logs and completed-file uploads",
-                "number": 34,
-                "startedAt": "2026-11-06T10:56:18Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:56:18Z",
-                "conclusion": "skipped",
-                "name": "Post Run actions/setup-python@v5",
-                "number": 35,
-                "startedAt": "2026-11-06T10:56:18Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:56:18Z",
-                "conclusion": "success",
-                "name": "Post Run actions/checkout@v4",
-                "number": 36,
-                "startedAt": "2026-11-06T10:56:18Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:56:18Z",
-                "conclusion": "success",
-                "name": "Complete job",
-                "number": 37,
-                "startedAt": "2026-11-06T10:56:18Z",
-                "status": "completed"
-              }
-            ],
-            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/42206069736/job/127852906880"
-          },
-          {
-            "completedAt": "2026-11-06T10:56:38Z",
-            "conclusion": "success",
-            "databaseId": 127854175228,
-            "name": "Archive structured diagnostics",
-            "startedAt": "2026-11-06T10:56:23Z",
-            "status": "completed",
-            "steps": [
-              {
-                "completedAt": "2026-11-06T10:56:24Z",
-                "conclusion": "success",
-                "name": "Set up job",
-                "number": 1,
-                "startedAt": "2026-11-06T10:56:23Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:56:33Z",
-                "conclusion": "success",
-                "name": "Run actions/checkout@v4",
-                "number": 2,
-                "startedAt": "2026-11-06T10:56:24Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:56:33Z",
-                "conclusion": "success",
-                "name": "Run actions/setup-python@v5",
-                "number": 3,
-                "startedAt": "2026-11-06T10:56:33Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:56:34Z",
-                "conclusion": "success",
-                "name": "Run actions/download-artifact@v4",
-                "number": 4,
-                "startedAt": "2026-11-06T10:56:33Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:56:36Z",
-                "conclusion": "success",
-                "name": "Archive credential-free JSON on the cloud-reports branch",
-                "number": 5,
-                "startedAt": "2026-11-06T10:56:34Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:56:36Z",
-                "conclusion": "success",
-                "name": "Post Run actions/setup-python@v5",
-                "number": 9,
-                "startedAt": "2026-11-06T10:56:36Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:56:36Z",
-                "conclusion": "success",
-                "name": "Post Run actions/checkout@v4",
-                "number": 10,
-                "startedAt": "2026-11-06T10:56:36Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:56:36Z",
-                "conclusion": "success",
-                "name": "Complete job",
-                "number": 11,
-                "startedAt": "2026-11-06T10:56:36Z",
-                "status": "completed"
-              }
-            ],
-            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/42206069736/job/127854175228"
-          }
-        ],
-        "status": "completed"
-      },
-      "failed_log": "fetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2730473Z __CHOTU_PROGRESS__|58|Active: VNS Collection\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2731445Z [VNS Collection] WEBSITE ORDER POLICY: observed default listing; no forced bestseller or cheapest-first sort\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2733105Z [VNS Collection] ANALYSIS NOTES: 773 products documented; collection labels are merchant signals, not verified sales counts; no additional page requests\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2734603Z [VNS Collection] VARIANT EXPORT: 2236 combinations; 360 unavailable preserved as no\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2736116Z [VNS Collection] VARIANT IMAGES: 0 source-linked; 2236 general product-photo fallbacks; source-specific image field stays blank when unlinked\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2737359Z [VNS Collection] [10:56:03] STAGE: Writing Excel rows\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2738178Z __CHOTU_PROGRESS__|58|Active: VNS Collection\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2739453Z [VNS Collection] [10:56:03] EXCEPTION: IllegalCharacterError('EMERALD MARMARA\\x0bTURK TARZI-D.GREEN-1000000053401-52 cannot be used in worksheets.')\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2740933Z [VNS Collection] [10:56:03] Traceback (most recent call last):\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2749348Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2054, in _run_checked\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2750505Z     run_site(site['url'], name, template, log_line)\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2751700Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2752998Z     if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2753895Z                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2755001Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1547, in run_site\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2756514Z     _chotuapp_run_site_original(base, name, template, intercept)\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2757838Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2759743Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2761258Z                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2762547Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2819894Z   File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/cell/cell.py\", line 218, in value\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2820431Z     self._bind_value(value)\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2820968Z   File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/cell/cell.py\", line 197, in _bind_value\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2821532Z     value = self.check_string(value)\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2821800Z             ^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2822355Z   File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/cell/cell.py\", line 165, in check_string\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2823061Z     raise IllegalCharacterError(f\"{value} cannot be used in worksheets.\")\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2823824Z openpyxl.utils.exceptions.IllegalCharacterError: EMERALD MARMARA\nTURK TARZI-D.GREEN-1000000053401-52 cannot be used in worksheets.\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2824362Z \nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2824731Z [VNS Collection] FAILED: VNS Collection: EMERALD MARMARA\nTURK TARZI-D.GREEN-1000000053401-52 cannot be used in worksheets.\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2825292Z [VNS Collection] [10:56:03] STAGE: Idle\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2825871Z FAILED: VNS Collection: FAILED: VNS Collection: EMERALD MARMARA\nTURK TARZI-D.GREEN-1000000053401-52 cannot be used in worksheets.\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2826428Z False\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2826855Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2827516Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2828200Z RUN SUMMARY:\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2829019Z VNS Collection: FAILED \u2014 FAILED: VNS Collection: EMERALD MARMARA\nTURK TARZI-D.GREEN-1000000053401-52 cannot be used in worksheets.\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2829596Z Checkpoint: saved\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2830068Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2839846Z ##[error]Process completed with exit code 2.\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2887083Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2887776Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2907058Z shell: /usr/bin/bash -e {0}\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2907321Z env:\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2907699Z   CHOTUAPP_CLOUD_DATA: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2908434Z   CLOUD_RUNNER_GROUP: requested-new20261106-2-src5d700be3d5e2\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2908801Z   CLOUD_PARTITION_RESUME: true\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2909138Z   CLOUD_STORES: VNS Collection | https://www.vnscollection.com\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2909497Z   CLOUD_MINUTES: 300\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2909723Z   RESUME_RUN_ID: 42194725766\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:13.2909967Z   SAVE_CHECKPOINT: true\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:18.0486590Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:18.0487045Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:18.0487468Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:18.0487835Z   CLOUD_NEEDS_CZONE_BROWSER: false\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:18.0488426Z   CLOUD_NEEDS_AXIS_RENDERER: false\n[credential-bearing log line removed]\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:18.0491753Z ##[endgroup]\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:18.4875743Z No continuation: completed, stopped manually, unauthorized or not a time-budget stop.\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:18.5199655Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:18.5309803Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:18.6178262Z [command]/usr/bin/git version\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:18.6224792Z git version 2.56.0\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:18.6266245Z Temporarily overriding HOME='/home/runner/work/_temp/6100adde-3502-4231-8010-2e53d99a769d' before making global git config changes\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:18.6268474Z Adding repository directory to the temporary git global config as a safe directory\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:18.6273213Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ChotuApp-Software/ChotuApp-Software\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:18.6315957Z [command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:18.6356099Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:18.6629023Z [command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nfetch\tUNKNOWN STEP\t2026-11-06T10:56:18.6667225Z http.https://github.com/.extraheader",
-      "artifacts": [
-        {
-          "name": "chotuapp-live-logs",
-          "id": 13496936844,
-          "expired": false,
-          "size_in_bytes": 70426
-        },
-        {
-          "name": "chotuapp-excel-files",
-          "id": 13496602591,
-          "expired": false,
-          "size_in_bytes": 620
-        },
-        {
-          "name": "chotuapp-diagnostics",
-          "id": 13496108823,
-          "expired": false,
-          "size_in_bytes": 68527
-        },
-        {
-          "name": "chotuapp-checkpoint",
-          "id": 13495894606,
-          "expired": false,
-          "size_in_bytes": 55876080
-        }
-      ],
-      "summary": {
-        "runner_group": "requested-new20261106-2-src5d700be3d5e2",
-        "status": "incomplete",
-        "stop_reason": "completed_or_source_failure",
-        "checkpoint": "saved",
-        "auto_continue_limit": 6,
-        "continuation_index": 0,
-        "stalled_runs": 0,
-        "stores": [
-          {
-            "name": "VNS Collection",
-            "status": "failed",
-            "products": null
-          }
-        ]
-      },
-      "available_checkpoint_ancestor": {
-        "run_id": "42206069736",
-        "checked": [
-          "42206069736"
-        ]
-      },
-      "annotations": [
-        {
-          "level": "warning",
-          "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
-        },
-        {
-          "level": "failure",
-          "message": "Process completed with exit code 2."
-        }
-      ],
-      "console-tail.txt": "[VNS Collection] ANALYSIS NOTES: 773 products documented; collection labels are merchant signals, not verified sales counts; no additional page requests\n[VNS Collection] VARIANT EXPORT: 2236 combinations; 360 unavailable preserved as no\n[VNS Collection] VARIANT IMAGES: 0 source-linked; 2236 general product-photo fallbacks; source-specific image field stays blank when unlinked\n[VNS Collection] [10:56:03] STAGE: Writing Excel rows\n__CHOTU_PROGRESS__|58|Active: VNS Collection\n[VNS Collection] [10:56:03] EXCEPTION: IllegalCharacterError('EMERALD MARMARA\\x0bTURK TARZI-D.GREEN-1000000053401-52 cannot be used in worksheets.')\n[VNS Collection] [10:56:03] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2054, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1547, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 114, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='alfatehgarments.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 216, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 191, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 365, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.') not in HOSTS:return original(base,name,template,log)\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 347, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.')!='laam.com':return original(base,name,template,log)\n                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 478, in run\n    if host!='czone.com.pk':return original(base,name,template,log)\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1268, in run_site\n    write_row(wb['Products'],r)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 679, in write_row\n    ws.append([vals.get(h) for h in headers])\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/worksheet/worksheet.py\", line 673, in append\n    cell = Cell(self, row=row_idx, column=col_idx, value=content)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/cell/cell.py\", line 119, in __init__\n    self.value = value\n    ^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/cell/cell.py\", line 218, in value\n    self._bind_value(value)\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/cell/cell.py\", line 197, in _bind_value\n    value = self.check_string(value)\n            ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/cell/cell.py\", line 165, in check_string\n    raise IllegalCharacterError(f\"{value} cannot be used in worksheets.\")\nopenpyxl.utils.exceptions.IllegalCharacterError: EMERALD MARMARA\nTURK TARZI-D.GREEN-1000000053401-52 cannot be used in worksheets.\n\n[VNS Collection] FAILED: VNS Collection: EMERALD MARMARA\nTURK TARZI-D.GREEN-1000000053401-52 cannot be used in worksheets.\n[VNS Collection] [10:56:03] STAGE: Idle\nFAILED: VNS Collection: FAILED: VNS Collection: EMERALD MARMARA\nTURK TARZI-D.GREEN-1000000053401-52 cannot be used in worksheets.\nFalse\nCheckpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nCheckpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nRUN SUMMARY:\nVNS Collection: FAILED \u2014 FAILED: VNS Collection: EMERALD MARMARA\nTURK TARZI-D.GREEN-1000000053401-52 cannot be used in worksheets.\nCheckpoint: saved\nRun finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
-      "store-status.txt": "Updated (UTC): 2026-11-06T10:56:11.589839+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nVNS Collection: failed\n  Stage: Idle",
-      "fetch-log.txt": "[VNS Collection] LIVE VARIANT PRICES: MATTE SQUARE MAGNET PIN SET OF 2 \u2014 1 checked; 0 refreshed\n[VNS Collection] [10:55:58] GET_JSON: https://www.vnscollection.com/products/pant-coat-2pcs-art2191023.js\n[VNS Collection] [10:55:58] CACHE HIT: https://www.vnscollection.com/products/pant-coat-2pcs-art2191023.js\n[VNS Collection] LIVE VARIANT PRICES: INDIGO 2PCS SUIT \u2014 5 checked; 0 refreshed\n[VNS Collection] [10:55:58] CACHE HIT status=200 elapsed=0.0s bytes=354113 \n[VNS Collection] [10:55:58] GET_JSON: https://www.vnscollection.com/products/coat-50942-art1551023.js\n[VNS Collection] [10:55:58] CACHE HIT: https://www.vnscollection.com/products/coat-50942-art1551023.js\n[VNS Collection] LIVE VARIANT PRICES: BLACK SHADOW JACKET \u2014 5 checked; 0 refreshed\n[VNS Collection] [10:55:58] CACHE HIT status=200 elapsed=0.0s bytes=353832 \n[VNS Collection] [10:55:58] GET_JSON: https://www.vnscollection.com/products/coat-50942-art1781023.js\n[VNS Collection] [10:55:58] CACHE HIT: https://www.vnscollection.com/products/coat-50942-art1781023.js\n[VNS Collection] LIVE VARIANT PRICES: NAVY BLUE JACKET \u2014 5 checked; 0 refreshed\n[VNS Collection] [10:55:58] CACHE HIT status=200 elapsed=0.0s bytes=353859 \n[VNS Collection] [10:55:59] GET_JSON: https://www.vnscollection.com/products/femeshirtst508.js\n[VNS Collection] [10:55:59] CACHE HIT: https://www.vnscollection.com/products/femeshirtst508.js\n[VNS Collection] LIVE VARIANT PRICES: WORK WEAR SHIRT \u2014 4 checked; 0 refreshed\n[VNS Collection] [10:55:59] GET_JSON: https://www.vnscollection.com/products/pearl-radiance-hijab-pin.js\n[VNS Collection] [10:55:59] CACHE HIT: https://www.vnscollection.com/products/pearl-radiance-hijab-pin.js\n[VNS Collection] LIVE VARIANT PRICES: PEARL RADIANCE HIJAB PIN SET OF 2 \u2014 1 checked; 0 refreshed\n[VNS Collection] [10:55:59] CACHE HIT status=200 elapsed=0.0s bytes=276722 \n[VNS Collection] [10:55:59] GET_JSON: https://www.vnscollection.com/products/femefabric-lawn-tr0056-27.js\n[VNS Collection] [10:55:59] CACHE HIT: https://www.vnscollection.com/products/femefabric-lawn-tr0056-27.js\n[VNS Collection] LIVE VARIANT PRICES: APPAREL \u2014 1 checked; 0 refreshed\n[VNS Collection] [10:55:59] GET_JSON: https://www.vnscollection.com/products/ethnic-pink.js\n[VNS Collection] [10:55:59] CACHE HIT: https://www.vnscollection.com/products/ethnic-pink.js\n[VNS Collection] LIVE VARIANT PRICES: ETHNIC PINK \u2014 4 checked; 0 refreshed\n[VNS Collection] [10:55:59] GET_JSON: https://www.vnscollection.com/products/femeshirtblkst577.js\n[VNS Collection] [10:55:59] CACHE HIT: https://www.vnscollection.com/products/femeshirtblkst577.js\n[VNS Collection] LIVE VARIANT PRICES: CREW NECK \u2014 4 checked; 0 refreshed\n[VNS Collection] [10:55:59] GET_JSON: https://www.vnscollection.com/products/blakish-node.js\n[VNS Collection] [10:55:59] CACHE HIT: https://www.vnscollection.com/products/blakish-node.js\n[VNS Collection] LIVE VARIANT PRICES: BLAKISH NODE \u2014 4 checked; 0 refreshed\n[VNS Collection] OWNER INCOMPLETE SKIP: shalwarqameezrjcolection2-23; Description lacks enough product-specific content for review\n[VNS Collection] [10:55:59] GET_JSON: https://www.vnscollection.com/products/v-scufflinksilver9-24.js\n[VNS Collection] [10:55:59] CACHE HIT: https://www.vnscollection.com/products/v-scufflinksilver9-24.js\n[VNS Collection] LIVE VARIANT PRICES: CROW \u2014 1 checked; 0 refreshed\n[VNS Collection] [10:55:59] CACHE HIT status=200 elapsed=0.0s bytes=276975 \n[VNS Collection] [10:55:59] GET_JSON: https://www.vnscollection.com/products/v-scufflinksgold9-36.js\n[VNS Collection] [10:55:59] CACHE HIT: https://www.vnscollection.com/products/v-scufflinksgold9-36.js\n[VNS Collection] LIVE VARIANT PRICES: CLASSIC BLACK \u2014 1 checked; 0 refreshed\n[VNS Collection] [10:55:59] GET_JSON: https://www.vnscollection.com/products/v-scufflinksilver9-22.js\n[VNS Collection] [10:55:59] CACHE HIT: https://www.vnscollection.com/products/v-scufflinksilver9-22.js\n[VNS Collection] LIVE VARIANT PRICES: BLUE MARBLE \u2014 1 checked; 0 refreshed\n[VNS Collection] [10:55:59] CACHE HIT status=200 elapsed=0.0s bytes=277262 \n[VNS Collection] [10:55:59] GET_JSON: https://www.vnscollection.com/products/black-golden.js\n[VNS Collection] [10:55:59] CACHE HIT: https://www.vnscollection.com/products/black-golden.js\n[VNS Collection] LIVE VARIANT PRICES: BLACK GOLDEN \u2014 1 checked; 0 refreshed\n[VNS Collection] [10:55:59] GET_JSON: https://www.vnscollection.com/products/pantcoat2pcs2985211-23.js\n[VNS Collection] [10:55:59] CACHE HIT: https://www.vnscollection.com/products/pantcoat2pcs2985211-23.js\n[VNS Collection] LIVE VARIANT PRICES: DOLPHIN GREY \u2014 5 checked; 0 refreshed\n[VNS Collection] [10:55:59] CACHE HIT status=200 elapsed=0.0s bytes=352085 \n[VNS Collection] [10:55:59] GET_JSON: https://www.vnscollection.com/products/waistcoattrsuitingcol-6.js\n[VNS Collection] [10:55:59] CACHE HIT: https://www.vnscollection.com/products/waistcoattrsuitingcol-6.js\n[VNS Collection] LIVE VARIANT PRICES: OXFORD BLUE \u2014 4 checked; 0 refreshed\n[VNS Collection] [10:55:59] GET_JSON: https://www.vnscollection.com/products/perdachadarlacem-1.js\n[VNS Collection] [10:55:59] CACHE HIT: https://www.vnscollection.com/products/perdachadarlacem-1.js\n[VNS Collection] LIVE VARIANT PRICES: LAWN COTTON - LACE CHADAR \u2014 1 checked; 0 refreshed\n[VNS Collection] [10:55:59] CACHE HIT status=200 elapsed=0.0s bytes=282603 \n[VNS Collection] [10:55:59] GET_JSON: https://www.vnscollection.com/products/perdachadarlacem.js\n[VNS Collection] [10:55:59] CACHE HIT: https://www.vnscollection.com/products/perdachadarlacem.js\n[VNS Collection] LIVE VARIANT PRICES: LACE CHADAR II (Lawn & Cotton Mix) \u2014 1 checked; 0 refreshed\n[VNS Collection] [10:55:59] CACHE HIT status=200 elapsed=0.0s bytes=278736 \n[VNS Collection] [10:55:59] GET_JSON: https://www.vnscollection.com/products/silk.js\n[VNS Collection] [10:55:59] CACHE HIT: https://www.vnscollection.com/products/silk.js\n[VNS Collection] LIVE VARIANT PRICES: SILK JERSEY HIJAB CAP \u2014 1 checked; 0 refreshed\n[VNS Collection] [10:55:59] GET_JSON: https://www.vnscollection.com/products/prdcaps91024003.js\n[VNS Collection] [10:55:59] CACHE HIT: https://www.vnscollection.com/products/prdcaps91024003.js\n[VNS Collection] LIVE VARIANT PRICES: Net Bonnet Caps \u2014 1 checked; 0 refreshed\n[VNS Collection] [10:55:59] GET_JSON: https://www.vnscollection.com/products/radiant-marquise-cut-pendant.js\n[VNS Collection] [10:55:59] CACHE HIT: https://www.vnscollection.com/products/radiant-marquise-cut-pendant.js\n[VNS Collection] LIVE VARIANT PRICES: Radiant Marquise Cut Pendant \u2014 1 checked; 0 refreshed\n[VNS Collection] [10:55:59] CACHE HIT status=200 elapsed=0.0s bytes=276766 \n[VNS Collection] [10:56:00] GET_JSON: https://www.vnscollection.com/products/customized-letter-pendant-b.js\n[VNS Collection] [10:56:00] CACHE HIT: https://www.vnscollection.com/products/customized-letter-pendant-b.js\n[VNS Collection] LIVE VARIANT PRICES: Customized Letter Pendant (B) \u2014 1 checked; 0 refreshed\n[VNS Collection] [10:56:00] CACHE HIT status=200 elapsed=0.0s bytes=277170 \n[VNS Collection] [10:56:00] GET_JSON: https://www.vnscollection.com/products/customized-letter-pendant-w.js\n[VNS Collection] [10:56:00] CACHE HIT: https://www.vnscollection.com/products/customized-letter-pendant-w.js\n[VNS Collection] LIVE VARIANT PRICES: Customized Letter Pendant (W) \u2014 1 checked; 0 refreshed\n[VNS Collection] [10:56:00] GET_JSON: https://www.vnscollection.com/products/customized-letter-pendant.js\n[VNS Collection] [10:56:00] CACHE HIT: https://www.vnscollection.com/products/customized-letter-pendant.js\n[VNS Collection] LIVE VARIANT PRICES: Customized Letter Pendant (N) \u2014 1 checked; 0 refreshed\n[VNS Collection] [10:56:00] CACHE HIT status=200 elapsed=0.0s bytes=277535 \n[VNS Collection] [10:56:00] GET_JSON: https://www.vnscollection.com/products/enchanted-stone-drop-pendant.js\n[VNS Collection] [10:56:00] CACHE HIT: https://www.vnscollection.com/products/enchanted-stone-drop-pendant.js\n[VNS Collection] LIVE VARIANT PRICES: Enchanted Stone Drop Pendant \u2014 1 checked; 0 refreshed\n[VNS Collection] [10:56:00] CACHE HIT status=200 elapsed=0.0s bytes=277392 \n[VNS Collection] [10:56:00] GET_JSON: https://www.vnscollection.com/products/round-elegant-stone-pendant.js\n[VNS Collection] [10:56:00] CACHE HIT: https://www.vnscollection.com/products/round-elegant-stone-pendant.js\n[VNS Collection] LIVE VARIANT PRICES: Round Elegant stone pendant \u2014 1 checked; 0 refreshed\n[VNS Collection] [10:56:00] CACHE HIT status=200 elapsed=0.0s bytes=277313 \n[VNS Collection] [10:56:00] GET_JSON: https://www.vnscollection.com/products/traditional-pendant.js\n[VNS Collection] [10:56:00] CACHE HIT: https://www.vnscollection.com/products/traditional-pendant.js\n[VNS Collection] LIVE VARIANT PRICES: Traditional Pendant \u2014 1 checked; 0 refreshed\n[VNS Collection] [10:56:00] CACHE HIT status=200 elapsed=0.0s bytes=277010 \n[VNS Collection] [10:56:00] GET_JSON: https://www.vnscollection.com/products/off-white-inner.js\n[VNS Collection] [10:56:00] CACHE HIT: https://www.vnscollection.com/products/off-white-inner.js\n[VNS Collection] LIVE VARIANT PRICES: OFF WHITE INNER \u2014 5 checked; 0 refreshed\n[VNS Collection] OWNER INCOMPLETE SKIP: shalwarqameezwnwsuitkchfeb20; Description lacks enough product-specific content for review\n[VNS Collection] [10:56:00] GET_JSON: https://www.vnscollection.com/products/prdnijacap81021101.js\n[VNS Collection] [10:56:00] CACHE HIT: https://www.vnscollection.com/products/prdnijacap81021101.js\n[VNS Collection] LIVE VARIANT PRICES: NIJA CAP \u2014 1 checked; 0 refreshed\n[VNS Collection] [10:56:00] CACHE HIT status=200 elapsed=0.0s bytes=276945 \n[VNS Collection] ROW BUILD: 844/844 products processed; 773 export rows prepared\n[VNS Collection] PRODUCT FILTER: excluded 67 fully unavailable products; skipped 0 explicitly unpublished, 4 invalid/unpriced; retained 773 products with ALL their variants\n__CHOTU_PROGRESS__|58|Active: VNS Collection\n[VNS Collection] WEBSITE ORDER POLICY: observed default listing; no forced bestseller or cheapest-first sort\n[VNS Collection] ANALYSIS NOTES: 773 products documented; collection labels are merchant signals, not verified sales counts; no additional page requests\n[VNS Collection] VARIANT EXPORT: 2236 combinations; 360 unavailable preserved as no\n[VNS Collection] VARIANT IMAGES: 0 source-linked; 2236 general product-photo fallbacks; source-specific image field stays blank when unlinked\n[VNS Collection] [10:56:03] STAGE: Writing Excel rows\n__CHOTU_PROGRESS__|58|Active: VNS Collection\n[VNS Collection] [10:56:03] EXCEPTION: IllegalCharacterError('EMERALD MARMARA\\x0bTURK TARZI-D.GREEN-1000000053401-52 cannot be used in worksheets.')\n[VNS Collection] [10:56:03] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2054, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1547, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 114, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='alfatehgarments.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 216, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 191, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 365, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.') not in HOSTS:return original(base,name,template,log)\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 347, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.')!='laam.com':return original(base,name,template,log)\n                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 478, in run\n    if host!='czone.com.pk':return original(base,name,template,log)\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1268, in run_site\n    write_row(wb['Products'],r)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 679, in write_row\n    ws.append([vals.get(h) for h in headers])\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/worksheet/worksheet.py\", line 673, in append\n    cell = Cell(self, row=row_idx, column=col_idx, value=content)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/cell/cell.py\", line 119, in __init__\n    self.value = value\n    ^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/cell/cell.py\", line 218, in value\n    self._bind_value(value)\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/cell/cell.py\", line 197, in _bind_value\n    value = self.check_string(value)\n            ^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/openpyxl/cell/cell.py\", line 165, in check_string\n    raise IllegalCharacterError(f\"{value} cannot be used in worksheets.\")\nopenpyxl.utils.exceptions.IllegalCharacterError: EMERALD MARMARA\nTURK TARZI-D.GREEN-1000000053401-52 cannot be used in worksheets.\n\n[VNS Collection] FAILED: VNS Collection: EMERALD MARMARA\nTURK TARZI-D.GREEN-1000000053401-52 cannot be used in worksheets.\n[VNS Collection] [10:56:03] STAGE: Idle\nFAILED: VNS Collection: FAILED: VNS Collection: EMERALD MARMARA\nTURK TARZI-D.GREEN-1000000053401-52 cannot be used in worksheets.\nFalse"
-    },
-    {
-      "target": "42206167335",
+      "target": "42366048039",
       "state": {
         "conclusion": "failure",
         "displayTitle": "Cloud group requested-new20261106-2-srccd9db21b3f3a",
-        "headSha": "365e5fff4bccac7650aa3d80b9896c2e03181556",
+        "headSha": "3f1dc54559ab18378d27525a92ea8f91cad9339e",
         "jobs": [
           {
-            "completedAt": "2026-11-06T10:55:25Z",
+            "completedAt": "2026-11-07T10:57:01Z",
             "conclusion": "failure",
-            "databaseId": 127853239813,
+            "databaseId": 128384229163,
             "name": "fetch",
-            "startedAt": "2026-11-06T10:54:09Z",
+            "startedAt": "2026-11-07T10:56:37Z",
             "status": "completed",
             "steps": [
               {
-                "completedAt": "2026-11-06T10:54:11Z",
+                "completedAt": "2026-11-07T10:56:38Z",
                 "conclusion": "success",
                 "name": "Set up job",
                 "number": 1,
-                "startedAt": "2026-11-06T10:54:10Z",
+                "startedAt": "2026-11-07T10:56:37Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:54:32Z",
+                "completedAt": "2026-11-07T10:56:46Z",
                 "conclusion": "success",
                 "name": "Run actions/checkout@v4",
                 "number": 2,
-                "startedAt": "2026-11-06T10:54:11Z",
+                "startedAt": "2026-11-07T10:56:38Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:54:32Z",
+                "completedAt": "2026-11-07T10:56:46Z",
                 "conclusion": "success",
                 "name": "Run actions/setup-python@v5",
                 "number": 3,
-                "startedAt": "2026-11-06T10:54:32Z",
+                "startedAt": "2026-11-07T10:56:46Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:54:35Z",
+                "completedAt": "2026-11-07T10:56:50Z",
                 "conclusion": "success",
                 "name": "Install extraction dependencies",
                 "number": 4,
-                "startedAt": "2026-11-06T10:54:32Z",
+                "startedAt": "2026-11-07T10:56:46Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:54:43Z",
+                "completedAt": "2026-11-07T10:56:56Z",
                 "conclusion": "success",
                 "name": "Verify standalone continuation and owner-policy guards",
                 "number": 5,
-                "startedAt": "2026-11-06T10:54:35Z",
+                "startedAt": "2026-11-07T10:56:50Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:54:43Z",
-                "conclusion": "skipped",
+                "completedAt": "2026-11-07T10:56:57Z",
+                "conclusion": "failure",
                 "name": "Restore optional saved run",
                 "number": 6,
-                "startedAt": "2026-11-06T10:54:43Z",
+                "startedAt": "2026-11-07T10:56:56Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:54:43Z",
+                "completedAt": "2026-11-07T10:56:57Z",
                 "conclusion": "skipped",
                 "name": "Install Czone browser fallback when needed",
                 "number": 7,
-                "startedAt": "2026-11-06T10:54:43Z",
+                "startedAt": "2026-11-07T10:56:57Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:54:43Z",
+                "completedAt": "2026-11-07T10:56:57Z",
                 "conclusion": "skipped",
                 "name": "Install Axis public JS renderer when needed",
                 "number": 8,
-                "startedAt": "2026-11-06T10:54:43Z",
+                "startedAt": "2026-11-07T10:56:57Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:54:43Z",
-                "conclusion": "success",
+                "completedAt": "2026-11-07T10:56:57Z",
+                "conclusion": "skipped",
                 "name": "Start continuous fetching on the cloud runner",
                 "number": 9,
-                "startedAt": "2026-11-06T10:54:43Z",
+                "startedAt": "2026-11-07T10:56:57Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:55:16Z",
-                "conclusion": "success",
+                "completedAt": "2026-11-07T10:56:57Z",
+                "conclusion": "skipped",
                 "name": "Live progress, logs and completed-file uploads",
                 "number": 10,
-                "startedAt": "2026-11-06T10:54:43Z",
+                "startedAt": "2026-11-07T10:56:57Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:55:16Z",
-                "conclusion": "failure",
+                "completedAt": "2026-11-07T10:56:57Z",
+                "conclusion": "skipped",
                 "name": "Fetch result",
                 "number": 11,
-                "startedAt": "2026-11-06T10:55:16Z",
+                "startedAt": "2026-11-07T10:56:57Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:55:16Z",
+                "completedAt": "2026-11-07T10:56:57Z",
                 "conclusion": "success",
                 "name": "Collect diagnostic report even if fetching failed",
                 "number": 12,
-                "startedAt": "2026-11-06T10:55:16Z",
+                "startedAt": "2026-11-07T10:56:57Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:55:18Z",
+                "completedAt": "2026-11-07T10:56:58Z",
                 "conclusion": "success",
                 "name": "Upload diagnostic report and redacted log",
                 "number": 13,
-                "startedAt": "2026-11-06T10:55:16Z",
+                "startedAt": "2026-11-07T10:56:57Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:55:19Z",
+                "completedAt": "2026-11-07T10:56:58Z",
                 "conclusion": "success",
                 "name": "Upload Excel files and audits, including completed stores from a partial run",
                 "number": 14,
-                "startedAt": "2026-11-06T10:55:18Z",
+                "startedAt": "2026-11-07T10:56:58Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:55:19Z",
+                "completedAt": "2026-11-07T10:56:58Z",
                 "conclusion": "skipped",
                 "name": "Final automated Rule 804 pass for fresh batch",
                 "number": 15,
-                "startedAt": "2026-11-06T10:55:19Z",
+                "startedAt": "2026-11-07T10:56:58Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:55:19Z",
+                "completedAt": "2026-11-07T10:56:58Z",
                 "conclusion": "skipped",
                 "name": "Upload automated Rule 804 fresh workbooks",
                 "number": 16,
-                "startedAt": "2026-11-06T10:55:19Z",
+                "startedAt": "2026-11-07T10:56:58Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:55:21Z",
+                "completedAt": "2026-11-07T10:56:58Z",
                 "conclusion": "success",
                 "name": "Upload saved checkpoint when available",
                 "number": 17,
-                "startedAt": "2026-11-06T10:55:19Z",
+                "startedAt": "2026-11-07T10:56:58Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:55:22Z",
-                "conclusion": "success",
+                "completedAt": "2026-11-07T10:56:58Z",
+                "conclusion": "skipped",
                 "name": "Dispatch authorized continuation after verified checkpoint upload",
                 "number": 18,
-                "startedAt": "2026-11-06T10:55:21Z",
+                "startedAt": "2026-11-07T10:56:58Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:55:22Z",
-                "conclusion": "success",
-                "name": "Post Live progress, logs and completed-file uploads",
-                "number": 34,
-                "startedAt": "2026-11-06T10:55:22Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T10:55:22Z",
+                "completedAt": "2026-11-07T10:56:58Z",
                 "conclusion": "skipped",
                 "name": "Post Run actions/setup-python@v5",
                 "number": 35,
-                "startedAt": "2026-11-06T10:55:22Z",
+                "startedAt": "2026-11-07T10:56:58Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:55:22Z",
+                "completedAt": "2026-11-07T10:56:59Z",
                 "conclusion": "success",
                 "name": "Post Run actions/checkout@v4",
                 "number": 36,
-                "startedAt": "2026-11-06T10:55:22Z",
+                "startedAt": "2026-11-07T10:56:58Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:55:22Z",
+                "completedAt": "2026-11-07T10:56:59Z",
                 "conclusion": "success",
                 "name": "Complete job",
                 "number": 37,
-                "startedAt": "2026-11-06T10:55:22Z",
+                "startedAt": "2026-11-07T10:56:59Z",
                 "status": "completed"
               }
             ],
-            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/42206167335/job/127853239813"
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/42366048039/job/128384229163"
           },
           {
-            "completedAt": "2026-11-06T10:55:47Z",
+            "completedAt": "2026-11-07T10:57:18Z",
             "conclusion": "success",
-            "databaseId": 127853796371,
+            "databaseId": 128384320737,
             "name": "Archive structured diagnostics",
-            "startedAt": "2026-11-06T10:55:31Z",
+            "startedAt": "2026-11-07T10:57:04Z",
             "status": "completed",
             "steps": [
               {
-                "completedAt": "2026-11-06T10:55:35Z",
+                "completedAt": "2026-11-07T10:57:06Z",
                 "conclusion": "success",
                 "name": "Set up job",
                 "number": 1,
-                "startedAt": "2026-11-06T10:55:34Z",
+                "startedAt": "2026-11-07T10:57:05Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:55:42Z",
+                "completedAt": "2026-11-07T10:57:13Z",
                 "conclusion": "success",
                 "name": "Run actions/checkout@v4",
                 "number": 2,
-                "startedAt": "2026-11-06T10:55:35Z",
+                "startedAt": "2026-11-07T10:57:06Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:55:42Z",
+                "completedAt": "2026-11-07T10:57:13Z",
                 "conclusion": "success",
                 "name": "Run actions/setup-python@v5",
                 "number": 3,
-                "startedAt": "2026-11-06T10:55:42Z",
+                "startedAt": "2026-11-07T10:57:13Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:55:43Z",
+                "completedAt": "2026-11-07T10:57:14Z",
                 "conclusion": "success",
                 "name": "Run actions/download-artifact@v4",
                 "number": 4,
-                "startedAt": "2026-11-06T10:55:42Z",
+                "startedAt": "2026-11-07T10:57:13Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:55:45Z",
+                "completedAt": "2026-11-07T10:57:16Z",
                 "conclusion": "success",
                 "name": "Archive credential-free JSON on the cloud-reports branch",
                 "number": 5,
-                "startedAt": "2026-11-06T10:55:43Z",
+                "startedAt": "2026-11-07T10:57:14Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:55:45Z",
+                "completedAt": "2026-11-07T10:57:16Z",
                 "conclusion": "success",
                 "name": "Post Run actions/setup-python@v5",
                 "number": 9,
-                "startedAt": "2026-11-06T10:55:45Z",
+                "startedAt": "2026-11-07T10:57:16Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:55:46Z",
+                "completedAt": "2026-11-07T10:57:16Z",
                 "conclusion": "success",
                 "name": "Post Run actions/checkout@v4",
                 "number": 10,
-                "startedAt": "2026-11-06T10:55:45Z",
+                "startedAt": "2026-11-07T10:57:16Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-06T10:55:46Z",
+                "completedAt": "2026-11-07T10:57:16Z",
                 "conclusion": "success",
                 "name": "Complete job",
                 "number": 11,
-                "startedAt": "2026-11-06T10:55:46Z",
+                "startedAt": "2026-11-07T10:57:16Z",
                 "status": "completed"
               }
             ],
-            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/42206167335/job/127853796371"
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/42366048039/job/128384320737"
           }
         ],
         "status": "completed"
       },
-      "failed_log": "fetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9269144Z [Alfateh Garments] ALFATEH PUBLIC PRODUCTS: 1/138 exact pages inspected; 1 complete products\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9271225Z [Alfateh Garments] OWNER INCOMPLETE SKIP: https://www.alfatehgarments.com/product/basic-cotton-bath-towel-with-fancy-border-18-36-inches; Exact source size/color selection missing\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9274418Z [Alfateh Garments] OWNER INCOMPLETE SKIP: https://www.alfatehgarments.com/product/premium-supima-cotton-bath-towel-with-textured-border-27-54-inches; Exact source size/color selection missing\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9277192Z [Alfateh Garments] OWNER INCOMPLETE SKIP: https://www.alfatehgarments.com/product/classic-black-leather-auto-lock-belt; Exact source size/color selection missing\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9279557Z [Alfateh Garments] OWNER INCOMPLETE SKIP: https://www.alfatehgarments.com/product/boys-sky-blue-wash-wide-leg-denim-jeans; Exact public variant selector missing\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9280984Z [Alfateh Garments] OWNER INCOMPLETE SKIP: https://www.alfatehgarments.com/product/men-s-black-leather-auto-lock-belt-with-silver-tone-buckle; Exact source size/color selection missing\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9282128Z __CHOTU_PROGRESS__|1|Active: Alfateh Garments\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9282631Z [Alfateh Garments] [10:55:13] EXCEPTION: ValueError('Published selected SKU/price mismatch')\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9283383Z [Alfateh Garments] [10:55:13] Traceback (most recent call last):\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9289128Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2054, in _run_checked\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9289819Z     run_site(site['url'], name, template, log_line)\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9290793Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9291997Z     if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9292580Z                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9293244Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1547, in run_site\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9293880Z     _chotuapp_run_site_original(base, name, template, intercept)\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9294575Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9295493Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9296204Z                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9296948Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9320162Z                                 ^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9320788Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 100, in catalog\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9321403Z     try:product=normalize(response.text,url)\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9321926Z                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9322563Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 52, in normalize\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9323465Z     if len(selected)!=1 or amount(selected[0]['price'])!=amount(offer.get('price')):raise ValueError('Published selected SKU/price mismatch')\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9324161Z                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9324591Z ValueError: Published selected SKU/price mismatch\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9324819Z \nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9325052Z [Alfateh Garments] FAILED: Alfateh Garments: Published selected SKU/price mismatch\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9325490Z [Alfateh Garments] [10:55:13] STAGE: Idle\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9325939Z FAILED: Alfateh Garments: FAILED: Alfateh Garments: Published selected SKU/price mismatch\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9326372Z False\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9326829Z Checkpoint lossless cache migration: 19 legacy responses compressed; all source bytes and hashes remain verifiable.\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9327579Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9328228Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9328667Z RUN SUMMARY:\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9329168Z Alfateh Garments: FAILED \u2014 FAILED: Alfateh Garments: Published selected SKU/price mismatch\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9329616Z Checkpoint: saved\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9330082Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9346637Z ##[error]Process completed with exit code 2.\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9394458Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9395185Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9414343Z shell: /usr/bin/bash -e {0}\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9414607Z env:\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9414989Z   CHOTUAPP_CLOUD_DATA: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9415534Z   CLOUD_RUNNER_GROUP: requested-new20261106-2-srccd9db21b3f3a\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9415895Z   CLOUD_PARTITION_RESUME: false\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9416299Z   CLOUD_STORES: [{\"name\": \"Alfateh Garments\", \"url\": \"https://alfatehgarments.com\"}]\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9416724Z   CLOUD_MINUTES: 300\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9416941Z   RESUME_RUN_ID: \nfetch\tUNKNOWN STEP\t2026-11-06T10:55:16.9417165Z   SAVE_CHECKPOINT: true\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:21.6320401Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:21.6320861Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:21.6321270Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:21.6322139Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:21.6322585Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib\n[credential-bearing log line removed]\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:21.6325629Z ##[endgroup]\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:22.2234996Z No continuation: completed, stopped manually, unauthorized or not a time-budget stop.\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:22.2532088Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:22.2616605Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:22.3509785Z [command]/usr/bin/git version\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:22.3554809Z git version 2.56.0\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:22.3594170Z Temporarily overriding HOME='/home/runner/work/_temp/a62ce6ad-06d1-4419-a056-e2cc697d3579' before making global git config changes\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:22.3595624Z Adding repository directory to the temporary git global config as a safe directory\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:22.3599899Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ChotuApp-Software/ChotuApp-Software\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:22.3642385Z [command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:22.3713055Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:22.3959469Z [command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nfetch\tUNKNOWN STEP\t2026-11-06T10:55:22.3993843Z http.https://github.com/.extraheader",
+      "failed_log": "fetch\tRestore optional saved run\t2026-11-07T10:56:56.7411881Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig\nfetch\tRestore optional saved run\t2026-11-07T10:56:56.7412282Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64\nfetch\tRestore optional saved run\t2026-11-07T10:56:56.7412635Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64\nfetch\tRestore optional saved run\t2026-11-07T10:56:56.7412988Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64\nfetch\tRestore optional saved run\t2026-11-07T10:56:56.7413641Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib\n[credential-bearing log line removed]\nfetch\tRestore optional saved run\t2026-11-07T10:56:56.7416397Z ##[endgroup]\nfetch\tRestore optional saved run\t2026-11-07T10:56:57.2322709Z Traceback (most recent call last):\nfetch\tRestore optional saved run\t2026-11-07T10:56:57.2331065Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/download_checkpoint.py\", line 31, in <module>\nfetch\tRestore optional saved run\t2026-11-07T10:56:57.2331669Z     if __name__=='__main__':main()\nfetch\tRestore optional saved run\t2026-11-07T10:56:57.2344419Z                             ^^^^^^\nfetch\tRestore optional saved run\t2026-11-07T10:56:57.2345403Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/download_checkpoint.py\", line 30, in main\nfetch\tRestore optional saved run\t2026-11-07T10:56:57.2347187Z     parser=argparse.ArgumentParser();parser.add_argument('--run',required=True);parser.add_argument('--repo',required=True);parser.add_argument('--output',required=True,type=Path);args=parser.parse_args();download(args.run,args.repo,args.output)\nfetch\tRestore optional saved run\t2026-11-07T10:56:57.2348281Z                                                                                                                                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tRestore optional saved run\t2026-11-07T10:56:57.2349010Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/download_checkpoint.py\", line 22, in download\nfetch\tRestore optional saved run\t2026-11-07T10:56:57.2349897Z     if not retry:raise RuntimeError('Checkpoint download failed without a retryable storage response; no fetching started. Check artifact availability and account access.')\nfetch\tRestore optional saved run\t2026-11-07T10:56:57.2350659Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tRestore optional saved run\t2026-11-07T10:56:57.2351365Z RuntimeError: Checkpoint download failed without a retryable storage response; no fetching started. Check artifact availability and account access.\nfetch\tRestore optional saved run\t2026-11-07T10:56:57.2396347Z ##[error]Process completed with exit code 1.",
       "artifacts": [
         {
-          "name": "chotuapp-live-logs",
-          "id": 13495729171,
-          "expired": false,
-          "size_in_bytes": 6828
-        },
-        {
-          "name": "chotuapp-checkpoint",
-          "id": 13495584608,
-          "expired": false,
-          "size_in_bytes": 235560
-        },
-        {
           "name": "chotuapp-diagnostics",
-          "id": 13495409968,
+          "id": 13572215272,
           "expired": false,
-          "size_in_bytes": 4667
-        },
-        {
-          "name": "chotuapp-excel-files",
-          "id": 13495379818,
-          "expired": false,
-          "size_in_bytes": 568
+          "size_in_bytes": 470
         }
       ],
-      "summary": {
-        "runner_group": "requested-new20261106-2-srccd9db21b3f3a",
-        "status": "incomplete",
-        "stop_reason": "completed_or_source_failure",
-        "checkpoint": "saved",
-        "auto_continue_limit": 6,
-        "continuation_index": 0,
-        "stalled_runs": 0,
-        "stores": [
-          {
-            "name": "Alfateh Garments",
-            "status": "failed",
-            "products": null
-          }
-        ]
-      },
-      "available_checkpoint_ancestor": {
-        "run_id": "42206167335",
-        "checked": [
-          "42206167335"
-        ]
-      },
       "annotations": [
         {
           "level": "warning",
           "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
         },
         {
-          "level": "failure",
-          "message": "Process completed with exit code 2."
-        }
-      ],
-      "console-tail.txt": "[Alfateh Garments] WEBSITE ORDER: Men /  \u2014 0 unique displayed products observed\n[Alfateh Garments] [10:54:47] HTTP START attempt=1 https://alfatehgarments.com/women\n[Alfateh Garments] [10:54:49] HTTP END status=200 elapsed=1.4s bytes=66799 https://alfatehgarments.com/women\n[Alfateh Garments] WEBSITE ORDER: Women /  \u2014 0 unique displayed products observed\n[Alfateh Garments] WEBSITE ORDER CAPTURE: 0 product placements; bounded/partial capture; unknown positions remain unverified\n[Alfateh Garments] SAVED RESPONSE: https://alfatehgarments.com/robots.txt\n[Alfateh Garments] ALFATEH PUBLIC PRODUCTS: 1/138 exact pages inspected; 1 complete products\n[Alfateh Garments] OWNER INCOMPLETE SKIP: https://www.alfatehgarments.com/product/basic-cotton-bath-towel-with-fancy-border-18-36-inches; Exact source size/color selection missing\n[Alfateh Garments] OWNER INCOMPLETE SKIP: https://www.alfatehgarments.com/product/premium-supima-cotton-bath-towel-with-textured-border-27-54-inches; Exact source size/color selection missing\n[Alfateh Garments] OWNER INCOMPLETE SKIP: https://www.alfatehgarments.com/product/classic-black-leather-auto-lock-belt; Exact source size/color selection missing\n[Alfateh Garments] OWNER INCOMPLETE SKIP: https://www.alfatehgarments.com/product/boys-sky-blue-wash-wide-leg-denim-jeans; Exact public variant selector missing\n[Alfateh Garments] OWNER INCOMPLETE SKIP: https://www.alfatehgarments.com/product/men-s-black-leather-auto-lock-belt-with-silver-tone-buckle; Exact source size/color selection missing\n__CHOTU_PROGRESS__|1|Active: Alfateh Garments\n[Alfateh Garments] [10:55:13] EXCEPTION: ValueError('Published selected SKU/price mismatch')\n[Alfateh Garments] [10:55:13] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2054, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1547, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 125, in run\n    try:return original(BASE,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 216, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 191, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 365, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.') not in HOSTS:return original(base,name,template,log)\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 347, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.')!='laam.com':return original(base,name,template,log)\n                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 478, in run\n    if host!='czone.com.pk':return original(base,name,template,log)\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1078, in run_site\n    products, complete_catalog=discover(base,log)\n                               ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 124, in <lambda>\n    g.update(discover=lambda *a:source.catalog(),collections=lambda *a:{},refresh_variant_prices=lambda b,p,l:p['variants'],storefront_cover=lambda *a:None,verified_top20=ranking,audit_fractional_prices=audit,storefront_price_audit=audit)\n                                ^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 100, in catalog\n    try:product=normalize(response.text,url)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 52, in normalize\n    if len(selected)!=1 or amount(selected[0]['price'])!=amount(offer.get('price')):raise ValueError('Published selected SKU/price mismatch')\n                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Published selected SKU/price mismatch\n\n[Alfateh Garments] FAILED: Alfateh Garments: Published selected SKU/price mismatch\n[Alfateh Garments] [10:55:13] STAGE: Idle\nFAILED: Alfateh Garments: FAILED: Alfateh Garments: Published selected SKU/price mismatch\nFalse\nCheckpoint lossless cache migration: 19 legacy responses compressed; all source bytes and hashes remain verifiable.\nCheckpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nCheckpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nRUN SUMMARY:\nAlfateh Garments: FAILED \u2014 FAILED: Alfateh Garments: Published selected SKU/price mismatch\nCheckpoint: saved\nRun finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
-      "store-status.txt": "Updated (UTC): 2026-11-06T10:55:14.645646+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nAlfateh Garments: failed\n  Stage: Idle\n  Last successful HTTP response (UTC): 2026-11-06T10:54:49.123509+00:00",
-      "fetch-log.txt": "QUEUE: smaller historical catalogs first; unknown counts last; fresh source data fetched again\nRUNNER STORES: Alfateh Garments\nPARALLEL STORES: up to 3 different websites together; source pacing, cooldowns and checks preserved.\nNEW FRESH RUN: Alfateh Garments\n[Alfateh Garments] SOFTWARE VERSION: b129865d0eaeecd5 \u2014 installed code loaded\n[Alfateh Garments] [10:54:44] STAGE: Starting Alfateh Garments\n[Alfateh Garments] SAVED RUN: completed requests are durable; an incomplete request will be retried.\n[Alfateh Garments] FRESH FETCH: new run; previous request checkpoints ignored. Products, prices, availability and images fetched again.\n[Alfateh Garments] CHECKPOINT: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/saved_runs/3c7408d97e9146dfa2fefa00c522f2d6/0/api.sqlite3 (this run only; restarting Fetch begins from zero)\n__CHOTU_PROGRESS__|1|Active: Alfateh Garments\n[Alfateh Garments] [10:54:44] STAGE: Website listing order\n[Alfateh Garments] [10:54:44] HTTP START attempt=1 https://alfatehgarments.com/robots.txt\n[Alfateh Garments] [10:54:45] HTTP END status=200 elapsed=0.8s bytes=232 https://alfatehgarments.com/robots.txt\n[Alfateh Garments] [10:54:45] HTTP START attempt=1 https://alfatehgarments.com/\n[Alfateh Garments] [10:54:46] HTTP END status=200 elapsed=1.1s bytes=103397 https://alfatehgarments.com/\n[Alfateh Garments] [10:54:46] HTTP START attempt=1 https://alfatehgarments.com/men\n[Alfateh Garments] [10:54:47] HTTP END status=200 elapsed=1.3s bytes=124724 https://alfatehgarments.com/men\n[Alfateh Garments] WEBSITE ORDER: Men /  \u2014 0 unique displayed products observed\n[Alfateh Garments] [10:54:47] HTTP START attempt=1 https://alfatehgarments.com/women\n[Alfateh Garments] [10:54:49] HTTP END status=200 elapsed=1.4s bytes=66799 https://alfatehgarments.com/women\n[Alfateh Garments] WEBSITE ORDER: Women /  \u2014 0 unique displayed products observed\n[Alfateh Garments] WEBSITE ORDER CAPTURE: 0 product placements; bounded/partial capture; unknown positions remain unverified\n[Alfateh Garments] SAVED RESPONSE: https://alfatehgarments.com/robots.txt\n[Alfateh Garments] ALFATEH PUBLIC PRODUCTS: 1/138 exact pages inspected; 1 complete products\n[Alfateh Garments] OWNER INCOMPLETE SKIP: https://www.alfatehgarments.com/product/basic-cotton-bath-towel-with-fancy-border-18-36-inches; Exact source size/color selection missing\n[Alfateh Garments] OWNER INCOMPLETE SKIP: https://www.alfatehgarments.com/product/premium-supima-cotton-bath-towel-with-textured-border-27-54-inches; Exact source size/color selection missing\n[Alfateh Garments] OWNER INCOMPLETE SKIP: https://www.alfatehgarments.com/product/classic-black-leather-auto-lock-belt; Exact source size/color selection missing\n[Alfateh Garments] OWNER INCOMPLETE SKIP: https://www.alfatehgarments.com/product/boys-sky-blue-wash-wide-leg-denim-jeans; Exact public variant selector missing\n[Alfateh Garments] OWNER INCOMPLETE SKIP: https://www.alfatehgarments.com/product/men-s-black-leather-auto-lock-belt-with-silver-tone-buckle; Exact source size/color selection missing\n__CHOTU_PROGRESS__|1|Active: Alfateh Garments\n[Alfateh Garments] [10:55:13] EXCEPTION: ValueError('Published selected SKU/price mismatch')\n[Alfateh Garments] [10:55:13] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2054, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1547, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 125, in run\n    try:return original(BASE,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 216, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 191, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 365, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.') not in HOSTS:return original(base,name,template,log)\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 347, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.')!='laam.com':return original(base,name,template,log)\n                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 478, in run\n    if host!='czone.com.pk':return original(base,name,template,log)\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1078, in run_site\n    products, complete_catalog=discover(base,log)\n                               ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 124, in <lambda>\n    g.update(discover=lambda *a:source.catalog(),collections=lambda *a:{},refresh_variant_prices=lambda b,p,l:p['variants'],storefront_cover=lambda *a:None,verified_top20=ranking,audit_fractional_prices=audit,storefront_price_audit=audit)\n                                ^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 100, in catalog\n    try:product=normalize(response.text,url)\n                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 52, in normalize\n    if len(selected)!=1 or amount(selected[0]['price'])!=amount(offer.get('price')):raise ValueError('Published selected SKU/price mismatch')\n                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Published selected SKU/price mismatch\n\n[Alfateh Garments] FAILED: Alfateh Garments: Published selected SKU/price mismatch\n[Alfateh Garments] [10:55:13] STAGE: Idle\nFAILED: Alfateh Garments: FAILED: Alfateh Garments: Published selected SKU/price mismatch\nFalse"
-    },
-    {
-      "target": "42194719605",
-      "state": {
-        "conclusion": "failure",
-        "displayTitle": "Cloud group requested-new20261106-1-srcad9418d0852f-src514a91476555",
-        "headSha": "ce60d0c297618967811c85da225407c3317f054f",
-        "jobs": [
-          {
-            "completedAt": "2026-11-06T12:09:09Z",
-            "conclusion": "failure",
-            "databaseId": 127814986273,
-            "name": "fetch",
-            "startedAt": "2026-11-06T09:23:49Z",
-            "status": "completed",
-            "steps": [
-              {
-                "completedAt": "2026-11-06T09:23:50Z",
-                "conclusion": "success",
-                "name": "Set up job",
-                "number": 1,
-                "startedAt": "2026-11-06T09:23:50Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T09:24:00Z",
-                "conclusion": "success",
-                "name": "Run actions/checkout@v4",
-                "number": 2,
-                "startedAt": "2026-11-06T09:23:50Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T09:24:00Z",
-                "conclusion": "success",
-                "name": "Run actions/setup-python@v5",
-                "number": 3,
-                "startedAt": "2026-11-06T09:24:00Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T09:24:04Z",
-                "conclusion": "success",
-                "name": "Install extraction dependencies",
-                "number": 4,
-                "startedAt": "2026-11-06T09:24:00Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T09:24:12Z",
-                "conclusion": "success",
-                "name": "Verify standalone continuation and owner-policy guards",
-                "number": 5,
-                "startedAt": "2026-11-06T09:24:04Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T09:24:12Z",
-                "conclusion": "skipped",
-                "name": "Restore optional saved run",
-                "number": 6,
-                "startedAt": "2026-11-06T09:24:12Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T09:24:12Z",
-                "conclusion": "skipped",
-                "name": "Install Czone browser fallback when needed",
-                "number": 7,
-                "startedAt": "2026-11-06T09:24:12Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T09:24:12Z",
-                "conclusion": "skipped",
-                "name": "Install Axis public JS renderer when needed",
-                "number": 8,
-                "startedAt": "2026-11-06T09:24:12Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T09:24:12Z",
-                "conclusion": "success",
-                "name": "Start continuous fetching on the cloud runner",
-                "number": 9,
-                "startedAt": "2026-11-06T09:24:12Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T12:08:45Z",
-                "conclusion": "success",
-                "name": "Live progress, logs and completed-file uploads",
-                "number": 10,
-                "startedAt": "2026-11-06T09:24:12Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T12:08:46Z",
-                "conclusion": "failure",
-                "name": "Fetch result",
-                "number": 11,
-                "startedAt": "2026-11-06T12:08:45Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T12:08:46Z",
-                "conclusion": "success",
-                "name": "Collect diagnostic report even if fetching failed",
-                "number": 12,
-                "startedAt": "2026-11-06T12:08:46Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T12:08:48Z",
-                "conclusion": "success",
-                "name": "Upload diagnostic report and redacted log",
-                "number": 13,
-                "startedAt": "2026-11-06T12:08:46Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T12:08:49Z",
-                "conclusion": "success",
-                "name": "Upload Excel files and audits, including completed stores from a partial run",
-                "number": 14,
-                "startedAt": "2026-11-06T12:08:48Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T12:08:49Z",
-                "conclusion": "skipped",
-                "name": "Final automated Rule 804 pass for fresh batch",
-                "number": 15,
-                "startedAt": "2026-11-06T12:08:49Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T12:08:49Z",
-                "conclusion": "skipped",
-                "name": "Upload automated Rule 804 fresh workbooks",
-                "number": 16,
-                "startedAt": "2026-11-06T12:08:49Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T12:09:00Z",
-                "conclusion": "success",
-                "name": "Upload saved checkpoint when available",
-                "number": 17,
-                "startedAt": "2026-11-06T12:08:49Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T12:09:06Z",
-                "conclusion": "success",
-                "name": "Dispatch authorized continuation after verified checkpoint upload",
-                "number": 18,
-                "startedAt": "2026-11-06T12:09:00Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T12:09:06Z",
-                "conclusion": "success",
-                "name": "Post Live progress, logs and completed-file uploads",
-                "number": 34,
-                "startedAt": "2026-11-06T12:09:06Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T12:09:06Z",
-                "conclusion": "skipped",
-                "name": "Post Run actions/setup-python@v5",
-                "number": 35,
-                "startedAt": "2026-11-06T12:09:06Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T12:09:06Z",
-                "conclusion": "success",
-                "name": "Post Run actions/checkout@v4",
-                "number": 36,
-                "startedAt": "2026-11-06T12:09:06Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T12:09:06Z",
-                "conclusion": "success",
-                "name": "Complete job",
-                "number": 37,
-                "startedAt": "2026-11-06T12:09:06Z",
-                "status": "completed"
-              }
-            ],
-            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/42194719605/job/127814986273"
-          },
-          {
-            "completedAt": "2026-11-06T12:09:39Z",
-            "conclusion": "success",
-            "databaseId": 127884273514,
-            "name": "Archive structured diagnostics",
-            "startedAt": "2026-11-06T12:09:12Z",
-            "status": "completed",
-            "steps": [
-              {
-                "completedAt": "2026-11-06T12:09:14Z",
-                "conclusion": "success",
-                "name": "Set up job",
-                "number": 1,
-                "startedAt": "2026-11-06T12:09:13Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T12:09:33Z",
-                "conclusion": "success",
-                "name": "Run actions/checkout@v4",
-                "number": 2,
-                "startedAt": "2026-11-06T12:09:14Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T12:09:33Z",
-                "conclusion": "success",
-                "name": "Run actions/setup-python@v5",
-                "number": 3,
-                "startedAt": "2026-11-06T12:09:33Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T12:09:34Z",
-                "conclusion": "success",
-                "name": "Run actions/download-artifact@v4",
-                "number": 4,
-                "startedAt": "2026-11-06T12:09:33Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T12:09:37Z",
-                "conclusion": "success",
-                "name": "Archive credential-free JSON on the cloud-reports branch",
-                "number": 5,
-                "startedAt": "2026-11-06T12:09:34Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T12:09:37Z",
-                "conclusion": "success",
-                "name": "Post Run actions/setup-python@v5",
-                "number": 9,
-                "startedAt": "2026-11-06T12:09:37Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T12:09:37Z",
-                "conclusion": "success",
-                "name": "Post Run actions/checkout@v4",
-                "number": 10,
-                "startedAt": "2026-11-06T12:09:37Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-06T12:09:37Z",
-                "conclusion": "success",
-                "name": "Complete job",
-                "number": 11,
-                "startedAt": "2026-11-06T12:09:37Z",
-                "status": "completed"
-              }
-            ],
-            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/42194719605/job/127884273514"
-          }
-        ],
-        "status": "completed"
-      },
-      "failed_log": "fetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9862383Z [Toyzone] [12:07:52] GET_JSON: https://www.toyzone.pk/products/nerf-fortnite-gun-1.js\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9864146Z [Toyzone] [12:07:52] HTTP START attempt=1 https://www.toyzone.pk/products/nerf-fortnite-gun-1.js\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9865825Z [Toyzone] [12:07:52] HTTP END status=200 elapsed=0.4s bytes=2636 https://www.toyzone.pk/products/nerf-fortnite-gun-1.js\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9867704Z [Toyzone] [12:07:52] GET_JSON: https://www.toyzone.pk/products/baby-silicone-teether.js\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9869183Z [Toyzone] [12:07:52] HTTP START attempt=1 https://www.toyzone.pk/products/baby-silicone-teether.js\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9870954Z [Toyzone] [12:07:53] HTTP END status=200 elapsed=0.6s bytes=2813 https://www.toyzone.pk/products/baby-silicone-teether.js\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9873083Z [Toyzone] [12:07:53] FAST FETCH: HTTP 429; store paused, checkpoint retained, cooldown 60s; no repeated blocked requests\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9875081Z [Toyzone] [12:07:53] FAST FETCH: preload deferred to canonical retry: 429 Client Error: Too Many Requests for url: https://www.toyzone.pk/products/baby-silicone-teether\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9877468Z [Toyzone] FAST FETCH: product prices and pages preload finished; successful tasks=2126, deferred=1; canonical pass follows\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9879079Z __CHOTU_PROGRESS__|13|Active: Toyzone\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9880868Z [Toyzone] [12:07:53] EXCEPTION: ChotuRateLimited('SOURCE PAUSED: website rate limit; retry this saved store after at least 60s. Checkpoint retained; other stores can proceed.')\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9882693Z [Toyzone] [12:07:53] Traceback (most recent call last):\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9891668Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2054, in _run_checked\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9893207Z     run_site(site['url'], name, template, log_line)\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9894858Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9897030Z     if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9898442Z                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9900073Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1547, in run_site\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9901596Z     _chotuapp_run_site_original(base, name, template, intercept)\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9903251Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9905365Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9907355Z                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9909086Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9948873Z                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9949711Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1084, in run_site\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9950506Z     cats=collections(base,log)\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9950969Z          ^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9951807Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/fast_fetch_support.py\", line 304, in collections\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9952740Z     if tls.fast_gate.limited:raise tls.fast_gate.blocked_error()\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9953377Z                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9954371Z _chotu_isolated_engine.ChotuRateLimited: SOURCE PAUSED: website rate limit; retry this saved store after at least 60s. Checkpoint retained; other stores can proceed.\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9966935Z \nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9967627Z [Toyzone] WEBSITE COOLDOWN: Toyzone: SOURCE PAUSED: website rate limit; retry this saved store after at least 60s. Checkpoint retained; other stores can proceed.\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9968573Z [Toyzone] [12:07:53] STAGE: Idle\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9969030Z False\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9969828Z WEBSITE COOLDOWN: Toyzone \u2014 saved requests retained; other stores continue.\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9970767Z Checkpoint lossless cache migration: 1946 legacy responses compressed; all source bytes and hashes remain verifiable.\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9971794Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9972851Z Large checkpoint streamed into checksummed parts: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9973835Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9974722Z RUN SUMMARY:\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9975799Z Toyzone: SOURCE_PAUSED \u2014 Website cooldown \u2014 FAILED: Toyzone: SOURCE PAUSED: website rate limit; retry this saved store after at least 60s. Checkpoint retained; other stores can proceed.\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9977627Z Toynix: FAILED \u2014 FAILED: Toynix: Website endpoint unavailable (403): https://www.toynix.pk/products.json?redacted\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9978402Z Checkpoint: saved\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9979104Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:45.9989845Z ##[error]Process completed with exit code 2.\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:46.0045361Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:46.0046319Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:46.0067250Z shell: /usr/bin/bash -e {0}\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:46.0067723Z env:\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:46.0068315Z   CHOTUAPP_CLOUD_DATA: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:46.0069146Z   CLOUD_RUNNER_GROUP: requested-new20261106-1-srcad9418d0852f-src514a91476555\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:46.0069778Z   CLOUD_PARTITION_RESUME: false\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:46.0070544Z   CLOUD_STORES: [{\"name\": \"Toyzone\", \"url\": \"https://www.toyzone.pk\"}, {\"name\": \"Toynix\", \"url\": \"https://www.toynix.pk\"}]\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:46.0071294Z   CLOUD_MINUTES: 300\nfetch\tUNKNOWN STEP\t2026-11-06T12:08:46.0071715Z   RESUME_RUN_ID: \nfetch\tUNKNOWN STEP\t2026-11-06T12:08:46.0072124Z   SAVE_CHECKPOINT: true",
-      "artifacts": [
-        {
-          "name": "chotuapp-checkpoint",
-          "id": 13501285804,
-          "expired": false,
-          "size_in_bytes": 291503377
+          "level": "warning",
+          "message": "No files were found with the provided path: checkpoint.zip\ncheckpoint.parts/. No artifacts will be uploaded."
         },
-        {
-          "name": "chotuapp-live-logs",
-          "id": 13500633040,
-          "expired": false,
-          "size_in_bytes": 221294
-        },
-        {
-          "name": "chotuapp-diagnostics",
-          "id": 13500334740,
-          "expired": false,
-          "size_in_bytes": 219198
-        },
-        {
-          "name": "chotuapp-excel-files",
-          "id": 13500054931,
-          "expired": false,
-          "size_in_bytes": 733
-        }
-      ],
-      "summary": {
-        "runner_group": "requested-new20261106-1-srcad9418d0852f-src514a91476555",
-        "status": "incomplete",
-        "stop_reason": "source_cooldown",
-        "checkpoint": "saved",
-        "auto_continue_limit": 6,
-        "continuation_index": 0,
-        "stalled_runs": 0,
-        "stores": [
-          {
-            "name": "Toyzone",
-            "status": "source_paused",
-            "products": null
-          },
-          {
-            "name": "Toynix",
-            "status": "failed",
-            "products": null
-          }
-        ]
-      },
-      "available_checkpoint_ancestor": {
-        "run_id": "42194719605",
-        "checked": [
-          "42194719605"
-        ]
-      },
-      "annotations": [
         {
           "level": "warning",
-          "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+          "message": "No files were found with the provided path: .cloud-data/ANAS_DATA_FETCH/. No artifacts will be uploaded."
         },
         {
           "level": "failure",
-          "message": "Process completed with exit code 2."
+          "message": "Process completed with exit code 1."
         }
-      ],
-      "console-tail.txt": "[Toyzone] [12:07:47] HTTP END status=200 elapsed=0.7s bytes=9067 https://www.toyzone.pk/products/5-pcs-colorful-smoke.js\n[Toyzone] [12:07:48] GET_JSON: https://www.toyzone.pk/products/hasbro-play-doh-star-wars-kit-yellow-combo.js\n[Toyzone] [12:07:48] HTTP START attempt=1 https://www.toyzone.pk/products/hasbro-play-doh-star-wars-kit-yellow-combo.js\n[Toyzone] [12:07:49] HTTP END status=200 elapsed=0.4s bytes=5924 https://www.toyzone.pk/products/hasbro-play-doh-star-wars-kit-yellow-combo.js\n[Toyzone] [12:07:50] GET_JSON: https://www.toyzone.pk/products/la-casa-de-papel-money-heist-mask.js\n[Toyzone] [12:07:50] HTTP START attempt=1 https://www.toyzone.pk/products/la-casa-de-papel-money-heist-mask.js\n[Toyzone] [12:07:50] HTTP END status=200 elapsed=0.4s bytes=5312 https://www.toyzone.pk/products/la-casa-de-papel-money-heist-mask.js\n[Toyzone] [12:07:51] GET_JSON: https://www.toyzone.pk/products/beautiful-best-stamp-toy.js\n[Toyzone] [12:07:51] HTTP START attempt=1 https://www.toyzone.pk/products/beautiful-best-stamp-toy.js\n[Toyzone] [12:07:51] HTTP END status=200 elapsed=0.5s bytes=5589 https://www.toyzone.pk/products/beautiful-best-stamp-toy.js\n[Toyzone] [12:07:52] GET_JSON: https://www.toyzone.pk/products/nerf-fortnite-gun-1.js\n[Toyzone] [12:07:52] HTTP START attempt=1 https://www.toyzone.pk/products/nerf-fortnite-gun-1.js\n[Toyzone] [12:07:52] HTTP END status=200 elapsed=0.4s bytes=2636 https://www.toyzone.pk/products/nerf-fortnite-gun-1.js\n[Toyzone] [12:07:52] GET_JSON: https://www.toyzone.pk/products/baby-silicone-teether.js\n[Toyzone] [12:07:52] HTTP START attempt=1 https://www.toyzone.pk/products/baby-silicone-teether.js\n[Toyzone] [12:07:53] HTTP END status=200 elapsed=0.6s bytes=2813 https://www.toyzone.pk/products/baby-silicone-teether.js\n[Toyzone] [12:07:53] FAST FETCH: HTTP 429; store paused, checkpoint retained, cooldown 60s; no repeated blocked requests\n[Toyzone] [12:07:53] FAST FETCH: preload deferred to canonical retry: 429 Client Error: Too Many Requests for url: https://www.toyzone.pk/products/baby-silicone-teether\n[Toyzone] FAST FETCH: product prices and pages preload finished; successful tasks=2126, deferred=1; canonical pass follows\n__CHOTU_PROGRESS__|13|Active: Toyzone\n[Toyzone] [12:07:53] EXCEPTION: ChotuRateLimited('SOURCE PAUSED: website rate limit; retry this saved store after at least 60s. Checkpoint retained; other stores can proceed.')\n[Toyzone] [12:07:53] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2054, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1547, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 216, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 191, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 365, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.') not in HOSTS:return original(base,name,template,log)\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 347, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.')!='laam.com':return original(base,name,template,log)\n                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 478, in run\n    if host!='czone.com.pk':return original(base,name,template,log)\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1084, in run_site\n    cats=collections(base,log)\n         ^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/fast_fetch_support.py\", line 304, in collections\n    if tls.fast_gate.limited:raise tls.fast_gate.blocked_error()\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n_chotu_isolated_engine.ChotuRateLimited: SOURCE PAUSED: website rate limit; retry this saved store after at least 60s. Checkpoint retained; other stores can proceed.\n\n[Toyzone] WEBSITE COOLDOWN: Toyzone: SOURCE PAUSED: website rate limit; retry this saved store after at least 60s. Checkpoint retained; other stores can proceed.\n[Toyzone] [12:07:53] STAGE: Idle\nFalse\nWEBSITE COOLDOWN: Toyzone \u2014 saved requests retained; other stores continue.\nCheckpoint lossless cache migration: 1946 legacy responses compressed; all source bytes and hashes remain verifiable.\nCheckpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nLarge checkpoint streamed into checksummed parts: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts\nCheckpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.parts\nRUN SUMMARY:\nToyzone: SOURCE_PAUSED \u2014 Website cooldown \u2014 FAILED: Toyzone: SOURCE PAUSED: website rate limit; retry this saved store after at least 60s. Checkpoint retained; other stores can proceed.\nToynix: FAILED \u2014 FAILED: Toynix: Website endpoint unavailable (403): https://www.toynix.pk/products.json?redacted\nCheckpoint: saved\nRun finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
-      "store-status.txt": "Updated (UTC): 2026-11-06T12:08:43.442153+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nToyzone: source_paused\n  Stage: Idle\n  Last successful HTTP response (UTC): 2026-11-06T12:07:53.422477+00:00\nToynix: failed\n  Stage: Idle",
-      "fetch-log.txt": "[Toyzone] [12:06:28] GET_JSON: https://www.toyzone.pk/products/mickey-and-minnie-keychain.js\n[Toyzone] [12:06:28] HTTP START attempt=1 https://www.toyzone.pk/products/mickey-and-minnie-keychain.js\n[Toyzone] [12:06:30] HTTP END status=200 elapsed=1.9s bytes=9249 https://www.toyzone.pk/products/mickey-and-minnie-keychain.js\n[Toyzone] [12:06:32] GET_JSON: https://www.toyzone.pk/products/j18-drone-with-camera-and-brushless-motor.js\n[Toyzone] [12:06:32] HTTP START attempt=1 https://www.toyzone.pk/products/j18-drone-with-camera-and-brushless-motor.js\n[Toyzone] [12:06:34] HTTP END status=200 elapsed=1.7s bytes=17265 https://www.toyzone.pk/products/j18-drone-with-camera-and-brushless-motor.js\n[Toyzone] [12:06:36] GET_JSON: https://www.toyzone.pk/products/bath-mat-water-absorbent-non-slip.js\n[Toyzone] [12:06:36] HTTP START attempt=1 https://www.toyzone.pk/products/bath-mat-water-absorbent-non-slip.js\n[Toyzone] [12:06:37] HTTP END status=200 elapsed=1.8s bytes=18047 https://www.toyzone.pk/products/bath-mat-water-absorbent-non-slip.js\n[Toyzone] [12:06:40] GET_JSON: https://www.toyzone.pk/products/slingshot-flying-copter-with-led-lights.js\n[Toyzone] [12:06:40] HTTP START attempt=1 https://www.toyzone.pk/products/slingshot-flying-copter-with-led-lights.js\n[Toyzone] [12:06:41] ADAPTIVE RECOVERY: 20 consecutive HTTP 200 responses; spacing 1.88s -> 1.41s; configured floor 0.25s\n[Toyzone] [12:06:41] HTTP END status=200 elapsed=1.7s bytes=5534 https://www.toyzone.pk/products/slingshot-flying-copter-with-led-lights.js\n[Toyzone] [12:06:43] GET_JSON: https://www.toyzone.pk/products/4-in-1-mastela-dream-starlight-baby-crib-bassinet-swing.js\n[Toyzone] [12:06:43] HTTP START attempt=1 https://www.toyzone.pk/products/4-in-1-mastela-dream-starlight-baby-crib-bassinet-swing.js\n[Toyzone] [12:06:45] HTTP END status=200 elapsed=1.2s bytes=9819 https://www.toyzone.pk/products/4-in-1-mastela-dream-starlight-baby-crib-bassinet-swing.js\n[Toyzone] [12:06:46] GET_JSON: https://www.toyzone.pk/products/kidilo-bluetooth-baby-swing-with-5-ranges-of-motion.js\n[Toyzone] [12:06:46] HTTP START attempt=1 https://www.toyzone.pk/products/kidilo-bluetooth-baby-swing-with-5-ranges-of-motion.js\n[Toyzone] [12:06:47] HTTP END status=200 elapsed=1.3s bytes=7790 https://www.toyzone.pk/products/kidilo-bluetooth-baby-swing-with-5-ranges-of-motion.js\n[Toyzone] [12:06:49] GET_JSON: https://www.toyzone.pk/products/4-in-1-mastela-baby-electric-bed-swing-and-bassinet.js\n[Toyzone] [12:06:49] HTTP START attempt=1 https://www.toyzone.pk/products/4-in-1-mastela-baby-electric-bed-swing-and-bassinet.js\n[Toyzone] [12:06:50] HTTP END status=200 elapsed=1.3s bytes=8826 https://www.toyzone.pk/products/4-in-1-mastela-baby-electric-bed-swing-and-bassinet.js\n[Toyzone] [12:06:52] GET_JSON: https://www.toyzone.pk/products/my-home-pretend-play-little-makeup-backup-toy-for-kids-multicolor.js\n[Toyzone] [12:06:52] HTTP START attempt=1 https://www.toyzone.pk/products/my-home-pretend-play-little-makeup-backup-toy-for-kids-multicolor.js\n[Toyzone] [12:06:53] HTTP END status=200 elapsed=1.3s bytes=6702 https://www.toyzone.pk/products/my-home-pretend-play-little-makeup-backup-toy-for-kids-multicolor.js\n[Toyzone] [12:06:55] GET_JSON: https://www.toyzone.pk/products/40-pcs-wall-climbing-flip-rolling-men.js\n[Toyzone] [12:06:55] HTTP START attempt=1 https://www.toyzone.pk/products/40-pcs-wall-climbing-flip-rolling-men.js\n[Toyzone] [12:06:56] HTTP END status=200 elapsed=1.2s bytes=10347 https://www.toyzone.pk/products/40-pcs-wall-climbing-flip-rolling-men.js\n[Toyzone] [12:06:57] GET_JSON: https://www.toyzone.pk/products/super-hero-character-sunglasses.js\n[Toyzone] [12:06:57] HTTP START attempt=1 https://www.toyzone.pk/products/super-hero-character-sunglasses.js\n[Toyzone] [12:06:59] HTTP END status=200 elapsed=1.2s bytes=4616 https://www.toyzone.pk/products/super-hero-character-sunglasses.js\n[Toyzone] [12:07:00] GET_JSON: https://www.toyzone.pk/products/learn-to-speak-plush-cat-and-shoulder-bag.js\n[Toyzone] [12:07:00] HTTP START attempt=1 https://www.toyzone.pk/products/learn-to-speak-plush-cat-and-shoulder-bag.js\n[Toyzone] [12:07:01] HTTP END status=200 elapsed=1.3s bytes=7051 https://www.toyzone.pk/products/learn-to-speak-plush-cat-and-shoulder-bag.js\n[Toyzone] [12:07:03] GET_JSON: https://www.toyzone.pk/products/1-24-diecast-bugatti-atlantic-sports-model-car.js\n[Toyzone] [12:07:03] HTTP START attempt=1 https://www.toyzone.pk/products/1-24-diecast-bugatti-atlantic-sports-model-car.js\n[Toyzone] [12:07:04] HTTP END status=200 elapsed=1.3s bytes=6763 https://www.toyzone.pk/products/1-24-diecast-bugatti-atlantic-sports-model-car.js\n[Toyzone] [12:07:06] GET_JSON: https://www.toyzone.pk/products/1-24-diecast-mercedes-benz-300sl.js\n[Toyzone] [12:07:06] HTTP START attempt=1 https://www.toyzone.pk/products/1-24-diecast-mercedes-benz-300sl.js\n[Toyzone] [12:07:07] HTTP END status=200 elapsed=1.2s bytes=5671 https://www.toyzone.pk/products/1-24-diecast-mercedes-benz-300sl.js\n[Toyzone] [12:07:07] GET_JSON: https://www.toyzone.pk/products/1-24-diecast-apollo-project-evo-model.js\n[Toyzone] [12:07:07] HTTP START attempt=1 https://www.toyzone.pk/products/1-24-diecast-apollo-project-evo-model.js\n[Toyzone] [12:07:08] HTTP END status=200 elapsed=1.4s bytes=5654 https://www.toyzone.pk/products/1-24-diecast-apollo-project-evo-model.js\n[Toyzone] [12:07:10] ADAPTIVE RECOVERY: 20 consecutive HTTP 200 responses; spacing 1.41s -> 1.05s; configured floor 0.25s\n[Toyzone] [12:07:10] GET_JSON: https://www.toyzone.pk/products/1-24-diecast-bugatti-luxury-bolide.js\n[Toyzone] [12:07:10] HTTP START attempt=1 https://www.toyzone.pk/products/1-24-diecast-bugatti-luxury-bolide.js\n[Toyzone] [12:07:11] HTTP END status=200 elapsed=1.2s bytes=3291 https://www.toyzone.pk/products/1-24-diecast-bugatti-luxury-bolide.js\n[Toyzone] [12:07:12] GET_JSON: https://www.toyzone.pk/products/diecast-model-hvmmer-metal-car-1-24-scale.js\n[Toyzone] [12:07:12] HTTP START attempt=1 https://www.toyzone.pk/products/diecast-model-hvmmer-metal-car-1-24-scale.js\n[Toyzone] [12:07:13] HTTP END status=200 elapsed=0.9s bytes=6472 https://www.toyzone.pk/products/diecast-model-hvmmer-metal-car-1-24-scale.js\n[Toyzone] [12:07:13] GET_JSON: https://www.toyzone.pk/products/pagani-huayra-dinastia-2016-diecast-model-car.js\n[Toyzone] [12:07:13] HTTP START attempt=1 https://www.toyzone.pk/products/pagani-huayra-dinastia-2016-diecast-model-car.js\n[Toyzone] [12:07:14] HTTP END status=200 elapsed=1.0s bytes=7129 https://www.toyzone.pk/products/pagani-huayra-dinastia-2016-diecast-model-car.js\n[Toyzone] [12:07:16] GET_JSON: https://www.toyzone.pk/products/1-18-diecast-toyota-land-cruiser-prado-tx-model.js\n[Toyzone] [12:07:16] HTTP START attempt=1 https://www.toyzone.pk/products/1-18-diecast-toyota-land-cruiser-prado-tx-model.js\n[Toyzone] [12:07:17] HTTP END status=200 elapsed=0.9s bytes=7272 https://www.toyzone.pk/products/1-18-diecast-toyota-land-cruiser-prado-tx-model.js\n[Toyzone] [12:07:18] GET_JSON: https://www.toyzone.pk/products/1-18-diecast-mercedes-brabus-g800-model.js\n[Toyzone] [12:07:18] HTTP START attempt=1 https://www.toyzone.pk/products/1-18-diecast-mercedes-brabus-g800-model.js\n[Toyzone] [12:07:19] HTTP END status=200 elapsed=0.9s bytes=7262 https://www.toyzone.pk/products/1-18-diecast-mercedes-brabus-g800-model.js\n[Toyzone] [12:07:20] GET_JSON: https://www.toyzone.pk/products/diecast-1-24-audi-rs6-car.js\n[Toyzone] [12:07:20] HTTP START attempt=1 https://www.toyzone.pk/products/diecast-1-24-audi-rs6-car.js\n[Toyzone] [12:07:21] HTTP END status=200 elapsed=0.9s bytes=5600 https://www.toyzone.pk/products/diecast-1-24-audi-rs6-car.js\n[Toyzone] [12:07:22] GET_JSON: https://www.toyzone.pk/products/diecast-1-24-lamborghini-countach-car.js\n[Toyzone] [12:07:22] HTTP START attempt=1 https://www.toyzone.pk/products/diecast-1-24-lamborghini-countach-car.js\n[Toyzone] [12:07:23] HTTP END status=200 elapsed=0.9s bytes=5652 https://www.toyzone.pk/products/diecast-1-24-lamborghini-countach-car.js\n[Toyzone] [12:07:24] GET_JSON: https://www.toyzone.pk/products/diecast-1-24-lamborghini-revuelto-car.js\n[Toyzone] [12:07:24] HTTP START attempt=1 https://www.toyzone.pk/products/diecast-1-24-lamborghini-revuelto-car.js\n[Toyzone] [12:07:25] HTTP END status=200 elapsed=0.9s bytes=4296 https://www.toyzone.pk/products/diecast-1-24-lamborghini-revuelto-car.js\n[Toyzone] [12:07:26] GET_JSON: https://www.toyzone.pk/products/diecast-1-24-brabus-adventure-v8.js\n[Toyzone] [12:07:26] HTTP START attempt=1 https://www.toyzone.pk/products/diecast-1-24-brabus-adventure-v8.js\n[Toyzone] [12:07:27] HTTP END status=200 elapsed=0.9s bytes=2898 https://www.toyzone.pk/products/diecast-1-24-brabus-adventure-v8.js\n[Toyzone] [12:07:28] GET_JSON: https://www.toyzone.pk/products/diecast-1-24-brabus-g800.js\n[Toyzone] [12:07:28] HTTP START attempt=1 https://www.toyzone.pk/products/diecast-1-24-brabus-g800.js\n[Toyzone] [12:07:29] HTTP END status=200 elapsed=0.9s bytes=5282 https://www.toyzone.pk/products/diecast-1-24-brabus-g800.js\n[Toyzone] [12:07:30] GET_JSON: https://www.toyzone.pk/products/diecast-1-24-mercedes-amg-ferodo.js\n[Toyzone] [12:07:30] HTTP START attempt=1 https://www.toyzone.pk/products/diecast-1-24-mercedes-amg-ferodo.js\n[Toyzone] [12:07:31] ADAPTIVE RECOVERY: 20 consecutive HTTP 200 responses; spacing 1.05s -> 0.79s; configured floor 0.25s\n[Toyzone] [12:07:31] HTTP END status=200 elapsed=0.9s bytes=5538 https://www.toyzone.pk/products/diecast-1-24-mercedes-amg-ferodo.js\n[Toyzone] [12:07:33] GET_JSON: https://www.toyzone.pk/products/diecast-1-24-scale-psroche.js\n[Toyzone] [12:07:33] HTTP START attempt=1 https://www.toyzone.pk/products/diecast-1-24-scale-psroche.js\n[Toyzone] [12:07:33] HTTP END status=200 elapsed=0.6s bytes=4152 https://www.toyzone.pk/products/diecast-1-24-scale-psroche.js\n[Toyzone] [12:07:34] GET_JSON: https://www.toyzone.pk/products/diecast-1-24-scale-psroche-911.js\n[Toyzone] [12:07:34] HTTP START attempt=1 https://www.toyzone.pk/products/diecast-1-24-scale-psroche-911.js\n[Toyzone] [12:07:35] HTTP END status=200 elapsed=0.7s bytes=3674 https://www.toyzone.pk/products/diecast-1-24-scale-psroche-911.js\n[Toyzone] [12:07:36] GET_JSON: https://www.toyzone.pk/products/diecast-barbus-rocket-900-1-24-scale.js\n[Toyzone] [12:07:36] HTTP START attempt=1 https://www.toyzone.pk/products/diecast-barbus-rocket-900-1-24-scale.js\n[Toyzone] [12:07:36] HTTP END status=200 elapsed=0.7s bytes=3596 https://www.toyzone.pk/products/diecast-barbus-rocket-900-1-24-scale.js\n[Toyzone] [12:07:37] GET_JSON: https://www.toyzone.pk/products/diecast-bmw-m8-car-1-24-scale.js\n[Toyzone] [12:07:37] HTTP START attempt=1 https://www.toyzone.pk/products/diecast-bmw-m8-car-1-24-scale.js\n[Toyzone] FAST FETCH: product prices and pages 2115/3429 tasks processed; deferred=0\n[Toyzone] [12:07:38] HTTP END status=200 elapsed=0.6s bytes=4884 https://www.toyzone.pk/products/diecast-bmw-m8-car-1-24-scale.js\n[Toyzone] [12:07:39] GET_JSON: https://www.toyzone.pk/products/diecast-porsche-911-turbo-s-car-1-24-scale.js\n[Toyzone] [12:07:39] HTTP START attempt=1 https://www.toyzone.pk/products/diecast-porsche-911-turbo-s-car-1-24-scale.js\n[Toyzone] [12:07:39] HTTP END status=200 elapsed=0.7s bytes=3016 https://www.toyzone.pk/products/diecast-porsche-911-turbo-s-car-1-24-scale.js\n[Toyzone] [12:07:40] GET_JSON: https://www.toyzone.pk/products/mercedes-benzes-g63-diecast-model-car.js\n[Toyzone] [12:07:40] HTTP START attempt=1 https://www.toyzone.pk/products/mercedes-benzes-g63-diecast-model-car.js\n[Toyzone] [12:07:41] HTTP END status=200 elapsed=0.6s bytes=5489 https://www.toyzone.pk/products/mercedes-benzes-g63-diecast-model-car.js\n[Toyzone] [12:07:42] GET_JSON: https://www.toyzone.pk/products/1-24-diecast-alloy-tesla-model-3-car.js\n[Toyzone] [12:07:42] HTTP START attempt=1 https://www.toyzone.pk/products/1-24-diecast-alloy-tesla-model-3-car.js\n[Toyzone] [12:07:43] HTTP END status=200 elapsed=0.6s bytes=8440 https://www.toyzone.pk/products/1-24-diecast-alloy-tesla-model-3-car.js\n[Toyzone] [12:07:44] GET_JSON: https://www.toyzone.pk/products/diecast-tesla-roadster-model-car-1-24-scale-copy.js\n[Toyzone] [12:07:44] HTTP START attempt=1 https://www.toyzone.pk/products/diecast-tesla-roadster-model-car-1-24-scale-copy.js\n[Toyzone] [12:07:44] HTTP END status=200 elapsed=0.7s bytes=5314 https://www.toyzone.pk/products/diecast-tesla-roadster-model-car-1-24-scale-copy.js\n[Toyzone] [12:07:45] GET_JSON: https://www.toyzone.pk/products/unicorn-magical-make-up-set.js\n[Toyzone] [12:07:45] HTTP START attempt=1 https://www.toyzone.pk/products/unicorn-magical-make-up-set.js\n[Toyzone] [12:07:46] HTTP END status=200 elapsed=0.7s bytes=5726 https://www.toyzone.pk/products/unicorn-magical-make-up-set.js\n[Toyzone] [12:07:47] GET_JSON: https://www.toyzone.pk/products/5-pcs-colorful-smoke.js\n[Toyzone] [12:07:47] HTTP START attempt=1 https://www.toyzone.pk/products/5-pcs-colorful-smoke.js\n[Toyzone] [12:07:47] ADAPTIVE RECOVERY: 20 consecutive HTTP 200 responses; spacing 0.79s -> 0.59s; configured floor 0.25s\n[Toyzone] [12:07:47] HTTP END status=200 elapsed=0.7s bytes=9067 https://www.toyzone.pk/products/5-pcs-colorful-smoke.js\n[Toyzone] [12:07:48] GET_JSON: https://www.toyzone.pk/products/hasbro-play-doh-star-wars-kit-yellow-combo.js\n[Toyzone] [12:07:48] HTTP START attempt=1 https://www.toyzone.pk/products/hasbro-play-doh-star-wars-kit-yellow-combo.js\n[Toyzone] [12:07:49] HTTP END status=200 elapsed=0.4s bytes=5924 https://www.toyzone.pk/products/hasbro-play-doh-star-wars-kit-yellow-combo.js\n[Toyzone] [12:07:50] GET_JSON: https://www.toyzone.pk/products/la-casa-de-papel-money-heist-mask.js\n[Toyzone] [12:07:50] HTTP START attempt=1 https://www.toyzone.pk/products/la-casa-de-papel-money-heist-mask.js\n[Toyzone] [12:07:50] HTTP END status=200 elapsed=0.4s bytes=5312 https://www.toyzone.pk/products/la-casa-de-papel-money-heist-mask.js\n[Toyzone] [12:07:51] GET_JSON: https://www.toyzone.pk/products/beautiful-best-stamp-toy.js\n[Toyzone] [12:07:51] HTTP START attempt=1 https://www.toyzone.pk/products/beautiful-best-stamp-toy.js\n[Toyzone] [12:07:51] HTTP END status=200 elapsed=0.5s bytes=5589 https://www.toyzone.pk/products/beautiful-best-stamp-toy.js\n[Toyzone] [12:07:52] GET_JSON: https://www.toyzone.pk/products/nerf-fortnite-gun-1.js\n[Toyzone] [12:07:52] HTTP START attempt=1 https://www.toyzone.pk/products/nerf-fortnite-gun-1.js\n[Toyzone] [12:07:52] HTTP END status=200 elapsed=0.4s bytes=2636 https://www.toyzone.pk/products/nerf-fortnite-gun-1.js\n[Toyzone] [12:07:52] GET_JSON: https://www.toyzone.pk/products/baby-silicone-teether.js\n[Toyzone] [12:07:52] HTTP START attempt=1 https://www.toyzone.pk/products/baby-silicone-teether.js\n[Toyzone] [12:07:53] HTTP END status=200 elapsed=0.6s bytes=2813 https://www.toyzone.pk/products/baby-silicone-teether.js\n[Toyzone] [12:07:53] FAST FETCH: HTTP 429; store paused, checkpoint retained, cooldown 60s; no repeated blocked requests\n[Toyzone] [12:07:53] FAST FETCH: preload deferred to canonical retry: 429 Client Error: Too Many Requests for url: https://www.toyzone.pk/products/baby-silicone-teether\n[Toyzone] FAST FETCH: product prices and pages preload finished; successful tasks=2126, deferred=1; canonical pass follows\n__CHOTU_PROGRESS__|13|Active: Toyzone\n[Toyzone] [12:07:53] EXCEPTION: ChotuRateLimited('SOURCE PAUSED: website rate limit; retry this saved store after at least 60s. Checkpoint retained; other stores can proceed.')\n[Toyzone] [12:07:53] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2054, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1547, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 216, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 191, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 365, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.') not in HOSTS:return original(base,name,template,log)\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 347, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.')!='laam.com':return original(base,name,template,log)\n                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 478, in run\n    if host!='czone.com.pk':return original(base,name,template,log)\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1084, in run_site\n    cats=collections(base,log)\n         ^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/fast_fetch_support.py\", line 304, in collections\n    if tls.fast_gate.limited:raise tls.fast_gate.blocked_error()\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n_chotu_isolated_engine.ChotuRateLimited: SOURCE PAUSED: website rate limit; retry this saved store after at least 60s. Checkpoint retained; other stores can proceed.\n\n[Toyzone] WEBSITE COOLDOWN: Toyzone: SOURCE PAUSED: website rate limit; retry this saved store after at least 60s. Checkpoint retained; other stores can proceed.\n[Toyzone] [12:07:53] STAGE: Idle\nFalse\nWEBSITE COOLDOWN: Toyzone \u2014 saved requests retained; other stores continue."
+      ]
     }
   ]
 }

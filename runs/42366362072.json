@@ -1,0 +1,298 @@
+{
+  "run_id": "42366362072",
+  "checked_utc": "2026-11-07T11:01:21.784080+00:00",
+  "targets": [
+    {
+      "target": "42366048039",
+      "state": {
+        "conclusion": "failure",
+        "displayTitle": "Cloud group requested-new20261106-2-srccd9db21b3f3a",
+        "headSha": "3f1dc54559ab18378d27525a92ea8f91cad9339e",
+        "jobs": [
+          {
+            "completedAt": "2026-11-07T10:57:01Z",
+            "conclusion": "failure",
+            "databaseId": 128384229163,
+            "name": "fetch",
+            "startedAt": "2026-11-07T10:56:37Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-11-07T10:56:38Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-11-07T10:56:37Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:56:46Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-11-07T10:56:38Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:56:46Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-11-07T10:56:46Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:56:50Z",
+                "conclusion": "success",
+                "name": "Install extraction dependencies",
+                "number": 4,
+                "startedAt": "2026-11-07T10:56:46Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:56:56Z",
+                "conclusion": "success",
+                "name": "Verify standalone continuation and owner-policy guards",
+                "number": 5,
+                "startedAt": "2026-11-07T10:56:50Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:56:57Z",
+                "conclusion": "failure",
+                "name": "Restore optional saved run",
+                "number": 6,
+                "startedAt": "2026-11-07T10:56:56Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:56:57Z",
+                "conclusion": "skipped",
+                "name": "Install Czone browser fallback when needed",
+                "number": 7,
+                "startedAt": "2026-11-07T10:56:57Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:56:57Z",
+                "conclusion": "skipped",
+                "name": "Install Axis public JS renderer when needed",
+                "number": 8,
+                "startedAt": "2026-11-07T10:56:57Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:56:57Z",
+                "conclusion": "skipped",
+                "name": "Start continuous fetching on the cloud runner",
+                "number": 9,
+                "startedAt": "2026-11-07T10:56:57Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:56:57Z",
+                "conclusion": "skipped",
+                "name": "Live progress, logs and completed-file uploads",
+                "number": 10,
+                "startedAt": "2026-11-07T10:56:57Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:56:57Z",
+                "conclusion": "skipped",
+                "name": "Fetch result",
+                "number": 11,
+                "startedAt": "2026-11-07T10:56:57Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:56:57Z",
+                "conclusion": "success",
+                "name": "Collect diagnostic report even if fetching failed",
+                "number": 12,
+                "startedAt": "2026-11-07T10:56:57Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:56:58Z",
+                "conclusion": "success",
+                "name": "Upload diagnostic report and redacted log",
+                "number": 13,
+                "startedAt": "2026-11-07T10:56:57Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:56:58Z",
+                "conclusion": "success",
+                "name": "Upload Excel files and audits, including completed stores from a partial run",
+                "number": 14,
+                "startedAt": "2026-11-07T10:56:58Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:56:58Z",
+                "conclusion": "skipped",
+                "name": "Final automated Rule 804 pass for fresh batch",
+                "number": 15,
+                "startedAt": "2026-11-07T10:56:58Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:56:58Z",
+                "conclusion": "skipped",
+                "name": "Upload automated Rule 804 fresh workbooks",
+                "number": 16,
+                "startedAt": "2026-11-07T10:56:58Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:56:58Z",
+                "conclusion": "success",
+                "name": "Upload saved checkpoint when available",
+                "number": 17,
+                "startedAt": "2026-11-07T10:56:58Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:56:58Z",
+                "conclusion": "skipped",
+                "name": "Dispatch authorized continuation after verified checkpoint upload",
+                "number": 18,
+                "startedAt": "2026-11-07T10:56:58Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:56:58Z",
+                "conclusion": "skipped",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 35,
+                "startedAt": "2026-11-07T10:56:58Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:56:59Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 36,
+                "startedAt": "2026-11-07T10:56:58Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:56:59Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 37,
+                "startedAt": "2026-11-07T10:56:59Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/42366048039/job/128384229163"
+          },
+          {
+            "completedAt": "2026-11-07T10:57:18Z",
+            "conclusion": "success",
+            "databaseId": 128384320737,
+            "name": "Archive structured diagnostics",
+            "startedAt": "2026-11-07T10:57:04Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-11-07T10:57:06Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-11-07T10:57:05Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:57:13Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-11-07T10:57:06Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:57:13Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-11-07T10:57:13Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:57:14Z",
+                "conclusion": "success",
+                "name": "Run actions/download-artifact@v4",
+                "number": 4,
+                "startedAt": "2026-11-07T10:57:13Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:57:16Z",
+                "conclusion": "success",
+                "name": "Archive credential-free JSON on the cloud-reports branch",
+                "number": 5,
+                "startedAt": "2026-11-07T10:57:14Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:57:16Z",
+                "conclusion": "success",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 9,
+                "startedAt": "2026-11-07T10:57:16Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:57:16Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 10,
+                "startedAt": "2026-11-07T10:57:16Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-07T10:57:16Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 11,
+                "startedAt": "2026-11-07T10:57:16Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/42366048039/job/128384320737"
+          }
+        ],
+        "status": "completed"
+      },
+      "failed_log": "fetch\tRestore optional saved run\t2026-11-07T10:56:56.7411881Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig\nfetch\tRestore optional saved run\t2026-11-07T10:56:56.7412282Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64\nfetch\tRestore optional saved run\t2026-11-07T10:56:56.7412635Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64\nfetch\tRestore optional saved run\t2026-11-07T10:56:56.7412988Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64\nfetch\tRestore optional saved run\t2026-11-07T10:56:56.7413641Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib\n[credential-bearing log line removed]\nfetch\tRestore optional saved run\t2026-11-07T10:56:56.7416397Z ##[endgroup]\nfetch\tRestore optional saved run\t2026-11-07T10:56:57.2322709Z Traceback (most recent call last):\nfetch\tRestore optional saved run\t2026-11-07T10:56:57.2331065Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/download_checkpoint.py\", line 31, in <module>\nfetch\tRestore optional saved run\t2026-11-07T10:56:57.2331669Z     if __name__=='__main__':main()\nfetch\tRestore optional saved run\t2026-11-07T10:56:57.2344419Z                             ^^^^^^\nfetch\tRestore optional saved run\t2026-11-07T10:56:57.2345403Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/download_checkpoint.py\", line 30, in main\nfetch\tRestore optional saved run\t2026-11-07T10:56:57.2347187Z     parser=argparse.ArgumentParser();parser.add_argument('--run',required=True);parser.add_argument('--repo',required=True);parser.add_argument('--output',required=True,type=Path);args=parser.parse_args();download(args.run,args.repo,args.output)\nfetch\tRestore optional saved run\t2026-11-07T10:56:57.2348281Z                                                                                                                                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tRestore optional saved run\t2026-11-07T10:56:57.2349010Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/download_checkpoint.py\", line 22, in download\nfetch\tRestore optional saved run\t2026-11-07T10:56:57.2349897Z     if not retry:raise RuntimeError('Checkpoint download failed without a retryable storage response; no fetching started. Check artifact availability and account access.')\nfetch\tRestore optional saved run\t2026-11-07T10:56:57.2350659Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tRestore optional saved run\t2026-11-07T10:56:57.2351365Z RuntimeError: Checkpoint download failed without a retryable storage response; no fetching started. Check artifact availability and account access.\nfetch\tRestore optional saved run\t2026-11-07T10:56:57.2396347Z ##[error]Process completed with exit code 1.",
+      "artifacts": [
+        {
+          "name": "chotuapp-diagnostics",
+          "id": 13572215272,
+          "expired": false,
+          "size_in_bytes": 470
+        }
+      ],
+      "annotations": [
+        {
+          "level": "warning",
+          "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+        },
+        {
+          "level": "warning",
+          "message": "No files were found with the provided path: checkpoint.zip\ncheckpoint.parts/. No artifacts will be uploaded."
+        },
+        {
+          "level": "warning",
+          "message": "No files were found with the provided path: .cloud-data/ANAS_DATA_FETCH/. No artifacts will be uploaded."
+        },
+        {
+          "level": "failure",
+          "message": "Process completed with exit code 1."
+        }
+      ]
+    }
+  ]
+}
