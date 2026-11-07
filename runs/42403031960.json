@@ -3563,7 +3563,6 @@
     "Rawayat": "source:3b0b61d26bc5fca52ffbfad76eb93b0a174442fe15c98656031307bec84e806c:Rawayat:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Junaid Jamshed": "source:0308c45c6b0511529dc6edf2f84119a8f4128d618f7c9ec1df76e6c6c47cf230:Junaid Jamshed:7634cfd7b40ffbdb5989206b801df918c8bf8d9d1b6ced5ac9c7198d1a029fb6",
     "Stylo": "source:7bd32974dce2a79fae2bc0ce4acd58cb38bcf7db6c6ca76ec14bb4cf004c9f2c:Stylo:53e79b209486f6888217d0056884597978bd08f37631735104797ddfac571f2a",
-    "Habitt": "source:29cf1e0eea6c695775a82a86a176eb7962d2b8bd8b8ddc3ea9667defc526ceda:Habitt:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Saya": "source:d75288929dcac346dcb0d171c03d98e9ea62e05c46b320aa425f6abc5d821cb7:Saya:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Limelight": "source:9c922eb891a28d0acca98f19513fdb97d0eeb35b119f2b146be3f487aa137149:Limelight:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "Fresh Basket": "source:afd59941e826be13b349c82d42481de96681ee55d7b259391b675d055752c19d:Fresh Basket:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
@@ -13121,13 +13120,13 @@
       "store": "Habitt",
       "shop_code": "SE10051",
       "identity_policy": "confirmed_code",
-      "status": "pass",
+      "status": "hold",
       "products_checked": 514,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "8ff4cb4a012a57a50b6a9e6ad7e3c9cb62037239d46e933dc2e9837319216c24",
-      "checked_utc": "2026-11-07T11:38:49.145435+00:00",
+      "workbook_sha256": "2d60f09b73c9460c36859b0e9cae907d7e8b72f487b311f6612c282a43be542b",
+      "checked_utc": "2026-11-07T19:24:45.062689+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
@@ -13184,7 +13183,9 @@
       "source_sha256": "29cf1e0eea6c695775a82a86a176eb7962d2b8bd8b8ddc3ea9667defc526ceda",
       "description_style_version": "customer-copy-v3",
       "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "verified",
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Duplicate Drive filenames require identity review",
       "held_input": "inputs/fresh804-20261026-5d42fe35/habitt/29cf1e0eea6c6957/manifest.json"
     },
     "Mala": {
@@ -18627,8 +18628,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Hush Puppies",
-  "audit804_progress_utc": "2026-11-07T19:23:50.113809+00:00",
+  "audit804_last_store": "Habitt",
+  "audit804_progress_utc": "2026-11-07T19:24:45.062764+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Limelight",
