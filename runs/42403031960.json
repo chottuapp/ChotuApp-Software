@@ -3568,7 +3568,6 @@
     "Fresh Basket": "source:afd59941e826be13b349c82d42481de96681ee55d7b259391b675d055752c19d:Fresh Basket:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "Bin Fahad": "source:fb195fe11f907566548490176df27b08b585ad67947a008c098a48f4693256f2:Bin Fahad:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Dairy Dream": "source:cb433e7b9d9e454acc7131500746f4af83e5028045df01b9342c8e09ec94339b:Dairy Dream:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
-    "G7 Leather": "source:1d8c844bb109e93f088fb5ec1f7481f5858300410ff1c31538124dc71add6315:G7 Leather:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "The Hanger Pakistan": "source:e6b00da2e0d2f623124a79e5a06838257d2e77afc077f58e41580f6830845cf2:The Hanger Pakistan:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Seran": "source:b483899d2cf04f8a384009639e9317d0cbab7215f351dac3be5be6253512b657:Seran:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Tawakkal Fabrics": "source:a91c6e6b9119d670a4eb247164705535fa7abf5e7b6ec13699af050b7ddb979e:Tawakkal Fabrics:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -17824,13 +17823,13 @@
       "store": "G7 Leather",
       "shop_code": "SE10062",
       "identity_policy": "confirmed_code",
-      "status": "pass",
+      "status": "hold",
       "products_checked": 12,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "a36f176d6b90f80e6a379f372af891cb6c01f3cc2591ecb4f5b3ccff02d44e74",
-      "checked_utc": "2026-11-07T11:53:49.898849+00:00",
+      "workbook_sha256": "184a1b74ed6697dc8b31e57ce6f815fc8444ef0985420df04d41fb10c387e06d",
+      "checked_utc": "2026-11-07T19:29:58.464097+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
@@ -17846,7 +17845,10 @@
       "source_sha256": "1d8c844bb109e93f088fb5ec1f7481f5858300410ff1c31538124dc71add6315",
       "description_style_version": "customer-copy-v3",
       "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "verified"
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Duplicate Drive filenames require identity review",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/g7-leather/1d8c844bb109e93f/manifest.json"
     },
     "House of Tools": {
       "name": "804 Audit",
@@ -18493,7 +18495,7 @@
     "41811637515": "41811637515:13330942688:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41811683153": "41811683153:13316465863:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41811727258": "41811727258:13319225789:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
-    "41811732225": "41811732225:13324730230:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
+    "41811732225": "41811732225:13324730230:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "41811736793": "41811736793:13315718324:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "41811744694": "41811744694:13316496988:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "41825069879": "41825069879:13317519915:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -18634,8 +18636,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "The Glossy Quill",
-  "audit804_progress_utc": "2026-11-07T19:29:52.287656+00:00",
+  "audit804_last_store": "G7 Leather",
+  "audit804_progress_utc": "2026-11-07T19:29:58.464160+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Limelight",
