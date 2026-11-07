@@ -3586,7 +3586,6 @@
     "Golden Rose": "source:d915ae481b4f44b583f8dedfcb79855e2d159596832b213a93721504d9fd131a:Golden Rose:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Zyren": "source:70f71e22827f05cbafca3beba239e68f514da58aed4c10eb85810cb9856bb669:Zyren:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Pyari Walls": "source:ea840ce404cb209a1cc5408535d5ad7d9ebfc0884cc943686ec5a3f6a023fbdc:Pyari Walls:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
-    "Prime Ticks": "source:b63a8e765cda0a9d95b7055e485d804b1a8277447a7744d9199ddb27ee7c0dbf:Prime Ticks:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Design by DAS": "source:e39f45da6ce69a718c2c678a1d625b37302d6131e8e0ad37775f2a95eed7739a:Design by DAS:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Xcessories Hub": "source:f889e78575fcb588ff82c3d28a56289a6f8dc3d93d84c99a0a6b8158b41a3e4e:Xcessories Hub:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Beechtree": "source:bd6e40e8661915d1b3a4ff20e78f6e3de308ab0e67a8e5ee17da6c452af18d92:Beechtree:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
@@ -12601,13 +12600,13 @@
       "store": "Prime Ticks",
       "shop_code": "SE10036",
       "identity_policy": "confirmed_code",
-      "status": "pass",
+      "status": "hold",
       "products_checked": 1959,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "1a1948596c129679f94222ebb4aa1a12768e09009b69aa4e6f96a7590c52cf2a",
-      "checked_utc": "2026-11-07T11:13:33.683516+00:00",
+      "workbook_sha256": "0fc570df84ec543c2e4f52bd4c84365f87ad7c3c5795444d35244f470fdb1b40",
+      "checked_utc": "2026-11-07T19:13:36.580767+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "incomplete_products_excluded": [
         {
@@ -12629,7 +12628,7 @@
       ],
       "incomplete_products_count": 2,
       "incomplete_products_truncated": false,
-      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/prime-ticks-incomplete-products/b1c5c69c269f38b4/manifest.json",
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/prime-ticks-incomplete-products/e22ee34b9864a7c1/manifest.json",
       "original_source_sha256": "b63a8e765cda0a9d95b7055e485d804b1a8277447a7744d9199ddb27ee7c0dbf",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
@@ -12651,7 +12650,9 @@
       "source_sha256": "b63a8e765cda0a9d95b7055e485d804b1a8277447a7744d9199ddb27ee7c0dbf",
       "description_style_version": "customer-copy-v3",
       "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "verified",
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Duplicate Drive filenames require identity review",
       "held_input": "inputs/fresh804-20261026-5d42fe35/prime-ticks/b63a8e765cda0a9d/manifest.json"
     },
     "Design by DAS": {
@@ -18608,8 +18609,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Hello Maali",
-  "audit804_progress_utc": "2026-11-07T19:12:47.311187+00:00",
+  "audit804_last_store": "Prime Ticks",
+  "audit804_progress_utc": "2026-11-07T19:13:36.580841+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Limelight",
