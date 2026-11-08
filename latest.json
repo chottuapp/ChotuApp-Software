@@ -1,49 +1,53 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-08T20:06:49.813241+00:00",
-  "run_id": "42490493301",
+  "generated_utc": "2026-11-08T20:15:07.635048+00:00",
+  "run_id": "42490496761",
   "attempt": "1",
   "source_commit": "823a612433613b60122f2132d777e0d09430227b",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 9890.1,
+  "elapsed_seconds": 9940.4,
   "stores": [
     {
-      "name": "Rung Rez",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "522ef8b7890d7b28",
-      "products": 5,
-      "variants": 13,
-      "http_statuses": {
-        "200": 2
-      },
-      "network_seconds": 1.8,
-      "max_response_seconds": 1.6,
-      "cache_events": 1
-    },
-    {
-      "name": "So Komal",
+      "name": "Taminzo",
       "status": "source_paused",
       "review_required": false,
       "issue_codes": [
         "HTTP_404",
         "HTTP_429",
-        "RATE_LIMIT"
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED",
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "522ef8b7890d7b28",
       "http_statuses": {
-        "200": 3436,
-        "429": 6,
-        "404": 5
+        "200": 2387,
+        "429": 4,
+        "404": 205
       },
-      "network_seconds": 7713.8,
-      "max_response_seconds": 3.6,
-      "cache_events": 8661
+      "network_seconds": 5639.8,
+      "max_response_seconds": 3.5,
+      "cache_events": 7769
+    },
+    {
+      "name": "Essence",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "522ef8b7890d7b28",
+      "products": 74,
+      "variants": 711,
+      "http_statuses": {
+        "200": 98,
+        "429": 1
+      },
+      "network_seconds": 155.2,
+      "max_response_seconds": 2.8,
+      "cache_events": 195
     }
   ]
 }
