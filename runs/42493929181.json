@@ -3566,7 +3566,7 @@
     "Tawakkal Fabrics": "source:a91c6e6b9119d670a4eb247164705535fa7abf5e7b6ec13699af050b7ddb979e:Tawakkal Fabrics:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Elite Cosmetics": "source:48a434a98de8413107c0c3b215400c0a3accacf5685e12300fd013484cfe8dc0:Elite Cosmetics:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Sana Safinaz": "source:d3a5c80bcb185cab8c51e4a3666a1f7f1122bba0ebb1a344411461f7469ada39:Sana Safinaz:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
-    "Beyond East": "source:520ba9a73e65eb23defb5ecdf26c85b48bf0d279f16faf458f8fc1d7f474dee0:Beyond East:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
+    "Beyond East": "source:8e57f77c6006d99e22ae5c291b98b070405db1e1108ddc3397b8f019cf11c1cc:Beyond East:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "Shop Modest": "source:2ee555c3548b41c041c55ece5095f93dee38fc528a3125f3afd8b5fd1fa5903f:Shop Modest:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "Computer Zone": "source:3c9a596752ee4220318b6b699bea02c28528c116c21c5f96b42437de658e02be:Computer Zone:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "ChenOne": "source:6ca04369872ae64c801ec8e5ac78e3d85e1cd7c76d46568c1c0037d48b6ec336:ChenOne:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
@@ -12165,7 +12165,7 @@
       "shop_code": "SE10052",
       "identity_policy": "confirmed_code",
       "status": "hold",
-      "products_checked": 479,
+      "products_checked": 481,
       "findings_count": 1,
       "findings": [
         {
@@ -12173,13 +12173,13 @@
           "name": "1 Piece Embroidered Lawn Shirt",
           "source_url": "https://www.beyondeast.com/products/wtse361039",
           "issues": [
-            "Description lost source numeric facts"
+            "Complete outfit classified as one component"
           ]
         }
       ],
       "details_truncated": false,
-      "workbook_sha256": "5911d949c35ed89c07b41699b9ed1348a8d970a511202c8470160ca31a53da20",
-      "checked_utc": "2026-11-07T18:51:23.901758+00:00",
+      "workbook_sha256": "d3e5575b4cd8cfcfa03e948a8dcd6b615e4e64bde3a8d452eaed8ba6ba01efb4",
+      "checked_utc": "2026-11-08T16:48:54.931304+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "incomplete_products_excluded": [
         {
@@ -12193,15 +12193,15 @@
       ],
       "incomplete_products_count": 1,
       "incomplete_products_truncated": false,
-      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/beyond-east-incomplete-products/f0ba348e32492a73/manifest.json",
-      "original_source_sha256": "520ba9a73e65eb23defb5ecdf26c85b48bf0d279f16faf458f8fc1d7f474dee0",
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/beyond-east-incomplete-products/836cb7d603ad3921/manifest.json",
+      "original_source_sha256": "8e57f77c6006d99e22ae5c291b98b070405db1e1108ddc3397b8f019cf11c1cc",
       "recovery": {
         "stage": "correction_pending_source_recheck",
         "unfinished": true,
         "owner": "804 automated recovery",
         "opened_utc": "2026-11-06T15:37:11.790944+00:00",
-        "updated_utc": "2026-11-07T18:51:25.855539+00:00",
-        "next_source_check_due_utc": "2026-11-07T19:06:25.855539+00:00",
+        "updated_utc": "2026-11-08T16:48:56.436184+00:00",
+        "next_source_check_due_utc": "2026-11-08T17:03:56.436184+00:00",
         "actions": [
           "Refresh exact public product facts",
           "Apply supported description and category repairs",
@@ -12209,37 +12209,27 @@
           "Upload and verify only after audit passes"
         ],
         "issues": [
-          "Description lost source numeric facts"
+          "Complete outfit classified as one component"
         ],
         "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
-      "description_repairs_count": 3,
+      "description_repairs_count": 1,
       "description_repairs_examples": [
         {
-          "product_id": "CP3453edeebbb7",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
           "product_id": "CPc6ef36d33b0b",
-          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPb43a06c5ca13",
           "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
           "repair_kind": "description"
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41811616330",
-      "source_artifact": 13322274655,
-      "source_sha256": "520ba9a73e65eb23defb5ecdf26c85b48bf0d279f16faf458f8fc1d7f474dee0",
+      "source_run": "42490469647",
+      "source_artifact": 13625776955,
+      "source_sha256": "8e57f77c6006d99e22ae5c291b98b070405db1e1108ddc3397b8f019cf11c1cc",
       "description_style_version": "customer-copy-v3",
-      "refresh_generation": "refresh20261104-6c42b57a",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/beyond-east/520ba9a73e65eb23/manifest.json"
+      "refresh_generation": "refresh20261108-92345025",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/beyond-east/8e57f77c6006d99e/manifest.json"
     },
     "Alkaram Studio": {
       "name": "804 Audit",
@@ -16861,8 +16851,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Habitt",
-  "audit804_progress_utc": "2026-11-08T16:48:35.038477+00:00",
+  "audit804_last_store": "Beyond East",
+  "audit804_progress_utc": "2026-11-08T16:48:56.436788+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
