@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-08T17:17:08.663577+00:00",
+  "run_id": "42490428979",
+  "attempt": "1",
+  "source_commit": "823a612433613b60122f2132d777e0d09430227b",
+  "status": "complete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 9726.7,
+  "stores": [
+    {
+      "name": "Vince Care",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "522ef8b7890d7b28",
+      "products": 212,
+      "variants": 372,
+      "http_statuses": {
+        "200": 334
+      },
+      "network_seconds": 760.8,
+      "max_response_seconds": 3.5,
+      "cache_events": 424
+    },
+    {
+      "name": "Elite Cosmetics",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "522ef8b7890d7b28",
+      "products": 1613,
+      "variants": 2117,
+      "http_statuses": {
+        "200": 2035,
+        "429": 2
+      },
+      "network_seconds": 4112.0,
+      "max_response_seconds": 3.8,
+      "cache_events": 12591
+    }
+  ]
+}
