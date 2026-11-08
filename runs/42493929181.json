@@ -5658,42 +5658,45 @@
       "shop_code": "SE10030",
       "identity_policy": "confirmed_code",
       "status": "hold",
-      "products_checked": 228,
+      "products_checked": 227,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "f9e8a89355103daf5f91c2b0ad19563ee052d6cd7284e33f56d8de29c2cd6f9f",
-      "checked_utc": "2026-11-08T14:40:33.202964+00:00",
+      "workbook_sha256": "72e2c6eabdf40834ac3591a03bd74f0c618d0bb64bad117d97436bac24cead4d",
+      "checked_utc": "2026-11-08T16:38:53.336065+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "incomplete_products_excluded": [
+        {
+          "product_id": "CPa88220ee85fc",
+          "source_url": "https://astorebags.pk/products/noirease-tote-brown",
+          "name": "Noir Ease Brown",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "incomplete_products_count": 1,
+      "incomplete_products_truncated": false,
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/astore-bags-incomplete-products/4f58164fc775edd3/manifest.json",
+      "original_source_sha256": "dbe19f242e23dc9d14f6b80a73456e2b1b44d85055e73168979bb88e9452de55",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
         "unfinished": false
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
-      "description_repairs_count": 2,
-      "description_repairs_examples": [
-        {
-          "product_id": "CPa88220ee85fc",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP0a7f2473504d",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        }
-      ],
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41810907719",
-      "source_artifact": 13319514176,
-      "source_sha256": "9f56f23c44cdea3c31757f12451b18827b058b1980c565fd8c488ed37e2298a7",
+      "source_run": "42490453604",
+      "source_artifact": 13621807943,
+      "source_sha256": "dbe19f242e23dc9d14f6b80a73456e2b1b44d85055e73168979bb88e9452de55",
       "description_style_version": "customer-copy-v3",
-      "refresh_generation": "refresh20261104-6c42b57a",
+      "refresh_generation": "refresh20261108-92345025",
       "delivery_status": "blocked",
       "audit_status": "pass",
       "error": "Duplicate Drive filenames require identity review",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/astore-bags/9f56f23c44cdea3c/manifest.json"
+      "held_input": "inputs/fresh804-20261026-5d42fe35/astore-bags/dbe19f242e23dc9d/manifest.json"
     },
     "Rawayat": {
       "name": "804 Audit",
@@ -16795,7 +16798,8 @@
     "42490443237": "42490443237:13622205351:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490445091": "42490445091:13622985666:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490447594": "42490447594:13620719279:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
-    "42490449857": "42490449857:13621903147:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
+    "42490449857": "42490449857:13621903147:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
+    "42490451734": "42490451734:13623847261:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-11-07T18:44:54.815389+00:00",
@@ -16884,8 +16888,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Servis",
-  "audit804_progress_utc": "2026-11-08T16:38:40.144746+00:00",
+  "audit804_last_store": "Astore Bags",
+  "audit804_progress_utc": "2026-11-08T16:38:53.336135+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
