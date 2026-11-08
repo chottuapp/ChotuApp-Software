@@ -273,6 +273,9 @@ def electronics_object(row):
 
 def classify(row,store):
  title=str(row.get('name') or '');body=str(row.get('description') or '')
+ from subcategory_inference_support import infer
+ explicit=infer(title,body)
+ if explicit and explicit[0] in {'Stationery Sets','Pen Holders','Notebooks & Journals','Ready-to-Wear Outfits'}:return explicit
  # Explicit sold nouns override broad merchant collections; compatibility text
  # and incidental care instructions are never used to invent the sold object.
  named_objects={

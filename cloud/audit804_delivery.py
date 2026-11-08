@@ -1,5 +1,5 @@
 """Fail-closed 804 Audit delivery, matching existing Drive workbooks by confirmed shop code."""
-import hashlib,json,shutil,tempfile,time
+import hashlib,json,re,shutil,tempfile,time
 from pathlib import Path
 from datetime import datetime,timezone
 from urllib.parse import urlsplit
@@ -25,17 +25,38 @@ def codes_in(path):
  return found if not blank else set()
 
 class DriveIdentity:
- def __init__(self,rc,folder,backup=None):self.backup=backup;self.rc=rc;self.remote='chotudrive:'+folder;self.tmp=None;self.names={};self.index={}
+ def __init__(self,rc,folder,backup=None):self.backup=backup;self.rc=rc;self.remote='chotudrive:'+folder;self.tmp=None;self.names={};self.index={};self.duplicates=set();self.unresolved_duplicates=False
  def __enter__(self):
   self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name)
   listing=json.loads(self.rc('lsjson',self.remote,'--files-only','--max-depth','1') or '[]')
+  groups={}
   for item in listing:
    name=item.get('Name','')
    if not name.lower().endswith('.xlsx'):continue
    if Path(name).name!=name:raise ValueError('Unexpected Drive file path')
-   if name in self.names:raise ValueError('Duplicate Drive filenames require identity review')
-   self.names[name]=item
-  if self.names:
+   groups.setdefault(name,[]).append(item)
+  self.duplicates={name for name,items in groups.items() if len(items)>1}
+  self.names={name:items[0] for name,items in groups.items()}
+  if self.duplicates:
+   # Name-based download can silently pick an arbitrary duplicate. Read every
+   # listed object by ID into separate LOCAL paths; never dedupe/move Drive files.
+   seen_ids=set()
+   for name,items in groups.items():
+    for item in items:
+     object_id=item.get('ID')
+     if not isinstance(object_id,str) or not re.fullmatch(r'[A-Za-z0-9_-]+',object_id) or object_id in seen_ids:
+      raise ValueError('Drive object identity missing or repeated; replacement held')
+     seen_ids.add(object_id)
+     path=self.root/name if name not in self.duplicates else self.root/'duplicates'/str(len(seen_ids))/name
+     path.parent.mkdir(parents=True,exist_ok=True)
+     self.rc('backend','copyid','chotudrive:',object_id,str(path))
+     try:codes=codes_in(path)
+     except Exception:codes=set()
+     if len(codes)==1:
+      names=self.index.setdefault(next(iter(codes)),[])
+      if name not in names:names.append(name)
+     elif name in self.duplicates:self.unresolved_duplicates=True
+  elif self.names:
    self.rc('copy',self.remote,str(self.root),'--include','*.xlsx','--max-depth','1')
    for name in self.names:
     try:codes=codes_in(self.root/name)
@@ -53,6 +74,8 @@ class DriveIdentity:
   matches=self.index.get(code,[]) if code else ([canonical] if canonical in self.names else [])
   if len(matches)>1:raise ValueError('Multiple existing files use this shop code; replacement held')
   old=matches[0] if matches else None
+  if self.unresolved_duplicates or canonical in self.duplicates or old in self.duplicates:
+   raise ValueError('Drive duplicate workbook identity requires review for this replacement; existing copies retained')
   # Owner has now supplied codes for previous blank-code exact store files.
   # Never replace a conflicting populated code or a different source host.
   if code and old is None and canonical in self.names:
@@ -329,7 +352,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
     phone_request=json.loads(phone_release.read_text())
     if phone_request.get('store')=='Khaadi' and phone_request.get('campaign_id')==campaign and phone_request.get('fresh_from_zero') is True:
      session_id=phone_request.get('session_id')
-     if isinstance(session_id,str) and __import__('re').fullmatch(r'fresh804-[0-9]{8}-[a-f0-9]{8}',session_id):approved_phone_campaigns={session_id}
+     if isinstance(session_id,str) and re.fullmatch(r'fresh804-[0-9]{8}-[a-f0-9]{8}',session_id):approved_phone_campaigns={session_id}
    if metadata.get('fresh_campaign_id') in approved_phone_campaigns:
     from mobile_khaadi_ingest import input_file
     supplied=input_file(root)

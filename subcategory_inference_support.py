@@ -370,7 +370,8 @@ def _structured_clothing(title,description):
     if not garment:return None
     named_count=re.search(r'(?i)\b([1234])\s*[- ]?\s*(?:pc|piece)s?\b',title)
     stated_count=re.search(r'(?i)\b(?:rtw|unstitched|stitched|suit|outfit)\s*[:-]?\s*([1234])\s*(?:pc|piece)s?\b',body)
-    prose_count=re.search(r'(?i)\b([234])\s*[- ]?(?:pc|piece)s?\b.{0,70}\b(?:ensemble|suit|outfit|stitched|stiched)\b',body)
+    count_body=re.sub(r'(?i)\b(two|three|four)[ -]+piece',lambda m:{'two':'2','three':'3','four':'4'}[m.group(1).lower()]+'-piece',body)
+    prose_count=re.search(r'(?i)\b([234])\s*[- ]?(?:pc|piece)s?\b.{0,70}\b(?:ensemble|suit|outfit|stitched|stiched)\b',count_body)
     count=int((named_count or stated_count or prose_count).group(1)) if named_count or stated_count or prose_count else None
     unstitched=bool(re.search(r'(?i)\bun[ -]?stitched\b',context))
     semi=bool(re.search(r'(?i)\bsemi[ -]?stitched\b',context))
@@ -389,6 +390,17 @@ def _structured_clothing(title,description):
 
 def infer(name,description,website_path=''):
     title=plain(name);body=_product_prose(description)
+    # School paper goods and holders are the sold object, not the electronics
+    # or cosmetics mentioned as compatible contents in supplier prose.
+    for label,pattern in [
+        ('Stationery Sets',r'\bstationery\s+set\b'),
+        ('Pen Holders',r'\b(?:pen|pencil)\s+holders?\b'),
+        ('Notebooks & Journals',r'\b(?:notebooks?|journals?)\b'),
+    ]:
+        if re.search(pattern,title,re.I):
+            paper=bool(re.search(r'\b(?:pages?|paper|lined|blank|gsm)\b',body,re.I))
+            if label!='Notebooks & Journals' or paper and not re.search(r'\b(?:processor|intel|ryzen|windows|ddr[345]|ssd)\b',title+' '+body,re.I):
+                return _quote(label,'name and source details',title+' '+body[:400])
     if re.search(r'(?i)\blotion\b',title) and re.search(r'(?i)\bface\b',title) and re.search(r'(?i)\bbody\b',title):return _quote('Face & Body Lotions','name',title)
     for label,pattern in [
         ('Forehead Jewellery',r'\bbindiya\b'),

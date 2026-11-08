@@ -16,6 +16,17 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  # Only explicit source garment-type strings; a generic vendor/brand is not purpose evidence.
  if re.fullmatch(r'(?i)(?:women|men|boys|girls|teens|kids|infants)\s+(?:stitched\s+[234]\s+piece(?:\s+shirt\s+trouser)?|(?:cotton\s+(?:silk\s+)?)?shalwar|(?:special\s+)?kurta|trouser|earrings|bracelet|necklace|ring|eyebrow\s+kit|waistcoat\s+with\s+kurta\s+trouser)',str(source_type or '').strip()):body+=' Source-listed garment type: '+str(source_type)
  evidence=title+' '+body
+ # Independent sold-object checks: incidental colour/compatibility nouns
+ # cannot turn garments into makeup, or paper goods into computers.
+ if cat in {'blushers','face powders','lipsticks'} and has(r'\babaya\b',title):return ['Garment evidence conflicts with cosmetics Category']
+ if cat=='jeans' and has(r'\bmary jane\s+flat\b',body) and has(r'\bflat sole\b',body):return ['Footwear evidence conflicts with jeans Category']
+ if cat=='laptops' and has(r'\b(?:notebooks?|journals?)\b',title) and has(r'\b(?:pages?|paper|lined|blank|gsm)\b',body) and not has(r'\b(?:processor|intel|ryzen|windows|ddr[345]|ssd)\b',evidence):return ['Paper notebook incorrectly classified as laptop']
+ if cat=='makeup brushes' and has(r'\b(?:pen|pencil)\s+holder\b',title):return ['Stationery holder incorrectly classified as its contents']
+ if cat=='abayas' and has(r'\babaya\b',title) and not has(r'\b(?:pattern|cover for|replacement)\b',title):return []
+ if cat=='flats' and has(r'\b(?:mary jane\s+flat|flat sole)\b',body) and has(r'\b(?:upper|shoe|buckle strap)\b',body):return []
+ if cat=='pen holders' and has(r'\b(?:pen|pencil)\s+holder\b',title):return []
+ if cat=='stationery sets' and has(r'\bstationery\s+set\b',title) and has(r'\b(?:pen|pencil|eraser|marker|notebook)\b',body):return []
+ if cat=='notebooks & journals' and has(r'\b(?:notebooks?|journals?)\b',title) and has(r'\b(?:pages?|paper|lined|blank|gsm)\b',body) and not has(r'\b(?:processor|intel|ryzen|windows|ddr[345]|ssd)\b',evidence):return []
  if cat=='shirts' and has(r'(?im)^Trouser\s*:\s*Not Included',str(description)) and has(r'(?im)^SHOULDER\s*:',str(description)) and has(r'(?im)^SLEEVE LENGTH',str(description)):return []
  if cat=='unstitched lehenga sets' and has(r'Component Details\s*\(3 Piece\)',body) and all(has(p,body) for p in [r'Shirt Lining',r'Dupatta',r'Lehnga',r'\d+(?:\.\d+)? Meters']):return []
  if cat=='toothpastes' and has(r'^SENSODYNE\b',title) and has(r'\btoothpaste\b',body):return []
@@ -325,7 +336,7 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  if cat=='unstitched fabric' and has(r'(?im)^\s*length\s*:\s*[2-9](?:\.\d+)?\s*(?:m|meters?|metres?)\b',description) and has(r'(?im)^\s*width\s*:',description) and has(r'(?im)^\s*fabric\s*:',description):return []
  if clothing:
   if cat in ('clothing sets','kurta & trouser sets','co-ord sets','suits & ensembles','stitched outfit sets','kurta & dupatta sets'):
-   return [] if multi or has(r'\b(?:co[ -]?ord|kurta.*trouser|shirt.*trouser|(?:kurta|shirt).*dupatta|gharara.*suit)\b',evidence) else None
+   return [] if multi or has(r'\b(?:co[ -]?ord|kurta.*trouser|shirt.*trouser|kameez.*shalwar|shalwar.*kameez|(?:kurta|shirt).*dupatta|gharara.*suit)\b',evidence) else None
   if cat=='ready-to-wear outfits':
    if unstitched and not ready:return ['Stitching state conflicts with Category']
    return [] if ready else None
