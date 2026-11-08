@@ -4185,41 +4185,35 @@
       "shop_code": "SE10023",
       "identity_policy": "confirmed_code",
       "status": "hold",
-      "products_checked": 219,
+      "products_checked": 217,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "4f18980c3b4b670f615804740a6ef3d9f68742eeb833a35bcbe8eb76dff7b187",
-      "checked_utc": "2026-11-08T14:34:11.036994+00:00",
+      "workbook_sha256": "ae6d42f831aeafaf7bb84f9b471eeb07bd158f019f2c4b3f12f43ec936f106cf",
+      "checked_utc": "2026-11-08T16:34:56.750402+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "incomplete_products_excluded": [
+        {
+          "product_id": "CP183699e85df1",
+          "source_url": "https://www.coolandcool.pk/products/nappy-bags-250-s",
+          "name": "Nappy Bags 250\u2019s",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "incomplete_products_count": 1,
+      "incomplete_products_truncated": false,
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/cool-and-cool-incomplete-products/72415e5568411d5a/manifest.json",
+      "original_source_sha256": "238334db834b9e0c58c21b48269401f064943eec983074c8c9031e024a2a62da",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
         "unfinished": false
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
-      "description_repairs_count": 32,
+      "description_repairs_count": 28,
       "description_repairs_examples": [
-        {
-          "product_id": "CP0d20d99fe212",
-          "issue": "Rewrote the explicitly named paid product and complimentary gift; all names and quantities retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPdad2bb5bdf44",
-          "issue": "Rewrote the explicitly named paid product and complimentary gift; all names and quantities retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPb5e70fe9449b",
-          "issue": "Rewrote the explicitly named paid product and complimentary gift; all names and quantities retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP3e9962e889e1",
-          "issue": "Rewrote the explicitly named paid product and complimentary gift; all names and quantities retained.",
-          "repair_kind": "description"
-        },
         {
           "product_id": "CPe2eb72956b5b",
           "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
@@ -4249,18 +4243,38 @@
           "product_id": "CP2f4373716835",
           "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
           "repair_kind": "description"
+        },
+        {
+          "product_id": "CP741eafec4dea",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPd57ff4738971",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP7d78da7f4295",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP9dcec5db1283",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41810887681",
-      "source_artifact": 13313920402,
-      "source_sha256": "bb4409e48db1ffbf9f63718f171f3e9f1faa67f3d98454027b5a077805ef3bc8",
+      "source_run": "42490441127",
+      "source_artifact": 13623190003,
+      "source_sha256": "238334db834b9e0c58c21b48269401f064943eec983074c8c9031e024a2a62da",
       "description_style_version": "customer-copy-v3",
-      "refresh_generation": "refresh20261104-6c42b57a",
+      "refresh_generation": "refresh20261108-92345025",
       "delivery_status": "blocked",
       "audit_status": "pass",
       "error": "Duplicate Drive filenames require identity review",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/cool-and-cool/bb4409e48db1ffbf/manifest.json"
+      "held_input": "inputs/fresh804-20261026-5d42fe35/cool-and-cool/238334db834b9e0c/manifest.json"
     },
     "Denim Leftover": {
       "name": "804 Audit",
@@ -18637,7 +18651,8 @@
     "42490430676": "42490430676:13622184296:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490432361": "42490432361:13622726051:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490433985": "42490433985:13621169199:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
-    "42490435736": "42490435736:13621753696:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
+    "42490435736": "42490435736:13621753696:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
+    "42490437439": "42490437439:13625057457:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-11-07T18:44:54.815389+00:00",
@@ -18726,8 +18741,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Sapphire",
-  "audit804_progress_utc": "2026-11-08T16:34:44.587175+00:00",
+  "audit804_last_store": "Cool and Cool",
+  "audit804_progress_utc": "2026-11-08T16:34:56.750487+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
