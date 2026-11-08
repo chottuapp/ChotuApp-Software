@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-08T19:34:59.464690+00:00",
-  "run_id": "42490445091",
+  "generated_utc": "2026-11-08T19:35:44.244452+00:00",
+  "run_id": "42490439276",
   "attempt": "1",
   "source_commit": "823a612433613b60122f2132d777e0d09430227b",
   "status": "incomplete",
@@ -10,7 +10,22 @@
   "elapsed_seconds": 18000.4,
   "stores": [
     {
-      "name": "Bonanza Satrangi",
+      "name": "Hemani Herbals",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "522ef8b7890d7b28",
+      "products": 1079,
+      "variants": 1079,
+      "http_statuses": {
+        "200": 1922
+      },
+      "network_seconds": 4540.2,
+      "max_response_seconds": 2.9,
+      "cache_events": 2996
+    },
+    {
+      "name": "Gul Ahmed",
       "status": "pending",
       "review_required": false,
       "issue_codes": [
@@ -18,28 +33,11 @@
       ],
       "software_revision": "522ef8b7890d7b28",
       "http_statuses": {
-        "200": 5848
+        "200": 3864
       },
-      "network_seconds": 14440.3,
-      "max_response_seconds": 3.2,
-      "cache_events": 0
-    },
-    {
-      "name": "Outfitters",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "522ef8b7890d7b28",
-      "products": 614,
-      "variants": 3491,
-      "http_statuses": {
-        "200": 638
-      },
-      "network_seconds": 1735.6,
-      "max_response_seconds": 19.2,
-      "cache_events": 1234
+      "network_seconds": 8734.7,
+      "max_response_seconds": 3.3,
+      "cache_events": 2
     }
   ]
 }
