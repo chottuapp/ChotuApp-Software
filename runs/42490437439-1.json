@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-08T16:29:35.569104+00:00",
+  "run_id": "42490437439",
+  "attempt": "1",
+  "source_commit": "823a612433613b60122f2132d777e0d09430227b",
+  "status": "complete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 6871.7,
+  "stores": [
+    {
+      "name": "Nisa Naturals",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "522ef8b7890d7b28",
+      "products": 53,
+      "variants": 53,
+      "http_statuses": {
+        "200": 79,
+        "429": 1
+      },
+      "network_seconds": 113.2,
+      "max_response_seconds": 2.6,
+      "cache_events": 164
+    },
+    {
+      "name": "Sapphire",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "522ef8b7890d7b28",
+      "products": 640,
+      "variants": 1764,
+      "http_statuses": {
+        "200": 4533
+      },
+      "network_seconds": 6335.7,
+      "max_response_seconds": 2.7,
+      "cache_events": 0
+    }
+  ]
+}
