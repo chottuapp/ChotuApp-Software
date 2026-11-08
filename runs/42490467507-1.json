@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-08T17:57:15.896692+00:00",
+  "run_id": "42490467507",
+  "attempt": "1",
+  "source_commit": "823a612433613b60122f2132d777e0d09430227b",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 9851.9,
+  "stores": [
+    {
+      "name": "Saya",
+      "status": "source_paused",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "522ef8b7890d7b28",
+      "http_statuses": {
+        "200": 2405,
+        "429": 3
+      },
+      "network_seconds": 5226.8,
+      "max_response_seconds": 2.7,
+      "cache_events": 8387
+    },
+    {
+      "name": "Hush Puppies",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED"
+      ],
+      "software_revision": "522ef8b7890d7b28",
+      "products": 139,
+      "variants": 2029,
+      "http_statuses": {
+        "200": 332,
+        "429": 1,
+        "404": 2
+      },
+      "network_seconds": 692.1,
+      "max_response_seconds": 2.6,
+      "cache_events": 501
+    }
+  ]
+}
