@@ -5941,13 +5941,43 @@
       "shop_code": "SE10021",
       "identity_policy": "confirmed_code",
       "status": "hold",
-      "products_checked": 1089,
+      "products_checked": 1076,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "2536329cf6ab6a5d022c49a5bbd59eecff15bea797c04ba52141a4c25f26a51e",
-      "checked_utc": "2026-11-08T14:39:50.873262+00:00",
+      "workbook_sha256": "3c6ee8a77d2271a38c9142b096057c70bf53e8fefaa8e909306d059ddf2bfc2f",
+      "checked_utc": "2026-11-08T17:34:39.601472+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "incomplete_products_excluded": [
+        {
+          "product_id": "CP5c156a70e839",
+          "source_url": "https://pk.hemaniherbals.com/products/lovestruck-100ml",
+          "name": "Lovestruck 100ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7e168108a1bd",
+          "source_url": "https://pk.hemaniherbals.com/products/patriot-green-pour-homme-100ml",
+          "name": "Patriot Green Pour Homme 100ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP06865b41aee3",
+          "source_url": "https://pk.hemaniherbals.com/products/isabelle-dupont-prime-n-perfect-smoothing-base",
+          "name": "Isabelle Dupont Prime' N Perfect Smoothing Base",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "incomplete_products_count": 3,
+      "incomplete_products_truncated": false,
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/hemani-herbals-incomplete-products/90664824b6df7545/manifest.json",
+      "original_source_sha256": "8442e34d6b1055cd49356823d20a5f240a2583fa74822af99171c6fde49ff03c",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
         "unfinished": false
@@ -5957,15 +5987,15 @@
       "description_repairs_count": 0,
       "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41810884187",
-      "source_artifact": 13320085596,
-      "source_sha256": "d31c857c4ac38f97692e2bac29b680d62fc9fc87ada60feb57fe853ff48f2176",
+      "source_run": "42490439276",
+      "source_artifact": 13625439577,
+      "source_sha256": "8442e34d6b1055cd49356823d20a5f240a2583fa74822af99171c6fde49ff03c",
       "description_style_version": "customer-copy-v3",
-      "refresh_generation": "refresh20261104-6c42b57a",
+      "refresh_generation": "refresh20261108-92345025",
       "delivery_status": "blocked",
       "audit_status": "pass",
       "error": "Duplicate Drive filenames require identity review",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/hemani-herbals/d31c857c4ac38f97/manifest.json"
+      "held_input": "inputs/fresh804-20261026-5d42fe35/hemani-herbals/8442e34d6b1055cd/manifest.json"
     },
     "Astore Bags": {
       "name": "804 Audit",
@@ -17012,7 +17042,7 @@
     "42363548222": "42363548222:13579688905:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "42490423242": "42490423242:13626669647:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490425251": "42490425251:13627465619:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
-    "42490428979": "42490428979:13621903239:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
+    "42490428979": "42490428979:13626254537:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490430676": "42490430676:13622184296:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490432361": "42490432361:13622726051:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490433985": "42490433985:13621169199:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
@@ -17125,8 +17155,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Elite Cosmetics",
-  "audit804_progress_utc": "2026-11-08T17:33:45.277927+00:00",
+  "audit804_last_store": "Hemani Herbals",
+  "audit804_progress_utc": "2026-11-08T17:34:39.601564+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
