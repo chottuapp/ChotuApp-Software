@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-08T18:02:38.244098+00:00",
+  "run_id": "42490471850",
+  "attempt": "1",
+  "source_commit": "823a612433613b60122f2132d777e0d09430227b",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 9932.3,
+  "stores": [
+    {
+      "name": "Rios",
+      "status": "source_paused",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "522ef8b7890d7b28",
+      "http_statuses": {
+        "200": 2902,
+        "429": 4
+      },
+      "network_seconds": 6456.8,
+      "max_response_seconds": 2.7,
+      "cache_events": 8151
+    },
+    {
+      "name": "Mala",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "522ef8b7890d7b28",
+      "products": 87,
+      "variants": 236,
+      "http_statuses": {
+        "200": 130
+      },
+      "network_seconds": 220.3,
+      "max_response_seconds": 2.4,
+      "cache_events": 217
+    }
+  ]
+}
