@@ -3569,7 +3569,8 @@
     "Computer Zone": "source:3c9a596752ee4220318b6b699bea02c28528c116c21c5f96b42437de658e02be:Computer Zone:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "ChenOne": "source:6ca04369872ae64c801ec8e5ac78e3d85e1cd7c76d46568c1c0037d48b6ec336:ChenOne:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "Breakout": "source:9a760ddf48487c17a9dc5c9fef1dca884f4a399ecb9dc257d2bf265178b89b41:Breakout:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
-    "Afrozeh": "source:d45ef33c8cd7e266546f76ea15c376912f86e9cd36553ae10897b99113f8e72e:Afrozeh:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
+    "Afrozeh": "source:d45ef33c8cd7e266546f76ea15c376912f86e9cd36553ae10897b99113f8e72e:Afrozeh:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
+    "Essence": "source:f829588cfdce46314a12b4d7bfbd038856f255e23a5cd9adc6f881d7a95823ff:Essence:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -18181,6 +18182,337 @@
       "audit_status": "pass",
       "error": "Duplicate Drive filenames require identity review",
       "held_input": "inputs/fresh804-20261026-5d42fe35/bela/e738a3eebfda7ab0/manifest.json"
+    },
+    "Essence": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Essence",
+      "shop_code": "SE10082",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 40,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CPba239bd9f1ba",
+          "name": "Meringue",
+          "source_url": "https://essencebyrubina.com/products/meringue",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        }
+      ],
+      "details_truncated": false,
+      "workbook_sha256": "664fe72ffcd2ae543f14d1f03e1cca36655351bf4d7585c8ba5f6f392d26291e",
+      "checked_utc": "2026-11-08T17:48:00.720468+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "incomplete_products_excluded": [
+        {
+          "product_id": "CP4c697563ecc7",
+          "source_url": "https://essencebyrubina.com/products/elara",
+          "name": "Elara",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP55206d8a78b2",
+          "source_url": "https://essencebyrubina.com/products/criss-cross",
+          "name": "Criss Cross",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe1fbbfd18acf",
+          "source_url": "https://essencebyrubina.com/products/mahzila",
+          "name": "Mahzila",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP780511daab46",
+          "source_url": "https://essencebyrubina.com/products/zenvia",
+          "name": "Zenvia",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP56b09eaaef3d",
+          "source_url": "https://essencebyrubina.com/products/zayrah",
+          "name": "Zayrah",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPece272c51f5d",
+          "source_url": "https://essencebyrubina.com/products/elyra",
+          "name": "Elyra",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP53d6e064efe0",
+          "source_url": "https://essencebyrubina.com/products/jewel",
+          "name": "Jewel",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPbd857fdc0ad6",
+          "source_url": "https://essencebyrubina.com/products/noir",
+          "name": "Noir",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPcc2fa7fdaed3",
+          "source_url": "https://essencebyrubina.com/products/aurista",
+          "name": "Aurista",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4718046e030a",
+          "source_url": "https://essencebyrubina.com/products/iris",
+          "name": "Iris",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0d432da6fc0d",
+          "source_url": "https://essencebyrubina.com/products/glimora",
+          "name": "Glimora",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP301f7950f30f",
+          "source_url": "https://essencebyrubina.com/products/veyra",
+          "name": "Veyra",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4318f418f087",
+          "source_url": "https://essencebyrubina.com/products/violetta",
+          "name": "Violetta",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP89539b1cf819",
+          "source_url": "https://essencebyrubina.com/products/rosea",
+          "name": "Rosea",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP619733a75c18",
+          "source_url": "https://essencebyrubina.com/products/azura",
+          "name": "Azura",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP28c9f0ecf522",
+          "source_url": "https://essencebyrubina.com/products/lunaria",
+          "name": "Lunaria",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPdd5a1e4f89f9",
+          "source_url": "https://essencebyrubina.com/products/solara",
+          "name": "Solara",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP33dc61110668",
+          "source_url": "https://essencebyrubina.com/products/meherin",
+          "name": "Meherin",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe99e4a265625",
+          "source_url": "https://essencebyrubina.com/products/zariel",
+          "name": "Zariel",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPff8df52c8b3d",
+          "source_url": "https://essencebyrubina.com/products/sovelle",
+          "name": "Sovelle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPce7592230822",
+          "source_url": "https://essencebyrubina.com/products/aira",
+          "name": "Aira",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPabb94e306fd6",
+          "source_url": "https://essencebyrubina.com/products/verlina",
+          "name": "Verlina",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPee0104ca339e",
+          "source_url": "https://essencebyrubina.com/products/crosvia",
+          "name": "Crosvia",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8602654974d8",
+          "source_url": "https://essencebyrubina.com/products/golden-bloom",
+          "name": "Golden Bloom",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPae898ce4ded5",
+          "source_url": "https://essencebyrubina.com/products/orelia",
+          "name": "Orelia",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP75b0691de040",
+          "source_url": "https://essencebyrubina.com/products/avene",
+          "name": "Avene",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5eba9c91de79",
+          "source_url": "https://essencebyrubina.com/products/nevo",
+          "name": "Nevo",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9fdd43b7c1ae",
+          "source_url": "https://essencebyrubina.com/products/vione",
+          "name": "Vione",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP669130af6258",
+          "source_url": "https://essencebyrubina.com/products/aveen",
+          "name": "Aveen",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5b1ee36f1999",
+          "source_url": "https://essencebyrubina.com/products/downtown-diva",
+          "name": "Downtown Diva",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd512c8af585e",
+          "source_url": "https://essencebyrubina.com/products/lumeire-ladies-sandal",
+          "name": "Lumeire",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP93a3613fac99",
+          "source_url": "https://essencebyrubina.com/products/vestra",
+          "name": "Vestra",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP03b60d878a5d",
+          "source_url": "https://essencebyrubina.com/products/imperial",
+          "name": "Imperial",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2fdd451f0013",
+          "source_url": "https://essencebyrubina.com/products/solena",
+          "name": "Solena",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "incomplete_products_count": 34,
+      "incomplete_products_truncated": false,
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/essence-incomplete-products/c3eb788c36ae06fc/manifest.json",
+      "original_source_sha256": "f829588cfdce46314a12b4d7bfbd038856f255e23a5cd9adc6f881d7a95823ff",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-08T17:48:02.604824+00:00",
+        "updated_utc": "2026-11-08T17:48:02.604824+00:00",
+        "next_source_check_due_utc": "2026-11-08T18:03:02.604824+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Primary product type and Category disagree: jeans"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "source_run": "42490496761",
+      "source_artifact": 13627462275,
+      "source_sha256": "f829588cfdce46314a12b4d7bfbd038856f255e23a5cd9adc6f881d7a95823ff",
+      "description_style_version": "customer-copy-v3",
+      "refresh_generation": "refresh20261108-92345025",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/essence/f829588cfdce4631/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -18543,7 +18875,8 @@
     "42490487212": "42490487212:13625829796:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490489426": "42490489426:13627212893:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490491350": "42490491350:13627696702:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
-    "42490493301": "42490493301:13626263971:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
+    "42490493301": "42490493301:13626263971:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
+    "42490494918": "42490494918:13627785233:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-11-08T16:51:50.464279+00:00",
@@ -18632,8 +18965,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Bela",
-  "audit804_progress_utc": "2026-11-08T17:47:52.520203+00:00",
+  "audit804_last_store": "Essence",
+  "audit804_progress_utc": "2026-11-08T17:48:02.605224+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
