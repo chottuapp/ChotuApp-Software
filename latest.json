@@ -1,46 +1,47 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-08T21:53:54.638901+00:00",
-  "run_id": "42490485609",
+  "generated_utc": "2026-11-08T22:09:43.160615+00:00",
+  "run_id": "42518462879",
   "attempt": "1",
-  "source_commit": "823a612433613b60122f2132d777e0d09430227b",
-  "status": "incomplete",
+  "source_commit": "5b0b100ead02d6f4b0b9bc397e6ecc3d29b4caa6",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 17701.9,
+  "elapsed_seconds": 7248.8,
   "stores": [
     {
-      "name": "Toyzone",
+      "name": "Rung Rez",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "522ef8b7890d7b28",
+      "products": 5,
+      "variants": 13,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    },
+    {
+      "name": "So Komal",
       "status": "done",
       "review_required": true,
       "issue_codes": [
-        "WEBSITE_ORDER_UNVERIFIED"
+        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT"
       ],
       "software_revision": "522ef8b7890d7b28",
-      "products": 3235,
-      "variants": 3637,
+      "products": 756,
+      "variants": 1226,
       "http_statuses": {
-        "200": 3472
+        "404": 15,
+        "200": 2857,
+        "429": 3
       },
-      "network_seconds": 8183.5,
-      "max_response_seconds": 3.3,
-      "cache_events": 6883
-    },
-    {
-      "name": "Toynix",
-      "status": "failed",
-      "review_required": false,
-      "issue_codes": [
-        "HTTP_403",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "522ef8b7890d7b28",
-      "http_statuses": {
-        "403": 2
-      },
-      "network_seconds": 0.3,
-      "max_response_seconds": 0.2,
-      "cache_events": 0
+      "network_seconds": 6818.2,
+      "max_response_seconds": 3.0,
+      "cache_events": 28260
     }
   ]
 }
