@@ -11134,35 +11134,80 @@
       "shop_code": "SE10050",
       "identity_policy": "confirmed_code",
       "status": "hold",
-      "products_checked": 169,
+      "products_checked": 133,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "5973bea98aec3e8137cecf6df159b4cc441e2c6ffd0f6a50d415ac9224d8634d",
-      "checked_utc": "2026-11-08T15:05:43.119366+00:00",
+      "workbook_sha256": "109218ad287d1b4f250f1574ecb3adc75a069e17f87b83c3c488fab78322f963",
+      "checked_utc": "2026-11-08T16:47:46.861016+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "incomplete_products_excluded": [
         {
-          "product_id": "CPeff443c5d27b",
-          "source_url": "https://www.hushpuppies.com.pk/products/ss-hl-0188",
-          "name": "SS-HL-0188",
+          "product_id": "CP4028570774b9",
+          "source_url": "https://www.hushpuppies.com.pk/products/stamp-cobalt",
+          "name": "Stamp cobalt",
           "issues": [
-            "Description lacks enough product-specific content for review"
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP284d54a091e4",
+          "source_url": "https://www.hushpuppies.com.pk/products/mid-barie",
+          "name": "Mid Barie",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd1f676eaf113",
+          "source_url": "https://www.hushpuppies.com.pk/products/natural-refresher-hp",
+          "name": "Natural Refresher HP",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9f7477ce5e25",
+          "source_url": "https://www.hushpuppies.com.pk/products/lilly-barie",
+          "name": "Lilly Barie",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPee7d79a4b9ae",
+          "source_url": "https://www.hushpuppies.com.pk/products/ss-hl-0187",
+          "name": "SS-HL-0187",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP132b25f8e921",
+          "source_url": "https://www.hushpuppies.com.pk/products/sun-cobalt",
+          "name": "Sun Cobalt",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
           ]
         }
       ],
-      "incomplete_products_count": 1,
+      "incomplete_products_count": 6,
       "incomplete_products_truncated": false,
-      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/hush-puppies-incomplete-products/7b9766ebf2416f66/manifest.json",
-      "original_source_sha256": "83340399f972e48d38889157f8eede7efd7ef4bcd4e573898725e2b070195bf5",
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/hush-puppies-incomplete-products/d498c436d67404ab/manifest.json",
+      "original_source_sha256": "ce262b0f087dd74a28263f445dd197df76422140302dfbb58dbe86dab28d52c1",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
         "unfinished": false
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
-      "description_repairs_count": 170,
+      "description_repairs_count": 133,
       "description_repairs_examples": [
+        {
+          "product_id": "CPf42fbed9e0f3",
+          "issue": "Added exact source product type; all supplied specifications retained.",
+          "repair_kind": "description"
+        },
         {
           "product_id": "CP6fd8d08e0ae3",
           "issue": "Added exact source product type; all supplied specifications retained.",
@@ -11207,23 +11252,18 @@
           "product_id": "CPa39d61ab493c",
           "issue": "Added exact source product type; all supplied specifications retained.",
           "repair_kind": "description"
-        },
-        {
-          "product_id": "CP8452615ed399",
-          "issue": "Added exact source product type; all supplied specifications retained.",
-          "repair_kind": "description"
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41811611300",
-      "source_artifact": 13314673364,
-      "source_sha256": "83340399f972e48d38889157f8eede7efd7ef4bcd4e573898725e2b070195bf5",
+      "source_run": "42490467507",
+      "source_artifact": 13622878494,
+      "source_sha256": "ce262b0f087dd74a28263f445dd197df76422140302dfbb58dbe86dab28d52c1",
       "description_style_version": "customer-copy-v3",
-      "refresh_generation": "refresh20261104-6c42b57a",
+      "refresh_generation": "refresh20261108-92345025",
       "delivery_status": "blocked",
       "audit_status": "pass",
       "error": "Duplicate Drive filenames require identity review",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/hush-puppies/83340399f972e48d/manifest.json"
+      "held_input": "inputs/fresh804-20261026-5d42fe35/hush-puppies/ce262b0f087dd74a/manifest.json"
     },
     "Habitt": {
       "name": "804 Audit",
@@ -16701,7 +16741,8 @@
     "42490457015": "42490457015:13621690510:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490458596": "42490458596:13621778193:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490460504": "42490460504:13623135752:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
-    "42490462162": "42490462162:13625865780:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
+    "42490462162": "42490462162:13625865780:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
+    "42490465739": "42490465739:13624475326:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-11-07T18:44:54.815389+00:00",
@@ -16790,8 +16831,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "ChenOne",
-  "audit804_progress_utc": "2026-11-08T16:46:57.834120+00:00",
+  "audit804_last_store": "Hush Puppies",
+  "audit804_progress_utc": "2026-11-08T16:47:46.861125+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
