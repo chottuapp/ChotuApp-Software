@@ -1512,6 +1512,26 @@
       "refresh_generation": "refresh20261108-92345025",
       "replaced_file": null,
       "file_name": "Mansab.xlsx"
+    },
+    "Bela": {
+      "shop_code": "SE10080",
+      "source_run": "42490494918",
+      "sha256": "e1c012278f4a9fe4cc84a36c48078346505f3d79f91aaa9349d7f9893941943f",
+      "source_sha256": "e738a3eebfda7ab019aab1a049fde655c31c8fdf1416592607bd53b165a05de8",
+      "folder": "ChotuApp 19-10-2026 11-36AM",
+      "verified_utc": "2026-11-08T23:29:54.573304+00:00",
+      "audit804": {
+        "name": "804 Audit",
+        "status": "pass",
+        "checked_utc": "2026-11-08T23:28:46.038915+00:00",
+        "products_checked": 59,
+        "workbook_sha256": "e1c012278f4a9fe4cc84a36c48078346505f3d79f91aaa9349d7f9893941943f"
+      },
+      "rule804": "applied; 804 Audit passed",
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "refresh_generation": "refresh20261108-92345025",
+      "replaced_file": null,
+      "file_name": "Bela.xlsx"
     }
   },
   "daily_uploads": {
@@ -3294,6 +3314,26 @@
         "refresh_generation": "refresh20261108-92345025",
         "replaced_file": null,
         "file_name": "Mansab.xlsx"
+      },
+      "Bela": {
+        "shop_code": "SE10080",
+        "source_run": "42490494918",
+        "sha256": "e1c012278f4a9fe4cc84a36c48078346505f3d79f91aaa9349d7f9893941943f",
+        "source_sha256": "e738a3eebfda7ab019aab1a049fde655c31c8fdf1416592607bd53b165a05de8",
+        "folder": "ChotuApp 19-10-2026 11-36AM",
+        "verified_utc": "2026-11-08T23:29:54.573304+00:00",
+        "audit804": {
+          "name": "804 Audit",
+          "status": "pass",
+          "checked_utc": "2026-11-08T23:28:46.038915+00:00",
+          "products_checked": 59,
+          "workbook_sha256": "e1c012278f4a9fe4cc84a36c48078346505f3d79f91aaa9349d7f9893941943f"
+        },
+        "rule804": "applied; 804 Audit passed",
+        "campaign_id": "fresh804-20261026-5d42fe35",
+        "refresh_generation": "refresh20261108-92345025",
+        "replaced_file": null,
+        "file_name": "Bela.xlsx"
       }
     }
   },
@@ -3450,7 +3490,8 @@
     "Rizen Watches": "source:fcefe4df7bbcb1aafcea8a226d072e61a6e331ea5c69989910eb1e15bf93c428:Rizen Watches:63e161179f53aeaf9371f5014e67218dffdd38b31010bd17e1d4ebba9bc83cec",
     "Blackbeiger": "source:bd7a53d292b9039478b0c5afe0cce2ecb10526517e49ce4ae7aa61a4b8ce1585:Blackbeiger:63e161179f53aeaf9371f5014e67218dffdd38b31010bd17e1d4ebba9bc83cec",
     "Rung Rez": "source:b5e2ed20000f01cd7e06cd75141d4677bd32c51e84ba78a521dc621748294984:Rung Rez:5bbfd7381ea1b9960a87f577cd73c8b1858863ab1a12b4b36e59d8897995535a",
-    "Mansab": "source:19132d8bfc3fc6bb28f9320a707fe0849bb4df8badbc435d48f01f7646c1f508:Mansab:5bbfd7381ea1b9960a87f577cd73c8b1858863ab1a12b4b36e59d8897995535a"
+    "Mansab": "source:19132d8bfc3fc6bb28f9320a707fe0849bb4df8badbc435d48f01f7646c1f508:Mansab:5bbfd7381ea1b9960a87f577cd73c8b1858863ab1a12b4b36e59d8897995535a",
+    "Bela": "source:e738a3eebfda7ab019aab1a049fde655c31c8fdf1416592607bd53b165a05de8:Bela:5bbfd7381ea1b9960a87f577cd73c8b1858863ab1a12b4b36e59d8897995535a"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -17875,13 +17916,13 @@
       "store": "Bela",
       "shop_code": "SE10080",
       "identity_policy": "confirmed_code",
-      "status": "hold",
+      "status": "pass",
       "products_checked": 59,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
       "workbook_sha256": "e1c012278f4a9fe4cc84a36c48078346505f3d79f91aaa9349d7f9893941943f",
-      "checked_utc": "2026-11-08T20:43:57.519153+00:00",
+      "checked_utc": "2026-11-08T23:28:46.038915+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
@@ -17897,9 +17938,7 @@
       "source_sha256": "e738a3eebfda7ab019aab1a049fde655c31c8fdf1416592607bd53b165a05de8",
       "description_style_version": "customer-copy-v3",
       "refresh_generation": "refresh20261108-92345025",
-      "delivery_status": "blocked",
-      "audit_status": "pass",
-      "error": "Duplicate Drive filenames require identity review",
+      "delivery_status": "verified",
       "held_input": "inputs/fresh804-20261026-5d42fe35/bela/e738a3eebfda7ab0/manifest.json"
     },
     "Essence": {
@@ -20754,8 +20793,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/524de9abeb23dfb4/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/cf41cf2778c5ff97/manifest.json"
   },
-  "audit804_last_store": "Mansab",
-  "audit804_progress_utc": "2026-11-08T23:28:42.765812+00:00",
+  "audit804_last_store": "Bela",
+  "audit804_progress_utc": "2026-11-08T23:29:54.573551+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Limelight",
