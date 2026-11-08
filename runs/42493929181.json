@@ -3557,7 +3557,7 @@
   "audit804_processed": {
     "Miss Rose": "source:1c074bd55448fa26862887226bfa501bb977e7ae0238f2bf4b53e15877009b54:Miss Rose:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "Islamabad Tea": "source:44c462e0c71aaf99a24df2d3eb8f42cc164f23d515c0a02822ccbaa03273d70f:Islamabad Tea:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
-    "Rivaj UK": "source:3d8b6d26dc844c7874478e60b70fe2f9ee1d0c126ec18a9c575ed0608547f588:Rivaj UK:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
+    "Rivaj UK": "source:6e6cb3df7ccd680a22bac4acf4de25142942802ff70d3ba8559528facd86e632:Rivaj UK:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "Vince Care": "source:e3b09c4e8679f13f17efbf729ec891740c249c414581e756757b01d0ef670b5a:Vince Care:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Rawayat": "source:3b0b61d26bc5fca52ffbfad76eb93b0a174442fe15c98656031307bec84e806c:Rawayat:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Junaid Jamshed": "source:0308c45c6b0511529dc6edf2f84119a8f4128d618f7c9ec1df76e6c6c47cf230:Junaid Jamshed:7634cfd7b40ffbdb5989206b801df918c8bf8d9d1b6ced5ac9c7198d1a029fb6",
@@ -4473,42 +4473,45 @@
       "store": "Rivaj UK",
       "shop_code": "SE10012",
       "identity_policy": "confirmed_code",
-      "status": "pass",
+      "status": "hold",
       "products_checked": 293,
-      "findings_count": 0,
-      "findings": [],
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CP6fc973f59d8f",
+          "name": "Fantasy 3 In 1 Palette",
+          "source_url": "https://rivaj-uk.com/products/spark-multifunctional-palette-9-in-1-113-3",
+          "issues": [
+            "Primary product type and Category disagree: contour"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "01c61033d437fbabb3bca128e1026346e0794771829ea919f96ba8e6d2e9c338",
-      "checked_utc": "2026-11-07T08:14:40.093291+00:00",
+      "workbook_sha256": "886f7b790955531c38a05e3709c5cdc940302bc480e0be00abe36eb8024c82d9",
+      "checked_utc": "2026-11-08T16:32:41.952367+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-08T16:32:41.952990+00:00",
+        "updated_utc": "2026-11-08T16:32:41.952990+00:00",
+        "next_source_check_due_utc": "2026-11-08T16:47:41.952990+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Primary product type and Category disagree: contour"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
-      "description_repairs_count": 33,
+      "description_repairs_count": 25,
       "description_repairs_examples": [
-        {
-          "product_id": "CPf239c4ff4ea4",
-          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPcad40e547f30",
-          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPbf6c174f43fc",
-          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPd30e861cbcc8",
-          "issue": "Rewrote the supplied listing name as a factual product-specific overview; no missing material, quantity, benefit or stock invented.",
-          "repair_kind": "description"
-        },
         {
           "product_id": "CP284fa65d7635",
           "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
@@ -4538,15 +4541,35 @@
           "product_id": "CP0a320fd49203",
           "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
           "repair_kind": "description"
+        },
+        {
+          "product_id": "CP5ad2022d37c2",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP4c13ef9e2a0b",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP8c6ac8254bb6",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPec431c1d70c9",
+          "issue": "Added the verified source fragrance family/range; all supplied product details retained, no notes or benefits invented.",
+          "repair_kind": "description"
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41810453768",
-      "source_artifact": 13334044200,
-      "source_sha256": "3d8b6d26dc844c7874478e60b70fe2f9ee1d0c126ec18a9c575ed0608547f588",
+      "source_run": "42490425251",
+      "source_artifact": 13622114910,
+      "source_sha256": "6e6cb3df7ccd680a22bac4acf4de25142942802ff70d3ba8559528facd86e632",
       "description_style_version": "customer-copy-v3",
-      "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "verified"
+      "refresh_generation": "refresh20261108-92345025",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/rivaj-uk/6e6cb3df7ccd680a/manifest.json"
     },
     "Vince Care": {
       "name": "804 Audit",
@@ -18585,7 +18608,8 @@
     "42269282967": "42269282967:13549382001:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "42313150161": "42313150161:13561187752:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "42340595024": "42340595024:13571070355:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
-    "42363548222": "42363548222:13579688905:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750"
+    "42363548222": "42363548222:13579688905:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
+    "42490423242": "42490423242:13622462274:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-11-07T18:44:54.815389+00:00",
@@ -18674,8 +18698,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Miss Rose",
-  "audit804_progress_utc": "2026-11-08T16:32:34.319878+00:00",
+  "audit804_last_store": "Rivaj UK",
+  "audit804_progress_utc": "2026-11-08T16:32:43.556135+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
