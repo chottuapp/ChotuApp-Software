@@ -3567,7 +3567,8 @@
     "Elite Cosmetics": "source:48a434a98de8413107c0c3b215400c0a3accacf5685e12300fd013484cfe8dc0:Elite Cosmetics:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Sana Safinaz": "source:d3a5c80bcb185cab8c51e4a3666a1f7f1122bba0ebb1a344411461f7469ada39:Sana Safinaz:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "Beyond East": "source:520ba9a73e65eb23defb5ecdf26c85b48bf0d279f16faf458f8fc1d7f474dee0:Beyond East:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
-    "Shop Modest": "source:2ee555c3548b41c041c55ece5095f93dee38fc528a3125f3afd8b5fd1fa5903f:Shop Modest:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
+    "Shop Modest": "source:2ee555c3548b41c041c55ece5095f93dee38fc528a3125f3afd8b5fd1fa5903f:Shop Modest:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
+    "Computer Zone": "source:3c9a596752ee4220318b6b699bea02c28528c116c21c5f96b42437de658e02be:Computer Zone:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -4609,31 +4610,51 @@
       "shop_code": "SE10015",
       "identity_policy": "confirmed_code",
       "status": "hold",
-      "products_checked": 833,
-      "findings_count": 0,
-      "findings": [],
+      "products_checked": 861,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CP76bb503905ed",
+          "name": "HP ZBOOK Firefly 14 G8, Intel Core i5-1145G7, 16GB DDR4 RAM, 256GB SSD, 14\" FHD Display, Intel Iris Xe Graphics, Backlit KB, Windows 11 Pro",
+          "source_url": "https://www.czone.com.pk/hp-zbook-firefly-14-g8",
+          "issues": [
+            "Primary product type and Category disagree: ram"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "d62cc7816bcd3b839e5be3eb1de12eb7ae021c117fa7ccaa1c72a54b7225f48f",
-      "checked_utc": "2026-11-08T14:35:33.084157+00:00",
+      "workbook_sha256": "f5c6199bd943203d84d19622ab90e4ca5416c23a72f8d96dc9f5a8ba83f36af7",
+      "checked_utc": "2026-11-08T16:34:24.210075+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-08T16:34:24.211455+00:00",
+        "updated_utc": "2026-11-08T16:34:24.211455+00:00",
+        "next_source_check_due_utc": "2026-11-08T16:49:24.211455+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Primary product type and Category disagree: ram"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
       "description_repairs_count": 0,
       "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41920427721",
-      "source_artifact": 13368322486,
-      "source_sha256": "7fe9b00f8b50e55805439925c7c144910ffdab3e2a2f760e68ffe343d7b051a7",
+      "source_run": "42490435736",
+      "source_artifact": 13621753696,
+      "source_sha256": "3c9a596752ee4220318b6b699bea02c28528c116c21c5f96b42437de658e02be",
       "description_style_version": "customer-copy-v3",
-      "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "blocked",
-      "audit_status": "pass",
-      "error": "Duplicate Drive filenames require identity review",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/computer-zone/7fe9b00f8b50e558/manifest.json"
+      "refresh_generation": "refresh20261108-92345025",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/computer-zone/3c9a596752ee4220/manifest.json"
     },
     "Bata": {
       "name": "804 Audit",
@@ -18614,7 +18635,8 @@
     "42490425251": "42490425251:13622114910:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490428979": "42490428979:13621903239:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490430676": "42490430676:13622184296:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
-    "42490432361": "42490432361:13622726051:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
+    "42490432361": "42490432361:13622726051:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
+    "42490433985": "42490433985:13621169199:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-11-07T18:44:54.815389+00:00",
@@ -18703,8 +18725,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Adam Cheese",
-  "audit804_progress_utc": "2026-11-08T16:33:56.024802+00:00",
+  "audit804_last_store": "Computer Zone",
+  "audit804_progress_utc": "2026-11-08T16:34:25.910701+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
