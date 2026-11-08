@@ -1,24 +1,25 @@
 {
   "campaign_id": "fresh804-20261026-5d42fe35",
-  "request": "Owner: update software to fetch only videos explicitly linked to each actual product, then fetch every enabled store from zero. Preserve owner exclusions, prices, variants, audit gates and verified Drive copies.",
-  "requested_date_pkt": "2026-11-04",
+  "request": "Owner 8 November 2026: start every enabled registered store from zero, including the sixteen newly coded stores; save/stop superseded fetches; retain all owner scopes and old verified Drive files.",
+  "requested_date_pkt": "2026-11-08",
   "destination_folder": "ChotuApp 19-10-2026 11-36AM",
   "audit_name": "804 Audit",
   "maximum_stores_per_runner": 2,
   "require_confirmed_shop_code": true,
   "khaadi_fresh_enabled": false,
-  "laam_rule": "Active, visible, source-confirmed in-stock clothing only; stitched, unstitched and ready-made included; bags, jewellery and non-clothing excluded",
+  "laam_rule": "Source-confirmed active visible in-stock clothing, cheapest available selling price PKR 2000\u20137000 inclusive; preserve actual variants, exact prices and stock",
   "audit_recovery": "active_correction_queue",
   "khaadi_execution": "excluded_by_owner_request",
   "excluded_stores": [
     "Khaadi",
-    "LAAM",
-    "Bachaa Party"
+    "Bachaa Party",
+    "Axis PK",
+    "Gift4U"
   ],
   "stock_policy": "Exclude fully out-of-stock products; retain source-confirmed unavailable variants of included products. LAAM active visible in-stock clothing only.",
   "price_policy": "Live variant identity, PKR prices and availability verified; no cached-price fallback on failed verification; sale only where actual payable price is below source compare-at price.",
   "fetch_segment_minutes": 300,
-  "laam_fresh_enabled": false,
+  "laam_fresh_enabled": true,
   "runner_plan": "paired",
   "resume_sources": {},
   "completed_stores": [],
@@ -27,7 +28,7 @@
     "Limelight",
     "Alkaram Studio"
   ],
-  "refresh_generation": "refresh20261104-6c42b57a",
+  "refresh_generation": "refresh20261108-92345025",
   "preserve_active_run_ids": [],
   "skip_fresh_stores": []
 }

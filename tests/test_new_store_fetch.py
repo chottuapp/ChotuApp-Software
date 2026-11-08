@@ -2,6 +2,12 @@ import copy,json,unittest
 from pathlib import Path
 from new_store_fetch import validate,plan,ROOT
 class NewStoreFetchTests(unittest.TestCase):
+ def test_owner_confirmed_codes_match_registered_domains(self):
+  r=json.loads((ROOT/'cloud/new-store-fetch-request.json').read_text());codes=json.loads((ROOT/'cloud/confirmed-shop-codes.json').read_text())
+  self.assertFalse(r['shop_codes_pending_owner'])
+  self.assertEqual([s['shop_code'] for s in r['stores']],['SE'+str(i) for i in range(10069,10085)])
+  for s in r['stores']:self.assertEqual(codes[s['name']],s['shop_code'])
+  self.assertEqual(len(validate(r)),16)
  def test_observed_throttled_sources_resume_with_bounded_pacing(self):
   from fast_fetch_support import source_policy
   for host in ('toyzone.pk','www.toyzone.pk','makeupgallery.pk','www.makeupgallery.pk'):

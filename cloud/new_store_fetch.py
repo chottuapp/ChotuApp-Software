@@ -14,10 +14,12 @@ def validate(request):
  stores=request.get('stores',[])
  if not 1<=len(stores)<=20:raise ValueError('Bounded store list required')
  from locked_store_rules import owner_paused
+ confirmed=json.loads((ROOT/'cloud/confirmed-shop-codes.json').read_text())
  names=set();hosts=set();result=[]
  for raw in stores:
   site=validate_site(raw,resolve=False);host=urlsplit(site['url']).hostname.removeprefix('www.')
-  if not site['url'].startswith('https://') or raw.get('shop_code') not in (None,''):raise ValueError('HTTPS stores with owner-pending shop codes only')
+  if not site['url'].startswith('https://') or raw.get('shop_code') not in (None,'',confirmed.get(site['name'])):raise ValueError('HTTPS stores with pending or owner-confirmed shop codes only')
+  if request.get('shop_codes_pending_owner') is False and (not raw.get('shop_code') or raw['shop_code']!=confirmed.get(site['name'])):raise ValueError('Owner-confirmed shop code missing or conflicting')
   if site['name'] in names or host in hosts or owner_paused(site['name'],site['url']):raise ValueError('Duplicate or owner-paused source')
   names.add(site['name']);hosts.add(host);result.append(site)
  return result
@@ -102,7 +104,7 @@ def probe(site):
 
 def main():
  request=json.loads((ROOT/'cloud/new-store-fetch-request.json').read_text());stores=validate(request)
- report=dict(run_id=os.environ['GITHUB_RUN_ID'],request_id=request['request_id'],checked_utc=datetime.now(timezone.utc).isoformat(),shop_codes='Pending owner; blank in exports',stores=[],groups=[],status='checking')
+ report=dict(run_id=os.environ['GITHUB_RUN_ID'],request_id=request['request_id'],checked_utc=datetime.now(timezone.utc).isoformat(),shop_codes='Pending owner; blank in exports' if request.get('shop_codes_pending_owner',True) else 'Owner confirmed; applied by Rule804 delivery',stores=[],groups=[],status='checking')
  def save():
   report['checked_utc']=datetime.now(timezone.utc).isoformat();publish(report,branch='requested-store-reports')
  with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:report['stores']=list(pool.map(probe,stores))
