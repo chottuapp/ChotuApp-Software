@@ -1,45 +1,45 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-08T21:27:43.960906+00:00",
-  "run_id": "42508354269",
+  "generated_utc": "2026-11-08T21:53:54.638901+00:00",
+  "run_id": "42490485609",
   "attempt": "1",
-  "source_commit": "5b0b100ead02d6f4b0b9bc397e6ecc3d29b4caa6",
+  "source_commit": "823a612433613b60122f2132d777e0d09430227b",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 11405.5,
+  "elapsed_seconds": 17701.9,
   "stores": [
     {
-      "name": "Limelight",
-      "status": "source_paused",
+      "name": "Toyzone",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "522ef8b7890d7b28",
+      "products": 3235,
+      "variants": 3637,
+      "http_statuses": {
+        "200": 3472
+      },
+      "network_seconds": 8183.5,
+      "max_response_seconds": 3.3,
+      "cache_events": 6883
+    },
+    {
+      "name": "Toynix",
+      "status": "failed",
       "review_required": false,
       "issue_codes": [
-        "HTTP_404",
-        "HTTP_429",
-        "RATE_LIMIT",
+        "HTTP_403",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "522ef8b7890d7b28",
       "http_statuses": {
-        "404": 83,
-        "200": 2284,
-        "429": 1
+        "403": 2
       },
-      "network_seconds": 3498.3,
-      "max_response_seconds": 2.5,
-      "cache_events": 35520
-    },
-    {
-      "name": "Alkaram Studio",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "522ef8b7890d7b28",
-      "products": 1521,
-      "variants": 5089,
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
+      "network_seconds": 0.3,
+      "max_response_seconds": 0.2,
       "cache_events": 0
     }
   ]
