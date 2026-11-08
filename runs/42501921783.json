@@ -10961,59 +10961,31 @@
       "shop_code": "SE10036",
       "identity_policy": "confirmed_code",
       "status": "hold",
-      "products_checked": 1959,
+      "products_checked": 1950,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "af29b1dea6f3d6e62652972194638ff75cf863afd363bd071dafd421f0f9e498",
-      "checked_utc": "2026-11-08T15:00:31.753017+00:00",
+      "workbook_sha256": "8066564c05e77d8df407cefbe48a5e55cc4640875c26865ca0c33a490cdc3ff6",
+      "checked_utc": "2026-11-08T17:36:47.924583+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "incomplete_products_excluded": [
-        {
-          "product_id": "CP4dd9431a6900",
-          "source_url": "https://primeticks.com/products/gucci-ya125409-ladies-watch",
-          "name": "GUCCI YA125409 Ladies Watch",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPff909ad37cad",
-          "source_url": "https://primeticks.com/products/michael-kors-watch-for-women-mk5676",
-          "name": "Michael Kors Watch For Women MK5676",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        }
-      ],
-      "incomplete_products_count": 2,
-      "incomplete_products_truncated": false,
-      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/prime-ticks-incomplete-products/1fbba0fd88edce84/manifest.json",
-      "original_source_sha256": "b63a8e765cda0a9d95b7055e485d804b1a8277447a7744d9199ddb27ee7c0dbf",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
         "unfinished": false
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
-      "description_repairs_count": 1,
-      "description_repairs_examples": [
-        {
-          "product_id": "CPff909ad37cad",
-          "issue": "Rewrote source-named watch identity; no specifications invented.",
-          "repair_kind": "description"
-        }
-      ],
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41810912306",
-      "source_artifact": 13321280878,
-      "source_sha256": "b63a8e765cda0a9d95b7055e485d804b1a8277447a7744d9199ddb27ee7c0dbf",
+      "source_run": "42490455380",
+      "source_artifact": 13626343169,
+      "source_sha256": "34bffbdcfd40b10d18397594612c8ea4dc4fc93d78cb1dca2336a0ddfda63c8b",
       "description_style_version": "customer-copy-v3",
-      "refresh_generation": "refresh20261104-6c42b57a",
+      "refresh_generation": "refresh20261108-92345025",
       "delivery_status": "blocked",
       "audit_status": "pass",
       "error": "Duplicate Drive filenames require identity review",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/prime-ticks/b63a8e765cda0a9d/manifest.json"
+      "held_input": "inputs/fresh804-20261026-5d42fe35/prime-ticks/34bffbdcfd40b10d/manifest.json"
     },
     "Design by DAS": {
       "name": "804 Audit",
@@ -17053,7 +17025,7 @@
     "42490445091": "42490445091:13622985666:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490447594": "42490447594:13620719279:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490449857": "42490449857:13621903147:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
-    "42490451734": "42490451734:13623847261:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
+    "42490451734": "42490451734:13626733127:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490453604": "42490453604:13621807943:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490455380": "42490455380:13620644361:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490457015": "42490457015:13621690510:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
@@ -17156,8 +17128,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Servis",
-  "audit804_progress_utc": "2026-11-08T17:35:30.530180+00:00",
+  "audit804_last_store": "Prime Ticks",
+  "audit804_progress_utc": "2026-11-08T17:36:47.924929+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
