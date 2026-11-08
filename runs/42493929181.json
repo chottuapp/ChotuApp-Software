@@ -3569,7 +3569,7 @@
     "Elite Cosmetics": "source:48a434a98de8413107c0c3b215400c0a3accacf5685e12300fd013484cfe8dc0:Elite Cosmetics:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "Sana Safinaz": "source:d3a5c80bcb185cab8c51e4a3666a1f7f1122bba0ebb1a344411461f7469ada39:Sana Safinaz:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "Beyond East": "source:520ba9a73e65eb23defb5ecdf26c85b48bf0d279f16faf458f8fc1d7f474dee0:Beyond East:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
-    "Shop Modest": "source:d7cba029dd74ab408edb56fcce45423156b49416753b4b140a957db9c7a9e69a:Shop Modest:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750"
+    "Shop Modest": "source:2ee555c3548b41c041c55ece5095f93dee38fc528a3125f3afd8b5fd1fa5903f:Shop Modest:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -3844,85 +3844,67 @@
       "store": "Shop Modest",
       "shop_code": "SE10006",
       "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 124,
-      "findings_count": 0,
-      "findings": [],
-      "details_truncated": false,
-      "workbook_sha256": "447945b06d7753c41ffc38c9c0bb124fa649f16bba3857ea236987fccda54ce5",
-      "checked_utc": "2026-11-07T08:20:50.842425+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "incomplete_products_excluded": [
+      "status": "hold",
+      "products_checked": 129,
+      "findings_count": 1,
+      "findings": [
         {
-          "product_id": "CP822b9f7ed241",
-          "source_url": "https://www.shopmodest.pk/products/3-piece-formal-rawsilk-gharara-set",
-          "name": "3 Piece Formal Rawsilk Gharara Set",
+          "product_id": "CPb1e48b7d5f28",
+          "name": "Girls Chiffon Black Embroidered Outfit",
+          "source_url": "https://www.shopmodest.pk/products/girls-chiffon-black-embroidered-outfit",
           "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP6ec62b9a8777",
-          "source_url": "https://www.shopmodest.pk/products/3-piece-white-mother-daughter-gharara-set",
-          "name": "3 Piece White Mother Daughter Formal Set",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP65199138edaa",
-          "source_url": "https://www.shopmodest.pk/products/3-piece-tissue-pink-formal-dress",
-          "name": "3 Piece Tissue Pink Formal Dress",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPffdf4e27895d",
-          "source_url": "https://www.shopmodest.pk/products/3-piece-chiffon-purple-formal-suit",
-          "name": "3 Piece Chiffon Purple Formal Suit",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP007faf367162",
-          "source_url": "https://www.shopmodest.pk/products/3-piece-purple-chiffon-formal-outfit",
-          "name": "3 Piece Purple Chiffon Formal Outfit",
-          "issues": [
-            "Description lacks enough product-specific content for review"
+            "Primary product type and Category disagree: trousers"
           ]
         }
       ],
-      "incomplete_products_count": 5,
+      "details_truncated": false,
+      "workbook_sha256": "b340fabe212200fd943bda2c8c57e2d7e31d3ba1183ddbf7df967f8a65c039c0",
+      "checked_utc": "2026-11-08T16:33:04.342643+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "incomplete_products_excluded": [
+        {
+          "product_id": "CP951dbfe20ace",
+          "source_url": "https://www.shopmodest.pk/products/green-trouser",
+          "name": "Rare Flare",
+          "issues": [
+            "Category is too broad or promotional for product-purpose classification",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "incomplete_products_count": 1,
       "incomplete_products_truncated": false,
-      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/shop-modest-incomplete-products/1ded96a9e90c45c2/manifest.json",
-      "original_source_sha256": "d7cba029dd74ab408edb56fcce45423156b49416753b4b140a957db9c7a9e69a",
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/shop-modest-incomplete-products/dfb7370e5d6269d2/manifest.json",
+      "original_source_sha256": "2ee555c3548b41c041c55ece5095f93dee38fc528a3125f3afd8b5fd1fa5903f",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-08T16:33:05.771965+00:00",
+        "updated_utc": "2026-11-08T16:33:05.771965+00:00",
+        "next_source_check_due_utc": "2026-11-08T16:48:05.771965+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Primary product type and Category disagree: trousers"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
-      "description_repairs_count": 129,
+      "description_repairs_count": 130,
       "description_repairs_examples": [
         {
-          "product_id": "CP87b7615559ac",
+          "product_id": "CP2311e9a464d5",
           "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
           "repair_kind": "description"
         },
         {
-          "product_id": "CPdb3b55d481e0",
-          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP785a2ceeab0a",
-          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP7130f38ceefa",
+          "product_id": "CP43b2a359c31d",
           "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
           "repair_kind": "description"
         },
@@ -3932,39 +3914,48 @@
           "repair_kind": "description"
         },
         {
-          "product_id": "CP92aa626ff1f2",
+          "product_id": "CPa05f48dcf2d9",
           "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
           "repair_kind": "description"
         },
         {
-          "product_id": "CP00de578d83e2",
+          "product_id": "CP51ab3115bf02",
           "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
           "repair_kind": "description"
         },
         {
-          "product_id": "CP5baf2039d890",
+          "product_id": "CP1d1785e4b128",
           "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
           "repair_kind": "description"
         },
         {
-          "product_id": "CP57780a417467",
+          "product_id": "CP6fd8359000dc",
           "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
           "repair_kind": "description"
         },
         {
-          "product_id": "CPae4a043f84fe",
+          "product_id": "CPdfdfae406da9",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP5b2d295932d5",
+          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CPe87330c7ab7b",
           "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
           "repair_kind": "description"
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41810860822",
-      "source_artifact": 13313532881,
-      "source_sha256": "d7cba029dd74ab408edb56fcce45423156b49416753b4b140a957db9c7a9e69a",
+      "source_run": "42490430676",
+      "source_artifact": 13622184296,
+      "source_sha256": "2ee555c3548b41c041c55ece5095f93dee38fc528a3125f3afd8b5fd1fa5903f",
       "description_style_version": "customer-copy-v3",
-      "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "verified",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/shop-modest/d7cba029dd74ab40/manifest.json"
+      "refresh_generation": "refresh20261108-92345025",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/shop-modest/2ee555c3548b41c0/manifest.json"
     },
     "Seran": {
       "name": "804 Audit",
@@ -18612,7 +18603,8 @@
     "42340595024": "42340595024:13571070355:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "42363548222": "42363548222:13579688905:f26ebab25691aacf3e82dc9e12538c44cc200bddeddb2fd301d4dfebe451e750",
     "42490423242": "42490423242:13622462274:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
-    "42490425251": "42490425251:13622114910:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
+    "42490425251": "42490425251:13622114910:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
+    "42490428979": "42490428979:13621903239:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-11-07T18:44:54.815389+00:00",
@@ -18701,8 +18693,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Vince Care",
-  "audit804_progress_utc": "2026-11-08T16:32:53.941880+00:00",
+  "audit804_last_store": "Shop Modest",
+  "audit804_progress_utc": "2026-11-08T16:33:05.772509+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
