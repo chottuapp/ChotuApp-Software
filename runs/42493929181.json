@@ -3568,7 +3568,8 @@
     "Sana Safinaz": "source:d3a5c80bcb185cab8c51e4a3666a1f7f1122bba0ebb1a344411461f7469ada39:Sana Safinaz:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "Beyond East": "source:520ba9a73e65eb23defb5ecdf26c85b48bf0d279f16faf458f8fc1d7f474dee0:Beyond East:027f7fce4e81a909daf6a15bc68427a577cf9315eadb7cc782aabdc9ba40e9e7",
     "Shop Modest": "source:2ee555c3548b41c041c55ece5095f93dee38fc528a3125f3afd8b5fd1fa5903f:Shop Modest:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
-    "Computer Zone": "source:3c9a596752ee4220318b6b699bea02c28528c116c21c5f96b42437de658e02be:Computer Zone:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
+    "Computer Zone": "source:3c9a596752ee4220318b6b699bea02c28528c116c21c5f96b42437de658e02be:Computer Zone:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
+    "ChenOne": "source:6ca04369872ae64c801ec8e5ac78e3d85e1cd7c76d46568c1c0037d48b6ec336:ChenOne:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -10889,81 +10890,183 @@
       "shop_code": "SE10047",
       "identity_policy": "confirmed_code",
       "status": "hold",
-      "products_checked": 292,
-      "findings_count": 0,
-      "findings": [],
+      "products_checked": 428,
+      "findings_count": 2,
+      "findings": [
+        {
+          "product_id": "CPc9917fc9467d",
+          "name": "Women's Co-Ord Set Olive Green",
+          "source_url": "https://chenone.com/products/lds-7207-co-ord-set-olive-green",
+          "issues": [
+            "Primary product type and Category disagree: trousers"
+          ]
+        },
+        {
+          "product_id": "CPc83bc4a9c5b5",
+          "name": "Women's Jogging Suit Pink",
+          "source_url": "https://chenone.com/products/jogging-suit-pink-lds-a1805",
+          "issues": [
+            "Primary product type and Category disagree: trousers"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "4711c0399c05abc91daa79b69f86fb5d6ae39c7ed836261a514e0184beb2efa9",
-      "checked_utc": "2026-11-08T15:04:53.614332+00:00",
+      "workbook_sha256": "6766b1641b31001877dfd58e6beda4e7414bb957da0cf6830b7610878f188671",
+      "checked_utc": "2026-11-08T16:46:56.297237+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "incomplete_products_excluded": [
+        {
+          "product_id": "CPa1570a3ac04c",
+          "source_url": "https://chenone.com/products/home-winter-3-pcs-bed-black-beauty",
+          "name": "3 Pcs Bed Spread Black Beauty",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8654de42ba33",
+          "source_url": "https://chenone.com/products/home-winter-3-pcs-bed-flamingo",
+          "name": "3 Pcs Bed Spread Flamingo",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa265c7a35fa1",
+          "source_url": "https://chenone.com/products/3-pcs-bed-spread-lucent-chenone-home-textile",
+          "name": "Home Summer 3 Pcs Bed Lucent",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf8fd96e05ddf",
+          "source_url": "https://chenone.com/products/3-pcs-bed-spread-set-frost-chenone-home-textile",
+          "name": "Home Winter 3 Pcs Bed Frost",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP24bea46558c8",
+          "source_url": "https://chenone.com/products/eurosham-cover-quilted-coffee-26-sl",
+          "name": "Home Eurosham Cover Quilted Coffee",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP031c0a4e48ec",
+          "source_url": "https://chenone.com/products/6-pcs-comforter-set-queen-seamist-chenone-home-textile",
+          "name": "Home Summer 6 Pcs Comforter Seamist",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP02631538bca9",
+          "source_url": "https://chenone.com/products/print-faux-wool-fur-comforter-26-set-grey",
+          "name": "Home 3 Pcs Comforter Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf8301f531efe",
+          "source_url": "https://chenone.com/products/brushing-rabbit-fur-comforter-26-set-tan",
+          "name": "Home 3 Pcs Brushing Tan",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP12e71b55e0ba",
+          "source_url": "https://chenone.com/products/gift-box-25",
+          "name": "Gift",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPaed6f1553e0c",
+          "source_url": "https://chenone.com/products/reg-towel-reg-towel-650-sl",
+          "name": "Reg Towel-Reg Towel",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3c723f847374",
+          "source_url": "https://chenone.com/products/tumbler-beige-skycu-017",
+          "name": "Tumbler Beige",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4b9cd843b1c4",
+          "source_url": "https://chenone.com/products/knitted-casual-short-black-gts-b4322",
+          "name": "Men's Knitted Casual Short Black",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5fae70882250",
+          "source_url": "https://chenone.com/products/pocket-spring-matt-feet-posturepedic-25",
+          "name": "Home Pocket Spring Mattress",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3afc9eb34383",
+          "source_url": "https://chenone.com/products/towel-white-sl-650",
+          "name": "Towel White",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb8c7a92b268c",
+          "source_url": "https://chenone.com/products/table-runner-bllack-white-shalimar-tl",
+          "name": "Tableware Shalimar",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "incomplete_products_count": 15,
+      "incomplete_products_truncated": false,
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/chenone-incomplete-products/a982a0ff7b2a2061/manifest.json",
+      "original_source_sha256": "6ca04369872ae64c801ec8e5ac78e3d85e1cd7c76d46568c1c0037d48b6ec336",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-08T16:46:57.833367+00:00",
+        "updated_utc": "2026-11-08T16:46:57.833367+00:00",
+        "next_source_check_due_utc": "2026-11-08T17:01:57.833367+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Primary product type and Category disagree: trousers"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [
         {
-          "product_id": "CP10a759b18d13",
-          "source_url": "https://chenone.com/products/package-3-garnet",
-          "reason": "Owner-locked ChenOne rule: furniture excluded; all other goods retained"
-        },
-        {
-          "product_id": "CP3a949cad109b",
-          "source_url": "https://chenone.com/products/package-2-devine-bed-with-mattress",
-          "reason": "Owner-locked ChenOne rule: furniture excluded; all other goods retained"
-        },
-        {
-          "product_id": "CP3ce1c6042217",
-          "source_url": "https://chenone.com/products/package-3-jupiter",
-          "reason": "Owner-locked ChenOne rule: furniture excluded; all other goods retained"
-        },
-        {
-          "product_id": "CP514c5a07216a",
-          "source_url": "https://chenone.com/products/copy-package-3-porter",
-          "reason": "Owner-locked ChenOne rule: furniture excluded; all other goods retained"
-        },
-        {
-          "product_id": "CP86258a233a54",
-          "source_url": "https://chenone.com/products/package-2-signature-bed-with-mattress",
-          "reason": "Owner-locked ChenOne rule: furniture excluded; all other goods retained"
-        },
-        {
-          "product_id": "CP9426831b4797",
-          "source_url": "https://chenone.com/products/package-4-special-package",
-          "reason": "Owner-locked ChenOne rule: furniture excluded; all other goods retained"
-        },
-        {
-          "product_id": "CP99b90e841532",
-          "source_url": "https://chenone.com/products/package-3-koko",
-          "reason": "Owner-locked ChenOne rule: furniture excluded; all other goods retained"
-        },
-        {
-          "product_id": "CP9def3c359a3f",
-          "source_url": "https://chenone.com/products/package-3-venus",
-          "reason": "Owner-locked ChenOne rule: furniture excluded; all other goods retained"
-        },
-        {
-          "product_id": "CPa0c9ae1eee93",
-          "source_url": "https://chenone.com/products/package-3-galaxy",
-          "reason": "Owner-locked ChenOne rule: furniture excluded; all other goods retained"
-        },
-        {
-          "product_id": "CPaa1526c7ae32",
-          "source_url": "https://chenone.com/products/package-3-suzanne",
-          "reason": "Owner-locked ChenOne rule: furniture excluded; all other goods retained"
-        },
-        {
-          "product_id": "CPde89c2985195",
-          "source_url": "https://chenone.com/products/package-3-vista",
-          "reason": "Owner-locked ChenOne rule: furniture excluded; all other goods retained"
-        },
-        {
-          "product_id": "CPf9ee98579440",
-          "source_url": "https://chenone.com/products/package-1",
+          "product_id": "CP750c1bb2a1ed",
+          "source_url": "https://chenone.com/products/wedding-package-1-signature-bed-with-night-stands",
           "reason": "Owner-locked ChenOne rule: furniture excluded; all other goods retained"
         }
       ],
       "image_metadata_repairs": 0,
-      "description_repairs_count": 56,
+      "description_repairs_count": 55,
       "description_repairs_examples": [
         {
           "product_id": "CPf61bc64e7698",
@@ -11017,15 +11120,12 @@
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41970206105",
-      "source_artifact": 13398587748,
-      "source_sha256": "199e23d210cf1d1f54da4b095e5b27476e61090318e383353c4a0c3d834a58f2",
+      "source_run": "42490465739",
+      "source_artifact": 13624475326,
+      "source_sha256": "6ca04369872ae64c801ec8e5ac78e3d85e1cd7c76d46568c1c0037d48b6ec336",
       "description_style_version": "customer-copy-v3",
-      "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "blocked",
-      "audit_status": "pass",
-      "error": "Duplicate Drive filenames require identity review",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/chenone/199e23d210cf1d1f/manifest.json"
+      "refresh_generation": "refresh20261108-92345025",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/chenone/6ca04369872ae64c/manifest.json"
     },
     "Hush Puppies": {
       "name": "804 Audit",
@@ -16600,7 +16700,8 @@
     "42490455380": "42490455380:13620644361:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490457015": "42490457015:13621690510:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490458596": "42490458596:13621778193:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
-    "42490460504": "42490460504:13623135752:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
+    "42490460504": "42490460504:13623135752:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
+    "42490462162": "42490462162:13625865780:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-11-07T18:44:54.815389+00:00",
@@ -16689,8 +16790,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Beechtree",
-  "audit804_progress_utc": "2026-11-08T16:46:30.449010+00:00",
+  "audit804_last_store": "ChenOne",
+  "audit804_progress_utc": "2026-11-08T16:46:57.834120+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
