@@ -1,30 +1,50 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-08T07:46:01.352679+00:00",
-  "run_id": "42438815568",
+  "generated_utc": "2026-11-08T14:38:27.931500+00:00",
+  "run_id": "42490433985",
   "attempt": "1",
-  "source_commit": "5ed7fa39d3cb245aa086345f43567ebc68e8de6f",
-  "status": "incomplete",
+  "source_commit": "823a612433613b60122f2132d777e0d09430227b",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 18001.5,
+  "elapsed_seconds": 236.8,
   "stores": [
     {
-      "name": "Liberty Books",
-      "status": "pending",
-      "review_required": false,
+      "name": "Farda Foods",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
-        "HTTP_404",
-        "WEBSITE_CATEGORY_UNVERIFIED",
-        "WEBSITE_ORDER_UNVERIFIED"
+        "HTTP_429",
+        "RATE_LIMIT"
       ],
       "software_revision": "522ef8b7890d7b28",
+      "products": 51,
+      "variants": 53,
       "http_statuses": {
-        "404": 2234
+        "200": 64
       },
-      "network_seconds": 5492.9,
+      "network_seconds": 90.5,
       "max_response_seconds": 2.9,
-      "cache_events": 125053
+      "cache_events": 161
+    },
+    {
+      "name": "Adam Cheese",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "522ef8b7890d7b28",
+      "products": 58,
+      "variants": 58,
+      "http_statuses": {
+        "200": 63,
+        "429": 1
+      },
+      "network_seconds": 85.8,
+      "max_response_seconds": 2.5,
+      "cache_events": 175
     }
   ]
 }
