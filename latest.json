@@ -3567,7 +3567,8 @@
     "Beyond East": "source:8e57f77c6006d99e22ae5c291b98b070405db1e1108ddc3397b8f019cf11c1cc:Beyond East:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "Shop Modest": "source:2ee555c3548b41c041c55ece5095f93dee38fc528a3125f3afd8b5fd1fa5903f:Shop Modest:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "Computer Zone": "source:3c9a596752ee4220318b6b699bea02c28528c116c21c5f96b42437de658e02be:Computer Zone:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
-    "ChenOne": "source:6ca04369872ae64c801ec8e5ac78e3d85e1cd7c76d46568c1c0037d48b6ec336:ChenOne:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
+    "ChenOne": "source:6ca04369872ae64c801ec8e5ac78e3d85e1cd7c76d46568c1c0037d48b6ec336:ChenOne:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
+    "Breakout": "source:9a760ddf48487c17a9dc5c9fef1dca884f4a399ecb9dc257d2bf265178b89b41:Breakout:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -13475,852 +13476,253 @@
       "shop_code": null,
       "identity_policy": "owner_authorized_blank_code_exact_store_filename",
       "status": "hold",
-      "products_checked": 1442,
-      "findings_count": 0,
-      "findings": [],
-      "details_truncated": false,
-      "workbook_sha256": "f757a48f022ef2d52aa90f10d147d4be6c27ccb0a2305de46f0a4d6a07d9f2f0",
-      "checked_utc": "2026-11-08T15:12:50.753921+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "incomplete_products_excluded": [
+      "products_checked": 1430,
+      "findings_count": 9,
+      "findings": [
         {
-          "product_id": "CP2f7eb896ee54",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu336-brg",
-          "name": "GIRLS BOXY CONTRAST HEM GRAPHIC SWEATSHIRT",
+          "product_id": "CP1efb160460b4",
+          "name": "BOYS LOOSE CARGO DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/k26fd620-blk",
           "issues": [
-            "Description lacks enough product-specific content for review"
+            "Primary product type and Category disagree: hoodie"
           ]
         },
         {
-          "product_id": "CP372e29d957d3",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu303-dpk",
-          "name": "GIRLS HELLO KITTY HOODIE",
+          "product_id": "CPa21a88061c08",
+          "name": "GIRLS LOOSE FIT MINNIE DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/k26fd762-dbl",
           "issues": [
-            "Description lacks enough product-specific content for review"
+            "Primary product type and Category disagree: computer mouse"
           ]
         },
         {
-          "product_id": "CP71f0f26da364",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu257-ryb",
-          "name": "BOYS MULTI ITEMS SWEATSHIRT",
+          "product_id": "CPebd51ccc2de5",
+          "name": "RIB COLLAR ZIPPER UPPER",
+          "source_url": "https://checkout.breakout.com.pk/products/26wup254-brn",
           "issues": [
-            "Description lacks enough product-specific content for review"
+            "Primary product type and Category disagree: jeans"
           ]
         },
         {
-          "product_id": "CPb1fd93e3c392",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu238-hgy",
-          "name": "BOYS LAKERS CONTRAST PANEL SWEATSHIRT",
+          "product_id": "CPee441e5eb781",
+          "name": "RIB COLLAR ZIPPER UPPER",
+          "source_url": "https://checkout.breakout.com.pk/products/26wup254-bge",
           "issues": [
-            "Description lacks enough product-specific content for review"
+            "Primary product type and Category disagree: jeans"
           ]
         },
         {
-          "product_id": "CPc97bdd98e0e1",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu236-brn",
-          "name": "BOYS GRAPHIC SWEATSHIRT",
+          "product_id": "CPfe36a20eab3b",
+          "name": "TEXTURED MOCK NECK UPPER",
+          "source_url": "https://checkout.breakout.com.pk/products/26wup241-nvy",
           "issues": [
-            "Description lacks enough product-specific content for review"
+            "Primary product type and Category disagree: jeans"
           ]
         },
         {
-          "product_id": "CPce15058954dd",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu220-bbr",
-          "name": "BOYS STRIPED HOODED TOP",
+          "product_id": "CP3cb5fc68eb06",
+          "name": "TEXTURED MOCK NECK UPPER",
+          "source_url": "https://checkout.breakout.com.pk/products/26wup241-brn",
           "issues": [
-            "Description lacks enough product-specific content for review"
+            "Primary product type and Category disagree: jeans"
           ]
         },
         {
-          "product_id": "CP068af699d958",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu207-blk",
-          "name": "BOYS SHORT PLACKET HOODED TOP",
+          "product_id": "CP91109ad4eddd",
+          "name": "BOYS LOOSE PATCH POCKET DENIM",
+          "source_url": "https://checkout.breakout.com.pk/products/k26fd617-dbl",
           "issues": [
-            "Description lacks enough product-specific content for review"
+            "Primary product type and Category disagree: jeans"
           ]
         },
         {
-          "product_id": "CP3811b3cea517",
-          "source_url": "https://checkout.breakout.com.pk/products/k26ws508-pig",
-          "name": "GIRLS RAGLAN JACQUARD SWEATER",
+          "product_id": "CP158cc346c437",
+          "name": "CLOUD FEEL MOCK NECK ZIPPER",
+          "source_url": "https://checkout.breakout.com.pk/products/26wup217-lgy",
           "issues": [
-            "Description lacks enough product-specific content for review"
+            "Primary product type and Category disagree: trousers"
           ]
         },
         {
-          "product_id": "CP9c80e54cd5ed",
-          "source_url": "https://checkout.breakout.com.pk/products/k26ws417-owu",
-          "name": "BOYS JACQUARD ACRYLIC SWEATER",
+          "product_id": "CP6a281657327d",
+          "name": "CLOUD FEEL MOCK NECK ZIPPER",
+          "source_url": "https://checkout.breakout.com.pk/products/26wup217-bck",
           "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP498836330f15",
-          "source_url": "https://checkout.breakout.com.pk/products/k26ws415-grd",
-          "name": "BOYS STRIPED POLO SWEATER",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP6b8e21b65de5",
-          "source_url": "https://checkout.breakout.com.pk/products/k26ws410-mlt",
-          "name": "BOYS TURKISH ACRYLIC STRIPED SWEATER",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPa08162c1dd08",
-          "source_url": "https://checkout.breakout.com.pk/products/k26ws408-mlt",
-          "name": "BOYS STRIPED TURKISH ACRYLIC POLO SWEATER",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP40854a8b65d3",
-          "source_url": "https://checkout.breakout.com.pk/products/k26ws406-grn",
-          "name": "BOYS TURKISH ACRYLIC TEXTURED SWEATER",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP8a15654ea07b",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wj901-dbr",
-          "name": "GIRLS BOXY BOMBER JACKET",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP4783886d820b",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wj604-grn",
-          "name": "BOYS PUFFER HOODED JACKET",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP20bbf7eb874b",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wj602-brn",
-          "name": "BOYS SLEEVELESS PUFFER JACKET",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP812510d60fd5",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wc931-blu",
-          "name": "GIRLS WOOL COAT",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP87c516dd4338",
-          "source_url": "https://checkout.breakout.com.pk/products/k26fsh32-bge",
-          "name": "GIRLS TEXTURED KNIT SLIP ON-SNEAKERS",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPf30c1fedd636",
-          "source_url": "https://checkout.breakout.com.pk/products/k26fsh31-olv",
-          "name": "BOYS SOCK-STYLE SNEAKERS",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP04aa43881cb5",
-          "source_url": "https://checkout.breakout.com.pk/products/k26fsh30-bge",
-          "name": "GIRLS BUCKLED CLOG SNEAKERS",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP482027f6f316",
-          "source_url": "https://checkout.breakout.com.pk/products/k26fsh29-brn",
-          "name": "BOYS SUEDE LACE-UP SNEAKERS",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP017301b83932",
-          "source_url": "https://checkout.breakout.com.pk/products/k26fsh22-bge",
-          "name": "GIRLS VELVET EMBROIDERED BALLET FLATS",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPca74ffb05d72",
-          "source_url": "https://checkout.breakout.com.pk/products/k26fsh20-pnk",
-          "name": "GIRLS COLOR BLOCK TRAINERS",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP393b225cdbc2",
-          "source_url": "https://checkout.breakout.com.pk/products/k26fsh12-slv",
-          "name": "GIRLS DOUBLE STRAP BALLET FLATS",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPb303aa6ee6ef",
-          "source_url": "https://checkout.breakout.com.pk/products/k26fsh12-rsg",
-          "name": "GIRLS DOUBLE STRAP BALLET FLATS",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPbafd08b670b2",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu355-say",
-          "name": "GIRLS STRIPED MICKEY SWEATSHIRT",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP2e58a3ebcdf6",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu354-bnw",
-          "name": "GIRLS BOXY PRINT TEXTURED SWEATSHIRT",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP8761edefa4b9",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu353-sgn",
-          "name": "GIRLS APPLIQUE TEXT BUBBLE SWEATSHIRT",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP31779ee62098",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu317-pch",
-          "name": "GIRLS GRAPHIC PRINT HOODED DRESS",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP38a15abcec1f",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu258-mlt",
-          "name": "BOYS COLOR BLOCK SWEATSHIRT",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP35f2d3a3e495",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu242-brn",
-          "name": "BOYS MOCK PLACKET TEXTURED SWEATSHIRT",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPa3553d3d2bb1",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu241-blk",
-          "name": "BOYS CARGO POCKET SWEATSHIRT",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPc9cb9bdb2c06",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu224-grn",
-          "name": "BOYS QUILTED DETAIL ZIP UP HOODIE",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPa8f6bcc5ebfb",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu223-brn",
-          "name": "BOYS ZIP UP HOODED TOP",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP86bdf18d5ad4",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu222-npl",
-          "name": "BOYS CONTRAST PANEL HOODED TOP",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPd5a2ed34e4d7",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wj912-blu",
-          "name": "GIRLS CORDUROY BOMBER JACKET",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP7ebaf6e792d1",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wj910-ofw",
-          "name": "GIRLS BOXY WOOL BLEND JACKET",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP1d92da5ce3af",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wj607-nvy",
-          "name": "BOYS SLEEVELESS PUFFER JACKET",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP9d779bc656e4",
-          "source_url": "https://checkout.breakout.com.pk/products/k26fb946-blk",
-          "name": "GIRLS LOOSE FIT DOUBLE POCKET PANTS",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP407a0732d610",
-          "source_url": "https://checkout.breakout.com.pk/products/25wjk286-brn",
-          "name": "VINTAGE FAUX LEATHER JACKET",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP5400d46df5af",
-          "source_url": "https://checkout.breakout.com.pk/products/25wwc533-olv",
-          "name": "OVERSIZED LONG COAT",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP13588e520ff4",
-          "source_url": "https://checkout.breakout.com.pk/products/25wup256-bge",
-          "name": "ZIP-UP HOODIE",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP3024e4c34ac8",
-          "source_url": "https://checkout.breakout.com.pk/products/25wbc036-blu",
-          "name": "BERET HAT",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP6e5e4ace39c7",
-          "source_url": "https://checkout.breakout.com.pk/products/25wbc036-blk",
-          "name": "BERET HAT",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP056bb4e3d7c5",
-          "source_url": "https://checkout.breakout.com.pk/products/25wbc044-rst",
-          "name": "WOOL BEANIE WITH INSIDE FUR",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPf2bd36122c6b",
-          "source_url": "https://checkout.breakout.com.pk/products/25wbc044-bro",
-          "name": "WOOL BEANIE WITH INSIDE FUR",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP6117db39657b",
-          "source_url": "https://checkout.breakout.com.pk/products/25wbc037-bge",
-          "name": "BERET HAT",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP8df462d033c4",
-          "source_url": "https://checkout.breakout.com.pk/products/25wgc028-rst",
-          "name": "PLAIN BEANIE",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP9a8589bf4050",
-          "source_url": "https://checkout.breakout.com.pk/products/25wgc027-rst",
-          "name": "BRUSHED BEANIE",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP458f4bfed2cd",
-          "source_url": "https://checkout.breakout.com.pk/products/25wgc027-blk",
-          "name": "BRUSHED BEANIE",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPd3094740f3ae",
-          "source_url": "https://checkout.breakout.com.pk/products/25wbc049-gry",
-          "name": "WOOL BEANIE WITH INSIDE FUR",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP37d109a11e33",
-          "source_url": "https://checkout.breakout.com.pk/products/k25ws300-pnk",
-          "name": "GIRLS DROP SHOULDER CABLE KNIT SWEATER",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP393c76f90a05",
-          "source_url": "https://checkout.breakout.com.pk/products/k25ws302-pnk",
-          "name": "GIRLS SPECIAL YARN BEADED SWEATER",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPe91b9c5c4cc6",
-          "source_url": "https://checkout.breakout.com.pk/products/k26ws509-pbr",
-          "name": "GIRLS JACQUARD KNIT SWEATER",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP9e376fe6165c",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu339-pnk",
-          "name": "GIRLS PRINTED TEXT HOODIE",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP1a70e14fbd87",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu306-nvy",
-          "name": "GIRLS CONTRAST TRIM SPORTY ZIPPER HOOD",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPd8d2ff0275ff",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu255-olv",
-          "name": "BOYS SLOGAN PRINT SWEATSHIRT",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP39742ca8d145",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu240-ofw",
-          "name": "BOYS RAGLAN SLEEVE LA SWEATSHIRT",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPac80152c1a6d",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu221-blu",
-          "name": "BOYS RAGLAN SLEEVE HOODED TOP",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP95899fa62064",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu219-olv",
-          "name": "BOYS CARGO POCKET HOODED TOP",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP9046f9f0a845",
-          "source_url": "https://checkout.breakout.com.pk/products/k26ws526-bnw",
-          "name": "GIRLS STRIPED FEATHER YARN SWEATER",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP4d84fd1dd8cf",
-          "source_url": "https://checkout.breakout.com.pk/products/k26ws525-mec",
-          "name": "GIRLS STRIPED FEATHER YARN SWEATER",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP563f878fcfd1",
-          "source_url": "https://checkout.breakout.com.pk/products/k26ws524-red",
-          "name": "GIRLS JACQUARD OPEN KNIT SWEATER",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPe1846b0aed14",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wj906-sgg",
-          "name": "GIRLS GLITTER WOOL BOMBER JACKET",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPa3315d8f5ba4",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wj906-rst",
-          "name": "GIRLS GLITTER WOOL BOMBER JACKET",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP02c7b76485f5",
-          "source_url": "https://checkout.breakout.com.pk/products/k26fsc39-mul",
-          "name": "BOYS SOCKS",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPfbc9f6a83b8d",
-          "source_url": "https://checkout.breakout.com.pk/products/k26fsc36-pwh",
-          "name": "GIRLS TURN DOWN CUFF ANKLE SOCKS",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPf3a533eb5400",
-          "source_url": "https://checkout.breakout.com.pk/products/k26fsc34-ypl",
-          "name": "GIRLS STRAWBERRY SOCKS",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP88e9fab89c78",
-          "source_url": "https://checkout.breakout.com.pk/products/k26fs102-omt",
-          "name": "GIRLS SOCKS",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP1864c94458ea",
-          "source_url": "https://checkout.breakout.com.pk/products/k26fs101-pwh",
-          "name": "GIRLS STITCH PRINTED SOCKS",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP1e3ed47c856c",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu338-blu",
-          "name": "GIRLS POLO SWEATSHIRT",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPf2a62ccc66db",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu332-dkh",
-          "name": "GIRLS BOW PRINT SWEATSHIRT",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP0fa538a44ee9",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu305-gre",
-          "name": "GIRLS HELLO KITTY ZIPPER HOOD",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPbe36653a61b6",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu304-wht",
-          "name": "GIRLS LOBSTER GRAPHIC ZIPPER HOOD",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP7906242d8105",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu254-nvy",
-          "name": "BOYS CONTRAST PANEL SWEATSHIRT",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP66934d658491",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu239-nvy",
-          "name": "BOYS CONTRAST PANEL SWEATSHIRT",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPbc6260a90f7f",
-          "source_url": "https://checkout.breakout.com.pk/products/k26fgw71-brn",
-          "name": "GIRLS ANALOG WATCH",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP61d01805843d",
-          "source_url": "https://checkout.breakout.com.pk/products/k26fbw90-blk",
-          "name": "BOYS WATCH",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPe6890c5cbb23",
-          "source_url": "https://checkout.breakout.com.pk/products/k26fb963-ibe",
-          "name": "GIRLS BASIC TIGHTS",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP75c73dba94b3",
-          "source_url": "https://checkout.breakout.com.pk/products/26wup527-sbl",
-          "name": "EMBROIDERED OVERSIZED HOODIE",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP6001a3100873",
-          "source_url": "https://checkout.breakout.com.pk/products/26wup526-pnk",
-          "name": "BASIC CROPPED HOODIE",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP81e8bdd7625b",
-          "source_url": "https://checkout.breakout.com.pk/products/26wup526-grn",
-          "name": "BASIC CROPPED HOODIE",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPdbd9f5d2ac16",
-          "source_url": "https://checkout.breakout.com.pk/products/26wup525-brn",
-          "name": "EMBROIDERED CROPPED HOODIE",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPe5c5a5465065",
-          "source_url": "https://checkout.breakout.com.pk/products/26wup266-stn",
-          "name": "RAGLAN SLEEVE SWEATSHIRT",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP2a6b418a3061",
-          "source_url": "https://checkout.breakout.com.pk/products/26wup266-blk",
-          "name": "RAGLAN SLEEVE SWEATSHIRT",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP6c74e4b2240b",
-          "source_url": "https://checkout.breakout.com.pk/products/k26wu337-lmy",
-          "name": "GIRLS BOXY FIT SPORTY GRAPHIC SWEATSHIRT",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP98435ef6e635",
-          "source_url": "https://checkout.breakout.com.pk/products/26wsf009-gry",
-          "name": "SCARVES",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPe2ff023a579e",
-          "source_url": "https://checkout.breakout.com.pk/products/26wsf005-red",
-          "name": "SCARVES",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP8df0af51060e",
-          "source_url": "https://checkout.breakout.com.pk/products/26wsf005-gry",
-          "name": "SCARVES",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP5d31d355052a",
-          "source_url": "https://checkout.breakout.com.pk/products/26wjk507-brg",
-          "name": "CORDUROY JACKET WITH ELASTICATED HEM",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPcd16026fa8ff",
-          "source_url": "https://checkout.breakout.com.pk/products/26wjk507-bge",
-          "name": "CORDUROY JACKET WITH ELASTICATED HEM",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP54e231441645",
-          "source_url": "https://checkout.breakout.com.pk/products/26wjk506-brn",
-          "name": "FAUX LEATHER BOMBER JACKET",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPea0f92182b54",
-          "source_url": "https://checkout.breakout.com.pk/products/26wjk506-blk",
-          "name": "FAUX LEATHER BOMBER JACKET",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP7d175c2a3dbc",
-          "source_url": "https://checkout.breakout.com.pk/products/26wjk255-gry",
-          "name": "DENIM JACKET",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP71e122712b86",
-          "source_url": "https://checkout.breakout.com.pk/products/26wfs523-bba",
-          "name": "GLITCH EFFECT CARDIGAN",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP5abb0b87ef79",
-          "source_url": "https://checkout.breakout.com.pk/products/26wfs523-bbl",
-          "name": "GLITCH EFFECT CARDIGAN",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP16e343f7bc77",
-          "source_url": "https://checkout.breakout.com.pk/products/26wfs520-cml",
-          "name": "EMBELLISHED CARDIGAN",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP1f30d1d494f0",
-          "source_url": "https://checkout.breakout.com.pk/products/26wfs520-blk",
-          "name": "EMBELLISHED CARDIGAN",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP40e810bd4177",
-          "source_url": "https://checkout.breakout.com.pk/products/26wfs264-brn",
-          "name": "MOCK NECK SWEATER",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP46051941485e",
-          "source_url": "https://checkout.breakout.com.pk/products/26wfs264-blk",
-          "name": "MOCK NECK SWEATER",
-          "issues": [
-            "Description lacks enough product-specific content for review"
+            "Primary product type and Category disagree: trousers"
           ]
         }
       ],
-      "incomplete_products_count": 482,
-      "incomplete_products_truncated": true,
-      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/breakout-incomplete-products/6f3a4937ac97c119/manifest.json",
-      "original_source_sha256": "baac9e2b7e77d1ab81eebe18a3d7ae8b7e2b4ff97d36c8b095968b99e3d8071e",
+      "details_truncated": false,
+      "workbook_sha256": "96e48bf1a0079a5fb12a64ee2693ee0613f8fa76c8911b75aa05f44eb11473b5",
+      "checked_utc": "2026-11-08T17:41:37.289689+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "incomplete_products_excluded": [
+        {
+          "product_id": "CP7886cd2117c4",
+          "source_url": "https://checkout.breakout.com.pk/products/26fmd423-gry",
+          "name": "WIDE LEG FIT CARGO DENIM",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb7bca845a74b",
+          "source_url": "https://checkout.breakout.com.pk/products/k26fd760-lbl",
+          "name": "GIRLS PRINTED DENIM",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa6c8242d36fd",
+          "source_url": "https://checkout.breakout.com.pk/products/26fwt384-blk",
+          "name": "EMBROIDERED BUTTON DOWN DRESS",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP80f596b30f91",
+          "source_url": "https://checkout.breakout.com.pk/products/26fmd298-blu",
+          "name": "ORIGINAL STRAIGHT FIT CARGO DENIM",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8db10112ce55",
+          "source_url": "https://checkout.breakout.com.pk/products/k26fd761-blu",
+          "name": "GIRLS APPLIQUE DENIM",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8858b70a1231",
+          "source_url": "https://checkout.breakout.com.pk/products/k26fb652-lbl",
+          "name": "BOYS 3-QUARTER CARGO DENIM",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd0d562e15c27",
+          "source_url": "https://checkout.breakout.com.pk/products/26wup225-dpu",
+          "name": "CLOUD FEEL MOCK NECK ZIPPER",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPae1ba2104bb6",
+          "source_url": "https://checkout.breakout.com.pk/products/26wup225-blu",
+          "name": "CLOUD FEEL MOCK NECK ZIPPER",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc6c3cc04ce7d",
+          "source_url": "https://checkout.breakout.com.pk/products/26fhw266-snd",
+          "name": "BOXY FIT RESORT COLLAR JACQUARD OVERSHIRT",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1b2b8471057a",
+          "source_url": "https://checkout.breakout.com.pk/products/26fhw266-ofw",
+          "name": "BOXY FIT RESORT COLLAR JACQUARD OVERSHIRT",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9996d64ef67a",
+          "source_url": "https://checkout.breakout.com.pk/products/26fht268-stn",
+          "name": "RELAXED FIT HENLEY",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb72b4e3d0b0c",
+          "source_url": "https://checkout.breakout.com.pk/products/26fht268-brn",
+          "name": "RELAXED FIT HENLEY",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9e0f36340048",
+          "source_url": "https://checkout.breakout.com.pk/products/26fnt374-red",
+          "name": "TEXTURED BUTTON-DOWN TEE",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP6a01eaecb101",
+          "source_url": "https://checkout.breakout.com.pk/products/25fsh085-blk",
+          "name": "CHUNKY BOAT SHOE",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7ac81ce29f27",
+          "source_url": "https://checkout.breakout.com.pk/products/6cswf983-llc",
+          "name": "LILAC AIR",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc5cfffd0ddfa",
+          "source_url": "https://checkout.breakout.com.pk/products/6bssh190-khk",
+          "name": "GLADIATOR WEDGES",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP69a2f2187ff9",
+          "source_url": "https://checkout.breakout.com.pk/products/6cswf982-yel",
+          "name": "PETAL GLOW",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "incomplete_products_count": 17,
+      "incomplete_products_truncated": false,
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/breakout-incomplete-products/8f1d44c47a5b0201/manifest.json",
+      "original_source_sha256": "9a760ddf48487c17a9dc5c9fef1dca884f4a399ecb9dc257d2bf265178b89b41",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-08T17:41:39.211308+00:00",
+        "updated_utc": "2026-11-08T17:41:39.211308+00:00",
+        "next_source_check_due_utc": "2026-11-08T17:56:39.211308+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Primary product type and Category disagree: computer mouse",
+          "Primary product type and Category disagree: hoodie",
+          "Primary product type and Category disagree: jeans",
+          "Primary product type and Category disagree: trousers"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
-      "description_repairs_count": 254,
+      "description_repairs_count": 161,
       "description_repairs_examples": [
-        {
-          "product_id": "CPed0658a272ca",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP7fb1550932ea",
-          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP3ac34053bdf1",
-          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP33ca2621fc3b",
-          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP652707317e5c",
-          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
-          "repair_kind": "description"
-        },
         {
           "product_id": "CP165bd062e256",
           "issue": "Added exact identity-matched public merchant object type; all original details retained.",
@@ -14332,31 +13734,53 @@
           "repair_kind": "description"
         },
         {
-          "product_id": "CP1efb160460b4",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP9afa2542ebbe",
+          "product_id": "CP3a32f05eb1fe",
           "issue": "Added exact identity-matched public merchant object type; all original details retained.",
           "repair_kind": "description"
         },
         {
-          "product_id": "CP7886cd2117c4",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
+          "product_id": "CPd43b8b88feaf",
+          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP1a08741de621",
+          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP071ae807707d",
+          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP5e6c8d8b45c2",
+          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP9b1d399dfece",
+          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP6bc5d48cfb1d",
+          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
+          "repair_kind": "description"
+        },
+        {
+          "product_id": "CP4c1606fffa68",
+          "issue": "Added exact identity-matched public merchant object type; all original details retained.",
           "repair_kind": "description"
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41811343293",
-      "source_artifact": 13322082163,
-      "source_sha256": "baac9e2b7e77d1ab81eebe18a3d7ae8b7e2b4ff97d36c8b095968b99e3d8071e",
+      "source_run": "42490464069",
+      "source_artifact": 13626244232,
+      "source_sha256": "9a760ddf48487c17a9dc5c9fef1dca884f4a399ecb9dc257d2bf265178b89b41",
       "description_style_version": "customer-copy-v3",
-      "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "blocked",
-      "audit_status": "pass",
-      "error": "Duplicate Drive filenames require identity review",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/breakout/baac9e2b7e77d1ab/manifest.json"
+      "refresh_generation": "refresh20261108-92345025",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/breakout/9a760ddf48487c17/manifest.json"
     },
     "Saya": {
       "name": "804 Audit",
@@ -17002,7 +16426,7 @@
     "42490455380": "42490455380:13626343169:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490457015": "42490457015:13625930504:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490458596": "42490458596:13621778193:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
-    "42490460504": "42490460504:13623135752:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
+    "42490460504": "42490460504:13627067218:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490462162": "42490462162:13625865780:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490465739": "42490465739:13624475326:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490467507": "42490467507:13622878494:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
@@ -17100,8 +16524,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Sana Safinaz",
-  "audit804_progress_utc": "2026-11-08T17:40:39.626191+00:00",
+  "audit804_last_store": "Breakout",
+  "audit804_progress_utc": "2026-11-08T17:41:39.212333+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
