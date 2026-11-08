@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-08T15:11:00.623227+00:00",
+  "run_id": "42490432361",
+  "attempt": "1",
+  "source_commit": "823a612433613b60122f2132d777e0d09430227b",
+  "status": "complete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 2192.5,
+  "stores": [
+    {
+      "name": "Islamabad Tea",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "522ef8b7890d7b28",
+      "products": 29,
+      "variants": 29,
+      "http_statuses": {
+        "200": 39,
+        "429": 1
+      },
+      "network_seconds": 23.1,
+      "max_response_seconds": 2.5,
+      "cache_events": 125
+    },
+    {
+      "name": "Seran",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_403",
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "522ef8b7890d7b28",
+      "products": 287,
+      "variants": 809,
+      "http_statuses": {
+        "200": 293,
+        "403": 2
+      },
+      "network_seconds": 708.2,
+      "max_response_seconds": 3.0,
+      "cache_events": 609
+    }
+  ]
+}
