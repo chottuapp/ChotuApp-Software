@@ -1,35 +1,36 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-08T16:57:08.215805+00:00",
-  "run_id": "42490483803",
+  "generated_utc": "2026-11-08T17:00:01.337447+00:00",
+  "run_id": "42490477931",
   "attempt": "1",
   "source_commit": "823a612433613b60122f2132d777e0d09430227b",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 268.6,
+  "elapsed_seconds": 943.9,
   "stores": [
     {
-      "name": "Babysaurus",
+      "name": "Fresh Basket",
       "status": "done",
       "review_required": true,
       "issue_codes": [
         "HTTP_429",
-        "RATE_LIMIT"
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "522ef8b7890d7b28",
-      "products": 40,
-      "variants": 185,
+      "products": 198,
+      "variants": 209,
       "http_statuses": {
-        "200": 54,
+        "200": 207,
         "429": 1
       },
-      "network_seconds": 58.3,
+      "network_seconds": 418.8,
       "max_response_seconds": 2.4,
-      "cache_events": 132
+      "cache_events": 457
     },
     {
-      "name": "Deflexxi",
+      "name": "The Glossy Quill",
       "status": "done",
       "review_required": true,
       "issue_codes": [
@@ -37,15 +38,15 @@
         "RATE_LIMIT"
       ],
       "software_revision": "522ef8b7890d7b28",
-      "products": 50,
-      "variants": 192,
+      "products": 56,
+      "variants": 91,
       "http_statuses": {
-        "200": 61,
+        "200": 90,
         "429": 1
       },
-      "network_seconds": 73.2,
+      "network_seconds": 136.6,
       "max_response_seconds": 2.5,
-      "cache_events": 164
+      "cache_events": 157
     }
   ]
 }
