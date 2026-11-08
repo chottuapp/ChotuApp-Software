@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-08T16:29:35.569104+00:00",
-  "run_id": "42490437439",
+  "generated_utc": "2026-11-08T16:42:33.006250+00:00",
+  "run_id": "42490427155",
   "attempt": "1",
   "source_commit": "823a612433613b60122f2132d777e0d09430227b",
-  "status": "complete",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 6871.7,
+  "elapsed_seconds": 7660.6,
   "stores": [
     {
-      "name": "Nisa Naturals",
+      "name": "Tawakkal Fabrics",
       "status": "done",
       "review_required": true,
       "issue_codes": [
@@ -18,30 +18,32 @@
         "RATE_LIMIT"
       ],
       "software_revision": "522ef8b7890d7b28",
-      "products": 53,
-      "variants": 53,
+      "products": 1509,
+      "variants": 3668,
       "http_statuses": {
-        "200": 79,
-        "429": 1
+        "200": 1664
       },
-      "network_seconds": 113.2,
-      "max_response_seconds": 2.6,
-      "cache_events": 164
+      "network_seconds": 3521.7,
+      "max_response_seconds": 7.9,
+      "cache_events": 8687
     },
     {
-      "name": "Sapphire",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
+      "name": "Stylo",
+      "status": "source_paused",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
       "software_revision": "522ef8b7890d7b28",
-      "products": 640,
-      "variants": 1764,
       "http_statuses": {
-        "200": 4533
+        "200": 1162,
+        "429": 6
       },
-      "network_seconds": 6335.7,
-      "max_response_seconds": 2.7,
-      "cache_events": 0
+      "network_seconds": 1736.2,
+      "max_response_seconds": 3.1,
+      "cache_events": 5410
     }
   ]
 }
