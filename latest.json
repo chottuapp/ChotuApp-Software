@@ -1,49 +1,47 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-08T18:02:38.244098+00:00",
-  "run_id": "42490471850",
+  "generated_utc": "2026-11-08T18:02:44.089680+00:00",
+  "run_id": "42490475726",
   "attempt": "1",
   "source_commit": "823a612433613b60122f2132d777e0d09430227b",
-  "status": "incomplete",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 9932.3,
+  "elapsed_seconds": 4740.9,
   "stores": [
     {
-      "name": "Rios",
-      "status": "source_paused",
-      "review_required": false,
-      "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "522ef8b7890d7b28",
-      "http_statuses": {
-        "200": 2902,
-        "429": 4
-      },
-      "network_seconds": 6456.8,
-      "max_response_seconds": 2.7,
-      "cache_events": 8151
-    },
-    {
-      "name": "Mala",
+      "name": "Paklap",
       "status": "done",
       "review_required": true,
       "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT"
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "522ef8b7890d7b28",
-      "products": 87,
-      "variants": 236,
+      "products": 1653,
+      "variants": 1653,
       "http_statuses": {
-        "200": 130
+        "200": 1696
       },
-      "network_seconds": 220.3,
-      "max_response_seconds": 2.4,
-      "cache_events": 217
+      "network_seconds": 1209.6,
+      "max_response_seconds": 6.0,
+      "cache_events": 1
+    },
+    {
+      "name": "House of Tools",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "522ef8b7890d7b28",
+      "products": 1354,
+      "variants": 1354,
+      "http_statuses": {
+        "200": 1386
+      },
+      "network_seconds": 1072.9,
+      "max_response_seconds": 1.9,
+      "cache_events": 0
     }
   ]
 }
