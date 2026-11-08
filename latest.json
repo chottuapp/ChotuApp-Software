@@ -1,34 +1,35 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-08T14:55:55.369051+00:00",
-  "run_id": "42490458596",
+  "generated_utc": "2026-11-08T14:58:54.537433+00:00",
+  "run_id": "42490449857",
   "attempt": "1",
   "source_commit": "823a612433613b60122f2132d777e0d09430227b",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 1004.4,
+  "elapsed_seconds": 1434.4,
   "stores": [
     {
-      "name": "Golden Rose",
+      "name": "Bata",
       "status": "done",
       "review_required": true,
       "issue_codes": [
         "HTTP_429",
-        "RATE_LIMIT"
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "522ef8b7890d7b28",
-      "products": 142,
-      "variants": 1138,
+      "products": 93,
+      "variants": 506,
       "http_statuses": {
-        "200": 200
+        "200": 125
       },
-      "network_seconds": 393.6,
-      "max_response_seconds": 2.6,
-      "cache_events": 361
+      "network_seconds": 211.2,
+      "max_response_seconds": 3.6,
+      "cache_events": 270
     },
     {
-      "name": "Zyren",
+      "name": "Aerosoft Studio",
       "status": "done",
       "review_required": true,
       "issue_codes": [
@@ -36,15 +37,14 @@
         "RATE_LIMIT"
       ],
       "software_revision": "522ef8b7890d7b28",
-      "products": 176,
-      "variants": 1207,
+      "products": 266,
+      "variants": 1586,
       "http_statuses": {
-        "200": 221,
-        "429": 1
+        "200": 319
       },
-      "network_seconds": 430.8,
+      "network_seconds": 685.4,
       "max_response_seconds": 2.5,
-      "cache_events": 386
+      "cache_events": 641
     }
   ]
 }
