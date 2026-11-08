@@ -3571,7 +3571,8 @@
     "Breakout": "source:9a760ddf48487c17a9dc5c9fef1dca884f4a399ecb9dc257d2bf265178b89b41:Breakout:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "Afrozeh": "source:d45ef33c8cd7e266546f76ea15c376912f86e9cd36553ae10897b99113f8e72e:Afrozeh:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "Essence": "source:f829588cfdce46314a12b4d7bfbd038856f255e23a5cd9adc6f881d7a95823ff:Essence:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
-    "VNS Collection": "source:a405ada33b75dbb736f68396a910de9d1991b046a4daff7694b8c6735f567548:VNS Collection:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
+    "VNS Collection": "source:a405ada33b75dbb736f68396a910de9d1991b046a4daff7694b8c6735f567548:VNS Collection:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
+    "The Paper Worm": "source:358dff62cefdce4155375b3a748d1a20033222ec0a783350f4991e1bf8e42ff7:The Paper Worm:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -19578,6 +19579,990 @@
       "audit_status": "pass",
       "error": "Duplicate Drive filenames require identity review",
       "held_input": "inputs/fresh804-20261026-5d42fe35/shoe-planet/f066226ae824b74a/manifest.json"
+    },
+    "The Paper Worm": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "The Paper Worm",
+      "shop_code": "SE10084",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 160,
+      "findings_count": 5,
+      "findings": [
+        {
+          "product_id": "CP005baf1c1db2",
+          "name": "Panda-Themed Stationery Set with LED Lamp",
+          "source_url": "https://www.thepaperworm.com/products/panda-themed-stationery-set-with-led-lamp",
+          "issues": [
+            "Primary product type and Category disagree: laptop"
+          ]
+        },
+        {
+          "product_id": "CP31ddb1168cb1",
+          "name": "A5 Blank White Pages Journal",
+          "source_url": "https://www.thepaperworm.com/products/a5-blank-white-pages-journal",
+          "issues": [
+            "Primary product type and Category disagree: laptop"
+          ]
+        },
+        {
+          "product_id": "CPc8be92674351",
+          "name": "Desk Organized Workspace Pen Holder",
+          "source_url": "https://www.thepaperworm.com/products/desk-organized-workspace-pen-holder",
+          "issues": [
+            "Primary product type and Category disagree: makeup brush"
+          ]
+        },
+        {
+          "product_id": "CP36759126a5ba",
+          "name": "3D Cartoon Pen Holder Desk Organizer",
+          "source_url": "https://www.thepaperworm.com/products/cartoon-pen-holder-desk-organizer",
+          "issues": [
+            "Primary product type and Category disagree: makeup brush"
+          ]
+        },
+        {
+          "product_id": "CPe7fbb8ac86b3",
+          "name": "Black & White \u201cBe Fearless\u201d Notebooks Set",
+          "source_url": "https://www.thepaperworm.com/products/black-white-be-fearless-notebooks-set",
+          "issues": [
+            "Primary product type and Category disagree: laptop"
+          ]
+        }
+      ],
+      "details_truncated": false,
+      "workbook_sha256": "400f72ce0666dec683e25e7e9294224174fcff232336622054b9d228e4d21246",
+      "checked_utc": "2026-11-08T18:33:55.139947+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "incomplete_products_excluded": [
+        {
+          "product_id": "CP9bda56765b6a",
+          "source_url": "https://www.thepaperworm.com/products/compass-geometry-set-box",
+          "name": "Compass & Geometry Set Box",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP527af8f9b7a9",
+          "source_url": "https://www.thepaperworm.com/products/ocean-world-plastic-sipper-water-bottle-copy",
+          "name": "Ocean World Plastic Water Bottle and Sipper",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP6cc29849ea5b",
+          "source_url": "https://www.thepaperworm.com/products/kawaii-school-supplies-bundle-with-pencil-pouch",
+          "name": "Kawaii School Supplies Bundle with Pencil Pouch",
+          "issues": [
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CPbcb1efb3234b",
+          "source_url": "https://www.thepaperworm.com/products/better-mood-every-day-blank-pages-notepad-with-pen",
+          "name": "Better Mood Every Day Blank Pages Notepad With Pen",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd5fd1d64e2bb",
+          "source_url": "https://www.thepaperworm.com/products/soft-cover-pocket-size-blank-pages-notepad-with-pen",
+          "name": "Soft Cover Pocket Size Blank Pages Notepad With Pen",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe9262470474d",
+          "source_url": "https://www.thepaperworm.com/products/magical-wizard-themed-stationery-set",
+          "name": "Magical Wizard Harry Potter Themed Stationery Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPbddb27137388",
+          "source_url": "https://www.thepaperworm.com/products/owala-premium-insulated-freesip-water-bottle-minor-fault",
+          "name": "OWALA Insulated Freesip Water Bottle - Minor Fault",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP49fc58ed87cb",
+          "source_url": "https://www.thepaperworm.com/products/owala-premium-insulated-water-bottle-minor-fault",
+          "name": "Assorted Owala Insulated Water Bottle - Minor Fault",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc7f3be83817c",
+          "source_url": "https://www.thepaperworm.com/products/mine-craft-owala-freesip-water-bottle-minor-fault",
+          "name": "Mine Craft Owala Freesip Water Bottle - Minor Fault",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP678d6c285a2b",
+          "source_url": "https://www.thepaperworm.com/products/led-acrylic-luminous-board-with-markers",
+          "name": "LED Acrylic Luminous Board with Markers",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb3460bf7b717",
+          "source_url": "https://www.thepaperworm.com/products/classic-black-hardcover-notebook-with-elastic-closure",
+          "name": "Classic Black Hardcover Notebook with Elastic Closure",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CPca6794526827",
+          "source_url": "https://www.thepaperworm.com/products/creative-aircraft-shaped-retractable-ballpoint-pen",
+          "name": "Creative Aircraft-Shaped Retractable Ballpoint Pen",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP68027b9fbe52",
+          "source_url": "https://www.thepaperworm.com/products/magnet-planner-with-marker",
+          "name": "Magnet Planner with Marker",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP6414a3002008",
+          "source_url": "https://www.thepaperworm.com/products/72-pcs-dual-tip-watercolor-brush-pen",
+          "name": "72 Pcs Dual Tip Watercolor Brush Pen",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7cad2ed55706",
+          "source_url": "https://www.thepaperworm.com/products/fineliner-pens-set-of-60-colors",
+          "name": "60 Colors Fineliner Pens Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPeb8c5ee03232",
+          "source_url": "https://www.thepaperworm.com/products/refillable-watercolor-brush-pen-set",
+          "name": "Refillable Watercolor Brush Pen Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP318294ba472a",
+          "source_url": "https://www.thepaperworm.com/products/new-fountain-pen-style-calligraphy-metal-brush-pen-1",
+          "name": "New Fountain Pen Style Calligraphy Metal Brush Pen",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP259138252df2",
+          "source_url": "https://www.thepaperworm.com/products/luxury-morandi-metal-calligraphy-brush-pen",
+          "name": "Luxury Morandi Metal Calligraphy Brush Pen",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa3cdfcb85cfd",
+          "source_url": "https://www.thepaperworm.com/products/large-capacity-water-storage-brush-pen-set-of-6",
+          "name": "Large Capacity Water Storage Brush Pen - Set of 6",
+          "issues": [
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CPb7d87a2154a0",
+          "source_url": "https://www.thepaperworm.com/products/ultra-fine-paint-brushes-set-of-12",
+          "name": "Ultra-Fine Paint Brushes - Set of 11",
+          "issues": [
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CPcfbdc541646d",
+          "source_url": "https://www.thepaperworm.com/products/cute-whale-shaped-pencil-pouch",
+          "name": "Cute Fish Pencil Pouch",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP12ba123f0763",
+          "source_url": "https://www.thepaperworm.com/products/owala-freesip-water-bottle-mine-craft",
+          "name": "Owala Freesip Water Bottle - Mine Craft",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPcbd6a3b8136b",
+          "source_url": "https://www.thepaperworm.com/products/3-pcs-motivational-water-bottle-set",
+          "name": "3-Pcs Motivational Water Bottle Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8b3e8749dcdf",
+          "source_url": "https://www.thepaperworm.com/products/orthopedic-series-doctors-bone-ballpoint-pen-set-of-5",
+          "name": "Orthopedic Series Doctors Bone Ballpoint Pen - Set of 5",
+          "issues": [
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CP1683cd649ee2",
+          "source_url": "https://www.thepaperworm.com/products/posca-acrylic-paint-markers-set",
+          "name": "POSCA Acrylic Paint Markers Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa54250d0a545",
+          "source_url": "https://www.thepaperworm.com/products/touch-double-head-alcohol-markers",
+          "name": "Touch Double Head Alcohol Markers",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe019b97a58f3",
+          "source_url": "https://www.thepaperworm.com/products/floral-design-thermal-water-bottle-with-handle",
+          "name": "Floral Design Thermal Water Bottle with Handle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7ed795589b74",
+          "source_url": "https://www.thepaperworm.com/products/silicone-sports-retractable-water-bottle-2",
+          "name": "Silicone Sports Retractable Water Bottle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9652d8164909",
+          "source_url": "https://www.thepaperworm.com/products/astronaut-stationery-set-turqoise",
+          "name": "Astronaut Stationery Set Turqoise",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe12321e2263b",
+          "source_url": "https://www.thepaperworm.com/products/astronaut-stationery-set-green",
+          "name": "Astronaut Stationery Set Green",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3b0807c81824",
+          "source_url": "https://www.thepaperworm.com/products/hello-sports-motivational-quote-water-bottle-1",
+          "name": "Hello Sports Motivational Quote Water Bottle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPac29d6c40b7c",
+          "source_url": "https://www.thepaperworm.com/products/portable-gradient-color-sports-water-bottle-with-handle-minor-fault-1",
+          "name": "Portable Gradient Color Sports Water Bottle with Handle - Minor Fault",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7c6dff25e378",
+          "source_url": "https://www.thepaperworm.com/products/sanrio-potbelly-cute-cartoon-water-bottle-blackberryk",
+          "name": "Sanrio Potbelly Cute Cartoon Water Bottle - Blackberry",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0ccb3d459b94",
+          "source_url": "https://www.thepaperworm.com/products/sanrio-potbelly-cute-cartoon-water-bottle-peach",
+          "name": "Sanrio Potbelly Cute Cartoon Water Bottle - Peach",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPae9382138743",
+          "source_url": "https://www.thepaperworm.com/products/stay-hydrated-keep-energy-water-bottle-with-paracord-handle-1",
+          "name": "Stay Hydrated Keep Energy Water Bottle with Paracord Handle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4697952c5631",
+          "source_url": "https://www.thepaperworm.com/products/sports-frosted-water-bottle-2",
+          "name": "Sports Frosted Water Bottle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPcbd888750cf1",
+          "source_url": "https://www.thepaperworm.com/products/bear-bare-gift-bundle-with-water-bottle",
+          "name": "Bear Bare Gift Bundle with Water Bottle",
+          "issues": [
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CP6158a519a8d4",
+          "source_url": "https://www.thepaperworm.com/products/square-loose-leaf-spiral-grid-lined-notebook",
+          "name": "Square Loose Leaf Spiral Grid/Lined Notebook",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CP0f45b9198a69",
+          "source_url": "https://www.thepaperworm.com/products/van-gogh-inspired-art-journal-sketchbook-with-elastic-closure",
+          "name": "Van Gogh Inspired Art Journal Sketchbook with Elastic Closure",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP75df3f8fb8cd",
+          "source_url": "https://www.thepaperworm.com/products/hamster-london-fineliner-pen-set-of-12",
+          "name": "Hamster London - Fineliner Pen Set Of 10",
+          "issues": [
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CPb14674f6c6ad",
+          "source_url": "https://www.thepaperworm.com/products/retro-cityscape-art-sketchbook",
+          "name": "Retro Cityscape Art Sketchbook",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP01e9d364770f",
+          "source_url": "https://www.thepaperworm.com/products/unicorn-shape-pencil-sharpener-copy",
+          "name": "Unicorn Shape Pencil Sharpener",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPfd338a368834",
+          "source_url": "https://www.thepaperworm.com/products/keep-smiling-kneadable-art-erasers",
+          "name": "Keep Smiling Kneadable Art Erasers",
+          "issues": [
+            "Description lacks enough product-specific content for review",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP6f22a10cbecb",
+          "source_url": "https://www.thepaperworm.com/products/keep-smile-paint-brushes-set-of-13",
+          "name": "Keep Smile Paint Brushes - Set of 12",
+          "issues": [
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CPd71be39fb55e",
+          "source_url": "https://www.thepaperworm.com/products/keep-smile-paint-brushes-set-of-12",
+          "name": "Keep Smile Paint Brushes - Set of 12",
+          "issues": [
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CPd33337efad20",
+          "source_url": "https://www.thepaperworm.com/products/romantic-cottagecore-sticker-notebook",
+          "name": "Romantic Cottagecore Sticker Notebook",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CP24305b507b68",
+          "source_url": "https://www.thepaperworm.com/products/harry-potter-magic-wand-ballpoint-pen",
+          "name": "Harry Potter Magic Wand Ballpoint Pen",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8cba94158af6",
+          "source_url": "https://www.thepaperworm.com/products/you-are-my-special-melody-hardcover-journal",
+          "name": "YOU ARE MY SPECIAL MELODY Hardcover Sketchbook",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP926829fce07b",
+          "source_url": "https://www.thepaperworm.com/products/you-are-my-special-melody-hardcover-journal-copy",
+          "name": "Flower Pattern Bush Hardcover Sketchbook",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa7a9a881f3b8",
+          "source_url": "https://www.thepaperworm.com/products/wooden-floral-pattern-rubber-stamps",
+          "name": "Wooden Floral Pattern Rubber Stamps",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP192d01a3bac6",
+          "source_url": "https://www.thepaperworm.com/products/languo-2-0mm-mechanical-pencil-set",
+          "name": "Languo 2.0mm Mechanical Pencil Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc68f5a1503aa",
+          "source_url": "https://www.thepaperworm.com/products/11-pc-premium-mechanical-pencil-set-for-artists",
+          "name": "11 pc Premium Mechanical Pencil Set for Artists",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb7e971370a9a",
+          "source_url": "https://www.thepaperworm.com/products/9-color-purple-shades-gel-pen-set",
+          "name": "9 Color Purple Shades Gel Pen Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd5befe01646d",
+          "source_url": "https://www.thepaperworm.com/products/gradient-round-body-black-ink-gel-pen",
+          "name": "Gradient Round Body Black Ink Gel Pen",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP542fc39d9090",
+          "source_url": "https://www.thepaperworm.com/products/12-color-liquid-acrylic-brush-marker-set",
+          "name": "12-Color Liquid Acrylic Brush Marker Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5cd6ac50cfd3",
+          "source_url": "https://www.thepaperworm.com/products/gold-foil-chocolate-design-erasers",
+          "name": "Gold Foil Chocolate Design Erasers",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP18e6d7f44917",
+          "source_url": "https://www.thepaperworm.com/products/chocolate-bean-eraser-pack",
+          "name": "Chocolate Bean Eraser Pack",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP142973f5ea85",
+          "source_url": "https://www.thepaperworm.com/products/cartoon-design-cover-landscape-sketchbook",
+          "name": "Cartoon Design Cover Landscape Sketchbook",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4210f5942782",
+          "source_url": "https://www.thepaperworm.com/products/creative-potato-chips-shape-eraser-pack",
+          "name": "Creative Potato Chips Shape Eraser Pack",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP80c5e8eed5c1",
+          "source_url": "https://www.thepaperworm.com/products/vintage-landscape-van-gogh-art-hard-cover-sketchbook",
+          "name": "Vintage Landscape Van Gogh Art Hard Cover Sketchbook",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP45edfb1d517f",
+          "source_url": "https://www.thepaperworm.com/products/impressionist-painted-landscape-sketchbook",
+          "name": "Impressionist Painted Landscape Sketchbook",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf1d8512c512c",
+          "source_url": "https://www.thepaperworm.com/products/white-highlight-gel-pen",
+          "name": "White Highlight Gel Pen",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3d383a1a1e13",
+          "source_url": "https://www.thepaperworm.com/products/white-gel-pen-for-highlighter-and-calligraphy",
+          "name": "White Gel Pen Pointer - Set of 12",
+          "issues": [
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CPe5caa6f92277",
+          "source_url": "https://www.thepaperworm.com/products/longue-retro-morandi-color-gel-pen-set",
+          "name": "LONGUE Retro Morandi Color Gel Pen Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc9d14d767bc6",
+          "source_url": "https://www.thepaperworm.com/products/little-prince-clock-theme-spiral-sketchbook",
+          "name": "Little Prince Theme Spiral Sketchbook",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPcc2eae95fd13",
+          "source_url": "https://www.thepaperworm.com/products/van-gogh-monet-art-cover-sketchbook-and-drawing-pad",
+          "name": "Van Gogh Monet Art Cover Sketchbook and Drawing Pad",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP553570537f7a",
+          "source_url": "https://www.thepaperworm.com/products/artistic-painting-cover-spiral-sketch-pad",
+          "name": "Artistic Painting Cover Spiral Sketch Pad",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2f3d45695910",
+          "source_url": "https://www.thepaperworm.com/products/canvas-multiple-compartments-pencil-pouch",
+          "name": "Canvas Multiple Compartments Pencil Pouch",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1c98453171e6",
+          "source_url": "https://www.thepaperworm.com/products/dual-head-long-nib-marker",
+          "name": "Dual Head Long Nib Marker",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPcc0a4e769808",
+          "source_url": "https://www.thepaperworm.com/products/panda-bus-water-bottle-and-sipper",
+          "name": "Panda Bus Water Bottle and Sipper",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd2b6347aa60b",
+          "source_url": "https://www.thepaperworm.com/products/astronaut-space-electric-fan-eraser-set",
+          "name": "Electric fan - Eraser Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP98b3b704abe8",
+          "source_url": "https://www.thepaperworm.com/products/crayola-felt-tip-permanent-markers",
+          "name": "Crayola Felt Tip Permanent Coloring Markers",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc3da303538f1",
+          "source_url": "https://www.thepaperworm.com/products/deli-large-capacity-signature-gel-pen",
+          "name": "Deli Large Capacity Signature Gel Pen",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPdd992cbfaf4d",
+          "source_url": "https://www.thepaperworm.com/products/desktop-plastic-pen-holder-with-silicon-brooches",
+          "name": "Desktop Plastic Pen Holder With Silicon Brooches",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP79c6c3a3b6d9",
+          "source_url": "https://www.thepaperworm.com/products/van-gogh-retro-college-hardcover-sketchbook",
+          "name": "Van Gogh Retro College Soft Cover Sketchbook",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3c31f630fbae",
+          "source_url": "https://www.thepaperworm.com/products/square-metal-mesh-pen-holder",
+          "name": "Square Metal Mesh Pen Holder",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP41a993cdefc3",
+          "source_url": "https://www.thepaperworm.com/products/flower-fairy-vintage-notebook-journal",
+          "name": "Flower Fairy Vintage Notebook Journal",
+          "issues": [
+            "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CP6e0aa0e04750",
+          "source_url": "https://www.thepaperworm.com/products/vincent-van-gogh-inspired-landscape-sketchbook",
+          "name": "Vincent Van Gogh inspired Landscape Sketchbook",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP202b1379ecc4",
+          "source_url": "https://www.thepaperworm.com/products/pastel-glue-pen-craft-tool-set",
+          "name": "Pastel Glue Pen & Craft Tool Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPcbf62162a0af",
+          "source_url": "https://www.thepaperworm.com/products/sanrio-spiral-bound-notebooks-set-of-4",
+          "name": "Sanrio Spiral Bound Notebooks - Set of 4",
+          "issues": [
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CP6d5843b79469",
+          "source_url": "https://www.thepaperworm.com/products/interactive-panda-retractable-gel-pen-set",
+          "name": "Interactive Panda Retractable Gel Pen Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP05670bfdad13",
+          "source_url": "https://www.thepaperworm.com/products/sanrio-kuromi-mechanical-pencils-set",
+          "name": "Sanrio Kuromi Mechanical Pencils Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP794575b8583f",
+          "source_url": "https://www.thepaperworm.com/products/3d-mcqueen-embossed-pencil-pouch-black",
+          "name": "3D McQueen Embossed Pencil Pouch - Black",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9985da5ddcdd",
+          "source_url": "https://www.thepaperworm.com/products/morandi-color-round-sharpener",
+          "name": "Morandi Color Round Sharpener",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4b8ecfd6639e",
+          "source_url": "https://www.thepaperworm.com/products/halftoy-elephants-shape-pencil-sharpener",
+          "name": "Halftoy Elephants Shape Pencil Sharpener",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0d06f8778440",
+          "source_url": "https://www.thepaperworm.com/products/sanrio-plastic-water-bottle-with-double-drinking-mouth",
+          "name": "Sanrio Plastic Water Bottle with Dual Dirnking Mode",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1d55b8a43cf7",
+          "source_url": "https://www.thepaperworm.com/products/swiss-roll-shaped-erasers-set-of-3",
+          "name": "Swiss Roll Shaped Erasers Set of 3",
+          "issues": [
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CP2d0033ac1654",
+          "source_url": "https://www.thepaperworm.com/products/cute-bow-shape-double-hole-pencil-sharpener",
+          "name": "Cute Bow Shape Double Hole Pencil Sharpener",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP129ce4419ff5",
+          "source_url": "https://www.thepaperworm.com/products/creative-curve-drawing-pen-marker-1",
+          "name": "Creative Curve Drawing Pen Marker",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP48ad35dbe5f1",
+          "source_url": "https://www.thepaperworm.com/products/mechanical-pencils-refill-leads-box",
+          "name": "Mechanical Pencils Refill Leads Box",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb1ad5c91a671",
+          "source_url": "https://www.thepaperworm.com/products/assorted-velvet-art",
+          "name": "Assorted Velvet Art Sheet with Mini Markers",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc53bb3634102",
+          "source_url": "https://www.thepaperworm.com/products/power-of-life-large-capacity-water-bottle-1",
+          "name": "Power Of Life Large Capacity Water Bottle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP29faa93a4e88",
+          "source_url": "https://www.thepaperworm.com/products/gradient-1000-ml-water-bottle-with-holder-1",
+          "name": "Gradient 1000 ml Water Bottle with holder",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPceb24c76206c",
+          "source_url": "https://www.thepaperworm.com/products/yes-man-series-mechanical-sketch-pencil",
+          "name": "Yes Man Series Mechanical Sketch Pencil",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP58bf93c13a58",
+          "source_url": "https://www.thepaperworm.com/products/battery-operated-automatic-pencil-sharpener",
+          "name": "Battery Operated Automatic Pencil Sharpner",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2e68ccd8fbfa",
+          "source_url": "https://www.thepaperworm.com/products/active-gradient-plastic-water-bottle",
+          "name": "Active Gradient Plastic Water Bottle with Carry Handle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1ef4d5751254",
+          "source_url": "https://www.thepaperworm.com/products/heart-shape-mechanical-pencil-1",
+          "name": "Heart Shape Mechanical Pencil",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1dc2dcacd26d",
+          "source_url": "https://www.thepaperworm.com/products/marker-and-brush-holder",
+          "name": "Marker and Brush Holder",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP77d8861d34c1",
+          "source_url": "https://www.thepaperworm.com/products/large-capacity-multiple-compartments-pencil-pouch",
+          "name": "Large Capacity Multiple Compartments Pencil Pouch",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb19564d23eaa",
+          "source_url": "https://www.thepaperworm.com/products/morandi-four-piece-flexible-geometry-set",
+          "name": "Morandi Four Piece Flexible Geometry Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "incomplete_products_count": 116,
+      "incomplete_products_truncated": true,
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/the-paper-worm-incomplete-products/2e7cfa7481f616a3/manifest.json",
+      "original_source_sha256": "358dff62cefdce4155375b3a748d1a20033222ec0a783350f4991e1bf8e42ff7",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-08T18:33:56.977070+00:00",
+        "updated_utc": "2026-11-08T18:33:56.977070+00:00",
+        "next_source_check_due_utc": "2026-11-08T18:48:56.977070+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Primary product type and Category disagree: laptop",
+          "Primary product type and Category disagree: makeup brush"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "owner_authorized_exclusions": [
+        {
+          "product_id": "CP1c823502f4e2",
+          "source_url": "https://www.thepaperworm.com/products/celestial-magical-city-hardcover-illustrated-art-journal",
+          "reason": "Owner-locked The Paper Worm: outside school-supplies scope; original source stock unchanged"
+        },
+        {
+          "product_id": "CP1da7f1a82eaf",
+          "source_url": "https://www.thepaperworm.com/products/planets-printed-black-page-journal",
+          "reason": "Owner-locked The Paper Worm: outside school-supplies scope; original source stock unchanged"
+        },
+        {
+          "product_id": "CP2987a8885c31",
+          "source_url": "https://www.thepaperworm.com/products/cosmic-clock-retro-hardcover-journal-1",
+          "reason": "Owner-locked The Paper Worm: outside school-supplies scope; original source stock unchanged"
+        },
+        {
+          "product_id": "CP3b640ebc2225",
+          "source_url": "https://www.thepaperworm.com/products/sanrio-gift-set-with-mini-fan",
+          "reason": "Owner-locked The Paper Worm: outside school-supplies scope; original source stock unchanged"
+        },
+        {
+          "product_id": "CP51d58e4ac68a",
+          "source_url": "https://www.thepaperworm.com/products/unicorn-paint-a-pot-1",
+          "reason": "Owner-locked The Paper Worm: outside school-supplies scope; original source stock unchanged"
+        },
+        {
+          "product_id": "CP6e0dd0393c8a",
+          "source_url": "https://www.thepaperworm.com/products/fantasy-wonderland-gold-foil-cover-designed-journal",
+          "reason": "Owner-locked The Paper Worm: outside school-supplies scope; original source stock unchanged"
+        },
+        {
+          "product_id": "CP82b12234f0c3",
+          "source_url": "https://www.thepaperworm.com/products/cosmic-clock-retro-hardcover-journal-with-cover",
+          "reason": "Owner-locked The Paper Worm: outside school-supplies scope; original source stock unchanged"
+        },
+        {
+          "product_id": "CP833e7e3dd3fd",
+          "source_url": "https://www.thepaperworm.com/products/rosses-n-butterfly-square-designed-pages-planner-journal",
+          "reason": "Owner-locked The Paper Worm: outside school-supplies scope; original source stock unchanged"
+        },
+        {
+          "product_id": "CPab74b2e222a4",
+          "source_url": "https://www.thepaperworm.com/products/b5-flip-up-style-loose-notes-and-notepad",
+          "reason": "Owner-locked The Paper Worm: outside school-supplies scope; original source stock unchanged"
+        },
+        {
+          "product_id": "CPb21b28164b12",
+          "source_url": "https://www.thepaperworm.com/products/365-days-designed-cover-kraft-page-blank-planner-journal",
+          "reason": "Owner-locked The Paper Worm: outside school-supplies scope; original source stock unchanged"
+        },
+        {
+          "product_id": "CPb693794c8ce5",
+          "source_url": "https://www.thepaperworm.com/products/capybara-double-drink-square-bottle",
+          "reason": "Owner-locked The Paper Worm: outside school-supplies scope; original source stock unchanged"
+        },
+        {
+          "product_id": "CPbc310ecae5c5",
+          "source_url": "https://www.thepaperworm.com/products/alice-in-wonderland-pastel-covers-designed-pages-journals",
+          "reason": "Owner-locked The Paper Worm: outside school-supplies scope; original source stock unchanged"
+        },
+        {
+          "product_id": "CPc3c0eb6ebcda",
+          "source_url": "https://www.thepaperworm.com/products/little-prince-n-the-wolf-designed-pages-journal",
+          "reason": "Owner-locked The Paper Worm: outside school-supplies scope; original source stock unchanged"
+        },
+        {
+          "product_id": "CPd036988d7a5e",
+          "source_url": "https://www.thepaperworm.com/products/2l-large-plastic-bottle-with-motivational-quotes",
+          "reason": "Owner-locked The Paper Worm: outside school-supplies scope; original source stock unchanged"
+        },
+        {
+          "product_id": "CPd4397222e068",
+          "source_url": "https://www.thepaperworm.com/products/lightweight-fashion-leak-proof-transparent-water-cup",
+          "reason": "Owner-locked The Paper Worm: outside school-supplies scope; original source stock unchanged"
+        },
+        {
+          "product_id": "CPeb97c670053a",
+          "source_url": "https://www.thepaperworm.com/products/vertical-striped-style-office-diary-lined-notebok",
+          "reason": "Owner-locked The Paper Worm: outside school-supplies scope; original source stock unchanged"
+        },
+        {
+          "product_id": "CPf0e96ef6fe3f",
+          "source_url": "https://www.thepaperworm.com/products/dragon-series-premium-design-pages-journals",
+          "reason": "Owner-locked The Paper Worm: outside school-supplies scope; original source stock unchanged"
+        },
+        {
+          "product_id": "CPf83d170d0fbc",
+          "source_url": "https://www.thepaperworm.com/products/egg-shell-crafts-gift-set-with-paints",
+          "reason": "Owner-locked The Paper Worm: outside school-supplies scope; original source stock unchanged"
+        }
+      ],
+      "image_metadata_repairs": 0,
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "source_run": "42490498711",
+      "source_artifact": 13629146918,
+      "source_sha256": "358dff62cefdce4155375b3a748d1a20033222ec0a783350f4991e1bf8e42ff7",
+      "description_style_version": "customer-copy-v3",
+      "refresh_generation": "refresh20261108-92345025",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/the-paper-worm/358dff62cefdce41/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -20035,8 +21020,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Shoe Planet",
-  "audit804_progress_utc": "2026-11-08T18:33:46.701641+00:00",
+  "audit804_last_store": "The Paper Worm",
+  "audit804_progress_utc": "2026-11-08T18:33:56.977614+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
