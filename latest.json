@@ -11078,13 +11078,67 @@
       "shop_code": "SE10038",
       "identity_policy": "confirmed_code",
       "status": "hold",
-      "products_checked": 3062,
+      "products_checked": 3083,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "d03e0318ddc2be78ab45a6a20783d1a9c82fbdc17d585643a5b0d18a29d51f8d",
-      "checked_utc": "2026-11-08T15:02:28.421673+00:00",
+      "workbook_sha256": "5428af174127965eaf4dc841f94c5ca9245da168a2caf063b7ed53cd3e5d1199",
+      "checked_utc": "2026-11-08T17:39:34.572900+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "incomplete_products_excluded": [
+        {
+          "product_id": "CP2af9336ee252",
+          "source_url": "https://xcessorieshub.com/product/apple-iphone-duo-folio-with-kickstand/",
+          "name": "Apple iPhone Duo Folio with Kickstand",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP14a1b9cf5915",
+          "source_url": "https://xcessorieshub.com/product/xiaomi-water-flosser-2/",
+          "name": "Xiaomi Water Flosser 2",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP6b885d783872",
+          "source_url": "https://xcessorieshub.com/product/mi-smart-space-heater-s/",
+          "name": "Mi Smart Space Heater S",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPa00926be861e",
+          "source_url": "https://xcessorieshub.com/product/xiaomi-induction-cooker-lite/",
+          "name": "Xiaomi Induction Cooker Lite",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPa5a1a27ec1d0",
+          "source_url": "https://xcessorieshub.com/product/insta360-go-3-64gb/",
+          "name": "Insta360 GO 3",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP796d687417e4",
+          "source_url": "https://xcessorieshub.com/product/xiaomi-grooming-kit-pro/",
+          "name": "Xiaomi Grooming Kit Pro",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        }
+      ],
+      "incomplete_products_count": 6,
+      "incomplete_products_truncated": false,
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/xcessories-hub-incomplete-products/940975fa5f1e8ae1/manifest.json",
+      "original_source_sha256": "9a9569e20e681c1e151f72e5079fa4197c90c53a44e999c460bd89da8cb5cc96",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
         "unfinished": false
@@ -11135,15 +11189,15 @@
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41810916660",
-      "source_artifact": 13319540918,
-      "source_sha256": "f889e78575fcb588ff82c3d28a56289a6f8dc3d93d84c99a0a6b8158b41a3e4e",
+      "source_run": "42490457015",
+      "source_artifact": 13625930504,
+      "source_sha256": "9a9569e20e681c1e151f72e5079fa4197c90c53a44e999c460bd89da8cb5cc96",
       "description_style_version": "customer-copy-v3",
-      "refresh_generation": "refresh20261104-6c42b57a",
+      "refresh_generation": "refresh20261108-92345025",
       "delivery_status": "blocked",
       "audit_status": "pass",
       "error": "Duplicate Drive filenames require identity review",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/xcessories-hub/f889e78575fcb588/manifest.json"
+      "held_input": "inputs/fresh804-20261026-5d42fe35/xcessories-hub/9a9569e20e681c1e/manifest.json"
     },
     "Beechtree": {
       "name": "804 Audit",
@@ -17027,7 +17081,7 @@
     "42490449857": "42490449857:13621903147:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490451734": "42490451734:13626733127:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490453604": "42490453604:13621807943:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
-    "42490455380": "42490455380:13620644361:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
+    "42490455380": "42490455380:13626343169:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490457015": "42490457015:13621690510:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490458596": "42490458596:13621778193:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490460504": "42490460504:13623135752:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
@@ -17128,8 +17182,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Hilm Chapals",
-  "audit804_progress_utc": "2026-11-08T17:36:54.275049+00:00",
+  "audit804_last_store": "Xcessories Hub",
+  "audit804_progress_utc": "2026-11-08T17:39:34.572975+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
