@@ -1,50 +1,52 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-08T17:37:16.824930+00:00",
-  "run_id": "42490489426",
+  "generated_utc": "2026-11-08T17:42:25.206189+00:00",
+  "run_id": "42490462162",
   "attempt": "1",
   "source_commit": "823a612433613b60122f2132d777e0d09430227b",
-  "status": "complete",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 1167.6,
+  "elapsed_seconds": 9933.1,
   "stores": [
     {
-      "name": "Rizen Watches",
-      "status": "done",
-      "review_required": true,
+      "name": "Edenrobe",
+      "status": "source_paused",
+      "review_required": false,
       "issue_codes": [
         "HTTP_429",
-        "RATE_LIMIT"
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "522ef8b7890d7b28",
-      "products": 170,
-      "variants": 1226,
       "http_statuses": {
-        "200": 373,
-        "429": 1
+        "200": 2615,
+        "429": 5
       },
-      "network_seconds": 686.0,
-      "max_response_seconds": 3.1,
-      "cache_events": 565
+      "network_seconds": 5727.9,
+      "max_response_seconds": 3.4,
+      "cache_events": 8191
     },
     {
-      "name": "Blackbeiger",
+      "name": "Beechtree",
       "status": "done",
       "review_required": true,
       "issue_codes": [
         "HTTP_429",
-        "RATE_LIMIT"
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED",
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "522ef8b7890d7b28",
-      "products": 227,
-      "variants": 1614,
+      "products": 777,
+      "variants": 3616,
       "http_statuses": {
-        "200": 257
+        "200": 1705,
+        "429": 2
       },
-      "network_seconds": 465.3,
-      "max_response_seconds": 2.5,
-      "cache_events": 582
+      "network_seconds": 3771.4,
+      "max_response_seconds": 2.8,
+      "cache_events": 4952
     }
   ]
 }
