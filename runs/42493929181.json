@@ -11272,72 +11272,101 @@
       "shop_code": "SE10051",
       "identity_policy": "confirmed_code",
       "status": "hold",
-      "products_checked": 514,
+      "products_checked": 491,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "b7553376573d115810185f48f3057ead2078d348877dfb1e0e85b1d1fdc44e18",
-      "checked_utc": "2026-11-08T15:06:54.801930+00:00",
+      "workbook_sha256": "d8549aac5215e5da009b978c9047cf6a4b3ef9d0d6468cbcc48e62c2905cbc34",
+      "checked_utc": "2026-11-08T16:48:35.038398+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "incomplete_products_excluded": [
+        {
+          "product_id": "CP304dc25b0f4a",
+          "source_url": "https://habitt.com/products/single-shaker-white-7876-49",
+          "name": "Single Shaker White 7876-49",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4df05213630c",
+          "source_url": "https://habitt.com/products/royal-ford-4pcs-silicon-set-rf12318",
+          "name": "ROYAL FORD 4PCS SILICON SET RF12318",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP35c911cade86",
+          "source_url": "https://habitt.com/products/sb2002-double-cutter",
+          "name": "SB2002 Double Cutter",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4281f9a2c7c9",
+          "source_url": "https://habitt.com/products/ikea-black-coffee-jar-60241389",
+          "name": "IKEA BLACK COFFEE 60241389",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7e56fc1f5c85",
+          "source_url": "https://habitt.com/products/royal-ford-8-inch-knife-copy",
+          "name": "Knife",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7c275c14dd8f",
+          "source_url": "https://habitt.com/products/acrylic-double-spoon-holder-kitchen-utensil-storage-organizer-copy",
+          "name": "Assorted Golden Decoration Holder | Stylish Home Decor Display Stand",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP904b29d31bd8",
+          "source_url": "https://habitt.com/products/3-pcs-steel-knife-set-stainless-steel-kitchen-knife-collection-copy",
+          "name": "Assorted 6 Pcs Fruit Knife Set | Compact Cutting Knife Collection",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPdf451cd46afb",
+          "source_url": "https://habitt.com/products/2-piece-glass-jar-set-with-wooden-lid-stylish-kitchen-storage-containers",
+          "name": "2 Piece Glass Jar Set with Wooden Lid Stylish Kitchen Storage Containers",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "incomplete_products_count": 8,
+      "incomplete_products_truncated": false,
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/habitt-incomplete-products/960b465219878607/manifest.json",
+      "original_source_sha256": "ddff4df1f041c499dd69c248c657aab3e950bc491e9280c9eae2f4e1f7c9ac29",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
         "unfinished": false
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
-      "description_repairs_count": 8,
-      "description_repairs_examples": [
-        {
-          "product_id": "CP304dc25b0f4a",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP4df05213630c",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP35c911cade86",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP4281f9a2c7c9",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP7e56fc1f5c85",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP7c275c14dd8f",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP904b29d31bd8",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPdf451cd46afb",
-          "issue": "Added reviewed primary-image object types and contents; source composition not guessed and all supplied facts retained.",
-          "repair_kind": "description"
-        }
-      ],
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41811611300",
-      "source_artifact": 13314673364,
-      "source_sha256": "29cf1e0eea6c695775a82a86a176eb7962d2b8bd8b8ddc3ea9667defc526ceda",
+      "source_run": "42490469647",
+      "source_artifact": 13625776955,
+      "source_sha256": "ddff4df1f041c499dd69c248c657aab3e950bc491e9280c9eae2f4e1f7c9ac29",
       "description_style_version": "customer-copy-v3",
-      "refresh_generation": "refresh20261104-6c42b57a",
+      "refresh_generation": "refresh20261108-92345025",
       "delivery_status": "blocked",
       "audit_status": "pass",
       "error": "Duplicate Drive filenames require identity review",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/habitt/29cf1e0eea6c6957/manifest.json"
+      "held_input": "inputs/fresh804-20261026-5d42fe35/habitt/ddff4df1f041c499/manifest.json"
     },
     "Mala": {
       "name": "804 Audit",
@@ -16742,7 +16771,8 @@
     "42490458596": "42490458596:13621778193:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490460504": "42490460504:13623135752:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490462162": "42490462162:13625865780:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
-    "42490465739": "42490465739:13624475326:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
+    "42490465739": "42490465739:13624475326:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
+    "42490467507": "42490467507:13622878494:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-11-07T18:44:54.815389+00:00",
@@ -16831,8 +16861,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Hush Puppies",
-  "audit804_progress_utc": "2026-11-08T16:47:46.861125+00:00",
+  "audit804_last_store": "Habitt",
+  "audit804_progress_utc": "2026-11-08T16:48:35.038477+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
