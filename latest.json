@@ -18093,6 +18093,61 @@
       "audit_status": "pass",
       "error": "Duplicate Drive filenames require identity review",
       "held_input": "inputs/fresh804-20261026-5d42fe35/rung-rez/b5e2ed20000f01cd/manifest.json"
+    },
+    "Mansab": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Mansab",
+      "shop_code": "SE10079",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 58,
+      "findings_count": 0,
+      "findings": [],
+      "details_truncated": false,
+      "workbook_sha256": "78a2f90366b3153534d416029bc720798788cc9c05d34a93b1539c73f7dfeb8a",
+      "checked_utc": "2026-11-08T17:47:46.954001+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "incomplete_products_excluded": [
+        {
+          "product_id": "CP4cf4df0e0916",
+          "source_url": "https://mansabpk.com/product/mustard-yellow-printed-two-piece-suit-for-women-mansab",
+          "name": "Mustard Yellow Printed Two-Piece Suit",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP40efab8cba9f",
+          "source_url": "https://mansabpk.com/product/floral-printed-embellished-two-piece-suit-for-women-mansab",
+          "name": "Floral Printed Embellished Two-Piece Suit",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        }
+      ],
+      "incomplete_products_count": 2,
+      "incomplete_products_truncated": false,
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/mansab-incomplete-products/0aee8724b8fbfa27/manifest.json",
+      "original_source_sha256": "19132d8bfc3fc6bb28f9320a707fe0849bb4df8badbc435d48f01f7646c1f508",
+      "recovery": {
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "source_run": "42490494918",
+      "source_artifact": 13627785233,
+      "source_sha256": "19132d8bfc3fc6bb28f9320a707fe0849bb4df8badbc435d48f01f7646c1f508",
+      "description_style_version": "customer-copy-v3",
+      "refresh_generation": "refresh20261108-92345025",
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Duplicate Drive filenames require identity review",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/mansab/19132d8bfc3fc6bb/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -18454,7 +18509,8 @@
     "42490483803": "42490483803:13626241485:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490487212": "42490487212:13625829796:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490489426": "42490489426:13627212893:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
-    "42490491350": "42490491350:13627696702:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
+    "42490491350": "42490491350:13627696702:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
+    "42490493301": "42490493301:13626263971:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-11-08T16:51:50.464279+00:00",
@@ -18543,8 +18599,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/68637cf7bfb076e3/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/aa10d6b085f52b0f/manifest.json"
   },
-  "audit804_last_store": "Rung Rez",
-  "audit804_progress_utc": "2026-11-08T17:47:35.609641+00:00",
+  "audit804_last_store": "Mansab",
+  "audit804_progress_utc": "2026-11-08T17:47:46.954078+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
