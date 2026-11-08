@@ -1,6 +1,6 @@
 {
-  "run_id": "42537084048",
-  "checked_utc": "2026-11-08T23:50:37.774425+00:00",
+  "run_id": "42537289751",
+  "checked_utc": "2026-11-08T23:53:13.276256+00:00",
   "targets": [
     {
       "target": "42490435736",
@@ -301,6 +301,33 @@
           "size_in_bytes": 1076584
         }
       ],
+      "summary": {
+        "runner_group": "audit804-fresh804-20261026-5d42fe35-refresh20261108-92345025-8",
+        "status": "incomplete",
+        "stop_reason": "completed_or_source_failure",
+        "checkpoint": "saved",
+        "auto_continue_limit": 48,
+        "continuation_index": 0,
+        "stalled_runs": 0,
+        "stores": [
+          {
+            "name": "Computer Zone",
+            "status": "done",
+            "products": 861
+          },
+          {
+            "name": "LAAM",
+            "status": "failed",
+            "products": null
+          }
+        ]
+      },
+      "available_checkpoint_ancestor": {
+        "run_id": "42490435736",
+        "checked": [
+          "42490435736"
+        ]
+      },
       "annotations": [
         {
           "level": "warning",
@@ -614,6 +641,33 @@
           "size_in_bytes": 200713
         }
       ],
+      "summary": {
+        "runner_group": "audit804-fresh804-20261026-5d42fe35-refresh20261108-92345025-13",
+        "status": "incomplete",
+        "stop_reason": "time_budget",
+        "checkpoint": "saved",
+        "auto_continue_limit": 48,
+        "continuation_index": 0,
+        "stalled_runs": 0,
+        "stores": [
+          {
+            "name": "Bonanza Satrangi",
+            "status": "pending",
+            "products": null
+          },
+          {
+            "name": "Outfitters",
+            "status": "done",
+            "products": 614
+          }
+        ]
+      },
+      "available_checkpoint_ancestor": {
+        "run_id": "42490445091",
+        "checked": [
+          "42490445091"
+        ]
+      },
       "annotations": [
         {
           "level": "warning",
@@ -931,6 +985,33 @@
           "size_in_bytes": 379828
         }
       ],
+      "summary": {
+        "runner_group": "audit804-fresh804-20261026-5d42fe35-refresh20261108-92345025-32",
+        "status": "incomplete",
+        "stop_reason": "completed_or_source_failure",
+        "checkpoint": "saved",
+        "auto_continue_limit": 48,
+        "continuation_index": 0,
+        "stalled_runs": 0,
+        "stores": [
+          {
+            "name": "Dairy Dream",
+            "status": "failed",
+            "products": null
+          },
+          {
+            "name": "Nayab Fashion",
+            "status": "done",
+            "products": 487
+          }
+        ]
+      },
+      "available_checkpoint_ancestor": {
+        "run_id": "42490481654",
+        "checked": [
+          "42490481654"
+        ]
+      },
       "annotations": [
         {
           "level": "warning",
@@ -945,5 +1026,63 @@
       "store-status.txt": "Updated (UTC): 2026-11-08T17:59:40.055644+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Nayab Fashion.xlsx\n\nSTORE STATUS\nDairy Dream: failed\n  Stage: Idle\n  Last successful HTTP response (UTC): 2026-11-08T16:50:21.121650+00:00\nNayab Fashion: done\n  Last successful HTTP response (UTC): 2026-11-08T17:59:25.840110+00:00",
       "fetch-log.txt": "[Nayab Fashion] [17:56:08] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/2335\n[Nayab Fashion] [17:56:09] HTTP END status=200 elapsed=1.9s bytes=10748 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/2335\n[Nayab Fashion] [17:56:09] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:56:09] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/2739\n[Nayab Fashion] [17:56:09] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/2739\n[Nayab Fashion] [17:56:13] HTTP END status=200 elapsed=3.0s bytes=10770 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/2739\n[Nayab Fashion] WOO PRODUCT PROGRESS: 592/626 checked; 465 retained\n[Nayab Fashion] [17:56:17] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:56:17] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/2636\n[Nayab Fashion] [17:56:17] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/2636\n[Nayab Fashion] [17:56:19] HTTP END status=200 elapsed=1.9s bytes=12100 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/2636\n[Nayab Fashion] WOO PRODUCT PROGRESS: 593/626 checked; 466 retained\n[Nayab Fashion] [17:56:24] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:56:24] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1919\n[Nayab Fashion] [17:56:24] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1919\n[Nayab Fashion] [17:56:26] HTTP END status=200 elapsed=1.8s bytes=10479 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1919\n[Nayab Fashion] WOO PRODUCT PROGRESS: 594/626 checked; 467 retained\n[Nayab Fashion] [17:56:30] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:56:30] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/2108\n[Nayab Fashion] [17:56:30] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/2108\n[Nayab Fashion] [17:56:32] HTTP END status=200 elapsed=1.8s bytes=10905 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/2108\n[Nayab Fashion] [17:56:32] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:56:32] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/2322\n[Nayab Fashion] [17:56:32] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/2322\n[Nayab Fashion] [17:56:34] HTTP END status=200 elapsed=1.8s bytes=10537 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/2322\n[Nayab Fashion] [17:56:34] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:56:34] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1994\n[Nayab Fashion] [17:56:34] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1994\n[Nayab Fashion] [17:56:36] HTTP END status=200 elapsed=1.8s bytes=10502 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1994\n[Nayab Fashion] WOO PRODUCT PROGRESS: 597/626 checked; 468 retained\n[Nayab Fashion] [17:56:41] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:56:41] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/2094\n[Nayab Fashion] [17:56:41] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/2094\n[Nayab Fashion] [17:56:42] HTTP END status=200 elapsed=1.8s bytes=9873 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/2094\n[Nayab Fashion] WOO PRODUCT PROGRESS: 598/626 checked; 469 retained\n[Nayab Fashion] [17:56:47] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:56:47] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1946\n[Nayab Fashion] [17:56:47] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1946\n[Nayab Fashion] [17:56:49] HTTP END status=200 elapsed=1.9s bytes=7822 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1946\n[Nayab Fashion] [17:56:49] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:56:49] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1934\n[Nayab Fashion] [17:56:49] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1934\n[Nayab Fashion] [17:56:51] HTTP END status=200 elapsed=1.8s bytes=8748 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1934\n[Nayab Fashion] WOO PRODUCT PROGRESS: 600/626 checked; 470 retained\n[Nayab Fashion] [17:56:56] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:56:56] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1926\n[Nayab Fashion] [17:56:56] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1926\n[Nayab Fashion] [17:56:58] HTTP END status=200 elapsed=1.8s bytes=10640 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1926\n[Nayab Fashion] WOO PRODUCT PROGRESS: 601/626 checked; 471 retained\n[Nayab Fashion] [17:57:04] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:57:04] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1877\n[Nayab Fashion] [17:57:04] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1877\n[Nayab Fashion] [17:57:06] HTTP END status=200 elapsed=2.0s bytes=8586 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1877\n[Nayab Fashion] WOO PRODUCT PROGRESS: 602/626 checked; 472 retained\n[Nayab Fashion] [17:57:11] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:57:11] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1874\n[Nayab Fashion] [17:57:11] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1874\n[Nayab Fashion] [17:57:13] HTTP END status=200 elapsed=2.1s bytes=6542 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1874\n[Nayab Fashion] [17:57:13] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:57:13] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1869\n[Nayab Fashion] [17:57:13] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1869\n[Nayab Fashion] [17:57:15] HTTP END status=200 elapsed=1.8s bytes=6445 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1869\n[Nayab Fashion] [17:57:15] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:57:15] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1627\n[Nayab Fashion] [17:57:15] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1627\n[Nayab Fashion] [17:57:17] HTTP END status=200 elapsed=2.0s bytes=8720 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1627\n[Nayab Fashion] WOO PRODUCT PROGRESS: 605/626 checked; 473 retained\n[Nayab Fashion] [17:57:22] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:57:22] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1613\n[Nayab Fashion] [17:57:22] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1613\n[Nayab Fashion] [17:57:24] HTTP END status=200 elapsed=2.0s bytes=8472 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1613\n[Nayab Fashion] WOO PRODUCT PROGRESS: 606/626 checked; 474 retained\n[Nayab Fashion] [17:57:30] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:57:30] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1531\n[Nayab Fashion] [17:57:30] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1531\n[Nayab Fashion] [17:57:32] HTTP END status=200 elapsed=2.3s bytes=10593 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1531\n[Nayab Fashion] WOO PRODUCT PROGRESS: 607/626 checked; 475 retained\n[Nayab Fashion] [17:57:40] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:57:40] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1516\n[Nayab Fashion] [17:57:40] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1516\n[Nayab Fashion] [17:57:42] HTTP END status=200 elapsed=2.3s bytes=10630 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1516\n[Nayab Fashion] WOO PRODUCT PROGRESS: 608/626 checked; 476 retained\n[Nayab Fashion] [17:57:48] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:57:48] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1503\n[Nayab Fashion] [17:57:48] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1503\n[Nayab Fashion] [17:57:49] HTTP END status=200 elapsed=2.0s bytes=8819 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1503\n[Nayab Fashion] [17:57:49] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:57:49] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1459\n[Nayab Fashion] [17:57:49] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1459\n[Nayab Fashion] [17:57:51] HTTP END status=200 elapsed=1.8s bytes=8834 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1459\n[Nayab Fashion] WOO PRODUCT PROGRESS: 610/626 checked; 477 retained\n[Nayab Fashion] [17:57:56] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:57:56] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1423\n[Nayab Fashion] [17:57:56] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1423\n[Nayab Fashion] [17:57:58] HTTP END status=200 elapsed=2.0s bytes=8955 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1423\n[Nayab Fashion] [17:57:58] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:57:58] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1324\n[Nayab Fashion] [17:57:58] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1324\n[Nayab Fashion] [17:58:00] HTTP END status=200 elapsed=2.1s bytes=10495 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1324\n[Nayab Fashion] WOO PRODUCT PROGRESS: 612/626 checked; 478 retained\n[Nayab Fashion] [17:58:08] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:58:08] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1311\n[Nayab Fashion] [17:58:08] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1311\n[Nayab Fashion] [17:58:10] HTTP END status=200 elapsed=2.3s bytes=11503 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1311\n[Nayab Fashion] WOO PRODUCT PROGRESS: 613/626 checked; 479 retained\n[Nayab Fashion] [17:58:19] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:58:19] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1274\n[Nayab Fashion] [17:58:19] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1274\n[Nayab Fashion] [17:58:22] HTTP END status=200 elapsed=3.1s bytes=11604 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1274\n[Nayab Fashion] WOO PRODUCT PROGRESS: 614/626 checked; 480 retained\n[Nayab Fashion] [17:58:28] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:58:28] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1228\n[Nayab Fashion] [17:58:28] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1228\n[Nayab Fashion] [17:58:30] HTTP END status=200 elapsed=1.9s bytes=10638 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1228\n[Nayab Fashion] WOO PRODUCT PROGRESS: 615/626 checked; 481 retained\n[Nayab Fashion] [17:58:34] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:58:34] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1219\n[Nayab Fashion] [17:58:34] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1219\n[Nayab Fashion] [17:58:36] HTTP END status=200 elapsed=1.8s bytes=12178 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1219\n[Nayab Fashion] [17:58:36] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:58:36] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1168\n[Nayab Fashion] [17:58:36] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1168\n[Nayab Fashion] [17:58:38] HTTP END status=200 elapsed=1.9s bytes=8781 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1168\n[Nayab Fashion] WOO PRODUCT PROGRESS: 617/626 checked; 482 retained\n[Nayab Fashion] [17:58:42] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:58:42] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1160\n[Nayab Fashion] [17:58:42] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1160\n[Nayab Fashion] [17:58:44] HTTP END status=200 elapsed=1.9s bytes=11570 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1160\n[Nayab Fashion] WOO PRODUCT PROGRESS: 618/626 checked; 483 retained\n[Nayab Fashion] [17:58:50] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:58:50] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1118\n[Nayab Fashion] [17:58:50] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1118\n[Nayab Fashion] [17:58:52] HTTP END status=200 elapsed=1.9s bytes=11522 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/1118\n[Nayab Fashion] WOO PRODUCT PROGRESS: 619/626 checked; 484 retained\n[Nayab Fashion] [17:58:57] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:58:57] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/983\n[Nayab Fashion] [17:58:57] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/983\n[Nayab Fashion] [17:58:59] HTTP END status=200 elapsed=1.9s bytes=8497 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/983\n[Nayab Fashion] WOO PRODUCT PROGRESS: 620/626 checked; 485 retained\n[Nayab Fashion] [17:59:07] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:59:07] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/959\n[Nayab Fashion] [17:59:07] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/959\n[Nayab Fashion] [17:59:10] HTTP END status=200 elapsed=3.1s bytes=9464 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/959\n[Nayab Fashion] [17:59:10] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:59:10] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/936\n[Nayab Fashion] [17:59:10] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/936\n[Nayab Fashion] [17:59:12] HTTP END status=200 elapsed=1.9s bytes=11766 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/936\n[Nayab Fashion] [17:59:12] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:59:12] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/928\n[Nayab Fashion] [17:59:12] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/928\n[Nayab Fashion] [17:59:14] HTTP END status=200 elapsed=2.0s bytes=11854 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/928\n[Nayab Fashion] [17:59:14] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:59:14] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/828\n[Nayab Fashion] [17:59:14] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/828\n[Nayab Fashion] [17:59:16] HTTP END status=200 elapsed=2.0s bytes=10168 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/828\n[Nayab Fashion] [17:59:16] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:59:16] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/805\n[Nayab Fashion] [17:59:16] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/805\n[Nayab Fashion] [17:59:18] HTTP END status=200 elapsed=1.9s bytes=11350 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/805\n[Nayab Fashion] WOO PRODUCT PROGRESS: 625/626 checked; 486 retained\n[Nayab Fashion] [17:59:24] STAGE: WooCommerce public product prices and pages\n[Nayab Fashion] [17:59:24] GET_JSON: https://nayabfashion.com.pk/wp-json/wc/store/v1/products/770\n[Nayab Fashion] [17:59:24] HTTP START attempt=1 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/770\n[Nayab Fashion] [17:59:25] HTTP END status=200 elapsed=1.8s bytes=9175 https://nayabfashion.com.pk/wp-json/wc/store/v1/products/770\n[Nayab Fashion] WOO PRODUCT PROGRESS: 626/626 checked; 487 retained\n[Nayab Fashion] EXPORT BUILT: 487 products; full independent 804 Audit required before delivery\n__CHOTU_PROGRESS__|35|Active: Nayab Fashion\n[Nayab Fashion] FILE: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/_build_temp/chotu_lukw9yev/Nayab Fashion - REFRESH REVIEW.xlsx\n[Nayab Fashion] PRICE POLICY: Source decimal prices preserved in Products and Variant Combinations; no truncation or rounding.\n[Nayab Fashion] STRICT WEBSITE CATEGORIES: 0/487 source-verified; missing website taxonomy remains unverified\n[Nayab Fashion] SUBCATEGORY FALLBACK: 279 inferred from supplied product text; explicitly labelled, not website-confirmed\n[Nayab Fashion] FINAL FILE ORDER: verified website navigation and default product listing; unknown positions stable; image hyperlinks move with products\n[Nayab Fashion] SAVED REVIEW EXCEL: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH/Nayab Fashion.xlsx\n__CHOTU_PROGRESS__|35|Active: Nayab Fashion\n[Nayab Fashion] REVIEW REQUIRED: 975 audit issue(s). Previous FINAL kept.\n[Nayab Fashion] Review files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/audit_reports/Nayab Fashion\n[Nayab Fashion] [17:59:33] STAGE: Idle\n[Nayab Fashion] AUDIT FILES: 5 CSV reports exported alongside workbook.\nFILE SAVED NOW: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH/Nayab Fashion.xlsx \u2014 other store processes continue.\nTrue"
     }
-  ]
+  ],
+  "laam_public_variant_evidence": {
+    "id": 518174,
+    "handle": "3p-br3981",
+    "title": "3P #BR3981",
+    "status": "ACTIVE",
+    "stock_status": "limited-stock",
+    "node_l2": "Clothing",
+    "node_l3": "Eastern Ready to wear",
+    "options": [],
+    "media": [
+      {
+        "shopify_id": 0,
+        "alt": "",
+        "src": "https://cdn.shopify.com/s/files/1/2337/7003/files/media_image-85fc0027ae0c4c42a63517578951c870_f57958fe-d6d5-4692-bd02-ccb53290ed9a.jpg?v=1763378331",
+        "width": 0,
+        "height": 0
+      },
+      {
+        "shopify_id": 0,
+        "alt": "",
+        "src": "https://cdn.shopify.com/s/files/1/2337/7003/files/media_image-b10dabecff1c428ab3db2fdd8a395a47_68f1da34-8100-4f57-b4a7-ce581fcba302.jpg?v=1763378331",
+        "width": 0,
+        "height": 0
+      },
+      {
+        "shopify_id": 0,
+        "alt": "",
+        "src": "https://cdn.shopify.com/s/files/1/2337/7003/files/media_image-28bd16d9a26c4a48b736a693b39dd8ff_52f4fc6c-f7b9-48d3-9c79-a901fd621afe.jpg?v=1763378331",
+        "width": 0,
+        "height": 0
+      },
+      {
+        "shopify_id": 0,
+        "alt": "",
+        "src": "https://cdn.shopify.com/s/files/1/2337/7003/files/media_image-758fdca6bcf24464972c307daadbf9d9_3599d9ed-33c9-45f6-9615-9bfc918e041f.jpg?v=1763378331",
+        "width": 0,
+        "height": 0
+      },
+      {
+        "shopify_id": 0,
+        "alt": "",
+        "src": "https://cdn.shopify.com/s/files/1/2337/7003/files/media_image-810d25f809594005999113aae598944f_0323f82a-f304-4301-ba9c-e256100cf62a.jpg?v=1763378331",
+        "width": 0,
+        "height": 0
+      }
+    ],
+    "images": null,
+    "image": {
+      "shopify_id": 0,
+      "alt": "",
+      "src": "https://cdn.shopify.com/s/files/1/2337/7003/files/media_image-85fc0027ae0c4c42a63517578951c870_f57958fe-d6d5-4692-bd02-ccb53290ed9a.jpg?v=1763378331",
+      "width": 0,
+      "height": 0
+    },
+    "featured_image": null,
+    "variants": [],
+    "_website_category_evidence": null
+  }
 }
