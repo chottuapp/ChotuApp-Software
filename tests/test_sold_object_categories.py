@@ -39,3 +39,7 @@ class SoldObjectTests(unittest.TestCase):
   from audit804 import issues_for
   self.assertTrue(issues_for(dict(name='Dia khussa',description='This khussa has a leather inner sole.',Category='Trousers')))
   self.assertEqual(issues_for(dict(name='Dia khussa',description='This khussa has a leather inner sole.',Category='Khussas')),[])
+
+ def test_shoe_design_named_lace_uses_actual_collection_not_lace_accessory_guess(self):
+  self.assertEqual(source_object('BELLE LACE - BEIGE','',product_type='Flats')[0],'Flats')
+  self.assertIsNone(source_object('Replacement shoe laces','For boots and sneakers.'))

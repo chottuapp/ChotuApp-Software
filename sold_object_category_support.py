@@ -13,7 +13,7 @@ def primary_prose(body):
  return text.strip()
 def source_object(name,description,product_type='',website_path=''):
  title=plain(name);body=plain(primary_prose(description))
- if re.search(r'\b(?:cream|lotion|scrub|mask|brush|polish|cleaner|charm|insoles?|laces?|shoe care|rack|organizer|holder)\b',title,re.I):return None
+ if re.search(r'\b(?:cream|lotion|scrub|mask|brush|polish|cleaner|charm|insoles?|shoe[ -]?laces?|replacement laces?|shoe care|rack|organizer|holder)\b',title,re.I):return None
  kind=EXACT.get(plain(product_type).casefold())
  if kind:return kind,'source_product_type','Exact merchant product type: '+plain(product_type)
  for part in reversed(str(website_path or '').split(' > ')):
