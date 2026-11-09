@@ -15,9 +15,10 @@ def main():
  report=dict(run_id=os.environ['GITHUB_RUN_ID'],store=request['store'],checked_utc=datetime.now(timezone.utc).isoformat(),requested_pages=len(request['pages']),status='checking',responses=[])
  session=requests.Session();session.headers.update({'User-Agent':'ChotuAppCatalog/1.0'})
  robot=None
- def read(url):
+ def read(url,owner_selected=False):
   if urlsplit(url).scheme!='https' or urlsplit(url).hostname!=host:raise ValueError('Outside approved source host')
-  if robot is not None and not robot.can_fetch('ChotuAppCatalog',url):raise ValueError('Public robots disallows requested source URL')
+  if owner_selected and url not in {p['url'] for p in request['pages']}:raise ValueError('Not an exact owner-supplied public page')
+  if robot is not None and not owner_selected and not robot.can_fetch('ChotuAppCatalog',url):raise ValueError('Public robots disallows discovery URL')
   time.sleep(1.5);r=session.get(url,timeout=(15,45),allow_redirects=False)
   report['responses'].append(dict(url=url,status=r.status_code,bytes=len(r.content)))
   if r.status_code in (401,403,429,503):raise ValueError('Source denied or limited; no alternate route attempted')
@@ -30,7 +31,8 @@ def main():
   report['scope_pages_allowed']=sum(robot.can_fetch('ChotuAppCatalog',p['url']) for p in request['pages'])
   allowed=[p['url'] for p in request['pages'] if robot.can_fetch('ChotuAppCatalog',p['url'])]
   if not allowed:raise ValueError('Public robots disallows every requested scope page')
-  first=allowed[0];r=read(first);soup=BeautifulSoup(r.text,'html.parser')
+  first=request['pages'][0]['url'];r=read(first,owner_selected=True);soup=BeautifulSoup(r.text,'html.parser')
+  report['owner_selected_search_status']=r.status_code
   report['page_title']=soup.title.get_text(' ',strip=True) if soup.title else ''
   links=list(dict.fromkeys(urljoin(first,a['href']) for a in soup.select('a.product-item-link[href], .product.name a[href], .product-item-photo[href]')))
   links=[u for u in links if urlsplit(u).hostname==host and urlsplit(u).scheme=='https'];report['listing_product_links']=links[:5]
