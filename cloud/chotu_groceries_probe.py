@@ -1,17 +1,18 @@
 """Bounded source access/schema verification for the owner's exact groceries scope."""
-import json,re,time
+import json,os,re,time
 from pathlib import Path
 from datetime import datetime,timezone
 from urllib.parse import urljoin,urlsplit,urlencode
 from urllib.robotparser import RobotFileParser
 import requests
 from bs4 import BeautifulSoup
-from source_research import publish
+from source_research import publish,clean_html
+from source_probe import inspect_page
 ROOT=Path(__file__).resolve().parents[1]
 
 def main():
  request=json.loads((ROOT/'cloud/chotu-groceries-request.json').read_text());base=request['url'];host=urlsplit(base).hostname
- report=dict(store=request['store'],checked_utc=datetime.now(timezone.utc).isoformat(),requested_pages=len(request['pages']),status='checking',responses=[])
+ report=dict(run_id=os.environ['GITHUB_RUN_ID'],store=request['store'],checked_utc=datetime.now(timezone.utc).isoformat(),requested_pages=len(request['pages']),status='checking',responses=[])
  session=requests.Session();session.headers.update({'User-Agent':'ChotuAppCatalog/1.0'})
  robot=None
  def read(url):
@@ -33,8 +34,8 @@ def main():
   links=[u for u in links if urlsplit(u).hostname==host and urlsplit(u).scheme=='https'];report['listing_product_links']=links[:5]
   report['pagination_links']=[urljoin(first,a['href']) for a in soup.select('.pages a[href], a.next[href]')][:6]
   if links:
-   r=read(links[0]);detail=BeautifulSoup(r.text,'html.parser');report['sample_product_html']=str(detail.select_one('main') or detail)[:180000]
-  else:report['listing_html']=str(soup.select_one('main') or soup)[:100000]
+   r=read(links[0]);detail=BeautifulSoup(r.text,'html.parser');report['sample_product_html']=clean_html(r.text);report['sample_product_structure']=inspect_page(r.text,links[0])
+  else:report['listing_html']=clean_html(r.text)
   report['status']='source_inspected'
  except (requests.RequestException,ValueError) as exc:report.update(status='source_hold',error=str(exc)[:500])
  finally:session.close()
