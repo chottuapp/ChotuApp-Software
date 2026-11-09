@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-09T09:11:20.921024+00:00",
+  "run_id": "42590962648",
+  "attempt": "1",
+  "source_commit": "d428f49483edb44e9e42f7b75c8c6ee78e737e44",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 148.2,
+  "stores": [
+    {
+      "name": "ChotuApp Groceries",
+      "status": "failed",
+      "review_required": false,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "2d65aaf5bce0ac64",
+      "http_statuses": {
+        "200": 4
+      },
+      "network_seconds": 3.4,
+      "max_response_seconds": 1.8,
+      "cache_events": 32
+    }
+  ]
+}
