@@ -3,7 +3,7 @@
   "url": "https://www.naheed.pk",
   "shop_code": null,
   "shop_code_status": "pending_owner",
-  "source_category_policy": "exact_product_breadcrumb_or_source_taxonomy; pasted_groups_are_scope_only",
+  "source_category_policy": "Owner-supplied 20 group headings are the export Category. Actual website product breadcrumbs are retained separately for verification, never substituted for owner headings.",
   "retailer_name_policy": "exclude retailer branding from product titles/descriptions; keep source/image links and actual manufacturer brands",
   "incomplete_product_policy": "skip_with_original_source_receipt",
   "pages": [
@@ -491,6 +491,17 @@
       "group": "Soap & Body Wash",
       "label": "Nivea",
       "url": "https://www.naheed.pk/catalogsearch/result/?q=Nivea"
+    },
+    {
+      "group": "Condoms Wellness",
+      "label": "Durex",
+      "url": "https://www.naheed.pk/catalogsearch/result/?q=Durex"
+    },
+    {
+      "group": "Condoms Wellness",
+      "label": "Josh",
+      "url": "https://www.naheed.pk/catalogsearch/result/?q=Josh+Condom"
     }
-  ]
+  ],
+  "source_access_policy": "Ordinary unauthenticated reads of exact owner-supplied public HTML pages and their same-scope published pagination; stop real 401/403/challenges and honor rate-limit cooldowns. No private API or login."
 }

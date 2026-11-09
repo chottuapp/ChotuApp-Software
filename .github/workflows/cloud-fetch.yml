@@ -93,7 +93,7 @@ jobs:
       - name: Verify standalone continuation and owner-policy guards
         env:
           PYTHONPATH: tests:cloud:.
-        run: python -m unittest test_mansab_source test_rungrez_source test_alfateh_source test_paperworm_scope test_axis_source test_auto_continue_entrypoint test_auto_continue test_continuation_policy test_runner_identity test_owner_photo_pause test_woocommerce_source test_requested_stores test_magento_source test_magento_option_page -q
+        run: python -m unittest test_mansab_source test_rungrez_source test_alfateh_source test_paperworm_scope test_axis_source test_auto_continue_entrypoint test_auto_continue test_continuation_policy test_runner_identity test_owner_photo_pause test_woocommerce_source test_requested_stores test_magento_source test_magento_option_page test_chotu_groceries test_laam_incomplete_listing -q
       - name: Restore optional saved run
         if: inputs.resume_run_id != ''
         env:
@@ -104,6 +104,11 @@ jobs:
           python cloud/prepare_resume.py --archive "$RUNNER_TEMP/chotu-restore" --data .cloud-data
       - name: Install Czone browser fallback when needed
         if: env.CLOUD_NEEDS_CZONE_BROWSER == 'true' || (inputs.resume_run_id == '' && contains(inputs.stores, 'czone.com.pk'))
+        run: |
+          python -m pip install playwright==1.55.0
+          python -m playwright install --with-deps chromium
+      - name: Install grocery public storefront renderer when needed
+        if: env.CLOUD_NEEDS_GROCERY_BROWSER == 'true' || contains(inputs.stores, 'naheed.pk')
         run: |
           python -m pip install playwright==1.55.0
           python -m playwright install --with-deps chromium

@@ -34,7 +34,10 @@ def main():
   first=request['pages'][0]['url'];r=read(first,owner_selected=True);soup=BeautifulSoup(r.text,'html.parser')
   report['owner_selected_search_status']=r.status_code
   report['page_title']=soup.title.get_text(' ',strip=True) if soup.title else ''
-  links=list(dict.fromkeys(urljoin(first,a['href']) for a in soup.select('a.product-item-link[href], .product.name a[href], .product-item-photo[href]')))
+  if not soup.select('a.product-item-link[href]') and soup.select_one('#product_result,#load-more'):
+   from grocery_browser_support import render_listing
+   rendered=render_listing(first,load_all=False);soup=BeautifulSoup(rendered,'html.parser');report['rendered_listing_html']=clean_html(rendered)
+  links=list(dict.fromkeys(urljoin(first,a['href']) for a in soup.select('#product_result a[href], a.product-item-link[href], .product.name a[href], .product-item-photo[href]')))
   links=[u for u in links if urlsplit(u).hostname==host and urlsplit(u).scheme=='https'];report['listing_product_links']=links[:5]
   report['pagination_links']=[urljoin(first,a['href']) for a in soup.select('.pages a[href], a.next[href]')][:6]
   if links:
