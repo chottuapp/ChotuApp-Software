@@ -317,14 +317,18 @@ def enable_chotu_groceries(g):
   from openpyxl import load_workbook
   from datetime import datetime,timezone
   path=g['OUT']/(STORE+' - REFRESH REVIEW.xlsx');book=load_workbook(path);sheet=book['Products'];headers={c.value:c.column for c in sheet[1]}
-  fields=['source_scope_coverage_status','source_scope_review_count','owner_scope_url','source_manufacturer','Category','website_category_path','website_category_source_url','website_category_status','website_category_checked_at','subcategory_source','subcategory_evidence']
+  request_path=Path(__file__).with_name('chotu-groceries-request.json')
+  if not request_path.exists():request_path=Path(__file__).parent/'cloud/chotu-groceries-request.json'
+  code=json.loads(request_path.read_text()).get('shop_code')
+  if not isinstance(code,str) or not re.fullmatch(r'SE[0-9]{5}',code):raise ValueError('Grocery owner-confirmed shop code missing')
+  fields=['shop_code','source_scope_coverage_status','source_scope_review_count','owner_scope_url','source_manufacturer','Category','website_category_path','website_category_source_url','website_category_status','website_category_checked_at','subcategory_source','subcategory_evidence']
   for key in fields:
    if key not in headers:headers[key]=sheet.max_column+1;sheet.cell(1,headers[key],key)
   byid={g['uid']('CP',BASE+'|'+str(p['id'])):p for p in provider.products.values()};stamp=datetime.now(timezone.utc).isoformat()
   for number in range(2,sheet.max_row+1):
    p=byid.get(str(sheet.cell(number,headers['product_id']).value))
    if p is None:raise ValueError('Grocery source/export identity mismatch')
-   taxonomy=' > '.join(c['name'] for c in p['categories']);values=dict(source_scope_coverage_status=provider.coverage_status,source_scope_review_count=len(provider.coverage_issues),owner_scope_url=p['owner_scope_url'],source_manufacturer=p['manufacturer'],Category=p['owner_category'],website_category_path=taxonomy,website_category_source_url=p['permalink'],website_category_status='verified_product_breadcrumb',website_category_checked_at=stamp,subcategory_source='owner_supplied_scope',subcategory_evidence='Owner category from '+p['owner_scope_url']+'; actual source breadcrumb '+taxonomy+'; response SHA256 '+p['source_response_sha256'])
+   taxonomy=' > '.join(c['name'] for c in p['categories']);values=dict(shop_code=code,source_scope_coverage_status=provider.coverage_status,source_scope_review_count=len(provider.coverage_issues),owner_scope_url=p['owner_scope_url'],source_manufacturer=p['manufacturer'],Category=p['owner_category'],website_category_path=taxonomy,website_category_source_url=p['permalink'],website_category_status='verified_product_breadcrumb',website_category_checked_at=stamp,subcategory_source='owner_supplied_scope',subcategory_evidence='Owner category from '+p['owner_scope_url']+'; actual source breadcrumb '+taxonomy+'; response SHA256 '+p['source_response_sha256'])
    for key,value in values.items():sheet.cell(number,headers[key],value)
   book.save(path);book.close()
  g['_chotuapp_run_site_original']=run

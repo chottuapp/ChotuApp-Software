@@ -18,7 +18,7 @@ class GroceryTests(unittest.TestCase):
  def test_options_are_not_fabricated_from_a_minimum_price(self):
   with self.assertRaises(source.IncompleteProduct):source.product(page(options='<select class="super-attribute-select"></select>'),source.BASE+'/item')
  def test_all_owner_pages_and_categories_are_preserved(self):
-  r=json.loads((ROOT/'cloud/chotu-groceries-request.json').read_text());self.assertEqual(len(r['pages']),99);self.assertEqual(len({p['group'] for p in r['pages']}),20);self.assertIsNone(r['shop_code']);self.assertEqual(len({p['url'] for p in r['pages']}),99)
+  r=json.loads((ROOT/'cloud/chotu-groceries-request.json').read_text());self.assertEqual(len(r['pages']),99);self.assertEqual(len({p['group'] for p in r['pages']}),20);self.assertEqual(r['shop_code'],'SE10085');self.assertEqual(len({p['url'] for p in r['pages']}),99)
   self.assertEqual([p['label'] for p in r['pages'] if p['group']=='Condoms Wellness'],['Durex','Josh'])
   self.assertTrue(all('utm_' not in p['url'] for p in r['pages']))
  def test_real_access_denial_stops_without_alternate_route(self):
@@ -27,7 +27,7 @@ class GroceryTests(unittest.TestCase):
  def test_foreign_source_is_never_read(self):
   reader=source.PublicCatalog({},lambda _:None)
   with self.assertRaises(ValueError):reader.read_page('https://other.example/item')
- def test_export_keeps_owner_category_and_blank_code_with_source_taxonomy_separate(self):
+ def test_export_keeps_owner_category_and_confirmed_code_with_source_taxonomy_separate(self):
   from test_app import main
   from openpyxl import load_workbook
   p=source.product(page(),source.BASE+'/item');p.update(owner_category='Bread, Bakery & Pasta',owner_scope_url=source.BASE+'/allproducts/?manufacturer=890')
@@ -38,7 +38,7 @@ class GroceryTests(unittest.TestCase):
    with patch.object(source,'PublicCatalog',return_value=provider):
     source.enable_chotu_groceries(g);g['_chotuapp_run_site_original'](source.BASE,source.STORE,ROOT/'importer-files/Chotu_Products_Import_Template_Discount_Tags.xlsx',lambda _:None)
    book=load_workbook(Path(tmp)/(source.STORE+' - REFRESH REVIEW.xlsx'));s=book['Products'];row=dict(zip([c.value for c in s[1]],[c.value for c in s[2]]))
-   self.assertEqual(row['Category'],'Bread, Bakery & Pasta');self.assertEqual(row['website_category_path'],'Groceries > Snacks');self.assertFalse(row['shop_code']);self.assertEqual(row['base_price (PKR)'],200);self.assertNotIn('naheed',row['description'].lower());self.assertIn('wheat',row['description']);book.close()
+   self.assertEqual(row['Category'],'Bread, Bakery & Pasta');self.assertEqual(row['website_category_path'],'Groceries > Snacks');self.assertEqual(row['shop_code'],'SE10085');self.assertEqual(row['base_price (PKR)'],200);self.assertNotIn('naheed',row['description'].lower());self.assertIn('wheat',row['description']);book.close()
  def test_runtime_copies_exact_owner_scope(self):
   from runtime import prepare_engine
   with tempfile.TemporaryDirectory() as tmp:
