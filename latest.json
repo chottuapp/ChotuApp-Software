@@ -1,16 +1,29 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-09T03:30:24.371399+00:00",
-  "run_id": "42539121641",
+  "generated_utc": "2026-11-09T03:41:40.616382+00:00",
+  "run_id": "42539427069",
   "attempt": "1",
   "source_commit": "3aa37f819fa227599cafbb152f448ac82323ee3d",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 11668.4,
+  "elapsed_seconds": 12061.8,
   "stores": [
     {
-      "name": "Edenrobe",
+      "name": "Rivaj UK",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "522ef8b7890d7b28",
+      "products": 293,
+      "variants": 947,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    },
+    {
+      "name": "Junaid Jamshed",
       "status": "source_paused",
       "review_required": false,
       "issue_codes": [
@@ -20,25 +33,12 @@
       ],
       "software_revision": "eebf3cd73513c185",
       "http_statuses": {
-        "200": 4599,
-        "429": 6
+        "200": 3728,
+        "429": 5
       },
-      "network_seconds": 10790.1,
+      "network_seconds": 7872.8,
       "max_response_seconds": 3.5,
-      "cache_events": 91128
-    },
-    {
-      "name": "Beechtree",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "522ef8b7890d7b28",
-      "products": 777,
-      "variants": 3616,
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "cache_events": 97636
     }
   ]
 }
