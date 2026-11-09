@@ -1,31 +1,29 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-09T09:34:18.942667+00:00",
-  "run_id": "42572301796",
+  "generated_utc": "2026-11-09T09:40:17.845376+00:00",
+  "run_id": "42592529653",
   "attempt": "1",
-  "source_commit": "970e404accdaa60a84903a29c0c8a73967b2c237",
-  "status": "complete",
+  "source_commit": "121d95b913ac543d4cf23120978dcf2df8ff04d2",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 11649.4,
+  "elapsed_seconds": 1192.9,
   "stores": [
     {
-      "name": "Bonanza Satrangi",
-      "status": "done",
-      "review_required": true,
+      "name": "ChotuApp Groceries",
+      "status": "failed",
+      "review_required": false,
       "issue_codes": [
-        "HTTP_503",
+        "SCHEMA_CHECK",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "2e5e508b183b087e",
-      "products": 1376,
-      "variants": 4355,
+      "software_revision": "ba9af049e2ae62c3",
       "http_statuses": {
-        "200": 4544
+        "200": 180
       },
-      "network_seconds": 11329.6,
-      "max_response_seconds": 3.1,
-      "cache_events": 18922
+      "network_seconds": 145.2,
+      "max_response_seconds": 2.1,
+      "cache_events": 0
     }
   ]
 }
