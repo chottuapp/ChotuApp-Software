@@ -1,28 +1,28 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-09T09:40:17.845376+00:00",
-  "run_id": "42592529653",
+  "generated_utc": "2026-11-09T11:19:55.565469+00:00",
+  "run_id": "42572298759",
   "attempt": "1",
-  "source_commit": "121d95b913ac543d4cf23120978dcf2df8ff04d2",
+  "source_commit": "970e404accdaa60a84903a29c0c8a73967b2c237",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 1192.9,
+  "elapsed_seconds": 18000.4,
   "stores": [
     {
-      "name": "ChotuApp Groceries",
-      "status": "failed",
+      "name": "LAAM",
+      "status": "pending",
       "review_required": false,
       "issue_codes": [
-        "SCHEMA_CHECK",
-        "WEBSITE_ORDER_UNVERIFIED"
+        "HTTP_404"
       ],
-      "software_revision": "ba9af049e2ae62c3",
+      "software_revision": "2e5e508b183b087e",
       "http_statuses": {
-        "200": 180
+        "200": 11943,
+        "404": 13
       },
-      "network_seconds": 145.2,
-      "max_response_seconds": 2.1,
+      "network_seconds": 4136.7,
+      "max_response_seconds": 10.4,
       "cache_events": 0
     }
   ]
