@@ -1,0 +1,22 @@
+name: Diagnose Mansab images and Blackbeiger categories
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - run: bash cloud/install_verified_rclone.sh
+      - name: Read only requested catalog files and public image responses
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CHOTU_DRIVE_RCLONE_CONFIG: ${{ secrets.CHOTU_DRIVE_RCLONE_CONFIG }}
+          PYTHONPATH: cloud:.
+        run: python cloud/store_image_category_diagnosis.py
