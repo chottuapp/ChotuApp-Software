@@ -39,6 +39,9 @@ def main():
  try:
   with tempfile.TemporaryDirectory() as tmp:
    normalized,_=normalize(paths[0],Path(tmp)/'normalized.xlsx',codes['ChotuApp Groceries'])
+   from grocery_scope_repair import repair
+   normalized,scope_repairs=repair(normalized,Path(tmp)/'owner-scope.xlsx','ChotuApp Groceries')
+   report['owner_scope_repairs']=scope_repairs
    output=Path(tmp)/'reviewed.xlsx';processing=process(normalized,output,'ChotuApp Groceries',codes)
    result=audit(output,'ChotuApp Groceries',codes,{'naheed.pk','www.naheed.pk'},source=normalized,strict_commercial=True,findings_limit=12)
    report['audit']=result;report['processing']=processing
@@ -58,9 +61,13 @@ def main():
    scope_map={}
    with zipfile.ZipFile(files[0]) as archive,tempfile.TemporaryDirectory() as tmp:
     entries=[v for v in archive.infolist() if v.filename.startswith('saved_runs/') and v.filename.endswith('/pages.sqlite3')]
-    if not 1<=len(entries)<=2 or sum(v.file_size for v in entries)>256*1024**2:raise ValueError('Checkpoint diagnostic exceeds bounds')
+    report['checkpoint_cache_sizes']=[v.file_size for v in entries]
+    if not 1<=len(entries)<=2 or sum(v.file_size for v in entries)>2*1024**3:raise ValueError('Checkpoint diagnostic exceeds bounds')
     for index,entry in enumerate(entries):
-     path=Path(tmp)/(str(index)+'.sqlite3');path.write_bytes(archive.read(entry));cache=ResponseCache(path)
+     import shutil
+     path=Path(tmp)/(str(index)+'.sqlite3')
+     with archive.open(entry) as original,path.open('wb') as target:shutil.copyfileobj(original,target,1024*1024)
+     cache=ResponseCache(path)
      try:
       urls=[v[0] for v in cache.db.execute('SELECT url FROM pages') if '#chotu-scope-snapshot-v1' in v[0]]
       for url in urls:

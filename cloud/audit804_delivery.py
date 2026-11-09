@@ -260,7 +260,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
   state['audit804_auto_evidence']={'status':'checked','facts':evidence_count,'digest':evidence_revision}
  except Exception:
   state['audit804_auto_evidence']={'status':'unavailable','action':'Retain saved source facts; no unverified audit approval'}
- revision=hashlib.sha256(b''.join((root/name).read_bytes() for name in ('cloud/additional_completed_sources.py','sold_object_category_support.py','cloud/sold_object_audit.py','product_description_support.py','cloud/catalogue_object_rules.py','cloud/grocery_owner_scope.py','cloud/chotu-groceries-request.json','cloud/audit804-stock-exclusions.json','cloud/reviewed_source_types.py','electronics_description_support.py','xcessories_purpose_support.py','cloud/review_evidence_cache.py','cloud/image_provenance_repair.py','locked_store_rules.py','cloud/description_readability.py','cloud/owner_product_exclusions.py','cloud/audit804-removed-source.json','cloud/audit804.py','cloud/audit804_semantics.py','cloud/reviewed804_repairs.py','cloud/audit804_delivery.py','cloud/incomplete_products.py','cloud/rule804_pipeline.py','cloud/hold804_repairs.py','cloud/audit804-reviewed-source.json','cloud/audit804-image-reviews.json','cloud/audit804_automation.py','cloud/price_stock_gate.py','cloud/legacy_original_schema.py','cloud/confirmed-shop-codes.json','subcategory_inference_support.py','catalog-tools/complete_rule804_batch.py'))).hexdigest()
+ revision=hashlib.sha256(b''.join((root/name).read_bytes() for name in ('cloud/additional_completed_sources.py','cloud/grocery_scope_repair.py','sold_object_category_support.py','cloud/sold_object_audit.py','product_description_support.py','cloud/catalogue_object_rules.py','cloud/grocery_owner_scope.py','cloud/chotu-groceries-request.json','cloud/audit804-stock-exclusions.json','cloud/reviewed_source_types.py','electronics_description_support.py','xcessories_purpose_support.py','cloud/review_evidence_cache.py','cloud/image_provenance_repair.py','locked_store_rules.py','cloud/description_readability.py','cloud/owner_product_exclusions.py','cloud/audit804-removed-source.json','cloud/audit804.py','cloud/audit804_semantics.py','cloud/reviewed804_repairs.py','cloud/audit804_delivery.py','cloud/incomplete_products.py','cloud/rule804_pipeline.py','cloud/hold804_repairs.py','cloud/audit804-reviewed-source.json','cloud/audit804-image-reviews.json','cloud/audit804_automation.py','cloud/price_stock_gate.py','cloud/legacy_original_schema.py','cloud/confirmed-shop-codes.json','subcategory_inference_support.py','catalog-tools/complete_rule804_batch.py'))).hexdigest()
  revision=hashlib.sha256((revision+evidence_revision).encode()).hexdigest()
  state['audit804_campaign']=campaign;state.setdefault('audit804_results',{});state.setdefault('audit804_processed',{});identity=None
  def handle(source,store,source_run,artifact_id,cache_key):
@@ -276,6 +276,8 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
   with tempfile.TemporaryDirectory() as tmp:
    stage=Path(tmp);normalized,migrated=normalize(source,stage/'normalized'/source.name,code);output=stage/'checked'/(store+'.xlsx')
    from image_provenance_repair import repair as repair_image_provenance
+   from grocery_scope_repair import repair as repair_grocery_scope
+   normalized,grocery_scope_repairs=repair_grocery_scope(normalized,stage/'owner-scope'/source.name,store)
    normalized,image_metadata_repairs=repair_image_provenance(normalized,stage/'image-metadata'/source.name,store)
    from owner_product_exclusions import apply as apply_owner_exclusions
    normalized,owner_exclusions=apply_owner_exclusions(normalized,stage/'owner-filtered'/source.name,store)
@@ -312,6 +314,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
    report['recovery']=recovery_plan(report,prior.get('recovery'))
    report['owner_authorized_exclusions']=owner_exclusions
    report['image_metadata_repairs']=image_metadata_repairs
+   report['owner_grocery_scope_repairs']=grocery_scope_repairs
    report.update(description_repairs_count=len(repairs),description_repairs_examples=repairs[:10])
    from product_description_support import DESCRIPTION_STYLE_VERSION
    report.update(campaign_id=campaign,source_run=str(source_run),source_artifact=artifact_id,source_sha256=source_sha,description_style_version=DESCRIPTION_STYLE_VERSION)

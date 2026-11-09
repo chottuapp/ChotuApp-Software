@@ -95,6 +95,18 @@ def apply(row,previous=None):
     path=str(row.get('website_category_path') or '')
     verified=row.get('website_category_status') in VERIFIED and path and row.get('website_category_source_url') and row.get('website_category_checked_at')
     if row.get('subcategory_source')=='manual' and row.get('subcategory'):return row
+    if row.get('subcategory_source')=='owner_supplied_scope':
+        from pathlib import Path
+        from urllib.parse import urlsplit
+        import json
+        url=urlsplit(str(row.get('source_url') or ''))
+        request=Path(__file__).with_name('chotu-groceries-request.json')
+        if not request.exists():request=Path(__file__).parent/'cloud/chotu-groceries-request.json'
+        groups={p['url']:p['group'] for p in json.loads(request.read_text())['pages']}
+        heading=groups.get(row.get('owner_scope_url'))
+        if url.hostname=='www.naheed.pk' and url.scheme=='https' and heading:
+            row['subcategory']=heading;return row
+        raise ValueError('Owner grocery scope cannot be verified; no inferred override')
     from sold_object_category_support import source_object
     result=source_object(row.get('name'),row.get('description'),row.get('source_product_type'),path if verified else '') or infer(row.get('name'),row.get('description'),path if verified else '')
     if result:
