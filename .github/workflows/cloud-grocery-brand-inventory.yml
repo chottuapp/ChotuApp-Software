@@ -25,10 +25,17 @@ jobs:
           github-token: ${{ github.token }}
           run-id: 42607016680
           path: ${{ runner.temp }}/grocery-export-readonly
+      - uses: actions/download-artifact@v4
+        with:
+          name: chotuapp-checkpoint
+          github-token: ${{ github.token }}
+          run-id: 42607016680
+          path: ${{ runner.temp }}/grocery-checkpoint-readonly
       - name: Read manufacturer column and encrypt the answer
         env:
           GH_TOKEN: ${{ github.token }}
           REPORT_PUBLIC_KEY: ${{ inputs.report_public_key }}
+          GROCERY_CHECKPOINT_ROOT: ${{ runner.temp }}/grocery-checkpoint-readonly
           GROCERY_EXPORT_ROOT: ${{ runner.temp }}/grocery-export-readonly
           PYTHONPATH: cloud:.
         run: python cloud/grocery_brand_inventory.py

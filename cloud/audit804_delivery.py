@@ -243,6 +243,15 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
   runs=[run for run in all_runs if str(run['databaseId']) in refresh_runs|carried_runs]
   state.update(audit804_refresh_generation=generation,audit804_refresh_stores=sorted(refresh_stores),audit804_refresh_requested_utc=config.get('refresh_requested_utc'))
 
+ from additional_completed_sources import approved_runs
+ try:
+  extra_runs=approved_runs(config,sites,gh,held_stores)
+  state.pop('additional_completed_source_error',None)
+ except (RuntimeError,ValueError,KeyError):
+  extra_runs=[]
+  state['additional_completed_source_error']='Additional source verification unavailable or invalid; no additive source approved; existing store delivery continues'
+ runs.extend(extra_runs)
+
  evidence_revision=''
  try:
   from audit804_automation import refresh
@@ -251,7 +260,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
   state['audit804_auto_evidence']={'status':'checked','facts':evidence_count,'digest':evidence_revision}
  except Exception:
   state['audit804_auto_evidence']={'status':'unavailable','action':'Retain saved source facts; no unverified audit approval'}
- revision=hashlib.sha256(b''.join((root/name).read_bytes() for name in ('sold_object_category_support.py','cloud/sold_object_audit.py','product_description_support.py','cloud/catalogue_object_rules.py','cloud/grocery_owner_scope.py','cloud/chotu-groceries-request.json','cloud/audit804-stock-exclusions.json','cloud/reviewed_source_types.py','electronics_description_support.py','xcessories_purpose_support.py','cloud/review_evidence_cache.py','cloud/image_provenance_repair.py','locked_store_rules.py','cloud/description_readability.py','cloud/owner_product_exclusions.py','cloud/audit804-removed-source.json','cloud/audit804.py','cloud/audit804_semantics.py','cloud/reviewed804_repairs.py','cloud/audit804_delivery.py','cloud/incomplete_products.py','cloud/rule804_pipeline.py','cloud/hold804_repairs.py','cloud/audit804-reviewed-source.json','cloud/audit804-image-reviews.json','cloud/audit804_automation.py','cloud/price_stock_gate.py','cloud/legacy_original_schema.py','cloud/confirmed-shop-codes.json','subcategory_inference_support.py','catalog-tools/complete_rule804_batch.py'))).hexdigest()
+ revision=hashlib.sha256(b''.join((root/name).read_bytes() for name in ('cloud/additional_completed_sources.py','sold_object_category_support.py','cloud/sold_object_audit.py','product_description_support.py','cloud/catalogue_object_rules.py','cloud/grocery_owner_scope.py','cloud/chotu-groceries-request.json','cloud/audit804-stock-exclusions.json','cloud/reviewed_source_types.py','electronics_description_support.py','xcessories_purpose_support.py','cloud/review_evidence_cache.py','cloud/image_provenance_repair.py','locked_store_rules.py','cloud/description_readability.py','cloud/owner_product_exclusions.py','cloud/audit804-removed-source.json','cloud/audit804.py','cloud/audit804_semantics.py','cloud/reviewed804_repairs.py','cloud/audit804_delivery.py','cloud/incomplete_products.py','cloud/rule804_pipeline.py','cloud/hold804_repairs.py','cloud/audit804-reviewed-source.json','cloud/audit804-image-reviews.json','cloud/audit804_automation.py','cloud/price_stock_gate.py','cloud/legacy_original_schema.py','cloud/confirmed-shop-codes.json','subcategory_inference_support.py','catalog-tools/complete_rule804_batch.py'))).hexdigest()
  revision=hashlib.sha256((revision+evidence_revision).encode()).hexdigest()
  state['audit804_campaign']=campaign;state.setdefault('audit804_results',{});state.setdefault('audit804_processed',{});identity=None
  def handle(source,store,source_run,artifact_id,cache_key):
@@ -364,7 +373,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
    with tempfile.TemporaryDirectory() as tmp:
     source=restore_source(marker,Path(tmp)/(store+'.xlsx'),store,campaign,state,progress)
     if source is not None:safe_handle(source,store,report.get('source_run','phone'),report.get('source_artifact'),key)
-  for run in reversed(runs if held_stores is None else []):
+  for run in reversed(runs if held_stores is None else extra_runs):
    rid=str(run['databaseId']);artifacts=json.loads(gh('api','repos/chottuapp/ChotuApp-Software/actions/runs/'+rid+'/artifacts?per_page=100'))['artifacts'];found=[a for a in artifacts if a.get('name')=='chotuapp-excel-files' and not a.get('expired')]
    if not found:continue
    item=max(found,key=lambda a:a['id']);base=rid+':'+str(item['id'])
@@ -374,6 +383,8 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
     if stage is None:continue
     for entry in completed_files(stage):
      store=entry.get('store');name=entry.get('name','')
+     if run.get('additional_store') and store!=run['additional_store']:continue
+     if held_stores is not None and store not in held_stores:continue
      if store in paused:continue
      if generation and store in refresh_stores and rid not in refresh_runs:continue
      if store not in config['stores']:raise ValueError('Unapproved store in completed source')
