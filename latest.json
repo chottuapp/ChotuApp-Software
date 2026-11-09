@@ -1,30 +1,44 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-09T13:16:47.731102+00:00",
-  "run_id": "42608201099",
+  "generated_utc": "2026-11-09T14:00:24.034037+00:00",
+  "run_id": "42589212243",
   "attempt": "1",
-  "source_commit": "ae571ecf84bb24eca133c1b7441cdf4db4fbb066",
+  "source_commit": "2af288275802dd215255260882e1c4fd6ff2c5d5",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 6950.1,
+  "elapsed_seconds": 18001.4,
   "stores": [
     {
-      "name": "LAAM",
-      "status": "failed",
+      "name": "Breakout",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "522ef8b7890d7b28",
+      "products": 1447,
+      "variants": 7424,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    },
+    {
+      "name": "Liberty Books",
+      "status": "pending",
       "review_required": false,
       "issue_codes": [
-        "ADAPTER_ERROR",
-        "HTTP_404"
+        "HTTP_404",
+        "WEBSITE_CATEGORY_UNVERIFIED",
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "91cf8e679f65d17b",
+      "software_revision": "36cca8d1d6ed0823",
       "http_statuses": {
-        "200": 4609,
-        "404": 4
+        "404": 1,
+        "200": 3996
       },
-      "network_seconds": 1742.9,
-      "max_response_seconds": 11.2,
-      "cache_events": 0
+      "network_seconds": 9248.9,
+      "max_response_seconds": 2.8,
+      "cache_events": 22811
     }
   ]
 }
