@@ -1,21 +1,21 @@
 {
-  "run_id": "42592767564",
-  "checked_utc": "2026-11-09T09:21:30.173968+00:00",
+  "run_id": "42606643635",
+  "checked_utc": "2026-11-09T11:09:13.253835+00:00",
   "targets": [
     {
       "target": "42592529653",
       "state": {
-        "conclusion": "",
+        "conclusion": "failure",
         "displayTitle": "Automatic continuation of 42590962648",
         "headSha": "121d95b913ac543d4cf23120978dcf2df8ff04d2",
         "jobs": [
           {
-            "completedAt": "0001-01-01T00:00:00Z",
-            "conclusion": "",
+            "completedAt": "2026-11-09T09:40:25Z",
+            "conclusion": "failure",
             "databaseId": 129077330007,
             "name": "fetch",
             "startedAt": "2026-11-09T09:19:33Z",
-            "status": "in_progress",
+            "status": "completed",
             "steps": [
               {
                 "completedAt": "2026-11-09T09:19:35Z",
@@ -98,120 +98,230 @@
                 "status": "completed"
               },
               {
-                "completedAt": "0001-01-01T00:00:00Z",
-                "conclusion": "",
+                "completedAt": "2026-11-09T09:40:17Z",
+                "conclusion": "success",
                 "name": "Live progress, logs and completed-file uploads",
                 "number": 11,
                 "startedAt": "2026-11-09T09:20:18Z",
-                "status": "in_progress"
+                "status": "completed"
               },
               {
-                "completedAt": "0001-01-01T00:00:00Z",
-                "conclusion": "",
+                "completedAt": "2026-11-09T09:40:17Z",
+                "conclusion": "failure",
                 "name": "Fetch result",
                 "number": 12,
-                "startedAt": "0001-01-01T00:00:00Z",
-                "status": "pending"
+                "startedAt": "2026-11-09T09:40:17Z",
+                "status": "completed"
               },
               {
-                "completedAt": "0001-01-01T00:00:00Z",
-                "conclusion": "",
+                "completedAt": "2026-11-09T09:40:17Z",
+                "conclusion": "success",
                 "name": "Collect diagnostic report even if fetching failed",
                 "number": 13,
-                "startedAt": "0001-01-01T00:00:00Z",
-                "status": "pending"
+                "startedAt": "2026-11-09T09:40:17Z",
+                "status": "completed"
               },
               {
-                "completedAt": "0001-01-01T00:00:00Z",
-                "conclusion": "",
+                "completedAt": "2026-11-09T09:40:18Z",
+                "conclusion": "success",
                 "name": "Upload diagnostic report and redacted log",
                 "number": 14,
-                "startedAt": "0001-01-01T00:00:00Z",
-                "status": "pending"
+                "startedAt": "2026-11-09T09:40:17Z",
+                "status": "completed"
               },
               {
-                "completedAt": "0001-01-01T00:00:00Z",
-                "conclusion": "",
+                "completedAt": "2026-11-09T09:40:20Z",
+                "conclusion": "success",
                 "name": "Upload Excel files and audits, including completed stores from a partial run",
                 "number": 15,
-                "startedAt": "0001-01-01T00:00:00Z",
-                "status": "pending"
+                "startedAt": "2026-11-09T09:40:18Z",
+                "status": "completed"
               },
               {
-                "completedAt": "0001-01-01T00:00:00Z",
-                "conclusion": "",
+                "completedAt": "2026-11-09T09:40:20Z",
+                "conclusion": "skipped",
                 "name": "Final automated Rule 804 pass for fresh batch",
                 "number": 16,
-                "startedAt": "0001-01-01T00:00:00Z",
-                "status": "pending"
+                "startedAt": "2026-11-09T09:40:20Z",
+                "status": "completed"
               },
               {
-                "completedAt": "0001-01-01T00:00:00Z",
-                "conclusion": "",
+                "completedAt": "2026-11-09T09:40:20Z",
+                "conclusion": "skipped",
                 "name": "Upload automated Rule 804 fresh workbooks",
                 "number": 17,
-                "startedAt": "0001-01-01T00:00:00Z",
-                "status": "pending"
+                "startedAt": "2026-11-09T09:40:20Z",
+                "status": "completed"
               },
               {
-                "completedAt": "0001-01-01T00:00:00Z",
-                "conclusion": "",
+                "completedAt": "2026-11-09T09:40:22Z",
+                "conclusion": "success",
                 "name": "Upload saved checkpoint when available",
                 "number": 18,
-                "startedAt": "0001-01-01T00:00:00Z",
-                "status": "pending"
+                "startedAt": "2026-11-09T09:40:20Z",
+                "status": "completed"
               },
               {
-                "completedAt": "0001-01-01T00:00:00Z",
-                "conclusion": "",
+                "completedAt": "2026-11-09T09:40:22Z",
+                "conclusion": "success",
                 "name": "Dispatch authorized continuation after verified checkpoint upload",
                 "number": 19,
-                "startedAt": "0001-01-01T00:00:00Z",
-                "status": "pending"
+                "startedAt": "2026-11-09T09:40:22Z",
+                "status": "completed"
               },
               {
-                "completedAt": "0001-01-01T00:00:00Z",
-                "conclusion": "",
+                "completedAt": "2026-11-09T09:40:22Z",
+                "conclusion": "success",
                 "name": "Post Live progress, logs and completed-file uploads",
                 "number": 36,
-                "startedAt": "0001-01-01T00:00:00Z",
-                "status": "pending"
+                "startedAt": "2026-11-09T09:40:22Z",
+                "status": "completed"
               },
               {
-                "completedAt": "0001-01-01T00:00:00Z",
-                "conclusion": "",
+                "completedAt": "2026-11-09T09:40:22Z",
+                "conclusion": "skipped",
                 "name": "Post Run actions/setup-python@v5",
                 "number": 37,
-                "startedAt": "0001-01-01T00:00:00Z",
-                "status": "pending"
+                "startedAt": "2026-11-09T09:40:22Z",
+                "status": "completed"
               },
               {
-                "completedAt": "0001-01-01T00:00:00Z",
-                "conclusion": "",
+                "completedAt": "2026-11-09T09:40:22Z",
+                "conclusion": "success",
                 "name": "Post Run actions/checkout@v4",
                 "number": 38,
-                "startedAt": "0001-01-01T00:00:00Z",
-                "status": "pending"
+                "startedAt": "2026-11-09T09:40:22Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T09:40:22Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 39,
+                "startedAt": "2026-11-09T09:40:22Z",
+                "status": "completed"
               }
             ],
             "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/42592529653/job/129077330007"
+          },
+          {
+            "completedAt": "2026-11-09T09:40:41Z",
+            "conclusion": "success",
+            "databaseId": 129086067956,
+            "name": "Archive structured diagnostics",
+            "startedAt": "2026-11-09T09:40:28Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-11-09T09:40:29Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-11-09T09:40:29Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T09:40:37Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-11-09T09:40:29Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T09:40:37Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-11-09T09:40:37Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T09:40:37Z",
+                "conclusion": "success",
+                "name": "Run actions/download-artifact@v4",
+                "number": 4,
+                "startedAt": "2026-11-09T09:40:37Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T09:40:39Z",
+                "conclusion": "success",
+                "name": "Archive credential-free JSON on the cloud-reports branch",
+                "number": 5,
+                "startedAt": "2026-11-09T09:40:37Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T09:40:40Z",
+                "conclusion": "success",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 9,
+                "startedAt": "2026-11-09T09:40:39Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T09:40:40Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 10,
+                "startedAt": "2026-11-09T09:40:40Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T09:40:40Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 11,
+                "startedAt": "2026-11-09T09:40:40Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/42592529653/job/129086067956"
           }
         ],
-        "status": "in_progress"
+        "status": "completed"
       },
-      "log_unavailable": "run 42592529653 is still in progress; logs will be available when it is complete\n",
+      "failed_log": "fetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7947107Z [ChotuApp Groceries] [09:40:09] HTTP START attempt=1 https://www.naheed.pk/shangrila-peri-peri-mild-sauce-295g\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7948270Z [ChotuApp Groceries] [09:40:10] HTTP END status=200 elapsed=0.8s bytes=355812 https://www.naheed.pk/shangrila-peri-peri-mild-sauce-295g\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7949334Z [ChotuApp Groceries] GROCERY PRODUCTS: 103/3189 checked; 99 complete available products\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7950182Z [ChotuApp Groceries] [09:40:11] STAGE: Grocery source product pages\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7951236Z [ChotuApp Groceries] [09:40:11] HTTP START attempt=1 https://www.naheed.pk/chana-chaat-kit-kabli-cholay-imli-and-shan-chat-masala\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7952494Z [ChotuApp Groceries] [09:40:11] HTTP END status=200 elapsed=0.7s bytes=369264 https://www.naheed.pk/chana-chaat-kit-kabli-cholay-imli-and-shan-chat-masala\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7953410Z __CHOTU_PROGRESS__|1|Active: ChotuApp Groceries\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7954067Z [ChotuApp Groceries] [09:40:12] EXCEPTION: ValueError('Visible/schema source price conflict')\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7954811Z [ChotuApp Groceries] [09:40:12] Traceback (most recent call last):\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7961124Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2061, in _run_checked\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7961749Z     run_site(site['url'], name, template, log_line)\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7962382Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7963113Z     if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7963621Z                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7964204Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1554, in run_site\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7964778Z     _chotuapp_run_site_original(base, name, template, intercept)\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7965425Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7966242Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7966896Z                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7967553Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7985930Z              ^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7986497Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 261, in catalog\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7987086Z     p=product(page,url)\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7987337Z       ^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7987939Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 58, in product\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7988894Z     if not final or amount(final['data-price-amount'])!=price:raise ValueError('Visible/schema source price conflict')\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7989599Z                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7990143Z ValueError: Visible/schema source price conflict\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7990368Z \nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7990605Z [ChotuApp Groceries] FAILED: ChotuApp Groceries: Visible/schema source price conflict\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7991036Z [ChotuApp Groceries] [09:40:12] STAGE: Idle\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7991488Z FAILED: ChotuApp Groceries: FAILED: ChotuApp Groceries: Visible/schema source price conflict\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7991910Z False\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7992441Z Checkpoint lossless cache migration: 244 legacy responses compressed; all source bytes and hashes remain verifiable.\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7993143Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7993749Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7994171Z RUN SUMMARY:\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7994845Z ChotuApp Groceries: FAILED \u2014 FAILED: ChotuApp Groceries: Visible/schema source price conflict\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7995278Z Checkpoint: saved\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.7995733Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.8022423Z ##[error]Process completed with exit code 2.\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.8068081Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.8068697Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.8081192Z shell: /usr/bin/bash -e {0}\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.8081459Z env:\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.8081839Z   CHOTUAPP_CLOUD_DATA: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.8082336Z   CLOUD_RUNNER_GROUP: chotu-groceries-20261109-99pages\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.8082669Z   CLOUD_PARTITION_RESUME: true\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.8083005Z   CLOUD_STORES: ChotuApp Groceries | https://www.naheed.pk\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.8083341Z   CLOUD_MINUTES: 300\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.8083576Z   RESUME_RUN_ID: 42590962648\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:17.8083836Z   SAVE_CHECKPOINT: true\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:22.1488240Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:22.1488651Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:22.1489015Z   CLOUD_NEEDS_CZONE_BROWSER: false\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:22.1489324Z   CLOUD_NEEDS_AXIS_RENDERER: false\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:22.1490045Z   CLOUD_NEEDS_GROCERY_BROWSER: true\n[credential-bearing log line removed]\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:22.1492598Z ##[endgroup]\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:22.6945992Z No continuation: completed, stopped manually, unauthorized or not a time-budget stop.\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:22.7215855Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:22.7296502Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:22.8123107Z [command]/usr/bin/git version\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:22.8171759Z git version 2.56.0\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:22.8213372Z Temporarily overriding HOME='/home/runner/work/_temp/27d703e2-4b48-496e-a57d-c7348d878af1' before making global git config changes\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:22.8214635Z Adding repository directory to the temporary git global config as a safe directory\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:22.8220269Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ChotuApp-Software/ChotuApp-Software\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:22.8260121Z [command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:22.8293726Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:22.8512006Z [command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nfetch\tUNKNOWN STEP\t2026-11-09T09:40:22.8538554Z http.https://github.com/.extraheader",
       "artifacts": [
         {
           "name": "chotuapp-live-logs",
-          "id": 13662425881,
+          "id": 13663555641,
           "expired": false,
-          "size_in_bytes": 4796
+          "size_in_bytes": 20185
+        },
+        {
+          "name": "chotuapp-diagnostics",
+          "id": 13663550621,
+          "expired": false,
+          "size_in_bytes": 18262
+        },
+        {
+          "name": "chotuapp-excel-files",
+          "id": 13663425947,
+          "expired": false,
+          "size_in_bytes": 569
+        },
+        {
+          "name": "chotuapp-checkpoint",
+          "id": 13663196171,
+          "expired": false,
+          "size_in_bytes": 15738826
         }
       ],
-      "annotations": [],
-      "console-tail.txt": "RUNNER STORES: ChotuApp Groceries\nQUEUE: previous terminal results requeued for updated code; original failure retained\nPARALLEL STORES: up to 3 different websites together; source pacing, cooldowns and checks preserved.\nCONTINUE SAVED RUN: ChotuApp Groceries\n[ChotuApp Groceries] SOFTWARE VERSION: ba9af049e2ae62c3 \u2014 installed code loaded; updated checks will revalidate saved responses\n[ChotuApp Groceries] [09:20:20] STAGE: Starting ChotuApp Groceries\n[ChotuApp Groceries] SAVED RUN: completed requests are durable; an incomplete request will be retried.\n[ChotuApp Groceries] CONTINUE SAVED RUN: successful responses reused; unfinished requests retried.\n[ChotuApp Groceries] CHECKPOINT: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/saved_runs/df216d71058749eab479772363367de2/0/api.sqlite3 (this run only; restarting Fetch begins from zero)\n__CHOTU_PROGRESS__|1|Active: ChotuApp Groceries\n[ChotuApp Groceries] [09:20:20] STAGE: Website listing order\n[ChotuApp Groceries] [09:20:20] HTTP START attempt=1 https://www.naheed.pk/robots.txt\n[ChotuApp Groceries] [09:20:20] CACHE HIT status=200 elapsed=0.0s bytes=1443 https://www.naheed.pk/robots.txt\n[ChotuApp Groceries] [09:20:20] HTTP START attempt=1 https://www.naheed.pk/\n[ChotuApp Groceries] [09:20:20] CACHE HIT status=200 elapsed=0.0s bytes=334071 https://www.naheed.pk/\n[ChotuApp Groceries] WEBSITE ORDER UNVERIFIED: No supported public category navigation found; observed prefix retained, no price/bestseller fallback\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 1/99\n[ChotuApp Groceries] GROCERY SCOPE: 1/99 traversed; 154 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 2/99\n[ChotuApp Groceries] GROCERY SCOPE: 2/99 traversed; 283 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 3/99\n[ChotuApp Groceries] GROCERY SCOPE: 3/99 traversed; 336 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 4/99\n[ChotuApp Groceries] GROCERY SCOPE: 4/99 traversed; 363 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 5/99\n[ChotuApp Groceries] GROCERY SCOPE: 5/99 traversed; 398 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 6/99\n[ChotuApp Groceries] GROCERY SCOPE: 6/99 traversed; 462 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 7/99\n[ChotuApp Groceries] GROCERY SCOPE: 7/99 traversed; 515 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 8/99\n[ChotuApp Groceries] GROCERY SCOPE: 8/99 traversed; 549 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 9/99\n[ChotuApp Groceries] GROCERY SCOPE: 9/99 traversed; 593 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 10/99\n[ChotuApp Groceries] GROCERY SCOPE: 10/99 traversed; 614 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 11/99\n[ChotuApp Groceries] GROCERY SCOPE: 11/99 traversed; 625 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 12/99\n[ChotuApp Groceries] GROCERY SCOPE: 12/99 traversed; 671 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 13/99\n[ChotuApp Groceries] GROCERY SCOPE: 13/99 traversed; 687 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 14/99\n[ChotuApp Groceries] GROCERY SCOPE: 14/99 traversed; 709 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 15/99\n[ChotuApp Groceries] GROCERY SCOPE: 15/99 traversed; 714 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 16/99\n[ChotuApp Groceries] GROCERY SCOPE: 16/99 traversed; 715 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 17/99\n[ChotuApp Groceries] GROCERY SCOPE: 17/99 traversed; 720 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 18/99\n[ChotuApp Groceries] GROCERY COVERAGE REVIEW: {\"scope_url\": \"https://www.naheed.pk/allproducts/?redacted\", \"reported_total\": 35, \"visible_products\": 34, \"pages\": 2, \"reported_totals\": [35]}; source discrepancy retained; no complete-catalog approval\n[ChotuApp Groceries] GROCERY SCOPE: 18/99 traversed; 751 distinct product URLs; review_required\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 19/99\n[ChotuApp Groceries] GROCERY SCOPE: 19/99 traversed; 767 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 20/99\n[ChotuApp Groceries] GROCERY SCOPE: 20/99 traversed; 772 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 21/99\n[ChotuApp Groceries] GROCERY SCOPE: 21/99 traversed; 779 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 22/99\n[ChotuApp Groceries] GROCERY SCOPE: 22/99 traversed; 1147 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 23/99\n[ChotuApp Groceries] GROCERY SCOPE: 23/99 traversed; 1149 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 24/99\n[ChotuApp Groceries] GROCERY SCOPE: 24/99 traversed; 1151 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 25/99\n[ChotuApp Groceries] GROCERY SCOPE: 25/99 traversed; 1153 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 26/99\n[ChotuApp Groceries] GROCERY SCOPE: 26/99 traversed; 1153 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 27/99\n[ChotuApp Groceries] GROCERY SCOPE: 27/99 traversed; 1167 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 28/99\n[ChotuApp Groceries] GROCERY SCOPE: 28/99 traversed; 1167 distinct product URLs; complete\n[ChotuApp Groceries] [09:20:20] STAGE: Grocery listing pages\n[ChotuApp Groceries] [09:20:20] HTTP START attempt=1 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] [09:20:20] CACHE HIT status=200 elapsed=0.0s bytes=289090 https://www.naheed.pk/catalogsearch/result/?redacted",
-      "store-status.txt": "Updated (UTC): 2026-11-09T09:20:29.110389+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nChotuApp Groceries: running",
-      "fetch-log.txt": "RUNNER STORES: ChotuApp Groceries\nQUEUE: previous terminal results requeued for updated code; original failure retained\nPARALLEL STORES: up to 3 different websites together; source pacing, cooldowns and checks preserved.\nCONTINUE SAVED RUN: ChotuApp Groceries\n[ChotuApp Groceries] SOFTWARE VERSION: ba9af049e2ae62c3 \u2014 installed code loaded; updated checks will revalidate saved responses\n[ChotuApp Groceries] [09:20:20] STAGE: Starting ChotuApp Groceries\n[ChotuApp Groceries] SAVED RUN: completed requests are durable; an incomplete request will be retried.\n[ChotuApp Groceries] CONTINUE SAVED RUN: successful responses reused; unfinished requests retried.\n[ChotuApp Groceries] CHECKPOINT: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/saved_runs/df216d71058749eab479772363367de2/0/api.sqlite3 (this run only; restarting Fetch begins from zero)\n__CHOTU_PROGRESS__|1|Active: ChotuApp Groceries\n[ChotuApp Groceries] [09:20:20] STAGE: Website listing order\n[ChotuApp Groceries] [09:20:20] HTTP START attempt=1 https://www.naheed.pk/robots.txt\n[ChotuApp Groceries] [09:20:20] CACHE HIT status=200 elapsed=0.0s bytes=1443 https://www.naheed.pk/robots.txt\n[ChotuApp Groceries] [09:20:20] HTTP START attempt=1 https://www.naheed.pk/\n[ChotuApp Groceries] [09:20:20] CACHE HIT status=200 elapsed=0.0s bytes=334071 https://www.naheed.pk/\n[ChotuApp Groceries] WEBSITE ORDER UNVERIFIED: No supported public category navigation found; observed prefix retained, no price/bestseller fallback\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 1/99\n[ChotuApp Groceries] GROCERY SCOPE: 1/99 traversed; 154 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 2/99\n[ChotuApp Groceries] GROCERY SCOPE: 2/99 traversed; 283 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 3/99\n[ChotuApp Groceries] GROCERY SCOPE: 3/99 traversed; 336 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 4/99\n[ChotuApp Groceries] GROCERY SCOPE: 4/99 traversed; 363 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 5/99\n[ChotuApp Groceries] GROCERY SCOPE: 5/99 traversed; 398 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 6/99\n[ChotuApp Groceries] GROCERY SCOPE: 6/99 traversed; 462 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 7/99\n[ChotuApp Groceries] GROCERY SCOPE: 7/99 traversed; 515 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 8/99\n[ChotuApp Groceries] GROCERY SCOPE: 8/99 traversed; 549 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 9/99\n[ChotuApp Groceries] GROCERY SCOPE: 9/99 traversed; 593 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 10/99\n[ChotuApp Groceries] GROCERY SCOPE: 10/99 traversed; 614 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 11/99\n[ChotuApp Groceries] GROCERY SCOPE: 11/99 traversed; 625 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 12/99\n[ChotuApp Groceries] GROCERY SCOPE: 12/99 traversed; 671 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 13/99\n[ChotuApp Groceries] GROCERY SCOPE: 13/99 traversed; 687 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 14/99\n[ChotuApp Groceries] GROCERY SCOPE: 14/99 traversed; 709 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 15/99\n[ChotuApp Groceries] GROCERY SCOPE: 15/99 traversed; 714 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 16/99\n[ChotuApp Groceries] GROCERY SCOPE: 16/99 traversed; 715 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 17/99\n[ChotuApp Groceries] GROCERY SCOPE: 17/99 traversed; 720 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 18/99\n[ChotuApp Groceries] GROCERY COVERAGE REVIEW: {\"scope_url\": \"https://www.naheed.pk/allproducts/?redacted\", \"reported_total\": 35, \"visible_products\": 34, \"pages\": 2, \"reported_totals\": [35]}; source discrepancy retained; no complete-catalog approval\n[ChotuApp Groceries] GROCERY SCOPE: 18/99 traversed; 751 distinct product URLs; review_required\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 19/99\n[ChotuApp Groceries] GROCERY SCOPE: 19/99 traversed; 767 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 20/99\n[ChotuApp Groceries] GROCERY SCOPE: 20/99 traversed; 772 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 21/99\n[ChotuApp Groceries] GROCERY SCOPE: 21/99 traversed; 779 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 22/99\n[ChotuApp Groceries] GROCERY SCOPE: 22/99 traversed; 1147 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 23/99\n[ChotuApp Groceries] GROCERY SCOPE: 23/99 traversed; 1149 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 24/99\n[ChotuApp Groceries] GROCERY SCOPE: 24/99 traversed; 1151 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 25/99\n[ChotuApp Groceries] GROCERY SCOPE: 25/99 traversed; 1153 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 26/99\n[ChotuApp Groceries] GROCERY SCOPE: 26/99 traversed; 1153 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 27/99\n[ChotuApp Groceries] GROCERY SCOPE: 27/99 traversed; 1167 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 28/99\n[ChotuApp Groceries] GROCERY SCOPE: 28/99 traversed; 1167 distinct product URLs; complete\n[ChotuApp Groceries] [09:20:20] STAGE: Grocery listing pages\n[ChotuApp Groceries] [09:20:20] HTTP START attempt=1 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] [09:20:20] CACHE HIT status=200 elapsed=0.0s bytes=289090 https://www.naheed.pk/catalogsearch/result/?redacted"
+      "annotations": [
+        {
+          "level": "warning",
+          "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+        },
+        {
+          "level": "failure",
+          "message": "Process completed with exit code 2."
+        }
+      ],
+      "console-tail.txt": "[ChotuApp Groceries] [09:40:05] HTTP START attempt=1 https://www.naheed.pk/shangrila-natural-honey-mustard-sauce-227g\n[ChotuApp Groceries] [09:40:05] HTTP END status=200 elapsed=0.5s bytes=353715 https://www.naheed.pk/shangrila-natural-honey-mustard-sauce-227g\n[ChotuApp Groceries] GROCERY PRODUCTS: 100/3189 checked; 96 complete available products\n[ChotuApp Groceries] [09:40:06] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:40:06] HTTP START attempt=1 https://www.naheed.pk/shan-biryani-recipe-masala-double-pack\n[ChotuApp Groceries] [09:40:07] HTTP END status=200 elapsed=0.5s bytes=362936 https://www.naheed.pk/shan-biryani-recipe-masala-double-pack\n[ChotuApp Groceries] GROCERY PRODUCTS: 101/3189 checked; 97 complete available products\n[ChotuApp Groceries] [09:40:08] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:40:08] HTTP START attempt=1 https://www.naheed.pk/shangrila-trio-pack-soy-sauce-synthetic-vinegar-chili-sauce-3x300ml\n[ChotuApp Groceries] [09:40:08] HTTP END status=200 elapsed=0.6s bytes=354639 https://www.naheed.pk/shangrila-trio-pack-soy-sauce-synthetic-vinegar-chili-sauce-3x300ml\n[ChotuApp Groceries] GROCERY PRODUCTS: 102/3189 checked; 98 complete available products\n[ChotuApp Groceries] [09:40:09] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:40:09] HTTP START attempt=1 https://www.naheed.pk/shangrila-peri-peri-mild-sauce-295g\n[ChotuApp Groceries] [09:40:10] HTTP END status=200 elapsed=0.8s bytes=355812 https://www.naheed.pk/shangrila-peri-peri-mild-sauce-295g\n[ChotuApp Groceries] GROCERY PRODUCTS: 103/3189 checked; 99 complete available products\n[ChotuApp Groceries] [09:40:11] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:40:11] HTTP START attempt=1 https://www.naheed.pk/chana-chaat-kit-kabli-cholay-imli-and-shan-chat-masala\n[ChotuApp Groceries] [09:40:11] HTTP END status=200 elapsed=0.7s bytes=369264 https://www.naheed.pk/chana-chaat-kit-kabli-cholay-imli-and-shan-chat-masala\n__CHOTU_PROGRESS__|1|Active: ChotuApp Groceries\n[ChotuApp Groceries] [09:40:12] EXCEPTION: ValueError('Visible/schema source price conflict')\n[ChotuApp Groceries] [09:40:12] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2061, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1554, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 128, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='alfatehgarments.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 216, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 296, in run\n    provider=PublicCatalog(g,log);export(g,BASE,STORE,template,log,provider=provider)\n                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 226, in export\n    products=provider.catalog()\n             ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 261, in catalog\n    p=product(page,url)\n      ^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 58, in product\n    if not final or amount(final['data-price-amount'])!=price:raise ValueError('Visible/schema source price conflict')\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Visible/schema source price conflict\n\n[ChotuApp Groceries] FAILED: ChotuApp Groceries: Visible/schema source price conflict\n[ChotuApp Groceries] [09:40:12] STAGE: Idle\nFAILED: ChotuApp Groceries: FAILED: ChotuApp Groceries: Visible/schema source price conflict\nFalse\nCheckpoint lossless cache migration: 244 legacy responses compressed; all source bytes and hashes remain verifiable.\nCheckpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nCheckpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nRUN SUMMARY:\nChotuApp Groceries: FAILED \u2014 FAILED: ChotuApp Groceries: Visible/schema source price conflict\nCheckpoint: saved\nRun finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+      "store-status.txt": "Updated (UTC): 2026-11-09T09:40:16.041664+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nChotuApp Groceries: failed\n  Stage: Idle\n  Last successful HTTP response (UTC): 2026-11-09T09:40:11.931626+00:00",
+      "fetch-log.txt": "[ChotuApp Groceries] [09:39:24] HTTP END status=200 elapsed=0.1s bytes=352842 https://www.naheed.pk/shangrila-peri-peri-hot-sauce-295g\n[ChotuApp Groceries] GROCERY PRODUCTS: 73/3189 checked; 70 complete available products\n[ChotuApp Groceries] [09:39:26] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:39:26] HTTP START attempt=1 https://www.naheed.pk/shan-nihari-recipe-masala-double-pack\n[ChotuApp Groceries] [09:39:26] HTTP END status=200 elapsed=0.4s bytes=360826 https://www.naheed.pk/shan-nihari-recipe-masala-double-pack\n[ChotuApp Groceries] GROCERY PRODUCTS: 74/3189 checked; 71 complete available products\n[ChotuApp Groceries] [09:39:27] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:39:27] HTTP START attempt=1 https://www.naheed.pk/shan-bombay-biryani-recipe-masala-60g-x-4\n[ChotuApp Groceries] [09:39:28] HTTP END status=200 elapsed=0.5s bytes=363950 https://www.naheed.pk/shan-bombay-biryani-recipe-masala-60g-x-4\n[ChotuApp Groceries] GROCERY PRODUCTS: 75/3189 checked; 72 complete available products\n[ChotuApp Groceries] [09:39:29] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:39:29] HTTP START attempt=1 https://www.naheed.pk/shangrila-green-chilli-sauce-500g\n[ChotuApp Groceries] [09:39:29] HTTP END status=200 elapsed=0.5s bytes=352134 https://www.naheed.pk/shangrila-green-chilli-sauce-500g\n[ChotuApp Groceries] GROCERY PRODUCTS: 76/3189 checked; 73 complete available products\n[ChotuApp Groceries] [09:39:30] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:39:30] HTTP START attempt=1 https://www.naheed.pk/shangrila-worcestershire-sauce-275ml\n[ChotuApp Groceries] [09:39:31] HTTP END status=200 elapsed=0.5s bytes=352165 https://www.naheed.pk/shangrila-worcestershire-sauce-275ml\n[ChotuApp Groceries] GROCERY PRODUCTS: 77/3189 checked; 74 complete available products\n[ChotuApp Groceries] [09:39:32] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:39:32] HTTP START attempt=1 https://www.naheed.pk/shangrila-habanero-ketchup-400g\n[ChotuApp Groceries] [09:39:32] HTTP END status=200 elapsed=0.5s bytes=352474 https://www.naheed.pk/shangrila-habanero-ketchup-400g\n[ChotuApp Groceries] GROCERY PRODUCTS: 78/3189 checked; 75 complete available products\n[ChotuApp Groceries] [09:39:33] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:39:33] HTTP START attempt=1 https://www.naheed.pk/shangrila-lemon-juice-300ml\n[ChotuApp Groceries] [09:39:33] HTTP END status=200 elapsed=0.1s bytes=353673 https://www.naheed.pk/shangrila-lemon-juice-300ml\n[ChotuApp Groceries] GROCERY PRODUCTS: 79/3189 checked; 76 complete available products\n[ChotuApp Groceries] [09:39:35] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:39:35] HTTP START attempt=1 https://www.naheed.pk/shan-chicken-masala-recipe-masala-50gm\n[ChotuApp Groceries] [09:39:35] HTTP END status=200 elapsed=0.5s bytes=360323 https://www.naheed.pk/shan-chicken-masala-recipe-masala-50gm\n[ChotuApp Groceries] GROCERY PRODUCTS: 80/3189 checked; 77 complete available products\n[ChotuApp Groceries] [09:39:36] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:39:36] HTTP START attempt=1 https://www.naheed.pk/shan-crushed-pickle-390gm\n[ChotuApp Groceries] [09:39:36] HTTP END status=200 elapsed=0.1s bytes=358340 https://www.naheed.pk/shan-crushed-pickle-390gm\n[ChotuApp Groceries] GROCERY INCOMPLETE: https://www.naheed.pk/shan-crushed-pickle-390gm; Description lacks enough product-specific content for review\n[ChotuApp Groceries] [09:39:38] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:39:38] HTTP START attempt=1 https://www.naheed.pk/shangrila-ketchup-pouch-800g\n[ChotuApp Groceries] [09:39:38] HTTP END status=200 elapsed=0.4s bytes=353047 https://www.naheed.pk/shangrila-ketchup-pouch-800g\n[ChotuApp Groceries] GROCERY PRODUCTS: 82/3189 checked; 78 complete available products\n[ChotuApp Groceries] [09:39:39] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:39:39] HTTP START attempt=1 https://www.naheed.pk/shan-achar-gosht-recipe-masala-double-pack\n[ChotuApp Groceries] [09:39:40] HTTP END status=200 elapsed=0.5s bytes=364482 https://www.naheed.pk/shan-achar-gosht-recipe-masala-double-pack\n[ChotuApp Groceries] GROCERY PRODUCTS: 83/3189 checked; 79 complete available products\n[ChotuApp Groceries] [09:39:41] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:39:41] HTTP START attempt=1 https://www.naheed.pk/shan-balochi-tikka-recipe-masala-35gm\n[ChotuApp Groceries] [09:39:41] HTTP END status=200 elapsed=0.5s bytes=363490 https://www.naheed.pk/shan-balochi-tikka-recipe-masala-35gm\n[ChotuApp Groceries] GROCERY PRODUCTS: 84/3189 checked; 80 complete available products\n[ChotuApp Groceries] [09:39:42] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:39:42] HTTP START attempt=1 https://www.naheed.pk/shangrila-classic-yellow-mustard-sauce-227g\n[ChotuApp Groceries] [09:39:43] HTTP END status=200 elapsed=0.5s bytes=353815 https://www.naheed.pk/shangrila-classic-yellow-mustard-sauce-227g\n[ChotuApp Groceries] GROCERY PRODUCTS: 85/3189 checked; 81 complete available products\n[ChotuApp Groceries] [09:39:44] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:39:44] HTTP START attempt=1 https://www.naheed.pk/shangrila-tobassco-sauce-aged-pepper-60ml\n[ChotuApp Groceries] [09:39:44] HTTP END status=200 elapsed=0.6s bytes=357734 https://www.naheed.pk/shangrila-tobassco-sauce-aged-pepper-60ml\n[ChotuApp Groceries] GROCERY PRODUCTS: 86/3189 checked; 82 complete available products\n[ChotuApp Groceries] [09:39:45] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:39:45] HTTP START attempt=1 https://www.naheed.pk/shan-korma-recipe-masala-50gm\n[ChotuApp Groceries] [09:39:46] HTTP END status=200 elapsed=0.5s bytes=362861 https://www.naheed.pk/shan-korma-recipe-masala-50gm\n[ChotuApp Groceries] GROCERY PRODUCTS: 87/3189 checked; 83 complete available products\n[ChotuApp Groceries] [09:39:47] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:39:47] HTTP START attempt=1 https://www.naheed.pk/shan-shahi-haleem-mix-300gm\n[ChotuApp Groceries] [09:39:47] HTTP END status=200 elapsed=0.4s bytes=362382 https://www.naheed.pk/shan-shahi-haleem-mix-300gm\n[ChotuApp Groceries] GROCERY PRODUCTS: 88/3189 checked; 84 complete available products\n[ChotuApp Groceries] [09:39:48] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:39:48] HTTP START attempt=1 https://www.naheed.pk/shangrila-garlic-chilli-sauce-400g\n[ChotuApp Groceries] [09:39:49] HTTP END status=200 elapsed=0.5s bytes=353852 https://www.naheed.pk/shangrila-garlic-chilli-sauce-400g\n[ChotuApp Groceries] GROCERY PRODUCTS: 89/3189 checked; 85 complete available products\n[ChotuApp Groceries] [09:39:50] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:39:50] HTTP START attempt=1 https://www.naheed.pk/shan-shoop-korean-noodles-fiery-hot-chili-blast-140g\n[ChotuApp Groceries] [09:39:50] HTTP END status=200 elapsed=0.5s bytes=356930 https://www.naheed.pk/shan-shoop-korean-noodles-fiery-hot-chili-blast-140g\n[ChotuApp Groceries] GROCERY PRODUCTS: 90/3189 checked; 86 complete available products\n[ChotuApp Groceries] [09:39:51] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:39:51] HTTP START attempt=1 https://www.naheed.pk/shan-bihari-kabab-recipe-masala-50gm\n[ChotuApp Groceries] [09:39:52] HTTP END status=200 elapsed=0.5s bytes=360742 https://www.naheed.pk/shan-bihari-kabab-recipe-masala-50gm\n[ChotuApp Groceries] GROCERY PRODUCTS: 91/3189 checked; 87 complete available products\n[ChotuApp Groceries] [09:39:53] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:39:53] HTTP START attempt=1 https://www.naheed.pk/shan-mango-pickle-1000gm\n[ChotuApp Groceries] [09:39:53] HTTP END status=200 elapsed=0.1s bytes=359708 https://www.naheed.pk/shan-mango-pickle-1000gm\n[ChotuApp Groceries] GROCERY PRODUCTS: 92/3189 checked; 88 complete available products\n[ChotuApp Groceries] [09:39:54] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:39:54] HTTP START attempt=1 https://www.naheed.pk/shan-beef-biryani-recipe-masala-60gm\n[ChotuApp Groceries] [09:39:55] HTTP END status=200 elapsed=0.5s bytes=363116 https://www.naheed.pk/shan-beef-biryani-recipe-masala-60gm\n[ChotuApp Groceries] GROCERY PRODUCTS: 93/3189 checked; 89 complete available products\n[ChotuApp Groceries] [09:39:56] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:39:56] HTTP START attempt=1 https://www.naheed.pk/shangrila-smokey-spicy-chipotle-sauce-285g\n[ChotuApp Groceries] [09:39:56] HTTP END status=200 elapsed=0.5s bytes=354998 https://www.naheed.pk/shangrila-smokey-spicy-chipotle-sauce-285g\n[ChotuApp Groceries] GROCERY PRODUCTS: 94/3189 checked; 90 complete available products\n[ChotuApp Groceries] [09:39:57] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:39:57] HTTP START attempt=1 https://www.naheed.pk/shan-chicken-jalfrezi-mix-recipe-masala-50gm\n[ChotuApp Groceries] [09:39:58] HTTP END status=200 elapsed=0.6s bytes=360526 https://www.naheed.pk/shan-chicken-jalfrezi-mix-recipe-masala-50gm\n[ChotuApp Groceries] GROCERY PRODUCTS: 95/3189 checked; 91 complete available products\n[ChotuApp Groceries] [09:39:59] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:39:59] HTTP START attempt=1 https://www.naheed.pk/shan-nihari-recipe-masala-60g-x-4\n[ChotuApp Groceries] [09:39:59] HTTP END status=200 elapsed=0.5s bytes=362369 https://www.naheed.pk/shan-nihari-recipe-masala-60g-x-4\n[ChotuApp Groceries] GROCERY PRODUCTS: 96/3189 checked; 92 complete available products\n[ChotuApp Groceries] [09:40:00] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:40:00] HTTP START attempt=1 https://www.naheed.pk/shan-mango-pickle-330gm\n[ChotuApp Groceries] [09:40:01] HTTP END status=200 elapsed=0.5s bytes=359584 https://www.naheed.pk/shan-mango-pickle-330gm\n[ChotuApp Groceries] GROCERY PRODUCTS: 97/3189 checked; 93 complete available products\n[ChotuApp Groceries] [09:40:02] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:40:02] HTTP START attempt=1 https://www.naheed.pk/shan-chinese-egg-fried-rice-mix-40g\n[ChotuApp Groceries] [09:40:02] HTTP END status=200 elapsed=0.6s bytes=361599 https://www.naheed.pk/shan-chinese-egg-fried-rice-mix-40g\n[ChotuApp Groceries] GROCERY PRODUCTS: 98/3189 checked; 94 complete available products\n[ChotuApp Groceries] [09:40:03] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:40:03] HTTP START attempt=1 https://www.naheed.pk/shan-fried-chops-steaks-recipe-masala-50g\n[ChotuApp Groceries] [09:40:04] HTTP END status=200 elapsed=0.5s bytes=354452 https://www.naheed.pk/shan-fried-chops-steaks-recipe-masala-50g\n[ChotuApp Groceries] GROCERY PRODUCTS: 99/3189 checked; 95 complete available products\n[ChotuApp Groceries] [09:40:05] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:40:05] HTTP START attempt=1 https://www.naheed.pk/shangrila-natural-honey-mustard-sauce-227g\n[ChotuApp Groceries] [09:40:05] HTTP END status=200 elapsed=0.5s bytes=353715 https://www.naheed.pk/shangrila-natural-honey-mustard-sauce-227g\n[ChotuApp Groceries] GROCERY PRODUCTS: 100/3189 checked; 96 complete available products\n[ChotuApp Groceries] [09:40:06] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:40:06] HTTP START attempt=1 https://www.naheed.pk/shan-biryani-recipe-masala-double-pack\n[ChotuApp Groceries] [09:40:07] HTTP END status=200 elapsed=0.5s bytes=362936 https://www.naheed.pk/shan-biryani-recipe-masala-double-pack\n[ChotuApp Groceries] GROCERY PRODUCTS: 101/3189 checked; 97 complete available products\n[ChotuApp Groceries] [09:40:08] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:40:08] HTTP START attempt=1 https://www.naheed.pk/shangrila-trio-pack-soy-sauce-synthetic-vinegar-chili-sauce-3x300ml\n[ChotuApp Groceries] [09:40:08] HTTP END status=200 elapsed=0.6s bytes=354639 https://www.naheed.pk/shangrila-trio-pack-soy-sauce-synthetic-vinegar-chili-sauce-3x300ml\n[ChotuApp Groceries] GROCERY PRODUCTS: 102/3189 checked; 98 complete available products\n[ChotuApp Groceries] [09:40:09] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:40:09] HTTP START attempt=1 https://www.naheed.pk/shangrila-peri-peri-mild-sauce-295g\n[ChotuApp Groceries] [09:40:10] HTTP END status=200 elapsed=0.8s bytes=355812 https://www.naheed.pk/shangrila-peri-peri-mild-sauce-295g\n[ChotuApp Groceries] GROCERY PRODUCTS: 103/3189 checked; 99 complete available products\n[ChotuApp Groceries] [09:40:11] STAGE: Grocery source product pages\n[ChotuApp Groceries] [09:40:11] HTTP START attempt=1 https://www.naheed.pk/chana-chaat-kit-kabli-cholay-imli-and-shan-chat-masala\n[ChotuApp Groceries] [09:40:11] HTTP END status=200 elapsed=0.7s bytes=369264 https://www.naheed.pk/chana-chaat-kit-kabli-cholay-imli-and-shan-chat-masala\n__CHOTU_PROGRESS__|1|Active: ChotuApp Groceries\n[ChotuApp Groceries] [09:40:12] EXCEPTION: ValueError('Visible/schema source price conflict')\n[ChotuApp Groceries] [09:40:12] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2061, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1554, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 128, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='alfatehgarments.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 216, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 296, in run\n    provider=PublicCatalog(g,log);export(g,BASE,STORE,template,log,provider=provider)\n                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 226, in export\n    products=provider.catalog()\n             ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 261, in catalog\n    p=product(page,url)\n      ^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 58, in product\n    if not final or amount(final['data-price-amount'])!=price:raise ValueError('Visible/schema source price conflict')\n                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Visible/schema source price conflict\n\n[ChotuApp Groceries] FAILED: ChotuApp Groceries: Visible/schema source price conflict\n[ChotuApp Groceries] [09:40:12] STAGE: Idle\nFAILED: ChotuApp Groceries: FAILED: ChotuApp Groceries: Visible/schema source price conflict\nFalse"
     }
   ]
 }
