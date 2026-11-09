@@ -1,0 +1,318 @@
+{
+  "run_id": "42652867744",
+  "checked_utc": "2026-11-09T16:15:44.420270+00:00",
+  "targets": [
+    {
+      "target": "42607016680",
+      "state": {
+        "conclusion": "success",
+        "displayTitle": "Automatic continuation of 42592529653",
+        "headSha": "ae571ecf84bb24eca133c1b7441cdf4db4fbb066",
+        "jobs": [
+          {
+            "completedAt": "2026-11-09T12:50:27Z",
+            "conclusion": "success",
+            "databaseId": 129125474775,
+            "name": "fetch",
+            "startedAt": "2026-11-09T11:11:39Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-11-09T11:11:40Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-11-09T11:11:39Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T11:11:48Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-11-09T11:11:40Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T11:11:48Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-11-09T11:11:48Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T11:11:52Z",
+                "conclusion": "success",
+                "name": "Install extraction dependencies",
+                "number": 4,
+                "startedAt": "2026-11-09T11:11:48Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T11:12:02Z",
+                "conclusion": "success",
+                "name": "Verify standalone continuation and owner-policy guards",
+                "number": 5,
+                "startedAt": "2026-11-09T11:11:52Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T11:12:04Z",
+                "conclusion": "success",
+                "name": "Restore optional saved run",
+                "number": 6,
+                "startedAt": "2026-11-09T11:12:02Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T11:12:04Z",
+                "conclusion": "skipped",
+                "name": "Install Czone browser fallback when needed",
+                "number": 7,
+                "startedAt": "2026-11-09T11:12:04Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T11:12:23Z",
+                "conclusion": "success",
+                "name": "Install grocery public storefront renderer when needed",
+                "number": 8,
+                "startedAt": "2026-11-09T11:12:04Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T11:12:23Z",
+                "conclusion": "skipped",
+                "name": "Install Axis public JS renderer when needed",
+                "number": 9,
+                "startedAt": "2026-11-09T11:12:23Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T11:12:23Z",
+                "conclusion": "success",
+                "name": "Start continuous fetching on the cloud runner",
+                "number": 10,
+                "startedAt": "2026-11-09T11:12:23Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T12:50:17Z",
+                "conclusion": "success",
+                "name": "Live progress, logs and completed-file uploads",
+                "number": 11,
+                "startedAt": "2026-11-09T11:12:23Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T12:50:17Z",
+                "conclusion": "success",
+                "name": "Fetch result",
+                "number": 12,
+                "startedAt": "2026-11-09T12:50:17Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T12:50:17Z",
+                "conclusion": "success",
+                "name": "Collect diagnostic report even if fetching failed",
+                "number": 13,
+                "startedAt": "2026-11-09T12:50:17Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T12:50:19Z",
+                "conclusion": "success",
+                "name": "Upload diagnostic report and redacted log",
+                "number": 14,
+                "startedAt": "2026-11-09T12:50:17Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T12:50:22Z",
+                "conclusion": "success",
+                "name": "Upload Excel files and audits, including completed stores from a partial run",
+                "number": 15,
+                "startedAt": "2026-11-09T12:50:19Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T12:50:22Z",
+                "conclusion": "skipped",
+                "name": "Final automated Rule 804 pass for fresh batch",
+                "number": 16,
+                "startedAt": "2026-11-09T12:50:22Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T12:50:22Z",
+                "conclusion": "skipped",
+                "name": "Upload automated Rule 804 fresh workbooks",
+                "number": 17,
+                "startedAt": "2026-11-09T12:50:22Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T12:50:24Z",
+                "conclusion": "success",
+                "name": "Upload saved checkpoint when available",
+                "number": 18,
+                "startedAt": "2026-11-09T12:50:22Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T12:50:24Z",
+                "conclusion": "success",
+                "name": "Dispatch authorized continuation after verified checkpoint upload",
+                "number": 19,
+                "startedAt": "2026-11-09T12:50:24Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T12:50:24Z",
+                "conclusion": "success",
+                "name": "Post Live progress, logs and completed-file uploads",
+                "number": 36,
+                "startedAt": "2026-11-09T12:50:24Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T12:50:24Z",
+                "conclusion": "success",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 37,
+                "startedAt": "2026-11-09T12:50:24Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T12:50:25Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 38,
+                "startedAt": "2026-11-09T12:50:24Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T12:50:25Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 39,
+                "startedAt": "2026-11-09T12:50:25Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/42607016680/job/129125474775"
+          },
+          {
+            "completedAt": "2026-11-09T12:50:48Z",
+            "conclusion": "success",
+            "databaseId": 129170532559,
+            "name": "Archive structured diagnostics",
+            "startedAt": "2026-11-09T12:50:30Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-11-09T12:50:32Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-11-09T12:50:31Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T12:50:42Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-11-09T12:50:32Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T12:50:42Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-11-09T12:50:42Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T12:50:43Z",
+                "conclusion": "success",
+                "name": "Run actions/download-artifact@v4",
+                "number": 4,
+                "startedAt": "2026-11-09T12:50:42Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T12:50:46Z",
+                "conclusion": "success",
+                "name": "Archive credential-free JSON on the cloud-reports branch",
+                "number": 5,
+                "startedAt": "2026-11-09T12:50:43Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T12:50:46Z",
+                "conclusion": "success",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 9,
+                "startedAt": "2026-11-09T12:50:46Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T12:50:46Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 10,
+                "startedAt": "2026-11-09T12:50:46Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T12:50:46Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 11,
+                "startedAt": "2026-11-09T12:50:46Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/42607016680/job/129170532559"
+          }
+        ],
+        "status": "completed"
+      },
+      "failed_log": "",
+      "artifacts": [
+        {
+          "name": "chotuapp-checkpoint",
+          "id": 13675487104,
+          "expired": false,
+          "size_in_bytes": 18923223
+        },
+        {
+          "name": "chotuapp-excel-files",
+          "id": 13675312224,
+          "expired": false,
+          "size_in_bytes": 15877376
+        },
+        {
+          "name": "chotuapp-live-logs",
+          "id": 13675057387,
+          "expired": false,
+          "size_in_bytes": 164862
+        },
+        {
+          "name": "chotuapp-diagnostics",
+          "id": 13675047418,
+          "expired": false,
+          "size_in_bytes": 163141
+        }
+      ],
+      "annotations": [],
+      "console-tail.txt": "[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2343/2400 checked; 2343 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2344/2400 checked; 2344 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2345/2400 checked; 2345 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2346/2400 checked; 2346 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2347/2400 checked; 2347 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2348/2400 checked; 2348 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2349/2400 checked; 2349 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2350/2400 checked; 2350 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2351/2400 checked; 2351 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2352/2400 checked; 2352 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2353/2400 checked; 2353 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2354/2400 checked; 2354 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2355/2400 checked; 2355 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2356/2400 checked; 2356 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2357/2400 checked; 2357 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2358/2400 checked; 2358 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2359/2400 checked; 2359 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2360/2400 checked; 2360 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2361/2400 checked; 2361 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2362/2400 checked; 2362 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2363/2400 checked; 2363 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2364/2400 checked; 2364 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2365/2400 checked; 2365 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2366/2400 checked; 2366 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2367/2400 checked; 2367 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2368/2400 checked; 2368 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2369/2400 checked; 2369 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2370/2400 checked; 2370 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2371/2400 checked; 2371 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2372/2400 checked; 2372 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2373/2400 checked; 2373 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2374/2400 checked; 2374 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2375/2400 checked; 2375 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2376/2400 checked; 2376 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2377/2400 checked; 2377 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2378/2400 checked; 2378 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2379/2400 checked; 2379 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2380/2400 checked; 2380 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2381/2400 checked; 2381 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2382/2400 checked; 2382 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2383/2400 checked; 2383 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2384/2400 checked; 2384 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2385/2400 checked; 2385 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2386/2400 checked; 2386 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2387/2400 checked; 2387 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2388/2400 checked; 2388 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2389/2400 checked; 2389 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2390/2400 checked; 2390 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2391/2400 checked; 2391 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2392/2400 checked; 2392 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2393/2400 checked; 2393 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2394/2400 checked; 2394 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2395/2400 checked; 2395 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2396/2400 checked; 2396 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2397/2400 checked; 2397 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2398/2400 checked; 2398 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2399/2400 checked; 2399 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2400/2400 checked; 2400 retained\n[ChotuApp Groceries] EXPORT BUILT: 2400 products; full independent 804 Audit required before delivery\n__CHOTU_PROGRESS__|70|Active: ChotuApp Groceries\n[ChotuApp Groceries] FILE: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/_build_temp/chotu_6qj9fk4h/ChotuApp Groceries - REFRESH REVIEW.xlsx\n[ChotuApp Groceries] PRICE POLICY: Source decimal prices preserved in Products and Variant Combinations; no truncation or rounding.\n[ChotuApp Groceries] STRICT WEBSITE CATEGORIES: 184/2400 source-verified; missing website taxonomy remains unverified\n[ChotuApp Groceries] SUBCATEGORY FALLBACK: 1078 inferred from supplied product text; explicitly labelled, not website-confirmed\n[ChotuApp Groceries] FINAL FILE ORDER: verified website navigation and default product listing; unknown positions stable; image hyperlinks move with products\n[ChotuApp Groceries] SAVED REVIEW EXCEL: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH/ChotuApp Groceries.xlsx\n__CHOTU_PROGRESS__|70|Active: ChotuApp Groceries\n[ChotuApp Groceries] REVIEW REQUIRED: 4801 audit issue(s). Previous FINAL kept.\n[ChotuApp Groceries] Review files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/audit_reports/ChotuApp Groceries\n[ChotuApp Groceries] [12:49:42] STAGE: Idle\n[ChotuApp Groceries] AUDIT FILES: 8 CSV reports exported alongside workbook.\nFILE SAVED NOW: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH/ChotuApp Groceries.xlsx \u2014 other store processes continue.\nTrue\nCheckpoint lossless cache migration: 3085 legacy responses compressed; all source bytes and hashes remain verifiable.\nCheckpoint packaging: excluding request caches for 1 completed stores; Excel files and audits retained.\nCheckpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nRUN SUMMARY:\nChotuApp Groceries: DONE \u2014 2400 products, 2400 variants; ChotuApp Groceries.xlsx (REVIEW)\nCheckpoint: saved\nRun finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+      "store-status.txt": "Updated (UTC): 2026-11-09T12:50:13.388439+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. ChotuApp Groceries.xlsx\n\nSTORE STATUS\nChotuApp Groceries: done\n  Last successful HTTP response (UTC): 2026-11-09T12:40:20.864960+00:00",
+      "fetch-log.txt": "[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2236/2400 checked; 2236 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2237/2400 checked; 2237 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2238/2400 checked; 2238 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2239/2400 checked; 2239 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2240/2400 checked; 2240 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2241/2400 checked; 2241 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2242/2400 checked; 2242 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2243/2400 checked; 2243 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2244/2400 checked; 2244 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2245/2400 checked; 2245 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2246/2400 checked; 2246 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2247/2400 checked; 2247 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2248/2400 checked; 2248 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2249/2400 checked; 2249 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2250/2400 checked; 2250 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2251/2400 checked; 2251 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2252/2400 checked; 2252 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2253/2400 checked; 2253 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2254/2400 checked; 2254 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2255/2400 checked; 2255 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2256/2400 checked; 2256 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2257/2400 checked; 2257 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2258/2400 checked; 2258 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2259/2400 checked; 2259 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2260/2400 checked; 2260 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2261/2400 checked; 2261 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2262/2400 checked; 2262 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2263/2400 checked; 2263 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2264/2400 checked; 2264 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2265/2400 checked; 2265 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2266/2400 checked; 2266 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2267/2400 checked; 2267 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2268/2400 checked; 2268 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2269/2400 checked; 2269 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2270/2400 checked; 2270 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2271/2400 checked; 2271 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2272/2400 checked; 2272 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2273/2400 checked; 2273 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2274/2400 checked; 2274 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2275/2400 checked; 2275 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2276/2400 checked; 2276 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2277/2400 checked; 2277 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2278/2400 checked; 2278 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2279/2400 checked; 2279 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2280/2400 checked; 2280 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2281/2400 checked; 2281 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2282/2400 checked; 2282 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2283/2400 checked; 2283 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2284/2400 checked; 2284 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2285/2400 checked; 2285 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2286/2400 checked; 2286 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2287/2400 checked; 2287 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2288/2400 checked; 2288 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2289/2400 checked; 2289 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2290/2400 checked; 2290 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2291/2400 checked; 2291 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2292/2400 checked; 2292 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2293/2400 checked; 2293 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2294/2400 checked; 2294 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2295/2400 checked; 2295 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2296/2400 checked; 2296 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2297/2400 checked; 2297 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2298/2400 checked; 2298 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2299/2400 checked; 2299 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2300/2400 checked; 2300 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2301/2400 checked; 2301 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2302/2400 checked; 2302 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2303/2400 checked; 2303 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2304/2400 checked; 2304 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2305/2400 checked; 2305 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2306/2400 checked; 2306 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2307/2400 checked; 2307 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2308/2400 checked; 2308 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2309/2400 checked; 2309 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2310/2400 checked; 2310 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2311/2400 checked; 2311 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2312/2400 checked; 2312 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2313/2400 checked; 2313 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2314/2400 checked; 2314 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2315/2400 checked; 2315 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2316/2400 checked; 2316 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2317/2400 checked; 2317 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2318/2400 checked; 2318 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2319/2400 checked; 2319 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2320/2400 checked; 2320 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2321/2400 checked; 2321 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2322/2400 checked; 2322 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2323/2400 checked; 2323 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2324/2400 checked; 2324 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2325/2400 checked; 2325 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2326/2400 checked; 2326 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2327/2400 checked; 2327 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2328/2400 checked; 2328 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2329/2400 checked; 2329 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2330/2400 checked; 2330 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2331/2400 checked; 2331 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2332/2400 checked; 2332 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2333/2400 checked; 2333 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2334/2400 checked; 2334 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2335/2400 checked; 2335 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2336/2400 checked; 2336 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2337/2400 checked; 2337 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2338/2400 checked; 2338 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2339/2400 checked; 2339 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2340/2400 checked; 2340 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2341/2400 checked; 2341 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2342/2400 checked; 2342 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2343/2400 checked; 2343 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2344/2400 checked; 2344 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2345/2400 checked; 2345 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2346/2400 checked; 2346 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2347/2400 checked; 2347 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2348/2400 checked; 2348 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2349/2400 checked; 2349 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2350/2400 checked; 2350 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2351/2400 checked; 2351 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2352/2400 checked; 2352 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2353/2400 checked; 2353 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2354/2400 checked; 2354 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2355/2400 checked; 2355 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2356/2400 checked; 2356 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2357/2400 checked; 2357 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2358/2400 checked; 2358 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2359/2400 checked; 2359 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2360/2400 checked; 2360 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2361/2400 checked; 2361 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2362/2400 checked; 2362 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2363/2400 checked; 2363 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2364/2400 checked; 2364 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2365/2400 checked; 2365 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2366/2400 checked; 2366 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2367/2400 checked; 2367 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2368/2400 checked; 2368 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2369/2400 checked; 2369 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2370/2400 checked; 2370 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2371/2400 checked; 2371 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2372/2400 checked; 2372 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2373/2400 checked; 2373 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2374/2400 checked; 2374 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2375/2400 checked; 2375 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2376/2400 checked; 2376 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2377/2400 checked; 2377 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2378/2400 checked; 2378 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2379/2400 checked; 2379 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2380/2400 checked; 2380 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2381/2400 checked; 2381 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2382/2400 checked; 2382 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2383/2400 checked; 2383 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2384/2400 checked; 2384 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2385/2400 checked; 2385 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2386/2400 checked; 2386 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2387/2400 checked; 2387 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2388/2400 checked; 2388 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2389/2400 checked; 2389 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2390/2400 checked; 2390 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2391/2400 checked; 2391 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2392/2400 checked; 2392 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2393/2400 checked; 2393 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2394/2400 checked; 2394 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2395/2400 checked; 2395 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2396/2400 checked; 2396 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2397/2400 checked; 2397 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2398/2400 checked; 2398 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2399/2400 checked; 2399 retained\n[ChotuApp Groceries] WOO PRODUCT PROGRESS: 2400/2400 checked; 2400 retained\n[ChotuApp Groceries] EXPORT BUILT: 2400 products; full independent 804 Audit required before delivery\n__CHOTU_PROGRESS__|70|Active: ChotuApp Groceries\n[ChotuApp Groceries] FILE: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/_build_temp/chotu_6qj9fk4h/ChotuApp Groceries - REFRESH REVIEW.xlsx\n[ChotuApp Groceries] PRICE POLICY: Source decimal prices preserved in Products and Variant Combinations; no truncation or rounding.\n[ChotuApp Groceries] STRICT WEBSITE CATEGORIES: 184/2400 source-verified; missing website taxonomy remains unverified\n[ChotuApp Groceries] SUBCATEGORY FALLBACK: 1078 inferred from supplied product text; explicitly labelled, not website-confirmed\n[ChotuApp Groceries] FINAL FILE ORDER: verified website navigation and default product listing; unknown positions stable; image hyperlinks move with products\n[ChotuApp Groceries] SAVED REVIEW EXCEL: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH/ChotuApp Groceries.xlsx\n__CHOTU_PROGRESS__|70|Active: ChotuApp Groceries\n[ChotuApp Groceries] REVIEW REQUIRED: 4801 audit issue(s). Previous FINAL kept.\n[ChotuApp Groceries] Review files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/audit_reports/ChotuApp Groceries\n[ChotuApp Groceries] [12:49:42] STAGE: Idle\n[ChotuApp Groceries] AUDIT FILES: 8 CSV reports exported alongside workbook.\nFILE SAVED NOW: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH/ChotuApp Groceries.xlsx \u2014 other store processes continue.\nTrue"
+    }
+  ]
+}
