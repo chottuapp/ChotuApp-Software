@@ -1,136 +1,327 @@
 {
-  "run_id": "42572550906",
-  "checked_utc": "2026-11-09T06:21:58.569647+00:00",
+  "run_id": "42577688698",
+  "checked_utc": "2026-11-09T07:11:29.148105+00:00",
   "targets": [
     {
-      "target": "42572304777",
+      "target": "42576816915",
       "state": {
         "conclusion": "failure",
-        "displayTitle": "ChotuApp Rule 804 Google Drive Sync",
-        "headSha": "970e404accdaa60a84903a29c0c8a73967b2c237",
+        "displayTitle": "Cloud group chotu-groceries-20261109-99pages",
+        "headSha": "24d75058aed7802d4df149782136f9bfbee33f64",
         "jobs": [
           {
-            "completedAt": "2026-11-09T06:19:37Z",
+            "completedAt": "2026-11-09T07:05:28Z",
             "conclusion": "failure",
-            "databaseId": 129012213389,
-            "name": "upload",
-            "startedAt": "2026-11-09T06:19:16Z",
+            "databaseId": 129026290707,
+            "name": "fetch",
+            "startedAt": "2026-11-09T07:03:04Z",
             "status": "completed",
             "steps": [
               {
-                "completedAt": "2026-11-09T06:19:17Z",
+                "completedAt": "2026-11-09T07:03:06Z",
                 "conclusion": "success",
                 "name": "Set up job",
                 "number": 1,
-                "startedAt": "2026-11-09T06:19:16Z",
+                "startedAt": "2026-11-09T07:03:05Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-09T06:19:25Z",
+                "completedAt": "2026-11-09T07:03:14Z",
                 "conclusion": "success",
                 "name": "Run actions/checkout@v4",
                 "number": 2,
-                "startedAt": "2026-11-09T06:19:17Z",
+                "startedAt": "2026-11-09T07:03:06Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-09T06:19:25Z",
+                "completedAt": "2026-11-09T07:03:14Z",
                 "conclusion": "success",
                 "name": "Run actions/setup-python@v5",
                 "number": 3,
-                "startedAt": "2026-11-09T06:19:25Z",
+                "startedAt": "2026-11-09T07:03:14Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-09T06:19:29Z",
+                "completedAt": "2026-11-09T07:03:19Z",
                 "conclusion": "success",
-                "name": "Run python -m pip install -r requirements.txt",
+                "name": "Install extraction dependencies",
                 "number": 4,
-                "startedAt": "2026-11-09T06:19:25Z",
+                "startedAt": "2026-11-09T07:03:14Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-09T06:19:29Z",
+                "completedAt": "2026-11-09T07:03:27Z",
                 "conclusion": "success",
-                "name": "Verify description-repair dependencies before touching Drive",
+                "name": "Verify standalone continuation and owner-policy guards",
                 "number": 5,
-                "startedAt": "2026-11-09T06:19:29Z",
+                "startedAt": "2026-11-09T07:03:19Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-09T06:19:34Z",
-                "conclusion": "success",
-                "name": "Verify source repair safeguards before touching Drive",
-                "number": 6,
-                "startedAt": "2026-11-09T06:19:29Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-09T06:19:35Z",
-                "conclusion": "success",
-                "name": "Install checksum-verified rclone with ID-preserving duplicate archival",
-                "number": 7,
-                "startedAt": "2026-11-09T06:19:34Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-09T06:19:36Z",
-                "conclusion": "failure",
-                "name": "Rule 804 checked files only, then checksum verification",
-                "number": 8,
-                "startedAt": "2026-11-09T06:19:35Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-09T06:19:36Z",
+                "completedAt": "2026-11-09T07:03:27Z",
                 "conclusion": "skipped",
-                "name": "Publish Drive links after verified uploads",
-                "number": 9,
-                "startedAt": "2026-11-09T06:19:36Z",
+                "name": "Restore optional saved run",
+                "number": 6,
+                "startedAt": "2026-11-09T07:03:27Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-09T06:19:36Z",
+                "completedAt": "2026-11-09T07:03:27Z",
+                "conclusion": "skipped",
+                "name": "Install Czone browser fallback when needed",
+                "number": 7,
+                "startedAt": "2026-11-09T07:03:27Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T07:03:51Z",
+                "conclusion": "success",
+                "name": "Install grocery public storefront renderer when needed",
+                "number": 8,
+                "startedAt": "2026-11-09T07:03:27Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T07:03:51Z",
+                "conclusion": "skipped",
+                "name": "Install Axis public JS renderer when needed",
+                "number": 9,
+                "startedAt": "2026-11-09T07:03:51Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T07:03:51Z",
+                "conclusion": "success",
+                "name": "Start continuous fetching on the cloud runner",
+                "number": 10,
+                "startedAt": "2026-11-09T07:03:51Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T07:05:20Z",
+                "conclusion": "success",
+                "name": "Live progress, logs and completed-file uploads",
+                "number": 11,
+                "startedAt": "2026-11-09T07:03:51Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T07:05:20Z",
+                "conclusion": "failure",
+                "name": "Fetch result",
+                "number": 12,
+                "startedAt": "2026-11-09T07:05:20Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T07:05:20Z",
+                "conclusion": "success",
+                "name": "Collect diagnostic report even if fetching failed",
+                "number": 13,
+                "startedAt": "2026-11-09T07:05:20Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T07:05:21Z",
+                "conclusion": "success",
+                "name": "Upload diagnostic report and redacted log",
+                "number": 14,
+                "startedAt": "2026-11-09T07:05:20Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T07:05:23Z",
+                "conclusion": "success",
+                "name": "Upload Excel files and audits, including completed stores from a partial run",
+                "number": 15,
+                "startedAt": "2026-11-09T07:05:21Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T07:05:23Z",
+                "conclusion": "skipped",
+                "name": "Final automated Rule 804 pass for fresh batch",
+                "number": 16,
+                "startedAt": "2026-11-09T07:05:23Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T07:05:23Z",
+                "conclusion": "skipped",
+                "name": "Upload automated Rule 804 fresh workbooks",
+                "number": 17,
+                "startedAt": "2026-11-09T07:05:23Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T07:05:24Z",
+                "conclusion": "success",
+                "name": "Upload saved checkpoint when available",
+                "number": 18,
+                "startedAt": "2026-11-09T07:05:23Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T07:05:25Z",
+                "conclusion": "success",
+                "name": "Dispatch authorized continuation after verified checkpoint upload",
+                "number": 19,
+                "startedAt": "2026-11-09T07:05:24Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T07:05:25Z",
+                "conclusion": "success",
+                "name": "Post Live progress, logs and completed-file uploads",
+                "number": 36,
+                "startedAt": "2026-11-09T07:05:25Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T07:05:25Z",
                 "conclusion": "skipped",
                 "name": "Post Run actions/setup-python@v5",
-                "number": 17,
-                "startedAt": "2026-11-09T06:19:36Z",
+                "number": 37,
+                "startedAt": "2026-11-09T07:05:25Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-09T06:19:36Z",
+                "completedAt": "2026-11-09T07:05:25Z",
                 "conclusion": "success",
                 "name": "Post Run actions/checkout@v4",
-                "number": 18,
-                "startedAt": "2026-11-09T06:19:36Z",
+                "number": 38,
+                "startedAt": "2026-11-09T07:05:25Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-09T06:19:36Z",
+                "completedAt": "2026-11-09T07:05:25Z",
                 "conclusion": "success",
                 "name": "Complete job",
-                "number": 19,
-                "startedAt": "2026-11-09T06:19:36Z",
+                "number": 39,
+                "startedAt": "2026-11-09T07:05:25Z",
                 "status": "completed"
               }
             ],
-            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/42572304777/job/129012213389"
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/42576816915/job/129026290707"
+          },
+          {
+            "completedAt": "2026-11-09T07:05:45Z",
+            "conclusion": "success",
+            "databaseId": 129027100325,
+            "name": "Archive structured diagnostics",
+            "startedAt": "2026-11-09T07:05:31Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-11-09T07:05:33Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-11-09T07:05:32Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T07:05:40Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-11-09T07:05:33Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T07:05:40Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-11-09T07:05:40Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T07:05:41Z",
+                "conclusion": "success",
+                "name": "Run actions/download-artifact@v4",
+                "number": 4,
+                "startedAt": "2026-11-09T07:05:40Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T07:05:43Z",
+                "conclusion": "success",
+                "name": "Archive credential-free JSON on the cloud-reports branch",
+                "number": 5,
+                "startedAt": "2026-11-09T07:05:41Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T07:05:43Z",
+                "conclusion": "success",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 9,
+                "startedAt": "2026-11-09T07:05:43Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T07:05:43Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 10,
+                "startedAt": "2026-11-09T07:05:43Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T07:05:43Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 11,
+                "startedAt": "2026-11-09T07:05:43Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/42576816915/job/129027100325"
           }
         ],
         "status": "completed"
       },
-      "failed_log": "upload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:35.7188662Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:35.7188985Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:35.7189478Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib\n[credential-bearing log line removed]\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:35.7193399Z   CHOTU_DRIVE_RCLONE_CONFIG: *** \nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:35.7193896Z   CHOTU_REPAIR_HELD_STORES: Miss Rose,Shop Modest,Seran,Rivaj UK,Computer Zone,ChenOne,Sana Safinaz,Breakout,Fresh Basket,Alkaram Studio\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:35.7194414Z ##[endgroup]\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2935028Z Traceback (most recent call last):\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2941753Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/drive_sync.py\", line 122, in <module>\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2942454Z     try:main()\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2942694Z         ^^^^^^\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2943123Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/drive_sync.py\", line 57, in main\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2943590Z     state=json.loads(base64.b64decode(old['content']))\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2943905Z           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2944412Z   File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/json/__init__.py\", line 346, in loads\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2945061Z     return _default_decoder.decode(s)\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2945448Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2946232Z   File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/json/decoder.py\", line 338, in decode\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2946921Z     obj, end = self.raw_decode(s, idx=_w(s, 0).end())\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2947363Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2947987Z   File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/json/decoder.py\", line 356, in raw_decode\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2948722Z     raise JSONDecodeError(\"Expecting value\", s, err.value) from None\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2949344Z json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.3155691Z ##[error]Process completed with exit code 1.",
-      "artifacts": [],
+      "failed_log": "fetch\tFetch result\t2026-11-09T07:05:20.5397035Z [ChotuApp Groceries] [07:05:14] STAGE: Grocery listing pages\nfetch\tFetch result\t2026-11-09T07:05:20.5397556Z [ChotuApp Groceries] [07:05:14] HTTP START attempt=1 https://www.naheed.pk/allproducts/?redacted\nfetch\tFetch result\t2026-11-09T07:05:20.5398258Z [ChotuApp Groceries] [07:05:15] HTTP END status=200 elapsed=0.7s bytes=395345 https://www.naheed.pk/allproducts/?redacted\nfetch\tFetch result\t2026-11-09T07:05:20.5398865Z [ChotuApp Groceries] [07:05:16] STAGE: Grocery listing pages\nfetch\tFetch result\t2026-11-09T07:05:20.5399363Z [ChotuApp Groceries] [07:05:16] HTTP START attempt=1 https://www.naheed.pk/allproducts/?redacted\nfetch\tFetch result\t2026-11-09T07:05:20.5400048Z [ChotuApp Groceries] [07:05:16] HTTP END status=200 elapsed=0.4s bytes=295994 https://www.naheed.pk/allproducts/?redacted\nfetch\tFetch result\t2026-11-09T07:05:20.5401430Z __CHOTU_PROGRESS__|1|Active: ChotuApp Groceries\nfetch\tFetch result\t2026-11-09T07:05:20.5402000Z [ChotuApp Groceries] [07:05:17] EXCEPTION: ValueError('Grocery scope count mismatch; catalog not marked complete')\nfetch\tFetch result\t2026-11-09T07:05:20.5402602Z [ChotuApp Groceries] [07:05:17] Traceback (most recent call last):\nfetch\tFetch result\t2026-11-09T07:05:20.5408990Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2061, in _run_checked\nfetch\tFetch result\t2026-11-09T07:05:20.5409689Z     run_site(site['url'], name, template, log_line)\nfetch\tFetch result\t2026-11-09T07:05:20.5410721Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\nfetch\tFetch result\t2026-11-09T07:05:20.5411575Z     if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\nfetch\tFetch result\t2026-11-09T07:05:20.5412105Z                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-11-09T07:05:20.5412749Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1554, in run_site\nfetch\tFetch result\t2026-11-09T07:05:20.5413382Z     _chotuapp_run_site_original(base, name, template, intercept)\nfetch\tFetch result\t2026-11-09T07:05:20.5414096Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\nfetch\tFetch result\t2026-11-09T07:05:20.5415010Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\nfetch\tFetch result\t2026-11-09T07:05:20.5415710Z                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-11-09T07:05:20.5416450Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\nfetch\tFetch result\t2026-11-09T07:05:20.5434839Z                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-11-09T07:05:20.5435501Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 226, in export\nfetch\tFetch result\t2026-11-09T07:05:20.5436124Z     products=provider.catalog()\nfetch\tFetch result\t2026-11-09T07:05:20.5436380Z              ^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-11-09T07:05:20.5436990Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 156, in catalog\nfetch\tFetch result\t2026-11-09T07:05:20.5437904Z     if expected is not None and len(discovered)!=expected:raise ValueError('Grocery scope count mismatch; catalog not marked complete')\nfetch\tFetch result\t2026-11-09T07:05:20.5438584Z                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-11-09T07:05:20.5439060Z ValueError: Grocery scope count mismatch; catalog not marked complete\nfetch\tFetch result\t2026-11-09T07:05:20.5439347Z \nfetch\tFetch result\t2026-11-09T07:05:20.5439668Z [ChotuApp Groceries] FAILED: ChotuApp Groceries: Grocery scope count mismatch; catalog not marked complete\nfetch\tFetch result\t2026-11-09T07:05:20.5440438Z [ChotuApp Groceries] [07:05:17] STAGE: Idle\nfetch\tFetch result\t2026-11-09T07:05:20.5440978Z FAILED: ChotuApp Groceries: FAILED: ChotuApp Groceries: Grocery scope count mismatch; catalog not marked complete\nfetch\tFetch result\t2026-11-09T07:05:20.5441641Z False\nfetch\tFetch result\t2026-11-09T07:05:20.5442089Z Checkpoint lossless cache migration: 17 legacy responses compressed; all source bytes and hashes remain verifiable.\nfetch\tFetch result\t2026-11-09T07:05:20.5442834Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nfetch\tFetch result\t2026-11-09T07:05:20.5443494Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nfetch\tFetch result\t2026-11-09T07:05:20.5443922Z RUN SUMMARY:\nfetch\tFetch result\t2026-11-09T07:05:20.5444718Z ChotuApp Groceries: FAILED \u2014 FAILED: ChotuApp Groceries: Grocery scope count mismatch; catalog not marked complete\nfetch\tFetch result\t2026-11-09T07:05:20.5445253Z Checkpoint: saved\nfetch\tFetch result\t2026-11-09T07:05:20.5445718Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH\nfetch\tFetch result\t2026-11-09T07:05:20.5464451Z ##[error]Process completed with exit code 2.",
+      "artifacts": [
+        {
+          "name": "chotuapp-checkpoint",
+          "id": 13656085604,
+          "expired": false,
+          "size_in_bytes": 858172
+        },
+        {
+          "name": "chotuapp-excel-files",
+          "id": 13655647376,
+          "expired": false,
+          "size_in_bytes": 566
+        },
+        {
+          "name": "chotuapp-diagnostics",
+          "id": 13655373671,
+          "expired": false,
+          "size_in_bytes": 4442
+        },
+        {
+          "name": "chotuapp-live-logs",
+          "id": 13655343920,
+          "expired": false,
+          "size_in_bytes": 6268
+        }
+      ],
       "annotations": [
         {
           "level": "warning",
-          "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+          "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
         },
         {
           "level": "failure",
-          "message": "Process completed with exit code 1."
+          "message": "Process completed with exit code 2."
         }
-      ]
+      ],
+      "console-tail.txt": "[ChotuApp Groceries] [07:04:44] STAGE: Grocery listing pages\n[ChotuApp Groceries] [07:04:44] HTTP START attempt=1 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] [07:04:46] HTTP END status=200 elapsed=1.6s bytes=289123 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] GROCERY PUBLIC UI: load-more step 1; 105 product links\n[ChotuApp Groceries] GROCERY SCOPE: 5/99 complete; 398 distinct product URLs\n[ChotuApp Groceries] [07:04:54] STAGE: Grocery listing pages\n[ChotuApp Groceries] [07:04:54] HTTP START attempt=1 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] [07:04:55] HTTP END status=200 elapsed=1.4s bytes=289115 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] GROCERY PUBLIC UI: load-more step 1; 192 product links\n[ChotuApp Groceries] GROCERY SCOPE: 6/99 complete; 462 distinct product URLs\n[ChotuApp Groceries] [07:05:04] STAGE: Grocery listing pages\n[ChotuApp Groceries] [07:05:04] HTTP START attempt=1 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] [07:05:06] HTTP END status=200 elapsed=1.7s bytes=289115 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] GROCERY PUBLIC UI: load-more step 1; 159 product links\n[ChotuApp Groceries] GROCERY SCOPE: 7/99 complete; 515 distinct product URLs\n[ChotuApp Groceries] [07:05:14] STAGE: Grocery listing pages\n[ChotuApp Groceries] [07:05:14] HTTP START attempt=1 https://www.naheed.pk/allproducts/?redacted\n[ChotuApp Groceries] [07:05:15] HTTP END status=200 elapsed=0.7s bytes=395345 https://www.naheed.pk/allproducts/?redacted\n[ChotuApp Groceries] [07:05:16] STAGE: Grocery listing pages\n[ChotuApp Groceries] [07:05:16] HTTP START attempt=1 https://www.naheed.pk/allproducts/?redacted\n[ChotuApp Groceries] [07:05:16] HTTP END status=200 elapsed=0.4s bytes=295994 https://www.naheed.pk/allproducts/?redacted\n__CHOTU_PROGRESS__|1|Active: ChotuApp Groceries\n[ChotuApp Groceries] [07:05:17] EXCEPTION: ValueError('Grocery scope count mismatch; catalog not marked complete')\n[ChotuApp Groceries] [07:05:17] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2061, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1554, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 128, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='alfatehgarments.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 216, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 202, in run\n    provider=PublicCatalog(g,log);export(g,BASE,STORE,template,log,provider=provider)\n                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 226, in export\n    products=provider.catalog()\n             ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 156, in catalog\n    if expected is not None and len(discovered)!=expected:raise ValueError('Grocery scope count mismatch; catalog not marked complete')\n                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Grocery scope count mismatch; catalog not marked complete\n\n[ChotuApp Groceries] FAILED: ChotuApp Groceries: Grocery scope count mismatch; catalog not marked complete\n[ChotuApp Groceries] [07:05:17] STAGE: Idle\nFAILED: ChotuApp Groceries: FAILED: ChotuApp Groceries: Grocery scope count mismatch; catalog not marked complete\nFalse\nCheckpoint lossless cache migration: 17 legacy responses compressed; all source bytes and hashes remain verifiable.\nCheckpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nCheckpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nRUN SUMMARY:\nChotuApp Groceries: FAILED \u2014 FAILED: ChotuApp Groceries: Grocery scope count mismatch; catalog not marked complete\nCheckpoint: saved\nRun finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+      "store-status.txt": "Updated (UTC): 2026-11-09T07:05:18.674207+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nChotuApp Groceries: failed\n  Stage: Idle\n  Last successful HTTP response (UTC): 2026-11-09T07:05:16.785589+00:00",
+      "fetch-log.txt": "QUEUE: smaller historical catalogs first; unknown counts last; fresh source data fetched again\nRUNNER STORES: ChotuApp Groceries\nPARALLEL STORES: up to 3 different websites together; source pacing, cooldowns and checks preserved.\nNEW FRESH RUN: ChotuApp Groceries\n[ChotuApp Groceries] SOFTWARE VERSION: 01191b030f738a2a \u2014 installed code loaded\n[ChotuApp Groceries] [07:03:52] STAGE: Starting ChotuApp Groceries\n[ChotuApp Groceries] SAVED RUN: completed requests are durable; an incomplete request will be retried.\n[ChotuApp Groceries] FRESH FETCH: new run; previous request checkpoints ignored. Products, prices, availability and images fetched again.\n[ChotuApp Groceries] CHECKPOINT: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/saved_runs/b07f54fce07940ea9446a7d37372bb87/0/api.sqlite3 (this run only; restarting Fetch begins from zero)\n__CHOTU_PROGRESS__|1|Active: ChotuApp Groceries\n[ChotuApp Groceries] [07:03:52] STAGE: Website listing order\n[ChotuApp Groceries] [07:03:52] HTTP START attempt=1 https://www.naheed.pk/robots.txt\n[ChotuApp Groceries] [07:03:53] HTTP END status=200 elapsed=0.5s bytes=1443 https://www.naheed.pk/robots.txt\n[ChotuApp Groceries] [07:03:53] HTTP START attempt=1 https://www.naheed.pk/\n[ChotuApp Groceries] [07:03:54] HTTP END status=200 elapsed=1.2s bytes=334071 https://www.naheed.pk/\n[ChotuApp Groceries] WEBSITE ORDER UNVERIFIED: No supported public category navigation found; observed prefix retained, no price/bestseller fallback\n[ChotuApp Groceries] [07:03:54] STAGE: Grocery listing pages\n[ChotuApp Groceries] [07:03:54] HTTP START attempt=1 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] [07:03:56] HTTP END status=200 elapsed=1.5s bytes=289117 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] GROCERY PUBLIC UI: load-more step 1; 192 product links\n[ChotuApp Groceries] GROCERY SCOPE: 1/99 complete; 154 distinct product URLs\n[ChotuApp Groceries] [07:04:09] STAGE: Grocery listing pages\n[ChotuApp Groceries] [07:04:09] HTTP START attempt=1 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] [07:04:11] HTTP END status=200 elapsed=2.5s bytes=289141 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] GROCERY PUBLIC UI: load-more step 1; 192 product links\n[ChotuApp Groceries] GROCERY SCOPE: 2/99 complete; 283 distinct product URLs\n[ChotuApp Groceries] [07:04:25] STAGE: Grocery listing pages\n[ChotuApp Groceries] [07:04:25] HTTP START attempt=1 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] [07:04:27] HTTP END status=200 elapsed=1.7s bytes=289121 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] GROCERY PUBLIC UI: load-more step 1; 159 product links\n[ChotuApp Groceries] GROCERY SCOPE: 3/99 complete; 336 distinct product URLs\n[ChotuApp Groceries] [07:04:36] STAGE: Grocery listing pages\n[ChotuApp Groceries] [07:04:36] HTTP START attempt=1 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] [07:04:37] HTTP END status=200 elapsed=1.5s bytes=289036 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] GROCERY SCOPE: 4/99 complete; 363 distinct product URLs\n[ChotuApp Groceries] [07:04:44] STAGE: Grocery listing pages\n[ChotuApp Groceries] [07:04:44] HTTP START attempt=1 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] [07:04:46] HTTP END status=200 elapsed=1.6s bytes=289123 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] GROCERY PUBLIC UI: load-more step 1; 105 product links\n[ChotuApp Groceries] GROCERY SCOPE: 5/99 complete; 398 distinct product URLs\n[ChotuApp Groceries] [07:04:54] STAGE: Grocery listing pages\n[ChotuApp Groceries] [07:04:54] HTTP START attempt=1 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] [07:04:55] HTTP END status=200 elapsed=1.4s bytes=289115 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] GROCERY PUBLIC UI: load-more step 1; 192 product links\n[ChotuApp Groceries] GROCERY SCOPE: 6/99 complete; 462 distinct product URLs\n[ChotuApp Groceries] [07:05:04] STAGE: Grocery listing pages\n[ChotuApp Groceries] [07:05:04] HTTP START attempt=1 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] [07:05:06] HTTP END status=200 elapsed=1.7s bytes=289115 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] GROCERY PUBLIC UI: load-more step 1; 159 product links\n[ChotuApp Groceries] GROCERY SCOPE: 7/99 complete; 515 distinct product URLs\n[ChotuApp Groceries] [07:05:14] STAGE: Grocery listing pages\n[ChotuApp Groceries] [07:05:14] HTTP START attempt=1 https://www.naheed.pk/allproducts/?redacted\n[ChotuApp Groceries] [07:05:15] HTTP END status=200 elapsed=0.7s bytes=395345 https://www.naheed.pk/allproducts/?redacted\n[ChotuApp Groceries] [07:05:16] STAGE: Grocery listing pages\n[ChotuApp Groceries] [07:05:16] HTTP START attempt=1 https://www.naheed.pk/allproducts/?redacted\n[ChotuApp Groceries] [07:05:16] HTTP END status=200 elapsed=0.4s bytes=295994 https://www.naheed.pk/allproducts/?redacted\n__CHOTU_PROGRESS__|1|Active: ChotuApp Groceries\n[ChotuApp Groceries] [07:05:17] EXCEPTION: ValueError('Grocery scope count mismatch; catalog not marked complete')\n[ChotuApp Groceries] [07:05:17] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2061, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1554, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 128, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='alfatehgarments.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 216, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 202, in run\n    provider=PublicCatalog(g,log);export(g,BASE,STORE,template,log,provider=provider)\n                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 226, in export\n    products=provider.catalog()\n             ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 156, in catalog\n    if expected is not None and len(discovered)!=expected:raise ValueError('Grocery scope count mismatch; catalog not marked complete')\n                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Grocery scope count mismatch; catalog not marked complete\n\n[ChotuApp Groceries] FAILED: ChotuApp Groceries: Grocery scope count mismatch; catalog not marked complete\n[ChotuApp Groceries] [07:05:17] STAGE: Idle\nFAILED: ChotuApp Groceries: FAILED: ChotuApp Groceries: Grocery scope count mismatch; catalog not marked complete\nFalse"
     }
   ]
 }
