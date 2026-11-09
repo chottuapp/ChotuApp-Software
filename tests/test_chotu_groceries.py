@@ -248,3 +248,8 @@ class GroceryTests(unittest.TestCase):
    reader.request={'pages':[dict(url=source.BASE+'/allproducts/?manufacturer=890')]};reader.discover_scope=lambda _:({source.BASE+'/item'},1,set());reader.read_page=lambda _:page()
    with patch.object(source,'product',side_effect=TypeError('implementation fault')):
     with self.assertRaisesRegex(TypeError,'implementation fault'):reader.catalog()
+ def test_exact_source_empty_query_message_is_a_complete_empty_scope(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   reader=source.PublicCatalog({'_chotu_wait':lambda:None,'__file__':str(Path(tmp)/'main.py')},lambda _:None)
+   scope=dict(url=source.BASE+'/catalogsearch/result/?q=GoodMilk');reader.read_page=lambda url:'<h1>Search results for GoodMilk</h1><div>No products for query "GoodMilk"</div>'
+   links,total,pages=reader.discover_scope(scope);self.assertEqual(links,set());self.assertEqual(pages,{scope['url']})

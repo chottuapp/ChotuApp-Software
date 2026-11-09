@@ -56,7 +56,7 @@ def render_listing(url,pause=lambda:None,log=lambda _:None,*,load_all=True):
    actual=urlsplit(page.url);wanted=urlsplit(url)
    if actual.hostname!='www.naheed.pk' or actual.path.rstrip('/')!=wanted.path.rstrip('/') or any(dict(parse_qsl(actual.query)).get(k)!=v for k,v in parse_qsl(wanted.query) if k in ('q','manufacturer','p')):raise ValueError('Foreign or scope-changing grocery browser redirect')
    if re.search(r'just a moment|attention required|captcha',page.title(),re.I):raise RuntimeError('SOURCE BLOCKED: public storefront challenge; no solver used')
-   page.wait_for_function("selector => document.querySelector(selector) || /no products found|we can.t find products|your search returned no results/i.test(document.body.innerText)",arg=SELECTOR,timeout=60000)
+   page.wait_for_function("selector => document.querySelector(selector) || /no products found|no products for query|we can.t find products|your search returned no results/i.test(document.body.innerText)",arg=SELECTOR,timeout=60000)
    page.wait_for_timeout(1000)
    if load_all:exhaust_listing(page,pause,log,limited,pending)
    content=page.content()

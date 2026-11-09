@@ -1,0 +1,50 @@
+name: Complete saved ChotuApp Groceries file
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: chotu-grocery-file-completion
+  cancel-in-progress: false
+jobs:
+  complete:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - name: Verify grocery source, metadata and delivery guards
+        env:
+          PYTHONPATH: tests:cloud:.
+        run: python -m unittest test_grocery_completion test_chotu_groceries test_grocery_scope_repair test_additional_completed_sources -q
+      - uses: actions/download-artifact@v4
+        with:
+          name: chotuapp-excel-files
+          github-token: ${{ github.token }}
+          run-id: 42607016680
+          path: ${{ runner.temp }}/original-grocery-export
+      - uses: actions/download-artifact@v4
+        with:
+          name: chotuapp-checkpoint
+          github-token: ${{ github.token }}
+          run-id: 42592529653
+          path: ${{ runner.temp }}/grocery-discovery
+      - name: Reconcile four scopes, add missing valid products and independently audit the existing file
+        env:
+          PYTHONPATH: cloud:.
+          GROCERY_EXPORT_ROOT: ${{ runner.temp }}/original-grocery-export
+          GROCERY_CHECKPOINT_ROOT: ${{ runner.temp }}/grocery-discovery
+          GROCERY_OUTPUT: ${{ runner.temp }}/completed-grocery
+        run: python cloud/complete_grocery_export.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: chotuapp-excel-files
+          path: ${{ runner.temp }}/completed-grocery/
+          if-no-files-found: error
+          retention-days: 14

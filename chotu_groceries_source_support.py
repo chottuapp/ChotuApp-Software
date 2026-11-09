@@ -179,7 +179,7 @@ class PublicCatalog:
       saved=requests.Response();saved.status_code=200;saved.url=url;saved._content=rendered.encode();saved.encoding='utf-8';saved.headers['Content-Type']='text/html';cache.put(cache_key,saved)
     else:rendered=saved.text
     soup=BeautifulSoup(rendered,'html.parser');nodes=soup.select(selector)
-   if not nodes and not re.search(r"We can.t find products|No products found|Your search returned no results",soup.get_text(' ',strip=True),re.I):raise ValueError('Public grocery listing schema unverified; no empty completion')
+   if not nodes and not re.search(r"We can.t find products|No products found|No products for query|Your search returned no results",soup.get_text(' ',strip=True),re.I):raise ValueError('Public grocery listing schema unverified; no empty completion')
    for a in nodes:
     item=urljoin(url,a['href']);parsed=urlsplit(item)
     if parsed.hostname!=seed.hostname or parsed.scheme!='https':
