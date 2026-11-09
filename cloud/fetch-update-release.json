@@ -367,6 +367,15 @@
       "name": "The Paper Worm",
       "url": "https://www.thepaperworm.com",
       "owner_shop_name": "The Paperworm"
+    },
+    {
+      "name": "ChotuApp Groceries",
+      "owner_shop_name": "ChotuApp Groceries",
+      "url": "https://www.naheed.pk",
+      "enabled": false,
+      "shop_code_pending": true,
+      "source_scope_request": "cloud/chotu-groceries-request.json",
+      "source_status": "Public search paths disallowed; 13 explicit paths readable; exact source route mapping pending. No whole-store fallback."
     }
   ],
   "minutes": 300,
@@ -374,5 +383,7 @@
   "fresh_release": "source-retry-strict-preload-inline-continuation-telemetry-20261019",
   "stop_previous_run_id": "39152733413",
   "stop_any_active_fetches": true,
-  "owner_pending_shop_codes": []
+  "owner_pending_shop_codes": [
+    "ChotuApp Groceries"
+  ]
 }
