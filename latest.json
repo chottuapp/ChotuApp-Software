@@ -3652,7 +3652,8 @@
     "Rung Rez": "source:b5e2ed20000f01cd7e06cd75141d4677bd32c51e84ba78a521dc621748294984:Rung Rez:5bbfd7381ea1b9960a87f577cd73c8b1858863ab1a12b4b36e59d8897995535a",
     "Mansab": "source:19132d8bfc3fc6bb28f9320a707fe0849bb4df8badbc435d48f01f7646c1f508:Mansab:5bbfd7381ea1b9960a87f577cd73c8b1858863ab1a12b4b36e59d8897995535a",
     "Bela": "source:e738a3eebfda7ab019aab1a049fde655c31c8fdf1416592607bd53b165a05de8:Bela:5bbfd7381ea1b9960a87f577cd73c8b1858863ab1a12b4b36e59d8897995535a",
-    "Shoe Planet": "source:f066226ae824b74a8a44b10691d24335674f8c6a6cf70124738537735d133c40:Shoe Planet:5bbfd7381ea1b9960a87f577cd73c8b1858863ab1a12b4b36e59d8897995535a"
+    "Shoe Planet": "source:f066226ae824b74a8a44b10691d24335674f8c6a6cf70124738537735d133c40:Shoe Planet:5bbfd7381ea1b9960a87f577cd73c8b1858863ab1a12b4b36e59d8897995535a",
+    "Makeup Gallery": "source:1b0b5d0bb86b62d8cb80a9d23691d40e7f001c221abcd9f86b537b102f8cb89f:Makeup Gallery:5bbfd7381ea1b9960a87f577cd73c8b1858863ab1a12b4b36e59d8897995535a"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -20376,6 +20377,1393 @@
       "source_sha256": "b56b0ae70d8c23fe97657e3fe0c3c4ba4be8b7ab22f085d3f6fa457f7aadf8e4",
       "held_input": "inputs/fresh804-20261026-5d42fe35/toyzone/b56b0ae70d8c23fe/manifest.json",
       "checked_utc": "2026-11-09T01:13:20.012050+00:00"
+    },
+    "Makeup Gallery": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Makeup Gallery",
+      "shop_code": "SE10076",
+      "identity_policy": "confirmed_code",
+      "status": "hold",
+      "products_checked": 1416,
+      "findings_count": 64,
+      "findings": [
+        {
+          "product_id": "CP8fa3d126b5cb",
+          "name": "Medicube Rosemary Pdrn Scalp Serum - 20ML",
+          "source_url": "https://www.makeupgallery.pk/products/medicube-rosemary-pdrn-scalp-serum-20ml",
+          "issues": [
+            "Facial serum Category conflicts with named application area"
+          ]
+        },
+        {
+          "product_id": "CP7a5ade8ff4ee",
+          "name": "Baylis & Harding Gift Set for Women - Luxuruy Hand Care Pack - Moonlight Fig - 3 Pack",
+          "source_url": "https://www.makeupgallery.pk/products/baylis-amp-harding-gift-set-for-women-luxuruy-hand-care-pack-moonlight-fig-3-pack",
+          "issues": [
+            "Primary product type and Category disagree: body lotion"
+          ]
+        },
+        {
+          "product_id": "CP47470e8e4693",
+          "name": "Benefit Cosmetics Cheekleaders Bronze Squad Cheek Palette",
+          "source_url": "https://www.makeupgallery.pk/products/benefit-cosmetics-cheekleaders-bronze-squad-cheek-palette",
+          "issues": [
+            "Primary product type and Category disagree: blush"
+          ]
+        },
+        {
+          "product_id": "CP5b97bb7ecd98",
+          "name": "Benefit Cheeky Camper Mini Blush and Bronzer Palette",
+          "source_url": "https://www.makeupgallery.pk/products/benefit-cheeky-camper-mini-blush-and-bronzer-palette",
+          "issues": [
+            "Primary product type and Category disagree: blush"
+          ]
+        },
+        {
+          "product_id": "CP781ce6dbe11b",
+          "name": "TheBalm Travel Makeup Set \u2013 Lash Mascara, Hot Mama Blush, Bahama Mama Bronzer & Mary-Lou Manizer Highlighter",
+          "source_url": "https://www.makeupgallery.pk/products/thebalm-travel-makeup-set-lash-mascara-hot-mama-blush-bahama-mama-bronzer-mary-lou-manizer-highlighter",
+          "issues": [
+            "Primary product type and Category disagree: mascara"
+          ]
+        },
+        {
+          "product_id": "CPcd27a21ab07a",
+          "name": "Aveeno Baby Daily Care Moisturising Lotion 150ml",
+          "source_url": "https://www.makeupgallery.pk/products/aveeno-baby-daily-care-moisturising-lotion-150ml",
+          "issues": [
+            "Facial cream Category conflicts with named application area"
+          ]
+        },
+        {
+          "product_id": "CP00bf93d8d9cf",
+          "name": "Aveeno Baby Soothing Relief Emollient Wash 250m",
+          "source_url": "https://www.makeupgallery.pk/products/aveeno-baby-soothing-relief-emollient-wash-250m",
+          "issues": [
+            "Facial cream Category conflicts with named application area"
+          ]
+        },
+        {
+          "product_id": "CPf93bc6f55663",
+          "name": "Aveeno Baby Soothing Relief Emollient Cream 150ml",
+          "source_url": "https://www.makeupgallery.pk/products/aveeno-baby-soothing-relief-emollient-cream-150ml",
+          "issues": [
+            "Facial cream Category conflicts with named application area"
+          ]
+        },
+        {
+          "product_id": "CPdd551039f7f8",
+          "name": "Gisou Glow All The Way Set",
+          "source_url": "https://www.makeupgallery.pk/products/gisou-glow-all-the-way-set",
+          "issues": [
+            "Primary product type and Category disagree: hair mask"
+          ]
+        },
+        {
+          "product_id": "CPc9946a108ce6",
+          "name": "benefit Whatta Beach! Blusher and Bronzer Gift Set",
+          "source_url": "https://www.makeupgallery.pk/products/benefit-whatta-beach-blusher-and-bronzer-gift-set",
+          "issues": [
+            "Primary product type and Category disagree: blush"
+          ]
+        },
+        {
+          "product_id": "CPa5de8f1741fa",
+          "name": "Fenty Beauty by Rihanna Extra Fu$$y Lip Liner + Mini Lip Luminizer Duo",
+          "source_url": "https://www.makeupgallery.pk/products/fenty-beauty-by-rihanna-extra-fu-y-lip-liner-mini-lip-luminizer-duo",
+          "issues": [
+            "Primary product type and Category disagree: lip liner"
+          ]
+        },
+        {
+          "product_id": "CPf3d6c29a9dfe",
+          "name": "Milk Makeup Sticks Party Mix Cream Blush + Highlighter Set",
+          "source_url": "https://www.makeupgallery.pk/products/milk-makeup-sticks-party-mix-cream-blush-highlighter-set",
+          "issues": [
+            "Primary product type and Category disagree: highlighter"
+          ]
+        },
+        {
+          "product_id": "CPbf1291576091",
+          "name": "Too Faced Most Loved Gift Set",
+          "source_url": "https://www.makeupgallery.pk/products/too-faced-most-loved-gift-set",
+          "issues": [
+            "Primary product type and Category disagree: mascara"
+          ]
+        },
+        {
+          "product_id": "CPc075ca005f3e",
+          "name": "Real Techniques Matte & Merry Ultimate Blending 4 Piece Holiday Gift Set",
+          "source_url": "https://www.makeupgallery.pk/products/real-techniques-matte-merry-ultimate-blending-4-piece-holiday-gift-set",
+          "issues": [
+            "Primary product type and Category disagree: foundation"
+          ]
+        },
+        {
+          "product_id": "CP1c75a76f4185",
+          "name": "L'Or\u00e9al Paris Revitalift Clinical Vitamin C UV Fluid SPF50+ 50ml",
+          "source_url": "https://www.makeupgallery.pk/products/loreal-paris-revitalift-clinical-vitamin-c-uv-fluid-spf50-50ml",
+          "issues": [
+            "Primary product type and Category disagree: sunscreen"
+          ]
+        },
+        {
+          "product_id": "CP95f05a856d1e",
+          "name": "L.A. Girl Shine On Glossy Balm",
+          "source_url": "https://www.makeupgallery.pk/products/l-a-girl-shine-on-glossy-balm",
+          "issues": [
+            "Primary product type and Category disagree: lip balm"
+          ]
+        },
+        {
+          "product_id": "CP712abdf4d063",
+          "name": "Dior Rouge Velvet-100 Edition limitee Velvet",
+          "source_url": "https://www.makeupgallery.pk/products/dior-rouge-velvet-100-edition-limatee",
+          "issues": [
+            "Primary product type and Category disagree: lipstick"
+          ]
+        },
+        {
+          "product_id": "CPadb9e5858519",
+          "name": "Dior Rouge Velvet -221 FROU- FROU VELVET",
+          "source_url": "https://www.makeupgallery.pk/products/dior-rouge-velvet-221-frou-velvet",
+          "issues": [
+            "Primary product type and Category disagree: lipstick"
+          ]
+        },
+        {
+          "product_id": "CPf21242ab0624",
+          "name": "La Roche-Posay Anthelios UVMune 400 Oil Control Gel-Cream SPF50+",
+          "source_url": "https://www.makeupgallery.pk/products/la-roche-posay-anthelios-uvmune-400-oil-control-gel-cream-spf50-1",
+          "issues": [
+            "Primary product type and Category disagree: sunscreen"
+          ]
+        },
+        {
+          "product_id": "CPde23dd5a982e",
+          "name": "SHEGLAM Glass Lock Air Gloss High Key",
+          "source_url": "https://www.makeupgallery.pk/products/sheglam-glass-lock-air-gloss-high-key",
+          "issues": [
+            "Primary product type and Category disagree: lip gloss"
+          ]
+        },
+        {
+          "product_id": "CPbd88c7892c72",
+          "name": "Sephora Collection Lip Tint Felt Lip Stain & Liner - 05 Espresso Line",
+          "source_url": "https://www.makeupgallery.pk/products/sephora-collection-lip-tint-felt-lip-stain-liner-05-espresso-line",
+          "issues": [
+            "Primary product type and Category disagree: lip liner"
+          ]
+        },
+        {
+          "product_id": "CPc5416331bb57",
+          "name": "Sephora Collection Lip Tint Felt Lip Stain & Liner 06 Brownie Sketch",
+          "source_url": "https://www.makeupgallery.pk/products/sephora-collection-lip-tint-felt-lip-stain-liner-06-brownie-sketch",
+          "issues": [
+            "Primary product type and Category disagree: lip liner"
+          ]
+        },
+        {
+          "product_id": "CP094fa6ee1c1a",
+          "name": "Maybelline- Sunkisser Multi-Use Liquid Blush And Bronzer - 30 Pink Mirage",
+          "source_url": "https://www.makeupgallery.pk/products/maybelline-sunkisser-multi-use-liquid-blush-and-bronzer-30-pink-mirage",
+          "issues": [
+            "Primary product type and Category disagree: blush"
+          ]
+        },
+        {
+          "product_id": "CP6c12abf7dac7",
+          "name": "Maybelline- Sunkisser Multi-Use Liquid Blush And Bronzer- 10 Sun Tempt",
+          "source_url": "https://www.makeupgallery.pk/products/maybelline-sunkisser-multi-use-liquid-blush-and-bronzer-10-sun-tempt",
+          "issues": [
+            "Primary product type and Category disagree: blush"
+          ]
+        },
+        {
+          "product_id": "CP5891afd024a4",
+          "name": "Maybelline- Sunkisser Multi-Use Liquid Blush And Bronzer- 08 Shades On",
+          "source_url": "https://www.makeupgallery.pk/products/maybelline-sunkisser-multi-use-liquid-blush-and-bronzer-08-shades-on",
+          "issues": [
+            "Primary product type and Category disagree: blush"
+          ]
+        },
+        {
+          "product_id": "CPf95dd798120c",
+          "name": "Maybelline- Sunkisser Multi-Use Liquid Blush And Bronzer- 03 Sol Searc",
+          "source_url": "https://www.makeupgallery.pk/products/maybelline-sunkisser-multi-use-liquid-blush-and-bronzer-03-sol-searc",
+          "issues": [
+            "Primary product type and Category disagree: blush"
+          ]
+        },
+        {
+          "product_id": "CPf676da948820",
+          "name": "Harry Potter\u2122 X SHEGLAM Houses Of Hogwarts Glitter Liner",
+          "source_url": "https://www.makeupgallery.pk/products/harry-potter\u2122-x-sheglam-houses-of-hogwarts-glitter-liner",
+          "issues": [
+            "Primary product type and Category disagree: eyeliner"
+          ]
+        },
+        {
+          "product_id": "CPc98bff30e23c",
+          "name": "Too Faced Fairytale Crush Blush & Highlighter Palette",
+          "source_url": "https://www.makeupgallery.pk/products/too-faced-fairytale-crush-blush-highlighter-palette",
+          "issues": [
+            "Primary product type and Category disagree: highlighter"
+          ]
+        },
+        {
+          "product_id": "CPf034dc6b2545",
+          "name": "Kylie Gloss A Levres High Gloss - 321 Snatched",
+          "source_url": "https://www.makeupgallery.pk/products/kylie-gloss-a-levres-high-gloss-321-snatched",
+          "issues": [
+            "Primary product type and Category disagree: lip gloss"
+          ]
+        },
+        {
+          "product_id": "CP9c3ac7c7e592",
+          "name": "Kylie Gloss A Levres High Gloss - 300 Koko K",
+          "source_url": "https://www.makeupgallery.pk/products/kylie-gloss-a-levres-high-gloss-300-koko-k",
+          "issues": [
+            "Primary product type and Category disagree: lip gloss"
+          ]
+        },
+        {
+          "product_id": "CPd0e3f6d55b9c",
+          "name": "Tom Ford Gloss Luxe Lip with Hydrating Jojoba Oil - 08 Inhibition",
+          "source_url": "https://www.makeupgallery.pk/products/tom-ford-gloss-luxe-lip-with-hydrating-jojoba-oil-08-inhibition",
+          "issues": [
+            "Primary product type and Category disagree: lip gloss"
+          ]
+        },
+        {
+          "product_id": "CP9596aa990d12",
+          "name": "Tom Ford Gloss Luxe Lip with Hydrating Jojoba Oil - 04 Exquise",
+          "source_url": "https://www.makeupgallery.pk/products/tom-ford-gloss-luxe-lip-with-hydrating-jojoba-oil-04-exquise",
+          "issues": [
+            "Primary product type and Category disagree: lip gloss"
+          ]
+        },
+        {
+          "product_id": "CPfafb10591e54",
+          "name": "Tom Ford Gloss Luxe Lip with Hydrating Jojoba Oil - 01 Disclosure",
+          "source_url": "https://www.makeupgallery.pk/products/tom-ford-gloss-luxe-lip-with-hydrating-jojoba-oil-01-disclosure",
+          "issues": [
+            "Primary product type and Category disagree: lip gloss"
+          ]
+        },
+        {
+          "product_id": "CP40ee38c19b9b",
+          "name": "Tom Ford Ultra Shine Lip Color - 03 Nubile",
+          "source_url": "https://www.makeupgallery.pk/products/tom-ford-ultra-shine-lip-color-03-nubile",
+          "issues": [
+            "Primary product type and Category disagree: lipstick"
+          ]
+        },
+        {
+          "product_id": "CP6288e4fdee7f",
+          "name": "NYX Professional Makeup Jumbo Eye Pencil",
+          "source_url": "https://www.makeupgallery.pk/products/nyx-professional-makeup-jumbo-eye-pencil",
+          "issues": [
+            "Primary product type and Category disagree: eyeshadow"
+          ]
+        },
+        {
+          "product_id": "CP7a5254ff7da5",
+          "name": "SHEGLAM Sunburst Glow Mixer",
+          "source_url": "https://www.makeupgallery.pk/products/sheglam-sunburst-glow-mixer-foundation-fair-neutral",
+          "issues": [
+            "Primary product type and Category disagree: foundation"
+          ]
+        },
+        {
+          "product_id": "CP52fb9aca6f99",
+          "name": "MAC- Prep + Prime Fix+ Lavender - 100Ml",
+          "source_url": "https://www.makeupgallery.pk/products/mac-prep-prime-fix-lavender-100ml",
+          "issues": [
+            "Primary product type and Category disagree: foundation"
+          ]
+        },
+        {
+          "product_id": "CP914bdfeaa5fd",
+          "name": "Huda Beauty Glow Obsessions Face Palette - Rich Glow",
+          "source_url": "https://www.makeupgallery.pk/products/huda-beauty-glow-obsessions-face-palette",
+          "issues": [
+            "Primary product type and Category disagree: highlighter"
+          ]
+        },
+        {
+          "product_id": "CP8c3ecd3aa04f",
+          "name": "Dior Diorshow On Stage Liner - 001 Matte White",
+          "source_url": "https://www.makeupgallery.pk/products/dior-diorshow-on-stage-liner",
+          "issues": [
+            "Primary product type and Category disagree: eyeliner"
+          ]
+        },
+        {
+          "product_id": "CP1b032cd6d4e4",
+          "name": "Guerlain KissKiss Bee Glow Oil - 258 Rose Glow",
+          "source_url": "https://www.makeupgallery.pk/products/guerlain-kisskiss-bee-glow-oil-258-rose-glow-1",
+          "issues": [
+            "Primary product type and Category disagree: lip oil"
+          ]
+        },
+        {
+          "product_id": "CP4ed3ed270905",
+          "name": "Guerlain KissKiss Bee Glow Oil - 258 Rose Glow",
+          "source_url": "https://www.makeupgallery.pk/products/guerlain-kisskiss-bee-glow-oil-258-rose-glow",
+          "issues": [
+            "Primary product type and Category disagree: lip oil"
+          ]
+        },
+        {
+          "product_id": "CP8c76631554ee",
+          "name": "Huda Beauty Life Liner Duo Pencil & Liquid Eyeliner",
+          "source_url": "https://www.makeupgallery.pk/products/huda-beauty-life-liner-duo-pencil-liquid-eyeliner",
+          "issues": [
+            "Primary product type and Category disagree: eyeliner"
+          ]
+        },
+        {
+          "product_id": "CPa35257ef2a01",
+          "name": "Jazmine Beauty Complexion Essentials 3 Piece Brush Set",
+          "source_url": "https://www.makeupgallery.pk/products/jazmine-beauty-complexion-essentials-3-piece-brush-set",
+          "issues": [
+            "Primary product type and Category disagree: blush"
+          ]
+        },
+        {
+          "product_id": "CPcf325216c165",
+          "name": "Yves Saint Laurent Rouge Pur Couture Slim Velvet Radical",
+          "source_url": "https://www.makeupgallery.pk/products/yves-saint-laurent-rouge-pur-couture-slim-velvet-radical-302-brown-no-way-back",
+          "issues": [
+            "Primary product type and Category disagree: lipstick"
+          ]
+        },
+        {
+          "product_id": "CPb674e190920a",
+          "name": "Natasha Denona MINI ROSE CHEEK DUO [Cream Blush & Highlighter",
+          "source_url": "https://www.makeupgallery.pk/products/natasha-denona-mini-rose-cheek-duo-cream-blush-highlighter",
+          "issues": [
+            "Primary product type and Category disagree: highlighter"
+          ]
+        },
+        {
+          "product_id": "CP9677e4f822c0",
+          "name": "Alfaparf Milano Keratin Therapy Lisse Design Rehydrating 200ml",
+          "source_url": "https://www.makeupgallery.pk/products/alfaparf-milano-keratin-therapy-lisse-design-rehydrating-200ml",
+          "issues": [
+            "Primary product type and Category disagree: hair mask"
+          ]
+        },
+        {
+          "product_id": "CP9857601db0d8",
+          "name": "Kerastase Fusio-Scrub Huile Rafraichissante Essential Oil Blend with A Refreshing Aroma 50ml",
+          "source_url": "https://www.makeupgallery.pk/products/kerastase-fusio-scrub-huile-rafraichissante-essential-oil-blend-with-a-refreshing-aroma-50ml",
+          "issues": [
+            "Primary product type and Category disagree: hair oil"
+          ]
+        },
+        {
+          "product_id": "CP9a485a7601bf",
+          "name": "Kerastase Fusio-Scrub Huile Relaxante Essential Oil Blend with A Relaxing Aroma 50ml",
+          "source_url": "https://www.makeupgallery.pk/products/kerastase-fusio-scrub-huile-relaxante-essential-oil-blend-with-a-relaxing-aroma-50ml",
+          "issues": [
+            "Primary product type and Category disagree: hair oil"
+          ]
+        },
+        {
+          "product_id": "CP7d948b1c7aab",
+          "name": "NYX Professional Makeup Fat Oil Lip Drip News Feed",
+          "source_url": "https://www.makeupgallery.pk/products/nyx-professional-makeup-fat-oil-lip-drip-news-feed",
+          "issues": [
+            "Primary product type and Category disagree: lip oil"
+          ]
+        },
+        {
+          "product_id": "CPb81d2657c72a",
+          "name": "Bourjois Always Fabulous 2-in-1 Foundcealer Stick with Blender",
+          "source_url": "https://www.makeupgallery.pk/products/bourjois-always-fabulous-long-lasting-stick-foundcealer-beige-rose",
+          "issues": [
+            "Primary product type and Category disagree: foundation"
+          ]
+        },
+        {
+          "product_id": "CP7c500f6babd3",
+          "name": "Revlon Kiss Cushion Lip Tint 210 Pretty Kiss",
+          "source_url": "https://www.makeupgallery.pk/products/revlon-kiss-cushion-lip-tint-200-fancy-rose-210-pretty-kiss",
+          "issues": [
+            "Primary product type and Category disagree: lipstick"
+          ]
+        },
+        {
+          "product_id": "CPbafed59b49f3",
+          "name": "Sephora- Extensive Effective Attaching Eyelash",
+          "source_url": "https://www.makeupgallery.pk/products/sephora-extensive-effective-attaching-eyelash",
+          "issues": [
+            "Primary product type and Category disagree: false eyelashes"
+          ]
+        },
+        {
+          "product_id": "CPf550e357a093",
+          "name": "Revlon Kiss Cushion Lip Tint 270 Wine Trip",
+          "source_url": "https://www.makeupgallery.pk/products/revlon-kiss-cushion-lip-tint-270-wine-trip",
+          "issues": [
+            "Primary product type and Category disagree: lipstick"
+          ]
+        },
+        {
+          "product_id": "CPb02359ade59c",
+          "name": "Revlon Kiss Cushion Lip Tint 240 Berry Lit",
+          "source_url": "https://www.makeupgallery.pk/products/revlon-kiss-cushion-lip-tint-240-berry-lit",
+          "issues": [
+            "Primary product type and Category disagree: lipstick"
+          ]
+        },
+        {
+          "product_id": "CP6fe97caa1286",
+          "name": "Makeup Revolution Ultra Strobe Balm Palette",
+          "source_url": "https://www.makeupgallery.pk/products/makeup-revolution-ultra-strobe-balm-palette",
+          "issues": [
+            "Primary product type and Category disagree: highlighter"
+          ]
+        },
+        {
+          "product_id": "CPf2b851539efa",
+          "name": "Yves Saint Laurent Or Rouge Eye Cream 15 ml",
+          "source_url": "https://www.makeupgallery.pk/products/yves-saint-laurent-or-rouge-eye-cream-15-ml",
+          "issues": [
+            "Primary product type and Category disagree: contour"
+          ]
+        },
+        {
+          "product_id": "CP948d36e3d591",
+          "name": "Anastasia Beverly Hills Glow Kit - Ultimate Glow",
+          "source_url": "https://www.makeupgallery.pk/products/anastasia-beverly-hills-glow-kit-ultimate-glow",
+          "issues": [
+            "Bundle appears classified as a single component",
+            "Bundle family and product contents disagree"
+          ]
+        },
+        {
+          "product_id": "CPc20ce30e6616",
+          "name": "Guerlain KissKiss Matte Hydrating Matte Lip Colour M330 Spicy Burgundy",
+          "source_url": "https://www.makeupgallery.pk/products/guerlain-kisskiss-matte-hydrating-matte-lip-colour-m330-spicy-burgundy",
+          "issues": [
+            "Primary product type and Category disagree: lipstick"
+          ]
+        },
+        {
+          "product_id": "CPaff6fcba47e0",
+          "name": "Too Faced Retractable Kabuki Brush",
+          "source_url": "https://www.makeupgallery.pk/products/too-faced-retractable-kabuki-brush",
+          "issues": [
+            "Primary product type and Category disagree: makeup brush"
+          ]
+        },
+        {
+          "product_id": "CP098e27e330e4",
+          "name": "Urban Decay Stoned Vibes Major Gems Set",
+          "source_url": "https://www.makeupgallery.pk/products/urban-decay-stoned-vibes-major-gems-set",
+          "issues": [
+            "Primary product type and Category disagree: eye palette"
+          ]
+        },
+        {
+          "product_id": "CPa41700835094",
+          "name": "Lancaster Beauty Sun Sensitive Invisible Compact Cream SPF 50",
+          "source_url": "https://www.makeupgallery.pk/products/lancaster-beauty-sun-sensitive-invisible-compact-cream-spf-50",
+          "issues": [
+            "Primary product type and Category disagree: sunscreen"
+          ]
+        },
+        {
+          "product_id": "CP56f982f52ebc",
+          "name": "Givenchy - Le Rouge Mat - 330 Violin Retro",
+          "source_url": "https://www.makeupgallery.pk/products/givenchy-le-rouge-mat-330-violin-retro",
+          "issues": [
+            "Primary product type and Category disagree: lipstick"
+          ]
+        },
+        {
+          "product_id": "CP41a0b6fdbe13",
+          "name": "Dior-3 Couleurs Tri(O)blique Eyeshadow Palette-Coral Canvas 653",
+          "source_url": "https://www.makeupgallery.pk/products/dior-3-couleurs-trioblique-eyeshadow-palette-coral-canvas-653",
+          "issues": [
+            "Cosmetics bundle incorrectly classified as skincare"
+          ]
+        },
+        {
+          "product_id": "CP693c8263ec02",
+          "name": "Smashbox Halo Cheek Blush and Highlighter Palette",
+          "source_url": "https://www.makeupgallery.pk/products/smashbox-halo-cheek-blush-and-highlighter-palette",
+          "issues": [
+            "Primary product type and Category disagree: highlighter"
+          ]
+        }
+      ],
+      "details_truncated": false,
+      "workbook_sha256": "615180a5176d2b3d5eb2cad62f60f6e6ca927f66ab2ab17ed13f54535a47d567",
+      "checked_utc": "2026-11-09T01:16:19.011494+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "incomplete_products_excluded": [
+        {
+          "product_id": "CP1de12357c43b",
+          "source_url": "https://www.makeupgallery.pk/products/arencia-fresh-green-rice-mochi-cleanser-120g",
+          "name": "Arencia Fresh Green Rice Mochi Cleanser \u2013 120g",
+          "issues": [
+            "Brand name used as product Category"
+          ]
+        },
+        {
+          "product_id": "CPbe080031d0c5",
+          "source_url": "https://www.makeupgallery.pk/products/dr-althea-rapid-hypochlorous-acid-rescue-mist-60ml",
+          "name": "Dr. Althea Rapid Hypochlorous Acid Rescue Mist \u2013 60ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf278da7acfc1",
+          "source_url": "https://www.makeupgallery.pk/products/panoxyl-acne-creamy-wash-4-benzoyl-peroxide-170gm",
+          "name": "PanOxyl Acne Creamy Wash 4% Benzoyl Peroxide 170gm",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP02db9260d632",
+          "source_url": "https://www.makeupgallery.pk/products/medicube-deep-vitamin-c-capsule-serum-30ml",
+          "name": "Medicube Deep Vitamin C Capsule Serum \u2013 30ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3248c49a0591",
+          "source_url": "https://www.makeupgallery.pk/products/medicube-pdrn-pink-caffeine-collagen-eye-patch-60-patches",
+          "name": "Medicube PDRN Pink Caffeine Collagen Eye Patch \u2013 60 Patches",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa66105acf6eb",
+          "source_url": "https://www.makeupgallery.pk/products/medicube-pdrn-pink-glutathione-capsule-cleansing-foam-120g",
+          "name": "Medicube PDRN Pink Glutathione Capsule Cleansing Foam 120g",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1f30b9855d39",
+          "source_url": "https://www.makeupgallery.pk/products/medicube-kojic-acid-turmeric-vita-capsule-cleansing-foam-120g",
+          "name": "Medicube Kojic Acid Turmeric Vita Capsule Cleansing Foam 120g",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf43050b2efd6",
+          "source_url": "https://www.makeupgallery.pk/products/neocell-collagen-peptides-powder-with-vitamin-c-hyaluronic-acid-unflavored-195-6g",
+          "name": "NeoCell Collagen Peptides Powder with Vitamin C & Hyaluronic Acid \u2013 Unflavored \u2013 195.6g",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP611cd4bfdad4",
+          "source_url": "https://www.makeupgallery.pk/products/clarins-3-x-50g-candle-collection-tonic-relax-eau-dynamisante",
+          "name": "Clarins 3 x 50g Candle Collection \u2013 Tonic, Relax & Eau Dynamisante",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8ff9692d0e93",
+          "source_url": "https://www.makeupgallery.pk/products/medicube-kojic-acid-turmeric-vita-capsule-cream",
+          "name": "Medicube Kojic Acid Turmeric Vita Capsule Cream",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd554d5b9c129",
+          "source_url": "https://www.makeupgallery.pk/products/beauty-of-joseon-revive-under-eye-patch-ginseng-retinal",
+          "name": "Beauty of Joseon Revive Under Eye Patch Ginseng + Retinal",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc5932559defd",
+          "source_url": "https://www.makeupgallery.pk/products/makeup-by-mario-ultra-suede-cozy-lip-creme-pinky-brown",
+          "name": "MAKEUP BY MARIO Ultra Suede Cozy Lip Creme",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP92385a825cad",
+          "source_url": "https://www.makeupgallery.pk/products/mac-skinfinish-sunstruck-radiant-bronzer-radiant-light-rosy",
+          "name": "MAC Skinfinish Sunstruck Radiant Bronzer \u2013 Radiant Light Rosy",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP6e91579fa7fe",
+          "source_url": "https://www.makeupgallery.pk/products/fenty-beauty-by-rihanna-match-stix-color-adaptive-cheek-lip-stick-strawberry-pop",
+          "name": "Fenty Beauty by Rihanna Match Stix Color-Adaptive Cheek + Lip Stick \u2013 Strawberry Pop",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc120376a7cf7",
+          "source_url": "https://www.makeupgallery.pk/products/elf-halo-glow-liquid-filter-00-fair-clear",
+          "name": "Elf Halo Glow Liquid Filter 00 fair-Clear",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP49bc58e13204",
+          "source_url": "https://www.makeupgallery.pk/products/panoxyl-acne-foaming-wash-benzoyl-peroxide-10-maximum-strength-156g",
+          "name": "PanOxyl Acne Foaming Wash Benzoyl Peroxide 10% Maximum Strength (156g)",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP59d7c9c9ad89",
+          "source_url": "https://www.makeupgallery.pk/products/colourpop-long-lasting-lippie-penci",
+          "name": "ColourPop Long Lasting Lippie Pencil",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd74e0e26a710",
+          "source_url": "https://www.makeupgallery.pk/products/numbuzin-no-9-nad-bio-lifting-sil-essence-50ml",
+          "name": "Numbuzin No.9 NAD+ BIO Lifting-sil Essence 50ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0111933dcfed",
+          "source_url": "https://www.makeupgallery.pk/products/bobbi-brown-extra-glow-skincare-palette",
+          "name": "Bobbi Brown Extra Glow Skincare Palette",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc993b6a225c2",
+          "source_url": "https://www.makeupgallery.pk/products/medicube-pdrn-pink-collagen-volume-multi-balm-stick",
+          "name": "Medicube PDRN Pink Collagen Volume Multi Balm Stick",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP237359c2d5b5",
+          "source_url": "https://www.makeupgallery.pk/products/medicube-pdrn-pink-caffeine-night-wrapping-mask-75ml",
+          "name": "Medicube PDRN Pink Caffeine Night Wrapping Mask 75ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9de0a3dde8d2",
+          "source_url": "https://www.makeupgallery.pk/products/liz-earle-smooth-amp-glow-exfoliating-tonic",
+          "name": "Liz Earle Smooth & Glow Exfoliating Tonic",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPfaa4b16c7cf3",
+          "source_url": "https://www.makeupgallery.pk/products/skinsense-anti-ageing-overnight-leave-on-mask-400ml",
+          "name": "SkinSense Anti-Ageing Overnight Leave-On Mask 400ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP534c57e96af7",
+          "source_url": "https://www.makeupgallery.pk/products/skinsense-ceramide24-aha-treatment-mask",
+          "name": "SkinSense Ceramide24 AHA Treatment Mask",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4d5a1dd1ffb2",
+          "source_url": "https://www.makeupgallery.pk/products/medicube-pdrn-pink-niacinamide-whip-cleanser",
+          "name": "Medicube PDRN Pink Niacinamide Whip Cleanser",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP612e39e0c0fe",
+          "source_url": "https://www.makeupgallery.pk/products/kate-somerville-mini-liquid-exfolikate-triple-acid-resurfacing-treatment-30ml",
+          "name": "Kate Somerville Mini Liquid ExfoliKate Triple Acid Resurfacing Treatment 30ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP211bfb60c54e",
+          "source_url": "https://www.makeupgallery.pk/products/origins-mega-mushroom-soothing-treatment-lotion-200ml",
+          "name": "ORIGINS Mega-Mushroom Soothing Treatment Lotion 200ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP304b901ce975",
+          "source_url": "https://www.makeupgallery.pk/products/john-frieda-profiller-thickening-spray-150ml",
+          "name": "John Frieda ProFiller+ Thickening Spray 150ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9d9d4a667b72",
+          "source_url": "https://www.makeupgallery.pk/products/kerastase-curl-manifesto-gel-cream-styling-for-waves-amp-curls-150ml",
+          "name": "K\u00e9rastase Curl Manifesto Gel Cream Styling for Waves & Curls \u2013 150ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc81d6866bd63",
+          "source_url": "https://www.makeupgallery.pk/products/amika-the-closer-instant-split-end-hair-repair-cream",
+          "name": "Amika The Closer Instant Split-End Hair Repair Cream",
+          "issues": [
+            "Brand name used as product Category"
+          ]
+        },
+        {
+          "product_id": "CP8eea5b32cb25",
+          "source_url": "https://www.makeupgallery.pk/products/chi-magnified-volume-finishing-spray-340g",
+          "name": "CHI Magnified Volume Finishing Spray 340g",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9133b0b9c77c",
+          "source_url": "https://www.makeupgallery.pk/products/chi-keratin-flex-finish-hair-spray-hold-level-3-284g",
+          "name": "CHI Keratin Flex Finish Hair Spray \u2013 Hold Level 3, 284g",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3d9d5a5c7eb7",
+          "source_url": "https://www.makeupgallery.pk/products/chi-luxury-black-seed-oil-revitalizing-hair-masque-148ml",
+          "name": "CHI Luxury Black Seed Oil Revitalizing Hair Masque 148ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc34ce085b26d",
+          "source_url": "https://www.makeupgallery.pk/products/chi-deep-brilliance-deep-protein-masque-strengthening-treatment-237ml",
+          "name": "CHI Deep Brilliance Deep Protein Masque Strengthening Treatment 237ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe39a3b8e526f",
+          "source_url": "https://www.makeupgallery.pk/products/chi-argan-oil-leave-in-treatment-89ml",
+          "name": "Chi Argan Oil Leave-in Treatment 89ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2d0e769c8764",
+          "source_url": "https://www.makeupgallery.pk/products/neocell-grassfed-collagen-peptides-vitamin-c-6000mg-360-caplets",
+          "name": "NeoCell Grassfed Collagen Peptides + Vitamin C 6000mg \u2013 360 Caplets",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd840a443fda8",
+          "source_url": "https://www.makeupgallery.pk/products/sheglam-cupids-charm-one-touch-instant-curler-32mm-eu-plug",
+          "name": "SHEGLAM Cupid's Charm One-Touch Instant Curler-32mm EU Plug",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa498fbbfbf08",
+          "source_url": "https://www.makeupgallery.pk/products/neocell-beauty-enhancing-biotin-gummies-10-000-mcg-peach-flavor-supports-healthy-hair-skin-nails-72-vegan-gummies",
+          "name": "NeoCell Beauty Enhancing Biotin Gummies 10,000 mcg \u2013 Peach Flavor | Supports Healthy Hair, Skin & Nails | 72 Vegan Gummies",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8aa557b6a9c6",
+          "source_url": "https://www.makeupgallery.pk/products/sheglam-beach-babe-curling-iron-us-25mm-plug",
+          "name": "SHEGLAM Beach Babe Curling Iron - US 25mm Plug",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPfd08b5625ba6",
+          "source_url": "https://www.makeupgallery.pk/products/order-chi-44-iron-guard-thermal-protection-spray-heat-protectant-paraben-free-237ml",
+          "name": "Order CHI 44 Iron Guard Thermal Protection Spray, Heat Protectant, Paraben Free, 237ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP6e87a329b145",
+          "source_url": "https://www.makeupgallery.pk/products/argan-oil-rejuvenating-masque-237ml",
+          "name": "Argan Oil Rejuvenating Masque - 237ML",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa214dfd06076",
+          "source_url": "https://www.makeupgallery.pk/products/fenty-beauty-the-protection-posse-instant-damage-repair-treatment-heat-protectant-set",
+          "name": "Fenty Beauty The Protection Posse Instant Damage Repair Treatment + Heat Protectant Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP6bb473483846",
+          "source_url": "https://www.makeupgallery.pk/products/color-wow-pop-lock-high-gloss-finish-55ml",
+          "name": "Color Wow pop & lock high gloss finish 55ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd6c1fc0f83ab",
+          "source_url": "https://www.makeupgallery.pk/products/kerastase-ampoules-anti-chute-cure-fortifiante-anti-hair-fall-care",
+          "name": "Kerastase Ampoules Anti Chute Cure Fortifiante Anti Hair-Fall Care",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPfb4d782d50b1",
+          "source_url": "https://www.makeupgallery.pk/products/goli-nutrition-ashwagandha-gummies-60-gummies",
+          "name": "Goli Nutrition, Ashwagandha Gummies, 60 Gummies",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1e82147a263e",
+          "source_url": "https://www.makeupgallery.pk/products/night-time-fat-burner-weight-loss-120-capsule",
+          "name": "Night Time Fat Burner Weight Loss - 120 Capsule",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf176dcfc9667",
+          "source_url": "https://www.makeupgallery.pk/products/magnesium-complex-300-mg-250-tablets",
+          "name": "Magnesium Complex 300 mg, 250 Tablets",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb98a24d657a2",
+          "source_url": "https://www.makeupgallery.pk/products/nivea-feel-rejuvenated-4pc-gift-set",
+          "name": "NIVEA Feel Rejuvenated 4pc Gift Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1053ed4617ae",
+          "source_url": "https://www.makeupgallery.pk/products/champneys-mini-moments-all-occasion-gift-set",
+          "name": "Champneys Mini Moments All Occasion Gift Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7f5fb1e2a5ed",
+          "source_url": "https://www.makeupgallery.pk/products/laneige-hydration-to-go-holiday-set",
+          "name": "Laneige Hydration To Go Holiday Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4c0982ca3c23",
+          "source_url": "https://www.makeupgallery.pk/products/sephora-favorites-perfect-pout-lip-value-set",
+          "name": "Sephora Favorites Perfect Pout Lip Value Set.",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe139ebc3f4a6",
+          "source_url": "https://www.makeupgallery.pk/products/dior-capture-totale-dream-skin-perfect-skin-creator-travel-collection",
+          "name": "Dior Capture Totale Dream skin Perfect Skin Creator Travel Collection",
+          "issues": [
+            "Category is too broad or promotional for product-purpose classification"
+          ]
+        },
+        {
+          "product_id": "CPe4892c34930d",
+          "source_url": "https://www.makeupgallery.pk/products/sephora-beauty-pass-your-200-points-gift-boutique-set",
+          "name": "Sephora Beauty Pass Your 200 Points Gift Boutique set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9656e0badc6d",
+          "source_url": "https://www.makeupgallery.pk/products/elizabeth-arden-ceramide-retinol-capsules-60-u-gift-set",
+          "name": "Elizabeth Arden Ceramide Retinol Capsules 60 u Gift Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP00d6e94a7b37",
+          "source_url": "https://www.makeupgallery.pk/products/roc-multi-correxion-revive-glow-eye-balm-brighten-and-reduce-dark-circles-4g",
+          "name": "RoC Multi Correxion Revive Glow Eye Balm - Brighten and Reduce Dark Circles 4G",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc008461c0b19",
+          "source_url": "https://www.makeupgallery.pk/products/dr-jart-x-sephora-beauty-pass-happy-soothigday-set",
+          "name": "Dr.Jart+ X Sephora Beauty Pass Happy Soothigday Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0f7871f6a5e5",
+          "source_url": "https://www.makeupgallery.pk/products/anua-pdrn-hyaluronic-acid-hydrating-capsule-mist-100ml",
+          "name": "Anua Pdrn Hyaluronic Acid Hydrating Capsule Mist 100ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP47d7f68822a2",
+          "source_url": "https://www.makeupgallery.pk/products/cetaphil-gentle-skin-cleanser-normal-to-dry-sensitive-skin-473ml",
+          "name": "Cetaphil Gentle Skin Cleanser Normal to Dry & Sensitive Skin - 473ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP439366a608d3",
+          "source_url": "https://www.makeupgallery.pk/products/arencia-retinal-booster-shot-30ml",
+          "name": "Arencia Retinal Booster Shot 30ml",
+          "issues": [
+            "Brand name used as product Category"
+          ]
+        },
+        {
+          "product_id": "CPd21cceed1c8f",
+          "source_url": "https://www.makeupgallery.pk/products/arencia-eraser-shot-glycolic-acid-booster",
+          "name": "Arencia Eraser Shot Glycolic Acid Booster 30ml",
+          "issues": [
+            "Brand name used as product Category"
+          ]
+        },
+        {
+          "product_id": "CPfdfaf34ce013",
+          "source_url": "https://www.makeupgallery.pk/products/tatcha-kissu-lip-mask-no-spatula-5g",
+          "name": "Tatcha Kissu Lip Mask (no spatula) 5g",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP16c549eb6090",
+          "source_url": "https://www.makeupgallery.pk/products/thebalm-stainiac-hint-of-tint-for-cheeks-and-lips-beauty-queen",
+          "name": "theBalm Stainiac Hint Of Tint For Cheeks And Lips",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPda83345c694b",
+          "source_url": "https://www.makeupgallery.pk/products/nyx-diamonds-ice-please-shimmer-body-oil",
+          "name": "NYX Professional Makeup Diamonds & Ice, Please Shimmer",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP42653ccc3f0d",
+          "source_url": "https://www.makeupgallery.pk/products/gucci-poudre-de-beaute-eclat-soleil-bronzing-powder-shade-04",
+          "name": "Gucci Poudre De Beaut\u00e9 \u00c9clat Soleil Bronzing Powder \u2013 Shade 04",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd60521e7d04a",
+          "source_url": "https://www.makeupgallery.pk/products/gucci-poudre-de-beaute-mat-natural-powder-06",
+          "name": "Gucci Poudre De Beaute Mat Natural Powder 06",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPad6a43871153",
+          "source_url": "https://www.makeupgallery.pk/products/dior-backstage-glow-maximizer-palette-001-universal-glow",
+          "name": "Dior Backstage Glow Maximizer Palette-001 universal Glow",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP91909f918714",
+          "source_url": "https://www.makeupgallery.pk/products/rhode-glazing-milk-essence-124ml",
+          "name": "Rhode Glazing Milk Essence - 124ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd92efcaeb24d",
+          "source_url": "https://www.makeupgallery.pk/products/arencia-vitamin-c-booster-shot-30ml-30ml",
+          "name": "Arencia Vitamin C Booster Shot - 30ML",
+          "issues": [
+            "Brand name used as product Category"
+          ]
+        },
+        {
+          "product_id": "CP39d3254a6b95",
+          "source_url": "https://www.makeupgallery.pk/products/dior-prestage-travel-trio-collection",
+          "name": "DIOR PRESTAGE Travel trio Collection",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP012f25e061e2",
+          "source_url": "https://www.makeupgallery.pk/products/tirtir-mask-fit-red-cushion-17c-porcelain-18g",
+          "name": "Tirtir - Mask Fit Red Cushion - 17C Porcelain - 18g",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP74bcacef8470",
+          "source_url": "https://www.makeupgallery.pk/products/tirtir-mask-fit-red-cushion-22c-peach-beige-18g",
+          "name": "Tirtir - Mask Fit Red Cushion - 22C Peach Beige - 18g",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPfc50a5f63d2a",
+          "source_url": "https://www.makeupgallery.pk/products/patrick-ta-mini-must-have-blush-duo-set-limited-edition-travel-size-cream-powder-blush-kit",
+          "name": "Patrick Ta Mini Must-Have Blush Duo Set \u2013 Limited Edition Travel Size Cream & Powder Blush Kit",
+          "issues": [
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CP88b3147b01a9",
+          "source_url": "https://www.makeupgallery.pk/products/the-ordinary-100-plant-derived-squalane-30ml",
+          "name": "The Ordinary 100% Plant-Derived Squalane 30ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe7d4edbf1d35",
+          "source_url": "https://www.makeupgallery.pk/products/sheglam-chroma-zone-multichrome-flake-gel",
+          "name": "SHEGLAM Chroma Zone Multichrome Flake Gel",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1381cff81942",
+          "source_url": "https://www.makeupgallery.pk/products/sheglam-dew-done-skin-tint-with-spf20",
+          "name": "SHEGLAM Dew & Done Skin Tint With SPF20",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP6d6b558723a9",
+          "source_url": "https://www.makeupgallery.pk/products/skin1004-centella-madagascar-poremizing-deep-cleansing-facial-foam-125ml",
+          "name": "SKIN1004 Centella Madagascar Poremizing Deep Cleansing Facial Foam 125ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3aad3b7542aa",
+          "source_url": "https://www.makeupgallery.pk/products/skin1004-centella-tone-brightening-capsule-ampoule-100ml",
+          "name": "Skin1004 Centella Tone Brightening Capsule Ampoule 100ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP66cebe58130e",
+          "source_url": "https://www.makeupgallery.pk/products/skin1004-madagascar-centella-tone-brightening-capsule-ampoule-100ml",
+          "name": "Skin1004 - Madagascar Centella Tone Brightening Capsule Ampoule 100ML",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9c6b5666fd5a",
+          "source_url": "https://www.makeupgallery.pk/products/arencia-fresh-rosehip-rich-mochi-cleanser-120g",
+          "name": "Arencia Fresh Rosehip Rich Mochi Cleanser 120G",
+          "issues": [
+            "Brand name used as product Category"
+          ]
+        },
+        {
+          "product_id": "CP3e5f4f7fc429",
+          "source_url": "https://www.makeupgallery.pk/products/cetaphil-intensive-healing-lotion-with-ceramides-for-dry-rough-flaky-skin-473ml",
+          "name": "Cetaphil Intensive Healing Lotion with Ceramides, For Dry, Rough, Flaky Skin - 473ML",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP19c78cd23cbe",
+          "source_url": "https://www.makeupgallery.pk/products/la-roche-posay-toleriane-dermo-cleanser-400ml",
+          "name": "La Roche-Posay Toleriane Dermo-Cleanser 400ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP530afe223186",
+          "source_url": "https://www.makeupgallery.pk/products/kylie-cosmetics-kylighter-pressed-illuminating-powder-for-a-stunning-highlight-010-quartz",
+          "name": "Kylie Cosmetics Kylighter Pressed Illuminating Powder for a Stunning Highlight - 010 Quartz",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4c7727329bb0",
+          "source_url": "https://www.makeupgallery.pk/products/kylie-jenner-lip-shine-lacquer-109-dinner-at-mine",
+          "name": "Kylie Jenner Lip Shine Lacquer - 109 Dinner At Mine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP89e4a2fb8699",
+          "source_url": "https://www.makeupgallery.pk/products/kylie-led-bright-light-hand-mirror",
+          "name": "Kylie Led Bright Light Hand Mirror",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP19b398994497",
+          "source_url": "https://www.makeupgallery.pk/products/garnier-skin-active-vitamin-c-daily-uv-glow-boosting-fluid-spf50-vegan-40ml",
+          "name": "Garnier Skin Active Vitamin C Daily UV Glow-Boosting Fluid, SPF50+ Vegan, 40ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP447526717294",
+          "source_url": "https://www.makeupgallery.pk/products/skin1004-madagascar-centella-hyalu-cica-first-ampoule-50-ml",
+          "name": "Skin1004 Madagascar Centella Hyalu Cica First Ampoule 50 ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP706b59680395",
+          "source_url": "https://www.makeupgallery.pk/products/yves-saint-laurent-beaute-luxury-gold-compact-mirror",
+          "name": "Yves Saint Laurent Beaut\u00e9 Luxury Gold Compact Mirror",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPcf3817d14ca3",
+          "source_url": "https://www.makeupgallery.pk/products/about-face-matte-fix-lip-pencil-4ever-flame",
+          "name": "about-face Matte Fix Lip Pencil 4ever Flame",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd4b09d5751a3",
+          "source_url": "https://www.makeupgallery.pk/products/milani-supercharged-citrus-lip-mask",
+          "name": "Milani Supercharged Citrus Lip Mask",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa1717bd44d7b",
+          "source_url": "https://www.makeupgallery.pk/products/huda-beauty-faux-filter-color-corrector-cherry-blossom-9ml",
+          "name": "Huda Beauty FauxFilter Under Eye Color Corrector 9ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5fb5b2744daa",
+          "source_url": "https://www.makeupgallery.pk/products/sheglam-harry-potter\u2122-x-sheglam-magic-cauldron-lip-mask",
+          "name": "SHEGLAM Harry Potter\u2122 X SHEGLAM Magic Cauldron Lip Mask",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9352a58072e2",
+          "source_url": "https://www.makeupgallery.pk/products/sheglam-pillow-lips-lip-care-cream",
+          "name": "SHEGLAM Pillow Lips Lip Care Cream",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4372843a6ca1",
+          "source_url": "https://www.makeupgallery.pk/products/sheglam-bounce-putty-pocket-lip-pot",
+          "name": "Sheglam Bounce Putty Pocket Lip Pot",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPcc8d6c54eea3",
+          "source_url": "https://www.makeupgallery.pk/products/morphe-rich-foiled-artistry-palette",
+          "name": "MORPH Rich & Foiled Artistry Palette - Gold Seeker",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP885404e8effb",
+          "source_url": "https://www.makeupgallery.pk/products/sheglam-cursed-chrysalis-palette",
+          "name": "SHEGLAM Cursed Chrysalis Palette",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP647558cac24e",
+          "source_url": "https://www.makeupgallery.pk/products/sheglam-hydra-jelly-pocket-lip-jam",
+          "name": "SHEGLAM Hydra Jelly Pocket Lip Jam",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1795eba67319",
+          "source_url": "https://www.makeupgallery.pk/products/fenty-beauty-gloss-bomb-stix-high-shine-gloss-stick-fenty-glow",
+          "name": "Fenty Beauty- Gloss Bomb Stix High-Shine Gloss Stick - Fenty Glow",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa23eb4149dae",
+          "source_url": "https://www.makeupgallery.pk/products/aveeno-baby-calming-comfort-bedtime-lotion-for-delicate-skin-150ml",
+          "name": "Aveeno Baby Calming Comfort Bedtime Lotion, For Delicate Skin - 150ml",
+          "issues": [
+            "Brand name used as product Category"
+          ]
+        },
+        {
+          "product_id": "CP2317acc81582",
+          "source_url": "https://www.makeupgallery.pk/products/morphe-rose-away-6-piece-brush-set",
+          "name": "Morphe Rose Away 6 Piece Brush Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP08bb0dd77ec2",
+          "source_url": "https://www.makeupgallery.pk/products/morphe-cheek-thrills-multi-finish-face-trio-blind-date",
+          "name": "Morphe - Cheek Thrills Multi-Finish Face Trio",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "incomplete_products_count": 264,
+      "incomplete_products_truncated": true,
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/makeup-gallery-incomplete-products/48aeea8d19362743/manifest.json",
+      "original_source_sha256": "1b0b5d0bb86b62d8cb80a9d23691d40e7f001c221abcd9f86b537b102f8cb89f",
+      "recovery": {
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-09T01:16:21.124383+00:00",
+        "updated_utc": "2026-11-09T01:16:21.124383+00:00",
+        "next_source_check_due_utc": "2026-11-09T01:31:21.124383+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Bundle appears classified as a single component",
+          "Bundle family and product contents disagree",
+          "Cosmetics bundle incorrectly classified as skincare",
+          "Facial cream Category conflicts with named application area",
+          "Facial serum Category conflicts with named application area",
+          "Primary product type and Category disagree: blush",
+          "Primary product type and Category disagree: body lotion",
+          "Primary product type and Category disagree: contour",
+          "Primary product type and Category disagree: eye palette",
+          "Primary product type and Category disagree: eyeliner",
+          "Primary product type and Category disagree: eyeshadow",
+          "Primary product type and Category disagree: false eyelashes",
+          "Primary product type and Category disagree: foundation",
+          "Primary product type and Category disagree: hair mask",
+          "Primary product type and Category disagree: hair oil",
+          "Primary product type and Category disagree: highlighter",
+          "Primary product type and Category disagree: lip balm",
+          "Primary product type and Category disagree: lip gloss",
+          "Primary product type and Category disagree: lip liner",
+          "Primary product type and Category disagree: lip oil",
+          "Primary product type and Category disagree: lipstick",
+          "Primary product type and Category disagree: makeup brush",
+          "Primary product type and Category disagree: mascara",
+          "Primary product type and Category disagree: sunscreen"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "source_run": "42490491350",
+      "source_artifact": 13633879289,
+      "source_sha256": "1b0b5d0bb86b62d8cb80a9d23691d40e7f001c221abcd9f86b537b102f8cb89f",
+      "description_style_version": "customer-copy-v3",
+      "refresh_generation": "refresh20261108-92345025",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/makeup-gallery/1b0b5d0bb86b62d8/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -20736,7 +22124,7 @@
     "42490475726": "42490475726:13628700548:5bbfd7381ea1b9960a87f577cd73c8b1858863ab1a12b4b36e59d8897995535a",
     "42490483803": "42490483803:13626241485:5bbfd7381ea1b9960a87f577cd73c8b1858863ab1a12b4b36e59d8897995535a",
     "42490487212": "42490487212:13628696968:5bbfd7381ea1b9960a87f577cd73c8b1858863ab1a12b4b36e59d8897995535a",
-    "42490489426": "42490489426:13627212893:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
+    "42490489426": "42490489426:13627212893:5bbfd7381ea1b9960a87f577cd73c8b1858863ab1a12b4b36e59d8897995535a",
     "42490491350": "42490491350:13627696702:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490493301": "42490493301:13626263971:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490494918": "42490494918:13627785233:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
@@ -20846,8 +22234,8 @@
     "SE10073": "inputs/fresh804-20261026-5d42fe35/rollback-se10073/e43b6439fc4f5068/manifest.json",
     "SE10074": "inputs/fresh804-20261026-5d42fe35/rollback-se10074/33320da98da11740/manifest.json"
   },
-  "audit804_last_store": "Blackbeiger",
-  "audit804_progress_utc": "2026-11-09T01:15:35.991443+00:00",
+  "audit804_last_store": "Makeup Gallery",
+  "audit804_progress_utc": "2026-11-09T01:16:21.125204+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Limelight",
