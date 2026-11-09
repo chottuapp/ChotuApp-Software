@@ -14,3 +14,10 @@ class AdditionalSourcesTests(unittest.TestCase):
  def test_unregistered_store_is_rejected(self):
   self.config['stores']=[]
   with self.assertRaises(ValueError):approved_runs(self.config,self.sites,lambda *a:json.dumps(self.run))
+
+ def test_reviewed_grocery_finalizer_is_allowed_only_when_explicitly_configured(self):
+  self.config['additional_completed_sources'][0]['workflow']='.github/workflows/cloud-grocery-complete.yml';self.run['path']='.github/workflows/cloud-grocery-complete.yml'
+  self.assertEqual(approved_runs(self.config,self.sites,lambda *a:json.dumps(self.run))[0]['additional_store'],'ChotuApp Groceries')
+ def test_arbitrary_custom_source_workflow_remains_rejected(self):
+  self.config['additional_completed_sources'][0]['workflow']='.github/workflows/other.yml'
+  with self.assertRaises(ValueError):approved_runs(self.config,self.sites,lambda *a:json.dumps(self.run))

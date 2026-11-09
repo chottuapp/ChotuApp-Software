@@ -358,24 +358,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
   if progress:
    state['audit804_last_store']=store;state['audit804_progress_utc']=datetime.now(timezone.utc).isoformat();progress(state)
  try:
-  # Recheck durable held inputs after code/policy updates, even if Actions artifacts expired.
-  for store,report in list(state['audit804_results'].items()):
-   if held_stores is not None and store not in held_stores:continue
-   if store in paused:continue
-   requested_restyle=held_stores is not None and exact_verified_source(report,state.get('uploaded',{}).get(store,{}))
-   if generation and store in refresh_stores and str(report.get('source_run')) not in refresh_runs and not requested_restyle and not retry_prior_verified_delivery(report,state.get('uploaded',{}).get(store,{}),generation):continue
-   key='source:'+report.get('source_sha256','')+':'+store+':'+revision
-   code_changed=bool(codes.get(store) and state.get('uploaded',{}).get(store,{}).get('shop_code')!=codes[store])
-   if report.get('status')!='hold' and not requested_restyle and not (report.get('status')=='pass' and code_changed):continue
-   if not report.get('error') and state['audit804_processed'].get(store,'').endswith(revision):continue
-   marker=report.get('held_input')
-   if not marker and code_changed and report.get('source_sha256'):
-    from audit804_queue import slug
-    marker='inputs/'+campaign+'/'+slug(store)+'/'+report['source_sha256'][:16]+'/manifest.json'
-   if not marker:continue
-   with tempfile.TemporaryDirectory() as tmp:
-    source=restore_source(marker,Path(tmp)/(store+'.xlsx'),store,campaign,state,progress)
-    if source is not None:safe_handle(source,store,report.get('source_run','phone'),report.get('source_artifact'),key)
+  # Newer completed exports take priority; every file still passes the same audit/delivery gates.
   for run in reversed(runs if held_stores is None else extra_runs):
    rid=str(run['databaseId']);artifacts=json.loads(gh('api','repos/chottuapp/ChotuApp-Software/actions/runs/'+rid+'/artifacts?per_page=100'))['artifacts'];found=[a for a in artifacts if a.get('name')=='chotuapp-excel-files' and not a.get('expired')]
    if not found:continue
@@ -400,6 +383,26 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
      if entry.get('sha256') and actual_sha!=entry['sha256']:raise ValueError('Completed source checksum mismatch')
      safe_handle(matches[0],store,rid,item['id'],key)
    state['audit804_artifacts'][rid]=base+':'+revision
+  # Recheck durable held inputs after code/policy updates, even if Actions artifacts expired.
+  for store,report in list(state['audit804_results'].items()):
+   newer=next((r for r in extra_runs if r['additional_store']==store),None)
+   if newer and str(report.get('source_run','')).isdigit() and int(newer['databaseId'])>int(report['source_run']):continue
+   if held_stores is not None and store not in held_stores:continue
+   if store in paused:continue
+   requested_restyle=held_stores is not None and exact_verified_source(report,state.get('uploaded',{}).get(store,{}))
+   if generation and store in refresh_stores and str(report.get('source_run')) not in refresh_runs and not requested_restyle and not retry_prior_verified_delivery(report,state.get('uploaded',{}).get(store,{}),generation):continue
+   key='source:'+report.get('source_sha256','')+':'+store+':'+revision
+   code_changed=bool(codes.get(store) and state.get('uploaded',{}).get(store,{}).get('shop_code')!=codes[store])
+   if report.get('status')!='hold' and not requested_restyle and not (report.get('status')=='pass' and code_changed):continue
+   if not report.get('error') and state['audit804_processed'].get(store,'').endswith(revision):continue
+   marker=report.get('held_input')
+   if not marker and code_changed and report.get('source_sha256'):
+    from audit804_queue import slug
+    marker='inputs/'+campaign+'/'+slug(store)+'/'+report['source_sha256'][:16]+'/manifest.json'
+   if not marker:continue
+   with tempfile.TemporaryDirectory() as tmp:
+    source=restore_source(marker,Path(tmp)/(store+'.xlsx'),store,campaign,state,progress)
+    if source is not None:safe_handle(source,store,report.get('source_run','phone'),report.get('source_artifact'),key)
   marker=root/'catalog-inputs/khaadi-mobile/latest.json'
   if held_stores is None and marker.exists():
    metadata=json.loads(marker.read_text())
