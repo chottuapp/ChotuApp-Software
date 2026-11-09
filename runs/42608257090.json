@@ -1560,6 +1560,26 @@
       "refresh_generation": "refresh20261108-92345025",
       "replaced_file": "The Paper Worm.xlsx",
       "file_name": "The Paper Worm.xlsx"
+    },
+    "So Komal": {
+      "shop_code": "SE10078",
+      "source_run": "42518462879",
+      "sha256": "f8d2cabcb24521647060b86e6fdc9992221c45dd8969ba7d5393da421c2c9c09",
+      "source_sha256": "0ee1d5a314b3aca156c5ca08add6b926c0e1ba16e15a237eb5ab5a4e12ded0f7",
+      "folder": "ChotuApp 19-10-2026 11-36AM",
+      "verified_utc": "2026-11-09T12:00:43.745906+00:00",
+      "audit804": {
+        "name": "804 Audit",
+        "status": "pass",
+        "checked_utc": "2026-11-09T12:00:28.190954+00:00",
+        "products_checked": 685,
+        "workbook_sha256": "f8d2cabcb24521647060b86e6fdc9992221c45dd8969ba7d5393da421c2c9c09"
+      },
+      "rule804": "applied; 804 Audit passed",
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "refresh_generation": "refresh20261108-92345025",
+      "replaced_file": null,
+      "file_name": "So Komal.xlsx"
     }
   },
   "daily_uploads": {
@@ -3390,6 +3410,26 @@
         "refresh_generation": "refresh20261108-92345025",
         "replaced_file": "The Paper Worm.xlsx",
         "file_name": "The Paper Worm.xlsx"
+      },
+      "So Komal": {
+        "shop_code": "SE10078",
+        "source_run": "42518462879",
+        "sha256": "f8d2cabcb24521647060b86e6fdc9992221c45dd8969ba7d5393da421c2c9c09",
+        "source_sha256": "0ee1d5a314b3aca156c5ca08add6b926c0e1ba16e15a237eb5ab5a4e12ded0f7",
+        "folder": "ChotuApp 19-10-2026 11-36AM",
+        "verified_utc": "2026-11-09T12:00:43.745906+00:00",
+        "audit804": {
+          "name": "804 Audit",
+          "status": "pass",
+          "checked_utc": "2026-11-09T12:00:28.190954+00:00",
+          "products_checked": 685,
+          "workbook_sha256": "f8d2cabcb24521647060b86e6fdc9992221c45dd8969ba7d5393da421c2c9c09"
+        },
+        "rule804": "applied; 804 Audit passed",
+        "campaign_id": "fresh804-20261026-5d42fe35",
+        "refresh_generation": "refresh20261108-92345025",
+        "replaced_file": null,
+        "file_name": "So Komal.xlsx"
       }
     }
   },
@@ -3550,7 +3590,8 @@
     "Bela": "source:e738a3eebfda7ab019aab1a049fde655c31c8fdf1416592607bd53b165a05de8:Bela:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
     "Shoe Planet": "source:f066226ae824b74a8a44b10691d24335674f8c6a6cf70124738537735d133c40:Shoe Planet:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
     "Makeup Gallery": "source:1b0b5d0bb86b62d8cb80a9d23691d40e7f001c221abcd9f86b537b102f8cb89f:Makeup Gallery:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
-    "Alkaram Studio": "source:b218e5e3bdb30ed468cddd845f5d5d473e54fe1fcc5dcbbc3e502f6d19f70f9a:Alkaram Studio:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0"
+    "Alkaram Studio": "source:b218e5e3bdb30ed468cddd845f5d5d473e54fe1fcc5dcbbc3e502f6d19f70f9a:Alkaram Studio:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
+    "So Komal": "source:0ee1d5a314b3aca156c5ca08add6b926c0e1ba16e15a237eb5ab5a4e12ded0f7:So Komal:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -21004,6 +21045,611 @@
       "description_style_version": "customer-copy-v3",
       "refresh_generation": "refresh20261108-92345025",
       "held_input": "inputs/fresh804-20261026-5d42fe35/makeup-gallery/1b0b5d0bb86b62d8/manifest.json"
+    },
+    "So Komal": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "So Komal",
+      "shop_code": "SE10078",
+      "identity_policy": "confirmed_code",
+      "status": "pass",
+      "products_checked": 685,
+      "findings_count": 0,
+      "findings": [],
+      "details_truncated": false,
+      "workbook_sha256": "f8d2cabcb24521647060b86e6fdc9992221c45dd8969ba7d5393da421c2c9c09",
+      "checked_utc": "2026-11-09T12:00:28.190954+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "incomplete_products_excluded": [
+        {
+          "product_id": "CP48b7b14445f4",
+          "source_url": "https://www.sokamal.com/products/skb-354-duvet-set",
+          "name": "Embroidered Duvet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPca5f7a2f35bb",
+          "source_url": "https://www.sokamal.com/products/skb-343-duvet-set",
+          "name": "Embroidered Duvet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa1e2d2314419",
+          "source_url": "https://www.sokamal.com/products/skb-339-duvet-set",
+          "name": "Embroidered Duvet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPfb50f81c7e74",
+          "source_url": "https://www.sokamal.com/products/skb-341-duvet-set",
+          "name": "Embroidered Duvet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8815e0606581",
+          "source_url": "https://www.sokamal.com/products/skb-352-duvet-set",
+          "name": "Embroidered Duvet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5627a9edaa75",
+          "source_url": "https://www.sokamal.com/products/skb-342-duvet-set",
+          "name": "Embroidered Duvet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP45cf7fc5d061",
+          "source_url": "https://www.sokamal.com/products/skb-349-duvet-set",
+          "name": "Embroidered Duvet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1391a794c56a",
+          "source_url": "https://www.sokamal.com/products/skb-351-duvet-set",
+          "name": "Embroidered Duvet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4d0e67166785",
+          "source_url": "https://www.sokamal.com/products/skb-340-duvet-set",
+          "name": "Embroidered Duvet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP6a939d672d76",
+          "source_url": "https://www.sokamal.com/products/skb-353-duvet-set",
+          "name": "Embroidered Duvet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP045b833642d7",
+          "source_url": "https://www.sokamal.com/products/skb-355-duvet-set",
+          "name": "Embroidered Duvet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7b97abdd9d58",
+          "source_url": "https://www.sokamal.com/products/skb-346-duvet-set",
+          "name": "Embroidered Duvet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf9488b73d3d5",
+          "source_url": "https://www.sokamal.com/products/skb-350-duvet-set",
+          "name": "Embroidered Duvet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1b1d1cd52786",
+          "source_url": "https://www.sokamal.com/products/skb-348-duvet-set",
+          "name": "Embroidered Duvet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP37fab7050b7b",
+          "source_url": "https://www.sokamal.com/products/skb-347-duvet-set",
+          "name": "Embroidered Duvet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe8f05fdb0e6a",
+          "source_url": "https://www.sokamal.com/products/skb-345-duvet-set",
+          "name": "Embroidered Duvet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP6b5c298a4657",
+          "source_url": "https://www.sokamal.com/products/skb-344-duvet-set",
+          "name": "Embroidered Duvet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8f45955c4bf3",
+          "source_url": "https://www.sokamal.com/products/skb-338-duvet-set",
+          "name": "Embroidered Duvet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPca954a7f521b",
+          "source_url": "https://www.sokamal.com/products/skb-337-duvet-set",
+          "name": "Embroidered Duvet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP171505264df9",
+          "source_url": "https://www.sokamal.com/products/skb-336-duvet-set",
+          "name": "Embroidered Duvet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa39f7be52e1c",
+          "source_url": "https://www.sokamal.com/products/skb-335-duvet-set",
+          "name": "Embroidered Duvet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7b03e3ee0b48",
+          "source_url": "https://www.sokamal.com/products/skb-334-duvet-set",
+          "name": "Embroidered Duvet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP281175dc83f9",
+          "source_url": "https://www.sokamal.com/products/skb-333-duvet-set",
+          "name": "Embroidered Duvet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb3ef970e6cc0",
+          "source_url": "https://www.sokamal.com/products/skb-315-a-sheet-set",
+          "name": "Merrow Stitched Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPdc771e4ae070",
+          "source_url": "https://www.sokamal.com/products/skb-326-a-sheet-set",
+          "name": "Merrow Stitched Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPbd04798b8365",
+          "source_url": "https://www.sokamal.com/products/skb-323-a-sheet-set",
+          "name": "Merrow Stitched Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP62e5a906cbbf",
+          "source_url": "https://www.sokamal.com/products/skb-330-a-sheet-set",
+          "name": "Merrow Stitched Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP632df28782e6",
+          "source_url": "https://www.sokamal.com/products/skb-319-a-sheet-set",
+          "name": "Merrow Stitched Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4fdd169a9344",
+          "source_url": "https://www.sokamal.com/products/skb-311-a-sheet-set",
+          "name": "Merrow Stitched Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPbeced1a5d6c5",
+          "source_url": "https://www.sokamal.com/products/skb-322-a-sheet-set",
+          "name": "Merrow Stitched Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPae95770e91f2",
+          "source_url": "https://www.sokamal.com/products/skb-321-a-sheet-set",
+          "name": "Merrow Stitched Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf6216d006a84",
+          "source_url": "https://www.sokamal.com/products/skb-328-sheet-set",
+          "name": "Embroidered Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7271b4b5f57a",
+          "source_url": "https://www.sokamal.com/products/skb-332-sheet-set",
+          "name": "Embroidered Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd9cf461fe025",
+          "source_url": "https://www.sokamal.com/products/skb-324-sheet-set",
+          "name": "Embroidered Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe5d8b24f8e61",
+          "source_url": "https://www.sokamal.com/products/skb-322-sheet-set",
+          "name": "Embroidered Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP83a318a516c0",
+          "source_url": "https://www.sokamal.com/products/skb-331-sheet-set",
+          "name": "Embroidered Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPbe85e0f5eeee",
+          "source_url": "https://www.sokamal.com/products/skb-321-sheet-set",
+          "name": "Embroidered Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9406e92666fb",
+          "source_url": "https://www.sokamal.com/products/skb-327-sheet-set",
+          "name": "Embroidered Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1101e5882514",
+          "source_url": "https://www.sokamal.com/products/skb-325-sheet-set",
+          "name": "Embroidered Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc783aafee115",
+          "source_url": "https://www.sokamal.com/products/skb-320-sheet-set",
+          "name": "Embroidered Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa723bc391844",
+          "source_url": "https://www.sokamal.com/products/skb-319-sheet-set",
+          "name": "Embroidered Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5b7c7ec47c7d",
+          "source_url": "https://www.sokamal.com/products/skb-318-sheet-set",
+          "name": "Embroidered Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb8aa909d94e8",
+          "source_url": "https://www.sokamal.com/products/skb-326-sheet-set",
+          "name": "Embroidered Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPafb9c80ac109",
+          "source_url": "https://www.sokamal.com/products/skb-316-sheet-set",
+          "name": "Embroidered Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb2ccdbdcd2f0",
+          "source_url": "https://www.sokamal.com/products/skb-317-sheet-set",
+          "name": "Embroidered Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb10f9fc26e21",
+          "source_url": "https://www.sokamal.com/products/skb-314-sheet-set",
+          "name": "Embroidered Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3123155cf98b",
+          "source_url": "https://www.sokamal.com/products/skb-313-sheet-set",
+          "name": "Embroidered Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPbc239c53af3c",
+          "source_url": "https://www.sokamal.com/products/skb-312-sheet-set",
+          "name": "Embroidered Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP06ac3f24ec79",
+          "source_url": "https://www.sokamal.com/products/skb-308-sheet-set-d-7",
+          "name": "Printed Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP36ff6f1ce7e8",
+          "source_url": "https://www.sokamal.com/products/skb-308-sheet-set-d-6",
+          "name": "Printed Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPea2b1965b128",
+          "source_url": "https://www.sokamal.com/products/skb-308-sheet-set-d-5",
+          "name": "Printed Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf17c2fb1689a",
+          "source_url": "https://www.sokamal.com/products/skb-308-sheet-set-d-4",
+          "name": "Printed Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa6ab47b4f886",
+          "source_url": "https://www.sokamal.com/products/skb-308-sheet-set-d-3",
+          "name": "Printed Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa6e1b508408d",
+          "source_url": "https://www.sokamal.com/products/skb-308-sheet-set-d-2",
+          "name": "Printed Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP840f5ec792b8",
+          "source_url": "https://www.sokamal.com/products/skb-308-sheet-set-d-1",
+          "name": "Printed Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP65de3b4b161f",
+          "source_url": "https://www.sokamal.com/products/skb-295-bed-set",
+          "name": "Luxury Complete Bed Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPcb2b238228a5",
+          "source_url": "https://www.sokamal.com/products/skb-266-duvet-set-ds2",
+          "name": "Printed Duvet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP79b4cd39095e",
+          "source_url": "https://www.sokamal.com/products/skb-315-sheet-set",
+          "name": "Embroidered Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe775642c4daf",
+          "source_url": "https://www.sokamal.com/products/skb-358-sheet-set-d-1",
+          "name": "Printed Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4b0f96a04fea",
+          "source_url": "https://www.sokamal.com/products/skb-358-sheet-set-d-7",
+          "name": "Printed Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4b304090cee9",
+          "source_url": "https://www.sokamal.com/products/skb-358-sheet-set-d-6",
+          "name": "Printed Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa8cd073a7694",
+          "source_url": "https://www.sokamal.com/products/skb-358-sheet-set-d-5",
+          "name": "Printed Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPdb03c56e169f",
+          "source_url": "https://www.sokamal.com/products/skb-358-sheet-set-d-4",
+          "name": "Printed Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP44e86237377c",
+          "source_url": "https://www.sokamal.com/products/skb-358-sheet-set-d-3",
+          "name": "Printed Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa25b15a83438",
+          "source_url": "https://www.sokamal.com/products/skb-358-sheet-set-d-2",
+          "name": "Printed Sheet Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd914e64beff3",
+          "source_url": "https://www.sokamal.com/products/pm-1526-mens-suit-black",
+          "name": "PREMIUM - MENSWEAR",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPa807d35b18cd",
+          "source_url": "https://www.sokamal.com/products/pm-1526-mens-suit-white",
+          "name": "PREMIUM - MENSWEAR",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP7039d0539eeb",
+          "source_url": "https://www.sokamal.com/products/pm-1526-mens-suit-sky-blue",
+          "name": "PREMIUM - MENSWEAR",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP62e1149a2c27",
+          "source_url": "https://www.sokamal.com/products/pm-1526-mens-suit-navy-blue",
+          "name": "PREMIUM - MENSWEAR",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPebee68feeeca",
+          "source_url": "https://www.sokamal.com/products/pm-1526-mens-suit-beige",
+          "name": "PREMIUM - MENSWEAR",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPed100180f8d8",
+          "source_url": "https://www.sokamal.com/products/lamhe",
+          "name": "Lamhe",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        }
+      ],
+      "incomplete_products_count": 71,
+      "incomplete_products_truncated": false,
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/so-komal-incomplete-products/6895757ea714b111/manifest.json",
+      "original_source_sha256": "0ee1d5a314b3aca156c5ca08add6b926c0e1ba16e15a237eb5ab5a4e12ded0f7",
+      "recovery": {
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "source_run": "42518462879",
+      "source_artifact": 13636855434,
+      "source_sha256": "0ee1d5a314b3aca156c5ca08add6b926c0e1ba16e15a237eb5ab5a4e12ded0f7",
+      "description_style_version": "customer-copy-v3",
+      "refresh_generation": "refresh20261108-92345025",
+      "delivery_status": "verified",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/so-komal/0ee1d5a314b3aca1/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -21375,14 +22021,16 @@
     "42490481654": "42490481654:13628485154:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
     "42490498711": "42490498711:13629146918:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
     "42504503242": "42504503242:13627902040:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
-    "42505103826": "42505103826:13627214057:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
-    "42505128072": "42505128072:13627498823:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
-    "42506305430": "42506305430:13628146077:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
-    "42506432291": "42506432291:13628690267:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
-    "42507525202": "42507525202:13628640845:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
-    "42507976065": "42507976065:13628411619:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
-    "42508354269": "42508354269:13628601779:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
-    "42490485609": "42490485609:13635957454:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0"
+    "42505103826": "42505103826:13633017827:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
+    "42505128072": "42505128072:13634007020:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
+    "42506305430": "42506305430:13633589415:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
+    "42506432291": "42506432291:13633933443:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
+    "42507525202": "42507525202:13634910878:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
+    "42507976065": "42507976065:13634293277:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
+    "42508354269": "42508354269:13634669303:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
+    "42490485609": "42490485609:13635957454:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
+    "42515831045": "42515831045:13640879815:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
+    "42515882373": "42515882373:13641437476:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-11-09T06:58:52.204035+00:00",
@@ -21484,8 +22132,8 @@
     "SE10083": "inputs/fresh804-20261026-5d42fe35/rollback-se10083/89d142b1d7395cbb/manifest.json",
     "SE10084": "inputs/fresh804-20261026-5d42fe35/rollback-se10084/f03f680a9fdd6840/manifest.json"
   },
-  "audit804_last_store": "Rawayat",
-  "audit804_progress_utc": "2026-11-09T11:59:51.085161+00:00",
+  "audit804_last_store": "So Komal",
+  "audit804_progress_utc": "2026-11-09T12:00:43.746427+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Limelight",
