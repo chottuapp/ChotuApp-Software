@@ -1,0 +1,22 @@
+name: ChotuApp Groceries Source Check
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: chotu-groceries-source
+  cancel-in-progress: false
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install requests beautifulsoup4
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          PYTHONPATH: cloud:.
+        run: python cloud/chotu_groceries_probe.py
