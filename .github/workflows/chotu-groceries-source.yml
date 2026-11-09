@@ -6,6 +6,10 @@ on:
         description: Optional completed grocery run for bounded cached-pagination inspection
         required: false
         type: string
+      public_scope_indexes:
+        description: Optional comma-separated owner scope indexes for bounded anonymous UI diagnosis
+        required: false
+        type: string
 permissions:
   contents: write
   actions: read
@@ -29,9 +33,12 @@ jobs:
       - env:
           GH_TOKEN: ${{ github.token }}
           PYTHONPATH: cloud:.
+          GROCERY_PUBLIC_SCOPE_INDEXES: ${{ inputs.public_scope_indexes }}
           GROCERY_CHECKPOINT_RUN: ${{ inputs.checkpoint_run }}
         run: |
-          if [ -n "$GROCERY_CHECKPOINT_RUN" ]; then
+          if [ -n "$GROCERY_PUBLIC_SCOPE_INDEXES" ]; then
+            python cloud/grocery_scope_ui_probe.py
+          elif [ -n "$GROCERY_CHECKPOINT_RUN" ]; then
             python cloud/groceries_checkpoint_probe.py
           else
             python cloud/chotu_groceries_probe.py
