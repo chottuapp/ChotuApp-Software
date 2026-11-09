@@ -133,3 +133,65 @@ class GroceryTests(unittest.TestCase):
     calls.append(reader.force_fresh);return ({one,two} if reader.force_fresh else {one},2,{scope['url']})
    reader.discover_scope=discover;reader.read_page=lambda url:page() if url==one else page().replace('/item','/item-two').replace('182197','182198')
    products=reader.catalog();self.assertEqual(calls,[False,True]);self.assertEqual(len(products),2);self.assertEqual(reader.coverage_status,'complete');self.assertEqual(reader.coverage_issues,[])
+ def test_transient_request_timeout_retries_and_exhaustion_pauses(self):
+  import requests
+  from unittest.mock import Mock
+  response=Mock(status_code=200,url=source.BASE+'/item',content=b'ok',text='ok')
+  getter=Mock(side_effect=[requests.exceptions.ReadTimeout(),response]);backoff=Mock()
+  reader=source.PublicCatalog({'S':SimpleNamespace(get=getter),'_chotu_wait':lambda:None,'_chotu_backoff':backoff},lambda _:None)
+  self.assertEqual(reader.read_page(source.BASE+'/item'),'ok');self.assertEqual(getter.call_count,2)
+  reader.last=0;getter.side_effect=requests.exceptions.ReadTimeout()
+  with self.assertRaisesRegex(RuntimeError,'SOURCE PAUSED.*3 attempts'):reader.read_page(source.BASE+'/item')
+  self.assertEqual(getter.call_count,5)
+ def test_tls_identity_failure_is_not_retried(self):
+  import requests
+  from unittest.mock import Mock
+  getter=Mock(side_effect=requests.exceptions.SSLError('certificate mismatch'))
+  reader=source.PublicCatalog({'S':SimpleNamespace(get=getter),'_chotu_wait':lambda:None},lambda _:None)
+  with self.assertRaises(requests.exceptions.SSLError):reader.read_page(source.BASE+'/item')
+  self.assertEqual(getter.call_count,1)
+ def test_completed_scope_snapshot_survives_resume_without_fresh_rechecks(self):
+  from resume_support import ResponseCache
+  with tempfile.TemporaryDirectory() as tmp:
+   cache=ResponseCache(Path(tmp)/'pages.sqlite3')
+   config={'_chotu_wait':lambda:None,'__file__':str(Path(tmp)/'main.py'),'_chotu_tls':SimpleNamespace(saved_response_cache=cache)}
+   scope=dict(group='Bread, Bakery & Pasta',label='Dawn',url=source.BASE+'/allproducts/?manufacturer=890')
+   reader=source.PublicCatalog(config,lambda _:None);reader.request={'pages':[scope]}
+   reader.discover_scope=lambda selected:({source.BASE+'/item'},2,{scope['url']})
+   reader.read_page=lambda url:page()
+   self.assertEqual(len(reader.catalog()),1);self.assertEqual(reader.coverage_status,'review_required')
+   cache.close();cache=ResponseCache(Path(tmp)/'pages.sqlite3');config['_chotu_tls'].saved_response_cache=cache
+   resumed=source.PublicCatalog(config,lambda _:None);resumed.request=reader.request;resumed.read_page=lambda url:page()
+   resumed.discover_scope=lambda selected:self.fail('Completed scope was unnecessarily refetched')
+   self.assertEqual(len(resumed.catalog()),1);self.assertEqual(resumed.coverage_status,'review_required');cache.close()
+ def test_unfinished_browser_scope_is_held_while_other_products_continue(self):
+  from grocery_browser_support import ListingRenderIncomplete
+  with tempfile.TemporaryDirectory() as tmp:
+   reader=source.PublicCatalog({'_chotu_wait':lambda:None,'__file__':str(Path(tmp)/'main.py')},lambda _:None)
+   bad=dict(group='Bread, Bakery & Pasta',label='Dawn',url=source.BASE+'/allproducts/?manufacturer=890')
+   good=dict(bad,url=source.BASE+'/allproducts/?manufacturer=891');reader.request={'pages':[bad,good]}
+   calls=[]
+   def read(url):
+    calls.append(url)
+    if url==bad['url']:return '<div id="product_result"></div><button id="load-more">Load more</button>'
+    if url==good['url']:return '<div class="products-grid"><li class="product-item"><a class="product-item-link" href="/item">Product</a></li></div><p class="toolbar-amount">1 Item</p>'
+    return page()
+   reader.read_page=read
+   with patch('grocery_browser_support.render_listing',side_effect=ListingRenderIncomplete('Public UI timeout')):products=reader.catalog()
+   self.assertEqual(len(products),1);self.assertIn(good['url'],calls);self.assertEqual(reader.coverage_status,'review_required');self.assertIn('render_error',reader.coverage_issues[0])
+ def test_real_browser_rate_limit_still_stops_instead_of_skipping_scope(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   reader=source.PublicCatalog({'_chotu_wait':lambda:None,'__file__':str(Path(tmp)/'main.py')},lambda _:None)
+   reader.request={'pages':[dict(url=source.BASE+'/catalogsearch/result/?q=Durex')]}
+   reader.read_page=lambda url:'<div id="product_result"></div><button id="load-more">More</button>'
+   with patch('grocery_browser_support.render_listing',side_effect=RuntimeError('SOURCE PAUSED: rate limit')):
+    with self.assertRaisesRegex(RuntimeError,'rate limit'):reader.catalog()
+ def test_browser_timeout_retains_already_visible_product_cards(self):
+  from grocery_browser_support import ListingRenderIncomplete
+  with tempfile.TemporaryDirectory() as tmp:
+   reader=source.PublicCatalog({'_chotu_wait':lambda:None,'__file__':str(Path(tmp)/'main.py')},lambda _:None)
+   scope=dict(group='Bread, Bakery & Pasta',label='Dawn',url=source.BASE+'/allproducts/?manufacturer=890');reader.request={'pages':[scope]}
+   listing='<div class="products-grid"><li class="product-item"><a class="product-item-link" href="/item">Product</a></li></div><button id="load-more">More</button><p class="toolbar-amount">Items 1 - 1 of 2</p>'
+   reader.read_page=lambda url:listing if url==scope['url'] else page()
+   with patch('grocery_browser_support.render_listing',side_effect=ListingRenderIncomplete('Public UI timeout')):products=reader.catalog()
+   self.assertEqual(len(products),1);self.assertEqual(reader.coverage_status,'review_required');self.assertEqual(reader.coverage_issues[0]['reported_total'],2)

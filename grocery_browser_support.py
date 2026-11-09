@@ -2,6 +2,9 @@
 import re,time
 from urllib.parse import urlsplit,parse_qsl
 from bs4 import BeautifulSoup
+class ListingRenderIncomplete(RuntimeError):
+ """Public UI did not finish; retain scope review without approving empty results."""
+
 SELECTOR='#product_result a[href], .products-grid .product-item a.product-item-link[href], .ais-Hits-item a[href]'
 
 def exhaust_listing(page,pause,log,limited,pending,*,max_steps=1000):
@@ -19,7 +22,7 @@ def exhaust_listing(page,pause,log,limited,pending,*,max_steps=1000):
     if not button_visible():
      page.wait_for_timeout(500)
      if not pending and not busy() and not button_visible():return
-   if time.monotonic()>deadline:raise RuntimeError('SOURCE PAUSED: grocery loading did not settle; checkpoint retained; no partial catalog approval')
+   if time.monotonic()>deadline:raise ListingRenderIncomplete('Grocery loading did not settle; scope requires review; no partial catalog approval')
    page.wait_for_timeout(250)
  idle=0
  for step in range(max_steps):
@@ -59,5 +62,5 @@ def render_listing(url,pause=lambda:None,log=lambda _:None,*,load_all=True):
    content=page.content()
    if len(content.encode())>16*1024*1024:raise ValueError('Rendered grocery listing exceeds bound')
    return content
-  except BrowserTimeout as exc:raise RuntimeError('SOURCE PAUSED: public grocery rendering incomplete; retry saved store after at least 300s; no empty catalog guessed') from exc
+  except BrowserTimeout as exc:raise ListingRenderIncomplete('Public grocery rendering timed out; scope requires review; no empty catalog guessed') from exc
   finally:browser.close()

@@ -1,5 +1,6 @@
 """Owner-selected public HTML grocery pages; exact source offers and breadcrumbs."""
 import hashlib,html,json,re,time
+import requests
 from pathlib import Path
 from decimal import Decimal,InvalidOperation
 from urllib.parse import urlsplit,urljoin,parse_qsl,urlencode,urlunsplit
@@ -123,7 +124,14 @@ class PublicCatalog:
   self.g.get('_chotu_debug_stage',lambda *a:None)('Grocery listing pages' if p.path.startswith(('/catalogsearch/','/allproducts')) else 'Grocery source product pages')
   self.g.get('_chotu_debug_request',lambda *a:None)(url,1)
   getter=(getattr(self.g['S'],'get_fresh',None) or self.g['S'].get) if self.force_fresh else self.g['S'].get
-  r=getter(url,timeout=(15,45))
+  for attempt in range(3):
+   try:
+    r=getter(url,timeout=(15,45));break
+   except (requests.exceptions.Timeout,requests.exceptions.ConnectionError) as exc:
+    if isinstance(exc,requests.exceptions.SSLError):raise
+    if attempt==2:raise RuntimeError('SOURCE PAUSED: grocery public request timed out after 3 attempts; retry saved store after at least 300s; checkpoint retained') from exc
+    self.log('GROCERY REQUEST RETRY: transient connection/timeout; attempt '+str(attempt+2)+'/3')
+    self.g['_chotu_wait']();self.g['_chotu_backoff']((5,15)[attempt],'Grocery transient request retry')
   self.g.get('_chotu_debug_response',lambda *a,**k:None)(r.status_code,len(r.content),cached=bool(getattr(r,'_chotu_cache_hit',False)))
   if r.status_code in (429,500,502,503,504):raise RuntimeError('SOURCE PAUSED: grocery public source temporary failure; retry saved store after at least 300s. Checkpoint retained')
   if r.status_code in (401,403):raise RuntimeError('SOURCE BLOCKED: grocery public page denied; no login, alternate API or challenge bypass attempted')
@@ -135,6 +143,7 @@ class PublicCatalog:
  def discover_scope(self,scope):
   self.scope_count_changed=False;self.scope_totals=[]
   queue=[scope['url']];seen=set();discovered=set();expected=None
+  self.scope_partial=(discovered,seen);self.scope_expected=None
   seed=urlsplit(scope['url']);seed_query=dict(parse_qsl(seed.query))
   while queue:
    url=queue.pop(0)
@@ -147,8 +156,16 @@ class PublicCatalog:
     cache=getattr(self.g.get('_chotu_tls'),'saved_response_cache',None);cache_key=url+'#chotu-rendered-listing-v2'
     saved=cache.get(cache_key) if cache and not self.force_fresh else None
     if saved is None:
-     from grocery_browser_support import render_listing
-     rendered=render_listing(url,self.g['_chotu_wait'],self.log)
+     from grocery_browser_support import render_listing,ListingRenderIncomplete
+     try:rendered=render_listing(url,self.g['_chotu_wait'],self.log)
+     except ListingRenderIncomplete:
+      # Retain source-visible first-batch cards even when later UI loading fails.
+      for a in nodes:
+       item=urljoin(url,a['href']);part=urlsplit(item)
+       if part.hostname==seed.hostname and part.scheme=='https' and not part.query and not part.fragment and part.path.strip('/') and not part.path.strip('/').count('/') and part.path.rstrip('/') not in ('/allproducts','/customer','/checkout','/wishlist','/cart'):discovered.add(item)
+      count=soup.select_one('.toolbar-amount')
+      if count:self.scope_expected=listing_total(count.get_text(' ',strip=True))
+      raise
      if cache:
       import requests
       saved=requests.Response();saved.status_code=200;saved.url=url;saved._content=rendered.encode();saved.encoding='utf-8';saved.headers['Content-Type']='text/html';cache.put(cache_key,saved)
@@ -169,7 +186,7 @@ class PublicCatalog:
     if total is not None:
      if expected is not None and expected!=total:self.scope_count_changed=True
      if total not in self.scope_totals:self.scope_totals.append(total)
-     expected=total
+     expected=total;self.scope_expected=total
    candidates=[]
    for a in soup.select('.pages a[href],a.next[href]'):
     item=urljoin(url,a['href']);part=urlsplit(item);query=dict(parse_qsl(part.query))
@@ -181,15 +198,39 @@ class PublicCatalog:
  def catalog(self):
   urls={};coverage=[];self.coverage_issues=[]
   for index,scope in enumerate(self.request['pages'],1):
-   discovered,expected,seen=self.discover_scope(scope)
-   if self.scope_count_changed or expected is not None and len(discovered)!=expected:
-    self.log('GROCERY RECHECK: '+scope['url']+'; source total '+str(expected)+'; '+str(len(discovered))+' visible links; rechecking fresh public UI and all linked pages')
-    self.force_fresh=True
-    try:discovered,expected,seen=self.discover_scope(scope)
-    finally:self.force_fresh=False
+   from grocery_browser_support import ListingRenderIncomplete
+   cache=getattr(self.g.get('_chotu_tls'),'saved_response_cache',None)
+   snapshot_key=scope['url']+'#chotu-scope-snapshot-v1'
+   saved=cache.get(snapshot_key) if cache else None
+   render_error=None
+   if saved is not None:
+    snapshot=saved.json()
+    if snapshot.get('scope_url')!=scope['url'] or snapshot.get('version')!=1:raise ValueError('Grocery checkpoint scope identity mismatch')
+    discovered=set(snapshot['links']);seen=set(snapshot['pages']);expected=snapshot['total']
+    if any(urlsplit(u).hostname!='www.naheed.pk' or urlsplit(u).scheme!='https' for u in discovered|seen):raise ValueError('Foreign grocery checkpoint URL')
+    self.scope_count_changed=snapshot['count_changed'];self.scope_totals=snapshot['totals']
+    self.log('GROCERY SCOPE CACHE: retained traversed scope '+str(index)+'/'+str(len(self.request['pages'])))
+   else:
+    discovered=set();seen=set();expected=None
+    try:
+     discovered,expected,seen=self.discover_scope(scope)
+     if self.scope_count_changed or expected is not None and len(discovered)!=expected:
+      self.log('GROCERY RECHECK: '+scope['url']+'; source total '+str(expected)+'; '+str(len(discovered))+' visible links; rechecking fresh public UI and all linked pages')
+      self.force_fresh=True
+      try:discovered,expected,seen=self.discover_scope(scope)
+      finally:self.force_fresh=False
+    except ListingRenderIncomplete as exc:
+     partial,partial_pages=self.scope_partial
+     discovered=discovered|partial;seen=seen|partial_pages
+     expected=self.scope_expected if self.scope_expected is not None else expected
+     render_error=str(exc)
+    if cache and render_error is None:
+     snapshot=dict(version=1,scope_url=scope['url'],links=sorted(discovered),pages=sorted(seen),total=expected,count_changed=self.scope_count_changed,totals=self.scope_totals)
+     response=requests.Response();response.status_code=200;response.url=scope['url'];response._content=json.dumps(snapshot).encode();response.encoding='utf-8';response.headers['Content-Type']='application/json';cache.put(snapshot_key,response)
    status='complete'
-   if self.scope_count_changed or expected is not None and len(discovered)!=expected:
+   if render_error or self.scope_count_changed or expected is not None and len(discovered)!=expected:
     status='review_required';issue=dict(scope_url=scope['url'],reported_total=expected,visible_products=len(discovered),pages=len(seen),reported_totals=list(self.scope_totals))
+    if render_error:issue['render_error']=render_error
     self.coverage_issues.append(issue);self.log('GROCERY COVERAGE REVIEW: '+json.dumps(issue)+'; source discrepancy retained; no complete-catalog approval')
    for item in discovered:
     if scope not in urls.setdefault(item,[]):urls[item].append(scope)
