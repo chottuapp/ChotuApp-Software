@@ -195,3 +195,28 @@ class GroceryTests(unittest.TestCase):
    reader.read_page=lambda url:listing if url==scope['url'] else page()
    with patch('grocery_browser_support.render_listing',side_effect=ListingRenderIncomplete('Public UI timeout')):products=reader.catalog()
    self.assertEqual(len(products),1);self.assertEqual(reader.coverage_status,'review_required');self.assertEqual(reader.coverage_issues[0]['reported_total'],2)
+ def test_loading_toolbar_cannot_mask_browser_timeout_or_stop_remaining_scopes(self):
+  from grocery_browser_support import ListingRenderIncomplete
+  with tempfile.TemporaryDirectory() as tmp:
+   logs=[];reader=source.PublicCatalog({'_chotu_wait':lambda:None,'__file__':str(Path(tmp)/'main.py')},logs.append)
+   bad=dict(group='Bread, Bakery & Pasta',label='Dawn',url=source.BASE+'/allproducts/?manufacturer=890');good=dict(bad,url=source.BASE+'/allproducts/?manufacturer=891');reader.request={'pages':[bad,good]}
+   reader.read_page=lambda url:('<div id="product_result"></div><button id="load-more">More</button><p class="toolbar-amount">Loading...</p>' if url==bad['url'] else '<div class="products-grid"><li class="product-item"><a class="product-item-link" href="/item">Product</a></li></div><p class="toolbar-amount">1 Item</p>' if url==good['url'] else page())
+   with patch('grocery_browser_support.render_listing',side_effect=ListingRenderIncomplete('Public UI timeout')):products=reader.catalog()
+   self.assertEqual(len(products),1);self.assertEqual(reader.coverage_status,'review_required');self.assertEqual(reader.coverage_issues[0]['render_error'],'Public UI timeout');self.assertEqual(reader.coverage_issues[0]['source_toolbar'],'Loading...')
+ def test_unknown_toolbar_with_visible_cards_is_review_not_whole_catalog_failure(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   reader=source.PublicCatalog({'_chotu_wait':lambda:None,'__file__':str(Path(tmp)/'main.py')},lambda _:None)
+   scope=dict(group='Bread, Bakery & Pasta',label='Dawn',url=source.BASE+'/allproducts/?manufacturer=890');reader.request={'pages':[scope]}
+   reader.read_page=lambda url:'<div class="products-grid"><li class="product-item"><a class="product-item-link" href="/item">Product</a></li></div><p class="toolbar-amount">Loading...</p>' if url==scope['url'] else page()
+   self.assertEqual(len(reader.catalog()),1);self.assertEqual(reader.coverage_status,'review_required');self.assertIsNone(reader.coverage_issues[0]['reported_total'])
+ def test_saved_page_has_no_network_or_artificial_pacing_delay(self):
+  from resume_support import ResponseCache
+  from unittest.mock import Mock
+  import requests
+  with tempfile.TemporaryDirectory() as tmp:
+   cache=ResponseCache(Path(tmp)/'pages.sqlite3');url=source.BASE+'/item'
+   response=requests.Response();response.status_code=200;response.url=url;response._content=b'original';response.encoding='utf-8';cache.put(url,response)
+   getter=Mock(side_effect=AssertionError('Network must not be used'));backoff=Mock();pause=Mock()
+   reader=source.PublicCatalog({'S':SimpleNamespace(get=getter),'_chotu_wait':pause,'_chotu_backoff':backoff,'_chotu_tls':SimpleNamespace(saved_response_cache=cache)},lambda _:None)
+   reader.last=10**12
+   self.assertEqual(reader.read_page(url),'original');getter.assert_not_called();backoff.assert_not_called();pause.assert_called_once();cache.close()

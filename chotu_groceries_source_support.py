@@ -118,15 +118,19 @@ class PublicCatalog:
  def read_page(self,url):
   p=urlsplit(url)
   if p.scheme!='https' or p.hostname!=urlsplit(BASE).hostname or p.username or p.password:raise ValueError('Outside exact grocery source host')
-  self.g['_chotu_wait']();delay=max(0,self.last+1.5-time.monotonic())
-  if delay:self.g['_chotu_backoff'](delay,'Selected public grocery page pacing')
-  self.last=time.monotonic()
+  self.g['_chotu_wait']()
+  cache=getattr(self.g.get('_chotu_tls'),'saved_response_cache',None)
+  cached=cache.get(url) if cache and not self.force_fresh else None
+  if cached is None:
+   delay=max(0,self.last+1.5-time.monotonic())
+   if delay:self.g['_chotu_backoff'](delay,'Selected public grocery page pacing')
+   self.last=time.monotonic()
   self.g.get('_chotu_debug_stage',lambda *a:None)('Grocery listing pages' if p.path.startswith(('/catalogsearch/','/allproducts')) else 'Grocery source product pages')
   self.g.get('_chotu_debug_request',lambda *a:None)(url,1)
   getter=(getattr(self.g['S'],'get_fresh',None) or self.g['S'].get) if self.force_fresh else self.g['S'].get
   for attempt in range(3):
    try:
-    r=getter(url,timeout=(15,45));break
+    r=cached if cached is not None else getter(url,timeout=(15,45));break
    except (requests.exceptions.Timeout,requests.exceptions.ConnectionError) as exc:
     if isinstance(exc,requests.exceptions.SSLError):raise
     if attempt==2:raise RuntimeError('SOURCE PAUSED: grocery public request timed out after 3 attempts; retry saved store after at least 300s; checkpoint retained') from exc
@@ -143,7 +147,7 @@ class PublicCatalog:
  def discover_scope(self,scope):
   self.scope_count_changed=False;self.scope_totals=[]
   queue=[scope['url']];seen=set();discovered=set();expected=None
-  self.scope_partial=(discovered,seen);self.scope_expected=None
+  self.scope_partial=(discovered,seen);self.scope_expected=None;self.scope_total_text=None
   seed=urlsplit(scope['url']);seed_query=dict(parse_qsl(seed.query))
   while queue:
    url=queue.pop(0)
@@ -164,7 +168,10 @@ class PublicCatalog:
        item=urljoin(url,a['href']);part=urlsplit(item)
        if part.hostname==seed.hostname and part.scheme=='https' and not part.query and not part.fragment and part.path.strip('/') and not part.path.strip('/').count('/') and part.path.rstrip('/') not in ('/allproducts','/customer','/checkout','/wishlist','/cart'):discovered.add(item)
       count=soup.select_one('.toolbar-amount')
-      if count:self.scope_expected=listing_total(count.get_text(' ',strip=True))
+      if count:
+       self.scope_total_text=count.get_text(' ',strip=True)
+       try:self.scope_expected=listing_total(self.scope_total_text)
+       except ValueError:pass # Preserve original rendering exception and unresolved source text.
       raise
      if cache:
       import requests
@@ -182,7 +189,11 @@ class PublicCatalog:
     discovered.add(item)
    count=soup.select_one('.toolbar-amount')
    if count:
-    total=listing_total(count.get_text(' ',strip=True))
+    self.scope_total_text=count.get_text(' ',strip=True)
+    try:total=listing_total(self.scope_total_text)
+    except ValueError as exc:
+     from grocery_browser_support import ListingRenderIncomplete
+     raise ListingRenderIncomplete('Public grocery listing total unresolved; source toolbar: '+self.scope_total_text[:500]) from exc
     if total is not None:
      if expected is not None and expected!=total:self.scope_count_changed=True
      if total not in self.scope_totals:self.scope_totals.append(total)
@@ -230,7 +241,9 @@ class PublicCatalog:
    status='complete'
    if render_error or self.scope_count_changed or expected is not None and len(discovered)!=expected:
     status='review_required';issue=dict(scope_url=scope['url'],reported_total=expected,visible_products=len(discovered),pages=len(seen),reported_totals=list(self.scope_totals))
-    if render_error:issue['render_error']=render_error
+    if render_error:
+     issue['render_error']=render_error
+     issue['source_toolbar']=getattr(self,'scope_total_text',None)
     self.coverage_issues.append(issue);self.log('GROCERY COVERAGE REVIEW: '+json.dumps(issue)+'; source discrepancy retained; no complete-catalog approval')
    for item in discovered:
     if scope not in urls.setdefault(item,[]):urls[item].append(scope)
