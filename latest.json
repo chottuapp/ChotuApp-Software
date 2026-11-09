@@ -1,9 +1,9 @@
 {
-  "run_id": "42572421650",
+  "run_id": "42573261534",
   "store": "ChotuApp Groceries",
-  "checked_utc": "2026-11-09T06:20:36.948342+00:00",
+  "checked_utc": "2026-11-09T06:28:58.741690+00:00",
   "requested_pages": 97,
-  "status": "source_hold",
+  "status": "source_inspected",
   "responses": [
     {
       "url": "https://www.naheed.pk/robots.txt",
@@ -13,17 +13,12 @@
     {
       "url": "https://www.naheed.pk/allproducts/?manufacturer=890",
       "status": 200,
-      "bytes": 391782
+      "bytes": 398750
     },
     {
       "url": "https://www.naheed.pk/dawn-butter-garlic-croutons-125gm",
       "status": 200,
-      "bytes": 350139
-    },
-    {
-      "url": "https://www.naheed.pk/graphql?query=%7Bproducts%28search%3A%22Shan%22%2CpageSize%3A1%29%7Btotal_count+items%7Bid+sku+name+url_key+stock_status+categories%7Bid+name+url_path%7D+price_range%7Bminimum_price%7Bregular_price%7Bvalue+currency%7Dfinal_price%7Bvalue+currency%7D%7D%7D%7D%7D%7D",
-      "status": 403,
-      "bytes": 118
+      "bytes": 350147
     }
   ],
   "scope_pages_allowed": 13,
@@ -72,5 +67,37 @@
       }
     ]
   },
-  "error": "Source denied or limited; no alternate route attempted"
+  "permitted_label_routes": {
+    "Eggs": [
+      {
+        "source_label": "Eggs",
+        "url": "https://www.naheed.pk/groceries-pets/breakfast/eggs"
+      },
+      {
+        "source_label": "Eggs",
+        "url": "https://www.naheed.pk/groceries-pets/breakfast/eggs"
+      }
+    ],
+    "Dog Food": [
+      {
+        "source_label": "Dog Food",
+        "url": "https://www.naheed.pk/groceries-pets/pet-care/dog-food"
+      },
+      {
+        "source_label": "Dog Food",
+        "url": "https://www.naheed.pk/groceries-pets/pet-care/dog-food"
+      }
+    ],
+    "Cat Food": [
+      {
+        "source_label": "Cat Food",
+        "url": "https://www.naheed.pk/groceries-pets/pet-care/cat-food"
+      },
+      {
+        "source_label": "Cat Food",
+        "url": "https://www.naheed.pk/groceries-pets/pet-care/cat-food"
+      }
+    ]
+  },
+  "public_api_status": "403 from prior explicit probe; HTML navigation only, no API retry"
 }
