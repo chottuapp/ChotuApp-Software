@@ -3582,7 +3582,8 @@
     "Makeup Gallery": "source:1b0b5d0bb86b62d8cb80a9d23691d40e7f001c221abcd9f86b537b102f8cb89f:Makeup Gallery:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
     "Alkaram Studio": "source:b218e5e3bdb30ed468cddd845f5d5d473e54fe1fcc5dcbbc3e502f6d19f70f9a:Alkaram Studio:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
     "So Komal": "source:0ee1d5a314b3aca156c5ca08add6b926c0e1ba16e15a237eb5ab5a4e12ded0f7:So Komal:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
-    "Generation": "source:531c62514315fb9fcfa9c47a461607c39f59abadfd34c1d108ce66cc1b29bfe6:Generation:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0"
+    "Generation": "source:531c62514315fb9fcfa9c47a461607c39f59abadfd34c1d108ce66cc1b29bfe6:Generation:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
+    "Rios": "source:a3b70b2529e10006d227027cdcf3c2f84a6dc22bb84c7fa3c04f22e123890ff6:Rios:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -13221,12 +13222,46 @@
       "shop_code": "SE10053",
       "identity_policy": "confirmed_code",
       "status": "hold",
-      "products_checked": 2381,
-      "findings_count": 0,
-      "findings": [],
+      "products_checked": 2314,
+      "findings_count": 4,
+      "findings": [
+        {
+          "product_id": "CP3431d02e4a05",
+          "name": "Amrij Makeup Pencil Brush A6 Hs20Z",
+          "source_url": "https://www.rios.pk/products/amri-makeup-powder8-brush-a1-hs03l",
+          "issues": [
+            "Category is too broad or promotional for product-purpose classification",
+            "Primary product type and Category disagree: eyeshadow"
+          ]
+        },
+        {
+          "product_id": "CP3dc080bbbf8f",
+          "name": "Vaseline Cream Brulee Lip Therapy 7g",
+          "source_url": "https://www.rios.pk/products/vaseline-creme-brulee-lip-therapy-7g",
+          "issues": [
+            "Primary product type and Category disagree: lip balm"
+          ]
+        },
+        {
+          "product_id": "CP5c38063b594e",
+          "name": "Kodomo Lion New Born Natural Moisturizer Baby Soap 75g",
+          "source_url": "https://www.rios.pk/products/kodomo-new-born-bar-soap-arb-vrs-lion-75g",
+          "issues": [
+            "Facial cream Category conflicts with named application area"
+          ]
+        },
+        {
+          "product_id": "CPd918bec17947",
+          "name": "Wokali Ampoules Moisturizing Cream 100ml",
+          "source_url": "https://www.rios.pk/products/wokali-wkl529-ampoules-moisturizing-cream-100ml",
+          "issues": [
+            "Primary product type and Category disagree: foundation"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "d655e2d7ff9800e684f81d6d4945a4f7681440e5ab4796a6b2736451e5987a24",
-      "checked_utc": "2026-11-08T15:16:53.456047+00:00",
+      "workbook_sha256": "f9dffd7a32bec70f45278978b8dab78734b131cfd7b7b9697538dba612194488",
+      "checked_utc": "2026-11-09T12:03:05.958618+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "incomplete_products_excluded": [
         {
@@ -13254,52 +13289,19 @@
           ]
         },
         {
-          "product_id": "CPd481e320a977",
-          "source_url": "https://www.rios.pk/products/pressed-sparkle-palette-rhd-copy",
-          "name": "RHD EYESHADOW PALETTE 5IN1 CELESTE",
+          "product_id": "CP799ab1c968c2",
+          "source_url": "https://www.rios.pk/products/rica-orange-brazilian-wax-800g",
+          "name": "RICA ORANGE BRAZILIA",
           "issues": [
-            "Description lacks enough product-specific content for review"
+            "Brand name used as product Category"
           ]
         },
         {
-          "product_id": "CP06c54062b46a",
-          "source_url": "https://www.rios.pk/products/body-lotion-pomegranate-colagen-body-100ml-copy",
-          "name": "BODY LOTION STRAWBERY + VITAMIN C BODY",
+          "product_id": "CP5e230542572f",
+          "source_url": "https://www.rios.pk/products/loreal-white-face-collagen-cream-50ml",
+          "name": "LOREAL WHITE FACE COLLAGEN CREAM 50ML",
           "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP0c951baf07f3",
-          "source_url": "https://www.rios.pk/products/body-lotion-papaya-vitamin-e-100ml-copy",
-          "name": "BODY LOTION POMEGRANATE + COLAGEN BODY",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPa30790c379d5",
-          "source_url": "https://www.rios.pk/products/natural-glamza-brightening-glow-scrub-200g",
-          "name": "Natural Glamz Brightening Glow Scrub 200g",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP3dae82af74d2",
-          "source_url": "https://www.rios.pk/products/flormar-style-mattic-lipliner",
-          "name": "Flormar Style Mattic Lipliner",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP3424a8fc8bac",
-          "source_url": "https://www.rios.pk/products/hbr-haya-deep-hydro-gel-100gm",
-          "name": "HBR HAYA DEEP HYDRO GEL 100GM",
-          "issues": [
-            "Description lacks enough product-specific content for review",
-            "Category blank or unresolved"
+            "Category lacks clear product-purpose evidence; manual review required"
           ]
         },
         {
@@ -13311,19 +13313,19 @@
           ]
         },
         {
-          "product_id": "CP182e6fc12867",
-          "source_url": "https://www.rios.pk/products/aloe-vera-hard-wax-beads-800g",
-          "name": "Aloe Vera Hard Wax Beads 800g",
+          "product_id": "CP53b7d046a331",
+          "source_url": "https://www.rios.pk/products/feuchtigkeitscreme-baume-hydratant-moisturizing-cream-50ml",
+          "name": "Cerave Dry Skin Moisturizing Cream 50ml",
           "issues": [
-            "Description lacks enough product-specific content for review"
+            "Category lacks clear product-purpose evidence; manual review required"
           ]
         },
         {
-          "product_id": "CP0febb5743e15",
-          "source_url": "https://www.rios.pk/products/share-tools-diagonal-stainless-steel-eyebrow-clip-f3003a",
-          "name": "Share Tools Diagonal Stainless Steel Eyebrow Clip F3003A",
+          "product_id": "CP4ad5560a2a21",
+          "source_url": "https://www.rios.pk/products/nose-pore-cleansing-strips",
+          "name": "Rivaj Nose Pore Cleansing Strips",
           "issues": [
-            "Description lacks enough product-specific content for review"
+            "Category lacks clear product-purpose evidence; manual review required"
           ]
         },
         {
@@ -13335,27 +13337,19 @@
           ]
         },
         {
-          "product_id": "CP36447e4ab32e",
-          "source_url": "https://www.rios.pk/products/hair-energy-instant-glow-facial-scrub-150g",
-          "name": "Hair Energy Instant Glow Facial Scrub 150g",
+          "product_id": "CPfed2a1e8a72f",
+          "source_url": "https://www.rios.pk/products/cerave-blemish-control-cleanser-236ml",
+          "name": "Cerave Blemish Control Cleanser 236ml",
           "issues": [
-            "Description lacks enough product-specific content for review"
+            "Category lacks clear product-purpose evidence; manual review required"
           ]
         },
         {
-          "product_id": "CP95429862d26c",
-          "source_url": "https://www.rios.pk/products/belleza-lingerie-round-neck-string-camisole-6025",
-          "name": "Belleza Lingerie Round Neck String Camisole - 6025",
+          "product_id": "CP31bdff02ecf2",
+          "source_url": "https://www.rios.pk/products/cerave-smoothing-cleanser-for-dry-rough-and-bumpy-skin-236ml",
+          "name": "Cerave Dry Rough and Bumpy Skin SA Smoothing Cleanser 236ml",
           "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP9da1a6cd3ae6",
-          "source_url": "https://www.rios.pk/products/sh-delicate-pressed-powder-blush",
-          "name": "SH Delicate Pressed Powder Blush",
-          "issues": [
-            "Description lacks enough product-specific content for review"
+            "Category lacks clear product-purpose evidence; manual review required"
           ]
         },
         {
@@ -13367,75 +13361,27 @@
           ]
         },
         {
-          "product_id": "CP864ab56fe307",
-          "source_url": "https://www.rios.pk/products/cevera-eye-contour-pencil-1gm",
-          "name": "Cevera Eyeliner Contour Pencil",
+          "product_id": "CPfefb9eec67c9",
+          "source_url": "https://www.rios.pk/products/her-beauty-soy-smoothie-cleanser-100ml",
+          "name": "Her Beauty Soy Smoothie Cleanser 100ml",
           "issues": [
-            "Description lacks enough product-specific content for review"
+            "Brand name used as product Category"
           ]
         },
         {
-          "product_id": "CP48299365598d",
-          "source_url": "https://www.rios.pk/products/megaglo-highlighting-powder",
-          "name": "Megaglo Highlighting Powder",
+          "product_id": "CPfee69b2996bd",
+          "source_url": "https://www.rios.pk/products/loreal-revitalift-hydrating-anti-wrinkle-extra-firmng-day-cream-50ml",
+          "name": "Loreal Revitalift Anti Wrinkle Extra Firmng Day Cream 50ml",
           "issues": [
             "Category lacks clear product-purpose evidence; manual review required"
           ]
         },
         {
-          "product_id": "CPbe38f1ee635a",
-          "source_url": "https://www.rios.pk/products/cevera-eyebrow-pen",
-          "name": "Cevera Eyebrow Pen",
+          "product_id": "CP0fc451cca7bb",
+          "source_url": "https://www.rios.pk/products/vipera-powder-fashion-lightly-pigmented",
+          "name": "Vipera Powder Fashion Lightly Pigmented 13g",
           "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPb3da7922cfc8",
-          "source_url": "https://www.rios.pk/products/butterfly-stainless-tweezer",
-          "name": "Butterfly Stainless Tweezer",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPc78e3a66f7ab",
-          "source_url": "https://www.rios.pk/products/belleza-lingerie-thin-cup-wire-bra-set-a24002",
-          "name": "Belleza Lingerie Thin Cup Wire Bra Set - A24002",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP21f29997b17f",
-          "source_url": "https://www.rios.pk/products/belleza-lingerie-push-up-wire-bra-993",
-          "name": "Belleza Lingerie Push Up Wire Bra - 993",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPf94e84ffd5e0",
-          "source_url": "https://www.rios.pk/products/belleza-lingerie-push-up-cup-wire-bra-set-a3028",
-          "name": "Belleza Lingerie Push Up Cup Wire Bra Set - A3028",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP3e57e7a2cbe9",
-          "source_url": "https://www.rios.pk/products/belleza-lingerie-boxer-8809-panty",
-          "name": "Belleza Lingerie Boxer Panty - 8809",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP8277e6b0edcf",
-          "source_url": "https://www.rios.pk/products/belleza-wire-non-padded-bra-set-2033",
-          "name": "Belleza Lingerie Wire Non Padded Bra Set - 2033",
-          "issues": [
-            "Description lacks enough product-specific content for review"
+            "Category lacks clear product-purpose evidence; manual review required"
           ]
         },
         {
@@ -13447,27 +13393,11 @@
           ]
         },
         {
-          "product_id": "CP7326132549e7",
-          "source_url": "https://www.rios.pk/products/sh-flawless-blend-compact-powder",
-          "name": "SH Flawless Blend Compact Powder",
+          "product_id": "CP3ddbd797ead5",
+          "source_url": "https://www.rios.pk/products/loreal-pure-clays-red-algae-exfoliates-brightens-mask-50ml",
+          "name": "Loreal Pure Clays+Red Algae Exfoliates Brightens Mask 50Ml",
           "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP38554a46734f",
-          "source_url": "https://www.rios.pk/products/sh-mousse-blush",
-          "name": "SH Mousse Blush",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP5620631a5afa",
-          "source_url": "https://www.rios.pk/products/sh-blush-pigment",
-          "name": "SH Blush Pigment",
-          "issues": [
-            "Description lacks enough product-specific content for review"
+            "Category is too broad or promotional for product-purpose classification"
           ]
         },
         {
@@ -13476,6 +13406,31 @@
           "name": "Belleza Lingerie Low Ankle Socks - Mix (Pack Of 3) - SK04",
           "issues": [
             "Description lacks enough product-specific content for review"
+          ]
+        },
+        {
+          "product_id": "CPafc4781cd18d",
+          "source_url": "https://www.rios.pk/products/glitter-gum-stick",
+          "name": "Rivaj Glitter Gum Stick",
+          "issues": [
+            "Category is too broad or promotional for product-purpose classification",
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf42b9c949aa4",
+          "source_url": "https://www.rios.pk/products/kodomo-t-brush-orange-paste-arb-vrs-lion-15g-6-yr",
+          "name": "Kodomo Lion Orange / Strawberry Teeth Brush & Paste Set 6+Yrs",
+          "issues": [
+            "Brand name used as product Category"
+          ]
+        },
+        {
+          "product_id": "CP38eeacbea969",
+          "source_url": "https://www.rios.pk/products/cerave-sa-smoothing-cream-177ml",
+          "name": "Cerave SA Smoothing Cream 177ml",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
           ]
         },
         {
@@ -13503,35 +13458,27 @@
           ]
         },
         {
-          "product_id": "CP7f9a5b6c070f",
-          "source_url": "https://www.rios.pk/products/ruby-face-eyebrow-scissors-wj02",
-          "name": "Ruby Face Eyebrow Scissors WJ02",
+          "product_id": "CP0d62cf918093",
+          "source_url": "https://www.rios.pk/products/toni-guy-comb-4011",
+          "name": "Toni & Guy Comb - 4011",
           "issues": [
             "Description lacks enough product-specific content for review"
           ]
         },
         {
-          "product_id": "CP2d080f68ea24",
-          "source_url": "https://www.rios.pk/products/garnier-hair-color-1-0-40ml",
-          "name": "Garnier Hair Color - 1.0 40ml",
+          "product_id": "CPf0df5d4b1d9f",
+          "source_url": "https://www.rios.pk/products/u-s-polo-3-pack-panty-66274",
+          "name": "U.S Polo 3 Pack Panty 66274",
           "issues": [
             "Description lacks enough product-specific content for review"
           ]
         },
         {
-          "product_id": "CP087a6cccf9d2",
-          "source_url": "https://www.rios.pk/products/femfresh-sensitive-intimate-wash-250ml",
-          "name": "Femfresh Sensitive Intimate Wash 250ml",
+          "product_id": "CP2d0dfd0d9aca",
+          "source_url": "https://www.rios.pk/products/belleza-lingerie-two-piece-swim-suit-gm2101",
+          "name": "Belleza Lingerie Two Piece Swim Suit - GM2101",
           "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CPa36e9e46886c",
-          "source_url": "https://www.rios.pk/products/belleza-lingerie-long-nighty-15009",
-          "name": "Belleza Lingerie Long Nighty - 15009",
-          "issues": [
-            "Description lacks enough product-specific content for review"
+            "Category lacks clear product-purpose evidence; manual review required"
           ]
         },
         {
@@ -13543,27 +13490,20 @@
           ]
         },
         {
-          "product_id": "CP0683778147d3",
-          "source_url": "https://www.rios.pk/products/natural-glamza-brightening-massage-cream-200g",
-          "name": "Natural Glamz Brightening Massage Cream 200g",
+          "product_id": "CP4fb21596228c",
+          "source_url": "https://www.rios.pk/products/garnier-fructis-style-structure-gel-200ml",
+          "name": "Garnier Fructis Style Structure Gel 200ml",
           "issues": [
-            "Description lacks enough product-specific content for review"
+            "Brand name used as product Category"
           ]
         },
         {
-          "product_id": "CP259c7d7a947f",
-          "source_url": "https://www.rios.pk/products/share-tools-eyebrow-razor-2-pcs-f3162a",
-          "name": "Share Tools Eyebrow Razor F3162A (Pack of 2)",
+          "product_id": "CP0f4c54040cbf",
+          "source_url": "https://www.rios.pk/products/belleza-lingerie-fashion-nipple-cover-tape",
+          "name": "BELLEZA STYLING TAP 1.5X300 CM",
           "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP3f0bef4c5efa",
-          "source_url": "https://www.rios.pk/products/ruby-face-makeup-brush-set-st6",
-          "name": "Ruby Face Makeup Brush Set ST6 - Pack Of 6",
-          "issues": [
-            "Description lacks enough product-specific content for review"
+            "Brand name used as product Category",
+            "Category lacks clear product-purpose evidence; manual review required"
           ]
         },
         {
@@ -13575,14 +13515,6 @@
           ]
         },
         {
-          "product_id": "CP6bbdd9df3e82",
-          "source_url": "https://www.rios.pk/products/vaseline-original-lip-therapy-4g",
-          "name": "Vaseline Original Lip Therapy 4.8g",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
           "product_id": "CPd51de2be44b5",
           "source_url": "https://www.rios.pk/products/glitter-gripper-stick",
           "name": "Amrij Cosmetics Glitter Gripper Stick",
@@ -13591,43 +13523,30 @@
           ]
         },
         {
-          "product_id": "CPc02202eb5ba5",
-          "source_url": "https://www.rios.pk/products/only-makeup-brush-jb20w",
-          "name": "Only Makeup Brush - JB20W",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
-          "product_id": "CP2e5b377da1db",
-          "source_url": "https://www.rios.pk/products/share-tools-beauty-scissors-f3024a-kq1014",
-          "name": "Share Tools Beauty Scissors F3024A KQ1014",
-          "issues": [
-            "Description lacks enough product-specific content for review"
-          ]
-        },
-        {
           "product_id": "CPdeeb5a92c920",
           "source_url": "https://www.rios.pk/products/share-tools-body-shaver-gjal3410a",
           "name": "Share Tools Body Shaver GJAL3410A (Pack of 2)",
           "issues": [
-            "Description lacks enough product-specific content for review"
+            "Description lacks enough product-specific content for review",
+            "Category is too broad or promotional for product-purpose classification",
+            "Category lacks clear product-purpose evidence; manual review required"
           ]
         },
         {
-          "product_id": "CP35790fa26a35",
-          "source_url": "https://www.rios.pk/products/share-tools-beauty-scissors-f3020a",
-          "name": "Share Tools Beauty Scissors F3020A",
+          "product_id": "CPd11a65805b68",
+          "source_url": "https://www.rios.pk/products/share-tools-beauty-scissors-f3022a-kq1013",
+          "name": "Share Tools Beauty Scissors F3022A KQ1013",
           "issues": [
-            "Description lacks enough product-specific content for review"
+            "Category is too broad or promotional for product-purpose classification",
+            "Category lacks clear product-purpose evidence; manual review required"
           ]
         },
         {
-          "product_id": "CP146357bda089",
-          "source_url": "https://www.rios.pk/products/loreal-excellence-creme-tripple-protection-2u-black-brown-hair-color-48ml",
-          "name": "Loreal Excellence Cr\u00e8me Tripple Protection - 2U Black Brown Hair Color 48ml",
+          "product_id": "CP51e27f6d9a76",
+          "source_url": "https://www.rios.pk/products/neutrogena-cellular-bost-vitamin-c-polish-cream-75ml",
+          "name": "Neutrogena Cellular Boost Vitamin C Polish Cream 75ml",
           "issues": [
-            "Description lacks enough product-specific content for review"
+            "Category lacks clear product-purpose evidence; manual review required"
           ]
         },
         {
@@ -13639,17 +13558,35 @@
           ]
         }
       ],
-      "incomplete_products_count": 51,
+      "incomplete_products_count": 36,
       "incomplete_products_truncated": false,
-      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/rios-incomplete-products/a3fcdc4e0ddd7393/manifest.json",
-      "original_source_sha256": "173b36c3a1b3db326230c51ae46ed68fdacebd1835dcd8269818b9f097571418",
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/rios-incomplete-products/2cb0101b0fe3421f/manifest.json",
+      "original_source_sha256": "a3b70b2529e10006d227027cdcf3c2f84a6dc22bb84c7fa3c04f22e123890ff6",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-09T12:03:08.114814+00:00",
+        "updated_utc": "2026-11-09T12:03:08.114814+00:00",
+        "next_source_check_due_utc": "2026-11-09T12:18:08.114814+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category is too broad or promotional for product-purpose classification",
+          "Facial cream Category conflicts with named application area",
+          "Primary product type and Category disagree: eyeshadow",
+          "Primary product type and Category disagree: foundation",
+          "Primary product type and Category disagree: lip balm"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
-      "description_repairs_count": 1140,
+      "description_repairs_count": 1031,
       "description_repairs_examples": [
         {
           "product_id": "CP5fa0d73b48d6",
@@ -13703,15 +13640,12 @@
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "41861364912",
-      "source_artifact": 13350100826,
-      "source_sha256": "173b36c3a1b3db326230c51ae46ed68fdacebd1835dcd8269818b9f097571418",
+      "source_run": "42524584599",
+      "source_artifact": 13637943055,
+      "source_sha256": "a3b70b2529e10006d227027cdcf3c2f84a6dc22bb84c7fa3c04f22e123890ff6",
       "description_style_version": "customer-copy-v3",
-      "refresh_generation": "refresh20261104-6c42b57a",
-      "delivery_status": "blocked",
-      "audit_status": "pass",
-      "error": "Duplicate Drive filenames require identity review",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/rios/173b36c3a1b3db32/manifest.json"
+      "refresh_generation": "refresh20261108-92345025",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/rios/a3b70b2529e10006/manifest.json"
     },
     "Edenrobe": {
       "name": "804 Audit",
@@ -22030,7 +21964,9 @@
     "42518462879": "42518462879:13636855434:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
     "42519182747": "42519182747:13638459103:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
     "42522400795": "42522400795:13640955948:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
-    "42522812422": "42522812422:13641000227:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0"
+    "42522812422": "42522812422:13641000227:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
+    "42522938420": "42522938420:13633409778:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
+    "42524169882": "42524169882:13641600403:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-11-09T06:58:52.204035+00:00",
@@ -22132,8 +22068,8 @@
     "SE10083": "inputs/fresh804-20261026-5d42fe35/rollback-se10083/89d142b1d7395cbb/manifest.json",
     "SE10084": "inputs/fresh804-20261026-5d42fe35/rollback-se10084/f03f680a9fdd6840/manifest.json"
   },
-  "audit804_last_store": "Generation",
-  "audit804_progress_utc": "2026-11-09T12:01:47.175986+00:00",
+  "audit804_last_store": "Rios",
+  "audit804_progress_utc": "2026-11-09T12:03:08.116224+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Limelight",
