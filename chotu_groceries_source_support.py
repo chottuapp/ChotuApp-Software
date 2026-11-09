@@ -7,12 +7,13 @@ from urllib.parse import urlsplit,urljoin,parse_qsl,urlencode,urlunsplit
 from bs4 import BeautifulSoup
 BASE='https://www.naheed.pk';STORE='ChotuApp Groceries'
 class IncompleteProduct(ValueError):pass
+class ProductReviewRequired(ValueError):pass
 
 def norm(value):return re.sub(r'\s+',' ',html.unescape(str(value or ''))).strip()
 def amount(value):
  try:v=Decimal(str(value))
- except InvalidOperation:raise ValueError('Invalid source price')
- if not v.is_finite() or v<=0 or v*10000!=(v*10000).to_integral_value():raise ValueError('Unsupported exact PKR price')
+ except InvalidOperation:raise ProductReviewRequired('Invalid source price')
+ if not v.is_finite() or v<=0 or v*10000!=(v*10000).to_integral_value():raise ProductReviewRequired('Unsupported exact PKR price')
  return v
 
 def electronic_item(name,categories):
@@ -29,7 +30,7 @@ def listing_total(text):
 
 def product(page,url):
  soup=BeautifulSoup(page,'html.parser');canonical=soup.select_one('link[rel=canonical][href]');title=soup.select_one('h1 [itemprop=name],h1 .base,h1')
- if not canonical or urljoin(url,canonical['href']).rstrip('/')!=url.rstrip('/') or not title:raise ValueError('Exact product canonical/name unverified')
+ if not canonical or urljoin(url,canonical['href']).rstrip('/')!=url.rstrip('/') or not title:raise ProductReviewRequired('Exact product canonical/name unverified')
  name=norm(title.get_text(' ',strip=True))
  source_categories=[norm(a.get_text(' ',strip=True)) for a in soup.select('.breadcrumbs li a[href]')]
  if electronic_item(name,source_categories):raise IncompleteProduct('Owner grocery rule: electronic item excluded; original product retained in skip receipt')
@@ -50,21 +51,21 @@ def product(page,url):
   try:walk(json.loads(script.get_text()))
   except (ValueError,TypeError):continue
  candidates=[p for p in structured if norm(p.get('name'))==name]
- if len(candidates)>1:raise ValueError('Conflicting repeated source product identity/schema; no offer guessed')
+ if len(candidates)>1:raise ProductReviewRequired('Conflicting repeated source product identity/schema; no offer guessed')
  if not candidates:raise IncompleteProduct('Matching source product schema missing')
  raw=candidates[0];offers=raw.get('offers');offers=offers if isinstance(offers,list) else [offers]
  if len(offers)!=1 or not isinstance(offers[0],dict) or offers[0].get('priceCurrency')!='PKR':raise IncompleteProduct('Exact single PKR source offer missing')
  offer=offers[0];price=amount(offer.get('price'));final=box.select_one('[data-price-type=finalPrice][data-price-amount]');old=box.select_one('[data-price-type=oldPrice][data-price-amount]')
- if not final or amount(final['data-price-amount'])!=price:raise ValueError('Visible/schema source price conflict')
+ if not final or amount(final['data-price-amount'])!=price:raise ProductReviewRequired('Visible/schema source price conflict')
  regular=amount(old['data-price-amount']) if old else price
- if regular<price:raise ValueError('Source regular/selling prices disagree')
+ if regular<price:raise ProductReviewRequired('Source regular/selling prices disagree')
  availability=str(offer.get('availability') or '').rsplit('/',1)[-1]
  if availability not in ('InStock','OutOfStock','SoldOut'):raise IncompleteProduct('Source stock unknown')
  available=availability=='InStock'
  stock=soup.select_one('.att-stock .attribute-value,.stock.available,.stock.unavailable')
  if stock:
   label=norm(stock.get_text(' ',strip=True)).lower()
-  if label in ('in stock','out of stock') and (label=='in stock')!=available:raise ValueError('Visible/schema source stock conflict')
+  if label in ('in stock','out of stock') and (label=='in stock')!=available:raise ProductReviewRequired('Visible/schema source stock conflict')
  links=soup.select('.breadcrumbs li a[href]');categories=[dict(name=norm(a.get_text(' ',strip=True)),link=urljoin(url,a['href'])) for a in links if norm(a.get_text(' ',strip=True)).lower()!='home']
  categories=[c for c in categories if urlsplit(c['link']).hostname==urlsplit(BASE).hostname]
  if not categories:raise IncompleteProduct('Source product breadcrumb category missing')
@@ -258,7 +259,14 @@ class PublicCatalog:
   for index,url in enumerate(urls,1):
    page=self.read_page(url)
    try:
-    p=product(page,url)
+    try:p=product(page,url)
+    except ProductReviewRequired:
+     original_page=page;self.force_fresh=True
+     try:page=self.read_page(url)
+     finally:self.force_fresh=False
+     try:p=product(page,url)
+     except ProductReviewRequired as exc:
+      self.record_product_review(url,[original_page,page],str(exc));continue
     scopes=urls[url];generic={'milk','nestle','cat food','dog food'}
     def key(value):
      import unicodedata
@@ -282,6 +290,17 @@ class PublicCatalog:
    self.log('GROCERY PRODUCTS: '+str(index)+'/'+str(len(urls))+' checked; '+str(len(self.products))+' complete available products')
   if not self.products:raise ValueError('No complete sellable grocery products; incomplete receipts retained')
   return list(self.products.values())
+ def record_product_review(self,url,pages,reason):
+  import csv
+  folder=Path(self.g.get('__file__',__file__)).resolve().parent/'audit_reports'/STORE
+  folder.mkdir(parents=True,exist_ok=True);target=folder/(STORE+' - SOURCE PRODUCT REVIEW.csv')
+  first=not target.exists()
+  evidence=[dict(response_sha256=hashlib.sha256(page.encode()).hexdigest(),original_product_html=page) for page in pages]
+  with target.open('a',encoding='utf-8-sig',newline='') as stream:
+   writer=csv.writer(stream)
+   if first:writer.writerow(['source_url','review_reason','export_status','original_source_responses_json'])
+   writer.writerow([url,reason,'excluded_pending_review',json.dumps(evidence,ensure_ascii=False)])
+  self.log('GROCERY PRODUCT REVIEW: '+url+'; '+reason+'; excluded; remaining products continue')
  def read(self,path):
   match=re.fullmatch(r'/wp-json/wc/store/v1/products/(\d+)',path)
   if not match or int(match[1]) not in self.products:raise ValueError('Unknown grocery product identity')

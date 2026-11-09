@@ -220,3 +220,31 @@ class GroceryTests(unittest.TestCase):
    reader=source.PublicCatalog({'S':SimpleNamespace(get=getter),'_chotu_wait':pause,'_chotu_backoff':backoff,'_chotu_tls':SimpleNamespace(saved_response_cache=cache)},lambda _:None)
    reader.last=10**12
    self.assertEqual(reader.read_page(url),'original');getter.assert_not_called();backoff.assert_not_called();pause.assert_called_once();cache.close()
+ def test_unresolved_source_price_conflict_is_quarantined_and_other_products_continue(self):
+  import csv
+  with tempfile.TemporaryDirectory() as tmp:
+   reader=source.PublicCatalog({'_chotu_wait':lambda:None,'__file__':str(Path(tmp)/'main.py')},lambda _:None)
+   scope=dict(group='Bread, Bakery & Pasta',label='Dawn',url=source.BASE+'/allproducts/?manufacturer=890');reader.request={'pages':[scope]}
+   bad=source.BASE+'/item';good=source.BASE+'/item-two';calls=[]
+   reader.discover_scope=lambda _:({bad,good},2,{scope['url']})
+   def read(url):
+    calls.append((url,reader.force_fresh))
+    return page(price='201') if url==bad else page().replace('/item','/item-two').replace('182197','182198')
+   reader.read_page=read;products=reader.catalog()
+   self.assertEqual(len(products),1);self.assertEqual(products[0]['permalink'],good);self.assertIn((bad,True),calls)
+   target=Path(tmp)/'audit_reports'/source.STORE/(source.STORE+' - SOURCE PRODUCT REVIEW.csv')
+   with target.open(encoding='utf-8-sig',newline='') as f:rows=list(csv.DictReader(f))
+   self.assertEqual(len(rows),1);self.assertEqual(rows[0]['source_url'],bad);self.assertEqual(rows[0]['export_status'],'excluded_pending_review');self.assertIn('price conflict',rows[0]['review_reason']);self.assertEqual(len(json.loads(rows[0]['original_source_responses_json'])),2)
+ def test_fresh_recheck_can_resolve_source_conflict_without_guessing_price(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   reader=source.PublicCatalog({'_chotu_wait':lambda:None,'__file__':str(Path(tmp)/'main.py')},lambda _:None)
+   scope=dict(group='Bread, Bakery & Pasta',label='Dawn',url=source.BASE+'/allproducts/?manufacturer=890');reader.request={'pages':[scope]}
+   reader.discover_scope=lambda _:({source.BASE+'/item'},1,{scope['url']})
+   reader.read_page=lambda url:page() if reader.force_fresh else page(price='201')
+   products=reader.catalog();self.assertEqual(len(products),1);self.assertEqual(products[0]['prices']['price'],'2000000');self.assertFalse(reader.force_fresh)
+ def test_programming_errors_are_not_disguised_as_product_review(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   reader=source.PublicCatalog({'_chotu_wait':lambda:None,'__file__':str(Path(tmp)/'main.py')},lambda _:None)
+   reader.request={'pages':[dict(url=source.BASE+'/allproducts/?manufacturer=890')]};reader.discover_scope=lambda _:({source.BASE+'/item'},1,set());reader.read_page=lambda _:page()
+   with patch.object(source,'product',side_effect=TypeError('implementation fault')):
+    with self.assertRaisesRegex(TypeError,'implementation fault'):reader.catalog()
