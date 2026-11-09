@@ -20362,6 +20362,20 @@
       "refresh_generation": "refresh20261108-92345025",
       "delivery_status": "verified",
       "held_input": "inputs/fresh804-20261026-5d42fe35/the-paper-worm/358dff62cefdce41/manifest.json"
+    },
+    "Toyzone": {
+      "name": "804 Audit",
+      "status": "hold",
+      "audit_status": "incomplete",
+      "delivery_status": "blocked",
+      "store": "Toyzone",
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "source_run": "42490485609",
+      "source_artifact": 13635957454,
+      "error": "Description numeric facts changed for CP73053c540045; missing=['2']; added=[]",
+      "source_sha256": "b56b0ae70d8c23fe97657e3fe0c3c4ba4be8b7ab22f085d3f6fa457f7aadf8e4",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/toyzone/b56b0ae70d8c23fe/manifest.json",
+      "checked_utc": "2026-11-09T01:13:20.012050+00:00"
     }
   },
   "audit804_artifacts": {
@@ -20720,7 +20734,7 @@
     "42490439276": "42490439276:13631475753:5bbfd7381ea1b9960a87f577cd73c8b1858863ab1a12b4b36e59d8897995535a",
     "42490464069": "42490464069:13626244232:5bbfd7381ea1b9960a87f577cd73c8b1858863ab1a12b4b36e59d8897995535a",
     "42490475726": "42490475726:13628700548:5bbfd7381ea1b9960a87f577cd73c8b1858863ab1a12b4b36e59d8897995535a",
-    "42490483803": "42490483803:13626241485:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
+    "42490483803": "42490483803:13626241485:5bbfd7381ea1b9960a87f577cd73c8b1858863ab1a12b4b36e59d8897995535a",
     "42490487212": "42490487212:13628696968:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490489426": "42490489426:13627212893:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
     "42490491350": "42490491350:13627696702:6d2f240952a0977f1a29fd8d5e67c0d43738ee707f09e6ad81eb0cd0660dc94f",
@@ -20828,8 +20842,8 @@
     "SE10067": "inputs/fresh804-20261026-5d42fe35/rollback-se10067/8161f81da24203ff/manifest.json",
     "SE10065": "inputs/fresh804-20261026-5d42fe35/rollback-se10065/fa9d792179663145/manifest.json"
   },
-  "audit804_last_store": "Deflexxi",
-  "audit804_progress_utc": "2026-11-09T01:12:56.005460+00:00",
+  "audit804_last_store": "Toyzone",
+  "audit804_progress_utc": "2026-11-09T01:13:20.012359+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Limelight",
