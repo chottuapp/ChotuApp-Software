@@ -34,7 +34,13 @@ def main():
   for p in products:
    body=BeautifulSoup(p.get('body_html') or '', 'html.parser').get_text('\n',strip=True)
    row=dict(name=p['title'],description=body,source_url='https://blackbeiger.com/products/'+p['handle'])
-   report['blackbeiger'].append(dict(**row,public_product_type=p.get('product_type'),classification=category(row,'Blackbeiger') or infer(row['name'],body)))
+   report['blackbeiger'].append(dict(**row,public_product_type=p.get('product_type'),public_id=p['id'],public_tags=p.get('tags'),classification=category(row,'Blackbeiger') or infer(row['name'],body)))
   if len(products)<250:break
+ data=read('https://blackbeiger.com/collections.json?limit=250')
+ report['blackbeiger_collections']=[]
+ for collection in data.get('collections',[]):
+  if not re.search(r'khussa|sandal|slide|flat|heel|pump|ballet|footwear|shoe',collection['title'],re.I):continue
+  members=read('https://blackbeiger.com/collections/'+collection['handle']+'/products.json?limit=250').get('products',[])
+  report['blackbeiger_collections'].append(dict(title=collection['title'],url='https://blackbeiger.com/collections/'+collection['handle'],product_ids=[p['id'] for p in members]))
  publish(report,branch='category-reports');print('Public storefront and classifier diagnosis published. No private catalogs accessed.')
 if __name__=='__main__':main()
