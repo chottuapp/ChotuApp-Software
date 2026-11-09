@@ -1,0 +1,217 @@
+{
+  "run_id": "42612484567",
+  "checked_utc": "2026-11-09T11:53:06.680075+00:00",
+  "targets": [
+    {
+      "target": "42607016680",
+      "state": {
+        "conclusion": "",
+        "displayTitle": "Automatic continuation of 42592529653",
+        "headSha": "ae571ecf84bb24eca133c1b7441cdf4db4fbb066",
+        "jobs": [
+          {
+            "completedAt": "0001-01-01T00:00:00Z",
+            "conclusion": "",
+            "databaseId": 129125474775,
+            "name": "fetch",
+            "startedAt": "2026-11-09T11:11:39Z",
+            "status": "in_progress",
+            "steps": [
+              {
+                "completedAt": "2026-11-09T11:11:40Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-11-09T11:11:39Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T11:11:48Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-11-09T11:11:40Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T11:11:48Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-11-09T11:11:48Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T11:11:52Z",
+                "conclusion": "success",
+                "name": "Install extraction dependencies",
+                "number": 4,
+                "startedAt": "2026-11-09T11:11:48Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T11:12:02Z",
+                "conclusion": "success",
+                "name": "Verify standalone continuation and owner-policy guards",
+                "number": 5,
+                "startedAt": "2026-11-09T11:11:52Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T11:12:04Z",
+                "conclusion": "success",
+                "name": "Restore optional saved run",
+                "number": 6,
+                "startedAt": "2026-11-09T11:12:02Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T11:12:04Z",
+                "conclusion": "skipped",
+                "name": "Install Czone browser fallback when needed",
+                "number": 7,
+                "startedAt": "2026-11-09T11:12:04Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T11:12:23Z",
+                "conclusion": "success",
+                "name": "Install grocery public storefront renderer when needed",
+                "number": 8,
+                "startedAt": "2026-11-09T11:12:04Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T11:12:23Z",
+                "conclusion": "skipped",
+                "name": "Install Axis public JS renderer when needed",
+                "number": 9,
+                "startedAt": "2026-11-09T11:12:23Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T11:12:23Z",
+                "conclusion": "success",
+                "name": "Start continuous fetching on the cloud runner",
+                "number": 10,
+                "startedAt": "2026-11-09T11:12:23Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Live progress, logs and completed-file uploads",
+                "number": 11,
+                "startedAt": "2026-11-09T11:12:23Z",
+                "status": "in_progress"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Fetch result",
+                "number": 12,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Collect diagnostic report even if fetching failed",
+                "number": 13,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Upload diagnostic report and redacted log",
+                "number": 14,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Upload Excel files and audits, including completed stores from a partial run",
+                "number": 15,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Final automated Rule 804 pass for fresh batch",
+                "number": 16,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Upload automated Rule 804 fresh workbooks",
+                "number": 17,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Upload saved checkpoint when available",
+                "number": 18,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Dispatch authorized continuation after verified checkpoint upload",
+                "number": 19,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Post Live progress, logs and completed-file uploads",
+                "number": 36,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 37,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Post Run actions/checkout@v4",
+                "number": 38,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/42607016680/job/129125474775"
+          }
+        ],
+        "status": "in_progress"
+      },
+      "log_unavailable": "run 42607016680 is still in progress; logs will be available when it is complete\n",
+      "artifacts": [
+        {
+          "name": "chotuapp-live-logs",
+          "id": 13670737457,
+          "expired": false,
+          "size_in_bytes": 90953
+        }
+      ],
+      "annotations": [],
+      "console-tail.txt": "[ChotuApp Groceries] GROCERY PRODUCTS: 1554/3189 checked; 1192 complete available products\n[ChotuApp Groceries] [11:52:19] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:19] HTTP START attempt=1 https://www.naheed.pk/young-s-choco-bliss-peanut-cocoa-spread-350g\n[ChotuApp Groceries] [11:52:20] HTTP END status=200 elapsed=0.7s bytes=362351 https://www.naheed.pk/young-s-choco-bliss-peanut-cocoa-spread-350g\n[ChotuApp Groceries] GROCERY PRODUCTS: 1555/3189 checked; 1193 complete available products\n[ChotuApp Groceries] [11:52:21] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:21] HTTP START attempt=1 https://www.naheed.pk/young-s-mayonnaise-500ml-pouch\n[ChotuApp Groceries] [11:52:22] HTTP END status=200 elapsed=0.5s bytes=362315 https://www.naheed.pk/young-s-mayonnaise-500ml-pouch\n[ChotuApp Groceries] GROCERY PRODUCTS: 1556/3189 checked; 1194 complete available products\n[ChotuApp Groceries] [11:52:22] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:22] HTTP START attempt=1 https://www.naheed.pk/young-s-choco-bliss-hazelnut-cocoa-spread-675g\n[ChotuApp Groceries] [11:52:23] HTTP END status=200 elapsed=0.6s bytes=354159 https://www.naheed.pk/young-s-choco-bliss-hazelnut-cocoa-spread-675g\n[ChotuApp Groceries] GROCERY PRODUCTS: 1557/3189 checked; 1195 complete available products\n[ChotuApp Groceries] [11:52:24] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:24] HTTP START attempt=1 https://www.naheed.pk/young-cam-jansen-the-zoo-note-mystery-transi-pb\n[ChotuApp Groceries] [11:52:24] HTTP END status=200 elapsed=0.5s bytes=354371 https://www.naheed.pk/young-cam-jansen-the-zoo-note-mystery-transi-pb\n[ChotuApp Groceries] GROCERY PRODUCTS: 1558/3189 checked; 1196 complete available products\n[ChotuApp Groceries] [11:52:25] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:25] HTTP START attempt=1 https://www.naheed.pk/young-s-chocolaty-spread-600gm\n[ChotuApp Groceries] [11:52:26] HTTP END status=200 elapsed=0.5s bytes=362219 https://www.naheed.pk/young-s-chocolaty-spread-600gm\n[ChotuApp Groceries] GROCERY PRODUCTS: 1559/3189 checked; 1197 complete available products\n[ChotuApp Groceries] [11:52:27] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:27] HTTP START attempt=1 https://www.naheed.pk/young-s-choco-bliss-cookies-cream-spread-350g\n[ChotuApp Groceries] [11:52:27] HTTP END status=200 elapsed=0.1s bytes=365656 https://www.naheed.pk/young-s-choco-bliss-cookies-cream-spread-350g\n[ChotuApp Groceries] GROCERY PRODUCTS: 1560/3189 checked; 1198 complete available products\n[ChotuApp Groceries] [11:52:28] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:28] HTTP START attempt=1 https://www.naheed.pk/young-cam-jansen-and-the-circus-mystery-pb\n[ChotuApp Groceries] [11:52:29] HTTP END status=200 elapsed=0.5s bytes=354220 https://www.naheed.pk/young-cam-jansen-and-the-circus-mystery-pb\n[ChotuApp Groceries] GROCERY PRODUCTS: 1561/3189 checked; 1199 complete available products\n[ChotuApp Groceries] [11:52:30] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:30] HTTP START attempt=1 https://www.naheed.pk/young-s-french-salad-dressing-275ml\n[ChotuApp Groceries] [11:52:31] HTTP END status=200 elapsed=0.5s bytes=353685 https://www.naheed.pk/young-s-french-salad-dressing-275ml\n[ChotuApp Groceries] GROCERY PRODUCTS: 1562/3189 checked; 1200 complete available products\n[ChotuApp Groceries] [11:52:31] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:31] HTTP START attempt=1 https://www.naheed.pk/young-s-orla-cooking-oil-1-liter-pouch\n[ChotuApp Groceries] [11:52:32] HTTP END status=200 elapsed=0.5s bytes=354329 https://www.naheed.pk/young-s-orla-cooking-oil-1-liter-pouch\n[ChotuApp Groceries] GROCERY PRODUCTS: 1563/3189 checked; 1201 complete available products\n[ChotuApp Groceries] [11:52:33] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:33] HTTP START attempt=1 https://www.naheed.pk/carolina-herrera-212-men-heroes-forever-young-for-her-eau-de-parfum-80ml\n[ChotuApp Groceries] [11:52:33] HTTP END status=200 elapsed=0.4s bytes=357410 https://www.naheed.pk/carolina-herrera-212-men-heroes-forever-young-for-her-eau-de-parfum-80ml\n[ChotuApp Groceries] GROCERY INCOMPLETE: https://www.naheed.pk/carolina-herrera-212-men-heroes-forever-young-for-her-eau-de-parfum-80ml; Selectable source options require exact per-variant offers; no option/price guessed\n[ChotuApp Groceries] [11:52:34] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:34] HTTP START attempt=1 https://www.naheed.pk/ycj-the-library-mystery-pb\n[ChotuApp Groceries] [11:52:35] HTTP END status=200 elapsed=0.6s bytes=353972 https://www.naheed.pk/ycj-the-library-mystery-pb\n[ChotuApp Groceries] GROCERY PRODUCTS: 1565/3189 checked; 1202 complete available products\n[ChotuApp Groceries] [11:52:36] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:36] HTTP START attempt=1 https://www.naheed.pk/young-cam-jansen-the-new-girl-mystery-transi-pb\n[ChotuApp Groceries] [11:52:37] HTTP END status=200 elapsed=0.7s bytes=354371 https://www.naheed.pk/young-cam-jansen-the-new-girl-mystery-transi-pb\n[ChotuApp Groceries] GROCERY PRODUCTS: 1566/3189 checked; 1203 complete available products\n[ChotuApp Groceries] [11:52:37] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:37] HTTP START attempt=1 https://www.naheed.pk/young-cam-jansen-the-baseball-mystery-transi-pb\n[ChotuApp Groceries] [11:52:38] HTTP END status=200 elapsed=0.6s bytes=354361 https://www.naheed.pk/young-cam-jansen-the-baseball-mystery-transi-pb\n[ChotuApp Groceries] GROCERY PRODUCTS: 1567/3189 checked; 1204 complete available products\n[ChotuApp Groceries] [11:52:39] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:39] HTTP START attempt=1 https://www.naheed.pk/young-s-honey-1000gm\n[ChotuApp Groceries] [11:52:39] HTTP END status=200 elapsed=0.5s bytes=351193 https://www.naheed.pk/young-s-honey-1000gm\n[ChotuApp Groceries] GROCERY PRODUCTS: 1568/3189 checked; 1205 complete available products\n[ChotuApp Groceries] [11:52:40] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:40] HTTP START attempt=1 https://www.naheed.pk/young-s-chicken-spread-1ltr-pouch\n[ChotuApp Groceries] [11:52:41] HTTP END status=200 elapsed=0.6s bytes=351555 https://www.naheed.pk/young-s-chicken-spread-1ltr-pouch\n[ChotuApp Groceries] GROCERY PRODUCTS: 1569/3189 checked; 1206 complete available products\n[ChotuApp Groceries] [11:52:42] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:42] HTTP START attempt=1 https://www.naheed.pk/my-smart-vocabulary-for-young-learners-book-1\n[ChotuApp Groceries] [11:52:43] HTTP END status=200 elapsed=0.6s bytes=354929 https://www.naheed.pk/my-smart-vocabulary-for-young-learners-book-1\n[ChotuApp Groceries] GROCERY PRODUCTS: 1570/3189 checked; 1207 complete available products\n[ChotuApp Groceries] [11:52:43] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:43] HTTP START attempt=1 https://www.naheed.pk/young-s-crave-chocolate-topping-300gm\n[ChotuApp Groceries] [11:52:44] HTTP END status=200 elapsed=0.6s bytes=359325 https://www.naheed.pk/young-s-crave-chocolate-topping-300gm\n[ChotuApp Groceries] GROCERY INCOMPLETE: https://www.naheed.pk/young-s-crave-chocolate-topping-300gm; Description lacks enough product-specific content for review\n[ChotuApp Groceries] [11:52:45] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:45] HTTP START attempt=1 https://www.naheed.pk/young-s-honey-500gm\n[ChotuApp Groceries] [11:52:46] HTTP END status=200 elapsed=0.4s bytes=351438 https://www.naheed.pk/young-s-honey-500gm\n[ChotuApp Groceries] GROCERY PRODUCTS: 1572/3189 checked; 1208 complete available products\n[ChotuApp Groceries] [11:52:47] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:47] HTTP START attempt=1 https://www.naheed.pk/young-s-orla-cooking-oil-5-liter-bottle\n[ChotuApp Groceries] [11:52:47] HTTP END status=200 elapsed=0.6s bytes=354489 https://www.naheed.pk/young-s-orla-cooking-oil-5-liter-bottle\n[ChotuApp Groceries] GROCERY PRODUCTS: 1573/3189 checked; 1209 complete available products\n[ChotuApp Groceries] [11:52:48] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:48] HTTP START attempt=1 https://www.naheed.pk/young-s-chicken-bar-b-que-spread-500ml-pouch\n[ChotuApp Groceries] [11:52:49] HTTP END status=200 elapsed=0.5s bytes=351591 https://www.naheed.pk/young-s-chicken-bar-b-que-spread-500ml-pouch",
+      "store-status.txt": "Updated (UTC): 2026-11-09T11:52:50.111072+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nChotuApp Groceries: running\n  Stage: Grocery source product pages\n  grocery products: 1570/3189 tasks; sample age 6s\n  ETA unavailable or sample stale; not an overall completion estimate.\n  Last successful HTTP response (UTC): 2026-11-09T11:52:43.041210+00:00",
+      "fetch-log.txt": "[ChotuApp Groceries] [11:51:42] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:51:42] HTTP START attempt=1 https://www.naheed.pk/young-s-chicken-spread-500ml-pouch\n[ChotuApp Groceries] [11:51:42] HTTP END status=200 elapsed=0.4s bytes=354463 https://www.naheed.pk/young-s-chicken-spread-500ml-pouch\n[ChotuApp Groceries] GROCERY PRODUCTS: 1530/3189 checked; 1168 complete available products\n[ChotuApp Groceries] [11:51:43] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:51:43] HTTP START attempt=1 https://www.naheed.pk/young-s-chipotle-mayo-sauce-500ml-pouch\n[ChotuApp Groceries] [11:51:44] HTTP END status=200 elapsed=0.6s bytes=362127 https://www.naheed.pk/young-s-chipotle-mayo-sauce-500ml-pouch\n[ChotuApp Groceries] GROCERY PRODUCTS: 1531/3189 checked; 1169 complete available products\n[ChotuApp Groceries] [11:51:45] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:51:45] HTTP START attempt=1 https://www.naheed.pk/young-cam-jansen-the-pizza-shop-mystery-tran-pb\n[ChotuApp Groceries] [11:51:45] HTTP END status=200 elapsed=0.5s bytes=354439 https://www.naheed.pk/young-cam-jansen-the-pizza-shop-mystery-tran-pb\n[ChotuApp Groceries] GROCERY PRODUCTS: 1532/3189 checked; 1170 complete available products\n[ChotuApp Groceries] [11:51:46] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:51:46] HTTP START attempt=1 https://www.naheed.pk/young-s-mayonnaise-1-liter-pouch\n[ChotuApp Groceries] [11:51:47] HTTP END status=200 elapsed=0.7s bytes=363144 https://www.naheed.pk/young-s-mayonnaise-1-liter-pouch\n[ChotuApp Groceries] GROCERY PRODUCTS: 1533/3189 checked; 1171 complete available products\n[ChotuApp Groceries] [11:51:48] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:51:48] HTTP START attempt=1 https://www.naheed.pk/young-cam-jansen-molly-shoe-mystery-transitional\n[ChotuApp Groceries] [11:51:48] HTTP END status=200 elapsed=0.5s bytes=354316 https://www.naheed.pk/young-cam-jansen-molly-shoe-mystery-transitional\n[ChotuApp Groceries] GROCERY PRODUCTS: 1534/3189 checked; 1172 complete available products\n[ChotuApp Groceries] [11:51:49] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:51:49] HTTP START attempt=1 https://www.naheed.pk/kato-young-coconut-juice-320ml-bottle\n[ChotuApp Groceries] [11:51:50] HTTP END status=200 elapsed=0.5s bytes=353032 https://www.naheed.pk/kato-young-coconut-juice-320ml-bottle\n[ChotuApp Groceries] GROCERY PRODUCTS: 1535/3189 checked; 1173 complete available products\n[ChotuApp Groceries] [11:51:51] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:51:51] HTTP START attempt=1 https://www.naheed.pk/young-s-mayonnaise-2-liter-pouch\n[ChotuApp Groceries] [11:51:52] HTTP END status=200 elapsed=0.7s bytes=360792 https://www.naheed.pk/young-s-mayonnaise-2-liter-pouch\n[ChotuApp Groceries] GROCERY PRODUCTS: 1536/3189 checked; 1174 complete available products\n[ChotuApp Groceries] [11:51:52] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:51:52] HTTP START attempt=1 https://www.naheed.pk/my-smart-grammar-for-young-learners-book-2\n[ChotuApp Groceries] [11:51:53] HTTP END status=200 elapsed=0.6s bytes=354518 https://www.naheed.pk/my-smart-grammar-for-young-learners-book-2\n[ChotuApp Groceries] GROCERY PRODUCTS: 1537/3189 checked; 1175 complete available products\n[ChotuApp Groceries] [11:51:54] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:51:54] HTTP START attempt=1 https://www.naheed.pk/young-cam-jansen-the-missing-cookie-transitio\n[ChotuApp Groceries] [11:51:54] HTTP END status=200 elapsed=0.6s bytes=354263 https://www.naheed.pk/young-cam-jansen-the-missing-cookie-transitio\n[ChotuApp Groceries] GROCERY PRODUCTS: 1538/3189 checked; 1176 complete available products\n[ChotuApp Groceries] [11:51:55] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:51:55] HTTP START attempt=1 https://www.naheed.pk/young-s-sriracha-mayo-sauce-500ml-pouch\n[ChotuApp Groceries] [11:51:56] HTTP END status=200 elapsed=0.8s bytes=362148 https://www.naheed.pk/young-s-sriracha-mayo-sauce-500ml-pouch\n[ChotuApp Groceries] GROCERY PRODUCTS: 1539/3189 checked; 1177 complete available products\n[ChotuApp Groceries] [11:51:57] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:51:57] HTTP START attempt=1 https://www.naheed.pk/young-s-spicy-garlic-mayo-sauce-500ml-pouch\n[ChotuApp Groceries] [11:51:57] HTTP END status=200 elapsed=0.5s bytes=362394 https://www.naheed.pk/young-s-spicy-garlic-mayo-sauce-500ml-pouch\n[ChotuApp Groceries] GROCERY PRODUCTS: 1540/3189 checked; 1178 complete available products\n[ChotuApp Groceries] [11:51:58] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:51:58] HTTP START attempt=1 https://www.naheed.pk/young-s-chocolaty-spread-380g\n[ChotuApp Groceries] [11:51:59] HTTP END status=200 elapsed=0.7s bytes=359873 https://www.naheed.pk/young-s-chocolaty-spread-380g\n[ChotuApp Groceries] GROCERY PRODUCTS: 1541/3189 checked; 1179 complete available products\n[ChotuApp Groceries] [11:52:00] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:00] HTTP START attempt=1 https://www.naheed.pk/young-s-real-mayonnaise-2ltr-pouch\n[ChotuApp Groceries] [11:52:00] HTTP END status=200 elapsed=0.5s bytes=353558 https://www.naheed.pk/young-s-real-mayonnaise-2ltr-pouch\n[ChotuApp Groceries] GROCERY PRODUCTS: 1542/3189 checked; 1180 complete available products\n[ChotuApp Groceries] [11:52:01] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:01] HTTP START attempt=1 https://www.naheed.pk/young-s-mayo-garlic-500ml\n[ChotuApp Groceries] [11:52:02] HTTP END status=200 elapsed=0.5s bytes=360167 https://www.naheed.pk/young-s-mayo-garlic-500ml\n[ChotuApp Groceries] GROCERY PRODUCTS: 1543/3189 checked; 1181 complete available products\n[ChotuApp Groceries] [11:52:03] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:03] HTTP START attempt=1 https://www.naheed.pk/young-s-orla-cooking-oil-3-liter-bottle\n[ChotuApp Groceries] [11:52:03] HTTP END status=200 elapsed=0.5s bytes=354881 https://www.naheed.pk/young-s-orla-cooking-oil-3-liter-bottle\n[ChotuApp Groceries] GROCERY PRODUCTS: 1544/3189 checked; 1182 complete available products\n[ChotuApp Groceries] [11:52:04] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:04] HTTP START attempt=1 https://www.naheed.pk/young-s-mayo-dressing-2kg\n[ChotuApp Groceries] [11:52:05] HTTP END status=200 elapsed=0.6s bytes=350664 https://www.naheed.pk/young-s-mayo-dressing-2kg\n[ChotuApp Groceries] GROCERY PRODUCTS: 1545/3189 checked; 1183 complete available products\n[ChotuApp Groceries] [11:52:06] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:06] HTTP START attempt=1 https://www.naheed.pk/the-nest-boy-s-young-brave-polo\n[ChotuApp Groceries] [11:52:07] HTTP END status=200 elapsed=0.7s bytes=358580 https://www.naheed.pk/the-nest-boy-s-young-brave-polo\n[ChotuApp Groceries] GROCERY PRODUCTS: 1546/3189 checked; 1184 complete available products\n[ChotuApp Groceries] [11:52:07] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:07] HTTP START attempt=1 https://www.naheed.pk/young-s-french-dressing-500ml\n[ChotuApp Groceries] [11:52:08] HTTP END status=200 elapsed=0.5s bytes=354011 https://www.naheed.pk/young-s-french-dressing-500ml\n[ChotuApp Groceries] GROCERY PRODUCTS: 1547/3189 checked; 1185 complete available products\n[ChotuApp Groceries] [11:52:09] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:09] HTTP START attempt=1 https://www.naheed.pk/young-s-ranch-sauce-salad-dressing-275ml\n[ChotuApp Groceries] [11:52:10] HTTP END status=200 elapsed=0.5s bytes=353810 https://www.naheed.pk/young-s-ranch-sauce-salad-dressing-275ml\n[ChotuApp Groceries] GROCERY PRODUCTS: 1548/3189 checked; 1186 complete available products\n[ChotuApp Groceries] [11:52:10] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:10] HTTP START attempt=1 https://www.naheed.pk/my-smart-grammar-for-young-learners-book-1\n[ChotuApp Groceries] [11:52:11] HTTP END status=200 elapsed=0.6s bytes=354041 https://www.naheed.pk/my-smart-grammar-for-young-learners-book-1\n[ChotuApp Groceries] GROCERY PRODUCTS: 1549/3189 checked; 1187 complete available products\n[ChotuApp Groceries] [11:52:12] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:12] HTTP START attempt=1 https://www.naheed.pk/young-cam-jansen-the-ice-skate-mystery-pb\n[ChotuApp Groceries] [11:52:12] HTTP END status=200 elapsed=0.5s bytes=354311 https://www.naheed.pk/young-cam-jansen-the-ice-skate-mystery-pb\n[ChotuApp Groceries] GROCERY PRODUCTS: 1550/3189 checked; 1188 complete available products\n[ChotuApp Groceries] [11:52:13] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:13] HTTP START attempt=1 https://www.naheed.pk/young-s-mayo-red-chilli-sauce-500ml\n[ChotuApp Groceries] [11:52:14] HTTP END status=200 elapsed=0.6s bytes=362039 https://www.naheed.pk/young-s-mayo-red-chilli-sauce-500ml\n[ChotuApp Groceries] GROCERY PRODUCTS: 1551/3189 checked; 1189 complete available products\n[ChotuApp Groceries] [11:52:15] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:15] HTTP START attempt=1 https://www.naheed.pk/young-s-peanut-butter-creamy-450gm\n[ChotuApp Groceries] [11:52:15] HTTP END status=200 elapsed=0.5s bytes=361552 https://www.naheed.pk/young-s-peanut-butter-creamy-450gm\n[ChotuApp Groceries] GROCERY PRODUCTS: 1552/3189 checked; 1190 complete available products\n[ChotuApp Groceries] [11:52:16] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:16] HTTP START attempt=1 https://www.naheed.pk/young-s-choco-bliss-double-chocolate-cocoa-spread-350g\n[ChotuApp Groceries] [11:52:17] HTTP END status=200 elapsed=0.5s bytes=357264 https://www.naheed.pk/young-s-choco-bliss-double-chocolate-cocoa-spread-350g\n[ChotuApp Groceries] GROCERY PRODUCTS: 1553/3189 checked; 1191 complete available products\n[ChotuApp Groceries] [11:52:18] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:18] HTTP START attempt=1 https://www.naheed.pk/young-s-olive-oil-mayonnaise-500ml-pouch\n[ChotuApp Groceries] [11:52:18] HTTP END status=200 elapsed=0.5s bytes=362224 https://www.naheed.pk/young-s-olive-oil-mayonnaise-500ml-pouch\n[ChotuApp Groceries] GROCERY PRODUCTS: 1554/3189 checked; 1192 complete available products\n[ChotuApp Groceries] [11:52:19] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:19] HTTP START attempt=1 https://www.naheed.pk/young-s-choco-bliss-peanut-cocoa-spread-350g\n[ChotuApp Groceries] [11:52:20] HTTP END status=200 elapsed=0.7s bytes=362351 https://www.naheed.pk/young-s-choco-bliss-peanut-cocoa-spread-350g\n[ChotuApp Groceries] GROCERY PRODUCTS: 1555/3189 checked; 1193 complete available products\n[ChotuApp Groceries] [11:52:21] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:21] HTTP START attempt=1 https://www.naheed.pk/young-s-mayonnaise-500ml-pouch\n[ChotuApp Groceries] [11:52:22] HTTP END status=200 elapsed=0.5s bytes=362315 https://www.naheed.pk/young-s-mayonnaise-500ml-pouch\n[ChotuApp Groceries] GROCERY PRODUCTS: 1556/3189 checked; 1194 complete available products\n[ChotuApp Groceries] [11:52:22] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:22] HTTP START attempt=1 https://www.naheed.pk/young-s-choco-bliss-hazelnut-cocoa-spread-675g\n[ChotuApp Groceries] [11:52:23] HTTP END status=200 elapsed=0.6s bytes=354159 https://www.naheed.pk/young-s-choco-bliss-hazelnut-cocoa-spread-675g\n[ChotuApp Groceries] GROCERY PRODUCTS: 1557/3189 checked; 1195 complete available products\n[ChotuApp Groceries] [11:52:24] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:24] HTTP START attempt=1 https://www.naheed.pk/young-cam-jansen-the-zoo-note-mystery-transi-pb\n[ChotuApp Groceries] [11:52:24] HTTP END status=200 elapsed=0.5s bytes=354371 https://www.naheed.pk/young-cam-jansen-the-zoo-note-mystery-transi-pb\n[ChotuApp Groceries] GROCERY PRODUCTS: 1558/3189 checked; 1196 complete available products\n[ChotuApp Groceries] [11:52:25] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:25] HTTP START attempt=1 https://www.naheed.pk/young-s-chocolaty-spread-600gm\n[ChotuApp Groceries] [11:52:26] HTTP END status=200 elapsed=0.5s bytes=362219 https://www.naheed.pk/young-s-chocolaty-spread-600gm\n[ChotuApp Groceries] GROCERY PRODUCTS: 1559/3189 checked; 1197 complete available products\n[ChotuApp Groceries] [11:52:27] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:27] HTTP START attempt=1 https://www.naheed.pk/young-s-choco-bliss-cookies-cream-spread-350g\n[ChotuApp Groceries] [11:52:27] HTTP END status=200 elapsed=0.1s bytes=365656 https://www.naheed.pk/young-s-choco-bliss-cookies-cream-spread-350g\n[ChotuApp Groceries] GROCERY PRODUCTS: 1560/3189 checked; 1198 complete available products\n[ChotuApp Groceries] [11:52:28] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:28] HTTP START attempt=1 https://www.naheed.pk/young-cam-jansen-and-the-circus-mystery-pb\n[ChotuApp Groceries] [11:52:29] HTTP END status=200 elapsed=0.5s bytes=354220 https://www.naheed.pk/young-cam-jansen-and-the-circus-mystery-pb\n[ChotuApp Groceries] GROCERY PRODUCTS: 1561/3189 checked; 1199 complete available products\n[ChotuApp Groceries] [11:52:30] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:30] HTTP START attempt=1 https://www.naheed.pk/young-s-french-salad-dressing-275ml\n[ChotuApp Groceries] [11:52:31] HTTP END status=200 elapsed=0.5s bytes=353685 https://www.naheed.pk/young-s-french-salad-dressing-275ml\n[ChotuApp Groceries] GROCERY PRODUCTS: 1562/3189 checked; 1200 complete available products\n[ChotuApp Groceries] [11:52:31] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:31] HTTP START attempt=1 https://www.naheed.pk/young-s-orla-cooking-oil-1-liter-pouch\n[ChotuApp Groceries] [11:52:32] HTTP END status=200 elapsed=0.5s bytes=354329 https://www.naheed.pk/young-s-orla-cooking-oil-1-liter-pouch\n[ChotuApp Groceries] GROCERY PRODUCTS: 1563/3189 checked; 1201 complete available products\n[ChotuApp Groceries] [11:52:33] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:33] HTTP START attempt=1 https://www.naheed.pk/carolina-herrera-212-men-heroes-forever-young-for-her-eau-de-parfum-80ml\n[ChotuApp Groceries] [11:52:33] HTTP END status=200 elapsed=0.4s bytes=357410 https://www.naheed.pk/carolina-herrera-212-men-heroes-forever-young-for-her-eau-de-parfum-80ml\n[ChotuApp Groceries] GROCERY INCOMPLETE: https://www.naheed.pk/carolina-herrera-212-men-heroes-forever-young-for-her-eau-de-parfum-80ml; Selectable source options require exact per-variant offers; no option/price guessed\n[ChotuApp Groceries] [11:52:34] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:34] HTTP START attempt=1 https://www.naheed.pk/ycj-the-library-mystery-pb\n[ChotuApp Groceries] [11:52:35] HTTP END status=200 elapsed=0.6s bytes=353972 https://www.naheed.pk/ycj-the-library-mystery-pb\n[ChotuApp Groceries] GROCERY PRODUCTS: 1565/3189 checked; 1202 complete available products\n[ChotuApp Groceries] [11:52:36] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:36] HTTP START attempt=1 https://www.naheed.pk/young-cam-jansen-the-new-girl-mystery-transi-pb\n[ChotuApp Groceries] [11:52:37] HTTP END status=200 elapsed=0.7s bytes=354371 https://www.naheed.pk/young-cam-jansen-the-new-girl-mystery-transi-pb\n[ChotuApp Groceries] GROCERY PRODUCTS: 1566/3189 checked; 1203 complete available products\n[ChotuApp Groceries] [11:52:37] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:37] HTTP START attempt=1 https://www.naheed.pk/young-cam-jansen-the-baseball-mystery-transi-pb\n[ChotuApp Groceries] [11:52:38] HTTP END status=200 elapsed=0.6s bytes=354361 https://www.naheed.pk/young-cam-jansen-the-baseball-mystery-transi-pb\n[ChotuApp Groceries] GROCERY PRODUCTS: 1567/3189 checked; 1204 complete available products\n[ChotuApp Groceries] [11:52:39] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:39] HTTP START attempt=1 https://www.naheed.pk/young-s-honey-1000gm\n[ChotuApp Groceries] [11:52:39] HTTP END status=200 elapsed=0.5s bytes=351193 https://www.naheed.pk/young-s-honey-1000gm\n[ChotuApp Groceries] GROCERY PRODUCTS: 1568/3189 checked; 1205 complete available products\n[ChotuApp Groceries] [11:52:40] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:40] HTTP START attempt=1 https://www.naheed.pk/young-s-chicken-spread-1ltr-pouch\n[ChotuApp Groceries] [11:52:41] HTTP END status=200 elapsed=0.6s bytes=351555 https://www.naheed.pk/young-s-chicken-spread-1ltr-pouch\n[ChotuApp Groceries] GROCERY PRODUCTS: 1569/3189 checked; 1206 complete available products\n[ChotuApp Groceries] [11:52:42] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:42] HTTP START attempt=1 https://www.naheed.pk/my-smart-vocabulary-for-young-learners-book-1\n[ChotuApp Groceries] [11:52:43] HTTP END status=200 elapsed=0.6s bytes=354929 https://www.naheed.pk/my-smart-vocabulary-for-young-learners-book-1\n[ChotuApp Groceries] GROCERY PRODUCTS: 1570/3189 checked; 1207 complete available products\n[ChotuApp Groceries] [11:52:43] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:43] HTTP START attempt=1 https://www.naheed.pk/young-s-crave-chocolate-topping-300gm\n[ChotuApp Groceries] [11:52:44] HTTP END status=200 elapsed=0.6s bytes=359325 https://www.naheed.pk/young-s-crave-chocolate-topping-300gm\n[ChotuApp Groceries] GROCERY INCOMPLETE: https://www.naheed.pk/young-s-crave-chocolate-topping-300gm; Description lacks enough product-specific content for review\n[ChotuApp Groceries] [11:52:45] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:45] HTTP START attempt=1 https://www.naheed.pk/young-s-honey-500gm\n[ChotuApp Groceries] [11:52:46] HTTP END status=200 elapsed=0.4s bytes=351438 https://www.naheed.pk/young-s-honey-500gm\n[ChotuApp Groceries] GROCERY PRODUCTS: 1572/3189 checked; 1208 complete available products\n[ChotuApp Groceries] [11:52:47] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:47] HTTP START attempt=1 https://www.naheed.pk/young-s-orla-cooking-oil-5-liter-bottle\n[ChotuApp Groceries] [11:52:47] HTTP END status=200 elapsed=0.6s bytes=354489 https://www.naheed.pk/young-s-orla-cooking-oil-5-liter-bottle\n[ChotuApp Groceries] GROCERY PRODUCTS: 1573/3189 checked; 1209 complete available products\n[ChotuApp Groceries] [11:52:48] STAGE: Grocery source product pages\n[ChotuApp Groceries] [11:52:48] HTTP START attempt=1 https://www.naheed.pk/young-s-chicken-bar-b-que-spread-500ml-pouch\n[ChotuApp Groceries] [11:52:49] HTTP END status=200 elapsed=0.5s bytes=351591 https://www.naheed.pk/young-s-chicken-bar-b-que-spread-500ml-pouch\n[ChotuApp Groceries] GROCERY PRODUCTS: 1574/3189 checked; 1210 complete available products"
+    }
+  ]
+}
