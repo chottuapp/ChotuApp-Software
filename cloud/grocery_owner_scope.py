@@ -15,6 +15,7 @@ def authorized_category(row):
 
 def audit(row,source):
  if not source or (urlsplit(str(source.get('source_url') or '')).hostname or '').removeprefix('www.')!='naheed.pk':return None
+ if source.get('source_scope_coverage_status')!='complete' or source.get('source_scope_review_count',0)!=0:return ['Grocery source coverage unresolved; complete-catalog approval held']
  try:expected=authorized_category(source)
  except ValueError:return ['Owner grocery category/source scope requires review']
  if row.get('source_url')!=source.get('source_url') or row.get('Category')!=expected:return ['Export Category differs from owner grocery scope']

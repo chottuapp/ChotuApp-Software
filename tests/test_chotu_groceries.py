@@ -31,7 +31,7 @@ class GroceryTests(unittest.TestCase):
   from test_app import main
   from openpyxl import load_workbook
   p=source.product(page(),source.BASE+'/item');p.update(owner_category='Bread, Bakery & Pasta',owner_scope_url=source.BASE+'/allproducts/?manufacturer=890')
-  provider=SimpleNamespace(products={p['id']:p},label='public HTML fixture',supports=lambda _:True,catalog=lambda:[p],read=lambda _:p)
+  provider=SimpleNamespace(coverage_status='complete',coverage_issues=[],products={p['id']:p},label='public HTML fixture',supports=lambda _:True,catalog=lambda:[p],read=lambda _:p)
   with tempfile.TemporaryDirectory() as tmp:
    g=dict(vars(main),OUT=Path(tmp),_chotu_wait=lambda:None)
    g['_chotuapp_run_site_original']=lambda *a:None
@@ -58,7 +58,7 @@ class GroceryTests(unittest.TestCase):
  def test_rule804_cannot_replace_owner_category_with_inferred_taxonomy(self):
   from hold804_repairs import category
   from grocery_owner_scope import audit
-  row=dict(name='Dawn Garlic Croutons 125g',Category='Bread, Bakery & Pasta',source_url=source.BASE+'/item',owner_scope_url=source.BASE+'/allproducts/?manufacturer=890',subcategory_source='owner_supplied_scope')
+  row=dict(name='Dawn Garlic Croutons 125g',Category='Bread, Bakery & Pasta',source_url=source.BASE+'/item',owner_scope_url=source.BASE+'/allproducts/?manufacturer=890',subcategory_source='owner_supplied_scope',source_scope_coverage_status='complete')
   self.assertEqual(category(row,source.STORE)[0],'Bread, Bakery & Pasta');self.assertEqual(audit(row,row),[])
   changed=dict(row,Category='Snacks');self.assertTrue(audit(changed,row))
   with self.assertRaises(ValueError):category(changed,source.STORE)
@@ -68,3 +68,68 @@ class GroceryTests(unittest.TestCase):
   self.assertFalse(source.electronic_item('Shampoo for Dry Hair',['Hair Care']))
   self.assertFalse(source.electronic_item('Durex Condoms 3 Pack',['Sexual Wellness']))
   with self.assertRaisesRegex(source.IncompleteProduct,'electronic item excluded'):source.product(page(title='USB Charger',schema_price=0),source.BASE+'/item')
+ def test_numbered_pages_are_all_followed(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   reader=source.PublicCatalog({'_chotu_wait':lambda:None,'__file__':str(Path(tmp)/'main.py')},lambda _:None)
+   scope=dict(group='Bread, Bakery & Pasta',label='Dawn',url=source.BASE+'/allproducts/?manufacturer=890');second=scope['url']+'&p=2'
+   def listing(item,next_url=''):
+    return '<div class="products-grid"><li class="product-item"><a class="product-item-link" href="/'+item+'">Product</a></li></div><p class="toolbar-amount">Items 1 - 1 of 2</p>'+('<div class="pages"><a href="'+next_url+'">2</a></div>' if next_url else '')
+   reader.read_page=lambda url:listing('item',second) if url==scope['url'] else listing('item-two')
+   links,total,pages=reader.discover_scope(scope)
+   self.assertEqual(links,{source.BASE+'/item',source.BASE+'/item-two'});self.assertEqual(total,2);self.assertEqual(pages,{scope['url'],second})
+ def test_stale_source_total_does_not_abort_other_scopes_or_approve_complete_catalog(self):
+  from grocery_owner_scope import audit
+  with tempfile.TemporaryDirectory() as tmp:
+   reader=source.PublicCatalog({'_chotu_wait':lambda:None,'__file__':str(Path(tmp)/'main.py')},lambda _:None)
+   scope=dict(group='Bread, Bakery & Pasta',label='Dawn',url=source.BASE+'/allproducts/?manufacturer=890');other=dict(scope,url=source.BASE+'/allproducts/?manufacturer=891');reader.request={'pages':[scope,other]}
+   listing='<div class="products-grid"><li class="product-item"><a class="product-item-link" href="/item">Product</a></li></div><p class="toolbar-amount">Items 1 - 1 of 2</p>'
+   seen=[]
+   def read(url):
+    seen.append(url);return page() if url==source.BASE+'/item' else listing if url==scope['url'] else listing.replace('of 2','of 1')
+   reader.read_page=read
+   with patch('grocery_browser_support.render_listing',return_value=listing):products=reader.catalog()
+   self.assertIn(other['url'],seen);self.assertEqual(len(products),1);self.assertEqual(reader.coverage_status,'review_required');self.assertEqual(len(reader.coverage_issues),1)
+   row=dict(Category='Bread, Bakery & Pasta',source_url=source.BASE+'/item',owner_scope_url=scope['url'],subcategory_source='owner_supplied_scope',source_scope_coverage_status=reader.coverage_status)
+   self.assertTrue(audit(row,row));self.assertIn('coverage unresolved',audit(row,row)[0])
+   text=(Path(tmp)/'audit_reports'/source.STORE/(source.STORE+' - SCOPE COVERAGE.csv')).read_text();self.assertIn('review_required',text)
+ def test_toolbar_total_uses_catalog_total_not_a_trailing_page_number(self):
+  self.assertEqual(source.listing_total('Items 1 - 31 of 34'),34)
+  self.assertEqual(source.listing_total('Items 1 - 12 of 34 Page 1 of 3'),34)
+  self.assertEqual(source.listing_total('1 Item'),1)
+  with self.assertRaises(ValueError):source.listing_total('Loading products')
+ def test_scroll_and_delayed_load_more_are_exhausted(self):
+  from grocery_browser_support import exhaust_listing,SELECTOR
+  pending=set()
+  class Node:
+   def __init__(self,page,kind):self.page=page;self.kind=kind
+   @property
+   def first(self):return self
+   def count(self):return self.page.number if self.kind==SELECTOR else 1 if self.kind=='#load-more' else 0
+   def is_visible(self):return self.page.more
+   def click(self,**kwargs):self.page.more=False;self.page.delay=2;pending.add('catalog-xhr')
+  class Page:
+   number=2;more=True;delay=0;scrolled=False
+   def locator(self,kind):return Node(self,kind)
+   def wait_for_timeout(self,ms):
+    if self.delay:
+     self.delay-=1
+     if not self.delay:self.number=5;pending.clear()
+   def evaluate(self,*args):
+    if not self.scrolled:self.number+=2;self.scrolled=True
+  page=Page();exhaust_listing(page,lambda:None,lambda _:None,[],pending,max_steps=10)
+  self.assertEqual(page.number,7);self.assertFalse(pending)
+ def test_structured_source_description_and_images_are_not_missed(self):
+  from bs4 import BeautifulSoup
+  soup=BeautifulSoup(page(),'html.parser');soup.select_one('.product.attribute.description').decompose();soup.select_one('.MagicZoom').decompose()
+  script=soup.select_one('script[type="application/ld+json"]');raw=json.loads(script.get_text());raw.update(description='Garlic croutons in a 125g pack. Contains wheat.',image='https://media.naheed.pk/catalog/product/source.jpg');script.string=json.dumps(raw)
+  duplicate=soup.new_tag('script');duplicate['type']='application/ld+json';duplicate.string=json.dumps(raw);soup.append(duplicate)
+  p=source.product(str(soup),source.BASE+'/item');self.assertIn('125g',p['description']);self.assertIn('wheat',p['description']);self.assertEqual(p['images'][0]['src'],raw['image'])
+ def test_fresh_scope_reconciliation_removes_the_hold_only_when_totals_match(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   reader=source.PublicCatalog({'_chotu_wait':lambda:None,'__file__':str(Path(tmp)/'main.py')},lambda _:None)
+   scope=dict(group='Bread, Bakery & Pasta',label='Dawn',url=source.BASE+'/allproducts/?manufacturer=890');reader.request={'pages':[scope]}
+   one=source.BASE+'/item';two=source.BASE+'/item-two';calls=[]
+   def discover(selected):
+    calls.append(reader.force_fresh);return ({one,two} if reader.force_fresh else {one},2,{scope['url']})
+   reader.discover_scope=discover;reader.read_page=lambda url:page() if url==one else page().replace('/item','/item-two').replace('182197','182198')
+   products=reader.catalog();self.assertEqual(calls,[False,True]);self.assertEqual(len(products),2);self.assertEqual(reader.coverage_status,'complete');self.assertEqual(reader.coverage_issues,[])

@@ -1,0 +1,9 @@
+# Grocery pagination recovery
+
+The saved failed run 42576816915 discovered 515 distinct product URLs across the first seven scopes. It stopped before product-detail fetching at Dawn manufacturer 890. Checkpoint inspection 42578671297 proved the website itself served 31 product links on page 1 and 2 on page 2 while reporting 34 total. The actual published next link was followed; this was not an ignored second page.
+
+The reusable fetcher now performs one fresh public-UI recheck of count discrepancies. It handles numbered links, Load More and scrolling, waits for catalog XHR/loading to settle before declaring exhaustion, and invalidates old rendered-listing cache entries using a new renderer version. A still-inconsistent source total is recorded durably in the coverage CSV while remaining scopes and available products continue fetching. Every exported row carries the coverage status and outstanding review count. The independent grocery audit blocks complete-catalog approval whenever coverage remains unresolved; an unknown source listing is never fabricated or silently counted as fetched.
+
+Electronics are excluded from ChotuApp Groceries before prices/options are exported, using actual title/taxonomy, with an original-source skip receipt. Existing electronics stores remain enabled. Owner-provided 20 categories, blank pending shop code, exact source prices/stock/pack facts, source/image links and all 99 requested pages (including Durex and Josh) remain preserved.
+
+Regression cases cover both numbered pages, stale-source totals with continued work and held audit, a successful fresh reconciliation, delayed hidden Load More buttons, scrolling-only additions, exact total parsing, electronic exclusions, and preservation of public structured descriptions/images. These are software/fixture checks; the resumed live run and actual product export counts must be reported separately.
