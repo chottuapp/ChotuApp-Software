@@ -1,0 +1,136 @@
+{
+  "run_id": "42572550906",
+  "checked_utc": "2026-11-09T06:21:58.569647+00:00",
+  "targets": [
+    {
+      "target": "42572304777",
+      "state": {
+        "conclusion": "failure",
+        "displayTitle": "ChotuApp Rule 804 Google Drive Sync",
+        "headSha": "970e404accdaa60a84903a29c0c8a73967b2c237",
+        "jobs": [
+          {
+            "completedAt": "2026-11-09T06:19:37Z",
+            "conclusion": "failure",
+            "databaseId": 129012213389,
+            "name": "upload",
+            "startedAt": "2026-11-09T06:19:16Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-11-09T06:19:17Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-11-09T06:19:16Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T06:19:25Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-11-09T06:19:17Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T06:19:25Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-11-09T06:19:25Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T06:19:29Z",
+                "conclusion": "success",
+                "name": "Run python -m pip install -r requirements.txt",
+                "number": 4,
+                "startedAt": "2026-11-09T06:19:25Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T06:19:29Z",
+                "conclusion": "success",
+                "name": "Verify description-repair dependencies before touching Drive",
+                "number": 5,
+                "startedAt": "2026-11-09T06:19:29Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T06:19:34Z",
+                "conclusion": "success",
+                "name": "Verify source repair safeguards before touching Drive",
+                "number": 6,
+                "startedAt": "2026-11-09T06:19:29Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T06:19:35Z",
+                "conclusion": "success",
+                "name": "Install checksum-verified rclone with ID-preserving duplicate archival",
+                "number": 7,
+                "startedAt": "2026-11-09T06:19:34Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T06:19:36Z",
+                "conclusion": "failure",
+                "name": "Rule 804 checked files only, then checksum verification",
+                "number": 8,
+                "startedAt": "2026-11-09T06:19:35Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T06:19:36Z",
+                "conclusion": "skipped",
+                "name": "Publish Drive links after verified uploads",
+                "number": 9,
+                "startedAt": "2026-11-09T06:19:36Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T06:19:36Z",
+                "conclusion": "skipped",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 17,
+                "startedAt": "2026-11-09T06:19:36Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T06:19:36Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 18,
+                "startedAt": "2026-11-09T06:19:36Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T06:19:36Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 19,
+                "startedAt": "2026-11-09T06:19:36Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/42572304777/job/129012213389"
+          }
+        ],
+        "status": "completed"
+      },
+      "failed_log": "upload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:35.7188662Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:35.7188985Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:35.7189478Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib\n[credential-bearing log line removed]\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:35.7193399Z   CHOTU_DRIVE_RCLONE_CONFIG: *** \nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:35.7193896Z   CHOTU_REPAIR_HELD_STORES: Miss Rose,Shop Modest,Seran,Rivaj UK,Computer Zone,ChenOne,Sana Safinaz,Breakout,Fresh Basket,Alkaram Studio\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:35.7194414Z ##[endgroup]\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2935028Z Traceback (most recent call last):\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2941753Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/drive_sync.py\", line 122, in <module>\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2942454Z     try:main()\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2942694Z         ^^^^^^\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2943123Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/cloud/drive_sync.py\", line 57, in main\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2943590Z     state=json.loads(base64.b64decode(old['content']))\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2943905Z           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2944412Z   File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/json/__init__.py\", line 346, in loads\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2945061Z     return _default_decoder.decode(s)\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2945448Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2946232Z   File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/json/decoder.py\", line 338, in decode\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2946921Z     obj, end = self.raw_decode(s, idx=_w(s, 0).end())\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2947363Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2947987Z   File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/json/decoder.py\", line 356, in raw_decode\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2948722Z     raise JSONDecodeError(\"Expecting value\", s, err.value) from None\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.2949344Z json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)\nupload\tRule 804 checked files only, then checksum verification\t2026-11-09T06:19:36.3155691Z ##[error]Process completed with exit code 1.",
+      "artifacts": [],
+      "annotations": [
+        {
+          "level": "warning",
+          "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+        },
+        {
+          "level": "failure",
+          "message": "Process completed with exit code 1."
+        }
+      ]
+    }
+  ]
+}
