@@ -1,0 +1,217 @@
+{
+  "run_id": "42592767564",
+  "checked_utc": "2026-11-09T09:21:30.173968+00:00",
+  "targets": [
+    {
+      "target": "42592529653",
+      "state": {
+        "conclusion": "",
+        "displayTitle": "Automatic continuation of 42590962648",
+        "headSha": "121d95b913ac543d4cf23120978dcf2df8ff04d2",
+        "jobs": [
+          {
+            "completedAt": "0001-01-01T00:00:00Z",
+            "conclusion": "",
+            "databaseId": 129077330007,
+            "name": "fetch",
+            "startedAt": "2026-11-09T09:19:33Z",
+            "status": "in_progress",
+            "steps": [
+              {
+                "completedAt": "2026-11-09T09:19:35Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-11-09T09:19:34Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T09:19:44Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-11-09T09:19:35Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T09:19:44Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-11-09T09:19:44Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T09:19:47Z",
+                "conclusion": "success",
+                "name": "Install extraction dependencies",
+                "number": 4,
+                "startedAt": "2026-11-09T09:19:44Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T09:19:55Z",
+                "conclusion": "success",
+                "name": "Verify standalone continuation and owner-policy guards",
+                "number": 5,
+                "startedAt": "2026-11-09T09:19:47Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T09:19:57Z",
+                "conclusion": "success",
+                "name": "Restore optional saved run",
+                "number": 6,
+                "startedAt": "2026-11-09T09:19:55Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T09:19:57Z",
+                "conclusion": "skipped",
+                "name": "Install Czone browser fallback when needed",
+                "number": 7,
+                "startedAt": "2026-11-09T09:19:57Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T09:20:18Z",
+                "conclusion": "success",
+                "name": "Install grocery public storefront renderer when needed",
+                "number": 8,
+                "startedAt": "2026-11-09T09:19:57Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T09:20:18Z",
+                "conclusion": "skipped",
+                "name": "Install Axis public JS renderer when needed",
+                "number": 9,
+                "startedAt": "2026-11-09T09:20:18Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-09T09:20:18Z",
+                "conclusion": "success",
+                "name": "Start continuous fetching on the cloud runner",
+                "number": 10,
+                "startedAt": "2026-11-09T09:20:18Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Live progress, logs and completed-file uploads",
+                "number": 11,
+                "startedAt": "2026-11-09T09:20:18Z",
+                "status": "in_progress"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Fetch result",
+                "number": 12,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Collect diagnostic report even if fetching failed",
+                "number": 13,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Upload diagnostic report and redacted log",
+                "number": 14,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Upload Excel files and audits, including completed stores from a partial run",
+                "number": 15,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Final automated Rule 804 pass for fresh batch",
+                "number": 16,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Upload automated Rule 804 fresh workbooks",
+                "number": 17,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Upload saved checkpoint when available",
+                "number": 18,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Dispatch authorized continuation after verified checkpoint upload",
+                "number": 19,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Post Live progress, logs and completed-file uploads",
+                "number": 36,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 37,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              },
+              {
+                "completedAt": "0001-01-01T00:00:00Z",
+                "conclusion": "",
+                "name": "Post Run actions/checkout@v4",
+                "number": 38,
+                "startedAt": "0001-01-01T00:00:00Z",
+                "status": "pending"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/42592529653/job/129077330007"
+          }
+        ],
+        "status": "in_progress"
+      },
+      "log_unavailable": "run 42592529653 is still in progress; logs will be available when it is complete\n",
+      "artifacts": [
+        {
+          "name": "chotuapp-live-logs",
+          "id": 13662425881,
+          "expired": false,
+          "size_in_bytes": 4796
+        }
+      ],
+      "annotations": [],
+      "console-tail.txt": "RUNNER STORES: ChotuApp Groceries\nQUEUE: previous terminal results requeued for updated code; original failure retained\nPARALLEL STORES: up to 3 different websites together; source pacing, cooldowns and checks preserved.\nCONTINUE SAVED RUN: ChotuApp Groceries\n[ChotuApp Groceries] SOFTWARE VERSION: ba9af049e2ae62c3 \u2014 installed code loaded; updated checks will revalidate saved responses\n[ChotuApp Groceries] [09:20:20] STAGE: Starting ChotuApp Groceries\n[ChotuApp Groceries] SAVED RUN: completed requests are durable; an incomplete request will be retried.\n[ChotuApp Groceries] CONTINUE SAVED RUN: successful responses reused; unfinished requests retried.\n[ChotuApp Groceries] CHECKPOINT: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/saved_runs/df216d71058749eab479772363367de2/0/api.sqlite3 (this run only; restarting Fetch begins from zero)\n__CHOTU_PROGRESS__|1|Active: ChotuApp Groceries\n[ChotuApp Groceries] [09:20:20] STAGE: Website listing order\n[ChotuApp Groceries] [09:20:20] HTTP START attempt=1 https://www.naheed.pk/robots.txt\n[ChotuApp Groceries] [09:20:20] CACHE HIT status=200 elapsed=0.0s bytes=1443 https://www.naheed.pk/robots.txt\n[ChotuApp Groceries] [09:20:20] HTTP START attempt=1 https://www.naheed.pk/\n[ChotuApp Groceries] [09:20:20] CACHE HIT status=200 elapsed=0.0s bytes=334071 https://www.naheed.pk/\n[ChotuApp Groceries] WEBSITE ORDER UNVERIFIED: No supported public category navigation found; observed prefix retained, no price/bestseller fallback\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 1/99\n[ChotuApp Groceries] GROCERY SCOPE: 1/99 traversed; 154 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 2/99\n[ChotuApp Groceries] GROCERY SCOPE: 2/99 traversed; 283 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 3/99\n[ChotuApp Groceries] GROCERY SCOPE: 3/99 traversed; 336 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 4/99\n[ChotuApp Groceries] GROCERY SCOPE: 4/99 traversed; 363 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 5/99\n[ChotuApp Groceries] GROCERY SCOPE: 5/99 traversed; 398 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 6/99\n[ChotuApp Groceries] GROCERY SCOPE: 6/99 traversed; 462 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 7/99\n[ChotuApp Groceries] GROCERY SCOPE: 7/99 traversed; 515 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 8/99\n[ChotuApp Groceries] GROCERY SCOPE: 8/99 traversed; 549 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 9/99\n[ChotuApp Groceries] GROCERY SCOPE: 9/99 traversed; 593 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 10/99\n[ChotuApp Groceries] GROCERY SCOPE: 10/99 traversed; 614 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 11/99\n[ChotuApp Groceries] GROCERY SCOPE: 11/99 traversed; 625 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 12/99\n[ChotuApp Groceries] GROCERY SCOPE: 12/99 traversed; 671 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 13/99\n[ChotuApp Groceries] GROCERY SCOPE: 13/99 traversed; 687 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 14/99\n[ChotuApp Groceries] GROCERY SCOPE: 14/99 traversed; 709 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 15/99\n[ChotuApp Groceries] GROCERY SCOPE: 15/99 traversed; 714 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 16/99\n[ChotuApp Groceries] GROCERY SCOPE: 16/99 traversed; 715 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 17/99\n[ChotuApp Groceries] GROCERY SCOPE: 17/99 traversed; 720 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 18/99\n[ChotuApp Groceries] GROCERY COVERAGE REVIEW: {\"scope_url\": \"https://www.naheed.pk/allproducts/?redacted\", \"reported_total\": 35, \"visible_products\": 34, \"pages\": 2, \"reported_totals\": [35]}; source discrepancy retained; no complete-catalog approval\n[ChotuApp Groceries] GROCERY SCOPE: 18/99 traversed; 751 distinct product URLs; review_required\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 19/99\n[ChotuApp Groceries] GROCERY SCOPE: 19/99 traversed; 767 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 20/99\n[ChotuApp Groceries] GROCERY SCOPE: 20/99 traversed; 772 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 21/99\n[ChotuApp Groceries] GROCERY SCOPE: 21/99 traversed; 779 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 22/99\n[ChotuApp Groceries] GROCERY SCOPE: 22/99 traversed; 1147 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 23/99\n[ChotuApp Groceries] GROCERY SCOPE: 23/99 traversed; 1149 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 24/99\n[ChotuApp Groceries] GROCERY SCOPE: 24/99 traversed; 1151 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 25/99\n[ChotuApp Groceries] GROCERY SCOPE: 25/99 traversed; 1153 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 26/99\n[ChotuApp Groceries] GROCERY SCOPE: 26/99 traversed; 1153 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 27/99\n[ChotuApp Groceries] GROCERY SCOPE: 27/99 traversed; 1167 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 28/99\n[ChotuApp Groceries] GROCERY SCOPE: 28/99 traversed; 1167 distinct product URLs; complete\n[ChotuApp Groceries] [09:20:20] STAGE: Grocery listing pages\n[ChotuApp Groceries] [09:20:20] HTTP START attempt=1 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] [09:20:20] CACHE HIT status=200 elapsed=0.0s bytes=289090 https://www.naheed.pk/catalogsearch/result/?redacted",
+      "store-status.txt": "Updated (UTC): 2026-11-09T09:20:29.110389+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nChotuApp Groceries: running",
+      "fetch-log.txt": "RUNNER STORES: ChotuApp Groceries\nQUEUE: previous terminal results requeued for updated code; original failure retained\nPARALLEL STORES: up to 3 different websites together; source pacing, cooldowns and checks preserved.\nCONTINUE SAVED RUN: ChotuApp Groceries\n[ChotuApp Groceries] SOFTWARE VERSION: ba9af049e2ae62c3 \u2014 installed code loaded; updated checks will revalidate saved responses\n[ChotuApp Groceries] [09:20:20] STAGE: Starting ChotuApp Groceries\n[ChotuApp Groceries] SAVED RUN: completed requests are durable; an incomplete request will be retried.\n[ChotuApp Groceries] CONTINUE SAVED RUN: successful responses reused; unfinished requests retried.\n[ChotuApp Groceries] CHECKPOINT: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/saved_runs/df216d71058749eab479772363367de2/0/api.sqlite3 (this run only; restarting Fetch begins from zero)\n__CHOTU_PROGRESS__|1|Active: ChotuApp Groceries\n[ChotuApp Groceries] [09:20:20] STAGE: Website listing order\n[ChotuApp Groceries] [09:20:20] HTTP START attempt=1 https://www.naheed.pk/robots.txt\n[ChotuApp Groceries] [09:20:20] CACHE HIT status=200 elapsed=0.0s bytes=1443 https://www.naheed.pk/robots.txt\n[ChotuApp Groceries] [09:20:20] HTTP START attempt=1 https://www.naheed.pk/\n[ChotuApp Groceries] [09:20:20] CACHE HIT status=200 elapsed=0.0s bytes=334071 https://www.naheed.pk/\n[ChotuApp Groceries] WEBSITE ORDER UNVERIFIED: No supported public category navigation found; observed prefix retained, no price/bestseller fallback\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 1/99\n[ChotuApp Groceries] GROCERY SCOPE: 1/99 traversed; 154 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 2/99\n[ChotuApp Groceries] GROCERY SCOPE: 2/99 traversed; 283 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 3/99\n[ChotuApp Groceries] GROCERY SCOPE: 3/99 traversed; 336 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 4/99\n[ChotuApp Groceries] GROCERY SCOPE: 4/99 traversed; 363 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 5/99\n[ChotuApp Groceries] GROCERY SCOPE: 5/99 traversed; 398 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 6/99\n[ChotuApp Groceries] GROCERY SCOPE: 6/99 traversed; 462 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 7/99\n[ChotuApp Groceries] GROCERY SCOPE: 7/99 traversed; 515 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 8/99\n[ChotuApp Groceries] GROCERY SCOPE: 8/99 traversed; 549 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 9/99\n[ChotuApp Groceries] GROCERY SCOPE: 9/99 traversed; 593 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 10/99\n[ChotuApp Groceries] GROCERY SCOPE: 10/99 traversed; 614 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 11/99\n[ChotuApp Groceries] GROCERY SCOPE: 11/99 traversed; 625 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 12/99\n[ChotuApp Groceries] GROCERY SCOPE: 12/99 traversed; 671 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 13/99\n[ChotuApp Groceries] GROCERY SCOPE: 13/99 traversed; 687 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 14/99\n[ChotuApp Groceries] GROCERY SCOPE: 14/99 traversed; 709 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 15/99\n[ChotuApp Groceries] GROCERY SCOPE: 15/99 traversed; 714 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 16/99\n[ChotuApp Groceries] GROCERY SCOPE: 16/99 traversed; 715 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 17/99\n[ChotuApp Groceries] GROCERY SCOPE: 17/99 traversed; 720 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 18/99\n[ChotuApp Groceries] GROCERY COVERAGE REVIEW: {\"scope_url\": \"https://www.naheed.pk/allproducts/?redacted\", \"reported_total\": 35, \"visible_products\": 34, \"pages\": 2, \"reported_totals\": [35]}; source discrepancy retained; no complete-catalog approval\n[ChotuApp Groceries] GROCERY SCOPE: 18/99 traversed; 751 distinct product URLs; review_required\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 19/99\n[ChotuApp Groceries] GROCERY SCOPE: 19/99 traversed; 767 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 20/99\n[ChotuApp Groceries] GROCERY SCOPE: 20/99 traversed; 772 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 21/99\n[ChotuApp Groceries] GROCERY SCOPE: 21/99 traversed; 779 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 22/99\n[ChotuApp Groceries] GROCERY SCOPE: 22/99 traversed; 1147 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 23/99\n[ChotuApp Groceries] GROCERY SCOPE: 23/99 traversed; 1149 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 24/99\n[ChotuApp Groceries] GROCERY SCOPE: 24/99 traversed; 1151 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 25/99\n[ChotuApp Groceries] GROCERY SCOPE: 25/99 traversed; 1153 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 26/99\n[ChotuApp Groceries] GROCERY SCOPE: 26/99 traversed; 1153 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 27/99\n[ChotuApp Groceries] GROCERY SCOPE: 27/99 traversed; 1167 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 28/99\n[ChotuApp Groceries] GROCERY SCOPE: 28/99 traversed; 1167 distinct product URLs; complete\n[ChotuApp Groceries] [09:20:20] STAGE: Grocery listing pages\n[ChotuApp Groceries] [09:20:20] HTTP START attempt=1 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] [09:20:20] CACHE HIT status=200 elapsed=0.0s bytes=289090 https://www.naheed.pk/catalogsearch/result/?redacted"
+    }
+  ]
+}
