@@ -357,6 +357,9 @@ def fresh_source_category(row,store):
  return None
 
 def category(row,store):
+ if store=='ChotuApp Groceries':
+  from grocery_owner_scope import authorized_category
+  return authorized_category(row),'owner_supplied_scope',str(row.get('subcategory_evidence') or '')
  from catalogue_object_rules import classify
  recovered=classify(row,store)
  if recovered and visual_review(row,store) is None:return recovered

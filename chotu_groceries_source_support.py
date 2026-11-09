@@ -95,7 +95,11 @@ class PublicCatalog:
   if p.scheme!='https' or p.hostname!=urlsplit(BASE).hostname or p.username or p.password:raise ValueError('Outside exact grocery source host')
   self.g['_chotu_wait']();delay=max(0,self.last+1.5-time.monotonic())
   if delay:self.g['_chotu_backoff'](delay,'Selected public grocery page pacing')
-  self.last=time.monotonic();r=self.g['S'].get(url,timeout=(15,45))
+  self.last=time.monotonic()
+  self.g.get('_chotu_debug_stage',lambda *a:None)('Grocery listing pages' if p.path.startswith(('/catalogsearch/','/allproducts')) else 'Grocery source product pages')
+  self.g.get('_chotu_debug_request',lambda *a:None)(url,1)
+  r=self.g['S'].get(url,timeout=(15,45))
+  self.g.get('_chotu_debug_response',lambda *a,**k:None)(r.status_code,len(r.content),cached=bool(getattr(r,'_chotu_cache_hit',False)))
   if r.status_code in (429,500,502,503,504):raise RuntimeError('SOURCE PAUSED: grocery public source temporary failure; retry saved store after at least 300s. Checkpoint retained')
   if r.status_code in (401,403):raise RuntimeError('SOURCE BLOCKED: grocery public page denied; no login, alternate API or challenge bypass attempted')
   r.raise_for_status()
@@ -200,14 +204,14 @@ def enable_chotu_groceries(g):
   from openpyxl import load_workbook
   from datetime import datetime,timezone
   path=g['OUT']/(STORE+' - REFRESH REVIEW.xlsx');book=load_workbook(path);sheet=book['Products'];headers={c.value:c.column for c in sheet[1]}
-  fields=['source_manufacturer','Category','website_category_path','website_category_source_url','website_category_status','website_category_checked_at','subcategory_source','subcategory_evidence']
+  fields=['owner_scope_url','source_manufacturer','Category','website_category_path','website_category_source_url','website_category_status','website_category_checked_at','subcategory_source','subcategory_evidence']
   for key in fields:
    if key not in headers:headers[key]=sheet.max_column+1;sheet.cell(1,headers[key],key)
   byid={g['uid']('CP',BASE+'|'+str(p['id'])):p for p in provider.products.values()};stamp=datetime.now(timezone.utc).isoformat()
   for number in range(2,sheet.max_row+1):
    p=byid.get(str(sheet.cell(number,headers['product_id']).value))
    if p is None:raise ValueError('Grocery source/export identity mismatch')
-   taxonomy=' > '.join(c['name'] for c in p['categories']);values=dict(source_manufacturer=p['manufacturer'],Category=p['owner_category'],website_category_path=taxonomy,website_category_source_url=p['permalink'],website_category_status='verified_product_breadcrumb',website_category_checked_at=stamp,subcategory_source='owner_supplied_scope',subcategory_evidence='Owner category from '+p['owner_scope_url']+'; actual source breadcrumb '+taxonomy+'; response SHA256 '+p['source_response_sha256'])
+   taxonomy=' > '.join(c['name'] for c in p['categories']);values=dict(owner_scope_url=p['owner_scope_url'],source_manufacturer=p['manufacturer'],Category=p['owner_category'],website_category_path=taxonomy,website_category_source_url=p['permalink'],website_category_status='verified_product_breadcrumb',website_category_checked_at=stamp,subcategory_source='owner_supplied_scope',subcategory_evidence='Owner category from '+p['owner_scope_url']+'; actual source breadcrumb '+taxonomy+'; response SHA256 '+p['source_response_sha256'])
    for key,value in values.items():sheet.cell(number,headers[key],value)
   book.save(path);book.close()
  g['_chotuapp_run_site_original']=run

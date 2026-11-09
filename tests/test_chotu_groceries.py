@@ -22,7 +22,7 @@ class GroceryTests(unittest.TestCase):
   self.assertEqual([p['label'] for p in r['pages'] if p['group']=='Condoms Wellness'],['Durex','Josh'])
   self.assertTrue(all('utm_' not in p['url'] for p in r['pages']))
  def test_real_access_denial_stops_without_alternate_route(self):
-  reader=source.PublicCatalog({'S':SimpleNamespace(get=lambda *a,**k:SimpleNamespace(status_code=403)), '_chotu_wait':lambda:None},lambda _:None)
+  reader=source.PublicCatalog({'S':SimpleNamespace(get=lambda *a,**k:SimpleNamespace(status_code=403,content=b'Forbidden')), '_chotu_wait':lambda:None},lambda _:None)
   with self.assertRaisesRegex(RuntimeError,'SOURCE BLOCKED'):reader.read_page(source.BASE+'/catalogsearch/result/?q=Durex')
  def test_foreign_source_is_never_read(self):
   reader=source.PublicCatalog({},lambda _:None)
@@ -55,3 +55,10 @@ class GroceryTests(unittest.TestCase):
    reader.read_page=lambda url:listing if url==scope['url'] else page()
    products=reader.catalog();self.assertEqual(len(products),1);self.assertEqual(products[0]['owner_category'],scope['group']);self.assertEqual(products[0]['categories'][-1]['name'],'Snacks')
    self.assertTrue((Path(tmp)/'audit_reports'/source.STORE/(source.STORE+' - SCOPE COVERAGE.csv')).is_file())
+ def test_rule804_cannot_replace_owner_category_with_inferred_taxonomy(self):
+  from hold804_repairs import category
+  from grocery_owner_scope import audit
+  row=dict(name='Dawn Garlic Croutons 125g',Category='Bread, Bakery & Pasta',source_url=source.BASE+'/item',owner_scope_url=source.BASE+'/allproducts/?manufacturer=890',subcategory_source='owner_supplied_scope')
+  self.assertEqual(category(row,source.STORE)[0],'Bread, Bakery & Pasta');self.assertEqual(audit(row,row),[])
+  changed=dict(row,Category='Snacks');self.assertTrue(audit(changed,row))
+  with self.assertRaises(ValueError):category(changed,source.STORE)

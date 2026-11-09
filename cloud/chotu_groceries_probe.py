@@ -62,7 +62,7 @@ def main():
   report['permitted_label_routes']=found
   report['public_api_status']='403 from prior explicit probe; HTML navigation only, no API retry'
   report['status']='source_inspected'
- except (requests.RequestException,ValueError) as exc:report.update(status='source_hold',error=str(exc)[:500])
+ except (requests.RequestException,ValueError,RuntimeError) as exc:report.update(status='source_hold',error=str(exc)[:500])
  finally:session.close()
  publish(report,branch='chotu-groceries-reports');print(report['status'],report.get('error',''))
 if __name__=='__main__':main()

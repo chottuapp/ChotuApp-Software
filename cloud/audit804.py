@@ -207,6 +207,9 @@ def issues_for(row,source=None):
  from catalogue_object_rules import audit as audit_explicit_object
  original_proof=audit_explicit_object(row,source)
  if original_proof is not None:semantic=original_proof
+ from grocery_owner_scope import audit as audit_owner_grocery_scope
+ owner_scope=audit_owner_grocery_scope(row,source)
+ if owner_scope is not None:semantic=owner_scope
  if semantic is None and reviewed_photo_purpose(row,source):semantic=[]
  if category and plain(row.get('brand')) and category.casefold()==plain(row.get('brand')).casefold() and semantic!=[]:issues.append('Brand name used as product Category')
  if semantic is not None:issues.extend(semantic)

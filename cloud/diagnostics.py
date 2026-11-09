@@ -46,7 +46,7 @@ class Collector:
         name=match[1]
         if name not in self.stores and len(self.stores)>=30:return
         item=self.stores.setdefault(name,{'http_statuses':{},'network_seconds':0,'max_response_seconds':0,'cache_events':0,'issues':[]})
-        stages=('Website listing order','Discover catalog','Collection/category mapping','Building Excel rows','Writing Excel rows','Price audit','Saving Excel workbook','Parallel category responses','Parallel product prices and pages','Idle')
+        stages=('Grocery listing pages','Grocery source product pages','Website listing order','Discover catalog','Collection/category mapping','Building Excel rows','Writing Excel rows','Price audit','Saving Excel workbook','Parallel category responses','Parallel product prices and pages','Idle')
         stage=re.search(r'STAGE: (.+)$',text)
         if stage and stage[1] in stages:
             if item.get('current_stage')!=stage[1]:item.pop('task_progress',None)
@@ -61,6 +61,8 @@ class Collector:
         public_progress=re.search(r'PUBLIC PRODUCT PAGES: ([0-9]+)/([0-9]+) LAAM products verified',text)
         if public_progress:
             item['task_progress']={'stage':'public product pages','done':int(public_progress[1]),'total':int(public_progress[2]),'updated_epoch':time.time(),'eta_seconds':None}
+        grocery_progress=re.search(r'GROCERY (SCOPE|PRODUCTS): ([0-9]+)/([0-9]+)',text)
+        if grocery_progress:item['task_progress']={'stage':'grocery '+grocery_progress[1].lower(),'done':int(grocery_progress[2]),'total':int(grocery_progress[3]),'updated_epoch':time.time(),'eta_seconds':None}
         local_progress=re.search(r'ROW BUILD: ([0-9]+)/([0-9]+) products processed|WORKSHEET WRITE: ([0-9]+)/([0-9]+) variants written',text)
         if local_progress:
             building=local_progress[1] is not None
