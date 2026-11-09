@@ -36,24 +36,26 @@ def main():
  from rule804_pipeline import process
  from audit804 import run as audit
  root=Path(__file__).resolve().parents[1];codes=json.loads((root/'cloud/confirmed-shop-codes.json').read_text())
- try:
-  with tempfile.TemporaryDirectory() as tmp:
-   normalized,_=normalize(paths[0],Path(tmp)/'normalized.xlsx',codes['ChotuApp Groceries'])
-   from grocery_scope_repair import repair
-   normalized,scope_repairs=repair(normalized,Path(tmp)/'owner-scope.xlsx','ChotuApp Groceries')
-   report['owner_scope_repairs']=scope_repairs
-   output=Path(tmp)/'reviewed.xlsx';processing=process(normalized,output,'ChotuApp Groceries',codes)
-   result=audit(output,'ChotuApp Groceries',codes,{'naheed.pk','www.naheed.pk'},source=normalized,strict_commercial=True,findings_limit=12)
-   report['audit']=result;report['processing']=processing
- except Exception as exc:
-  import traceback
-  report['audit_diagnostic_error']=dict(type=type(exc).__name__,message=str(exc),traceback=traceback.format_exc()[-5000:])
+ if os.environ.get('GROCERY_SCOPE_ONLY')!='true':
+  try:
+   with tempfile.TemporaryDirectory() as tmp:
+    normalized,_=normalize(paths[0],Path(tmp)/'normalized.xlsx',codes['ChotuApp Groceries'])
+    from grocery_scope_repair import repair
+    normalized,scope_repairs=repair(normalized,Path(tmp)/'owner-scope.xlsx','ChotuApp Groceries')
+    report['owner_scope_repairs']=scope_repairs
+    output=Path(tmp)/'reviewed.xlsx';processing=process(normalized,output,'ChotuApp Groceries',codes)
+    result=audit(output,'ChotuApp Groceries',codes,{'naheed.pk','www.naheed.pk'},source=normalized,strict_commercial=True,findings_limit=12)
+    report['audit']=result;report['processing']=processing
+  except Exception as exc:
+   import traceback
+   report['audit_diagnostic_error']=dict(type=type(exc).__name__,message=str(exc),traceback=traceback.format_exc()[-5000:])
  report['scope_files']=[]
  for path in Path(os.environ['GROCERY_EXPORT_ROOT']).rglob('*SCOPE COVERAGE.csv'):
   with path.open(encoding='utf-8-sig',newline='') as stream:report['scope_files'].append(dict(name=path.name,rows=list(csv.DictReader(stream))))
  checkpoint_root=os.environ.get('GROCERY_CHECKPOINT_ROOT')
  try:
   if checkpoint_root:
+   report['checkpoint_source_run']='42592529653'
    import zipfile
    from resume_support import ResponseCache
    files=list(Path(checkpoint_root).rglob('checkpoint.zip'))

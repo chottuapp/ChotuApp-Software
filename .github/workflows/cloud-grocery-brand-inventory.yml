@@ -6,6 +6,11 @@ on:
         description: Ephemeral sealed-box public key for the requested brand list
         required: true
         type: string
+      scope_only:
+        description: Inspect saved scope checkpoint without repeating the completed row audit
+        required: false
+        default: false
+        type: boolean
 permissions:
   contents: write
   actions: read
@@ -29,12 +34,13 @@ jobs:
         with:
           name: chotuapp-checkpoint
           github-token: ${{ github.token }}
-          run-id: 42607016680
+          run-id: 42592529653
           path: ${{ runner.temp }}/grocery-checkpoint-readonly
       - name: Read manufacturer column and encrypt the answer
         env:
           GH_TOKEN: ${{ github.token }}
           REPORT_PUBLIC_KEY: ${{ inputs.report_public_key }}
+          GROCERY_SCOPE_ONLY: ${{ inputs.scope_only }}
           GROCERY_CHECKPOINT_ROOT: ${{ runner.temp }}/grocery-checkpoint-readonly
           GROCERY_EXPORT_ROOT: ${{ runner.temp }}/grocery-export-readonly
           PYTHONPATH: cloud:.
