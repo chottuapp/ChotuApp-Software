@@ -1,8 +1,8 @@
 """Bounded source access/schema verification for the owner's exact groceries scope."""
-import json,os,re,time
+import json,os,re,time,unicodedata
 from pathlib import Path
 from datetime import datetime,timezone
-from urllib.parse import urljoin,urlsplit,urlencode
+from urllib.parse import urljoin,urlsplit,urlencode,parse_qs
 from urllib.robotparser import RobotFileParser
 import requests
 from bs4 import BeautifulSoup
@@ -38,12 +38,24 @@ def main():
   if links:
    r=read(links[0]);detail=BeautifulSoup(r.text,'html.parser');report['sample_product_html']=clean_html(r.text);report['sample_product_structure']=inspect_page(r.text,links[0])
   else:report['listing_html']=clean_html(r.text)
-  query='{products(search:"Shan",pageSize:1){total_count items{id sku name url_key stock_status categories{id name url_path} price_range{minimum_price{regular_price{value currency}final_price{value currency}}}}}}'
-  endpoint=base+'/graphql?'+urlencode({'query':query})
-  if robot.can_fetch('ChotuAppCatalog',endpoint):
-   r=read(endpoint)
-   try:report['public_catalog_schema']=r.json()
-   except ValueError:report['public_catalog_schema']='not_json'
+  def normalized(label):return re.sub('[^a-z0-9]','',unicodedata.normalize('NFKD',label).encode('ascii','ignore').decode().lower())
+  requested={normalized(p['label']):p['label'] for p in request['pages']}
+  found={}
+  def collect(page):
+   for anchor in page.select('a[href]'):
+    url=urljoin(base,anchor['href']);parsed=urlsplit(url)
+    if parsed.hostname!=host or parsed.scheme!='https' or parsed.fragment:continue
+    label=anchor.get_text(' ',strip=True)
+    if not label and anchor.find('img'):label=anchor.find('img').get('alt','')
+    label=re.sub(r'\s*\(\d+\)\s*$','',label).strip();key=normalized(label)
+    if key in requested and robot.can_fetch('ChotuAppCatalog',url) and '/catalogsearch/' not in parsed.path:
+     found.setdefault(requested[key],[]).append({'source_label':label,'url':url})
+  collect(soup)
+  brand_index=next((urljoin(base,a['href']) for a in soup.select('a[href]') if re.fullmatch(r'(?i)(?:all |our |shop by )?brands',a.get_text(' ',strip=True)) and urlsplit(urljoin(base,a['href'])).hostname==host and not urlsplit(urljoin(base,a['href'])).fragment),None)
+  if brand_index and robot.can_fetch('ChotuAppCatalog',brand_index):
+   r=read(brand_index);collect(BeautifulSoup(r.text,'html.parser'));report['public_brand_index']=brand_index
+  report['permitted_label_routes']=found
+  report['public_api_status']='403 from prior explicit probe; HTML navigation only, no API retry'
   report['status']='source_inspected'
  except (requests.RequestException,ValueError) as exc:report.update(status='source_hold',error=str(exc)[:500])
  finally:session.close()
