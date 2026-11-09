@@ -1,37 +1,44 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-09T00:39:08.564332+00:00",
-  "run_id": "42515882373",
+  "generated_utc": "2026-11-09T00:46:24.661925+00:00",
+  "run_id": "42525417174",
   "attempt": "1",
-  "source_commit": "5b0b100ead02d6f4b0b9bc397e6ecc3d29b4caa6",
-  "status": "incomplete",
+  "source_commit": "c47d15d62df5a3f4a018a48a03c6c1ef63bd4652",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 18001.1,
+  "elapsed_seconds": 11019.8,
   "stores": [
     {
-      "name": "Zellbury",
-      "status": "pending",
-      "review_required": false,
+      "name": "Limelight",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
+        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "522ef8b7890d7b28",
+      "software_revision": "eebf3cd73513c185",
+      "products": 5538,
+      "variants": 13187,
       "http_statuses": {
-        "200": 9226
+        "404": 102,
+        "200": 1236,
+        "429": 2
       },
-      "network_seconds": 27049.2,
-      "max_response_seconds": 81.0,
-      "cache_events": 17322
+      "network_seconds": 1920.2,
+      "max_response_seconds": 2.5,
+      "cache_events": 51892
     },
     {
-      "name": "Zero Lifestyle",
+      "name": "Alkaram Studio",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "522ef8b7890d7b28",
-      "products": 55,
-      "variants": 223,
+      "products": 1521,
+      "variants": 5089,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
