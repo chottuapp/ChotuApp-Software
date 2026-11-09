@@ -360,6 +360,12 @@ def category(row,store):
  if store=='ChotuApp Groceries':
   from grocery_owner_scope import authorized_category
   return authorized_category(row),'owner_supplied_scope',str(row.get('subcategory_evidence') or '')
+ from sold_object_category_support import source_object
+ fact=public_facts(row,store) or {}
+ source_kind=fact.get('source_category_label') or fact.get('product_type') or row.get('source_product_type')
+ path=str(row.get('website_category_path') or '') if row.get('website_category_status') in ('verified_navigation_membership','verified_product_breadcrumb') else ''
+ sold=source_object(row.get('name'),row.get('description'),source_kind,path)
+ if sold:return sold
  from catalogue_object_rules import classify
  recovered=classify(row,store)
  if recovered and visual_review(row,store) is None:return recovered

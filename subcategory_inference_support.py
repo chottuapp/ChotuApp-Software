@@ -95,7 +95,8 @@ def apply(row,previous=None):
     path=str(row.get('website_category_path') or '')
     verified=row.get('website_category_status') in VERIFIED and path and row.get('website_category_source_url') and row.get('website_category_checked_at')
     if row.get('subcategory_source')=='manual' and row.get('subcategory'):return row
-    result=infer(row.get('name'),row.get('description'),path if verified else '')
+    from sold_object_category_support import source_object
+    result=source_object(row.get('name'),row.get('description'),row.get('source_product_type'),path if verified else '') or infer(row.get('name'),row.get('description'),path if verified else '')
     if result:
         label,source,quote=result
         if verified and path.split(' > ')[-1]==label:
@@ -391,7 +392,11 @@ def _structured_clothing(title,description):
     return None
 
 def infer(name,description,website_path=''):
-    title=plain(name);body=_product_prose(description)
+    from sold_object_category_support import source_object,primary_prose
+    sold=source_object(name,description,website_path=website_path)
+    if sold:return sold
+    if re.search(r'(?i)\bballet\s+coats?\b',plain(name)):return None
+    title=plain(name);body=_product_prose(primary_prose(description))
     # School paper goods and holders are the sold object, not the electronics
     # or cosmetics mentioned as compatible contents in supplier prose.
     for label,pattern in [
