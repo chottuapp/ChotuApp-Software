@@ -1,44 +1,41 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-09T00:29:54.890757+00:00",
-  "run_id": "42524169882",
+  "generated_utc": "2026-11-09T00:38:36.797272+00:00",
+  "run_id": "42515831045",
   "attempt": "1",
-  "source_commit": "c47d15d62df5a3f4a018a48a03c6c1ef63bd4652",
+  "source_commit": "5b0b100ead02d6f4b0b9bc397e6ecc3d29b4caa6",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 11614.0,
+  "elapsed_seconds": 18000.4,
   "stores": [
     {
-      "name": "Saya",
-      "status": "source_paused",
-      "review_required": false,
-      "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "eebf3cd73513c185",
-      "http_statuses": {
-        "200": 4282,
-        "429": 5
-      },
-      "network_seconds": 9939.9,
-      "max_response_seconds": 3.0,
-      "cache_events": 64285
-    },
-    {
-      "name": "Hush Puppies",
+      "name": "Hemani Herbals",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "522ef8b7890d7b28",
-      "products": 139,
-      "variants": 2029,
+      "products": 1079,
+      "variants": 1079,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
       "cache_events": 0
+    },
+    {
+      "name": "Gul Ahmed",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "522ef8b7890d7b28",
+      "http_statuses": {
+        "200": 3606
+      },
+      "network_seconds": 8063.8,
+      "max_response_seconds": 3.8,
+      "cache_events": 7121
     }
   ]
 }

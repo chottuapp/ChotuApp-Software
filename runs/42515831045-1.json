@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-09T00:38:36.797272+00:00",
+  "run_id": "42515831045",
+  "attempt": "1",
+  "source_commit": "5b0b100ead02d6f4b0b9bc397e6ecc3d29b4caa6",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 18000.4,
+  "stores": [
+    {
+      "name": "Hemani Herbals",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "522ef8b7890d7b28",
+      "products": 1079,
+      "variants": 1079,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    },
+    {
+      "name": "Gul Ahmed",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "522ef8b7890d7b28",
+      "http_statuses": {
+        "200": 3606
+      },
+      "network_seconds": 8063.8,
+      "max_response_seconds": 3.8,
+      "cache_events": 7121
+    }
+  ]
+}
