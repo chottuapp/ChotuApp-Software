@@ -80,7 +80,7 @@ REVIEW_TYPES=[
  ('stylus',r'\bstylus\b',r'stylus pens?'),
  ('webcam',r'\bweb\s*cam\b',r'webcams?'),
  ('game controller',r'\b(?:controller|gamepad|dualsense)\b',r'game controllers?'),
- ('computer mouse',r'\bmouse\b',r'computer mice'),
+ ('computer mouse',r'(?<!minnie )(?<!mickey )\bmouse\b',r'computer mice'),
  ('headset',r'\b(?:headsets?|headphones?)\b',r'headsets?|headphones?'),
  ('earbuds',r'\b(?:earbuds?|galaxy buds)\b',r'earphones?|earbuds?'),
  ('backpack',r'\b(?:backpack|laptop bag|top load laptop bag)\b',r'backpacks?|laptop bags?'),
@@ -176,7 +176,9 @@ def issues_for(row,source=None):
     if not str(row.get('description') or '').startswith(fact['overview']):continue
     source_content=fact['overview']
  if source and source_content.strip() not in ('0','None','') and not tokens(retained_text(source_content))<=tokens(retained_text(description)):issues.append('Description lost source numeric facts')
- body=CARE.split(description,1)[0][:1600]
+ body_for_type=re.sub(r'(?im)^[ \t*•✦]*(?:trousers?|dupattas?|slip)\s*:\s*(?:not\s+included|none|n/?a)\b[^\n]*','',str(row.get('description') or ''))
+ body=CARE.split(plain(body_for_type),1)[0][:1600]
+ body=re.split(r'(?i)\b(?:pairs? (?:effortlessly|perfectly|well|beautifully) with|style (?:it )?with|easy to style with)\b',body,maxsplit=1)[0]
  category_review=category
  for plural,singular in {'glosses':'gloss','washes':'wash','shampoos':'shampoo','conditioners':'conditioner','mascaras':'mascara','foundations':'foundation','serums':'serum','toners':'toner','lotions':'lotion','concealers':'concealer','eyeliners':'eyeliner','eyeshadows':'eyeshadow','lipsticks':'lipstick','perfumes':'perfume','fragrances':'fragrance','sunscreens':'sunscreen'}.items():category_review=re.sub(r'\b'+plural+r'\b',singular,category_review,flags=re.I)
  primary=name.split(',')[0] or body

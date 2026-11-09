@@ -212,7 +212,7 @@ def apparel_object(row):
  upper=r'\b(?:shirt|top|tee|kurta|kameez|sweater|sweatshirt|cardigan|jacket|vest|hoodie|blouse|romper|dress|neckline|sleeve)s?\b'
  lower=r'\b(?:trousers?|pants?|jeans|joggers?|shalwar|sharara|gharara|leggings?|palazzo|plazzo|plazo|pajamas?|bottoms?)\b'
  pack=has(r'\b(?:set|co[ -]?ord)\b',title) or has(r'\b(?:[2-6]|two|three|four|five|six)[ -]*(?:pieces?|pcs?)\b|\b(?:co[ -]?ord|combo)\b|\b(?:paired|comes)\s+with\b',body) or has(r'\boutfit\b',body) and has(r'\bfeatures\b',body)
- fields=re.findall(r'(?im)^\s*(shirt|blouse|trousers?|leh[ae]?nga|gharara|sharara|dupp?att?a)\s*(?:&\s*sleeves)?\s*:\s*(\S[^\n]*)',body)
+ fields=re.findall(r'(?im)^\s*(top|bottom|shirt|blouse|trousers?|leh[ae]?nga|gharara|sharara|dupp?att?a)\s*(?:&\s*sleeves)?\s*:\s*(\S[^\n]*)',body)
  parts={k.lower() for k,v in fields if not has(r'^(?:none|no|n/?a)\b|\bnot\s+included\b|\bsold\s+separately\b',v)}
  if has(r'\bsleepwear\b',body) and has(r'\bmatching\s+pajamas?\b',body):label='Sleepwear Sets'
  elif pack and has(upper,body) and has(lower,body):label='Clothing Sets'
@@ -273,6 +273,25 @@ def electronics_object(row):
 
 def classify(row,store):
  title=str(row.get('name') or '');body=str(row.get('description') or '')
+ # Sold-object names precede oil-control claims and application tips.
+ object_title=re.split(r'(?i)\b(?:with|including|includes)\b',title,maxsplit=1)[0]
+ cosmetic_accessory=bool(re.search(r'\b(?:brush|puff|sponge|case|empty)\b',object_title,re.I))
+ if not cosmetic_accessory and re.search(r'\b(?:compact|setting|face)\s+powder\b',title,re.I):return 'Face Powders','inferred_product_name','Explicit powder product: '+title
+ if not cosmetic_accessory and re.search(r'\bpalette\b',title,re.I) and all(re.search(r'\b'+part+r'\b',body,re.I) for part in ('contour','blush','highlighter')):return 'Face Palettes','inferred_source_contents','Palette contains contour, blush and highlighter: '+title
+ if re.match(r'(?i)^HP\s+ZBOOK\b',title) and all(re.search(pattern,body,re.I) for pattern in (r'\bprocessor\b',r'\bdisplay\b',r'\bRAM\b')):return 'Laptops','inferred_named_device','Named HP ZBook computer with source processor, RAM and display: '+title
+ if re.search(r'\b(?:zipper|mock neck|crew neck|rib collar)\b.*\bupper\b',title,re.I):return 'Tops','inferred_product_name','Explicit apparel upper; no jacket construction inferred: '+title
+ if re.search(r'\bmock neck\b',title,re.I) and re.search(r'\b(?:sleeves?|zipper|cotton|polyester)\b',body,re.I):return 'High-Neck Tops','inferred_source_apparel','Mock-neck upper garment with source construction details: '+title
+ if re.search(r'\bjogging suit\b',title,re.I) and re.search(r'\btrouser\b',body,re.I) and re.search(r'\b(?:sleeves|zip)\b',body,re.I):return 'Tracksuits','inferred_source_garment_contents','Named jogging suit with upper and trouser details: '+title
+ if store=='Sana Safinaz':
+  fields=re.sub(r'(?m)^[ \t*•✦]+','',body)
+  upper=bool(re.search(r'(?im)^SHIRT(?: MEASUREMENTS)?\s*:',fields)) or all(re.search(r'(?im)^'+part+r'[^\n]*:',fields) for part in ('SHOULDER','SLEEVE LENGTH'))
+  lower=re.search(r'(?im)^Trouser(?: Fabric)?\s*:\s*([^\n]+)',fields)
+  included=lower and not re.search(r'(?i)not included|none|n/?a',lower[1]) and re.search(r'(?i)included|shalwar|trouser|culotte|gharara',lower[1])
+  scarf=re.search(r'(?im)^Dupatta[ \t]*:[ \t]*([^\n]+)',fields)
+  scarf_supplied=scarf and not re.search(r'(?i)not included|none|n/?a',scarf[1]) and re.search(r'(?i)included|dupatta',scarf[1])
+  upper=upper or bool(re.search(r'(?i)\bstitched\b.*\b(?:suit|set)\b',title)) or bool(re.search(r'(?im)^Cut\s*:',fields) and scarf_supplied)
+  if upper and included:return 'Clothing Sets','inferred_source_garment_contents','Source supplies upper garment measurements and explicitly included lower garment.'
+  if upper and lower and re.search(r'(?i)not included',lower[1]) and re.search(r'(?im)^Cut\s*:\s*(?:Basic|Boxy|Shirt)\b',fields):return 'Shirts','inferred_source_garment_measurements','Upper garment measurements and cut; source explicitly excludes trousers.'
  from subcategory_inference_support import infer
  explicit=infer(title,body)
  if explicit and explicit[0] in {'Stationery Sets','Pen Holders','Notebooks & Journals','Ready-to-Wear Outfits'}:return explicit

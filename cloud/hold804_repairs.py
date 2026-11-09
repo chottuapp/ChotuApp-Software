@@ -332,6 +332,7 @@ def explicit_source_service(row,store):
 def fresh_source_category(row,store):
  """Explicit sold objects in held source rows; no price, stock or website inference."""
  name=str(row.get('name') or '');body=str(row.get('description') or '')
+ body=re.sub(r'(?m)^[ \t*•✦]+','',body)
  def has(pattern,value):return bool(re.search(pattern,value,re.I))
  label=None
  if store=='Shop Modest' and has(r'\boutfit\b',name) and all(has(r'(?m)^\s*'+field+r'\s*:',body) for field in ('Top','Bottom','Dupatta')):

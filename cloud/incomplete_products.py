@@ -45,8 +45,8 @@ def exclude(source,output,store,report,stage):
   selected[pid]=dict(source_url=row['source_url'],name=finding['name'],issues=issues)
  if not selected:return source,output,[]
  stage=Path(stage)
- filtered_source,_=apply(source,stage/'source.xlsx',store,incomplete=selected)
- filtered_output,_=apply(output,stage/'output.xlsx',store,incomplete=selected)
+ filtered_source,_=apply(source,stage/'source.xlsx',store,incomplete=selected,incomplete_only=True)
+ filtered_output,_=apply(output,stage/'output.xlsx',store,incomplete=selected,incomplete_only=True)
  return filtered_source,filtered_output,[dict(product_id=pid,**entry) for pid,entry in selected.items()]
 
 

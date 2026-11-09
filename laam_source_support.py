@@ -20,6 +20,12 @@ def owner_price_allowed(product):
         prices.append(price)
     return bool(prices) and Decimal('2000')<=min(prices)<=Decimal('7000')
 
+class IncompleteListing(ValueError):
+    """Source lists an active product but supplies no purchasable variant facts."""
+    def __init__(self,raw):
+        super().__init__('Active LAAM listing has no source variants; incomplete product excluded')
+        self.raw=raw
+
 class TemporaryProductError(RuntimeError):
     """A retryable page failure; never a missing or successfully exported product."""
 
@@ -95,7 +101,7 @@ def product_state(soup,handle,clothing_only=False,active_only=False,in_stock_onl
 
 # This revision only changes parsing of previously rejected option titles. Products
 # successfully normalized by the reviewed predecessor have identical cache schema.
-COMPATIBLE_PARSED_REVISIONS={'1c7604a7c33b8a7310d370dab183c0feed8bdbac88f53557f47928fb4d68672e'}
+COMPATIBLE_PARSED_REVISIONS={'a49604c05403ccb7751da14317a4be307268dda9c5c280c6a3d07632f12975e7','1c7604a7c33b8a7310d370dab183c0feed8bdbac88f53557f47928fb4d68672e'}
 
 def declared_option_title(title,dimensions):
     """Resolve separators inside declared values without inventing combinations."""
@@ -125,6 +131,7 @@ def normalize(raw,handle,active_only=False,in_stock_only=False):
         if isinstance(quantity,int) and not isinstance(quantity,bool) and quantity==0:
             if stores is not None and (not isinstance(stores,dict) or any(not isinstance(v,int) or isinstance(v,bool) or v!=0 for v in stores.values())):raise ValueError('Conflicting LAAM out-of-stock evidence')
             raise ConfirmedOutOfStock('Explicit out-of-stock product with zero source inventory and no variants')
+    if variants==[] and isinstance(options,list) and len(options)<=3 and str(raw.get('stock_status') or '').lower() in ('in-stock','limited-stock'):raise IncompleteListing(raw)
     if not isinstance(options,list) or len(options)>3 or not isinstance(variants,list) or not variants:raise ValueError('Unsupported LAAM option/variant schema')
     if any(not isinstance(item,dict) for item in options):raise ValueError('Incomplete LAAM option schema')
     positions=[item.get('position') for item in options]
@@ -312,6 +319,13 @@ class PublicCatalog:
                     continue
                 # Nuxt state and currency evidence live in scripts; don't build a full page DOM.
                 try:product=product_state(BeautifulSoup(response.text,'html.parser',parse_only=SoupStrainer('script')),handle,clothing_only=True,active_only=True,in_stock_only=True)
+                except IncompleteListing as exc:
+                    from locked_store_rules import record_incomplete_product
+                    original=dict(exc.raw,_source_url=url)
+                    record_incomplete_product(original,BASE,'LAAM',self.g.get('__file__',__file__),[str(exc)])
+                    if self.cache:self.cache.put(url,{'_source_url':url,'variants':[],'_excluded_reason':'incomplete-source-listing','_incomplete_reason':str(exc),'_original_source_product':original})
+                    self.log('LAAM INCOMPLETE PRODUCT: '+url+'; no source variants; original data and reason retained, no prices/options/stock invented')
+                    continue
                 except OutsideClothingScope:
                     if self.cache:self.cache.put(url,{'_source_url':url,'variants':[],'_excluded_reason':'not-confirmed-clothing'})
                     self.log('LAAM CLOTHING FILTER: excluded non-clothing or unclassified product '+url)

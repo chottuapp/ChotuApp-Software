@@ -16,6 +16,27 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  # Only explicit source garment-type strings; a generic vendor/brand is not purpose evidence.
  if re.fullmatch(r'(?i)(?:women|men|boys|girls|teens|kids|infants)\s+(?:stitched\s+[234]\s+piece(?:\s+shirt\s+trouser)?|(?:cotton\s+(?:silk\s+)?)?shalwar|(?:special\s+)?kurta|trouser|earrings|bracelet|necklace|ring|eyebrow\s+kit|waistcoat\s+with\s+kurta\s+trouser)',str(source_type or '').strip()):body+=' Source-listed garment type: '+str(source_type)
  evidence=title+' '+body
+ if cat=='high-neck tops' and has(r'\bmock neck\b',title) and has(r'\b(?:sleeves?|zipper|cotton|polyester)\b',body):return []
+ garment_fields=re.sub(r'(?m)^[ \t*•✦]+','',str(description))
+ upper_measurements=has(r'(?im)^SHIRT(?: MEASUREMENTS)?\s*:',garment_fields) or all(has(r'(?im)^'+part+r'[^\n]*:',garment_fields) for part in ('SHOULDER','SLEEVE LENGTH'))
+ lower_field=re.search(r'(?im)^Trouser(?: Fabric)?\s*:\s*([^\n]+)',garment_fields)
+ scarf_field=re.search(r'(?im)^Dupatta[ \t]*:[ \t]*([^\n]+)',garment_fields)
+ scarf_supplied=scarf_field and not has(r'not included|none|n/?a',scarf_field[1]) and has(r'included|dupatta',scarf_field[1])
+ upper_measurements=upper_measurements or has(r'\bstitched\b.*\b(?:suit|set)\b',title) or (has(r'(?im)^Cut\s*:',garment_fields) and scarf_supplied)
+ if cat=='clothing sets' and upper_measurements and lower_field and has(r'\b(?:included|shalwar|trouser|culotte|gharara)\b',lower_field[1]) and not has(r'not included|none|n/?a',lower_field[1]):return []
+ if cat in {'trousers','shalwars','culottes'} and upper_measurements and lower_field and has(r'not included',lower_field[1]):return ['Excluded lower garment incorrectly classified as sold product']
+ if cat=='shirts' and upper_measurements and lower_field and has(r'not included',lower_field[1]) and has(r'(?im)^Cut\s*:\s*(?:Basic|Boxy|Shirt)\b',garment_fields):return []
+ cosmetic_accessory=has(r'\b(?:brush|puff|sponge|case|empty)\b',re.split(r'(?i)\b(?:with|including|includes)\b',title,maxsplit=1)[0])
+ if cat=='face powders' and not cosmetic_accessory and has(r'\b(?:compact|setting|face)\s+powder\b',title):return []
+ if cat=='face palettes' and not cosmetic_accessory and has(r'\bpalette\b',title) and all(has(r'\b'+part+r'\b',body) for part in ('contour','blush','highlighter')):return []
+ if cat=='laptops' and has(r'^HP\s+ZBOOK\b',title) and all(has(p,body) for p in (r'\bprocessor\b',r'\bdisplay\b',r'\bRAM\b')):return []
+ if cat=='tops' and has(r'\b(?:zipper|mock neck|crew neck|rib collar)\b.*\bupper\b',title):return []
+ # Formatting bullets cannot hide explicit supplied component fields.
+ supplied=re.findall(r'(?im)^[ \t*•✦]*(top|bottom|shirt|trouser|dupatta)\s*:\s*(\S[^\n]*)',str(description))
+ supplied={part.lower() for part,value in supplied if not has(r'^(?:not|none|n/?a)\b|\bnot\s+included\b|\bsold\s+separately\b',value)}
+ if cat=='clothing sets' and (supplied & {'top','shirt'}) and (supplied & {'bottom','trouser'}):return []
+ if cat in {'co-ord sets','clothing sets'} and has(r'\bco[ -]?ord\s+set\b',title):return []
+ if cat in {'tracksuits','clothing sets'} and has(r'\bjogging suit\b',title) and has(r'\b(?:zip|sleeves)\b',body) and has(r'\btrouser\b',body):return []
  # Independent sold-object checks: incidental colour/compatibility nouns
  # cannot turn garments into makeup, or paper goods into computers.
  if cat in {'blushers','face powders','lipsticks'} and has(r'\babaya\b',title):return ['Garment evidence conflicts with cosmetics Category']

@@ -25,7 +25,7 @@ def codes_in(path):
  return found if not blank else set()
 
 class DriveIdentity:
- def __init__(self,rc,folder,backup=None):self.backup=backup;self.rc=rc;self.remote='chotudrive:'+folder;self.tmp=None;self.names={};self.index={};self.duplicates=set();self.unresolved_duplicates=False
+ def __init__(self,rc,folder,backup=None):self.backup=backup;self.rc=rc;self.remote='chotudrive:'+folder;self.tmp=None;self.names={};self.index={};self.duplicates=set();self.unresolved_duplicates=False;self.duplicate_files={}
  def __enter__(self):
   self.tmp=tempfile.TemporaryDirectory();self.root=Path(self.tmp.name)
   listing=json.loads(self.rc('lsjson',self.remote,'--files-only','--max-depth','1') or '[]')
@@ -52,6 +52,7 @@ class DriveIdentity:
      self.rc('backend','copyid','chotudrive:',object_id,str(path))
      try:codes=codes_in(path)
      except Exception:codes=set()
+     if name in self.duplicates:self.duplicate_files.setdefault(name,[]).append((object_id,path,codes))
      if len(codes)==1:
       names=self.index.setdefault(next(iter(codes)),[])
       if name not in names:names.append(name)
@@ -74,6 +75,7 @@ class DriveIdentity:
   matches=self.index.get(code,[]) if code else ([canonical] if canonical in self.names else [])
   if len(matches)>1:raise ValueError('Multiple existing files use this shop code; replacement held')
   old=matches[0] if matches else None
+  if old in self.duplicates and code and not self.unresolved_duplicates:return self.replace_duplicate_copies(file,code,old)
   if self.unresolved_duplicates or canonical in self.duplicates or old in self.duplicates:
    raise ValueError('Drive duplicate workbook identity requires review for this replacement; existing copies retained')
   # Owner has now supplied codes for previous blank-code exact store files.
@@ -113,6 +115,47 @@ class DriveIdentity:
    shutil.copy2(file,self.root/destination);self.names[destination]={'Name':destination}
    if code:self.index[code]=[destination]
   return {'replaced_file':old,'file_name':destination}
+
+ def replace_duplicate_copies(self,file,code,name):
+  """Preserve every matching historical copy by ID before promoting audited input."""
+  from audit804 import rows
+  copies=self.duplicate_files[name]
+  def hosts(path):return {(urlsplit(str(r.get('source_url') or '')).hostname or '').lower().removeprefix('www.') for r in rows(path)}
+  incoming_hosts=hosts(file)
+  if len(incoming_hosts)!=1 or '' in incoming_hosts or any(codes!={code} or hosts(path)!=incoming_hosts for _,path,codes in copies):
+   raise ValueError('Drive duplicate copies do not share a confirmed code and source host; originals retained')
+  current=json.loads(self.rc('lsjson',self.remote,'--files-only','--max-depth','1') or '[]')
+  if {item.get('ID') for item in current if item.get('Name')==name}!={identity for identity,_,_ in copies}:
+   raise ValueError('Drive duplicate listing changed; originals retained')
+  # Re-read every ID to detect changes since the identity snapshot.
+  for number,(identity,path,_) in enumerate(copies):
+   check=self.root/'duplicate-checks'/str(number)/name;check.parent.mkdir(parents=True,exist_ok=True)
+   self.rc('backend','copyid','chotudrive:',identity,str(check))
+   if hashlib.sha256(check.read_bytes()).digest()!=hashlib.sha256(path.read_bytes()).digest():raise ValueError('Drive duplicate content changed; originals retained')
+   if self.backup:self.backup(path,code+'-duplicate-'+identity)
+  digest=hashlib.sha256(file.read_bytes()).hexdigest();incoming=self.remote+'/_incoming/'+digest
+  moved=[]
+  with tempfile.TemporaryDirectory() as tmp:
+   stage=Path(tmp);shutil.copy2(file,stage/name)
+   self.rc('copy',str(stage),incoming,'--include',name,'--checksum')
+   self.rc('check',str(stage),incoming,'--include',name,'--one-way')
+   try:
+    for identity,path,_ in copies:
+     backup=self.remote+'/_duplicate_backups/'+identity+'/'+name
+     self.rc('backend','moveid','chotudrive:',identity,backup);moved.append(identity)
+     self.rc('check',str(path.parent),backup.rsplit('/',1)[0],'--include',name,'--one-way')
+    self.rc('copyto',incoming+'/'+name,self.remote+'/'+name,'--checksum')
+    self.rc('check',str(stage),self.remote,'--include',name,'--one-way')
+   except Exception:
+    # Move by ID preserves all historical copies even if a new upload is partial.
+    # Never delete an uncertain canonical object during rollback.
+    for identity in reversed(moved):
+     self.rc('backend','moveid','chotudrive:',identity,self.remote+'/'+name)
+    raise
+   try:self.rc('deletefile',incoming+'/'+name)
+   except Exception:pass
+   shutil.copy2(file,self.root/name);self.names[name]={'Name':name};self.index[code]=[name];self.duplicates.remove(name)
+  return {'replaced_file':name,'file_name':name,'duplicate_copies_preserved':len(copies)}
 
 def completed_files(stage):
  manifests=list(stage.rglob('completion-manifest.json'))

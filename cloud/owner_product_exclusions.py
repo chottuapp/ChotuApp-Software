@@ -36,11 +36,11 @@ def out_of_stock_rules(store):
   result[str(item['product_id'])]=item['source_url']
  return result
 
-def apply(source,out,store,*,incomplete=None):
+def apply(source,out,store,*,incomplete=None,incomplete_only=False):
  incomplete=incomplete or {}
- source_removed=source_removed_rules(source,store)
- stock_removed=out_of_stock_rules(store)
- rules=dict(EXCLUSIONS.get(store,{}));rules.update(source_removed);rules.update(stock_removed)
+ source_removed={} if incomplete_only else source_removed_rules(source,store)
+ stock_removed={} if incomplete_only else out_of_stock_rules(store)
+ rules={} if incomplete_only else dict(EXCLUSIONS.get(store,{}));rules.update(source_removed);rules.update(stock_removed)
  for pid,entry in incomplete.items():
   if not entry.get('source_url') or not entry.get('issues'):raise ValueError('Incomplete exclusion requires exact source identity and reasons')
   rules[str(pid)]=entry['source_url']
@@ -57,21 +57,21 @@ def apply(source,out,store,*,incomplete=None):
    photographed.update(str(r.get('product_id')) for r in rows.get(name,[]) if has_source_photo(r))
   for r in rows['Products']:
    pid=str(r.get('product_id') or '')
-   if pid and not has_source_photo(r) and pid not in photographed:
+   if not incomplete_only and pid and not has_source_photo(r) and pid not in photographed:
     photo_removed.add(pid);rules[pid]=r['source_url']
   produce_removed=set()
   school_scope_removed=set()
-  if store=='The Paper Worm':
+  if not incomplete_only and store=='The Paper Worm':
    from locked_store_rules import paperworm_school_supply
    for r in rows['Products']:
     if not paperworm_school_supply(r):
      pid=str(r['product_id']);school_scope_removed.add(pid);rules[pid]=r['source_url']
-  if store=='Fresh Basket':
+  if not incomplete_only and store=='Fresh Basket':
    from locked_store_rules import freshbasket_produce
    for r in rows['Products']:
     if freshbasket_produce(r):
      pid=str(r['product_id']);produce_removed.add(pid);rules[pid]=r['source_url']
-  if store=='ChenOne':
+  if not incomplete_only and store=='ChenOne':
    from locked_store_rules import chenone_furniture
    facts={(str(r.get('product_id')),r.get('source_url')):r for r in json.loads(Path(__file__).with_name('audit804-reviewed-source.json').read_text()).get('products',[]) if r.get('store')=='ChenOne'}
    for r in rows['Products']:

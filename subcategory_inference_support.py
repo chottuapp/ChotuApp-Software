@@ -205,6 +205,7 @@ PURPOSE_RULES=[(label,re.compile(pattern,re.I)) for label,pattern in PURPOSE_RUL
 def _product_prose(description):
     # Application tools and ingredient names are not the item being sold.
     raw=str(description or '')
+    raw=re.sub(r'(?im)^[ \t*•✦]*(?:trousers?|dupattas?|slip)\s*:\s*(?:not\s+included|none|n/?a)\b[^\n]*','',raw)
     boundary=re.search(r'(?im)(?:^|\n)\s*(?:how to use[^\n]*|directions[^\n]*|usage|ingredients|precautions[^\n]*|warnings?|care instructions|composition & care|available options|product options)\s*[:：.]?\s*(?:\n|$)',raw)
     jewellery=re.search(r'(?im)(?:^|\n)\s*(?:\d+[.)]\s*)?(?:jewelry|jewellery)\s+care\s*[:：]',raw)
     if jewellery and (boundary is None or jewellery.start()<boundary.start()):boundary=jewellery
@@ -213,7 +214,8 @@ def _product_prose(description):
     if detail:
         extra=re.split(r'(?im)^\s*(?:product options|available options|care instructions|composition & care)\s*[:：]?',raw[detail.end():],maxsplit=1)[0]
     if boundary:raw=raw[:boundary.start()]
-    return plain(raw+' '+extra)[:2200]
+    proof=plain(raw+' '+extra)[:2200]
+    return re.split(r'(?i)\b(?:pairs? (?:effortlessly|perfectly|well|beautifully) with|style (?:it )?with|easy to style with)\b',proof,maxsplit=1)[0]
 
 def _quote(label,field,text,match=None):
     evidence=text[:300] if match is None else text[max(0,match.start()-55):match.end()+110]

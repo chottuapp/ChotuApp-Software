@@ -7,7 +7,7 @@ def roots(rows):
  result=set()
  for row in rows:
   match=re.match(r'([A-Za-z][A-Za-z-]{3,})',str(row.get('name') or ''))
-  if match:result.add(match.group(1).lower())
+  if match:result.add(match.group(1).rstrip('-').lower())
  return result
 
 def conflicting_name(row,catalogue):
@@ -15,7 +15,7 @@ def conflicting_name(row,catalogue):
  if not own:return None
  for match in re.finditer(r'\b([A-Z][a-z]{3,}) is (?:a |an |the )',str(row.get('description') or '')):
   other=match.group(1)
-  if other.lower()!=own.group(1).lower() and other.lower() in catalogue:return other
+  if other.lower()!=own.group(1).rstrip('-').lower() and other.lower() in catalogue:return other
  return None
 
 def product_content(row):
@@ -38,7 +38,7 @@ def description(row,store,catalogue):
  original=str(row.get('description') or '');title=str(row.get('name') or '');reason=None;fixed=product_content(row)
  if fixed!=original:reason='Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.'
  if store=='Seran' and conflicting_name(row,catalogue):
-  match=re.search(r'(?is)OUTFIT DESCRIPTION\s*\n.*?\nPRODUCT DETAIL\s*\n(.*)',original)
+  match=re.search(r'(?is)OUTFIT DESCRIPTION\s*[.:：]?\s*\n.*?\nPRODUCT DETAIL\s*[.:：]?\s*\n(.*)',original)
   if match:
    candidate=title+'\nPRODUCT DETAIL\n'+match.group(1)
    if numbers(original)<=numbers(candidate):fixed=candidate;reason='Copied narrative naming a different catalog product removed; selected listing identity and complete PRODUCT DETAIL specifications retained.'
