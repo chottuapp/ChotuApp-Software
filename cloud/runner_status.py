@@ -3,6 +3,7 @@ import base64,datetime,json,os,re,subprocess,sys,tempfile
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from source_research import publish
+from github_json import read_json
 REPO='chottuapp/ChotuApp-Software'
 def gh(*args):
  r=subprocess.run(['gh',*args],capture_output=True,text=True,timeout=60)
@@ -110,8 +111,7 @@ def main():
  report['collection_seconds']=round((datetime.datetime.now(datetime.timezone.utc)-now).total_seconds())
 
  try:
-  response=json.loads(gh('api','repos/'+REPO+'/contents/latest.json?ref=drive-sync-reports'))
-  drive=json.loads(base64.b64decode(response['content']))
+  drive=read_json(gh,'repos/'+REPO+'/contents/latest.json?ref=drive-sync-reports')
   report['store_overview']=store_overview(report,drive,campaign)
   report['drive']={'current_campaign':campaign,'fresh_verified_files':sum(v.get('campaign_id')==campaign and v.get('audit804',{}).get('status')=='pass' for v in drive.get('uploaded',{}).values()),'audit_progress_utc':drive.get('audit804_progress_utc'),'sync_status':drive.get('sync_status'),'sync_error':drive.get('sync_error'),'last_scan_utc':drive.get('last_scan_utc'),'held':drive.get('held',{}),'verified_files':len(drive.get('uploaded',{})),'original_uploads':drive.get('original_uploads',{}),'verified_utc':drive.get('verified_utc'),'folders':{k:len(v) for k,v in drive.get('daily_uploads',{}).items()},'latest_move':drive.get('moves',[])[-1:]}
  except (RuntimeError,ValueError,KeyError):report['drive']={'status':'unavailable; not claimed verified'};report['store_overview']=store_overview(report,{},campaign)

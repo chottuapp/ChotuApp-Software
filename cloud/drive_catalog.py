@@ -2,6 +2,7 @@
 import base64,configparser,datetime,json,os,re,subprocess,tempfile
 from pathlib import Path
 from source_research import publish
+from github_json import read_json
 from drive_sync import config_text,gh,REPO
 
 def enrich(state,folders,files,histories):
@@ -42,7 +43,7 @@ def enrich(state,folders,files,histories):
 
 def main():
  secret=os.environ.get('CHOTU_DRIVE_RCLONE_CONFIG','');config_text(secret)
- response=json.loads(gh('api','repos/'+REPO+'/contents/latest.json?ref=drive-sync-reports'));state=json.loads(base64.b64decode(response['content']))
+ state=read_json(gh,'repos/'+REPO+'/contents/latest.json?ref=drive-sync-reports')
  globals()['LAST_STATE']=state
  folder=state['folder']
  if '/' in folder or '\\' in folder or ':' in folder:raise ValueError('Unexpected folder path')

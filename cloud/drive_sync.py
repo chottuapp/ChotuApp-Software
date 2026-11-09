@@ -3,6 +3,7 @@ import base64,configparser,datetime,hashlib,importlib.util,json,os,subprocess,sy
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from source_research import publish
+from github_json import read_json
 ROOT=Path(__file__).resolve().parents[1];REPO='chottuapp/ChotuApp-Software'
 spec=importlib.util.spec_from_file_location('drive_checked',ROOT/'catalog-tools/start_fresh26_rule804_drive_windows.py');checked=importlib.util.module_from_spec(spec);spec.loader.exec_module(checked)
 class GitHubOperationError(RuntimeError):
@@ -53,8 +54,7 @@ def main():
  config=load_config();root=config['dispatcher'];folder=config.get('destination_folder') or checked.daily_folder()
  if '/' in folder or '\\' in folder or ':' in folder or folder in ('.','..',''):raise ValueError('Invalid destination folder')
  try:
-  old=json.loads(gh('api','repos/'+REPO+'/contents/latest.json?ref=drive-sync-reports'))
-  state=json.loads(base64.b64decode(old['content']))
+  state=read_json(gh,'repos/'+REPO+'/contents/latest.json?ref=drive-sync-reports')
  except GitHubOperationError as exc:
   if not exc.not_found:raise
   state={}
