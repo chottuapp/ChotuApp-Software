@@ -62,3 +62,9 @@ class GroceryTests(unittest.TestCase):
   self.assertEqual(category(row,source.STORE)[0],'Bread, Bakery & Pasta');self.assertEqual(audit(row,row),[])
   changed=dict(row,Category='Snacks');self.assertTrue(audit(changed,row))
   with self.assertRaises(ValueError):category(changed,source.STORE)
+ def test_electronics_are_excluded_before_option_price_export(self):
+  self.assertTrue(source.electronic_item('National Electric Kettle',['Home Appliances']))
+  self.assertTrue(source.electronic_item('Hair Dryer',['Beauty','Hair Care']))
+  self.assertFalse(source.electronic_item('Shampoo for Dry Hair',['Hair Care']))
+  self.assertFalse(source.electronic_item('Durex Condoms 3 Pack',['Sexual Wellness']))
+  with self.assertRaisesRegex(source.IncompleteProduct,'electronic item excluded'):source.product(page(title='USB Charger',schema_price=0),source.BASE+'/item')

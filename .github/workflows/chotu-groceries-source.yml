@@ -1,8 +1,14 @@
 name: ChotuApp Groceries Source Check
 on:
   workflow_dispatch:
+    inputs:
+      checkpoint_run:
+        description: Optional completed grocery run for bounded cached-pagination inspection
+        required: false
+        type: string
 permissions:
   contents: write
+  actions: read
 concurrency:
   group: chotu-groceries-source
   cancel-in-progress: false
@@ -15,11 +21,18 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m pip install requests beautifulsoup4
-      - run: |
+      - run: python -m pip install -r requirements.txt
+      - if: inputs.checkpoint_run == ''
+        run: |
           python -m pip install playwright==1.55.0
           python -m playwright install --with-deps chromium
       - env:
           GH_TOKEN: ${{ github.token }}
           PYTHONPATH: cloud:.
-        run: python cloud/chotu_groceries_probe.py
+          GROCERY_CHECKPOINT_RUN: ${{ inputs.checkpoint_run }}
+        run: |
+          if [ -n "$GROCERY_CHECKPOINT_RUN" ]; then
+            python cloud/groceries_checkpoint_probe.py
+          else
+            python cloud/chotu_groceries_probe.py
+          fi

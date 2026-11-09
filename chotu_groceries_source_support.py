@@ -14,10 +14,20 @@ def amount(value):
  if not v.is_finite() or v<=0 or v*10000!=(v*10000).to_integral_value():raise ValueError('Unsupported exact PKR price')
  return v
 
+def electronic_item(name,categories):
+ taxonomy=' > '.join(categories)
+ if re.search(r'\b(?:electronics?|mobile phones?|smartphones?|computers?|computer accessories|home appliances?|kitchen appliances?|audio equipment|headphones?|cameras?)\b',taxonomy,re.I):return True
+ objects=r'\b(?:laptops?|smartphones?|smartwatches?|earbuds?|headphones?|headsets?|power banks?|chargers?|usb cables?|hair dryers?|hair straighteners?|electric shavers?|electric toothbrush(?:es)?|digital thermometers?|baby monitors?|blood pressure monitors?|vibrators?)\b'
+ if re.search(objects,name+' '+taxonomy,re.I):return True
+ return bool(re.search(r'\b(?:electric|rechargeable|battery[ -]operated)\b.{0,35}\b(?:kettle|iron|fan|heater|blender|mixer|trimmer|massager|toy|toothbrush)\b',name,re.I))
+
 def product(page,url):
  soup=BeautifulSoup(page,'html.parser');canonical=soup.select_one('link[rel=canonical][href]');title=soup.select_one('h1 [itemprop=name],h1 .base,h1')
  if not canonical or urljoin(url,canonical['href']).rstrip('/')!=url.rstrip('/') or not title:raise ValueError('Exact product canonical/name unverified')
- name=norm(title.get_text(' ',strip=True));box=soup.select_one('.product-info-main [data-product-id][data-role=priceBox]')
+ name=norm(title.get_text(' ',strip=True))
+ source_categories=[norm(a.get_text(' ',strip=True)) for a in soup.select('.breadcrumbs li a[href]')]
+ if electronic_item(name,source_categories):raise IncompleteProduct('Owner grocery rule: electronic item excluded; original product retained in skip receipt')
+ box=soup.select_one('.product-info-main [data-product-id][data-role=priceBox]')
  if not box or not str(box.get('data-product-id','')).isdigit():raise IncompleteProduct('Source product ID absent')
  if soup.select_one('.super-attribute-select,.swatch-attribute,.product-options-wrapper select,.product-options-wrapper input[type=radio]'):raise IncompleteProduct('Selectable source options require exact per-variant offers; no option/price guessed')
  ident=int(box['data-product-id']);sku=soup.select_one('.product-info-main .sku,.product.attribute.sku .value');brand=soup.select_one('.product-info-main .brand-name a')
@@ -153,7 +163,7 @@ class PublicCatalog:
      if part.hostname!=seed.hostname or part.path.rstrip('/')!=seed.path.rstrip('/') or {k:v for k,v in query.items() if k!='p'}!=seed_query:continue
      if item not in seen and item not in queue and item not in candidates:candidates.append(item)
     queue.extend(candidates)
-   if expected is not None and len(discovered)!=expected:raise ValueError('Grocery scope count mismatch; catalog not marked complete')
+   if expected is not None and len(discovered)!=expected:raise ValueError('Grocery scope count mismatch; scope='+scope['url']+' expected='+str(expected)+' discovered='+str(len(discovered))+' pages='+str(len(seen))+'; catalog not marked complete')
    coverage.append(dict(scope_url=scope['url'],pages=len(seen),products=len(discovered)))
    self.log('GROCERY SCOPE: '+str(index)+'/'+str(len(self.request['pages']))+' complete; '+str(len(urls))+' distinct product URLs')
   import csv
