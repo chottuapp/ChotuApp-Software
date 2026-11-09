@@ -1,29 +1,43 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-09T11:19:55.565469+00:00",
-  "run_id": "42572298759",
+  "generated_utc": "2026-11-09T11:53:29.060428+00:00",
+  "run_id": "42588687062",
   "attempt": "1",
-  "source_commit": "970e404accdaa60a84903a29c0c8a73967b2c237",
-  "status": "incomplete",
+  "source_commit": "2af288275802dd215255260882e1c4fd6ff2c5d5",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 18000.4,
+  "elapsed_seconds": 10884.0,
   "stores": [
     {
-      "name": "LAAM",
-      "status": "pending",
-      "review_required": false,
-      "issue_codes": [
-        "HTTP_404"
-      ],
-      "software_revision": "2e5e508b183b087e",
-      "http_statuses": {
-        "200": 11943,
-        "404": 13
-      },
-      "network_seconds": 4136.7,
-      "max_response_seconds": 10.4,
+      "name": "Tawakkal Fabrics",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "522ef8b7890d7b28",
+      "products": 1509,
+      "variants": 3668,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
       "cache_events": 0
+    },
+    {
+      "name": "Stylo",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "36cca8d1d6ed0823",
+      "products": 9095,
+      "variants": 46999,
+      "http_statuses": {
+        "200": 2123
+      },
+      "network_seconds": 6360.8,
+      "max_response_seconds": 19.5,
+      "cache_events": 74255
     }
   ]
 }
