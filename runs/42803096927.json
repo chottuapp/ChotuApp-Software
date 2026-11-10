@@ -3624,7 +3624,7 @@
     "Vince Care": "source:c6ece09bf4e9701114a143c03f25bb05769425df94fbbe09f7cba66f8f66d0da:Vince Care:444743bd303c17af34c92f7469f33c67297e61795dc975ee049211486984642f",
     "Bata": "source:719aef272ea86a780eaa4ba1389924c00013111682ab7d017de45781de22168d:Bata:444743bd303c17af34c92f7469f33c67297e61795dc975ee049211486984642f",
     "Servis": "source:6d933ba88686aabaa30af83c485fb6a38f390388014c33209ad3f1756a2d7b4c:Servis:444743bd303c17af34c92f7469f33c67297e61795dc975ee049211486984642f",
-    "Ndure": "source:eb57ce0ef4de24d3e78acefd9460bc1b20005f7858e9f09b51766f6c548f1144:Ndure:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
+    "Ndure": "source:eb57ce0ef4de24d3e78acefd9460bc1b20005f7858e9f09b51766f6c548f1144:Ndure:444743bd303c17af34c92f7469f33c67297e61795dc975ee049211486984642f",
     "Saeed Ghani": "source:9982a2cefcbc4ff8bdcdcc7b6cb6f6126bbdb581985cfc55cb81b3ddb0148d64:Saeed Ghani:444743bd303c17af34c92f7469f33c67297e61795dc975ee049211486984642f",
     "Tawakkal Fabrics": "source:312439b331c89980953fec654b0d36cf3008bce4027fc0ab216d7d3180f02aef:Tawakkal Fabrics:444743bd303c17af34c92f7469f33c67297e61795dc975ee049211486984642f",
     "Elite Cosmetics": "source:1f43be9200449aa24242caae087ae7b493e95243e30a73c0b9b9f78da2cbc7a0:Elite Cosmetics:444743bd303c17af34c92f7469f33c67297e61795dc975ee049211486984642f",
@@ -5153,20 +5153,786 @@
       "store": "Ndure",
       "shop_code": "SE10034",
       "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 1860,
-      "findings_count": 0,
-      "findings": [],
+      "status": "hold",
+      "products_checked": 1770,
+      "findings_count": 3,
+      "findings": [
+        {
+          "product_id": "CPf44d19a0385a",
+          "name": "Girls\u2019 Patent Lace-Up Boots",
+          "source_url": "https://www.ndure.com/products/girls-lace-up-boots-g-bt-azr-0012-black",
+          "issues": [
+            "Primary product type and Category disagree: earrings"
+          ]
+        },
+        {
+          "product_id": "CPe3dde5005998",
+          "name": "Girls' Suede Ballet Flats",
+          "source_url": "https://www.ndure.com/products/girls-suede-ballet-flats-g-bl-vrg-0002-black",
+          "issues": [
+            "Primary product type and Category disagree: earrings"
+          ]
+        },
+        {
+          "product_id": "CP7b6cb90bc632",
+          "name": "Girls' Suede Ballet Flats",
+          "source_url": "https://www.ndure.com/products/girls-suede-ballet-flats-g-bl-vrg-0002-navy",
+          "issues": [
+            "Primary product type and Category disagree: earrings"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "7469d510ddddc20811fd9732bd359cff3f7098a785028842648173d699486be9",
-      "checked_utc": "2026-11-09T11:57:33.996496+00:00",
+      "workbook_sha256": "1153d7849a20a65235e26517bdca9f4513617917fa71d7ad17c0a76b26bc78b5",
+      "checked_utc": "2026-11-10T12:11:46.384408+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "incomplete_products_excluded": [
+        {
+          "product_id": "CPe73e90912bd2",
+          "source_url": "https://www.ndure.com/products/boys-double-strap-ankle-boots-b-bt-mun-0007-tan",
+          "name": "Boys' Double Strap Ankle Boots",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf420e72e6220",
+          "source_url": "https://www.ndure.com/products/girls-classic-mary-janes-g-bt-azr-0010-maroon",
+          "name": "Girls\u2019 Patent Mary Jane Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP24001378759c",
+          "source_url": "https://www.ndure.com/products/girls-suede-loafers-g-bt-azr-0009-brown",
+          "name": "Girls' Suede Loafers",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf91a8aeb7c27",
+          "source_url": "https://www.ndure.com/products/girls-suede-ballet-flats-g-bl-vrg-0007-brown",
+          "name": "Girls\u2019 Suede Mary Jane Flats",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2d997f88a336",
+          "source_url": "https://www.ndure.com/products/boys-ankle-outdoor-boots-b-bt-frt-0013-tan-blk",
+          "name": "Boys' Ankle Outdoor Boots",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9d949e967992",
+          "source_url": "https://www.ndure.com/products/boys-ankle-outdoor-boots-b-bt-frt-0013-olv-blk",
+          "name": "Boys' Ankle Outdoor Boots",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP6c889d09de58",
+          "source_url": "https://www.ndure.com/products/mens-flyknit-trainers-m-pr-grn-0001-navy",
+          "name": "Men's Easy Fit Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP73fe627ea47e",
+          "source_url": "https://www.ndure.com/products/womens-suede-leopard-print-ballet-flats-w-bl-pam-0021-leopard",
+          "name": "Women's Suede Leopard-Print Ballet Flats",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf58472e62fb4",
+          "source_url": "https://www.ndure.com/products/womens-suede-snake-print-ballet-flats-w-bl-pam-0020-snake",
+          "name": "Women's Suede Snake-Print Ballet Flats",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9d2c6e727111",
+          "source_url": "https://www.ndure.com/products/womens-suede-panel-sneakers-w-lf-ary-0020-beige",
+          "name": "Women\u2019s Suede Brogue Lace-Up Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7f71b53046c4",
+          "source_url": "https://www.ndure.com/products/womens-suede-panel-sneakers-w-lf-ary-0020-espresso",
+          "name": "Women\u2019s Suede Brogue Lace-Up Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP431091282230",
+          "source_url": "https://www.ndure.com/products/boys-ankle-boots-b-cl-jak-0017-brn-blk",
+          "name": "Boys' Ankle Boots",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP764e1e91ce7f",
+          "source_url": "https://www.ndure.com/products/womens-metallic-pumps-w-bl-msl-0009-black",
+          "name": "Women's Embellished Mules",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP406ae2e04bee",
+          "source_url": "https://www.ndure.com/products/girls-daily-essential-clogs-g-op-lak-0005",
+          "name": "Girls' Daily Essential Clogs",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPee1dacb01bc8",
+          "source_url": "https://www.ndure.com/products/boys-daily-essentials-clogs-b-op-lak-0004-l-blue",
+          "name": "Boys' Daily Essentials Clogs",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP15f1faa9324f",
+          "source_url": "https://www.ndure.com/products/boys-daily-essentials-clogs-b-sd-lak-0004-l-blue",
+          "name": "Boys' Daily Essentials Clogs",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2aa237355bc3",
+          "source_url": "https://www.ndure.com/products/mens-slip-on-shoes-m-pr-luc-0027-brown",
+          "name": "Men's Slip-On Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP190f104ab389",
+          "source_url": "https://www.ndure.com/products/girls-metallic-mary-janes-g-bl-war-0008-black",
+          "name": "Girls' Metallic Mary Janes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb49f6b9d9112",
+          "source_url": "https://www.ndure.com/products/girls-metallic-mary-janes-g-bl-war-0008-gold",
+          "name": "Girls' Metallic Mary Janes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc9881840a9f1",
+          "source_url": "https://www.ndure.com/products/girls-clogs-g-sd-lak-0005-white",
+          "name": "Girls' Daily Essential Clogs",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPfa0c213ca4f8",
+          "source_url": "https://www.ndure.com/products/girls-suede-ballet-flats-g-sn-atl-0003-pink",
+          "name": "Girls' Casual Mary Jane",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2e04dc4acb4f",
+          "source_url": "https://www.ndure.com/products/mens-sporty-slip-ons-m-pr-luc-0023-beige",
+          "name": "Men's Slip-On Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPec609378f047",
+          "source_url": "https://www.ndure.com/products/mens-sporty-slip-ons-m-pr-luc-0023-brown",
+          "name": "Men's Slip-On Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPee38d077095a",
+          "source_url": "https://www.ndure.com/products/mens-sporty-slip-ons-m-pr-luc-0023-black",
+          "name": "Men's Slip-On Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe01f7cf37a0d",
+          "source_url": "https://www.ndure.com/products/mens-slip-on-shoes-m-pr-luc-0027-beige",
+          "name": "Men's Slip-On Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc035778bbbb1",
+          "source_url": "https://www.ndure.com/products/womens-suede-ballet-flats-with-bow-w-bl-pam-0015-black",
+          "name": "Women's Suede Ballet Flats with Bow",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7864b457e85e",
+          "source_url": "https://www.ndure.com/products/womens-suede-ballet-flats-with-bow-w-bl-pam-0015-olive",
+          "name": "Women's Suede Ballet Flats with Bow",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb31dac5e1266",
+          "source_url": "https://www.ndure.com/products/boys-lace-up-boots-b-bt-mun-0006-espresso",
+          "name": "Boys' Lace-Up Boots",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP88256ad153bd",
+          "source_url": "https://www.ndure.com/products/boys-lace-up-ankle-boots-b-bt-frt-0006-tan",
+          "name": "Boys' Lace-Up Ankle Boots",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9e676a961f79",
+          "source_url": "https://www.ndure.com/products/boys-lace-up-ankle-boots-b-bt-frt-0006-black",
+          "name": "Boys' Lace-Up Ankle Boots",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPcce6d15d2fd5",
+          "source_url": "https://www.ndure.com/products/girls-studded-ballet-flats-g-bl-vrg-0001-black",
+          "name": "Girls' Studded Ballet Flats",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7a8b95ec690e",
+          "source_url": "https://www.ndure.com/products/womens-suede-ballet-flats-with-bow-w-bl-pam-0015-tan",
+          "name": "Women's Suede Ballet Flats with Bow",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPcb0421af9fdf",
+          "source_url": "https://www.ndure.com/products/mens-sporty-slip-ons-m-pr-luc-0023-camel",
+          "name": "Men's Slip-On Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP12bb6ef32129",
+          "source_url": "https://www.ndure.com/products/mens-sporty-slip-ons-m-pr-luc-0023-navy",
+          "name": "Men's Slip-On Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb491405dfec7",
+          "source_url": "https://www.ndure.com/products/boys-double-strap-ankle-boots-b-bt-mun-0007-grey",
+          "name": "Boys' Double Strap Ankle Boots",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4ca7908de683",
+          "source_url": "https://www.ndure.com/products/boys-lace-up-boots-b-bt-mun-0006-grey",
+          "name": "Boys' Lace-Up Boots",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP756956599bd6",
+          "source_url": "https://www.ndure.com/products/girls-loafers-with-metal-detail-g-bt-azr-0004-black",
+          "name": "Girls\u2019 Patent Chunky Loafers",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb9e860d43f8e",
+          "source_url": "https://www.ndure.com/products/mens-flyknit-trainers-m-pr-grn-0001-black",
+          "name": "Men's Easy Fit Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP52b2c3592c3a",
+          "source_url": "https://www.ndure.com/products/girls-double-strap-ankle-boots-g-bt-mun-0007-pink",
+          "name": "Girls' Double Strap Ankle Boots",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd70acf477bd2",
+          "source_url": "https://www.ndure.com/products/girls-patent-ankle-boots-g-bt-azr-0006-pink",
+          "name": "Girls' Patent Ankle Boots",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4a6b4df95cd9",
+          "source_url": "https://www.ndure.com/products/boys-double-strap-ankle-boots-b-bt-mun-0007-espresso",
+          "name": "Boys' Double Strap Ankle Boots",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9b37e329466a",
+          "source_url": "https://www.ndure.com/products/girls-studded-ballet-flats-g-bl-vrg-0001-maroon",
+          "name": "Girls' Studded Ballet Flats",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf07978ab3da6",
+          "source_url": "https://www.ndure.com/products/womens-sleek-slip-ons-w-bl-cfe-0028-navy",
+          "name": "Women's Sleek Slip-Ons",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf570bc81b945",
+          "source_url": "https://www.ndure.com/products/womens-quilted-mules-w-bl-rmu-0015-fawn",
+          "name": "Women's Quilted Mules",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP32c91935f561",
+          "source_url": "https://www.ndure.com/products/womens-quilted-mules-w-bl-rmu-0015-black",
+          "name": "Women's Quilted Mules",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPbc4d071eab3d",
+          "source_url": "https://www.ndure.com/products/mens-slip-on-shoes-m-pr-luc-0027-khaki",
+          "name": "Men's Slip-On Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPfbe620e52079",
+          "source_url": "https://www.ndure.com/products/mens-slip-on-shoes-m-pr-luc-0027-espresso",
+          "name": "Men's Slip-On Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5074442040aa",
+          "source_url": "https://www.ndure.com/products/womens-ballet-flats-w-lf-prl-0014-tan",
+          "name": "Women's Ballet Flats",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2283932bdcee",
+          "source_url": "https://www.ndure.com/products/womens-ballet-flats-w-lf-prl-0014-maroon",
+          "name": "Women's Ballet Flats",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP178106d09d69",
+          "source_url": "https://www.ndure.com/products/womens-ballet-flats-w-lf-prl-0014-black",
+          "name": "Women's Ballet Flats",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd51171e500b7",
+          "source_url": "https://www.ndure.com/products/womens-basic-school-shoes-w-sc-mic-0401-black",
+          "name": "Girls' Patent School Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP86bfc1301791",
+          "source_url": "https://www.ndure.com/products/downtown-sneakers-for-men-m-sn-nit-0008-tan",
+          "name": "Men's Contrast Sole Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP95fc5bfd3acd",
+          "source_url": "https://www.ndure.com/products/womens-classic-school-shoes-w-sc-mic-0395-black",
+          "name": "Girls\u2019 Floral Detailing School Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc75c5a24a71d",
+          "source_url": "https://www.ndure.com/products/womens-tbar-school-shoes-w-sc-gox-0020-black",
+          "name": "Girls' Buckle Strap School Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP6c4d44d70cb4",
+          "source_url": "https://www.ndure.com/products/womens-quilted-school-shoes-w-sc-gox-0013-black",
+          "name": "Girls\u2019 Textured School Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0fd31b8f8277",
+          "source_url": "https://www.ndure.com/products/womens-patterned-mules-w-bl-rmu-0011-cream",
+          "name": "Women's Patterned Mules",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0dfeed536226",
+          "source_url": "https://www.ndure.com/products/womens-modern-muse-slip-ons-w-bl-cfe-0030-green",
+          "name": "Women's Modern Muse Slip-Ons",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa8a93f557678",
+          "source_url": "https://www.ndure.com/products/girls-allure-heels-g-hl-frn-0002-cream",
+          "name": "Girls' Allure Heels",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP02e516e6551a",
+          "source_url": "https://www.ndure.com/products/buckled-ladies-mules-nd-cu-0089-black",
+          "name": "Buckled Ladies Mules",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc44069cb1373",
+          "source_url": "https://www.ndure.com/products/buckled-ladies-mules-nd-cu-0089-tan",
+          "name": "Buckled Ladies Mules",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP12500002cd87",
+          "source_url": "https://www.ndure.com/products/sunsplash-boys-sliders-b-sl-bmb-0004-grey",
+          "name": "Sun-Splash Boy's Sliders",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP68bde690b853",
+          "source_url": "https://www.ndure.com/products/girls-elegant-ballerinas-g-bl-ptr-0005-cream",
+          "name": "Girls' Elegant Ballerinas",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP260a5201f315",
+          "source_url": "https://www.ndure.com/products/womens-cushioned-runners-w-pr-leo-0034-white",
+          "name": "Women's Cushioned Runners",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP6c6e330f9d8d",
+          "source_url": "https://www.ndure.com/products/womens-patterned-mules-w-bl-rmu-0011-black",
+          "name": "Women's Patterned Mules",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP06fbe96ab09c",
+          "source_url": "https://www.ndure.com/products/womens-vibrant-w-sc-gox-0017-black",
+          "name": "Girls' Classic School Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa0dc4d25281f",
+          "source_url": "https://www.ndure.com/products/womens-modern-sneakers-w-sc-gox-0011-black",
+          "name": "Girls' Classic School Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd2da6d294764",
+          "source_url": "https://www.ndure.com/products/girls-patent-leather-chunky-loafers-g-bt-azr-0001-pink",
+          "name": "Girls' Patent Leather Chunky Loafers",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5375571503ec",
+          "source_url": "https://www.ndure.com/products/boys-lace-up-boots-b-bt-frt-0004-black",
+          "name": "Boys' Lace-Up Boots",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa5560675575b",
+          "source_url": "https://www.ndure.com/products/girls-patent-leather-chunky-loafers-g-bt-azr-0001-black",
+          "name": "Girls' Patent Leather Chunky Loafers",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe21dc4ed0abd",
+          "source_url": "https://www.ndure.com/products/girls-moccasin-boots-g-bt-azr-0002-pink",
+          "name": "Girls' Moccasin Boots",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2bc5f0c14298",
+          "source_url": "https://www.ndure.com/products/girls-moccasin-boots-g-bt-azr-0002-black",
+          "name": "Girls' Moccasin Boots",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP78443c56635b",
+          "source_url": "https://www.ndure.com/products/downtown-sneakers-for-men-m-sn-nit-0008-brown",
+          "name": "Men's Contrast Sole Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPbc0028e89697",
+          "source_url": "https://www.ndure.com/products/mens-flyknit-trainers-m-pr-grn-0001-grey",
+          "name": "Men's Easy Fit Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8fa7831e75de",
+          "source_url": "https://www.ndure.com/products/womens-embellished-mules-w-bl-rmu-0012-tan",
+          "name": "Women's Embellished Mules",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPcd4778ca1bfd",
+          "source_url": "https://www.ndure.com/products/womens-easy-fit-trainers-w-sn-grn-0001-black",
+          "name": "Women's Easy-Fit Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP518473bac522",
+          "source_url": "https://www.ndure.com/products/womens-easy-fit-trainers-w-sn-grn-0001-navy",
+          "name": "Women's Easy-Fit Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP182d1491bd56",
+          "source_url": "https://www.ndure.com/products/womens-metallic-pumps-w-bl-msl-0009-tan",
+          "name": "Women's Embellished Mules",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP285a2ec74bec",
+          "source_url": "https://www.ndure.com/products/womens-daily-wear-moccs-w-bl-fst-0016-black",
+          "name": "Women's Chic Loafers",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5beb57affe7c",
+          "source_url": "https://www.ndure.com/products/womens-laser-cut-moccs-w-bl-fst-0017-pink",
+          "name": "Women's Laser-Cut Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP14f602395eb5",
+          "source_url": "https://www.ndure.com/products/womens-sleek-slip-ons-w-bl-cfe-0028-maroon",
+          "name": "Women's Sleek Slip-Ons",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1c1a3318015c",
+          "source_url": "https://www.ndure.com/products/womens-embellished-mules-w-bl-rmu-0012-cream",
+          "name": "Women's Embellished Mules",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPfc679778884c",
+          "source_url": "https://www.ndure.com/products/womens-laser-cut-moccs-w-bl-fst-0017-maroon",
+          "name": "Women's Laser-Cut Shoes",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP336aa20cb8a1",
+          "source_url": "https://www.ndure.com/products/womens-everyday-moccs-w-bl-fst-0015-tan",
+          "name": "Women's Everyday Slip-Ons",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb3c37c36e4fc",
+          "source_url": "https://www.ndure.com/products/womens-everyday-moccs-w-bl-fst-0015-navy",
+          "name": "Women's Everyday Slip-Ons",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP548e353545af",
+          "source_url": "https://www.ndure.com/products/womens-urban-chic-slip-ons-w-bl-cfe-0029-black",
+          "name": "Women's Urban Chic Slip-Ons",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPfa1b31a999e0",
+          "source_url": "https://www.ndure.com/products/womens-cushioned-runners-w-pr-leo-0034-l-grey",
+          "name": "Women's Cushioned Runners",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP28e42b1c7b81",
+          "source_url": "https://www.ndure.com/products/womens-modern-muse-slip-ons-w-bl-cfe-0030-tan",
+          "name": "Women's Modern Muse Slip-Ons",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPed743f65aecc",
+          "source_url": "https://www.ndure.com/products/womens-simple-ballerinas-w-bl-rmu-0010-green",
+          "name": "Women's Simple Ballerinas",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP21e1e772d422",
+          "source_url": "https://www.ndure.com/products/womens-simple-ballerinas-w-bl-rmu-0010-pink",
+          "name": "Women's Simple Ballerinas",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPca11fa8888d2",
+          "source_url": "https://www.ndure.com/products/sunsplash-boys-sliders-b-sl-bmb-0004-navy",
+          "name": "SunSplash Boy's Sliders",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "incomplete_products_count": 90,
+      "incomplete_products_truncated": false,
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/ndure-incomplete-products/8323a168759ecb4a/manifest.json",
+      "original_source_sha256": "eb57ce0ef4de24d3e78acefd9460bc1b20005f7858e9f09b51766f6c548f1144",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-10T12:11:48.763065+00:00",
+        "updated_utc": "2026-11-10T12:11:48.763065+00:00",
+        "next_source_check_due_utc": "2026-11-10T12:26:48.763065+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Primary product type and Category disagree: earrings"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
+      "owner_grocery_scope_repairs": 0,
       "description_repairs_count": 0,
       "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
@@ -5175,7 +5941,6 @@
       "source_sha256": "eb57ce0ef4de24d3e78acefd9460bc1b20005f7858e9f09b51766f6c548f1144",
       "description_style_version": "customer-copy-v3",
       "refresh_generation": "refresh20261108-92345025",
-      "delivery_status": "verified",
       "held_input": "inputs/fresh804-20261026-5d42fe35/ndure/eb57ce0ef4de24d3/manifest.json"
     },
     "Saeed Ghani": {
@@ -19741,11 +20506,11 @@
     "42490493301": "42490493301:13632341368:444743bd303c17af34c92f7469f33c67297e61795dc975ee049211486984642f",
     "42490494918": "42490494918:13627785233:444743bd303c17af34c92f7469f33c67297e61795dc975ee049211486984642f",
     "42490496761": "42490496761:13632577319:444743bd303c17af34c92f7469f33c67297e61795dc975ee049211486984642f",
-    "42501279689": "42501279689:13637581534:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
-    "42504045038": "42504045038:13636679200:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
+    "42501279689": "42501279689:13637581534:444743bd303c17af34c92f7469f33c67297e61795dc975ee049211486984642f",
+    "42504045038": "42504045038:13636679200:444743bd303c17af34c92f7469f33c67297e61795dc975ee049211486984642f",
     "42490473879": "42490473879:13628426087:444743bd303c17af34c92f7469f33c67297e61795dc975ee049211486984642f",
     "42490481654": "42490481654:13628485154:444743bd303c17af34c92f7469f33c67297e61795dc975ee049211486984642f",
-    "42490498711": "42490498711:13629146918:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
+    "42490498711": "42490498711:13629146918:444743bd303c17af34c92f7469f33c67297e61795dc975ee049211486984642f",
     "42504503242": "42504503242:13627902040:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
     "42505103826": "42505103826:13633017827:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
     "42505128072": "42505128072:13634007020:75bd1248fbcbf1ace4bd1becc7424cfaa66e0ec9d9f26c3292eca9cf695695d0",
@@ -19887,8 +20652,8 @@
     "SE10031-duplicate-1Ks82WX2VzN1KU6kZ6NeqwKekbY26zzWI": "inputs/fresh804-20261026-5d42fe35/rollback-se10031-duplicate-1ks82wx2vzn1ku6kz6neqwkekby26zzwi/d9aacb682a2d4c85/manifest.json",
     "SE10031-duplicate-18tnnYT7M9sV8Q3AsO7VLfpuWm304vVLE": "inputs/fresh804-20261026-5d42fe35/rollback-se10031-duplicate-18tnnyt7m9sv8q3aso7vlfpuwm304vvle/7e4dc57a4ce784c6/manifest.json"
   },
-  "audit804_last_store": "The Paper Worm",
-  "audit804_progress_utc": "2026-11-10T12:10:42.337759+00:00",
+  "audit804_last_store": "Ndure",
+  "audit804_progress_utc": "2026-11-10T12:11:48.764358+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Blackbeiger",
