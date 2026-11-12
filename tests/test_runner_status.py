@@ -28,6 +28,11 @@ class EarlyStatusTests(unittest.TestCase):
   self.assertEqual(events[-1][1]['fresh_stores'],{'A':'running'});self.assertEqual(events[-1][1]['active_queued'],1)
 
 class OverviewTests(unittest.TestCase):
+ def test_previous_refresh_does_not_hide_current_hold_or_count_as_fresh(self):
+  from runner_status import store_overview,current_verified_uploads
+  drive={'audit804_refresh_generation':'new','uploaded':{'A':{'campaign_id':'batch','refresh_generation':'old','audit804':{'status':'pass'}},'B':{'campaign_id':'batch','refresh_generation':'new','audit804':{'status':'pass'}}},'audit804_results':{'A':{'campaign_id':'batch','status':'hold','findings_count':1,'findings':[]}}}
+  self.assertEqual(set(current_verified_uploads(drive,'batch')),{'B'})
+  self.assertEqual(store_overview({'runs':[]},drive,'batch')['A']['state'],'correction_queue')
  def test_export_correction_delivery_and_stale_progress_are_distinct(self):
   from runner_status import store_overview
   report={'runs':[{'databaseId':1,'status':'in_progress','stores':{'A':'done','B':'done','C':'running'},'snapshot_stale':True}]}

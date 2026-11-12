@@ -55,6 +55,7 @@ def main():
      record['result_container']=page.locator('#product_result').evaluate_all('(nodes) => nodes.map(n => n.innerText.slice(0,15000))')
      record['pagination']=page.locator('.pages a[href],a.next[href]').evaluate_all('(nodes) => nodes.map(n => ({text:n.innerText,url:n.href}))')
      record['next_pages']=[]
+     record['page_size_controls']=page.locator('select[data-role="limiter"],select#limiter').evaluate_all('(nodes) => nodes.map(n => ({id:n.id,options:Array.from(n.options).map(o=>({value:o.value,selected:o.selected}))}))')
      seed=urlsplit(scope['url']);seed_query=dict(parse_qsl(seed.query))
      candidates=[]
      for link in record['pagination']:
@@ -65,6 +66,26 @@ def main():
       if not next_response or next_response.status>=400:record['next_pages'].append(dict(url=url,status=next_response.status if next_response else None));continue
       page.wait_for_timeout(5000)
       record['next_pages'].append(dict(url=url,status=next_response.status,toolbar=[v.inner_text() for v in page.locator('.toolbar-amount').all()],cards=page.locator('.products-grid .product-item').evaluate_all('(nodes) => nodes.map(n => ({text:n.innerText.slice(0,250),links:Array.from(n.querySelectorAll(\"a.product-item-link[href]\")).map(a=>a.href)}))')))
+     if record['page_size_controls']:
+      page.goto(scope['url'],wait_until='domcontentloaded',timeout=60000)
+      limiter=page.locator('select[data-role="limiter"],select#limiter').first
+      options=record['page_size_controls'][0]['options'];value=next((v['value'] for v in options if str(v['value']).isdigit()),None)
+      if value:
+       limiter.select_option(value);page.wait_for_timeout(4000)
+       record['explicit_page_size']=dict(value=value,url=page.url,pages=[])
+       targets=[page.url];seen=set()
+       while targets and len(seen)<5:
+        target=targets.pop(0)
+        if target in seen:continue
+        part=urlsplit(target);q=dict(parse_qsl(part.query))
+        if part.hostname!=seed.hostname or part.path.rstrip('/')!=seed.path.rstrip('/') or any(q.get(k)!=v for k,v in seed_query.items()):raise ValueError('Page-size UI changed owner scope')
+        seen.add(target);response=page.goto(target,wait_until='domcontentloaded',timeout=60000)
+        if not response or response.status>=400:break
+        page.wait_for_timeout(2000)
+        record['explicit_page_size']['pages'].append(dict(url=page.url,toolbar=page.locator('.toolbar-amount').all_text_contents(),links=page.locator('.products-grid .product-item a.product-item-link[href]').evaluate_all('(nodes)=>nodes.map(n=>n.href)')))
+        for link in page.locator('.pages a[href],a.next[href]').evaluate_all('(nodes)=>nodes.map(n=>n.href)'):
+         part=urlsplit(link);query=dict(parse_qsl(part.query))
+         if part.hostname==seed.hostname and part.path.rstrip('/')==seed.path.rstrip('/') and {k:v for k,v in query.items() if k!='p'}=={k:v for k,v in q.items() if k!='p'} and link not in seen and link not in targets:targets.append(link)
     except Exception as exc:record['error']=type(exc).__name__
     finally:page.close();record['production_parser']=parser_evidence(scope);report['scopes'].append(record)
   finally:browser.close()

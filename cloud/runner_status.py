@@ -68,9 +68,14 @@ def inspect_run(run,now):
   except RuntimeError:item['failure_details_unavailable']=True
  return item
 
+def current_verified_uploads(drive,campaign):
+ """An older refresh receipt must not conceal a current fetch or audit hold."""
+ generation=drive.get('audit804_refresh_generation')
+ return {name:value for name,value in drive.get('uploaded',{}).items() if value.get('campaign_id')==campaign and value.get('audit804',{}).get('status')=='pass' and (not generation or value.get('refresh_generation')==generation)}
+
 def store_overview(report,drive,campaign):
  """Separate fetching, correction and delivery; a done export is not an upload."""
- delivered={name:value for name,value in drive.get('uploaded',{}).items() if value.get('campaign_id')==campaign and value.get('audit804',{}).get('status')=='pass'}
+ delivered=current_verified_uploads(drive,campaign)
  holds={name:value for name,value in drive.get('audit804_results',{}).items() if value.get('campaign_id')==campaign and value.get('status')=='hold'}
  result={}
  for run in report.get('runs',[]):
@@ -113,7 +118,7 @@ def main():
  try:
   drive=read_json(gh,'repos/'+REPO+'/contents/latest.json?ref=drive-sync-reports')
   report['store_overview']=store_overview(report,drive,campaign)
-  report['drive']={'current_campaign':campaign,'fresh_verified_files':sum(v.get('campaign_id')==campaign and v.get('audit804',{}).get('status')=='pass' for v in drive.get('uploaded',{}).values()),'audit_progress_utc':drive.get('audit804_progress_utc'),'sync_status':drive.get('sync_status'),'sync_error':drive.get('sync_error'),'last_scan_utc':drive.get('last_scan_utc'),'held':drive.get('held',{}),'verified_files':len(drive.get('uploaded',{})),'original_uploads':drive.get('original_uploads',{}),'verified_utc':drive.get('verified_utc'),'folders':{k:len(v) for k,v in drive.get('daily_uploads',{}).items()},'latest_move':drive.get('moves',[])[-1:]}
+  report['drive']={'current_campaign':campaign,'fresh_verified_files':len(current_verified_uploads(drive,campaign)),'audit_progress_utc':drive.get('audit804_progress_utc'),'sync_status':drive.get('sync_status'),'sync_error':drive.get('sync_error'),'last_scan_utc':drive.get('last_scan_utc'),'held':drive.get('held',{}),'verified_files':len(drive.get('uploaded',{})),'original_uploads':drive.get('original_uploads',{}),'verified_utc':drive.get('verified_utc'),'folders':{k:len(v) for k,v in drive.get('daily_uploads',{}).items()},'latest_move':drive.get('moves',[])[-1:]}
  except (RuntimeError,ValueError,KeyError):report['drive']={'status':'unavailable; not claimed verified'};report['store_overview']=store_overview(report,{},campaign)
  local_reports=[]
  for filename in ('khaadi.json','khaadi-android.json'):
