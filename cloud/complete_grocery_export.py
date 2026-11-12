@@ -13,6 +13,13 @@ from rule804_pipeline import process
 from audit804 import run as audit
 from locked_store_rules import incomplete_product_reasons
 ROOT=Path(__file__).resolve().parents[1]
+def require_scope_complete(out,scope,index,urls,total,pages,count_changed,coverage):
+ """Keep actionable source proof even when completion is correctly refused."""
+ if not count_changed and (total is None or len(urls)==total):return
+ evidence=dict(status='held_source_coverage',source_run=os.environ.get('GROCERY_SOURCE_RUN'),checkpoint_run=os.environ.get('GROCERY_CHECKPOINT_RUN'),completed_scopes=coverage,unresolved_scope=dict(index=index,label=scope['label'],url=scope['url'],visible=len(urls),total=total,count_changed=count_changed,links=sorted(urls),pages=sorted(pages)))
+ (out/'grocery-coverage-hold.json').write_text(json.dumps(evidence,indent=2))
+ raise ValueError('Fresh grocery scope still inconsistent: '+scope['label']+'; visible='+str(len(urls))+'; total='+str(total)+'; count_changed='+str(count_changed)+'; source proof saved; no complete catalog approval')
+
 def pending_scope_indexes(pages,snapshots,reported_reviews):
  """Recheck only proved incomplete scopes; inconsistent receipts require all scopes."""
  pending=set()
@@ -80,7 +87,7 @@ def main():
   for index,scope in enumerate(request['pages'],1):
    if index in pending:
     urls,total,pages=reader.discover_scope(scope)
-    if reader.scope_count_changed or total is not None and len(urls)!=total:raise ValueError('Fresh grocery scope still inconsistent: '+scope['label'])
+    require_scope_complete(out,scope,index,urls,total,pages,reader.scope_count_changed,coverage)
     for url in urls:
      if url not in existing:candidates.setdefault(url,scope)
     coverage.append(dict(index=index,url=scope['url'],visible=len(urls),total=total,pages=len(pages),evidence='fresh exact public UI/page recheck'))

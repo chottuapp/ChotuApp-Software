@@ -26,6 +26,18 @@ jobs:
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
+        timeout-minutes: 8
+        with:
+          # Historical deliveries and install archives are not runtime inputs.
+          # Sparse checkout also enables a blob-filtered fetch in checkout@v4.
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*.zip
+            !/*.rar
+            !/catalog-files/
+            !/pc-backups/
+            !/catalog-inputs/**/*.zip
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'

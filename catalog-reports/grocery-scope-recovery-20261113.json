@@ -3,11 +3,27 @@
   "source_run": "43238339380",
   "checkpoint_run": "43238339380",
   "refresh_generation": "refresh20261112-5f1c5ec3",
-  "status": "queued",
+  "status": "blocked_source_coverage",
   "approval_gate": "Not deliverable until this exact main workflow succeeds, current-generation source is validated, independent full audit passes and checksum verification succeeds.",
   "workflow_permissions": "Existing read-only contents/actions unchanged",
   "scope": "Reconcile unresolved exact owner scopes from saved discovery; append missing valid products only; retain full original for normal durable audit quarantine.",
   "previous_run": "43308924679",
   "previous_failure": "Legacy discovery-cache shape assumption; no source facts approved",
-  "checkpoint_reader": "Missing caches require fresh scope checks; multiple caches use exact approved scope identities"
+  "checkpoint_reader": "Missing caches require fresh scope checks; multiple caches use exact approved scope identities",
+  "failure": "Dawn Bread public listing advertises 33 products but provides 29 unique product links across all native pages.",
+  "public_ui_probe_run": "43321374906",
+  "native_pagination_probe_run": "43320630453",
+  "source_counts": {
+    "advertised": 33,
+    "default_page_cards": [
+      28,
+      1
+    ],
+    "explicit_20_page_cards": [
+      18,
+      11
+    ],
+    "unique_links_both_traversals": 29
+  },
+  "no_completeness_waiver": true
 }

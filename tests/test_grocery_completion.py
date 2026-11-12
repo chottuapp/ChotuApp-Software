@@ -3,6 +3,18 @@ from pathlib import Path
 from openpyxl import Workbook,load_workbook
 from complete_grocery_export import merge
 class GroceryCompletionTests(unittest.TestCase):
+ def test_incomplete_scope_keeps_source_proof_without_a_completion_manifest(self):
+  import json
+  from complete_grocery_export import require_scope_complete
+  with tempfile.TemporaryDirectory() as tmp:
+   out=Path(tmp);scope={'label':'Dawn Bread','url':'https://www.naheed.pk/allproducts/?manufacturer=890'}
+   with self.assertRaisesRegex(ValueError,'visible=1; total=2'):
+    require_scope_complete(out,scope,8,{'https://www.naheed.pk/item'},2,{scope['url']},False,[])
+   proof=json.loads((out/'grocery-coverage-hold.json').read_text())
+   self.assertEqual(proof['unresolved_scope']['links'],['https://www.naheed.pk/item'])
+   self.assertEqual(proof['status'],'held_source_coverage');self.assertFalse((out/'completion-manifest.json').exists())
+   with self.assertRaisesRegex(ValueError,'count_changed=True'):
+    require_scope_complete(out,scope,8,{'https://www.naheed.pk/item'},1,{scope['url']},True,[])
  def create(self,path,pid,price):
   b=Workbook();b.remove(b.active)
   for name,key in [('Products','product_id'),('Product Images','image_id'),('Option Groups','group_id'),('Options','option_id'),('Variant Combinations','combination_id')]:
