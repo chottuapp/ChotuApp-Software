@@ -4214,7 +4214,7 @@
   "original_uploads": {},
   "audit804_processed": {
     "Miss Rose": "source:d87232c16358d5a462a05888af88212cecac9e9958afe445b02f73877348df3c:Miss Rose:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb",
-    "Rivaj UK": "source:6e6cb3df7ccd680a22bac4acf4de25142942802ff70d3ba8559528facd86e632:Rivaj UK:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
+    "Rivaj UK": "source:6094852691bd3bdc704d8317c9d2e6aed4b17527bd3edc1e5d7e03404236b41b:Rivaj UK:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb",
     "Rawayat": "source:e5e4f92e82590df4c93300e6afe0d1dd51adb8d233c95101e9a80daa4182ee39:Rawayat:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
     "Junaid Jamshed": "source:8781f131bdea4d3a090afdd4ee9837d9216a3c43119c2c42a8cf2f657d3c58ef:Junaid Jamshed:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
     "Stylo": "source:7fb8480bb13288321fe6a910a7fb581f84f8a6405f11952cb2f90917a2f680a8:Stylo:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
@@ -5289,22 +5289,45 @@
       "store": "Rivaj UK",
       "shop_code": "SE10012",
       "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 293,
-      "findings_count": 0,
-      "findings": [],
+      "status": "hold",
+      "products_checked": 311,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CP80cb29796791",
+          "name": "RHD EYESHADOW MAGICAL DAZZLING",
+          "source_url": "https://rivaj-uk.com/products/rivaj-magical-dazzling-eyeshadow-rivaj-hd",
+          "issues": [
+            "Primary product type and Category disagree: eyeshadow"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "2bdeab8c436720db7e5e19b4cf847274558f3f43240a4573721aba4d76ebee75",
-      "checked_utc": "2026-11-11T17:38:01.703074+00:00",
+      "workbook_sha256": "a4ab1e35f8ec354c10770a157a0df6136581266e84b415220d943b2bbc445d2b",
+      "checked_utc": "2026-11-12T15:48:26.763628+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-12T15:48:26.764220+00:00",
+        "updated_utc": "2026-11-12T15:48:26.764220+00:00",
+        "next_source_check_due_utc": "2026-11-12T16:03:26.764220+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Primary product type and Category disagree: eyeshadow"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
       "owner_grocery_scope_repairs": 0,
-      "description_repairs_count": 25,
+      "description_repairs_count": 31,
       "description_repairs_examples": [
         {
           "product_id": "CP284fa65d7635",
@@ -5358,13 +5381,12 @@
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "42490425251",
-      "source_artifact": 13627465619,
-      "source_sha256": "6e6cb3df7ccd680a22bac4acf4de25142942802ff70d3ba8559528facd86e632",
+      "source_run": "43201362176",
+      "source_artifact": 13946688642,
+      "source_sha256": "6094852691bd3bdc704d8317c9d2e6aed4b17527bd3edc1e5d7e03404236b41b",
       "description_style_version": "customer-copy-v3",
-      "refresh_generation": "refresh20261108-92345025",
-      "delivery_status": "verified",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/rivaj-uk/6e6cb3df7ccd680a/manifest.json"
+      "refresh_generation": "refresh20261112-5f1c5ec3",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/rivaj-uk/6094852691bd3bdc/manifest.json"
     },
     "Vince Care": {
       "name": "804 Audit",
@@ -21181,7 +21203,8 @@
     "42681203970": "42681203970:13722094814:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
     "42728047948": "42728047948:13738860238:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
     "42763203221": "42763203221:13755653799:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
-    "42802656967": "42802656967:13779918009:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe"
+    "42802656967": "42802656967:13779918009:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
+    "43201353964": "43201353964:13947776715:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-11-12T15:42:54.529746+00:00",
@@ -21289,8 +21312,8 @@
     "SE10029-duplicate-1vZhH7OpSqLrQAokrEBL71ZsanJ_q9cU3": "inputs/fresh804-20261026-5d42fe35/rollback-se10029-duplicate-1vzhh7opsqlrqaokrebl71zsanj-q9cu3/fb102c981d6e6723/manifest.json",
     "SE10078": "inputs/fresh804-20261026-5d42fe35/rollback-se10078/c269ca0270e0db97/manifest.json"
   },
-  "audit804_last_store": "Miss Rose",
-  "audit804_progress_utc": "2026-11-12T15:48:13.244115+00:00",
+  "audit804_last_store": "Rivaj UK",
+  "audit804_progress_utc": "2026-11-12T15:48:28.931935+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
