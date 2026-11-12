@@ -73,7 +73,16 @@ def main():
       if value:
        limiter.select_option(value);page.wait_for_timeout(4000)
        record['explicit_page_size']=dict(value=value,url=page.url,pages=[])
-       targets=[page.url];seen=set()
+       record['explicit_page_size']['selected_toolbar']=page.locator('.toolbar-amount').all_text_contents()
+       record['explicit_page_size']['selected_pagination']=page.locator('.pages a[href],a.next[href]').evaluate_all('(nodes)=>nodes.map(n=>n.href)')
+       # Inspect the public toolbar configuration before testing its named URL control.
+       from bs4 import BeautifulSoup
+       toolbar=BeautifulSoup(page.content(),'html.parser')
+       record['toolbar_config']=[dict(n.attrs) for n in toolbar.select('[data-mage-init]') if 'productListToolbarForm' in n.get('data-mage-init','')]
+       from urllib.parse import urlencode,urlunsplit
+       q=dict(seed_query,product_list_limit=value)
+       target=urlunsplit((seed.scheme,seed.netloc,seed.path,urlencode(q),''))
+       targets=[target];seen=set()
        while targets and len(seen)<5:
         target=targets.pop(0)
         if target in seen:continue
