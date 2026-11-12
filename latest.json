@@ -3741,7 +3741,7 @@
     "Makeup Gallery": "source:e94c513401e6f4915eb3b231b6991945f18cc60870a25814f3831b47e5f56d46:Makeup Gallery:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
     "Alkaram Studio": "source:2288ecfb455854c8d04cc8b319586f66fe4f6f3c049c6b433f2399b534d051ce:Alkaram Studio:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
     "So Komal": "source:0ee1d5a314b3aca156c5ca08add6b926c0e1ba16e15a237eb5ab5a4e12ded0f7:So Komal:72a55f669e961baab2a494889bb6ecf8777199b5ab5cf6fd913638cef1c67092",
-    "Generation": "source:531c62514315fb9fcfa9c47a461607c39f59abadfd34c1d108ce66cc1b29bfe6:Generation:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
+    "Generation": "source:0adef8b33ab7977e8f5f2e43e3e2e6a6898c748ad5cab2f344cf5fb50e302ff4:Generation:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
     "Rios": "source:a3b70b2529e10006d227027cdcf3c2f84a6dc22bb84c7fa3c04f22e123890ff6:Rios:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
     "Taminzo": "source:62da8e518f2580959e80eb117d1ba735a557eeec23b9d2a51adc55cbd7ead913:Taminzo:72a55f669e961baab2a494889bb6ecf8777199b5ab5cf6fd913638cef1c67092",
     "Saya": "source:ad90a9d06827c67eb115f5cdac3998a51c34e19143bf040c73b0d225c1ae421a:Saya:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
@@ -12191,13 +12191,38 @@
       "store": "Generation",
       "shop_code": "SE10048",
       "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 802,
-      "findings_count": 0,
-      "findings": [],
+      "status": "hold",
+      "products_checked": 833,
+      "findings_count": 3,
+      "findings": [
+        {
+          "product_id": "CP4881dd317077",
+          "name": "Techno Sharara Set",
+          "source_url": "https://generation.com.pk/products/w26k3521-plum",
+          "issues": [
+            "Primary product type and Category disagree: kurta"
+          ]
+        },
+        {
+          "product_id": "CPa4fd752ebe2a",
+          "name": "Kashmiri Chai Sharara Set",
+          "source_url": "https://generation.com.pk/products/w26k3521-chai",
+          "issues": [
+            "Primary product type and Category disagree: kurta"
+          ]
+        },
+        {
+          "product_id": "CPeccc183fff2f",
+          "name": "Knitted Beanie",
+          "source_url": "https://generation.com.pk/products/w26w3235-mocha-mouse",
+          "issues": [
+            "Primary product type and Category disagree: computer mouse"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "a9d93bbd5caac3b865be9d4820882a0f79dbd97361bc675219a3d3ff1f4c912b",
-      "checked_utc": "2026-11-12T00:55:27.941447+00:00",
+      "workbook_sha256": "a347929e8d84222fd28d7ca33c548b0fb6349f6ad6b6f8381e2d7932794a1e57",
+      "checked_utc": "2026-11-12T19:46:09.679471+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "incomplete_products_excluded": [
         {
@@ -12235,11 +12260,26 @@
       ],
       "incomplete_products_count": 4,
       "incomplete_products_truncated": false,
-      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/generation-incomplete-products/5d2686f3374c41c8/manifest.json",
-      "original_source_sha256": "531c62514315fb9fcfa9c47a461607c39f59abadfd34c1d108ce66cc1b29bfe6",
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/generation-incomplete-products/d145c7fc4915dcc7/manifest.json",
+      "original_source_sha256": "0adef8b33ab7977e8f5f2e43e3e2e6a6898c748ad5cab2f344cf5fb50e302ff4",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-12T19:46:11.435055+00:00",
+        "updated_utc": "2026-11-12T19:46:11.435055+00:00",
+        "next_source_check_due_utc": "2026-11-12T20:01:11.435055+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Primary product type and Category disagree: computer mouse",
+          "Primary product type and Category disagree: kurta"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
@@ -12247,13 +12287,12 @@
       "description_repairs_count": 0,
       "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "42522938420",
-      "source_artifact": 13633409778,
-      "source_sha256": "531c62514315fb9fcfa9c47a461607c39f59abadfd34c1d108ce66cc1b29bfe6",
+      "source_run": "43268347639",
+      "source_artifact": 13971142828,
+      "source_sha256": "0adef8b33ab7977e8f5f2e43e3e2e6a6898c748ad5cab2f344cf5fb50e302ff4",
       "description_style_version": "customer-copy-v3",
-      "refresh_generation": "refresh20261108-92345025",
-      "delivery_status": "verified",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/generation/531c62514315fb9f/manifest.json"
+      "refresh_generation": "refresh20261112-5f1c5ec3",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/generation/0adef8b33ab7977e/manifest.json"
     },
     "Breakout": {
       "name": "804 Audit",
@@ -40595,7 +40634,16 @@
     "43238315043": "43238315043:13969934069:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
     "43238321114": "43238321114:13958649187:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
     "43238326996": "43238326996:13970699867:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
-    "43238333037": "43238333037:13963708230:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88"
+    "43238333037": "43238333037:13963708230:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
+    "43238339380": "43238339380:13974151557:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
+    "43247815256": "43247815256:13967351512:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
+    "43247822596": "43247822596:13966324246:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
+    "43247830325": "43247830325:13965749857:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
+    "43247837266": "43247837266:13965644804:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
+    "43247844059": "43247844059:13966877825:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
+    "43247850444": "43247850444:13967401814:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
+    "43247858664": "43247858664:13967322109:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
+    "43268312251": "43268312251:13968325186:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-11-12T15:42:54.529746+00:00",
@@ -40703,8 +40751,8 @@
     "SE10029-duplicate-1vZhH7OpSqLrQAokrEBL71ZsanJ_q9cU3": "inputs/fresh804-20261026-5d42fe35/rollback-se10029-duplicate-1vzhh7opsqlrqaokrebl71zsanj-q9cu3/fb102c981d6e6723/manifest.json",
     "SE10078": "inputs/fresh804-20261026-5d42fe35/rollback-se10078/c269ca0270e0db97/manifest.json"
   },
-  "audit804_last_store": "ChotuApp Groceries",
-  "audit804_progress_utc": "2026-11-12T19:45:07.750086+00:00",
+  "audit804_last_store": "Generation",
+  "audit804_progress_utc": "2026-11-12T19:46:11.435895+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Makeup Gallery",
