@@ -1,49 +1,44 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-12T13:13:54.705923+00:00",
-  "run_id": "43201372193",
+  "generated_utc": "2026-11-12T13:14:25.473568+00:00",
+  "run_id": "43201504379",
   "attempt": "1",
   "source_commit": "ea10cacd30197c337916f5a0aa62d799a9caf3f0",
-  "status": "complete",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 9578.8,
+  "elapsed_seconds": 680.3,
   "stores": [
     {
-      "name": "Vince Care",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "876a6eacc6f1b8ef",
-      "products": 212,
-      "variants": 372,
-      "http_statuses": {
-        "200": 334
-      },
-      "network_seconds": 747.5,
-      "max_response_seconds": 3.4,
-      "cache_events": 424
-    },
-    {
-      "name": "Elite Cosmetics",
-      "status": "done",
-      "review_required": true,
+      "name": "Toyzone",
+      "status": "pending",
+      "review_required": false,
       "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT",
-        "WEBSITE_CATEGORY_UNVERIFIED",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "876a6eacc6f1b8ef",
-      "products": 1628,
-      "variants": 2304,
       "http_statuses": {
-        "200": 2051,
-        "429": 4
+        "200": 145
       },
-      "network_seconds": 4180.2,
+      "network_seconds": 338.9,
       "max_response_seconds": 2.7,
-      "cache_events": 12569
+      "cache_events": 0
+    },
+    {
+      "name": "Toynix",
+      "status": "failed",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_403",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "876a6eacc6f1b8ef",
+      "http_statuses": {
+        "403": 2
+      },
+      "network_seconds": 0.4,
+      "max_response_seconds": 0.3,
+      "cache_events": 0
     }
   ]
 }

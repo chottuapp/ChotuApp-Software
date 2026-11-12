@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-12T13:14:25.473568+00:00",
+  "run_id": "43201504379",
+  "attempt": "1",
+  "source_commit": "ea10cacd30197c337916f5a0aa62d799a9caf3f0",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 680.3,
+  "stores": [
+    {
+      "name": "Toyzone",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "876a6eacc6f1b8ef",
+      "http_statuses": {
+        "200": 145
+      },
+      "network_seconds": 338.9,
+      "max_response_seconds": 2.7,
+      "cache_events": 0
+    },
+    {
+      "name": "Toynix",
+      "status": "failed",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_403",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "876a6eacc6f1b8ef",
+      "http_statuses": {
+        "403": 2
+      },
+      "network_seconds": 0.4,
+      "max_response_seconds": 0.3,
+      "cache_events": 0
+    }
+  ]
+}
