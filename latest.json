@@ -1,41 +1,46 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-12T14:41:20.648173+00:00",
-  "run_id": "43238208857",
+  "generated_utc": "2026-11-12T14:52:24.150194+00:00",
+  "run_id": "43238179415",
   "attempt": "1",
   "source_commit": "ff15165a095b202ee99fe09db8865d51f1dcbcb1",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 493.6,
+  "elapsed_seconds": 1152.1,
   "stores": [
     {
-      "name": "Pyari Walls",
+      "name": "Servis",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "876a6eacc6f1b8ef",
-      "products": 301,
-      "variants": 758,
+      "products": 1014,
+      "variants": 5533,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
       "cache_events": 0
     },
     {
-      "name": "Sana Safinaz",
+      "name": "Ndure",
       "status": "done",
       "review_required": true,
-      "issue_codes": [],
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
       "software_revision": "59351b9269aef9e6",
-      "products": 866,
-      "variants": 2662,
+      "products": 1857,
+      "variants": 12363,
       "http_statuses": {
-        "200": 35
+        "200": 185,
+        "429": 1
       },
-      "network_seconds": 148.9,
-      "max_response_seconds": 12.5,
-      "cache_events": 7595
+      "network_seconds": 456.1,
+      "max_response_seconds": 9.9,
+      "cache_events": 12025
     }
   ]
 }
