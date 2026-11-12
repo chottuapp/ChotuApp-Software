@@ -3811,7 +3811,7 @@
     "Limelight": "source:3f7153c6181b9f294176c64c9cf2fbd8ffbf39a3cdeb243460ea9da311f8f3f1:Limelight:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
     "Fresh Basket": "source:1a87c0b603bf29fca5e6944b611989df0747c737fd167f06e524b2433b13fc42:Fresh Basket:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb",
     "Seran": "source:1a5cf76e4a0daca286fbd5a2721febd98f0c2ad3ec9587d9eaf487799bf72527:Seran:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb",
-    "Sana Safinaz": "source:2f628516384e386b777f1e7dbac99c813098448b1a33f6d882bb42130eb26048:Sana Safinaz:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
+    "Sana Safinaz": "source:427430cc0d8475986b6d8d930be8640ee3379fc18b567ceba3b91b2272aae1c6:Sana Safinaz:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb",
     "Beyond East": "source:e9435f62ff0ce282322836bc7a516ffee9ea2fcf48f5a0a244003705150a4d13:Beyond East:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb",
     "Shop Modest": "source:466678244efe2e1809dee7152e380a31685d6c88e79686cdaac9b399af1d1276:Shop Modest:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb",
     "Computer Zone": "source:ee483945600c6766c051a3e8fd945000421da2bd9a813a617c36249de30028fd:Computer Zone:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb",
@@ -11091,13 +11091,22 @@
       "store": "Sana Safinaz",
       "shop_code": "SE10043",
       "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 829,
-      "findings_count": 0,
-      "findings": [],
+      "status": "hold",
+      "products_checked": 841,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CP012d5c82c25c",
+          "name": "TROPICAL (SS26SM55P2T)",
+          "source_url": "https://sanasafinaz.com/products/tropical-ss26sm55p2t",
+          "issues": [
+            "Primary product type and Category disagree: trousers"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "d1addc6367a3c44038b84b4b8adeb5299da44b141a0947932c45e4b53015288b",
-      "checked_utc": "2026-11-11T23:49:39.450010+00:00",
+      "workbook_sha256": "944f7afc059c77b8edfd350b58dba91beebddc428a628e26cf34590b2a21efa0",
+      "checked_utc": "2026-11-12T17:29:26.329832+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "incomplete_products_excluded": [
         {
@@ -11144,9 +11153,25 @@
           ]
         },
         {
+          "product_id": "CP1a35ecafa308",
+          "source_url": "https://sanasafinaz.com/products/ss25bsp534-ss25bsp534",
+          "name": "SS25BSP534",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
           "product_id": "CP4f279ad5f035",
           "source_url": "https://sanasafinaz.com/products/ss26for429p2t",
           "name": "SS26FOR429P2T",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPe1519a8d5b34",
+          "source_url": "https://sanasafinaz.com/products/ss26for430p3",
+          "name": "SS26FOR430P3",
           "issues": [
             "Category blank or unresolved"
           ]
@@ -11163,6 +11188,14 @@
           "product_id": "CP1ed75935c13b",
           "source_url": "https://sanasafinaz.com/products/ss26for434p3",
           "name": "SS26FOR434P3",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP0baa9cc716f8",
+          "source_url": "https://sanasafinaz.com/products/ss26for435p3",
+          "name": "SS26FOR435P3",
           "issues": [
             "Category blank or unresolved"
           ]
@@ -11277,26 +11310,40 @@
           ]
         },
         {
-          "product_id": "CP1a35ecafa308",
-          "source_url": "https://sanasafinaz.com/products/ss25bsp534-ss25bsp534",
-          "name": "SS25BSP534",
+          "product_id": "CPf21c7daa0541",
+          "source_url": "https://sanasafinaz.com/products/zona",
+          "name": "ZONA",
           "issues": [
-            "Category lacks clear product-purpose evidence; manual review required"
+            "Category blank or unresolved"
           ]
         }
       ],
-      "incomplete_products_count": 22,
+      "incomplete_products_count": 25,
       "incomplete_products_truncated": false,
-      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/sana-safinaz-incomplete-products/508d1b426566606f/manifest.json",
-      "original_source_sha256": "2f628516384e386b777f1e7dbac99c813098448b1a33f6d882bb42130eb26048",
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/sana-safinaz-incomplete-products/8543d2fb132cfc93/manifest.json",
+      "original_source_sha256": "427430cc0d8475986b6d8d930be8640ee3379fc18b567ceba3b91b2272aae1c6",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-12T17:29:28.620328+00:00",
+        "updated_utc": "2026-11-12T17:29:28.620328+00:00",
+        "next_source_check_due_utc": "2026-11-12T17:44:28.620328+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Primary product type and Category disagree: trousers"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
       "owner_grocery_scope_repairs": 0,
-      "description_repairs_count": 354,
+      "description_repairs_count": 355,
       "description_repairs_examples": [
         {
           "product_id": "CPb7d253935a49",
@@ -11350,13 +11397,12 @@
         }
       ],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "42490460504",
-      "source_artifact": 13627067218,
-      "source_sha256": "2f628516384e386b777f1e7dbac99c813098448b1a33f6d882bb42130eb26048",
+      "source_run": "43238208857",
+      "source_artifact": 13952584409,
+      "source_sha256": "427430cc0d8475986b6d8d930be8640ee3379fc18b567ceba3b91b2272aae1c6",
       "description_style_version": "customer-copy-v3",
-      "refresh_generation": "refresh20261108-92345025",
-      "delivery_status": "verified",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/sana-safinaz/2f628516384e386b/manifest.json"
+      "refresh_generation": "refresh20261112-5f1c5ec3",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/sana-safinaz/427430cc0d847598/manifest.json"
     },
     "Beyond East": {
       "name": "804 Audit",
@@ -20909,7 +20955,10 @@
     "43238157977": "43238157977:13953337523:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb",
     "43238172050": "43238172050:13952728163:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb",
     "43238179415": "43238179415:13954492881:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb",
-    "43238184535": "43238184535:13952124802:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb"
+    "43238184535": "43238184535:13952124802:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb",
+    "43238189595": "43238189595:13953717744:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb",
+    "43238194843": "43238194843:13953227843:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb",
+    "43238202778": "43238202778:13952274395:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-11-12T15:42:54.529746+00:00",
@@ -21017,8 +21066,8 @@
     "SE10029-duplicate-1vZhH7OpSqLrQAokrEBL71ZsanJ_q9cU3": "inputs/fresh804-20261026-5d42fe35/rollback-se10029-duplicate-1vzhh7opsqlrqaokrebl71zsanj-q9cu3/fb102c981d6e6723/manifest.json",
     "SE10078": "inputs/fresh804-20261026-5d42fe35/rollback-se10078/c269ca0270e0db97/manifest.json"
   },
-  "audit804_last_store": "Prime Ticks",
-  "audit804_progress_utc": "2026-11-12T17:28:50.387106+00:00",
+  "audit804_last_store": "Sana Safinaz",
+  "audit804_progress_utc": "2026-11-12T17:29:28.620903+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
