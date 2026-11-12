@@ -4201,7 +4201,7 @@
     "Essence": "source:f829588cfdce46314a12b4d7bfbd038856f255e23a5cd9adc6f881d7a95823ff:Essence:72a55f669e961baab2a494889bb6ecf8777199b5ab5cf6fd913638cef1c67092",
     "VNS Collection": "source:a405ada33b75dbb736f68396a910de9d1991b046a4daff7694b8c6735f567548:VNS Collection:72a55f669e961baab2a494889bb6ecf8777199b5ab5cf6fd913638cef1c67092",
     "The Paper Worm": "source:358dff62cefdce4155375b3a748d1a20033222ec0a783350f4991e1bf8e42ff7:The Paper Worm:72a55f669e961baab2a494889bb6ecf8777199b5ab5cf6fd913638cef1c67092",
-    "The Hanger Pakistan": "source:e618daa4ef53edd48c8ecb3ef9d7a36be131a60d05f4d7db34366009cc3798dc:The Hanger Pakistan:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
+    "The Hanger Pakistan": "source:1e9220d37c6c669f89f0b5dde92d395ffd371ce209708a1677258fa1faead472:The Hanger Pakistan:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb",
     "Islamabad Tea": "source:1785982dc27a9a7db2d736cb243b8327cf73bb80e1afd03f245fc72222078f4e:Islamabad Tea:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
     "Adam Cheese": "source:ffbb2f7cb5d2262de7c8d6a78b126cc6613c9261bc8be6140747878375f5bd67:Adam Cheese:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
     "Farda Foods": "source:e38c761b570286ad0e63ba893b8f7e8a3c4616aaa81b6fffdb29c7497121fd43:Farda Foods:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
@@ -4323,13 +4323,22 @@
       "store": "The Hanger Pakistan",
       "shop_code": "SE10007",
       "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 349,
-      "findings_count": 0,
-      "findings": [],
+      "status": "hold",
+      "products_checked": 354,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CP69735ed41a6b",
+          "name": "Denim Skater Trouser",
+          "source_url": "https://thehangerpakistan.com/products/denim-skater-trouser",
+          "issues": [
+            "Primary product type and Category disagree: trousers"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "8e9667db804c7b4a60f4cd09ad3113b5111768b14de9546a88dd3e6f56fc25d9",
-      "checked_utc": "2026-11-11T17:45:48.142291+00:00",
+      "workbook_sha256": "de49bbdafb72a0a64027ea7c63b19235be34de7ee1a480a7c0428e7ee234ef03",
+      "checked_utc": "2026-11-12T15:59:13.009479+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "incomplete_products_excluded": [
         {
@@ -4511,11 +4520,25 @@
       ],
       "incomplete_products_count": 22,
       "incomplete_products_truncated": false,
-      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/the-hanger-pakistan-incomplete-products/43c90c91b5a6abb9/manifest.json",
-      "original_source_sha256": "e618daa4ef53edd48c8ecb3ef9d7a36be131a60d05f4d7db34366009cc3798dc",
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/the-hanger-pakistan-incomplete-products/6cd951e7f27711e6/manifest.json",
+      "original_source_sha256": "1e9220d37c6c669f89f0b5dde92d395ffd371ce209708a1677258fa1faead472",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-12T15:59:14.616751+00:00",
+        "updated_utc": "2026-11-12T15:59:14.616751+00:00",
+        "next_source_check_due_utc": "2026-11-12T16:14:14.616751+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Primary product type and Category disagree: trousers"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
@@ -4523,13 +4546,12 @@
       "description_repairs_count": 0,
       "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "42490430676",
-      "source_artifact": 13622184296,
-      "source_sha256": "e618daa4ef53edd48c8ecb3ef9d7a36be131a60d05f4d7db34366009cc3798dc",
+      "source_run": "43201378186",
+      "source_artifact": 13937228710,
+      "source_sha256": "1e9220d37c6c669f89f0b5dde92d395ffd371ce209708a1677258fa1faead472",
       "description_style_version": "customer-copy-v3",
-      "refresh_generation": "refresh20261108-92345025",
-      "delivery_status": "verified",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/the-hanger-pakistan/e618daa4ef53edd4/manifest.json"
+      "refresh_generation": "refresh20261112-5f1c5ec3",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/the-hanger-pakistan/1e9220d37c6c669f/manifest.json"
     },
     "Shop Modest": {
       "name": "804 Audit",
@@ -21272,8 +21294,8 @@
     "SE10029-duplicate-1vZhH7OpSqLrQAokrEBL71ZsanJ_q9cU3": "inputs/fresh804-20261026-5d42fe35/rollback-se10029-duplicate-1vzhh7opsqlrqaokrebl71zsanj-q9cu3/fb102c981d6e6723/manifest.json",
     "SE10078": "inputs/fresh804-20261026-5d42fe35/rollback-se10078/c269ca0270e0db97/manifest.json"
   },
-  "audit804_last_store": "Shop Modest",
-  "audit804_progress_utc": "2026-11-12T15:58:58.233323+00:00",
+  "audit804_last_store": "The Hanger Pakistan",
+  "audit804_progress_utc": "2026-11-12T15:59:14.617286+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
