@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-12T13:16:04.423473+00:00",
+  "run_id": "43201411743",
+  "attempt": "1",
+  "source_commit": "ea10cacd30197c337916f5a0aa62d799a9caf3f0",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 9703.7,
+  "stores": [
+    {
+      "name": "Bonanza Satrangi",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "876a6eacc6f1b8ef",
+      "http_statuses": {
+        "200": 2606
+      },
+      "network_seconds": 6339.6,
+      "max_response_seconds": 3.2,
+      "cache_events": 0
+    },
+    {
+      "name": "Outfitters",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "876a6eacc6f1b8ef",
+      "products": 677,
+      "variants": 3889,
+      "http_statuses": {
+        "200": 699
+      },
+      "network_seconds": 1994.1,
+      "max_response_seconds": 35.5,
+      "cache_events": 1358
+    }
+  ]
+}

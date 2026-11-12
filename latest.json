@@ -1,54 +1,45 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-12T13:15:59.212011+00:00",
-  "run_id": "43201452018",
+  "generated_utc": "2026-11-12T13:16:04.423473+00:00",
+  "run_id": "43201411743",
   "attempt": "1",
   "source_commit": "ea10cacd30197c337916f5a0aa62d799a9caf3f0",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 8621.2,
+  "elapsed_seconds": 9703.7,
   "stores": [
     {
-      "name": "Edenrobe",
+      "name": "Bonanza Satrangi",
       "status": "pending",
       "review_required": false,
       "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "876a6eacc6f1b8ef",
       "http_statuses": {
-        "200": 2229,
-        "429": 4
+        "200": 2606
       },
-      "network_seconds": 4989.4,
-      "max_response_seconds": 2.8,
-      "cache_events": 8136
+      "network_seconds": 6339.6,
+      "max_response_seconds": 3.2,
+      "cache_events": 0
     },
     {
-      "name": "Beechtree",
+      "name": "Outfitters",
       "status": "done",
       "review_required": true,
       "issue_codes": [
-        "HTTP_404",
-        "HTTP_429",
-        "RATE_LIMIT",
-        "WEBSITE_CATEGORY_UNVERIFIED",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "876a6eacc6f1b8ef",
-      "products": 714,
-      "variants": 3053,
+      "products": 677,
+      "variants": 3889,
       "http_statuses": {
-        "200": 1538,
-        "429": 2,
-        "404": 4
+        "200": 699
       },
-      "network_seconds": 3475.1,
-      "max_response_seconds": 2.6,
-      "cache_events": 4707
+      "network_seconds": 1994.1,
+      "max_response_seconds": 35.5,
+      "cache_events": 1358
     }
   ]
 }
