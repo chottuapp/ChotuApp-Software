@@ -1,50 +1,53 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-12T13:15:46.618226+00:00",
-  "run_id": "43201471510",
+  "generated_utc": "2026-11-12T13:15:51.627431+00:00",
+  "run_id": "43201475225",
   "attempt": "1",
   "source_commit": "ea10cacd30197c337916f5a0aa62d799a9caf3f0",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 7099.0,
+  "elapsed_seconds": 6183.6,
   "stores": [
     {
-      "name": "Rios",
+      "name": "Limelight",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "876a6eacc6f1b8ef",
+      "http_statuses": {
+        "200": 1357,
+        "429": 4,
+        "404": 40
+      },
+      "network_seconds": 2902.9,
+      "max_response_seconds": 2.8,
+      "cache_events": 4900
+    },
+    {
+      "name": "Alkaram Studio",
       "status": "pending",
       "review_required": false,
       "issue_codes": [
         "HTTP_429",
         "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "876a6eacc6f1b8ef",
       "http_statuses": {
-        "200": 1947,
-        "429": 1
+        "200": 1324,
+        "429": 4
       },
-      "network_seconds": 4192.8,
-      "max_response_seconds": 4.3,
-      "cache_events": 4901
-    },
-    {
-      "name": "Mala",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT"
-      ],
-      "software_revision": "876a6eacc6f1b8ef",
-      "products": 88,
-      "variants": 247,
-      "http_statuses": {
-        "200": 133,
-        "429": 1
-      },
-      "network_seconds": 228.3,
-      "max_response_seconds": 2.4,
-      "cache_events": 213
+      "network_seconds": 2692.5,
+      "max_response_seconds": 3.3,
+      "cache_events": 4856
     }
   ]
 }
