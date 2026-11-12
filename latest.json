@@ -1,45 +1,49 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-12T17:27:27.371519+00:00",
-  "run_id": "43238080165",
+  "generated_utc": "2026-11-12T18:11:06.356510+00:00",
+  "run_id": "43238315043",
   "attempt": "1",
   "source_commit": "ff15165a095b202ee99fe09db8865d51f1dcbcb1",
-  "status": "complete",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 10448.3,
+  "elapsed_seconds": 9852.1,
   "stores": [
     {
-      "name": "Miss Rose",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "876a6eacc6f1b8ef",
-      "products": 190,
-      "variants": 1874,
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
-    },
-    {
-      "name": "Rawayat",
+      "name": "Rung Rez",
       "status": "done",
       "review_required": true,
       "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "59351b9269aef9e6",
+      "products": 5,
+      "variants": 13,
+      "http_statuses": {
+        "200": 2
+      },
+      "network_seconds": 1.9,
+      "max_response_seconds": 1.4,
+      "cache_events": 1
+    },
+    {
+      "name": "So Komal",
+      "status": "source_paused",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_404",
         "HTTP_429",
         "RATE_LIMIT"
       ],
       "software_revision": "59351b9269aef9e6",
-      "products": 3590,
-      "variants": 4765,
       "http_statuses": {
-        "200": 1628,
-        "429": 1
+        "200": 3329,
+        "429": 5,
+        "404": 4
       },
-      "network_seconds": 3434.8,
-      "max_response_seconds": 17.3,
-      "cache_events": 33354
+      "network_seconds": 7481.4,
+      "max_response_seconds": 7.1,
+      "cache_events": 8219
     }
   ]
 }
