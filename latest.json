@@ -1,46 +1,44 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-12T19:34:51.788804+00:00",
-  "run_id": "43238220893",
+  "generated_utc": "2026-11-12T20:12:29.478184+00:00",
+  "run_id": "43291296265",
   "attempt": "1",
-  "source_commit": "ff15165a095b202ee99fe09db8865d51f1dcbcb1",
-  "status": "incomplete",
+  "source_commit": "ff2d5f9de8beac77874378ae6de1257a1d2b69f5",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 18002.3,
+  "elapsed_seconds": 2289.8,
   "stores": [
     {
-      "name": "Breakout",
+      "name": "Bonanza Satrangi",
       "status": "done",
       "review_required": true,
       "issue_codes": [
+        "HTTP_503",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "59351b9269aef9e6",
-      "products": 1564,
-      "variants": 8083,
+      "products": 1443,
+      "variants": 4529,
+      "http_statuses": {
+        "200": 810
+      },
+      "network_seconds": 2032.1,
+      "max_response_seconds": 8.6,
+      "cache_events": 22905
+    },
+    {
+      "name": "Outfitters",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "876a6eacc6f1b8ef",
+      "products": 677,
+      "variants": 3889,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
-      "cache_events": 6535
-    },
-    {
-      "name": "Liberty Books",
-      "status": "pending",
-      "review_required": false,
-      "issue_codes": [
-        "HTTP_404",
-        "WEBSITE_CATEGORY_UNVERIFIED",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "59351b9269aef9e6",
-      "http_statuses": {
-        "404": 1,
-        "200": 3965
-      },
-      "network_seconds": 9629.2,
-      "max_response_seconds": 12.1,
-      "cache_events": 1547
+      "cache_events": 0
     }
   ]
 }
