@@ -524,11 +524,772 @@
       "success": true
     }
   ],
-  "pause_state": "blocked_waiting_for_stop_workflow_runner_capacity",
-  "checkpoint_verification_complete": false,
-  "running_fetchers_waiting_for_stop_signal": 19,
-  "stop_workflows_queued": 19,
+  "pause_state": "paused",
+  "checkpoint_verification_complete": true,
+  "running_fetchers_waiting_for_stop_signal": 0,
+  "stop_workflows_queued": 0,
   "workflow_state": "cloud-fetch.yml disabled_manually",
   "resume_instructions": "Only resume after explicit owner request. Re-enable cloud-fetch.yml. Verify per-run checkpoint artifacts first, including cancelled queued rerun attempts that may retain earlier checkpoints. Resume each started pair from its own saved checkpoint; do not restart completed stores or create a new refresh generation. Never-started pairs may start normally in the same generation. The stop signals target original run IDs, so new resume run IDs are not stopped by them.",
-  "unrelated_workflows_changed": false
+  "unrelated_workflows_changed": false,
+  "artifact_verification": [
+    {
+      "run_id": "43221500692",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "artifacts": [],
+      "checkpoint_uploaded": false
+    },
+    {
+      "run_id": "43201539434",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "artifacts": [],
+      "checkpoint_uploaded": false
+    },
+    {
+      "run_id": "43201535201",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "artifacts": [],
+      "checkpoint_uploaded": false
+    },
+    {
+      "run_id": "43201530653",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "artifacts": [],
+      "checkpoint_uploaded": false
+    },
+    {
+      "run_id": "43201526507",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "artifacts": [],
+      "checkpoint_uploaded": false
+    },
+    {
+      "run_id": "43201522449",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "artifacts": [],
+      "checkpoint_uploaded": false
+    },
+    {
+      "run_id": "43201518776",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "artifacts": [],
+      "checkpoint_uploaded": false
+    },
+    {
+      "run_id": "43201514535",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "artifacts": [],
+      "checkpoint_uploaded": false
+    },
+    {
+      "run_id": "43201509883",
+      "status": "completed",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13947388364,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 234357,
+          "expires_at": "2026-11-26T13:14:33Z"
+        },
+        {
+          "id": 13947288510,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 10204431,
+          "expires_at": "2026-11-15T13:14:34Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201504379",
+      "status": "completed",
+      "conclusion": "failure",
+      "artifacts": [
+        {
+          "id": 13948071215,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 22471681,
+          "expires_at": "2026-11-15T13:14:28Z"
+        },
+        {
+          "id": 13947303376,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 650,
+          "expires_at": "2026-11-26T13:14:27Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201500611",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "artifacts": [
+        {
+          "id": 13946273912,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 228701,
+          "expires_at": "2026-11-26T13:02:14Z"
+        },
+        {
+          "id": 13946229004,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 275811,
+          "expires_at": "2026-11-15T13:02:15Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201496700",
+      "status": "completed",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13948136110,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 8355977,
+          "expires_at": "2026-11-15T13:15:01Z"
+        },
+        {
+          "id": 13948066128,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 42888,
+          "expires_at": "2026-11-26T13:15:00Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201493105",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "artifacts": [
+        {
+          "id": 13945263427,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 171185,
+          "expires_at": "2026-11-15T12:54:02Z"
+        },
+        {
+          "id": 13944763508,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 124728,
+          "expires_at": "2026-11-26T12:54:01Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201489010",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "artifacts": [
+        {
+          "id": 13947425429,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 602375,
+          "expires_at": "2026-11-15T13:02:13Z"
+        },
+        {
+          "id": 13947335633,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 501686,
+          "expires_at": "2026-11-26T13:02:12Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201484386",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "artifacts": [
+        {
+          "id": 13946906673,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 801985,
+          "expires_at": "2026-11-15T13:03:42Z"
+        },
+        {
+          "id": 13945039803,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 795044,
+          "expires_at": "2026-11-26T13:03:41Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201475225",
+      "status": "completed",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13948221559,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 270771688,
+          "expires_at": "2026-11-15T13:15:54Z"
+        },
+        {
+          "id": 13948172075,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 587,
+          "expires_at": "2026-11-26T13:15:53Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201471510",
+      "status": "completed",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13948550162,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 188675,
+          "expires_at": "2026-11-26T13:15:49Z"
+        },
+        {
+          "id": 13947437696,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 104973209,
+          "expires_at": "2026-11-15T13:15:50Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201468066",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "artifacts": [
+        {
+          "id": 13946435553,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 1414345,
+          "expires_at": "2026-11-26T12:44:07Z"
+        },
+        {
+          "id": 13946011462,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 1503533,
+          "expires_at": "2026-11-15T12:44:09Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201464105",
+      "status": "completed",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13946998263,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 781966,
+          "expires_at": "2026-11-26T13:16:04Z"
+        },
+        {
+          "id": 13946828439,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 201289732,
+          "expires_at": "2026-11-15T13:16:05Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201460474",
+      "status": "completed",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13946848960,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 83695153,
+          "expires_at": "2026-11-15T13:15:47Z"
+        },
+        {
+          "id": 13946644245,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 600218,
+          "expires_at": "2026-11-26T13:15:46Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201456703",
+      "status": "completed",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13947547782,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 271484349,
+          "expires_at": "2026-11-15T13:15:56Z"
+        },
+        {
+          "id": 13946858319,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 704,
+          "expires_at": "2026-11-26T13:15:55Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201452018",
+      "status": "completed",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13947427900,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 1186914,
+          "expires_at": "2026-11-26T13:16:02Z"
+        },
+        {
+          "id": 13947338124,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 103845369,
+          "expires_at": "2026-11-15T13:16:04Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201445439",
+      "status": "completed",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13948082257,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 515834,
+          "expires_at": "2026-11-26T13:16:00Z"
+        },
+        {
+          "id": 13948022390,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 93910306,
+          "expires_at": "2026-11-15T13:16:02Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201441740",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "artifacts": [
+        {
+          "id": 13937450762,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 832292,
+          "expires_at": "2026-11-26T10:51:37Z"
+        },
+        {
+          "id": 13936238257,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 888615,
+          "expires_at": "2026-11-15T10:51:38Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201437985",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "artifacts": [
+        {
+          "id": 13942566181,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 75705,
+          "expires_at": "2026-11-26T11:50:45Z"
+        },
+        {
+          "id": 13941966842,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 15966450,
+          "expires_at": "2026-11-15T11:50:46Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201434662",
+      "status": "completed",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13947462673,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 232186,
+          "expires_at": "2026-11-26T13:16:04Z"
+        },
+        {
+          "id": 13946748519,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 114536095,
+          "expires_at": "2026-11-15T13:16:05Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201430787",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "artifacts": [
+        {
+          "id": 13937345762,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 647190,
+          "expires_at": "2026-11-15T10:55:41Z"
+        },
+        {
+          "id": 13936442844,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 594172,
+          "expires_at": "2026-11-26T10:55:39Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201424312",
+      "status": "completed",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13947766632,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 161238172,
+          "expires_at": "2026-11-15T13:16:15Z"
+        },
+        {
+          "id": 13947701606,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 1996505,
+          "expires_at": "2026-11-26T13:16:13Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201420258",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "artifacts": [
+        {
+          "id": 13936941949,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 2018044,
+          "expires_at": "2026-11-15T10:56:00Z"
+        },
+        {
+          "id": 13935869637,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 1586657,
+          "expires_at": "2026-11-26T10:55:59Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201416018",
+      "status": "completed",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13948331470,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 323229,
+          "expires_at": "2026-11-26T13:16:34Z"
+        },
+        {
+          "id": 13948077381,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 304324202,
+          "expires_at": "2026-11-15T13:16:35Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201411743",
+      "status": "completed",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13947891524,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 4035526,
+          "expires_at": "2026-11-26T13:16:07Z"
+        },
+        {
+          "id": 13947009155,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 128781340,
+          "expires_at": "2026-11-15T13:16:08Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201407334",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "artifacts": [
+        {
+          "id": 13936217261,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 559850,
+          "expires_at": "2026-11-15T10:50:44Z"
+        },
+        {
+          "id": 13935849667,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 506266,
+          "expires_at": "2026-11-26T10:50:43Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201402920",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "artifacts": [
+        {
+          "id": 13940695647,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 758308,
+          "expires_at": "2026-11-15T11:16:37Z"
+        },
+        {
+          "id": 13940610689,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 687546,
+          "expires_at": "2026-11-26T11:16:35Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201399127",
+      "status": "completed",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13947746602,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 1294485,
+          "expires_at": "2026-11-26T13:16:30Z"
+        },
+        {
+          "id": 13947551855,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 173571930,
+          "expires_at": "2026-11-15T13:16:32Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201395205",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "artifacts": [
+        {
+          "id": 13944276746,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 916653,
+          "expires_at": "2026-11-15T12:21:56Z"
+        },
+        {
+          "id": 13944002316,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 823170,
+          "expires_at": "2026-11-26T12:21:55Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201391290",
+      "status": "completed",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13948550258,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 1084414,
+          "expires_at": "2026-11-26T13:16:19Z"
+        },
+        {
+          "id": 13946883428,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 5346099,
+          "expires_at": "2026-11-15T13:16:20Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201386747",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "artifacts": [
+        {
+          "id": 13935871635,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 181606,
+          "expires_at": "2026-11-15T10:38:28Z"
+        },
+        {
+          "id": 13934883587,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 133477,
+          "expires_at": "2026-11-26T10:38:27Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201382847",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "artifacts": [
+        {
+          "id": 13937293666,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 562222,
+          "expires_at": "2026-11-26T11:08:50Z"
+        },
+        {
+          "id": 13937004311,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 620834,
+          "expires_at": "2026-11-15T11:08:51Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201378186",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "artifacts": [
+        {
+          "id": 13938550206,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 1378915,
+          "expires_at": "2026-11-15T11:10:44Z"
+        },
+        {
+          "id": 13937228710,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 1317212,
+          "expires_at": "2026-11-26T11:10:43Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201372193",
+      "status": "completed",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13948535492,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 2402106,
+          "expires_at": "2026-11-15T13:13:57Z"
+        },
+        {
+          "id": 13948300950,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 2279750,
+          "expires_at": "2026-11-26T13:13:56Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201366894",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "artifacts": [
+        {
+          "id": 13946042418,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 102340349,
+          "expires_at": "2026-11-15T12:49:38Z"
+        },
+        {
+          "id": 13946012497,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 1754323,
+          "expires_at": "2026-11-26T12:49:37Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201362176",
+      "status": "completed",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13946893500,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 360572914,
+          "expires_at": "2026-11-15T13:16:47Z"
+        },
+        {
+          "id": 13946688642,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 588769,
+          "expires_at": "2026-11-26T13:16:46Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    },
+    {
+      "run_id": "43201353964",
+      "status": "completed",
+      "conclusion": "success",
+      "artifacts": [
+        {
+          "id": 13947776715,
+          "name": "chotuapp-excel-files",
+          "size_in_bytes": 704244,
+          "expires_at": "2026-11-26T13:16:45Z"
+        },
+        {
+          "id": 13947054204,
+          "name": "chotuapp-checkpoint",
+          "size_in_bytes": 288635594,
+          "expires_at": "2026-11-15T13:16:47Z"
+        }
+      ],
+      "checkpoint_uploaded": true
+    }
+  ],
+  "active_fetches_at_verification": 0,
+  "drive_cancellation_needed": false,
+  "owner_approved_single_drive_cancellation": true
 }
