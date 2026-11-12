@@ -1,10 +1,13 @@
 {
-  "run_id": "43308924679",
+  "run_id": "43309854077",
   "source_run": "43238339380",
   "checkpoint_run": "43238339380",
   "refresh_generation": "refresh20261112-5f1c5ec3",
   "status": "queued",
   "approval_gate": "Not deliverable until this exact main workflow succeeds, current-generation source is validated, independent full audit passes and checksum verification succeeds.",
   "workflow_permissions": "Existing read-only contents/actions unchanged",
-  "scope": "Reconcile unresolved exact owner scopes from saved discovery; append missing valid products only; retain full original for normal durable audit quarantine."
+  "scope": "Reconcile unresolved exact owner scopes from saved discovery; append missing valid products only; retain full original for normal durable audit quarantine.",
+  "previous_run": "43308924679",
+  "previous_failure": "Legacy discovery-cache shape assumption; no source facts approved",
+  "checkpoint_reader": "Missing caches require fresh scope checks; multiple caches use exact approved scope identities"
 }
