@@ -1,41 +1,43 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-12T13:14:31.765639+00:00",
-  "run_id": "43201509883",
+  "generated_utc": "2026-11-12T13:14:59.197882+00:00",
+  "run_id": "43201496700",
   "attempt": "1",
   "source_commit": "ea10cacd30197c337916f5a0aa62d799a9caf3f0",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 650.9,
+  "elapsed_seconds": 1199.9,
   "stores": [
     {
-      "name": "VNS Collection",
-      "status": "pending",
-      "review_required": false,
-      "issue_codes": [],
-      "software_revision": "876a6eacc6f1b8ef",
-      "http_statuses": {
-        "200": 142
-      },
-      "network_seconds": 338.5,
-      "max_response_seconds": 2.7,
-      "cache_events": 0
-    },
-    {
-      "name": "Alfateh Garments",
+      "name": "Dairy Dream",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "876a6eacc6f1b8ef",
-      "products": 123,
-      "variants": 339,
+      "products": 10,
+      "variants": 15,
       "http_statuses": {
-        "200": 4
+        "200": 19
       },
-      "network_seconds": 4.7,
-      "max_response_seconds": 1.5,
-      "cache_events": 1
+      "network_seconds": 10.4,
+      "max_response_seconds": 1.9,
+      "cache_events": 20
+    },
+    {
+      "name": "Nayab Fashion",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "876a6eacc6f1b8ef",
+      "http_statuses": {
+        "200": 143
+      },
+      "network_seconds": 381.8,
+      "max_response_seconds": 16.8,
+      "cache_events": 0
     }
   ]
 }
