@@ -1,46 +1,50 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-12T14:52:24.150194+00:00",
-  "run_id": "43238179415",
+  "generated_utc": "2026-11-12T15:25:15.016065+00:00",
+  "run_id": "43238303754",
   "attempt": "1",
   "source_commit": "ff15165a095b202ee99fe09db8865d51f1dcbcb1",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 1152.1,
+  "elapsed_seconds": 1915.5,
   "stores": [
     {
-      "name": "Servis",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "876a6eacc6f1b8ef",
-      "products": 1014,
-      "variants": 5533,
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
-    },
-    {
-      "name": "Ndure",
+      "name": "Rizen Watches",
       "status": "done",
       "review_required": true,
       "issue_codes": [
         "HTTP_429",
-        "RATE_LIMIT",
-        "WEBSITE_ORDER_UNVERIFIED"
+        "RATE_LIMIT"
       ],
       "software_revision": "59351b9269aef9e6",
-      "products": 1857,
-      "variants": 12363,
+      "products": 171,
+      "variants": 1274,
       "http_statuses": {
-        "200": 185,
+        "200": 381
+      },
+      "network_seconds": 800.4,
+      "max_response_seconds": 3.0,
+      "cache_events": 490
+    },
+    {
+      "name": "Blackbeiger",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "59351b9269aef9e6",
+      "products": 362,
+      "variants": 2556,
+      "http_statuses": {
+        "200": 387,
         "429": 1
       },
-      "network_seconds": 456.1,
-      "max_response_seconds": 9.9,
-      "cache_events": 12025
+      "network_seconds": 845.9,
+      "max_response_seconds": 4.4,
+      "cache_events": 787
     }
   ]
 }
