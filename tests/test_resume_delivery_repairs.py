@@ -48,3 +48,11 @@ class FreshDeliveryGeneration(unittest.TestCase):
   with tempfile.TemporaryDirectory() as folder:
    root=Path(folder);self.config(root);p=root/'cloud/drive-sync-release.json';c=json.loads(p.read_text());c['stores']=[];p.write_text(json.dumps(c))
    with patch.object(drive_sync,'ROOT',root),self.assertRaisesRegex(ValueError,'outside approved'):drive_sync.load_config()
+ def test_current_saved_resume_record_seeds_exact_store_checked_roots(self):
+  with tempfile.TemporaryDirectory() as folder:
+   root=Path(folder);self.config(root);(root/'catalog-reports').mkdir()
+   record={'refresh_generation':'new','groups':[{'parent_run':'123','runner_group':'audit804-campaign-new-1','stores':['Saved Store']}]}
+   (root/'catalog-reports/fetch-resume-20261112.json').write_text(json.dumps(record))
+   with patch.object(drive_sync,'ROOT',root):self.assertEqual(drive_sync.load_config()['refresh_root_run_ids'],['123'])
+   record['groups'][0]['stores']=['Other Store'];(root/'catalog-reports/fetch-resume-20261112.json').write_text(json.dumps(record))
+   with patch.object(drive_sync,'ROOT',root),self.assertRaisesRegex(ValueError,'approved store plan'):drive_sync.load_config()

@@ -27,3 +27,9 @@ class FreshTests(unittest.TestCase):
   sites=[{'name':str(i)} for i in range(5)]
   plan=planned_groups(sites,{'maximum_stores_per_runner':2})
   self.assertEqual([len(g) for g in plan],[2,2,1]);self.assertEqual([s for g in plan for s in g],sites)
+ def test_saved_root_keeps_orphaned_resume_in_generation_after_history_window_rolls(self):
+  from audit804_delivery import refresh_source_ids
+  runs=[{'databaseId':3,'displayTitle':'Automatic continuation of 2'},{'databaseId':2,'displayTitle':'Automatic continuation of 1'}]
+  found,_=refresh_source_ids(runs,'generation','campaign',[],known_roots=['1'])
+  self.assertEqual(found,{'1','2','3'})
+  self.assertEqual(refresh_source_ids(runs,'another','campaign',[])[0],set())

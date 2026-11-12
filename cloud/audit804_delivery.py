@@ -164,10 +164,11 @@ def completed_files(stage):
  if len(summaries)!=1:return []
  return [{'store':row['name'],'name':row.get('file'),'complete':True} for row in json.loads(summaries[0].read_text()).get('stores',[]) if row.get('status')=='done' and row.get('file')]
 
-def refresh_source_ids(all_runs,generation,campaign,carry_roots):
+def refresh_source_ids(all_runs,generation,campaign,carry_roots,known_roots=()):
  from fresh804_dispatch import chain_ids
  prefix='Cloud group audit804-'+campaign+'-'+generation+'-'
  roots={str(run['databaseId']) for run in all_runs if run.get('displayTitle','').startswith(prefix)}
+ roots.update(str(rid) for rid in known_roots if str(rid).isdigit())
  return chain_ids(all_runs,roots),chain_ids(all_runs,carry_roots)
 
 def download_source(gh,rid,artifact_id,root,state,progress=None):
@@ -238,7 +239,13 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
  paused=OWNER_PAUSED_STORES
  generation=config.get('refresh_generation');refresh_stores=set(config.get('refresh_stores',[]))-paused
  state['owner_paused_stores']=sorted(paused)
- refresh_runs,carried_runs=refresh_source_ids(all_runs,generation,campaign,config.get('preserve_active_run_ids',[])) if generation else (set(),set())
+ known_roots=set(config.get('refresh_root_run_ids',[]))
+ if state.get('audit804_refresh_root_generation')==generation:known_roots.update(state.get('audit804_refresh_root_ids',[]))
+ if generation:
+  prefix='Cloud group audit804-'+campaign+'-'+generation+'-'
+  known_roots.update(str(run['databaseId']) for run in all_runs if run.get('displayTitle','').startswith(prefix))
+  state.update(audit804_refresh_root_generation=generation,audit804_refresh_root_ids=sorted(known_roots))
+ refresh_runs,carried_runs=refresh_source_ids(all_runs,generation,campaign,config.get('preserve_active_run_ids',[]),known_roots) if generation else (set(),set())
  if generation:
   runs=[run for run in all_runs if str(run['databaseId']) in refresh_runs|carried_runs]
   state.update(audit804_refresh_generation=generation,audit804_refresh_stores=sorted(refresh_stores),audit804_refresh_requested_utc=config.get('refresh_requested_utc'))
