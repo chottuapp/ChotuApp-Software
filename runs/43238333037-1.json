@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-12T16:41:47.950094+00:00",
+  "run_id": "43238333037",
+  "attempt": "1",
+  "source_commit": "ff15165a095b202ee99fe09db8865d51f1dcbcb1",
+  "status": "complete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 3282.4,
+  "stores": [
+    {
+      "name": "Shoe Planet",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "59351b9269aef9e6",
+      "products": 33,
+      "variants": 198,
+      "http_statuses": {
+        "200": 1326,
+        "429": 1
+      },
+      "network_seconds": 3085.8,
+      "max_response_seconds": 2.7,
+      "cache_events": 2261
+    },
+    {
+      "name": "The Paper Worm",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED"
+      ],
+      "software_revision": "59351b9269aef9e6",
+      "products": 292,
+      "variants": 773,
+      "http_statuses": {
+        "200": 407,
+        "429": 1
+      },
+      "network_seconds": 864.5,
+      "max_response_seconds": 2.8,
+      "cache_events": 622
+    }
+  ]
+}
