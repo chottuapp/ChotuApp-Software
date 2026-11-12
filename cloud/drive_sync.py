@@ -45,7 +45,21 @@ def drive_command(config,*args):
  if result.returncode:raise DriveOperationError(args[0],result.stderr) from None
  return getattr(result,'stdout','')
 
-def load_config():return json.loads((ROOT/'cloud/drive-sync-release.json').read_text())
+def load_config():
+ config=json.loads((ROOT/'cloud/drive-sync-release.json').read_text())
+ request_path=ROOT/'cloud/audit804-release.json'
+ if config.get('audit804_enabled') and request_path.exists():
+  request=json.loads(request_path.read_text())
+  if request.get('campaign_id')==config['dispatcher'] and request.get('refresh_generation'):
+   if request.get('destination_folder')!=config['destination_folder']:raise ValueError('Fresh fetch destination differs from approved Drive destination')
+   from fresh804_dispatch import selected_sites
+   registry=json.loads((ROOT/'cloud/fetch-update-release.json').read_text())['fresh_stores']
+   names=[site['name'] for site in selected_sites(registry,request)]
+   if not set(names)<=set(config['stores']):raise ValueError('Fresh fetch includes stores outside approved Drive delivery')
+   config.update(refresh_generation=request['refresh_generation'],refresh_stores=names,
+    refresh_requested_utc=request.get('requested_utc'),refresh_requested_date_pkt=request.get('requested_date_pkt'),
+    preserve_active_run_ids=request.get('preserve_active_run_ids',[]))
+ return config
 
 def main():
  secret=os.environ.get('CHOTU_DRIVE_RCLONE_CONFIG','')

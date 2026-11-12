@@ -104,9 +104,11 @@ class CloudService:
         from openpyxl import load_workbook
         with self.lock:
             if self.running:raise ValueError('A run is already active. Pause or stop it before starting another.')
+            already_complete=False
             if resume:
                 state=self.store.load()
-                if not state or not self.store.pending(state):raise ValueError('No unfinished saved run')
+                if not state or not state.get('sites'):raise ValueError('No saved run')
+                already_complete=not self.store.pending(state)
                 state=dict(state,_resuming=True)
             else:
                 if not isinstance(sites,list) or not 1<=len(sites)<=30:raise ValueError('Select 1 to 30 stores')
@@ -126,6 +128,12 @@ class CloudService:
             blocked=paused_sources(state.get('sites',[]))
             if blocked:raise ValueError('OWNER PAUSED: '+', '.join(sorted(blocked))+'; fetching disabled until owner enables it.')
             validate_runner_sources(state,os.environ.get('CLOUD_RUNNER_GROUP',''))
+            if already_complete:
+                state['status']='complete'
+                state.pop('_resuming',None)
+                self.store.save(state)
+                self.event('CHECKPOINT COMPLETE: all saved store outputs validated; retained without source refetch.')
+                return
             self.event('RUNNER STORES: '+', '.join(s['name'] for s in state['sites']))
             if not Path(state['template']).is_file():raise ValueError('Saved template is missing')
             # Add the new field to a resumed template without replacing its custom columns.
