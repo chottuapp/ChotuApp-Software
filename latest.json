@@ -1,44 +1,49 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-10T16:03:42.385869+00:00",
-  "run_id": "42802656967",
+  "generated_utc": "2026-11-12T13:13:54.705923+00:00",
+  "run_id": "43201372193",
   "attempt": "1",
-  "source_commit": "bf734e580354d0c8e7ad98e573a80121a6b10782",
-  "status": "incomplete",
+  "source_commit": "ea10cacd30197c337916f5a0aa62d799a9caf3f0",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 18000.8,
+  "elapsed_seconds": 9578.8,
   "stores": [
     {
-      "name": "Breakout",
+      "name": "Vince Care",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
-      "software_revision": "522ef8b7890d7b28",
-      "products": 1447,
-      "variants": 7424,
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "software_revision": "876a6eacc6f1b8ef",
+      "products": 212,
+      "variants": 372,
+      "http_statuses": {
+        "200": 334
+      },
+      "network_seconds": 747.5,
+      "max_response_seconds": 3.4,
+      "cache_events": 424
     },
     {
-      "name": "Liberty Books",
-      "status": "pending",
-      "review_required": false,
+      "name": "Elite Cosmetics",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
-        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT",
         "WEBSITE_CATEGORY_UNVERIFIED",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "876a6eacc6f1b8ef",
+      "products": 1628,
+      "variants": 2304,
       "http_statuses": {
-        "404": 1,
-        "200": 4080
+        "200": 2051,
+        "429": 4
       },
-      "network_seconds": 9385.7,
-      "max_response_seconds": 19.5,
-      "cache_events": 58614
+      "network_seconds": 4180.2,
+      "max_response_seconds": 2.7,
+      "cache_events": 12569
     }
   ]
 }
