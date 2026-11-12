@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-12T21:44:07.705337+00:00",
+  "run_id": "43280093089",
+  "attempt": "1",
+  "source_commit": "ff2d5f9de8beac77874378ae6de1257a1d2b69f5",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 11671.3,
+  "stores": [
+    {
+      "name": "Taminzo",
+      "status": "source_paused",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "59351b9269aef9e6",
+      "http_statuses": {
+        "404": 570,
+        "200": 2786,
+        "429": 5
+      },
+      "network_seconds": 7740.8,
+      "max_response_seconds": 7.5,
+      "cache_events": 33609
+    },
+    {
+      "name": "Essence",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "59351b9269aef9e6",
+      "products": 74,
+      "variants": 711,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    }
+  ]
+}
