@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-12T13:15:53.849725+00:00",
+  "run_id": "43201456703",
+  "attempt": "1",
+  "source_commit": "ea10cacd30197c337916f5a0aa62d799a9caf3f0",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 8599.1,
+  "stores": [
+    {
+      "name": "Breakout",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "876a6eacc6f1b8ef",
+      "http_statuses": {
+        "200": 1835,
+        "429": 2
+      },
+      "network_seconds": 3956.4,
+      "max_response_seconds": 3.5,
+      "cache_events": 9355
+    },
+    {
+      "name": "Liberty Books",
+      "status": "source_paused",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "876a6eacc6f1b8ef",
+      "http_statuses": {
+        "200": 1161,
+        "404": 1,
+        "429": 6
+      },
+      "network_seconds": 2881.5,
+      "max_response_seconds": 3.6,
+      "cache_events": 0
+    }
+  ]
+}
