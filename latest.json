@@ -1,43 +1,50 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-12T13:14:59.197882+00:00",
-  "run_id": "43201496700",
+  "generated_utc": "2026-11-12T13:15:46.618226+00:00",
+  "run_id": "43201471510",
   "attempt": "1",
   "source_commit": "ea10cacd30197c337916f5a0aa62d799a9caf3f0",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 1199.9,
+  "elapsed_seconds": 7099.0,
   "stores": [
     {
-      "name": "Dairy Dream",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "876a6eacc6f1b8ef",
-      "products": 10,
-      "variants": 15,
-      "http_statuses": {
-        "200": 19
-      },
-      "network_seconds": 10.4,
-      "max_response_seconds": 1.9,
-      "cache_events": 20
-    },
-    {
-      "name": "Nayab Fashion",
+      "name": "Rios",
       "status": "pending",
       "review_required": false,
       "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "876a6eacc6f1b8ef",
       "http_statuses": {
-        "200": 143
+        "200": 1947,
+        "429": 1
       },
-      "network_seconds": 381.8,
-      "max_response_seconds": 16.8,
-      "cache_events": 0
+      "network_seconds": 4192.8,
+      "max_response_seconds": 4.3,
+      "cache_events": 4901
+    },
+    {
+      "name": "Mala",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "876a6eacc6f1b8ef",
+      "products": 88,
+      "variants": 247,
+      "http_statuses": {
+        "200": 133,
+        "429": 1
+      },
+      "network_seconds": 228.3,
+      "max_response_seconds": 2.4,
+      "cache_events": 213
     }
   ]
 }
