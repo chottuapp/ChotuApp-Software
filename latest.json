@@ -1,31 +1,16 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-12T13:16:28.831306+00:00",
-  "run_id": "43201399127",
+  "generated_utc": "2026-11-12T13:16:32.086546+00:00",
+  "run_id": "43201416018",
   "attempt": "1",
   "source_commit": "ea10cacd30197c337916f5a0aa62d799a9caf3f0",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 9718.4,
+  "elapsed_seconds": 9720.5,
   "stores": [
     {
-      "name": "Hemani Herbals",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "876a6eacc6f1b8ef",
-      "products": 1059,
-      "variants": 1059,
-      "http_statuses": {
-        "200": 1922
-      },
-      "network_seconds": 4566.9,
-      "max_response_seconds": 2.9,
-      "cache_events": 2922
-    },
-    {
-      "name": "Gul Ahmed",
+      "name": "Zellbury",
       "status": "pending",
       "review_required": false,
       "issue_codes": [
@@ -33,11 +18,30 @@
       ],
       "software_revision": "876a6eacc6f1b8ef",
       "http_statuses": {
-        "200": 2178
+        "200": 4343
       },
-      "network_seconds": 4984.5,
-      "max_response_seconds": 3.1,
-      "cache_events": 2
+      "network_seconds": 11907.9,
+      "max_response_seconds": 46.3,
+      "cache_events": 0
+    },
+    {
+      "name": "Zero Lifestyle",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "876a6eacc6f1b8ef",
+      "products": 60,
+      "variants": 255,
+      "http_statuses": {
+        "200": 128,
+        "429": 1
+      },
+      "network_seconds": 222.8,
+      "max_response_seconds": 3.0,
+      "cache_events": 199
     }
   ]
 }
