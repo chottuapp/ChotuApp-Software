@@ -21,3 +21,8 @@ class AdditionalSourcesTests(unittest.TestCase):
  def test_arbitrary_custom_source_workflow_remains_rejected(self):
   self.config['additional_completed_sources'][0]['workflow']='.github/workflows/other.yml'
   with self.assertRaises(ValueError):approved_runs(self.config,self.sites,lambda *a:json.dumps(self.run))
+
+ def test_registered_generation_is_preserved_for_separate_fresh_delivery_gate(self):
+  self.config['additional_completed_sources'][0]['refresh_generation']='current'
+  result=approved_runs(self.config,self.sites,lambda *a:json.dumps(self.run))
+  self.assertEqual(result[0]['additional_refresh_generation'],'current')

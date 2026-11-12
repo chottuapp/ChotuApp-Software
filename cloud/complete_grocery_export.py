@@ -13,7 +13,14 @@ from rule804_pipeline import process
 from audit804 import run as audit
 from locked_store_rules import incomplete_product_reasons
 ROOT=Path(__file__).resolve().parents[1]
-PENDING={18,29,31,75}
+def pending_scope_indexes(pages,snapshots,reported_reviews):
+ """Recheck only proved incomplete scopes; inconsistent receipts require all scopes."""
+ pending=set()
+ for index,scope in enumerate(pages,1):
+  data=snapshots.get(scope['url'])
+  if not data or data.get('count_changed') or data.get('render_error') or not data.get('pages') or data.get('total') is not None and len(data.get('links',[]))!=data['total']:pending.add(index)
+ if len(pending)!=reported_reviews:return set(range(1,len(pages)+1))
+ return pending
 
 def merge(source,extra,target):
  book=load_workbook(source);add=load_workbook(extra)
@@ -56,12 +63,12 @@ def main():
     data=response.json();snapshots[data['scope_url']]=data
   finally:cache.close()
   normalized,_=normalize(original,temp/'normalized.xlsx',codes[STORE]);normalized,_=repair(normalized,temp/'scoped.xlsx',STORE)
-  source_book=load_workbook(normalized,read_only=True,data_only=False);sheet=source_book['Products'];headers=[c.value for c in sheet[1]];existing={str(v[headers.index('source_url')]) for v in sheet.iter_rows(min_row=2,values_only=True) if any(x is not None for x in v)};source_book.close()
+  source_book=load_workbook(normalized,read_only=True,data_only=False);sheet=source_book['Products'];headers=[c.value for c in sheet[1]];source_rows=list(sheet.iter_rows(min_row=2,values_only=True));existing={str(v[headers.index('source_url')]) for v in source_rows if any(x is not None for x in v)};review_count=max(int(v[headers.index('source_scope_review_count')] or 0) for v in source_rows if any(x is not None for x in v));source_book.close();pending=pending_scope_indexes(request['pages'],snapshots,review_count)
   g=runpy.run_path(str(ROOT/'main.py'),run_name='grocery_completion_engine');g['OUT']=temp/'additions';g['S']=requests.Session();g['__file__']=str(temp/'grocery-completion.py')
   fresh_cache=ResponseCache(temp/'fresh-responses.sqlite3');tls=SimpleNamespace(saved_response_cache=fresh_cache);g['_chotu_tls']=tls;g['S']=SessionProxy(requests.Session(),tls,g['_chotu_wait'])
   reader=PublicCatalog(g,print);coverage=[];candidates={};receipts=[]
   for index,scope in enumerate(request['pages'],1):
-   if index in PENDING:
+   if index in pending:
     urls,total,pages=reader.discover_scope(scope)
     if reader.scope_count_changed or total is not None and len(urls)!=total:raise ValueError('Fresh grocery scope still inconsistent: '+scope['label'])
     for url in urls:
@@ -111,12 +118,24 @@ def main():
   # Clear only the reconciled coverage hold; keep a durable 99-scope proof and exclusions.
   b=load_workbook(merged);s=b['Products'];h={c.value:c.column for c in s[1]}
   for n in range(2,s.max_row+1):s.cell(n,h['source_scope_coverage_status'],'complete');s.cell(n,h['source_scope_review_count'],0)
+  source_product_count=s.max_row-1
   b.save(merged);b.close()
   target=out/(STORE+'.xlsx');process(merged,target,STORE,codes)
-  report=audit(target,STORE,codes,{'naheed.pk','www.naheed.pk'},source=merged,strict_commercial=True,findings_limit=30)
-  (out/'grocery-final-audit.json').write_text(json.dumps(report,indent=2));(out/'grocery-scope-proof.json').write_text(json.dumps(dict(source_run='42607016680',discovery_run='42592529653',scopes=coverage,missing_checked=len(candidates),added=len(products),exclusions=receipts),indent=2))
+  report=audit(target,STORE,codes,{'naheed.pk','www.naheed.pk'},source=merged,strict_commercial=True,findings_limit=None)
+  from incomplete_products import exclude
+  checked_source,checked_output,unclear=exclude(merged,target,STORE,report,temp/'unclear')
+  preview_name=None
+  if unclear:
+   # This read-only completion job publishes the full source unchanged. The
+   # existing Drive audit pipeline persists it durably before quarantining rows.
+   report=audit(checked_output,STORE,codes,{'naheed.pk','www.naheed.pk'},source=checked_source,strict_commercial=True,findings_limit=None)
+   preview_name='grocery-audited-preview.xlsx'
+   shutil.copy2(checked_output,out/preview_name)
+  report.update(audited_file=preview_name or target.name,source_file=target.name,requires_independent_delivery_audit=True)
+  (out/'grocery-final-audit.json').write_text(json.dumps(report,indent=2));(out/'grocery-scope-proof.json').write_text(json.dumps(dict(source_run=os.environ.get('GROCERY_SOURCE_RUN','42607016680'),discovery_run=os.environ.get('GROCERY_CHECKPOINT_RUN','42592529653'),scopes=coverage,missing_checked=len(candidates),added=len(products),exclusions=receipts,unclear_products=unclear,complete_source_export=target.name,audited_preview=preview_name),indent=2))
   if report['status']!='pass':raise ValueError('Grocery final audit still held; original file preserved')
   fresh_cache.close();shutil.copy2(temp/'fresh-responses.sqlite3',out/'grocery-recheck-responses.sqlite3')
-  (out/'run-summary.json').write_text(json.dumps(dict(stores=[dict(name=STORE,file=STORE+'.xlsx',status='done',products=report['products_checked'])])))
-  print('GROCERY FILE COMPLETE:',report['products_checked'],'products; 99 scopes reconciled; independent audit passed.')
+  (out/'completion-manifest.json').write_text(json.dumps({'files':[dict(store=STORE,name=target.name,complete=True,sha256=hashlib.sha256(target.read_bytes()).hexdigest())]}))
+  (out/'run-summary.json').write_text(json.dumps(dict(stores=[dict(name=STORE,file=target.name,status='done',products=source_product_count,review_required=True,audited_preview_products=report['products_checked'])])))
+  print('GROCERY SOURCE COMPLETE:',report['products_checked'],'products in audited preview; 99 scopes reconciled; full source retained for independent Drive processing.')
 if __name__=='__main__':main()

@@ -75,3 +75,16 @@ class IncompleteProductsTests(unittest.TestCase):
    finding=dict(product_id='bad',name='Unknown bundle',source_url='https://shop.test/bad',issues=['Source price mismatch'])
    report={'findings':[finding,dict(finding,issues=['Description exceeds Excel cell capacity'])]}
    self.assertEqual(exclude(source,source,'House of Tools',report,root/'filtered')[2],[])
+ def test_owner_unclear_purpose_rule_never_hides_commercial_or_numeric_errors(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   root=Path(tmp);source=root/'s.xlsx';self.workbook(source)
+   finding=dict(product_id='bad',name='Unknown bundle',source_url='https://shop.test/bad',issues=['Primary product type and Category disagree: trousers'])
+   self.assertEqual(len(exclude(source,source,'Store',{'findings':[finding]},root/'clear')[2]),1)
+   for protected in ['Source price mismatch','Description lost source numeric facts','Shop code mismatch','Grocery source coverage unresolved; complete-catalog approval held']:
+    finding['issues']=['Primary product type and Category disagree: trousers',protected]
+    self.assertEqual(exclude(source,source,'Store',{'findings':[finding]},root/'protected')[2],[])
+ def test_owner_authorized_unclear_piece_count_is_preserved_separately(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   root=Path(tmp);source=root/'s.xlsx';self.workbook(source)
+   finding=dict(product_id='bad',name='Unknown bundle',source_url='https://shop.test/bad',issues=['Complete outfit classified as one component'])
+   a,b,receipt=exclude(source,source,'Store',{'findings':[finding]},root/'filtered');self.assertEqual(len(receipt),1);self.assertEqual(receipt[0]['issues'],finding['issues'])

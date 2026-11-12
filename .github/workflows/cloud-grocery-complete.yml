@@ -1,6 +1,15 @@
 name: Complete saved ChotuApp Groceries file
 on:
   workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: 'Exact saved grocery export run to finish'
+        default: '42607016680'
+        type: string
+      checkpoint_run_id:
+        description: 'Exact saved discovery checkpoint run'
+        default: '42592529653'
+        type: string
 permissions:
   contents: read
   actions: read
@@ -10,7 +19,7 @@ concurrency:
 jobs:
   complete:
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -26,19 +35,21 @@ jobs:
         with:
           name: chotuapp-excel-files
           github-token: ${{ github.token }}
-          run-id: 42607016680
+          run-id: ${{ inputs.source_run_id }}
           path: ${{ runner.temp }}/original-grocery-export
       - uses: actions/download-artifact@v4
         with:
           name: chotuapp-checkpoint
           github-token: ${{ github.token }}
-          run-id: 42592529653
+          run-id: ${{ inputs.checkpoint_run_id }}
           path: ${{ runner.temp }}/grocery-discovery
-      - name: Reconcile four scopes, add missing valid products and independently audit the existing file
+      - name: Reconcile unresolved scopes, append missing products and audit the retained preview
         env:
           PYTHONPATH: cloud:.
           GROCERY_EXPORT_ROOT: ${{ runner.temp }}/original-grocery-export
           GROCERY_CHECKPOINT_ROOT: ${{ runner.temp }}/grocery-discovery
+          GROCERY_SOURCE_RUN: ${{ inputs.source_run_id }}
+          GROCERY_CHECKPOINT_RUN: ${{ inputs.checkpoint_run_id }}
           GROCERY_OUTPUT: ${{ runner.temp }}/completed-grocery
         run: python cloud/complete_grocery_export.py
       - uses: actions/upload-artifact@v4

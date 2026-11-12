@@ -1,9 +1,12 @@
 """Independent purpose evidence: semantic alternatives, never classifier output as proof."""
 import re
+from functools import lru_cache
 
 def text(value):
  return re.sub(r'\s+',' ',re.sub(r'</?[A-Za-z][A-Za-z0-9:-]*(?:\s[^<>]*?)?/?>',' ',str(value or ''))).strip()
-def has(pattern,value):return bool(re.search(pattern,value,re.I))
+@lru_cache(maxsize=4096)
+def compiled_proof(pattern):return re.compile(pattern,re.I)
+def has(pattern,value):return bool(compiled_proof(pattern).search(value))
 def extend_proofs(proofs,additions):
  # New aliases extend existing evidence instead of erasing supported spellings.
  for label,pattern in additions.items():
@@ -11,6 +14,8 @@ def extend_proofs(proofs,additions):
   proofs[label]=('(?:'+old+')|(?:'+pattern+')') if old and old!=pattern else pattern
 
 def review(name,description,category,sku="",source_type="",verified_path=""):
+ from product_description_support import evidence_text
+ description=evidence_text(description)
  title=text(name);body=text(description);cat=text(category).lower()
  # Audience is checked independently; purpose proofs compare the sold object.
  cat=re.sub(r"^(?:men|women)(?:['’]s)?\s+",'',cat)
@@ -18,6 +23,58 @@ def review(name,description,category,sku="",source_type="",verified_path=""):
  # Only explicit source garment-type strings; a generic vendor/brand is not purpose evidence.
  if re.fullmatch(r'(?i)(?:women|men|boys|girls|teens|kids|infants)\s+(?:stitched\s+[234]\s+piece(?:\s+shirt\s+trouser)?|(?:cotton\s+(?:silk\s+)?)?shalwar|(?:special\s+)?kurta|trouser|earrings|bracelet|necklace|ring|eyebrow\s+kit|waistcoat\s+with\s+kurta\s+trouser)',str(source_type or '').strip()):body+=' Source-listed garment type: '+str(source_type)
  evidence=title+' '+body
+ if cat=='stationery gift sets' and has(r'\bgift set\b',title) and has(r'\bnotebook\b',body) and has(r'\b(?:gel pen|sticky note)\b',body):return []
+ if cat=='painting & craft sets' and has(r'\b(?:crafts?|paints?)\b',title) and has(r'\bpaint brush\b',body) and has(r'\b(?:coloring card|pigment|paint)\b',body):return []
+ # Character names, controllers and USB compatibility are not the sold object.
+ primary_forms={'costumes':r'\bcostume\b(?!\s+jewel)','sunglasses':r'\bsunglasses\b','keychains':r'\bkeychain\b','baby walkers':r'\bbaby walker\b','baby bath gloves':r'\bbaby bath gloves\b',
+  'handheld fans':r'\b(?:hand fan|handheld fan)\b','desk lamps':r'\bdesk lamp\b','decorative lights':r'\b(?:roof light|moon lamp|night light)\b','insect killers':r'\binsect killer\b',
+  'fidget pouches':r'\bpop it\b.*\b(?:zipper bag|pouch)\b','fidget toys':r'\b(?:push pop it|pop it bubble)\b','remote-control vehicles':r'\bremote control\b.*\b(?:car|truck|bus|tank|jeep|motorcycle)\b',
+  'robot toys':r'\b(?:robot dog|robot toy|robot dinosaur)\b','plush toys':r'\b(?:plush|soft toy|stuffed toy)\b','construction toys':r'\b(?:building blocks|building bricks|construction toy)\b',
+  'drawing boards':r'\b(?:drawing (?:board|tablet)|writing (?:board|tablet))\b','colouring paper':r'\b(?:coloring|colouring|drawing)\b.*\b(?:roll|paper)\b','scratch art paper':r'\bscratch paper\b',
+  'art & craft sets':r'\b(?:art|craft|painting) (?:set|kit)\b','xylophones':r'\bxylophone\b','pianos':r'\bpiano\b','bubble toys':r'\bbubble (?:gun|machine|blower)\b','money boxes':r'\b(?:piggy bank|money box|atm machine)\b',
+  'baby rattles':r'\b(?:baby rattle|rattle toy)\b','toy vehicles':r'\btoy (?:car|truck|bus|train|plane)\b','bath toys':r'\bbath toy\b','animal toys':r'\banimal\b.*\btoy\b','activity tables':r'\blearning table\b','handheld games':r'\bhand game\b'}
+ sold_title=re.split(r'\b(?:with|for)\b',title,maxsplit=1,flags=re.I)[0]
+ if cat=='drawing boards' and has(r'\b(?:magic|foldable) phone\b',sold_title) and has(r'\blcd drawing board\b',title) and has(r'\bdraw\w*\b',body):return []
+ apparel_title=has(r'\b(?:t[ -]?shirt|shirt|kurta|trouser|jeans|dress|hoodie|sweater|earrings?|pendant|necklace|bracelet|socks|backpack|handbag|wallet)\b',sold_title)
+ if cat in primary_forms and not apparel_title and has(primary_forms[cat],sold_title):return []
+ if cat=='ride-on vehicles' and has(r'\bride[ -]on (?:car|truck|bike|motorcycle)\b',title):return []
+ if cat=='beauty play sets' and has(r'\bbeauty set\b',title) and has(r'\btoy collection\b',body) and has(r'\bset contents\b',body):return []
+ if cat=='drawing boards' and has(r'\bmagic slate\b',title) and has(r'\b(?:drawing|writing|write)\b',body):return []
+ if cat=='kitchen play sets' and has(r'\bchef\b.*\bbagpack\b',title) and has(r'\b(?:kitchen|cooking|pretend)\b',body):return []
+ if cat=='kids makeup sets' and has(r'\b(?:children|princess)\b.*\b(?:cosmetic|makeup) set\b',title):return []
+ # Independently prove the explicit whole sold form before component/styling fallbacks.
+ explicit_forms={'lunch boxes':r'\blunch box\b','pen & stationery organizers':r'\bstationery organizer\b','blush & bronzer':r'\bblush\s*(?:and|&)\s*bronzer\b','beanies':r'\bbeanie\b','bb creams':r'\bbb\s*cream\b','lipsticks':r'\blipstick\b','contour sticks':r'\bcontour stick\b','brow & lash serums':r'\bbrow\s*(?:&|and)\s*lash serum\b','shackets':r'\bshacket\b','sweatpants':r'\bsweatpants\b','scalp serums':r'\bscalp serum\b',
+  'baby soaps':r'\bbaby\b.*\bsoap\b','baby lotions':r'\bbaby\b.*\blotion\b','baby washes':r'\bbaby\b.*\bwash\b','baby creams':r'\bbaby\b.*\bcream\b',
+  'eye creams':r'\beye cream\b','makeup brush sets':r'\bbrush set\b','makeup brushes':r'\bkabuki brush\b',
+  'lip tints':r'\blip tint\b','lip oils':r'\blip (?:oil|drip)\b'}
+ if cat in explicit_forms and has(explicit_forms[cat],title):return []
+ if cat=='face & body creams' and has(r'\bmoisturizing cream\b',title) and has(r'\bface\s*(?:&|and)\s*body\b',body):return []
+ if cat=='hair conditioners' and has(r'\b(?:conditioner|condtnr)\b',title) and has(r'\bhair\b',body):return []
+ if cat=='eyebrow & eyeliner pencils' and all(has(p,title) for p in [r'\beyebrow\b',r'\beyeliner\b',r'\bpencil\b']):return []
+ if cat=='lip balms & treatments' and has(r'\blip therapy\b',title) and has(r'\blip balm\b',body):return []
+ if cat=='jeans' and has(r'\bdenim\b',title) and has(r'\btrouser\b',title):return []
+ if cat in {'earrings','necklaces','rings'} and has(r'^(?:an?\s+)?'+{'earrings':'earrings?','necklaces':'necklace','rings':'rings?'}[cat]+r'\b',body):return []
+ if cat=='trousers' and has(r'^pair this .{0,35}\btrouser\b',body):return []
+ if cat=='clothing sets' and has(r'\bsharara set\b',title) and has(r'\b(?:shirt|kurta)\b',body):return []
+ if cat=='clothing sets' and has(r'\b(?:2|two|3|three)[ -]*(?:pcs?|pieces?)\b.*\bsuit\b',title) and has(r'\bshirt\b',body) and has(r'\btrouser\b',body):return []
+ if cat in {'makeup sets','lip sets','face palettes','makeup palettes'} and has(r'\b(?:set|kit|duo|palette)\b',title):
+  components=[p for p in [r'\bmascara\b',r'\bblush(?:er)?\b',r'\bbronzer\b',r'\bhighlighter\b',r'\beye\s*shadow\b',r'\b(?:eyeliner|kohl|khol|eye pencil)\b',r'\blip liner\b',r'\blip\s*(?:gloss|luminizer)\b',r'\blipstick\b'] if has(p,title+' '+body)]
+  if len(components)>=2 and (has(r'\b(?:includes?|contains?|contents|features|featuring)\b|brings together',body) or has(r'\b(?:face|cheek) palette\b',title) or sum(has(p,title) for p in components)>=2):return []
+ if cat=='jewellery sets' and has(r'\bset\b',title) and has(r'\bnecklace\b',body) and has(r'\bearrings?\b',body) and not has(r'\b(?:without|not included|sold separately)\b',body):return []
+ if cat=='foundation & concealer sticks' and has(r'\bfoundcealer\b',title) and has(r'\bfoundation\b',body) and has(r'\bconcealer\b',body):return []
+ if cat=='cc creams' and has(r'\bcc\s*cr(?:eam|eme)\b',title):return []
+ if cat=='lip balms & treatments' and has(r'\bglossy balm\b',title) and has(r'\blip balm\b',body):return []
+ if cat=='gloss lipsticks' and has(r'\bgloss\b',title) and has(r'\bgloss[ -]lipstick hybrid\b',body):return []
+ if cat=='lip oils' and has(r'\boil\b',title) and has(r'\blips\b',body[:700]) and not has(r'\bhair\b',title):return []
+ if cat=='makeup tool sets' and has(r'\bset\b',title) and has(r'\bmakeup tool (?:collection|set)\b',body):return []
+ if cat=='highlighter sets' and has(r'\b(?:kit|set|palette)\b',title) and has(r'\b(?:collection of highlighters|highlighter shades)\b',body):return []
+ if cat=='foundation enhancers' and has(r'\bfoundation enhancer\b',body[:700]):return []
+ if cat=='makeup setting mists' and has(r'\bmist\b',body) and has(r'\bset makeup\b',body):return []
+ if cat in {'hair care sets','hair & lip care sets'} and has(r'\bset\b',title) and has(r'\bhair mask\b',body) and has(r'\bhair oil\b',body) and (cat=='hair care sets' or has(r'\blip oil\b',body)):return []
+ if cat=='hair oils' and has(r'\bhair oil\b',title):return []
+ if cat=='necklace sets' and has(r'\bset\b',title) and has(r'\bnecklace set\b',body):return []
+ if cat=='hair & lip care sets' and has(r'\bset\b',title) and has(r'\bhair oil\b',body) and has(r'\blip oil\b',body):return []
+ if cat=='hand care sets' and has(r'\bhand care\b',title) and has(r'\b(?:set|pack)\b',title) and has(r'\b(?:hand wash|hand cream|hand lotion)\b',body):return []
  if cat=='high-neck tops' and has(r'\bmock neck\b',title) and has(r'\b(?:sleeves?|zipper|cotton|polyester)\b',body):return []
  garment_fields=re.sub(r'(?m)^[ \t*•✦]+','',str(description))
  upper_measurements=has(r'(?im)^SHIRT(?: MEASUREMENTS)?\s*:',garment_fields) or all(has(r'(?im)^'+part+r'[^\n]*:',garment_fields) for part in ('SHOULDER','SLEEVE LENGTH'))

@@ -88,6 +88,8 @@ def retained_text(value):
  """Approved cleanup baseline; substantive numbers/options are never discarded."""
  raw=text(value)
  raw=re.sub(r'(?m)^[ \t]*(?:✦|📦|📏|🎨|⚠️?)\s*','',raw)
+ # Normalize bullets before numbering analysis so repeated rendering is stable.
+ raw=re.sub(r'(?m)^[ \t]*•[ \t]*','',raw)
  indices=[int(m[1]) for m in re.finditer(r'(?m)^\s*(\d+)[.)]\s+(?=[A-Za-z])',raw)]
  if len(indices)>=2 and indices==list(range(1,len(indices)+1)):
   raw=re.sub(r'(?m)^\s*\d+[.)]\s+(?=[A-Za-z])','',raw)
@@ -177,6 +179,10 @@ def source_factual_summary(name,value):
  return None
 
 def completeness_issues(value,name=''):
+ # A supplier's opening identification of another bundle does not describe a
+ # single named item. Keep the original separately rather than inventing prose.
+ opening=text(value).strip()
+ if not re.search(r'(?i)\b(?:set|kit|trio|bundle)\b',str(name)) and re.match(r'(?is)^(?:experience|xperience|discover|introducing)\b[^.!?]{0,180}\b(?:trio|bundle|set)[.!?]\s*This[^.!?]{0,60}\bset\b',opening):return ['Description identifies another bundle rather than the named product']
  useful=body(value,name)
  if not useful or len(re.findall(r'\b\w+\b',useful))<5:
   summary=source_factual_summary(name,value)
@@ -263,3 +269,8 @@ def overview_matches(value,overview):
  # Formatting/punctuation must not break an existing identity/hash-bound review.
  simplify=lambda s:re.sub(r'[^a-z0-9]+','',clean_prose(s).casefold())
  return simplify(body(value)).startswith(simplify(overview))
+
+
+def evidence_text(value):
+ """Plain source lines for purpose checks; preserve every word and number."""
+ return re.sub(r'(?m)^[ \t]*(?:•|✦|📦|📏|🎨|⚠️?)[ \t]*','',text(value))

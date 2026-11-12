@@ -13,13 +13,22 @@ INCOMPLETE_ISSUES={
  'Brand name used as product Category',
  'Store name used as product Category',
  'Bundle appears classified as a single component',
+ 'Complete outfit classified as one component',
+ 'Multi-piece outfit may be classified as one component',
+ 'Category audience is unsupported or conflicts with original product evidence',
+ 'Category family conflicts with original exact merchant product type',
+ 'Facial cream Category conflicts with named application area',
+ 'Facial serum Category conflicts with named application area',
+ 'Cosmetics bundle incorrectly classified as skincare',
+ 'Bundle family and product contents disagree',
 }
 
 def exclude(source,output,store,report,stage):
  """Remove eligible Products and all linked rows from BOTH audit inputs.
 
  Never waive an audit finding. Re-audit the filtered output against the filtered
- source; price, stock, identity, numeric-loss and conflicting-fact errors stay held.
+ source; price, stock, identity, numeric-loss and other protected source-fact errors stay held. Product-purpose
+ uncertainty is quarantined only under the owner's 13 November clarification.
  The caller retains the original source and publishes the exclusion receipt.
  """
  grouped={}
@@ -31,7 +40,7 @@ def exclude(source,output,store,report,stage):
  def eligible(finding):
   issues=set(finding.get('issues') or [])
   allowed=INCOMPLETE_ISSUES|({'Description readability: split dense prose into clear paragraphs without losing facts'} if 'Description exceeds Excel cell capacity' in issues else set())
-  return bool(issues) and issues<=allowed
+  return bool(issues) and all(issue in allowed or issue.startswith('Primary product type and Category disagree: ') for issue in issues)
  candidates=[f for f in grouped.values() if eligible(f)]
  if not candidates:return source,output,[]
  from audit804 import rows

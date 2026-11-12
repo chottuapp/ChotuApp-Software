@@ -272,7 +272,8 @@ def electronics_object(row):
  return None
 
 def classify(row,store):
- title=str(row.get('name') or '');body=str(row.get('description') or '')
+ from product_description_support import evidence_text
+ title=str(row.get('name') or '');body=evidence_text(row.get('description'))
  # Sold-object names precede oil-control claims and application tips.
  object_title=re.split(r'(?i)\b(?:with|including|includes)\b',title,maxsplit=1)[0]
  cosmetic_accessory=bool(re.search(r'\b(?:brush|puff|sponge|case|empty)\b',object_title,re.I))

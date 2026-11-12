@@ -19,3 +19,10 @@ class GroceryCompletionTests(unittest.TestCase):
   with tempfile.TemporaryDirectory() as tmp:
    root=Path(tmp);self.create(root/'old.xlsx','same',200);self.create(root/'new.xlsx','same',350)
    with self.assertRaises(ValueError):merge(root/'old.xlsx',root/'new.xlsx',root/'combined.xlsx')
+ def test_scope_repair_uses_current_checkpoint_not_hardcoded_old_indexes(self):
+  from complete_grocery_export import pending_scope_indexes
+  pages=[{'url':'https://www.naheed.pk/scope/'+str(i)} for i in range(4)]
+  snapshots={p['url']:{'links':['one'],'pages':['page1'],'total':1,'count_changed':False} for p in pages}
+  snapshots[pages[2]['url']]['count_changed']=True
+  self.assertEqual(pending_scope_indexes(pages,snapshots,1),{3})
+  self.assertEqual(pending_scope_indexes(pages,snapshots,2),{1,2,3,4})

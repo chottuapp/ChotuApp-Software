@@ -14,5 +14,5 @@ def approved_runs(config,sites,gh,selected=None):
   if selected is not None and store not in selected:continue
   run=json.loads(gh('api','repos/'+REPO+'/actions/runs/'+rid))
   if str(run.get('id'))!=rid or run.get('head_branch')!='main' or run.get('path')!=expected_path or run.get('event')!='workflow_dispatch' or run.get('status')!='completed' or run.get('conclusion')!='success' or run.get('head_repository',{}).get('full_name')!=REPO:raise ValueError('Additional source is not a successful trusted main fetch')
-  result.append(dict(databaseId=run['id'],displayTitle=run['display_title'],status=run['status'],conclusion=run['conclusion'],headSha=run['head_sha'],additional_store=store))
+  result.append(dict(databaseId=run['id'],displayTitle=run['display_title'],status=run['status'],conclusion=run['conclusion'],headSha=run['head_sha'],additional_store=store,additional_refresh_generation=item.get('refresh_generation')))
  return result

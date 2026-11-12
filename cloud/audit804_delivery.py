@@ -251,6 +251,9 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
   extra_runs=[]
   state['additional_completed_source_error']='Additional source verification unavailable or invalid; no additive source approved; existing store delivery continues'
  runs.extend(extra_runs)
+ # Only an explicitly registered successful additive source for this exact
+ # generation may enter fresh delivery; old additive exports remain separate.
+ refresh_runs.update(str(run['databaseId']) for run in extra_runs if generation and run.get('additional_refresh_generation')==generation)
 
  evidence_revision=''
  try:

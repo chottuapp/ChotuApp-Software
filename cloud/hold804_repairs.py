@@ -369,7 +369,8 @@ def category(row,store):
  from catalogue_object_rules import classify
  recovered=classify(row,store)
  if recovered and visual_review(row,store) is None:return recovered
- name=str(row.get('name') or '');body=str(row.get('description') or '')
+ from product_description_support import evidence_text
+ name=str(row.get('name') or '');body=evidence_text(row.get('description'))
  if re.search(r'\b(?:quilt|duvet)\s+cover\b',name,re.I) and re.search(r'\b[12]\s+pillow\s*cases?\b',body,re.I):return 'Duvet Cover Sets','reviewed_source_contents','Explicit cover and pillowcases supplied; no duvet filling inferred.'
  visual=visual_review(row,store)
  if visual:return visual['category'],'reviewed_primary_product_image',visual['overview']+' Image: '+visual['image_url']+' SHA256: '+visual['image_sha256']
