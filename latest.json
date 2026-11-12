@@ -1,43 +1,41 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-12T19:32:43.367403+00:00",
-  "run_id": "43238194843",
+  "generated_utc": "2026-11-12T19:33:34.348862+00:00",
+  "run_id": "43238096606",
   "attempt": "1",
   "source_commit": "ff15165a095b202ee99fe09db8865d51f1dcbcb1",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 18000.8,
+  "elapsed_seconds": 18001.3,
   "stores": [
     {
-      "name": "Xcessories Hub",
-      "status": "pending",
-      "review_required": false,
-      "issue_codes": [
-        "HTTP_403",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "59351b9269aef9e6",
-      "http_statuses": {
-        "403": 1,
-        "200": 1948
-      },
-      "network_seconds": 5332.8,
-      "max_response_seconds": 5.0,
-      "cache_events": 4688
-    },
-    {
-      "name": "Design by DAS",
+      "name": "Tawakkal Fabrics",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "876a6eacc6f1b8ef",
-      "products": 77,
-      "variants": 82,
+      "products": 1561,
+      "variants": 3757,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
       "cache_events": 0
+    },
+    {
+      "name": "Stylo",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "59351b9269aef9e6",
+      "http_statuses": {
+        "200": 6428
+      },
+      "network_seconds": 19099.0,
+      "max_response_seconds": 55.4,
+      "cache_events": 1452
     }
   ]
 }
