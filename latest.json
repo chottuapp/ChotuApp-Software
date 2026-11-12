@@ -1,52 +1,49 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-12T18:27:41.049938+00:00",
-  "run_id": "43238326996",
+  "generated_utc": "2026-11-12T18:39:46.914546+00:00",
+  "run_id": "43238308631",
   "attempt": "1",
   "source_commit": "ff15165a095b202ee99fe09db8865d51f1dcbcb1",
-  "status": "incomplete",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 9947.4,
+  "elapsed_seconds": 13523.1,
   "stores": [
     {
-      "name": "Taminzo",
-      "status": "source_paused",
-      "review_required": false,
-      "issue_codes": [
-        "HTTP_404",
-        "HTTP_429",
-        "RATE_LIMIT",
-        "WEBSITE_CATEGORY_UNVERIFIED",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "59351b9269aef9e6",
-      "http_statuses": {
-        "200": 2430,
-        "429": 4,
-        "404": 205
-      },
-      "network_seconds": 5801.7,
-      "max_response_seconds": 4.3,
-      "cache_events": 7824
-    },
-    {
-      "name": "Essence",
+      "name": "Afrozeh",
       "status": "done",
       "review_required": true,
       "issue_codes": [
         "HTTP_429",
-        "RATE_LIMIT"
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "59351b9269aef9e6",
-      "products": 74,
-      "variants": 711,
+      "products": 177,
+      "variants": 1021,
       "http_statuses": {
-        "200": 101
+        "200": 421,
+        "429": 1
       },
-      "network_seconds": 160.0,
-      "max_response_seconds": 2.4,
-      "cache_events": 195
+      "network_seconds": 946.3,
+      "max_response_seconds": 2.6,
+      "cache_events": 655
+    },
+    {
+      "name": "Makeup Gallery",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "59351b9269aef9e6",
+      "products": 1658,
+      "variants": 2032,
+      "http_statuses": {
+        "200": 3568,
+        "504": 2
+      },
+      "network_seconds": 8709.8,
+      "max_response_seconds": 34.3,
+      "cache_events": 5166
     }
   ]
 }
