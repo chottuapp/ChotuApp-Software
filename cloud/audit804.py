@@ -146,6 +146,8 @@ def reviewed_photo_purpose(row,source):
 
 def issues_for(row,source=None):
  name=plain(row.get('name'));description=plain(row.get('description'));category=plain(row.get('Category'));issues=[]
+ from sold_object_audit import category_boundary_issues
+ issues.extend(category_boundary_issues(row,source))
  from description_readability import issues as readability_issues
  issues.extend(readability_issues(row.get('description')))
  if not name:issues.append('Missing product name')

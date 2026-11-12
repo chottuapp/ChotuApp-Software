@@ -12,6 +12,8 @@ def extend_proofs(proofs,additions):
 
 def review(name,description,category,sku="",source_type="",verified_path=""):
  title=text(name);body=text(description);cat=text(category).lower()
+ # Audience is checked independently; purpose proofs compare the sold object.
+ cat=re.sub(r"^(?:men|women)(?:['’]s)?\s+",'',cat)
  if source_type in ('SYNCC - Women Sweater','Women Stitched Sari','Men Peshawari Chappal'):body+=' Source-listed product type: '+source_type
  # Only explicit source garment-type strings; a generic vendor/brand is not purpose evidence.
  if re.fullmatch(r'(?i)(?:women|men|boys|girls|teens|kids|infants)\s+(?:stitched\s+[234]\s+piece(?:\s+shirt\s+trouser)?|(?:cotton\s+(?:silk\s+)?)?shalwar|(?:special\s+)?kurta|trouser|earrings|bracelet|necklace|ring|eyebrow\s+kit|waistcoat\s+with\s+kurta\s+trouser)',str(source_type or '').strip()):body+=' Source-listed garment type: '+str(source_type)

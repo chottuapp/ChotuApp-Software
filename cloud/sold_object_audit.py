@@ -24,3 +24,32 @@ def review(row,source=None):
    return []
  if not excluded and cat in kinds and re.search(kinds[cat],context,re.I):return []
  return None
+
+def category_boundary_issues(row,source=None):
+ """Non-waivable source audience and cross-family checks for every seller."""
+ from urllib.parse import urlsplit
+ original=source or row;category=str(row.get('Category') or '')
+ fields=[str(original.get('name') or ''),str(original.get('source_product_type') or '')]
+ path=str(original.get('website_category_path') or '')
+ if original.get('website_category_status') in {'verified_navigation_membership','verified_product_breadcrumb'} and original.get('website_category_checked_at') and urlsplit(str(original.get('source_url') or '')).hostname and (urlsplit(str(original.get('website_category_source_url') or '')).hostname or '').removeprefix('www.')==(urlsplit(str(original.get('source_url') or '')).hostname or '').removeprefix('www.'):
+  fields.extend(path.split(' > '))
+ context=' '.join(fields)
+ audience=[]
+ for label,pattern in [('men',r"\b(?:men(?:['’]?s)?|gents|male)\b"),('women',r"\b(?:women(?:['’]?s)?|ladies|female)\b")]:
+  if re.search(pattern,context,re.I):audience.append(label)
+ category_audience='women' if re.match(r"(?i)^(?:women(?:['’]?s)?|ladies|female)\b",category) else 'men' if re.match(r"(?i)^(?:men(?:['’]?s)?|gents|male)\b",category) else None
+ issues=[]
+ if category_audience and audience!=[category_audience]:issues.append('Category audience is unsupported or conflicts with original product evidence')
+ # Exact product-type fields, never ingredient/styling/care text, establish family.
+ kind=str(original.get('source_product_type') or '').strip().casefold()
+ families={'apparel':r'^(?:shirt|shirts|trousers|jeans|kurta|shalwar|clothing sets)$',
+  'footwear':r'^(?:flats|sandals|slippers|sneakers|heels|boots|loafers)$',
+  'beauty':r'^(?:shampoo|face wash|face serum|foundation|lipstick|mascara)$',
+  'stationery':r'^(?:notebook|notebooks|pencil|pencils)$'}
+ incompatible={'apparel':r'\b(?:shampoos?|serums?|foundations?|lipsticks?|sandals|slippers|notebooks)\b',
+  'footwear':r'\b(?:shirts|trousers|jeans|dresses|shampoos?|serums?|foundation)\b',
+  'beauty':r'\b(?:shirts|trousers|jeans|dresses|sandals|slippers|notebooks)\b',
+  'stationery':r'\b(?:shirts|trousers|jeans|dresses|shampoos?|serums?|foundations?|sandals)\b'}
+ for family,pattern in families.items():
+  if re.fullmatch(pattern,kind) and re.search(incompatible[family],category,re.I):issues.append('Category family conflicts with original exact merchant product type')
+ return issues

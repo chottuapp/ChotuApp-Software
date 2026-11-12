@@ -60,6 +60,12 @@ def process(source,out,store,codes,*,mobile_khaadi=False,approved_original=False
                 if result:
                     label,origin,quote=result
                     if label!=old:changes.update(Category=label,subcategory_source=origin,subcategory_evidence=quote,subcategory_checked_at=stamp)
+            if str(row.get('subcategory_source') or '').lower() not in ('manual','owner','manual_override','owner_supplied_scope'):
+                from sold_object_category_support import correct_audience_category
+                audience_label=correct_audience_category(row,label)
+                if audience_label!=label:
+                    label=audience_label
+                    changes.update(Category=label,subcategory_source='source_audience_correction',subcategory_evidence='Explicit source audience only; unknown or conflicting audience remains neutral.',subcategory_checked_at=stamp)
             if not label:warnings.append({'product_id':pid,'issue':'Ambiguous product category retained blank'})
             from description_readability import format_description
             from electronics_description_support import electronic,format_electronics

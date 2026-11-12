@@ -27,3 +27,27 @@ def source_object(name,description,product_type='',website_path=''):
     if label=='Heels & Pumps' and not re.search(r'\b(?:shoes?|footwear|soles?|footbed|ankle|straps?|sandals?|pumps?|heels)\b',title+' '+body,re.I):continue
     return label,'source_sold_object_'+field,field+': '+text[max(0,match.start()-70):match.end()+130]
  return None
+
+# Exact merchant types extend object recovery beyond footwear. Generic ranges,
+# brands, colours and styling prose are deliberately absent.
+EXACT.update({'shirt':'Shirts','shirts':'Shirts','trousers':'Trousers','jeans':'Jeans',
+ 'shampoo':'Shampoos','toothpaste':'Toothpastes','toothbrush':'Toothbrushes',
+ 'face wash':'Face Wash','face serum':'Face Serums','foundation':'Foundations',
+ 'lipstick':'Lipsticks','mascara':'Mascaras','notebook':'Notebooks','backpack':'Backpacks',
+ 'lunch box':'Lunch Boxes','water bottle':'Water Bottles'})
+
+def correct_audience_category(row,category):
+ """Repair existing gender labels only; never infer audience from brand/colour."""
+ label=str(category or '')
+ prefix=re.match(r"(?i)^(women(?:['’]?s)?|ladies|female|men(?:['’]?s)?|gents|male)\s+(.+)$",label)
+ if not prefix:return label
+ from urllib.parse import urlsplit
+ fields=[str(row.get('name') or ''),str(row.get('source_product_type') or '')]
+ path=str(row.get('website_category_path') or '')
+ if row.get('website_category_status') in {'verified_navigation_membership','verified_product_breadcrumb'} and row.get('website_category_checked_at') and urlsplit(str(row.get('source_url') or '')).hostname and (urlsplit(str(row.get('website_category_source_url') or '')).hostname or '').removeprefix('www.')==(urlsplit(str(row.get('source_url') or '')).hostname or '').removeprefix('www.'):
+  fields.extend(path.split(' > '))
+ evidence=' '.join(fields)
+ male=bool(re.search(r"\b(?:men(?:['’]?s)?|gents|male)\b",evidence,re.I))
+ female=bool(re.search(r"\b(?:women(?:['’]?s)?|ladies|female)\b",evidence,re.I))
+ if male==female:return prefix[2] # unknown/conflicting audience: keep the object neutral
+ return ("Men's " if male else "Women's ")+prefix[2]

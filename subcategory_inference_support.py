@@ -90,7 +90,7 @@ def _infer_type(name,description):
         return label,'inferred_product_name' if field=='name' else 'inferred_description',field+': '+quote
     return None
 
-def apply(row,previous=None):
+def _apply(row,previous=None):
     old=previous or (row.get('subcategory'),row.get('subcategory_source'),row.get('subcategory_checked_at'))
     path=str(row.get('website_category_path') or '')
     verified=row.get('website_category_status') in VERIFIED and path and row.get('website_category_source_url') and row.get('website_category_checked_at')
@@ -556,3 +556,13 @@ def infer(name,description,website_path=''):
     if re.search(r'(?i)\b(?:is|a|an|this)\b.{0,50}\b(?:perfume|fragrance|scent)\b|\beau de parfum\b',body) and not re.search(r'(?i)\b(?:wash|cream|lotion|soap|shampoo|wipes|colou?r)\b',title):
         return _quote('Perfumes & Fragrances','description',body)
     return None
+
+
+def apply(row,previous=None):
+    result=_apply(row,previous)
+    if result.get('subcategory_source') in ('manual','owner','manual_override','owner_supplied_scope'):return result
+    from sold_object_category_support import correct_audience_category
+    label=correct_audience_category(result,result.get('subcategory'))
+    if label!=result.get('subcategory'):
+        result.update(subcategory=label,subcategory_source='source_audience_correction',subcategory_evidence='Explicit source audience only; unknown or conflicting audience remains neutral.',subcategory_checked_at=datetime.now(timezone.utc).isoformat())
+    return result
