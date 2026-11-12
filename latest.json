@@ -1,44 +1,47 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-12T20:12:29.478184+00:00",
-  "run_id": "43291296265",
+  "generated_utc": "2026-11-12T20:20:22.148817+00:00",
+  "run_id": "43277254613",
   "attempt": "1",
   "source_commit": "ff2d5f9de8beac77874378ae6de1257a1d2b69f5",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 2289.8,
+  "elapsed_seconds": 7569.3,
   "stores": [
     {
-      "name": "Bonanza Satrangi",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [
-        "HTTP_503",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "59351b9269aef9e6",
-      "products": 1443,
-      "variants": 4529,
-      "http_statuses": {
-        "200": 810
-      },
-      "network_seconds": 2032.1,
-      "max_response_seconds": 8.6,
-      "cache_events": 22905
-    },
-    {
-      "name": "Outfitters",
+      "name": "Rung Rez",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
-      "software_revision": "876a6eacc6f1b8ef",
-      "products": 677,
-      "variants": 3889,
+      "software_revision": "59351b9269aef9e6",
+      "products": 5,
+      "variants": 13,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
       "cache_events": 0
+    },
+    {
+      "name": "So Komal",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "59351b9269aef9e6",
+      "products": 766,
+      "variants": 1231,
+      "http_statuses": {
+        "404": 15,
+        "200": 2982,
+        "429": 3
+      },
+      "network_seconds": 7157.7,
+      "max_response_seconds": 20.4,
+      "cache_events": 27780
     }
   ]
 }
