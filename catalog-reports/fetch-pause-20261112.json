@@ -262,8 +262,8 @@
       "status": "in_progress"
     }
   ],
-  "resume_authorized": false,
-  "fetch_workflow_disabled": true,
+  "resume_authorized": true,
+  "fetch_workflow_disabled": false,
   "pause_actions": [
     {
       "run_id": "43221500692",
@@ -524,11 +524,11 @@
       "success": true
     }
   ],
-  "pause_state": "paused",
+  "pause_state": "resumed_by_owner",
   "checkpoint_verification_complete": true,
   "running_fetchers_waiting_for_stop_signal": 0,
   "stop_workflows_queued": 0,
-  "workflow_state": "cloud-fetch.yml disabled_manually",
+  "workflow_state": "active",
   "resume_instructions": "Only resume after explicit owner request. Re-enable cloud-fetch.yml. Verify per-run checkpoint artifacts first, including cancelled queued rerun attempts that may retain earlier checkpoints. Resume each started pair from its own saved checkpoint; do not restart completed stores or create a new refresh generation. Never-started pairs may start normally in the same generation. The stop signals target original run IDs, so new resume run IDs are not stopped by them.",
   "unrelated_workflows_changed": false,
   "artifact_verification": [
@@ -1291,5 +1291,6 @@
   ],
   "active_fetches_at_verification": 0,
   "drive_cancellation_needed": false,
-  "owner_approved_single_drive_cancellation": true
+  "owner_approved_single_drive_cancellation": true,
+  "resume_record": "catalog-reports/fetch-resume-20261112.json"
 }
