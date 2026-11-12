@@ -4213,7 +4213,7 @@
   "original_holds": {},
   "original_uploads": {},
   "audit804_processed": {
-    "Miss Rose": "source:1c074bd55448fa26862887226bfa501bb977e7ae0238f2bf4b53e15877009b54:Miss Rose:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
+    "Miss Rose": "source:d87232c16358d5a462a05888af88212cecac9e9958afe445b02f73877348df3c:Miss Rose:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb",
     "Rivaj UK": "source:6e6cb3df7ccd680a22bac4acf4de25142942802ff70d3ba8559528facd86e632:Rivaj UK:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
     "Rawayat": "source:e5e4f92e82590df4c93300e6afe0d1dd51adb8d233c95101e9a80daa4182ee39:Rawayat:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
     "Junaid Jamshed": "source:8781f131bdea4d3a090afdd4ee9837d9216a3c43119c2c42a8cf2f657d3c58ef:Junaid Jamshed:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
@@ -4299,17 +4299,40 @@
       "store": "Miss Rose",
       "shop_code": "SE10014",
       "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 192,
-      "findings_count": 0,
-      "findings": [],
+      "status": "hold",
+      "products_checked": 190,
+      "findings_count": 1,
+      "findings": [
+        {
+          "product_id": "CPa0543b0712ee",
+          "name": "Miss Rose 2 in 1 Eyebrow & Eyeliner Pencil",
+          "source_url": "https://missrose.com.pk/products/miss-rose-2-in-1-eyebrow-eyeliner-pencil",
+          "issues": [
+            "Primary product type and Category disagree: eyeliner"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "ded3e34408e05f5acab94df073d5e328c2f526948822e8979b23945e249490b4",
-      "checked_utc": "2026-11-11T17:36:04.070175+00:00",
+      "workbook_sha256": "69d78b74de87fa1f43f36664e0da6ee229d3ab9b08e245a62d2b065883a1e98f",
+      "checked_utc": "2026-11-12T15:45:46.690169+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-12T15:45:46.690866+00:00",
+        "updated_utc": "2026-11-12T15:45:46.690866+00:00",
+        "next_source_check_due_utc": "2026-11-12T16:00:46.690866+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Primary product type and Category disagree: eyeliner"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
@@ -4317,13 +4340,12 @@
       "description_repairs_count": 0,
       "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "42490423242",
-      "source_artifact": 13626669647,
-      "source_sha256": "1c074bd55448fa26862887226bfa501bb977e7ae0238f2bf4b53e15877009b54",
+      "source_run": "43201353964",
+      "source_artifact": 13947776715,
+      "source_sha256": "d87232c16358d5a462a05888af88212cecac9e9958afe445b02f73877348df3c",
       "description_style_version": "customer-copy-v3",
-      "refresh_generation": "refresh20261108-92345025",
-      "delivery_status": "verified",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/miss-rose/1c074bd55448fa26/manifest.json"
+      "refresh_generation": "refresh20261112-5f1c5ec3",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/miss-rose/d87232c16358d5a4/manifest.json"
     },
     "The Hanger Pakistan": {
       "name": "804 Audit",
@@ -21153,7 +21175,7 @@
     "42588687062": "42588687062:13670144366:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
     "42589212243": "42589212243:13680128767:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
     "42607016680": "42607016680:13675312224:01a70064bf192b6ffefd1b91ec66c72e33a281d72002ae672498fba22541605d",
-    "42675079842": "42675079842:13699907263:855cc0ebfa5b8f32e926671267d1260c381ecd22d59c76789beb684cdd584fa5",
+    "42675079842": "42675079842:13699907263:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb",
     "42608201099": "42608201099:13677149540:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
     "42630652507": "42630652507:13702247097:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
     "42681203970": "42681203970:13722094814:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
@@ -21267,8 +21289,8 @@
     "SE10029-duplicate-1vZhH7OpSqLrQAokrEBL71ZsanJ_q9cU3": "inputs/fresh804-20261026-5d42fe35/rollback-se10029-duplicate-1vzhh7opsqlrqaokrebl71zsanj-q9cu3/fb102c981d6e6723/manifest.json",
     "SE10078": "inputs/fresh804-20261026-5d42fe35/rollback-se10078/c269ca0270e0db97/manifest.json"
   },
-  "audit804_last_store": "ChotuApp Groceries",
-  "audit804_progress_utc": "2026-11-12T14:51:55.075628+00:00",
+  "audit804_last_store": "Miss Rose",
+  "audit804_progress_utc": "2026-11-12T15:48:13.244115+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
@@ -23265,7 +23287,7 @@
     "campaign_id": "fresh804-20261026-a3f0b983",
     "results": {}
   },
-  "audit804_refresh_generation": "refresh20261108-92345025",
+  "audit804_refresh_generation": "refresh20261112-5f1c5ec3",
   "audit804_refresh_stores": [
     "Adam Cheese",
     "Aerosoft Studio",
@@ -23283,6 +23305,7 @@
     "Bonanza Satrangi",
     "Breakout",
     "ChenOne",
+    "ChotuApp Groceries",
     "Computer Zone",
     "Cool and Cool",
     "Dairy Dream",
@@ -23350,7 +23373,7 @@
     "Zero Lifestyle",
     "Zyren"
   ],
-  "audit804_refresh_requested_utc": "2026-11-08T14:30:30.760941+00:00",
+  "audit804_refresh_requested_utc": null,
   "audit804_source_download_errors": {},
   "audit804_source_restore_errors": {},
   "owner_paused_stores": [
