@@ -1,6 +1,11 @@
 name: Diagnose Four Requested Sources
 on:
   workflow_dispatch:
+    inputs:
+      store:
+        description: Optional exact requested seller for a bounded single-source check
+        required: false
+        type: string
 permissions:
   contents: write
 jobs:
@@ -16,4 +21,5 @@ jobs:
       - env:
           GH_TOKEN: ${{ github.token }}
           PYTHONPATH: cloud:.
+          REQUESTED_SOURCE_STORE: ${{ inputs.store }}
         run: python cloud/requested_source_diagnosis.py

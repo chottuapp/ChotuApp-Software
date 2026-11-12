@@ -44,6 +44,8 @@ def inspect(item):
  try:
   r=read(base+'/robots.txt');robot=RobotFileParser();robot.parse(r.text.splitlines())
   if name=='Toynix':
+   home=read(base+'/');out['public_home_status']=home.status_code
+   soup=BeautifulSoup(home.text,'html.parser');out['public_home_product_links']=list(dict.fromkeys(urljoin(base,a['href']) for a in soup.select('a[href]') if a['href'].startswith('/products/')))[:10]
    for query in ('limit=1','limit=50&page=1','limit=50&page=2'):
     r=read(base+'/products.json?'+query);data=r.json();out.setdefault('catalog_checks',[]).append({'query':query,'products':len(data.get('products',[])),'sample_ids':[p.get('id') for p in data.get('products',[])[:3]]})
    return out
@@ -72,7 +74,10 @@ def inspect(item):
  return out
 
 def main():
- with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:sources=list(pool.map(inspect,SITES.items()))
+ selected=os.environ.get('REQUESTED_SOURCE_STORE','')
+ if selected and selected not in SITES:raise ValueError('Exact requested seller required')
+ items=[(selected,SITES[selected])] if selected else list(SITES.items())
+ with concurrent.futures.ThreadPoolExecutor(max_workers=min(4,len(items))) as pool:sources=list(pool.map(inspect,items))
  publish({'run_id':os.environ['GITHUB_RUN_ID'],'sources':sources},branch='requested-store-reports')
  print('Sanitized source repair evidence saved')
 if __name__=='__main__':main()
