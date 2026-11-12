@@ -4193,7 +4193,7 @@
     "Seran": "source:99e08d6c3b693068c9e9eff15215c634f7d6dd23f677cd40fa773afd2e06fdea:Seran:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
     "Sana Safinaz": "source:2f628516384e386b777f1e7dbac99c813098448b1a33f6d882bb42130eb26048:Sana Safinaz:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
     "Beyond East": "source:8e57f77c6006d99e22ae5c291b98b070405db1e1108ddc3397b8f019cf11c1cc:Beyond East:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
-    "Shop Modest": "source:2ee555c3548b41c041c55ece5095f93dee38fc528a3125f3afd8b5fd1fa5903f:Shop Modest:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
+    "Shop Modest": "source:466678244efe2e1809dee7152e380a31685d6c88e79686cdaac9b399af1d1276:Shop Modest:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb",
     "Computer Zone": "source:3c9a596752ee4220318b6b699bea02c28528c116c21c5f96b42437de658e02be:Computer Zone:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
     "ChenOne": "source:6ca04369872ae64c801ec8e5ac78e3d85e1cd7c76d46568c1c0037d48b6ec336:ChenOne:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
     "Breakout": "source:9a760ddf48487c17a9dc5c9fef1dca884f4a399ecb9dc257d2bf265178b89b41:Breakout:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
@@ -4537,97 +4537,55 @@
       "store": "Shop Modest",
       "shop_code": "SE10006",
       "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 129,
-      "findings_count": 0,
-      "findings": [],
-      "details_truncated": false,
-      "workbook_sha256": "a86d57c0f317a5683f50477278655e93faa0804dafc02ee1dbd561b0b7220501",
-      "checked_utc": "2026-11-11T17:42:59.515157+00:00",
-      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
-      "incomplete_products_excluded": [
+      "status": "hold",
+      "products_checked": 126,
+      "findings_count": 1,
+      "findings": [
         {
           "product_id": "CP951dbfe20ace",
-          "source_url": "https://www.shopmodest.pk/products/green-trouser",
           "name": "Rare Flare",
+          "source_url": "https://www.shopmodest.pk/products/green-trouser",
           "issues": [
             "Category is too broad or promotional for product-purpose classification",
-            "Category lacks clear product-purpose evidence; manual review required"
+            "Primary product type and Category disagree: trousers"
           ]
         }
       ],
-      "incomplete_products_count": 1,
-      "incomplete_products_truncated": false,
-      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/shop-modest-incomplete-products/80c086d2a0ca8775/manifest.json",
-      "original_source_sha256": "2ee555c3548b41c041c55ece5095f93dee38fc528a3125f3afd8b5fd1fa5903f",
+      "details_truncated": false,
+      "workbook_sha256": "82f57a9f5618e7b16fe5cda3b00dbaa18c89dc41996afcfe6c78cbe8fe6c2ef5",
+      "checked_utc": "2026-11-12T15:58:55.722014+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-12T15:58:55.722347+00:00",
+        "updated_utc": "2026-11-12T15:58:55.722347+00:00",
+        "next_source_check_due_utc": "2026-11-12T16:13:55.722347+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category is too broad or promotional for product-purpose classification",
+          "Primary product type and Category disagree: trousers"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
       "owner_grocery_scope_repairs": 0,
-      "description_repairs_count": 130,
-      "description_repairs_examples": [
-        {
-          "product_id": "CP2311e9a464d5",
-          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP43b2a359c31d",
-          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPf4a0a3a03762",
-          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPa05f48dcf2d9",
-          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP51ab3115bf02",
-          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP1d1785e4b128",
-          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP6fd8359000dc",
-          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPdfdfae406da9",
-          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CP5b2d295932d5",
-          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
-          "repair_kind": "description"
-        },
-        {
-          "product_id": "CPe87330c7ab7b",
-          "issue": "Removed bulk-contact and customer-review boilerplate; all product specifications, size tables and options retained.",
-          "repair_kind": "description"
-        }
-      ],
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "42490430676",
-      "source_artifact": 13622184296,
-      "source_sha256": "2ee555c3548b41c041c55ece5095f93dee38fc528a3125f3afd8b5fd1fa5903f",
+      "source_run": "43201378186",
+      "source_artifact": 13937228710,
+      "source_sha256": "466678244efe2e1809dee7152e380a31685d6c88e79686cdaac9b399af1d1276",
       "description_style_version": "customer-copy-v3",
-      "refresh_generation": "refresh20261108-92345025",
-      "delivery_status": "verified",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/shop-modest/2ee555c3548b41c0/manifest.json"
+      "refresh_generation": "refresh20261112-5f1c5ec3",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/shop-modest/466678244efe2e18/manifest.json"
     },
     "Seran": {
       "name": "804 Audit",
@@ -21205,7 +21163,8 @@
     "42802656967": "42802656967:13779918009:5b240b876175945ff7cb2717983c68d41f6776f2d289494ba7bbfe89b50d54fe",
     "43201353964": "43201353964:13947776715:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb",
     "43201362176": "43201362176:13946688642:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb",
-    "43201366894": "43201366894:13946012497:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb"
+    "43201366894": "43201366894:13946012497:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb",
+    "43201372193": "43201372193:13948300950:6f030b0ed5429fb6106d091fa6ec881b1e0c3d9156fd50c412ed16b6205059bb"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-11-12T15:42:54.529746+00:00",
@@ -21313,8 +21272,8 @@
     "SE10029-duplicate-1vZhH7OpSqLrQAokrEBL71ZsanJ_q9cU3": "inputs/fresh804-20261026-5d42fe35/rollback-se10029-duplicate-1vzhh7opsqlrqaokrebl71zsanj-q9cu3/fb102c981d6e6723/manifest.json",
     "SE10078": "inputs/fresh804-20261026-5d42fe35/rollback-se10078/c269ca0270e0db97/manifest.json"
   },
-  "audit804_last_store": "Elite Cosmetics",
-  "audit804_progress_utc": "2026-11-12T15:58:49.149777+00:00",
+  "audit804_last_store": "Shop Modest",
+  "audit804_progress_utc": "2026-11-12T15:58:58.233323+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Rios",
