@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-12T13:15:57.746057+00:00",
+  "run_id": "43201445439",
+  "attempt": "1",
+  "source_commit": "ea10cacd30197c337916f5a0aa62d799a9caf3f0",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 9387.5,
+  "stores": [
+    {
+      "name": "Pyari Walls",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "876a6eacc6f1b8ef",
+      "products": 301,
+      "variants": 758,
+      "http_statuses": {
+        "200": 366,
+        "429": 1
+      },
+      "network_seconds": 772.5,
+      "max_response_seconds": 2.6,
+      "cache_events": 630
+    },
+    {
+      "name": "Sana Safinaz",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "876a6eacc6f1b8ef",
+      "http_statuses": {
+        "200": 2955,
+        "429": 4
+      },
+      "network_seconds": 6672.7,
+      "max_response_seconds": 2.7,
+      "cache_events": 8162
+    }
+  ]
+}
