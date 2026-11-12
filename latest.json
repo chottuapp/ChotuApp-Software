@@ -1,42 +1,40 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-12T20:28:45.705866+00:00",
-  "run_id": "43268453209",
+  "generated_utc": "2026-11-12T20:35:54.866782+00:00",
+  "run_id": "43268312251",
   "attempt": "1",
   "source_commit": "ff2d5f9de8beac77874378ae6de1257a1d2b69f5",
-  "status": "complete",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 10898.6,
+  "elapsed_seconds": 11399.9,
   "stores": [
     {
-      "name": "Rios",
-      "status": "done",
-      "review_required": true,
+      "name": "Edenrobe",
+      "status": "source_paused",
+      "review_required": false,
       "issue_codes": [
         "HTTP_429",
         "RATE_LIMIT",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "59351b9269aef9e6",
-      "products": 2259,
-      "variants": 5916,
       "http_statuses": {
-        "200": 3504,
-        "429": 4
+        "200": 4269,
+        "429": 6
       },
-      "network_seconds": 8117.2,
-      "max_response_seconds": 2.8,
-      "cache_events": 63407
+      "network_seconds": 9997.8,
+      "max_response_seconds": 8.9,
+      "cache_events": 56558
     },
     {
-      "name": "Mala",
+      "name": "Beechtree",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "876a6eacc6f1b8ef",
-      "products": 88,
-      "variants": 247,
+      "products": 714,
+      "variants": 3053,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
