@@ -1,41 +1,46 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-12T19:34:29.372417+00:00",
-  "run_id": "43238157977",
+  "generated_utc": "2026-11-12T19:34:51.788804+00:00",
+  "run_id": "43238220893",
   "attempt": "1",
   "source_commit": "ff15165a095b202ee99fe09db8865d51f1dcbcb1",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 18000.7,
+  "elapsed_seconds": 18002.3,
   "stores": [
     {
-      "name": "Zellbury",
-      "status": "pending",
-      "review_required": false,
+      "name": "Breakout",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "59351b9269aef9e6",
-      "http_statuses": {
-        "200": 8365
-      },
-      "network_seconds": 24095.4,
-      "max_response_seconds": 49.2,
-      "cache_events": 6398
-    },
-    {
-      "name": "Zero Lifestyle",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "876a6eacc6f1b8ef",
-      "products": 60,
-      "variants": 255,
+      "products": 1564,
+      "variants": 8083,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
-      "cache_events": 0
+      "cache_events": 6535
+    },
+    {
+      "name": "Liberty Books",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_404",
+        "WEBSITE_CATEGORY_UNVERIFIED",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "59351b9269aef9e6",
+      "http_statuses": {
+        "404": 1,
+        "200": 3965
+      },
+      "network_seconds": 9629.2,
+      "max_response_seconds": 12.1,
+      "cache_events": 1547
     }
   ]
 }
