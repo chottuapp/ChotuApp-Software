@@ -26,3 +26,25 @@ class GroceryCompletionTests(unittest.TestCase):
   snapshots[pages[2]['url']]['count_changed']=True
   self.assertEqual(pending_scope_indexes(pages,snapshots,1),{3})
   self.assertEqual(pending_scope_indexes(pages,snapshots,2),{1,2,3,4})
+ def test_completed_checkpoint_without_cache_requires_fresh_scope_verification(self):
+  import zipfile
+  from complete_grocery_export import discovery_snapshots,pending_scope_indexes
+  with tempfile.TemporaryDirectory() as tmp:
+   root=Path(tmp);archive=root/'checkpoint.zip'
+   with zipfile.ZipFile(archive,'w') as z:z.writestr('template.xlsx',b'placeholder')
+   scopes=[{'url':'https://www.naheed.pk/scope1'},{'url':'https://www.naheed.pk/scope2'}]
+   snapshots=discovery_snapshots(archive,root,{p['url'] for p in scopes})
+   self.assertEqual(snapshots,{})
+   self.assertEqual(pending_scope_indexes(scopes,snapshots,1),{1,2})
+ def test_multiple_store_caches_only_use_exact_approved_scope(self):
+  import zipfile,json,requests
+  from resume_support import ResponseCache
+  from complete_grocery_export import discovery_snapshots
+  with tempfile.TemporaryDirectory() as tmp:
+   root=Path(tmp);scope='https://www.naheed.pk/scope1';cache=ResponseCache(root/'pages.sqlite3')
+   response=requests.Response();response.status_code=200;response.url=scope;response._content=json.dumps({'scope_url':scope,'links':['p1'],'pages':['page1'],'total':1,'count_changed':False}).encode();cache.put(scope+'#chotu-scope-snapshot-v1',response);cache.close()
+   archive=root/'checkpoint.zip'
+   with zipfile.ZipFile(archive,'w') as z:
+    z.write(root/'pages.sqlite3','saved_runs/a/0/pages.sqlite3');z.write(root/'pages.sqlite3','saved_runs/a/1/pages.sqlite3')
+   self.assertEqual(set(discovery_snapshots(archive,root,{scope})),{scope})
+   self.assertEqual(discovery_snapshots(archive,root,{'https://www.naheed.pk/other'}),{})

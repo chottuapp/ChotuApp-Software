@@ -22,6 +22,28 @@ def pending_scope_indexes(pages,snapshots,reported_reviews):
  if len(pending)!=reported_reviews:return set(range(1,len(pages)+1))
  return pending
 
+def discovery_snapshots(archive_path,temp,approved_scopes):
+ """Completed checkpoints may omit caches; missing proof requires fresh listings."""
+ snapshots={}
+ with zipfile.ZipFile(archive_path) as archive:
+  entries=[v for v in archive.infolist() if v.filename.startswith('saved_runs/') and v.filename.endswith('/pages.sqlite3')]
+  if len(entries)>30 or sum(v.file_size for v in entries)>1024**3 or any(v.file_size>512*1024**2 for v in entries):raise ValueError('Discovery cache exceeds checkpoint bounds')
+  for index,entry in enumerate(entries):
+   cache_path=Path(temp)/('discovery-'+str(index)+'.sqlite3')
+   with archive.open(entry) as src,cache_path.open('wb') as dst:shutil.copyfileobj(src,dst,1024**2)
+   cache=ResponseCache(cache_path)
+   try:
+    for (url,) in cache.db.execute('SELECT url FROM pages').fetchall():
+     if '#chotu-scope-snapshot-v1' not in url:continue
+     response=cache.get(url)
+     if response is None:raise ValueError('Checkpoint snapshot checksum failed')
+     data=response.json();scope=data.get('scope_url')
+     if scope not in approved_scopes:continue
+     if scope in snapshots and snapshots[scope]!=data:data=dict(data,count_changed=True)
+     snapshots[scope]=data
+   finally:cache.close()
+ return snapshots
+
 def merge(source,extra,target):
  book=load_workbook(source);add=load_workbook(extra)
  try:
@@ -49,19 +71,7 @@ def main():
  request=json.loads((ROOT/'cloud/chotu-groceries-request.json').read_text());codes=json.loads((ROOT/'cloud/confirmed-shop-codes.json').read_text())
  with tempfile.TemporaryDirectory() as tmp:
   temp=Path(tmp);snapshots={};archive_path=next(Path(os.environ['GROCERY_CHECKPOINT_ROOT']).rglob('checkpoint.zip'))
-  with zipfile.ZipFile(archive_path) as archive:
-   entries=[v for v in archive.infolist() if v.filename.startswith('saved_runs/') and v.filename.endswith('/pages.sqlite3')]
-   if len(entries)!=1 or entries[0].file_size>512*1024**2:raise ValueError('Unexpected discovery checkpoint')
-   cache_path=temp/'discovery.sqlite3'
-   with archive.open(entries[0]) as src,cache_path.open('wb') as dst:shutil.copyfileobj(src,dst,1024**2)
-  cache=ResponseCache(cache_path)
-  try:
-   for (url,) in cache.db.execute('SELECT url FROM pages').fetchall():
-    if '#chotu-scope-snapshot-v1' not in url:continue
-    response=cache.get(url)
-    if response is None:raise ValueError('Checkpoint checksum failed')
-    data=response.json();snapshots[data['scope_url']]=data
-  finally:cache.close()
+  snapshots=discovery_snapshots(archive_path,temp,{p['url'] for p in request['pages']})
   normalized,_=normalize(original,temp/'normalized.xlsx',codes[STORE]);normalized,_=repair(normalized,temp/'scoped.xlsx',STORE)
   source_book=load_workbook(normalized,read_only=True,data_only=False);sheet=source_book['Products'];headers=[c.value for c in sheet[1]];source_rows=list(sheet.iter_rows(min_row=2,values_only=True));existing={str(v[headers.index('source_url')]) for v in source_rows if any(x is not None for x in v)};review_count=max(int(v[headers.index('source_scope_review_count')] or 0) for v in source_rows if any(x is not None for x in v));source_book.close();pending=pending_scope_indexes(request['pages'],snapshots,review_count)
   g=runpy.run_path(str(ROOT/'main.py'),run_name='grocery_completion_engine');g['OUT']=temp/'additions';g['S']=requests.Session();g['__file__']=str(temp/'grocery-completion.py')
