@@ -1,53 +1,39 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-12T17:22:10.341388+00:00",
-  "run_id": "43238253997",
+  "generated_utc": "2026-11-12T17:23:15.397312+00:00",
+  "run_id": "43247858664",
   "attempt": "1",
-  "source_commit": "ff15165a095b202ee99fe09db8865d51f1dcbcb1",
-  "status": "incomplete",
+  "source_commit": "cc108d5119b0332938eb15ab8f556f9737d859b4",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 10009.7,
+  "elapsed_seconds": 0.1,
   "stores": [
     {
-      "name": "Limelight",
-      "status": "source_paused",
-      "review_required": false,
-      "issue_codes": [
-        "HTTP_404",
-        "HTTP_429",
-        "RATE_LIMIT",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "59351b9269aef9e6",
-      "http_statuses": {
-        "404": 69,
-        "200": 2018,
-        "429": 5
-      },
-      "network_seconds": 4616.7,
-      "max_response_seconds": 15.0,
-      "cache_events": 22982
-    },
-    {
-      "name": "Alkaram Studio",
+      "name": "Shop Modest",
       "status": "done",
       "review_required": true,
-      "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "59351b9269aef9e6",
-      "products": 1572,
-      "variants": 5306,
-      "http_statuses": {
-        "200": 417,
-        "429": 1
-      },
-      "network_seconds": 953.7,
-      "max_response_seconds": 23.0,
-      "cache_events": 8238
+      "issue_codes": [],
+      "software_revision": "876a6eacc6f1b8ef",
+      "products": 126,
+      "variants": 879,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    },
+    {
+      "name": "The Hanger Pakistan",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "876a6eacc6f1b8ef",
+      "products": 376,
+      "variants": 1661,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
     }
   ]
 }
