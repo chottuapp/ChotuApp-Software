@@ -1,40 +1,42 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-12T20:36:51.788976+00:00",
-  "run_id": "43268490793",
+  "generated_utc": "2026-11-12T20:37:59.462316+00:00",
+  "run_id": "43268745096",
   "attempt": "1",
   "source_commit": "ff2d5f9de8beac77874378ae6de1257a1d2b69f5",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 11346.3,
+  "elapsed_seconds": 11278.4,
   "stores": [
     {
-      "name": "Saya",
+      "name": "Limelight",
       "status": "source_paused",
       "review_required": false,
       "issue_codes": [
+        "HTTP_404",
         "HTTP_429",
         "RATE_LIMIT",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "59351b9269aef9e6",
       "http_statuses": {
-        "200": 4041,
-        "429": 5
+        "404": 66,
+        "200": 2280,
+        "429": 2
       },
-      "network_seconds": 9418.1,
-      "max_response_seconds": 14.7,
-      "cache_events": 54491
+      "network_seconds": 5189.3,
+      "max_response_seconds": 5.6,
+      "cache_events": 49779
     },
     {
-      "name": "Hush Puppies",
+      "name": "Alkaram Studio",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
-      "software_revision": "876a6eacc6f1b8ef",
-      "products": 222,
-      "variants": 3057,
+      "software_revision": "59351b9269aef9e6",
+      "products": 1572,
+      "variants": 5306,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
