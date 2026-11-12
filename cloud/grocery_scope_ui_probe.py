@@ -1,9 +1,33 @@
 """Bounded anonymous UI evidence for exact owner-supplied grocery scopes."""
-import json,os,re
+import json,os,re,tempfile,time
 from pathlib import Path
 from urllib.parse import urlsplit,urljoin,parse_qsl
 from playwright.sync_api import sync_playwright
 from source_research import publish
+
+def parser_evidence(scope):
+ """Compare the production traversal with bounded public card evidence."""
+ import requests
+ from types import SimpleNamespace
+ from bs4 import BeautifulSoup
+ from resume_support import ResponseCache
+ from chotu_groceries_source_support import PublicCatalog
+ with tempfile.TemporaryDirectory() as tmp:
+  cache=ResponseCache(Path(tmp)/'pages.sqlite3')
+  try:
+   reader=PublicCatalog({'S':requests.Session(),'_chotu_tls':SimpleNamespace(saved_response_cache=cache),'_chotu_wait':lambda:None,'_chotu_backoff':lambda seconds,*_:time.sleep(seconds)},print)
+   result={}
+   try:
+    links,total,pages=reader.discover_scope(scope)
+    result.update(links=sorted(links),total=total,pages=sorted(pages),count_changed=reader.scope_count_changed)
+   except Exception as exc:result.update(error=type(exc).__name__+': '+str(exc)[:500])
+   result['rendered']=[]
+   for (url,) in cache.db.execute('SELECT url FROM pages').fetchall():
+    if '#chotu-rendered-listing-v2' not in url:continue
+    response=cache.get(url);soup=BeautifulSoup(response.text,'html.parser')
+    result['rendered'].append(dict(url=url.split('#')[0],toolbar=[v.get_text(' ',strip=True) for v in soup.select('.toolbar-amount')],cards=len(soup.select('.products-grid .product-item')),result_links=sorted({a['href'] for a in soup.select('#product_result a[href]')}),card_links=sorted({a['href'] for a in soup.select('.products-grid .product-item a.product-item-link[href]')})))
+   return result
+  finally:cache.close()
 
 def main():
  indexes=[int(v) for v in os.environ['GROCERY_PUBLIC_SCOPE_INDEXES'].split(',') if v.strip()]
@@ -42,7 +66,7 @@ def main():
       page.wait_for_timeout(5000)
       record['next_pages'].append(dict(url=url,status=next_response.status,toolbar=[v.inner_text() for v in page.locator('.toolbar-amount').all()],cards=page.locator('.products-grid .product-item').evaluate_all('(nodes) => nodes.map(n => ({text:n.innerText.slice(0,250),links:Array.from(n.querySelectorAll(\"a.product-item-link[href]\")).map(a=>a.href)}))')))
     except Exception as exc:record['error']=type(exc).__name__
-    finally:page.close();report['scopes'].append(record)
+    finally:page.close();record['production_parser']=parser_evidence(scope);report['scopes'].append(record)
   finally:browser.close()
  publish(report,branch='chotu-groceries-reports');print('Public owner-scope UI evidence saved; no private catalogs accessed.')
 if __name__=='__main__':main()
