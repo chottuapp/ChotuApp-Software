@@ -1,52 +1,35 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-12T13:16:43.748127+00:00",
-  "run_id": "43201362176",
+  "generated_utc": "2026-11-12T14:32:14.202895+00:00",
+  "run_id": "43238102179",
   "attempt": "1",
-  "source_commit": "ea10cacd30197c337916f5a0aa62d799a9caf3f0",
-  "status": "incomplete",
-  "checkpoint_saved": true,
+  "source_commit": "ff15165a095b202ee99fe09db8865d51f1dcbcb1",
+  "status": "complete",
+  "checkpoint_saved": false,
   "python": "3.12.16",
-  "elapsed_seconds": 9736.1,
+  "elapsed_seconds": 0.0,
   "stores": [
     {
-      "name": "Rivaj UK",
+      "name": "Shop Modest",
       "status": "done",
       "review_required": true,
-      "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
+      "issue_codes": [],
       "software_revision": "876a6eacc6f1b8ef",
-      "products": 311,
-      "variants": 978,
-      "http_statuses": {
-        "200": 640,
-        "429": 1
-      },
-      "network_seconds": 1303.9,
-      "max_response_seconds": 2.6,
-      "cache_events": 1085
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
     },
     {
-      "name": "Junaid Jamshed",
-      "status": "pending",
-      "review_required": false,
-      "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT",
-        "WEBSITE_CATEGORY_UNVERIFIED",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
+      "name": "The Hanger Pakistan",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
       "software_revision": "876a6eacc6f1b8ef",
-      "http_statuses": {
-        "200": 2555,
-        "429": 2
-      },
-      "network_seconds": 5167.9,
-      "max_response_seconds": 3.0,
-      "cache_events": 9395
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
     }
   ]
 }
