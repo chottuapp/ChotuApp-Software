@@ -1,45 +1,44 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-12T19:29:46.520642+00:00",
-  "run_id": "43238291015",
+  "generated_utc": "2026-11-12T19:32:19.551966+00:00",
+  "run_id": "43238122719",
   "attempt": "1",
   "source_commit": "ff15165a095b202ee99fe09db8865d51f1dcbcb1",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 17365.3,
+  "elapsed_seconds": 18000.9,
   "stores": [
     {
-      "name": "Toyzone",
+      "name": "Computer Zone",
       "status": "done",
       "review_required": true,
-      "issue_codes": [
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "59351b9269aef9e6",
-      "products": 3241,
-      "variants": 3644,
-      "http_statuses": {
-        "200": 3342
-      },
-      "network_seconds": 7794.5,
-      "max_response_seconds": 3.3,
-      "cache_events": 7174
+      "issue_codes": [],
+      "software_revision": "876a6eacc6f1b8ef",
+      "products": 862,
+      "variants": 862,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
     },
     {
-      "name": "Toynix",
-      "status": "failed",
+      "name": "LAAM",
+      "status": "pending",
       "review_required": false,
       "issue_codes": [
-        "HTTP_403",
-        "WEBSITE_ORDER_UNVERIFIED"
+        "HTTP_404",
+        "HTTP_503",
+        "RATE_LIMIT"
       ],
       "software_revision": "59351b9269aef9e6",
       "http_statuses": {
-        "403": 2
+        "200": 11397,
+        "503": 1,
+        "404": 8
       },
-      "network_seconds": 0.3,
-      "max_response_seconds": 0.2,
+      "network_seconds": 6495.0,
+      "max_response_seconds": 10.7,
       "cache_events": 0
     }
   ]
