@@ -1,27 +1,44 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-13T16:16:08.521988+00:00",
-  "run_id": "43456840130",
+  "generated_utc": "2026-11-13T17:09:41.827088+00:00",
+  "run_id": "43422750305",
   "attempt": "1",
-  "source_commit": "230b33fa5e078178142c61e791a38f86fe6c06cf",
+  "source_commit": "e463db675a0eb80d20b1b04b902db5eac846ac42",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 1403.8,
+  "elapsed_seconds": 18000.7,
   "stores": [
     {
-      "name": "ChotuApp Groceries",
-      "status": "failed",
+      "name": "Computer Zone",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "876a6eacc6f1b8ef",
+      "products": 862,
+      "variants": 862,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    },
+    {
+      "name": "LAAM",
+      "status": "pending",
       "review_required": false,
       "issue_codes": [
-        "WEBSITE_ORDER_UNVERIFIED"
+        "HTTP_404",
+        "HTTP_503",
+        "RATE_LIMIT"
       ],
-      "software_revision": "b1e95dbe950d5dde",
+      "software_revision": "ab6daa359cf8a006",
       "http_statuses": {
-        "200": 565
+        "200": 10050,
+        "404": 88,
+        "503": 3
       },
-      "network_seconds": 311.8,
-      "max_response_seconds": 3.6,
+      "network_seconds": 8760.4,
+      "max_response_seconds": 11.3,
       "cache_events": 0
     }
   ]
