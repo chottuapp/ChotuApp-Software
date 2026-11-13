@@ -23,6 +23,6 @@ def main():
     record['samples'].append(dict(url=url,manufacturer=brand.get_text(' ',strip=True) if brand else '',title=title.get_text(' ',strip=True) if title else ''))
   except Exception as exc:record['error']=type(exc).__name__+': '+str(exc)[:500]
   records.append(record)
- publish(dict(run_id=os.environ['GITHUB_RUN_ID'],brand_discovery=records),branch='naheed-brand-reports')
+ publish(dict(run_id=os.environ['GITHUB_RUN_ID'],brand_discovery=records),branch='chotu-groceries-reports')
  print('Exact Naheed brand discovery evidence saved')
 if __name__=='__main__':main()
