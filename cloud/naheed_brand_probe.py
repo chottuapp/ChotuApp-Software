@@ -30,6 +30,8 @@ def main():
    if getattr(exc,'html',None):
     soup=BeautifulSoup(exc.html,'html.parser');heading=soup.select_one('h1');canonical=soup.select_one('link[rel=canonical][href]')
     record['redirect_page']=dict(title=soup.title.get_text(' ',strip=True)[:300] if soup.title else '',heading=heading.get_text(' ',strip=True)[:500] if heading else '',canonical=canonical.get('href') if canonical else None)
+    main=soup.select_one('main') or soup
+    record['redirect_page'].update(listing_cards=len(main.select('.products-grid .product-item')),toolbar=[n.get_text(' ',strip=True) for n in main.select('.toolbar-amount,.ais-Stats-text')],manufacturer_links=sorted({a['href'] for a in main.select('a[href]') if 'manufacturer=' in a['href']}),pagination=[a['href'] for a in main.select('.pages a[href],a.next[href]')],buttons=[n.get_text(' ',strip=True)[:100] for n in main.select('button')][:15])
   records.append(record)
  publish(dict(run_id=os.environ['GITHUB_RUN_ID'],brand_discovery=records),branch='chotu-groceries-reports')
  print('Exact Naheed brand discovery evidence saved')
