@@ -1,44 +1,43 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-13T00:38:33.208953+00:00",
-  "run_id": "43291703488",
+  "generated_utc": "2026-11-13T01:51:02.212096+00:00",
+  "run_id": "43335936511",
   "attempt": "1",
-  "source_commit": "ff2d5f9de8beac77874378ae6de1257a1d2b69f5",
-  "status": "incomplete",
+  "source_commit": "9a59f056b353d1bb314e8ca56e41232a8d4830de",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 18001.3,
+  "elapsed_seconds": 5407.9,
   "stores": [
     {
-      "name": "Breakout",
+      "name": "Rivaj UK",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
-      "software_revision": "59351b9269aef9e6",
-      "products": 1564,
-      "variants": 8083,
+      "software_revision": "876a6eacc6f1b8ef",
+      "products": 311,
+      "variants": 978,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
       "cache_events": 0
     },
     {
-      "name": "Liberty Books",
-      "status": "pending",
-      "review_required": false,
+      "name": "Junaid Jamshed",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
-        "HTTP_404",
-        "WEBSITE_CATEGORY_UNVERIFIED",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "59351b9269aef9e6",
+      "software_revision": "9cfbd8fd832c08c2",
+      "products": 4249,
+      "variants": 17983,
       "http_statuses": {
-        "404": 1,
-        "200": 3646
+        "200": 233
       },
-      "network_seconds": 8286.9,
-      "max_response_seconds": 4.2,
-      "cache_events": 8522
+      "network_seconds": 541.0,
+      "max_response_seconds": 2.6,
+      "cache_events": 37698
     }
   ]
 }
