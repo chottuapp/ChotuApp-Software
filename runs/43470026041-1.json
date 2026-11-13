@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-13T22:10:55.599926+00:00",
+  "run_id": "43470026041",
+  "attempt": "1",
+  "source_commit": "def8faeaaab178d544b3c9ed82725b5a3baa7b0e",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 18000.4,
+  "stores": [
+    {
+      "name": "Computer Zone",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "876a6eacc6f1b8ef",
+      "products": 862,
+      "variants": 862,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    },
+    {
+      "name": "LAAM",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_404",
+        "HTTP_503",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "b1e95dbe950d5dde",
+      "http_statuses": {
+        "200": 10824,
+        "503": 2,
+        "404": 8
+      },
+      "network_seconds": 7831.3,
+      "max_response_seconds": 4.1,
+      "cache_events": 0
+    }
+  ]
+}
