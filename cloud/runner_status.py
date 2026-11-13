@@ -16,8 +16,8 @@ def phone_connection(reports):
  if not phone.get('status_confirmed'):return {'status':'heartbeat_stale','status_confirmed':False,'observed_utc':phone.get('observed_utc'),'message':'Phone heartbeat is stale; running or stopped cannot be confirmed.'}
  return {'status':'connected','status_confirmed':True,'worker_active':phone.get('worker_active'),'worker_status':phone.get('status'),'observed_utc':phone.get('observed_utc'),'progress_age_seconds':phone.get('progress_age_seconds'),'message':'Recent phone report received; heartbeat does not itself prove product progress.'}
 
-def select_runs(runs,campaign=None):
- lanes={}
+def select_runs(runs,campaign=None,known_lanes=None):
+ lanes=dict(known_lanes or {})
  for r in reversed(runs):
   title=r.get('displayTitle','')
   if title.startswith('Cloud group '):lanes[str(r['databaseId'])]=title.removeprefix('Cloud group ')
@@ -96,7 +96,8 @@ def main():
  runs=json.loads(gh('run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','100','--json','databaseId,displayTitle,status,conclusion,updatedAt,url'))
  report={'run_id':os.environ['GITHUB_RUN_ID'],'checked_utc':now.isoformat(),'active_queued':sum(r['status']!='completed' for r in runs),'runs':[],'fresh_stores':{},'local_khaadi':'Not visible to cloud monitoring; no local activity claimed'}
  policy=json.loads((Path(__file__).parent/'drive-sync-release.json').read_text());campaign=policy.get('dispatcher') if policy.get('audit804_enabled') else None
- selected=select_runs(runs,campaign)
+ from drive_sync import load_config
+ selected=select_runs(runs,campaign,load_config().get('refresh_root_run_lanes',{}))
  # Publish live API run states before artifact downloads; one slow run must not
  # hide the heartbeat of every other runner.
  report['runs']=[dict(run,snapshot_pending=True) for run in selected]

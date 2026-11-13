@@ -3,6 +3,11 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path[:0]=[str(ROOT),str(ROOT/'cloud')]
 from runner_status import select_runs,parse_snapshot
 class StatusTests(unittest.TestCase):
+ def test_saved_root_lineage_keeps_active_descendant_visible_after_root_ages_out(self):
+  runs=[{'databaseId':4,'displayTitle':'Automatic continuation of 3','status':'in_progress'},{'databaseId':3,'displayTitle':'Automatic continuation of 2','status':'completed'}]
+  self.assertEqual(select_runs(runs,'batch'),[])
+  selected=select_runs(runs,'batch',{'2':'audit804-batch-generation-8'})
+  self.assertEqual([r['databaseId'] for r in selected],[4]);self.assertEqual(selected[0]['lane'],'audit804-batch-generation-8')
  def test_newest_continuation_wins_over_parent_old_failure(self):
   runs=[{'databaseId':3,'displayTitle':'Automatic continuation of 2','status':'in_progress'},{'databaseId':2,'displayTitle':'Automatic continuation of 1','status':'completed'},{'databaseId':1,'displayTitle':'Cloud group solo-laam','status':'completed'}]
   selected=select_runs(runs);self.assertEqual(len(selected),1);self.assertEqual(selected[0]['databaseId'],3);self.assertEqual(selected[0]['lane'],'solo-laam')

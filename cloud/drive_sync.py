@@ -65,15 +65,15 @@ def load_config():
     if resume_path.exists():
      resume=json.loads(resume_path.read_text())
      if resume.get('refresh_generation')==request['refresh_generation']:
-      approved=set(config['stores'])&{site['name'] for site in registry};prefix='audit804-'+config['dispatcher']+'-'+request['refresh_generation']+'-';roots=[]
+      approved=set(config['stores'])&{site['name'] for site in registry};prefix='audit804-'+config['dispatcher']+'-'+request['refresh_generation']+'-';roots=[];root_lanes={}
       for item in resume.get('groups',[]):
        lane=str(item.get('runner_group') or '');rid=str(item.get('parent_run') or '')
        if not lane.startswith(prefix) or not lane[len(prefix):].isdigit() or not rid.isdigit():raise ValueError('Invalid saved fresh resume lineage')
        index=int(lane[len(prefix):])-1
        members=item.get('stores',[])
        if not 0<=index<100 or not isinstance(members,list) or not 1<=len(members)<=3 or len(set(members))!=len(members) or not set(members)<=approved:raise ValueError('Saved resume lineage differs from approved store plan')
-       roots.append(rid)
-      config['refresh_root_run_ids']=sorted(set(roots))
+       roots.append(rid);root_lanes[rid]=lane
+      config['refresh_root_run_ids']=sorted(set(roots));config['refresh_root_run_lanes']=root_lanes
  return config
 
 def main():
