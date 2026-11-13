@@ -1,47 +1,42 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-13T00:20:33.910385+00:00",
-  "run_id": "43313209978",
+  "generated_utc": "2026-11-13T00:33:16.719810+00:00",
+  "run_id": "43291198924",
   "attempt": "1",
-  "source_commit": "7d296e956835870e4cd7f3e3529a661f00e7acea",
-  "status": "complete",
+  "source_commit": "ff2d5f9de8beac77874378ae6de1257a1d2b69f5",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 9270.0,
+  "elapsed_seconds": 18000.5,
   "stores": [
     {
-      "name": "Taminzo",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [
-        "HTTP_404",
-        "HTTP_429",
-        "RATE_LIMIT",
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "9cfbd8fd832c08c2",
-      "products": 3554,
-      "variants": 13079,
-      "http_statuses": {
-        "404": 680,
-        "200": 1774,
-        "429": 1
-      },
-      "network_seconds": 5694.3,
-      "max_response_seconds": 3.4,
-      "cache_events": 46105
-    },
-    {
-      "name": "Essence",
+      "name": "Computer Zone",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
-      "software_revision": "59351b9269aef9e6",
-      "products": 74,
-      "variants": 711,
+      "software_revision": "876a6eacc6f1b8ef",
+      "products": 862,
+      "variants": 862,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
+      "cache_events": 0
+    },
+    {
+      "name": "LAAM",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_404"
+      ],
+      "software_revision": "59351b9269aef9e6",
+      "http_statuses": {
+        "200": 11969,
+        "404": 2,
+        "500": 1
+      },
+      "network_seconds": 4744.6,
+      "max_response_seconds": 16.0,
       "cache_events": 0
     }
   ]
