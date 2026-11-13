@@ -103,9 +103,25 @@ def verified_vendor_redirect(error,brand):
 
 def discover_current_vendor(reader,scope,vendor):
  from chotu_groceries_source_support import GroceryScopeRedirect
- try:return reader.discover_scope(dict(scope,url=vendor,_resolved_brand=True))
- except GroceryScopeRedirect as exc:
-  target=verified_vendor_redirect(exc,scope['brand'])
-  if not target:raise
-  reader.log('GROCERY VENDOR RENAMED: '+vendor+' -> '+target+'; exact source brand/canonical verified')
-  return reader.discover_scope(dict(scope,url=target,_resolved_brand=True))
+ if urlsplit(vendor).path.rstrip('/')!='/allproducts':
+  try:html=reader.read_page(vendor)
+  except GroceryScopeRedirect as exc:
+   target=verified_vendor_redirect(exc,scope['brand'])
+   if not target:raise
+   reader.log('GROCERY VENDOR RENAMED: '+vendor+' -> '+target+'; exact source brand/canonical verified')
+   vendor=target;html=exc.html
+  full=verified_full_catalogue_link(html,vendor,scope['brand'])
+  if full:
+   reader.log('GROCERY FULL BRAND CATALOGUE: '+full+'; linked by verified '+scope['brand']+' page')
+   vendor=full
+ reader.last_verified_vendor_url=vendor
+ return reader.discover_scope(dict(scope,url=vendor,_resolved_brand=True))
+
+def verified_full_catalogue_link(html,url,brand):
+ from types import SimpleNamespace
+ if not verified_vendor_redirect(SimpleNamespace(requested=url,actual=url,html=html),brand):return None
+ soup=BeautifulSoup(html,'html.parser');main=soup.select_one('main') or soup;links=set()
+ for a in main.select('a[href]'):
+  link=urljoin(url,a['href']);p=urlsplit(link);q=parse_qsl(p.query)
+  if p.scheme=='https' and p.netloc=='www.naheed.pk' and p.path.rstrip('/')=='/allproducts' and not p.fragment and len(q)==1 and q[0][0]=='manufacturer' and re.fullmatch(r'\d+',q[0][1]):links.add(link)
+ return next(iter(links)) if len(links)==1 else None

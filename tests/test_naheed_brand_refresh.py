@@ -42,6 +42,14 @@ class NaheedBrandRefreshTests(unittest.TestCase):
   self.assertIsNone(verified_vendor_redirect(error,'Another Brand'))
   error.actual='https://evil.test/sajiero-undergarments';self.assertIsNone(verified_vendor_redirect(error,'Sajiero'))
   error.actual=BASE+'/sajiero-undergarments';error.html=html.replace('rel="canonical"','rel="other"');self.assertIsNone(verified_vendor_redirect(error,'Sajiero'))
+ def test_landing_page_full_catalogue_link_is_source_derived_and_unambiguous(self):
+  from naheed_brand_support import verified_full_catalogue_link
+  url=BASE+'/sajiero-undergarments';full=BASE+'/allproducts?manufacturer=4971'
+  html='<link rel="canonical" href="'+url+'"><title>Sajiero Undergarments</title><main><a href="'+full+'">Shop All</a><a href="/bra?manufacturer=4971">Bras</a></main>'
+  self.assertEqual(verified_full_catalogue_link(html,url,'Sajiero'),full)
+  self.assertIsNone(verified_full_catalogue_link(html,url,'Another Brand'))
+  self.assertIsNone(verified_full_catalogue_link(html.replace('</main>','<a href="/allproducts?manufacturer=999">Other</a></main>'),url,'Sajiero'))
+  self.assertIsNone(verified_full_catalogue_link(html.replace(full,'https://evil.test/allproducts?manufacturer=4971'),url,'Sajiero'))
  def test_brand_match_is_not_a_title_or_partial_name_match(self):
   scope=dict(brand='Dawn',url=BASE+'/catalogsearch/result/?q=Dawn')
   p=dict(manufacturer='Dawn Foods',name='Dawn Bread',categories=[{'name':'Snacks'}])
