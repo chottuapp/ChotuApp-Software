@@ -1,43 +1,41 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-13T08:01:13.447246+00:00",
-  "run_id": "43373718066",
+  "generated_utc": "2026-11-13T10:18:03.183291+00:00",
+  "run_id": "43399630503",
   "attempt": "1",
-  "source_commit": "9a59f056b353d1bb314e8ca56e41232a8d4830de",
-  "status": "complete",
+  "source_commit": "9a866c18fa0fa3b8c17a3ceaaf27982a4846e659",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 8127.7,
+  "elapsed_seconds": 3790.2,
   "stores": [
     {
-      "name": "Tawakkal Fabrics",
+      "name": "Computer Zone",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "876a6eacc6f1b8ef",
-      "products": 1561,
-      "variants": 3757,
+      "products": 862,
+      "variants": 862,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
       "cache_events": 0
     },
     {
-      "name": "Stylo",
-      "status": "done",
-      "review_required": true,
+      "name": "LAAM",
+      "status": "failed",
+      "review_required": false,
       "issue_codes": [
-        "WEBSITE_ORDER_UNVERIFIED"
+        "ADAPTER_ERROR"
       ],
-      "software_revision": "9cfbd8fd832c08c2",
-      "products": 8528,
-      "variants": 45356,
+      "software_revision": "33b197c45bed51d9",
       "http_statuses": {
-        "200": 1621
+        "200": 2524
       },
-      "network_seconds": 4832.4,
-      "max_response_seconds": 57.0,
-      "cache_events": 73765
+      "network_seconds": 1084.1,
+      "max_response_seconds": 5.2,
+      "cache_events": 0
     }
   ]
 }
