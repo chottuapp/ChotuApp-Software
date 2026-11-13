@@ -85,7 +85,7 @@ def product_state(soup,handle,clothing_only=False,active_only=False,in_stock_onl
         value={k:decode(v) for k,v in raw.items()};candidates.append(value)
     if len(candidates)!=1:raise ValueError('LAAM exact product state is missing or ambiguous')
     if active_only:require_active(candidates[0])
-    currencies=set()
+    currencies=set();scoped_stock=[]
     for tag in soup.find_all('script',type='application/ld+json'):
         try:tree=json.loads(tag.string or tag.get_text())
         except (ValueError,TypeError):continue
@@ -94,6 +94,8 @@ def product_state(soup,handle,clothing_only=False,active_only=False,in_stock_onl
                 if value.get('@type') in ('Product','ProductGroup'):
                     offers=value.get('offers',[]);offers=offers if isinstance(offers,list) else [offers]
                     currencies.update(str(o['priceCurrency']).upper() for o in offers if isinstance(o,dict) and o.get('priceCurrency'))
+                    if str(value.get('url') or '').rstrip('/')==BASE+'/products/'+handle:
+                        scoped_stock.append(bool(offers) and all(isinstance(o,dict) and o.get('priceCurrency')=='PKR' and str(o.get('availability','')).rstrip('/').rsplit('/',1)[-1]=='OutOfStock' for o in offers))
                 for item in value.values():walk(item)
             elif isinstance(value,list):
                 for item in value:walk(item)
@@ -110,14 +112,14 @@ def product_state(soup,handle,clothing_only=False,active_only=False,in_stock_onl
             selection.append(dict(price=variant.get('price'),available=stock in ('in-stock','limited-stock')))
         else:
             if any(v['available'] for v in selection) and not owner_price_allowed({'variants':selection}):raise OutsidePriceScope(raw)
-    product=normalize(raw,handle,active_only=active_only,in_stock_only=in_stock_only)
+    product=normalize(raw,handle,active_only=active_only,in_stock_only=in_stock_only,scoped_out_of_stock=bool(scoped_stock) and all(scoped_stock))
     from website_category_support import breadcrumb
     product['_website_category_evidence']=breadcrumb(soup,BASE+'/products/'+handle)
     return product
 
 # This revision only changes parsing of previously rejected option titles. Products
 # successfully normalized by the reviewed predecessor have identical cache schema.
-COMPATIBLE_PARSED_REVISIONS={'80090f7e2cbfca31ce0d7d006017b25fe3da0d41442880679098ca7efaff6f0b','a49604c05403ccb7751da14317a4be307268dda9c5c280c6a3d07632f12975e7','1c7604a7c33b8a7310d370dab183c0feed8bdbac88f53557f47928fb4d68672e'}
+COMPATIBLE_PARSED_REVISIONS={'8e55fc25986323e870d995e396ce5fa5bcf3987e8d8bd0e21b4cf0309ed5ad3a','80090f7e2cbfca31ce0d7d006017b25fe3da0d41442880679098ca7efaff6f0b','a49604c05403ccb7751da14317a4be307268dda9c5c280c6a3d07632f12975e7','1c7604a7c33b8a7310d370dab183c0feed8bdbac88f53557f47928fb4d68672e'}
 
 def declared_option_title(title,dimensions):
     """Resolve separators inside declared values without inventing combinations."""
@@ -137,7 +139,7 @@ def declared_option_title(title,dimensions):
     if len(answers)>1:raise ValueError('LAAM option title matches multiple declared combinations')
     return answers[0] if answers else None
 
-def normalize(raw,handle,active_only=False,in_stock_only=False):
+def normalize(raw,handle,active_only=False,in_stock_only=False,scoped_out_of_stock=False):
     if raw.get('handle')!=handle or raw.get('id') is None or not raw.get('title'):raise ValueError('Incomplete LAAM identity')
     if str(raw.get('status') or '').lower() not in ('active','draft','archived'):raise ValueError('LAAM publication status unverified')
     if active_only:require_active(raw)
@@ -145,7 +147,9 @@ def normalize(raw,handle,active_only=False,in_stock_only=False):
     if variants==[] and str(raw.get('stock_status') or '').lower() in ('out-of-stock','sold-out'):
         quantity=raw.get('total_inventory_quantity');stores=raw.get('total_sellable_inventory_on_store')
         if isinstance(quantity,int) and not isinstance(quantity,bool) and quantity==0:
-            if stores is not None and (not isinstance(stores,dict) or any(not isinstance(v,int) or isinstance(v,bool) or v!=0 for v in stores.values())):raise ValueError('Conflicting LAAM out-of-stock evidence')
+            if stores is not None:
+                if not isinstance(stores,dict) or any(not isinstance(v,int) or isinstance(v,bool) or v<0 for v in stores.values()):raise ValueError('Conflicting LAAM out-of-stock evidence')
+                if any(v!=0 for v in stores.values()) and not scoped_out_of_stock:raise ValueError('Conflicting LAAM out-of-stock evidence')
             raise ConfirmedOutOfStock('Explicit out-of-stock product with zero source inventory and no variants')
     if variants==[] and isinstance(options,list) and len(options)<=3 and str(raw.get('stock_status') or '').lower() in ('in-stock','limited-stock'):raise IncompleteListing(raw)
     if not isinstance(options,list) or len(options)>3 or not isinstance(variants,list) or not variants:raise ValueError('Unsupported LAAM option/variant schema')
