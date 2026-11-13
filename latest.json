@@ -1,41 +1,44 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-13T10:18:03.183291+00:00",
-  "run_id": "43399630503",
+  "generated_utc": "2026-11-13T10:53:38.745310+00:00",
+  "run_id": "43374228255",
   "attempt": "1",
-  "source_commit": "9a866c18fa0fa3b8c17a3ceaaf27982a4846e659",
+  "source_commit": "9a59f056b353d1bb314e8ca56e41232a8d4830de",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 3790.2,
+  "elapsed_seconds": 18001.8,
   "stores": [
     {
-      "name": "Computer Zone",
+      "name": "Breakout",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
-      "software_revision": "876a6eacc6f1b8ef",
-      "products": 862,
-      "variants": 862,
+      "software_revision": "59351b9269aef9e6",
+      "products": 1564,
+      "variants": 8083,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
       "cache_events": 0
     },
     {
-      "name": "LAAM",
-      "status": "failed",
+      "name": "Liberty Books",
+      "status": "pending",
       "review_required": false,
       "issue_codes": [
-        "ADAPTER_ERROR"
+        "HTTP_404",
+        "WEBSITE_CATEGORY_UNVERIFIED",
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "33b197c45bed51d9",
+      "software_revision": "9cfbd8fd832c08c2",
       "http_statuses": {
-        "200": 2524
+        "404": 1,
+        "200": 3988
       },
-      "network_seconds": 1084.1,
-      "max_response_seconds": 5.2,
-      "cache_events": 0
+      "network_seconds": 9022.5,
+      "max_response_seconds": 2.8,
+      "cache_events": 22866
     }
   ]
 }
