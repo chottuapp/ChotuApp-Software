@@ -2,6 +2,10 @@ name: ChotuApp Groceries Source Check
 on:
   workflow_dispatch:
     inputs:
+      brand_names:
+        description: Optional one to three exact approved Naheed brands for discovery verification
+        required: false
+        type: string
       checkpoint_run:
         description: Optional completed grocery run for bounded cached-pagination inspection
         required: false
@@ -34,9 +38,12 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           PYTHONPATH: cloud:.
           GROCERY_PUBLIC_SCOPE_INDEXES: ${{ inputs.public_scope_indexes }}
+          GROCERY_BRAND_NAMES: ${{ inputs.brand_names }}
           GROCERY_CHECKPOINT_RUN: ${{ inputs.checkpoint_run }}
         run: |
-          if [ -n "$GROCERY_PUBLIC_SCOPE_INDEXES" ]; then
+          if [ -n "$GROCERY_BRAND_NAMES" ]; then
+            python cloud/naheed_brand_probe.py
+          elif [ -n "$GROCERY_PUBLIC_SCOPE_INDEXES" ]; then
             python cloud/grocery_scope_ui_probe.py
           elif [ -n "$GROCERY_CHECKPOINT_RUN" ]; then
             python cloud/groceries_checkpoint_probe.py

@@ -111,10 +111,15 @@ def scope_supported(group,p):
 
 class PublicCatalog:
  label='Owner-selected public HTML'
- def __init__(self,g,log):
+ def __init__(self,g,log,brand_refresh=False):
+  self.brand_proofs=[]
   self.g=g;self.log=log;self.products={};self.last=0;self.force_fresh=False;self.coverage_issues=[];self.coverage_status='incomplete';self.scope_count_changed=False;self.scope_totals=[]
   local=Path(__file__).with_name('chotu-groceries-request.json');local=local if local.exists() else Path(__file__).parent/'cloud/chotu-groceries-request.json'
   self.request=json.loads(local.read_text())
+  if brand_refresh:
+   from naheed_brand_support import load_request
+   request=load_request()
+   if request:self.request=dict(pages=request['brands'])
  def supports(self,base):return base.rstrip('/')==BASE
  def read_page(self,url):
   p=urlsplit(url)
@@ -146,6 +151,9 @@ class PublicCatalog:
   if re.search(r'cf-chl-|<title>\s*(?:Just a moment|Attention Required)',r.text,re.I):raise RuntimeError('SOURCE BLOCKED: source challenge; original requests retained')
   return r.text
  def discover_scope(self,scope):
+  if scope.get('brand') and not scope.get('_resolved_brand'):
+   from naheed_brand_support import discover_brand_scope
+   return discover_brand_scope(self,scope)
   self.scope_count_changed=False;self.scope_totals=[]
   queue=[scope['url']];seen=set();discovered=set();expected=None
   self.scope_partial=(discovered,seen);self.scope_expected=None;self.scope_total_text=None
@@ -267,17 +275,24 @@ class PublicCatalog:
      try:p=product(page,url)
      except ProductReviewRequired as exc:
       self.record_product_review(url,[original_page,page],str(exc));continue
-    scopes=urls[url];generic={'milk','nestle','cat food','dog food'}
-    def key(value):
-     import unicodedata
-     return re.sub('[^a-z0-9]+',' ',unicodedata.normalize('NFKD',value).encode('ascii','ignore').decode().lower()).strip()
-    exact=[v for v in scopes if key(v['label'])==key(p['manufacturer'])]
-    specific=[v for v in scopes if key(v['label']) not in generic and key(v['label']) in key(p['name'])]
-    candidates=exact or specific or scopes;groups={v['group'] for v in candidates}
-    if len(groups)!=1:raise IncompleteProduct('Owner category scope conflicts across supplied pages; original source retained')
-    p['owner_category']=next(iter(groups))
-    if not scope_supported(p['owner_category'],p):raise IncompleteProduct('Search hit is outside the owner category purpose; source facts retained')
-    p['owner_scope_url']=next(v['url'] for v in candidates if v['group']==p['owner_category'])
+    scopes=urls[url]
+    if any(v.get('brand') for v in scopes):
+     from naheed_brand_support import select_brand_category
+     try:p['owner_scope_url'],p['owner_category']=select_brand_category(p,scopes)
+     except ValueError as exc:raise IncompleteProduct(str(exc)) from exc
+     p['owner_scope_policy']='owner_brand_search'
+    else:
+     scopes=urls[url];generic={'milk','nestle','cat food','dog food'}
+     def key(value):
+      import unicodedata
+      return re.sub('[^a-z0-9]+',' ',unicodedata.normalize('NFKD',value).encode('ascii','ignore').decode().lower()).strip()
+     exact=[v for v in scopes if key(v['label'])==key(p['manufacturer'])]
+     specific=[v for v in scopes if key(v['label']) not in generic and key(v['label']) in key(p['name'])]
+     candidates=exact or specific or scopes;groups={v['group'] for v in candidates}
+     if len(groups)!=1:raise IncompleteProduct('Owner category scope conflicts across supplied pages; original source retained')
+     p['owner_category']=next(iter(groups))
+     if not scope_supported(p['owner_category'],p):raise IncompleteProduct('Search hit is outside the owner category purpose; source facts retained')
+     p['owner_scope_url']=next(v['url'] for v in candidates if v['group']==p['owner_category'])
     reasons=incomplete_product_reasons(p)
     if not p['images']:reasons.append('No real source product image')
     if reasons:raise IncompleteProduct('; '.join(reasons))
@@ -288,6 +303,7 @@ class PublicCatalog:
    if p['id'] in self.products:raise ValueError('Repeated grocery source product ID')
    self.products[p['id']]=p
    self.log('GROCERY PRODUCTS: '+str(index)+'/'+str(len(urls))+' checked; '+str(len(self.products))+' complete available products')
+  if self.brand_proofs:(coverage_dir/(STORE+' - BRAND SCOPE PROOF.json')).write_text(json.dumps(self.brand_proofs,indent=2))
   if not self.products:raise ValueError('No complete sellable grocery products; incomplete receipts retained')
   return list(self.products.values())
  def record_product_review(self,url,pages,reason):
@@ -312,7 +328,7 @@ def enable_chotu_groceries(g):
   if (urlsplit(base).hostname or '').removeprefix('www.')!='naheed.pk':return original(base,name,template,log)
   if name!=STORE:raise ValueError('Grocery source requires owner-selected shop identity')
   from woocommerce_source_support import export
-  provider=PublicCatalog(g,log);export(g,BASE,STORE,template,log,provider=provider)
+  provider=PublicCatalog(g,log,brand_refresh=True);export(g,BASE,STORE,template,log,provider=provider)
   # Owner headings are the public Category; actual breadcrumbs remain evidence.
   from openpyxl import load_workbook
   from datetime import datetime,timezone
@@ -328,7 +344,7 @@ def enable_chotu_groceries(g):
   for number in range(2,sheet.max_row+1):
    p=byid.get(str(sheet.cell(number,headers['product_id']).value))
    if p is None:raise ValueError('Grocery source/export identity mismatch')
-   taxonomy=' > '.join(c['name'] for c in p['categories']);values=dict(shop_code=code,source_scope_coverage_status=provider.coverage_status,source_scope_review_count=len(provider.coverage_issues),owner_scope_url=p['owner_scope_url'],source_manufacturer=p['manufacturer'],Category=p['owner_category'],website_category_path=taxonomy,website_category_source_url=p['permalink'],website_category_status='verified_product_breadcrumb',website_category_checked_at=stamp,subcategory_source='owner_supplied_scope',subcategory_evidence='Owner category from '+p['owner_scope_url']+'; actual source breadcrumb '+taxonomy+'; response SHA256 '+p['source_response_sha256'])
+   taxonomy=' > '.join(c['name'] for c in p['categories']);values=dict(shop_code=code,source_scope_coverage_status=provider.coverage_status,source_scope_review_count=len(provider.coverage_issues),owner_scope_url=p['owner_scope_url'],source_manufacturer=p['manufacturer'],Category=p['owner_category'],website_category_path=taxonomy,website_category_source_url=p['permalink'],website_category_status='verified_product_breadcrumb',website_category_checked_at=stamp,subcategory_source=p.get('owner_scope_policy','owner_supplied_scope'),subcategory_evidence='Owner-selected scope '+p['owner_scope_url']+'; actual source breadcrumb '+taxonomy+'; response SHA256 '+p['source_response_sha256'])
    for key,value in values.items():sheet.cell(number,headers[key],value)
   book.save(path);book.close()
  g['_chotuapp_run_site_original']=run

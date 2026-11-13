@@ -16,6 +16,10 @@ def repair(source,out,store):
   for number,values in enumerate(sheet.iter_rows(min_row=2,values_only=True),2):
    if not any(v is not None for v in values):continue
    row=dict(zip(headers,values));expected=categories().get(row['owner_scope_url']);url=urlsplit(str(row['source_url'] or ''))
+   if row.get('subcategory_source')=='owner_brand_search':
+    from grocery_owner_scope import authorized_category
+    authorized_category(row)
+    continue
    if not expected or url.scheme!='https' or url.hostname!='www.naheed.pk' or not row['source_manufacturer'] or row['source_scope_coverage_status'] not in ('complete','review_required'):raise ValueError('Grocery source scope identity cannot be restored')
    if row['subcategory_source'] in ('manual','owner','manual_override'):
     if row['Category']!=expected:raise ValueError('Owner category override conflict; review required')

@@ -10,7 +10,7 @@ from parallel_store_support import StoreScheduler,output_key
 from diagnostics import Collector
 from continuation_policy import integer
 
-MODULES=('sold_object_category_support.py','grocery_browser_support.py','chotu_groceries_source_support.py','mansab_source_support.py','public_catalog_support.py','rungrez_source_support.py','product_description_support.py','next_public_support.py','alfateh_source_support.py','product_video_support.py','axis_source_support.py','magento_source_support.py','electronics_description_support.py','breakout_source_support.py','collection_scope_support.py','woocommerce_removed_pages.json','woocommerce_source_support.py','locked_store_rules.py','subcategory_inference_support.py','website_category_support.py','ranking_support.py','resume_support.py','fast_fetch_support.py','farda_source_support.py','complete_description_support.py','czone_source_support.py','software_revision_support.py','seran_source_support.py','laam_source_support.py','source_compatibility_support.py','sapphire_source_support.py','khaadi_source_support.py','website_order_support.py')
+MODULES=('naheed_brand_support.py','sold_object_category_support.py','grocery_browser_support.py','chotu_groceries_source_support.py','mansab_source_support.py','public_catalog_support.py','rungrez_source_support.py','product_description_support.py','next_public_support.py','alfateh_source_support.py','product_video_support.py','axis_source_support.py','magento_source_support.py','electronics_description_support.py','breakout_source_support.py','collection_scope_support.py','woocommerce_removed_pages.json','woocommerce_source_support.py','locked_store_rules.py','subcategory_inference_support.py','website_category_support.py','ranking_support.py','resume_support.py','fast_fetch_support.py','farda_source_support.py','complete_description_support.py','czone_source_support.py','software_revision_support.py','seran_source_support.py','laam_source_support.py','source_compatibility_support.py','sapphire_source_support.py','khaadi_source_support.py','website_order_support.py')
 DEFAULT_TEMPLATE=ROOT/'importer-files/Chotu_Products_Import_Template_Discount_Tags.xlsx'
 
 
@@ -36,6 +36,7 @@ def prepare_engine(data):
         if not target.exists() or target.read_bytes()!=payload:target.write_bytes(payload)
     grocery_request=(ROOT/'cloud/chotu-groceries-request.json').read_bytes()
     (runtime/'chotu-groceries-request.json').write_bytes(grocery_request)
+    (runtime/'naheed-brand-refresh.json').write_bytes((ROOT/'cloud/naheed-brand-refresh.json').read_bytes())
     if not (runtime/'main.py').exists() or (runtime/'main.py').read_bytes()!=content:(runtime/'main.py').write_bytes(content)
     return runtime/'main.py'
 
