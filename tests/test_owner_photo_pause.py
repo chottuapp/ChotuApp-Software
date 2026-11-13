@@ -24,10 +24,14 @@ class OwnerPolicyTests(unittest.TestCase):
   with patch('requested_stores.requests.Session') as session:
    self.assertEqual(probe(dict(name='Khaadi',url='https://pk.khaadi.com'))['status'],'owner_paused');session.assert_not_called()
  def test_owner_reenabled_remaining_four_sources_by_name_and_host(self):
-  sites=[dict(name=n,url=u) for n,u in [('Xcessories Hub','https://xcessorieshub.com'),('Liberty Books','https://libertybooks.com'),('Beyond East','https://www.beyondeast.com'),('Paklap','https://www.paklap.pk')]]
+  sites=[dict(name=n,url=u) for n,u in [('Xcessories Hub','https://xcessorieshub.com'),('Beyond East','https://www.beyondeast.com'),('Paklap','https://www.paklap.pk')]]
   for site in sites:
    self.assertFalse(owner_paused(**site));self.assertFalse(owner_paused(url=site['url']))
   self.assertEqual(paused_sources(sites),set())
+ def test_liberty_books_owner_pause_blocks_named_and_host_only_continuations(self):
+  for url in ('https://libertybooks.com','https://www.libertybooks.com'):
+   self.assertTrue(owner_paused('Liberty Books',url));self.assertTrue(owner_paused(url=url))
+   self.assertEqual(paused_sources([dict(name='Liberty Books',url=url)]),{'Liberty Books'})
  def test_real_variant_or_gallery_photos_count_but_placeholders_do_not(self):
   self.assertFalse(has_source_photo({'images':[{'src':'https://shop.test/woocommerce-placeholder.png'}]}))
   self.assertFalse(has_source_photo({'images':[]}))
