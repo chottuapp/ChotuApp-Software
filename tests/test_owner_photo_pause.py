@@ -32,6 +32,10 @@ class OwnerPolicyTests(unittest.TestCase):
   for url in ('https://libertybooks.com','https://www.libertybooks.com'):
    self.assertTrue(owner_paused('Liberty Books',url));self.assertTrue(owner_paused(url=url))
    self.assertEqual(paused_sources([dict(name='Liberty Books',url=url)]),{'Liberty Books'})
+ def test_toynix_owner_pause_blocks_named_and_host_only_continuations(self):
+  for url in ('https://toynix.pk','https://www.toynix.pk'):
+   self.assertTrue(owner_paused('Toynix',url));self.assertTrue(owner_paused(url=url))
+   self.assertEqual(paused_sources([dict(name='Toynix',url=url)]),{'Toynix'})
  def test_real_variant_or_gallery_photos_count_but_placeholders_do_not(self):
   self.assertFalse(has_source_photo({'images':[{'src':'https://shop.test/woocommerce-placeholder.png'}]}))
   self.assertFalse(has_source_photo({'images':[]}))
