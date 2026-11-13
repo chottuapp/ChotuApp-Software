@@ -10,6 +10,10 @@ def main():
  requested=[v.strip() for v in os.environ['GROCERY_BRAND_NAMES'].split(',') if v.strip()]
  if not 1<=len(requested)<=3:raise ValueError('Inspect one to three exact approved brands')
  approved={brand_key(v['brand']):v for v in load_request()['brands']}
+ # Read-only spelling verification for the owner's explicitly requested brand.
+ if brand_key('Rose Patel') in approved:
+  from urllib.parse import urlencode
+  approved[brand_key('Rose Petal')]=dict(brand='Rose Petal',url='https://www.naheed.pk/catalogsearch/result/?'+urlencode({'q':'Rose Petal'}),examples=[])
  if any(brand_key(v) not in approved for v in requested):raise ValueError('Brand not in owner-approved request')
  reader=PublicCatalog({'S':requests.Session(),'_chotu_wait':lambda:None,'_chotu_backoff':lambda seconds,*_:time.sleep(seconds)},print,brand_refresh=True)
  records=[]

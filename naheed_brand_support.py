@@ -54,11 +54,16 @@ def discover_brand_scope(reader,scope):
   if not reader.scope_count_changed and total is not None and len(links)==total:
    reader.brand_proofs.append(dict(brand=scope['brand'],scope_url=scope['url'],selected='current_vendor_page',vendor=vendor_proof))
    return links,total,pages
- links,total,pages=reader.discover_scope(dict(scope,_resolved_brand=True))
+ fresh=reader.force_fresh if hasattr(reader,'force_fresh') else False
+ reader.force_fresh=True
+ try:links,total,pages=reader.discover_scope(dict(scope,_resolved_brand=True))
+ finally:reader.force_fresh=fresh
  search_changed=reader.scope_count_changed;search_totals=list(reader.scope_totals)
  search_partial=reader.scope_partial;search_expected=reader.scope_expected
  if not vendor:
-  for url in sorted(links)[:3]:
+  prefix=re.sub(r'[^a-z0-9]+','-',brand_key(scope['brand'])).strip('-')
+  candidates=sorted(links,key=lambda u:(not urlsplit(u).path.lstrip('/').startswith(prefix+'-'),u))
+  for url in candidates[:3]:
    candidate=vendor_link(reader.read_page(url),url,scope['brand'])
    if not candidate:continue
    found,expected,traversed=reader.discover_scope(dict(scope,url=candidate,_resolved_brand=True))
