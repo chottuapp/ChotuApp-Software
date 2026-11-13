@@ -24,6 +24,11 @@ class NaheedBrandRefreshTests(unittest.TestCase):
   self.assertIsNone(vendor_link(html,BASE+'/item','Dawn Foods'))
   self.assertIsNone(vendor_link(html.replace('/allproducts/?manufacturer=890','https://evil.test/allproducts/?manufacturer=890'),BASE+'/item','Dawn'))
   self.assertIsNone(vendor_link(html,BASE+'/another','Dawn'))
+ def test_matching_product_manufacturer_can_link_a_named_brand_landing_page(self):
+  html=page().replace('<a>Dawn</a>','<a href="/sajiero-undergarments">Sajiero</a>')
+  self.assertEqual(vendor_link(html,BASE+'/item','Sajiero'),BASE+'/sajiero-undergarments')
+  self.assertIsNone(vendor_link(html,BASE+'/item','Another Brand'))
+  self.assertIsNone(vendor_link(html.replace('/sajiero-undergarments','/checkout'),BASE+'/item','Sajiero'))
  def test_brand_match_is_not_a_title_or_partial_name_match(self):
   scope=dict(brand='Dawn',url=BASE+'/catalogsearch/result/?q=Dawn')
   p=dict(manufacturer='Dawn Foods',name='Dawn Bread',categories=[{'name':'Snacks'}])

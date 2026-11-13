@@ -34,8 +34,12 @@ def vendor_link(html,url,brand):
  soup=BeautifulSoup(html,'html.parser');canonical=soup.select_one('link[rel=canonical][href]');node=soup.select_one('.product-info-main .brand-name a[href]')
  if not canonical or urljoin(url,canonical['href']).rstrip('/')!=url.rstrip('/') or not node or brand_key(node.get_text(' ',strip=True))!=brand_key(brand):return None
  link=urljoin(url,node['href']);p=urlsplit(link);q=parse_qsl(p.query)
- if p.scheme!='https' or p.netloc!='www.naheed.pk' or p.path.rstrip('/')!='/allproducts' or len(q)!=1 or q[0][0]!='manufacturer' or not re.fullmatch(r'\d+',q[0][1]) or p.fragment:return None
- return link
+ if p.scheme!='https' or p.netloc!='www.naheed.pk' or p.fragment:return None
+ if p.path.rstrip('/')=='/allproducts' and len(q)==1 and q[0][0]=='manufacturer' and re.fullmatch(r'\d+',q[0][1]):return link
+ # Naheed also publishes named brand landing pages (e.g. Sajiero).
+ # Accept only a link exposed by the exact product's matching manufacturer.
+ if not q and re.fullmatch(r'/[a-z0-9][a-z0-9-]{0,150}/?',p.path) and p.path.rstrip('/')!=urlsplit(url).path.rstrip('/') and p.path.rstrip('/') not in ('/allproducts','/customer','/checkout','/wishlist','/cart','/contact','/about-us'):return link
+ return None
 
 def discover_brand_scope(reader,scope):
  """Prefer a current identity-matched vendor link; reconcile using exact brand search."""
