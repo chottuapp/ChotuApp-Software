@@ -36,6 +36,10 @@ class OwnerPolicyTests(unittest.TestCase):
   for url in ('https://toynix.pk','https://www.toynix.pk'):
    self.assertTrue(owner_paused('Toynix',url));self.assertTrue(owner_paused(url=url))
    self.assertEqual(paused_sources([dict(name='Toynix',url=url)]),{'Toynix'})
+  from unittest.mock import patch
+  from requested_source_diagnosis import inspect
+  with patch('requested_source_diagnosis.requests.Session') as session:
+   self.assertEqual(inspect(('Toynix','https://www.toynix.pk'))['status'],'owner_paused');session.assert_not_called()
  def test_real_variant_or_gallery_photos_count_but_placeholders_do_not(self):
   self.assertFalse(has_source_photo({'images':[{'src':'https://shop.test/woocommerce-placeholder.png'}]}))
   self.assertFalse(has_source_photo({'images':[]}))

@@ -16,7 +16,10 @@ def safe(value):
  return value
 
 def inspect(item):
- name,base=item;out={'name':name,'responses':[]};session=requests.Session();session.headers['User-Agent']=AGENT;robot=None
+ name,base=item;out={'name':name,'responses':[]}
+ from locked_store_rules import owner_paused
+ if owner_paused(name,base):return dict(out,status='owner_paused')
+ session=requests.Session();session.headers['User-Agent']=AGENT;robot=None
  def read(url):
   if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):raise ValueError('Outside source host')
   if robot and not robot.can_fetch(AGENT,url):raise ValueError('Robots disallows path')
