@@ -35,6 +35,10 @@ class NaheedBrandRefreshTests(unittest.TestCase):
   html='<link rel="canonical" href="'+BASE+'/sajiero-undergarments"><h1>Sajiero Undergarments</h1>'
   error=GroceryScopeRedirect(BASE+'/sajiero',BASE+'/sajiero-undergarments',html)
   self.assertEqual(verified_vendor_redirect(error,'Sajiero'),error.actual)
+  error.html=html.replace('<h1>Sajiero Undergarments</h1>','<title>Sajiero Undergarments</title>')
+  self.assertEqual(verified_vendor_redirect(error,'Sajiero'),error.actual)
+  error.html+='<h1>Another Brand</h1>';self.assertIsNone(verified_vendor_redirect(error,'Sajiero'))
+  error.html=html
   self.assertIsNone(verified_vendor_redirect(error,'Another Brand'))
   error.actual='https://evil.test/sajiero-undergarments';self.assertIsNone(verified_vendor_redirect(error,'Sajiero'))
   error.actual=BASE+'/sajiero-undergarments';error.html=html.replace('rel="canonical"','rel="other"');self.assertIsNone(verified_vendor_redirect(error,'Sajiero'))

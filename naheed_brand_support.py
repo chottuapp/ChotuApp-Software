@@ -96,7 +96,7 @@ def verified_vendor_redirect(error,brand):
  """Only a source-linked vendor may rename to a same-host branded canonical page."""
  old=urlsplit(error.requested);new=urlsplit(error.actual)
  if any(p.scheme!='https' or p.netloc!='www.naheed.pk' or p.query or p.fragment or not re.fullmatch(r'/[a-z0-9][a-z0-9-]{0,150}/?',p.path) for p in (old,new)):return None
- soup=BeautifulSoup(error.html,'html.parser');canonical=soup.select_one('link[rel=canonical][href]');heading=soup.select_one('h1')
+ soup=BeautifulSoup(error.html,'html.parser');canonical=soup.select_one('link[rel=canonical][href]');heading=soup.select_one('h1') or soup.title
  if not canonical or urljoin(error.actual,canonical['href']).rstrip('/')!=error.actual.rstrip('/') or not heading:return None
  if not re.search(r'(?<!\w)'+re.escape(brand_key(brand))+r'(?!\w)',brand_key(heading.get_text(' ',strip=True))):return None
  return error.actual
