@@ -1705,6 +1705,26 @@
       "file_id": "1XCnmDdfw_fymVKIk0uZMEIOJ2ICbPDsA",
       "file_url": "https://drive.google.com/file/d/1XCnmDdfw_fymVKIk0uZMEIOJ2ICbPDsA/view",
       "drive_modified_utc": "2026-11-09T18:39:54.813Z"
+    },
+    "Toyzone": {
+      "shop_code": "SE10069",
+      "source_run": "43238291015",
+      "sha256": "6baba7d2143b6fd5ba118064cad61e44b9f0fb7cf453f9249ec3d744a7674d22",
+      "source_sha256": "3705de2fc550e9c9b62ec09fcac935d95e1095929d132f1c2b9ef3d82942cccc",
+      "folder": "ChotuApp 19-10-2026 11-36AM",
+      "verified_utc": "2026-11-13T01:52:38.925648+00:00",
+      "audit804": {
+        "name": "804 Audit",
+        "status": "pass",
+        "checked_utc": "2026-11-13T01:52:24.738292+00:00",
+        "products_checked": 1377,
+        "workbook_sha256": "6baba7d2143b6fd5ba118064cad61e44b9f0fb7cf453f9249ec3d744a7674d22"
+      },
+      "rule804": "applied; 804 Audit passed",
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "refresh_generation": "refresh20261112-5f1c5ec3",
+      "replaced_file": null,
+      "file_name": "Toyzone.xlsx"
     }
   },
   "daily_uploads": {
@@ -3680,6 +3700,26 @@
         "file_id": "1XCnmDdfw_fymVKIk0uZMEIOJ2ICbPDsA",
         "file_url": "https://drive.google.com/file/d/1XCnmDdfw_fymVKIk0uZMEIOJ2ICbPDsA/view",
         "drive_modified_utc": "2026-11-09T18:39:54.813Z"
+      },
+      "Toyzone": {
+        "shop_code": "SE10069",
+        "source_run": "43238291015",
+        "sha256": "6baba7d2143b6fd5ba118064cad61e44b9f0fb7cf453f9249ec3d744a7674d22",
+        "source_sha256": "3705de2fc550e9c9b62ec09fcac935d95e1095929d132f1c2b9ef3d82942cccc",
+        "folder": "ChotuApp 19-10-2026 11-36AM",
+        "verified_utc": "2026-11-13T01:52:38.925648+00:00",
+        "audit804": {
+          "name": "804 Audit",
+          "status": "pass",
+          "checked_utc": "2026-11-13T01:52:24.738292+00:00",
+          "products_checked": 1377,
+          "workbook_sha256": "6baba7d2143b6fd5ba118064cad61e44b9f0fb7cf453f9249ec3d744a7674d22"
+        },
+        "rule804": "applied; 804 Audit passed",
+        "campaign_id": "fresh804-20261026-5d42fe35",
+        "refresh_generation": "refresh20261112-5f1c5ec3",
+        "replaced_file": null,
+        "file_name": "Toyzone.xlsx"
       }
     }
   },
@@ -3851,7 +3891,8 @@
     "Bonanza Satrangi": "source:5a494108e71bd59ade30399809a6b94d6e34d89f72e4b3dfaf87d2aeae3b1fc6:Bonanza Satrangi:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
     "ChotuApp Groceries": "source:75da773894b8fd2fa174e7cc6bc99e47284178d0968c7b631a2d6cffa1db4454:ChotuApp Groceries:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
     "Golden Rose": "source:4bc09ab4df19a08097ed171a2999140a77fbe03cce9f2f5c2c1cb06844eea312:Golden Rose:0d2ec92b06f884171db558d0ce57a357ce83d91588c45bfeabb9ba01eb4fe377",
-    "Dairy Dream": "source:d1a86d7274913adb98cba1ea7a3381166e11d839cc175d3215c4fef1f4f8cb86:Dairy Dream:0d2ec92b06f884171db558d0ce57a357ce83d91588c45bfeabb9ba01eb4fe377"
+    "Dairy Dream": "source:d1a86d7274913adb98cba1ea7a3381166e11d839cc175d3215c4fef1f4f8cb86:Dairy Dream:0d2ec92b06f884171db558d0ce57a357ce83d91588c45bfeabb9ba01eb4fe377",
+    "Toyzone": "source:3705de2fc550e9c9b62ec09fcac935d95e1095929d132f1c2b9ef3d82942cccc:Toyzone:0d2ec92b06f884171db558d0ce57a357ce83d91588c45bfeabb9ba01eb4fe377"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -17791,17 +17832,841 @@
     },
     "Toyzone": {
       "name": "804 Audit",
-      "status": "hold",
-      "audit_status": "incomplete",
-      "delivery_status": "blocked",
+      "version": "804-audit-v2",
       "store": "Toyzone",
+      "shop_code": "SE10069",
+      "identity_policy": "confirmed_code",
+      "status": "pass",
+      "products_checked": 1377,
+      "findings_count": 0,
+      "findings": [],
+      "details_truncated": false,
+      "workbook_sha256": "6baba7d2143b6fd5ba118064cad61e44b9f0fb7cf453f9249ec3d744a7674d22",
+      "checked_utc": "2026-11-13T01:52:24.738292+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "incomplete_products_excluded": [
+        {
+          "product_id": "CP32039dcfc557",
+          "source_url": "https://www.toyzone.pk/products/popcorn-maker-and-ice-cream-maker-pretend-play-set",
+          "name": "Popcorn Maker And Ice Cream Maker Pretend Play Set",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP2c226d10ecf6",
+          "source_url": "https://www.toyzone.pk/products/science-horse-test-bench-science-experiment-kit",
+          "name": "Science Horse Test Bench Science Experiment Kit",
+          "issues": [
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CP10b15837df27",
+          "source_url": "https://www.toyzone.pk/products/storm-2-4ghz-6wd-remote-control-rock-crawler-with-light",
+          "name": "1:8 Storm 2.4GHz 6WD Remote Control Rock Crawler With Light",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP6922bed5b753",
+          "source_url": "https://www.toyzone.pk/products/1-10-remote-control-rock-crawler-6wd-with-light-and-metal-body-frame",
+          "name": "1:10 Remote Control Rock Crawler 6WD with Light And Metal Body Frame",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP42c6d03726a5",
+          "source_url": "https://www.toyzone.pk/products/fivestar-multifunctional-fun-oven-kitchen-playset",
+          "name": "FiveStar Multifunctional Fun Oven Kitchen Playset",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP877fd680d2bd",
+          "source_url": "https://www.toyzone.pk/products/pineapple-fidget-squishy-toy",
+          "name": "Pineapple Fidget Squishy Toy",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPe6f405dc0c11",
+          "source_url": "https://www.toyzone.pk/products/peanut-fidget-squishy-toy",
+          "name": "Peanut Fidget Squishy Toy",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP8558d8910296",
+          "source_url": "https://www.toyzone.pk/products/jumbo-carrot-fidget-squishy-toy",
+          "name": "Jumbo Carrot Fidget Squishy Toy",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPb9c8387c17c6",
+          "source_url": "https://www.toyzone.pk/products/jumbo-corn-fidget-squishy-toy",
+          "name": "Jumbo Corn Fidget Squishy Toy",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP2bfcb8e9ee5e",
+          "source_url": "https://www.toyzone.pk/products/magic-bean-rotating-cube",
+          "name": "Magic Bean Rotating Cube",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPa99b6b4f118e",
+          "source_url": "https://www.toyzone.pk/products/cans-bean-cube-rotating-fidget-1",
+          "name": "Cans Bean Cube Rotating Fidget",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP6db09d911705",
+          "source_url": "https://www.toyzone.pk/products/remote-control-excavator-with-light-and-sound",
+          "name": "Remote Control Excavator with Light And Sound",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP151ba1eb723c",
+          "source_url": "https://www.toyzone.pk/products/cute-baby-doll-with-toy-crib-and-care-accessories",
+          "name": "Cute Baby Doll with Toy Crib and Care Accessories",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP5419ff37c72a",
+          "source_url": "https://www.toyzone.pk/products/kids-diy-pottery-wheel-and-ceramic-painting-machine",
+          "name": "Kids DIY Pottery Wheel And Ceramic Painting Machine",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPdf114d90b89f",
+          "source_url": "https://www.toyzone.pk/products/kids-bunny-pottery-wheel-and-ceramic-set",
+          "name": "Kids Bunny Pottery Wheel And Ceramic Set",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPc0936b8ed502",
+          "source_url": "https://www.toyzone.pk/products/kids-round-jigsaw-puzzle-128-pieces",
+          "name": "Kids Round Jigsaw Puzzle 128 Pieces",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP5e6d62057fd1",
+          "source_url": "https://www.toyzone.pk/products/kids-cricket-set-with-bat-wicket-and-2-balls",
+          "name": "Kids Cricket Set with Bat Wicket and 2 Balls",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP65572fb97679",
+          "source_url": "https://www.toyzone.pk/products/superhero-mini-block-figure-pack-of-2",
+          "name": "Superhero Mini Block Figure (Pack Of 2)",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa6226dc4f1fa",
+          "source_url": "https://www.toyzone.pk/products/zt-paw-patrol-diy-girl-figure-8107",
+          "name": "DIY PAW Patrol Series Mini Figure (Pack Of 2)",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP91441d277c1b",
+          "source_url": "https://www.toyzone.pk/products/minecraft-style-grey-white-mini-block-figure-1744",
+          "name": "Minecraft-Style Mini Block Figure (Pack Of 2)",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP73f8af94bbb2",
+          "source_url": "https://www.toyzone.pk/products/minecraft-style-creeper-hood-mini-block-figure-1796",
+          "name": "Minecraft-Style Mini Block Figure (Pack Of 2)",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2c7468776271",
+          "source_url": "https://www.toyzone.pk/products/zt-spider-man-white-suit-mini-block-figure-0858",
+          "name": "Spider-Man Mini Block Figure (Pack Of 2)",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPfc40494a2041",
+          "source_url": "https://www.toyzone.pk/products/roblox-mini-block-figure-pack-of-2",
+          "name": "Roblox Mini Block Figure (Pack Of 2)",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4e4439de1f45",
+          "source_url": "https://www.toyzone.pk/products/multifunction-educational-activity-bus-with-toy-hammer",
+          "name": "Multifunction Educational Activity Bus with Toy Hammer",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPdb9b16084019",
+          "source_url": "https://www.toyzone.pk/products/girl-creator-braiding-and-knitting-machine-set",
+          "name": "Girl Creator Braiding And Knitting Machine Set",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP043a1a22bf83",
+          "source_url": "https://www.toyzone.pk/products/ball-set-12-5cm-with-play-balls-for-kids",
+          "name": "4 Pcs Ball Set 12.5cm with Play Balls for Kids",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPc895c2d383b3",
+          "source_url": "https://www.toyzone.pk/products/ball-set-10cm-with-play-balls-for-kids",
+          "name": "6 Pcs Ball Set 10cm with Play Balls for Kids",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPeaa7deacbc61",
+          "source_url": "https://www.toyzone.pk/products/ball-set-7-5cm-with-play-balls-for-kids",
+          "name": "12 Pcs Ball Set 7.5cm with Play Balls for Kids",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPc7a66e9216d8",
+          "source_url": "https://www.toyzone.pk/products/foosball-table-game-with-mini-football-play-set",
+          "name": "Foosball Table Game with Mini Football Play Set",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPafe1e79929ee",
+          "source_url": "https://www.toyzone.pk/products/foosball-table-game-set-with-football-play",
+          "name": "Foosball Table Game Set with Football Play",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPe8623358b522",
+          "source_url": "https://www.toyzone.pk/products/tool-set-with-tool-play-accessories-for-kids",
+          "name": "Tool Set with Tool Play Accessories for Kids",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP9b2f36155a1a",
+          "source_url": "https://www.toyzone.pk/products/mini-kitchen-play-set-cookware-utensils-play-food",
+          "name": "Mini Kitchen Play Set with Toy Cookware Utensils & Play Food",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP5dd85209003f",
+          "source_url": "https://www.toyzone.pk/products/tool-set-with-workbench-play-accessories-for-kids",
+          "name": "Tool Set with Workbench Box Play Accessories for Kids",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP1b9db79bb544",
+          "source_url": "https://www.toyzone.pk/products/doctor-tool-set-with-doctor-play-accessories-for-kids",
+          "name": "Doctor Tool Set with Doctor Play Accessories for Kids",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP6b37c416eaef",
+          "source_url": "https://www.toyzone.pk/products/cricket-set-with-bat-ball-and-stumps-play-set",
+          "name": "Cricket Set with Bat, Ball and Stumps Play Set",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP07feceb1316a",
+          "source_url": "https://www.toyzone.pk/products/bluetooth-ai-printing-camera-yellow-with-ai-chat-and-photo-editing",
+          "name": "Bluetooth AI Printing Camera Yellow with AI Chat And Photo Editing",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP54aed6eef9e3",
+          "source_url": "https://www.toyzone.pk/products/building-blocks-set-with-medium-construction-play-pieces",
+          "name": "Kitchen Set with Cook and Play Food Accessories for Kids",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPf52f3bd75627",
+          "source_url": "https://www.toyzone.pk/products/tool-box-set-with-repair-play-accessories-for-kids",
+          "name": "Tool Box Set with Repair Play Accessories for Kids",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP67b83736518b",
+          "source_url": "https://www.toyzone.pk/products/tool-box-play-set-with-construction-tool-accessories",
+          "name": "Tool Box Play Set with Construction Tool Accessories",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP23abd9d2179a",
+          "source_url": "https://www.toyzone.pk/products/tool-box-set-with-tool-play-accessories-for-kids",
+          "name": "Kitchen Tool Box Set with Accessories for Kids",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPb088f3914e29",
+          "source_url": "https://www.toyzone.pk/products/water-gun-set-with-spray-play-for-kids",
+          "name": "Water Gun Set with Spray Play for Kids",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP0fbed8048eaf",
+          "source_url": "https://www.toyzone.pk/products/small-water-gun-set-with-outdoor-spray-play",
+          "name": "Small Water Gun Set with Outdoor Spray Play",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP7757cd843aad",
+          "source_url": "https://www.toyzone.pk/products/large-water-gun-set-with-outdoor-spray-play",
+          "name": "Large Water Gun Set with Outdoor Spray Play",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPd76bb517e29e",
+          "source_url": "https://www.toyzone.pk/products/small-water-gun-with-spray-play-set-for-kids",
+          "name": "Small Water Gun with Spray Play Set for Kids",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPc0a34b410856",
+          "source_url": "https://www.toyzone.pk/products/large-water-gun-with-spray-play-set",
+          "name": "Large Water Gun with Spray Play Set",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP90b50e7b9cb4",
+          "source_url": "https://www.toyzone.pk/products/bowling-set-with-pins-and-ball-play-set-for-kids",
+          "name": "Bowling Set with Pins and Ball Play Set for Kids",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPbe1e41dd18cb",
+          "source_url": "https://www.toyzone.pk/products/trolley-cart-with-2-tier-play-set-for-kids",
+          "name": "Trolley Cart with 2-Tier Play Set for Kids",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP39166774ac86",
+          "source_url": "https://www.toyzone.pk/products/pink-barbie-trolley-cart",
+          "name": "Barbie Trolley Cart with 2-Tier Kitchen Play Set",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP2f7ed16e1d10",
+          "source_url": "https://www.toyzone.pk/products/kids-trolley-cart-with-2-tier-storage-play-set",
+          "name": "Kids Trolley Cart with 2-Tier Storage Play Set",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPd256cc6d54e0",
+          "source_url": "https://www.toyzone.pk/products/tool-cart-with-2-tier-tool-play-set",
+          "name": "Tool Cart with 2-Tier Tool Play Set",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP5ab34994fd1c",
+          "source_url": "https://www.toyzone.pk/products/lol-trolley-cart-with-2-tier-doll-play-set",
+          "name": "LOL Trolley Cart with 2-Tier Doll Play Set",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPd13752754609",
+          "source_url": "https://www.toyzone.pk/products/doctor-cart-with-2-tier-medical-play-set",
+          "name": "Doctor Cart with 2-Tier Medical Play Set",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP36c8db6548d2",
+          "source_url": "https://www.toyzone.pk/products/dessert-cart-with-2-tier-serving-play-set",
+          "name": "Dessert Cart with 2-Tier Serving Play Set",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP2ae276ae2160",
+          "source_url": "https://www.toyzone.pk/products/cleaner-cart",
+          "name": "2-Tier Kids Cleaner Cart with Cleaning Play Set",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP66b6c6541cc3",
+          "source_url": "https://www.toyzone.pk/products/pink-beauty-cart",
+          "name": "Beauty Cart with 2-Tier Beauty Play Set",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP82be6180f6ae",
+          "source_url": "https://www.toyzone.pk/products/street-series-mclaren-p1-rc-car-1-14-red-27mhz",
+          "name": "Maisto Remote Control Street Series McLaren P1 RC Supercar 1:14 Scale 27MHz Red",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPdf15eea07d39",
+          "source_url": "https://www.toyzone.pk/products/maisto-tech-express-lane-rc-sports-car-27mhz",
+          "name": "Maisto Tech Express Lane Radio Control Sports Car 27MHz (1:14 Scale)",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP4017b210a872",
+          "source_url": "https://www.toyzone.pk/products/transport-board-puzzle-ship-rocket-aeroplane-bus",
+          "name": "4 Transport Chunky Board Puzzle Ship, Rocket, Aeroplane And Bus",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP90c6ba2249f4",
+          "source_url": "https://www.toyzone.pk/products/four-dinosaur-chunky-board-puzzle",
+          "name": "4 Dinosaur Chunky Board Puzzle Pterosaur, Tyrannosaurus, Brachiosaurus & Spinosaurus",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0ead0b480879",
+          "source_url": "https://www.toyzone.pk/products/sea-animal-board-puzzle-seahorse-whale-fish-octopus",
+          "name": "4 Sea Animal Chunky Board Puzzle Seahorse, Whale, Fish & Octopus",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd578b8a2a70a",
+          "source_url": "https://www.toyzone.pk/products/animal-board-puzzle-butterfly-ladybird-rooster-snail",
+          "name": "4 Animal Chunky Board Puzzle Butterfly, Ladybird, Rooster & Snail",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP42d4dedc3659",
+          "source_url": "https://www.toyzone.pk/products/geometric-shape-sorter-board-puzzle",
+          "name": "Geometric Shape Sorter Board Puzzle with Circles, Hexagons & Triangles",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP34b51eb81f40",
+          "source_url": "https://www.toyzone.pk/products/four-animal-board-puzzle-crab-turtle-frog-duck",
+          "name": "4 Animal Chunky Board Puzzle Crab, Sea Turtle, Frog & Duck",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP00b55f6e49cb",
+          "source_url": "https://www.toyzone.pk/products/four-transport-vehicle-number-chunky-board-puzzle",
+          "name": "4 Transport Vehicle Number Chunky Board Puzzle Aeroplane, Car, Train & Boat",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4cdd99168967",
+          "source_url": "https://www.toyzone.pk/products/four-fruit-number-chunky-board-puzzle",
+          "name": "4 Fruit Number Chunky Board Puzzle Pineapple, Apple, Pear & Bananas",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7d7a4de6b80b",
+          "source_url": "https://www.toyzone.pk/products/four-bug-number-chunky-board-puzzle",
+          "name": "4 Bug Number Chunky Board Puzzle Butterfly, Dragonfly, Ladybird & Snail",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf037aa555a4c",
+          "source_url": "https://www.toyzone.pk/products/four-construction-vehicle-number-chunky-board-puzzle",
+          "name": "4 Construction Vehicle Number Chunky Board Puzzle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPbbccb3b673b5",
+          "source_url": "https://www.toyzone.pk/products/four-animal-number-chunky-board-puzzle",
+          "name": "4 Animal Number Chunky Board Puzzle Giraffe, Elephant, Crocodile & Fox",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP869c6469e58c",
+          "source_url": "https://www.toyzone.pk/products/tiger-number-1-10-chunky-board-puzzle",
+          "name": "Tiger Number 1\u201310 Chunky Board Puzzle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPfbc0a46a42db",
+          "source_url": "https://www.toyzone.pk/products/aeroplane-number-1-10-chunky-board-puzzle",
+          "name": "Aeroplane Number 1\u201310 Chunky Board Puzzle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa0bdc7a792b0",
+          "source_url": "https://www.toyzone.pk/products/plated-dinosaur-number-1-10-chunky-board-puzzle",
+          "name": "Stegosaurus-Style Dinosaur Number 1\u201310 Chunky Board Puzzle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf2fafe29f143",
+          "source_url": "https://www.toyzone.pk/products/school-bus-number-1-10-chunky-board-puzzle",
+          "name": "School Bus Number 1\u201310 Chunky Board Puzzle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP15e5b89f38dd",
+          "source_url": "https://www.toyzone.pk/products/long-neck-dinosaur-number-1-10-chunky-board-puzzle",
+          "name": "Long-Neck Dinosaur Number 1\u201310 Chunky Board Puzzle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2fd4339fb7ce",
+          "source_url": "https://www.toyzone.pk/products/giraffe-number-1-10-chunky-board-puzzle",
+          "name": "Giraffe Number 1\u201310 Chunky Board Puzzle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0bf12733c7c0",
+          "source_url": "https://www.toyzone.pk/products/excavator-digger-number-1-10-chunky-board-puzzle",
+          "name": "Excavator Digger Number 1\u201310 Chunky Board Puzzle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0c037a5237e9",
+          "source_url": "https://www.toyzone.pk/products/boy-number-1-10-chunky-board-puzzle",
+          "name": "Boy Number 1\u201310 Chunky Board Puzzle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPaa5a3639ac5a",
+          "source_url": "https://www.toyzone.pk/products/bunny-rabbit-number-1-10-chunky-board-puzzle",
+          "name": "Bunny Rabbit Number 1\u201310 Chunky Board Puzzle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc4a6242bc047",
+          "source_url": "https://www.toyzone.pk/products/elephant-family-chunky-board-puzzle",
+          "name": "Elephant Family Chunky Board Puzzle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPafb20abe06e3",
+          "source_url": "https://www.toyzone.pk/products/ladybird-beetle-chunky-board-puzzle-red-black",
+          "name": "Ladybird Beetle Chunky Board Puzzle \u2013 Red & Black",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP14b1c45de605",
+          "source_url": "https://www.toyzone.pk/products/red-car-chunky-board-puzzle",
+          "name": "Red Car Chunky Board Puzzle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf440593381bd",
+          "source_url": "https://www.toyzone.pk/products/maisto-tech-rock-crawler-27mhz-rtr-electric-rc-atv",
+          "name": "Maisto Tech Rock Crawler 27MHz RTR Electric RC ATV",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0bf5280cc76e",
+          "source_url": "https://www.toyzone.pk/products/spinosaurus-dinosaur-chunky-board-puzzle",
+          "name": "Spinosaurus Dinosaur Chunky Board Puzzle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP84080aec5e83",
+          "source_url": "https://www.toyzone.pk/products/brontosaurus-dinosaur-chunky-board-puzzle",
+          "name": "Brontosaurus Dinosaur Chunky Board Puzzle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP232861228157",
+          "source_url": "https://www.toyzone.pk/products/dinosaur-chunky-board-puzzle-with-green-head-colourful",
+          "name": "Dinosaur Chunky Board Puzzle with Green Head & Colourful",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP71b20cabaed6",
+          "source_url": "https://www.toyzone.pk/products/brachiosaurus-dinosaur-chunky-board-puzzle",
+          "name": "Brachiosaurus Dinosaur Chunky Board Puzzle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa5d5a552dc03",
+          "source_url": "https://www.toyzone.pk/products/parasaurolophus-dinosaur-chunky-board-puzzle",
+          "name": "Parasaurolophus Dinosaur Chunky Board Puzzle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP25d77625210e",
+          "source_url": "https://www.toyzone.pk/products/pterosaur-chunky-board-puzzle",
+          "name": "Pterosaur Chunky Board Puzzle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1f7bab72c35b",
+          "source_url": "https://www.toyzone.pk/products/volcano-dinosaur-digging-kit-with-blue-tools-plus-free-surprise-gift",
+          "name": "Volcano Dinosaur Digging Kit with Blue Tools Plus Free Surprise Gift",
+          "issues": [
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CP01745efd1164",
+          "source_url": "https://www.toyzone.pk/products/dinosaur-fossils-egg-digging-kit-tools",
+          "name": "Dinosaur Fossils Egg Digging Kit With Tools Plus free Surprise Gift",
+          "issues": [
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CP49d26e354960",
+          "source_url": "https://www.toyzone.pk/products/kids-astronaut-winter-mittens-future-1-pair",
+          "name": "Kids Astronaut Winter Mittens with Future Design \u2013 1 Pair",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb002ef07b5ea",
+          "source_url": "https://www.toyzone.pk/products/baby-fuzzy-mittens-pastel-stripes-yellow-character",
+          "name": "Baby Fuzzy Mittens with Pastel Stripes Yellow Character 1 Pair",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5da37963241e",
+          "source_url": "https://www.toyzone.pk/products/kids-winter-mittens-pom-pom-blue-navy",
+          "name": "Kids Winter Mittens with Pom-Pom Baby Mitten Glove (1 Pair)",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd703d3d94755",
+          "source_url": "https://www.toyzone.pk/products/baybee-baby-bedding-set-mosquito-net-pillows-peach",
+          "name": "Baby Bedding Set with Mosquito Net & Pillows",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP63c3e0e88e3e",
+          "source_url": "https://www.toyzone.pk/products/animal-print-baby-nest-mosquito-net-cream",
+          "name": "Animal Print Baby Nest with Mosquito Net",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP548bcfcb96a3",
+          "source_url": "https://www.toyzone.pk/products/manual-handheld-lint-remover-blue",
+          "name": "Manual Handheld Lint Remover",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP3261fa821822",
+          "source_url": "https://www.toyzone.pk/products/handy-heater-400w-wall-outlet-space-heater",
+          "name": "Handy Heater 400W Wall-Outlet Space Heater with 12-Hour Timer",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP395abf189d47",
+          "source_url": "https://www.toyzone.pk/products/mini-usb-mosquito-swatter-purple-light-black",
+          "name": "Mini USB Mosquito Swatter with Purple Light",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP332d6e8632ed",
+          "source_url": "https://www.toyzone.pk/products/sky-bird-electric-mosquito-killer-racket-white-stand",
+          "name": "Electric Mosquito Killer Racket With Stand",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP2547d8410060",
+          "source_url": "https://www.toyzone.pk/products/electric-mosquito-killer-green-white-switch",
+          "name": "Electric Mosquito Killer Green And White with On And Off Switch",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP6c5759670f31",
+          "source_url": "https://www.toyzone.pk/products/electric-shock-mosquito-killing-lamp",
+          "name": "Electric Shock Mosquito Killing Lamp",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        }
+      ],
+      "incomplete_products_count": 1864,
+      "incomplete_products_truncated": true,
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/toyzone-incomplete-products/f926c2574516a0c8/manifest.json",
+      "original_source_sha256": "3705de2fc550e9c9b62ec09fcac935d95e1095929d132f1c2b9ef3d82942cccc",
+      "recovery": {
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "owner_grocery_scope_repairs": 0,
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
       "source_run": "43238291015",
       "source_artifact": 13975734242,
-      "error": "Description numeric facts changed for CP73053c540045; missing=['2']; added=[]",
       "source_sha256": "3705de2fc550e9c9b62ec09fcac935d95e1095929d132f1c2b9ef3d82942cccc",
-      "held_input": "inputs/fresh804-20261026-5d42fe35/toyzone/3705de2fc550e9c9/manifest.json",
-      "checked_utc": "2026-11-12T20:56:12.721170+00:00"
+      "description_style_version": "customer-copy-v3",
+      "refresh_generation": "refresh20261112-5f1c5ec3",
+      "delivery_status": "verified",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/toyzone/3705de2fc550e9c9/manifest.json"
     },
     "Makeup Gallery": {
       "name": "804 Audit",
@@ -40299,8 +41164,8 @@
     "43238261036": "43238261036:13958288416:0d2ec92b06f884171db558d0ce57a357ce83d91588c45bfeabb9ba01eb4fe377",
     "43238267020": "43238267020:13954365701:0d2ec92b06f884171db558d0ce57a357ce83d91588c45bfeabb9ba01eb4fe377",
     "43238271986": "43238271986:13953897511:0d2ec92b06f884171db558d0ce57a357ce83d91588c45bfeabb9ba01eb4fe377",
-    "43238277659": "43238277659:13957288550:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
-    "43238285066": "43238285066:13953992511:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
+    "43238277659": "43238277659:13957288550:0d2ec92b06f884171db558d0ce57a357ce83d91588c45bfeabb9ba01eb4fe377",
+    "43238285066": "43238285066:13953992511:0d2ec92b06f884171db558d0ce57a357ce83d91588c45bfeabb9ba01eb4fe377",
     "43238297110": "43238297110:13957803361:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
     "43238303754": "43238303754:13958031225:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
     "43238308631": "43238308631:13973141733:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
@@ -40441,8 +41306,8 @@
     "SE10029-duplicate-1vZhH7OpSqLrQAokrEBL71ZsanJ_q9cU3": "inputs/fresh804-20261026-5d42fe35/rollback-se10029-duplicate-1vzhh7opsqlrqaokrebl71zsanj-q9cu3/fb102c981d6e6723/manifest.json",
     "SE10078": "inputs/fresh804-20261026-5d42fe35/rollback-se10078/0297a00af9e37658/manifest.json"
   },
-  "audit804_last_store": "Nayab Fashion",
-  "audit804_progress_utc": "2026-11-13T01:49:46.363761+00:00",
+  "audit804_last_store": "Toyzone",
+  "audit804_progress_utc": "2026-11-13T01:52:38.931061+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Makeup Gallery",
