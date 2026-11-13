@@ -3853,7 +3853,7 @@
     "Nayab Fashion": "source:a92edf13a9952638dbf819de25134ef2255b9045b38beef9bd720b69d1a82d2a:Nayab Fashion:0d2ec92b06f884171db558d0ce57a357ce83d91588c45bfeabb9ba01eb4fe377",
     "Alfateh Garments": "source:0d0328f0b16dfbbfe992b413aca8cb4979e4987f0bd607e27bd94d82e91b2968:Alfateh Garments:0d2ec92b06f884171db558d0ce57a357ce83d91588c45bfeabb9ba01eb4fe377",
     "Rizen Watches": "source:592c64ea13a9d27e40cfcebe645b4e071bfd35bbacfd76b134b8f3e87765df54:Rizen Watches:0d2ec92b06f884171db558d0ce57a357ce83d91588c45bfeabb9ba01eb4fe377",
-    "Blackbeiger": "source:77004f118944824310d9087707f8824243a6459d0c575be32fcebbc046e9b342:Blackbeiger:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
+    "Blackbeiger": "source:77004f118944824310d9087707f8824243a6459d0c575be32fcebbc046e9b342:Blackbeiger:0d2ec92b06f884171db558d0ce57a357ce83d91588c45bfeabb9ba01eb4fe377",
     "Rung Rez": "source:2fe06a2a059a601d6903f781831e7378b3b4fde6d6d0be56cad37a618a8539de:Rung Rez:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
     "Mansab": "source:e2cf0c201d9623a18f53f0670ba4afc75357dfb822b1d84525c4c798007ba1b4:Mansab:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
     "Bela": "source:050823e985b8e44447fb6b8c43434513617433b2dcc8726aabd75405ab68d3b2:Bela:f46255aa8f8dc4e7c053d34b1dbe71b145dd9d0031cbbe6cd887097b2da4ca88",
@@ -14829,13 +14829,62 @@
       "store": "Blackbeiger",
       "shop_code": "SE10074",
       "identity_policy": "confirmed_code",
-      "status": "pass",
+      "status": "hold",
       "products_checked": 255,
-      "findings_count": 0,
-      "findings": [],
+      "findings_count": 6,
+      "findings": [
+        {
+          "product_id": "CPe3adc56b7f54",
+          "name": "Black Block Heel",
+          "source_url": "https://blackbeiger.com/products/ls309",
+          "issues": [
+            "Category differs from identity-matched source collection evidence"
+          ]
+        },
+        {
+          "product_id": "CP14382d8d1bea",
+          "name": "Maroon Block Heel",
+          "source_url": "https://blackbeiger.com/products/ls308",
+          "issues": [
+            "Category differs from identity-matched source collection evidence"
+          ]
+        },
+        {
+          "product_id": "CP0bc7332017b6",
+          "name": "BALLET PUMPS - BEIGE",
+          "source_url": "https://blackbeiger.com/products/ballet-pumps-beige",
+          "issues": [
+            "Category differs from identity-matched source collection evidence"
+          ]
+        },
+        {
+          "product_id": "CP88e29882347d",
+          "name": "BALLET PUMPS - BLACK",
+          "source_url": "https://blackbeiger.com/products/ballet-pumps-black",
+          "issues": [
+            "Category differs from identity-matched source collection evidence"
+          ]
+        },
+        {
+          "product_id": "CP83c28b6c9b4a",
+          "name": "YSL HEELS (4 INCHES) - BLACK",
+          "source_url": "https://blackbeiger.com/products/ysl-heels-4-inches-black",
+          "issues": [
+            "Category differs from identity-matched source collection evidence"
+          ]
+        },
+        {
+          "product_id": "CP26c3a5b44f07",
+          "name": "BALLET PUMPS - MAROON",
+          "source_url": "https://blackbeiger.com/products/ls1112",
+          "issues": [
+            "Category differs from identity-matched source collection evidence"
+          ]
+        }
+      ],
       "details_truncated": false,
-      "workbook_sha256": "37c8af0cbc5eb6cdc3622c4464f5b37b2033e332eef129fae33c6e21c907e581",
-      "checked_utc": "2026-11-12T19:31:52.833500+00:00",
+      "workbook_sha256": "328c0107d147527665486ee2126bf9abd9577c76b05105e044421fa5a6d7b3f8",
+      "checked_utc": "2026-11-13T01:55:08.713338+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "incomplete_products_excluded": [
         {
@@ -15641,11 +15690,25 @@
       ],
       "incomplete_products_count": 107,
       "incomplete_products_truncated": true,
-      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/blackbeiger-incomplete-products/a12e96542fc14039/manifest.json",
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/blackbeiger-incomplete-products/cb599f8ab5a66790/manifest.json",
       "original_source_sha256": "77004f118944824310d9087707f8824243a6459d0c575be32fcebbc046e9b342",
       "recovery": {
-        "stage": "audit_passed_delivery_ready",
-        "unfinished": false
+        "stage": "correction_pending_source_recheck",
+        "unfinished": true,
+        "owner": "804 automated recovery",
+        "opened_utc": "2026-11-13T01:55:10.676725+00:00",
+        "updated_utc": "2026-11-13T01:55:10.676725+00:00",
+        "next_source_check_due_utc": "2026-11-13T02:10:10.676725+00:00",
+        "actions": [
+          "Refresh exact public product facts",
+          "Apply supported description and category repairs",
+          "Rerun independent all-row audit",
+          "Upload and verify only after audit passes"
+        ],
+        "issues": [
+          "Category differs from identity-matched source collection evidence"
+        ],
+        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
@@ -15658,7 +15721,6 @@
       "source_sha256": "77004f118944824310d9087707f8824243a6459d0c575be32fcebbc046e9b342",
       "description_style_version": "customer-copy-v3",
       "refresh_generation": "refresh20261112-5f1c5ec3",
-      "delivery_status": "verified",
       "held_input": "inputs/fresh804-20261026-5d42fe35/blackbeiger/77004f1189448243/manifest.json"
     },
     "Afrozeh": {
@@ -41286,8 +41348,8 @@
     "SE10029-duplicate-1vZhH7OpSqLrQAokrEBL71ZsanJ_q9cU3": "inputs/fresh804-20261026-5d42fe35/rollback-se10029-duplicate-1vzhh7opsqlrqaokrebl71zsanj-q9cu3/fb102c981d6e6723/manifest.json",
     "SE10078": "inputs/fresh804-20261026-5d42fe35/rollback-se10078/0297a00af9e37658/manifest.json"
   },
-  "audit804_last_store": "Rizen Watches",
-  "audit804_progress_utc": "2026-11-13T01:54:52.445631+00:00",
+  "audit804_last_store": "Blackbeiger",
+  "audit804_progress_utc": "2026-11-13T01:55:10.677351+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Makeup Gallery",
