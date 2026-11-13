@@ -29,6 +29,15 @@ class NaheedBrandRefreshTests(unittest.TestCase):
   self.assertEqual(vendor_link(html,BASE+'/item','Sajiero'),BASE+'/sajiero-undergarments')
   self.assertIsNone(vendor_link(html,BASE+'/item','Another Brand'))
   self.assertIsNone(vendor_link(html.replace('/sajiero-undergarments','/checkout'),BASE+'/item','Sajiero'))
+ def test_renamed_vendor_requires_same_host_canonical_and_matching_brand_heading(self):
+  from naheed_brand_support import verified_vendor_redirect
+  from chotu_groceries_source_support import GroceryScopeRedirect
+  html='<link rel="canonical" href="'+BASE+'/sajiero-undergarments"><h1>Sajiero Undergarments</h1>'
+  error=GroceryScopeRedirect(BASE+'/sajiero',BASE+'/sajiero-undergarments',html)
+  self.assertEqual(verified_vendor_redirect(error,'Sajiero'),error.actual)
+  self.assertIsNone(verified_vendor_redirect(error,'Another Brand'))
+  error.actual='https://evil.test/sajiero-undergarments';self.assertIsNone(verified_vendor_redirect(error,'Sajiero'))
+  error.actual=BASE+'/sajiero-undergarments';error.html=html.replace('rel="canonical"','rel="other"');self.assertIsNone(verified_vendor_redirect(error,'Sajiero'))
  def test_brand_match_is_not_a_title_or_partial_name_match(self):
   scope=dict(brand='Dawn',url=BASE+'/catalogsearch/result/?q=Dawn')
   p=dict(manufacturer='Dawn Foods',name='Dawn Bread',categories=[{'name':'Snacks'}])

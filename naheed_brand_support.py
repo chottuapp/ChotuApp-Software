@@ -53,7 +53,7 @@ def discover_brand_scope(reader,scope):
   if vendor:break
  vendor_proof=None
  if vendor:
-  links,total,pages=reader.discover_scope(dict(scope,url=vendor,_resolved_brand=True))
+  links,total,pages=discover_current_vendor(reader,scope,vendor)
   vendor_proof=dict(url=vendor,visible=len(links),total=total,pages=sorted(pages),count_changed=reader.scope_count_changed)
   if not reader.scope_count_changed and total is not None and len(links)==total:
    reader.brand_proofs.append(dict(brand=scope['brand'],scope_url=scope['url'],selected='current_vendor_page',vendor=vendor_proof))
@@ -70,7 +70,7 @@ def discover_brand_scope(reader,scope):
   for url in candidates[:3]:
    candidate=vendor_link(reader.read_page(url),url,scope['brand'])
    if not candidate:continue
-   found,expected,traversed=reader.discover_scope(dict(scope,url=candidate,_resolved_brand=True))
+   found,expected,traversed=discover_current_vendor(reader,scope,candidate)
    vendor_proof=dict(url=candidate,visible=len(found),total=expected,pages=sorted(traversed),count_changed=reader.scope_count_changed)
    if not reader.scope_count_changed and expected is not None and len(found)==expected:
     reader.brand_proofs.append(dict(brand=scope['brand'],scope_url=scope['url'],selected='current_vendor_page',vendor=vendor_proof))
@@ -91,3 +91,21 @@ def select_brand_category(product,scopes):
  categories=product.get('categories',[])
  if not categories or not str(categories[-1].get('name') or '').strip():raise ValueError('Verified Naheed product category missing')
  return exact[0]['url'],categories[-1]['name']
+
+def verified_vendor_redirect(error,brand):
+ """Only a source-linked vendor may rename to a same-host branded canonical page."""
+ old=urlsplit(error.requested);new=urlsplit(error.actual)
+ if any(p.scheme!='https' or p.netloc!='www.naheed.pk' or p.query or p.fragment or not re.fullmatch(r'/[a-z0-9][a-z0-9-]{0,150}/?',p.path) for p in (old,new)):return None
+ soup=BeautifulSoup(error.html,'html.parser');canonical=soup.select_one('link[rel=canonical][href]');heading=soup.select_one('h1')
+ if not canonical or urljoin(error.actual,canonical['href']).rstrip('/')!=error.actual.rstrip('/') or not heading:return None
+ if not re.search(r'(?<!\w)'+re.escape(brand_key(brand))+r'(?!\w)',brand_key(heading.get_text(' ',strip=True))):return None
+ return error.actual
+
+def discover_current_vendor(reader,scope,vendor):
+ from chotu_groceries_source_support import GroceryScopeRedirect
+ try:return reader.discover_scope(dict(scope,url=vendor,_resolved_brand=True))
+ except GroceryScopeRedirect as exc:
+  target=verified_vendor_redirect(exc,scope['brand'])
+  if not target:raise
+  reader.log('GROCERY VENDOR RENAMED: '+vendor+' -> '+target+'; exact source brand/canonical verified')
+  return reader.discover_scope(dict(scope,url=target,_resolved_brand=True))

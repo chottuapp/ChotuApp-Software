@@ -8,6 +8,10 @@ from bs4 import BeautifulSoup
 BASE='https://www.naheed.pk';STORE='ChotuApp Groceries'
 class IncompleteProduct(ValueError):pass
 class ProductReviewRequired(ValueError):pass
+class GroceryScopeRedirect(ValueError):
+ def __init__(self,requested,actual,html):
+  super().__init__('Unverified grocery response or scope-changing redirect')
+  self.requested=requested;self.actual=actual;self.html=html
 
 def norm(value):return re.sub(r'\s+',' ',html.unescape(str(value or ''))).strip()
 def amount(value):
@@ -148,7 +152,8 @@ class PublicCatalog:
   r.raise_for_status()
   actual=urlsplit(r.url)
   self.last_response_identity=dict(requested=urlunsplit((p.scheme,p.hostname,p.path,urlencode([(k,v) for k,v in parse_qsl(p.query) if k in ('q','manufacturer','p')]),'')),actual=urlunsplit((actual.scheme,actual.hostname or '',actual.path,urlencode([(k,v) for k,v in parse_qsl(actual.query) if k in ('q','manufacturer','p')]),'')))
-  if actual.hostname!=p.hostname or actual.path.rstrip('/')!=p.path.rstrip('/') or any(dict(parse_qsl(actual.query)).get(k)!=v for k,v in parse_qsl(p.query) if k in ('q','manufacturer','p')) or len(r.content)>8*1024*1024:raise ValueError('Unverified grocery response or scope-changing redirect')
+  if len(r.content)>8*1024*1024:raise ValueError('Grocery response exceeds verified size bound')
+  if actual.hostname!=p.hostname or actual.path.rstrip('/')!=p.path.rstrip('/') or any(dict(parse_qsl(actual.query)).get(k)!=v for k,v in parse_qsl(p.query) if k in ('q','manufacturer','p')):raise GroceryScopeRedirect(url,r.url,r.text)
   if re.search(r'cf-chl-|<title>\s*(?:Just a moment|Attention Required)',r.text,re.I):raise RuntimeError('SOURCE BLOCKED: source challenge; original requests retained')
   return r.text
  def discover_scope(self,scope):
