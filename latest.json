@@ -1,44 +1,43 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-13T05:45:37.151661+00:00",
-  "run_id": "43338740578",
+  "generated_utc": "2026-11-13T08:01:13.447246+00:00",
+  "run_id": "43373718066",
   "attempt": "1",
   "source_commit": "9a59f056b353d1bb314e8ca56e41232a8d4830de",
-  "status": "incomplete",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 18001.4,
+  "elapsed_seconds": 8127.7,
   "stores": [
     {
-      "name": "Breakout",
+      "name": "Tawakkal Fabrics",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
-      "software_revision": "59351b9269aef9e6",
-      "products": 1564,
-      "variants": 8083,
+      "software_revision": "876a6eacc6f1b8ef",
+      "products": 1561,
+      "variants": 3757,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
       "cache_events": 0
     },
     {
-      "name": "Liberty Books",
-      "status": "pending",
-      "review_required": false,
+      "name": "Stylo",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
-        "HTTP_404",
-        "WEBSITE_CATEGORY_UNVERIFIED",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "9cfbd8fd832c08c2",
+      "products": 8528,
+      "variants": 45356,
       "http_statuses": {
-        "404": 1,
-        "200": 3981
+        "200": 1621
       },
-      "network_seconds": 9279.5,
-      "max_response_seconds": 2.7,
-      "cache_events": 15701
+      "network_seconds": 4832.4,
+      "max_response_seconds": 57.0,
+      "cache_events": 73765
     }
   ]
 }
