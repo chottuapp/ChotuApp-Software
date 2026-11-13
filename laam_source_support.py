@@ -26,6 +26,12 @@ class IncompleteListing(ValueError):
         super().__init__('Active LAAM listing has no source variants; incomplete product excluded')
         self.raw=raw
 
+class OutsidePriceScope(ValueError):
+    """Exact available source prices exclude the whole product before option parsing."""
+    def __init__(self,raw):
+        super().__init__('Cheapest available source price outside owner PKR 2000–7000 scope')
+        self.raw=raw
+
 class TemporaryProductError(RuntimeError):
     """A retryable page failure; never a missing or successfully exported product."""
 
@@ -58,7 +64,7 @@ def require_active(raw):
     if status!='active' or any(raw.get(k) is True for k in ('hidden','is_hidden')) or any(raw.get(k) is False for k in ('visible','is_visible','published','is_published')) or str(raw.get('visibility') or '').lower() in ('hidden','private','unlisted'):
         raise HiddenProduct('LAAM product explicitly hidden, unpublished or inactive')
 
-def product_state(soup,handle,clothing_only=False,active_only=False,in_stock_only=False):
+def product_state(soup,handle,clothing_only=False,active_only=False,in_stock_only=False,owner_price_scope=False):
     script=soup.find('script',id='__NUXT_DATA__')
     if script is None:raise ValueError('LAAM public product state missing')
     flat=json.loads(script.string or script.get_text())
@@ -94,14 +100,24 @@ def product_state(soup,handle,clothing_only=False,active_only=False,in_stock_onl
         walk(tree)
     if currencies!={'PKR'}:raise SourceAccessError('LAAM Pakistan currency unverified; no foreign price export')
     if clothing_only and not is_clothing(candidates[0]):raise OutsideClothingScope('Not source-confirmed clothing')
-    product=normalize(candidates[0],handle,active_only=active_only,in_stock_only=in_stock_only)
+    raw=candidates[0]
+    if owner_price_scope and isinstance(raw.get('variants'),list) and raw['variants']:
+        selection=[]
+        for variant in raw['variants']:
+            if not isinstance(variant,dict):break
+            stock=str(variant.get('stock_status') or '').lower()
+            if stock not in ('in-stock','limited-stock','out-of-stock','sold-out'):break
+            selection.append(dict(price=variant.get('price'),available=stock in ('in-stock','limited-stock')))
+        else:
+            if any(v['available'] for v in selection) and not owner_price_allowed({'variants':selection}):raise OutsidePriceScope(raw)
+    product=normalize(raw,handle,active_only=active_only,in_stock_only=in_stock_only)
     from website_category_support import breadcrumb
     product['_website_category_evidence']=breadcrumb(soup,BASE+'/products/'+handle)
     return product
 
 # This revision only changes parsing of previously rejected option titles. Products
 # successfully normalized by the reviewed predecessor have identical cache schema.
-COMPATIBLE_PARSED_REVISIONS={'a49604c05403ccb7751da14317a4be307268dda9c5c280c6a3d07632f12975e7','1c7604a7c33b8a7310d370dab183c0feed8bdbac88f53557f47928fb4d68672e'}
+COMPATIBLE_PARSED_REVISIONS={'80090f7e2cbfca31ce0d7d006017b25fe3da0d41442880679098ca7efaff6f0b','a49604c05403ccb7751da14317a4be307268dda9c5c280c6a3d07632f12975e7','1c7604a7c33b8a7310d370dab183c0feed8bdbac88f53557f47928fb4d68672e'}
 
 def declared_option_title(title,dimensions):
     """Resolve separators inside declared values without inventing combinations."""
@@ -318,7 +334,12 @@ class PublicCatalog:
                     self.log('LAAM SOURCE REMOVED: HTTP '+str(response.status_code)+' '+url+'; absent public product excluded')
                     continue
                 # Nuxt state and currency evidence live in scripts; don't build a full page DOM.
-                try:product=product_state(BeautifulSoup(response.text,'html.parser',parse_only=SoupStrainer('script')),handle,clothing_only=True,active_only=True,in_stock_only=True)
+                try:product=product_state(BeautifulSoup(response.text,'html.parser',parse_only=SoupStrainer('script')),handle,clothing_only=True,active_only=True,in_stock_only=True,owner_price_scope=True)
+                except OutsidePriceScope as exc:
+                    original=dict(exc.raw,_source_url=url)
+                    if self.cache:self.cache.put(url,{'_source_url':url,'variants':[],'_excluded_reason':'outside-owner-price-range','_original_source_product':original})
+                    self.log('LAAM OWNER PRICE FILTER: excluded '+url+'; exact available source prices outside PKR 2000–7000; original retained')
+                    continue
                 except IncompleteListing as exc:
                     from locked_store_rules import record_incomplete_product
                     original=dict(exc.raw,_source_url=url)
