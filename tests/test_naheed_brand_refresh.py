@@ -16,6 +16,8 @@ class NaheedBrandRefreshTests(unittest.TestCase):
  def test_saved_list_is_exact_and_contains_only_naheed_scope_urls(self):
   request=load_request();self.assertEqual(len(request['brands']),222)
   self.assertNotIn('unbranded',{brand_key(v['brand']) for v in request['brands']})
+  self.assertIn('rose petal',{brand_key(v['brand']) for v in request['brands']})
+  self.assertNotIn('rose patel',{brand_key(v['brand']) for v in request['brands']})
  def test_vendor_link_requires_matching_manufacturer_canonical_and_exact_host(self):
   html=page().replace('<a>Dawn</a>','<a href="/allproducts/?manufacturer=890">Dawn</a>')
   self.assertEqual(vendor_link(html,BASE+'/item','Dawn'),BASE+'/allproducts/?manufacturer=890')
@@ -35,6 +37,13 @@ class NaheedBrandRefreshTests(unittest.TestCase):
   links,total,_=discover_brand_scope(reader,scope)
   self.assertEqual(total,len(links));self.assertEqual(reader.brand_proofs[0]['selected'],'exact_brand_search')
   self.assertEqual(reader.brand_proofs[0]['vendor']['total'],33)
+ def test_search_without_total_cannot_be_approved_as_complete(self):
+  from grocery_browser_support import ListingRenderIncomplete
+  scope=dict(brand='Dawn',url=BASE+'/catalogsearch/result/?q=Dawn',examples=[])
+  reader=SimpleNamespace(brand_proofs=[],scope_count_changed=False,scope_totals=[],scope_partial=({BASE+'/item'},set()),scope_expected=None)
+  reader.read_page=lambda _:page().replace('<a>Dawn</a>','<a>Another Brand</a>')
+  reader.discover_scope=lambda s:({BASE+'/item'},None,{s['url']})
+  with self.assertRaises(ListingRenderIncomplete):discover_brand_scope(reader,scope)
  def test_other_brand_search_hits_are_excluded_and_source_category_is_used(self):
   import chotu_groceries_source_support as source
   scope=dict(brand='Dawn',url=BASE+'/catalogsearch/result/?q=Dawn',group='Old heading')

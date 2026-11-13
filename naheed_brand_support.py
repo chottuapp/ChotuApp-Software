@@ -76,6 +76,9 @@ def discover_brand_scope(reader,scope):
    reader.scope_partial=search_partial;reader.scope_expected=search_expected
    break
  reader.brand_proofs.append(dict(brand=scope['brand'],scope_url=scope['url'],selected='exact_brand_search',vendor=vendor_proof,search=dict(visible=len(links),total=total,pages=sorted(pages),count_changed=reader.scope_count_changed)))
+ if links and total is None:
+  from grocery_browser_support import ListingRenderIncomplete
+  raise ListingRenderIncomplete('Exact brand search total is unverified; current vendor/search evidence retained; no partial brand completion')
  return links,total,pages
 
 def select_brand_category(product,scopes):
