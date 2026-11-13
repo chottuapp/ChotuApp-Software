@@ -25,7 +25,7 @@ def main():
    for url in sorted(links)[:3]:
     soup=BeautifulSoup(reader.read_page(url),'html.parser');brand=soup.select_one('.product-info-main .brand-name a');title=soup.select_one('h1')
     record['samples'].append(dict(url=url,manufacturer=brand.get_text(' ',strip=True) if brand else '',title=title.get_text(' ',strip=True) if title else ''))
-  except Exception as exc:record['error']=type(exc).__name__+': '+str(exc)[:500]
+  except Exception as exc:record.update(error=type(exc).__name__+': '+str(exc)[:500],response_identity=getattr(reader,'last_response_identity',None))
   records.append(record)
  publish(dict(run_id=os.environ['GITHUB_RUN_ID'],brand_discovery=records),branch='chotu-groceries-reports')
  print('Exact Naheed brand discovery evidence saved')

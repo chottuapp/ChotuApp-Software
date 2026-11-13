@@ -147,6 +147,7 @@ class PublicCatalog:
   if r.status_code in (401,403):raise RuntimeError('SOURCE BLOCKED: grocery public page denied; no login, alternate API or challenge bypass attempted')
   r.raise_for_status()
   actual=urlsplit(r.url)
+  self.last_response_identity=dict(requested=urlunsplit((p.scheme,p.hostname,p.path,urlencode([(k,v) for k,v in parse_qsl(p.query) if k in ('q','manufacturer','p')]),'')),actual=urlunsplit((actual.scheme,actual.hostname or '',actual.path,urlencode([(k,v) for k,v in parse_qsl(actual.query) if k in ('q','manufacturer','p')]),'')))
   if actual.hostname!=p.hostname or actual.path.rstrip('/')!=p.path.rstrip('/') or any(dict(parse_qsl(actual.query)).get(k)!=v for k,v in parse_qsl(p.query) if k in ('q','manufacturer','p')) or len(r.content)>8*1024*1024:raise ValueError('Unverified grocery response or scope-changing redirect')
   if re.search(r'cf-chl-|<title>\s*(?:Just a moment|Attention Required)',r.text,re.I):raise RuntimeError('SOURCE BLOCKED: source challenge; original requests retained')
   return r.text
