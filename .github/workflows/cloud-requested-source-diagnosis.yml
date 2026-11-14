@@ -18,8 +18,17 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install requests beautifulsoup4
+      - if: inputs.store == 'Barkat Meat House'
+        run: |
+          python -m pip install playwright==1.55.0
+          python -m playwright install --with-deps chromium
       - env:
           GH_TOKEN: ${{ github.token }}
           PYTHONPATH: cloud:.
           REQUESTED_SOURCE_STORE: ${{ inputs.store }}
-        run: python cloud/requested_source_diagnosis.py
+        run: |
+          if [ "$REQUESTED_SOURCE_STORE" = "Barkat Meat House" ]; then
+            python cloud/barkat_public_probe.py
+          else
+            python cloud/requested_source_diagnosis.py
+          fi
