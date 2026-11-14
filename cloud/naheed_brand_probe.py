@@ -40,6 +40,11 @@ def main():
   for (key,) in cache.db.execute('SELECT url FROM pages').fetchall():
    if not key.startswith(scope['url']+'#chotu-rendered-listing-v2'):continue
    response=cache.get(key);soup=BeautifulSoup(response.text,'html.parser');main=soup.select_one('main') or soup
+   facets=[]
+   for text in main.find_all(string=lambda value:value and brand_key(value)==brand_key(scope['brand'])):
+    node=text.parent.find_parent('label') or text.parent.find_parent('li') or text.parent.parent
+    facets.append(dict(tag=node.name,classes=node.get('class'),text=node.get_text(' ',strip=True)[:500],links=[dict(text=a.get_text(' ',strip=True),href=a.get('href')) for a in node.select('a[href]')][:4],inputs=[{k:i.get(k) for k in ('type','name','value','id')} for i in node.select('input')][:4]))
+   record['brand_filter_controls']=facets[:6]
    record['rendered_search'].append(dict(stats=[n.get_text(' ',strip=True)[:700] for n in main.select('.toolbar-amount,.ais-Stats,.ais-Stats-text,[class*=Stats],#stats,#stats-container')],text=main.get_text(' ',strip=True)[:3500],pagination=[a.get('href') for a in main.select('.ais-Pagination-link,.pages a[href],a.next[href]')],load_more=bool(main.select_one('#load-more'))))
   records.append(record)
  cache.close()
