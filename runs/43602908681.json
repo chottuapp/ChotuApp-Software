@@ -1755,6 +1755,26 @@
       "file_id": "1SFat5kkUzj0u8nyFvgdamY8gE7BFssSE",
       "file_url": "https://drive.google.com/file/d/1SFat5kkUzj0u8nyFvgdamY8gE7BFssSE/view",
       "drive_modified_utc": "2026-11-14T03:09:31.307Z"
+    },
+    "ChotuApp Meat House": {
+      "shop_code": "SE10086",
+      "source_run": "43596482691",
+      "sha256": "d080850958b20d9e861daeeea458ac180ad9acb3cbad6601b79aa077d90f6129",
+      "source_sha256": "4ca926bdb1aef616d3751ab0a8ef52cfce1025fd004350a3e156c12b7d019a5f",
+      "folder": "ChotuApp 19-10-2026 11-36AM",
+      "verified_utc": "2026-11-14T14:14:50.154493+00:00",
+      "audit804": {
+        "name": "804 Audit",
+        "status": "pass",
+        "checked_utc": "2026-11-14T14:10:11.077245+00:00",
+        "products_checked": 19,
+        "workbook_sha256": "d080850958b20d9e861daeeea458ac180ad9acb3cbad6601b79aa077d90f6129"
+      },
+      "rule804": "applied; 804 Audit passed",
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "refresh_generation": "refresh20261112-5f1c5ec3",
+      "replaced_file": null,
+      "file_name": "ChotuApp Meat House.xlsx"
     }
   },
   "daily_uploads": {
@@ -3780,6 +3800,26 @@
         "file_id": "1SFat5kkUzj0u8nyFvgdamY8gE7BFssSE",
         "file_url": "https://drive.google.com/file/d/1SFat5kkUzj0u8nyFvgdamY8gE7BFssSE/view",
         "drive_modified_utc": "2026-11-14T03:09:31.307Z"
+      },
+      "ChotuApp Meat House": {
+        "shop_code": "SE10086",
+        "source_run": "43596482691",
+        "sha256": "d080850958b20d9e861daeeea458ac180ad9acb3cbad6601b79aa077d90f6129",
+        "source_sha256": "4ca926bdb1aef616d3751ab0a8ef52cfce1025fd004350a3e156c12b7d019a5f",
+        "folder": "ChotuApp 19-10-2026 11-36AM",
+        "verified_utc": "2026-11-14T14:14:50.154493+00:00",
+        "audit804": {
+          "name": "804 Audit",
+          "status": "pass",
+          "checked_utc": "2026-11-14T14:10:11.077245+00:00",
+          "products_checked": 19,
+          "workbook_sha256": "d080850958b20d9e861daeeea458ac180ad9acb3cbad6601b79aa077d90f6129"
+        },
+        "rule804": "applied; 804 Audit passed",
+        "campaign_id": "fresh804-20261026-5d42fe35",
+        "refresh_generation": "refresh20261112-5f1c5ec3",
+        "replaced_file": null,
+        "file_name": "ChotuApp Meat House.xlsx"
       }
     }
   },
@@ -3952,7 +3992,8 @@
     "Golden Rose": "source:4bc09ab4df19a08097ed171a2999140a77fbe03cce9f2f5c2c1cb06844eea312:Golden Rose:23cd24f425bb011a6ed9119fcb065bd2af98c50dcb5532c371ceff5f27aaab40",
     "Dairy Dream": "source:d1a86d7274913adb98cba1ea7a3381166e11d839cc175d3215c4fef1f4f8cb86:Dairy Dream:cd96bf459bcbc141cb662df4799a8a36a16c4651083682849709b999aa039e61",
     "Toyzone": "source:3705de2fc550e9c9b62ec09fcac935d95e1095929d132f1c2b9ef3d82942cccc:Toyzone:2846cd94c8b87a13844156f1997a54112a49dac7a071b19a47df5bb2040bb37c",
-    "ChotuApp Groceries": "source:75da773894b8fd2fa174e7cc6bc99e47284178d0968c7b631a2d6cffa1db4454:ChotuApp Groceries:2846cd94c8b87a13844156f1997a54112a49dac7a071b19a47df5bb2040bb37c"
+    "ChotuApp Groceries": "source:75da773894b8fd2fa174e7cc6bc99e47284178d0968c7b631a2d6cffa1db4454:ChotuApp Groceries:2846cd94c8b87a13844156f1997a54112a49dac7a071b19a47df5bb2040bb37c",
+    "ChotuApp Meat House": "source:4ca926bdb1aef616d3751ab0a8ef52cfce1025fd004350a3e156c12b7d019a5f:ChotuApp Meat House:d543758cd970ebe620d70127adf7ea41a9bbabfb2de081636ea85cd346b128b1"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -40094,6 +40135,196 @@
       "description_style_version": "customer-copy-v3",
       "refresh_generation": "refresh20261112-5f1c5ec3",
       "held_input": "inputs/fresh804-20261026-5d42fe35/chotuapp-groceries/75da773894b8fd2f/manifest.json"
+    },
+    "ChotuApp Meat House": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "ChotuApp Meat House",
+      "shop_code": "SE10086",
+      "identity_policy": "confirmed_code",
+      "status": "pass",
+      "products_checked": 19,
+      "findings_count": 0,
+      "findings": [],
+      "details_truncated": false,
+      "workbook_sha256": "d080850958b20d9e861daeeea458ac180ad9acb3cbad6601b79aa077d90f6129",
+      "checked_utc": "2026-11-14T14:10:11.077245+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "incomplete_products_excluded": [
+        {
+          "product_id": "CPc7220b14ccf0",
+          "source_url": "https://barkatmeathouse.com/product/beef-kaleeji-gurday-mix-offer-6abe1fe725be590d514e19a3.html",
+          "name": "Beef Kaleeji + Gurday Mix Offer",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP6621cf104a9b",
+          "source_url": "https://barkatmeathouse.com/product/beef-stomach-lining-battain-6abe1d8125be590d514e1864.html",
+          "name": "Beef Stomach Lining (Battain)",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP901965274356",
+          "source_url": "https://barkatmeathouse.com/product/fresh-beef-boneless-bbq-chunks-6aa2c44e6fdef76af482e2eb.html",
+          "name": "Fresh Beef Boneless BBQ Chunks",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2b0b1b71aa29",
+          "source_url": "https://barkatmeathouse.com/product/fresh-beef-boneless-haleem-cut-6aa2c44e6fdef76af482e2ed.html",
+          "name": "Fresh Beef Boneless Haleem Cut",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf12b5da3f754",
+          "source_url": "https://barkatmeathouse.com/product/fresh-beef-brain-maghaz-6abf8fd60fdb8c46ad879875.html",
+          "name": "Fresh Beef Brain (Maghaz)",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc2070aafe0f7",
+          "source_url": "https://barkatmeathouse.com/product/fresh-beef-haddi-guddi-6aa2c44e6fdef76af482e2e8.html",
+          "name": "Fresh Beef Haddi Guddi",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2424bb685bb3",
+          "source_url": "https://barkatmeathouse.com/product/fresh-beef-mix-with-bone-6aa2c44e6fdef76af482e2ec.html",
+          "name": "Fresh Beef Mix With Bone",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa9bef5bd7627",
+          "source_url": "https://barkatmeathouse.com/product/fresh-beef-nehari-bong-bone-in-6aa2c44e6fdef76af482e2f1.html",
+          "name": "Fresh Beef Nehari Bong (Bone-in)",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2b0626cc7116",
+          "source_url": "https://barkatmeathouse.com/product/fresh-beef-nehari-bong-boneless-6aa2c44e6fdef76af482e2e5.html",
+          "name": "Fresh Beef Nehari Bong Boneless",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP22167767c35f",
+          "source_url": "https://barkatmeathouse.com/product/fresh-beef-pasanday-cut-6aa2c44e6fdef76af482e2e7.html",
+          "name": "Fresh Beef Pasanday Cut",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2f0e0154a8c5",
+          "source_url": "https://barkatmeathouse.com/product/fresh-beef-paye-trotters-6abf909c0fdb8c46ad8798fc.html",
+          "name": "Fresh Beef Paye (Trotters)",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPea3101c6150f",
+          "source_url": "https://barkatmeathouse.com/product/fresh-beef-strips-cut-6aa2c44e6fdef76af482e2ea.html",
+          "name": "Fresh Beef Strips Cut",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP84c213063af6",
+          "source_url": "https://barkatmeathouse.com/product/fresh-veal-bachiya-biryani-bone-in-6aa2c44e6fdef76af482e2fe.html",
+          "name": "Fresh Veal (Bachiya) Biryani (Bone-in)",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP523f8179b72b",
+          "source_url": "https://barkatmeathouse.com/product/fresh-veal-bachiya-bong-boneless-6aa2c44e6fdef76af482e2f9.html",
+          "name": "Fresh Veal (Bachiya) Bong Boneless",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf92973600df0",
+          "source_url": "https://barkatmeathouse.com/product/fresh-veal-bachiya-bong-meat-bone-in-6aa2c44e6fdef76af482e2fc.html",
+          "name": "Fresh Veal (Bachiya) Bong Meat (Bone-in)",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP40928dcbe2ba",
+          "source_url": "https://barkatmeathouse.com/product/fresh-veal-bachiya-meat-bone-in-6aa2c44e6fdef76af482e2fb.html",
+          "name": "Fresh Veal (Bachiya) Meat (Bone-in)",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP062854b69e76",
+          "source_url": "https://barkatmeathouse.com/product/fresh-veal-bachiya-pulao-bone-in-6aa2c44e6fdef76af482e300.html",
+          "name": "Fresh Veal (Bachiya) Pulao (Bone-in)",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP084424a3d743",
+          "source_url": "https://barkatmeathouse.com/product/kaleeji-liver-6ab39a0de91625e422eaa49c.html",
+          "name": "KALEEJI (LIVER)",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd14fb9ed3163",
+          "source_url": "https://barkatmeathouse.com/product/nalli-bone-6ac885680fdb8c46ad884729.html",
+          "name": "Nalli (Bone)",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "incomplete_products_count": 19,
+      "incomplete_products_truncated": false,
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/chotuapp-meat-house-incomplete-products/944569dcc5f53f83/manifest.json",
+      "original_source_sha256": "4ca926bdb1aef616d3751ab0a8ef52cfce1025fd004350a3e156c12b7d019a5f",
+      "recovery": {
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "owner_grocery_scope_repairs": 0,
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "source_run": "43596482691",
+      "source_artifact": 14114451849,
+      "source_sha256": "4ca926bdb1aef616d3751ab0a8ef52cfce1025fd004350a3e156c12b7d019a5f",
+      "description_style_version": "customer-copy-v3",
+      "refresh_generation": "refresh20261112-5f1c5ec3",
+      "delivery_status": "verified",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/chotuapp-meat-house/4ca926bdb1aef616/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -40734,8 +40965,8 @@
     "SE10076": "inputs/fresh804-20261026-5d42fe35/rollback-se10076/8eb3270860875cb3/manifest.json",
     "SE10081": "inputs/fresh804-20261026-5d42fe35/rollback-se10081/b5776b5e7409ac29/manifest.json"
   },
-  "audit804_last_store": "Servis",
-  "audit804_progress_utc": "2026-11-14T14:04:50.596879+00:00",
+  "audit804_last_store": "ChotuApp Meat House",
+  "audit804_progress_utc": "2026-11-14T14:14:50.155199+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Blackbeiger",
@@ -41074,6 +41305,5 @@
     "43238339380",
     "43456840130",
     "43596482691"
-  ],
-  "additional_completed_source_error": "Additional source verification unavailable or invalid; no additive source approved; existing store delivery continues"
+  ]
 }
