@@ -146,6 +146,8 @@ def reviewed_photo_purpose(row,source):
 
 def issues_for(row,source=None):
  name=plain(row.get('name'));description=plain(row.get('description'));category=plain(row.get('Category'));issues=[]
+ from retailer_branding_support import issues as retailer_branding_issues
+ issues.extend(retailer_branding_issues(row))
  from sold_object_audit import category_boundary_issues
  issues.extend(category_boundary_issues(row,source))
  from description_readability import issues as readability_issues

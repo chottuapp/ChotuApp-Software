@@ -25,7 +25,8 @@ def prepare(archive,data,source_run):
     needs_browser=any(not complete(site) and (urlsplit(str(site.get('url',''))).hostname or '').lower().removeprefix('www.')=='czone.com.pk' for site in state['sites'])
     needs_axis=any(not complete(site) and (urlsplit(str(site.get('url',''))).hostname or '').lower().removeprefix('www.')=='axispk.shop' for site in state['sites'])
     needs_grocery=any(not complete(site) and (urlsplit(str(site.get('url',''))).hostname or '').lower().removeprefix('www.')=='naheed.pk' for site in state['sites'])
-    atomic_json(ready,{'needs_grocery_renderer':needs_grocery,'source_run':str(source_run),'state_id':state.get('id'),'needs_axis_renderer':needs_axis})
+    needs_meat=any(not complete(site) and (urlsplit(str(site.get('url',''))).hostname or '').lower().removeprefix('www.')=='barkatmeathouse.com' for site in state['sites'])
+    atomic_json(ready,{'needs_meat_renderer':needs_meat,'needs_grocery_renderer':needs_grocery,'source_run':str(source_run),'state_id':state.get('id'),'needs_axis_renderer':needs_axis})
     print('Resume checkpoint restored; '+str(sum(complete(s) for s in state['sites']))+' completed stores retained. Czone browser needed: '+str(needs_browser).lower()+'.',flush=True)
     return needs_browser
 
@@ -41,5 +42,5 @@ def main():
     needs=prepare(a.archive,a.data,os.environ.get('RESUME_RUN_ID',''))
     if os.environ.get('GITHUB_ENV'):
         marker=json.loads((a.data/'restore-ready.json').read_text())
-        with open(os.environ['GITHUB_ENV'],'a') as stream:stream.write('CLOUD_NEEDS_CZONE_BROWSER='+str(needs).lower()+'\nCLOUD_NEEDS_AXIS_RENDERER='+str(marker.get('needs_axis_renderer',False)).lower()+'\nCLOUD_NEEDS_GROCERY_BROWSER='+str(marker.get('needs_grocery_renderer',False)).lower()+'\n')
+        with open(os.environ['GITHUB_ENV'],'a') as stream:stream.write('CLOUD_NEEDS_CZONE_BROWSER='+str(needs).lower()+'\nCLOUD_NEEDS_AXIS_RENDERER='+str(marker.get('needs_axis_renderer',False)).lower()+'\nCLOUD_NEEDS_MEAT_BROWSER='+str(marker.get('needs_meat_renderer',False)).lower()+'\nCLOUD_NEEDS_GROCERY_BROWSER='+str(marker.get('needs_grocery_renderer',False)).lower()+'\n')
 if __name__=='__main__':main()

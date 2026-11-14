@@ -93,7 +93,7 @@ jobs:
       - name: Verify standalone continuation and owner-policy guards
         env:
           PYTHONPATH: tests:cloud:.
-        run: python -m unittest test_category_accuracy_recovery test_resume_delivery_repairs test_additional_completed_sources test_grocery_scope_repair test_naheed_brand_refresh test_sold_object_categories test_mansab_source test_rungrez_source test_alfateh_source test_paperworm_scope test_axis_source test_auto_continue_entrypoint test_auto_continue test_continuation_policy test_runner_identity test_owner_photo_pause test_woocommerce_source test_requested_stores test_magento_source test_magento_option_page test_chotu_groceries test_laam_price_scope_discovery test_laam_scoped_stock test_laam_incomplete_listing -q
+        run: python -m unittest test_category_accuracy_recovery test_resume_delivery_repairs test_additional_completed_sources test_grocery_scope_repair test_naheed_brand_refresh test_sold_object_categories test_mansab_source test_rungrez_source test_alfateh_source test_paperworm_scope test_axis_source test_auto_continue_entrypoint test_auto_continue test_continuation_policy test_runner_identity test_owner_photo_pause test_retailer_branding test_meat_source test_woocommerce_source test_requested_stores test_magento_source test_magento_option_page test_chotu_groceries test_laam_price_scope_discovery test_laam_scoped_stock test_laam_incomplete_listing -q
       - name: Restore optional saved run
         if: inputs.resume_run_id != ''
         env:
@@ -109,6 +109,11 @@ jobs:
           python -m playwright install --with-deps chromium
       - name: Install grocery public storefront renderer when needed
         if: env.CLOUD_NEEDS_GROCERY_BROWSER == 'true' || contains(inputs.stores, 'naheed.pk')
+        run: |
+          python -m pip install playwright==1.55.0
+          python -m playwright install --with-deps chromium
+      - name: Install meat public storefront renderer when needed
+        if: env.CLOUD_NEEDS_MEAT_BROWSER == 'true' || contains(inputs.stores, 'barkatmeathouse.com')
         run: |
           python -m pip install playwright==1.55.0
           python -m playwright install --with-deps chromium

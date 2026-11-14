@@ -27,7 +27,13 @@ def process(source,out,store,codes,*,mobile_khaadi=False,approved_original=False
         if not required<=set(headers):raise ValueError('Required description/category evidence fields missing')
         for number,values in enumerate(rows,2):
             if not any(v is not None for v in values):continue
-            row=dict(zip(headers,values));pid=row['product_id'];count+=1
+            row=dict(zip(headers,values));branding_changes={}
+            from retailer_branding_support import applies as branding_applies,customer_fields
+            if branding_applies(row.get('source_url')):
+                cleaned=customer_fields(row['source_url'],row.get('name'),row.get('description'))
+                branding_changes={k:cleaned[k] for k in ('name','description') if row.get(k)!=cleaned[k]}
+                row.update(branding_changes)
+            pid=row['product_id'];count+=1
             if mobile_khaadi or approved_original:
                 from urllib.parse import urlsplit
                 source_url=urlsplit(str(row.get('source_url') or ''))
@@ -43,7 +49,7 @@ def process(source,out,store,codes,*,mobile_khaadi=False,approved_original=False
             if hold_reason:description_repair=hold_reason
             if description_repair:warnings.append({'product_id':pid,'issue':description_repair,'repair_kind':'description'})
             capacity_issue=False
-            changes={};code=codes.get(store)
+            changes=dict(branding_changes);code=codes.get(store)
             if code and row.get('shop_code')!=code:changes['shop_code']=code
             if not code and row.get('shop_code'):raise ValueError('Unconfirmed shop code; held for review')
             old=str(row.get('Category') or '');label=old
@@ -81,6 +87,9 @@ def process(source,out,store,codes,*,mobile_khaadi=False,approved_original=False
                 polished=str(row.get('description') or '')
                 capacity_issue=True
                 warnings.append({'product_id':pid,'issue':'Description exceeds Excel cell capacity','repair_kind':'description_capacity'})
+            if branding_applies(row.get('source_url')):
+                from retailer_branding_support import clean as clean_branding
+                polished=clean_branding(polished)
             before_numbers=numeric_facts(description);after_numbers=numeric_facts(polished)
             allowed_numbers=before_numbers|numeric_facts(row.get('name'))
             if not capacity_issue and (not before_numbers<=after_numbers or not after_numbers<=allowed_numbers):raise ValueError('Description numeric facts changed for '+str(pid)+'; missing='+str(sorted(before_numbers-after_numbers))+'; added='+str(sorted(after_numbers-allowed_numbers)))
