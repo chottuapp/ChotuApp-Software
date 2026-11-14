@@ -18,7 +18,7 @@ def select_brand_filter(page,brand):
  node.click(timeout=30000);page.wait_for_timeout(1500)
  matches=[n for n in page.get_by_text(pattern).all() if n.is_visible()]
  if len(matches)!=1:raise ListingRenderIncomplete('Selected brand filter cannot be verified: '+brand)
- selected=matches[0].evaluate("n => {const scope=n.closest('label')||n.closest('li')||n.parentElement;const box=scope.querySelector('input[type=checkbox]');if(box)return box.checked;const role=n.closest('[role=checkbox]');return role?role.getAttribute('aria-checked')==='true':null;}")
+ selected=matches[0].evaluate("n => {const scope=n.closest('label')||n.closest('li')||n.parentElement;const label=n.closest('label');const box=(label&&label.control)||scope.querySelector('input[type=checkbox]');if(box)return box.checked;const role=n.closest('[role=checkbox]');return role?role.getAttribute('aria-checked')==='true':null;}")
  if selected is not True:
   error=ListingRenderIncomplete('Public By Brand selection not confirmed: '+brand)
   error.public_filter_evidence=matches[0].evaluate("n => {const result=[];for(let p=n,i=0;p&&i<5;p=p.parentElement,i++){const attrs={};for(const k of ['class','role','aria-checked','aria-pressed','href','type','value','checked','for'])if(p.hasAttribute(k))attrs[k]=p.getAttribute(k);result.push({tag:p.tagName,attrs,text:p.innerText.slice(0,250),inputs:Array.from(p.querySelectorAll('input[type=checkbox]')).slice(0,5).map(b=>({checked:b.checked,value:b.value}))});}return {ancestors:result,url:location.href};}")
@@ -80,6 +80,8 @@ def render_listing(url,pause=lambda:None,log=lambda _:None,*,load_all=True,brand
    if load_all:exhaust_listing(page,pause,log,limited,pending)
    if brand:
     page.evaluate("value => {document.documentElement.setAttribute('data-chotu-selected-brand',value.brand);document.documentElement.setAttribute('data-chotu-brand-total',String(value.total));}",dict(brand=brand,total=brand_total))
+   actual=urlsplit(page.url)
+   if actual.scheme!='https' or actual.netloc!='www.naheed.pk' or actual.path.rstrip('/')!=wanted.path.rstrip('/') or any(dict(parse_qsl(actual.query)).get(k)!=v for k,v in parse_qsl(wanted.query) if k in ('q','manufacturer')):raise ValueError('Foreign or scope-changing grocery UI navigation')
    content=page.content()
    if len(content.encode())>16*1024*1024:raise ValueError('Rendered grocery listing exceeds bound')
    return content

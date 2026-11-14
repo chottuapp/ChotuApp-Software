@@ -2,6 +2,10 @@ name: Complete saved ChotuApp Groceries file
 on:
   workflow_dispatch:
     inputs:
+      brand_refresh:
+        description: Complete the saved exact-brand Naheed export using its original coverage receipts
+        default: false
+        type: boolean
       source_run_id:
         description: 'Exact saved grocery export run to finish'
         default: '42607016680'
@@ -30,7 +34,7 @@ jobs:
       - name: Verify grocery source, metadata and delivery guards
         env:
           PYTHONPATH: tests:cloud:.
-        run: python -m unittest test_grocery_completion test_chotu_groceries test_grocery_scope_repair test_additional_completed_sources -q
+        run: python -m unittest test_grocery_completion test_naheed_saved_completion test_naheed_brand_refresh test_chotu_groceries test_grocery_scope_repair test_additional_completed_sources -q
       - uses: actions/download-artifact@v4
         with:
           name: chotuapp-excel-files
@@ -38,6 +42,7 @@ jobs:
           run-id: ${{ inputs.source_run_id }}
           path: ${{ runner.temp }}/original-grocery-export
       - uses: actions/download-artifact@v4
+        if: inputs.brand_refresh != true
         with:
           name: chotuapp-checkpoint
           github-token: ${{ github.token }}
@@ -51,7 +56,13 @@ jobs:
           GROCERY_SOURCE_RUN: ${{ inputs.source_run_id }}
           GROCERY_CHECKPOINT_RUN: ${{ inputs.checkpoint_run_id }}
           GROCERY_OUTPUT: ${{ runner.temp }}/completed-grocery
-        run: python cloud/complete_grocery_export.py
+          GROCERY_BRAND_REFRESH: ${{ inputs.brand_refresh }}
+        run: |
+          if [ "$GROCERY_BRAND_REFRESH" = "true" ]; then
+            python cloud/complete_naheed_brand_export.py
+          else
+            python cloud/complete_grocery_export.py
+          fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
