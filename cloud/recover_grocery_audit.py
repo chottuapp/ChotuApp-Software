@@ -59,12 +59,20 @@ def main():
   temp=Path(tmp);g=runpy.run_path(str(ROOT/'main.py'),run_name='saved_source_audit_recovery');g.update(OUT=temp/'additions',__file__=str(temp/'recovery.py'))
   cache=ResponseCache(temp/'responses.sqlite3');tls=SimpleNamespace(saved_response_cache=cache);g['_chotu_tls']=tls;g['S']=SessionProxy(requests.Session(),tls,g['_chotu_wait']);reader=PublicCatalog(g,print,brand_refresh=True)
   normalized,_=normalize(original,temp/'normalized.xlsx',codes[STORE]);category_proof=restore_missing_categories(normalized,temp/'category-source.xlsx',reader,g);source,_=repair(temp/'category-source.xlsx',temp/'verified-category-source.xlsx',STORE)
-  scopes=load_request()['brands'];new_products=[]
+  scopes=load_request()['brands'];new_products=[];new_exclusions=[]
   for pid,candidate in new_candidates.items():
    html=reader.read_page(candidate['source_url']);p=product(html,candidate['source_url'])
    if g['uid']('CP',BASE+'|'+str(p['id']))!=pid:raise ValueError('New candidate supplier identity changed')
    p['owner_scope_url'],p['owner_category']=select_brand_category(p,scopes)
-   if not p['is_in_stock'] or not p['images']:raise ValueError('New candidate current source availability/image requires review')
+   p['owner_scope_policy']='owner_brand_search'
+   from locked_store_rules import incomplete_product_reasons
+   reasons=incomplete_product_reasons(p)
+   if not p['is_in_stock']:reasons.append('Source out of stock')
+   if not p['images']:reasons.append('Missing source image')
+   if reasons:
+    new_exclusions.append(dict(product_id=pid,source_url=candidate['source_url'],reason='; '.join(reasons),response_sha256=hashlib.sha256(html.encode()).hexdigest()))
+    (out/'grocery-recovery-new-exclusions.json').write_text(json.dumps(new_exclusions,indent=2))
+    continue
    new_products.append(p)
   merged=temp/'complete-source.xlsx';append_source_products(g,source,new_products,merged,codes)
   b=load_workbook(merged);s=b['Products'];h={c.value:c.column for c in s[1]}
@@ -77,7 +85,7 @@ def main():
    report=audit(filtered_output,STORE,codes,{'www.naheed.pk','naheed.pk'},source=filtered_source,strict_commercial=True,findings_limit=None);shutil.copy2(filtered_output,checked)
   cache.close();shutil.copy2(temp/'responses.sqlite3',out/'grocery-recovery-source-responses.sqlite3')
   (out/'grocery-final-audit.json').write_text(json.dumps(report,indent=2))
-  (out/'grocery-audit-recovery-proof.json').write_text(json.dumps(dict(original_source_run=source_run,original_source_sha256=hashlib.sha256(original.read_bytes()).hexdigest(),prior_failed_audit_run=rid,prior_failed_findings=previous['findings'],scope_proof=proof['coverage'],category_repairs=category_proof,new_supplier_products=len(new_products),current_incomplete_products=unclear,original_commercial_description_and_linked_values_verified=True,failed_preview_used_as_source=False),indent=2))
+  (out/'grocery-audit-recovery-proof.json').write_text(json.dumps(dict(original_source_run=source_run,original_source_sha256=hashlib.sha256(original.read_bytes()).hexdigest(),prior_failed_audit_run=rid,prior_failed_findings=previous['findings'],scope_proof=proof['coverage'],category_repairs=category_proof,new_supplier_products=len(new_products),new_supplier_exclusions=new_exclusions,current_incomplete_products=unclear,original_commercial_description_and_linked_values_verified=True,failed_preview_used_as_source=False),indent=2))
   if report['status']!='pass':raise ValueError('Independent original-source audit remains held; old verified file retained')
   (out/'completion-manifest.json').write_text(json.dumps({'files':[dict(store=STORE,name=target.name,complete=True,sha256=hashlib.sha256(target.read_bytes()).hexdigest())]}))
   (out/'run-summary.json').write_text(json.dumps(dict(stores=[dict(name=STORE,status='done',file=target.name,products=len(before)+len(new_products),review_required=True)])))
