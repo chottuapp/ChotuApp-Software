@@ -1,5 +1,8 @@
 """Bounded verification of the selected Naheed brand-discovery paths."""
-import json,os,time
+import json,os,time,tempfile
+from pathlib import Path
+from types import SimpleNamespace
+from resume_support import ResponseCache
 import requests
 from bs4 import BeautifulSoup
 from chotu_groceries_source_support import PublicCatalog
@@ -15,7 +18,8 @@ def main():
   from urllib.parse import urlencode
   approved[brand_key('Rose Petal')]=dict(brand='Rose Petal',url='https://www.naheed.pk/catalogsearch/result/?'+urlencode({'q':'Rose Petal'}),examples=[])
  if any(brand_key(v) not in approved for v in requested):raise ValueError('Brand not in owner-approved request')
- reader=PublicCatalog({'S':requests.Session(),'_chotu_wait':lambda:None,'_chotu_backoff':lambda seconds,*_:time.sleep(seconds)},print,brand_refresh=True)
+ cache=ResponseCache(Path(tempfile.mkdtemp(prefix='naheed-brand-probe-'))/'pages.sqlite3')
+ reader=PublicCatalog({'_chotu_tls':SimpleNamespace(saved_response_cache=cache),'S':requests.Session(),'_chotu_wait':lambda:None,'_chotu_backoff':lambda seconds,*_:time.sleep(seconds)},print,brand_refresh=True)
  records=[]
  for name in requested:
   scope=approved[brand_key(name)];record=dict(brand=scope['brand'])
@@ -26,13 +30,19 @@ def main():
     soup=BeautifulSoup(reader.read_page(url),'html.parser');brand=soup.select_one('.product-info-main .brand-name a');title=soup.select_one('h1')
     record['samples'].append(dict(url=url,manufacturer=brand.get_text(' ',strip=True) if brand else '',title=title.get_text(' ',strip=True) if title else ''))
   except Exception as exc:
-   record.update(error=type(exc).__name__+': '+str(exc)[:500],response_identity=getattr(reader,'last_response_identity',None))
+   record.update(error=type(exc).__name__+': '+str(exc)[:500],response_identity=getattr(reader,'last_response_identity',None),proofs=[v for v in reader.brand_proofs if v['brand']==scope['brand']])
    if getattr(exc,'html',None):
     soup=BeautifulSoup(exc.html,'html.parser');heading=soup.select_one('h1');canonical=soup.select_one('link[rel=canonical][href]')
     record['redirect_page']=dict(title=soup.title.get_text(' ',strip=True)[:300] if soup.title else '',heading=heading.get_text(' ',strip=True)[:500] if heading else '',canonical=canonical.get('href') if canonical else None)
     main=soup.select_one('main') or soup
     record['redirect_page'].update(listing_cards=len(main.select('.products-grid .product-item')),toolbar=[n.get_text(' ',strip=True) for n in main.select('.toolbar-amount,.ais-Stats-text')],manufacturer_links=sorted({a['href'] for a in main.select('a[href]') if 'manufacturer=' in a['href']}),pagination=[a['href'] for a in main.select('.pages a[href],a.next[href]')],buttons=[n.get_text(' ',strip=True)[:100] for n in main.select('button')][:15])
+  record['rendered_search']=[]
+  for (key,) in cache.db.execute('SELECT url FROM pages').fetchall():
+   if not key.startswith(scope['url']+'#chotu-rendered-listing-v2'):continue
+   response=cache.get(key);soup=BeautifulSoup(response.text,'html.parser');main=soup.select_one('main') or soup
+   record['rendered_search'].append(dict(stats=[n.get_text(' ',strip=True)[:700] for n in main.select('.toolbar-amount,.ais-Stats,.ais-Stats-text,[class*=Stats],#stats,#stats-container')],text=main.get_text(' ',strip=True)[:3500],pagination=[a.get('href') for a in main.select('.ais-Pagination-link,.pages a[href],a.next[href]')],load_more=bool(main.select_one('#load-more'))))
   records.append(record)
+ cache.close()
  publish(dict(run_id=os.environ['GITHUB_RUN_ID'],brand_discovery=records),branch='chotu-groceries-reports')
  print('Exact Naheed brand discovery evidence saved')
 if __name__=='__main__':main()
