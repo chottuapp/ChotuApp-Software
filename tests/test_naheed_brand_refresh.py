@@ -6,6 +6,23 @@ from naheed_brand_support import BASE,brand_key,load_request,vendor_link,select_
 from test_chotu_groceries import page
 
 class NaheedBrandRefreshTests(unittest.TestCase):
+ def test_public_brand_filter_requires_an_exact_label_count_and_checked_state(self):
+  from grocery_browser_support import select_brand_filter,ListingRenderIncomplete
+  class Node:
+   selected=False
+   def is_visible(self):return True
+   def inner_text(self):return 'Shan (106)'
+   def click(self,**kwargs):self.selected=True
+   def evaluate(self,script):return self.selected
+  node=Node()
+  class Page:
+   def get_by_text(self,pattern):
+    return SimpleNamespace(all=lambda:[node] if pattern.fullmatch(node.inner_text()) else [])
+   def wait_for_timeout(self,ms):pass
+  self.assertEqual(select_brand_filter(Page(),'Shan'),106)
+  with self.assertRaises(ListingRenderIncomplete):select_brand_filter(Page(),'Shangrila')
+  node.evaluate=lambda _:False
+  with self.assertRaises(ListingRenderIncomplete):select_brand_filter(Page(),'Shan')
  def test_generated_runtime_receives_brand_module_and_exact_request(self):
   import importlib.util
   from runtime import prepare_engine

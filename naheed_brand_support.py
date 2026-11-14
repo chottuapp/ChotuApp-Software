@@ -10,6 +10,16 @@ BASE='https://www.naheed.pk'
 def brand_key(value):
  return ' '.join(unicodedata.normalize('NFKC',str(value or '')).casefold().split())
 
+def brand_scope_identity(row):
+ request=load_request();scopes={p['url']:p['brand'] for p in request['brands']} if request else {}
+ expected=scopes.get(str(row.get('owner_scope_url') or ''));part=urlsplit(str(row.get('source_url') or ''))
+ return bool(expected and brand_key(expected)==brand_key(row.get('source_manufacturer')) and part.scheme=='https' and part.netloc=='www.naheed.pk')
+
+def authorized_brand_category(row,repair=False):
+ path=str(row.get('website_category_path') or '');category=path.rsplit(' > ',1)[-1].strip()
+ if not brand_scope_identity(row) or not category or not repair and category!=row.get('Category') or row.get('website_category_status')!='verified_product_breadcrumb' or row.get('website_category_source_url')!=row.get('source_url'):raise ValueError('Exact Naheed brand/product/category evidence missing or changed')
+ return category
+
 @lru_cache(maxsize=1)
 def load_request():
  p=Path(__file__).parent/'naheed-brand-refresh.json'

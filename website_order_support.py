@@ -173,16 +173,21 @@ def apply_order(rows,evidence=None,category_evidence=None):
         else:
             for field in ORDER_FIELDS:row.setdefault(field,'')
             if not row.get('website_order_status'):row['website_order_status']='unverified'
-        from website_category_support import apply as apply_category
-        prior_subcategory=(row.get('subcategory'),row.get('subcategory_source'),row.get('subcategory_checked_at'))
-        apply_category(row,category_evidence)
-        if canonical and saved_category and not row.get('subcategory') and row.get('website_category_status')=='unverified':
-            row['subcategory']=saved_category
-            if row.get('subcategory_source') in (None,'','website','unverified'):
-                row.update(subcategory_source='existing',subcategory_evidence='Existing Category retained; website provenance unverified',subcategory_checked_at='')
-        from subcategory_inference_support import apply as infer_subcategory
-        infer_subcategory(row,prior_subcategory)
-        if 'Category' in row:row['Category']=row.get('subcategory') or ''
+        if row.get('subcategory_source')=='owner_brand_search':
+            from naheed_brand_support import authorized_brand_category
+            row['subcategory']=authorized_brand_category(row)
+            if canonical:row['Category']=row['subcategory']
+        else:
+            from website_category_support import apply as apply_category
+            prior_subcategory=(row.get('subcategory'),row.get('subcategory_source'),row.get('subcategory_checked_at'))
+            apply_category(row,category_evidence)
+            if canonical and saved_category and not row.get('subcategory') and row.get('website_category_status')=='unverified':
+                row['subcategory']=saved_category
+                if row.get('subcategory_source') in (None,'','website','unverified'):
+                    row.update(subcategory_source='existing',subcategory_evidence='Existing Category retained; website provenance unverified',subcategory_checked_at='')
+            from subcategory_inference_support import apply as infer_subcategory
+            infer_subcategory(row,prior_subcategory)
+            if 'Category' in row:row['Category']=row.get('subcategory') or ''
         valid=all(position(row.get(field))!=float('inf') for field in ORDER_FIELDS[:3]) and row.get('website_order_source_url') and public_link(row.get('source_url',''),row.get('website_order_source_url','')) and row.get('website_order_checked_at')
         if row.get('website_order_status')=='observed_default_listing' and valid:known.append(row)
         else:row['website_order_status']='unverified'

@@ -176,7 +176,7 @@ class PublicCatalog:
     saved=cache.get(cache_key) if cache and not self.force_fresh else None
     if saved is None:
      from grocery_browser_support import render_listing,ListingRenderIncomplete
-     try:rendered=render_listing(url,self.g['_chotu_wait'],self.log)
+     try:rendered=render_listing(url,self.g['_chotu_wait'],self.log,**({'brand':scope['brand']} if scope.get('brand') and seed.path.startswith('/catalogsearch/') else {}))
      except ListingRenderIncomplete:
       # Retain source-visible first-batch cards even when later UI loading fails.
       for a in nodes:
@@ -203,6 +203,13 @@ class PublicCatalog:
     if parsed.query or parsed.fragment or parsed.path.strip('/').count('/') or parsed.path.rstrip('/') in ('','/allproducts','/customer','/checkout','/wishlist','/cart'):continue
     discovered.add(item)
    count=soup.select_one('.toolbar-amount')
+   if scope.get('brand') and soup.html and soup.html.get('data-chotu-selected-brand'):
+    from naheed_brand_support import brand_key
+    if brand_key(soup.html['data-chotu-selected-brand'])!=brand_key(scope['brand']) or not str(soup.html.get('data-chotu-brand-total','')).isdigit():raise ValueError('Selected public brand count identity mismatch')
+    selected_total=int(soup.html['data-chotu-brand-total'])
+    if expected is not None and expected!=selected_total:self.scope_count_changed=True
+    expected=selected_total;self.scope_expected=selected_total
+    if selected_total not in self.scope_totals:self.scope_totals.append(selected_total)
    if count:
     self.scope_total_text=count.get_text(' ',strip=True)
     try:total=listing_total(self.scope_total_text)

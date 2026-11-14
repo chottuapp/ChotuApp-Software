@@ -7,6 +7,21 @@ class ListingRenderIncomplete(RuntimeError):
 
 SELECTOR='#product_result a[href], .products-grid .product-item a.product-item-link[href], .ais-Hits-item a[href]'
 
+def brand_filter_pattern(brand):
+ return re.compile(r'^\s*'+re.escape(brand).replace(r'\ ',r'\s+')+r'\s*\(\s*([\d,]+)\s*\)\s*$',re.I)
+
+def select_brand_filter(page,brand):
+ pattern=brand_filter_pattern(brand)
+ matches=[n for n in page.get_by_text(pattern).all() if n.is_visible()]
+ if len(matches)!=1:raise ListingRenderIncomplete('Exact public By Brand filter missing or ambiguous: '+brand)
+ node=matches[0];match=pattern.fullmatch(node.inner_text());expected=int(match[1].replace(',',''))
+ node.click(timeout=30000);page.wait_for_timeout(1500)
+ matches=[n for n in page.get_by_text(pattern).all() if n.is_visible()]
+ if len(matches)!=1:raise ListingRenderIncomplete('Selected brand filter cannot be verified: '+brand)
+ selected=matches[0].evaluate("n => {const scope=n.closest('label')||n.closest('li')||n.parentElement;const box=scope.querySelector('input[type=checkbox]');if(box)return box.checked;const role=n.closest('[role=checkbox]');return role?role.getAttribute('aria-checked')==='true':null;}")
+ if selected is not True:raise ListingRenderIncomplete('Public By Brand selection not confirmed: '+brand)
+ return expected
+
 def exhaust_listing(page,pause,log,limited,pending,*,max_steps=1000):
  def button_visible():
   node=page.locator('#load-more').first
@@ -39,7 +54,7 @@ def exhaust_listing(page,pause,log,limited,pending,*,max_steps=1000):
   if step%10==0:log('GROCERY PUBLIC UI: traversal step '+str(step+1)+'; '+str(page.locator(SELECTOR).count())+' product links')
  else:raise ValueError('Grocery public traversal bound exceeded; no partial completion')
 
-def render_listing(url,pause=lambda:None,log=lambda _:None,*,load_all=True):
+def render_listing(url,pause=lambda:None,log=lambda _:None,*,load_all=True,brand=None):
  if urlsplit(url).scheme!='https' or urlsplit(url).hostname!='www.naheed.pk':raise ValueError('Outside approved public grocery storefront')
  from playwright.sync_api import sync_playwright,TimeoutError as BrowserTimeout
  with sync_playwright() as driver:
@@ -58,7 +73,10 @@ def render_listing(url,pause=lambda:None,log=lambda _:None,*,load_all=True):
    if re.search(r'just a moment|attention required|captcha',page.title(),re.I):raise RuntimeError('SOURCE BLOCKED: public storefront challenge; no solver used')
    page.wait_for_function("selector => document.querySelector(selector) || /no products found|no products for query|we can.t find products|your search returned no results/i.test(document.body.innerText)",arg=SELECTOR,timeout=60000)
    page.wait_for_timeout(1000)
+   brand_total=select_brand_filter(page,brand) if brand else None
    if load_all:exhaust_listing(page,pause,log,limited,pending)
+   if brand:
+    page.evaluate("value => {document.documentElement.setAttribute('data-chotu-selected-brand',value.brand);document.documentElement.setAttribute('data-chotu-brand-total',String(value.total));}",dict(brand=brand,total=brand_total))
    content=page.content()
    if len(content.encode())>16*1024*1024:raise ValueError('Rendered grocery listing exceeds bound')
    return content

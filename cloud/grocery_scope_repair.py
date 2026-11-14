@@ -13,12 +13,25 @@ def repair(source,out,store):
   sheet=book['Products'];headers=list(next(sheet.iter_rows(values_only=True)));cols={k:i+1 for i,k in enumerate(headers)}
   required={'Category','owner_scope_url','source_url','source_manufacturer','subcategory_source','subcategory_evidence','source_scope_coverage_status','source_scope_review_count'}
   if not required<=set(headers):raise ValueError('Original grocery scope evidence missing; no guessed category repair')
+  from naheed_brand_support import brand_scope_identity,authorized_brand_category
+  populated=[dict(zip(headers,v)) for v in sheet.iter_rows(min_row=2,values_only=True) if any(x is not None for x in v)]
+  brand_mode=bool(populated) and all(brand_scope_identity(r) for r in populated) and any(r.get('owner_scope_url') not in categories() for r in populated)
   for number,values in enumerate(sheet.iter_rows(min_row=2,values_only=True),2):
    if not any(v is not None for v in values):continue
    row=dict(zip(headers,values));expected=categories().get(row['owner_scope_url']);url=urlsplit(str(row['source_url'] or ''))
    if row.get('subcategory_source')=='owner_brand_search':
     from grocery_owner_scope import authorized_category
     authorized_category(row)
+    continue
+   if brand_mode:
+    if row.get('subcategory_source') in ('manual','owner','manual_override','owner_supplied_scope'):raise ValueError('Explicit owner category cannot be overwritten by brand repair')
+    category=authorized_brand_category(row,repair=True)
+    changes={'Category':category,'subcategory_source':'owner_brand_search','subcategory_evidence':'Exact selected Naheed manufacturer and retained verified product breadcrumb restored; original coverage hold preserved. '+str(row.get('subcategory_evidence') or '')}
+    if 'subcategory' in cols:changes['subcategory']=category
+    changed=False
+    for key,value in changes.items():
+     if row.get(key)!=value:patches[get_column_letter(cols[key])+str(number)]=value;changed=True
+    count+=int(changed)
     continue
    if not expected or url.scheme!='https' or url.hostname!='www.naheed.pk' or not row['source_manufacturer'] or row['source_scope_coverage_status'] not in ('complete','review_required'):raise ValueError('Grocery source scope identity cannot be restored')
    if row['subcategory_source'] in ('manual','owner','manual_override'):
