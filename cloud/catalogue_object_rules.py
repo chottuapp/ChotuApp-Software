@@ -274,6 +274,14 @@ def electronics_object(row):
 def classify(row,store):
  from product_description_support import evidence_text
  title=str(row.get('name') or '');body=evidence_text(row.get('description'))
+ # Preserve corroborated species taxonomy for fresh meat, not generic token inference.
+ from urllib.parse import urlsplit
+ source_url=str(row.get('source_url') or '')
+ if (urlsplit(source_url).hostname or '').removeprefix('www.')=='barkatmeathouse.com':
+  leaf=str(row.get('website_category_path') or '').split(' > ')[-1].strip()
+  species={'Beef':r'\bbeef\b','Mutton':r'\bmutton\b','Veal':r'\bveal\b','Veal (Bachiya)':r'\bveal\b'}
+  if leaf in species and row.get('website_category_status') in {'verified_navigation_membership','verified_product_breadcrumb'} and row.get('website_category_checked_at') and str(row.get('website_category_source_url') or '').rstrip('/')==source_url.rstrip('/') and re.search(species[leaf],title,re.I) and not re.search(r'\b(?:knife|cutter|grinder|flavour|flavor|masala|seasoning|pet|dog|cat|toy)\b',title,re.I):
+   return leaf,'verified_source_category','Source meat category corroborated by product title: '+title
  # Sold-object names precede oil-control claims and application tips.
  object_title=re.split(r'(?i)\b(?:with|including|includes)\b',title,maxsplit=1)[0]
  cosmetic_accessory=bool(re.search(r'\b(?:brush|puff|sponge|case|empty)\b',object_title,re.I))
@@ -491,6 +499,13 @@ def audit(row,source):
  from urllib.parse import urlsplit
  host=(urlsplit(str(source.get('source_url') or '')).hostname or '').removeprefix('www.')
  title=str(source.get('name') or '');body=str(source.get('description') or '');label=row.get('Category')
+ if host=='barkatmeathouse.com':
+  path=str(source.get('website_category_path') or '').split(' > ')[-1].strip()
+  permitted={'Beef':'beef','Mutton':'mutton','Veal':'veal','Veal (Bachiya)':'veal'}
+  identity=str(source.get('website_category_source_url') or '').rstrip('/')==str(source.get('source_url') or '').rstrip('/')
+  verified=source.get('website_category_status') in {'verified_navigation_membership','verified_product_breadcrumb'} and source.get('website_category_checked_at')
+  if identity and verified and path in permitted and re.search(r'\b'+permitted[path]+r'\b',title,re.I) and not re.search(r'\b(?:knife|cutter|grinder|flavour|flavor|masala|seasoning|pet|dog|cat|toy)\b',title,re.I):
+   return [] if label==path else ['Meat Category conflicts with verified supplier species category']
  if host=='bata.com.pk':
   from hold804_repairs import public_facts
   fact=public_facts(source,'Bata') or {};tags=[str(t).casefold() for t in fact.get('published_tags',[])]

@@ -26,3 +26,18 @@ class MeatSourceTests(unittest.TestCase):
  def test_owner_store_name_and_unique_code_are_bound(self):
   codes=json.loads((Path(__file__).resolve().parents[1]/'cloud/confirmed-shop-codes.json').read_text())
   self.assertEqual(STORE,'ChotuApp Meat House');self.assertEqual(CODE,'SE10086');self.assertEqual(codes[STORE],CODE);self.assertEqual(list(codes.values()).count(CODE),1)
+
+ def test_verified_species_categories_survive_repair_and_independent_audit(self):
+  from hold804_repairs import category
+  from audit804 import issues_for
+  from catalogue_object_rules import audit, classify
+  for label,title,body in [('Beef','Fresh Beef Boneless BBQ Chunks','Fresh boneless beef chunks for BBQ.'),('Beef','Beef Kaleeji + Gurday Mix Offer','Fresh beef liver and kidneys.'),('Veal (Bachiya)','Fresh Veal (Bachiya) Biryani (Bone-in)','Fresh veal bone-in biryani cut.'),('Mutton','Mutton Kaleji','Fresh goat liver.')]:
+   url='https://barkatmeathouse.com/product/item.html'
+   row=dict(name=title,description=body+' Prepared fresh by our master butchers and hygienically sealed for delivery. Price per kilogram.',source_url=url,website_category_source_url=url,website_category_path=label,website_category_status='verified_navigation_membership',website_category_checked_at='2026-11-14T00:00:00Z',Category=label)
+   self.assertEqual(category(row,STORE)[0],label)
+   self.assertEqual(issues_for(row,source=row),[])
+   self.assertTrue(audit(dict(row,Category='Meat & Poultry'),row))
+   bad=dict(row,website_category_source_url=url+'/different')
+   self.assertIsNone(audit(bad,bad));self.assertNotEqual((classify(bad,STORE) or (None,))[0],label)
+   bad=dict(row,name='Beef grinder knife')
+   self.assertIsNone(audit(bad,bad));self.assertNotEqual((classify(bad,STORE) or (None,))[0],label)
