@@ -41,3 +41,7 @@ class MeatSourceTests(unittest.TestCase):
    self.assertIsNone(audit(bad,bad));self.assertNotEqual((classify(bad,STORE) or (None,))[0],label)
    bad=dict(row,name='Beef grinder knife')
    self.assertIsNone(audit(bad,bad));self.assertNotEqual((classify(bad,STORE) or (None,))[0],label)
+
+ def test_only_owner_approved_category_pages_are_fetched(self):
+  from meat_source_support import OWNER_CATEGORY_PAGES
+  self.assertEqual(OWNER_CATEGORY_PAGES,tuple('https://barkatmeathouse.com/shop?category='+k for k in ('beef','mutton','veal')))

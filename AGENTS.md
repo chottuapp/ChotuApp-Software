@@ -51,3 +51,5 @@ Owner request/lock — 14 November 2026: Add Barkat Meat House at exact source b
 Owner-confirmed code — 14 November 2026: Barkat Meat House (barkatmeathouse.com including www) is SE10086. This supersedes its pending blank code; bind every exported Products row to this exact seller and code. The title/description retailer-branding exclusion remains locked.
 
 Owner customer-facing name correction — 14 November 2026: The seller/export name for barkatmeathouse.com is ChotuApp Meat House, code SE10086. Use ChotuApp Meat House as the canonical store and workbook name; the source retailer name remains internal provenance only and is forbidden in customer titles/descriptions. Keep one confirmed code mapping only.
+
+Owner source scope — 14 November 2026: ChotuApp Meat House must fetch only the three supplied public listings https://barkatmeathouse.com/shop?category=beef, https://barkatmeathouse.com/shop?category=mutton and https://barkatmeathouse.com/shop?category=veal, then their actual linked product pages and genuine options. Keep category coverage verification and all existing source/branding/shop-code rules.

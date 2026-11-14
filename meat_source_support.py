@@ -2,11 +2,12 @@
 import hashlib,json,re
 from decimal import Decimal,InvalidOperation
 from pathlib import Path
-from urllib.parse import urlsplit,parse_qs,urljoin
+from urllib.parse import urlsplit,urljoin
 import requests
 from bs4 import BeautifulSoup
 from retailer_branding_support import customer_fields,clean
 BASE='https://barkatmeathouse.com';STORE='ChotuApp Meat House';CODE='SE10086'
+OWNER_CATEGORY_PAGES=tuple(BASE+'/shop?category='+key for key in ('beef','mutton','veal'))
 PRODUCT=re.compile(r'^/product/[a-z0-9-]+-([a-f0-9]{24})\.html$')
 
 def money(text):
@@ -112,10 +113,8 @@ class PublicMeatCatalog:
   with sync_playwright() as driver:
    browser=driver.chromium.launch(headless=True)
    try:
-    page=browser.new_page();open_page(page,BASE);page.wait_for_timeout(1200)
-    links=page.locator('a[href]').evaluate_all('(nodes)=>nodes.map(n=>n.href)')
-    scopes=list(dict.fromkeys(u for u in links if urlsplit(u).netloc=='barkatmeathouse.com' and urlsplit(u).path=='/shop' and parse_qs(urlsplit(u).query).get('category')))
-    if not scopes:raise ValueError('Public catalog category navigation missing')
+    page=browser.new_page()
+    scopes=OWNER_CATEGORY_PAGES
     urls=set();coverage=[]
     for scope in scopes:
      self.g['_chotu_wait']();open_page(page,scope);page.wait_for_timeout(800)
