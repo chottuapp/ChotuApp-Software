@@ -19,7 +19,10 @@ def select_brand_filter(page,brand):
  matches=[n for n in page.get_by_text(pattern).all() if n.is_visible()]
  if len(matches)!=1:raise ListingRenderIncomplete('Selected brand filter cannot be verified: '+brand)
  selected=matches[0].evaluate("n => {const scope=n.closest('label')||n.closest('li')||n.parentElement;const box=scope.querySelector('input[type=checkbox]');if(box)return box.checked;const role=n.closest('[role=checkbox]');return role?role.getAttribute('aria-checked')==='true':null;}")
- if selected is not True:raise ListingRenderIncomplete('Public By Brand selection not confirmed: '+brand)
+ if selected is not True:
+  error=ListingRenderIncomplete('Public By Brand selection not confirmed: '+brand)
+  error.public_filter_evidence=matches[0].evaluate("n => {const result=[];for(let p=n,i=0;p&&i<5;p=p.parentElement,i++){const attrs={};for(const k of ['class','role','aria-checked','aria-pressed','href','type','value','checked','for'])if(p.hasAttribute(k))attrs[k]=p.getAttribute(k);result.push({tag:p.tagName,attrs,text:p.innerText.slice(0,250),inputs:Array.from(p.querySelectorAll('input[type=checkbox]')).slice(0,5).map(b=>({checked:b.checked,value:b.value}))});}return {ancestors:result,url:location.href};}")
+  raise error
  return expected
 
 def exhaust_listing(page,pause,log,limited,pending,*,max_steps=1000):

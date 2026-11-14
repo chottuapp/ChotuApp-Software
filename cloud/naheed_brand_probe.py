@@ -31,6 +31,7 @@ def main():
     record['samples'].append(dict(url=url,manufacturer=brand.get_text(' ',strip=True) if brand else '',title=title.get_text(' ',strip=True) if title else ''))
   except Exception as exc:
    record.update(error=type(exc).__name__+': '+str(exc)[:500],response_identity=getattr(reader,'last_response_identity',None),proofs=[v for v in reader.brand_proofs if v['brand']==scope['brand']])
+   if getattr(exc,'public_filter_evidence',None):record['public_filter_evidence']=exc.public_filter_evidence
    if getattr(exc,'html',None):
     soup=BeautifulSoup(exc.html,'html.parser');heading=soup.select_one('h1');canonical=soup.select_one('link[rel=canonical][href]')
     record['redirect_page']=dict(title=soup.title.get_text(' ',strip=True)[:300] if soup.title else '',heading=heading.get_text(' ',strip=True)[:500] if heading else '',canonical=canonical.get('href') if canonical else None)
