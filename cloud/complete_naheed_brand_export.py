@@ -70,6 +70,22 @@ def verify_old_values(before,after):
     if any(old[i]!=new[j] for i,j in compare):raise ValueError('Existing source commercial/description/linked facts changed during completion')
  finally:left.close();right.close()
 
+def append_source_products(g,source,products,target,codes):
+ """Append only independently read new supplier products; old rows stay intact."""
+ if not products:shutil.copy2(source,target);return
+ from woocommerce_source_support import export
+ provider=SimpleNamespace(label='Exact source-verified missing Naheed products',products={p['id']:p for p in products},supports=lambda u:u==BASE,catalog=lambda:products)
+ provider.read=lambda path:provider.products[int(path.rsplit('/',1)[-1])]
+ export(g,BASE,STORE,ROOT/'importer-files/Chotu_Products_Import_Template_Discount_Tags.xlsx',print,provider=provider)
+ extra=g['OUT']/(STORE+' - REFRESH REVIEW.xlsx');b=load_workbook(extra);s=b['Products'];h={c.value:c.column for c in s[1]};byid={g['uid']('CP',BASE+'|'+str(p['id'])):p for p in products}
+ for number in range(2,s.max_row+1):
+  p=byid[s.cell(number,h['product_id']).value];path=' > '.join(c['name'] for c in p['categories'])
+  values=dict(shop_code=codes[STORE],Category=p['owner_category'],source_manufacturer=p['manufacturer'],owner_scope_url=p['owner_scope_url'],subcategory_source='owner_brand_search',subcategory_evidence='Exact selected manufacturer and actual supplier breadcrumb: '+path,website_category_path=path,website_category_source_url=p['permalink'],website_category_status='verified_product_breadcrumb',website_category_checked_at=datetime.now(timezone.utc).isoformat(),source_scope_coverage_status='complete',source_scope_review_count=0)
+  for key,value in values.items():
+   if key not in h:h[key]=s.max_column+1;s.cell(1,h[key],key)
+   s.cell(number,h[key],value)
+ b.save(extra);b.close();merge(source,extra,target)
+
 def main():
  csv.field_size_limit(8*1024*1024)
  source_root=Path(os.environ['GROCERY_EXPORT_ROOT']);sources=list(source_root.rglob(STORE+'.xlsx'))
@@ -135,6 +151,7 @@ def main():
   b=load_workbook(merged);s=b['Products'];h={c.value:c.column for c in s[1]}
   for number in range(2,s.max_row+1):s.cell(number,h['source_scope_coverage_status'],'complete');s.cell(number,h['source_scope_review_count'],0)
   b.save(merged);b.close();verify_old_values(sources[0],merged)
+  shutil.copy2(merged,out/'grocery-complete-source.xlsx')
   preview=out/'grocery-audited-preview.xlsx';process(merged,preview,STORE,codes);report=audit(preview,STORE,codes,{'www.naheed.pk','naheed.pk'},source=merged,strict_commercial=True,findings_limit=None)
   filtered_source,filtered_output,unclear=exclude(merged,preview,STORE,report,temp/'unclear')
   if unclear:

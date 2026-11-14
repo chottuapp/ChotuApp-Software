@@ -53,7 +53,10 @@ def process(source,out,store,codes,*,mobile_khaadi=False,approved_original=False
             if code and row.get('shop_code')!=code:changes['shop_code']=code
             if not code and row.get('shop_code'):raise ValueError('Unconfirmed shop code; held for review')
             old=str(row.get('Category') or '');label=old
-            if str(row.get('subcategory_source') or '').lower() not in ('manual','owner','manual_override'):
+            if row.get('subcategory_source')=='owner_brand_search':
+                from naheed_brand_support import authorized_brand_category
+                label=authorized_brand_category(row)
+            if str(row.get('subcategory_source') or '').lower() not in ('manual','owner','manual_override','owner_brand_search'):
                 result=hold_category(dict(row,description=description),store) or tools.extra_category(dict(row,description=description)) or infer(row.get('name'),description)
                 if row.get('website_category_status')=='verified_product_breadcrumb' and re.search(r'(?i)\bunstitched\b',str(row.get('website_category_path') or '')) and re.search(r'(?i)\bshirt\s*&\s*trouser\s+\d+(?:\.\d+)?\s*m\b',description):
                     result=('Unstitched Suits','verified_product_breadcrumb',str(row['website_category_path'])+'; supplied shirt and trouser fabric length retained')
@@ -66,7 +69,7 @@ def process(source,out,store,codes,*,mobile_khaadi=False,approved_original=False
                 if result:
                     label,origin,quote=result
                     if label!=old:changes.update(Category=label,subcategory_source=origin,subcategory_evidence=quote,subcategory_checked_at=stamp)
-            if str(row.get('subcategory_source') or '').lower() not in ('manual','owner','manual_override','owner_supplied_scope'):
+            if str(row.get('subcategory_source') or '').lower() not in ('manual','owner','manual_override','owner_supplied_scope','owner_brand_search'):
                 from sold_object_category_support import correct_audience_category
                 audience_label=correct_audience_category(row,label)
                 if audience_label!=label:

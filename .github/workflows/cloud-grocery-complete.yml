@@ -2,6 +2,10 @@ name: Complete saved ChotuApp Groceries file
 on:
   workflow_dispatch:
     inputs:
+      audited_recovery_run_id:
+        description: Optional completed category-only failed audit to reprocess without refetching
+        required: false
+        type: string
       brand_refresh:
         description: Complete the saved exact-brand Naheed export using its original coverage receipts
         default: false
@@ -29,12 +33,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m pip install -r requirements.txt playwright==1.55.0
-      - run: python -m playwright install --with-deps chromium
+      - run: python -m pip install -r requirements.txt
+      - if: inputs.audited_recovery_run_id == ''
+        run: |
+          python -m pip install playwright==1.55.0
+          python -m playwright install --with-deps chromium
       - name: Verify grocery source, metadata and delivery guards
         env:
           PYTHONPATH: tests:cloud:.
-        run: python -m unittest test_grocery_completion test_naheed_saved_completion test_naheed_brand_refresh test_chotu_groceries test_grocery_scope_repair test_additional_completed_sources -q
+        run: python -m unittest test_grocery_completion test_naheed_saved_completion test_grocery_audit_recovery test_naheed_brand_refresh test_chotu_groceries test_grocery_scope_repair test_additional_completed_sources -q
       - uses: actions/download-artifact@v4
         with:
           name: chotuapp-excel-files
@@ -42,12 +49,19 @@ jobs:
           run-id: ${{ inputs.source_run_id }}
           path: ${{ runner.temp }}/original-grocery-export
       - uses: actions/download-artifact@v4
-        if: inputs.brand_refresh != true
+        if: inputs.brand_refresh != true && inputs.audited_recovery_run_id == ''
         with:
           name: chotuapp-checkpoint
           github-token: ${{ github.token }}
           run-id: ${{ inputs.checkpoint_run_id }}
           path: ${{ runner.temp }}/grocery-discovery
+      - uses: actions/download-artifact@v4
+        if: inputs.audited_recovery_run_id != ''
+        with:
+          name: chotuapp-excel-files
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.audited_recovery_run_id }}
+          path: ${{ runner.temp }}/saved-grocery-audit
       - name: Reconcile unresolved scopes, append missing products and audit the retained preview
         env:
           PYTHONPATH: cloud:.
@@ -57,8 +71,13 @@ jobs:
           GROCERY_CHECKPOINT_RUN: ${{ inputs.checkpoint_run_id }}
           GROCERY_OUTPUT: ${{ runner.temp }}/completed-grocery
           GROCERY_BRAND_REFRESH: ${{ inputs.brand_refresh }}
+          GROCERY_AUDITED_RECOVERY_RUN: ${{ inputs.audited_recovery_run_id }}
+          GROCERY_AUDITED_RECOVERY_ROOT: ${{ runner.temp }}/saved-grocery-audit
+          GH_TOKEN: ${{ github.token }}
         run: |
-          if [ "$GROCERY_BRAND_REFRESH" = "true" ]; then
+          if [ -n "$GROCERY_AUDITED_RECOVERY_RUN" ]; then
+            python cloud/recover_grocery_audit.py
+          elif [ "$GROCERY_BRAND_REFRESH" = "true" ]; then
             python cloud/complete_naheed_brand_export.py
           else
             python cloud/complete_grocery_export.py
