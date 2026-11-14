@@ -71,6 +71,7 @@ def verify_old_values(before,after):
  finally:left.close();right.close()
 
 def main():
+ csv.field_size_limit(8*1024*1024)
  source_root=Path(os.environ['GROCERY_EXPORT_ROOT']);sources=list(source_root.rglob(STORE+'.xlsx'))
  if len(sources)!=1:raise ValueError('Exact completed grocery workbook required')
  out=Path(os.environ['GROCERY_OUTPUT']);out.mkdir(parents=True,exist_ok=True);request=load_request();scopes={s['url']:s for s in request['brands']};coverage=saved_coverage(source_root,scopes)
@@ -91,7 +92,7 @@ def main():
     for link in links:
      if link not in existing:candidates.setdefault(link,[]).append(scope)
    except ListingRenderIncomplete as exc:failures.append(dict(scope_url=url,brand=scope['brand'],reason=str(exc)))
-   (out/'grocery-scope-progress.json').write_text(json.dumps(dict(source_run=os.environ['GROCERY_SOURCE_RUN'],coverage=coverage,failures=failures),indent=2))
+   (out/'grocery-scope-progress.json').write_text(json.dumps(dict(source_run=os.environ['GROCERY_SOURCE_RUN'],coverage=coverage,failures=failures,candidate_urls={u:[v['url'] for v in members] for u,members in candidates.items()}),indent=2))
    print('SAVED BRAND REPAIR:',index,'/',len(pending),scope['brand'],'unresolved',len(failures),flush=True)
   if failures:raise ValueError('Unresolved brand scopes retained; no full catalog approval: '+', '.join(v['brand'] for v in failures))
   prior_excluded=set()
