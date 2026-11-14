@@ -8,7 +8,7 @@ import requests
 from source_research import publish,clean_html,public_product_state
 from next_public_support import public_next_product_state
 AGENT='Mozilla/5.0 (compatible; ChotuAppCatalogRefresh/1.0)'
-SITES={'Toynix':'https://www.toynix.pk','Alfateh Garments':'https://alfatehgarments.com','Mansab':'https://mansabpk.com','Rung Rez':'https://rungrez.com.pk'}
+SITES={'Barkat Meat House':'https://barkatmeathouse.com','Toynix':'https://www.toynix.pk','Alfateh Garments':'https://alfatehgarments.com','Mansab':'https://mansabpk.com','Rung Rez':'https://rungrez.com.pk'}
 SENSITIVE=re.compile('token|secret|password|authorization|api.?key|bearer|email|phone|cookie|session',re.I)
 def safe(value):
  if isinstance(value,dict):return {k:safe(v) for k,v in value.items() if not SENSITIVE.search(k)}
@@ -53,6 +53,12 @@ def inspect(item):
     r=read(base+'/products.json?'+query);data=r.json();out.setdefault('catalog_checks',[]).append({'query':query,'products':len(data.get('products',[])),'sample_ids':[p.get('id') for p in data.get('products',[])[:3]]})
    return out
   home=read(base+'/');soup=BeautifulSoup(home.text,'html.parser')
+  if name=='Barkat Meat House':
+   out['platform_markers']=[marker for marker in ('woocommerce','wp-content','cdn.shopify.com','Shopify') if marker.lower() in home.text.lower()]
+   if 'woocommerce' in home.text.lower() or 'wp-content' in home.text.lower():
+    response=read(base+'/wp-json/wc/store/v1/products?per_page=2&page=1');out['public_products']=safe(response.json());out['catalog_total']=response.headers.get('X-WP-Total');out['catalog_pages']=response.headers.get('X-WP-TotalPages')
+   elif 'shopify' in home.text.lower():out['public_products']=safe(read(base+'/products.json?limit=2&page=1').json())
+
   links=list(dict.fromkeys(urljoin(base,a['href']) for a in soup.select('a[href]') if a['href'].startswith(('/product/','/products/'))))
   out['home_nuxt']=public_product_state(soup)
   if name in ('Alfateh Garments','Rung Rez'):
