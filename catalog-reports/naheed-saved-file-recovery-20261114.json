@@ -1,0 +1,22 @@
+{
+  "run_id": "43579452806",
+  "source_run": "43500762475",
+  "status": "queued_saved_brand_recovery",
+  "saved_products": 7576,
+  "scope_rechecks": 34,
+  "approved_brand_count": 222,
+  "metadata_fix": "Preserve owner_brand_search during final ordering; restore saved categories only from exact manufacturer and verified product breadcrumb evidence.",
+  "coverage_fix": "Select and verify the real public By Brand checkbox and its published count; native Load More traversal and exact product manufacturer checks remain mandatory.",
+  "live_example": {
+    "brand": "Shan",
+    "visible": 106,
+    "total": 106,
+    "verification_run": "43579265402"
+  },
+  "tests": {
+    "targeted": 83,
+    "drive_required": 249
+  },
+  "approval_gate": "Only this successful main workflow, exact source checksum and independent full strict audit may enter staged/final checksum-verified Drive replacement. Old verified file retained.",
+  "laam": "owner_off"
+}
