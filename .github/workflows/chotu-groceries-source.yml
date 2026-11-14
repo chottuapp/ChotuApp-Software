@@ -2,6 +2,10 @@ name: ChotuApp Groceries Source Check
 on:
   workflow_dispatch:
     inputs:
+      completed_run:
+        description: Optional trusted completed grocery run for saved coverage receipts
+        required: false
+        type: string
       brand_names:
         description: Optional one to three exact approved Naheed brands for discovery verification
         required: false
@@ -30,7 +34,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install -r requirements.txt
-      - if: inputs.checkpoint_run == ''
+      - if: inputs.checkpoint_run == '' && inputs.completed_run == ''
         run: |
           python -m pip install playwright==1.55.0
           python -m playwright install --with-deps chromium
@@ -40,8 +44,11 @@ jobs:
           GROCERY_PUBLIC_SCOPE_INDEXES: ${{ inputs.public_scope_indexes }}
           GROCERY_BRAND_NAMES: ${{ inputs.brand_names }}
           GROCERY_CHECKPOINT_RUN: ${{ inputs.checkpoint_run }}
+          GROCERY_COMPLETED_RUN: ${{ inputs.completed_run }}
         run: |
-          if [ -n "$GROCERY_BRAND_NAMES" ]; then
+          if [ -n "$GROCERY_COMPLETED_RUN" ]; then
+            python cloud/grocery_delivery_diagnosis.py
+          elif [ -n "$GROCERY_BRAND_NAMES" ]; then
             python cloud/naheed_brand_probe.py
           elif [ -n "$GROCERY_PUBLIC_SCOPE_INDEXES" ]; then
             python cloud/grocery_scope_ui_probe.py
