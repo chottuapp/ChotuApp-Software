@@ -1,22 +1,23 @@
 {
-  "run_id": "43321096525",
+  "run_id": "43594514219",
   "sources": [
     {
-      "name": "Toynix",
+      "name": "Barkat Meat House",
       "responses": [
         {
-          "url": "https://www.toynix.pk/robots.txt",
-          "status": 403,
-          "bytes": 5529
+          "url": "https://barkatmeathouse.com/robots.txt",
+          "status": 200,
+          "bytes": 322
+        },
+        {
+          "url": "https://barkatmeathouse.com/",
+          "status": 200,
+          "bytes": 5537
         }
       ],
-      "denial": {
-        "url": "https://www.toynix.pk/robots.txt",
-        "status": 403,
-        "challenge": true,
-        "title": "Just a moment..."
-      },
-      "error": "Source denied/limited; no retries"
+      "platform_markers": [],
+      "home_nuxt": [],
+      "details": []
     }
   ]
 }
