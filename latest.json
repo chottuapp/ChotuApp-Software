@@ -1,44 +1,43 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-20T08:07:27.042693+00:00",
-  "run_id": "44696673384",
+  "generated_utc": "2026-11-20T08:11:39.995299+00:00",
+  "run_id": "44696654766",
   "attempt": "1",
   "source_commit": "e5312c9692dd817cbec10d0ca96de6728b825f89",
-  "status": "incomplete",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 1590.9,
+  "elapsed_seconds": 1843.8,
   "stores": [
     {
-      "name": "Hilm Chapals",
+      "name": "Skin Factor",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "3e16bd7d173b67be",
-      "products": 102,
-      "variants": 660,
+      "products": 25,
+      "variants": 25,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
       "cache_events": 0
     },
     {
-      "name": "Xcessories Hub",
-      "status": "failed",
-      "review_required": false,
+      "name": "Outfitters",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
-        "HTTP_403",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "3e16bd7d173b67be",
+      "products": 838,
+      "variants": 4547,
       "http_statuses": {
-        "403": 1,
-        "200": 1153,
-        "521": 1
+        "200": 436
       },
-      "network_seconds": 930.5,
-      "max_response_seconds": 2.4,
-      "cache_events": 1774
+      "network_seconds": 1230.5,
+      "max_response_seconds": 20.8,
+      "cache_events": 2501
     }
   ]
 }
