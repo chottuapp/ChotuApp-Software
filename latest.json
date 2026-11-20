@@ -1,44 +1,48 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-20T17:25:38.111759+00:00",
-  "run_id": "44749381874",
+  "generated_utc": "2026-11-20T17:38:57.720436+00:00",
+  "run_id": "44750497881",
   "attempt": "1",
   "source_commit": "e5312c9692dd817cbec10d0ca96de6728b825f89",
-  "status": "incomplete",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 12117.1,
+  "elapsed_seconds": 12516.6,
   "stores": [
     {
-      "name": "Rivaj UK",
+      "name": "Limelight",
       "status": "done",
       "review_required": true,
-      "issue_codes": [],
-      "software_revision": "3e16bd7d173b67be",
-      "products": 307,
-      "variants": 921,
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
-    },
-    {
-      "name": "Junaid Jamshed",
-      "status": "source_paused",
-      "review_required": false,
       "issue_codes": [
+        "HTTP_404",
         "HTTP_429",
         "RATE_LIMIT",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "3e16bd7d173b67be",
+      "products": 5732,
+      "variants": 13947,
       "http_statuses": {
-        "200": 4747,
-        "429": 5
+        "404": 97,
+        "200": 1576,
+        "429": 3
       },
-      "network_seconds": 10507.1,
-      "max_response_seconds": 4.8,
-      "cache_events": 74185
+      "network_seconds": 3654.7,
+      "max_response_seconds": 4.0,
+      "cache_events": 65008
+    },
+    {
+      "name": "Alkaram Studio",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "3e16bd7d173b67be",
+      "products": 1814,
+      "variants": 6476,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
     }
   ]
 }
