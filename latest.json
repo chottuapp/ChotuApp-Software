@@ -1,43 +1,49 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-20T06:58:12.720373+00:00",
-  "run_id": "44687989096",
+  "generated_utc": "2026-11-20T06:58:27.804397+00:00",
+  "run_id": "44687964196",
   "attempt": "1",
   "source_commit": "fc3053697216558c0220c7d4a2888235f1dc7df0",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 1772.2,
+  "elapsed_seconds": 1799.7,
   "stores": [
     {
-      "name": "Bonanza Satrangi",
-      "status": "pending",
-      "review_required": false,
+      "name": "Shop Modest",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
-        "WEBSITE_ORDER_UNVERIFIED"
+        "HTTP_429",
+        "RATE_LIMIT"
       ],
       "software_revision": "3e16bd7d173b67be",
+      "products": 121,
+      "variants": 849,
       "http_statuses": {
-        "200": 377
+        "200": 187,
+        "429": 1
       },
-      "network_seconds": 903.2,
-      "max_response_seconds": 2.7,
-      "cache_events": 0
+      "network_seconds": 380.1,
+      "max_response_seconds": 3.9,
+      "cache_events": 343
     },
     {
-      "name": "Zellbury",
+      "name": "The Hanger Pakistan",
       "status": "pending",
       "review_required": false,
       "issue_codes": [
-        "WEBSITE_ORDER_UNVERIFIED"
+        "HTTP_429",
+        "RATE_LIMIT"
       ],
       "software_revision": "3e16bd7d173b67be",
       "http_statuses": {
-        "200": 928
+        "200": 449,
+        "429": 1
       },
-      "network_seconds": 2355.3,
-      "max_response_seconds": 33.0,
-      "cache_events": 0
+      "network_seconds": 1005.9,
+      "max_response_seconds": 2.6,
+      "cache_events": 46
     }
   ]
 }
