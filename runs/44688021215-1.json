@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-20T06:57:13.569242+00:00",
+  "run_id": "44688021215",
+  "attempt": "1",
+  "source_commit": "fc3053697216558c0220c7d4a2888235f1dc7df0",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 834.6,
+  "stores": [
+    {
+      "name": "ChenOne",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "3e16bd7d173b67be",
+      "http_statuses": {
+        "200": 201,
+        "429": 1
+      },
+      "network_seconds": 427.3,
+      "max_response_seconds": 2.5,
+      "cache_events": 15
+    },
+    {
+      "name": "Generation",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "3e16bd7d173b67be",
+      "http_statuses": {
+        "200": 221,
+        "429": 1
+      },
+      "network_seconds": 405.1,
+      "max_response_seconds": 2.7,
+      "cache_events": 48
+    }
+  ]
+}
