@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-20T06:58:03.961178+00:00",
+  "run_id": "44688004646",
+  "attempt": "1",
+  "source_commit": "fc3053697216558c0220c7d4a2888235f1dc7df0",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 1746.8,
+  "stores": [
+    {
+      "name": "Hilm Chapals",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "3e16bd7d173b67be",
+      "products": 102,
+      "variants": 660,
+      "http_statuses": {
+        "200": 123
+      },
+      "network_seconds": 225.1,
+      "max_response_seconds": 2.5,
+      "cache_events": 264
+    },
+    {
+      "name": "Xcessories Hub",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_403",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "3e16bd7d173b67be",
+      "http_statuses": {
+        "403": 1,
+        "200": 1773
+      },
+      "network_seconds": 1460.4,
+      "max_response_seconds": 5.2,
+      "cache_events": 0
+    }
+  ]
+}
