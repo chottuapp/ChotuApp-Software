@@ -61,6 +61,10 @@ def main():
   return
  registry=json.loads((ROOT/'cloud/fetch-update-release.json').read_text())['fresh_stores']
  sites=selected_sites(registry,request)
+ if request.get('resume_pause_run_id'):
+  from resume_fresh_batch import resume_batch
+  resume_batch(request,sites)
+  return
  if request.get('maximum_stores_per_runner') not in (1,2,3) or request.get('destination_folder')!='ChotuApp 19-10-2026 11-36AM':raise ValueError('Unexpected requested fresh policy')
  report={'run_id':os.environ['GITHUB_RUN_ID'],'campaign_id':campaign,'checked_utc':datetime.now(timezone.utc).isoformat(),'groups':[],'phone':{'store':'Khaadi','status':'cloud_fresh_attempt_requested_no_phone_required' if any(site['name']=='Khaadi' for site in sites) else 'excluded_by_owner_request','fresh_campaign_id':campaign},'stopped':[]}
  publish_progress(report)
