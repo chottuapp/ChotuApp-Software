@@ -1,43 +1,45 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-20T09:19:38.513061+00:00",
-  "run_id": "44696647846",
+  "generated_utc": "2026-11-20T09:20:57.663238+00:00",
+  "run_id": "44696713599",
   "attempt": "1",
   "source_commit": "e5312c9692dd817cbec10d0ca96de6728b825f89",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 5898.2,
+  "elapsed_seconds": 3802.5,
   "stores": [
     {
-      "name": "Saeed Ghani",
+      "name": "Dairy Dream",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "3e16bd7d173b67be",
-      "products": 401,
-      "variants": 572,
+      "products": 10,
+      "variants": 23,
       "http_statuses": {
-        "200": 112
+        "200": 19
       },
-      "network_seconds": 266.4,
-      "max_response_seconds": 2.4,
-      "cache_events": 1480
+      "network_seconds": 9.7,
+      "max_response_seconds": 1.6,
+      "cache_events": 20
     },
     {
-      "name": "Hemani Herbals",
+      "name": "Nayab Fashion",
       "status": "done",
       "review_required": true,
-      "issue_codes": [],
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
       "software_revision": "3e16bd7d173b67be",
-      "products": 1047,
-      "variants": 1047,
+      "products": 507,
+      "variants": 507,
       "http_statuses": {
-        "200": 1370
+        "200": 653
       },
-      "network_seconds": 3251.9,
-      "max_response_seconds": 2.7,
-      "cache_events": 3589
+      "network_seconds": 1295.1,
+      "max_response_seconds": 5.9,
+      "cache_events": 0
     }
   ]
 }
