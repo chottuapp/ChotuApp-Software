@@ -1,41 +1,48 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-20T06:58:49.501547+00:00",
-  "run_id": "44687976228",
+  "generated_utc": "2026-11-20T06:58:53.526986+00:00",
+  "run_id": "44687953322",
   "attempt": "1",
   "source_commit": "fc3053697216558c0220c7d4a2888235f1dc7df0",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 1805.4,
+  "elapsed_seconds": 1804.6,
   "stores": [
     {
-      "name": "Gul Ahmed",
+      "name": "Miss Rose",
       "status": "pending",
       "review_required": false,
       "issue_codes": [
-        "WEBSITE_ORDER_UNVERIFIED"
+        "HTTP_429",
+        "RATE_LIMIT"
       ],
       "software_revision": "3e16bd7d173b67be",
       "http_statuses": {
-        "200": 545
+        "200": 599,
+        "429": 1
       },
-      "network_seconds": 1299.8,
-      "max_response_seconds": 3.0,
-      "cache_events": 1
+      "network_seconds": 1323.6,
+      "max_response_seconds": 2.5,
+      "cache_events": 60
     },
     {
-      "name": "Sapphire",
+      "name": "Rawayat",
       "status": "pending",
       "review_required": false,
-      "issue_codes": [],
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED"
+      ],
       "software_revision": "3e16bd7d173b67be",
       "http_statuses": {
-        "200": 1203
+        "200": 456,
+        "429": 1
       },
-      "network_seconds": 1730.8,
-      "max_response_seconds": 2.2,
-      "cache_events": 0
+      "network_seconds": 896.0,
+      "max_response_seconds": 2.6,
+      "cache_events": 89
     }
   ]
 }
