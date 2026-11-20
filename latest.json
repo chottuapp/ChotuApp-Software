@@ -1,48 +1,43 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-20T12:42:11.517344+00:00",
-  "run_id": "44696626212",
+  "generated_utc": "2026-11-20T12:42:13.568015+00:00",
+  "run_id": "44696657985",
   "attempt": "1",
   "source_commit": "e5312c9692dd817cbec10d0ca96de6728b825f89",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 18002.5,
+  "elapsed_seconds": 18000.8,
   "stores": [
     {
-      "name": "Tawakkal Fabrics",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT"
-      ],
-      "software_revision": "3e16bd7d173b67be",
-      "products": 1577,
-      "variants": 3837,
-      "http_statuses": {
-        "200": 1282,
-        "429": 3
-      },
-      "network_seconds": 2878.8,
-      "max_response_seconds": 14.9,
-      "cache_events": 9061
-    },
-    {
-      "name": "Stylo",
+      "name": "Bonanza Satrangi",
       "status": "pending",
       "review_required": false,
       "issue_codes": [
-        "WEBSITE_CATEGORY_UNVERIFIED",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "3e16bd7d173b67be",
       "http_statuses": {
-        "200": 6629
+        "200": 6082
       },
-      "network_seconds": 18165.3,
-      "max_response_seconds": 34.3,
-      "cache_events": 902
+      "network_seconds": 15078.3,
+      "max_response_seconds": 2.7,
+      "cache_events": 707
+    },
+    {
+      "name": "Zellbury",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "3e16bd7d173b67be",
+      "http_statuses": {
+        "200": 7529
+      },
+      "network_seconds": 21291.7,
+      "max_response_seconds": 41.9,
+      "cache_events": 1099
     }
   ]
 }
