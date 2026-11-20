@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-20T12:41:42.735245+00:00",
+  "run_id": "44696644349",
+  "attempt": "1",
+  "source_commit": "e5312c9692dd817cbec10d0ca96de6728b825f89",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 18000.6,
+  "stores": [
+    {
+      "name": "Gul Ahmed",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "3e16bd7d173b67be",
+      "http_statuses": {
+        "200": 3665
+      },
+      "network_seconds": 8443.0,
+      "max_response_seconds": 2.6,
+      "cache_events": 643
+    },
+    {
+      "name": "Sapphire",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "3e16bd7d173b67be",
+      "products": 699,
+      "variants": 2115,
+      "http_statuses": {
+        "200": 3767
+      },
+      "network_seconds": 5437.1,
+      "max_response_seconds": 2.5,
+      "cache_events": 0
+    }
+  ]
+}
