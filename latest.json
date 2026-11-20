@@ -1,30 +1,51 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-14T16:39:12.308806+00:00",
-  "run_id": "43616518874",
+  "generated_utc": "2026-11-20T06:57:01.405012+00:00",
+  "run_id": "44688017981",
   "attempt": "1",
-  "source_commit": "c424b3981d476aef5314eabf533dcdd0fed9a30e",
-  "status": "complete",
-  "checkpoint_saved": true,
+  "source_commit": "fc3053697216558c0220c7d4a2888235f1dc7df0",
+  "status": "incomplete",
+  "checkpoint_saved": false,
   "python": "3.12.16",
-  "elapsed_seconds": 122.4,
+  "elapsed_seconds": 1009.1,
   "stores": [
     {
-      "name": "ChotuApp Meat House",
-      "status": "done",
-      "review_required": true,
+      "name": "Beechtree",
+      "status": "pending",
+      "review_required": false,
       "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "31b3a66cea1ee857",
-      "products": 38,
-      "variants": 152,
+      "software_revision": "3e16bd7d173b67be",
       "http_statuses": {
-        "200": 2
+        "200": 312,
+        "429": 1
       },
-      "network_seconds": 1.6,
-      "max_response_seconds": 1.2,
-      "cache_events": 0
+      "network_seconds": 530.6,
+      "max_response_seconds": 2.7,
+      "cache_events": 60
+    },
+    {
+      "name": "Breakout",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "3e16bd7d173b67be",
+      "http_statuses": {
+        "200": 309,
+        "429": 1
+      },
+      "network_seconds": 606.0,
+      "max_response_seconds": 2.7,
+      "cache_events": 26
     }
   ]
 }
