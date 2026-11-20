@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-20T12:55:00.425021+00:00",
+  "run_id": "44696728990",
+  "attempt": "1",
+  "source_commit": "e5312c9692dd817cbec10d0ca96de6728b825f89",
+  "status": "complete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 13233.2,
+  "stores": [
+    {
+      "name": "Makeup Gallery",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "3e16bd7d173b67be",
+      "products": 1624,
+      "variants": 1989,
+      "http_statuses": {
+        "200": 3577
+      },
+      "network_seconds": 8749.4,
+      "max_response_seconds": 3.5,
+      "cache_events": 5141
+    },
+    {
+      "name": "Rung Rez",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "3e16bd7d173b67be",
+      "products": 5,
+      "variants": 13,
+      "http_statuses": {
+        "200": 2
+      },
+      "network_seconds": 1.8,
+      "max_response_seconds": 1.6,
+      "cache_events": 1
+    }
+  ]
+}
