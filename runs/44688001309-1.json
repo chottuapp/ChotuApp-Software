@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-20T06:58:11.594065+00:00",
+  "run_id": "44688001309",
+  "attempt": "1",
+  "source_commit": "fc3053697216558c0220c7d4a2888235f1dc7df0",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 1769.3,
+  "stores": [
+    {
+      "name": "Hello Maali",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "3e16bd7d173b67be",
+      "products": 133,
+      "variants": 464,
+      "http_statuses": {
+        "200": 162
+      },
+      "network_seconds": 346.2,
+      "max_response_seconds": 4.9,
+      "cache_events": 327
+    },
+    {
+      "name": "Prime Ticks",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "3e16bd7d173b67be",
+      "http_statuses": {
+        "200": 383
+      },
+      "network_seconds": 835.9,
+      "max_response_seconds": 2.5,
+      "cache_events": 55
+    }
+  ]
+}
