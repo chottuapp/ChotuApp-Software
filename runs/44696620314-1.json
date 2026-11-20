@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-20T10:34:59.274180+00:00",
+  "run_id": "44696620314",
+  "attempt": "1",
+  "source_commit": "e5312c9692dd817cbec10d0ca96de6728b825f89",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 10418.8,
+  "stores": [
+    {
+      "name": "Miss Rose",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "3e16bd7d173b67be",
+      "products": 187,
+      "variants": 1866,
+      "http_statuses": {
+        "200": 96,
+        "429": 1
+      },
+      "network_seconds": 272.9,
+      "max_response_seconds": 14.7,
+      "cache_events": 2372
+    },
+    {
+      "name": "Rawayat",
+      "status": "source_paused",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "3e16bd7d173b67be",
+      "http_statuses": {
+        "200": 2261,
+        "429": 3
+      },
+      "network_seconds": 4711.5,
+      "max_response_seconds": 14.7,
+      "cache_events": 13824
+    }
+  ]
+}
