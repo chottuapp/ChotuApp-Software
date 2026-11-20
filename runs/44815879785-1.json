@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-20T23:47:08.021168+00:00",
+  "run_id": "44815879785",
+  "attempt": "1",
+  "source_commit": "083913cacbd8e321b09c16ba520c06b50a26e140",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 10141.6,
+  "stores": [
+    {
+      "name": "Taminzo",
+      "status": "source_paused",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "3e16bd7d173b67be",
+      "http_statuses": {
+        "404": 548,
+        "200": 2411,
+        "429": 5
+      },
+      "network_seconds": 6987.1,
+      "max_response_seconds": 17.8,
+      "cache_events": 30659
+    }
+  ]
+}
