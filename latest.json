@@ -1,26 +1,28 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-20T20:57:11.263530+00:00",
-  "run_id": "44815868112",
+  "generated_utc": "2026-11-20T20:57:15.144709+00:00",
+  "run_id": "44815873040",
   "attempt": "1",
   "source_commit": "083913cacbd8e321b09c16ba520c06b50a26e140",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 6.5,
+  "elapsed_seconds": 7.0,
   "stores": [
     {
-      "name": "House of Tools",
+      "name": "Deflexxi",
       "status": "failed",
       "review_required": false,
       "issue_codes": [
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "3e16bd7d173b67be",
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 179
+      "http_statuses": {
+        "402": 4
+      },
+      "network_seconds": 0.4,
+      "max_response_seconds": 0.1,
+      "cache_events": 0
     }
   ]
 }
