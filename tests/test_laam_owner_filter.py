@@ -16,10 +16,11 @@ class OwnerFilterTests(unittest.TestCase):
   with self.assertRaises(ConfirmedOutOfStock):normalize(raw,raw['handle'],active_only=True,in_stock_only=True)
 
 class PriceRangeTests(unittest.TestCase):
- def test_owner_reenabled_only_laam(self):
+ def test_owner_paused_stores_and_enabled_xcessories(self):
   from locked_store_rules import owner_paused
-  self.assertFalse(owner_paused('LAAM','https://laam.com'))
-  for name in ('Khaadi','Bachaa Party','Axis PK','Gift4U'):self.assertTrue(owner_paused(name))
+  self.assertTrue(owner_paused('LAAM','https://laam.com'))
+  self.assertFalse(owner_paused('Xcessories Hub'))
+  for name in ('Khaadi','Bachaa Party','Axis PK','Gift4U','Liberty Books','Toynix'):self.assertTrue(owner_paused(name))
  def test_inclusive_available_selling_price_range_and_variant_preservation(self):
   from laam_source_support import owner_price_allowed
   for price,expected in [('1999.99',False),('2000',True),('7000',True),('7000.01',False)]:
