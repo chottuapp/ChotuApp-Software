@@ -1,35 +1,16 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-20T10:28:11.127905+00:00",
-  "run_id": "44696682734",
+  "generated_utc": "2026-11-20T10:29:04.833073+00:00",
+  "run_id": "44696692314",
   "attempt": "1",
   "source_commit": "e5312c9692dd817cbec10d0ca96de6728b825f89",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 9971.5,
+  "elapsed_seconds": 9966.3,
   "stores": [
     {
-      "name": "Sana Safinaz",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT"
-      ],
-      "software_revision": "3e16bd7d173b67be",
-      "products": 858,
-      "variants": 2634,
-      "http_statuses": {
-        "200": 2659,
-        "429": 3
-      },
-      "network_seconds": 6161.9,
-      "max_response_seconds": 14.8,
-      "cache_events": 15115
-    },
-    {
-      "name": "Edenrobe",
+      "name": "Saya",
       "status": "source_paused",
       "review_required": false,
       "issue_codes": [
@@ -39,12 +20,32 @@
       ],
       "software_revision": "3e16bd7d173b67be",
       "http_statuses": {
-        "200": 2526,
+        "200": 2454,
         "429": 3
       },
-      "network_seconds": 5745.6,
-      "max_response_seconds": 10.2,
-      "cache_events": 11192
+      "network_seconds": 5599.0,
+      "max_response_seconds": 12.4,
+      "cache_events": 9068
+    },
+    {
+      "name": "Hush Puppies",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "3e16bd7d173b67be",
+      "products": 230,
+      "variants": 3133,
+      "http_statuses": {
+        "200": 252,
+        "404": 3
+      },
+      "network_seconds": 601.3,
+      "max_response_seconds": 9.4,
+      "cache_events": 733
     }
   ]
 }
