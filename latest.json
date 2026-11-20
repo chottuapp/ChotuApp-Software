@@ -1,33 +1,35 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-20T08:16:20.446607+00:00",
-  "run_id": "44696710787",
+  "generated_utc": "2026-11-20T08:26:04.278803+00:00",
+  "run_id": "44696707596",
   "attempt": "1",
   "source_commit": "e5312c9692dd817cbec10d0ca96de6728b825f89",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 235.3,
+  "elapsed_seconds": 980.8,
   "stores": [
     {
-      "name": "G7 Leather",
+      "name": "Fresh Basket",
       "status": "done",
       "review_required": true,
       "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "3e16bd7d173b67be",
-      "products": 12,
-      "variants": 37,
+      "products": 205,
+      "variants": 217,
       "http_statuses": {
-        "200": 28
+        "200": 214
       },
-      "network_seconds": 21.0,
-      "max_response_seconds": 4.4,
-      "cache_events": 0
+      "network_seconds": 432.0,
+      "max_response_seconds": 2.4,
+      "cache_events": 470
     },
     {
-      "name": "Bin Fahad",
+      "name": "The Glossy Quill",
       "status": "done",
       "review_required": true,
       "issue_codes": [
@@ -35,13 +37,12 @@
         "RATE_LIMIT"
       ],
       "software_revision": "3e16bd7d173b67be",
-      "products": 51,
-      "variants": 96,
+      "products": 57,
+      "variants": 93,
       "http_statuses": {
-        "200": 70,
-        "429": 1
+        "200": 91
       },
-      "network_seconds": 96.4,
+      "network_seconds": 134.4,
       "max_response_seconds": 2.5,
       "cache_events": 163
     }
