@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-20T08:41:50.308365+00:00",
-  "run_id": "44696716668",
+  "generated_utc": "2026-11-20T09:13:18.894683+00:00",
+  "run_id": "44696695465",
   "attempt": "1",
   "source_commit": "e5312c9692dd817cbec10d0ca96de6728b825f89",
-  "status": "incomplete",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 170.7,
+  "elapsed_seconds": 5382.5,
   "stores": [
     {
-      "name": "Babysaurus",
+      "name": "Habitt",
       "status": "done",
       "review_required": true,
       "issue_codes": [
@@ -18,31 +18,33 @@
         "RATE_LIMIT"
       ],
       "software_revision": "3e16bd7d173b67be",
-      "products": 40,
-      "variants": 184,
+      "products": 458,
+      "variants": 584,
       "http_statuses": {
-        "200": 55,
-        "429": 1
+        "200": 487
       },
-      "network_seconds": 60.7,
-      "max_response_seconds": 2.4,
-      "cache_events": 133
+      "network_seconds": 1007.7,
+      "max_response_seconds": 2.5,
+      "cache_events": 1895
     },
     {
-      "name": "Deflexxi",
-      "status": "failed",
-      "review_required": false,
+      "name": "Beyond East",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
-        "WEBSITE_ORDER_UNVERIFIED"
+        "HTTP_429",
+        "RATE_LIMIT"
       ],
       "software_revision": "3e16bd7d173b67be",
+      "products": 426,
+      "variants": 1520,
       "http_statuses": {
-        "200": 1,
-        "402": 4
+        "200": 1775,
+        "429": 2
       },
-      "network_seconds": 0.7,
-      "max_response_seconds": 0.2,
-      "cache_events": 0
+      "network_seconds": 4009.6,
+      "max_response_seconds": 2.9,
+      "cache_events": 4694
     }
   ]
 }
