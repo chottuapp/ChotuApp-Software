@@ -61,6 +61,10 @@ def main():
   return
  registry=json.loads((ROOT/'cloud/fetch-update-release.json').read_text())['fresh_stores']
  sites=selected_sites(registry,request)
+ if request.get('priority_stores'):
+  from priority_fresh_recovery import recover_priority
+  recover_priority(request,sites)
+  return
  if request.get('resume_pause_run_id'):
   from resume_fresh_batch import resume_batch
   resume_batch(request,sites)

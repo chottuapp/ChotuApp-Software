@@ -371,6 +371,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
    state['audit804_last_store']=store;state['audit804_progress_utc']=datetime.now(timezone.utc).isoformat();progress(state)
  try:
   # Newer completed exports take priority; every file still passes the same audit/delivery gates.
+  priority={name:index for index,name in enumerate(config.get('priority_stores',[]))}
   for run in reversed(runs if held_stores is None else extra_runs):
    rid=str(run['databaseId']);artifacts=json.loads(gh('api','repos/chottuapp/ChotuApp-Software/actions/runs/'+rid+'/artifacts?per_page=100'))['artifacts'];found=[a for a in artifacts if a.get('name')=='chotuapp-excel-files' and not a.get('expired')]
    if not found:continue
@@ -379,7 +380,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
    with tempfile.TemporaryDirectory() as tmp:
     stage=download_source(gh,rid,item['id'],tmp,state,progress)
     if stage is None:continue
-    for entry in completed_files(stage):
+    for entry in sorted(completed_files(stage),key=lambda entry:priority.get(entry.get('store'),len(priority))):
      store=entry.get('store');name=entry.get('name','')
      if run.get('additional_store') and store!=run['additional_store']:continue
      if held_stores is not None and store not in held_stores:continue
@@ -396,7 +397,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
      safe_handle(matches[0],store,rid,item['id'],key)
    state['audit804_artifacts'][rid]=base+':'+revision
   # Recheck durable held inputs after code/policy updates, even if Actions artifacts expired.
-  for store,report in list(state['audit804_results'].items()):
+  for store,report in sorted(state['audit804_results'].items(),key=lambda item:priority.get(item[0],len(priority))):
    newer=next((r for r in extra_runs if r['additional_store']==store),None)
    if newer and str(report.get('source_run','')).isdigit() and int(newer['databaseId'])>int(report['source_run']):continue
    if held_stores is not None and store not in held_stores:continue
