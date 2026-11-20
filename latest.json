@@ -1,49 +1,52 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-20T06:58:27.804397+00:00",
-  "run_id": "44687964196",
+  "generated_utc": "2026-11-20T06:58:25.436116+00:00",
+  "run_id": "44687967260",
   "attempt": "1",
   "source_commit": "fc3053697216558c0220c7d4a2888235f1dc7df0",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 1799.7,
+  "elapsed_seconds": 1800.0,
   "stores": [
     {
-      "name": "Shop Modest",
+      "name": "Islamabad Tea",
       "status": "done",
       "review_required": true,
       "issue_codes": [
         "HTTP_429",
-        "RATE_LIMIT"
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "3e16bd7d173b67be",
-      "products": 121,
-      "variants": 849,
+      "products": 29,
+      "variants": 29,
       "http_statuses": {
-        "200": 187,
-        "429": 1
+        "200": 38
       },
-      "network_seconds": 380.1,
-      "max_response_seconds": 3.9,
-      "cache_events": 343
+      "network_seconds": 22.0,
+      "max_response_seconds": 2.5,
+      "cache_events": 124
     },
     {
-      "name": "The Hanger Pakistan",
+      "name": "Seran",
       "status": "pending",
       "review_required": false,
       "issue_codes": [
+        "HTTP_403",
         "HTTP_429",
-        "RATE_LIMIT"
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "3e16bd7d173b67be",
       "http_statuses": {
-        "200": 449,
+        "200": 286,
+        "403": 2,
         "429": 1
       },
-      "network_seconds": 1005.9,
-      "max_response_seconds": 2.6,
-      "cache_events": 46
+      "network_seconds": 676.1,
+      "max_response_seconds": 2.8,
+      "cache_events": 203
     }
   ]
 }
