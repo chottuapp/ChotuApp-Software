@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-20T10:09:59.812190+00:00",
+  "run_id": "44696667186",
+  "attempt": "1",
+  "source_commit": "e5312c9692dd817cbec10d0ca96de6728b825f89",
+  "status": "complete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 8929.8,
+  "stores": [
+    {
+      "name": "Ndure",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "3e16bd7d173b67be",
+      "products": 1869,
+      "variants": 12455,
+      "http_statuses": {
+        "200": 1969,
+        "429": 5
+      },
+      "network_seconds": 4510.2,
+      "max_response_seconds": 13.1,
+      "cache_events": 16848
+    },
+    {
+      "name": "Astore Bags",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "3e16bd7d173b67be",
+      "products": 227,
+      "variants": 241,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    }
+  ]
+}
