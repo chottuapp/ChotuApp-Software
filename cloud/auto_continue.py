@@ -69,6 +69,10 @@ def main():
             if not summary.get('stop_reason'):
                 gh('run','download',identity,'--repo',repo,'--name','chotuapp-live-logs','--dir',str(logs))
                 console=(logs/'console-tail.txt').read_text(encoding='utf-8',errors='replace')
+    request=json.loads((Path(__file__).parent/'audit804-release.json').read_text())
+    paused_prefix='audit804-'+request['campaign_id']+'-'+str(request.get('refresh_generation'))+'-'
+    if request.get('fetch_paused') and str(summary.get('runner_group','')).startswith(paused_prefix):
+        print('No continuation: owner paused this fresh generation.');return
     if not eligible(run,repo,summary,console,checkpoint):print('No continuation: completed, stopped manually, unauthorized or not a time-budget stop.');return
     name='Automatic continuation of '+identity
     previous=json.loads(gh('run','list','--repo',repo,'--workflow','cloud-fetch.yml','--limit','100','--json','displayTitle'))

@@ -55,6 +55,10 @@ def chain_ids(runs,roots):
 
 def main():
  request=json.loads((ROOT/'cloud/audit804-release.json').read_text());campaign=request['campaign_id'];prefix='Cloud group '+lane_prefix(request)
+ if request.get('fetch_paused'):
+  from pause_fresh_batch import pause_batch
+  pause_batch(request)
+  return
  registry=json.loads((ROOT/'cloud/fetch-update-release.json').read_text())['fresh_stores']
  sites=selected_sites(registry,request)
  if request.get('maximum_stores_per_runner') not in (1,2,3) or request.get('destination_folder')!='ChotuApp 19-10-2026 11-36AM':raise ValueError('Unexpected requested fresh policy')
