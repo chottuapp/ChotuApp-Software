@@ -1,39 +1,45 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-20T07:41:28.242842+00:00",
-  "run_id": "44696679669",
+  "generated_utc": "2026-11-20T07:46:38.084276+00:00",
+  "run_id": "44696631945",
   "attempt": "1",
   "source_commit": "e5312c9692dd817cbec10d0ca96de6728b825f89",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 0.1,
+  "elapsed_seconds": 348.5,
   "stores": [
     {
-      "name": "Zyren",
+      "name": "Shop Modest",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "3e16bd7d173b67be",
-      "products": 183,
-      "variants": 1258,
+      "products": 121,
+      "variants": 849,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
       "cache_events": 0
     },
     {
-      "name": "Pyari Walls",
+      "name": "The Hanger Pakistan",
       "status": "done",
       "review_required": true,
-      "issue_codes": [],
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
       "software_revision": "3e16bd7d173b67be",
-      "products": 304,
-      "variants": 764,
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "products": 350,
+      "variants": 1553,
+      "http_statuses": {
+        "200": 86,
+        "429": 1
+      },
+      "network_seconds": 233.4,
+      "max_response_seconds": 17.5,
+      "cache_events": 2418
     }
   ]
 }
