@@ -362,6 +362,11 @@ def category(row,store):
   return authorized_category(row),'owner_supplied_scope',str(row.get('subcategory_evidence') or '')
  from sold_object_category_support import source_object
  fact=public_facts(row,store) or {}
+ if store=='Blackbeiger' and fact.get('source_category_label') and fact.get('source_category_title'):
+  from urllib.parse import urlsplit
+  collection=urlsplit(str(fact.get('source_category_url') or ''))
+  if collection.scheme=='https' and collection.hostname=='blackbeiger.com' and collection.path.startswith('/collections/'):
+   return fact['source_category_label'],'verified_source_collection',fact['source_category_title']+' '+fact['source_category_url']
  source_kind=fact.get('source_category_label') or fact.get('product_type') or row.get('source_product_type')
  path=str(row.get('website_category_path') or '') if row.get('website_category_status') in ('verified_navigation_membership','verified_product_breadcrumb') else ''
  sold=source_object(row.get('name'),row.get('description'),source_kind,path)

@@ -25,5 +25,18 @@ class GroceryScopeRepairTests(unittest.TestCase):
    s.append(list(row));s.append(list(row.values()));b.save(p);b.close();path,count=repair(p,out,'ChotuApp Groceries');self.assertEqual(count,1)
    b=load_workbook(path);s=b['Products'];r=dict(zip([c.value for c in s[1]],[c.value for c in s[2]]));b.close();self.assertEqual(r['Category'],'Tissues');self.assertEqual(r['subcategory_source'],'owner_brand_search');self.assertEqual(r['base_price (PKR)'],200);self.assertEqual(r['source_scope_review_count'],34)
    again,changes=repair(path,Path(tmp)/'again.xlsx','ChotuApp Groceries');self.assertEqual(changes,0);self.assertEqual(again,path)
+ def test_existing_brand_marker_repairs_category_only_with_retained_breadcrumb(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   p=Path(tmp)/'source.xlsx';out=Path(tmp)/'fixed.xlsx'
+   row=dict(Category='Wrong label',owner_scope_url='https://www.naheed.pk/catalogsearch/result/?q=Rose+Petal',source_url='https://www.naheed.pk/item',source_manufacturer='Rose Petal',subcategory_source='owner_brand_search',subcategory_evidence='retained receipt',source_scope_coverage_status='review_required',source_scope_review_count=34,website_category_path='Home > Tissues',website_category_source_url='https://www.naheed.pk/item',website_category_status='verified_product_breadcrumb')
+   for url in (row['source_url'],'https://www.naheed.pk/another-item'):
+    row['website_category_source_url']=url
+    book=Workbook();sheet=book.active;sheet.title='Products';sheet.append(list(row));sheet.append(list(row.values()));book.save(p);book.close()
+    if url!=row['source_url']:
+     with self.assertRaises(ValueError):repair(p,out,'ChotuApp Groceries')
+    else:
+     path,count=repair(p,out,'ChotuApp Groceries');self.assertEqual(count,1)
+     book=load_workbook(path);sheet=book['Products'];fixed=dict(zip([c.value for c in sheet[1]],[c.value for c in sheet[2]]));book.close()
+     self.assertEqual(fixed['Category'],'Tissues');self.assertEqual(fixed['source_scope_review_count'],34)
  def test_unknown_scope_does_not_bypass_inference(self):
   with self.assertRaises(ValueError):apply(dict(name='Serum',source_url='https://other.example/item',owner_scope_url=SCOPE,subcategory_source='owner_supplied_scope'))

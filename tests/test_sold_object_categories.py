@@ -21,6 +21,14 @@ class SoldObjectTests(unittest.TestCase):
   row={'name':fact['public_title'],'product_id':fact['product_id'],'source_url':fact['source_url'],'description':fact['description'],'Category':'Jackets & Coats'}
   self.assertEqual(category(row,'Blackbeiger')[0],'Flats');self.assertTrue(review(row))
   row['Category']='Flats';self.assertEqual(review(row),[])
+ def test_collection_label_preserved_when_generic_footwear_label_differs(self):
+  facts=[fact for fact in public_index().values() if fact['store']=='Blackbeiger' and fact.get('source_category_label')]
+  self.assertTrue(facts)
+  for fact in facts:
+   row=dict(name=fact['public_title'],product_id=fact['product_id'],source_url=fact['source_url'],description=fact.get('description',''))
+   row['Category']=category(row,'Blackbeiger')[0]
+   self.assertEqual(row['Category'],fact['source_category_label'])
+   self.assertEqual(review(row),[])
  def test_generic_styles_and_related_footwear_do_not_define_object(self):
   self.assertIsNone(infer('Mystery','Wear yours with trousers.'))
   self.assertIsNone(infer('Mystery','Pair this dress with loafers.'))

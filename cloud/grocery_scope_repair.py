@@ -19,13 +19,10 @@ def repair(source,out,store):
   for number,values in enumerate(sheet.iter_rows(min_row=2,values_only=True),2):
    if not any(v is not None for v in values):continue
    row=dict(zip(headers,values));expected=categories().get(row['owner_scope_url']);url=urlsplit(str(row['source_url'] or ''))
-   if row.get('subcategory_source')=='owner_brand_search':
-    from grocery_owner_scope import authorized_category
-    authorized_category(row)
-    continue
-   if brand_mode:
+   if row.get('subcategory_source')=='owner_brand_search' or brand_mode:
     if row.get('subcategory_source') in ('manual','owner','manual_override','owner_supplied_scope'):raise ValueError('Explicit owner category cannot be overwritten by brand repair')
     category=authorized_brand_category(row,repair=True)
+    if row.get('subcategory_source')=='owner_brand_search' and row['Category']==category and ('subcategory' not in cols or row.get('subcategory')==category):continue
     changes={'Category':category,'subcategory_source':'owner_brand_search','subcategory_evidence':'Exact selected Naheed manufacturer and retained verified product breadcrumb restored; original coverage hold preserved. '+str(row.get('subcategory_evidence') or '')}
     if 'subcategory' in cols:changes['subcategory']=category
     changed=False
