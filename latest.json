@@ -1,29 +1,32 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-23T14:18:48.072685+00:00",
-  "run_id": "45190424039",
+  "generated_utc": "2026-11-23T15:08:30.473916+00:00",
+  "run_id": "45189548788",
   "attempt": "1",
-  "source_commit": "f6dda6e653b4f4a28553c6c8203b12f02463c669",
+  "source_commit": "4e7ecac4d705e46cfadf64e013551dc0ded67224",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 782.2,
+  "elapsed_seconds": 4058.2,
   "stores": [
     {
-      "name": "Xcessories Hub",
-      "status": "failed",
+      "name": "Asim Jofa",
+      "status": "pending",
       "review_required": false,
       "issue_codes": [
-        "HTTP_403",
-        "WEBSITE_ORDER_UNVERIFIED"
+        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT"
       ],
-      "software_revision": "4ae30514dae2eaf2",
+      "software_revision": "3e16bd7d173b67be",
       "http_statuses": {
-        "403": 1
+        "200": 556,
+        "429": 2,
+        "404": 852
       },
-      "network_seconds": 0.1,
-      "max_response_seconds": 0.1,
-      "cache_events": 2927
+      "network_seconds": 3252.4,
+      "max_response_seconds": 2.9,
+      "cache_events": 855
     }
   ]
 }
