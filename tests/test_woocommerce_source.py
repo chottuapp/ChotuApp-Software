@@ -135,3 +135,10 @@ class WooTests(unittest.TestCase):
   page=SimpleNamespace(status_code=200,url=url,text='<link rel="canonical" href="'+url+'"><h1>Speakers</h1>')
   self.assertFalse(removed_listing(p,page));self.assertTrue(removed_listing(p,page,api_absent=True))
   page.text+='<form class="cart"></form>';self.assertFalse(removed_listing(p,page,api_absent=True))
+
+class EmptyVariableTests(unittest.TestCase):
+ def test_unpurchasable_empty_variant_list_never_invents_an_offer(self):
+  parent=dict(type='variable',variations=[],is_purchasable=False)
+  self.assertEqual(variants(parent,None),[])
+  for change in (dict(is_purchasable=True),dict(variations=None)):
+   with self.assertRaises(ValueError):variants(dict(parent,**change),None)

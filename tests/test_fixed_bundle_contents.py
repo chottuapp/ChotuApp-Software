@@ -21,6 +21,15 @@ class FixedBundleContentsTests(unittest.TestCase):
  def test_complete_source_contents_and_minified_boolean_parser_preserve_literal_text(self):
   p,c=self.fixture();before=copy.deepcopy(p);result=fixed_bundle_details(p,self.page(p,c))
   self.assertEqual(p,before);self.assertIn('Drill !0 Edition',result['description']);self.assertIn('12V',result['description']);self.assertIn('2 batteries',result['description']);self.assertEqual(len(result['components']),2)
+ def test_numeric_component_requires_matching_simple_source_detail(self):
+  p,c=self.fixture();c['bundles']['bundles'][0]['product']=11
+  child=dict(id=11,type='simple',has_options=False,variations=[],name='Exact drill',permalink='https://houseoftools.com.pk/product/drill/',description='12V')
+  read=Mock(return_value=child)
+  details=fixed_bundle_details(p,self.page(p,c),read)
+  read.assert_called_once_with('/wp-json/wc/store/v1/products/11')
+  self.assertIn('Exact drill',details['description'])
+  for changes in (dict(id=12),dict(type='variable'),dict(has_options=True),dict(permalink='https://other.test/product/drill/')):
+   with self.assertRaises(ValueError):fixed_bundle_details(p,self.page(p,c),Mock(return_value=dict(child,**changes)))
  def test_wrong_identity_prices_and_selectable_contents_fail_closed(self):
   for change in ('id','currency','price','optional','variable','quantity','target'):
    p,c=self.fixture();item=c['bundles']['bundles'][0]

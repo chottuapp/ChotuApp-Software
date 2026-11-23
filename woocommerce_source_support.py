@@ -28,8 +28,13 @@ def unpriced_unpurchasable(p):
  q=p.get('prices',{})
  return p.get('is_purchasable') is False and q.get('currency_code')=='PKR' and str(q.get('price'))=='0' and str(q.get('regular_price'))=='0'
 
+def unavailable_variable(parent):
+ return (parent.get('type')=='variable' and parent.get('variations')==[]
+         and parent.get('is_purchasable') is False)
+
 def variants(parent,get):
  if parent['type']=='simple':return [(parent,{})]
+ if unavailable_variable(parent):return []
  # This plugin exposes one fixed, purchasable bundle offer, not child SKU offers.
  if parent['type']=='easy_product_bundle':
   if parent.get('has_options') is not False or parent.get('variations') or any(a.get('has_variations') for a in parent.get('attributes',[])):raise ValueError('Selectable bundle options require exact source verification')
@@ -172,7 +177,7 @@ def content_text(value):
  if text.lstrip('\ufeff ').startswith('.product-card-container {') and marker in text:text=text[text.index(marker):]
  return text
 
-def fixed_bundle_details(p,response):
+def fixed_bundle_details(p,response,read_component=None):
  """Read explicit fixed contents from Easy Product Bundles' public product config."""
  from urllib.parse import urljoin
  soup=BeautifulSoup(response.text,'html.parser');canonical=soup.select_one('link[rel=canonical][href]');heading=soup.select_one('h1.product_title,h1')
@@ -204,7 +209,12 @@ def fixed_bundle_details(p,response):
  components=[];lines=['Pack Contents']
  for entry in entries:
   child=entry.get('product',{});quantity=entry.get('quantity')
-  if any(entry.get(k) not in ('false',False) for k in ('optional','can_change_product','edit_quantity')) or entry.get('selected') not in ('true',True) or child.get('is_variable') not in ('false',False):raise ValueError('Selectable bundle contents require independent offer verification')
+  if any(entry.get(k) not in ('false',False) for k in ('optional','can_change_product','edit_quantity')) or entry.get('selected') not in ('true',True):raise ValueError('Selectable bundle contents require independent offer verification')
+  if type(child) is int and child>0 and read_component is not None:
+   record=read_component('/wp-json/wc/store/v1/products/'+str(child))
+   if not isinstance(record,dict) or record.get('id')!=child or record.get('type')!='simple' or record.get('has_options') is not False or record.get('variations'):raise ValueError('Fixed bundle component identity or options unverified')
+   child={'id':child,'name':record.get('name'),'link':record.get('permalink'),'description':record.get('description'),'is_variable':False}
+  if not isinstance(child,dict) or child.get('is_variable') not in ('false',False):raise ValueError('Selectable or unresolved bundle contents require independent offer verification')
   if isinstance(quantity,bool) or not str(quantity).isdigit() or not 1<=int(quantity)<=10000 or not isinstance(child.get('id'),int) or not child.get('name') or not str(child.get('link','')).startswith(p['permalink'].split('/product/')[0]+'/product/'):raise ValueError('Bundle component identity/quantity unverified')
   component=dict(id=child['id'],name=content_text(child['name']),quantity=int(quantity),source_url=child['link'],description=content_text(child.get('description') or ''));components.append(component)
   lines.append(str(quantity)+' × '+component['name'])
@@ -271,6 +281,8 @@ def export(g,base,name,template,log,*,provider=None):
    log('WOO SOURCE EXCLUSION: zero-priced, explicitly unpurchasable listing '+str(p['id'])+' '+p['permalink']);continue
   url=p['permalink']
   if urlsplit(url).hostname.removeprefix('www.')!=host:raise ValueError('Product belongs to another host')
+  if unavailable_variable(p):
+   log('WOO SOURCE EXCLUSION: explicitly unpurchasable variable product with an empty exact variant list '+str(p['id'])+' '+url);continue
   vs=variants(p,get);offers=[(v,a,offer(v)) for v,a in vs]
   available=[x for x in offers if x[2][2]]
   if not available:continue
@@ -298,7 +310,7 @@ def export(g,base,name,template,log,*,provider=None):
    p=recovered;cover=p['images'][0]['src'];log('WOO MEDIA RECOVERED: canonical PDP and exact cart product identity verified: '+url)
 
   if p.get('type')=='easy_product_bundle':
-   g['_chotu_wait']();page=g['S'].get(url,timeout=(15,60));details=fixed_bundle_details(p,page)
+   g['_chotu_wait']();page=g['S'].get(url,timeout=(15,60));details=fixed_bundle_details(p,page,read_component=get)
    p=dict(p,description=(p.get('description') or '')+'\n'+details['description'])
   pid=g['uid']('CP',base+'|'+str(p['id']));dimensions=[]
   for _,attrs,_ in offers:

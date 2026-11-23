@@ -73,7 +73,7 @@ def recover_priority(request, sites):
         for site, entry in selected:
             receipt = by_store.get(site['name'], {})
             statuses = receipt.get('http_statuses', {})
-            if statuses and set(statuses) <= {'402', '403'}:
+            if statuses and set(statuses) <= {'402', '403'} and site['name'] not in request.get('repaired_source_adapters', []):
                 entry.update(status='source_access_blocked', parent_run=parent, http_statuses=statuses)
             else:
                 eligible.append((site, entry))
