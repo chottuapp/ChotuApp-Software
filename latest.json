@@ -1,324 +1,324 @@
 {
-  "run_id": "45189940326",
-  "checked_utc": "2026-11-23T14:02:50.810959+00:00",
+  "run_id": "45190410209",
+  "checked_utc": "2026-11-23T14:05:31.614109+00:00",
   "targets": [
     {
-      "target": "45189559290",
+      "target": "45189577908",
       "state": {
         "conclusion": "failure",
-        "displayTitle": "Automatic continuation of 44815868112",
+        "displayTitle": "Automatic continuation of 44815884782",
         "headSha": "4e7ecac4d705e46cfadf64e013551dc0ded67224",
         "jobs": [
           {
-            "completedAt": "2026-11-23T14:01:22Z",
+            "completedAt": "2026-11-23T14:02:39Z",
             "conclusion": "failure",
-            "databaseId": 137744028102,
+            "databaseId": 137744095833,
             "name": "fetch",
-            "startedAt": "2026-11-23T14:00:26Z",
+            "startedAt": "2026-11-23T14:00:33Z",
             "status": "completed",
             "steps": [
               {
-                "completedAt": "2026-11-23T14:00:30Z",
+                "completedAt": "2026-11-23T14:00:36Z",
                 "conclusion": "success",
                 "name": "Set up job",
                 "number": 1,
-                "startedAt": "2026-11-23T14:00:27Z",
+                "startedAt": "2026-11-23T14:00:34Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:00:43Z",
+                "completedAt": "2026-11-23T14:00:48Z",
                 "conclusion": "success",
                 "name": "Run actions/checkout@v4",
                 "number": 2,
-                "startedAt": "2026-11-23T14:00:30Z",
+                "startedAt": "2026-11-23T14:00:36Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:00:43Z",
+                "completedAt": "2026-11-23T14:00:49Z",
                 "conclusion": "success",
                 "name": "Run actions/setup-python@v5",
                 "number": 3,
-                "startedAt": "2026-11-23T14:00:43Z",
+                "startedAt": "2026-11-23T14:00:48Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:00:50Z",
+                "completedAt": "2026-11-23T14:00:55Z",
                 "conclusion": "success",
                 "name": "Install extraction dependencies",
                 "number": 4,
-                "startedAt": "2026-11-23T14:00:43Z",
+                "startedAt": "2026-11-23T14:00:49Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:00:56Z",
+                "completedAt": "2026-11-23T14:01:01Z",
                 "conclusion": "success",
                 "name": "Verify standalone continuation and owner-policy guards",
                 "number": 5,
-                "startedAt": "2026-11-23T14:00:50Z",
+                "startedAt": "2026-11-23T14:00:55Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:00Z",
+                "completedAt": "2026-11-23T14:01:07Z",
                 "conclusion": "success",
                 "name": "Restore optional saved run",
                 "number": 6,
-                "startedAt": "2026-11-23T14:00:56Z",
+                "startedAt": "2026-11-23T14:01:01Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:00Z",
+                "completedAt": "2026-11-23T14:01:07Z",
                 "conclusion": "skipped",
                 "name": "Install Czone browser fallback when needed",
                 "number": 7,
-                "startedAt": "2026-11-23T14:01:00Z",
+                "startedAt": "2026-11-23T14:01:07Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:00Z",
-                "conclusion": "skipped",
+                "completedAt": "2026-11-23T14:02:05Z",
+                "conclusion": "success",
                 "name": "Install grocery public storefront renderer when needed",
                 "number": 8,
-                "startedAt": "2026-11-23T14:01:00Z",
+                "startedAt": "2026-11-23T14:01:07Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:00Z",
+                "completedAt": "2026-11-23T14:02:05Z",
                 "conclusion": "skipped",
                 "name": "Install meat public storefront renderer when needed",
                 "number": 9,
-                "startedAt": "2026-11-23T14:01:00Z",
+                "startedAt": "2026-11-23T14:02:05Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:00Z",
+                "completedAt": "2026-11-23T14:02:05Z",
                 "conclusion": "skipped",
                 "name": "Install Axis public JS renderer when needed",
                 "number": 10,
-                "startedAt": "2026-11-23T14:01:00Z",
+                "startedAt": "2026-11-23T14:02:05Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:00Z",
+                "completedAt": "2026-11-23T14:02:05Z",
                 "conclusion": "success",
                 "name": "Start continuous fetching on the cloud runner",
                 "number": 11,
-                "startedAt": "2026-11-23T14:01:00Z",
+                "startedAt": "2026-11-23T14:02:05Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:12Z",
+                "completedAt": "2026-11-23T14:02:29Z",
                 "conclusion": "success",
                 "name": "Live progress, logs and completed-file uploads",
                 "number": 12,
-                "startedAt": "2026-11-23T14:01:00Z",
+                "startedAt": "2026-11-23T14:02:05Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:12Z",
+                "completedAt": "2026-11-23T14:02:29Z",
                 "conclusion": "failure",
                 "name": "Fetch result",
                 "number": 13,
-                "startedAt": "2026-11-23T14:01:12Z",
+                "startedAt": "2026-11-23T14:02:29Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:12Z",
+                "completedAt": "2026-11-23T14:02:29Z",
                 "conclusion": "success",
                 "name": "Collect diagnostic report even if fetching failed",
                 "number": 14,
-                "startedAt": "2026-11-23T14:01:12Z",
+                "startedAt": "2026-11-23T14:02:29Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:14Z",
+                "completedAt": "2026-11-23T14:02:30Z",
                 "conclusion": "success",
                 "name": "Upload diagnostic report and redacted log",
                 "number": 15,
-                "startedAt": "2026-11-23T14:01:12Z",
+                "startedAt": "2026-11-23T14:02:29Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:15Z",
+                "completedAt": "2026-11-23T14:02:32Z",
                 "conclusion": "success",
                 "name": "Upload Excel files and audits, including completed stores from a partial run",
                 "number": 16,
-                "startedAt": "2026-11-23T14:01:14Z",
+                "startedAt": "2026-11-23T14:02:30Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:15Z",
+                "completedAt": "2026-11-23T14:02:32Z",
                 "conclusion": "skipped",
                 "name": "Final automated Rule 804 pass for fresh batch",
                 "number": 17,
-                "startedAt": "2026-11-23T14:01:15Z",
+                "startedAt": "2026-11-23T14:02:32Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:15Z",
+                "completedAt": "2026-11-23T14:02:32Z",
                 "conclusion": "skipped",
                 "name": "Upload automated Rule 804 fresh workbooks",
                 "number": 18,
-                "startedAt": "2026-11-23T14:01:15Z",
+                "startedAt": "2026-11-23T14:02:32Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:18Z",
+                "completedAt": "2026-11-23T14:02:34Z",
                 "conclusion": "success",
                 "name": "Upload saved checkpoint when available",
                 "number": 19,
-                "startedAt": "2026-11-23T14:01:15Z",
+                "startedAt": "2026-11-23T14:02:32Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:19Z",
+                "completedAt": "2026-11-23T14:02:35Z",
                 "conclusion": "success",
                 "name": "Dispatch authorized continuation after verified checkpoint upload",
                 "number": 20,
-                "startedAt": "2026-11-23T14:01:18Z",
+                "startedAt": "2026-11-23T14:02:34Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:19Z",
+                "completedAt": "2026-11-23T14:02:35Z",
                 "conclusion": "success",
                 "name": "Post Live progress, logs and completed-file uploads",
                 "number": 38,
-                "startedAt": "2026-11-23T14:01:19Z",
+                "startedAt": "2026-11-23T14:02:35Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:19Z",
+                "completedAt": "2026-11-23T14:02:35Z",
                 "conclusion": "skipped",
                 "name": "Post Run actions/setup-python@v5",
                 "number": 39,
-                "startedAt": "2026-11-23T14:01:19Z",
+                "startedAt": "2026-11-23T14:02:35Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:19Z",
+                "completedAt": "2026-11-23T14:02:35Z",
                 "conclusion": "success",
                 "name": "Post Run actions/checkout@v4",
                 "number": 40,
-                "startedAt": "2026-11-23T14:01:19Z",
+                "startedAt": "2026-11-23T14:02:35Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:19Z",
+                "completedAt": "2026-11-23T14:02:35Z",
                 "conclusion": "success",
                 "name": "Complete job",
                 "number": 41,
-                "startedAt": "2026-11-23T14:01:19Z",
+                "startedAt": "2026-11-23T14:02:35Z",
                 "status": "completed"
               }
             ],
-            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/45189559290/job/137744028102"
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/45189577908/job/137744095833"
           },
           {
-            "completedAt": "2026-11-23T14:01:44Z",
+            "completedAt": "2026-11-23T14:03:10Z",
             "conclusion": "success",
-            "databaseId": 137744635347,
+            "databaseId": 137745408835,
             "name": "Archive structured diagnostics",
-            "startedAt": "2026-11-23T14:01:25Z",
+            "startedAt": "2026-11-23T14:02:45Z",
             "status": "completed",
             "steps": [
               {
-                "completedAt": "2026-11-23T14:01:28Z",
+                "completedAt": "2026-11-23T14:02:47Z",
                 "conclusion": "success",
                 "name": "Set up job",
                 "number": 1,
-                "startedAt": "2026-11-23T14:01:25Z",
+                "startedAt": "2026-11-23T14:02:46Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:38Z",
+                "completedAt": "2026-11-23T14:03:03Z",
                 "conclusion": "success",
                 "name": "Run actions/checkout@v4",
                 "number": 2,
-                "startedAt": "2026-11-23T14:01:28Z",
+                "startedAt": "2026-11-23T14:02:47Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:38Z",
+                "completedAt": "2026-11-23T14:03:04Z",
                 "conclusion": "success",
                 "name": "Run actions/setup-python@v5",
                 "number": 3,
-                "startedAt": "2026-11-23T14:01:38Z",
+                "startedAt": "2026-11-23T14:03:03Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:39Z",
+                "completedAt": "2026-11-23T14:03:05Z",
                 "conclusion": "success",
                 "name": "Run actions/download-artifact@v4",
                 "number": 4,
-                "startedAt": "2026-11-23T14:01:38Z",
+                "startedAt": "2026-11-23T14:03:04Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:43Z",
+                "completedAt": "2026-11-23T14:03:07Z",
                 "conclusion": "success",
                 "name": "Archive credential-free JSON on the cloud-reports branch",
                 "number": 5,
-                "startedAt": "2026-11-23T14:01:39Z",
+                "startedAt": "2026-11-23T14:03:05Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:43Z",
+                "completedAt": "2026-11-23T14:03:07Z",
                 "conclusion": "success",
                 "name": "Post Run actions/setup-python@v5",
                 "number": 9,
-                "startedAt": "2026-11-23T14:01:43Z",
+                "startedAt": "2026-11-23T14:03:07Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:43Z",
+                "completedAt": "2026-11-23T14:03:07Z",
                 "conclusion": "success",
                 "name": "Post Run actions/checkout@v4",
                 "number": 10,
-                "startedAt": "2026-11-23T14:01:43Z",
+                "startedAt": "2026-11-23T14:03:07Z",
                 "status": "completed"
               },
               {
-                "completedAt": "2026-11-23T14:01:43Z",
+                "completedAt": "2026-11-23T14:03:07Z",
                 "conclusion": "success",
                 "name": "Complete job",
                 "number": 11,
-                "startedAt": "2026-11-23T14:01:43Z",
+                "startedAt": "2026-11-23T14:03:07Z",
                 "status": "completed"
               }
             ],
-            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/45189559290/job/137744635347"
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/45189577908/job/137745408835"
           }
         ],
         "status": "completed"
       },
-      "failed_log": "fetch\tFetch result\t2026-11-23T14:01:12.5721757Z [House of Tools] SAVED RESPONSE: https://houseoftools.com.pk/product/diy-bundle-w3/\nfetch\tFetch result\t2026-11-23T14:01:12.5722284Z [House of Tools] WOO PRODUCT PROGRESS: 157/1291 checked; 152 retained\nfetch\tFetch result\t2026-11-23T14:01:12.5722774Z [House of Tools] [14:01:08] STAGE: WooCommerce public product prices and pages\nfetch\tFetch result\t2026-11-23T14:01:12.5723522Z [House of Tools] [14:01:08] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23915\nfetch\tFetch result\t2026-11-23T14:01:12.5724188Z [House of Tools] [14:01:08] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23915\nfetch\tFetch result\t2026-11-23T14:01:12.5725013Z [House of Tools] SAVED RESPONSE: https://houseoftools.com.pk/product/diy-bundle-w2/\nfetch\tFetch result\t2026-11-23T14:01:12.5725470Z __CHOTU_PROGRESS__|1|Active: House of Tools\nfetch\tFetch result\t2026-11-23T14:01:12.5725898Z [House of Tools] [14:01:08] EXCEPTION: AttributeError(\"'int' object has no attribute 'get'\")\nfetch\tFetch result\t2026-11-23T14:01:12.5726474Z [House of Tools] [14:01:08] Traceback (most recent call last):\nfetch\tFetch result\t2026-11-23T14:01:12.5732171Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2064, in _run_checked\nfetch\tFetch result\t2026-11-23T14:01:12.5732879Z     run_site(site['url'], name, template, log_line)\nfetch\tFetch result\t2026-11-23T14:01:12.5733899Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\nfetch\tFetch result\t2026-11-23T14:01:12.5735116Z     if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\nfetch\tFetch result\t2026-11-23T14:01:12.5735682Z                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-11-23T14:01:12.5736338Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1557, in run_site\nfetch\tFetch result\t2026-11-23T14:01:12.5736973Z     _chotuapp_run_site_original(base, name, template, intercept)\nfetch\tFetch result\t2026-11-23T14:01:12.5737930Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\nfetch\tFetch result\t2026-11-23T14:01:12.5739005Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\nfetch\tFetch result\t2026-11-23T14:01:12.5739995Z                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-11-23T14:01:12.5740928Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\nfetch\tFetch result\t2026-11-23T14:01:12.5767409Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-11-23T14:01:12.5768068Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 301, in export\nfetch\tFetch result\t2026-11-23T14:01:12.5768916Z     g['_chotu_wait']();page=g['S'].get(url,timeout=(15,60));details=fixed_bundle_details(p,page)\nfetch\tFetch result\t2026-11-23T14:01:12.5769431Z                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-11-23T14:01:12.5770359Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 207, in fixed_bundle_details\nfetch\tFetch result\t2026-11-23T14:01:12.5771934Z     if any(entry.get(k) not in ('false',False) for k in ('optional','can_change_product','edit_quantity')) or entry.get('selected') not in ('true',True) or child.get('is_variable') not in ('false',False):raise ValueError('Selectable bundle contents require independent offer verification')\nfetch\tFetch result\t2026-11-23T14:01:12.5773173Z                                                                                                                                                             ^^^^^^^^^\nfetch\tFetch result\t2026-11-23T14:01:12.5773943Z AttributeError: 'int' object has no attribute 'get'\nfetch\tFetch result\t2026-11-23T14:01:12.5774207Z \nfetch\tFetch result\t2026-11-23T14:01:12.5774423Z [House of Tools] FAILED: House of Tools: 'int' object has no attribute 'get'\nfetch\tFetch result\t2026-11-23T14:01:12.5775115Z [House of Tools] [14:01:08] STAGE: Idle\nfetch\tFetch result\t2026-11-23T14:01:12.5775588Z FAILED: House of Tools: FAILED: House of Tools: 'int' object has no attribute 'get'\nfetch\tFetch result\t2026-11-23T14:01:12.5775994Z False\nfetch\tFetch result\t2026-11-23T14:01:12.5776458Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nfetch\tFetch result\t2026-11-23T14:01:12.5777135Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nfetch\tFetch result\t2026-11-23T14:01:12.5777584Z RUN SUMMARY:\nfetch\tFetch result\t2026-11-23T14:01:12.5778285Z House of Tools: FAILED \u2014 FAILED: House of Tools: 'int' object has no attribute 'get'\nfetch\tFetch result\t2026-11-23T14:01:12.5778714Z Checkpoint: saved\nfetch\tFetch result\t2026-11-23T14:01:12.5779122Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH\nfetch\tFetch result\t2026-11-23T14:01:12.5791911Z ##[error]Process completed with exit code 2.",
+      "failed_log": "fetch\tFetch result\t2026-11-23T14:02:29.3142096Z [ChotuApp Groceries] [14:02:07] HTTP START attempt=1 https://www.naheed.pk/allproducts?redacted\nfetch\tFetch result\t2026-11-23T14:02:29.3142707Z [ChotuApp Groceries] [14:02:07] CACHE HIT status=200 elapsed=0.0s bytes=348964 https://www.naheed.pk/allproducts?redacted\nfetch\tFetch result\t2026-11-23T14:02:29.3143227Z [ChotuApp Groceries] [14:02:07] STAGE: Grocery listing pages\nfetch\tFetch result\t2026-11-23T14:02:29.3143702Z [ChotuApp Groceries] [14:02:07] HTTP START attempt=1 https://www.naheed.pk/catalogsearch/result/?redacted\nfetch\tFetch result\t2026-11-23T14:02:29.3144359Z [ChotuApp Groceries] [14:02:09] HTTP END status=200 elapsed=1.9s bytes=291514 https://www.naheed.pk/catalogsearch/result/?redacted\nfetch\tFetch result\t2026-11-23T14:02:29.3144934Z [ChotuApp Groceries] GROCERY PUBLIC UI: traversal step 1; 192 product links\nfetch\tFetch result\t2026-11-23T14:02:29.3145315Z __CHOTU_PROGRESS__|1|Active: ChotuApp Groceries\nfetch\tFetch result\t2026-11-23T14:02:29.3145760Z [ChotuApp Groceries] [14:02:25] EXCEPTION: ValueError('Foreign or scope-changing grocery UI navigation')\nfetch\tFetch result\t2026-11-23T14:02:29.3146415Z [ChotuApp Groceries] [14:02:25] Traceback (most recent call last):\nfetch\tFetch result\t2026-11-23T14:02:29.3151326Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2064, in _run_checked\nfetch\tFetch result\t2026-11-23T14:02:29.3151818Z     run_site(site['url'], name, template, log_line)\nfetch\tFetch result\t2026-11-23T14:02:29.3152292Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\nfetch\tFetch result\t2026-11-23T14:02:29.3153021Z     if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\nfetch\tFetch result\t2026-11-23T14:02:29.3153405Z                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-11-23T14:02:29.3153834Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1557, in run_site\nfetch\tFetch result\t2026-11-23T14:02:29.3154277Z     _chotuapp_run_site_original(base, name, template, intercept)\nfetch\tFetch result\t2026-11-23T14:02:29.3154750Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\nfetch\tFetch result\t2026-11-23T14:02:29.3155371Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\nfetch\tFetch result\t2026-11-23T14:02:29.3155864Z                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-11-23T14:02:29.3156397Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\nfetch\tFetch result\t2026-11-23T14:02:29.3173974Z                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-11-23T14:02:29.3174464Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 179, in discover_scope\nfetch\tFetch result\t2026-11-23T14:02:29.3175213Z     try:rendered=render_listing(url,self.g['_chotu_wait'],self.log,**({'brand':scope['brand']} if scope.get('brand') and seed.path.startswith('/catalogsearch/') else {}))\nfetch\tFetch result\t2026-11-23T14:02:29.3175793Z                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-11-23T14:02:29.3176340Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/grocery_browser_support.py\", line 84, in render_listing\nfetch\tFetch result\t2026-11-23T14:02:29.3177427Z     if actual.scheme!='https' or actual.netloc!='www.naheed.pk' or actual.path.rstrip('/')!=wanted.path.rstrip('/') or any(dict(parse_qsl(actual.query)).get(k)!=v for k,v in parse_qsl(wanted.query) if k in ('q','manufacturer')):raise ValueError('Foreign or scope-changing grocery UI navigation')\nfetch\tFetch result\t2026-11-23T14:02:29.3178381Z                                                                                                                                                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tFetch result\t2026-11-23T14:02:29.3178890Z ValueError: Foreign or scope-changing grocery UI navigation\nfetch\tFetch result\t2026-11-23T14:02:29.3179083Z \nfetch\tFetch result\t2026-11-23T14:02:29.3179288Z [ChotuApp Groceries] FAILED: ChotuApp Groceries: Foreign or scope-changing grocery UI navigation\nfetch\tFetch result\t2026-11-23T14:02:29.3179639Z [ChotuApp Groceries] [14:02:25] STAGE: Idle\nfetch\tFetch result\t2026-11-23T14:02:29.3179988Z FAILED: ChotuApp Groceries: FAILED: ChotuApp Groceries: Foreign or scope-changing grocery UI navigation\nfetch\tFetch result\t2026-11-23T14:02:29.3180320Z False\nfetch\tFetch result\t2026-11-23T14:02:29.3180610Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nfetch\tFetch result\t2026-11-23T14:02:29.3181112Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nfetch\tFetch result\t2026-11-23T14:02:29.3181422Z RUN SUMMARY:\nfetch\tFetch result\t2026-11-23T14:02:29.3181978Z ChotuApp Groceries: FAILED \u2014 FAILED: ChotuApp Groceries: Foreign or scope-changing grocery UI navigation\nfetch\tFetch result\t2026-11-23T14:02:29.3182328Z Checkpoint: saved\nfetch\tFetch result\t2026-11-23T14:02:29.3182658Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH\nfetch\tFetch result\t2026-11-23T14:02:29.3204553Z ##[error]Process completed with exit code 2.",
       "artifacts": [
+        {
+          "name": "chotuapp-live-logs",
+          "id": 14824838323,
+          "expired": false,
+          "size_in_bytes": 7774
+        },
+        {
+          "name": "chotuapp-excel-files",
+          "id": 14824774057,
+          "expired": false,
+          "size_in_bytes": 131140
+        },
+        {
+          "name": "chotuapp-checkpoint",
+          "id": 14824604399,
+          "expired": false,
+          "size_in_bytes": 5971479
+        },
         {
           "name": "chotuapp-diagnostics",
-          "id": 14825955310,
+          "id": 14824589299,
           "expired": false,
-          "size_in_bytes": 9618
-        },
-        {
-          "name": "chotuapp-excel-files",
-          "id": 14825875529,
-          "expired": false,
-          "size_in_bytes": 162778
-        },
-        {
-          "name": "chotuapp-checkpoint",
-          "id": 14825675639,
-          "expired": false,
-          "size_in_bytes": 10405529
-        },
-        {
-          "name": "chotuapp-live-logs",
-          "id": 14825226514,
-          "expired": false,
-          "size_in_bytes": 11418
+          "size_in_bytes": 5784
         }
       ],
       "summary": {
-        "runner_group": "audit804-fresh804-20261026-5d42fe35-refresh20261120-50e380bc-28",
+        "runner_group": "audit804-fresh804-20261026-5d42fe35-refresh20261120-50e380bc-40",
         "status": "incomplete",
         "stop_reason": "completed_or_source_failure",
         "checkpoint": "saved",
@@ -327,16 +327,16 @@
         "stalled_runs": 0,
         "stores": [
           {
-            "name": "House of Tools",
+            "name": "ChotuApp Groceries",
             "status": "failed",
             "products": null
           }
         ]
       },
       "available_checkpoint_ancestor": {
-        "run_id": "45189559290",
+        "run_id": "45189577908",
         "checked": [
-          "45189559290"
+          "45189577908"
         ]
       },
       "annotations": [
@@ -349,699 +349,9 @@
           "message": "Process completed with exit code 2."
         }
       ],
-      "console-tail.txt": "[House of Tools] [14:01:07] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:07] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23930\n[House of Tools] [14:01:07] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23930\n[House of Tools] WOO PRODUCT PROGRESS: 156/1291 checked; 151 retained\n[House of Tools] [14:01:07] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:07] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23918\n[House of Tools] [14:01:07] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23918\n[House of Tools] SAVED RESPONSE: https://houseoftools.com.pk/product/diy-bundle-w3/\n[House of Tools] WOO PRODUCT PROGRESS: 157/1291 checked; 152 retained\n[House of Tools] [14:01:08] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:08] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23915\n[House of Tools] [14:01:08] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23915\n[House of Tools] SAVED RESPONSE: https://houseoftools.com.pk/product/diy-bundle-w2/\n__CHOTU_PROGRESS__|1|Active: House of Tools\n[House of Tools] [14:01:08] EXCEPTION: AttributeError(\"'int' object has no attribute 'get'\")\n[House of Tools] [14:01:08] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2064, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1557, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 128, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='alfatehgarments.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 221, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 341, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='naheed.pk':return original(base,name,template,log)\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 191, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/meat_source_support.py\", line 146, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='barkatmeathouse.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 366, in run\n    return export(g,base,name,template,log)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 301, in export\n    g['_chotu_wait']();page=g['S'].get(url,timeout=(15,60));details=fixed_bundle_details(p,page)\n                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 207, in fixed_bundle_details\n    if any(entry.get(k) not in ('false',False) for k in ('optional','can_change_product','edit_quantity')) or entry.get('selected') not in ('true',True) or child.get('is_variable') not in ('false',False):raise ValueError('Selectable bundle contents require independent offer verification')\n                                                                                                                                                            ^^^^^^^^^\nAttributeError: 'int' object has no attribute 'get'\n\n[House of Tools] FAILED: House of Tools: 'int' object has no attribute 'get'\n[House of Tools] [14:01:08] STAGE: Idle\nFAILED: House of Tools: FAILED: House of Tools: 'int' object has no attribute 'get'\nFalse\nCheckpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nCheckpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nRUN SUMMARY:\nHouse of Tools: FAILED \u2014 FAILED: House of Tools: 'int' object has no attribute 'get'\nCheckpoint: saved\nRun finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
-      "store-status.txt": "Updated (UTC): 2026-11-23T14:01:10.541619+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nHouse of Tools: failed\n  Stage: Idle",
-      "fetch-log.txt": "[House of Tools] WOO PRODUCT PROGRESS: 129/1291 checked; 129 retained\n[House of Tools] [14:01:06] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:06] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24265\n[House of Tools] [14:01:06] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24265\n[House of Tools] WOO PRODUCT PROGRESS: 130/1291 checked; 130 retained\n[House of Tools] [14:01:06] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:06] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24262\n[House of Tools] [14:01:06] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24262\n[House of Tools] WOO PRODUCT PROGRESS: 131/1291 checked; 131 retained\n[House of Tools] [14:01:06] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:06] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24261\n[House of Tools] [14:01:06] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24261\n[House of Tools] WOO PRODUCT PROGRESS: 132/1291 checked; 132 retained\n[House of Tools] [14:01:06] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:06] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24260\n[House of Tools] [14:01:06] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24260\n[House of Tools] WOO PRODUCT PROGRESS: 133/1291 checked; 133 retained\n[House of Tools] [14:01:06] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:06] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24259\n[House of Tools] [14:01:06] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24259\n[House of Tools] WOO PRODUCT PROGRESS: 134/1291 checked; 134 retained\n[House of Tools] [14:01:07] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:07] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24257\n[House of Tools] [14:01:07] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24257\n[House of Tools] WOO PRODUCT PROGRESS: 135/1291 checked; 135 retained\n[House of Tools] [14:01:07] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:07] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24256\n[House of Tools] [14:01:07] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24256\n[House of Tools] WOO PRODUCT PROGRESS: 136/1291 checked; 136 retained\n[House of Tools] [14:01:07] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:07] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24255\n[House of Tools] [14:01:07] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24255\n[House of Tools] WOO PRODUCT PROGRESS: 137/1291 checked; 137 retained\n[House of Tools] [14:01:07] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:07] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24253\n[House of Tools] [14:01:07] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24253\n[House of Tools] WOO PRODUCT PROGRESS: 138/1291 checked; 138 retained\n[House of Tools] [14:01:07] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:07] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24250\n[House of Tools] [14:01:07] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24250\n[House of Tools] WOO PRODUCT PROGRESS: 139/1291 checked; 139 retained\n[House of Tools] [14:01:07] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:07] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24248\n[House of Tools] [14:01:07] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24248\n[House of Tools] WOO PRODUCT PROGRESS: 140/1291 checked; 140 retained\n[House of Tools] [14:01:07] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:07] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24247\n[House of Tools] [14:01:07] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24247\n[House of Tools] WOO PRODUCT PROGRESS: 141/1291 checked; 141 retained\n[House of Tools] [14:01:07] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:07] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24246\n[House of Tools] [14:01:07] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/24246\n[House of Tools] WOO PRODUCT PROGRESS: 142/1291 checked; 142 retained\n[House of Tools] [14:01:07] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:07] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23885\n[House of Tools] [14:01:07] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23885\n[House of Tools] SAVED RESPONSE: https://houseoftools.com.pk/product/diy-bundle-10/\n[House of Tools] WOO PRODUCT PROGRESS: 143/1291 checked; 143 retained\n[House of Tools] [14:01:07] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:07] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23888\n[House of Tools] [14:01:07] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23888\n[House of Tools] SAVED RESPONSE: https://houseoftools.com.pk/product/sockets-switches-bundle-1/\n[House of Tools] WOO PRODUCT PROGRESS: 144/1291 checked; 144 retained\n[House of Tools] [14:01:07] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:07] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23891\n[House of Tools] [14:01:07] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23891\n[House of Tools] SAVED RESPONSE: https://houseoftools.com.pk/product/sockets-switches-bundle-2/\n[House of Tools] WOO PRODUCT PROGRESS: 145/1291 checked; 145 retained\n[House of Tools] [14:01:07] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:07] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23896\n[House of Tools] [14:01:07] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23896\n[House of Tools] WOO PRODUCT PROGRESS: 146/1291 checked; 146 retained\n[House of Tools] [14:01:07] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:07] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23901\n[House of Tools] [14:01:07] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23901\n[House of Tools] WOO PRODUCT PROGRESS: 147/1291 checked; 147 retained\n[House of Tools] [14:01:07] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:07] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23907\n[House of Tools] [14:01:07] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23907\n[House of Tools] SAVED RESPONSE: https://houseoftools.com.pk/product/diy-bundle-11/\n[House of Tools] WOO PRODUCT PROGRESS: 148/1291 checked; 148 retained\n[House of Tools] [14:01:07] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:07] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23921\n[House of Tools] [14:01:07] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23921\n[House of Tools] [14:01:07] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:07] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23925\n[House of Tools] [14:01:07] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23925\n[House of Tools] [14:01:07] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:07] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23928\n[House of Tools] [14:01:07] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23928\n[House of Tools] SAVED RESPONSE: https://houseoftools.com.pk/product/gardening-bundle-w1/\n[House of Tools] WOO PRODUCT PROGRESS: 151/1291 checked; 149 retained\n[House of Tools] [14:01:07] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:07] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23934\n[House of Tools] [14:01:07] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23934\n[House of Tools] [14:01:07] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:07] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23943\n[House of Tools] [14:01:07] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23943\n[House of Tools] [14:01:07] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:07] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23940\n[House of Tools] [14:01:07] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23940\n[House of Tools] SAVED RESPONSE: https://houseoftools.com.pk/product/diy-bundle-w6/\n[House of Tools] WOO PRODUCT PROGRESS: 154/1291 checked; 150 retained\n[House of Tools] [14:01:07] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:07] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23937\n[House of Tools] [14:01:07] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23937\n[House of Tools] [14:01:07] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:07] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23930\n[House of Tools] [14:01:07] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23930\n[House of Tools] WOO PRODUCT PROGRESS: 156/1291 checked; 151 retained\n[House of Tools] [14:01:07] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:07] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23918\n[House of Tools] [14:01:07] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23918\n[House of Tools] SAVED RESPONSE: https://houseoftools.com.pk/product/diy-bundle-w3/\n[House of Tools] WOO PRODUCT PROGRESS: 157/1291 checked; 152 retained\n[House of Tools] [14:01:08] STAGE: WooCommerce public product prices and pages\n[House of Tools] [14:01:08] GET_JSON: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23915\n[House of Tools] [14:01:08] CACHE HIT: https://houseoftools.com.pk/wp-json/wc/store/v1/products/23915\n[House of Tools] SAVED RESPONSE: https://houseoftools.com.pk/product/diy-bundle-w2/\n__CHOTU_PROGRESS__|1|Active: House of Tools\n[House of Tools] [14:01:08] EXCEPTION: AttributeError(\"'int' object has no attribute 'get'\")\n[House of Tools] [14:01:08] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2064, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1557, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 128, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='alfatehgarments.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 221, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 341, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='naheed.pk':return original(base,name,template,log)\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 191, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/meat_source_support.py\", line 146, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='barkatmeathouse.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 366, in run\n    return export(g,base,name,template,log)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 301, in export\n    g['_chotu_wait']();page=g['S'].get(url,timeout=(15,60));details=fixed_bundle_details(p,page)\n                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 207, in fixed_bundle_details\n    if any(entry.get(k) not in ('false',False) for k in ('optional','can_change_product','edit_quantity')) or entry.get('selected') not in ('true',True) or child.get('is_variable') not in ('false',False):raise ValueError('Selectable bundle contents require independent offer verification')\n                                                                                                                                                            ^^^^^^^^^\nAttributeError: 'int' object has no attribute 'get'\n\n[House of Tools] FAILED: House of Tools: 'int' object has no attribute 'get'\n[House of Tools] [14:01:08] STAGE: Idle\nFAILED: House of Tools: FAILED: House of Tools: 'int' object has no attribute 'get'\nFalse"
-    },
-    {
-      "target": "44815873040",
-      "state": {
-        "conclusion": "failure",
-        "displayTitle": "Automatic continuation of 44696716668",
-        "headSha": "083913cacbd8e321b09c16ba520c06b50a26e140",
-        "jobs": [
-          {
-            "completedAt": "2026-11-20T20:57:19Z",
-            "conclusion": "failure",
-            "databaseId": 136563925984,
-            "name": "fetch",
-            "startedAt": "2026-11-20T20:56:44Z",
-            "status": "completed",
-            "steps": [
-              {
-                "completedAt": "2026-11-20T20:56:45Z",
-                "conclusion": "success",
-                "name": "Set up job",
-                "number": 1,
-                "startedAt": "2026-11-20T20:56:44Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:56:52Z",
-                "conclusion": "success",
-                "name": "Run actions/checkout@v4",
-                "number": 2,
-                "startedAt": "2026-11-20T20:56:45Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:56:53Z",
-                "conclusion": "success",
-                "name": "Run actions/setup-python@v5",
-                "number": 3,
-                "startedAt": "2026-11-20T20:56:52Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:56:56Z",
-                "conclusion": "success",
-                "name": "Install extraction dependencies",
-                "number": 4,
-                "startedAt": "2026-11-20T20:56:53Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:04Z",
-                "conclusion": "success",
-                "name": "Verify standalone continuation and owner-policy guards",
-                "number": 5,
-                "startedAt": "2026-11-20T20:56:56Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:05Z",
-                "conclusion": "success",
-                "name": "Restore optional saved run",
-                "number": 6,
-                "startedAt": "2026-11-20T20:57:04Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:05Z",
-                "conclusion": "skipped",
-                "name": "Install Czone browser fallback when needed",
-                "number": 7,
-                "startedAt": "2026-11-20T20:57:05Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:05Z",
-                "conclusion": "skipped",
-                "name": "Install grocery public storefront renderer when needed",
-                "number": 8,
-                "startedAt": "2026-11-20T20:57:05Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:05Z",
-                "conclusion": "skipped",
-                "name": "Install meat public storefront renderer when needed",
-                "number": 9,
-                "startedAt": "2026-11-20T20:57:05Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:05Z",
-                "conclusion": "skipped",
-                "name": "Install Axis public JS renderer when needed",
-                "number": 10,
-                "startedAt": "2026-11-20T20:57:05Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:05Z",
-                "conclusion": "success",
-                "name": "Start continuous fetching on the cloud runner",
-                "number": 11,
-                "startedAt": "2026-11-20T20:57:05Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:15Z",
-                "conclusion": "success",
-                "name": "Live progress, logs and completed-file uploads",
-                "number": 12,
-                "startedAt": "2026-11-20T20:57:05Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:15Z",
-                "conclusion": "failure",
-                "name": "Fetch result",
-                "number": 13,
-                "startedAt": "2026-11-20T20:57:15Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:15Z",
-                "conclusion": "success",
-                "name": "Collect diagnostic report even if fetching failed",
-                "number": 14,
-                "startedAt": "2026-11-20T20:57:15Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:15Z",
-                "conclusion": "success",
-                "name": "Upload diagnostic report and redacted log",
-                "number": 15,
-                "startedAt": "2026-11-20T20:57:15Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:16Z",
-                "conclusion": "success",
-                "name": "Upload Excel files and audits, including completed stores from a partial run",
-                "number": 16,
-                "startedAt": "2026-11-20T20:57:15Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:16Z",
-                "conclusion": "skipped",
-                "name": "Final automated Rule 804 pass for fresh batch",
-                "number": 17,
-                "startedAt": "2026-11-20T20:57:16Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:16Z",
-                "conclusion": "skipped",
-                "name": "Upload automated Rule 804 fresh workbooks",
-                "number": 18,
-                "startedAt": "2026-11-20T20:57:16Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:17Z",
-                "conclusion": "success",
-                "name": "Upload saved checkpoint when available",
-                "number": 19,
-                "startedAt": "2026-11-20T20:57:16Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:18Z",
-                "conclusion": "success",
-                "name": "Dispatch authorized continuation after verified checkpoint upload",
-                "number": 20,
-                "startedAt": "2026-11-20T20:57:17Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:18Z",
-                "conclusion": "success",
-                "name": "Post Live progress, logs and completed-file uploads",
-                "number": 38,
-                "startedAt": "2026-11-20T20:57:18Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:18Z",
-                "conclusion": "skipped",
-                "name": "Post Run actions/setup-python@v5",
-                "number": 39,
-                "startedAt": "2026-11-20T20:57:18Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:18Z",
-                "conclusion": "success",
-                "name": "Post Run actions/checkout@v4",
-                "number": 40,
-                "startedAt": "2026-11-20T20:57:18Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:18Z",
-                "conclusion": "success",
-                "name": "Complete job",
-                "number": 41,
-                "startedAt": "2026-11-20T20:57:18Z",
-                "status": "completed"
-              }
-            ],
-            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/44815873040/job/136563925984"
-          },
-          {
-            "completedAt": "2026-11-20T20:57:45Z",
-            "conclusion": "success",
-            "databaseId": 136564237461,
-            "name": "Archive structured diagnostics",
-            "startedAt": "2026-11-20T20:57:23Z",
-            "status": "completed",
-            "steps": [
-              {
-                "completedAt": "2026-11-20T20:57:25Z",
-                "conclusion": "success",
-                "name": "Set up job",
-                "number": 1,
-                "startedAt": "2026-11-20T20:57:23Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:38Z",
-                "conclusion": "success",
-                "name": "Run actions/checkout@v4",
-                "number": 2,
-                "startedAt": "2026-11-20T20:57:25Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:38Z",
-                "conclusion": "success",
-                "name": "Run actions/setup-python@v5",
-                "number": 3,
-                "startedAt": "2026-11-20T20:57:38Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:39Z",
-                "conclusion": "success",
-                "name": "Run actions/download-artifact@v4",
-                "number": 4,
-                "startedAt": "2026-11-20T20:57:38Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:42Z",
-                "conclusion": "success",
-                "name": "Archive credential-free JSON on the cloud-reports branch",
-                "number": 5,
-                "startedAt": "2026-11-20T20:57:39Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:42Z",
-                "conclusion": "success",
-                "name": "Post Run actions/setup-python@v5",
-                "number": 9,
-                "startedAt": "2026-11-20T20:57:42Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:42Z",
-                "conclusion": "success",
-                "name": "Post Run actions/checkout@v4",
-                "number": 10,
-                "startedAt": "2026-11-20T20:57:42Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:42Z",
-                "conclusion": "success",
-                "name": "Complete job",
-                "number": 11,
-                "startedAt": "2026-11-20T20:57:42Z",
-                "status": "completed"
-              }
-            ],
-            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/44815873040/job/136564237461"
-          }
-        ],
-        "status": "completed"
-      },
-      "failed_log": "fetch\tUNKNOWN STEP\t2026-11-20T20:57:15.0976287Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 245, in discover\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.0976860Z     batch = get_json(f'{base}/products.json?limit=250&page={page}').get('products', [])\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.0977235Z             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.0977740Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/fast_fetch_support.py\", line 168, in get_json\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.0978227Z     try:return old_get_json(*args,**kwargs)\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.0978476Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.0978905Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 182, in get_json\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.0979563Z     raise RuntimeError(f'Network/JSON error: {exc}') from exc\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.0980083Z RuntimeError: Network/JSON error: 402 Client Error: Payment Required for url: https://deflexxi.online/products.json?redacted\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.0980478Z \nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.0980808Z [Deflexxi] FAILED: Deflexxi: Network/JSON error: 402 Client Error: Payment Required for url: https://deflexxi.online/products.json?redacted\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.0981290Z [Deflexxi] [20:57:12] STAGE: Idle\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.0981772Z FAILED: Deflexxi: FAILED: Deflexxi: Network/JSON error: 402 Client Error: Payment Required for url: https://deflexxi.online/products.json?redacted\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.0982259Z False\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.0982607Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.0983138Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.0983493Z RUN SUMMARY:\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.0984299Z Deflexxi: FAILED \u2014 FAILED: Deflexxi: Network/JSON error: 402 Client Error: Payment Required for url: https://deflexxi.online/products.json?redacted\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.0985039Z Checkpoint: saved\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.0985428Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.1010034Z ##[error]Process completed with exit code 2.\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.1053455Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.1054004Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.1072390Z shell: /usr/bin/bash -e {0}\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.1072612Z env:\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.1072937Z   CHOTUAPP_CLOUD_DATA: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.1073428Z   CLOUD_RUNNER_GROUP: audit804-fresh804-20261026-5d42fe35-refresh20261120-50e380bc-32\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.1073798Z   CLOUD_PARTITION_RESUME: true\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.1074090Z   CLOUD_STORES: [{\"name\":\"Deflexxi\",\"url\":\"https://deflexxi.online\"}]\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.1074391Z   CLOUD_MINUTES: 300\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.1074591Z   RESUME_RUN_ID: 44696716668\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:15.1075013Z   SAVE_CHECKPOINT: true\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:17.5051830Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:17.5052122Z   CLOUD_NEEDS_CZONE_BROWSER: false\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:17.5052366Z   CLOUD_NEEDS_AXIS_RENDERER: false\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:17.5052597Z   CLOUD_NEEDS_MEAT_BROWSER: false\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:17.5052833Z   CLOUD_NEEDS_GROCERY_BROWSER: false\n[credential-bearing log line removed]\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:17.5055549Z ##[endgroup]\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:18.0823566Z No continuation: completed, stopped manually, unauthorized or not a time-budget stop.\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:18.1072420Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:18.1144875Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:18.1861987Z [command]/usr/bin/git version\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:18.1929794Z git version 2.56.1\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:18.1961631Z Temporarily overriding HOME='/home/runner/work/_temp/9378dacf-92f6-4aa6-a464-babed6d60692' before making global git config changes\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:18.1962733Z Adding repository directory to the temporary git global config as a safe directory\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:18.1966982Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ChotuApp-Software/ChotuApp-Software\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:18.2005022Z [command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:18.2039494Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:18.2279291Z [command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nfetch\tUNKNOWN STEP\t2026-11-20T20:57:18.2306476Z http.https://github.com/.extraheader",
-      "artifacts": [
-        {
-          "name": "chotuapp-excel-files",
-          "id": 14669077976,
-          "expired": false,
-          "size_in_bytes": 13907
-        },
-        {
-          "name": "chotuapp-live-logs",
-          "id": 14669077968,
-          "expired": false,
-          "size_in_bytes": 6065
-        },
-        {
-          "name": "chotuapp-checkpoint",
-          "id": 14669052665,
-          "expired": false,
-          "size_in_bytes": 63055
-        }
-      ],
-      "summary": {
-        "runner_group": "audit804-fresh804-20261026-5d42fe35-refresh20261120-50e380bc-32",
-        "status": "incomplete",
-        "stop_reason": "completed_or_source_failure",
-        "checkpoint": "saved",
-        "auto_continue_limit": 48,
-        "continuation_index": 0,
-        "stalled_runs": 0,
-        "stores": [
-          {
-            "name": "Deflexxi",
-            "status": "failed",
-            "products": null
-          }
-        ]
-      },
-      "available_checkpoint_ancestor": {
-        "run_id": "44815873040",
-        "checked": [
-          "44815873040"
-        ]
-      },
-      "annotations": [
-        {
-          "level": "warning",
-          "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
-        },
-        {
-          "level": "failure",
-          "message": "Process completed with exit code 2."
-        }
-      ],
-      "console-tail.txt": "                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1557, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 128, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='alfatehgarments.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 221, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 341, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='naheed.pk':return original(base,name,template,log)\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 191, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/meat_source_support.py\", line 146, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='barkatmeathouse.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 365, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.') not in HOSTS:return original(base,name,template,log)\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 386, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.')!='laam.com':return original(base,name,template,log)\n                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 478, in run\n    if host!='czone.com.pk':return original(base,name,template,log)\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1083, in run_site\n    products, complete_catalog=discover(base,log)\n                               ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/source_compatibility_support.py\", line 10, in discover\n    if host not in ('pk.khaadi.com','khaadi.com','sapphireonline.pk','pk.sapphireonline.pk'):return original(base,log)\n                                                                                                    ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/seran_source_support.py\", line 75, in discover\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.')!=HOST:return original(base,log)\n                                                                                 ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/fast_fetch_support.py\", line 209, in discover\n    result=old_discover(base,log);tls.fast_products=result[0];return result\n           ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 245, in discover\n    batch = get_json(f'{base}/products.json?limit=250&page={page}').get('products', [])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/fast_fetch_support.py\", line 168, in get_json\n    try:return old_get_json(*args,**kwargs)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 182, in get_json\n    raise RuntimeError(f'Network/JSON error: {exc}') from exc\nRuntimeError: Network/JSON error: 402 Client Error: Payment Required for url: https://deflexxi.online/products.json?redacted\n\n[Deflexxi] FAILED: Deflexxi: Network/JSON error: 402 Client Error: Payment Required for url: https://deflexxi.online/products.json?redacted\n[Deflexxi] [20:57:12] STAGE: Idle\nFAILED: Deflexxi: FAILED: Deflexxi: Network/JSON error: 402 Client Error: Payment Required for url: https://deflexxi.online/products.json?redacted\nFalse\nCheckpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nCheckpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nRUN SUMMARY:\nDeflexxi: FAILED \u2014 FAILED: Deflexxi: Network/JSON error: 402 Client Error: Payment Required for url: https://deflexxi.online/products.json?redacted\nCheckpoint: saved\nRun finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
-      "store-status.txt": "Updated (UTC): 2026-11-20T20:57:14.174489+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nDeflexxi: failed\n  Stage: Idle",
-      "fetch-log.txt": "RUNNER STORES: Deflexxi\nPARALLEL STORES: up to 3 different websites together; source pacing, cooldowns and checks preserved.\nCONTINUE SAVED RUN: Deflexxi\n[Deflexxi] SOFTWARE VERSION: 3e16bd7d173b67be \u2014 installed code loaded\n[Deflexxi] [20:57:05] STAGE: Starting Deflexxi\n[Deflexxi] SAVED RUN: completed requests are durable; an incomplete request will be retried.\n[Deflexxi] CONTINUE SAVED RUN: successful responses reused; unfinished requests retried.\n[Deflexxi] CHECKPOINT: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/saved_runs/e470b11ababb415e8e146a2e5419d9bd/0/api.sqlite3 (this run only; restarting Fetch begins from zero)\n__CHOTU_PROGRESS__|1|Active: Deflexxi\n[Deflexxi] [20:57:05] STAGE: Website listing order\n[Deflexxi] [20:57:05] HTTP START attempt=1 https://deflexxi.online/robots.txt\n[Deflexxi] [20:57:05] CACHE HIT status=200 elapsed=0.0s bytes=70 https://deflexxi.online/robots.txt\n[Deflexxi] WEBSITE ORDER UNVERIFIED: Storefront order path disallowed by source robots; observed prefix retained, no price/bestseller fallback\n[Deflexxi] [20:57:05] STAGE: Discover catalog\n[Deflexxi] [20:57:05] GET_JSON: https://deflexxi.online/products.json?redacted\n[Deflexxi] [20:57:05] HTTP START attempt=1 https://deflexxi.online/products.json?redacted\n[Deflexxi] [20:57:06] HTTP END status=402 elapsed=0.1s bytes=29 https://deflexxi.online/products.json?redacted\n[Deflexxi] [20:57:07] HTTP START attempt=2 https://deflexxi.online/products.json?redacted\n[Deflexxi] [20:57:07] HTTP END status=402 elapsed=0.1s bytes=29 https://deflexxi.online/products.json?redacted\n[Deflexxi] [20:57:09] HTTP START attempt=3 https://deflexxi.online/products.json?redacted\n[Deflexxi] [20:57:09] HTTP END status=402 elapsed=0.1s bytes=29 https://deflexxi.online/products.json?redacted\n[Deflexxi] [20:57:12] HTTP START attempt=4 https://deflexxi.online/products.json?redacted\n[Deflexxi] [20:57:12] HTTP END status=402 elapsed=0.1s bytes=29 https://deflexxi.online/products.json?redacted\n__CHOTU_PROGRESS__|1|Active: Deflexxi\n[Deflexxi] [20:57:12] EXCEPTION: RuntimeError('Network/JSON error: 402 Client Error: Payment Required for url: https://deflexxi.online/products.json?redacted')\n[Deflexxi] [20:57:12] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 170, in get_json\n    r.raise_for_status()\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/requests/models.py\", line 1167, in raise_for_status\n    raise HTTPError(http_error_msg, response=self)\nrequests.exceptions.HTTPError: 402 Client Error: Payment Required for url: https://deflexxi.online/products.json?redacted\n\nThe above exception was the direct cause of the following exception:\n\nTraceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2064, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1557, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 128, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='alfatehgarments.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 221, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 341, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='naheed.pk':return original(base,name,template,log)\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 191, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/meat_source_support.py\", line 146, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='barkatmeathouse.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 365, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.') not in HOSTS:return original(base,name,template,log)\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 386, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.')!='laam.com':return original(base,name,template,log)\n                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 478, in run\n    if host!='czone.com.pk':return original(base,name,template,log)\n                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1083, in run_site\n    products, complete_catalog=discover(base,log)\n                               ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/source_compatibility_support.py\", line 10, in discover\n    if host not in ('pk.khaadi.com','khaadi.com','sapphireonline.pk','pk.sapphireonline.pk'):return original(base,log)\n                                                                                                    ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/seran_source_support.py\", line 75, in discover\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.')!=HOST:return original(base,log)\n                                                                                 ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/fast_fetch_support.py\", line 209, in discover\n    result=old_discover(base,log);tls.fast_products=result[0];return result\n           ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 245, in discover\n    batch = get_json(f'{base}/products.json?limit=250&page={page}').get('products', [])\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/fast_fetch_support.py\", line 168, in get_json\n    try:return old_get_json(*args,**kwargs)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 182, in get_json\n    raise RuntimeError(f'Network/JSON error: {exc}') from exc\nRuntimeError: Network/JSON error: 402 Client Error: Payment Required for url: https://deflexxi.online/products.json?redacted\n\n[Deflexxi] FAILED: Deflexxi: Network/JSON error: 402 Client Error: Payment Required for url: https://deflexxi.online/products.json?redacted\n[Deflexxi] [20:57:12] STAGE: Idle\nFAILED: Deflexxi: FAILED: Deflexxi: Network/JSON error: 402 Client Error: Payment Required for url: https://deflexxi.online/products.json?redacted\nFalse"
-    },
-    {
-      "target": "44815861248",
-      "state": {
-        "conclusion": "failure",
-        "displayTitle": "Automatic continuation of 44696673384",
-        "headSha": "083913cacbd8e321b09c16ba520c06b50a26e140",
-        "jobs": [
-          {
-            "completedAt": "2026-11-20T21:10:22Z",
-            "conclusion": "failure",
-            "databaseId": 136563883179,
-            "name": "fetch",
-            "startedAt": "2026-11-20T20:56:39Z",
-            "status": "completed",
-            "steps": [
-              {
-                "completedAt": "2026-11-20T20:56:41Z",
-                "conclusion": "success",
-                "name": "Set up job",
-                "number": 1,
-                "startedAt": "2026-11-20T20:56:40Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:56:48Z",
-                "conclusion": "success",
-                "name": "Run actions/checkout@v4",
-                "number": 2,
-                "startedAt": "2026-11-20T20:56:41Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:56:48Z",
-                "conclusion": "success",
-                "name": "Run actions/setup-python@v5",
-                "number": 3,
-                "startedAt": "2026-11-20T20:56:48Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:56:52Z",
-                "conclusion": "success",
-                "name": "Install extraction dependencies",
-                "number": 4,
-                "startedAt": "2026-11-20T20:56:48Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:04Z",
-                "conclusion": "success",
-                "name": "Verify standalone continuation and owner-policy guards",
-                "number": 5,
-                "startedAt": "2026-11-20T20:56:52Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:07Z",
-                "conclusion": "success",
-                "name": "Restore optional saved run",
-                "number": 6,
-                "startedAt": "2026-11-20T20:57:04Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:07Z",
-                "conclusion": "skipped",
-                "name": "Install Czone browser fallback when needed",
-                "number": 7,
-                "startedAt": "2026-11-20T20:57:07Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:07Z",
-                "conclusion": "skipped",
-                "name": "Install grocery public storefront renderer when needed",
-                "number": 8,
-                "startedAt": "2026-11-20T20:57:07Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:07Z",
-                "conclusion": "skipped",
-                "name": "Install meat public storefront renderer when needed",
-                "number": 9,
-                "startedAt": "2026-11-20T20:57:07Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:07Z",
-                "conclusion": "skipped",
-                "name": "Install Axis public JS renderer when needed",
-                "number": 10,
-                "startedAt": "2026-11-20T20:57:07Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T20:57:07Z",
-                "conclusion": "success",
-                "name": "Start continuous fetching on the cloud runner",
-                "number": 11,
-                "startedAt": "2026-11-20T20:57:07Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T21:10:13Z",
-                "conclusion": "success",
-                "name": "Live progress, logs and completed-file uploads",
-                "number": 12,
-                "startedAt": "2026-11-20T20:57:07Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T21:10:13Z",
-                "conclusion": "failure",
-                "name": "Fetch result",
-                "number": 13,
-                "startedAt": "2026-11-20T21:10:13Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T21:10:13Z",
-                "conclusion": "success",
-                "name": "Collect diagnostic report even if fetching failed",
-                "number": 14,
-                "startedAt": "2026-11-20T21:10:13Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T21:10:15Z",
-                "conclusion": "success",
-                "name": "Upload diagnostic report and redacted log",
-                "number": 15,
-                "startedAt": "2026-11-20T21:10:13Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T21:10:16Z",
-                "conclusion": "success",
-                "name": "Upload Excel files and audits, including completed stores from a partial run",
-                "number": 16,
-                "startedAt": "2026-11-20T21:10:15Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T21:10:16Z",
-                "conclusion": "skipped",
-                "name": "Final automated Rule 804 pass for fresh batch",
-                "number": 17,
-                "startedAt": "2026-11-20T21:10:16Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T21:10:16Z",
-                "conclusion": "skipped",
-                "name": "Upload automated Rule 804 fresh workbooks",
-                "number": 18,
-                "startedAt": "2026-11-20T21:10:16Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T21:10:19Z",
-                "conclusion": "success",
-                "name": "Upload saved checkpoint when available",
-                "number": 19,
-                "startedAt": "2026-11-20T21:10:16Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T21:10:19Z",
-                "conclusion": "success",
-                "name": "Dispatch authorized continuation after verified checkpoint upload",
-                "number": 20,
-                "startedAt": "2026-11-20T21:10:19Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T21:10:19Z",
-                "conclusion": "success",
-                "name": "Post Live progress, logs and completed-file uploads",
-                "number": 38,
-                "startedAt": "2026-11-20T21:10:19Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T21:10:19Z",
-                "conclusion": "skipped",
-                "name": "Post Run actions/setup-python@v5",
-                "number": 39,
-                "startedAt": "2026-11-20T21:10:19Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T21:10:20Z",
-                "conclusion": "success",
-                "name": "Post Run actions/checkout@v4",
-                "number": 40,
-                "startedAt": "2026-11-20T21:10:19Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T21:10:20Z",
-                "conclusion": "success",
-                "name": "Complete job",
-                "number": 41,
-                "startedAt": "2026-11-20T21:10:20Z",
-                "status": "completed"
-              }
-            ],
-            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/44815861248/job/136563883179"
-          },
-          {
-            "completedAt": "2026-11-20T21:10:41Z",
-            "conclusion": "success",
-            "databaseId": 136570969467,
-            "name": "Archive structured diagnostics",
-            "startedAt": "2026-11-20T21:10:24Z",
-            "status": "completed",
-            "steps": [
-              {
-                "completedAt": "2026-11-20T21:10:26Z",
-                "conclusion": "success",
-                "name": "Set up job",
-                "number": 1,
-                "startedAt": "2026-11-20T21:10:25Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T21:10:34Z",
-                "conclusion": "success",
-                "name": "Run actions/checkout@v4",
-                "number": 2,
-                "startedAt": "2026-11-20T21:10:26Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T21:10:35Z",
-                "conclusion": "success",
-                "name": "Run actions/setup-python@v5",
-                "number": 3,
-                "startedAt": "2026-11-20T21:10:34Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T21:10:35Z",
-                "conclusion": "success",
-                "name": "Run actions/download-artifact@v4",
-                "number": 4,
-                "startedAt": "2026-11-20T21:10:35Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T21:10:39Z",
-                "conclusion": "success",
-                "name": "Archive credential-free JSON on the cloud-reports branch",
-                "number": 5,
-                "startedAt": "2026-11-20T21:10:35Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T21:10:39Z",
-                "conclusion": "success",
-                "name": "Post Run actions/setup-python@v5",
-                "number": 9,
-                "startedAt": "2026-11-20T21:10:39Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T21:10:39Z",
-                "conclusion": "success",
-                "name": "Post Run actions/checkout@v4",
-                "number": 10,
-                "startedAt": "2026-11-20T21:10:39Z",
-                "status": "completed"
-              },
-              {
-                "completedAt": "2026-11-20T21:10:39Z",
-                "conclusion": "success",
-                "name": "Complete job",
-                "number": 11,
-                "startedAt": "2026-11-20T21:10:39Z",
-                "status": "completed"
-              }
-            ],
-            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/44815861248/job/136570969467"
-          }
-        ],
-        "status": "completed"
-      },
-      "failed_log": "fetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6629057Z [Xcessories Hub] [21:10:08] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/147812\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6630464Z [Xcessories Hub] [21:10:08] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/147812\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6631586Z [Xcessories Hub] WOO PRODUCT PROGRESS: 1565/3114 checked; 1560 retained\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6632428Z [Xcessories Hub] [21:10:09] STAGE: WooCommerce public product prices and pages\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6633421Z [Xcessories Hub] [21:10:09] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/147563\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6635230Z [Xcessories Hub] [21:10:09] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/147563\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6636114Z __CHOTU_PROGRESS__|1|Active: Xcessories Hub\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6636969Z [Xcessories Hub] [21:10:09] EXCEPTION: ValueError('Unsupported WooCommerce product type: variable')\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6637673Z [Xcessories Hub] [21:10:09] Traceback (most recent call last):\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6643696Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2064, in _run_checked\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6644768Z     run_site(site['url'], name, template, log_line)\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6645794Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6646644Z     if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6647200Z                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6647874Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1557, in run_site\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6648528Z     _chotuapp_run_site_original(base, name, template, intercept)\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6649216Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6650142Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6650872Z                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6651605Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6676027Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6676683Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 274, in export\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6677370Z     vs=variants(p,get);offers=[(v,a,offer(v)) for v,a in vs]\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6677707Z        ^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6678310Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 37, in variants\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6679285Z     if parent['type']!='variable' or not parent.get('variations'):raise ValueError('Unsupported WooCommerce product type: '+str(parent.get('type')))\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6680041Z                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6680521Z ValueError: Unsupported WooCommerce product type: variable\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6680784Z \nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6681046Z [Xcessories Hub] FAILED: Xcessories Hub: Unsupported WooCommerce product type: variable\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6681504Z [Xcessories Hub] [21:10:09] STAGE: Idle\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6681970Z FAILED: Xcessories Hub: FAILED: Xcessories Hub: Unsupported WooCommerce product type: variable\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6682422Z False\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6682850Z Checkpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6683678Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6684422Z RUN SUMMARY:\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6685089Z Xcessories Hub: FAILED \u2014 FAILED: Xcessories Hub: Unsupported WooCommerce product type: variable\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6685582Z Checkpoint: saved\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6686068Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6706971Z ##[error]Process completed with exit code 2.\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6755759Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6756474Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6776529Z shell: /usr/bin/bash -e {0}\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6776804Z env:\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6777206Z   CHOTUAPP_CLOUD_DATA: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6777865Z   CLOUD_RUNNER_GROUP: audit804-fresh804-20261026-5d42fe35-refresh20261120-50e380bc-18\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6778333Z   CLOUD_PARTITION_RESUME: true\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6778742Z   CLOUD_STORES: [{\"name\":\"Xcessories Hub\",\"url\":\"https://xcessorieshub.com\"}]\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6779151Z   CLOUD_MINUTES: 300\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6779383Z   RESUME_RUN_ID: 44696673384\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:13.6779642Z   SAVE_CHECKPOINT: true\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:19.1672502Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:19.1672896Z   CLOUD_NEEDS_CZONE_BROWSER: false\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:19.1673208Z   CLOUD_NEEDS_AXIS_RENDERER: false\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:19.1673509Z   CLOUD_NEEDS_MEAT_BROWSER: false\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:19.1673801Z   CLOUD_NEEDS_GROCERY_BROWSER: false\n[credential-bearing log line removed]\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:19.1677101Z ##[endgroup]\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:19.9043004Z No continuation: completed, stopped manually, unauthorized or not a time-budget stop.\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:19.9337413Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:19.9421147Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:20.0301133Z [command]/usr/bin/git version\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:20.0348345Z git version 2.56.1\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:20.0419607Z Temporarily overriding HOME='/home/runner/work/_temp/aab2c443-69b3-4aa6-9ca1-b09363afc26c' before making global git config changes\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:20.0421201Z Adding repository directory to the temporary git global config as a safe directory\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:20.0425516Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ChotuApp-Software/ChotuApp-Software\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:20.0470660Z [command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:20.0525150Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:20.0810385Z [command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nfetch\tUNKNOWN STEP\t2026-11-20T21:10:20.0846437Z http.https://github.com/.extraheader",
-      "artifacts": [
-        {
-          "name": "chotuapp-excel-files",
-          "id": 14670780158,
-          "expired": false,
-          "size_in_bytes": 21805
-        },
-        {
-          "name": "chotuapp-checkpoint",
-          "id": 14670700130,
-          "expired": false,
-          "size_in_bytes": 57480730
-        },
-        {
-          "name": "chotuapp-live-logs",
-          "id": 14669933020,
-          "expired": false,
-          "size_in_bytes": 58121
-        }
-      ],
-      "summary": {
-        "runner_group": "audit804-fresh804-20261026-5d42fe35-refresh20261120-50e380bc-18",
-        "status": "incomplete",
-        "stop_reason": "completed_or_source_failure",
-        "checkpoint": "saved",
-        "auto_continue_limit": 48,
-        "continuation_index": 0,
-        "stalled_runs": 0,
-        "stores": [
-          {
-            "name": "Xcessories Hub",
-            "status": "failed",
-            "products": null
-          }
-        ]
-      },
-      "available_checkpoint_ancestor": {
-        "run_id": "44815861248",
-        "checked": [
-          "44815861248"
-        ]
-      },
-      "annotations": [
-        {
-          "level": "warning",
-          "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
-        },
-        {
-          "level": "failure",
-          "message": "Process completed with exit code 2."
-        }
-      ],
-      "console-tail.txt": "[Xcessories Hub] [21:10:08] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/147827\n[Xcessories Hub] [21:10:08] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/147827\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1564/3114 checked; 1559 retained\n[Xcessories Hub] [21:10:08] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:08] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/147802\n[Xcessories Hub] [21:10:08] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/147802\n[Xcessories Hub] [21:10:08] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:08] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/147812\n[Xcessories Hub] [21:10:08] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/147812\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1565/3114 checked; 1560 retained\n[Xcessories Hub] [21:10:09] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:09] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/147563\n[Xcessories Hub] [21:10:09] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/147563\n__CHOTU_PROGRESS__|1|Active: Xcessories Hub\n[Xcessories Hub] [21:10:09] EXCEPTION: ValueError('Unsupported WooCommerce product type: variable')\n[Xcessories Hub] [21:10:09] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2064, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1557, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 128, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='alfatehgarments.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 221, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 341, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='naheed.pk':return original(base,name,template,log)\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 191, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/meat_source_support.py\", line 146, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='barkatmeathouse.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 366, in run\n    return export(g,base,name,template,log)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 274, in export\n    vs=variants(p,get);offers=[(v,a,offer(v)) for v,a in vs]\n       ^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 37, in variants\n    if parent['type']!='variable' or not parent.get('variations'):raise ValueError('Unsupported WooCommerce product type: '+str(parent.get('type')))\n                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Unsupported WooCommerce product type: variable\n\n[Xcessories Hub] FAILED: Xcessories Hub: Unsupported WooCommerce product type: variable\n[Xcessories Hub] [21:10:09] STAGE: Idle\nFAILED: Xcessories Hub: FAILED: Xcessories Hub: Unsupported WooCommerce product type: variable\nFalse\nCheckpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nCheckpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nRUN SUMMARY:\nXcessories Hub: FAILED \u2014 FAILED: Xcessories Hub: Unsupported WooCommerce product type: variable\nCheckpoint: saved\nRun finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
-      "store-status.txt": "Updated (UTC): 2026-11-20T21:10:11.903799+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nXcessories Hub: failed\n  Stage: Idle",
-      "fetch-log.txt": "[Xcessories Hub] [21:09:59] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/151075\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1547/3114 checked; 1542 retained\n[Xcessories Hub] [21:10:00] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:00] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/151065\n[Xcessories Hub] [21:10:00] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/151065\n[Xcessories Hub] [21:10:00] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:00] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/151072\n[Xcessories Hub] [21:10:00] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/151072\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1548/3114 checked; 1543 retained\n[Xcessories Hub] [21:10:00] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:00] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/150994\n[Xcessories Hub] [21:10:00] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/150994\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1549/3114 checked; 1544 retained\n[Xcessories Hub] [21:10:01] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:01] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/150889\n[Xcessories Hub] [21:10:01] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/150889\n[Xcessories Hub] [21:10:01] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:01] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/212018\n[Xcessories Hub] [21:10:01] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/212018\n[Xcessories Hub] [21:10:01] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:01] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/212019\n[Xcessories Hub] [21:10:01] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/212019\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1550/3114 checked; 1545 retained\n[Xcessories Hub] [21:10:01] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:01] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/150875\n[Xcessories Hub] [21:10:01] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/150875\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1551/3114 checked; 1546 retained\n[Xcessories Hub] [21:10:02] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:02] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/150222\n[Xcessories Hub] [21:10:02] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/150222\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1552/3114 checked; 1547 retained\n[Xcessories Hub] [21:10:02] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:02] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/150217\n[Xcessories Hub] [21:10:02] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/150217\n[Xcessories Hub] [21:10:02] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:02] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/150220\n[Xcessories Hub] [21:10:02] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/150220\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1553/3114 checked; 1548 retained\n[Xcessories Hub] [21:10:03] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:03] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/150205\n[Xcessories Hub] [21:10:03] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/150205\n[Xcessories Hub] [21:10:03] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:03] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/150210\n[Xcessories Hub] [21:10:03] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/150210\n[Xcessories Hub] [21:10:03] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:03] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/150211\n[Xcessories Hub] [21:10:03] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/150211\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1554/3114 checked; 1549 retained\n[Xcessories Hub] [21:10:03] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:03] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/150196\n[Xcessories Hub] [21:10:03] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/150196\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1555/3114 checked; 1550 retained\n[Xcessories Hub] [21:10:04] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:04] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/149840\n[Xcessories Hub] [21:10:04] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/149840\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1556/3114 checked; 1551 retained\n[Xcessories Hub] [21:10:04] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:04] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/149740\n[Xcessories Hub] [21:10:04] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/149740\n[Xcessories Hub] [21:10:04] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:04] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/194450\n[Xcessories Hub] [21:10:04] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/194450\n[Xcessories Hub] [21:10:04] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:04] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/194451\n[Xcessories Hub] [21:10:04] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/194451\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1557/3114 checked; 1552 retained\n[Xcessories Hub] [21:10:05] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:05] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/149736\n[Xcessories Hub] [21:10:05] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/149736\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1558/3114 checked; 1553 retained\n[Xcessories Hub] [21:10:05] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:05] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/149653\n[Xcessories Hub] [21:10:05] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/149653\n[Xcessories Hub] [21:10:05] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:05] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/149654\n[Xcessories Hub] [21:10:05] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/149654\n[Xcessories Hub] [21:10:05] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:05] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/149655\n[Xcessories Hub] [21:10:05] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/149655\n[Xcessories Hub] [21:10:05] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:05] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/149656\n[Xcessories Hub] [21:10:05] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/149656\n[Xcessories Hub] [21:10:05] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:05] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/149657\n[Xcessories Hub] [21:10:05] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/149657\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1559/3114 checked; 1554 retained\n[Xcessories Hub] [21:10:06] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:06] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/148994\n[Xcessories Hub] [21:10:06] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/148994\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1560/3114 checked; 1555 retained\n[Xcessories Hub] [21:10:06] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:06] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/148345\n[Xcessories Hub] [21:10:06] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/148345\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1561/3114 checked; 1556 retained\n[Xcessories Hub] [21:10:07] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:07] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/148173\n[Xcessories Hub] [21:10:07] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/148173\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1562/3114 checked; 1557 retained\n[Xcessories Hub] [21:10:07] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:07] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/148158\n[Xcessories Hub] [21:10:07] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/148158\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1563/3114 checked; 1558 retained\n[Xcessories Hub] [21:10:08] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:08] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/147815\n[Xcessories Hub] [21:10:08] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/147815\n[Xcessories Hub] [21:10:08] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:08] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/147827\n[Xcessories Hub] [21:10:08] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/147827\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1564/3114 checked; 1559 retained\n[Xcessories Hub] [21:10:08] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:08] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/147802\n[Xcessories Hub] [21:10:08] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/147802\n[Xcessories Hub] [21:10:08] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:08] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/147812\n[Xcessories Hub] [21:10:08] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/147812\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1565/3114 checked; 1560 retained\n[Xcessories Hub] [21:10:09] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [21:10:09] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/147563\n[Xcessories Hub] [21:10:09] CACHE HIT: https://xcessorieshub.com/wp-json/wc/store/v1/products/147563\n__CHOTU_PROGRESS__|1|Active: Xcessories Hub\n[Xcessories Hub] [21:10:09] EXCEPTION: ValueError('Unsupported WooCommerce product type: variable')\n[Xcessories Hub] [21:10:09] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2064, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1557, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 128, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='alfatehgarments.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 221, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 341, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='naheed.pk':return original(base,name,template,log)\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 191, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/meat_source_support.py\", line 146, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='barkatmeathouse.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 366, in run\n    return export(g,base,name,template,log)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 274, in export\n    vs=variants(p,get);offers=[(v,a,offer(v)) for v,a in vs]\n       ^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 37, in variants\n    if parent['type']!='variable' or not parent.get('variations'):raise ValueError('Unsupported WooCommerce product type: '+str(parent.get('type')))\n                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Unsupported WooCommerce product type: variable\n\n[Xcessories Hub] FAILED: Xcessories Hub: Unsupported WooCommerce product type: variable\n[Xcessories Hub] [21:10:09] STAGE: Idle\nFAILED: Xcessories Hub: FAILED: Xcessories Hub: Unsupported WooCommerce product type: variable\nFalse"
+      "console-tail.txt": "[ChotuApp Groceries] [14:02:07] STAGE: Grocery listing pages\n[ChotuApp Groceries] [14:02:07] HTTP START attempt=1 https://www.naheed.pk/allproducts?redacted\n[ChotuApp Groceries] [14:02:07] CACHE HIT status=200 elapsed=0.0s bytes=412069 https://www.naheed.pk/allproducts?redacted\n[ChotuApp Groceries] [14:02:07] STAGE: Grocery listing pages\n[ChotuApp Groceries] [14:02:07] HTTP START attempt=1 https://www.naheed.pk/allproducts?redacted\n[ChotuApp Groceries] [14:02:07] CACHE HIT status=200 elapsed=0.0s bytes=348964 https://www.naheed.pk/allproducts?redacted\n[ChotuApp Groceries] [14:02:07] STAGE: Grocery listing pages\n[ChotuApp Groceries] [14:02:07] HTTP START attempt=1 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] [14:02:09] HTTP END status=200 elapsed=1.9s bytes=291514 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] GROCERY PUBLIC UI: traversal step 1; 192 product links\n__CHOTU_PROGRESS__|1|Active: ChotuApp Groceries\n[ChotuApp Groceries] [14:02:25] EXCEPTION: ValueError('Foreign or scope-changing grocery UI navigation')\n[ChotuApp Groceries] [14:02:25] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2064, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1557, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 128, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='alfatehgarments.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 221, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 344, in run\n    provider=PublicCatalog(g,log,brand_refresh=True);export(g,BASE,STORE,template,log,provider=provider)\n                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 226, in export\n    products=provider.catalog()\n             ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 249, in catalog\n    discovered,expected,seen=self.discover_scope(scope)\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 162, in discover_scope\n    return discover_brand_scope(self,scope)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/naheed_brand_support.py\", line 73, in discover_brand_scope\n    try:links,total,pages=reader.discover_scope(dict(scope,_resolved_brand=True))\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 179, in discover_scope\n    try:rendered=render_listing(url,self.g['_chotu_wait'],self.log,**({'brand':scope['brand']} if scope.get('brand') and seed.path.startswith('/catalogsearch/') else {}))\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/grocery_browser_support.py\", line 84, in render_listing\n    if actual.scheme!='https' or actual.netloc!='www.naheed.pk' or actual.path.rstrip('/')!=wanted.path.rstrip('/') or any(dict(parse_qsl(actual.query)).get(k)!=v for k,v in parse_qsl(wanted.query) if k in ('q','manufacturer')):raise ValueError('Foreign or scope-changing grocery UI navigation')\n                                                                                                                                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Foreign or scope-changing grocery UI navigation\n\n[ChotuApp Groceries] FAILED: ChotuApp Groceries: Foreign or scope-changing grocery UI navigation\n[ChotuApp Groceries] [14:02:25] STAGE: Idle\nFAILED: ChotuApp Groceries: FAILED: ChotuApp Groceries: Foreign or scope-changing grocery UI navigation\nFalse\nCheckpoint packaging: excluding request caches for 0 completed stores; Excel files and audits retained.\nCheckpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nRUN SUMMARY:\nChotuApp Groceries: FAILED \u2014 FAILED: ChotuApp Groceries: Foreign or scope-changing grocery UI navigation\nCheckpoint: saved\nRun finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+      "store-status.txt": "Updated (UTC): 2026-11-23T14:02:27.082397+00:00\nSaved Excel files: 0\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\nNone yet.\n\nSTORE STATUS\nChotuApp Groceries: failed\n  Stage: Idle\n  Last successful HTTP response (UTC): 2026-11-23T14:02:09.836905+00:00",
+      "fetch-log.txt": "RUNNER STORES: ChotuApp Groceries\nPARALLEL STORES: up to 3 different websites together; source pacing, cooldowns and checks preserved.\nCONTINUE SAVED RUN: ChotuApp Groceries\n[ChotuApp Groceries] SOFTWARE VERSION: 3e16bd7d173b67be \u2014 installed code loaded\n[ChotuApp Groceries] [14:02:06] STAGE: Starting ChotuApp Groceries\n[ChotuApp Groceries] SAVED RUN: completed requests are durable; an incomplete request will be retried.\n[ChotuApp Groceries] CONTINUE SAVED RUN: successful responses reused; unfinished requests retried.\n[ChotuApp Groceries] CHECKPOINT: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/saved_runs/4c80bd1844f640f8801302ed478c52c5/0/api.sqlite3 (this run only; restarting Fetch begins from zero)\n__CHOTU_PROGRESS__|1|Active: ChotuApp Groceries\n[ChotuApp Groceries] [14:02:06] STAGE: Website listing order\n[ChotuApp Groceries] [14:02:06] HTTP START attempt=1 https://www.naheed.pk/robots.txt\n[ChotuApp Groceries] [14:02:06] CACHE HIT status=200 elapsed=0.0s bytes=1443 https://www.naheed.pk/robots.txt\n[ChotuApp Groceries] [14:02:06] HTTP START attempt=1 https://www.naheed.pk/\n[ChotuApp Groceries] [14:02:06] CACHE HIT status=200 elapsed=0.0s bytes=331902 https://www.naheed.pk/\n[ChotuApp Groceries] WEBSITE ORDER UNVERIFIED: No supported public category navigation found; observed prefix retained, no price/bestseller fallback\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 1/222\n[ChotuApp Groceries] GROCERY SCOPE: 1/222 traversed; 11 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 2/222\n[ChotuApp Groceries] GROCERY SCOPE: 2/222 traversed; 25 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 3/222\n[ChotuApp Groceries] GROCERY SCOPE: 3/222 traversed; 31 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 4/222\n[ChotuApp Groceries] GROCERY SCOPE: 4/222 traversed; 37 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 5/222\n[ChotuApp Groceries] GROCERY SCOPE: 5/222 traversed; 47 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 6/222\n[ChotuApp Groceries] GROCERY SCOPE: 6/222 traversed; 71 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 7/222\n[ChotuApp Groceries] GROCERY SCOPE: 7/222 traversed; 89 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 8/222\n[ChotuApp Groceries] GROCERY SCOPE: 8/222 traversed; 90 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 9/222\n[ChotuApp Groceries] GROCERY SCOPE: 9/222 traversed; 97 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 10/222\n[ChotuApp Groceries] GROCERY SCOPE: 10/222 traversed; 101 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 11/222\n[ChotuApp Groceries] GROCERY SCOPE: 11/222 traversed; 107 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 12/222\n[ChotuApp Groceries] GROCERY SCOPE: 12/222 traversed; 127 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 13/222\n[ChotuApp Groceries] GROCERY SCOPE: 13/222 traversed; 137 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 14/222\n[ChotuApp Groceries] GROCERY SCOPE: 14/222 traversed; 230 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 15/222\n[ChotuApp Groceries] GROCERY SCOPE: 15/222 traversed; 280 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 16/222\n[ChotuApp Groceries] GROCERY SCOPE: 16/222 traversed; 281 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 17/222\n[ChotuApp Groceries] GROCERY SCOPE: 17/222 traversed; 332 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 18/222\n[ChotuApp Groceries] GROCERY SCOPE: 18/222 traversed; 342 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 19/222\n[ChotuApp Groceries] GROCERY SCOPE: 19/222 traversed; 358 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 20/222\n[ChotuApp Groceries] GROCERY SCOPE: 20/222 traversed; 664 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 21/222\n[ChotuApp Groceries] GROCERY SCOPE: 21/222 traversed; 676 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 22/222\n[ChotuApp Groceries] GROCERY SCOPE: 22/222 traversed; 708 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 23/222\n[ChotuApp Groceries] GROCERY SCOPE: 23/222 traversed; 719 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 24/222\n[ChotuApp Groceries] GROCERY SCOPE: 24/222 traversed; 725 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 25/222\n[ChotuApp Groceries] GROCERY SCOPE: 25/222 traversed; 751 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 26/222\n[ChotuApp Groceries] GROCERY SCOPE: 26/222 traversed; 752 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 27/222\n[ChotuApp Groceries] GROCERY SCOPE: 27/222 traversed; 769 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 28/222\n[ChotuApp Groceries] GROCERY SCOPE: 28/222 traversed; 770 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 29/222\n[ChotuApp Groceries] GROCERY SCOPE: 29/222 traversed; 826 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 30/222\n[ChotuApp Groceries] GROCERY SCOPE: 30/222 traversed; 828 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 31/222\n[ChotuApp Groceries] GROCERY SCOPE: 31/222 traversed; 860 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 32/222\n[ChotuApp Groceries] GROCERY SCOPE: 32/222 traversed; 876 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 33/222\n[ChotuApp Groceries] GROCERY SCOPE: 33/222 traversed; 905 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 34/222\n[ChotuApp Groceries] GROCERY SCOPE: 34/222 traversed; 908 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 35/222\n[ChotuApp Groceries] GROCERY SCOPE: 35/222 traversed; 920 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 36/222\n[ChotuApp Groceries] GROCERY SCOPE: 36/222 traversed; 928 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 37/222\n[ChotuApp Groceries] GROCERY SCOPE: 37/222 traversed; 935 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 38/222\n[ChotuApp Groceries] GROCERY SCOPE: 38/222 traversed; 941 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 39/222\n[ChotuApp Groceries] GROCERY SCOPE: 39/222 traversed; 948 distinct product URLs; complete\n[ChotuApp Groceries] GROCERY SCOPE CACHE: retained traversed scope 40/222\n[ChotuApp Groceries] GROCERY SCOPE: 40/222 traversed; 954 distinct product URLs; complete\n[ChotuApp Groceries] [14:02:06] STAGE: Grocery source product pages\n[ChotuApp Groceries] [14:02:06] HTTP START attempt=1 https://www.naheed.pk/cool-cool-baby-milk-lotion-with-chamomile-aloe-vera-non-greasy-paraben-free-500ml\n[ChotuApp Groceries] [14:02:06] CACHE HIT status=200 elapsed=0.0s bytes=354672 https://www.naheed.pk/cool-cool-baby-milk-lotion-with-chamomile-aloe-vera-non-greasy-paraben-free-500ml\n[ChotuApp Groceries] [14:02:06] STAGE: Grocery source product pages\n[ChotuApp Groceries] [14:02:06] HTTP START attempt=1 https://www.naheed.pk/cool-cool\n[ChotuApp Groceries] [14:02:06] CACHE HIT status=200 elapsed=0.0s bytes=605976 https://www.naheed.pk/cool-cool\n[ChotuApp Groceries] GROCERY VENDOR RENAMED: https://www.naheed.pk/cool-cool -> https://www.naheed.pk/cool-cool-pakistan; exact source brand/canonical verified\n[ChotuApp Groceries] GROCERY FULL BRAND CATALOGUE: https://www.naheed.pk/allproducts?redacted linked by verified Cool & Cool page\n[ChotuApp Groceries] [14:02:07] STAGE: Grocery listing pages\n[ChotuApp Groceries] [14:02:07] HTTP START attempt=1 https://www.naheed.pk/allproducts?redacted\n[ChotuApp Groceries] [14:02:07] CACHE HIT status=200 elapsed=0.0s bytes=412936 https://www.naheed.pk/allproducts?redacted\n[ChotuApp Groceries] [14:02:07] STAGE: Grocery listing pages\n[ChotuApp Groceries] [14:02:07] HTTP START attempt=1 https://www.naheed.pk/allproducts?redacted\n[ChotuApp Groceries] [14:02:07] CACHE HIT status=200 elapsed=0.0s bytes=412069 https://www.naheed.pk/allproducts?redacted\n[ChotuApp Groceries] [14:02:07] STAGE: Grocery listing pages\n[ChotuApp Groceries] [14:02:07] HTTP START attempt=1 https://www.naheed.pk/allproducts?redacted\n[ChotuApp Groceries] [14:02:07] CACHE HIT status=200 elapsed=0.0s bytes=348964 https://www.naheed.pk/allproducts?redacted\n[ChotuApp Groceries] [14:02:07] STAGE: Grocery listing pages\n[ChotuApp Groceries] [14:02:07] HTTP START attempt=1 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] [14:02:09] HTTP END status=200 elapsed=1.9s bytes=291514 https://www.naheed.pk/catalogsearch/result/?redacted\n[ChotuApp Groceries] GROCERY PUBLIC UI: traversal step 1; 192 product links\n__CHOTU_PROGRESS__|1|Active: ChotuApp Groceries\n[ChotuApp Groceries] [14:02:25] EXCEPTION: ValueError('Foreign or scope-changing grocery UI navigation')\n[ChotuApp Groceries] [14:02:25] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2064, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1557, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 128, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='alfatehgarments.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 221, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 344, in run\n    provider=PublicCatalog(g,log,brand_refresh=True);export(g,BASE,STORE,template,log,provider=provider)\n                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 226, in export\n    products=provider.catalog()\n             ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 249, in catalog\n    discovered,expected,seen=self.discover_scope(scope)\n                             ^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 162, in discover_scope\n    return discover_brand_scope(self,scope)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/naheed_brand_support.py\", line 73, in discover_brand_scope\n    try:links,total,pages=reader.discover_scope(dict(scope,_resolved_brand=True))\n                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 179, in discover_scope\n    try:rendered=render_listing(url,self.g['_chotu_wait'],self.log,**({'brand':scope['brand']} if scope.get('brand') and seed.path.startswith('/catalogsearch/') else {}))\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/grocery_browser_support.py\", line 84, in render_listing\n    if actual.scheme!='https' or actual.netloc!='www.naheed.pk' or actual.path.rstrip('/')!=wanted.path.rstrip('/') or any(dict(parse_qsl(actual.query)).get(k)!=v for k,v in parse_qsl(wanted.query) if k in ('q','manufacturer')):raise ValueError('Foreign or scope-changing grocery UI navigation')\n                                                                                                                                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Foreign or scope-changing grocery UI navigation\n\n[ChotuApp Groceries] FAILED: ChotuApp Groceries: Foreign or scope-changing grocery UI navigation\n[ChotuApp Groceries] [14:02:25] STAGE: Idle\nFAILED: ChotuApp Groceries: FAILED: ChotuApp Groceries: Foreign or scope-changing grocery UI navigation\nFalse"
     }
   ]
 }
