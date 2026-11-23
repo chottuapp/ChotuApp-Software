@@ -1,28 +1,29 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-23T14:09:49.974794+00:00",
-  "run_id": "45190440572",
+  "generated_utc": "2026-11-23T14:18:48.072685+00:00",
+  "run_id": "45190424039",
   "attempt": "1",
   "source_commit": "f6dda6e653b4f4a28553c6c8203b12f02463c669",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 18.0,
+  "elapsed_seconds": 782.2,
   "stores": [
     {
-      "name": "ChotuApp Groceries",
+      "name": "Xcessories Hub",
       "status": "failed",
       "review_required": false,
       "issue_codes": [
+        "HTTP_403",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "4ae30514dae2eaf2",
       "http_statuses": {
-        "200": 1
+        "403": 1
       },
-      "network_seconds": 1.8,
-      "max_response_seconds": 1.8,
-      "cache_events": 0
+      "network_seconds": 0.1,
+      "max_response_seconds": 0.1,
+      "cache_events": 2927
     }
   ]
 }
