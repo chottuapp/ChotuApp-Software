@@ -40,3 +40,14 @@ class GroceryScopeRepairTests(unittest.TestCase):
      self.assertEqual(fixed['Category'],'Tissues');self.assertEqual(fixed['source_scope_review_count'],34)
  def test_unknown_scope_does_not_bypass_inference(self):
   with self.assertRaises(ValueError):apply(dict(name='Serum',source_url='https://other.example/item',owner_scope_url=SCOPE,subcategory_source='owner_supplied_scope'))
+
+class GroceryTraversalScopeTests(unittest.TestCase):
+ def test_scope_change_remains_reviewable_and_foreign_navigation_stays_rejected(self):
+  from urllib.parse import urlsplit
+  from grocery_browser_support import ListingRenderIncomplete,verify_traversed_listing
+  expected=urlsplit('https://www.naheed.pk/catalogsearch/result/?q=Nestle')
+  verify_traversed_listing(urlsplit(expected.geturl()+'&p=2'),expected)
+  with self.assertRaises(ListingRenderIncomplete):
+   verify_traversed_listing(urlsplit('https://www.naheed.pk/catalogsearch/result/?q=Other'),expected)
+  with self.assertRaises(ValueError):
+   verify_traversed_listing(urlsplit('https://another.example/catalogsearch/result/?q=Nestle'),expected)

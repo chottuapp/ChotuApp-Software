@@ -57,6 +57,15 @@ def exhaust_listing(page,pause,log,limited,pending,*,max_steps=1000):
   if step%10==0:log('GROCERY PUBLIC UI: traversal step '+str(step+1)+'; '+str(page.locator(SELECTOR).count())+' product links')
  else:raise ValueError('Grocery public traversal bound exceeded; no partial completion')
 
+def verify_traversed_listing(actual, wanted):
+ if actual.scheme!='https' or actual.netloc!='www.naheed.pk':
+  raise ValueError('Foreign grocery UI navigation')
+ expected={k:v for k,v in parse_qsl(wanted.query) if k in ('q','manufacturer')}
+ observed=dict(parse_qsl(actual.query))
+ if actual.path.rstrip('/')!=wanted.path.rstrip('/') or any(observed.get(k)!=v for k,v in expected.items()):
+  raise ListingRenderIncomplete('Public grocery UI left the requested scope during traversal; source coverage requires review')
+
+
 def render_listing(url,pause=lambda:None,log=lambda _:None,*,load_all=True,brand=None):
  if urlsplit(url).scheme!='https' or urlsplit(url).hostname!='www.naheed.pk':raise ValueError('Outside approved public grocery storefront')
  from playwright.sync_api import sync_playwright,TimeoutError as BrowserTimeout
@@ -81,7 +90,7 @@ def render_listing(url,pause=lambda:None,log=lambda _:None,*,load_all=True,brand
    if brand:
     page.evaluate("value => {document.documentElement.setAttribute('data-chotu-selected-brand',value.brand);document.documentElement.setAttribute('data-chotu-brand-total',String(value.total));}",dict(brand=brand,total=brand_total))
    actual=urlsplit(page.url)
-   if actual.scheme!='https' or actual.netloc!='www.naheed.pk' or actual.path.rstrip('/')!=wanted.path.rstrip('/') or any(dict(parse_qsl(actual.query)).get(k)!=v for k,v in parse_qsl(wanted.query) if k in ('q','manufacturer')):raise ValueError('Foreign or scope-changing grocery UI navigation')
+   verify_traversed_listing(actual,wanted)
    content=page.content()
    if len(content.encode())>16*1024*1024:raise ValueError('Rendered grocery listing exceeds bound')
    return content
