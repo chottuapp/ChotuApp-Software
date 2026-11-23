@@ -20,7 +20,13 @@ class FreshTests(unittest.TestCase):
   registry=json.loads((root/'cloud/fetch-update-release.json').read_text())['fresh_stores']
   request=json.loads((root/'cloud/audit804-release.json').read_text())
   sites=selected_sites(registry,request);self.assertEqual(len(sites),sum(r.get('enabled',True) is not False and r['name'] not in set(request['excluded_stores'])|OWNER_PAUSED_STORES for r in registry))
-  remaining=len(sites)-len([v for v in sites if v['name'] in set(request.get('completed_stores',[]))|set(request.get('skip_fresh_stores',[]))]);size=request['maximum_stores_per_runner'];plan=planned_groups(sites,request);self.assertEqual(len(plan),(remaining+size-1)//size);self.assertTrue(all(1<=len(g)<=size for g in plan))
+  skipped=set(request.get('completed_stores',[]))|set(request.get('skip_fresh_stores',[]))
+  remaining=[site for site in sites if site['name'] not in skipped]
+  solo=[site for site in remaining if site['name'] in request.get('additive_solo_stores',[])]
+  size=request['maximum_stores_per_runner'];plan=planned_groups(sites,request)
+  self.assertEqual(len(plan),(len(remaining)-len(solo)+size-1)//size+len(solo))
+  self.assertTrue(all(1<=len(g)<=size for g in plan))
+  for site in solo:self.assertIn([site],plan)
   self.assertTrue(({'Stylo','Bata','Aerosoft Studio','Servis','Ndure'}-set(request.get('completed_stores',[]))-set(request.get('skip_fresh_stores',[])))<={site['name'] for g in plan for site in g})
 
  def test_two_store_plan_does_not_drop_or_repeat_odd_last_store(self):

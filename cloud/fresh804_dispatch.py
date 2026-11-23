@@ -31,10 +31,12 @@ def selected_sites(registry,request):
 
 def planned_groups(sites,request):
  skipped=set(request.get('completed_stores',[]))|set(request.get('skip_fresh_stores',[]))
- remaining=[site for site in sites if site['name'] not in skipped]
+ solo=set(request.get('additive_solo_stores',[]))
+ remaining=[site for site in sites if site['name'] not in skipped|solo]
+ additive=[[site] for site in sites if site['name'] in solo-skipped]
  size=request.get('maximum_stores_per_runner')
- if size in (1,2):return [remaining[i:i+size] for i in range(0,len(remaining),size)]
- return groups(remaining) if remaining else []
+ if size in (1,2):return [remaining[i:i+size] for i in range(0,len(remaining),size)]+additive
+ return (groups(remaining) if remaining else [])+additive
 
 def lane_prefix(request):
  base='audit804-'+request['campaign_id']+'-'

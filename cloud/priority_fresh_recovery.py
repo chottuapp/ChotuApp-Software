@@ -2,6 +2,7 @@
 
 import json
 import os
+import subprocess
 
 from fresh804_dispatch import REPO, chain_ids, gh, lane_prefix, planned_groups, publish_progress
 from github_json import read_json
@@ -22,7 +23,8 @@ def recover_priority(request, sites):
                          '--limit', '200', '--json', 'databaseId,displayTitle,status,conclusion'))
     by_title = {entry['title']: identity for identity, entry in previous['runs'].items()}
     report = {'run_id': os.environ['GITHUB_RUN_ID'], 'refresh_generation': generation, 'stores': []}
-    for index, group in enumerate(planned_groups(sites, request), 1):
+    groups = planned_groups(sites, request)
+    for index, group in sorted(enumerate(groups, 1), key=lambda row: row[1][0]["name"] not in request.get("additive_solo_stores", [])):
         lane = lane_prefix(request) + str(index)
         selected = []
         for site in group:
@@ -40,7 +42,18 @@ def recover_priority(request, sites):
                 selected.append((site, entry))
         if not selected:
             continue
-        root = by_title['Cloud group ' + lane]
+        title = 'Cloud group ' + lane
+        if len(group) == 1 and group[0]['name'] in request.get('additive_solo_stores', []):
+            if any(run['displayTitle'] == title for run in runs):
+                selected[0][1]['status'] = 'existing_run_retained'
+                continue
+            gh('workflow', 'run', 'cloud-fetch.yml', '--repo', REPO, '--ref', 'main',
+               '-f', 'runner_group=' + lane, '-f', 'stores=' + json.dumps(group, separators=(',', ':')),
+               '-f', 'minutes=300', '-f', 'save_checkpoint=true',
+               '-f', 'auto_continue_limit=48', '-f', 'auto_continue_once=false')
+            selected[0][1]['status'] = 'fresh_dispatched'
+            continue
+        root = by_title[title]
         lineage = chain_ids(runs, {root})
         recent = [run for run in runs if str(run['databaseId']) in lineage]
         if not recent:
@@ -50,6 +63,22 @@ def recover_priority(request, sites):
         if latest['status'] != 'completed' or latest['conclusion'] == 'success':
             for _, entry in selected:
                 entry.update(status='existing_run_retained', parent_run=parent)
+            continue
+        try:
+            diagnostics = read_json(gh, f'repos/{REPO}/contents/runs/{parent}-1.json?ref=cloud-reports')
+        except subprocess.CalledProcessError:
+            diagnostics = {}
+        by_store = {row['name']: row for row in diagnostics.get('stores', [])}
+        eligible = []
+        for site, entry in selected:
+            receipt = by_store.get(site['name'], {})
+            statuses = receipt.get('http_statuses', {})
+            if statuses and set(statuses) <= {'402', '403'}:
+                entry.update(status='source_access_blocked', parent_run=parent, http_statuses=statuses)
+            else:
+                eligible.append((site, entry))
+        selected = eligible
+        if not selected:
             continue
         try:
             checkpoint, _ = checkpoint_parent(parent)
