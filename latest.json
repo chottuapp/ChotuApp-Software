@@ -1,32 +1,35 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-23T15:08:30.473916+00:00",
-  "run_id": "45189548788",
+  "generated_utc": "2026-11-23T17:18:13.205324+00:00",
+  "run_id": "45189569541",
   "attempt": "1",
   "source_commit": "4e7ecac4d705e46cfadf64e013551dc0ded67224",
-  "status": "incomplete",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 4058.2,
+  "elapsed_seconds": 11790.4,
   "stores": [
     {
-      "name": "Asim Jofa",
-      "status": "pending",
-      "review_required": false,
+      "name": "Taminzo",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
         "HTTP_404",
         "HTTP_429",
-        "RATE_LIMIT"
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "3e16bd7d173b67be",
+      "products": 3482,
+      "variants": 12856,
       "http_statuses": {
-        "200": 556,
-        "429": 2,
-        "404": 852
+        "404": 974,
+        "200": 2065,
+        "429": 3
       },
-      "network_seconds": 3252.4,
-      "max_response_seconds": 2.9,
-      "cache_events": 855
+      "network_seconds": 7403.0,
+      "max_response_seconds": 22.6,
+      "cache_events": 61703
     }
   ]
 }
