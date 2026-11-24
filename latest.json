@@ -1,43 +1,46 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-24T20:37:30.679092+00:00",
-  "run_id": "45409071763",
+  "generated_utc": "2026-11-24T20:46:20.787946+00:00",
+  "run_id": "45449334133",
   "attempt": "1",
   "source_commit": "299b52dd40f382d2e30baaf6aa5f711c03c13ae2",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 18000.7,
+  "elapsed_seconds": 11623.1,
   "stores": [
     {
-      "name": "Toyzone",
-      "status": "pending",
+      "name": "Limelight",
+      "status": "source_paused",
       "review_required": false,
       "issue_codes": [
+        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "52a551413b1f1dcf",
       "http_statuses": {
-        "200": 3671
+        "404": 118,
+        "200": 2327,
+        "429": 4
       },
-      "network_seconds": 8735.9,
-      "max_response_seconds": 2.7,
-      "cache_events": 1686
+      "network_seconds": 5458.5,
+      "max_response_seconds": 2.5,
+      "cache_events": 35532
     },
     {
-      "name": "VNS Collection",
+      "name": "Alkaram Studio",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "52a551413b1f1dcf",
-      "products": 724,
-      "variants": 2100,
-      "http_statuses": {
-        "200": 747
-      },
-      "network_seconds": 1793.2,
-      "max_response_seconds": 4.3,
-      "cache_events": 1481
+      "products": 1841,
+      "variants": 6591,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
     }
   ]
 }
