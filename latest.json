@@ -1,51 +1,41 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-24T21:18:55.677036+00:00",
-  "run_id": "45409114494",
+  "generated_utc": "2026-11-24T21:47:24.170823+00:00",
+  "run_id": "45435511997",
   "attempt": "1",
   "source_commit": "299b52dd40f382d2e30baaf6aa5f711c03c13ae2",
-  "status": "complete",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 16981.3,
+  "elapsed_seconds": 18001.4,
   "stores": [
     {
-      "name": "The Paper Worm",
+      "name": "Tawakkal Fabrics",
       "status": "done",
       "review_required": true,
-      "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT",
-        "WEBSITE_CATEGORY_UNVERIFIED"
-      ],
+      "issue_codes": [],
       "software_revision": "52a551413b1f1dcf",
-      "products": 286,
-      "variants": 765,
-      "http_statuses": {
-        "200": 398,
-        "429": 1
-      },
-      "network_seconds": 846.7,
-      "max_response_seconds": 2.7,
-      "cache_events": 608
+      "products": 1607,
+      "variants": 3894,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
     },
     {
-      "name": "ChotuApp Groceries",
-      "status": "done",
-      "review_required": true,
+      "name": "Stylo",
+      "status": "pending",
+      "review_required": false,
       "issue_codes": [
-        "SCHEMA_CHECK",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "52a551413b1f1dcf",
-      "products": 7726,
-      "variants": 7726,
       "http_statuses": {
-        "200": 9507
+        "200": 6325
       },
-      "network_seconds": 4204.5,
-      "max_response_seconds": 85.0,
-      "cache_events": 0
+      "network_seconds": 18665.4,
+      "max_response_seconds": 37.4,
+      "cache_events": 1418
     }
   ]
 }
