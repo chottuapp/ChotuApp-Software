@@ -45,7 +45,7 @@ class NewStoreFetchTests(unittest.TestCase):
  def test_current_pending_request_and_owner_pause_policy(self):
   request=json.loads((ROOT/'cloud/pending-store-fetch-request.json').read_text())
   stores=validate(request)
-  self.assertEqual(len(stores),6)
+  self.assertEqual(len(stores),len(request['stores']))
   self.assertTrue(all('shop_code' not in site for site in stores))
   request['stores'][0]={'name':'Toynix','url':'https://www.toynix.pk/'}
   with self.assertRaisesRegex(ValueError,'owner-paused'):
