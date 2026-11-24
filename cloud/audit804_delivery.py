@@ -246,6 +246,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
   known_roots.update(str(run['databaseId']) for run in all_runs if run.get('displayTitle','').startswith(prefix))
   state.update(audit804_refresh_root_generation=generation,audit804_refresh_root_ids=sorted(known_roots))
  refresh_runs,carried_runs=refresh_source_ids(all_runs,generation,campaign,config.get('preserve_active_run_ids',[]),known_roots) if generation else (set(),set())
+ if generation:state['audit804_refresh_root_ids']=sorted(refresh_runs)
  if generation:
   runs=[run for run in all_runs if str(run['databaseId']) in refresh_runs|carried_runs]
   state.update(audit804_refresh_generation=generation,audit804_refresh_stores=sorted(refresh_stores),audit804_refresh_requested_utc=config.get('refresh_requested_utc'))

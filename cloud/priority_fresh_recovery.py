@@ -43,18 +43,17 @@ def recover_priority(request, sites):
         if not selected:
             continue
         title = 'Cloud group ' + lane
-        if len(group) == 1 and group[0]['name'] in request.get('additive_solo_stores', []):
-            if any(run['displayTitle'] == title for run in runs):
-                selected[0][1]['status'] = 'existing_run_retained'
-                continue
+        additive_roots = [str(run['databaseId']) for run in runs if run['displayTitle'] == title]
+        additive_group = len(group) == 1 and group[0]['name'] in request.get('additive_solo_stores', [])
+        if additive_group and not additive_roots:
             gh('workflow', 'run', 'cloud-fetch.yml', '--repo', REPO, '--ref', 'main',
                '-f', 'runner_group=' + lane, '-f', 'stores=' + json.dumps(group, separators=(',', ':')),
                '-f', 'minutes=300', '-f', 'save_checkpoint=true',
                '-f', 'auto_continue_limit=48', '-f', 'auto_continue_once=false')
             selected[0][1]['status'] = 'fresh_dispatched'
             continue
-        root = by_title[title]
-        lineage = chain_ids(runs, {root})
+        roots = set(additive_roots) if additive_group else {by_title[title]}
+        lineage = chain_ids(runs, roots)
         recent = [run for run in runs if str(run['databaseId']) in lineage]
         if not recent:
             raise RuntimeError(f'No trusted recent run for lane {lane}')
@@ -73,6 +72,9 @@ def recover_priority(request, sites):
         for site, entry in selected:
             receipt = by_store.get(site['name'], {})
             statuses = receipt.get('http_statuses', {})
+            if receipt.get('status') == 'done':
+                entry.update(status='completed_output_for_audit', parent_run=parent)
+                continue
             if statuses and set(statuses) <= {'402', '403'} and site['name'] not in request.get('repaired_source_adapters', []):
                 entry.update(status='source_access_blocked', parent_run=parent, http_statuses=statuses)
             else:

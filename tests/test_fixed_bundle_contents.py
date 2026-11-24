@@ -30,6 +30,13 @@ class FixedBundleContentsTests(unittest.TestCase):
   self.assertIn('Exact drill',details['description'])
   for changes in (dict(id=12),dict(type='variable'),dict(has_options=True),dict(permalink='https://other.test/product/drill/')):
    with self.assertRaises(ValueError):fixed_bundle_details(p,self.page(p,c),Mock(return_value=dict(child,**changes)))
+ def test_missing_numeric_child_reuses_only_reviewed_same_id_and_quantity(self):
+  p,c=self.fixture();c['bundles']['bundles'][0]['product']=11
+  child=dict(id=11,quantity=1,name='Reviewed drill',source_url='https://houseoftools.com.pk/product/drill/',description='12V')
+  missing=Mock(side_effect=RuntimeError('Website endpoint unavailable (404): test'))
+  self.assertIn('Reviewed drill',fixed_bundle_details(p,self.page(p,c),missing,[child])['description'])
+  with self.assertRaises(RuntimeError):fixed_bundle_details(p,self.page(p,c),missing,[dict(child,quantity=2)])
+  with self.assertRaises(RuntimeError):fixed_bundle_details(p,self.page(p,c),Mock(side_effect=RuntimeError('Website endpoint unavailable (403): test')),[child])
  def test_wrong_identity_prices_and_selectable_contents_fail_closed(self):
   for change in ('id','currency','price','optional','variable','quantity','target'):
    p,c=self.fixture();item=c['bundles']['bundles'][0]

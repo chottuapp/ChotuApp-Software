@@ -94,7 +94,7 @@ def main():
  state['folder']=folder;state.setdefault('daily_uploads',{}).setdefault(folder,{})
  state['run_id']=os.environ['GITHUB_RUN_ID'];state['sync_status']='scanning';state['last_scan_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat();globals()['LAST_STATE']=state
  state.pop('sync_error',None);publish(state,branch='drive-sync-reports')
- runs=json.loads(gh('run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','100','--json','databaseId,displayTitle,status,conclusion,headSha'))
+ runs=json.loads(gh('run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','200','--json','databaseId,displayTitle,status,conclusion,headSha'))
  all_runs=list(runs)
  groups={r['displayTitle'].removeprefix('Cloud group ') for r in runs if r['displayTitle'].startswith('Cloud group fresh26-'+root+'-')}
  runs=checked.related(runs,groups)

@@ -177,7 +177,7 @@ def content_text(value):
  if text.lstrip('\ufeff ').startswith('.product-card-container {') and marker in text:text=text[text.index(marker):]
  return text
 
-def fixed_bundle_details(p,response,read_component=None):
+def fixed_bundle_details(p,response,read_component=None,reviewed_components=()):
  """Read explicit fixed contents from Easy Product Bundles' public product config."""
  from urllib.parse import urljoin
  soup=BeautifulSoup(response.text,'html.parser');canonical=soup.select_one('link[rel=canonical][href]');heading=soup.select_one('h1.product_title,h1')
@@ -211,7 +211,15 @@ def fixed_bundle_details(p,response,read_component=None):
   child=entry.get('product',{});quantity=entry.get('quantity')
   if any(entry.get(k) not in ('false',False) for k in ('optional','can_change_product','edit_quantity')) or entry.get('selected') not in ('true',True):raise ValueError('Selectable bundle contents require independent offer verification')
   if type(child) is int and child>0 and read_component is not None:
-   record=read_component('/wp-json/wc/store/v1/products/'+str(child))
+   try:
+    record=read_component('/wp-json/wc/store/v1/products/'+str(child))
+   except (RuntimeError,requests.HTTPError) as exc:
+    status=getattr(getattr(exc,'response',None),'status_code',None)
+    if status not in (404,410) and not re.search(r'Website endpoint unavailable \((?:404|410)\)',str(exc)):raise
+    matches=[row for row in reviewed_components if row.get('id')==child and str(row.get('quantity'))==str(quantity)]
+    if len(matches)!=1:raise
+    reviewed=matches[0]
+    record=dict(id=child,type='simple',has_options=False,variations=[],name=reviewed['name'],permalink=reviewed['source_url'],description=reviewed.get('description'))
    if not isinstance(record,dict) or record.get('id')!=child or record.get('type')!='simple' or record.get('has_options') is not False or record.get('variations'):raise ValueError('Fixed bundle component identity or options unverified')
    child={'id':child,'name':record.get('name'),'link':record.get('permalink'),'description':record.get('description'),'is_variable':False}
   if not isinstance(child,dict) or child.get('is_variable') not in ('false',False):raise ValueError('Selectable or unresolved bundle contents require independent offer verification')
@@ -310,7 +318,13 @@ def export(g,base,name,template,log,*,provider=None):
    p=recovered;cover=p['images'][0]['src'];log('WOO MEDIA RECOVERED: canonical PDP and exact cart product identity verified: '+url)
 
   if p.get('type')=='easy_product_bundle':
-   g['_chotu_wait']();page=g['S'].get(url,timeout=(15,60));details=fixed_bundle_details(p,page,read_component=get)
+   reviewed=()
+   if name=='House of Tools':
+    from hold804_repairs import public_facts
+    fact=public_facts({'name':p['name'],'product_id':g['uid']('CP',base+'|'+str(p['id'])),'source_url':url},name) or {}
+    if re.fullmatch(r'[a-f0-9]{64}',fact.get('bundle_page_sha256','')):
+     reviewed=fact.get('bundle_components',())
+   g['_chotu_wait']();page=g['S'].get(url,timeout=(15,60));details=fixed_bundle_details(p,page,read_component=get,reviewed_components=reviewed)
    p=dict(p,description=(p.get('description') or '')+'\n'+details['description'])
   pid=g['uid']('CP',base+'|'+str(p['id']));dimensions=[]
   for _,attrs,_ in offers:
