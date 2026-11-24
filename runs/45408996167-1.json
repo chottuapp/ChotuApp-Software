@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-24T14:13:38.633491+00:00",
+  "run_id": "45408996167",
+  "attempt": "1",
+  "source_commit": "299b52dd40f382d2e30baaf6aa5f711c03c13ae2",
+  "status": "complete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 819.3,
+  "stores": [
+    {
+      "name": "Design by DAS",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "52a551413b1f1dcf",
+      "products": 77,
+      "variants": 82,
+      "http_statuses": {
+        "200": 109
+      },
+      "network_seconds": 124.8,
+      "max_response_seconds": 6.6,
+      "cache_events": 0
+    },
+    {
+      "name": "Golden Rose",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "52a551413b1f1dcf",
+      "products": 138,
+      "variants": 1134,
+      "http_statuses": {
+        "200": 199
+      },
+      "network_seconds": 387.5,
+      "max_response_seconds": 2.5,
+      "cache_events": 358
+    }
+  ]
+}
