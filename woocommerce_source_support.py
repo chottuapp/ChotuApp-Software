@@ -3,6 +3,7 @@ import csv,html,json,re,time,itertools,hashlib,base64,gzip
 import requests
 from pathlib import Path
 from datetime import datetime,timezone
+from functools import lru_cache
 from types import SimpleNamespace
 from decimal import Decimal
 from urllib.parse import urlsplit
@@ -177,6 +178,17 @@ def content_text(value):
  if text.lstrip('\ufeff ').startswith('.product-card-container {') and marker in text:text=text[text.index(marker):]
  return text
 
+@lru_cache(maxsize=1)
+def reviewed_bundle_index():
+ directory=Path(__file__).resolve().parent
+ direct=directory/'audit804-reviewed-bundles.json'
+ path=direct if direct.is_file() else directory/'cloud'/'audit804-reviewed-source.json'
+ if not path.is_file():return {}
+ return {(fact['product_id'],fact['source_url'],fact['public_title']):fact['bundle_components']
+         for fact in json.loads(path.read_text(encoding='utf-8')).get('products',[])
+         if fact.get('store')=='House of Tools' and fact.get('bundle_components')
+         and re.fullmatch(r'[a-f0-9]{64}',fact.get('bundle_page_sha256',''))}
+
 def fixed_bundle_details(p,response,read_component=None,reviewed_components=()):
  """Read explicit fixed contents from Easy Product Bundles' public product config."""
  from urllib.parse import urljoin
@@ -320,10 +332,8 @@ def export(g,base,name,template,log,*,provider=None):
   if p.get('type')=='easy_product_bundle':
    reviewed=()
    if name=='House of Tools':
-    from hold804_repairs import public_facts
-    fact=public_facts({'name':p['name'],'product_id':g['uid']('CP',base+'|'+str(p['id'])),'source_url':url},name) or {}
-    if re.fullmatch(r'[a-f0-9]{64}',fact.get('bundle_page_sha256','')):
-     reviewed=fact.get('bundle_components',())
+    key=(g['uid']('CP',base+'|'+str(p['id'])),url,p['name'])
+    reviewed=reviewed_bundle_index().get(key,())
    g['_chotu_wait']();page=g['S'].get(url,timeout=(15,60));details=fixed_bundle_details(p,page,read_component=get,reviewed_components=reviewed)
    p=dict(p,description=(p.get('description') or '')+'\n'+details['description'])
   pid=g['uid']('CP',base+'|'+str(p['id']));dimensions=[]

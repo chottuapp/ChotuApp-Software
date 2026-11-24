@@ -37,6 +37,9 @@ def prepare_engine(data):
     grocery_request=(ROOT/'cloud/chotu-groceries-request.json').read_bytes()
     (runtime/'chotu-groceries-request.json').write_bytes(grocery_request)
     (runtime/'naheed-brand-refresh.json').write_bytes((ROOT/'cloud/naheed-brand-refresh.json').read_bytes())
+    evidence=json.loads((ROOT/'cloud/audit804-reviewed-source.json').read_text(encoding='utf-8'))
+    bundle_facts=[row for row in evidence['products'] if row.get('store')=='House of Tools' and row.get('bundle_components')]
+    (runtime/'audit804-reviewed-bundles.json').write_text(json.dumps({'products':bundle_facts},ensure_ascii=False),encoding='utf-8')
     if not (runtime/'main.py').exists() or (runtime/'main.py').read_bytes()!=content:(runtime/'main.py').write_bytes(content)
     return runtime/'main.py'
 
