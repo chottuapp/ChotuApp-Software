@@ -1,5 +1,6 @@
 import copy,json,unittest
 from pathlib import Path
+from unittest.mock import patch
 from new_store_fetch import validate,plan,ROOT
 class NewStoreFetchTests(unittest.TestCase):
  def test_owner_confirmed_codes_match_registered_domains(self):
@@ -7,13 +8,17 @@ class NewStoreFetchTests(unittest.TestCase):
   self.assertFalse(r['shop_codes_pending_owner'])
   self.assertEqual([s['shop_code'] for s in r['stores']],['SE'+str(i) for i in range(10069,10085)])
   for s in r['stores']:self.assertEqual(codes[s['name']],s['shop_code'])
-  self.assertEqual(len(validate(r)),16)
+  with patch("locked_store_rules.OWNER_PAUSED_STORES",set()),patch("locked_store_rules.OWNER_PAUSED_HOSTS",set()):
+   self.assertEqual(len(validate(r)),16)
  def test_observed_throttled_sources_resume_with_bounded_pacing(self):
   from fast_fetch_support import source_policy
   for host in ('toyzone.pk','www.toyzone.pk','makeupgallery.pk','www.makeupgallery.pk'):
    self.assertEqual(source_policy(host),(2.5,1))
  def setUp(self):
-  self.request=json.loads((ROOT/'cloud/new-store-fetch-request.json').read_text());self.stores=validate(self.request)
+  self.request=json.loads((ROOT/'cloud/new-store-fetch-request.json').read_text())
+  # The historical fixture predates the current Toynix pause.
+  with patch('locked_store_rules.OWNER_PAUSED_STORES',set()),patch('locked_store_rules.OWNER_PAUSED_HOSTS',set()):
+   self.stores=validate(self.request)
   self.observations=[dict(name=s['name'],status='supported',provider='shopify') for s in self.stores]
  def test_sixteen_exact_sources_export_no_invented_codes(self):
   self.assertEqual(len(self.stores),16)
@@ -32,9 +37,19 @@ class NewStoreFetchTests(unittest.TestCase):
   remaining,_=plan(self.request,self.stores,self.observations,runs)
   self.assertEqual(remaining[0]['stores'],[self.stores[1]])
  def test_bad_source_duplicate_and_invented_code_rejected(self):
+  self.request['stores']=[self.request['stores'][0]]
   for change in ({'shop_code':'SE123'},{'url':'https://localhost/'},{'name':'Axis PK'},{'url':'https://www.toyzone.pk/private'}):
    r=copy.deepcopy(self.request);r['stores'][0].update(change)
    with self.assertRaises(ValueError):validate(r)
+
+ def test_current_pending_request_and_owner_pause_policy(self):
+  request=json.loads((ROOT/'cloud/pending-store-fetch-request.json').read_text())
+  stores=validate(request)
+  self.assertEqual(len(stores),6)
+  self.assertTrue(all('shop_code' not in site for site in stores))
+  request['stores'][0]={'name':'Toynix','url':'https://www.toynix.pk/'}
+  with self.assertRaisesRegex(ValueError,'owner-paused'):
+   validate(request)
 
  def test_public_next_json_stream_handles_split_product_records_without_execution(self):
   from new_store_fetch import public_next_product_state
