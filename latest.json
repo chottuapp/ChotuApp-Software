@@ -1,23 +1,27 @@
 {
-  "run_id": "45190812125",
+  "run_id": "45336310980",
   "refresh_generation": "refresh20261120-50e380bc",
   "stores": [
     {
       "store": "Asim Jofa",
       "runner_group": "audit804-fresh804-20261026-5d42fe35-refresh20261120-50e380bc-42",
-      "status": "existing_run_retained"
+      "status": "checkpoint_dispatched",
+      "parent_run": "45189548788"
     },
     {
       "store": "Xcessories Hub",
       "runner_group": "audit804-fresh804-20261026-5d42fe35-refresh20261120-50e380bc-18",
-      "status": "existing_run_retained",
-      "parent_run": "45190424039"
+      "status": "source_access_blocked",
+      "parent_run": "45190424039",
+      "http_statuses": {
+        "403": 1
+      }
     },
     {
       "store": "House of Tools",
       "runner_group": "audit804-fresh804-20261026-5d42fe35-refresh20261120-50e380bc-28",
       "status": "checkpoint_dispatched",
-      "parent_run": "45190431429"
+      "parent_run": "45190914657"
     },
     {
       "store": "Deflexxi",
@@ -31,13 +35,13 @@
     {
       "store": "Taminzo",
       "runner_group": "audit804-fresh804-20261026-5d42fe35-refresh20261120-50e380bc-38",
-      "status": "existing_run_retained",
+      "status": "completed_output_for_audit",
       "parent_run": "45189569541"
     },
     {
       "store": "ChotuApp Groceries",
       "runner_group": "audit804-fresh804-20261026-5d42fe35-refresh20261120-50e380bc-40",
-      "status": "existing_run_retained",
+      "status": "checkpoint_dispatched",
       "parent_run": "45190440572"
     }
   ],
