@@ -179,6 +179,53 @@ class GroceryTests(unittest.TestCase):
    reader.read_page=read
    with patch('grocery_browser_support.render_listing',side_effect=ListingRenderIncomplete('Public UI timeout')):products=reader.catalog()
    self.assertEqual(len(products),1);self.assertIn(good['url'],calls);self.assertEqual(reader.coverage_status,'review_required');self.assertIn('render_error',reader.coverage_issues[0])
+ def test_cached_scope_redirect_gets_one_fresh_identity_check(self):
+  from requests import Response
+  from unittest.mock import Mock
+
+  url=source.BASE+'/catalogsearch/result/?q=Dawn'
+  def response(actual):
+   result=Response();result.status_code=200;result.url=actual;result._content=b'public listing'
+   return result
+  cache=SimpleNamespace(get=Mock(return_value=response(source.BASE+'/catalogsearch/result/?q=Other')))
+  session=SimpleNamespace(get=Mock(),get_fresh=Mock(return_value=response(url)))
+  reader=source.PublicCatalog({'S':session,'_chotu_wait':lambda:None,'_chotu_tls':SimpleNamespace(saved_response_cache=cache)},lambda _:None)
+  self.assertEqual(reader.read_page(url),'public listing')
+  session.get_fresh.assert_called_once_with(url,timeout=(15,45))
+  session.get.assert_not_called()
+  self.assertFalse(reader.force_fresh)
+
+ def test_scope_redirect_is_held_without_caching_or_using_redirected_products(self):
+  from requests import Response
+  from resume_support import ResponseCache
+
+  with tempfile.TemporaryDirectory() as tmp:
+   good=dict(group='Bread, Bakery & Pasta',label='Dawn',url=source.BASE+'/allproducts/?manufacturer=890')
+   bad=dict(good,url=source.BASE+'/catalogsearch/result/?q=Dawn',brand='Dawn',examples=[source.BASE+'/retired-example'])
+   responses={
+    good['url']:(good['url'],'<div id="product_result"><a href="/item">Product</a></div><p class="toolbar-amount">1 Item</p>'),
+    bad['examples'][0]:(source.BASE+'/wrong-product',page()),
+    source.BASE+'/item':(source.BASE+'/item',page()),
+   }
+   def get(url,**kwargs):
+    self.assertIn(url,responses)
+    response=Response();response.status_code=200
+    response.url,body=responses[url];response._content=body.encode();response.encoding='utf-8'
+    return response
+
+   cache=ResponseCache(Path(tmp)/'pages.sqlite3')
+   self.addCleanup(cache.close)
+   reader=source.PublicCatalog({'S':SimpleNamespace(get=get),'_chotu_wait':lambda:None,'_chotu_backoff':lambda *args:None,'__file__':str(Path(tmp)/'main.py'),'_chotu_tls':SimpleNamespace(saved_response_cache=cache)},lambda _:None)
+   reader.request={'pages':[good,bad]}
+   self.assertEqual(len(reader.catalog()),1)
+   self.assertEqual(reader.coverage_status,'review_required')
+   issue,=reader.coverage_issues
+   self.assertEqual(issue['scope_url'],bad['url'])
+   self.assertEqual(issue['visible_products'],0)
+   self.assertIsNone(issue['reported_total'])
+   self.assertEqual(issue['response_identity']['actual'],source.BASE+'/wrong-product')
+   self.assertIsNotNone(cache.get(good['url']+'#chotu-scope-snapshot-v1'))
+   self.assertIsNone(cache.get(bad['url']+'#chotu-scope-snapshot-v1'))
  def test_real_browser_rate_limit_still_stops_instead_of_skipping_scope(self):
   with tempfile.TemporaryDirectory() as tmp:
    reader=source.PublicCatalog({'_chotu_wait':lambda:None,'__file__':str(Path(tmp)/'main.py')},lambda _:None)

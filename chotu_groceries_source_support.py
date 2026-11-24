@@ -150,11 +150,16 @@ class PublicCatalog:
   if r.status_code in (429,500,502,503,504):raise RuntimeError('SOURCE PAUSED: grocery public source temporary failure; retry saved store after at least 300s. Checkpoint retained')
   if r.status_code in (401,403):raise RuntimeError('SOURCE BLOCKED: grocery public page denied; no login, alternate API or challenge bypass attempted')
   r.raise_for_status()
+  if len(r.content)>8*1024*1024:raise ValueError('Grocery response exceeds verified size bound')
+  if re.search(r'cf-chl-|<title>\s*(?:Just a moment|Attention Required)',r.text,re.I):raise RuntimeError('SOURCE BLOCKED: source challenge; original requests retained')
   actual=urlsplit(r.url)
   self.last_response_identity=dict(requested=urlunsplit((p.scheme,p.hostname,p.path,urlencode([(k,v) for k,v in parse_qsl(p.query) if k in ('q','manufacturer','p')]),'')),actual=urlunsplit((actual.scheme,actual.hostname or '',actual.path,urlencode([(k,v) for k,v in parse_qsl(actual.query) if k in ('q','manufacturer','p')]),'')))
-  if len(r.content)>8*1024*1024:raise ValueError('Grocery response exceeds verified size bound')
-  if actual.hostname!=p.hostname or actual.path.rstrip('/')!=p.path.rstrip('/') or any(dict(parse_qsl(actual.query)).get(k)!=v for k,v in parse_qsl(p.query) if k in ('q','manufacturer','p')):raise GroceryScopeRedirect(url,r.url,r.text)
-  if re.search(r'cf-chl-|<title>\s*(?:Just a moment|Attention Required)',r.text,re.I):raise RuntimeError('SOURCE BLOCKED: source challenge; original requests retained')
+  if actual.scheme!=p.scheme or actual.netloc!=p.netloc or actual.path.rstrip('/')!=p.path.rstrip('/') or any(dict(parse_qsl(actual.query)).get(k)!=v for k,v in parse_qsl(p.query) if k in ('q','manufacturer','p')):
+   if cached is not None:
+    self.force_fresh=True
+    try:return self.read_page(url)
+    finally:self.force_fresh=False
+   raise GroceryScopeRedirect(url,r.url,r.text)
   return r.text
  def discover_scope(self,scope):
   if scope.get('brand') and not scope.get('_resolved_brand'):
@@ -237,7 +242,7 @@ class PublicCatalog:
    cache=getattr(self.g.get('_chotu_tls'),'saved_response_cache',None)
    snapshot_key=scope['url']+'#chotu-scope-snapshot-v1'
    saved=cache.get(snapshot_key) if cache else None
-   render_error=None
+   render_error=None;response_identity=None
    if saved is not None:
     snapshot=saved.json()
     if snapshot.get('scope_url')!=scope['url'] or snapshot.get('version')!=1:raise ValueError('Grocery checkpoint scope identity mismatch')
@@ -247,6 +252,8 @@ class PublicCatalog:
     self.log('GROCERY SCOPE CACHE: retained traversed scope '+str(index)+'/'+str(len(self.request['pages'])))
    else:
     discovered=set();seen=set();expected=None
+    self.scope_partial=(set(),set());self.scope_expected=None;self.scope_total_text=None
+    self.scope_count_changed=False;self.scope_totals=[];self.last_response_identity=None
     try:
      discovered,expected,seen=self.discover_scope(scope)
      if self.scope_count_changed or expected is not None and len(discovered)!=expected:
@@ -254,11 +261,12 @@ class PublicCatalog:
       self.force_fresh=True
       try:discovered,expected,seen=self.discover_scope(scope)
       finally:self.force_fresh=False
-    except ListingRenderIncomplete as exc:
+    except (ListingRenderIncomplete,GroceryScopeRedirect) as exc:
      partial,partial_pages=self.scope_partial
      discovered=discovered|partial;seen=seen|partial_pages
      expected=self.scope_expected if self.scope_expected is not None else expected
      render_error=str(exc)
+     if isinstance(exc,GroceryScopeRedirect):response_identity=self.last_response_identity
     if cache and render_error is None:
      snapshot=dict(version=1,scope_url=scope['url'],links=sorted(discovered),pages=sorted(seen),total=expected,count_changed=self.scope_count_changed,totals=self.scope_totals)
      response=requests.Response();response.status_code=200;response.url=scope['url'];response._content=json.dumps(snapshot).encode();response.encoding='utf-8';response.headers['Content-Type']='application/json';cache.put(snapshot_key,response)
@@ -267,7 +275,8 @@ class PublicCatalog:
     status='review_required';issue=dict(scope_url=scope['url'],reported_total=expected,visible_products=len(discovered),pages=len(seen),reported_totals=list(self.scope_totals))
     if render_error:
      issue['render_error']=render_error
-     issue['source_toolbar']=getattr(self,'scope_total_text',None)
+     issue['source_toolbar']=self.scope_total_text
+     if response_identity:issue['response_identity']=response_identity
     self.coverage_issues.append(issue);self.log('GROCERY COVERAGE REVIEW: '+json.dumps(issue)+'; source discrepancy retained; no complete-catalog approval')
    for item in discovered:
     if scope not in urls.setdefault(item,[]):urls[item].append(scope)
