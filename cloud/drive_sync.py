@@ -56,7 +56,8 @@ def load_config():
    registry=json.loads((ROOT/'cloud/fetch-update-release.json').read_text())['fresh_stores']
    names=[site['name'] for site in selected_sites(registry,request)]
    if not set(names)<=set(config['stores']):raise ValueError('Fresh fetch includes stores outside approved Drive delivery')
-   config.update(refresh_generation=request['refresh_generation'],refresh_stores=names,
+   skipped=set(request.get('skip_fresh_stores',[]))
+   config.update(refresh_generation=request['refresh_generation'],refresh_stores=[name for name in names if name not in skipped],
     refresh_requested_utc=request.get('requested_utc'),refresh_requested_date_pkt=request.get('requested_date_pkt'),
     preserve_active_run_ids=request.get('preserve_active_run_ids',[]))
    date=str(request.get('requested_date_pkt') or '')

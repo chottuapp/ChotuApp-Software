@@ -387,7 +387,10 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
    found=[a for a in artifacts if a.get('name')=='chotuapp-excel-files' and not a.get('expired')]
    if not found:continue
    item=max(found,key=lambda a:a['id']);base=rid+':'+str(item['id'])
-   if state.setdefault('audit804_artifacts',{}).get(rid)==base+':'+revision:continue
+   artifact_revision=revision
+   if rid in carried_runs and rid not in refresh_runs:
+    artifact_revision=hashlib.sha256((revision+json.dumps(sorted(refresh_stores))).encode()).hexdigest()
+   if state.setdefault('audit804_artifacts',{}).get(rid)==base+':'+artifact_revision:continue
    with tempfile.TemporaryDirectory() as tmp:
     stage=download_source(gh,rid,item['id'],tmp,state,progress)
     if stage is None:continue
@@ -406,7 +409,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
      if state['audit804_processed'].get(store)==key:continue
      if entry.get('sha256') and actual_sha!=entry['sha256']:raise ValueError('Completed source checksum mismatch')
      safe_handle(matches[0],store,rid,item['id'],key)
-   state['audit804_artifacts'][rid]=base+':'+revision
+   state['audit804_artifacts'][rid]=base+':'+artifact_revision
   # Recheck durable held inputs after code/policy updates, even if Actions artifacts expired.
   for store,report in sorted(state['audit804_results'].items(),key=lambda item:priority.get(item[0],len(priority))):
    newer=next((r for r in extra_runs if r['additional_store']==store),None)

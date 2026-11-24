@@ -36,6 +36,13 @@ class FreshDeliveryGeneration(unittest.TestCase):
    root=Path(folder);self.config(root)
    with patch.object(drive_sync,'ROOT',root):result=drive_sync.load_config()
    self.assertEqual(result['refresh_generation'],'new');self.assertEqual(result['refresh_stores'],['Saved Store']);self.assertEqual(result['destination_folder'],'Approved')
+ def test_store_skipped_from_fresh_fetch_remains_eligible_via_preserved_run(self):
+  with tempfile.TemporaryDirectory() as folder:
+   root=Path(folder);self.config(root,skip_fresh_stores=['Saved Store'],preserve_active_run_ids=['123'])
+   with patch.object(drive_sync,'ROOT',root):result=drive_sync.load_config()
+   self.assertEqual(result['stores'],['Saved Store'])
+   self.assertEqual(result['refresh_stores'],[])
+   self.assertEqual(result['preserve_active_run_ids'],['123'])
  def test_different_campaign_cannot_redirect_delivery(self):
   with tempfile.TemporaryDirectory() as folder:
    root=Path(folder);self.config(root,campaign_id='unapproved')
