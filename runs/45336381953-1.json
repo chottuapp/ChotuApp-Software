@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-24T08:57:58.111965+00:00",
+  "run_id": "45336381953",
+  "attempt": "1",
+  "source_commit": "ab359047b16e6ef7eb7516d35d42f8009ac8a350",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 11065.0,
+  "stores": [
+    {
+      "name": "Asim Jofa",
+      "status": "source_paused",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "3c4ebf16ab435dde",
+      "http_statuses": {
+        "404": 2556,
+        "200": 1975,
+        "429": 5
+      },
+      "network_seconds": 11837.5,
+      "max_response_seconds": 30.0,
+      "cache_events": 9300
+    }
+  ]
+}
