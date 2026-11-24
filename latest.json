@@ -1,50 +1,48 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-24T14:02:39.078618+00:00",
-  "run_id": "45408936189",
+  "generated_utc": "2026-11-24T14:06:38.336982+00:00",
+  "run_id": "45408970832",
   "attempt": "1",
   "source_commit": "299b52dd40f382d2e30baaf6aa5f711c03c13ae2",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 230.8,
+  "elapsed_seconds": 443.1,
   "stores": [
     {
-      "name": "Farda Foods",
+      "name": "Zero Lifestyle",
       "status": "done",
       "review_required": true,
-      "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT"
-      ],
+      "issue_codes": [],
       "software_revision": "52a551413b1f1dcf",
-      "products": 51,
-      "variants": 53,
+      "products": 57,
+      "variants": 239,
       "http_statuses": {
-        "200": 64
+        "200": 131
       },
-      "network_seconds": 94.0,
-      "max_response_seconds": 4.9,
-      "cache_events": 169
+      "network_seconds": 75.0,
+      "max_response_seconds": 2.0,
+      "cache_events": 152
     },
     {
-      "name": "Adam Cheese",
+      "name": "Bata",
       "status": "done",
       "review_required": true,
       "issue_codes": [
         "HTTP_429",
-        "RATE_LIMIT"
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "52a551413b1f1dcf",
-      "products": 58,
-      "variants": 58,
+      "products": 123,
+      "variants": 681,
       "http_statuses": {
-        "200": 63,
+        "200": 159,
         "429": 1
       },
-      "network_seconds": 85.3,
+      "network_seconds": 189.8,
       "max_response_seconds": 2.5,
-      "cache_events": 175
+      "cache_events": 428
     }
   ]
 }
