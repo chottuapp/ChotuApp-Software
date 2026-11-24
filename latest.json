@@ -1,49 +1,52 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-24T15:57:39.738702+00:00",
-  "run_id": "45409045056",
+  "generated_utc": "2026-11-24T16:28:52.769393+00:00",
+  "run_id": "45409088981",
   "attempt": "1",
   "source_commit": "299b52dd40f382d2e30baaf6aa5f711c03c13ae2",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 4111.9,
+  "elapsed_seconds": 1826.1,
   "stores": [
     {
-      "name": "Paklap",
+      "name": "Blackbeiger",
       "status": "done",
       "review_required": true,
       "issue_codes": [
-        "WEBSITE_ORDER_UNVERIFIED"
+        "HTTP_429",
+        "RATE_LIMIT"
       ],
       "software_revision": "52a551413b1f1dcf",
-      "products": 1713,
-      "variants": 1713,
+      "products": 354,
+      "variants": 2513,
       "http_statuses": {
-        "200": 1756
+        "200": 371,
+        "429": 1
       },
-      "network_seconds": 1215.4,
-      "max_response_seconds": 2.9,
-      "cache_events": 1
+      "network_seconds": 815.3,
+      "max_response_seconds": 2.5,
+      "cache_events": 763
     },
     {
-      "name": "House of Tools",
+      "name": "Afrozeh",
       "status": "done",
       "review_required": true,
       "issue_codes": [
-        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "52a551413b1f1dcf",
-      "products": 1260,
-      "variants": 1260,
+      "products": 110,
+      "variants": 631,
       "http_statuses": {
-        "200": 1288,
-        "404": 1
+        "200": 432,
+        "429": 1
       },
-      "network_seconds": 957.0,
-      "max_response_seconds": 1.5,
-      "cache_events": 0
+      "network_seconds": 991.3,
+      "max_response_seconds": 2.6,
+      "cache_events": 597
     }
   ]
 }
