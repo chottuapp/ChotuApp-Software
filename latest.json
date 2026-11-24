@@ -1,41 +1,46 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-24T21:47:24.170823+00:00",
-  "run_id": "45435511997",
+  "generated_utc": "2026-11-24T22:19:15.825107+00:00",
+  "run_id": "45482640471",
   "attempt": "1",
   "source_commit": "299b52dd40f382d2e30baaf6aa5f711c03c13ae2",
-  "status": "incomplete",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 18001.4,
+  "elapsed_seconds": 6035.6,
   "stores": [
     {
-      "name": "Tawakkal Fabrics",
+      "name": "Rios",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "52a551413b1f1dcf",
+      "products": 2237,
+      "variants": 5937,
+      "http_statuses": {
+        "200": 1804,
+        "429": 2
+      },
+      "network_seconds": 4247.0,
+      "max_response_seconds": 2.7,
+      "cache_events": 39457
+    },
+    {
+      "name": "Mala",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "52a551413b1f1dcf",
-      "products": 1607,
-      "variants": 3894,
+      "products": 88,
+      "variants": 263,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
       "cache_events": 0
-    },
-    {
-      "name": "Stylo",
-      "status": "pending",
-      "review_required": false,
-      "issue_codes": [
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "52a551413b1f1dcf",
-      "http_statuses": {
-        "200": 6325
-      },
-      "network_seconds": 18665.4,
-      "max_response_seconds": 37.4,
-      "cache_events": 1418
     }
   ]
 }
