@@ -1,47 +1,47 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-24T15:35:24.670145+00:00",
-  "run_id": "45409065947",
+  "generated_utc": "2026-11-24T16:09:33.157881+00:00",
+  "run_id": "45408953819",
   "attempt": "1",
   "source_commit": "299b52dd40f382d2e30baaf6aa5f711c03c13ae2",
-  "status": "incomplete",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 175.2,
+  "elapsed_seconds": 7806.9,
   "stores": [
     {
-      "name": "Babysaurus",
+      "name": "Saeed Ghani",
       "status": "done",
       "review_required": true,
       "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT"
+        "HTTP_403"
       ],
       "software_revision": "52a551413b1f1dcf",
-      "products": 40,
-      "variants": 184,
+      "products": 403,
+      "variants": 574,
       "http_statuses": {
-        "200": 54
+        "200": 544
       },
-      "network_seconds": 56.4,
-      "max_response_seconds": 2.5,
-      "cache_events": 132
+      "network_seconds": 1304.0,
+      "max_response_seconds": 2.8,
+      "cache_events": 830
     },
     {
-      "name": "Deflexxi",
-      "status": "failed",
-      "review_required": false,
+      "name": "Hemani Herbals",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "52a551413b1f1dcf",
+      "products": 1047,
+      "variants": 1047,
       "http_statuses": {
-        "200": 1,
-        "402": 4
+        "200": 1908
       },
-      "network_seconds": 0.7,
-      "max_response_seconds": 0.2,
-      "cache_events": 0
+      "network_seconds": 4543.4,
+      "max_response_seconds": 5.8,
+      "cache_events": 2849
     }
   ]
 }
