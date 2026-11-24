@@ -1,47 +1,49 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-24T16:30:01.304618+00:00",
-  "run_id": "45409081534",
+  "generated_utc": "2026-11-24T16:36:21.401352+00:00",
+  "run_id": "45408919225",
   "attempt": "1",
   "source_commit": "299b52dd40f382d2e30baaf6aa5f711c03c13ae2",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 1612.3,
+  "elapsed_seconds": 9415.2,
   "stores": [
     {
-      "name": "Alfateh Garments",
+      "name": "Vince Care",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "52a551413b1f1dcf",
-      "products": 123,
-      "variants": 339,
+      "products": 213,
+      "variants": 353,
       "http_statuses": {
-        "200": 4
+        "200": 334
       },
-      "network_seconds": 4.6,
-      "max_response_seconds": 1.4,
-      "cache_events": 1
+      "network_seconds": 774.7,
+      "max_response_seconds": 2.8,
+      "cache_events": 426
     },
     {
-      "name": "Rizen Watches",
+      "name": "Elite Cosmetics",
       "status": "done",
       "review_required": true,
       "issue_codes": [
         "HTTP_429",
-        "RATE_LIMIT"
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED",
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "52a551413b1f1dcf",
-      "products": 225,
-      "variants": 1687,
+      "products": 1635,
+      "variants": 2314,
       "http_statuses": {
-        "200": 418,
-        "429": 1
+        "200": 2066,
+        "429": 3
       },
-      "network_seconds": 892.7,
-      "max_response_seconds": 2.6,
-      "cache_events": 577
+      "network_seconds": 4216.9,
+      "max_response_seconds": 5.8,
+      "cache_events": 12841
     }
   ]
 }
