@@ -1,51 +1,53 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-24T17:03:07.109470+00:00",
-  "run_id": "45409017445",
+  "generated_utc": "2026-11-24T17:17:39.784509+00:00",
+  "run_id": "45409021897",
   "attempt": "1",
   "source_commit": "299b52dd40f382d2e30baaf6aa5f711c03c13ae2",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 9890.7,
+  "elapsed_seconds": 9845.6,
   "stores": [
     {
-      "name": "ChenOne",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT"
-      ],
-      "software_revision": "52a551413b1f1dcf",
-      "products": 328,
-      "variants": 1211,
-      "http_statuses": {
-        "200": 776,
-        "429": 1
-      },
-      "network_seconds": 1829.6,
-      "max_response_seconds": 2.7,
-      "cache_events": 2077
-    },
-    {
-      "name": "Generation",
+      "name": "Saya",
       "status": "source_paused",
       "review_required": false,
       "issue_codes": [
         "HTTP_429",
         "RATE_LIMIT",
-        "WEBSITE_CATEGORY_UNVERIFIED",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "52a551413b1f1dcf",
       "http_statuses": {
-        "200": 3179,
+        "200": 2472,
         "429": 5
       },
-      "network_seconds": 7198.3,
-      "max_response_seconds": 4.6,
-      "cache_events": 8219
+      "network_seconds": 5474.7,
+      "max_response_seconds": 3.0,
+      "cache_events": 8382
+    },
+    {
+      "name": "Hush Puppies",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED"
+      ],
+      "software_revision": "52a551413b1f1dcf",
+      "products": 239,
+      "variants": 3275,
+      "http_statuses": {
+        "200": 340,
+        "429": 1,
+        "404": 2
+      },
+      "network_seconds": 702.4,
+      "max_response_seconds": 2.7,
+      "cache_events": 607
     }
   ]
 }
