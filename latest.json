@@ -1,51 +1,45 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-24T16:42:11.067786+00:00",
-  "run_id": "45408986222",
+  "generated_utc": "2026-11-24T16:44:18.562112+00:00",
+  "run_id": "45409060679",
   "attempt": "1",
   "source_commit": "299b52dd40f382d2e30baaf6aa5f711c03c13ae2",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 9772.0,
+  "elapsed_seconds": 4345.3,
   "stores": [
     {
-      "name": "Hello Maali",
+      "name": "Dairy Dream",
       "status": "done",
       "review_required": true,
-      "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT"
-      ],
+      "issue_codes": [],
       "software_revision": "52a551413b1f1dcf",
-      "products": 145,
-      "variants": 488,
+      "products": 8,
+      "variants": 29,
       "http_statuses": {
-        "200": 178,
-        "429": 1
+        "200": 17
       },
-      "network_seconds": 384.2,
-      "max_response_seconds": 9.0,
-      "cache_events": 388
+      "network_seconds": 10.1,
+      "max_response_seconds": 1.5,
+      "cache_events": 16
     },
     {
-      "name": "Prime Ticks",
+      "name": "Nayab Fashion",
       "status": "done",
       "review_required": true,
       "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT"
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "52a551413b1f1dcf",
-      "products": 1935,
-      "variants": 1935,
+      "products": 509,
+      "variants": 509,
       "http_statuses": {
-        "200": 1972,
-        "429": 4
+        "200": 655
       },
-      "network_seconds": 4432.4,
-      "max_response_seconds": 2.9,
-      "cache_events": 12166
+      "network_seconds": 1370.1,
+      "max_response_seconds": 6.5,
+      "cache_events": 0
     }
   ]
 }
