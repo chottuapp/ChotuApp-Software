@@ -1,32 +1,50 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-24T12:14:04.466852+00:00",
-  "run_id": "45360744185",
+  "generated_utc": "2026-11-24T14:02:39.078618+00:00",
+  "run_id": "45408936189",
   "attempt": "1",
-  "source_commit": "6ffa0e0ad256e7b6c3629e9d0c6bbb4bbe55ac4b",
-  "status": "incomplete",
+  "source_commit": "299b52dd40f382d2e30baaf6aa5f711c03c13ae2",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 11679.5,
+  "elapsed_seconds": 230.8,
   "stores": [
     {
-      "name": "Asim Jofa",
-      "status": "source_paused",
-      "review_required": false,
+      "name": "Farda Foods",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
-        "HTTP_404",
         "HTTP_429",
         "RATE_LIMIT"
       ],
-      "software_revision": "86fbc928016a0b96",
+      "software_revision": "52a551413b1f1dcf",
+      "products": 51,
+      "variants": 53,
       "http_statuses": {
-        "404": 2556,
-        "200": 2239,
-        "429": 6
+        "200": 64
       },
-      "network_seconds": 11279.9,
-      "max_response_seconds": 5.0,
-      "cache_events": 22736
+      "network_seconds": 94.0,
+      "max_response_seconds": 4.9,
+      "cache_events": 169
+    },
+    {
+      "name": "Adam Cheese",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "52a551413b1f1dcf",
+      "products": 58,
+      "variants": 58,
+      "http_statuses": {
+        "200": 63,
+        "429": 1
+      },
+      "network_seconds": 85.3,
+      "max_response_seconds": 2.5,
+      "cache_events": 175
     }
   ]
 }
