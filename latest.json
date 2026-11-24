@@ -1,29 +1,32 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-24T06:00:57.334363+00:00",
-  "run_id": "45336392544",
+  "generated_utc": "2026-11-24T06:54:56.434410+00:00",
+  "run_id": "45336387342",
   "attempt": "1",
   "source_commit": "ab359047b16e6ef7eb7516d35d42f8009ac8a350",
-  "status": "incomplete",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 127.7,
+  "elapsed_seconds": 3671.5,
   "stores": [
     {
-      "name": "ChotuApp Groceries",
-      "status": "failed",
-      "review_required": false,
+      "name": "House of Tools",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
-        "SCHEMA_CHECK",
+        "HTTP_404",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "3c4ebf16ab435dde",
+      "products": 1278,
+      "variants": 1278,
       "http_statuses": {
-        "200": 42
+        "404": 1,
+        "200": 1133
       },
-      "network_seconds": 20.0,
-      "max_response_seconds": 1.6,
-      "cache_events": 0
+      "network_seconds": 837.9,
+      "max_response_seconds": 2.2,
+      "cache_events": 179
     }
   ]
 }
