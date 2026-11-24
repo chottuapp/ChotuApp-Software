@@ -103,7 +103,10 @@ def probe(site):
  return result
 
 def main():
- request=json.loads((ROOT/'cloud/new-store-fetch-request.json').read_text());stores=validate(request)
+ import argparse
+ parser=argparse.ArgumentParser()
+ parser.add_argument("--request",type=Path,default=ROOT/"cloud/new-store-fetch-request.json")
+ request=json.loads(parser.parse_args().request.read_text());stores=validate(request)
  report=dict(run_id=os.environ['GITHUB_RUN_ID'],request_id=request['request_id'],checked_utc=datetime.now(timezone.utc).isoformat(),shop_codes='Pending owner; blank in exports' if request.get('shop_codes_pending_owner',True) else 'Owner confirmed; applied by Rule804 delivery',stores=[],groups=[],status='checking')
  def save():
   report['checked_utc']=datetime.now(timezone.utc).isoformat();publish(report,branch='requested-store-reports')

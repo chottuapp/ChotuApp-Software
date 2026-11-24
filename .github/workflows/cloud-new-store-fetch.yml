@@ -1,6 +1,9 @@
 name: Fetch New Stores With Pending Shop Codes
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [cloud/pending-store-fetch-request.json]
 permissions:
   contents: write
   actions: write
@@ -25,4 +28,4 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           PYTHONPATH: cloud:.
-        run: python cloud/new_store_fetch.py
+        run: python cloud/new_store_fetch.py --request cloud/pending-store-fetch-request.json
