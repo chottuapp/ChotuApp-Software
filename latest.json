@@ -1,35 +1,29 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-23T17:18:13.205324+00:00",
-  "run_id": "45189569541",
+  "generated_utc": "2026-11-24T06:00:57.334363+00:00",
+  "run_id": "45336392544",
   "attempt": "1",
-  "source_commit": "4e7ecac4d705e46cfadf64e013551dc0ded67224",
-  "status": "complete",
+  "source_commit": "ab359047b16e6ef7eb7516d35d42f8009ac8a350",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 11790.4,
+  "elapsed_seconds": 127.7,
   "stores": [
     {
-      "name": "Taminzo",
-      "status": "done",
-      "review_required": true,
+      "name": "ChotuApp Groceries",
+      "status": "failed",
+      "review_required": false,
       "issue_codes": [
-        "HTTP_404",
-        "HTTP_429",
-        "RATE_LIMIT",
+        "SCHEMA_CHECK",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "3e16bd7d173b67be",
-      "products": 3482,
-      "variants": 12856,
+      "software_revision": "3c4ebf16ab435dde",
       "http_statuses": {
-        "404": 974,
-        "200": 2065,
-        "429": 3
+        "200": 42
       },
-      "network_seconds": 7403.0,
-      "max_response_seconds": 22.6,
-      "cache_events": 61703
+      "network_seconds": 20.0,
+      "max_response_seconds": 1.6,
+      "cache_events": 0
     }
   ]
 }
