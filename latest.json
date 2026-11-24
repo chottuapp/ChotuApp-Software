@@ -1,50 +1,49 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-24T16:02:15.728348+00:00",
-  "run_id": "45409027296",
+  "generated_utc": "2026-11-24T15:57:39.738702+00:00",
+  "run_id": "45409045056",
   "attempt": "1",
   "source_commit": "299b52dd40f382d2e30baaf6aa5f711c03c13ae2",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 5356.1,
+  "elapsed_seconds": 4111.9,
   "stores": [
     {
-      "name": "Habitt",
+      "name": "Paklap",
       "status": "done",
       "review_required": true,
       "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT"
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "52a551413b1f1dcf",
-      "products": 469,
-      "variants": 601,
+      "products": 1713,
+      "variants": 1713,
       "http_statuses": {
-        "200": 497
+        "200": 1756
       },
-      "network_seconds": 949.5,
-      "max_response_seconds": 5.1,
-      "cache_events": 1156
+      "network_seconds": 1215.4,
+      "max_response_seconds": 2.9,
+      "cache_events": 1
     },
     {
-      "name": "Beyond East",
+      "name": "House of Tools",
       "status": "done",
       "review_required": true,
       "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT"
+        "HTTP_404",
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "52a551413b1f1dcf",
-      "products": 422,
-      "variants": 1531,
+      "products": 1260,
+      "variants": 1260,
       "http_statuses": {
-        "200": 1778,
-        "429": 2
+        "200": 1288,
+        "404": 1
       },
-      "network_seconds": 4018.6,
-      "max_response_seconds": 4.8,
-      "cache_events": 4703
+      "network_seconds": 957.0,
+      "max_response_seconds": 1.5,
+      "cache_events": 0
     }
   ]
 }
