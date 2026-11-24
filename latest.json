@@ -1,44 +1,46 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-24T20:18:27.553567+00:00",
-  "run_id": "45442506458",
+  "generated_utc": "2026-11-24T20:21:33.620377+00:00",
+  "run_id": "45444209073",
   "attempt": "1",
   "source_commit": "299b52dd40f382d2e30baaf6aa5f711c03c13ae2",
-  "status": "incomplete",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 12110.3,
+  "elapsed_seconds": 11802.4,
   "stores": [
     {
-      "name": "Rivaj UK",
+      "name": "ChenOne",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "52a551413b1f1dcf",
-      "products": 296,
-      "variants": 910,
+      "products": 328,
+      "variants": 1211,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
       "cache_events": 0
     },
     {
-      "name": "Junaid Jamshed",
-      "status": "source_paused",
-      "review_required": false,
+      "name": "Generation",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
         "HTTP_429",
         "RATE_LIMIT",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "52a551413b1f1dcf",
+      "products": 878,
+      "variants": 7161,
       "http_statuses": {
-        "200": 3908,
+        "200": 4749,
         "429": 5
       },
-      "network_seconds": 8349.1,
-      "max_response_seconds": 4.0,
-      "cache_events": 39525
+      "network_seconds": 11212.5,
+      "max_response_seconds": 2.8,
+      "cache_events": 44843
     }
   ]
 }
