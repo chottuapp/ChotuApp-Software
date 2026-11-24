@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-24T14:55:49.946726+00:00",
+  "run_id": "45409055314",
+  "attempt": "1",
+  "source_commit": "299b52dd40f382d2e30baaf6aa5f711c03c13ae2",
+  "status": "complete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 266.9,
+  "stores": [
+    {
+      "name": "G7 Leather",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "52a551413b1f1dcf",
+      "products": 12,
+      "variants": 37,
+      "http_statuses": {
+        "200": 28
+      },
+      "network_seconds": 14.7,
+      "max_response_seconds": 1.2,
+      "cache_events": 0
+    },
+    {
+      "name": "Bin Fahad",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "52a551413b1f1dcf",
+      "products": 51,
+      "variants": 96,
+      "http_statuses": {
+        "200": 83,
+        "429": 1
+      },
+      "network_seconds": 118.2,
+      "max_response_seconds": 2.5,
+      "cache_events": 174
+    }
+  ]
+}
