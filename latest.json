@@ -1,37 +1,43 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-24T20:54:46.472059+00:00",
-  "run_id": "45482816238",
+  "generated_utc": "2026-11-24T21:05:55.257186+00:00",
+  "run_id": "45464896190",
   "attempt": "1",
   "source_commit": "299b52dd40f382d2e30baaf6aa5f711c03c13ae2",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 829.8,
+  "elapsed_seconds": 7650.7,
   "stores": [
     {
-      "name": "Toyzone",
+      "name": "So Komal",
       "status": "done",
       "review_required": true,
       "issue_codes": [
-        "WEBSITE_ORDER_UNVERIFIED"
+        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT"
       ],
       "software_revision": "52a551413b1f1dcf",
-      "products": 3393,
-      "variants": 3789,
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 14302
+      "products": 769,
+      "variants": 1235,
+      "http_statuses": {
+        "404": 15,
+        "200": 2990,
+        "429": 3
+      },
+      "network_seconds": 7155.1,
+      "max_response_seconds": 2.8,
+      "cache_events": 27890
     },
     {
-      "name": "VNS Collection",
+      "name": "Mansab",
       "status": "done",
       "review_required": true,
       "issue_codes": [],
       "software_revision": "52a551413b1f1dcf",
-      "products": 724,
-      "variants": 2100,
+      "products": 61,
+      "variants": 134,
       "http_statuses": {},
       "network_seconds": 0,
       "max_response_seconds": 0,
