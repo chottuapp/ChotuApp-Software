@@ -373,7 +373,9 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
  try:
   # Newer completed exports take priority; every file still passes the same audit/delivery gates.
   priority={name:index for index,name in enumerate(config.get('priority_stores',[]))}
-  for run in reversed(runs if held_stores is None else extra_runs):
+  priority_runs={str(rid):index for index,rid in enumerate(config.get('priority_source_runs',[]))}
+  newest_first=reversed(runs if held_stores is None else extra_runs)
+  for run in sorted(newest_first,key=lambda run:priority_runs.get(str(run['databaseId']),len(priority_runs))):
    rid=str(run['databaseId']);artifacts=json.loads(gh('api','repos/chottuapp/ChotuApp-Software/actions/runs/'+rid+'/artifacts?per_page=100'))['artifacts'];found=[a for a in artifacts if a.get('name')=='chotuapp-excel-files' and not a.get('expired')]
    if not found:continue
    item=max(found,key=lambda a:a['id']);base=rid+':'+str(item['id'])
