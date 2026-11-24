@@ -35,6 +35,29 @@ class DownloadRecoveryTests(unittest.TestCase):
   with patch('audit804_automation.refresh',return_value=('',0,[])),patch.object(delivery,'completed_files',return_value=[]):
    delivery.run_campaign(state,config,runs,fetch,lambda *a:None)
   self.assertEqual(seen,['1','2']);self.assertIn('1',state['audit804_source_download_errors']);self.assertIn('2',state['audit804_artifacts']);self.assertNotIn('1',state['audit804_artifacts']);self.assertEqual(state['uploaded'],{'Existing':{'sha256':'old'}});self.assertEqual(state['sync_status'],'pending_source_artifacts')
+ def test_preserved_continuation_reopens_artifact_when_store_leaves_fresh_scope(self):
+  config=json.loads((delivery.ROOT/'cloud/drive-sync-release.json').read_text())
+  store='Asim Jofa'
+  config.update(preserve_active_run_ids=['10'],refresh_stores=[store],additional_completed_sources=[])
+  runs=[{'databaseId':11,'displayTitle':'Automatic continuation of 10'}]
+  state={}
+  def fetch(*args):
+   if args[0]=='api':
+    return json.dumps({'artifacts':[{'id':7,'name':'chotuapp-excel-files'}]})
+   stage=Path(args[-1])
+   (stage/(store+'.xlsx')).write_bytes(b'source workbook')
+  files=[{'store':store,'name':store+'.xlsx','complete':True}]
+  with patch('audit804_automation.refresh',return_value=('',0,[])),patch.object(delivery,'completed_files',return_value=files),patch.object(delivery,'normalize',side_effect=ValueError('test audit gate')) as normalize,patch.object(delivery,'save_held',return_value='input/manifest.json'):
+   delivery.run_campaign(state,config,runs,fetch,lambda *a:None)
+   normalize.assert_not_called()
+   first_receipt=state['audit804_artifacts']['11']
+   config['refresh_stores']=[]
+   delivery.run_campaign(state,config,runs,fetch,lambda *a:None)
+   normalize.assert_called_once()
+   self.assertNotEqual(state['audit804_artifacts']['11'],first_receipt)
+   self.assertEqual(state['audit804_results'][store]['source_run'],'11')
+   self.assertEqual(state['audit804_results'][store]['delivery_status'],'blocked')
+   self.assertNotIn(store,state.get('uploaded',{}))
  def test_transient_download_failure_stops_after_three_attempts(self):
   calls=[];state={}
   def fetch(*args):
