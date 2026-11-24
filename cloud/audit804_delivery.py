@@ -376,7 +376,15 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
   priority_runs={str(rid):index for index,rid in enumerate(config.get('priority_source_runs',[]))}
   newest_first=reversed(runs if held_stores is None else extra_runs)
   for run in sorted(newest_first,key=lambda run:priority_runs.get(str(run['databaseId']),len(priority_runs))):
-   rid=str(run['databaseId']);artifacts=json.loads(gh('api','repos/chottuapp/ChotuApp-Software/actions/runs/'+rid+'/artifacts?per_page=100'))['artifacts'];found=[a for a in artifacts if a.get('name')=='chotuapp-excel-files' and not a.get('expired')]
+   rid=str(run['databaseId'])
+   try:
+    artifacts=json.loads(gh('api','repos/chottuapp/ChotuApp-Software/actions/runs/'+rid+'/artifacts?per_page=100'))['artifacts']
+   except RuntimeError as exc:
+    if not getattr(exc,'transient',False):raise
+    from diagnostics import redact
+    state.setdefault('audit804_source_download_errors',{})[rid]={'stage':'artifact_listing','error':redact(str(exc))[:1500],'action':'Retry listing on a later scan; preserve the verified Drive file'}
+    continue
+   found=[a for a in artifacts if a.get('name')=='chotuapp-excel-files' and not a.get('expired')]
    if not found:continue
    item=max(found,key=lambda a:a['id']);base=rid+':'+str(item['id'])
    if state.setdefault('audit804_artifacts',{}).get(rid)==base+':'+revision:continue
