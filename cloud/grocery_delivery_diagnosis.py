@@ -15,6 +15,10 @@ def main():
   root=Path(tmp)
   audits=list(root.rglob('grocery-final-audit.json'))
   if len(audits)==1:report['final_audit']=json.loads(audits[0].read_text())
+  progress=list(root.rglob('grocery-scope-progress.json'))
+  if len(progress)==1:
+   receipt=json.loads(progress[0].read_text());report['unresolved_brands']=receipt['failures']
+   report['unverified_scope_count']=sum(not row['complete'] for row in receipt['coverage'].values())
   proofs=list(root.rglob('grocery-completion-proof.json'))
   if len(proofs)==1:report['completion_proof']=json.loads(proofs[0].read_text())
   report['files']=[str(p.relative_to(root)) for p in root.rglob('*') if p.is_file()][:250]

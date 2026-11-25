@@ -1,5 +1,8 @@
 name: ChotuApp Groceries Source Check
 on:
+  push:
+    branches: [main]
+    paths: [cloud/grocery-diagnosis-request.txt]
   workflow_dispatch:
     inputs:
       completed_run:
@@ -34,7 +37,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install -r requirements.txt
-      - if: inputs.checkpoint_run == '' && inputs.completed_run == ''
+      - if: github.event_name == 'workflow_dispatch' && inputs.checkpoint_run == '' && inputs.completed_run == ''
         run: |
           python -m pip install playwright==1.55.0
           python -m playwright install --with-deps chromium
@@ -46,6 +49,9 @@ jobs:
           GROCERY_CHECKPOINT_RUN: ${{ inputs.checkpoint_run }}
           GROCERY_COMPLETED_RUN: ${{ inputs.completed_run }}
         run: |
+          if [ "$GITHUB_EVENT_NAME" = "push" ]; then
+            export GROCERY_COMPLETED_RUN="$(cat cloud/grocery-diagnosis-request.txt)"
+          fi
           if [ -n "$GROCERY_COMPLETED_RUN" ]; then
             python cloud/grocery_delivery_diagnosis.py
           elif [ -n "$GROCERY_BRAND_NAMES" ]; then
