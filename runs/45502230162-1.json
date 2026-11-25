@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-25T01:04:49.786739+00:00",
+  "run_id": "45502230162",
+  "attempt": "1",
+  "source_commit": "ea268d655bf3b6a9343768359e3630fdfc7d4544",
+  "status": "complete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 8884.0,
+  "stores": [
+    {
+      "name": "Bela",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "52a551413b1f1dcf",
+      "products": 107,
+      "variants": 127,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    },
+    {
+      "name": "Taminzo",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "52a551413b1f1dcf",
+      "products": 3485,
+      "variants": 12914,
+      "http_statuses": {
+        "404": 680,
+        "200": 1666,
+        "429": 3
+      },
+      "network_seconds": 5478.2,
+      "max_response_seconds": 2.8,
+      "cache_events": 46135
+    }
+  ]
+}
