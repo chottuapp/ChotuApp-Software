@@ -1,46 +1,31 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-25T00:04:29.525788+00:00",
-  "run_id": "45465690944",
+  "generated_utc": "2026-11-25T00:06:30.787948+00:00",
+  "run_id": "45513989606",
   "attempt": "1",
-  "source_commit": "299b52dd40f382d2e30baaf6aa5f711c03c13ae2",
-  "status": "incomplete",
+  "source_commit": "380e9fb5c227f8ce96453e951e60d40f94795c7f",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 18000.6,
+  "elapsed_seconds": 618.3,
   "stores": [
     {
-      "name": "Bonanza Satrangi",
+      "name": "Musk Al Mahal Pakistan",
       "status": "done",
       "review_required": true,
       "issue_codes": [
-        "HTTP_503",
-        "WEBSITE_ORDER_UNVERIFIED"
+        "HTTP_429",
+        "RATE_LIMIT"
       ],
       "software_revision": "52a551413b1f1dcf",
-      "products": 1488,
-      "variants": 4739,
+      "products": 95,
+      "variants": 143,
       "http_statuses": {
-        "200": 4794
+        "200": 155
       },
-      "network_seconds": 11980.1,
-      "max_response_seconds": 3.8,
-      "cache_events": 19170
-    },
-    {
-      "name": "Zellbury",
-      "status": "pending",
-      "review_required": false,
-      "issue_codes": [
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "52a551413b1f1dcf",
-      "http_statuses": {
-        "200": 9257
-      },
-      "network_seconds": 27534.7,
-      "max_response_seconds": 40.3,
-      "cache_events": 18100
+      "network_seconds": 276.4,
+      "max_response_seconds": 2.6,
+      "cache_events": 227
     }
   ]
 }
