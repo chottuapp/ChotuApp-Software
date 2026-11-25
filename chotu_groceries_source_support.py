@@ -174,10 +174,10 @@ class PublicCatalog:
    if url in seen:raise ValueError('Grocery pagination loop; scope incomplete')
    if len(seen)>=1000:raise ValueError('Grocery scope page bound exceeded')
    seen.add(url);soup=BeautifulSoup(self.read_page(url),'html.parser')
-   selector='#product_result a[href], .products-grid .product-item a.product-item-link[href], .products.list.items .product-item a.product-item-link[href]'
+   selector='#product_result a[href], .products-grid .product-item a.product-item-link[href], .products.list.items .product-item a.product-item-link[href], .ais-Hits-item a[href]'
    nodes=soup.select(selector)
    if self.force_fresh or soup.select_one('#load-more') or not nodes and soup.select_one('#product_result,.search-result-page'):
-    cache=getattr(self.g.get('_chotu_tls'),'saved_response_cache',None);cache_key=url+'#chotu-rendered-listing-v2'
+    cache=getattr(self.g.get('_chotu_tls'),'saved_response_cache',None);cache_key=url+('#chotu-rendered-candidates-v1' if scope.get('_candidate_only') else '#chotu-rendered-listing-v2')
     saved=cache.get(cache_key) if cache and not self.force_fresh else None
     if saved is None:
      from grocery_browser_support import render_listing,ListingRenderIncomplete

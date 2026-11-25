@@ -53,6 +53,8 @@ def vendor_link(html,url,brand):
 
 def discover_brand_scope(reader,scope):
  """Prefer a current identity-matched vendor link; reconcile using exact brand search."""
+ from grocery_browser_support import ListingRenderIncomplete
+ from chotu_groceries_source_support import GroceryScopeRedirect
  vendor=None
  for url in scope.get('examples',[]):
   try:page=reader.read_page(url)
@@ -63,14 +65,34 @@ def discover_brand_scope(reader,scope):
   if vendor:break
  vendor_proof=None
  if vendor:
-  links,total,pages=discover_current_vendor(reader,scope,vendor)
-  vendor_proof=dict(url=vendor,visible=len(links),total=total,pages=sorted(pages),count_changed=reader.scope_count_changed)
-  if not reader.scope_count_changed and total is not None and len(links)==total:
-   reader.brand_proofs.append(dict(brand=scope['brand'],scope_url=scope['url'],selected='current_vendor_page',vendor=vendor_proof))
-   return links,total,pages
+  try:
+   links,total,pages=discover_current_vendor(reader,scope,vendor)
+  except (ListingRenderIncomplete,GroceryScopeRedirect) as exc:
+   vendor_proof=dict(url=vendor,error=str(exc))
+  else:
+   vendor_proof=dict(url=vendor,visible=len(links),total=total,pages=sorted(pages),count_changed=reader.scope_count_changed)
+   if not reader.scope_count_changed and total is not None and len(links)==total:
+    reader.brand_proofs.append(dict(brand=scope['brand'],scope_url=scope['url'],selected='current_vendor_page',vendor=vendor_proof))
+    return links,total,pages
  fresh=reader.force_fresh if hasattr(reader,'force_fresh') else False
  reader.force_fresh=True
- try:links,total,pages=reader.discover_scope(dict(scope,_resolved_brand=True))
+ try:
+  try:links,total,pages=reader.discover_scope(dict(scope,_resolved_brand=True))
+  except ListingRenderIncomplete as exc:
+   if vendor or not str(exc).startswith('Exact public By Brand filter missing or ambiguous:'):raise
+   # Unfiltered results are used only to find a product with an exact
+   # manufacturer link. They never establish manufacturer coverage.
+   resolved=None
+   try:
+    candidates,_,_=reader.discover_scope(dict(scope,brand=None,_resolved_brand=True,_candidate_only=True))
+    resolved=discover_vendor_from_candidates(reader,scope,candidates)
+   finally:
+    if resolved is None:
+     # Unfiltered hits are never part of a partial manufacturer export.
+     reader.scope_partial=(set(),set());reader.scope_expected=None
+     reader.scope_totals=[];reader.scope_count_changed=False
+   if resolved is None:raise
+   return resolved
  finally:reader.force_fresh=fresh
  search_changed=reader.scope_count_changed;search_totals=list(reader.scope_totals)
  search_partial=reader.scope_partial;search_expected=reader.scope_expected
@@ -94,6 +116,20 @@ def discover_brand_scope(reader,scope):
   from grocery_browser_support import ListingRenderIncomplete
   raise ListingRenderIncomplete('Exact brand search total is unverified; current vendor/search evidence retained; no partial brand completion')
  return links,total,pages
+
+def discover_vendor_from_candidates(reader,scope,links):
+ prefix=re.sub(r'[^a-z0-9]+','-',brand_key(scope['brand'])).strip('-')
+ candidates=sorted(links,key=lambda url:(not urlsplit(url).path.lstrip('/').startswith(prefix+'-'),url))
+ for url in candidates[:3]:
+  vendor=vendor_link(reader.read_page(url),url,scope['brand'])
+  if not vendor:continue
+  found,total,pages=discover_current_vendor(reader,scope,vendor)
+  if not reader.scope_count_changed and total is not None and len(found)==total:
+   proof=dict(url=vendor,visible=len(found),total=total,pages=sorted(pages),count_changed=False)
+   reader.brand_proofs.append(dict(brand=scope['brand'],scope_url=scope['url'],selected='current_vendor_page',vendor=proof))
+   return found,total,pages
+  break
+ return None
 
 def select_brand_category(product,scopes):
  exact=[s for s in scopes if s.get('brand') and brand_key(s['brand'])==brand_key(product.get('manufacturer'))]

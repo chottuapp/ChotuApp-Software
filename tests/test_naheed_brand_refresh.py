@@ -80,6 +80,24 @@ class NaheedBrandRefreshTests(unittest.TestCase):
   links,total,_=discover_brand_scope(reader,scope)
   self.assertEqual(total,len(links));self.assertEqual(reader.brand_proofs[0]['selected'],'exact_brand_search')
   self.assertEqual(reader.brand_proofs[0]['vendor']['total'],33)
+ def test_missing_exact_facet_uses_only_identity_verified_vendor_catalog(self):
+  from grocery_browser_support import ListingRenderIncomplete
+  scope=dict(brand='Dawn',url=BASE+'/catalogsearch/result/?q=Dawn',examples=[])
+  vendor=BASE+'/allproducts?manufacturer=890'
+  reader=SimpleNamespace(brand_proofs=[],scope_count_changed=False,force_fresh=False)
+  reader.read_page=lambda _:page().replace('<a>Dawn</a>','<a href="'+vendor+'">Dawn</a>')
+  def discover(selection):
+   if selection['url']==vendor:
+    return {BASE+'/item',BASE+'/another'},2,{vendor}
+   if selection.get('_candidate_only'):return {BASE+'/item'},1,{scope['url']}
+   raise ListingRenderIncomplete('Exact public By Brand filter missing or ambiguous: Dawn')
+  reader.discover_scope=discover
+  self.assertEqual(discover_brand_scope(reader,scope),({BASE+'/item',BASE+'/another'},2,{vendor}))
+  self.assertEqual(reader.brand_proofs[0]['selected'],'current_vendor_page')
+  reader.read_page=lambda _:page().replace('<a>Dawn</a>','<a href="'+vendor+'">Dawn Foods</a>')
+  with self.assertRaises(ListingRenderIncomplete):discover_brand_scope(reader,scope)
+  self.assertEqual(reader.scope_partial,(set(),set()))
+
  def test_search_without_total_cannot_be_approved_as_complete(self):
   from grocery_browser_support import ListingRenderIncomplete
   scope=dict(brand='Dawn',url=BASE+'/catalogsearch/result/?q=Dawn',examples=[])
