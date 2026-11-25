@@ -1,41 +1,50 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-25T02:51:33.476586+00:00",
-  "run_id": "45494668355",
+  "generated_utc": "2026-11-25T03:02:19.336045+00:00",
+  "run_id": "45531903409",
   "attempt": "1",
-  "source_commit": "ea268d655bf3b6a9343768359e3630fdfc7d4544",
-  "status": "incomplete",
+  "source_commit": "380e9fb5c227f8ce96453e951e60d40f94795c7f",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 18001.3,
+  "elapsed_seconds": 2581.0,
   "stores": [
     {
-      "name": "Tawakkal Fabrics",
+      "name": "Insignia",
       "status": "done",
       "review_required": true,
-      "issue_codes": [],
-      "software_revision": "52a551413b1f1dcf",
-      "products": 1607,
-      "variants": 3894,
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
-    },
-    {
-      "name": "Stylo",
-      "status": "pending",
-      "review_required": false,
       "issue_codes": [
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "52a551413b1f1dcf",
+      "products": 921,
+      "variants": 4343,
       "http_statuses": {
-        "200": 9238
+        "200": 481
       },
-      "network_seconds": 27368.9,
-      "max_response_seconds": 34.5,
-      "cache_events": 12983
+      "network_seconds": 1199.9,
+      "max_response_seconds": 2.7,
+      "cache_events": 9153
+    },
+    {
+      "name": "Lulusar",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "52a551413b1f1dcf",
+      "products": 1973,
+      "variants": 8422,
+      "http_statuses": {
+        "200": 623,
+        "429": 1
+      },
+      "network_seconds": 1413.7,
+      "max_response_seconds": 2.7,
+      "cache_events": 13737
     }
   ]
 }

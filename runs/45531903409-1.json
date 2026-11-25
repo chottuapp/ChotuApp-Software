@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-25T03:02:19.336045+00:00",
+  "run_id": "45531903409",
+  "attempt": "1",
+  "source_commit": "380e9fb5c227f8ce96453e951e60d40f94795c7f",
+  "status": "complete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 2581.0,
+  "stores": [
+    {
+      "name": "Insignia",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "52a551413b1f1dcf",
+      "products": 921,
+      "variants": 4343,
+      "http_statuses": {
+        "200": 481
+      },
+      "network_seconds": 1199.9,
+      "max_response_seconds": 2.7,
+      "cache_events": 9153
+    },
+    {
+      "name": "Lulusar",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "52a551413b1f1dcf",
+      "products": 1973,
+      "variants": 8422,
+      "http_statuses": {
+        "200": 623,
+        "429": 1
+      },
+      "network_seconds": 1413.7,
+      "max_response_seconds": 2.7,
+      "cache_events": 13737
+    }
+  ]
+}
