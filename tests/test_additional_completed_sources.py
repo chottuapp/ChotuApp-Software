@@ -26,3 +26,13 @@ class AdditionalSourcesTests(unittest.TestCase):
   self.config['additional_completed_sources'][0]['refresh_generation']='current'
   result=approved_runs(self.config,self.sites,lambda *a:json.dumps(self.run))
   self.assertEqual(result[0]['additional_refresh_generation'],'current')
+
+ def test_pinned_grocery_push_only_authorizes_completed_successful_exact_commit(self):
+  item=self.config['additional_completed_sources'][0]
+  item.update(workflow='.github/workflows/cloud-grocery-complete.yml',push_commit='a'*40)
+  run=dict(self.run,path=item['workflow'],event='push')
+  self.assertEqual(len(approved_runs(self.config,self.sites,lambda *a:json.dumps(run))),1)
+  for state in ({'status':'in_progress'},{'conclusion':'failure'}):
+   self.assertEqual(approved_runs(self.config,self.sites,lambda *a:json.dumps(dict(run,**state))),[])
+  with self.assertRaises(ValueError):
+   approved_runs(self.config,self.sites,lambda *a:json.dumps(dict(run,head_sha='b'*40)))

@@ -9,7 +9,7 @@ on:
   schedule:
     - cron: '*/5 * * * *'
   workflow_run:
-    workflows: [ChotuApp Cloud Fetch]
+    workflows: [ChotuApp Cloud Fetch, Complete saved ChotuApp Groceries file]
     types: [completed]
   push:
     branches: [main]

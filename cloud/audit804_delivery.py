@@ -263,6 +263,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
  # Only an explicitly registered successful additive source for this exact
  # generation may enter fresh delivery; old additive exports remain separate.
  refresh_runs.update(str(run['databaseId']) for run in extra_runs if generation and run.get('additional_refresh_generation')==generation)
+ preferred_sources={run['additional_store']:int(run['databaseId']) for run in extra_runs if generation and run.get('additional_refresh_generation')==generation}
 
  evidence_revision=''
  try:
@@ -406,6 +407,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
      if run.get('additional_store') and store!=run['additional_store']:continue
      if held_stores is not None and store not in held_stores:continue
      if store in paused:continue
+     if store in preferred_sources and int(rid)<preferred_sources[store]:continue
      if generation and store in refresh_stores and rid not in refresh_runs:continue
      if store not in config['stores'] or name!=store+'.xlsx' or Path(name).name!=name:
       rejected.append('Completed source outside approved batch');continue
