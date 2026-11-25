@@ -181,7 +181,9 @@ class PublicCatalog:
     saved=cache.get(cache_key) if cache and not self.force_fresh else None
     if saved is None:
      from grocery_browser_support import render_listing,ListingRenderIncomplete
-     try:rendered=render_listing(url,self.g['_chotu_wait'],self.log,**({'brand':scope['brand']} if scope.get('brand') and seed.path.startswith('/catalogsearch/') else {}))
+     options={'brand':scope['brand']} if scope.get('brand') and seed.path.startswith('/catalogsearch/') else {}
+     if scope.get('_candidate_only'):options['load_all']=False
+     try:rendered=render_listing(url,self.g['_chotu_wait'],self.log,**options)
      except ListingRenderIncomplete:
       # Retain source-visible first-batch cards even when later UI loading fails.
       for a in nodes:
@@ -209,6 +211,7 @@ class PublicCatalog:
     # Public result cards also contain wishlist/cart actions and fragment links.
     if parsed.query or parsed.fragment or parsed.path.strip('/').count('/') or parsed.path.rstrip('/') in ('','/allproducts','/customer','/checkout','/wishlist','/cart'):continue
     discovered.add(item)
+   if scope.get('_candidate_only'):return discovered,None,seen
    count=soup.select_one('.toolbar-amount')
    if scope.get('brand') and soup.html and soup.html.get('data-chotu-selected-brand'):
     from naheed_brand_support import brand_key

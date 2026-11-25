@@ -37,6 +37,22 @@ def main():
     record['redirect_page']=dict(title=soup.title.get_text(' ',strip=True)[:300] if soup.title else '',heading=heading.get_text(' ',strip=True)[:500] if heading else '',canonical=canonical.get('href') if canonical else None)
     main=soup.select_one('main') or soup
     record['redirect_page'].update(listing_cards=len(main.select('.products-grid .product-item')),toolbar=[n.get_text(' ',strip=True) for n in main.select('.toolbar-amount,.ais-Stats-text')],manufacturer_links=sorted({a['href'] for a in main.select('a[href]') if 'manufacturer=' in a['href']}),pagination=[a['href'] for a in main.select('.pages a[href],a.next[href]')],buttons=[n.get_text(' ',strip=True)[:100] for n in main.select('button')][:15])
+  from naheed_brand_support import vendor_link
+  from urllib.parse import urlsplit
+  record['public_examples']=[]
+  try:
+   reader.force_fresh=True
+   hits,_,_=reader.discover_scope(dict(scope,brand=None,_resolved_brand=True,_candidate_only=True))
+   prefix=brand_key(name).replace(' ','-')+'-'
+   ranked=sorted(hits,key=lambda url:(not urlsplit(url).path.lstrip('/').startswith(prefix),url))
+   for url in list(dict.fromkeys(scope.get('examples',[])+ranked[:5])):
+    try:
+     html=reader.read_page(url);soup=BeautifulSoup(html,'html.parser')
+     manufacturer=soup.select_one('.product-info-main .brand-name')
+     record['public_examples'].append(dict(url=url,manufacturer=manufacturer.get_text(' ',strip=True) if manufacturer else None,vendor=vendor_link(html,url,name)))
+    except Exception as exc:record['public_examples'].append(dict(url=url,error=type(exc).__name__,identity=getattr(reader,'last_response_identity',None)))
+  except Exception as exc:record['candidate_error']=type(exc).__name__+': '+str(exc)[:300]
+  finally:reader.force_fresh=False
   record['rendered_search']=[]
   for (key,) in cache.db.execute('SELECT url FROM pages').fetchall():
    if not key.startswith(scope['url']+'#chotu-rendered-listing-v2'):continue
