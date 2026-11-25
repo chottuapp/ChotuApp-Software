@@ -41,7 +41,7 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install -r requirements.txt
-      - if: github.event_name == 'push' || (github.event_name == 'workflow_dispatch' && inputs.checkpoint_run == '' && inputs.completed_run == '')
+      - if: github.event_name == 'workflow_dispatch' && inputs.checkpoint_run == '' && inputs.completed_run == ''
         run: |
           python -m pip install playwright==1.55.0
           python -m playwright install --with-deps chromium
@@ -56,7 +56,11 @@ jobs:
           if [ "$GITHUB_EVENT_NAME" = "push" ]; then
             request="$(cat cloud/grocery-diagnosis-request.txt)"
             case "$request" in
-              brands:*) export GROCERY_BRAND_NAMES="${request#brands:}" ;;
+              vendors:*) export GROCERY_BRAND_NAMES="${request#vendors:}" GROCERY_VENDOR_ONLY=1 ;;
+              brands:*)
+                export GROCERY_BRAND_NAMES="${request#brands:}"
+                python -m pip install playwright==1.55.0
+                python -m playwright install --with-deps chromium ;;
               *) export GROCERY_COMPLETED_RUN="$request" ;;
             esac
           fi

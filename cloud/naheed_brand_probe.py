@@ -9,6 +9,24 @@ from chotu_groceries_source_support import PublicCatalog
 from naheed_brand_support import brand_key,load_request
 from source_research import publish
 
+def vendor_evidence(reader,scope):
+ from naheed_brand_support import vendor_link
+ result=[]
+ for example in scope.get('examples',[]):
+  vendor=vendor_link(reader.read_page(example),example,scope['brand'])
+  if not vendor:continue
+  try:
+   soup=BeautifulSoup(reader.read_page(vendor),'html.parser')
+  except Exception as exc:
+   result.append(dict(url=vendor,error=type(exc).__name__+': '+str(exc)[:300],identity=getattr(reader,'last_response_identity',None)))
+   continue
+  main=soup.select_one('main') or soup
+  result.append(dict(url=vendor,title=soup.title.get_text(' ',strip=True) if soup.title else None,
+   text=main.get_text(' ',strip=True)[:2500],links=[a['href'] for a in main.select('a[href]')][:30],
+   counts=[n.get_text(' ',strip=True)[:250] for n in main.select('.toolbar-amount,.ais-Stats,[class*=product-count]')],
+   markup=[dict(tag=n.name,id=n.get('id'),classes=n.get('class')) for n in main.select('[class*=product],[id*=product]')][:30]))
+ return result
+
 def main():
  requested=[v.strip() for v in os.environ['GROCERY_BRAND_NAMES'].split(',') if v.strip()]
  if not 1<=len(requested)<=3:raise ValueError('Inspect one to three exact approved brands')
@@ -23,6 +41,8 @@ def main():
  records=[]
  for name in requested:
   scope=approved[brand_key(name)];record=dict(brand=scope['brand'])
+  if os.environ.get('GROCERY_VENDOR_ONLY')=='1':
+   record['vendor_evidence']=vendor_evidence(reader,scope);records.append(record);continue
   try:
    links,total,pages=reader.discover_scope(scope)
    record.update(visible=len(links),total=total,pages=sorted(pages),count_changed=reader.scope_count_changed,proofs=[v for v in reader.brand_proofs if v['brand']==scope['brand']],samples=[])
