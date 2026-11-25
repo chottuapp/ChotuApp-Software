@@ -3,6 +3,10 @@ on:
   push:
     branches: [main]
     paths: [cloud/grocery-diagnosis-request.txt]
+  workflow_run:
+    workflows: [Complete saved ChotuApp Groceries file]
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
     inputs:
       completed_run:
@@ -47,7 +51,7 @@ jobs:
           GROCERY_PUBLIC_SCOPE_INDEXES: ${{ inputs.public_scope_indexes }}
           GROCERY_BRAND_NAMES: ${{ inputs.brand_names }}
           GROCERY_CHECKPOINT_RUN: ${{ inputs.checkpoint_run }}
-          GROCERY_COMPLETED_RUN: ${{ inputs.completed_run }}
+          GROCERY_COMPLETED_RUN: ${{ inputs.completed_run || github.event.workflow_run.id }}
         run: |
           if [ "$GITHUB_EVENT_NAME" = "push" ]; then
             export GROCERY_COMPLETED_RUN="$(cat cloud/grocery-diagnosis-request.txt)"
