@@ -67,6 +67,16 @@ class NaheedBrandRefreshTests(unittest.TestCase):
   self.assertIsNone(verified_full_catalogue_link(html,url,'Another Brand'))
   self.assertIsNone(verified_full_catalogue_link(html.replace('</main>','<a href="/allproducts?manufacturer=999">Other</a></main>'),url,'Sajiero'))
   self.assertIsNone(verified_full_catalogue_link(html.replace(full,'https://evil.test/allproducts?manufacturer=4971'),url,'Sajiero'))
+ def test_untitled_vendor_landing_requires_exact_product_backlink_and_unique_view_all(self):
+  from naheed_brand_support import verified_full_catalogue_link
+  item=BASE+'/silk-hand-wash'
+  vendor=BASE+'/allproducts?manufacturer=980'
+  html=f'<main><a class="product-item-link" href="{item}">Hand wash</a><a href="{vendor}">View All</a></main>'
+  self.assertEqual(verified_full_catalogue_link(html,BASE+'/silk','Silk',[item]),vendor)
+  self.assertIsNone(verified_full_catalogue_link(html,BASE+'/silk','Silk',[BASE+'/other']))
+  self.assertIsNone(verified_full_catalogue_link(html.replace('View All','Featured'),BASE+'/silk','Silk',[item]))
+  self.assertIsNone(verified_full_catalogue_link(html.replace('</main>','<a href="/allproducts?manufacturer=999">View All</a></main>'),BASE+'/silk','Silk',[item]))
+
  def test_brand_match_is_not_a_title_or_partial_name_match(self):
   scope=dict(brand='Dawn',url=BASE+'/catalogsearch/result/?q=Dawn')
   p=dict(manufacturer='Dawn Foods',name='Dawn Bread',categories=[{'name':'Snacks'}])

@@ -68,6 +68,15 @@ class GroceryTests(unittest.TestCase):
   self.assertFalse(source.electronic_item('Shampoo for Dry Hair',['Hair Care']))
   self.assertFalse(source.electronic_item('Durex Condoms 3 Pack',['Sexual Wellness']))
   with self.assertRaisesRegex(source.IncompleteProduct,'electronic item excluded'):source.product(page(title='USB Charger',schema_price=0),source.BASE+'/item')
+ def test_explicit_empty_vendor_catalog_requires_exact_brand_heading(self):
+  from grocery_browser_support import ListingRenderIncomplete
+  reader=source.PublicCatalog({'_chotu_wait':lambda:None},lambda _:None)
+  scope=dict(brand='Eros',url=source.BASE+'/allproducts?manufacturer=1852',_resolved_brand=True)
+  reader.read_page=lambda _: '<main><h1>Eros - All Products</h1><p>There are currently no products available</p></main>'
+  self.assertEqual(reader.discover_scope(scope),(set(),0,{scope['url']}))
+  with self.assertRaises(ListingRenderIncomplete):
+   reader.discover_scope(dict(scope,brand='Different'))
+
  def test_numbered_pages_are_all_followed(self):
   with tempfile.TemporaryDirectory() as tmp:
    reader=source.PublicCatalog({'_chotu_wait':lambda:None,'__file__':str(Path(tmp)/'main.py')},lambda _:None)

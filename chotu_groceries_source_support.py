@@ -200,6 +200,13 @@ class PublicCatalog:
       saved=requests.Response();saved.status_code=200;saved.url=url;saved._content=rendered.encode();saved.encoding='utf-8';saved.headers['Content-Type']='text/html';cache.put(cache_key,saved)
     else:rendered=saved.text
     soup=BeautifulSoup(rendered,'html.parser');nodes=soup.select(selector)
+   main=soup.select_one('main')
+   if scope.get('brand') and seed.path.rstrip('/')=='/allproducts' and seed_query.get('manufacturer') and main:
+    from naheed_brand_support import brand_key
+    heading=main.select_one('h1') or soup.select_one('h1')
+    verified=heading and brand_key(heading.get_text(' ',strip=True))==brand_key(scope['brand']+' - All Products')
+    if verified and not nodes and 'There are currently no products available' in main.get_text(' ',strip=True):
+     return set(),0,seen
    if not nodes and not re.search(r"We can.t find products|No products found|No products for query|Your search returned no results",soup.get_text(' ',strip=True),re.I):
     from grocery_browser_support import ListingRenderIncomplete
     raise ListingRenderIncomplete('Public grocery listing schema unverified; affected scope requires review')

@@ -156,18 +156,24 @@ def discover_current_vendor(reader,scope,vendor):
    if not target:raise
    reader.log('GROCERY VENDOR RENAMED: '+vendor+' -> '+target+'; exact source brand/canonical verified')
    vendor=target;html=exc.html
-  full=verified_full_catalogue_link(html,vendor,scope['brand'])
+  full=verified_full_catalogue_link(html,vendor,scope['brand'],scope.get('examples',[]))
   if full:
    reader.log('GROCERY FULL BRAND CATALOGUE: '+full+'; linked by verified '+scope['brand']+' page')
    vendor=full
  reader.last_verified_vendor_url=vendor
  return reader.discover_scope(dict(scope,url=vendor,_resolved_brand=True))
 
-def verified_full_catalogue_link(html,url,brand):
+def verified_full_catalogue_link(html,url,brand,examples=()):
  from types import SimpleNamespace
- if not verified_vendor_redirect(SimpleNamespace(requested=url,actual=url,html=html),brand):return None
- soup=BeautifulSoup(html,'html.parser');main=soup.select_one('main') or soup;links=set()
+ identity=verified_vendor_redirect(SimpleNamespace(requested=url,actual=url,html=html),brand)
+ soup=BeautifulSoup(html,'html.parser');main=soup.select_one('main') or soup
+ # Some brand landing pages omit a heading and canonical. Require a return
+ # link to the exact example that led here and a unique explicit View All.
+ if not identity and not set(examples).intersection(urljoin(url,a['href']) for a in main.select('a.product-item-link[href]')):return None
+ links=set()
  for a in main.select('a[href]'):
   link=urljoin(url,a['href']);p=urlsplit(link);q=parse_qsl(p.query)
-  if p.scheme=='https' and p.netloc=='www.naheed.pk' and p.path.rstrip('/')=='/allproducts' and not p.fragment and len(q)==1 and q[0][0]=='manufacturer' and re.fullmatch(r'\d+',q[0][1]):links.add(link)
+  if p.scheme=='https' and p.netloc=='www.naheed.pk' and p.path.rstrip('/')=='/allproducts' and not p.fragment and len(q)==1 and q[0][0]=='manufacturer' and re.fullmatch(r'\d+',q[0][1]):
+   if not identity and brand_key(a.get_text(' ',strip=True)) not in ('view all','shop all'):return None
+   links.add(link)
  return next(iter(links)) if len(links)==1 else None
