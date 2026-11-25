@@ -58,6 +58,28 @@ class DownloadRecoveryTests(unittest.TestCase):
    self.assertEqual(state['audit804_results'][store]['source_run'],'11')
    self.assertEqual(state['audit804_results'][store]['delivery_status'],'blocked')
    self.assertNotIn(store,state.get('uploaded',{}))
+ def test_invalid_export_receipt_leaves_verified_copy_and_other_runs_processable(self):
+  config=json.loads((delivery.ROOT/'cloud/drive-sync-release.json').read_text())
+  campaign=config['dispatcher'];generation=config['refresh_generation']
+  config['additional_completed_sources']=[]
+  prefix='Cloud group audit804-'+campaign+'-'+generation+'-'
+  runs=[{'databaseId':20,'displayTitle':prefix+'1'},{'databaseId':21,'displayTitle':prefix+'2'}]
+  verified={'sha256':'old'}
+  state={'uploaded':{'Bata':verified}}
+  def fetch(*args):
+   if args[0]=='api':return json.dumps({'artifacts':[{'id':7,'name':'chotuapp-excel-files'}]})
+   stage=Path(args[-1]);files=[]
+   if args[2]=='21':
+    (stage/'Bata.xlsx').write_bytes(b'changed bytes')
+    files=[{'store':'Bata','name':'Bata.xlsx','complete':True,'sha256':'wrong'}]
+   (stage/'completion-manifest.json').write_text(json.dumps({'files':files}))
+  with patch('audit804_automation.refresh',return_value=('',0,[])),patch.object(delivery,'normalize') as normalize:
+   delivery.run_campaign(state,config,runs,fetch,lambda *a:None)
+   normalize.assert_not_called()
+  self.assertEqual(state['uploaded']['Bata'],verified)
+  self.assertIn('checksum mismatch',state['audit804_source_download_errors']['21']['error'])
+  self.assertNotIn('21',state['audit804_artifacts'])
+  self.assertIn('20',state['audit804_artifacts'])
  def test_transient_download_failure_stops_after_three_attempts(self):
   calls=[];state={}
   def fetch(*args):

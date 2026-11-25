@@ -159,6 +159,7 @@ class DriveIdentity:
 
 def completed_files(stage):
  manifests=list(stage.rglob('completion-manifest.json'))
+ if len(manifests)>1:raise ValueError('Unique completion manifest required')
  if len(manifests)==1:return [row for row in json.loads(manifests[0].read_text()).get('files',[]) if row.get('complete') is True]
  summaries=list(stage.rglob('run-summary.json'))
  if len(summaries)!=1:return []
@@ -380,7 +381,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
    try:
     artifacts=json.loads(gh('api','repos/chottuapp/ChotuApp-Software/actions/runs/'+rid+'/artifacts?per_page=100'))['artifacts']
    except RuntimeError as exc:
-    if not getattr(exc,'transient',False):raise
+    if not (getattr(exc,'transient',False) or getattr(exc,'not_found',False)):raise
     from diagnostics import redact
     state.setdefault('audit804_source_download_errors',{})[rid]={'stage':'artifact_listing','error':redact(str(exc))[:1500],'action':'Retry listing on a later scan; preserve the verified Drive file'}
     continue
@@ -394,21 +395,32 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
    with tempfile.TemporaryDirectory() as tmp:
     stage=download_source(gh,rid,item['id'],tmp,state,progress)
     if stage is None:continue
-    for entry in sorted(completed_files(stage),key=lambda entry:priority.get(entry.get('store'),len(priority))):
-     store=entry.get('store');name=entry.get('name','')
+    try:
+     entries=sorted(completed_files(stage),key=lambda entry:priority.get(entry.get('store'),len(priority)))
+    except (ValueError,TypeError,AttributeError,OSError):
+     state.setdefault('audit804_source_download_errors',{})[rid]={'stage':'completion_manifest','artifact_id':item['id'],'error':'Unreadable completion manifest'}
+     continue
+    rejected=[]
+    for entry in entries:
+     store=entry.get('store');name=entry.get('name')
      if run.get('additional_store') and store!=run['additional_store']:continue
      if held_stores is not None and store not in held_stores:continue
      if store in paused:continue
      if generation and store in refresh_stores and rid not in refresh_runs:continue
-     if store not in config['stores']:raise ValueError('Unapproved store in completed source')
-     key=base+':'+store+':'+revision
-     if store not in config['stores'] or Path(name).name!=name or name!=store+'.xlsx':raise ValueError('Completed source outside approved batch')
+     if store not in config['stores'] or name!=store+'.xlsx' or Path(name).name!=name:
+      rejected.append('Completed source outside approved batch');continue
      matches=list(stage.rglob(name))
-     if len(matches)!=1:raise ValueError('Unique completed source required')
-     actual_sha=hashlib.sha256(matches[0].read_bytes()).hexdigest();key='source:'+actual_sha+':'+store+':'+revision
+     if len(matches)!=1 or not matches[0].is_file() or matches[0].is_symlink():
+      rejected.append('Unique completed source required for '+store);continue
+     actual_sha=hashlib.sha256(matches[0].read_bytes()).hexdigest()
+     if entry.get('sha256') and actual_sha!=entry['sha256']:
+      rejected.append('Completed source checksum mismatch for '+store);continue
+     key='source:'+actual_sha+':'+store+':'+revision
      if state['audit804_processed'].get(store)==key:continue
-     if entry.get('sha256') and actual_sha!=entry['sha256']:raise ValueError('Completed source checksum mismatch')
      safe_handle(matches[0],store,rid,item['id'],key)
+    if rejected:
+     state.setdefault('audit804_source_download_errors',{})[rid]={'stage':'completion_manifest','artifact_id':item['id'],'error':'; '.join(rejected)[:1500]}
+     continue
    state['audit804_artifacts'][rid]=base+':'+artifact_revision
   # Recheck durable held inputs after code/policy updates, even if Actions artifacts expired.
   for store,report in sorted(state['audit804_results'].items(),key=lambda item:priority.get(item[0],len(priority))):
