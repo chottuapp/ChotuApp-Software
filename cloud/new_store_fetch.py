@@ -38,6 +38,29 @@ def plan(request,stores,observations,runs):
   if selected:groups.append(dict(runner_group=prefix+str(i//2+1)+'-'+'-'.join(key(s) for s in selected),stores=selected))
  return groups,already
 
+def saved_recovery(request,stores,runs,fetch):
+ recovery=request.get('saved_recovery')
+ if not recovery:return None
+ parent=str(recovery['run_id']);site=next((s for s in stores if s['name']==recovery['store']),None)
+ if not parent.isdigit() or site is None:raise ValueError('Invalid additive recovery request')
+ run=next((r for r in runs if str(r['databaseId'])==parent),None)
+ if run is None:raise ValueError('Saved source run is outside the visible history')
+ lane=root_lane(run,runs)
+ if not lane or not lane.startswith('requested-'+request['request_id']+'-') or key(site) not in lane.split('-'):
+  raise ValueError('Checkpoint does not belong to the requested store')
+ if any(int(r['databaseId'])>int(parent) and root_lane(r,runs)==lane for r in runs):
+  return dict(store=site['name'],status='newer_run_retained',parent_run=parent)
+ if run['status']!='completed' or run['conclusion']!='failure':raise ValueError('Only a completed failed run can be recovered')
+ data=json.loads(fetch('api',f'repos/{REPO}/actions/runs/{parent}/artifacts?per_page=100'))
+ if not any(a['name']=='chotuapp-checkpoint' and not a.get('expired') for a in data['artifacts']):
+  return dict(store=site['name'],status='checkpoint_unavailable',parent_run=parent)
+ fetch('workflow','run','cloud-fetch.yml','--repo',REPO,'--ref','main',
+       '-f','stores='+json.dumps([site]),'-f','runner_group='+lane,
+       '-f','resume_run_id='+parent,'-f','continuation_parent='+parent,
+       '-f','partition_resume=true','-f','minutes=300','-f','save_checkpoint=true',
+       '-f','auto_continue_limit=6','-f','auto_continue_once=false')
+ return dict(store=site['name'],status='checkpoint_dispatched',parent_run=parent)
+
 from next_public_support import public_next_product_state
 
 def probe(site):
@@ -112,8 +135,9 @@ def main():
   report['checked_utc']=datetime.now(timezone.utc).isoformat();publish(report,branch='requested-store-reports')
  with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:report['stores']=list(pool.map(probe,stores))
  save()
- runs=json.loads(gh('run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','200','--json','databaseId,displayTitle,status'))
+ runs=json.loads(gh('run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','200','--json','databaseId,displayTitle,status,conclusion'))
  groups,already=plan(request,stores,report['stores'],runs);report['already_dispatched']=sorted(already)
+ if request.get('saved_recovery'):report['saved_recovery']=saved_recovery(request,stores,runs,gh);save()
  for group in groups:
   gh('workflow','run','cloud-fetch.yml','--repo',REPO,'--ref','main','-f','stores='+json.dumps(group['stores']),'-f','runner_group='+group['runner_group'],'-f','minutes=300','-f','save_checkpoint=true','-f','auto_continue_limit=6','-f','auto_continue_once=false')
   report['groups'].append(dict(group,status='dispatched'));save()

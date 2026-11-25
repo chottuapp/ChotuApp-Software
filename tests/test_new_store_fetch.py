@@ -1,7 +1,7 @@
 import copy,json,unittest
 from pathlib import Path
-from unittest.mock import patch
-from new_store_fetch import validate,plan,ROOT
+from unittest.mock import Mock,patch
+from new_store_fetch import key,plan,ROOT,saved_recovery,validate
 class NewStoreFetchTests(unittest.TestCase):
  def test_owner_confirmed_codes_match_registered_domains(self):
   r=json.loads((ROOT/'cloud/new-store-fetch-request.json').read_text());codes=json.loads((ROOT/'cloud/confirmed-shop-codes.json').read_text())
@@ -50,6 +50,23 @@ class NewStoreFetchTests(unittest.TestCase):
   request['stores'][0]={'name':'Toynix','url':'https://www.toynix.pk/'}
   with self.assertRaisesRegex(ValueError,'owner-paused'):
    validate(request)
+
+ def test_saved_recovery_partitions_only_requested_store_and_is_idempotent(self):
+  site={'name':'OrderNation','url':'https://www.ordernation.com'}
+  request={'request_id':'new20261125','saved_recovery':{'store':site['name'],'run_id':'20'}}
+  lane='requested-new20261125-3-'+key(site)
+  runs=[{'databaseId':10,'displayTitle':'Cloud group '+lane},
+        {'databaseId':20,'displayTitle':'Automatic continuation of 10','status':'completed','conclusion':'failure'}]
+  fetch=Mock(return_value=json.dumps({'artifacts':[{'name':'chotuapp-checkpoint','expired':False}]}))
+  self.assertEqual(saved_recovery(request,[site],runs,fetch)['status'],'checkpoint_dispatched')
+  sent=fetch.call_args.args
+  self.assertIn('stores='+json.dumps([site]),sent)
+  self.assertIn('partition_resume=true',sent)
+  self.assertIn('resume_run_id=20',sent)
+  runs.append({'databaseId':30,'displayTitle':'Automatic continuation of 20','status':'in_progress'})
+  fetch.reset_mock()
+  self.assertEqual(saved_recovery(request,[site],runs,fetch)['status'],'newer_run_retained')
+  fetch.assert_not_called()
 
  def test_public_next_json_stream_handles_split_product_records_without_execution(self):
   from new_store_fetch import public_next_product_state

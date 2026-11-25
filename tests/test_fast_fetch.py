@@ -1,4 +1,6 @@
 import copy
+from contextlib import ExitStack
+from datetime import datetime,timezone
 import importlib.util
 import json
 from pathlib import Path
@@ -23,6 +25,9 @@ class FastFetchTests(unittest.TestCase):
     def test_liberty_uses_one_worker_and_conservative_spacing_after_observed_429(self):
         self.assertEqual(fast.source_policy('libertybooks.com'),(2.5,1))
         self.assertEqual(fast.source_policy('www.libertybooks.com'),(2.5,1))
+
+    def test_ordernation_uses_one_worker_after_repeated_rate_limits(self):
+        self.assertEqual(fast.source_policy("www.ordernation.com"),(2.5,1))
 
     def test_live_stock_controls_html_preload_not_stale_snapshot(self):
         self.assertTrue(fast.needs_live_product_page({'variants':[{'available':False},{'available':True}]}))
@@ -80,7 +85,12 @@ class FastFetchTests(unittest.TestCase):
                     base=f'http://127.0.0.1:{server.server_port}'
                     module._chotu_open_checkpoint(base,'Fixture');logs=[]
                     visits.clear();peak=0;start=time.monotonic()
-                    try:module.run_site(base,'Fixture',str(ROOT/'importer-files/Chotu_Products_Import_Template_Discount_Tags.xlsx'),logs.append)
+                    try:
+                        with ExitStack() as clocks:
+                            for support in ('website_category_support','website_order_support','ranking_support','subcategory_inference_support'):
+                                clock=clocks.enter_context(patch(support+'.datetime'))
+                                clock.now.return_value=datetime(2026,11,25,tzinfo=timezone.utc)
+                            module.run_site(base,'Fixture',str(ROOT/'importer-files/Chotu_Products_Import_Template_Discount_Tags.xlsx'),logs.append)
                     finally:
                         module._chotu_close_checkpoint(False);module._chotu_tls.saved_response_cache.close()
                     self.assertNotIn('/products/incomplete.js',visits)
