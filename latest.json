@@ -1,34 +1,36 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-25T00:33:25.931209+00:00",
-  "run_id": "45510509894",
+  "generated_utc": "2026-11-25T00:44:56.301765+00:00",
+  "run_id": "45513967926",
   "attempt": "1",
-  "source_commit": "94d383b92c1c7a9c9e10a556ae52f993921ac92b",
-  "status": "incomplete",
+  "source_commit": "380e9fb5c227f8ce96453e951e60d40f94795c7f",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 3718.3,
+  "elapsed_seconds": 2930.6,
   "stores": [
     {
-      "name": "OrderNation",
-      "status": "source_paused",
-      "review_required": false,
+      "name": "Bin Ilyas",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
         "HTTP_429",
         "RATE_LIMIT",
-        "WEBSITE_ORDER_UNVERIFIED"
+        "WEBSITE_CATEGORY_UNVERIFIED"
       ],
       "software_revision": "52a551413b1f1dcf",
+      "products": 179,
+      "variants": 387,
       "http_statuses": {
-        "200": 1449,
-        "429": 6
+        "200": 1002,
+        "429": 2
       },
-      "network_seconds": 3257.3,
-      "max_response_seconds": 4.9,
-      "cache_events": 5026
+      "network_seconds": 2284.9,
+      "max_response_seconds": 2.6,
+      "cache_events": 2038
     },
     {
-      "name": "Scents N Secrets",
+      "name": "Skin Deep International",
       "status": "done",
       "review_required": true,
       "issue_codes": [
@@ -36,14 +38,14 @@
         "RATE_LIMIT"
       ],
       "software_revision": "52a551413b1f1dcf",
-      "products": 140,
-      "variants": 181,
+      "products": 32,
+      "variants": 59,
       "http_statuses": {
-        "200": 186
+        "200": 86
       },
-      "network_seconds": 234.4,
-      "max_response_seconds": 2.5,
-      "cache_events": 445
+      "network_seconds": 112.2,
+      "max_response_seconds": 2.4,
+      "cache_events": 101
     }
   ]
 }
