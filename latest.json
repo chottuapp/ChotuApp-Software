@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-25T05:31:35.541494+00:00",
-  "run_id": "45531617138",
+  "generated_utc": "2026-11-25T06:21:34.847000+00:00",
+  "run_id": "45554223242",
   "attempt": "1",
   "source_commit": "380e9fb5c227f8ce96453e951e60d40f94795c7f",
-  "status": "incomplete",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 11668.0,
+  "elapsed_seconds": 2860.5,
   "stores": [
     {
       "name": "Jenpharm",
@@ -24,20 +24,22 @@
     },
     {
       "name": "Baby Planet",
-      "status": "source_paused",
-      "review_required": false,
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
         "HTTP_429",
         "RATE_LIMIT"
       ],
       "software_revision": "52a551413b1f1dcf",
+      "products": 4548,
+      "variants": 10123,
       "http_statuses": {
-        "200": 2456,
-        "429": 4
+        "200": 429,
+        "429": 1
       },
-      "network_seconds": 5523.8,
-      "max_response_seconds": 2.5,
-      "cache_events": 36415
+      "network_seconds": 962.5,
+      "max_response_seconds": 2.6,
+      "cache_events": 28183
     }
   ]
 }
