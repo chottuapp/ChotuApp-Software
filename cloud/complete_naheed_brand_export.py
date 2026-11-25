@@ -99,6 +99,7 @@ def main():
   original_rows=rows(normalized);existing={r['source_url'] for r in original_rows};ids={r['product_id'] for r in original_rows};candidates={};failures=[]
   pending=[u for u,v in coverage.items() if not v['complete']]
   if len(pending)!=max(int(r.get('source_scope_review_count') or 0) for r in original_rows):raise ValueError('Original brand review receipts disagree; scope repair must not silently skip a brand')
+  from chotu_groceries_source_support import GroceryScopeRedirect
   for index,url in enumerate(pending,1):
    scope=scopes[url]
    try:
@@ -107,7 +108,7 @@ def main():
     coverage[url]=dict(visible=len(links),pages=len(pages),total=total,complete=True,evidence=reader.brand_proofs[-1])
     for link in links:
      if link not in existing:candidates.setdefault(link,[]).append(scope)
-   except ListingRenderIncomplete as exc:failures.append(dict(scope_url=url,brand=scope['brand'],reason=str(exc)))
+   except (ListingRenderIncomplete,GroceryScopeRedirect) as exc:failures.append(dict(scope_url=url,brand=scope['brand'],reason=str(exc)))
    (out/'grocery-scope-progress.json').write_text(json.dumps(dict(source_run=os.environ['GROCERY_SOURCE_RUN'],coverage=coverage,failures=failures,candidate_urls={u:[v['url'] for v in members] for u,members in candidates.items()}),indent=2))
    print('SAVED BRAND REPAIR:',index,'/',len(pending),scope['brand'],'unresolved',len(failures),flush=True)
   if failures:raise ValueError('Unresolved brand scopes retained; no full catalog approval: '+', '.join(v['brand'] for v in failures))

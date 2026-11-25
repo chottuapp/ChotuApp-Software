@@ -1,5 +1,8 @@
 name: Complete saved ChotuApp Groceries file
 on:
+  push:
+    branches: [main]
+    paths: [cloud/grocery-completion-request.json]
   workflow_dispatch:
     inputs:
       audited_recovery_run_id:
@@ -33,6 +36,31 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Resolve saved export identity
+        id: source
+        env:
+          MANUAL_SOURCE_RUN: ${{ inputs.source_run_id }}
+          MANUAL_BRAND_REFRESH: ${{ inputs.brand_refresh }}
+        run: |
+          python - <<'PYTHON'
+          import json
+          import os
+          from pathlib import Path
+
+          if os.environ["GITHUB_EVENT_NAME"] == "push":
+              request = json.loads(Path("cloud/grocery-completion-request.json").read_text())
+              run_id = request["source_run_id"]
+              brand_refresh = "true" if request["brand_refresh"] is True else "false"
+          else:
+              run_id = os.environ["MANUAL_SOURCE_RUN"]
+              brand_refresh = os.environ["MANUAL_BRAND_REFRESH"]
+          if not isinstance(run_id, str) or not run_id.isascii() or not run_id.isdecimal():
+              raise SystemExit("Expected an exact numeric source run ID")
+          if brand_refresh not in ("true", "false"):
+              raise SystemExit("Expected a boolean brand refresh mode")
+          with Path(os.environ["GITHUB_OUTPUT"]).open("a") as output:
+              output.write(f"run_id={run_id}\nbrand_refresh={brand_refresh}\n")
+          PYTHON
       - run: python -m pip install -r requirements.txt
       - if: inputs.audited_recovery_run_id == ''
         run: |
@@ -46,10 +74,10 @@ jobs:
         with:
           name: chotuapp-excel-files
           github-token: ${{ github.token }}
-          run-id: ${{ inputs.source_run_id }}
+          run-id: ${{ steps.source.outputs.run_id }}
           path: ${{ runner.temp }}/original-grocery-export
       - uses: actions/download-artifact@v4
-        if: inputs.brand_refresh != true && inputs.audited_recovery_run_id == ''
+        if: steps.source.outputs.brand_refresh != 'true' && inputs.audited_recovery_run_id == ''
         with:
           name: chotuapp-checkpoint
           github-token: ${{ github.token }}
@@ -67,10 +95,10 @@ jobs:
           PYTHONPATH: cloud:.
           GROCERY_EXPORT_ROOT: ${{ runner.temp }}/original-grocery-export
           GROCERY_CHECKPOINT_ROOT: ${{ runner.temp }}/grocery-discovery
-          GROCERY_SOURCE_RUN: ${{ inputs.source_run_id }}
+          GROCERY_SOURCE_RUN: ${{ steps.source.outputs.run_id }}
           GROCERY_CHECKPOINT_RUN: ${{ inputs.checkpoint_run_id }}
           GROCERY_OUTPUT: ${{ runner.temp }}/completed-grocery
-          GROCERY_BRAND_REFRESH: ${{ inputs.brand_refresh }}
+          GROCERY_BRAND_REFRESH: ${{ steps.source.outputs.brand_refresh }}
           GROCERY_AUDITED_RECOVERY_RUN: ${{ inputs.audited_recovery_run_id }}
           GROCERY_AUDITED_RECOVERY_ROOT: ${{ runner.temp }}/saved-grocery-audit
           GH_TOKEN: ${{ github.token }}
