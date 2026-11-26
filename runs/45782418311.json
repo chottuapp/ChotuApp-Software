@@ -1740,6 +1740,25 @@
       "campaign_id": "fresh804-20261026-5d42fe35",
       "replaced_file": "Asim Jofa.xlsx",
       "file_name": "Asim Jofa.xlsx"
+    },
+    "Baby Planet": {
+      "shop_code": "SE10088",
+      "source_run": "45554223242",
+      "sha256": "a4392327c6dc70018bf408ee32f766d20927340daa831095afb0b755e41fbd41",
+      "source_sha256": "a83c0cedbc702984fb4de19e47290d21453324472505c014fc640490870baa5a",
+      "folder": "ChotuApp 19-10-2026 11-36AM",
+      "verified_utc": "2026-11-26T08:31:38.888582+00:00",
+      "audit804": {
+        "name": "804 Audit",
+        "status": "pass",
+        "checked_utc": "2026-11-26T08:25:29.005253+00:00",
+        "products_checked": 2716,
+        "workbook_sha256": "a4392327c6dc70018bf408ee32f766d20927340daa831095afb0b755e41fbd41"
+      },
+      "rule804": "applied; 804 Audit passed",
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "replaced_file": null,
+      "file_name": "Baby Planet.xlsx"
     }
   },
   "daily_uploads": {
@@ -3750,6 +3769,25 @@
         "campaign_id": "fresh804-20261026-5d42fe35",
         "replaced_file": "Asim Jofa.xlsx",
         "file_name": "Asim Jofa.xlsx"
+      },
+      "Baby Planet": {
+        "shop_code": "SE10088",
+        "source_run": "45554223242",
+        "sha256": "a4392327c6dc70018bf408ee32f766d20927340daa831095afb0b755e41fbd41",
+        "source_sha256": "a83c0cedbc702984fb4de19e47290d21453324472505c014fc640490870baa5a",
+        "folder": "ChotuApp 19-10-2026 11-36AM",
+        "verified_utc": "2026-11-26T08:31:38.888582+00:00",
+        "audit804": {
+          "name": "804 Audit",
+          "status": "pass",
+          "checked_utc": "2026-11-26T08:25:29.005253+00:00",
+          "products_checked": 2716,
+          "workbook_sha256": "a4392327c6dc70018bf408ee32f766d20927340daa831095afb0b755e41fbd41"
+        },
+        "rule804": "applied; 804 Audit passed",
+        "campaign_id": "fresh804-20261026-5d42fe35",
+        "replaced_file": null,
+        "file_name": "Baby Planet.xlsx"
       }
     }
   },
@@ -3924,7 +3962,8 @@
     "ChotuApp Meat House": "source:05067743119ceda17a9f5b9fbf9eac390cfc0522f75348ec42de78d0f983043c:ChotuApp Meat House:25da05651a0687f939f1c0a41634dc65703c3c3e5e48f243bc6f79acdec0d3ae",
     "Asim Jofa": "source:609e7881586e806e1b9dac7604b2fb68186912335efffd03ea08722bc9db6495:Asim Jofa:01b6d5911c582ee7b6030e4efb135420ba82954e085bc6603d1d7e4ccd741be2",
     "ChotuApp Groceries": "source:231e7677e8f340451f4ebd4d5619d3f9172688475b27da651880e1bf2f9d9fdf:ChotuApp Groceries:01b6d5911c582ee7b6030e4efb135420ba82954e085bc6603d1d7e4ccd741be2",
-    "ChenOne": "source:095a92e2f106351cfafdbfd0fc666781e89010a69df91aa47d9f50d8a0c9cc79:ChenOne:01b6d5911c582ee7b6030e4efb135420ba82954e085bc6603d1d7e4ccd741be2"
+    "ChenOne": "source:095a92e2f106351cfafdbfd0fc666781e89010a69df91aa47d9f50d8a0c9cc79:ChenOne:01b6d5911c582ee7b6030e4efb135420ba82954e085bc6603d1d7e4ccd741be2",
+    "Baby Planet": "source:a83c0cedbc702984fb4de19e47290d21453324472505c014fc640490870baa5a:Baby Planet:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -21816,6 +21855,843 @@
       "description_style_version": "customer-copy-v3",
       "delivery_status": "verified",
       "held_input": "inputs/fresh804-20261026-5d42fe35/asim-jofa/609e7881586e806e/manifest.json"
+    },
+    "Baby Planet": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Baby Planet",
+      "shop_code": "SE10088",
+      "identity_policy": "confirmed_code",
+      "status": "pass",
+      "products_checked": 2716,
+      "findings_count": 0,
+      "findings": [],
+      "details_truncated": false,
+      "workbook_sha256": "a4392327c6dc70018bf408ee32f766d20927340daa831095afb0b755e41fbd41",
+      "checked_utc": "2026-11-26T08:25:29.005253+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "incomplete_products_excluded": [
+        {
+          "product_id": "CPe9347d5e56a2",
+          "source_url": "https://babyplanet.pk/products/multi-purpose-travel-diapers-bag-shapes-sky-blue-momease-b207007000960003",
+          "name": "Multi-Purpose Travel & Diapers Bag Shapes Sky Blue - MomEase",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP63d5ec67669c",
+          "source_url": "https://babyplanet.pk/products/multi-purpose-travel-diapers-bag-shapes-blue-momease-b207007000970003",
+          "name": "Multi-Purpose Travel & Diapers Bag Shapes Blue - MomEase",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP338ddfe58cdc",
+          "source_url": "https://babyplanet.pk/products/multifunction-premium-waterproof-travel-diapers-bag-pattern-black-momease-b207007000950004",
+          "name": "Multifunction Premium (Waterproof) Travel & Diapers Bag Pattern Black - Momease",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf4ecd81ba222",
+          "source_url": "https://babyplanet.pk/products/multi-purpose-travel-diapers-bag-waterproof-animals-orange-momease-b207007000940010",
+          "name": "Multi-Purpose Travel & Diapers Bag (Waterproof) Animals Orange - Momease",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP38de74e3cb36",
+          "source_url": "https://babyplanet.pk/products/infantes-kids-tricycle-red-ms-715-red",
+          "name": "Infantes Kids Tricycle Red",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc88b296602a2",
+          "source_url": "https://babyplanet.pk/products/infantes-baby-musical-walker-red-ms-250-red",
+          "name": "Infantes Baby Musical Walker Red",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP19747bfcdfe2",
+          "source_url": "https://babyplanet.pk/products/infantes-baby-musical-walker-pink-ms-250-pink",
+          "name": "Infantes Baby Musical Walker Pink",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP97d48e4e2068",
+          "source_url": "https://babyplanet.pk/products/infantes-kids-tricycle-pink-ms-715-pink",
+          "name": "Infantes Kids Tricycle Pink",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP46bdc134c759",
+          "source_url": "https://babyplanet.pk/products/infantes-baby-musical-walker-grey-ms-566-grey",
+          "name": "Infantes Baby Musical Walker Grey",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc0d3aafa4d72",
+          "source_url": "https://babyplanet.pk/products/infantes-baby-musical-walker-green-ms-568-green",
+          "name": "Infantes Baby Musical Walker Green",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP28d941f2d38c",
+          "source_url": "https://babyplanet.pk/products/infantes-kids-tricycle-blue-ms-715-d-blue",
+          "name": "Infantes Kids Tricycle Blue",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP25b10b28fea8",
+          "source_url": "https://babyplanet.pk/products/infantes-baby-musical-walker-car-red-ms-1085-red",
+          "name": "Infantes Baby Musical Walker Car Red",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd8cc2d90adc7",
+          "source_url": "https://babyplanet.pk/products/infantes-baby-musical-walker-blue-ms-568-blue",
+          "name": "Infantes Baby Musical Walker Blue",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf05302f0b902",
+          "source_url": "https://babyplanet.pk/products/infantes-kids-tricycle-blue-ms-780-blue",
+          "name": "Infantes Kids Tricycle Blue",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2647d8232c03",
+          "source_url": "https://babyplanet.pk/products/infantes-baby-musical-walker-green-ms-272-green",
+          "name": "Infantes Baby Musical Walker Green",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa1b5ced9af7d",
+          "source_url": "https://babyplanet.pk/products/infantes-baby-musical-sports-walker-blue-ms-8811",
+          "name": "Infantes Baby Musical Sports Walker Blue",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8ddfb12f041f",
+          "source_url": "https://babyplanet.pk/products/baby-diaper-bag-waterproof-alphabets-pink-momease-b207007000930006",
+          "name": "Baby Diaper Bag (Waterproof) Alphabets Pink - Momease",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4cb128123bfc",
+          "source_url": "https://babyplanet.pk/products/infantes-baby-musical-walker-green-ms-450-green",
+          "name": "Infantes Baby Musical Walker Green",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4d942694939b",
+          "source_url": "https://babyplanet.pk/products/infantes-kids-tricycle-pink-ms-780-pink",
+          "name": "Infantes Kids Tricycle Pink",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5eeb7ff14a0e",
+          "source_url": "https://babyplanet.pk/products/baby-diaper-bag-stripes-pink-sunshine-b187007007400006",
+          "name": "Baby Diaper Bag Stripes Pink - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP48bfa874bb78",
+          "source_url": "https://babyplanet.pk/products/infantes-baby-musical-walker-blue-ms-888-blue",
+          "name": "Infantes Baby Musical Walker Blue",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP88fbee1eeeeb",
+          "source_url": "https://babyplanet.pk/products/baby-diaper-bag-stripes-navy-blue-sunshine-b187007007390003",
+          "name": "Baby Diaper Bag Stripes Navy Blue - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0e936ebcf1ab",
+          "source_url": "https://babyplanet.pk/products/infantes-baby-musical-walker-blue-ms-272-blue",
+          "name": "Infantes Baby Musical Walker Blue",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4f9180c6f22a",
+          "source_url": "https://babyplanet.pk/products/baby-diaper-bag-stripes-brown-sunshine-b187007007410012",
+          "name": "Baby Diaper Bag Stripes Brown - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1a507c06027a",
+          "source_url": "https://babyplanet.pk/products/joyous-baby-stroller-grey-blue-ms-jyb-200",
+          "name": "Joyous Baby Stroller Grey & Blue",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP24f64e3a8cfe",
+          "source_url": "https://babyplanet.pk/products/joyous-baby-stroller-black-ms-jy212-black",
+          "name": "Joyous Baby Stroller Black",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP37f9b4cdb716",
+          "source_url": "https://babyplanet.pk/products/baby-pacifier-clip-pink-sunshine-b187003015460003",
+          "name": "Baby Pacifier Clip Pink - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa23ca37509a8",
+          "source_url": "https://babyplanet.pk/products/baby-5pcs-silicone-tableware-set-corn-yellow-sunshine-b187003015010009",
+          "name": "Baby 5Pcs Silicone Tableware Set Corn Yellow - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP498fb936fc9c",
+          "source_url": "https://babyplanet.pk/products/baby-pack-of-2-bandana-bib-set-king-jungle-green-pink-sunshine-b187003014970000",
+          "name": "Baby Pack Of 2 Bandana Bib Set King Jungle Green & Pink - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7770829e2159",
+          "source_url": "https://babyplanet.pk/products/baby-bib-bear-red-yellow-sunshine-b187003014680000",
+          "name": "Baby Bib Bear Red & Yellow - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP47da4ce213a6",
+          "source_url": "https://babyplanet.pk/products/baby-bib-aeroplan-yellow-red-sunshine-b187003014630000",
+          "name": "Baby Bib Aeroplan Yellow & Red - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP45c8ae797edf",
+          "source_url": "https://babyplanet.pk/products/baby-bib-swamp-deer-pink-sunshine-b187003014750000",
+          "name": "Baby Bib Swamp Deer Pink - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc863b2629199",
+          "source_url": "https://babyplanet.pk/products/baby-bib-submarine-yellow-green-sunshine-b187003014800000",
+          "name": "Baby Bib Submarine Yellow & Green - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb8cb1c77aeda",
+          "source_url": "https://babyplanet.pk/products/baby-bib-rabbit-yellow-blue-sunshine-b187003014650000",
+          "name": "Baby Bib Rabbit Yellow & Blue - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP0bce19ef85d6",
+          "source_url": "https://babyplanet.pk/products/baby-bib-dolphin-grey-red-sunshine-b187003014640000",
+          "name": "Baby Bib Dolphin Grey & Red - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP307c8db249bc",
+          "source_url": "https://babyplanet.pk/products/baby-bib-dino-blue-yellow-sunshine-b187003014690000",
+          "name": "Baby Bib Dino Blue & Yellow - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP429048a91562",
+          "source_url": "https://babyplanet.pk/products/baby-bib-dino-blue-orange-sunshine-b187003014710000",
+          "name": "Baby Bib Dino Blue & Orange - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPbbb5ed5e8df0",
+          "source_url": "https://babyplanet.pk/products/baby-bib-car-beige-blue-sunshine-b187003014660000",
+          "name": "Baby Bib Car Beige & Blue - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3496d4defddb",
+          "source_url": "https://babyplanet.pk/products/baby-bib-aeroplan-yellow-grey-sunshine-b187003014620000",
+          "name": "Baby Bib Aeroplan Yellow & Grey - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5f785ce4da50",
+          "source_url": "https://babyplanet.pk/products/3in1-silicon-bottle-nipple-brush-green-sunshine-b187003014150002",
+          "name": "3In1 Bottle & Nipple Brush Green - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP45d9b1f8571e",
+          "source_url": "https://babyplanet.pk/products/baby-sipper-cup-character-orange-sunshine-b187003014300000",
+          "name": "Baby Sipper Cup Character Orange - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2c64f7075e94",
+          "source_url": "https://babyplanet.pk/products/baby-sipper-cup-character-green-sunshine-b187003014310000",
+          "name": "Baby Sipper Cup Character Green - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd4e658b5afd7",
+          "source_url": "https://babyplanet.pk/products/baby-sipper-cup-character-blue-sunshine-b187003014320000",
+          "name": "Baby Sipper Cup Character Blue - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8087ec3fec4d",
+          "source_url": "https://babyplanet.pk/products/3in1-silicon-bottle-nipple-brush-peach-sunshine-b187003014210014",
+          "name": "3In1 Bottle & Nipple Brush Peach - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb6cf4f649a49",
+          "source_url": "https://babyplanet.pk/products/little-star-baby-hooded-wrapping-sheet-red-ba-35970-re",
+          "name": "Kidzo Baby Hooded Wrapping Sheet Red",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPcc5f8a1f4647",
+          "source_url": "https://babyplanet.pk/products/little-star-baby-carry-nest-tractor-red-ba-32597-red",
+          "name": "Kidzo Baby Carry Nest Tractor Red",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP02ceb7adff46",
+          "source_url": "https://babyplanet.pk/products/little-star-baby-5pcs-washcloths-pink-ba-35252-pi",
+          "name": "Kidzo Baby 5Pcs Washcloths Pink",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPaf8906f99ab4",
+          "source_url": "https://babyplanet.pk/products/infantes-baby-bath-tub-green-ms-8019-green",
+          "name": "Infantes Baby Bath Tub Green",
+          "issues": [
+            "Primary product type and Category disagree: baby wash"
+          ]
+        },
+        {
+          "product_id": "CPf6009a964210",
+          "source_url": "https://babyplanet.pk/products/infantes-baby-bath-seat-green-ms-8002-green",
+          "name": "Infantes Baby Bath Seat Green",
+          "issues": [
+            "Primary product type and Category disagree: baby wash"
+          ]
+        },
+        {
+          "product_id": "CP099bde255b95",
+          "source_url": "https://babyplanet.pk/products/baby-3pcs-nail-care-set-pink-sunshine-b187004005480000",
+          "name": "Baby 3Pcs Nail Care Set Pink - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9da51d9bca1e",
+          "source_url": "https://babyplanet.pk/products/baby-3pcs-nail-care-set-blue-sunshine-b187004005490000",
+          "name": "Baby 3Pcs Nail Care Set Blue - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1aa5bf0f6be0",
+          "source_url": "https://babyplanet.pk/products/baby-easy-medicine-feeder-pink-sunshine-b187003015480000",
+          "name": "Baby Easy Medicine Feeder Pink - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3c509060f3ea",
+          "source_url": "https://babyplanet.pk/products/baby-easy-medicine-feeder-green-sunshine-b187003015490000",
+          "name": "Baby Easy Medicine Feeder Green - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPbdd7d01b95d8",
+          "source_url": "https://babyplanet.pk/products/baby-easy-medicine-feeder-pink-sunshine-b187003013780000",
+          "name": "Baby Easy Medicine Feeder Pink - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9744f5b2643f",
+          "source_url": "https://babyplanet.pk/products/baby-easy-medicine-feeder-green-sunshine-b187003013770000",
+          "name": "Baby Easy Medicine Feeder Green - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP245cbb65d6fa",
+          "source_url": "https://babyplanet.pk/products/baby-knee-pads-bear-bus-pink-sunshine-b187005000890006",
+          "name": "Baby Knee Pads Bear Bus Pink - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc9afe2ba84e2",
+          "source_url": "https://babyplanet.pk/products/farlin-medicine-feeder-bf-19103",
+          "name": "Farlin Medicine Feeder",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP4338fa7d7bc0",
+          "source_url": "https://babyplanet.pk/products/farlin-flexible-digital-thermometer-bf-169a",
+          "name": "Farlin Flexible Digital Thermometer",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9ec516428d58",
+          "source_url": "https://babyplanet.pk/products/farlin-baby-medicine-dispenser-bc-30004",
+          "name": "Farlin Baby Medicine Dispenser",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP50f10051fc5b",
+          "source_url": "https://babyplanet.pk/products/baby-knee-pads-smily-yellow-sunshine-b187005000810009",
+          "name": "Baby Knee Pads Smily Yellow - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPce840cb59194",
+          "source_url": "https://babyplanet.pk/products/farlin-finger-toothbrushes-parents-set-bb-41001",
+          "name": "Farlin Finger Toothbrushes Parents Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP81b1beec1696",
+          "source_url": "https://babyplanet.pk/products/farlin-farlin-paper-stem-cotton-swab-bc-61001",
+          "name": "Farlin Paper Stem Cotton Swab",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPaa0c5d48aebf",
+          "source_url": "https://babyplanet.pk/products/joymaker-multicolor-soft-plastic-balls-50pcs-b026006000020000",
+          "name": "Joymaker Multicolor Soft Plastic Balls 50Pcs",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7bc85d6e7dba",
+          "source_url": "https://babyplanet.pk/products/joyous-baby-activity-playgym-blue-ms-jy-16",
+          "name": "Joyous Baby Activity Playgym Blue",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2229b483df52",
+          "source_url": "https://babyplanet.pk/products/infantes-kids-play-tent-galaxy-blue-ms-cb3032-60",
+          "name": "Infantes Kids Play Tent Galaxy Blue",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPab8c6926dabc",
+          "source_url": "https://babyplanet.pk/products/pink-panther-orig-be-mine-heart-mini-key-chain-59919b",
+          "name": "Pink Panther - Orig. - Be Mine Heart - Mini Key Chain",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3f6dd8e73c31",
+          "source_url": "https://babyplanet.pk/products/infantes-kids-sporty-tricycle-silver-ms-805-sl",
+          "name": "Infantes Kids Sporty Tricycle Silver",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa51a6d549a52",
+          "source_url": "https://babyplanet.pk/products/neat-oh-fairy-castle-small-playset-toybox-and-playmat-a1107xx",
+          "name": "Neat-Oh! Fairy Castle Small Playset Toybox And Playmat",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb9d19df60621",
+          "source_url": "https://babyplanet.pk/products/infantes-kids-push-car-blackmsp512bla",
+          "name": "Infantes Kids Push Car Black",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPd6d4bb014a2b",
+          "source_url": "https://babyplanet.pk/products/tinnies-baby-play-gym-t704",
+          "name": "Tinnies Baby Play Gym",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3a03070a9961",
+          "source_url": "https://babyplanet.pk/products/infantes-kids-tricycle-black-green-ms-kq-01-gr",
+          "name": "Infantes Kids Tricycle Black & Green",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3ef871cedb15",
+          "source_url": "https://babyplanet.pk/products/infantes-kids-bike-style-tricycle-ms-ctl-01",
+          "name": "Infantes Kids Bike Style Tricycle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc3a151580d34",
+          "source_url": "https://babyplanet.pk/products/infantes-kids-tricycle-black-blue-ms-kq-01-bl",
+          "name": "Infantes Kids Tricycle Black & Blue",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP70dedf745c36",
+          "source_url": "https://babyplanet.pk/products/infantes-kids-play-tent-castle-galaxy-blue-ms-cb3034-60",
+          "name": "Infantes Kids Play Tent Castle Galaxy Blue",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf2cfa4d8f04f",
+          "source_url": "https://babyplanet.pk/products/onyx-freeze-pop-playset-kt-71039",
+          "name": "Onyx Freeze Pop Playset",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP98fe7b7de82e",
+          "source_url": "https://babyplanet.pk/products/infantes-baby-potty-seat-red-blue-ms-shj-1",
+          "name": "Infantes Baby Potty Seat Red & Blue",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPf713e1d49e65",
+          "source_url": "https://babyplanet.pk/products/infantes-kids-toilet-training-seat-blue-ms-1002-blue",
+          "name": "Infantes Kids Toilet Training Seat Blue",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa3d0445c7043",
+          "source_url": "https://babyplanet.pk/products/baby-potty-seat-bear-blue-sunshine-b075007000170000",
+          "name": "Baby Potty Seat Bear Blue - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3c5acff82ca4",
+          "source_url": "https://babyplanet.pk/products/baby-diaper-bag-waterproof-printed-teddy-bear-pink-sunshine-b187007007110000",
+          "name": "Baby Diaper Bag (Waterproof) Printed Teddy Bear Pink - Sunshine",
+          "issues": [
+            "Primary product type and Category disagree: backpack"
+          ]
+        },
+        {
+          "product_id": "CP3a953137d8a7",
+          "source_url": "https://babyplanet.pk/products/baby-diaper-bag-waterproof-pumpkin-yellow-sunshine-b187007007130000",
+          "name": "Baby Diaper Bag (Waterproof) Pumpkin Yellow - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPa15972cef46f",
+          "source_url": "https://babyplanet.pk/products/baby-diaper-bag-waterproof-courage-pink-sunshine-b187007007220000",
+          "name": "Baby Diaper Bag (Waterproof) Courage Pink - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5845f9522e33",
+          "source_url": "https://babyplanet.pk/products/multi-purpose-travel-diapers-bag-waterproof-peach-momease-b207010000010014",
+          "name": "Multi-Purpose Travel & Diapers Bag (Waterproof) Peach - Momease",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPc79a5c8ba431",
+          "source_url": "https://babyplanet.pk/products/baby-diaper-bag-oldo-navy-blue-sunshine-b187007006510000",
+          "name": "Baby Diaper Bag Oldo Navy Blue - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP247f72418220",
+          "source_url": "https://babyplanet.pk/products/kids-toilet-training-seat-pink-sunshine-b187007007200000",
+          "name": "Kids Toilet Training Seat Pink - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP13420219c668",
+          "source_url": "https://babyplanet.pk/products/baby-diaper-bag-dino-grey-sunshine-b187007006500000",
+          "name": "Baby Diaper Bag Dino Grey - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP642f6f0db407",
+          "source_url": "https://babyplanet.pk/products/baby-diaper-bag-bear-pink-sunshine-b187007006530000",
+          "name": "Baby Diaper Bag Bear Pink - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP148287ab0bc4",
+          "source_url": "https://babyplanet.pk/products/baby-diaper-bag-bear-navy-blue-sunshine-b187007006550000",
+          "name": "Baby Diaper Bag Bear Navy Blue - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP6b9b65ac13fb",
+          "source_url": "https://babyplanet.pk/products/baby-diaper-bag-bear-blue-sunshine-b187007006540000",
+          "name": "Baby Diaper Bag Bear Blue - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP762a3d658ab0",
+          "source_url": "https://babyplanet.pk/products/baby-diaper-bag-alphabets-pink-sunshine-b187007006460000",
+          "name": "Baby Diaper Bag Alphabets Pink - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2847ad6dd7a2",
+          "source_url": "https://babyplanet.pk/products/baby-diaper-bag-alphabets-navy-blue-sunshine-b187007006480000",
+          "name": "Baby Diaper Bag Alphabets Navy Blue - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPaf798798574d",
+          "source_url": "https://babyplanet.pk/products/baby-diaper-bag-alphabets-grey-sunshine-b187007006470000",
+          "name": "Baby Diaper Bag Alphabets Grey - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9c69d28532da",
+          "source_url": "https://babyplanet.pk/products/baby-diaper-bag-rabbit-pink-sky-sunshine-b187007006450000",
+          "name": "Baby Diaper Bag Rabbit Pink Sky - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP062f4fe0e685",
+          "source_url": "https://babyplanet.pk/products/baby-mini-diaper-bag-beige-orange-sunshine-b187007006390000",
+          "name": "Baby Mini Diaper Bag Beige & Orange - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5ef037867ee3",
+          "source_url": "https://babyplanet.pk/products/baby-mini-diaper-bag-fashion-yellow-sunshine-b187007006440000",
+          "name": "Baby Mini Diaper Bag Fashion Yellow - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe178e8cc47b5",
+          "source_url": "https://babyplanet.pk/products/baby-mini-diaper-bag-fashion-pink-sunshine-b187007006410000",
+          "name": "Baby Mini Diaper Bag Fashion Pink - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP9d55e2773e6d",
+          "source_url": "https://babyplanet.pk/products/sunshine-baby-adjustable-white-swaddle-rocket-b187008000050205",
+          "name": "Baby Adjustable White Swaddle Rocket - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP3382a7a34443",
+          "source_url": "https://babyplanet.pk/products/baby-hooded-wrapping-sheet-car-green-oolaa-b120008000020002",
+          "name": "Baby Hooded Wrapping Sheet Car Green - Oolaa",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP5b0a6a81135f",
+          "source_url": "https://babyplanet.pk/products/baby-hooded-wrapping-sheet-arrow-navy-blue-oolaa-b120008000050003",
+          "name": "Baby Hooded Wrapping Sheet Arrow Navy Blue - Oolaa",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP1ffb84ecbe44",
+          "source_url": "https://babyplanet.pk/products/adjustable-baby-swaddle-mickey-maroon-sunshine-b187008008180012",
+          "name": "Adjustable Baby Swaddle Mickey Maroon - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP8fc95ee36082",
+          "source_url": "https://babyplanet.pk/products/sunshine-baby-adjustable-white-swaddle-stripes-animals-b187008000020205",
+          "name": "Baby Adjustable White Swaddle Stripes Animals - Sunshine",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "incomplete_products_count": 1832,
+      "incomplete_products_truncated": true,
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/baby-planet-incomplete-products/ee7124964399a28c/manifest.json",
+      "original_source_sha256": "a83c0cedbc702984fb4de19e47290d21453324472505c014fc640490870baa5a",
+      "recovery": {
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "owner_grocery_scope_repairs": 0,
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "source_run": "45554223242",
+      "source_artifact": 14997492060,
+      "source_sha256": "a83c0cedbc702984fb4de19e47290d21453324472505c014fc640490870baa5a",
+      "description_style_version": "customer-copy-v3",
+      "delivery_status": "verified",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/baby-planet/a83c0cedbc702984/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -22620,8 +23496,8 @@
     "SE10080-duplicate-1pvigEi63KZZdyB7tMUWSyKIX4qBShc1Y": "inputs/fresh804-20261026-5d42fe35/rollback-se10080-duplicate-1pvigei63kzzdyb7tmuwsykix4qbshc1y/b23253de6fbc3077/manifest.json",
     "SE10087": "inputs/fresh804-20261026-5d42fe35/rollback-se10087/09fe9fcac8f55940/manifest.json"
   },
-  "audit804_last_store": "Essence",
-  "audit804_progress_utc": "2026-11-26T05:56:56.197311+00:00",
+  "audit804_last_store": "Baby Planet",
+  "audit804_progress_utc": "2026-11-26T08:31:38.890430+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Blackbeiger",
