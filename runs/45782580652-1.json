@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-26T13:26:31.207641+00:00",
+  "run_id": "45782580652",
+  "attempt": "1",
+  "source_commit": "263c9028b1acb8af1d28bf2c4ff1462d9424dde9",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 18002.2,
+  "stores": [
+    {
+      "name": "OrderNation",
+      "status": "pending",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_404",
+        "WEBSITE_CATEGORY_UNVERIFIED",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "bfbb7cd3f5647278",
+      "http_statuses": {
+        "404": 6,
+        "200": 3775
+      },
+      "network_seconds": 8659.2,
+      "max_response_seconds": 3.6,
+      "cache_events": 11118
+    }
+  ]
+}

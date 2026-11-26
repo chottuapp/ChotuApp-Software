@@ -1,30 +1,31 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-26T10:55:53.789944+00:00",
-  "run_id": "45802958781",
+  "generated_utc": "2026-11-26T13:26:31.207641+00:00",
+  "run_id": "45782580652",
   "attempt": "1",
-  "source_commit": "daac81e3f8c7629f3d58ae2da9071ff75b394ba0",
-  "status": "complete",
+  "source_commit": "263c9028b1acb8af1d28bf2c4ff1462d9424dde9",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 1059.5,
+  "elapsed_seconds": 18002.2,
   "stores": [
     {
-      "name": "Computer Zone",
-      "status": "done",
-      "review_required": true,
+      "name": "OrderNation",
+      "status": "pending",
+      "review_required": false,
       "issue_codes": [
+        "HTTP_404",
+        "WEBSITE_CATEGORY_UNVERIFIED",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
-      "software_revision": "6ad29d707cf6535f",
-      "products": 971,
-      "variants": 971,
+      "software_revision": "bfbb7cd3f5647278",
       "http_statuses": {
-        "200": 1651
+        "404": 6,
+        "200": 3775
       },
-      "network_seconds": 1895.2,
-      "max_response_seconds": 20.1,
-      "cache_events": 705
+      "network_seconds": 8659.2,
+      "max_response_seconds": 3.6,
+      "cache_events": 11118
     }
   ]
 }
