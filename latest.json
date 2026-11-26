@@ -1,30 +1,31 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-26T19:22:27.919801+00:00",
-  "run_id": "45850955140",
+  "generated_utc": "2026-11-26T23:46:54.285243+00:00",
+  "run_id": "45877299832",
   "attempt": "1",
   "source_commit": "bd56724fd086398e7fd1bd089b3a9b4a1128a808",
-  "status": "complete",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 13333.5,
+  "elapsed_seconds": 18002.5,
   "stores": [
     {
-      "name": "Saya",
-      "status": "done",
-      "review_required": true,
+      "name": "OrderNation",
+      "status": "pending",
+      "review_required": false,
       "issue_codes": [
+        "HTTP_404",
+        "WEBSITE_CATEGORY_UNVERIFIED",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "6ad29d707cf6535f",
-      "products": 3590,
-      "variants": 13607,
       "http_statuses": {
-        "200": 4636
+        "404": 9,
+        "200": 4446
       },
-      "network_seconds": 11528.1,
+      "network_seconds": 10557.8,
       "max_response_seconds": 2.7,
-      "cache_events": 27481
+      "cache_events": 25334
     }
   ]
 }
