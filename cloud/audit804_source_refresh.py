@@ -40,6 +40,10 @@ def main():
  if not items:print('No actionable public source holds');return
  if not 1<=len(items)<=160:raise ValueError('Bounded public review required')
  hosts={urlsplit(s['url']).hostname.removeprefix('www.') for s in json.loads(Path('cloud/fetch-update-release.json').read_text())['fresh_stores']}
+ pending=Path('cloud/pending-store-fetch-request.json')
+ if pending.exists():
+  codes=json.loads(Path('cloud/confirmed-shop-codes.json').read_text())
+  hosts.update(urlsplit(s['url']).hostname.removeprefix('www.') for s in json.loads(pending.read_text())['stores'] if s.get('shop_code') and codes.get(s['name'])==s['shop_code'])
  robots={};session=requests.Session();session.headers['User-Agent']=AGENT;results=[]
  def read(url):
   host=urlsplit(url).hostname
