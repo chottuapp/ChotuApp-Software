@@ -1873,6 +1873,25 @@
       "campaign_id": "fresh804-20261026-5d42fe35",
       "replaced_file": null,
       "file_name": "Shahi Jora.xlsx"
+    },
+    "Tomatotes": {
+      "shop_code": "SE10100",
+      "source_run": "45513981276",
+      "sha256": "37a11b7ed5d7f41a640ced227f8613b4785f2a34ffdc327597434f7e86364950",
+      "source_sha256": "53e6b2fa231b69e40fdebfc2c0cccb6dee11f1e6bb430ff3f1ce3d47a6f991bd",
+      "folder": "ChotuApp 19-10-2026 11-36AM",
+      "verified_utc": "2026-11-26T08:48:34.693071+00:00",
+      "audit804": {
+        "name": "804 Audit",
+        "status": "pass",
+        "checked_utc": "2026-11-26T08:47:13.490163+00:00",
+        "products_checked": 52,
+        "workbook_sha256": "37a11b7ed5d7f41a640ced227f8613b4785f2a34ffdc327597434f7e86364950"
+      },
+      "rule804": "applied; 804 Audit passed",
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "replaced_file": null,
+      "file_name": "Tomatotes.xlsx"
     }
   },
   "daily_uploads": {
@@ -4016,6 +4035,25 @@
         "campaign_id": "fresh804-20261026-5d42fe35",
         "replaced_file": null,
         "file_name": "Shahi Jora.xlsx"
+      },
+      "Tomatotes": {
+        "shop_code": "SE10100",
+        "source_run": "45513981276",
+        "sha256": "37a11b7ed5d7f41a640ced227f8613b4785f2a34ffdc327597434f7e86364950",
+        "source_sha256": "53e6b2fa231b69e40fdebfc2c0cccb6dee11f1e6bb430ff3f1ce3d47a6f991bd",
+        "folder": "ChotuApp 19-10-2026 11-36AM",
+        "verified_utc": "2026-11-26T08:48:34.693071+00:00",
+        "audit804": {
+          "name": "804 Audit",
+          "status": "pass",
+          "checked_utc": "2026-11-26T08:47:13.490163+00:00",
+          "products_checked": 52,
+          "workbook_sha256": "37a11b7ed5d7f41a640ced227f8613b4785f2a34ffdc327597434f7e86364950"
+        },
+        "rule804": "applied; 804 Audit passed",
+        "campaign_id": "fresh804-20261026-5d42fe35",
+        "replaced_file": null,
+        "file_name": "Tomatotes.xlsx"
       }
     }
   },
@@ -4198,7 +4236,8 @@
     "Insignia": "source:8500a78c3bb43317c9f73c8a6bd3a8308d7982ce5ecffcdf1fb41c229b324f73:Insignia:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
     "Musk Al Mahal Pakistan": "source:dd0bed5c1b88ddb58472aa30c71ea662ca4a02dfc5de407e8a28fece0300f6a9:Musk Al Mahal Pakistan:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
     "Shahi Jora": "source:59acb95adb424a369161628bc7c168ee92b68cd77c45ae92b109b2d8fa93db2d:Shahi Jora:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
-    "Pehnawa Store": "source:12845ddb0cc4fe32f34c8b218ac3e55a13a9efd5a3698568cfc713332c39140e:Pehnawa Store:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf"
+    "Pehnawa Store": "source:12845ddb0cc4fe32f34c8b218ac3e55a13a9efd5a3698568cfc713332c39140e:Pehnawa Store:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
+    "Tomatotes": "source:53e6b2fa231b69e40fdebfc2c0cccb6dee11f1e6bb430ff3f1ce3d47a6f991bd:Tomatotes:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -24345,6 +24384,843 @@
       "source_sha256": "12845ddb0cc4fe32f34c8b218ac3e55a13a9efd5a3698568cfc713332c39140e",
       "description_style_version": "customer-copy-v3",
       "held_input": "inputs/fresh804-20261026-5d42fe35/pehnawa-store/12845ddb0cc4fe32/manifest.json"
+    },
+    "Tomatotes": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Tomatotes",
+      "shop_code": "SE10100",
+      "identity_policy": "confirmed_code",
+      "status": "pass",
+      "products_checked": 52,
+      "findings_count": 0,
+      "findings": [],
+      "details_truncated": false,
+      "workbook_sha256": "37a11b7ed5d7f41a640ced227f8613b4785f2a34ffdc327597434f7e86364950",
+      "checked_utc": "2026-11-26T08:47:13.490163+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "incomplete_products_excluded": [
+        {
+          "product_id": "CP920a6cd0658b",
+          "source_url": "https://tomatotes.co/products/indie",
+          "name": "Indie",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPa51d26fd7cc0",
+          "source_url": "https://tomatotes.co/products/naia-xl",
+          "name": "Naia XL",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPa18a66325adf",
+          "source_url": "https://tomatotes.co/products/sky-floral",
+          "name": "Sky Floral",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPb3ce545036a5",
+          "source_url": "https://tomatotes.co/products/were-all-mad-here-enamel-pin",
+          "name": "\"We're All Mad Here\" Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP3f58c88f2920",
+          "source_url": "https://tomatotes.co/products/medusa-enamel-pin",
+          "name": "Medusa Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPc2be546d4eac",
+          "source_url": "https://tomatotes.co/products/vol-1-pinback-badges",
+          "name": "vol. 1 pinback badges",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPb4160964e557",
+          "source_url": "https://tomatotes.co/products/golden-heart-pin",
+          "name": "Golden Heart Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP42aa5dc3c5fd",
+          "source_url": "https://tomatotes.co/products/silver-heart-pin",
+          "name": "Silver Heart Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP78d2fbfc2b65",
+          "source_url": "https://tomatotes.co/products/i-3-tomatotes-enamel-pin",
+          "name": "I <3 Tomatotes Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP2ee19c270b7c",
+          "source_url": "https://tomatotes.co/products/fleeting-heart-metal-brooch-pin",
+          "name": "Fleeting Heart Metal Brooch Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP12ac5f992053",
+          "source_url": "https://tomatotes.co/products/marlow-crochet-maroon-shoulderbag",
+          "name": "Marlow Crochet - Maroon Shoulderbag",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPd9a859e9aec9",
+          "source_url": "https://tomatotes.co/products/handknit-laptop-sleeve",
+          "name": "BerryCore Sleeve",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP58dcb439754a",
+          "source_url": "https://tomatotes.co/products/boba-character-pin",
+          "name": "Boba Character Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPca81abe81d1a",
+          "source_url": "https://tomatotes.co/products/fray-in-blue",
+          "name": "Fray - in Blue",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP85081938fb30",
+          "source_url": "https://tomatotes.co/products/bag-e-khas-embroidered-patch",
+          "name": "Bag e Khas Embroidered Patch",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP6ecd83d85ee7",
+          "source_url": "https://tomatotes.co/products/black-willow-crochet-small",
+          "name": "Maroon Willow Crochet - Small",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPdb2e06ccd08c",
+          "source_url": "https://tomatotes.co/products/lavenders-embroidery-patch",
+          "name": "Lavenders Embroidery Patch",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP2fe7eafab8d1",
+          "source_url": "https://tomatotes.co/products/girls-just-wanna-have-fun-embroidery-patch",
+          "name": "\u2018Girls Just Wanna Have Fun\u2019 Embroidery Patch",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPe2559b2c309c",
+          "source_url": "https://tomatotes.co/products/paintme-canvas-tote",
+          "name": "PaintMe - Canvas Tote",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP9e95cce1c3f3",
+          "source_url": "https://tomatotes.co/products/opheliacrochet",
+          "name": "Ophelia - Crochet Crossbody",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP8e9e02a14214",
+          "source_url": "https://tomatotes.co/products/cloud-pin-1",
+          "name": "Cloud Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP684eb343f621",
+          "source_url": "https://tomatotes.co/products/i-am-enough-enamel-pin",
+          "name": "I am Enough Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPcb875fcb36f1",
+          "source_url": "https://tomatotes.co/products/el-cato-enamel-pin",
+          "name": "El Cato Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP789b7ae019d3",
+          "source_url": "https://tomatotes.co/products/willow-crochet-large",
+          "name": "Willow Crochet - Large",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP15a80806a47f",
+          "source_url": "https://tomatotes.co/products/eleven-organiser-tote-black",
+          "name": "Eleven - Organiser Tote | Black",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP7005ed4a9fdf",
+          "source_url": "https://tomatotes.co/products/paper-plane-w-heart-enamel-pin",
+          "name": "Paper Plane w Heart Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPdd05b538a2ec",
+          "source_url": "https://tomatotes.co/products/cherrywood-shoulderbag",
+          "name": "Cherry - Shoulderbag",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPe9bf435073ba",
+          "source_url": "https://tomatotes.co/products/wovenwillow-bag-black",
+          "name": "Black Willow Crochet - Small",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPad1f68feb939",
+          "source_url": "https://tomatotes.co/products/get-well-soon-card",
+          "name": "Get Well Soon Card",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP5e714e69952c",
+          "source_url": "https://tomatotes.co/products/balloons-printed-card",
+          "name": "Balloons Printed Card",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP8645890b6f42",
+          "source_url": "https://tomatotes.co/products/heart-printed-card",
+          "name": "Heart Printed Card",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP8cecb3e35d80",
+          "source_url": "https://tomatotes.co/products/unladylike-embroidery-patch",
+          "name": "Unladylike Embroidery Patch",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP203abd79ea38",
+          "source_url": "https://tomatotes.co/products/vintage-volkswagen-beetle-embroidery-patch",
+          "name": "Vintage Volkswagen Beetle Embroidery Patch",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP5febc8244a7a",
+          "source_url": "https://tomatotes.co/products/spicy-pepper-embroidery-patch",
+          "name": "Spicy Pepper Embroidery Patch",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP71c60e2bb426",
+          "source_url": "https://tomatotes.co/products/smore-embroidery-patch",
+          "name": "S'more Embroidery Patch",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP6a5aa1144ff7",
+          "source_url": "https://tomatotes.co/products/if-i-fits-i-sits-embroidery-patch",
+          "name": "If I Fits I Sits Embroidery Patch",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPeee232a2f18e",
+          "source_url": "https://tomatotes.co/products/sad-shark-embroidery-patch",
+          "name": "Sad Shark Embroidery Patch",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP0d0be15f23a8",
+          "source_url": "https://tomatotes.co/products/porsche-911-retro-embroidery-patch",
+          "name": "Porsche 911 Retro Embroidery Patch",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP071fecf4dd9a",
+          "source_url": "https://tomatotes.co/products/scooby-doo-van-embroidery-patch",
+          "name": "Scooby Doo Van Embroidery Patch",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP9b438dbbbacf",
+          "source_url": "https://tomatotes.co/products/power-puff-girls-telephone-embroidery-patch",
+          "name": "Power Puff Girls \"Call me\" Embroidery Patch",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP755e44a3cb92",
+          "source_url": "https://tomatotes.co/products/chupa-chups-embroidery-patch",
+          "name": "Chupa Chups Embroidery Patch",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPde43be170679",
+          "source_url": "https://tomatotes.co/products/totally-rad-embroidery-patch",
+          "name": "TOTALLY RAD Embroidery Patch",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP837c8bff7060",
+          "source_url": "https://tomatotes.co/products/mosaic-flowered",
+          "name": "Mosaic Flowered",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPf2ead4141dcb",
+          "source_url": "https://tomatotes.co/products/pocketpair\u2122-tote",
+          "name": "PocketPair\u2122 Corduroy Totes",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP6ee47a03cf70",
+          "source_url": "https://tomatotes.co/products/sky-black-stonewashed-bag",
+          "name": "Sky - Black Stonewashed Crossbody",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP3f526c419538",
+          "source_url": "https://tomatotes.co/products/soft-shell-deluxe-tote",
+          "name": "Navy Soft Shell - Organiser Tote | Waterproof",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP64ec92926164",
+          "source_url": "https://tomatotes.co/products/umber-deluxe-tote",
+          "name": "Umber Deluxe Tote",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP9ba52f638f14",
+          "source_url": "https://tomatotes.co/products/loving-cats-in-a-jar-enamel-pin",
+          "name": "Loving Cats in a Jar Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP73e80c2fc5b4",
+          "source_url": "https://tomatotes.co/products/chestnut-crossbody",
+          "name": "April Chestnut - Crossbody",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP5a0725bf26b2",
+          "source_url": "https://tomatotes.co/products/soft-shell-padded-tote-large",
+          "name": "Black Soft Shell - Organiser Tote | Waterproof",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPd7da89b704e3",
+          "source_url": "https://tomatotes.co/products/hot-mess-monsters-embroidery-patch",
+          "name": "Hot Mess Monsters Embroidery Patch",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP2ce57737769f",
+          "source_url": "https://tomatotes.co/products/ufo-leaving-embroidery-patch",
+          "name": "UFO Leaving Embroidery Patch",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPd350d2a009e1",
+          "source_url": "https://tomatotes.co/products/banana-bread-enthusiast-embroidery-patch",
+          "name": "Banana Bread Enthusiast Embroidery Patch",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPec9ade0c0a04",
+          "source_url": "https://tomatotes.co/products/ugly-cry-club-embroidery-patch",
+          "name": "Ugly Cry Club Embroidery Patch",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP703331169427",
+          "source_url": "https://tomatotes.co/products/stella",
+          "name": "Stella",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP68a2d9b2a813",
+          "source_url": "https://tomatotes.co/products/untitled-nov6_16-54",
+          "name": "Love Yourself Embroidery Patch",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPde4bc2bb21fb",
+          "source_url": "https://tomatotes.co/products/pineapple-enamel-pin",
+          "name": "Pineapple Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP4ff7a2e4a000",
+          "source_url": "https://tomatotes.co/products/santa-enamel-pin",
+          "name": "Santa Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPd746de27791c",
+          "source_url": "https://tomatotes.co/products/rainbow-w-clouds",
+          "name": "Rainbow W Clouds",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP74af13514023",
+          "source_url": "https://tomatotes.co/products/maroon-corduroy-classic-tote",
+          "name": "Scarlet",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP903591e2b8ae",
+          "source_url": "https://tomatotes.co/products/blue-denim-duffle-bag",
+          "name": "Blue Denim Duffle Bag",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP63ef3972ad91",
+          "source_url": "https://tomatotes.co/products/black-dahlia",
+          "name": "Dahlia - Black Tote",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPfe472745ccad",
+          "source_url": "https://tomatotes.co/products/dahlia",
+          "name": "Dahlia - Pale Pink Corduroy Tote",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP4ccc423180b8",
+          "source_url": "https://tomatotes.co/products/oink-oink-enamel-pin",
+          "name": "Oink Oink Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPb1a9a70b3905",
+          "source_url": "https://tomatotes.co/products/red-flower-enamel-pin-1",
+          "name": "Red Flower Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPa6e9aea6d20e",
+          "source_url": "https://tomatotes.co/products/puppy-enamel-pin",
+          "name": "Puppy Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP8e38fd137b27",
+          "source_url": "https://tomatotes.co/products/christmas-candy-cane-enamel-pin",
+          "name": "Christmas Candy Cane Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP40d78d0fbc96",
+          "source_url": "https://tomatotes.co/products/navy-blue-flower-enamel-pin",
+          "name": "Navy Blue Flower Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPdc5c57973f82",
+          "source_url": "https://tomatotes.co/products/red-heart-enamel-pin",
+          "name": "Red Heart Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPd5f0f8b7229f",
+          "source_url": "https://tomatotes.co/products/black-flower-enamel-pin",
+          "name": "Black Flower Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPaf5321bef6e0",
+          "source_url": "https://tomatotes.co/products/cream-shoulder-bag",
+          "name": "Riley - Crossbody",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP0e9352a53f5c",
+          "source_url": "https://tomatotes.co/products/denim-pouch",
+          "name": "Denim Pouchette",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP21ea3b6e933e",
+          "source_url": "https://tomatotes.co/products/night-time-enamel-pin",
+          "name": "Night Time Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPd109e28679f7",
+          "source_url": "https://tomatotes.co/products/boy-hiding-flowers-of-hearts-enamel-pin",
+          "name": "Boy Hiding Flowers of Hearts Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP55a65b2667e1",
+          "source_url": "https://tomatotes.co/products/shark-enamel-pin",
+          "name": "Shark Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP5da904d01f37",
+          "source_url": "https://tomatotes.co/products/flower-enamel-pin",
+          "name": "Flower Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP81114d5db264",
+          "source_url": "https://tomatotes.co/products/pug-dog-enamel-pin",
+          "name": "Pug Dog Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPb82f701aee8b",
+          "source_url": "https://tomatotes.co/products/sky-stonewashed-crossbody",
+          "name": "Sky - Blue Stonewashed Crossbody",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPfb88bbf82a15",
+          "source_url": "https://tomatotes.co/products/goosse",
+          "name": "\u2018Be Goose Do Crimes\u2019 Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPadc04690274f",
+          "source_url": "https://tomatotes.co/products/goose-w-a-bow-enamel-pin",
+          "name": "Goose w a Bow Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPa20f01b4f826",
+          "source_url": "https://tomatotes.co/products/goose-does-crimes-enamel-pin",
+          "name": "Goose Does Crimes Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP929eb2c377d5",
+          "source_url": "https://tomatotes.co/products/watermelon-enamel-pin",
+          "name": "Watermelon Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPcf3c0767b8fb",
+          "source_url": "https://tomatotes.co/products/daisy-flowered",
+          "name": "Daisy - Flowered",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP86f1f8beda5c",
+          "source_url": "https://tomatotes.co/products/the-bow-bag",
+          "name": "The Bow Bag",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP68f4cf7b0deb",
+          "source_url": "https://tomatotes.co/products/sunflower-embroidery-patch",
+          "name": "Sunflower Embroidery Patch",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPd23ff3eb8c08",
+          "source_url": "https://tomatotes.co/products/duck-with-a-knife-embroidery",
+          "name": "Duck with a Knife Embroidery Patch",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP5acf5deb8ed6",
+          "source_url": "https://tomatotes.co/products/take-it-easy-embroidery-patch",
+          "name": "Take it Easy Embroidery Patch",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP3702922a21fb",
+          "source_url": "https://tomatotes.co/products/rainbow-with-clouds-pin",
+          "name": "Rainbow with Clouds Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP27934feb6db0",
+          "source_url": "https://tomatotes.co/products/night-sky-pin",
+          "name": "Night Sky Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPf9ce47938246",
+          "source_url": "https://tomatotes.co/products/milk-box-pin",
+          "name": "Milk Box Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP1569486826ad",
+          "source_url": "https://tomatotes.co/products/mountain-pin",
+          "name": "Mountain Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP3e0576ce3e1b",
+          "source_url": "https://tomatotes.co/products/leaves-pin",
+          "name": "Leaves Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPbac00afd5f0b",
+          "source_url": "https://tomatotes.co/products/browncorduroyminimal",
+          "name": "Heather - Brown Corduroy",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPed0a881e24e1",
+          "source_url": "https://tomatotes.co/products/carrot-pin",
+          "name": "Carrot Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP593688e0dd7e",
+          "source_url": "https://tomatotes.co/products/white-rose-pin",
+          "name": "White Rose Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP3d8b1d68dbac",
+          "source_url": "https://tomatotes.co/products/tomato-pin",
+          "name": "Tomato Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP9baf0120dc7f",
+          "source_url": "https://tomatotes.co/products/pine-corduroy-tote",
+          "name": "Heather - Pine Corduroy",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP1c86b5ef8b74",
+          "source_url": "https://tomatotes.co/products/paper-fan",
+          "name": "Paper Fan",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPa753ac5724a1",
+          "source_url": "https://tomatotes.co/products/raddish-pin",
+          "name": "Raddish Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP66fca84bbe80",
+          "source_url": "https://tomatotes.co/products/whale-pin",
+          "name": "Whale Enamel Pin",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        }
+      ],
+      "incomplete_products_count": 115,
+      "incomplete_products_truncated": true,
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/tomatotes-incomplete-products/823e597c8b9f40c4/manifest.json",
+      "original_source_sha256": "53e6b2fa231b69e40fdebfc2c0cccb6dee11f1e6bb430ff3f1ce3d47a6f991bd",
+      "recovery": {
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "owner_grocery_scope_repairs": 0,
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "source_run": "45513981276",
+      "source_artifact": 14980412428,
+      "source_sha256": "53e6b2fa231b69e40fdebfc2c0cccb6dee11f1e6bb430ff3f1ce3d47a6f991bd",
+      "description_style_version": "customer-copy-v3",
+      "delivery_status": "verified",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/tomatotes/53e6b2fa231b69e4/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -25042,7 +25918,8 @@
     "45531903409:Lulusar": "45531903409:14986784970:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
     "45531903409:Insignia": "45531903409:14986784970:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
     "45513989606:Musk Al Mahal Pakistan": "45513989606:14976344577:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
-    "45513974872:Shahi Jora": "45513974872:14980226319:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf"
+    "45513974872:Shahi Jora": "45513974872:14980226319:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
+    "45513974872:Pehnawa Store": "45513974872:14980226319:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-11-24T20:41:18.594248+00:00",
@@ -25158,8 +26035,8 @@
     "SE10087": "inputs/fresh804-20261026-5d42fe35/rollback-se10087/09fe9fcac8f55940/manifest.json",
     "SE10090": "inputs/fresh804-20261026-5d42fe35/rollback-se10090/aca5e76205e71056/manifest.json"
   },
-  "audit804_last_store": "Pehnawa Store",
-  "audit804_progress_utc": "2026-11-26T08:47:05.721242+00:00",
+  "audit804_last_store": "Tomatotes",
+  "audit804_progress_utc": "2026-11-26T08:48:34.693323+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Blackbeiger",
