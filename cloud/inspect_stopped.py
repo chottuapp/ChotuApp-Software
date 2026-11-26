@@ -11,6 +11,36 @@ def evidence(text):
  for i,line in enumerate(lines):
   if re.search(r'Traceback|(?:Error|Exception):|FAILED:|SOURCE PAUSED|SOURCE BLOCKED|exit code|No continuation:|RUN SUMMARY|Killed|out of memory',line,re.I):indices.update(range(max(0,i-7),min(len(lines),i+12)))
  return '\n'.join(redact(lines[i]) for i in sorted(indices))[-65000:]
+def checkpoint_product(rid,request,run):
+ import sqlite3,zipfile,zlib
+ from download_checkpoint import download
+ if run.get('status')!='completed' or not re.fullmatch(r'Cloud group audit804-[a-z0-9-]+',run.get('displayTitle','')):raise ValueError('Expected a stopped fresh-group checkpoint')
+ store=request['store'];ident=str(request['product_id'])
+ registry=json.loads(Path('cloud/fetch-update-release.json').read_text())['fresh_stores']
+ site=next((row for row in registry if row['name']==store),None)
+ if not site or not ident.isdigit():raise ValueError('Invalid checkpoint product request')
+ from locked_store_rules import owner_paused
+ if owner_paused(store,site['url']):raise ValueError('Owner-paused checkpoint scope')
+ from urllib.parse import urlsplit
+ url=site['url'].rstrip('/')+'/wp-json/wc/store/v1/products/'+ident
+ with tempfile.TemporaryDirectory() as tmp:
+  folder=Path(tmp);download(rid,REPO,folder/'download',attempts=2,deadline_seconds=180)
+  archives=list((folder/'download').rglob('checkpoint.zip'))
+  if len(archives)!=1:raise ValueError('Expected one intact checkpoint zip')
+  matches=[]
+  with zipfile.ZipFile(archives[0]) as archive:
+   entries=[file for file in archive.infolist() if re.fullmatch(r'saved_runs/[a-zA-Z0-9_-]+/\d+/api\.sqlite3',file.filename)]
+   if len(entries)>3 or sum(file.file_size for file in entries)>128*1024*1024:raise ValueError('Checkpoint evidence bound exceeded')
+   for file in entries:
+    database=folder/'checkpoint-api.sqlite3';database.write_bytes(archive.read(file))
+    with sqlite3.connect(database.as_uri()+'?mode=ro',uri=True) as db:
+     row=db.execute('SELECT payload FROM responses WHERE url=?',(url,)).fetchone()
+    if row:matches.append(json.loads(zlib.decompress(row[0])))
+  if len(matches)!=1:raise ValueError('Exact cached product response unavailable')
+  raw=matches[0]
+  if str(raw.get('id'))!=ident or urlsplit(raw.get('permalink','')).hostname!=urlsplit(url).hostname:raise ValueError('Cached product identity mismatch')
+  return {key:raw.get(key) for key in ('id','name','permalink','type','prices','is_purchasable','is_in_stock','has_options','variations','attributes')}
+
 def main():
  request=json.loads((Path(__file__).parent/'inspect-stopped-request.json').read_text())
  if os.environ.get('SOURCE_INSPECT_RUNS'):
@@ -22,6 +52,8 @@ def main():
   record={'target':rid}
   try:
    record['state']=json.loads(gh('run','view',rid,'--repo',REPO,'--json','status,conclusion,jobs,headSha,displayTitle'))
+   if request.get('checkpoint_product'):
+    record['checkpoint_product']=checkpoint_product(rid,request['checkpoint_product'],record['state'])
    try:record['failed_log']=evidence(gh('run','view',rid,'--repo',REPO,'--log-failed'))
    except subprocess.CalledProcessError as exc:record['log_unavailable']=redact(exc.stderr or '')[:1500]
    artifacts=json.loads(gh('api','repos/'+REPO+'/actions/runs/'+rid+'/artifacts'))['artifacts']
