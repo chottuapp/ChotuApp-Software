@@ -36,10 +36,35 @@ def checkpoint_product(rid,request,run):
     with sqlite3.connect(database.as_uri()+'?mode=ro',uri=True) as db:
      row=db.execute('SELECT payload FROM responses WHERE url=?',(url,)).fetchone()
     if row:matches.append(json.loads(zlib.decompress(row[0])))
-  if len(matches)!=1:raise ValueError('Exact cached product response unavailable')
-  raw=matches[0]
-  if str(raw.get('id'))!=ident or urlsplit(raw.get('permalink','')).hostname!=urlsplit(url).hostname:raise ValueError('Cached product identity mismatch')
-  return {key:raw.get(key) for key in ('id','name','permalink','type','prices','is_purchasable','is_in_stock','has_options','variations','attributes')}
+   if len(matches)!=1:raise ValueError('Exact cached product response unavailable')
+   raw=matches[0]
+   permalink=raw.get('permalink','')
+   parsed=urlsplit(permalink)
+   if str(raw.get('id'))!=ident or parsed.scheme!='https' or parsed.netloc!=urlsplit(url).netloc or parsed.query or parsed.fragment:raise ValueError('Cached product identity mismatch')
+   facts={key:raw.get(key) for key in ('id','name','permalink','type','prices','is_purchasable','is_in_stock','has_options','variations','attributes')}
+   pages=[file for file in archive.infolist() if re.fullmatch(r'saved_runs/[a-zA-Z0-9_-]+/\d+/pages\.sqlite3',file.filename)]
+   if len(pages)>3 or sum(file.file_size for file in pages)>768*1024*1024:raise ValueError('Saved page evidence bound exceeded')
+   from resume_support import ResponseCache
+   from bs4 import BeautifulSoup
+   facts['saved_public_page_found']=False
+   facts['saved_public_page_variants']=[]
+   for file in pages:
+    database=folder/'checkpoint-pages.sqlite3';database.write_bytes(archive.read(file))
+    cache=ResponseCache(database)
+    try:
+     response=cache.get(permalink) or cache.get(permalink.rstrip('/'))
+     if response is None or response.url.rstrip('/')!=permalink.rstrip('/'):continue
+     soup=BeautifulSoup(response.text,'html.parser')
+     canonical=soup.select_one('link[rel=canonical][href]')
+     if not canonical or canonical['href'].rstrip('/')!=permalink.rstrip('/'):continue
+     facts['saved_public_page_found']=True
+     for form in soup.select('form.variations_form[data-product_id][data-product_variations]'):
+      if form['data-product_id']!=ident:continue
+      variants=json.loads(form['data-product_variations'])
+      if isinstance(variants,list):
+       facts['saved_public_page_variants'].extend({key:v.get(key) for key in ('variation_id','attributes','sku','display_price','display_regular_price','is_in_stock','is_purchasable')} for v in variants[:100])
+    finally:cache.close()
+   return facts
 
 def main():
  request=json.loads((Path(__file__).parent/'inspect-stopped-request.json').read_text())
