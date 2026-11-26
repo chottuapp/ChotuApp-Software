@@ -80,6 +80,25 @@ class DownloadRecoveryTests(unittest.TestCase):
   self.assertIn('checksum mismatch',state['audit804_source_download_errors']['21']['error'])
   self.assertNotIn('21',state['audit804_artifacts'])
   self.assertIn('20',state['audit804_artifacts'])
+ def test_two_approved_stores_in_one_artifact_both_reach_audit(self):
+  config=json.loads((delivery.ROOT/'cloud/drive-sync-release.json').read_text())
+  stores=('Bata','Breakout')
+  config['additional_completed_sources']=[{'store':store,'run_id':'77','refresh_generation':config['refresh_generation']} for store in stores]
+  run={'id':77,'head_branch':'main','path':'.github/workflows/cloud-fetch.yml','event':'workflow_dispatch',
+       'head_repository':{'full_name':'chottuapp/ChotuApp-Software'},'status':'completed','conclusion':'success',
+       'display_title':'Cloud group requested','head_sha':'a'*40}
+  state={}
+  def fetch(*args):
+   if args[0]=='api':
+    return json.dumps({'artifacts':[{'id':7,'name':'chotuapp-excel-files'}]} if 'artifacts' in args[1] else run)
+   stage=Path(args[-1])
+   for store in stores:(stage/(store+'.xlsx')).write_bytes(store.encode())
+  files=[{'store':store,'name':store+'.xlsx','complete':True} for store in stores]
+  with patch('audit804_automation.refresh',return_value=('',0,[])),patch.object(delivery,'completed_files',return_value=files),patch.object(delivery,'normalize',side_effect=ValueError('test audit gate')) as normalize,patch.object(delivery,'save_held',return_value='input/manifest.json'):
+   delivery.run_campaign(state,config,[],fetch,lambda *a:None)
+  self.assertEqual(normalize.call_count,2)
+  self.assertTrue(all('77:'+store in state['audit804_artifacts'] for store in stores))
+
  def test_transient_download_failure_stops_after_three_attempts(self):
   calls=[];state={}
   def fetch(*args):

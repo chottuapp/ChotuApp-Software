@@ -36,3 +36,10 @@ class AdditionalSourcesTests(unittest.TestCase):
    self.assertEqual(approved_runs(self.config,self.sites,lambda *a:json.dumps(dict(run,**state))),[])
   with self.assertRaises(ValueError):
    approved_runs(self.config,self.sites,lambda *a:json.dumps(dict(run,head_sha='b'*40)))
+
+ def test_explicit_partial_run_remains_scoped_to_the_named_store(self):
+  self.config['additional_completed_sources'][0]['allow_completed_store_on_failure']=True
+  run=dict(self.run,conclusion='failure')
+  self.assertEqual(approved_runs(self.config,self.sites,lambda *a:json.dumps(run))[0]['additional_store'],'ChotuApp Groceries')
+  with self.assertRaises(ValueError):
+   approved_runs(self.config,self.sites,lambda *a:json.dumps(dict(run,conclusion='cancelled')))

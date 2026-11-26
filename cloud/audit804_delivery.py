@@ -236,6 +236,16 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
  groups={run['displayTitle'].removeprefix('Cloud group ') for run in all_runs if run.get('displayTitle','').startswith(prefix)}
  runs=helper.related(all_runs,groups);registry=json.loads((root/'cloud/fetch-update-release.json').read_text())['fresh_stores'];sites={s['name']:s for s in registry}
  codes=json.loads((root/'cloud/confirmed-shop-codes.json').read_text())
+ # Additive stores have their own exact host registry and do not change the
+ # active from-zero batch. Only confirmed, allowlisted bindings enter audit.
+ additive_request=root/'cloud/pending-store-fetch-request.json'
+ if additive_request.exists():
+  for site in json.loads(additive_request.read_text())['stores']:
+   name=site['name']
+   if name in config['stores'] and codes.get(name) and codes[name]==site.get('shop_code'):
+    if name in sites and sites[name]['url'].rstrip('/')!=site['url'].rstrip('/'):raise ValueError('Conflicting additive storefront identity')
+    sites.setdefault(name,site)
+
  from locked_store_rules import OWNER_PAUSED_STORES
  paused=OWNER_PAUSED_STORES
  generation=config.get('refresh_generation');refresh_stores=set(config.get('refresh_stores',[]))-paused
@@ -392,7 +402,8 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
    artifact_revision=revision
    if rid in carried_runs and rid not in refresh_runs:
     artifact_revision=hashlib.sha256((revision+json.dumps(sorted(refresh_stores))).encode()).hexdigest()
-   if state.setdefault('audit804_artifacts',{}).get(rid)==base+':'+artifact_revision:continue
+   receipt_key=rid+':'+run['additional_store'] if run.get('additional_store') else rid
+   if state.setdefault('audit804_artifacts',{}).get(receipt_key)==base+':'+artifact_revision:continue
    with tempfile.TemporaryDirectory() as tmp:
     stage=download_source(gh,rid,item['id'],tmp,state,progress)
     if stage is None:continue
@@ -423,7 +434,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
     if rejected:
      state.setdefault('audit804_source_download_errors',{})[rid]={'stage':'completion_manifest','artifact_id':item['id'],'error':'; '.join(rejected)[:1500]}
      continue
-   state['audit804_artifacts'][rid]=base+':'+artifact_revision
+   state['audit804_artifacts'][receipt_key]=base+':'+artifact_revision
   # Recheck durable held inputs after code/policy updates, even if Actions artifacts expired.
   for store,report in sorted(state['audit804_results'].items(),key=lambda item:priority.get(item[0],len(priority))):
    newer=next((r for r in extra_runs if r['additional_store']==store),None)
