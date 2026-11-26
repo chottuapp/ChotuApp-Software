@@ -1,0 +1,1056 @@
+{
+  "run_id": "45802497997",
+  "checked_utc": "2026-11-26T10:34:16.135120+00:00",
+  "targets": [
+    {
+      "target": "45408941548",
+      "state": {
+        "conclusion": "failure",
+        "displayTitle": "Cloud group audit804-fresh804-20261026-5d42fe35-refresh20261124-1c4ddf1c-8",
+        "headSha": "299b52dd40f382d2e30baaf6aa5f711c03c13ae2",
+        "jobs": [
+          {
+            "completedAt": "2026-11-24T14:11:23Z",
+            "conclusion": "failure",
+            "databaseId": 138497184855,
+            "name": "fetch",
+            "startedAt": "2026-11-24T13:58:21Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-11-24T13:58:22Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-11-24T13:58:21Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T13:58:29Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-11-24T13:58:22Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T13:58:30Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-11-24T13:58:29Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T13:58:35Z",
+                "conclusion": "success",
+                "name": "Install extraction dependencies",
+                "number": 4,
+                "startedAt": "2026-11-24T13:58:30Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T13:58:42Z",
+                "conclusion": "success",
+                "name": "Verify standalone continuation and owner-policy guards",
+                "number": 5,
+                "startedAt": "2026-11-24T13:58:35Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T13:58:42Z",
+                "conclusion": "skipped",
+                "name": "Restore optional saved run",
+                "number": 6,
+                "startedAt": "2026-11-24T13:58:42Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T13:59:05Z",
+                "conclusion": "success",
+                "name": "Install Czone browser fallback when needed",
+                "number": 7,
+                "startedAt": "2026-11-24T13:58:42Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T13:59:05Z",
+                "conclusion": "skipped",
+                "name": "Install grocery public storefront renderer when needed",
+                "number": 8,
+                "startedAt": "2026-11-24T13:59:05Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T13:59:05Z",
+                "conclusion": "skipped",
+                "name": "Install meat public storefront renderer when needed",
+                "number": 9,
+                "startedAt": "2026-11-24T13:59:05Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T13:59:05Z",
+                "conclusion": "skipped",
+                "name": "Install Axis public JS renderer when needed",
+                "number": 10,
+                "startedAt": "2026-11-24T13:59:05Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T13:59:05Z",
+                "conclusion": "success",
+                "name": "Start continuous fetching on the cloud runner",
+                "number": 11,
+                "startedAt": "2026-11-24T13:59:05Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:11:15Z",
+                "conclusion": "success",
+                "name": "Live progress, logs and completed-file uploads",
+                "number": 12,
+                "startedAt": "2026-11-24T13:59:05Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:11:15Z",
+                "conclusion": "failure",
+                "name": "Fetch result",
+                "number": 13,
+                "startedAt": "2026-11-24T14:11:15Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:11:15Z",
+                "conclusion": "success",
+                "name": "Collect diagnostic report even if fetching failed",
+                "number": 14,
+                "startedAt": "2026-11-24T14:11:15Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:11:16Z",
+                "conclusion": "success",
+                "name": "Upload diagnostic report and redacted log",
+                "number": 15,
+                "startedAt": "2026-11-24T14:11:15Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:11:17Z",
+                "conclusion": "success",
+                "name": "Upload Excel files and audits, including completed stores from a partial run",
+                "number": 16,
+                "startedAt": "2026-11-24T14:11:16Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:11:17Z",
+                "conclusion": "skipped",
+                "name": "Final automated Rule 804 pass for fresh batch",
+                "number": 17,
+                "startedAt": "2026-11-24T14:11:17Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:11:17Z",
+                "conclusion": "skipped",
+                "name": "Upload automated Rule 804 fresh workbooks",
+                "number": 18,
+                "startedAt": "2026-11-24T14:11:17Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:11:21Z",
+                "conclusion": "success",
+                "name": "Upload saved checkpoint when available",
+                "number": 19,
+                "startedAt": "2026-11-24T14:11:17Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:11:21Z",
+                "conclusion": "success",
+                "name": "Dispatch authorized continuation after verified checkpoint upload",
+                "number": 20,
+                "startedAt": "2026-11-24T14:11:21Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:11:21Z",
+                "conclusion": "success",
+                "name": "Post Live progress, logs and completed-file uploads",
+                "number": 38,
+                "startedAt": "2026-11-24T14:11:21Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:11:21Z",
+                "conclusion": "skipped",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 39,
+                "startedAt": "2026-11-24T14:11:21Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:11:22Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 40,
+                "startedAt": "2026-11-24T14:11:21Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:11:22Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 41,
+                "startedAt": "2026-11-24T14:11:22Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/45408941548/job/138497184855"
+          },
+          {
+            "completedAt": "2026-11-24T16:41:39Z",
+            "conclusion": "success",
+            "databaseId": 138505538245,
+            "name": "Archive structured diagnostics",
+            "startedAt": "2026-11-24T16:41:13Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-11-24T16:41:18Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-11-24T16:41:14Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T16:41:30Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-11-24T16:41:18Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T16:41:30Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-11-24T16:41:30Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T16:41:31Z",
+                "conclusion": "success",
+                "name": "Run actions/download-artifact@v4",
+                "number": 4,
+                "startedAt": "2026-11-24T16:41:30Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T16:41:36Z",
+                "conclusion": "success",
+                "name": "Archive credential-free JSON on the cloud-reports branch",
+                "number": 5,
+                "startedAt": "2026-11-24T16:41:31Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T16:41:36Z",
+                "conclusion": "success",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 9,
+                "startedAt": "2026-11-24T16:41:36Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T16:41:36Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 10,
+                "startedAt": "2026-11-24T16:41:36Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T16:41:36Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 11,
+                "startedAt": "2026-11-24T16:41:36Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/45408941548/job/138505538245"
+          }
+        ],
+        "status": "completed"
+      },
+      "failed_log": "fetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4649950Z   File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/requests/sessions.py\", line 827, in send\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4650604Z     r.content\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4651105Z   File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/requests/models.py\", line 1042, in content\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4651760Z     self._content = b\"\".join(self.iter_content(CONTENT_CHUNK_SIZE)) or b\"\"\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4652180Z                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4652787Z   File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/requests/models.py\", line 939, in generate\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4653366Z     raise ChunkedEncodingError(e)\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4653791Z requests.exceptions.ChunkedEncodingError: Response ended prematurely\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4654114Z \nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4654307Z [Computer Zone] FAILED: Computer Zone: Response ended prematurely\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4654696Z [Computer Zone] [14:11:00] STAGE: Idle\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4655087Z FAILED: Computer Zone: FAILED: Computer Zone: Response ended prematurely\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4655481Z False\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4655955Z Checkpoint lossless cache migration: 706 legacy responses compressed; all source bytes and hashes remain verifiable.\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4656761Z Checkpoint lossless cache migration: 66 legacy responses compressed; all source bytes and hashes remain verifiable.\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4657666Z Checkpoint packaging: excluding request caches for 1 completed stores; Excel files and audits retained.\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4658353Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4658804Z RUN SUMMARY:\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4659425Z Nisa Naturals: DONE \u2014 55 products, 55 variants; Nisa Naturals.xlsx (REVIEW)\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4660019Z Computer Zone: FAILED \u2014 FAILED: Computer Zone: Response ended prematurely\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4660420Z Checkpoint: saved\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4660900Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4698460Z ##[error]Process completed with exit code 2.\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4747794Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4748574Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4768447Z shell: /usr/bin/bash -e {0}\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4768727Z env:\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4769134Z   CHOTUAPP_CLOUD_DATA: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4769756Z   CLOUD_RUNNER_GROUP: audit804-fresh804-20261026-5d42fe35-refresh20261124-1c4ddf1c-8\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4770218Z   CLOUD_PARTITION_RESUME: false\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4770811Z   CLOUD_STORES: [{\"name\":\"Computer Zone\",\"url\":\"https://www.czone.com.pk\"},{\"name\":\"Nisa Naturals\",\"url\":\"https://nisanaturals.pk\"}]\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4771404Z   CLOUD_MINUTES: 300\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4771643Z   RESUME_RUN_ID: \nfetch\tUNKNOWN STEP\t2026-11-24T14:11:15.4771876Z   SAVE_CHECKPOINT: true\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:21.1872269Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:21.1872760Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:21.1873207Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:21.1873642Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:21.1874086Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib\n[credential-bearing log line removed]\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:21.1876954Z ##[endgroup]\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:21.8518430Z No continuation: completed, stopped manually, unauthorized or not a time-budget stop.\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:21.8828739Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:21.8922475Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:21.9820360Z [command]/usr/bin/git version\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:21.9905385Z git version 2.56.1\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:21.9954373Z Temporarily overriding HOME='/home/runner/work/_temp/1880d7e8-150c-4df4-935b-7e9d4555d199' before making global git config changes\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:21.9955481Z Adding repository directory to the temporary git global config as a safe directory\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:21.9961586Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ChotuApp-Software/ChotuApp-Software\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:22.0010418Z [command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:22.0052405Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:22.0353286Z [command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nfetch\tUNKNOWN STEP\t2026-11-24T14:11:22.0391993Z http.https://github.com/.extraheader",
+      "artifacts": [
+        {
+          "name": "chotuapp-live-logs",
+          "id": 14928831041,
+          "expired": false,
+          "size_in_bytes": 71428
+        },
+        {
+          "name": "chotuapp-checkpoint",
+          "id": 14927254127,
+          "expired": false,
+          "size_in_bytes": 67723003
+        },
+        {
+          "name": "chotuapp-excel-files",
+          "id": 14926908801,
+          "expired": false,
+          "size_in_bytes": 98135
+        }
+      ],
+      "summary": {
+        "runner_group": "audit804-fresh804-20261026-5d42fe35-refresh20261124-1c4ddf1c-8",
+        "status": "incomplete",
+        "stop_reason": "completed_or_source_failure",
+        "checkpoint": "saved",
+        "auto_continue_limit": 48,
+        "continuation_index": 0,
+        "stalled_runs": 0,
+        "stores": [
+          {
+            "name": "Nisa Naturals",
+            "status": "done",
+            "products": 55
+          },
+          {
+            "name": "Computer Zone",
+            "status": "failed",
+            "products": null
+          }
+        ]
+      },
+      "available_checkpoint_ancestor": {
+        "run_id": "45408941548",
+        "checked": [
+          "45408941548"
+        ]
+      },
+      "annotations": [
+        {
+          "level": "warning",
+          "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+        },
+        {
+          "level": "failure",
+          "message": "Process completed with exit code 2."
+        }
+      ],
+      "console-tail.txt": "                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 221, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 352, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='naheed.pk':return original(base,name,template,log)\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 191, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/meat_source_support.py\", line 146, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='barkatmeathouse.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 401, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.') not in HOSTS:return original(base,name,template,log)\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 386, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.')!='laam.com':return original(base,name,template,log)\n                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 479, in run\n    return export(g,BASE,name,template,log)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 431, in export\n    records=collect_products(g,sorted(urls),log)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 386, in collect_products\n    for index,(url,html) in enumerate(pages,1):\n                            ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 364, in parallel_pages\n    if error is not None:raise error\n                         ^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 347, in worker\n    try:response=fetch_page(g,session,url)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 281, in fetch_page\n    response=session.get(url,timeout=45)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/fast_fetch_support.py\", line 137, in get\n    try:response=self.session.get(url,**kwargs)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/resume_support.py\", line 204, in get\n    response=self.session.get(url,**kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/requests/sessions.py\", line 671, in get\n    return self.request(\"GET\", url, params=params, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/requests/sessions.py\", line 651, in request\n    resp = self.send(prep, **send_kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/requests/sessions.py\", line 827, in send\n    r.content\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/requests/models.py\", line 1042, in content\n    self._content = b\"\".join(self.iter_content(CONTENT_CHUNK_SIZE)) or b\"\"\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/requests/models.py\", line 939, in generate\n    raise ChunkedEncodingError(e)\nrequests.exceptions.ChunkedEncodingError: Response ended prematurely\n\n[Computer Zone] FAILED: Computer Zone: Response ended prematurely\n[Computer Zone] [14:11:00] STAGE: Idle\nFAILED: Computer Zone: FAILED: Computer Zone: Response ended prematurely\nFalse\nCheckpoint lossless cache migration: 706 legacy responses compressed; all source bytes and hashes remain verifiable.\nCheckpoint lossless cache migration: 66 legacy responses compressed; all source bytes and hashes remain verifiable.\nCheckpoint packaging: excluding request caches for 1 completed stores; Excel files and audits retained.\nCheckpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nRUN SUMMARY:\nNisa Naturals: DONE \u2014 55 products, 55 variants; Nisa Naturals.xlsx (REVIEW)\nComputer Zone: FAILED \u2014 FAILED: Computer Zone: Response ended prematurely\nCheckpoint: saved\nRun finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+      "store-status.txt": "Updated (UTC): 2026-11-24T14:11:13.847867+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Nisa Naturals.xlsx\n\nSTORE STATUS\nNisa Naturals: done\n  Last successful HTTP response (UTC): 2026-11-24T14:03:37.508044+00:00\nComputer Zone: failed\n  Stage: Idle\n  Last successful HTTP response (UTC): 2026-11-24T14:11:00.187683+00:00",
+      "fetch-log.txt": "[Computer Zone] [14:10:24] HTTP START attempt=1 https://www.czone.com.pk/hp-victus-15-fa2114nia\n[Computer Zone] [14:10:25] HTTP END status=200 elapsed=1.1s bytes=481631 https://www.czone.com.pk/hp-victus-15-fa2114nia\n[Computer Zone] [14:10:25] HTTP START attempt=1 https://www.czone.com.pk/hp-victus-15-fa2115nia\n[Computer Zone] [14:10:26] HTTP END status=200 elapsed=0.9s bytes=484676 https://www.czone.com.pk/hp-victus-15-fa2115nia\n[Computer Zone] [14:10:26] HTTP START attempt=1 https://www.czone.com.pk/hp-zbook-15-g5-laptop\n[Computer Zone] [14:10:27] HTTP END status=200 elapsed=1.0s bytes=484260 https://www.czone.com.pk/hp-zbook-15-g5-laptop\n[Computer Zone] [14:10:27] HTTP START attempt=1 https://www.czone.com.pk/hp-zbook-17-g4-mobile-workstation\n[Computer Zone] [14:10:28] HTTP END status=200 elapsed=8.0s bytes=481227 https://www.czone.com.pk/hp-scanjet-pro-3000-s4-sheet-feed-scanner\n[Computer Zone] [14:10:28] HTTP START attempt=1 https://www.czone.com.pk/hp-zbook-firefly-14-g7\n[Computer Zone] [14:10:30] HTTP END status=200 elapsed=1.3s bytes=479216 https://www.czone.com.pk/hp-zbook-firefly-14-g7\n[Computer Zone] [14:10:30] HTTP START attempt=1 https://www.czone.com.pk/huawei-watch-fit-5-smart-watch\n[Computer Zone] [14:10:31] HTTP END status=200 elapsed=1.3s bytes=482647 https://www.czone.com.pk/huawei-watch-fit-5-smart-watch\n[Computer Zone] [14:10:31] HTTP START attempt=1 https://www.czone.com.pk/huawei-watch-gt-7-smart-watch\n[Computer Zone] CZONE: checked 675/1651 product pages; parsed results reused=0\n__CHOTU_PROGRESS__|64|Active: Computer Zone\n[Computer Zone] [14:10:32] HTTP END status=200 elapsed=4.6s bytes=485326 https://www.czone.com.pk/hp-zbook-17-g4-mobile-workstation\n[Computer Zone] [14:10:32] HTTP START attempt=1 https://www.czone.com.pk/hyperx-hp-omen-16-ap1023dx\n[Computer Zone] [14:10:32] HTTP END status=200 elapsed=0.5s bytes=492479 https://www.czone.com.pk/hyperx-hp-omen-16-ap1023dx\n[Computer Zone] [14:10:32] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-af-127-argb-w-trio-120mm-3-pack\n[Computer Zone] [14:10:33] HTTP END status=200 elapsed=1.1s bytes=480807 https://www.czone.com.pk/id-cooling-af-127-argb-w-trio-120mm-3-pack\n[Computer Zone] [14:10:33] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-as-120-argb-k-120mm-pwm-argb-fan\n[Computer Zone] [14:10:34] HTTP END status=200 elapsed=0.8s bytes=482131 https://www.czone.com.pk/id-cooling-as-120-argb-k-120mm-pwm-argb-fan\n[Computer Zone] [14:10:34] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-as-120-argb-k-trio-120mm-case-fan\n[Computer Zone] [14:10:35] HTTP END status=200 elapsed=1.2s bytes=483259 https://www.czone.com.pk/id-cooling-as-120-argb-k-trio-120mm-case-fan\n[Computer Zone] [14:10:35] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-dk-500-500w-power-supply\n[Computer Zone] [14:10:36] HTTP END status=200 elapsed=5.4s bytes=479404 https://www.czone.com.pk/huawei-watch-gt-7-smart-watch\n[Computer Zone] [14:10:36] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-dx360-gdl-aio-360mm-liquid-cpu-cooler\n[Computer Zone] [14:10:37] HTTP END status=200 elapsed=1.9s bytes=480976 https://www.czone.com.pk/id-cooling-dk-500-500w-power-supply\n[Computer Zone] [14:10:37] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-flow-500-air-micro-atx-pc-case\n[Computer Zone] [14:10:38] HTTP END status=200 elapsed=2.1s bytes=483638 https://www.czone.com.pk/id-cooling-dx360-gdl-aio-360mm-liquid-cpu-cooler\n[Computer Zone] [14:10:38] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-flow-500-air-micro-atx-pc-case-white\n[Computer Zone] [14:10:40] HTTP END status=200 elapsed=2.3s bytes=483092 https://www.czone.com.pk/id-cooling-flow-500-air-micro-atx-pc-case\n[Computer Zone] [14:10:40] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-frost-x25-thermal-paste\n[Computer Zone] [14:10:42] HTTP END status=200 elapsed=2.2s bytes=477642 https://www.czone.com.pk/id-cooling-frost-x25-thermal-paste\n[Computer Zone] [14:10:42] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-frozn-a410-td-argb-cpu-air-cooler\n[Computer Zone] [14:10:43] HTTP END status=200 elapsed=5.0s bytes=483674 https://www.czone.com.pk/id-cooling-flow-500-air-micro-atx-pc-case-white\n[Computer Zone] [14:10:43] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-frozn-a410-xe-dk-cpu-air-cooler\n[Computer Zone] [14:10:44] HTTP END status=200 elapsed=2.3s bytes=487280 https://www.czone.com.pk/id-cooling-frozn-a410-td-argb-cpu-air-cooler\n[Computer Zone] [14:10:44] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-fx240-lcd-argb-2\n[Computer Zone] [14:10:44] HTTP END status=200 elapsed=1.1s bytes=483032 https://www.czone.com.pk/id-cooling-frozn-a410-xe-dk-cpu-air-cooler\n[Computer Zone] [14:10:44] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-fx360-lcd-argb\n[Computer Zone] [14:10:45] HTTP END status=200 elapsed=0.8s bytes=482855 https://www.czone.com.pk/id-cooling-fx240-lcd-argb-2\n[Computer Zone] [14:10:45] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-se-214-xt-v2-argb-white-cpu-cooler\n[Computer Zone] [14:10:46] HTTP END status=200 elapsed=1.4s bytes=484632 https://www.czone.com.pk/id-cooling-fx360-lcd-argb\n[Computer Zone] [14:10:46] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-se-214-xt-v2-plus-cpu-air-cooler\n[Computer Zone] [14:10:47] HTTP END status=200 elapsed=1.3s bytes=490834 https://www.czone.com.pk/id-cooling-se-214-xt-v2-plus-cpu-air-cooler\n[Computer Zone] [14:10:47] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-se-802-sd-v3-cpu-air-cooler\n[Computer Zone] [14:10:48] HTTP END status=200 elapsed=2.8s bytes=481875 https://www.czone.com.pk/id-cooling-se-214-xt-v2-argb-white-cpu-cooler\n[Computer Zone] [14:10:48] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-se-903-xt-argb-cpu-air-cooler-white\n[Computer Zone] [14:10:49] HTTP END status=200 elapsed=1.4s bytes=483644 https://www.czone.com.pk/id-cooling-se-903-xt-argb-cpu-air-cooler-white\n[Computer Zone] [14:10:49] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-se-904-xt-argb-black-cpu-air-cooler\n[Computer Zone] [14:10:50] HTTP END status=200 elapsed=2.7s bytes=480606 https://www.czone.com.pk/id-cooling-se-802-sd-v3-cpu-air-cooler\n[Computer Zone] [14:10:50] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-sl360-v2-plus-360mm-aio-liquid-cpu-cooler\n[Computer Zone] [14:10:51] HTTP END status=200 elapsed=1.7s bytes=491131 https://www.czone.com.pk/id-cooling-se-904-xt-argb-black-cpu-air-cooler\n[Computer Zone] [14:10:51] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-sl360-v2-space-lcd\n[Computer Zone] [14:10:52] HTTP END status=200 elapsed=1.5s bytes=490427 https://www.czone.com.pk/id-cooling-sl360-v2-space-lcd\n[Computer Zone] [14:10:52] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-view-500-argb-micro-atx-pc-case\n[Computer Zone] [14:10:53] HTTP END status=200 elapsed=0.5s bytes=486245 https://www.czone.com.pk/id-cooling-view-500-argb-micro-atx-pc-case\n[Computer Zone] [14:10:53] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-view-500-argb-micro-atx-pc-case-2\n[Computer Zone] [14:10:54] HTTP END status=200 elapsed=4.2s bytes=486146 https://www.czone.com.pk/id-cooling-sl360-v2-plus-360mm-aio-liquid-cpu-cooler\n[Computer Zone] [14:10:54] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-view-510-argb-atx-pc-case-black\n[Computer Zone] [14:10:55] HTTP END status=200 elapsed=0.8s bytes=483588 https://www.czone.com.pk/id-cooling-view-510-argb-atx-pc-case-black\n[Computer Zone] [14:10:55] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-view-510-argb-white-atx-pc-case\n[Computer Zone] [14:10:56] HTTP END status=200 elapsed=1.6s bytes=484090 https://www.czone.com.pk/id-cooling-view-510-argb-white-atx-pc-case\n[Computer Zone] [14:10:56] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-ware-310-argb-atx-pc-case\n[Computer Zone] CZONE: checked 700/1651 product pages; parsed results reused=0\n__CHOTU_PROGRESS__|65|Active: Computer Zone\n[Computer Zone] [14:10:57] HTTP END status=200 elapsed=4.0s bytes=483301 https://www.czone.com.pk/id-cooling-view-500-argb-micro-atx-pc-case-2\n[Computer Zone] [14:10:57] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-ware-310-argb-white-atx-pc-case\n[Computer Zone] [14:10:58] HTTP END status=200 elapsed=0.9s bytes=483630 https://www.czone.com.pk/id-cooling-ware-310-argb-white-atx-pc-case\n[Computer Zone] [14:10:58] HTTP START attempt=1 https://www.czone.com.pk/id-cooling-ware-510-argb-atx-pc-case\n[Computer Zone] [14:11:00] HTTP END status=200 elapsed=2.0s bytes=486652 https://www.czone.com.pk/id-cooling-ware-510-argb-atx-pc-case\n__CHOTU_PROGRESS__|50|Active: Computer Zone\n[Computer Zone] [14:11:00] EXCEPTION: ChunkedEncodingError(ProtocolError('Response ended prematurely'))\n[Computer Zone] [14:11:00] Traceback (most recent call last):\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/requests/models.py\", line 937, in generate\n    yield from self.raw.stream(chunk_size, decode_content=True)\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/response.py\", line 1284, in stream\n    yield from self.read_chunked(amt, decode_content=decode_content)\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/response.py\", line 1459, in read_chunked\n    self._update_chunk_length()\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/urllib3/response.py\", line 1383, in _update_chunk_length\n    raise ProtocolError(\"Response ended prematurely\") from None\nurllib3.exceptions.ProtocolError: Response ended prematurely\n\nDuring handling of the above exception, another exception occurred:\n\nTraceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2064, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1557, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 128, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='alfatehgarments.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 221, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 352, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='naheed.pk':return original(base,name,template,log)\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 191, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/meat_source_support.py\", line 146, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='barkatmeathouse.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 401, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.') not in HOSTS:return original(base,name,template,log)\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/laam_source_support.py\", line 386, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.')!='laam.com':return original(base,name,template,log)\n                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 479, in run\n    return export(g,BASE,name,template,log)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 431, in export\n    records=collect_products(g,sorted(urls),log)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 386, in collect_products\n    for index,(url,html) in enumerate(pages,1):\n                            ^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 364, in parallel_pages\n    if error is not None:raise error\n                         ^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 347, in worker\n    try:response=fetch_page(g,session,url)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/czone_source_support.py\", line 281, in fetch_page\n    response=session.get(url,timeout=45)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/fast_fetch_support.py\", line 137, in get\n    try:response=self.session.get(url,**kwargs)\n                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/resume_support.py\", line 204, in get\n    response=self.session.get(url,**kwargs)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/requests/sessions.py\", line 671, in get\n    return self.request(\"GET\", url, params=params, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/requests/sessions.py\", line 651, in request\n    resp = self.send(prep, **send_kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/requests/sessions.py\", line 827, in send\n    r.content\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/requests/models.py\", line 1042, in content\n    self._content = b\"\".join(self.iter_content(CONTENT_CHUNK_SIZE)) or b\"\"\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.12.16/x64/lib/python3.12/site-packages/requests/models.py\", line 939, in generate\n    raise ChunkedEncodingError(e)\nrequests.exceptions.ChunkedEncodingError: Response ended prematurely\n\n[Computer Zone] FAILED: Computer Zone: Response ended prematurely\n[Computer Zone] [14:11:00] STAGE: Idle\nFAILED: Computer Zone: FAILED: Computer Zone: Response ended prematurely\nFalse"
+    },
+    {
+      "target": "45408991513",
+      "state": {
+        "conclusion": "failure",
+        "displayTitle": "Cloud group audit804-fresh804-20261026-5d42fe35-refresh20261124-1c4ddf1c-18",
+        "headSha": "299b52dd40f382d2e30baaf6aa5f711c03c13ae2",
+        "jobs": [
+          {
+            "completedAt": "2026-11-24T14:50:52Z",
+            "conclusion": "failure",
+            "databaseId": 138497373039,
+            "name": "fetch",
+            "startedAt": "2026-11-24T13:58:39Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-11-24T13:58:41Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-11-24T13:58:40Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T13:58:49Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-11-24T13:58:41Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T13:58:49Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-11-24T13:58:49Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T13:58:55Z",
+                "conclusion": "success",
+                "name": "Install extraction dependencies",
+                "number": 4,
+                "startedAt": "2026-11-24T13:58:49Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T13:59:03Z",
+                "conclusion": "success",
+                "name": "Verify standalone continuation and owner-policy guards",
+                "number": 5,
+                "startedAt": "2026-11-24T13:58:55Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T13:59:03Z",
+                "conclusion": "skipped",
+                "name": "Restore optional saved run",
+                "number": 6,
+                "startedAt": "2026-11-24T13:59:03Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T13:59:03Z",
+                "conclusion": "skipped",
+                "name": "Install Czone browser fallback when needed",
+                "number": 7,
+                "startedAt": "2026-11-24T13:59:03Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T13:59:03Z",
+                "conclusion": "skipped",
+                "name": "Install grocery public storefront renderer when needed",
+                "number": 8,
+                "startedAt": "2026-11-24T13:59:03Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T13:59:03Z",
+                "conclusion": "skipped",
+                "name": "Install meat public storefront renderer when needed",
+                "number": 9,
+                "startedAt": "2026-11-24T13:59:03Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T13:59:03Z",
+                "conclusion": "skipped",
+                "name": "Install Axis public JS renderer when needed",
+                "number": 10,
+                "startedAt": "2026-11-24T13:59:03Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T13:59:03Z",
+                "conclusion": "success",
+                "name": "Start continuous fetching on the cloud runner",
+                "number": 11,
+                "startedAt": "2026-11-24T13:59:03Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:50:43Z",
+                "conclusion": "success",
+                "name": "Live progress, logs and completed-file uploads",
+                "number": 12,
+                "startedAt": "2026-11-24T13:59:03Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:50:43Z",
+                "conclusion": "failure",
+                "name": "Fetch result",
+                "number": 13,
+                "startedAt": "2026-11-24T14:50:43Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:50:43Z",
+                "conclusion": "success",
+                "name": "Collect diagnostic report even if fetching failed",
+                "number": 14,
+                "startedAt": "2026-11-24T14:50:43Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:50:45Z",
+                "conclusion": "success",
+                "name": "Upload diagnostic report and redacted log",
+                "number": 15,
+                "startedAt": "2026-11-24T14:50:43Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:50:46Z",
+                "conclusion": "success",
+                "name": "Upload Excel files and audits, including completed stores from a partial run",
+                "number": 16,
+                "startedAt": "2026-11-24T14:50:45Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:50:46Z",
+                "conclusion": "skipped",
+                "name": "Final automated Rule 804 pass for fresh batch",
+                "number": 17,
+                "startedAt": "2026-11-24T14:50:46Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:50:46Z",
+                "conclusion": "skipped",
+                "name": "Upload automated Rule 804 fresh workbooks",
+                "number": 18,
+                "startedAt": "2026-11-24T14:50:46Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:50:49Z",
+                "conclusion": "success",
+                "name": "Upload saved checkpoint when available",
+                "number": 19,
+                "startedAt": "2026-11-24T14:50:46Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:50:50Z",
+                "conclusion": "success",
+                "name": "Dispatch authorized continuation after verified checkpoint upload",
+                "number": 20,
+                "startedAt": "2026-11-24T14:50:49Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:50:50Z",
+                "conclusion": "success",
+                "name": "Post Live progress, logs and completed-file uploads",
+                "number": 38,
+                "startedAt": "2026-11-24T14:50:50Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:50:50Z",
+                "conclusion": "skipped",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 39,
+                "startedAt": "2026-11-24T14:50:50Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:50:50Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 40,
+                "startedAt": "2026-11-24T14:50:50Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T14:50:50Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 41,
+                "startedAt": "2026-11-24T14:50:50Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/45408991513/job/138497373039"
+          },
+          {
+            "completedAt": "2026-11-24T16:43:40Z",
+            "conclusion": "success",
+            "databaseId": 138531797850,
+            "name": "Archive structured diagnostics",
+            "startedAt": "2026-11-24T16:43:13Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-11-24T16:43:17Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-11-24T16:43:14Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T16:43:30Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-11-24T16:43:17Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T16:43:31Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-11-24T16:43:30Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T16:43:32Z",
+                "conclusion": "success",
+                "name": "Run actions/download-artifact@v4",
+                "number": 4,
+                "startedAt": "2026-11-24T16:43:31Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T16:43:36Z",
+                "conclusion": "success",
+                "name": "Archive credential-free JSON on the cloud-reports branch",
+                "number": 5,
+                "startedAt": "2026-11-24T16:43:32Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T16:43:36Z",
+                "conclusion": "success",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 9,
+                "startedAt": "2026-11-24T16:43:36Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T16:43:36Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 10,
+                "startedAt": "2026-11-24T16:43:36Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T16:43:36Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 11,
+                "startedAt": "2026-11-24T16:43:36Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/45408991513/job/138531797850"
+          }
+        ],
+        "status": "completed"
+      },
+      "failed_log": "fetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7636189Z [Xcessories Hub] [14:50:37] HTTP END status=200 elapsed=0.6s bytes=87079 https://xcessorieshub.com/wp-json/wc/store/v1/products/147812\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7636783Z [Xcessories Hub] WOO PRODUCT PROGRESS: 1599/3150 checked; 1595 retained\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7637261Z [Xcessories Hub] [14:50:37] STAGE: WooCommerce public product prices and pages\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7637801Z [Xcessories Hub] [14:50:37] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/147563\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7638379Z [Xcessories Hub] [14:50:37] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/147563\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7639032Z [Xcessories Hub] [14:50:38] HTTP END status=200 elapsed=0.9s bytes=90416 https://xcessorieshub.com/wp-json/wc/store/v1/products/147563\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7639555Z __CHOTU_PROGRESS__|50|Active: Xcessories Hub\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7640001Z [Xcessories Hub] [14:50:38] EXCEPTION: ValueError('Unsupported WooCommerce product type: variable')\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7644214Z [Xcessories Hub] [14:50:38] Traceback (most recent call last):\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7651239Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2064, in _run_checked\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7652457Z     run_site(site['url'], name, template, log_line)\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7653600Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7654729Z     if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7655744Z                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7656652Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1557, in run_site\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7657502Z     _chotuapp_run_site_original(base, name, template, intercept)\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7658521Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7659785Z     if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7660782Z                                                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7661782Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7695547Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7696450Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 306, in export\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7697404Z     vs=variants(p,get);offers=[(v,a,offer(v)) for v,a in vs]\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7697915Z        ^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7698691Z   File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 43, in variants\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7699676Z     if parent['type']!='variable' or not parent.get('variations'):raise ValueError('Unsupported WooCommerce product type: '+str(parent.get('type')))\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7700332Z                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7700807Z ValueError: Unsupported WooCommerce product type: variable\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7701076Z \nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7701303Z [Xcessories Hub] FAILED: Xcessories Hub: Unsupported WooCommerce product type: variable\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7702122Z [Xcessories Hub] [14:50:38] STAGE: Idle\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7702785Z FAILED: Xcessories Hub: FAILED: Xcessories Hub: Unsupported WooCommerce product type: variable\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7703504Z False\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7703947Z Checkpoint lossless cache migration: 116 legacy responses compressed; all source bytes and hashes remain verifiable.\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7704593Z Checkpoint packaging: excluding request caches for 1 completed stores; Excel files and audits retained.\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7705169Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7705568Z RUN SUMMARY:\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7706152Z Hilm Chapals: DONE \u2014 107 products, 665 variants; Hilm Chapals.xlsx (REVIEW)\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7706749Z Xcessories Hub: FAILED \u2014 FAILED: Xcessories Hub: Unsupported WooCommerce product type: variable\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7707344Z Checkpoint: saved\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7707779Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7716328Z ##[error]Process completed with exit code 2.\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7757599Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7758221Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7775612Z shell: /usr/bin/bash -e {0}\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7775882Z env:\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7776255Z   CHOTUAPP_CLOUD_DATA: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7776804Z   CLOUD_RUNNER_GROUP: audit804-fresh804-20261026-5d42fe35-refresh20261124-1c4ddf1c-18\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7777205Z   CLOUD_PARTITION_RESUME: false\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7777709Z   CLOUD_STORES: [{\"name\":\"Hilm Chapals\",\"url\":\"https://www.hilmchapals.com\"},{\"name\":\"Xcessories Hub\",\"url\":\"https://xcessorieshub.com\"}]\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7778217Z   CLOUD_MINUTES: 300\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7778460Z   RESUME_RUN_ID: \nfetch\tUNKNOWN STEP\t2026-11-24T14:50:43.7778698Z   SAVE_CHECKPOINT: true\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:49.5601562Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:49.5601993Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:49.5602393Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:49.5602777Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:49.5603372Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib\n[credential-bearing log line removed]\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:49.5605664Z ##[endgroup]\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:50.3957090Z No continuation: completed, stopped manually, unauthorized or not a time-budget stop.\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:50.4194153Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:50.4276088Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:50.4981919Z [command]/usr/bin/git version\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:50.5049232Z git version 2.56.1\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:50.5078113Z Temporarily overriding HOME='/home/runner/work/_temp/7212fc08-9f03-46bc-acca-bc66d811a0e6' before making global git config changes\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:50.5079364Z Adding repository directory to the temporary git global config as a safe directory\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:50.5082661Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ChotuApp-Software/ChotuApp-Software\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:50.5117375Z [command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:50.5154411Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:50.5377014Z [command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nfetch\tUNKNOWN STEP\t2026-11-24T14:50:50.5402737Z http.https://github.com/.extraheader",
+      "artifacts": [
+        {
+          "name": "chotuapp-checkpoint",
+          "id": 14934085089,
+          "expired": false,
+          "size_in_bytes": 58739046
+        },
+        {
+          "name": "chotuapp-live-logs",
+          "id": 14933656100,
+          "expired": false,
+          "size_in_bytes": 119768
+        },
+        {
+          "name": "chotuapp-excel-files",
+          "id": 14933576191,
+          "expired": false,
+          "size_in_bytes": 236839
+        }
+      ],
+      "summary": {
+        "runner_group": "audit804-fresh804-20261026-5d42fe35-refresh20261124-1c4ddf1c-18",
+        "status": "incomplete",
+        "stop_reason": "completed_or_source_failure",
+        "checkpoint": "saved",
+        "auto_continue_limit": 48,
+        "continuation_index": 0,
+        "stalled_runs": 0,
+        "stores": [
+          {
+            "name": "Hilm Chapals",
+            "status": "done",
+            "products": 107
+          },
+          {
+            "name": "Xcessories Hub",
+            "status": "failed",
+            "products": null
+          }
+        ]
+      },
+      "available_checkpoint_ancestor": {
+        "run_id": "45408991513",
+        "checked": [
+          "45408991513"
+        ]
+      },
+      "annotations": [
+        {
+          "level": "warning",
+          "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+        },
+        {
+          "level": "failure",
+          "message": "Process completed with exit code 2."
+        }
+      ],
+      "console-tail.txt": "[Xcessories Hub] [14:50:35] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/147802\n[Xcessories Hub] [14:50:36] HTTP END status=200 elapsed=0.9s bytes=96612 https://xcessorieshub.com/wp-json/wc/store/v1/products/147802\n[Xcessories Hub] [14:50:36] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:36] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/147812\n[Xcessories Hub] [14:50:36] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/147812\n[Xcessories Hub] [14:50:37] HTTP END status=200 elapsed=0.6s bytes=87079 https://xcessorieshub.com/wp-json/wc/store/v1/products/147812\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1599/3150 checked; 1595 retained\n[Xcessories Hub] [14:50:37] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:37] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/147563\n[Xcessories Hub] [14:50:37] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/147563\n[Xcessories Hub] [14:50:38] HTTP END status=200 elapsed=0.9s bytes=90416 https://xcessorieshub.com/wp-json/wc/store/v1/products/147563\n__CHOTU_PROGRESS__|50|Active: Xcessories Hub\n[Xcessories Hub] [14:50:38] EXCEPTION: ValueError('Unsupported WooCommerce product type: variable')\n[Xcessories Hub] [14:50:38] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2064, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1557, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 128, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='alfatehgarments.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 221, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 352, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='naheed.pk':return original(base,name,template,log)\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 191, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/meat_source_support.py\", line 146, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='barkatmeathouse.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 402, in run\n    return export(g,base,name,template,log)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 306, in export\n    vs=variants(p,get);offers=[(v,a,offer(v)) for v,a in vs]\n       ^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 43, in variants\n    if parent['type']!='variable' or not parent.get('variations'):raise ValueError('Unsupported WooCommerce product type: '+str(parent.get('type')))\n                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Unsupported WooCommerce product type: variable\n\n[Xcessories Hub] FAILED: Xcessories Hub: Unsupported WooCommerce product type: variable\n[Xcessories Hub] [14:50:38] STAGE: Idle\nFAILED: Xcessories Hub: FAILED: Xcessories Hub: Unsupported WooCommerce product type: variable\nFalse\nCheckpoint lossless cache migration: 116 legacy responses compressed; all source bytes and hashes remain verifiable.\nCheckpoint packaging: excluding request caches for 1 completed stores; Excel files and audits retained.\nCheckpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nRUN SUMMARY:\nHilm Chapals: DONE \u2014 107 products, 665 variants; Hilm Chapals.xlsx (REVIEW)\nXcessories Hub: FAILED \u2014 FAILED: Xcessories Hub: Unsupported WooCommerce product type: variable\nCheckpoint: saved\nRun finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+      "store-status.txt": "Updated (UTC): 2026-11-24T14:50:41.929377+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Hilm Chapals.xlsx\n\nSTORE STATUS\nHilm Chapals: done\n  Last successful HTTP response (UTC): 2026-11-24T14:07:41.786636+00:00\nXcessories Hub: failed\n  Stage: Idle\n  Last successful HTTP response (UTC): 2026-11-24T14:50:38.240021+00:00",
+      "fetch-log.txt": "[Xcessories Hub] WOO PRODUCT PROGRESS: 1585/3150 checked; 1581 retained\n[Xcessories Hub] [14:50:13] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:13] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/150222\n[Xcessories Hub] [14:50:13] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/150222\n[Xcessories Hub] [14:50:14] HTTP END status=200 elapsed=0.8s bytes=108223 https://xcessorieshub.com/wp-json/wc/store/v1/products/150222\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1586/3150 checked; 1582 retained\n[Xcessories Hub] [14:50:14] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:14] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/150217\n[Xcessories Hub] [14:50:14] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/150217\n[Xcessories Hub] [14:50:15] HTTP END status=200 elapsed=0.9s bytes=94577 https://xcessorieshub.com/wp-json/wc/store/v1/products/150217\n[Xcessories Hub] [14:50:15] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:15] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/150220\n[Xcessories Hub] [14:50:15] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/150220\n[Xcessories Hub] [14:50:16] HTTP END status=200 elapsed=0.6s bytes=88089 https://xcessorieshub.com/wp-json/wc/store/v1/products/150220\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1587/3150 checked; 1583 retained\n[Xcessories Hub] [14:50:16] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:16] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/150205\n[Xcessories Hub] [14:50:16] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/150205\n[Xcessories Hub] [14:50:17] HTTP END status=200 elapsed=0.9s bytes=90178 https://xcessorieshub.com/wp-json/wc/store/v1/products/150205\n[Xcessories Hub] [14:50:17] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:17] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/150210\n[Xcessories Hub] [14:50:17] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/150210\n[Xcessories Hub] [14:50:18] HTTP END status=200 elapsed=0.7s bytes=87948 https://xcessorieshub.com/wp-json/wc/store/v1/products/150210\n[Xcessories Hub] [14:50:18] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:18] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/150211\n[Xcessories Hub] [14:50:18] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/150211\n[Xcessories Hub] [14:50:18] HTTP END status=200 elapsed=0.6s bytes=87948 https://xcessorieshub.com/wp-json/wc/store/v1/products/150211\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1588/3150 checked; 1584 retained\n[Xcessories Hub] [14:50:19] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:19] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/150196\n[Xcessories Hub] [14:50:19] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/150196\n[Xcessories Hub] [14:50:19] HTTP END status=200 elapsed=0.8s bytes=89787 https://xcessorieshub.com/wp-json/wc/store/v1/products/150196\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1589/3150 checked; 1585 retained\n[Xcessories Hub] [14:50:20] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:20] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/149840\n[Xcessories Hub] [14:50:20] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/149840\n[Xcessories Hub] [14:50:21] HTTP END status=200 elapsed=1.0s bytes=90086 https://xcessorieshub.com/wp-json/wc/store/v1/products/149840\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1590/3150 checked; 1586 retained\n[Xcessories Hub] [14:50:21] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:21] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/149740\n[Xcessories Hub] [14:50:21] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/149740\n[Xcessories Hub] [14:50:22] HTTP END status=200 elapsed=0.9s bytes=97604 https://xcessorieshub.com/wp-json/wc/store/v1/products/149740\n[Xcessories Hub] [14:50:22] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:22] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/194450\n[Xcessories Hub] [14:50:22] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/194450\n[Xcessories Hub] [14:50:23] HTTP END status=200 elapsed=0.6s bytes=87059 https://xcessorieshub.com/wp-json/wc/store/v1/products/194450\n[Xcessories Hub] [14:50:23] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:23] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/194451\n[Xcessories Hub] [14:50:23] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/194451\n[Xcessories Hub] [14:50:23] HTTP END status=200 elapsed=0.6s bytes=87763 https://xcessorieshub.com/wp-json/wc/store/v1/products/194451\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1591/3150 checked; 1587 retained\n[Xcessories Hub] [14:50:23] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:23] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/149736\n[Xcessories Hub] [14:50:23] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/149736\n[Xcessories Hub] [14:50:24] HTTP END status=200 elapsed=1.0s bytes=90203 https://xcessorieshub.com/wp-json/wc/store/v1/products/149736\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1592/3150 checked; 1588 retained\n[Xcessories Hub] [14:50:25] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:25] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/149653\n[Xcessories Hub] [14:50:25] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/149653\n[Xcessories Hub] [14:50:26] HTTP END status=200 elapsed=0.9s bytes=102082 https://xcessorieshub.com/wp-json/wc/store/v1/products/149653\n[Xcessories Hub] [14:50:26] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:26] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/149654\n[Xcessories Hub] [14:50:26] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/149654\n[Xcessories Hub] [14:50:26] HTTP END status=200 elapsed=0.6s bytes=86863 https://xcessorieshub.com/wp-json/wc/store/v1/products/149654\n[Xcessories Hub] [14:50:26] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:26] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/149655\n[Xcessories Hub] [14:50:26] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/149655\n[Xcessories Hub] [14:50:27] HTTP END status=200 elapsed=0.6s bytes=86866 https://xcessorieshub.com/wp-json/wc/store/v1/products/149655\n[Xcessories Hub] [14:50:27] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:27] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/149656\n[Xcessories Hub] [14:50:27] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/149656\n[Xcessories Hub] [14:50:28] HTTP END status=200 elapsed=0.7s bytes=86846 https://xcessorieshub.com/wp-json/wc/store/v1/products/149656\n[Xcessories Hub] [14:50:28] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:28] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/149657\n[Xcessories Hub] [14:50:28] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/149657\n[Xcessories Hub] [14:50:28] HTTP END status=200 elapsed=0.6s bytes=86832 https://xcessorieshub.com/wp-json/wc/store/v1/products/149657\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1593/3150 checked; 1589 retained\n[Xcessories Hub] [14:50:29] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:29] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/148994\n[Xcessories Hub] [14:50:29] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/148994\n[Xcessories Hub] [14:50:29] HTTP END status=200 elapsed=0.8s bytes=89450 https://xcessorieshub.com/wp-json/wc/store/v1/products/148994\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1594/3150 checked; 1590 retained\n[Xcessories Hub] [14:50:30] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:30] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/148345\n[Xcessories Hub] [14:50:30] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/148345\n[Xcessories Hub] [14:50:30] HTTP END status=200 elapsed=0.8s bytes=91245 https://xcessorieshub.com/wp-json/wc/store/v1/products/148345\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1595/3150 checked; 1591 retained\n[Xcessories Hub] [14:50:31] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:31] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/148173\n[Xcessories Hub] [14:50:31] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/148173\n[Xcessories Hub] [14:50:32] HTTP END status=200 elapsed=0.8s bytes=92524 https://xcessorieshub.com/wp-json/wc/store/v1/products/148173\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1596/3150 checked; 1592 retained\n[Xcessories Hub] [14:50:32] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:32] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/148158\n[Xcessories Hub] [14:50:32] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/148158\n[Xcessories Hub] [14:50:33] HTTP END status=200 elapsed=0.9s bytes=94896 https://xcessorieshub.com/wp-json/wc/store/v1/products/148158\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1597/3150 checked; 1593 retained\n[Xcessories Hub] [14:50:33] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:33] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/147815\n[Xcessories Hub] [14:50:33] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/147815\n[Xcessories Hub] [14:50:34] HTTP END status=200 elapsed=0.9s bytes=98831 https://xcessorieshub.com/wp-json/wc/store/v1/products/147815\n[Xcessories Hub] [14:50:34] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:34] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/147827\n[Xcessories Hub] [14:50:34] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/147827\n[Xcessories Hub] [14:50:35] HTTP END status=200 elapsed=0.7s bytes=87351 https://xcessorieshub.com/wp-json/wc/store/v1/products/147827\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1598/3150 checked; 1594 retained\n[Xcessories Hub] [14:50:35] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:35] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/147802\n[Xcessories Hub] [14:50:35] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/147802\n[Xcessories Hub] [14:50:36] HTTP END status=200 elapsed=0.9s bytes=96612 https://xcessorieshub.com/wp-json/wc/store/v1/products/147802\n[Xcessories Hub] [14:50:36] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:36] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/147812\n[Xcessories Hub] [14:50:36] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/147812\n[Xcessories Hub] [14:50:37] HTTP END status=200 elapsed=0.6s bytes=87079 https://xcessorieshub.com/wp-json/wc/store/v1/products/147812\n[Xcessories Hub] WOO PRODUCT PROGRESS: 1599/3150 checked; 1595 retained\n[Xcessories Hub] [14:50:37] STAGE: WooCommerce public product prices and pages\n[Xcessories Hub] [14:50:37] GET_JSON: https://xcessorieshub.com/wp-json/wc/store/v1/products/147563\n[Xcessories Hub] [14:50:37] HTTP START attempt=1 https://xcessorieshub.com/wp-json/wc/store/v1/products/147563\n[Xcessories Hub] [14:50:38] HTTP END status=200 elapsed=0.9s bytes=90416 https://xcessorieshub.com/wp-json/wc/store/v1/products/147563\n__CHOTU_PROGRESS__|50|Active: Xcessories Hub\n[Xcessories Hub] [14:50:38] EXCEPTION: ValueError('Unsupported WooCommerce product type: variable')\n[Xcessories Hub] [14:50:38] Traceback (most recent call last):\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 2064, in _run_checked\n    run_site(site['url'], name, template, log_line)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/farda_source_support.py\", line 27, in run_site\n    if host not in ('fardafoods.com','shop.fardafoods.com'):return original(base,name,template,log)\n                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/main.py\", line 1557, in run_site\n    _chotuapp_run_site_original(base, name, template, intercept)\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/khaadi_source_support.py\", line 203, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('khaadi.com','pk.khaadi.com'):return original(base,name,template,log)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/sapphire_source_support.py\", line 255, in run\n    if (urlsplit(base).hostname or '').lower().removeprefix('www.') not in ('sapphireonline.pk','pk.sapphireonline.pk'):return original(base,name,template,log)\n                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/alfateh_source_support.py\", line 128, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='alfatehgarments.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/public_catalog_support.py\", line 56, in run\n    if (urlsplit(url).hostname or '').removeprefix('www.')!=urlsplit(base).hostname.removeprefix('www.'):return original(url,store,template,log)\n                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/breakout_source_support.py\", line 7, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='breakout.com.pk':return original(base,name,template,log)\n                                                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/website_order_support.py\", line 221, in run\n    try:return original(base,name,template,log)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/collection_scope_support.py\", line 25, in run\n    if not scope:return original(base,name,template,log)\n                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/axis_source_support.py\", line 223, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/chotu_groceries_source_support.py\", line 352, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='naheed.pk':return original(base,name,template,log)\n                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/magento_source_support.py\", line 191, in run\n    if base.rstrip('/')!=BASE:return original(base,name,template,log)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/meat_source_support.py\", line 146, in run\n    if (urlsplit(base).hostname or '').removeprefix('www.')!='barkatmeathouse.com':return original(base,name,template,log)\n                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 402, in run\n    return export(g,base,name,template,log)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 306, in export\n    vs=variants(p,get);offers=[(v,a,offer(v)) for v,a in vs]\n       ^^^^^^^^^^^^^^^\n  File \"/home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/woocommerce_source_support.py\", line 43, in variants\n    if parent['type']!='variable' or not parent.get('variations'):raise ValueError('Unsupported WooCommerce product type: '+str(parent.get('type')))\n                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nValueError: Unsupported WooCommerce product type: variable\n\n[Xcessories Hub] FAILED: Xcessories Hub: Unsupported WooCommerce product type: variable\n[Xcessories Hub] [14:50:38] STAGE: Idle\nFAILED: Xcessories Hub: FAILED: Xcessories Hub: Unsupported WooCommerce product type: variable\nFalse"
+    },
+    {
+      "target": "45409065947",
+      "state": {
+        "conclusion": "failure",
+        "displayTitle": "Cloud group audit804-fresh804-20261026-5d42fe35-refresh20261124-1c4ddf1c-32",
+        "headSha": "299b52dd40f382d2e30baaf6aa5f711c03c13ae2",
+        "jobs": [
+          {
+            "completedAt": "2026-11-24T15:35:31Z",
+            "conclusion": "failure",
+            "databaseId": 138497644123,
+            "name": "fetch",
+            "startedAt": "2026-11-24T15:32:01Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-11-24T15:32:02Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-11-24T15:32:02Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T15:32:10Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-11-24T15:32:02Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T15:32:10Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-11-24T15:32:10Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T15:32:13Z",
+                "conclusion": "success",
+                "name": "Install extraction dependencies",
+                "number": 4,
+                "startedAt": "2026-11-24T15:32:10Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T15:32:22Z",
+                "conclusion": "success",
+                "name": "Verify standalone continuation and owner-policy guards",
+                "number": 5,
+                "startedAt": "2026-11-24T15:32:13Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T15:32:22Z",
+                "conclusion": "skipped",
+                "name": "Restore optional saved run",
+                "number": 6,
+                "startedAt": "2026-11-24T15:32:22Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T15:32:22Z",
+                "conclusion": "skipped",
+                "name": "Install Czone browser fallback when needed",
+                "number": 7,
+                "startedAt": "2026-11-24T15:32:22Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T15:32:22Z",
+                "conclusion": "skipped",
+                "name": "Install grocery public storefront renderer when needed",
+                "number": 8,
+                "startedAt": "2026-11-24T15:32:22Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T15:32:22Z",
+                "conclusion": "skipped",
+                "name": "Install meat public storefront renderer when needed",
+                "number": 9,
+                "startedAt": "2026-11-24T15:32:22Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T15:32:22Z",
+                "conclusion": "skipped",
+                "name": "Install Axis public JS renderer when needed",
+                "number": 10,
+                "startedAt": "2026-11-24T15:32:22Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T15:32:22Z",
+                "conclusion": "success",
+                "name": "Start continuous fetching on the cloud runner",
+                "number": 11,
+                "startedAt": "2026-11-24T15:32:22Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T15:35:24Z",
+                "conclusion": "success",
+                "name": "Live progress, logs and completed-file uploads",
+                "number": 12,
+                "startedAt": "2026-11-24T15:32:22Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T15:35:24Z",
+                "conclusion": "failure",
+                "name": "Fetch result",
+                "number": 13,
+                "startedAt": "2026-11-24T15:35:24Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T15:35:24Z",
+                "conclusion": "success",
+                "name": "Collect diagnostic report even if fetching failed",
+                "number": 14,
+                "startedAt": "2026-11-24T15:35:24Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T15:35:25Z",
+                "conclusion": "success",
+                "name": "Upload diagnostic report and redacted log",
+                "number": 15,
+                "startedAt": "2026-11-24T15:35:24Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T15:35:27Z",
+                "conclusion": "success",
+                "name": "Upload Excel files and audits, including completed stores from a partial run",
+                "number": 16,
+                "startedAt": "2026-11-24T15:35:25Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T15:35:27Z",
+                "conclusion": "skipped",
+                "name": "Final automated Rule 804 pass for fresh batch",
+                "number": 17,
+                "startedAt": "2026-11-24T15:35:27Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T15:35:27Z",
+                "conclusion": "skipped",
+                "name": "Upload automated Rule 804 fresh workbooks",
+                "number": 18,
+                "startedAt": "2026-11-24T15:35:27Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T15:35:28Z",
+                "conclusion": "success",
+                "name": "Upload saved checkpoint when available",
+                "number": 19,
+                "startedAt": "2026-11-24T15:35:27Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T15:35:28Z",
+                "conclusion": "success",
+                "name": "Dispatch authorized continuation after verified checkpoint upload",
+                "number": 20,
+                "startedAt": "2026-11-24T15:35:28Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T15:35:28Z",
+                "conclusion": "success",
+                "name": "Post Live progress, logs and completed-file uploads",
+                "number": 38,
+                "startedAt": "2026-11-24T15:35:28Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T15:35:28Z",
+                "conclusion": "skipped",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 39,
+                "startedAt": "2026-11-24T15:35:28Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T15:35:29Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 40,
+                "startedAt": "2026-11-24T15:35:28Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T15:35:29Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 41,
+                "startedAt": "2026-11-24T15:35:29Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/45409065947/job/138497644123"
+          },
+          {
+            "completedAt": "2026-11-24T16:44:20Z",
+            "conclusion": "success",
+            "databaseId": 138562620605,
+            "name": "Archive structured diagnostics",
+            "startedAt": "2026-11-24T16:44:04Z",
+            "status": "completed",
+            "steps": [
+              {
+                "completedAt": "2026-11-24T16:44:06Z",
+                "conclusion": "success",
+                "name": "Set up job",
+                "number": 1,
+                "startedAt": "2026-11-24T16:44:05Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T16:44:14Z",
+                "conclusion": "success",
+                "name": "Run actions/checkout@v4",
+                "number": 2,
+                "startedAt": "2026-11-24T16:44:06Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T16:44:14Z",
+                "conclusion": "success",
+                "name": "Run actions/setup-python@v5",
+                "number": 3,
+                "startedAt": "2026-11-24T16:44:14Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T16:44:14Z",
+                "conclusion": "success",
+                "name": "Run actions/download-artifact@v4",
+                "number": 4,
+                "startedAt": "2026-11-24T16:44:14Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T16:44:18Z",
+                "conclusion": "success",
+                "name": "Archive credential-free JSON on the cloud-reports branch",
+                "number": 5,
+                "startedAt": "2026-11-24T16:44:14Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T16:44:18Z",
+                "conclusion": "success",
+                "name": "Post Run actions/setup-python@v5",
+                "number": 9,
+                "startedAt": "2026-11-24T16:44:18Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T16:44:18Z",
+                "conclusion": "success",
+                "name": "Post Run actions/checkout@v4",
+                "number": 10,
+                "startedAt": "2026-11-24T16:44:18Z",
+                "status": "completed"
+              },
+              {
+                "completedAt": "2026-11-24T16:44:18Z",
+                "conclusion": "success",
+                "name": "Complete job",
+                "number": 11,
+                "startedAt": "2026-11-24T16:44:18Z",
+                "status": "completed"
+              }
+            ],
+            "url": "https://github.com/chottuapp/ChotuApp-Software/actions/runs/45409065947/job/138562620605"
+          }
+        ],
+        "status": "completed"
+      },
+      "failed_log": "fetch\tUNKNOWN STEP\t2026-11-24T15:35:24.6186256Z [Babysaurus] [15:35:18] STAGE: Idle\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:24.6186623Z [Babysaurus] AUDIT FILES: 9 CSV reports exported alongside workbook.\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:24.6187487Z FILE SAVED NOW: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH/Babysaurus.xlsx \u2014 other store processes continue.\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:24.6188129Z True\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:24.6188600Z Checkpoint lossless cache migration: 49 legacy responses compressed; all source bytes and hashes remain verifiable.\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:24.6189369Z Checkpoint packaging: excluding request caches for 1 completed stores; Excel files and audits retained.\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:24.6190032Z Checkpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:24.6190481Z RUN SUMMARY:\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:24.6190860Z Babysaurus: DONE \u2014 40 products, 184 variants; Babysaurus.xlsx (REVIEW)\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:24.6191718Z Deflexxi: FAILED \u2014 FAILED: Deflexxi: Network/JSON error: 402 Client Error: Payment Required for url: https://deflexxi.online/products.json?redacted\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:24.6192356Z Checkpoint: saved\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:24.6192834Z Run finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:24.6219136Z ##[error]Process completed with exit code 2.\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:24.6267091Z ##[group]Run python cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:24.6267823Z ^[[36;1mpython cloud/diagnostics.py --data .cloud-data --output .cloud-data/diagnostics^[[0m\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:24.6287563Z shell: /usr/bin/bash -e {0}\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:24.6287827Z env:\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:24.6288208Z   CHOTUAPP_CLOUD_DATA: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:24.6288832Z   CLOUD_RUNNER_GROUP: audit804-fresh804-20261026-5d42fe35-refresh20261124-1c4ddf1c-32\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:24.6289296Z   CLOUD_PARTITION_RESUME: false\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:24.6289836Z   CLOUD_STORES: [{\"name\":\"Babysaurus\",\"url\":\"https://babysaurus.pk\"},{\"name\":\"Deflexxi\",\"url\":\"https://deflexxi.online\"}]\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:24.6290392Z   CLOUD_MINUTES: 300\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:24.6290616Z   RESUME_RUN_ID: \nfetch\tUNKNOWN STEP\t2026-11-24T15:35:24.6290878Z   SAVE_CHECKPOINT: true\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:28.0974173Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:28.0974632Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:28.0975064Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:28.0975489Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:28.0976215Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib\n[credential-bearing log line removed]\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:28.0979761Z ##[endgroup]\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:28.8347206Z No continuation: completed, stopped manually, unauthorized or not a time-budget stop.\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:28.8645043Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:28.8729849Z Post job cleanup.\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:28.9599752Z [command]/usr/bin/git version\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:28.9646221Z git version 2.56.1\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:28.9717971Z Temporarily overriding HOME='/home/runner/work/_temp/c171d123-c9bd-450e-9de8-efdbc78d9b55' before making global git config changes\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:28.9719314Z Adding repository directory to the temporary git global config as a safe directory\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:28.9724392Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/ChotuApp-Software/ChotuApp-Software\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:28.9768935Z [command]/usr/bin/git config --local --name-only --get-regexp core\\.sshCommand\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:28.9810822Z [command]/usr/bin/git submodule foreach --recursive sh -c \"git config --local --name-only --get-regexp 'core\\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\"\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:29.0085372Z [command]/usr/bin/git config --local --name-only --get-regexp http\\.https\\:\\/\\/github\\.com\\/\\.extraheader\nfetch\tUNKNOWN STEP\t2026-11-24T15:35:29.0122428Z http.https://github.com/.extraheader",
+      "artifacts": [
+        {
+          "name": "chotuapp-checkpoint",
+          "id": 14937705209,
+          "expired": false,
+          "size_in_bytes": 163710
+        },
+        {
+          "name": "chotuapp-excel-files",
+          "id": 14937600193,
+          "expired": false,
+          "size_in_bytes": 114715
+        },
+        {
+          "name": "chotuapp-live-logs",
+          "id": 14935044879,
+          "expired": false,
+          "size_in_bytes": 19375
+        }
+      ],
+      "summary": {
+        "runner_group": "audit804-fresh804-20261026-5d42fe35-refresh20261124-1c4ddf1c-32",
+        "status": "incomplete",
+        "stop_reason": "completed_or_source_failure",
+        "checkpoint": "saved",
+        "auto_continue_limit": 48,
+        "continuation_index": 0,
+        "stalled_runs": 0,
+        "stores": [
+          {
+            "name": "Babysaurus",
+            "status": "done",
+            "products": 40
+          },
+          {
+            "name": "Deflexxi",
+            "status": "failed",
+            "products": null
+          }
+        ]
+      },
+      "available_checkpoint_ancestor": {
+        "run_id": "45409065947",
+        "checked": [
+          "45409065947"
+        ]
+      },
+      "annotations": [
+        {
+          "level": "warning",
+          "message": "Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/"
+        },
+        {
+          "level": "failure",
+          "message": "Process completed with exit code 2."
+        }
+      ],
+      "console-tail.txt": "[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/pastel-plaid-skirt-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/pastel-plaid-skirt-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/crocodile-smile-romper.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/crocodile-smile-romper.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/cocoa-bear-varsity-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/cocoa-bear-varsity-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/caramel-frill-tracksuit.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/caramel-frill-tracksuit.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/boom-bunny-jogger-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/boom-bunny-jogger-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/gym-tiger-tracksuit-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/gym-tiger-tracksuit-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/roarwear-builder-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/roarwear-builder-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/mushroom-bloom-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/mushroom-bloom-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/denim-bloom-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/denim-bloom-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/bear-buddies-jogger-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/bear-buddies-jogger-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/poodle-puff-co-ord-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/poodle-puff-co-ord-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/curious-dino-3-piece-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/curious-dino-3-piece-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/yellow-dino-trip-5-piece-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/yellow-dino-trip-5-piece-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/dino-saur-bird-5-piece-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/dino-saur-bird-5-piece-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/snowflake-rabbit-romper.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/snowflake-rabbit-romper.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/teddy-patch-ribbed-romper.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/teddy-patch-ribbed-romper.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/afternoon-tea-romper.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/afternoon-tea-romper.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/paris-dream-varsity-romper.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/paris-dream-varsity-romper.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/bunny-cable-knit-romper.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/bunny-cable-knit-romper.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/pink-giraffe-5-piece-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/pink-giraffe-5-piece-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/dark-plaid-3-piece-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/dark-plaid-3-piece-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/dark-rex-denim-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/dark-rex-denim-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/matcha-bear-set-\ud83d\udc3b\ud83c\udf3f.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/matcha-bear-set-\ud83d\udc3b\ud83c\udf3f.js\n[Babysaurus] PRICE AUDIT: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/_build_temp/chotu_v2neciwa/Babysaurus - PRICE AUDIT.csv (40 products checked; 0 review/mismatch rows; REVIEW=0, MISMATCH=0)\n__CHOTU_PROGRESS__|40|Active: Babysaurus\n[Babysaurus] PRICE AUDIT NOTE: product.js is a second Shopify API endpoint, NOT visual storefront/checkout verification. No prices changed.\n[Babysaurus] STOREFRONT AUDIT: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/_build_temp/chotu_v2neciwa/Babysaurus - STOREFRONT AUDIT.csv (0 fractional-price products; 0 pending/review; 0 rate limited)\n__CHOTU_PROGRESS__|44|Active: Babysaurus\n[Babysaurus] STOREFRONT NOTE: HTML is not checkout; no source or exported prices changed.\n[Babysaurus] QUALITY REPORT: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/_build_temp/chotu_v2neciwa/Babysaurus - QUALITY REPORT.csv (4 findings; 0 errors, 4 warnings)\n__CHOTU_PROGRESS__|47|Active: Babysaurus\n[Babysaurus] QUALITY NOTE: Structural and heuristic checks only; live website price, images, and checkout NOT verified.\n[Babysaurus] CHANGE REPORT: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/_build_temp/chotu_v2neciwa/Babysaurus - CHANGE REPORT.csv (40 changes)\n__CHOTU_PROGRESS__|48|Active: Babysaurus\n[Babysaurus] STATUS: REVIEW REQUIRED \u2014 quality report has findings\n[Babysaurus] Existing FINAL file preserved. Review refresh before manually replacing it.\n[Babysaurus] NOTE: Public catalog only; not a checkout, importer or current product-page verification.\n[Babysaurus] PRICE POLICY: Source decimal prices preserved in Products and Variant Combinations; no truncation or rounding.\n[Babysaurus] STRICT WEBSITE CATEGORIES: 16/40 source-verified; missing website taxonomy remains unverified\n[Babysaurus] SUBCATEGORY FALLBACK: 30 inferred from supplied product text; explicitly labelled, not website-confirmed\n[Babysaurus] FINAL FILE ORDER: verified website navigation and default product listing; unknown positions stable; image hyperlinks move with products\n[Babysaurus] SAVED REVIEW EXCEL: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH/Babysaurus.xlsx\n__CHOTU_PROGRESS__|48|Active: Babysaurus\n[Babysaurus] REVIEW REQUIRED: 4 audit issue(s). Previous FINAL kept.\n[Babysaurus] Review files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/audit_reports/Babysaurus\n[Babysaurus] [15:35:18] STAGE: Idle\n[Babysaurus] AUDIT FILES: 9 CSV reports exported alongside workbook.\nFILE SAVED NOW: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH/Babysaurus.xlsx \u2014 other store processes continue.\nTrue\nCheckpoint lossless cache migration: 49 legacy responses compressed; all source bytes and hashes remain verifiable.\nCheckpoint packaging: excluding request caches for 1 completed stores; Excel files and audits retained.\nCheckpoint saved: /home/runner/work/ChotuApp-Software/ChotuApp-Software/checkpoint.zip\nRUN SUMMARY:\nBabysaurus: DONE \u2014 40 products, 184 variants; Babysaurus.xlsx (REVIEW)\nDeflexxi: FAILED \u2014 FAILED: Deflexxi: Network/JSON error: 402 Client Error: Payment Required for url: https://deflexxi.online/products.json?redacted\nCheckpoint: saved\nRun finished. Excel files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH",
+      "store-status.txt": "Updated (UTC): 2026-11-24T15:35:20.523650+00:00\nSaved Excel files: 1\nSaved means exported; review/audit warnings must still be checked.\n\nSAVED FILES\n1. Babysaurus.xlsx\n\nSTORE STATUS\nBabysaurus: done\n  Last successful HTTP response (UTC): 2026-11-24T15:35:08.098737+00:00\nDeflexxi: failed\n  Stage: Idle\n  Last successful HTTP response (UTC): 2026-11-24T15:32:24.259751+00:00",
+      "fetch-log.txt": "[Babysaurus] [15:35:14] CACHE HIT: https://babysaurus.pk/products/dark-rex-denim-set.js\n[Babysaurus] LIVE VARIANT PRICES: Dark Rex Denim Set \u2014 5 checked; 0 refreshed\n[Babysaurus] [15:35:14] CACHE HIT status=200 elapsed=0.0s bytes=349899 \n[Babysaurus] [15:35:14] GET_JSON: https://babysaurus.pk/products/dark-plaid-3-piece-set.js\n[Babysaurus] [15:35:14] CACHE HIT: https://babysaurus.pk/products/dark-plaid-3-piece-set.js\n[Babysaurus] LIVE VARIANT PRICES: Dark Plaid 3-Piece Set \u2014 5 checked; 0 refreshed\n[Babysaurus] [15:35:14] CACHE HIT status=200 elapsed=0.0s bytes=359999 \n[Babysaurus] [15:35:15] GET_JSON: https://babysaurus.pk/products/cute-bear-snap-set.js\n[Babysaurus] [15:35:15] CACHE HIT: https://babysaurus.pk/products/cute-bear-snap-set.js\n[Babysaurus] LIVE VARIANT PRICES: Cute Bear Snap Set \u2014 3 checked; 0 refreshed\n[Babysaurus] [15:35:15] CACHE HIT status=200 elapsed=0.0s bytes=347233 \n[Babysaurus] [15:35:15] GET_JSON: https://babysaurus.pk/products/curious-dino-3-piece-set.js\n[Babysaurus] [15:35:15] CACHE HIT: https://babysaurus.pk/products/curious-dino-3-piece-set.js\n[Babysaurus] LIVE VARIANT PRICES: Curious Dino 3-Piece Set \u2014 5 checked; 0 refreshed\n[Babysaurus] [15:35:15] CACHE HIT status=200 elapsed=0.0s bytes=357874 \n[Babysaurus] [15:35:15] GET_JSON: https://babysaurus.pk/products/crocodile-smile-romper.js\n[Babysaurus] [15:35:15] CACHE HIT: https://babysaurus.pk/products/crocodile-smile-romper.js\n[Babysaurus] LIVE VARIANT PRICES: Crocodile Smile Romper \u2014 2 checked; 0 refreshed\n[Babysaurus] [15:35:15] CACHE HIT status=200 elapsed=0.0s bytes=348913 \n[Babysaurus] [15:35:15] GET_JSON: https://babysaurus.pk/products/cocoa-bear-varsity-set.js\n[Babysaurus] [15:35:15] CACHE HIT: https://babysaurus.pk/products/cocoa-bear-varsity-set.js\n[Babysaurus] LIVE VARIANT PRICES: Cocoa Bear Varsity Set \u2014 5 checked; 0 refreshed\n[Babysaurus] [15:35:15] CACHE HIT status=200 elapsed=0.0s bytes=370223 \n[Babysaurus] [15:35:15] GET_JSON: https://babysaurus.pk/products/caramel-frill-tracksuit.js\n[Babysaurus] [15:35:15] CACHE HIT: https://babysaurus.pk/products/caramel-frill-tracksuit.js\n[Babysaurus] LIVE VARIANT PRICES: Caramel Frill Tracksuit \u2014 5 checked; 0 refreshed\n[Babysaurus] [15:35:15] CACHE HIT status=200 elapsed=0.0s bytes=358856 \n[Babysaurus] [15:35:15] GET_JSON: https://babysaurus.pk/products/bunny-cable-knit-romper.js\n[Babysaurus] [15:35:15] CACHE HIT: https://babysaurus.pk/products/bunny-cable-knit-romper.js\n[Babysaurus] LIVE VARIANT PRICES: Bunny Cable Knit Romper \u2014 3 checked; 0 refreshed\n[Babysaurus] [15:35:15] CACHE HIT status=200 elapsed=0.0s bytes=353347 \n[Babysaurus] [15:35:16] GET_JSON: https://babysaurus.pk/products/bear-friends-fleece-set.js\n[Babysaurus] [15:35:16] CACHE HIT: https://babysaurus.pk/products/bear-friends-fleece-set.js\n[Babysaurus] LIVE VARIANT PRICES: Bear Friends Fleece Set \u2014 3 checked; 0 refreshed\n[Babysaurus] [15:35:16] CACHE HIT status=200 elapsed=0.0s bytes=348292 \n[Babysaurus] [15:35:16] GET_JSON: https://babysaurus.pk/products/bear-buddies-jogger-set.js\n[Babysaurus] [15:35:16] CACHE HIT: https://babysaurus.pk/products/bear-buddies-jogger-set.js\n[Babysaurus] LIVE VARIANT PRICES: Bear Buddies Jogger Set \u2014 5 checked; 0 refreshed\n[Babysaurus] [15:35:16] CACHE HIT status=200 elapsed=0.0s bytes=394669 \n[Babysaurus] [15:35:16] GET_JSON: https://babysaurus.pk/products/pink-giraffe-5-piece-set.js\n[Babysaurus] [15:35:16] CACHE HIT: https://babysaurus.pk/products/pink-giraffe-5-piece-set.js\n[Babysaurus] LIVE VARIANT PRICES: Pink Giraffe 5-Piece Set \u2014 1 checked; 0 refreshed\n[Babysaurus] [15:35:16] CACHE HIT status=200 elapsed=0.0s bytes=332105 \n[Babysaurus] [15:35:16] GET_JSON: https://babysaurus.pk/products/yellow-dino-trip-5-piece-set.js\n[Babysaurus] [15:35:16] CACHE HIT: https://babysaurus.pk/products/yellow-dino-trip-5-piece-set.js\n[Babysaurus] LIVE VARIANT PRICES: Yellow Dino Trip 5-Piece Set \u2014 1 checked; 0 refreshed\n[Babysaurus] [15:35:16] CACHE HIT status=200 elapsed=0.0s bytes=332617 \n[Babysaurus] [15:35:16] GET_JSON: https://babysaurus.pk/products/dino-saur-bird-5-piece-set.js\n[Babysaurus] [15:35:16] CACHE HIT: https://babysaurus.pk/products/dino-saur-bird-5-piece-set.js\n[Babysaurus] LIVE VARIANT PRICES: Dino Saur & Bird 5-Piece Set \u2014 1 checked; 0 refreshed\n[Babysaurus] [15:35:16] CACHE HIT status=200 elapsed=0.0s bytes=351182 \n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/afternoon-tea-romper.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/afternoon-tea-romper.js\n[Babysaurus] LIVE VARIANT PRICES: Afternoon Tea Romper \u2014 4 checked; 0 refreshed\n[Babysaurus] [15:35:17] CACHE HIT status=200 elapsed=0.0s bytes=346111 \n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/boom-bunny-jogger-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/boom-bunny-jogger-set.js\n[Babysaurus] LIVE VARIANT PRICES: Boom Bunny Jogger Set \u2014 10 checked; 0 refreshed\n[Babysaurus] [15:35:17] CACHE HIT status=200 elapsed=0.0s bytes=382428 \n[Babysaurus] ROW BUILD: 40/40 products processed; 40 export rows prepared\n[Babysaurus] PRODUCT FILTER: excluded 0 fully unavailable products; skipped 0 explicitly unpublished, 0 invalid/unpriced; retained 40 products with ALL their variants\n__CHOTU_PROGRESS__|29|Active: Babysaurus\n[Babysaurus] WEBSITE ORDER POLICY: observed default listing; no forced bestseller or cheapest-first sort\n[Babysaurus] ANALYSIS NOTES: 40 products documented; collection labels are merchant signals, not verified sales counts; no additional page requests\n[Babysaurus] VARIANT EXPORT: 184 combinations; 37 unavailable preserved as no\n[Babysaurus] VARIANT IMAGES: 143 source-linked; 41 general product-photo fallbacks; source-specific image field stays blank when unlinked\n[Babysaurus] [15:35:17] STAGE: Writing Excel rows\n[Babysaurus] DISCOUNT TAGS: product and variant percentages calculated from exported regular/sale prices; exact website badge text not independently fetched\n[Babysaurus] WORKSHEET WRITE: 184/184 variants written\n[Babysaurus] [15:35:17] STAGE: Saving Excel workbook\n[Babysaurus] EXPORT BUILT: 40 products, 208 images, 71 selector groups, 197 selector values, 184 actual variants (37 unavailable)\n__CHOTU_PROGRESS__|35|Active: Babysaurus\n[Babysaurus] FILE: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/_build_temp/chotu_v2neciwa/Babysaurus - REFRESH REVIEW.xlsx\n[Babysaurus] [15:35:17] STAGE: Price audit\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/the-signature-roar-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/the-signature-roar-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/daisy-dino-denim.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/daisy-dino-denim.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/street-stomper-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/street-stomper-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/miss-ruffles-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/miss-ruffles-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/scorched-flannel-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/scorched-flannel-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/party-parade-3-piece-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/party-parade-3-piece-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/cocoa-pup-knit-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/cocoa-pup-knit-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/slate-cable-knit-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/slate-cable-knit-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/pawsome-knit-co-ord.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/pawsome-knit-co-ord.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/polka-dot-doll-hoodie-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/polka-dot-doll-hoodie-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/little-deer-2-piece-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/little-deer-2-piece-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/cute-bear-snap-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/cute-bear-snap-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/bear-friends-fleece-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/bear-friends-fleece-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/denim-frill-3-piece-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/denim-frill-3-piece-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/plaid-denim-bomber-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/plaid-denim-bomber-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/panda-party-3-piece-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/panda-party-3-piece-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/giraffe-hug-romper.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/giraffe-hug-romper.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/pastel-plaid-skirt-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/pastel-plaid-skirt-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/crocodile-smile-romper.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/crocodile-smile-romper.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/cocoa-bear-varsity-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/cocoa-bear-varsity-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/caramel-frill-tracksuit.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/caramel-frill-tracksuit.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/boom-bunny-jogger-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/boom-bunny-jogger-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/gym-tiger-tracksuit-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/gym-tiger-tracksuit-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/roarwear-builder-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/roarwear-builder-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/mushroom-bloom-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/mushroom-bloom-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/denim-bloom-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/denim-bloom-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/bear-buddies-jogger-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/bear-buddies-jogger-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/poodle-puff-co-ord-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/poodle-puff-co-ord-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/curious-dino-3-piece-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/curious-dino-3-piece-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/yellow-dino-trip-5-piece-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/yellow-dino-trip-5-piece-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/dino-saur-bird-5-piece-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/dino-saur-bird-5-piece-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/snowflake-rabbit-romper.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/snowflake-rabbit-romper.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/teddy-patch-ribbed-romper.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/teddy-patch-ribbed-romper.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/afternoon-tea-romper.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/afternoon-tea-romper.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/paris-dream-varsity-romper.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/paris-dream-varsity-romper.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/bunny-cable-knit-romper.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/bunny-cable-knit-romper.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/pink-giraffe-5-piece-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/pink-giraffe-5-piece-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/dark-plaid-3-piece-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/dark-plaid-3-piece-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/dark-rex-denim-set.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/dark-rex-denim-set.js\n[Babysaurus] [15:35:17] GET_JSON: https://babysaurus.pk/products/matcha-bear-set-\ud83d\udc3b\ud83c\udf3f.js\n[Babysaurus] [15:35:17] CACHE HIT: https://babysaurus.pk/products/matcha-bear-set-\ud83d\udc3b\ud83c\udf3f.js\n[Babysaurus] PRICE AUDIT: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/_build_temp/chotu_v2neciwa/Babysaurus - PRICE AUDIT.csv (40 products checked; 0 review/mismatch rows; REVIEW=0, MISMATCH=0)\n__CHOTU_PROGRESS__|40|Active: Babysaurus\n[Babysaurus] PRICE AUDIT NOTE: product.js is a second Shopify API endpoint, NOT visual storefront/checkout verification. No prices changed.\n[Babysaurus] STOREFRONT AUDIT: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/_build_temp/chotu_v2neciwa/Babysaurus - STOREFRONT AUDIT.csv (0 fractional-price products; 0 pending/review; 0 rate limited)\n__CHOTU_PROGRESS__|44|Active: Babysaurus\n[Babysaurus] STOREFRONT NOTE: HTML is not checkout; no source or exported prices changed.\n[Babysaurus] QUALITY REPORT: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/_build_temp/chotu_v2neciwa/Babysaurus - QUALITY REPORT.csv (4 findings; 0 errors, 4 warnings)\n__CHOTU_PROGRESS__|47|Active: Babysaurus\n[Babysaurus] QUALITY NOTE: Structural and heuristic checks only; live website price, images, and checkout NOT verified.\n[Babysaurus] CHANGE REPORT: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/_build_temp/chotu_v2neciwa/Babysaurus - CHANGE REPORT.csv (40 changes)\n__CHOTU_PROGRESS__|48|Active: Babysaurus\n[Babysaurus] STATUS: REVIEW REQUIRED \u2014 quality report has findings\n[Babysaurus] Existing FINAL file preserved. Review refresh before manually replacing it.\n[Babysaurus] NOTE: Public catalog only; not a checkout, importer or current product-page verification.\n[Babysaurus] PRICE POLICY: Source decimal prices preserved in Products and Variant Combinations; no truncation or rounding.\n[Babysaurus] STRICT WEBSITE CATEGORIES: 16/40 source-verified; missing website taxonomy remains unverified\n[Babysaurus] SUBCATEGORY FALLBACK: 30 inferred from supplied product text; explicitly labelled, not website-confirmed\n[Babysaurus] FINAL FILE ORDER: verified website navigation and default product listing; unknown positions stable; image hyperlinks move with products\n[Babysaurus] SAVED REVIEW EXCEL: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH/Babysaurus.xlsx\n__CHOTU_PROGRESS__|48|Active: Babysaurus\n[Babysaurus] REVIEW REQUIRED: 4 audit issue(s). Previous FINAL kept.\n[Babysaurus] Review files: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/runtime/audit_reports/Babysaurus\n[Babysaurus] [15:35:18] STAGE: Idle\n[Babysaurus] AUDIT FILES: 9 CSV reports exported alongside workbook.\nFILE SAVED NOW: /home/runner/work/ChotuApp-Software/ChotuApp-Software/.cloud-data/ANAS_DATA_FETCH/Babysaurus.xlsx \u2014 other store processes continue.\nTrue"
+    }
+  ]
+}
