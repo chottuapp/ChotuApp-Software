@@ -264,7 +264,7 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
 
  from additional_completed_sources import approved_runs
  try:
-  extra_runs=approved_runs(config,sites,gh,held_stores)
+  extra_runs=approved_runs(config,sites,gh,held_stores,runs=all_runs)
   state.pop('additional_completed_source_error',None)
  except (RuntimeError,ValueError,KeyError):
   extra_runs=[]
@@ -386,6 +386,8 @@ def run_campaign(state,config,all_runs,gh,rc,*,root=ROOT,progress=None,held_stor
   # Newer completed exports take priority; every file still passes the same audit/delivery gates.
   priority={name:index for index,name in enumerate(config.get('priority_stores',[]))}
   priority_runs={str(rid):index for index,rid in enumerate(config.get('priority_source_runs',[]))}
+  for run in extra_runs:
+   if run.get('additional_store')=='OrderNation':priority_runs[str(run['databaseId'])]=-1
   newest_first=reversed(runs if held_stores is None else extra_runs)
   for run in sorted(newest_first,key=lambda run:priority_runs.get(str(run['databaseId']),len(priority_runs))):
    rid=str(run['databaseId'])

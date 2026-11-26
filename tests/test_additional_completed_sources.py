@@ -43,3 +43,16 @@ class AdditionalSourcesTests(unittest.TestCase):
   self.assertEqual(approved_runs(self.config,self.sites,lambda *a:json.dumps(run))[0]['additional_store'],'ChotuApp Groceries')
   with self.assertRaises(ValueError):
    approved_runs(self.config,self.sites,lambda *a:json.dumps(dict(run,conclusion='cancelled')))
+
+ def test_waiting_run_and_only_its_completed_continuation_can_enter_audit(self):
+  self.config['additional_completed_sources'][0]['follow_continuations']=True
+  pending=dict(self.run,status='in_progress',conclusion=None)
+  self.assertEqual(approved_runs(self.config,self.sites,lambda *a:json.dumps(pending)),[])
+  visible=[{'databaseId':124,'displayTitle':'Automatic continuation of 123'},
+           {'databaseId':125,'displayTitle':'Automatic continuation of 100'}]
+  completed=dict(self.run,id=124,display_title='Automatic continuation of 123')
+  calls=[]
+  def fetch(*args):
+   calls.append(args);return json.dumps(completed)
+  self.assertEqual(approved_runs(self.config,self.sites,fetch,runs=visible)[0]['databaseId'],124)
+  self.assertTrue(calls[0][-1].endswith('/124'))
