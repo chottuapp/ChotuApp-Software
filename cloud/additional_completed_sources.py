@@ -3,7 +3,7 @@ import json,re
 REPO='chottuapp/ChotuApp-Software'
 def approved_runs(config,sites,gh,selected=None):
  policy=config.get('additional_completed_sources',[])
- if not isinstance(policy,list) or len(policy)>20:raise ValueError('Additional source policy exceeds bound')
+ if not isinstance(policy,list) or len(policy)>32:raise ValueError('Additional source policy exceeds bound')
  result=[];seen=set()
  for item in policy:
   store=item.get('store');rid=str(item.get('run_id',''))
