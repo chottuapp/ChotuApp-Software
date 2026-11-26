@@ -1759,6 +1759,25 @@
       "campaign_id": "fresh804-20261026-5d42fe35",
       "replaced_file": null,
       "file_name": "Baby Planet.xlsx"
+    },
+    "Skin Deep International": {
+      "shop_code": "SE10099",
+      "source_run": "45513967926",
+      "sha256": "50fc4141e91ba419825fd565a07641e3ccb60a64156595d9f9c083202c8d729d",
+      "source_sha256": "d2be7f9d47f03e238a3a24a3ca38b476420f9c5c9e34d4248b8f3d4c2132e549",
+      "folder": "ChotuApp 19-10-2026 11-36AM",
+      "verified_utc": "2026-11-26T08:32:53.903460+00:00",
+      "audit804": {
+        "name": "804 Audit",
+        "status": "pass",
+        "checked_utc": "2026-11-26T08:31:44.476262+00:00",
+        "products_checked": 26,
+        "workbook_sha256": "50fc4141e91ba419825fd565a07641e3ccb60a64156595d9f9c083202c8d729d"
+      },
+      "rule804": "applied; 804 Audit passed",
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "replaced_file": null,
+      "file_name": "Skin Deep International.xlsx"
     }
   },
   "daily_uploads": {
@@ -3788,6 +3807,25 @@
         "campaign_id": "fresh804-20261026-5d42fe35",
         "replaced_file": null,
         "file_name": "Baby Planet.xlsx"
+      },
+      "Skin Deep International": {
+        "shop_code": "SE10099",
+        "source_run": "45513967926",
+        "sha256": "50fc4141e91ba419825fd565a07641e3ccb60a64156595d9f9c083202c8d729d",
+        "source_sha256": "d2be7f9d47f03e238a3a24a3ca38b476420f9c5c9e34d4248b8f3d4c2132e549",
+        "folder": "ChotuApp 19-10-2026 11-36AM",
+        "verified_utc": "2026-11-26T08:32:53.903460+00:00",
+        "audit804": {
+          "name": "804 Audit",
+          "status": "pass",
+          "checked_utc": "2026-11-26T08:31:44.476262+00:00",
+          "products_checked": 26,
+          "workbook_sha256": "50fc4141e91ba419825fd565a07641e3ccb60a64156595d9f9c083202c8d729d"
+        },
+        "rule804": "applied; 804 Audit passed",
+        "campaign_id": "fresh804-20261026-5d42fe35",
+        "replaced_file": null,
+        "file_name": "Skin Deep International.xlsx"
       }
     }
   },
@@ -3963,7 +4001,8 @@
     "Asim Jofa": "source:609e7881586e806e1b9dac7604b2fb68186912335efffd03ea08722bc9db6495:Asim Jofa:01b6d5911c582ee7b6030e4efb135420ba82954e085bc6603d1d7e4ccd741be2",
     "ChotuApp Groceries": "source:231e7677e8f340451f4ebd4d5619d3f9172688475b27da651880e1bf2f9d9fdf:ChotuApp Groceries:01b6d5911c582ee7b6030e4efb135420ba82954e085bc6603d1d7e4ccd741be2",
     "ChenOne": "source:095a92e2f106351cfafdbfd0fc666781e89010a69df91aa47d9f50d8a0c9cc79:ChenOne:01b6d5911c582ee7b6030e4efb135420ba82954e085bc6603d1d7e4ccd741be2",
-    "Baby Planet": "source:a83c0cedbc702984fb4de19e47290d21453324472505c014fc640490870baa5a:Baby Planet:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf"
+    "Baby Planet": "source:a83c0cedbc702984fb4de19e47290d21453324472505c014fc640490870baa5a:Baby Planet:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
+    "Skin Deep International": "source:d2be7f9d47f03e238a3a24a3ca38b476420f9c5c9e34d4248b8f3d4c2132e549:Skin Deep International:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -22692,6 +22731,91 @@
       "description_style_version": "customer-copy-v3",
       "delivery_status": "verified",
       "held_input": "inputs/fresh804-20261026-5d42fe35/baby-planet/a83c0cedbc702984/manifest.json"
+    },
+    "Skin Deep International": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Skin Deep International",
+      "shop_code": "SE10099",
+      "identity_policy": "confirmed_code",
+      "status": "pass",
+      "products_checked": 26,
+      "findings_count": 0,
+      "findings": [],
+      "details_truncated": false,
+      "workbook_sha256": "50fc4141e91ba419825fd565a07641e3ccb60a64156595d9f9c083202c8d729d",
+      "checked_utc": "2026-11-26T08:31:44.476262+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "incomplete_products_excluded": [
+        {
+          "product_id": "CP5b81efd00694",
+          "source_url": "https://skindeepintl.com/products/peptide-lip-glaze-copy",
+          "name": "Peptide Lip Glaze Set",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP59b2af77910a",
+          "source_url": "https://skindeepintl.com/products/hair-revival-set",
+          "name": "Hair Revival Set",
+          "issues": [
+            "Primary product type and Category disagree: hair shampoo"
+          ]
+        },
+        {
+          "product_id": "CPcdd217aa532f",
+          "source_url": "https://skindeepintl.com/products/peptide-lip-glaze",
+          "name": "Peptide Lip Glaze",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP2cc0efd016d4",
+          "source_url": "https://skindeepintl.com/products/miracle-patch-acne-healing-blemish-spot-treatment",
+          "name": "MIRACLE PATCH - Acne Healing & Blemish Spot Treatment",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP02688067529e",
+          "source_url": "https://skindeepintl.com/products/niacinamide-serum-with-vitamin-b5",
+          "name": "NIACINAMIDE GLOW DROPS - with HA & Vit B5",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP7f9655327827",
+          "source_url": "https://skindeepintl.com/products/gua-sha-rose-quartz-crystal-heart",
+          "name": "GUA SHA - Rose Quartz Crystal Heart",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "incomplete_products_count": 6,
+      "incomplete_products_truncated": false,
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/skin-deep-international-incomplete-products/f63c005f97e0f4f1/manifest.json",
+      "original_source_sha256": "d2be7f9d47f03e238a3a24a3ca38b476420f9c5c9e34d4248b8f3d4c2132e549",
+      "recovery": {
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "owner_grocery_scope_repairs": 0,
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "source_run": "45513967926",
+      "source_artifact": 14979672962,
+      "source_sha256": "d2be7f9d47f03e238a3a24a3ca38b476420f9c5c9e34d4248b8f3d4c2132e549",
+      "description_style_version": "customer-copy-v3",
+      "delivery_status": "verified",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/skin-deep-international/d2be7f9d47f03e23/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -23381,7 +23505,8 @@
     "45479488675": "45479488675:14961407469:25da05651a0687f939f1c0a41634dc65703c3c3e5e48f243bc6f79acdec0d3ae",
     "45482640471": "45482640471:14963680653:25da05651a0687f939f1c0a41634dc65703c3c3e5e48f243bc6f79acdec0d3ae",
     "45482816238": "45482816238:14963895896:25da05651a0687f939f1c0a41634dc65703c3c3e5e48f243bc6f79acdec0d3ae",
-    "45703742221": "45703742221:15065165653:01b6d5911c582ee7b6030e4efb135420ba82954e085bc6603d1d7e4ccd741be2"
+    "45703742221": "45703742221:15065165653:01b6d5911c582ee7b6030e4efb135420ba82954e085bc6603d1d7e4ccd741be2",
+    "45554223242:Baby Planet": "45554223242:14997492060:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-11-24T20:41:18.594248+00:00",
@@ -23496,8 +23621,8 @@
     "SE10080-duplicate-1pvigEi63KZZdyB7tMUWSyKIX4qBShc1Y": "inputs/fresh804-20261026-5d42fe35/rollback-se10080-duplicate-1pvigei63kzzdyb7tmuwsykix4qbshc1y/b23253de6fbc3077/manifest.json",
     "SE10087": "inputs/fresh804-20261026-5d42fe35/rollback-se10087/09fe9fcac8f55940/manifest.json"
   },
-  "audit804_last_store": "Baby Planet",
-  "audit804_progress_utc": "2026-11-26T08:31:38.890430+00:00",
+  "audit804_last_store": "Skin Deep International",
+  "audit804_progress_utc": "2026-11-26T08:32:53.903699+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Blackbeiger",
