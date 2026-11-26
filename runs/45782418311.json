@@ -1778,6 +1778,25 @@
       "campaign_id": "fresh804-20261026-5d42fe35",
       "replaced_file": null,
       "file_name": "Skin Deep International.xlsx"
+    },
+    "Bin Ilyas": {
+      "shop_code": "SE10089",
+      "source_run": "45513967926",
+      "sha256": "15de014969fd5a54d7c6a9f21792e9f6e8e85c78c0253d768b934879057323cb",
+      "source_sha256": "dd29826bbba7111621217d7b32ce0177066fcb09c34c22e8c677fcb790ad9146",
+      "folder": "ChotuApp 19-10-2026 11-36AM",
+      "verified_utc": "2026-11-26T08:35:52.245186+00:00",
+      "audit804": {
+        "name": "804 Audit",
+        "status": "pass",
+        "checked_utc": "2026-11-26T08:33:01.668650+00:00",
+        "products_checked": 178,
+        "workbook_sha256": "15de014969fd5a54d7c6a9f21792e9f6e8e85c78c0253d768b934879057323cb"
+      },
+      "rule804": "applied; 804 Audit passed",
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "replaced_file": null,
+      "file_name": "Bin Ilyas.xlsx"
     }
   },
   "daily_uploads": {
@@ -3826,6 +3845,25 @@
         "campaign_id": "fresh804-20261026-5d42fe35",
         "replaced_file": null,
         "file_name": "Skin Deep International.xlsx"
+      },
+      "Bin Ilyas": {
+        "shop_code": "SE10089",
+        "source_run": "45513967926",
+        "sha256": "15de014969fd5a54d7c6a9f21792e9f6e8e85c78c0253d768b934879057323cb",
+        "source_sha256": "dd29826bbba7111621217d7b32ce0177066fcb09c34c22e8c677fcb790ad9146",
+        "folder": "ChotuApp 19-10-2026 11-36AM",
+        "verified_utc": "2026-11-26T08:35:52.245186+00:00",
+        "audit804": {
+          "name": "804 Audit",
+          "status": "pass",
+          "checked_utc": "2026-11-26T08:33:01.668650+00:00",
+          "products_checked": 178,
+          "workbook_sha256": "15de014969fd5a54d7c6a9f21792e9f6e8e85c78c0253d768b934879057323cb"
+        },
+        "rule804": "applied; 804 Audit passed",
+        "campaign_id": "fresh804-20261026-5d42fe35",
+        "replaced_file": null,
+        "file_name": "Bin Ilyas.xlsx"
       }
     }
   },
@@ -4002,7 +4040,8 @@
     "ChotuApp Groceries": "source:231e7677e8f340451f4ebd4d5619d3f9172688475b27da651880e1bf2f9d9fdf:ChotuApp Groceries:01b6d5911c582ee7b6030e4efb135420ba82954e085bc6603d1d7e4ccd741be2",
     "ChenOne": "source:095a92e2f106351cfafdbfd0fc666781e89010a69df91aa47d9f50d8a0c9cc79:ChenOne:01b6d5911c582ee7b6030e4efb135420ba82954e085bc6603d1d7e4ccd741be2",
     "Baby Planet": "source:a83c0cedbc702984fb4de19e47290d21453324472505c014fc640490870baa5a:Baby Planet:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
-    "Skin Deep International": "source:d2be7f9d47f03e238a3a24a3ca38b476420f9c5c9e34d4248b8f3d4c2132e549:Skin Deep International:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf"
+    "Skin Deep International": "source:d2be7f9d47f03e238a3a24a3ca38b476420f9c5c9e34d4248b8f3d4c2132e549:Skin Deep International:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
+    "Bin Ilyas": "source:dd29826bbba7111621217d7b32ce0177066fcb09c34c22e8c677fcb790ad9146:Bin Ilyas:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -22816,6 +22855,51 @@
       "description_style_version": "customer-copy-v3",
       "delivery_status": "verified",
       "held_input": "inputs/fresh804-20261026-5d42fe35/skin-deep-international/d2be7f9d47f03e23/manifest.json"
+    },
+    "Bin Ilyas": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Bin Ilyas",
+      "shop_code": "SE10089",
+      "identity_policy": "confirmed_code",
+      "status": "pass",
+      "products_checked": 178,
+      "findings_count": 0,
+      "findings": [],
+      "details_truncated": false,
+      "workbook_sha256": "15de014969fd5a54d7c6a9f21792e9f6e8e85c78c0253d768b934879057323cb",
+      "checked_utc": "2026-11-26T08:33:01.668650+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "incomplete_products_excluded": [
+        {
+          "product_id": "CP8081f7fcaf0b",
+          "source_url": "https://binilyas.com/products/d-001a",
+          "name": "D:001A",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "incomplete_products_count": 1,
+      "incomplete_products_truncated": false,
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/bin-ilyas-incomplete-products/b495b7c6b0a002ec/manifest.json",
+      "original_source_sha256": "dd29826bbba7111621217d7b32ce0177066fcb09c34c22e8c677fcb790ad9146",
+      "recovery": {
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "owner_grocery_scope_repairs": 0,
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "source_run": "45513967926",
+      "source_artifact": 14979672962,
+      "source_sha256": "dd29826bbba7111621217d7b32ce0177066fcb09c34c22e8c677fcb790ad9146",
+      "description_style_version": "customer-copy-v3",
+      "delivery_status": "verified",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/bin-ilyas/dd29826bbba71116/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -23506,7 +23590,8 @@
     "45482640471": "45482640471:14963680653:25da05651a0687f939f1c0a41634dc65703c3c3e5e48f243bc6f79acdec0d3ae",
     "45482816238": "45482816238:14963895896:25da05651a0687f939f1c0a41634dc65703c3c3e5e48f243bc6f79acdec0d3ae",
     "45703742221": "45703742221:15065165653:01b6d5911c582ee7b6030e4efb135420ba82954e085bc6603d1d7e4ccd741be2",
-    "45554223242:Baby Planet": "45554223242:14997492060:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf"
+    "45554223242:Baby Planet": "45554223242:14997492060:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
+    "45513967926:Skin Deep International": "45513967926:14979672962:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-11-24T20:41:18.594248+00:00",
@@ -23621,8 +23706,8 @@
     "SE10080-duplicate-1pvigEi63KZZdyB7tMUWSyKIX4qBShc1Y": "inputs/fresh804-20261026-5d42fe35/rollback-se10080-duplicate-1pvigei63kzzdyb7tmuwsykix4qbshc1y/b23253de6fbc3077/manifest.json",
     "SE10087": "inputs/fresh804-20261026-5d42fe35/rollback-se10087/09fe9fcac8f55940/manifest.json"
   },
-  "audit804_last_store": "Skin Deep International",
-  "audit804_progress_utc": "2026-11-26T08:32:53.903699+00:00",
+  "audit804_last_store": "Bin Ilyas",
+  "audit804_progress_utc": "2026-11-26T08:35:52.245426+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Blackbeiger",
