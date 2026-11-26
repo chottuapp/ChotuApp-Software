@@ -1930,6 +1930,25 @@
       "campaign_id": "fresh804-20261026-5d42fe35",
       "replaced_file": null,
       "file_name": "Scents N Secrets.xlsx"
+    },
+    "Pehnawa Store": {
+      "shop_code": "SE10095",
+      "source_run": "45513974872",
+      "sha256": "ef65cc0c71cf9993ef9c5a7c3609d3cbf0fd0280f5a4356a1ed64d963e068948",
+      "source_sha256": "12845ddb0cc4fe32f34c8b218ac3e55a13a9efd5a3698568cfc713332c39140e",
+      "folder": "ChotuApp 19-10-2026 11-36AM",
+      "verified_utc": "2026-11-26T09:13:52.775907+00:00",
+      "audit804": {
+        "name": "804 Audit",
+        "status": "pass",
+        "checked_utc": "2026-11-26T09:11:58.231414+00:00",
+        "products_checked": 584,
+        "workbook_sha256": "ef65cc0c71cf9993ef9c5a7c3609d3cbf0fd0280f5a4356a1ed64d963e068948"
+      },
+      "rule804": "applied; 804 Audit passed",
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "replaced_file": null,
+      "file_name": "Pehnawa Store.xlsx"
     }
   },
   "daily_uploads": {
@@ -4130,6 +4149,25 @@
         "campaign_id": "fresh804-20261026-5d42fe35",
         "replaced_file": null,
         "file_name": "Scents N Secrets.xlsx"
+      },
+      "Pehnawa Store": {
+        "shop_code": "SE10095",
+        "source_run": "45513974872",
+        "sha256": "ef65cc0c71cf9993ef9c5a7c3609d3cbf0fd0280f5a4356a1ed64d963e068948",
+        "source_sha256": "12845ddb0cc4fe32f34c8b218ac3e55a13a9efd5a3698568cfc713332c39140e",
+        "folder": "ChotuApp 19-10-2026 11-36AM",
+        "verified_utc": "2026-11-26T09:13:52.775907+00:00",
+        "audit804": {
+          "name": "804 Audit",
+          "status": "pass",
+          "checked_utc": "2026-11-26T09:11:58.231414+00:00",
+          "products_checked": 584,
+          "workbook_sha256": "ef65cc0c71cf9993ef9c5a7c3609d3cbf0fd0280f5a4356a1ed64d963e068948"
+        },
+        "rule804": "applied; 804 Audit passed",
+        "campaign_id": "fresh804-20261026-5d42fe35",
+        "replaced_file": null,
+        "file_name": "Pehnawa Store.xlsx"
       }
     }
   },
@@ -4312,7 +4350,7 @@
     "Insignia": "source:8500a78c3bb43317c9f73c8a6bd3a8308d7982ce5ecffcdf1fb41c229b324f73:Insignia:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
     "Musk Al Mahal Pakistan": "source:dd0bed5c1b88ddb58472aa30c71ea662ca4a02dfc5de407e8a28fece0300f6a9:Musk Al Mahal Pakistan:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
     "Shahi Jora": "source:59acb95adb424a369161628bc7c168ee92b68cd77c45ae92b109b2d8fa93db2d:Shahi Jora:302bbf0fdbc56a35d5540c24c015a8754ad08c384c241370852f77754168ea3b",
-    "Pehnawa Store": "source:12845ddb0cc4fe32f34c8b218ac3e55a13a9efd5a3698568cfc713332c39140e:Pehnawa Store:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
+    "Pehnawa Store": "source:12845ddb0cc4fe32f34c8b218ac3e55a13a9efd5a3698568cfc713332c39140e:Pehnawa Store:302bbf0fdbc56a35d5540c24c015a8754ad08c384c241370852f77754168ea3b",
     "Tomatotes": "source:53e6b2fa231b69e40fdebfc2c0cccb6dee11f1e6bb430ff3f1ce3d47a6f991bd:Tomatotes:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
     "Pets Park": "source:27c953effe999af751af0ffa5b804b8a1ff4844788f180ac83c7cec0828dc1d6:Pets Park:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
     "Scents N Secrets": "source:3a511d55ed2a08bd4b1ec4c9ee1f0a6ef4262aeccee15aa0d5f0db5d08c3e3d0:Scents N Secrets:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf"
@@ -24322,22 +24360,13 @@
       "store": "Pehnawa Store",
       "shop_code": "SE10095",
       "identity_policy": "confirmed_code",
-      "status": "hold",
+      "status": "pass",
       "products_checked": 584,
-      "findings_count": 1,
-      "findings": [
-        {
-          "product_id": "CP9503efabddde",
-          "name": "Maria.B D-03 Palaichi Shawl Winter Luxury Embroidered Velvet 3Pc Unstitched / Stitched Suit PA-148",
-          "source_url": "https://pehnawastore.pk/products/maria-b-winter-luxe-embroidered-velvet-unstitched-3pc-suit-d-03-palaichi-shawl",
-          "issues": [
-            "Price/stock gate: missing or nonpositive PKR base price"
-          ]
-        }
-      ],
+      "findings_count": 0,
+      "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "a9e28bfa0ae7821f78880b7c329df284c6a630e6b690203ff040637c11ecb713",
-      "checked_utc": "2026-11-26T08:47:04.084432+00:00",
+      "workbook_sha256": "ef65cc0c71cf9993ef9c5a7c3609d3cbf0fd0280f5a4356a1ed64d963e068948",
+      "checked_utc": "2026-11-26T09:11:58.231414+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "incomplete_products_excluded": [
         {
@@ -24431,25 +24460,11 @@
       ],
       "incomplete_products_count": 11,
       "incomplete_products_truncated": false,
-      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/pehnawa-store-incomplete-products/58595667946bead4/manifest.json",
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/pehnawa-store-incomplete-products/77322b843fe4eb1b/manifest.json",
       "original_source_sha256": "12845ddb0cc4fe32f34c8b218ac3e55a13a9efd5a3698568cfc713332c39140e",
       "recovery": {
-        "stage": "correction_pending_source_recheck",
-        "unfinished": true,
-        "owner": "804 automated recovery",
-        "opened_utc": "2026-11-26T08:47:05.720904+00:00",
-        "updated_utc": "2026-11-26T08:47:05.720904+00:00",
-        "next_source_check_due_utc": "2026-11-26T09:02:05.720904+00:00",
-        "actions": [
-          "Refresh exact public product facts",
-          "Apply supported description and category repairs",
-          "Rerun independent all-row audit",
-          "Upload and verify only after audit passes"
-        ],
-        "issues": [
-          "Price/stock gate: missing or nonpositive PKR base price"
-        ],
-        "adapter_or_missing_fact_exception": "Report explicitly if public facts cannot resolve the issue; never invent facts or mark the file complete."
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
       },
       "owner_authorized_exclusions": [],
       "image_metadata_repairs": 0,
@@ -24461,6 +24476,7 @@
       "source_artifact": 14980226319,
       "source_sha256": "12845ddb0cc4fe32f34c8b218ac3e55a13a9efd5a3698568cfc713332c39140e",
       "description_style_version": "customer-copy-v3",
+      "delivery_status": "verified",
       "held_input": "inputs/fresh804-20261026-5d42fe35/pehnawa-store/12845ddb0cc4fe32/manifest.json"
     },
     "Tomatotes": {
@@ -26934,7 +26950,7 @@
     "45531903409:Lulusar": "45531903409:14986784970:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
     "45531903409:Insignia": "45531903409:14986784970:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
     "45513989606:Musk Al Mahal Pakistan": "45513989606:14976344577:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
-    "45513974872:Shahi Jora": "45513974872:14980226319:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
+    "45513974872:Shahi Jora": "45513974872:14980226319:302bbf0fdbc56a35d5540c24c015a8754ad08c384c241370852f77754168ea3b",
     "45513974872:Pehnawa Store": "45513974872:14980226319:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
     "45513981276:Tomatotes": "45513981276:14980412428:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
     "45513981276:Pets Park": "45513981276:14980412428:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
@@ -27057,8 +27073,8 @@
     "SE10090": "inputs/fresh804-20261026-5d42fe35/rollback-se10090/aca5e76205e71056/manifest.json",
     "SE10098": "inputs/fresh804-20261026-5d42fe35/rollback-se10098/b6431de5b69359ae/manifest.json"
   },
-  "audit804_last_store": "Shahi Jora",
-  "audit804_progress_utc": "2026-11-26T09:11:44.880485+00:00",
+  "audit804_last_store": "Pehnawa Store",
+  "audit804_progress_utc": "2026-11-26T09:13:52.776411+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
