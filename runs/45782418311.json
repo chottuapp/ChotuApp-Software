@@ -1911,6 +1911,25 @@
       "campaign_id": "fresh804-20261026-5d42fe35",
       "replaced_file": null,
       "file_name": "Pets Park.xlsx"
+    },
+    "Scents N Secrets": {
+      "shop_code": "SE10097",
+      "source_run": "45519013386",
+      "sha256": "0bc2db0e83c336eb569c26b3ad0c8320ff91845b980cf8e092ca5b9e461c6768",
+      "source_sha256": "3a511d55ed2a08bd4b1ec4c9ee1f0a6ef4262aeccee15aa0d5f0db5d08c3e3d0",
+      "folder": "ChotuApp 19-10-2026 11-36AM",
+      "verified_utc": "2026-11-26T08:53:50.733972+00:00",
+      "audit804": {
+        "name": "804 Audit",
+        "status": "pass",
+        "checked_utc": "2026-11-26T08:51:57.113922+00:00",
+        "products_checked": 132,
+        "workbook_sha256": "0bc2db0e83c336eb569c26b3ad0c8320ff91845b980cf8e092ca5b9e461c6768"
+      },
+      "rule804": "applied; 804 Audit passed",
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "replaced_file": null,
+      "file_name": "Scents N Secrets.xlsx"
     }
   },
   "daily_uploads": {
@@ -4092,6 +4111,25 @@
         "campaign_id": "fresh804-20261026-5d42fe35",
         "replaced_file": null,
         "file_name": "Pets Park.xlsx"
+      },
+      "Scents N Secrets": {
+        "shop_code": "SE10097",
+        "source_run": "45519013386",
+        "sha256": "0bc2db0e83c336eb569c26b3ad0c8320ff91845b980cf8e092ca5b9e461c6768",
+        "source_sha256": "3a511d55ed2a08bd4b1ec4c9ee1f0a6ef4262aeccee15aa0d5f0db5d08c3e3d0",
+        "folder": "ChotuApp 19-10-2026 11-36AM",
+        "verified_utc": "2026-11-26T08:53:50.733972+00:00",
+        "audit804": {
+          "name": "804 Audit",
+          "status": "pass",
+          "checked_utc": "2026-11-26T08:51:57.113922+00:00",
+          "products_checked": 132,
+          "workbook_sha256": "0bc2db0e83c336eb569c26b3ad0c8320ff91845b980cf8e092ca5b9e461c6768"
+        },
+        "rule804": "applied; 804 Audit passed",
+        "campaign_id": "fresh804-20261026-5d42fe35",
+        "replaced_file": null,
+        "file_name": "Scents N Secrets.xlsx"
       }
     }
   },
@@ -4276,7 +4314,8 @@
     "Shahi Jora": "source:59acb95adb424a369161628bc7c168ee92b68cd77c45ae92b109b2d8fa93db2d:Shahi Jora:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
     "Pehnawa Store": "source:12845ddb0cc4fe32f34c8b218ac3e55a13a9efd5a3698568cfc713332c39140e:Pehnawa Store:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
     "Tomatotes": "source:53e6b2fa231b69e40fdebfc2c0cccb6dee11f1e6bb430ff3f1ce3d47a6f991bd:Tomatotes:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
-    "Pets Park": "source:27c953effe999af751af0ffa5b804b8a1ff4844788f180ac83c7cec0828dc1d6:Pets Park:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf"
+    "Pets Park": "source:27c953effe999af751af0ffa5b804b8a1ff4844788f180ac83c7cec0828dc1d6:Pets Park:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
+    "Scents N Secrets": "source:3a511d55ed2a08bd4b1ec4c9ee1f0a6ef4262aeccee15aa0d5f0db5d08c3e3d0:Scents N Secrets:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -26097,6 +26136,107 @@
       "description_style_version": "customer-copy-v3",
       "delivery_status": "verified",
       "held_input": "inputs/fresh804-20261026-5d42fe35/pets-park/27c953effe999af7/manifest.json"
+    },
+    "Scents N Secrets": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Scents N Secrets",
+      "shop_code": "SE10097",
+      "identity_policy": "confirmed_code",
+      "status": "pass",
+      "products_checked": 132,
+      "findings_count": 0,
+      "findings": [],
+      "details_truncated": false,
+      "workbook_sha256": "0bc2db0e83c336eb569c26b3ad0c8320ff91845b980cf8e092ca5b9e461c6768",
+      "checked_utc": "2026-11-26T08:51:57.113922+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "incomplete_products_excluded": [
+        {
+          "product_id": "CP56cc2fd957f7",
+          "source_url": "https://scentsnsecrets.com/products/his-duo-bundle",
+          "name": "DUO BUNDLE",
+          "issues": [
+            "Bundle appears classified as a single component"
+          ]
+        },
+        {
+          "product_id": "CP4a695aa85366",
+          "source_url": "https://scentsnsecrets.com/products/oh-honey",
+          "name": "Oh Honey",
+          "issues": [
+            "Primary product type and Category disagree: fragrance"
+          ]
+        },
+        {
+          "product_id": "CP276bc7cd91ca",
+          "source_url": "https://scentsnsecrets.com/products/after-citrus",
+          "name": "After Citrus",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CPddad5fcad19e",
+          "source_url": "https://scentsnsecrets.com/products/tester-box-samples-box-5-x-5ml-testers",
+          "name": "Custom Tester Box",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP91e34b90be66",
+          "source_url": "https://scentsnsecrets.com/products/scented-candle-bundle-any-3",
+          "name": "Scented Candle Bundle - Choose Any 3",
+          "issues": [
+            "Category blank or unresolved"
+          ]
+        },
+        {
+          "product_id": "CP14d10e2521df",
+          "source_url": "https://scentsnsecrets.com/products/rose-vault-scented-candle",
+          "name": "Rose Vault Scented Candle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CP936d1dc358a3",
+          "source_url": "https://scentsnsecrets.com/products/romanian-blue-scented-candle",
+          "name": "Romanian Blue Scented Candle",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPe3f0624e2bc1",
+          "source_url": "https://scentsnsecrets.com/products/perfume-gift-box",
+          "name": "Premium Perfume Gift Box",
+          "issues": [
+            "Primary product type and Category disagree: fragrance"
+          ]
+        }
+      ],
+      "incomplete_products_count": 8,
+      "incomplete_products_truncated": false,
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/scents-n-secrets-incomplete-products/5e256c9c54d6ad70/manifest.json",
+      "original_source_sha256": "3a511d55ed2a08bd4b1ec4c9ee1f0a6ef4262aeccee15aa0d5f0db5d08c3e3d0",
+      "recovery": {
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "owner_grocery_scope_repairs": 0,
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "source_run": "45519013386",
+      "source_artifact": 14984175807,
+      "source_sha256": "3a511d55ed2a08bd4b1ec4c9ee1f0a6ef4262aeccee15aa0d5f0db5d08c3e3d0",
+      "description_style_version": "customer-copy-v3",
+      "delivery_status": "verified",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/scents-n-secrets/3a511d55ed2a08bd/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -26796,7 +26936,8 @@
     "45513989606:Musk Al Mahal Pakistan": "45513989606:14976344577:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
     "45513974872:Shahi Jora": "45513974872:14980226319:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
     "45513974872:Pehnawa Store": "45513974872:14980226319:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
-    "45513981276:Tomatotes": "45513981276:14980412428:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf"
+    "45513981276:Tomatotes": "45513981276:14980412428:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
+    "45513981276:Pets Park": "45513981276:14980412428:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-11-24T20:41:18.594248+00:00",
@@ -26912,8 +27053,8 @@
     "SE10087": "inputs/fresh804-20261026-5d42fe35/rollback-se10087/09fe9fcac8f55940/manifest.json",
     "SE10090": "inputs/fresh804-20261026-5d42fe35/rollback-se10090/aca5e76205e71056/manifest.json"
   },
-  "audit804_last_store": "Pets Park",
-  "audit804_progress_utc": "2026-11-26T08:51:48.031599+00:00",
+  "audit804_last_store": "Scents N Secrets",
+  "audit804_progress_utc": "2026-11-26T08:53:50.734215+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Blackbeiger",
