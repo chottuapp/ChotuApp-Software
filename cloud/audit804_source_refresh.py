@@ -69,6 +69,15 @@ def main():
   try:
    if p.scheme!='https' or p.username or p.password or p.query:raise ValueError('Exact public HTTPS product URL required')
    handle=unquote(p.path.rstrip('/').split('/')[-1]);product=None
+   if item.get('inspect_store_api_identity') is True:
+    product_id=str(item['product_id'])
+    if not product_id.isdigit() or p.path!='/wp-json/wc/store/v1/products/'+product_id:raise ValueError('Exact numeric Store API URL required')
+    raw=read(url).json()
+    canonical=urlsplit(raw.get('permalink',''))
+    if raw.get('id')!=int(product_id) or canonical.scheme!='https' or canonical.hostname!=p.hostname:raise ValueError('Store API identity mismatch')
+    rec['store_api_variant_facts']={k:raw.get(k) for k in ('id','name','permalink','type','prices','is_purchasable','is_in_stock','has_options','variations','attributes')}
+    rec['status']='review_evidence_collected'
+    results.append(rec);emit(False);continue
    if item.get('inspect_store_api') is True:
     if not str(item['product_id']).isdigit():raise ValueError('Numeric public Store API identity required')
     raw=read('https://'+p.netloc+'/wp-json/wc/store/v1/products/'+str(item['product_id'])).json()

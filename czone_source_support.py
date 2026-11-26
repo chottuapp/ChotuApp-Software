@@ -279,7 +279,7 @@ def fetch_page(g,session,url):
         g.get('_chotu_debug_request',lambda *args:None)(url,attempt+1)
         try:
             response=session.get(url,timeout=45)
-        except (requests.Timeout,requests.ConnectionError) as exc:
+        except (requests.Timeout,requests.ConnectionError,requests.exceptions.ChunkedEncodingError) as exc:
             g.get('_chotu_debug_response',lambda *args,**kwargs:None)('EXCEPTION',0)
             if attempt==2:raise TemporaryPageError('Czone temporary transport failure: '+url) from exc
             g.get('_chotu_backoff',lambda seconds,reason:time.sleep(seconds))(2*(attempt+1),'Czone transport retry')
