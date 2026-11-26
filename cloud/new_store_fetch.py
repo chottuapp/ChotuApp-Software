@@ -38,7 +38,7 @@ def plan(request,stores,observations,runs):
   if selected:groups.append(dict(runner_group=prefix+str(i//2+1)+'-'+'-'.join(key(s) for s in selected),stores=selected))
  return groups,already
 
-def saved_recovery(request,stores,runs,fetch):
+def saved_recovery(request,stores,runs,fetch,*,expected_lane=None):
  recovery=request.get('saved_recovery')
  if not recovery:return None
  parent=str(recovery['run_id']);site=next((s for s in stores if s['name']==recovery['store']),None)
@@ -46,20 +46,39 @@ def saved_recovery(request,stores,runs,fetch):
  run=next((r for r in runs if str(r['databaseId'])==parent),None)
  if run is None:raise ValueError('Saved source run is outside the visible history')
  lane=root_lane(run,runs)
- if not lane or not lane.startswith('requested-'+request['request_id']+'-') or key(site) not in lane.split('-'):
+ if not lane or (lane!=expected_lane if expected_lane else not lane.startswith('requested-'+request['request_id']+'-') or key(site) not in lane.split('-')):
   raise ValueError('Checkpoint does not belong to the requested store')
  if any(int(r['databaseId'])>int(parent) and root_lane(r,runs)==lane for r in runs):
   return dict(store=site['name'],status='newer_run_retained',parent_run=parent)
  if run['status']!='completed' or run['conclusion']!='failure':raise ValueError('Only a completed failed run can be recovered')
  data=json.loads(fetch('api',f'repos/{REPO}/actions/runs/{parent}/artifacts?per_page=100'))
- if not any(a['name']=='chotuapp-checkpoint' and not a.get('expired') for a in data['artifacts']):
+ checkpoint=any(a['name']=='chotuapp-checkpoint' and not a.get('expired') for a in data['artifacts'])
+ if not checkpoint and not (expected_lane and recovery.get('allow_fresh_if_missing') is True):
   return dict(store=site['name'],status='checkpoint_unavailable',parent_run=parent)
+ restore=['-f','resume_run_id='+parent,'-f','partition_resume=true'] if checkpoint else []
  fetch('workflow','run','cloud-fetch.yml','--repo',REPO,'--ref','main',
        '-f','stores='+json.dumps([site]),'-f','runner_group='+lane,
-       '-f','resume_run_id='+parent,'-f','continuation_parent='+parent,
-       '-f','partition_resume=true','-f','minutes=300','-f','save_checkpoint=true',
+       '-f','continuation_parent='+parent,*restore,
+       '-f','minutes=300','-f','save_checkpoint=true',
        '-f','auto_continue_limit=6','-f','auto_continue_once=false')
- return dict(store=site['name'],status='checkpoint_dispatched',parent_run=parent)
+ return dict(store=site['name'],status='checkpoint_dispatched' if checkpoint else 'fresh_dispatched',parent_run=parent)
+
+def fresh_recoveries(request,runs,fetch):
+ from fresh804_dispatch import lane_prefix,planned_groups,selected_sites
+ targets=request.get('fresh_recoveries',[])
+ if not targets:return []
+ if len(targets)>6 or len({item['store'] for item in targets})!=len(targets):raise ValueError('Invalid fresh recovery scope')
+ release=json.loads((ROOT/'cloud/audit804-release.json').read_text())
+ registry=json.loads((ROOT/'cloud/fetch-update-release.json').read_text())['fresh_stores']
+ groups=planned_groups(selected_sites(registry,release),release)
+ lanes={site['name']:(lane_prefix(release)+str(index),site)
+        for index,group in enumerate(groups,1) for site in group}
+ records=[]
+ for item in targets:
+  lane,site=lanes[item['store']]
+  try:records.append(saved_recovery({'saved_recovery':item},[site],runs,fetch,expected_lane=lane))
+  except ValueError as exc:records.append(dict(store=item['store'],status='held',reason=str(exc)))
+ return records
 
 from next_public_support import public_next_product_state
 
@@ -138,6 +157,7 @@ def main():
  runs=json.loads(gh('run','list','--repo',REPO,'--workflow','cloud-fetch.yml','--limit','200','--json','databaseId,displayTitle,status,conclusion'))
  groups,already=plan(request,stores,report['stores'],runs);report['already_dispatched']=sorted(already)
  if request.get('saved_recovery'):report['saved_recovery']=saved_recovery(request,stores,runs,gh);save()
+ if request.get('fresh_recoveries'):report['fresh_recoveries']=fresh_recoveries(request,runs,gh);save()
  for group in groups:
   gh('workflow','run','cloud-fetch.yml','--repo',REPO,'--ref','main','-f','stores='+json.dumps(group['stores']),'-f','runner_group='+group['runner_group'],'-f','minutes=300','-f','save_checkpoint=true','-f','auto_continue_limit=6','-f','auto_continue_once=false')
   report['groups'].append(dict(group,status='dispatched'));save()
