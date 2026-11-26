@@ -59,6 +59,16 @@ class CzoneTests(unittest.TestCase):
                 self.assertEqual(third['2462094']['price'],500)
                 fresh=Path(temp)/'new-run';fresh.mkdir();tls.saved_api_path=fresh/'api.sqlite3'
                 c.collect_products(g,[URL],lambda x:None);self.assertEqual(parse.call_count,3)
+    def test_truncated_response_retries_without_returning_partial_content(self):
+        import requests
+        from unittest.mock import Mock
+        response=requests.Response();response.status_code=200;response._content=b'complete'
+        session=SimpleNamespace(get=Mock(side_effect=[requests.exceptions.ChunkedEncodingError('truncated'),response]))
+        backoff=Mock()
+        self.assertIs(c.fetch_page({'_chotu_wait':lambda:None,'_chotu_backoff':backoff},session,URL),response)
+        self.assertEqual(session.get.call_count,2)
+        backoff.assert_called_once_with(2,'Czone transport retry')
+
     def test_429_maps_to_saved_run_cooldown_and_preserves_retry_after(self):
         import threading,time,requests
         from fast_fetch_support import RequestGate
