@@ -1816,6 +1816,25 @@
       "campaign_id": "fresh804-20261026-5d42fe35",
       "replaced_file": null,
       "file_name": "Lulusar.xlsx"
+    },
+    "Insignia": {
+      "shop_code": "SE10091",
+      "source_run": "45531903409",
+      "sha256": "089750d24676754f1e83de322fd3bc40aa89ee5b09f5dfe8fd8f80754d8832db",
+      "source_sha256": "8500a78c3bb43317c9f73c8a6bd3a8308d7982ce5ecffcdf1fb41c229b324f73",
+      "folder": "ChotuApp 19-10-2026 11-36AM",
+      "verified_utc": "2026-11-26T08:41:52.368259+00:00",
+      "audit804": {
+        "name": "804 Audit",
+        "status": "pass",
+        "checked_utc": "2026-11-26T08:41:06.218311+00:00",
+        "products_checked": 916,
+        "workbook_sha256": "089750d24676754f1e83de322fd3bc40aa89ee5b09f5dfe8fd8f80754d8832db"
+      },
+      "rule804": "applied; 804 Audit passed",
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "replaced_file": null,
+      "file_name": "Insignia.xlsx"
     }
   },
   "daily_uploads": {
@@ -3902,6 +3921,25 @@
         "campaign_id": "fresh804-20261026-5d42fe35",
         "replaced_file": null,
         "file_name": "Lulusar.xlsx"
+      },
+      "Insignia": {
+        "shop_code": "SE10091",
+        "source_run": "45531903409",
+        "sha256": "089750d24676754f1e83de322fd3bc40aa89ee5b09f5dfe8fd8f80754d8832db",
+        "source_sha256": "8500a78c3bb43317c9f73c8a6bd3a8308d7982ce5ecffcdf1fb41c229b324f73",
+        "folder": "ChotuApp 19-10-2026 11-36AM",
+        "verified_utc": "2026-11-26T08:41:52.368259+00:00",
+        "audit804": {
+          "name": "804 Audit",
+          "status": "pass",
+          "checked_utc": "2026-11-26T08:41:06.218311+00:00",
+          "products_checked": 916,
+          "workbook_sha256": "089750d24676754f1e83de322fd3bc40aa89ee5b09f5dfe8fd8f80754d8832db"
+        },
+        "rule804": "applied; 804 Audit passed",
+        "campaign_id": "fresh804-20261026-5d42fe35",
+        "replaced_file": null,
+        "file_name": "Insignia.xlsx"
       }
     }
   },
@@ -4080,7 +4118,8 @@
     "Baby Planet": "source:a83c0cedbc702984fb4de19e47290d21453324472505c014fc640490870baa5a:Baby Planet:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
     "Skin Deep International": "source:d2be7f9d47f03e238a3a24a3ca38b476420f9c5c9e34d4248b8f3d4c2132e549:Skin Deep International:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
     "Bin Ilyas": "source:dd29826bbba7111621217d7b32ce0177066fcb09c34c22e8c677fcb790ad9146:Bin Ilyas:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
-    "Lulusar": "source:1a0e4587e54793360a1bdd0ebabdec9e4940301e59335b7d9db12b4c02386046:Lulusar:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf"
+    "Lulusar": "source:1a0e4587e54793360a1bdd0ebabdec9e4940301e59335b7d9db12b4c02386046:Lulusar:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
+    "Insignia": "source:8500a78c3bb43317c9f73c8a6bd3a8308d7982ce5ecffcdf1fb41c229b324f73:Insignia:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf"
   },
   "audit804_results": {
     "Miss Rose": {
@@ -23783,6 +23822,83 @@
       "description_style_version": "customer-copy-v3",
       "delivery_status": "verified",
       "held_input": "inputs/fresh804-20261026-5d42fe35/lulusar/1a0e4587e5479336/manifest.json"
+    },
+    "Insignia": {
+      "name": "804 Audit",
+      "version": "804-audit-v2",
+      "store": "Insignia",
+      "shop_code": "SE10091",
+      "identity_policy": "confirmed_code",
+      "status": "pass",
+      "products_checked": 916,
+      "findings_count": 0,
+      "findings": [],
+      "details_truncated": false,
+      "workbook_sha256": "089750d24676754f1e83de322fd3bc40aa89ee5b09f5dfe8fd8f80754d8832db",
+      "checked_utc": "2026-11-26T08:41:06.218311+00:00",
+      "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
+      "incomplete_products_excluded": [
+        {
+          "product_id": "CP53d611bb5655",
+          "source_url": "https://insignia.com.pk/products/comfort-slip-on-ik0145-dark-brown",
+          "name": "Comfort Slip On IK0145-Dark Brown",
+          "issues": [
+            "Primary product type and Category disagree: jeans"
+          ]
+        },
+        {
+          "product_id": "CPcee110dc746f",
+          "source_url": "https://insignia.com.pk/products/formal-sling-back-if4097-black",
+          "name": "Formal Sling Back IF4097-Black",
+          "issues": [
+            "Primary product type and Category disagree: trousers"
+          ]
+        },
+        {
+          "product_id": "CP7037dbe2a624",
+          "source_url": "https://insignia.com.pk/products/formal-sling-back-if4040-black",
+          "name": "Formal Sling Back IF4040-Black",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPcf8a0d77f78b",
+          "source_url": "https://insignia.com.pk/products/formal-sling-back-if4040-off-white",
+          "name": "Formal Sling Back IF4040-Off White",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        },
+        {
+          "product_id": "CPb45c6cca10c9",
+          "source_url": "https://insignia.com.pk/products/formal-sling-back-if4040-maroon",
+          "name": "Formal Sling Back IF4040-Maroon",
+          "issues": [
+            "Category lacks clear product-purpose evidence; manual review required"
+          ]
+        }
+      ],
+      "incomplete_products_count": 5,
+      "incomplete_products_truncated": false,
+      "incomplete_products_receipt": "inputs/fresh804-20261026-5d42fe35/insignia-incomplete-products/418c987444f24f3d/manifest.json",
+      "original_source_sha256": "8500a78c3bb43317c9f73c8a6bd3a8308d7982ce5ecffcdf1fb41c229b324f73",
+      "recovery": {
+        "stage": "audit_passed_delivery_ready",
+        "unfinished": false
+      },
+      "owner_authorized_exclusions": [],
+      "image_metadata_repairs": 0,
+      "owner_grocery_scope_repairs": 0,
+      "description_repairs_count": 0,
+      "description_repairs_examples": [],
+      "campaign_id": "fresh804-20261026-5d42fe35",
+      "source_run": "45531903409",
+      "source_artifact": 14986784970,
+      "source_sha256": "8500a78c3bb43317c9f73c8a6bd3a8308d7982ce5ecffcdf1fb41c229b324f73",
+      "description_style_version": "customer-copy-v3",
+      "delivery_status": "verified",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/insignia/8500a78c3bb43317/manifest.json"
     }
   },
   "audit804_artifacts": {
@@ -24476,7 +24592,8 @@
     "45554223242:Baby Planet": "45554223242:14997492060:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
     "45513967926:Skin Deep International": "45513967926:14979672962:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
     "45513967926:Bin Ilyas": "45513967926:14979672962:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
-    "45409010093:Breakout": "45409010093:14941653051:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf"
+    "45409010093:Breakout": "45409010093:14941653051:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf",
+    "45531903409:Lulusar": "45531903409:14986784970:f055438059c3dfa8fbac6f64c5e73836049473bb2561fc1ce21995e7896b7fcf"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-11-24T20:41:18.594248+00:00",
@@ -24592,8 +24709,8 @@
     "SE10087": "inputs/fresh804-20261026-5d42fe35/rollback-se10087/09fe9fcac8f55940/manifest.json",
     "SE10090": "inputs/fresh804-20261026-5d42fe35/rollback-se10090/aca5e76205e71056/manifest.json"
   },
-  "audit804_last_store": "Lulusar",
-  "audit804_progress_utc": "2026-11-26T08:40:41.952832+00:00",
+  "audit804_last_store": "Insignia",
+  "audit804_progress_utc": "2026-11-26T08:41:52.368796+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Blackbeiger",
