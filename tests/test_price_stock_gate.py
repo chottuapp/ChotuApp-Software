@@ -8,6 +8,19 @@ class PriceStockTests(unittest.TestCase):
   row=self.row(**{'base_price (PKR)':'100.25','sale_price (PKR, agar discount ho)':'80.10'});before=row.copy();self.assertEqual(check(row),[]);self.assertEqual(row,before)
  def test_invalid_prices_and_discounts_fail(self):
   for change in [{'base_price (PKR)':0},{'base_price (PKR)':'NaN'},{'sale_price (PKR, agar discount ho)':101},{'sale_price (PKR, agar discount ho)':-1},{'sale_price (PKR, only if discounted)':70}]:self.assertTrue(check(self.row(**change)))
+ def test_zero_price_allowed_only_for_exact_verified_unavailable_variant(self):
+  from unittest.mock import patch
+  identity=('Store','P1','https://example.com/products/item','123','sku')
+  product=self.row(source_url=identity[2],source_variant_id='124',sku='product')
+  zero=dict(product,source_variant_id='123',sku='sku',**{'base_price (PKR)':0,'available (yes/no)':'no','sale_price (PKR, agar discount ho)':None})
+  with tempfile.TemporaryDirectory() as tmp,patch('price_stock_gate.unpriced_variant_evidence',return_value={identity}):
+   path=Path(tmp)/'verified.xlsx';book=Workbook();sheet=book.active;sheet.title='Products';sheet.append(list(product));sheet.append(list(product.values()))
+   variety=book.create_sheet('Variant Combinations');variety.append(list(product));variety.append(list(product.values()));variety.append(list(zero.values()));book.save(path)
+   self.assertEqual(workbook_issues(path,store='Store'),{})
+   self.assertIn('P1',workbook_issues(path,store='Other Store'))
+   variety.cell(3,list(product).index('available (yes/no)')+1,'yes');book.save(path)
+   self.assertIn('P1',workbook_issues(path,store='Store'))
+
  def test_unknown_and_conflicting_stock_fail_without_becoming_in_stock(self):
   for change in [{'available (yes/no)':''},{'stock_quantity (agar public ho)':0},{'stock_quantity (agar public ho)':-1}]:self.assertTrue(check(self.row(**change)))
   self.assertEqual(check(self.row(**{'available (yes/no)':'no','stock_quantity (agar public ho)':0})),[])

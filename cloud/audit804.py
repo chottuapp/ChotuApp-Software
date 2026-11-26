@@ -248,7 +248,7 @@ def rows(path):
 def run(path,store,codes,hosts,*,source=None,strict_commercial=False,findings_limit=100):
  path=Path(path);findings=[];expected=codes.get(store);seen=set();output_order=[];count=0;finding_count=0
  from price_stock_gate import workbook_issues
- commercial=workbook_issues(path) if strict_commercial else {}
+ commercial=workbook_issues(path,store=store) if strict_commercial else {}
  originals={str(row.get('product_id')):row for row in rows(source)} if source else {}
  from reviewed804_repairs import roots,conflicting_name
  catalogue=roots(originals.values()) if originals else set()

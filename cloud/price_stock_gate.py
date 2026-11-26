@@ -1,6 +1,9 @@
 """Strict monetary and availability consistency; never fills unknown stock or prices."""
 from decimal import Decimal,InvalidOperation
 from collections import defaultdict
+from functools import lru_cache
+import json
+from pathlib import Path
 from openpyxl import load_workbook
 
 def value(number):
@@ -11,11 +14,12 @@ def value(number):
  if not result.is_finite():raise ValueError('Non-finite numeric value')
  return result
 
-def check(row):
+def check(row,*,verified_unavailable_zero=False):
  issues=[]
  try:
   base=value(row.get('base_price (PKR)'))
-  if base is None or base<=0:issues.append('Price/stock gate: missing or nonpositive PKR base price')
+  zero_is_verified=(verified_unavailable_zero and base==0 and str(row.get('available (yes/no)') or '').strip().lower()=='no')
+  if base is None or base<0 or (base==0 and not zero_is_verified):issues.append('Price/stock gate: missing or nonpositive PKR base price')
   for key in ('sale_price (PKR, agar discount ho)','sale_price (PKR, only if discounted)'):
    sale=value(row.get(key))
    if sale is not None and (sale<=0 or base is None or sale>=base):issues.append('Price/stock gate: invalid sale price; must be positive and below base')
@@ -44,7 +48,15 @@ def image_metadata_issues(row,product):
  if status=='unavailable' and not image and not fallback and not covers:return []
  return ['Image provenance: variant mapping/fallback status disagrees with source-linked image or product cover']
 
-def workbook_issues(path):
+@lru_cache(maxsize=1)
+def unpriced_variant_evidence():
+ receipt=Path(__file__).with_name('audit804-unpriced-variants.json')
+ if not receipt.is_file():return frozenset()
+ return frozenset((p['store'],p['product_id'],p['source_url'],v['id'],v['sku'])
+                  for p in json.loads(receipt.read_text())['products']
+                  for v in p['unavailable_zero_price_variants'])
+
+def workbook_issues(path,*,store=None):
  book=load_workbook(path,read_only=True,data_only=False);issues=defaultdict(list);products={};variants=defaultdict(list)
  try:
   for title in ('Products','Variant Combinations'):
@@ -53,7 +65,9 @@ def workbook_issues(path):
    for values in iterator:
     if not any(v is not None for v in values):continue
     row=dict(zip(headers,values));pid=str(row.get('product_id') or '')
-    issues[pid].extend(check(row))
+    exact_variant=(store,pid,row.get('source_url'),str(row.get('source_variant_id') or ''),str(row.get('sku') or ''))
+    verified=title=='Variant Combinations' and exact_variant in unpriced_variant_evidence()
+    issues[pid].extend(check(row,verified_unavailable_zero=verified))
     if title=='Products':
      products[pid]=row
      if str(row.get('available (yes/no)') or '').strip().lower()=='no':issues[pid].append('Stock policy: fully out-of-stock products must be excluded; retain unavailable variants only under an available product')
