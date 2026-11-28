@@ -1,33 +1,16 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-28T11:53:42.215033+00:00",
-  "run_id": "46140846423",
+  "generated_utc": "2026-11-28T12:03:29.772789+00:00",
+  "run_id": "46140833248",
   "attempt": "1",
   "source_commit": "19e02a2aa0e95addb304c0e474410360209540a6",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 818.8,
+  "elapsed_seconds": 1457.0,
   "stores": [
     {
-      "name": "Design by DAS",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "6ad29d707cf6535f",
-      "products": 85,
-      "variants": 90,
-      "http_statuses": {
-        "200": 118
-      },
-      "network_seconds": 105.3,
-      "max_response_seconds": 2.8,
-      "cache_events": 0
-    },
-    {
-      "name": "Golden Rose",
+      "name": "Denim Leftover",
       "status": "done",
       "review_required": true,
       "issue_codes": [
@@ -35,15 +18,35 @@
         "RATE_LIMIT"
       ],
       "software_revision": "6ad29d707cf6535f",
-      "products": 138,
-      "variants": 1134,
+      "products": 161,
+      "variants": 2042,
       "http_statuses": {
-        "200": 199,
+        "200": 246,
         "429": 1
       },
-      "network_seconds": 389.0,
-      "max_response_seconds": 2.5,
-      "cache_events": 358
+      "network_seconds": 508.1,
+      "max_response_seconds": 2.6,
+      "cache_events": 416
+    },
+    {
+      "name": "Cool and Cool",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED"
+      ],
+      "software_revision": "6ad29d707cf6535f",
+      "products": 218,
+      "variants": 218,
+      "http_statuses": {
+        "200": 359,
+        "429": 1
+      },
+      "network_seconds": 744.3,
+      "max_response_seconds": 2.6,
+      "cache_events": 684
     }
   ]
 }
