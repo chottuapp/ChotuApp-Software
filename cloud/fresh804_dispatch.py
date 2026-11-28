@@ -29,6 +29,17 @@ def selected_sites(registry,request):
  if not sites:raise ValueError('No stores selected for fresh fetching')
  return sites
 
+def campaign_sites(root,request):
+ registry=json.loads((root/'cloud/fetch-update-release.json').read_text())['fresh_stores']
+ sites=selected_sites(registry,request)
+ if request.get('include_pending_store_batch'):
+  from new_store_fetch import validate
+  additive=validate(json.loads((root/'cloud/pending-store-fetch-request.json').read_text()))
+  if {site['name'] for site in registry}&{site['name'] for site in additive}:
+   raise ValueError('Fresh and additive storefront registries overlap')
+  sites.extend(additive)
+ return sites
+
 def planned_groups(sites,request):
  skipped=set(request.get('completed_stores',[]))|set(request.get('skip_fresh_stores',[]))
  solo=set(request.get('additive_solo_stores',[]))
@@ -61,8 +72,7 @@ def main():
   from pause_fresh_batch import pause_batch
   pause_batch(request)
   return
- registry=json.loads((ROOT/'cloud/fetch-update-release.json').read_text())['fresh_stores']
- sites=selected_sites(registry,request)
+ sites=campaign_sites(ROOT,request)
  if request.get('priority_stores'):
   from priority_fresh_recovery import recover_priority
   recover_priority(request,sites)

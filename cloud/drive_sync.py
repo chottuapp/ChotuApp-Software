@@ -52,10 +52,12 @@ def load_config():
   request=json.loads(request_path.read_text())
   if request.get('campaign_id')==config['dispatcher'] and request.get('refresh_generation'):
    if request.get('destination_folder')!=config['destination_folder']:raise ValueError('Fresh fetch destination differs from approved Drive destination')
-   from fresh804_dispatch import selected_sites
+   from fresh804_dispatch import campaign_sites,selected_sites
    registry=json.loads((ROOT/'cloud/fetch-update-release.json').read_text())['fresh_stores']
    names=[site['name'] for site in selected_sites(registry,request)]
    if not set(names)<=set(config['stores']):raise ValueError('Fresh fetch includes stores outside approved Drive delivery')
+   if request.get('include_pending_store_batch'):
+    names=[site['name'] for site in campaign_sites(ROOT,request) if site['name'] in config['stores']]
    skipped=set(request.get('skip_fresh_stores',[]))
    config.update(refresh_generation=request['refresh_generation'],refresh_stores=[name for name in names if name not in skipped],
     refresh_requested_utc=request.get('requested_utc'),refresh_requested_date_pkt=request.get('requested_date_pkt'),
@@ -66,7 +68,7 @@ def load_config():
     if resume_path.exists():
      resume=json.loads(resume_path.read_text())
      if resume.get('refresh_generation')==request['refresh_generation']:
-      approved=set(config['stores'])&{site['name'] for site in registry};prefix='audit804-'+config['dispatcher']+'-'+request['refresh_generation']+'-';roots=[];root_lanes={}
+      approved=set(names);prefix='audit804-'+config['dispatcher']+'-'+request['refresh_generation']+'-';roots=[];root_lanes={}
       for item in resume.get('groups',[]):
        lane=str(item.get('runner_group') or '');rid=str(item.get('parent_run') or '')
        if not lane.startswith(prefix) or not lane[len(prefix):].isdigit() or not rid.isdigit():raise ValueError('Invalid saved fresh resume lineage')
