@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-28T18:19:11.678073+00:00",
+  "run_id": "46158180444",
+  "attempt": "1",
+  "source_commit": "19e02a2aa0e95addb304c0e474410360209540a6",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 11363.3,
+  "stores": [
+    {
+      "name": "Limelight",
+      "status": "source_paused",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "6ad29d707cf6535f",
+      "http_statuses": {
+        "404": 47,
+        "200": 2307,
+        "429": 3
+      },
+      "network_seconds": 5222.9,
+      "max_response_seconds": 2.5,
+      "cache_events": 35284
+    },
+    {
+      "name": "Alkaram Studio",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "6ad29d707cf6535f",
+      "products": 1825,
+      "variants": 6503,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    }
+  ]
+}
