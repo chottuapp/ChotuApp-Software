@@ -1,29 +1,36 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-28T17:59:20.229509+00:00",
-  "run_id": "46155428594",
+  "generated_utc": "2026-11-28T18:02:12.515483+00:00",
+  "run_id": "46168279166",
   "attempt": "1",
   "source_commit": "19e02a2aa0e95addb304c0e474410360209540a6",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 10692.6,
+  "elapsed_seconds": 3525.3,
   "stores": [
     {
-      "name": "Rivaj UK",
+      "name": "Lulusar",
       "status": "done",
       "review_required": true,
-      "issue_codes": [],
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
       "software_revision": "6ad29d707cf6535f",
-      "products": 289,
-      "variants": 881,
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "products": 2027,
+      "variants": 8672,
+      "http_statuses": {
+        "200": 708,
+        "429": 1
+      },
+      "network_seconds": 1623.2,
+      "max_response_seconds": 3.1,
+      "cache_events": 13737
     },
     {
-      "name": "Junaid Jamshed",
+      "name": "OrderNation",
       "status": "source_paused",
       "review_required": false,
       "issue_codes": [
@@ -33,12 +40,12 @@
       ],
       "software_revision": "6ad29d707cf6535f",
       "http_statuses": {
-        "200": 3393,
-        "429": 5
+        "200": 1000,
+        "429": 6
       },
-      "network_seconds": 7211.2,
-      "max_response_seconds": 3.8,
-      "cache_events": 37087
+      "network_seconds": 2967.9,
+      "max_response_seconds": 12.1,
+      "cache_events": 11540
     }
   ]
 }
