@@ -1,16 +1,36 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-28T12:24:16.212365+00:00",
-  "run_id": "46140834976",
+  "generated_utc": "2026-11-28T12:40:52.681395+00:00",
+  "run_id": "46140862814",
   "attempt": "1",
   "source_commit": "19e02a2aa0e95addb304c0e474410360209540a6",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 2697.4,
+  "elapsed_seconds": 944.8,
   "stores": [
     {
-      "name": "Skin Factor",
+      "name": "Fresh Basket",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "6ad29d707cf6535f",
+      "products": 198,
+      "variants": 210,
+      "http_statuses": {
+        "200": 208,
+        "429": 1
+      },
+      "network_seconds": 418.9,
+      "max_response_seconds": 2.4,
+      "cache_events": 457
+    },
+    {
+      "name": "The Glossy Quill",
       "status": "done",
       "review_required": true,
       "issue_codes": [
@@ -18,32 +38,15 @@
         "RATE_LIMIT"
       ],
       "software_revision": "6ad29d707cf6535f",
-      "products": 25,
-      "variants": 25,
+      "products": 57,
+      "variants": 93,
       "http_statuses": {
-        "200": 79,
+        "200": 91,
         "429": 1
       },
-      "network_seconds": 91.3,
-      "max_response_seconds": 2.4,
-      "cache_events": 84
-    },
-    {
-      "name": "Outfitters",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [
-        "WEBSITE_ORDER_UNVERIFIED"
-      ],
-      "software_revision": "6ad29d707cf6535f",
-      "products": 678,
-      "variants": 3758,
-      "http_statuses": {
-        "200": 697
-      },
-      "network_seconds": 1952.7,
-      "max_response_seconds": 22.3,
-      "cache_events": 1357
+      "network_seconds": 137.5,
+      "max_response_seconds": 2.5,
+      "cache_events": 159
     }
   ]
 }

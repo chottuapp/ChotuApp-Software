@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-28T12:40:52.681395+00:00",
+  "run_id": "46140862814",
+  "attempt": "1",
+  "source_commit": "19e02a2aa0e95addb304c0e474410360209540a6",
+  "status": "complete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 944.8,
+  "stores": [
+    {
+      "name": "Fresh Basket",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "6ad29d707cf6535f",
+      "products": 198,
+      "variants": 210,
+      "http_statuses": {
+        "200": 208,
+        "429": 1
+      },
+      "network_seconds": 418.9,
+      "max_response_seconds": 2.4,
+      "cache_events": 457
+    },
+    {
+      "name": "The Glossy Quill",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "6ad29d707cf6535f",
+      "products": 57,
+      "variants": 93,
+      "http_statuses": {
+        "200": 91,
+        "429": 1
+      },
+      "network_seconds": 137.5,
+      "max_response_seconds": 2.5,
+      "cache_events": 159
+    }
+  ]
+}
