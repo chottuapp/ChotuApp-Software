@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-28T14:48:51.901706+00:00",
+  "run_id": "46140881815",
+  "attempt": "1",
+  "source_commit": "19e02a2aa0e95addb304c0e474410360209540a6",
+  "status": "complete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 3273.8,
+  "stores": [
+    {
+      "name": "Essence",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "6ad29d707cf6535f",
+      "products": 74,
+      "variants": 711,
+      "http_statuses": {
+        "200": 101,
+        "429": 1
+      },
+      "network_seconds": 168.2,
+      "max_response_seconds": 2.4,
+      "cache_events": 191
+    },
+    {
+      "name": "Shoe Planet",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "6ad29d707cf6535f",
+      "products": 33,
+      "variants": 198,
+      "http_statuses": {
+        "200": 1326,
+        "429": 2
+      },
+      "network_seconds": 3082.7,
+      "max_response_seconds": 2.6,
+      "cache_events": 2263
+    }
+  ]
+}
