@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-28T11:47:41.653983+00:00",
-  "run_id": "46140844820",
+  "generated_utc": "2026-11-28T11:50:10.120933+00:00",
+  "run_id": "46140838234",
   "attempt": "1",
   "source_commit": "19e02a2aa0e95addb304c0e474410360209540a6",
-  "status": "incomplete",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 507.7,
+  "elapsed_seconds": 659.4,
   "stores": [
     {
-      "name": "Hilm Chapals",
+      "name": "Zero Lifestyle",
       "status": "done",
       "review_required": true,
       "issue_codes": [
@@ -18,31 +18,34 @@
         "RATE_LIMIT"
       ],
       "software_revision": "6ad29d707cf6535f",
-      "products": 102,
-      "variants": 660,
+      "products": 60,
+      "variants": 249,
       "http_statuses": {
-        "200": 123
+        "200": 132,
+        "429": 1
       },
-      "network_seconds": 226.0,
+      "network_seconds": 236.8,
       "max_response_seconds": 2.5,
-      "cache_events": 262
+      "cache_events": 196
     },
     {
-      "name": "Xcessories Hub",
-      "status": "failed",
-      "review_required": false,
+      "name": "Bata",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
-        "HTTP_403",
+        "HTTP_429",
+        "RATE_LIMIT",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "6ad29d707cf6535f",
+      "products": 122,
+      "variants": 675,
       "http_statuses": {
-        "403": 1,
-        "200": 203
+        "200": 158
       },
-      "network_seconds": 226.6,
-      "max_response_seconds": 4.6,
-      "cache_events": 0
+      "network_seconds": 300.3,
+      "max_response_seconds": 2.5,
+      "cache_events": 328
     }
   ]
 }
