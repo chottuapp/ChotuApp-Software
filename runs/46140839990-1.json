@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-28T13:06:33.790781+00:00",
+  "run_id": "46140839990",
+  "attempt": "1",
+  "source_commit": "19e02a2aa0e95addb304c0e474410360209540a6",
+  "status": "complete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 5237.1,
+  "stores": [
+    {
+      "name": "Aerosoft Studio",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "6ad29d707cf6535f",
+      "products": 232,
+      "variants": 1379,
+      "http_statuses": {
+        "200": 294,
+        "429": 1
+      },
+      "network_seconds": 625.4,
+      "max_response_seconds": 2.5,
+      "cache_events": 577
+    },
+    {
+      "name": "Servis",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "6ad29d707cf6535f",
+      "products": 1013,
+      "variants": 5527,
+      "http_statuses": {
+        "200": 1077,
+        "429": 2
+      },
+      "network_seconds": 2381.3,
+      "max_response_seconds": 2.5,
+      "cache_events": 4563
+    }
+  ]
+}
