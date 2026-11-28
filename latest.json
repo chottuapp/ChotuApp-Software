@@ -4572,7 +4572,6 @@
     "Rizen Watches": "source:900b725d143cbc1a644e10a78d84bdfbe5ea9bf847dcf0b34d37974612bbbb9d:Rizen Watches:7395f09716fb7fb08a153c21061516d14efa3e299fc981f6f41127dbea94e2c9",
     "Blackbeiger": "source:07a60a12f5d62c8e262de1e9ffa3eddce4b8b6f7ffb1f9bd7c191fef04f48b0b:Blackbeiger:7395f09716fb7fb08a153c21061516d14efa3e299fc981f6f41127dbea94e2c9",
     "Rung Rez": "source:06edee40cf3b13ff0478cbd2b31108dff45e994c175cfa73a2f1c0c88a242e47:Rung Rez:7395f09716fb7fb08a153c21061516d14efa3e299fc981f6f41127dbea94e2c9",
-    "Mansab": "source:ace11209cb5a89af4a6169d9b2cc530b3615dffec1b60c0b5704f43bcd5d378e:Mansab:3e2e0be559255a77c6b97fdad357ff67bb4e086d48ebc50b5fa931330f3c484c",
     "Bela": "source:4271b5e9724a0655f572a57a5ddcd15b0bd4db8b3de7370d5333ac73d26be9d6:Bela:3e2e0be559255a77c6b97fdad357ff67bb4e086d48ebc50b5fa931330f3c484c",
     "Shoe Planet": "source:81d609e261d4253ef46eb23eb61b88ea8fa4f83496ea174dc42db7f11dee95ea:Shoe Planet:9d8e70cc442869001613da5b4aa7cf1a7f13cb15f3780eff93e9f718efbb86ec",
     "Makeup Gallery": "source:9a584162f7b055ea07f857aec5fb1ae0ea2a30231d220ccc5514d89189dd88fc:Makeup Gallery:9d8e70cc442869001613da5b4aa7cf1a7f13cb15f3780eff93e9f718efbb86ec",
@@ -17911,13 +17910,13 @@
       "store": "Mansab",
       "shop_code": "SE10079",
       "identity_policy": "confirmed_code",
-      "status": "pass",
-      "products_checked": 61,
+      "status": "hold",
+      "products_checked": 66,
       "findings_count": 0,
       "findings": [],
       "details_truncated": false,
-      "workbook_sha256": "6875cccbf82e54e36335a3649d0dd5cdd5c33293e57ffa90a44f76d447e3ca82",
-      "checked_utc": "2026-11-27T23:48:54.595870+00:00",
+      "workbook_sha256": "1e31dc94d388f01ab1f162fd2f08b025cad7bac7e5faf4eb7471b80ece459445",
+      "checked_utc": "2026-11-28T15:06:31.790976+00:00",
       "review_scope": "Every product description, independent product-type/category checks, source facts and confirmed shop-code identity. Ambiguity is held; this is not human semantic review or proof of full website coverage.",
       "recovery": {
         "stage": "audit_passed_delivery_ready",
@@ -17929,12 +17928,15 @@
       "description_repairs_count": 0,
       "description_repairs_examples": [],
       "campaign_id": "fresh804-20261026-5d42fe35",
-      "source_run": "45464896190",
-      "source_artifact": 14964498394,
-      "source_sha256": "ace11209cb5a89af4a6169d9b2cc530b3615dffec1b60c0b5704f43bcd5d378e",
+      "source_run": "46140877987",
+      "source_artifact": 15266185552,
+      "source_sha256": "e80386161146a0a38c7e57152c61e442faefaa4ed53c6f83abcffae9fcf064da",
       "description_style_version": "customer-copy-v3",
-      "refresh_generation": "refresh20261124-1c4ddf1c",
-      "delivery_status": "verified"
+      "refresh_generation": "refresh20261128-4abe6fc5",
+      "delivery_status": "blocked",
+      "audit_status": "pass",
+      "error": "Drive copyto failed; category=unclassified; upload not marked verified",
+      "held_input": "inputs/fresh804-20261026-5d42fe35/mansab/e80386161146a0a3/manifest.json"
     },
     "Bela": {
       "name": "804 Audit",
@@ -28458,7 +28460,8 @@
     "46140849755": "46140849755:15266729567:7395f09716fb7fb08a153c21061516d14efa3e299fc981f6f41127dbea94e2c9",
     "46140870309": "46140870309:15265913793:7395f09716fb7fb08a153c21061516d14efa3e299fc981f6f41127dbea94e2c9",
     "46140871913": "46140871913:15265960743:7395f09716fb7fb08a153c21061516d14efa3e299fc981f6f41127dbea94e2c9",
-    "46140874153": "46140874153:15265059199:7395f09716fb7fb08a153c21061516d14efa3e299fc981f6f41127dbea94e2c9"
+    "46140874153": "46140874153:15265059199:7395f09716fb7fb08a153c21061516d14efa3e299fc981f6f41127dbea94e2c9",
+    "46140876184": "46140876184:15265715863:7395f09716fb7fb08a153c21061516d14efa3e299fc981f6f41127dbea94e2c9"
   },
   "audit804_campaign": "fresh804-20261026-5d42fe35",
   "audit804_checked_utc": "2026-11-28T11:56:58.247486+00:00",
@@ -28585,8 +28588,8 @@
     "SE10097": "inputs/fresh804-20261026-5d42fe35/rollback-se10097/568eddb977ae3b8a/manifest.json",
     "SE10095": "inputs/fresh804-20261026-5d42fe35/rollback-se10095/3a83e796f6be1dcd/manifest.json"
   },
-  "audit804_last_store": "Rung Rez",
-  "audit804_progress_utc": "2026-11-28T15:03:46.769697+00:00",
+  "audit804_last_store": "Mansab",
+  "audit804_progress_utc": "2026-11-28T15:06:31.791013+00:00",
   "audit804_auto_evidence_cache": [
     {
       "store": "Bata",
