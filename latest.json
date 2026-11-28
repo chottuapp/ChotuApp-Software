@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-28T12:15:29.127542+00:00",
-  "run_id": "46140823465",
+  "generated_utc": "2026-11-28T12:24:16.212365+00:00",
+  "run_id": "46140834976",
   "attempt": "1",
   "source_commit": "19e02a2aa0e95addb304c0e474410360209540a6",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 2187.6,
+  "elapsed_seconds": 2697.4,
   "stores": [
     {
-      "name": "Shop Modest",
+      "name": "Skin Factor",
       "status": "done",
       "review_required": true,
       "issue_codes": [
@@ -18,33 +18,32 @@
         "RATE_LIMIT"
       ],
       "software_revision": "6ad29d707cf6535f",
-      "products": 125,
-      "variants": 867,
+      "products": 25,
+      "variants": 25,
       "http_statuses": {
-        "200": 192,
+        "200": 79,
         "429": 1
       },
-      "network_seconds": 400.0,
-      "max_response_seconds": 13.9,
-      "cache_events": 477
+      "network_seconds": 91.3,
+      "max_response_seconds": 2.4,
+      "cache_events": 84
     },
     {
-      "name": "The Hanger Pakistan",
+      "name": "Outfitters",
       "status": "done",
       "review_required": true,
       "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT"
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "6ad29d707cf6535f",
-      "products": 360,
-      "variants": 1593,
+      "products": 678,
+      "variants": 3758,
       "http_statuses": {
-        "200": 540
+        "200": 697
       },
-      "network_seconds": 1161.7,
-      "max_response_seconds": 2.7,
-      "cache_events": 1768
+      "network_seconds": 1952.7,
+      "max_response_seconds": 22.3,
+      "cache_events": 1357
     }
   ]
 }
