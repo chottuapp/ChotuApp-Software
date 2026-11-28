@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-28T16:40:30.749541+00:00",
-  "run_id": "46140836492",
+  "generated_utc": "2026-11-28T16:55:37.279112+00:00",
+  "run_id": "46140854416",
   "attempt": "1",
   "source_commit": "19e02a2aa0e95addb304c0e474410360209540a6",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 18000.8,
+  "elapsed_seconds": 18000.4,
   "stores": [
     {
-      "name": "Bonanza Satrangi",
+      "name": "Saya",
       "status": "pending",
       "review_required": false,
       "issue_codes": [
@@ -18,28 +18,33 @@
       ],
       "software_revision": "6ad29d707cf6535f",
       "http_statuses": {
-        "200": 5770
+        "200": 4468
       },
-      "network_seconds": 14269.6,
-      "max_response_seconds": 5.8,
+      "network_seconds": 10703.7,
+      "max_response_seconds": 4.1,
       "cache_events": 0
     },
     {
-      "name": "Zellbury",
-      "status": "pending",
-      "review_required": false,
+      "name": "Hush Puppies",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
         "HTTP_404",
-        "WEBSITE_ORDER_UNVERIFIED"
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED"
       ],
       "software_revision": "6ad29d707cf6535f",
+      "products": 236,
+      "variants": 3203,
       "http_statuses": {
-        "200": 7733,
+        "200": 339,
+        "429": 1,
         "404": 2
       },
-      "network_seconds": 22109.6,
-      "max_response_seconds": 34.4,
-      "cache_events": 0
+      "network_seconds": 697.1,
+      "max_response_seconds": 2.5,
+      "cache_events": 724
     }
   ]
 }
