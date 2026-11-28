@@ -1,36 +1,16 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-28T16:58:06.960196+00:00",
-  "run_id": "46140887213",
+  "generated_utc": "2026-11-28T17:01:34.291754+00:00",
+  "run_id": "46140888806",
   "attempt": "1",
   "source_commit": "19e02a2aa0e95addb304c0e474410360209540a6",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 9932.9,
+  "elapsed_seconds": 9925.7,
   "stores": [
     {
-      "name": "Baby Planet",
-      "status": "source_paused",
-      "review_required": false,
-      "issue_codes": [
-        "HTTP_404",
-        "HTTP_429",
-        "RATE_LIMIT",
-        "WEBSITE_CATEGORY_UNVERIFIED"
-      ],
-      "software_revision": "6ad29d707cf6535f",
-      "http_statuses": {
-        "200": 2315,
-        "429": 4,
-        "404": 3
-      },
-      "network_seconds": 5140.1,
-      "max_response_seconds": 2.7,
-      "cache_events": 8299
-    },
-    {
-      "name": "Insignia",
+      "name": "Lulusar",
       "status": "source_paused",
       "review_required": false,
       "issue_codes": [
@@ -41,12 +21,30 @@
       ],
       "software_revision": "6ad29d707cf6535f",
       "http_statuses": {
-        "200": 3150,
-        "429": 5
+        "200": 2297,
+        "429": 3
       },
-      "network_seconds": 7053.9,
-      "max_response_seconds": 2.7,
-      "cache_events": 8011
+      "network_seconds": 4993.8,
+      "max_response_seconds": 2.6,
+      "cache_events": 8144
+    },
+    {
+      "name": "OrderNation",
+      "status": "source_paused",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT",
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "6ad29d707cf6535f",
+      "http_statuses": {
+        "200": 1170,
+        "429": 6
+      },
+      "network_seconds": 2893.5,
+      "max_response_seconds": 2.9,
+      "cache_events": 5450
     }
   ]
 }
