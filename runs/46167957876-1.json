@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-28T20:12:53.864569+00:00",
+  "run_id": "46167957876",
+  "attempt": "1",
+  "source_commit": "19e02a2aa0e95addb304c0e474410360209540a6",
+  "status": "incomplete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 11541.9,
+  "stores": [
+    {
+      "name": "Baby Planet",
+      "status": "source_paused",
+      "review_required": false,
+      "issue_codes": [
+        "HTTP_404",
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "6ad29d707cf6535f",
+      "http_statuses": {
+        "404": 10,
+        "200": 2447,
+        "429": 3
+      },
+      "network_seconds": 5501.8,
+      "max_response_seconds": 2.6,
+      "cache_events": 36169
+    },
+    {
+      "name": "Insignia",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "WEBSITE_ORDER_UNVERIFIED"
+      ],
+      "software_revision": "6ad29d707cf6535f",
+      "products": 900,
+      "variants": 4267,
+      "http_statuses": {
+        "200": 512
+      },
+      "network_seconds": 1276.9,
+      "max_response_seconds": 2.6,
+      "cache_events": 9071
+    }
+  ]
+}
