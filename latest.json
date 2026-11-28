@@ -1,51 +1,49 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-28T13:06:33.790781+00:00",
-  "run_id": "46140839990",
+  "generated_utc": "2026-11-28T13:22:39.268059+00:00",
+  "run_id": "46140861234",
   "attempt": "1",
   "source_commit": "19e02a2aa0e95addb304c0e474410360209540a6",
-  "status": "complete",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 5237.1,
+  "elapsed_seconds": 4044.5,
   "stores": [
     {
-      "name": "Aerosoft Studio",
-      "status": "done",
-      "review_required": true,
+      "name": "Paklap",
+      "status": "failed",
+      "review_required": false,
       "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT"
+        "HTTP_403",
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "6ad29d707cf6535f",
-      "products": 232,
-      "variants": 1379,
       "http_statuses": {
-        "200": 294,
-        "429": 1
+        "200": 1,
+        "403": 2
       },
-      "network_seconds": 625.4,
-      "max_response_seconds": 2.5,
-      "cache_events": 577
+      "network_seconds": 1.7,
+      "max_response_seconds": 1.2,
+      "cache_events": 1
     },
     {
-      "name": "Servis",
+      "name": "House of Tools",
       "status": "done",
       "review_required": true,
       "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT"
+        "HTTP_404",
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "6ad29d707cf6535f",
-      "products": 1013,
-      "variants": 5527,
+      "products": 1341,
+      "variants": 1341,
       "http_statuses": {
-        "200": 1077,
-        "429": 2
+        "200": 1370,
+        "404": 1
       },
-      "network_seconds": 2381.3,
-      "max_response_seconds": 2.5,
-      "cache_events": 4563
+      "network_seconds": 1051.0,
+      "max_response_seconds": 4.5,
+      "cache_events": 0
     }
   ]
 }
