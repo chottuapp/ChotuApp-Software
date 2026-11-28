@@ -1,49 +1,46 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-28T14:59:02.342220+00:00",
-  "run_id": "46140857844",
+  "generated_utc": "2026-11-28T15:04:37.665016+00:00",
+  "run_id": "46154559203",
   "attempt": "1",
   "source_commit": "19e02a2aa0e95addb304c0e474410360209540a6",
-  "status": "incomplete",
+  "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 9927.8,
+  "elapsed_seconds": 787.2,
   "stores": [
     {
-      "name": "Rios",
-      "status": "source_paused",
-      "review_required": false,
+      "name": "Ndure",
+      "status": "done",
+      "review_required": true,
       "issue_codes": [
         "HTTP_429",
         "RATE_LIMIT",
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "6ad29d707cf6535f",
+      "products": 1876,
+      "variants": 12506,
       "http_statuses": {
-        "200": 2935,
-        "429": 4
+        "200": 126,
+        "429": 1
       },
-      "network_seconds": 6478.1,
-      "max_response_seconds": 4.8,
-      "cache_events": 8105
+      "network_seconds": 224.8,
+      "max_response_seconds": 2.5,
+      "cache_events": 12447
     },
     {
-      "name": "Mala",
+      "name": "Astore Bags",
       "status": "done",
       "review_required": true,
-      "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT"
-      ],
+      "issue_codes": [],
       "software_revision": "6ad29d707cf6535f",
-      "products": 88,
-      "variants": 271,
-      "http_statuses": {
-        "200": 135
-      },
-      "network_seconds": 231.0,
-      "max_response_seconds": 2.5,
-      "cache_events": 215
+      "products": 225,
+      "variants": 239,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
     }
   ]
 }
