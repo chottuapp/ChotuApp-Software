@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-28T16:32:17.877017+00:00",
-  "run_id": "46140879757",
+  "generated_utc": "2026-11-28T16:40:04.093654+00:00",
+  "run_id": "46140816654",
   "attempt": "1",
   "source_commit": "19e02a2aa0e95addb304c0e474410360209540a6",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 9943.7,
+  "elapsed_seconds": 18000.1,
   "stores": [
     {
-      "name": "Bela",
+      "name": "Miss Rose",
       "status": "done",
       "review_required": true,
       "issue_codes": [
@@ -18,35 +18,31 @@
         "RATE_LIMIT"
       ],
       "software_revision": "6ad29d707cf6535f",
-      "products": 107,
-      "variants": 127,
+      "products": 186,
+      "variants": 1859,
       "http_statuses": {
-        "200": 116
+        "200": 695,
+        "429": 1
       },
-      "network_seconds": 214.7,
-      "max_response_seconds": 2.5,
-      "cache_events": 305
+      "network_seconds": 1499.0,
+      "max_response_seconds": 2.7,
+      "cache_events": 1678
     },
     {
-      "name": "Taminzo",
-      "status": "source_paused",
+      "name": "Rawayat",
+      "status": "pending",
       "review_required": false,
       "issue_codes": [
-        "HTTP_404",
-        "HTTP_429",
-        "RATE_LIMIT",
-        "WEBSITE_CATEGORY_UNVERIFIED",
-        "WEBSITE_ORDER_UNVERIFIED"
+        "HTTP_404"
       ],
       "software_revision": "6ad29d707cf6535f",
       "http_statuses": {
-        "200": 2420,
-        "429": 5,
-        "404": 205
+        "200": 3683,
+        "404": 5
       },
-      "network_seconds": 5799.8,
-      "max_response_seconds": 3.6,
-      "cache_events": 7738
+      "network_seconds": 8674.7,
+      "max_response_seconds": 3.0,
+      "cache_events": 0
     }
   ]
 }
