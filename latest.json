@@ -1,47 +1,42 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-28T16:40:04.093654+00:00",
-  "run_id": "46140816654",
+  "generated_utc": "2026-11-28T16:40:11.596201+00:00",
+  "run_id": "46140829597",
   "attempt": "1",
   "source_commit": "19e02a2aa0e95addb304c0e474410360209540a6",
   "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 18000.1,
+  "elapsed_seconds": 18000.4,
   "stores": [
     {
-      "name": "Miss Rose",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [
-        "HTTP_429",
-        "RATE_LIMIT"
-      ],
-      "software_revision": "6ad29d707cf6535f",
-      "products": 186,
-      "variants": 1859,
-      "http_statuses": {
-        "200": 695,
-        "429": 1
-      },
-      "network_seconds": 1499.0,
-      "max_response_seconds": 2.7,
-      "cache_events": 1678
-    },
-    {
-      "name": "Rawayat",
+      "name": "Gul Ahmed",
       "status": "pending",
       "review_required": false,
       "issue_codes": [
-        "HTTP_404"
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "6ad29d707cf6535f",
       "http_statuses": {
-        "200": 3683,
-        "404": 5
+        "200": 3676
       },
-      "network_seconds": 8674.7,
+      "network_seconds": 8561.2,
       "max_response_seconds": 3.0,
+      "cache_events": 0
+    },
+    {
+      "name": "Sapphire",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "6ad29d707cf6535f",
+      "products": 728,
+      "variants": 2187,
+      "http_statuses": {
+        "200": 5100
+      },
+      "network_seconds": 7397.9,
+      "max_response_seconds": 25.2,
       "cache_events": 0
     }
   ]
