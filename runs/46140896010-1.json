@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-28T14:50:23.842197+00:00",
+  "run_id": "46140896010",
+  "attempt": "1",
+  "source_commit": "19e02a2aa0e95addb304c0e474410360209540a6",
+  "status": "complete",
+  "checkpoint_saved": true,
+  "python": "3.12.16",
+  "elapsed_seconds": 863.7,
+  "stores": [
+    {
+      "name": "Tomatotes",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "6ad29d707cf6535f",
+      "products": 164,
+      "variants": 271,
+      "http_statuses": {
+        "200": 203
+      },
+      "network_seconds": 400.2,
+      "max_response_seconds": 2.5,
+      "cache_events": 416
+    },
+    {
+      "name": "Musk Al Mahal Pakistan",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [
+        "HTTP_429",
+        "RATE_LIMIT"
+      ],
+      "software_revision": "6ad29d707cf6535f",
+      "products": 95,
+      "variants": 143,
+      "http_statuses": {
+        "200": 155,
+        "429": 1
+      },
+      "network_seconds": 271.8,
+      "max_response_seconds": 2.5,
+      "cache_events": 232
+    }
+  ]
+}
