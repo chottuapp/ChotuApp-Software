@@ -1,52 +1,55 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-28T15:06:49.244544+00:00",
-  "run_id": "46140890438",
+  "generated_utc": "2026-11-28T15:07:10.610936+00:00",
+  "run_id": "46140859647",
   "attempt": "1",
   "source_commit": "19e02a2aa0e95addb304c0e474410360209540a6",
-  "status": "complete",
+  "status": "incomplete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 2872.0,
+  "elapsed_seconds": 10190.0,
   "stores": [
     {
-      "name": "Scents N Secrets",
-      "status": "done",
-      "review_required": true,
+      "name": "Limelight",
+      "status": "source_paused",
+      "review_required": false,
       "issue_codes": [
+        "HTTP_404",
         "HTTP_429",
-        "RATE_LIMIT"
+        "RATE_LIMIT",
+        "WEBSITE_CATEGORY_UNVERIFIED",
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "6ad29d707cf6535f",
-      "products": 142,
-      "variants": 183,
       "http_statuses": {
-        "200": 186,
-        "429": 1
+        "200": 2148,
+        "429": 4,
+        "404": 31
       },
-      "network_seconds": 367.4,
-      "max_response_seconds": 2.5,
-      "cache_events": 320
+      "network_seconds": 4749.4,
+      "max_response_seconds": 2.9,
+      "cache_events": 8137
     },
     {
-      "name": "Bin Ilyas",
+      "name": "Alkaram Studio",
       "status": "done",
       "review_required": true,
       "issue_codes": [
         "HTTP_429",
         "RATE_LIMIT",
-        "WEBSITE_CATEGORY_UNVERIFIED"
+        "WEBSITE_CATEGORY_UNVERIFIED",
+        "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "6ad29d707cf6535f",
-      "products": 175,
-      "variants": 377,
+      "products": 1825,
+      "variants": 6503,
       "http_statuses": {
-        "200": 1002,
-        "429": 2
+        "200": 2003,
+        "429": 4
       },
-      "network_seconds": 2265.7,
+      "network_seconds": 4303.9,
       "max_response_seconds": 2.6,
-      "cache_events": 2047
+      "cache_events": 11740
     }
   ]
 }
