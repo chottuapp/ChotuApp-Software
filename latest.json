@@ -1,41 +1,43 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-11-28T18:21:07.091294+00:00",
-  "run_id": "46173081779",
+  "generated_utc": "2026-11-28T18:21:22.846123+00:00",
+  "run_id": "46172766851",
   "attempt": "1",
   "source_commit": "19e02a2aa0e95addb304c0e474410360209540a6",
   "status": "complete",
   "checkpoint_saved": true,
   "python": "3.12.16",
-  "elapsed_seconds": 1377.5,
+  "elapsed_seconds": 1684.6,
   "stores": [
     {
-      "name": "Toyzone",
+      "name": "ChenOne",
+      "status": "done",
+      "review_required": true,
+      "issue_codes": [],
+      "software_revision": "6ad29d707cf6535f",
+      "products": 337,
+      "variants": 1215,
+      "http_statuses": {},
+      "network_seconds": 0,
+      "max_response_seconds": 0,
+      "cache_events": 0
+    },
+    {
+      "name": "Generation",
       "status": "done",
       "review_required": true,
       "issue_codes": [
         "WEBSITE_ORDER_UNVERIFIED"
       ],
       "software_revision": "6ad29d707cf6535f",
-      "products": 3321,
-      "variants": 3725,
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 14048
-    },
-    {
-      "name": "VNS Collection",
-      "status": "done",
-      "review_required": true,
-      "issue_codes": [],
-      "software_revision": "6ad29d707cf6535f",
-      "products": 679,
-      "variants": 1973,
-      "http_statuses": {},
-      "network_seconds": 0,
-      "max_response_seconds": 0,
-      "cache_events": 0
+      "products": 819,
+      "variants": 6614,
+      "http_statuses": {
+        "200": 578
+      },
+      "network_seconds": 1442.6,
+      "max_response_seconds": 2.7,
+      "cache_events": 16912
     }
   ]
 }
